@@ -41,8 +41,8 @@ jobs:
         run: |
           set -euo pipefail
           git remote set-url origin https://x-access-token:"$GITHUB_TOKEN"@github.com/"$GITHUB_REPOSITORY".git
-          git config --global user.email "charmbot@sgrs.uk"
-          git config --global user.name "juju-charm-bot"
+          git config --global user.email "101582426+ashuntu@users.noreply.github.com"
+          git config --global user.name "ashuntu"
 
           git checkout $GITHUB_REF_NAME
           git add data/repos.json
@@ -56,5 +56,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          user_name: juju-charm-bot
-          user_email: charmbot@sgrs.uk
+          user_name: ashuntu
+          user_email: 101582426+ashuntu@users.noreply.github.com
