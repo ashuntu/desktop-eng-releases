@@ -5777,25 +5777,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d90a3e4b3ee6cb24324aa8b47abe794aa143f180",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1701155064,
+                  "message": "deps(go): bump golang.org/x/term from 0.14.0 to 0.15.0 (#115)\n\nBumps [golang.org/x/term](https://github.com/golang/term) from 0.14.0 to\r\n0.15.0.\r\n<details>\r\n<summary>Commits</summary>\r\n<ul>\r\n<li><a\r\nhref=\"https://github.com/golang/term/commit/ee66497fa39f03ba841b568a7b4f4ee4e4546f74\"><code>ee66497</code></a>\r\ngo.mod: update golang.org/x dependencies</li>\r\n<li>See full diff in <a\r\nhref=\"https://github.com/golang/term/compare/v0.14.0...v0.15.0\">compare\r\nview</a></li>\r\n</ul>\r\n</details>\r\n<br />\r\n\r\n\r\n[![Dependabot compatibility\r\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=golang.org/x/term&package-manager=go_modules&previous-version=0.14.0&new-version=0.15.0)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\r\n\r\nDependabot will resolve any conflicts with this PR as long as you don't\r\nalter it yourself. You can also trigger a rebase manually by commenting\r\n`@dependabot rebase`.\r\n\r\n[//]: # (dependabot-automerge-start)\r\n[//]: # (dependabot-automerge-end)\r\n\r\n---\r\n\r\n<details>\r\n<summary>Dependabot commands and options</summary>\r\n<br />\r\n\r\nYou can trigger Dependabot actions by commenting on this PR:\r\n- `@dependabot rebase` will rebase this PR\r\n- `@dependabot recreate` will recreate this PR, overwriting any edits\r\nthat have been made to it\r\n- `@dependabot merge` will merge this PR after your CI passes on it\r\n- `@dependabot squash and merge` will squash and merge this PR after\r\nyour CI passes on it\r\n- `@dependabot cancel merge` will cancel a previously requested merge\r\nand block automerging\r\n- `@dependabot reopen` will reopen this PR if it is closed\r\n- `@dependabot close` will close this PR and stop Dependabot recreating\r\nit. You can achieve the same result by closing it manually\r\n- `@dependabot show <dependency name> ignore conditions` will show all\r\nof the ignore conditions of the specified dependency\r\n- `@dependabot ignore this major version` will close this PR and stop\r\nDependabot creating any more for this major version (unless you reopen\r\nthe PR or upgrade to it yourself)\r\n- `@dependabot ignore this minor version` will close this PR and stop\r\nDependabot creating any more for this minor version (unless you reopen\r\nthe PR or upgrade to it yourself)\r\n- `@dependabot ignore this dependency` will close this PR and stop\r\nDependabot creating any more for this dependency (unless you reopen the\r\nPR or upgrade to it yourself)\r\n\r\n\r\n</details>",
+                  "url": "https://github.com/ubuntu/authd/commit/d90a3e4b3ee6cb24324aa8b47abe794aa143f180"
+               },
+               {
+                  "sha": "982436a573183f67e9bc1ea077ccb0122b99f269",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1701124527,
+                  "message": "deps(go): bump golang.org/x/term from 0.14.0 to 0.15.0\n\nBumps [golang.org/x/term](https://github.com/golang/term) from 0.14.0 to 0.15.0.\n- [Commits](https://github.com/golang/term/compare/v0.14.0...v0.15.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/term\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/authd/commit/982436a573183f67e9bc1ea077ccb0122b99f269"
+               },
+               {
                   "sha": "ab26227d1f914ba924c49cf28f5de37a97f34960",
                   "author": "Gabriel Nagy",
                   "timestamp": 1701087815,
                   "message": "fix(nss): fix authd daemon hanging on shutdown (#113)",
                   "url": "https://github.com/ubuntu/authd/commit/ab26227d1f914ba924c49cf28f5de37a97f34960"
-               },
-               {
-                  "sha": "d1b02a590c15ea3a6975ccb4d951a6594f826db3",
-                  "author": "Gabriel Nagy",
-                  "timestamp": 1700830943,
-                  "message": "Remove static runtime ref\n\nWe do not use this anymore, but we still need the crate to hook up the\nnss functions.",
-                  "url": "https://github.com/ubuntu/authd/commit/d1b02a590c15ea3a6975ccb4d951a6594f826db3"
-               },
-               {
-                  "sha": "d0b0168ac37e9ef3f33cfa4f5d15305bce918e99",
-                  "author": "Gabriel Nagy",
-                  "timestamp": 1700829938,
-                  "message": "Fix authd daemon hanging on shutdown\n\nNSS clients keep the library loaded until the end of the session, e.g.\nif one runs a command like `sudo sleep 10`, the library won't be closed\nuntil the sleep finishes. This also applies to SSH and login sessions -\neasy to monitor by applying a inotify watch on the NSS library path.\n\nOne side effect of this was that due to the way we were initializing our\ntokio runtime, gRPC clients would be left hanging until the end of the\naforementioned session, terminating together with the runtime. We\nassumed that the gRPC connection would go out of scope and terminate\nafter the NSS method returns, but it appears this was not the case.\n\nLeaving clients hanging meant that as long as there was at least one\nopen session (be it either a logged in user, a running sudo command, or\nany other blocking third-party program interacting with NSS), the authd\ndaemon wouldn't be able to gracefully stop in a quick manner, thus\nhanging the process and ultimately timing out after a period of time.\n\nBecause tonic (our Rust gRPC library) doesn't provide a bespoke way of\nclosing the client connection, we still need to rely on Rust to handle\nit for us, so the proposed way of doing it is to declare the tokio\nruntime inside the function call, which will make it go out of scope and\nterminate the client afer it returns. We initialize the runtime the same\nway, ensuring we remain single-threaded by using the current-thread\nscheduler.",
-                  "url": "https://github.com/ubuntu/authd/commit/d0b0168ac37e9ef3f33cfa4f5d15305bce918e99"
                }
             ],
             "ciActions": [
