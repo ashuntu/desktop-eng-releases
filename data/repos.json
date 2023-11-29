@@ -5777,25 +5777,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9b70b4cac37ec7b58f27ec357f103c7bd714a88b",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1701185943,
-                  "message": "feat(cache/pam): Save user's last used broker to the cache (#114)\n\nThe default broker for the user used to be stored in memory only. This\r\nmeant that, on each reboot, the user had to reselect the broker again.\r\nNow, the last broker used for authentication by the user is also stored\r\nin the database. This way, we can restore it every time.\r\n\r\nUDENG-1649",
-                  "url": "https://github.com/ubuntu/authd/commit/9b70b4cac37ec7b58f27ec357f103c7bd714a88b"
+                  "sha": "4093f4c13934ebe2e9c077971072fc895abc729e",
+                  "author": "Gabriel Nagy",
+                  "timestamp": 1701254044,
+                  "message": "fix(tests): increase wait time before exiting function (#116)",
+                  "url": "https://github.com/ubuntu/authd/commit/4093f4c13934ebe2e9c077971072fc895abc729e"
                },
                {
-                  "sha": "41b8c9c94311bf92577881599d95164c962d9983",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1701095851,
-                  "message": "Add and update tests to cover changes in the db",
-                  "url": "https://github.com/ubuntu/authd/commit/41b8c9c94311bf92577881599d95164c962d9983"
+                  "sha": "fd98da5b29aa3c4fd58ac7184f5dc07e79f55e53",
+                  "author": "Gabriel Nagy",
+                  "timestamp": 1701203866,
+                  "message": "Add todo to improve logic when cleanup is running",
+                  "url": "https://github.com/ubuntu/authd/commit/fd98da5b29aa3c4fd58ac7184f5dc07e79f55e53"
                },
                {
-                  "sha": "57c795b772a8ec86c6464e091f43610a3fb3f766",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1701095642,
-                  "message": "Update golden files and asserts due to db change\n\nTo reduce noise on the golden files for the new tests, this updates all\nthe golden files that only changed due to the new bucket being added.",
-                  "url": "https://github.com/ubuntu/authd/commit/57c795b772a8ec86c6464e091f43610a3fb3f766"
+                  "sha": "a2946dfd2babaa7d57ca5e7451a0c1c702e4e6a2",
+                  "author": "Gabriel Nagy",
+                  "timestamp": 1701183958,
+                  "message": "Increase wait time before exiting function\n\nThis is causing flaky tests in error cases where the test DB is corrupt\nor has bad entries. I've tried to increase sleep times within the tests\nbut it appears the issue is in the implementation itself.\n\nThe function exits if it's not able to send something on the doClear\nchannel within 1 millisecond -- given that a cleanup might already be\nrunning this would exit without queueing any subsequent cleanup, which\nin turn left us with a dangling \"dirty\" DB file.\n\nI think the ideal fix here would be to make this a buffered channel and\nbe able to queue multiple cleanups while one is running, but for now\nI've increased the amount of time we wait before exiting.\n\nFixes UDENG-1847",
+                  "url": "https://github.com/ubuntu/authd/commit/a2946dfd2babaa7d57ca5e7451a0c1c702e4e6a2"
                }
             ],
             "ciActions": [
