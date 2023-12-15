@@ -5796,25 +5796,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "06c32ac1f23185b9e30cc5515162115fdfa82cec",
+                  "sha": "ba9f0e2340a07be00a13332669b1f6556fd5350e",
                   "author": "Gabriel Nagy",
-                  "timestamp": 1702631327,
-                  "message": "perf: wait for the dbus-daemon to be ready using its output (#152)\n\ndbus-daemon can print out its listen address when it's ready, by waiting\r\nso instead of just guessing how much to wait.\r\n\r\nDoing this through some goroutines although being this test code we\r\ncould very likely just hang.\r\n\r\nPS: Since these two functions _were already_ pretty much the same, can\r\nwe just maybe move them in a common place? If so, which one should I\r\npick?",
-                  "url": "https://github.com/ubuntu/authd/commit/06c32ac1f23185b9e30cc5515162115fdfa82cec"
+                  "timestamp": 1702647947,
+                  "message": "pam: Add GDM JSON protocol definition (#121)\n\nWe use JSON to communicate with GDM since its UI, GNOME Shell is in\r\nJavaScript and so can handle those messages natively pretty well.\r\n\r\nHere we define the primitives of this protocol and their conversion back\r\nand forth from go structures and types, ensuring the expectations are\r\nmet.\r\n\r\nThe protocol code generation is mostly done via protobuf so that we can\r\navoid manual definition of many structures, but is meant for being used\r\nfrom the JSON side too thus using some naming conventions to please both\r\ncases.\r\n\r\nUDENG-1466",
+                  "url": "https://github.com/ubuntu/authd/commit/ba9f0e2340a07be00a13332669b1f6556fd5350e"
                },
                {
-                  "sha": "fafc8bd0cf000ed76bbc1f852c50e680f1398ff0",
+                  "sha": "9f4f56d0e18ff53fecd100a1be9d6a6d3b7c9df6",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1702499974,
-                  "message": "dbus: Wait for the dbus-daemon to be ready using its output\n\ndbus-daemon can print out its listen address when it's ready, by waiting\nso instead of just guessing how much to wait.\n\nDoing this through some goroutines although being this test code we\ncould very likely just hang.\n\nCo-authored-by: Gabriel Nagy <gabriel.nagy@canonical.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/fafc8bd0cf000ed76bbc1f852c50e680f1398ff0"
+                  "timestamp": 1702529406,
+                  "message": "pam: Introduce pam_debug build tag to generate debug libraries\n\nWhen using this tag on `go build` or `go generate` we:\n - Add more debug symbols to built libraries\n - Enable pedantic checks on data structures used by GDM proto\n\nTo achieve this, add a further generate_debug.go file that is only\nused when the `pam_debug` tag is used, this now also builds the gdm\ncode with the `pam_gdm_debug` build tag that implies enabling by\ndefault some checks that are not enabled by default.\n\nUpdate CI job to ensure this works.",
+                  "url": "https://github.com/ubuntu/authd/commit/9f4f56d0e18ff53fecd100a1be9d6a6d3b7c9df6"
                },
                {
-                  "sha": "01fc400ba3641314f02aa214e4d552635b87edb3",
+                  "sha": "67503f33d6dfa2f15a521fe7a2daea7e3a72c985",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1702582880,
-                  "message": "brokers/withexamples: Reuse testutils function to start a mock system bus",
-                  "url": "https://github.com/ubuntu/authd/commit/01fc400ba3641314f02aa214e4d552635b87edb3"
+                  "timestamp": 1702529088,
+                  "message": "pam/gdm: Use debug assertions only during tests\n\nWe may want to enable some checks only during checks or debug builds to\nbe used in integration tests, so let's abstract things a bit more by\nexposing some features at runtime only.\n\nThis allows to generate normal builds without debug checks but at the\nsame time, to avoid having to define special build tags when testing,\nleaving the room for using special tags for building different binaries\nfor integration tests or local debugging.",
+                  "url": "https://github.com/ubuntu/authd/commit/67503f33d6dfa2f15a521fe7a2daea7e3a72c985"
                }
             ],
             "ciActions": [
