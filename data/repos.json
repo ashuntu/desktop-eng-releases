@@ -5823,25 +5823,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5493b8028af380e5ee20ecf35fa3a9a32d1ddbd7",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1704460354,
+                  "message": "Auto update packaging related Rust files (#166)\n\nAutomated changes by\r\n[create-pull-request](https://github.com/peter-evans/create-pull-request)\r\nGitHub action",
+                  "url": "https://github.com/ubuntu/authd/commit/5493b8028af380e5ee20ecf35fa3a9a32d1ddbd7"
+               },
+               {
+                  "sha": "4988b928102bae4d16752eed5194c7539f1b491b",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1704441363,
+                  "message": "Auto update packaging related Rust files",
+                  "url": "https://github.com/ubuntu/authd/commit/4988b928102bae4d16752eed5194c7539f1b491b"
+               },
+               {
                   "sha": "134e25452b46c95742a6ba05389a16158e874b9f",
                   "author": "dependabot[bot]",
                   "timestamp": 1704441314,
                   "message": "deps(go): bump golang.org/x/term from 0.15.0 to 0.16.0 (#167)",
                   "url": "https://github.com/ubuntu/authd/commit/134e25452b46c95742a6ba05389a16158e874b9f"
-               },
-               {
-                  "sha": "54dab7ae3ddbf3ec2ce2ce66719b7c990de20481",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1704407710,
-                  "message": "deps(go): bump golang.org/x/term from 0.15.0 to 0.16.0\n\nBumps [golang.org/x/term](https://github.com/golang/term) from 0.15.0 to 0.16.0.\n- [Commits](https://github.com/golang/term/compare/v0.15.0...v0.16.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/term\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/54dab7ae3ddbf3ec2ce2ce66719b7c990de20481"
-               },
-               {
-                  "sha": "e16afc63abecb0ae9aa1fb2334345558b7acb193",
-                  "author": "Gabriel Nagy",
-                  "timestamp": 1704278412,
-                  "message": "fix: skip NSS lookups from dbus-daemon through systemd (#154)\n\nWhile doing more tests that required frequent reboots I still\r\nencountered the boot hang issue described in UDENG-1862. I was able to\r\ntrace it back to an issue in systemd where [something similar happened\r\nbetween nss-systemd and\r\ndbus](https://github.com/systemd/systemd/issues/15316).\r\n\r\nEven with the strictest systemd unit dependency ordering we're still not\r\nable to rule out the deadlock completely, because while `dbus.service`\r\nmay report that it's active, other services could still interact with it\r\nafterwards causing it to perform more _blocking_ NSS lookups, before the\r\nauthd daemon has fully started.\r\n\r\nTo prevent this from happening, we can leverage the [systemd\r\nfix](https://github.com/systemd/systemd/pull/22552) which sets a\r\nspecific environment variable when starting the dbus.service, telling\r\nitself (`nss-systemd`) to avoid using dbus for the lookup.\r\n\r\nIt's not really ideal to return an error here but it was the quickest\r\nway to do it without changing all the NSS entry points of the library.\r\n\r\nFixes UDENG-1862",
-                  "url": "https://github.com/ubuntu/authd/commit/e16afc63abecb0ae9aa1fb2334345558b7acb193"
                }
             ],
             "ciActions": [
