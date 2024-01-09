@@ -5810,25 +5810,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9c0185193fde8347db5787b0ed71807296efa080",
-                  "author": "Gabriel Nagy",
-                  "timestamp": 1704793474,
-                  "message": "build: create and package systemd units (#151)\n\nCreate systemd units for the socket-activated daemon and install them in\r\nthe built deb.\r\n\r\nAs the daemon only communicates via D-Bus (via Unix sockets) we can\r\nactivate almost all hardening options provided by systemd, lowering the\r\nexposure level reported by `systemd-analyze security` from 9.8 to 1.8.\r\nLooking at each of the options, the newest one we use is `ProcSubset`\r\nadded in v247 available starting with Jammy.\r\n\r\nBecause config/cache paths are configurable (and writable) I avoided\r\nenabling `ProtectSystem` which mounts the system read-only.\r\n\r\nI confirmed installing the deb will correctly enable `authd.socket` and\r\nimmediately start `authd.service`.\r\n\r\nFixes UDENG-1877",
-                  "url": "https://github.com/ubuntu/authd/commit/9c0185193fde8347db5787b0ed71807296efa080"
+                  "sha": "b92fb6a9eb518b39f6e54245dfc9467891b5e86a",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1704802700,
+                  "message": "ci: run dependabot less frequently (#170)\n\nReduce dependabot spam",
+                  "url": "https://github.com/ubuntu/authd/commit/b92fb6a9eb518b39f6e54245dfc9467891b5e86a"
                },
                {
-                  "sha": "5493b8028af380e5ee20ecf35fa3a9a32d1ddbd7",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1704460354,
-                  "message": "Auto update packaging related Rust files (#166)\n\nAutomated changes by\r\n[create-pull-request](https://github.com/peter-evans/create-pull-request)\r\nGitHub action",
-                  "url": "https://github.com/ubuntu/authd/commit/5493b8028af380e5ee20ecf35fa3a9a32d1ddbd7"
+                  "sha": "8aa4011861c3d6c78d9bdd1fe1c99885de32d35c",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1704801835,
+                  "message": "ci: run dependabot less frequently",
+                  "url": "https://github.com/ubuntu/authd/commit/8aa4011861c3d6c78d9bdd1fe1c99885de32d35c"
                },
                {
-                  "sha": "4988b928102bae4d16752eed5194c7539f1b491b",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1704441363,
+                  "sha": "c9b24a29785714d3320d670a12f102f6e7737087",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1704801697,
                   "message": "Auto update packaging related Rust files",
-                  "url": "https://github.com/ubuntu/authd/commit/4988b928102bae4d16752eed5194c7539f1b491b"
+                  "url": "https://github.com/ubuntu/authd/commit/c9b24a29785714d3320d670a12f102f6e7737087"
                }
             ],
             "ciActions": [
