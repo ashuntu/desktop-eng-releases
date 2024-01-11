@@ -5810,25 +5810,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "67805db903764c184bace76caace7aabd55967e0",
+                  "sha": "edc620296dab2b29fe3ee3d9079748c8f2a3abcd",
                   "author": "Denison Barbosa",
-                  "timestamp": 1704813210,
-                  "message": "feat(users/services): Local groups cleanup (#150)\n\nDue to limitations with our `cache`, we can't know exactly which users\r\nwere deleted when the database was corrupted and it got cleared up and\r\nrebuilt, so we need to have a routine that periodically cleans the local\r\ngroups from any unexistent users.\r\n\r\nThis is a complex task that could potentially spawn a lot of\r\nsubprocesses (in the form of `gpasswd --delete` calls) to clean the\r\nlocal groups. However, the dominant factor of complexity in the code is\r\nthe number of groups (and the number of users that belong to those\r\ngroups) rather than the number of existent users. Since we query\r\ndirectly `/etc/groups` to look for the groups, we are only dealing with\r\nlocal groups here and, as such, we should be fine with performance.\r\n\r\nUDENG-1864",
-                  "url": "https://github.com/ubuntu/authd/commit/67805db903764c184bace76caace7aabd55967e0"
+                  "timestamp": 1704985844,
+                  "message": "tests(pam/testutils): Integration tests for the PAM CLI (#109)\n\nThis adds integration tests for the PAM module and moves some code\r\naround to avoid copying and maintain consistency between our integration\r\ntests.\r\nThe golden files are `ASCII` representations of terminal screenshots, so\r\ndon't get scared by the number of lines changed (I promise it will be\r\nokay).\r\n\r\nUDENG-1456",
+                  "url": "https://github.com/ubuntu/authd/commit/edc620296dab2b29fe3ee3d9079748c8f2a3abcd"
                },
                {
-                  "sha": "3c81c49821f6f6253ea5eb3927dc3fb8bc40140b",
+                  "sha": "10d92c3eea4ac57476fde6d0ba16a7157c14703e",
                   "author": "denisonbarbosa",
-                  "timestamp": 1704812642,
-                  "message": "Add tests for the new functionalities",
-                  "url": "https://github.com/ubuntu/authd/commit/3c81c49821f6f6253ea5eb3927dc3fb8bc40140b"
+                  "timestamp": 1704983377,
+                  "message": "Add option to use gpasswd mock when building authd\n\nSince we rely on the mock to test some behaviors in the CLI tests, we\nhave to be able to build the binary with the mock. This now is doable by\nusing the \"integrationtests\" build tag.",
+                  "url": "https://github.com/ubuntu/authd/commit/10d92c3eea4ac57476fde6d0ba16a7157c14703e"
                },
                {
-                  "sha": "3a084d749aba2cee789610d1ec5b6180d7cab3eb",
+                  "sha": "06c77475012354c3aab61a01eb88ff4cf9b93972",
                   "author": "denisonbarbosa",
-                  "timestamp": 1704812597,
-                  "message": "Update previous tests with the func signature changes",
-                  "url": "https://github.com/ubuntu/authd/commit/3a084d749aba2cee789610d1ec5b6180d7cab3eb"
+                  "timestamp": 1704983277,
+                  "message": "Update docs to point to vhs documentation",
+                  "url": "https://github.com/ubuntu/authd/commit/06c77475012354c3aab61a01eb88ff4cf9b93972"
                }
             ],
             "ciActions": [
