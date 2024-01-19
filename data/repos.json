@@ -5823,6 +5823,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "831edac0c814deea1011b97fece5a3cb045b26f0",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1705681644,
+                  "message": "feat: Implement encryption when exchanging challenge (#180)\n\nThis generates an asymmetric private/public key pair at broker creation\r\ntime. We let it panic as this broker is only for testing purposes.\r\nThis encryption key is then passed at session creation. Note that the\r\nbroker can create a new key for each session if desired.\r\n\r\nThe chosen encryption is sha512. The public key is passed as X.509\r\nstandard, encoded as base64.\r\n\r\nTesting is only covered at integration test level, as this requires a\r\nbroker and exercise the PAM module itself.\r\n\r\nUDENG-2014",
+                  "url": "https://github.com/ubuntu/authd/commit/831edac0c814deea1011b97fece5a3cb045b26f0"
+               },
+               {
                   "sha": "913b3b3ae4a3c0a23f3136586733cdc560c1948a",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1705681440,
@@ -5830,18 +5837,11 @@
                   "url": "https://github.com/ubuntu/authd/commit/913b3b3ae4a3c0a23f3136586733cdc560c1948a"
                },
                {
-                  "sha": "64ee73efcbea68ece4038d9f1da17bb3566ad852",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1705678363,
-                  "message": "deps(go): Bump dependency on go-pam to ignore compilation warning\n\nBump go-pam requirement so that we do ignore unused-variables warning on\ncgo generated code.",
-                  "url": "https://github.com/ubuntu/authd/commit/64ee73efcbea68ece4038d9f1da17bb3566ad852"
-               },
-               {
-                  "sha": "735d34e20aac4f11151b7670022cdb24a7c6e0e7",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1705677376,
-                  "message": "maint: remove uncessary annoying logs and fix typos (#181)\n\nThose are polluting our current logs and we are better without them",
-                  "url": "https://github.com/ubuntu/authd/commit/735d34e20aac4f11151b7670022cdb24a7c6e0e7"
+                  "sha": "96ede9e4834835a1ef0d2cd843b68d1fbbb6fad3",
+                  "author": "Didier Roche",
+                  "timestamp": 1705676322,
+                  "message": "Implement pam-side encryption mechanism\n\nFollow the spec to encrypt any given \"challenge\" to follow the\nencryption mechanism.\n\nThis is using the public key received at session creationg time. Note that\nthe broker can create a new key for each session if desired.\n\nThe chosen encryption is sha512. The public key is passed as X.509 standard,\nencoded as base64.\n\nCo-authored-by: Jean-Baptiste Lallement <jean-baptiste@ubuntu.com>",
+                  "url": "https://github.com/ubuntu/authd/commit/96ede9e4834835a1ef0d2cd843b68d1fbbb6fad3"
                }
             ],
             "ciActions": [
