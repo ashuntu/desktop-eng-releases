@@ -3746,6 +3746,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cab79c43be5959355fabea136d142924b347d678",
+                  "author": "Dennis Loose",
+                  "timestamp": 1705919939,
+                  "message": "Merge pull request #328 from d-loose/remove-theme-page\n\nfeat: remove theme page",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cab79c43be5959355fabea136d142924b347d678"
+               },
+               {
                   "sha": "abbce92e593f3bbdd513be46415429991fc475be",
                   "author": "Dennis Loose",
                   "timestamp": 1705918118,
@@ -3758,13 +3765,6 @@
                   "timestamp": 1705663210,
                   "message": "Merge pull request #333 from matthew-hagemann/remove-hello-service\n\nchore(provd): remove hello service",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7ac07fb29b48a3fb5b472c9fce79a0333c9a5778"
-               },
-               {
-                  "sha": "1da7bd366dc61de372240cd88f484895c2ba23c3",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1705591099,
-                  "message": "Merge pull request #334 from matthew-hagemann/user-dbus-path-fix\n\nUser dbus path fix",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/1da7bd366dc61de372240cd88f484895c2ba23c3"
                }
             ],
             "ciActions": [
@@ -5392,6 +5392,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cab79c43be5959355fabea136d142924b347d678",
+                  "author": "Dennis Loose",
+                  "timestamp": 1705919939,
+                  "message": "Merge pull request #328 from d-loose/remove-theme-page\n\nfeat: remove theme page",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cab79c43be5959355fabea136d142924b347d678"
+               },
+               {
                   "sha": "abbce92e593f3bbdd513be46415429991fc475be",
                   "author": "Dennis Loose",
                   "timestamp": 1705918118,
@@ -5404,13 +5411,6 @@
                   "timestamp": 1705663210,
                   "message": "Merge pull request #333 from matthew-hagemann/remove-hello-service\n\nchore(provd): remove hello service",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7ac07fb29b48a3fb5b472c9fce79a0333c9a5778"
-               },
-               {
-                  "sha": "1da7bd366dc61de372240cd88f484895c2ba23c3",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1705591099,
-                  "message": "Merge pull request #334 from matthew-hagemann/user-dbus-path-fix\n\nUser dbus path fix",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/1da7bd366dc61de372240cd88f484895c2ba23c3"
                }
             ],
             "ciActions": [
@@ -5823,25 +5823,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "831edac0c814deea1011b97fece5a3cb045b26f0",
+                  "sha": "111225380ec69b038ca83b20c23201601e205c03",
                   "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1705681644,
-                  "message": "feat: Implement encryption when exchanging challenge (#180)\n\nThis generates an asymmetric private/public key pair at broker creation\r\ntime. We let it panic as this broker is only for testing purposes.\r\nThis encryption key is then passed at session creation. Note that the\r\nbroker can create a new key for each session if desired.\r\n\r\nThe chosen encryption is sha512. The public key is passed as X.509\r\nstandard, encoded as base64.\r\n\r\nTesting is only covered at integration test level, as this requires a\r\nbroker and exercise the PAM module itself.\r\n\r\nUDENG-2014",
-                  "url": "https://github.com/ubuntu/authd/commit/831edac0c814deea1011b97fece5a3cb045b26f0"
+                  "timestamp": 1705920961,
+                  "message": "Pam random cleanups and fixes (#155)\n\nSome cleanups and fixes as prerequisite of bigger gdm changes",
+                  "url": "https://github.com/ubuntu/authd/commit/111225380ec69b038ca83b20c23201601e205c03"
                },
                {
-                  "sha": "913b3b3ae4a3c0a23f3136586733cdc560c1948a",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1705681440,
-                  "message": "deps(go): Bump dependency on go-pam to ignore compilation warning (#182)\n\nBump go-pam requirement so that we do ignore unused-variables warning on\r\ncgo generated code.\r\n\r\nIt basically includes https://github.com/msteinert/pam/pull/22\r\n\r\nCloses: #179 \r\n\r\nUDENG-2104",
-                  "url": "https://github.com/ubuntu/authd/commit/913b3b3ae4a3c0a23f3136586733cdc560c1948a"
+                  "sha": "b4feed56af7b5bd058d3b283cdf94e86a1a4f043",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1705693603,
+                  "message": "pam: Properly handle session startup errors\n\nIf an error occurred we need to also return the model, otherwise we'd\nend up on a invalid memory address or nil pointer dereference in\nbubbletea",
+                  "url": "https://github.com/ubuntu/authd/commit/b4feed56af7b5bd058d3b283cdf94e86a1a4f043"
                },
                {
-                  "sha": "96ede9e4834835a1ef0d2cd843b68d1fbbb6fad3",
-                  "author": "Didier Roche",
-                  "timestamp": 1705676322,
-                  "message": "Implement pam-side encryption mechanism\n\nFollow the spec to encrypt any given \"challenge\" to follow the\nencryption mechanism.\n\nThis is using the public key received at session creationg time. Note that\nthe broker can create a new key for each session if desired.\n\nThe chosen encryption is sha512. The public key is passed as X.509 standard,\nencoded as base64.\n\nCo-authored-by: Jean-Baptiste Lallement <jean-baptiste@ubuntu.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/96ede9e4834835a1ef0d2cd843b68d1fbbb6fad3"
+                  "sha": "bbc1b60b40a8a68178f4a99bad96dfcd04c2a871",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1705524082,
+                  "message": "pam: Add PamClientType enum type and use to identify clients\n\nOur model may handle multiple pam client types, and depending on them it\ncould behave differently, so indicate this through an enum instead of a\nsimple boolean, since we will have multiple types not just interactive\nand non interactive clients.\n\nAs for now, just return an error if a non-interactive client is used,\nsince that's the only thing we support right now.",
+                  "url": "https://github.com/ubuntu/authd/commit/bbc1b60b40a8a68178f4a99bad96dfcd04c2a871"
                }
             ],
             "ciActions": [
@@ -7247,6 +7247,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cab79c43be5959355fabea136d142924b347d678",
+                  "author": "Dennis Loose",
+                  "timestamp": 1705919939,
+                  "message": "Merge pull request #328 from d-loose/remove-theme-page\n\nfeat: remove theme page",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cab79c43be5959355fabea136d142924b347d678"
+               },
+               {
                   "sha": "abbce92e593f3bbdd513be46415429991fc475be",
                   "author": "Dennis Loose",
                   "timestamp": 1705918118,
@@ -7259,13 +7266,6 @@
                   "timestamp": 1705663210,
                   "message": "Merge pull request #333 from matthew-hagemann/remove-hello-service\n\nchore(provd): remove hello service",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7ac07fb29b48a3fb5b472c9fce79a0333c9a5778"
-               },
-               {
-                  "sha": "1da7bd366dc61de372240cd88f484895c2ba23c3",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1705591099,
-                  "message": "Merge pull request #334 from matthew-hagemann/user-dbus-path-fix\n\nUser dbus path fix",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/1da7bd366dc61de372240cd88f484895c2ba23c3"
                }
             ],
             "ciActions": [
