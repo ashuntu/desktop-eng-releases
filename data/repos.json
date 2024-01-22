@@ -5823,25 +5823,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a1483af80d6f818f41c755aad59eeecb09f6b678",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1705926519,
+                  "message": "Fix(config): clean unused value (#183)\n\nIt's been quite a while we don’t need the interface entry anymore as we\r\ndefine the interface in authd.\r\nRemove it from the example fixtures.",
+                  "url": "https://github.com/ubuntu/authd/commit/a1483af80d6f818f41c755aad59eeecb09f6b678"
+               },
+               {
+                  "sha": "c458958be80685288ae725d8fc9fe1170f53393f",
+                  "author": "Didier Roche",
+                  "timestamp": 1705924944,
+                  "message": "Fix(broker config): clean unused value\n\nIt's been quite a while we don’t need the interface entry anymore as we\ndefine the interface in authd.\nRemove it from the example fixtures.",
+                  "url": "https://github.com/ubuntu/authd/commit/c458958be80685288ae725d8fc9fe1170f53393f"
+               },
+               {
                   "sha": "111225380ec69b038ca83b20c23201601e205c03",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1705920961,
                   "message": "Pam random cleanups and fixes (#155)\n\nSome cleanups and fixes as prerequisite of bigger gdm changes",
                   "url": "https://github.com/ubuntu/authd/commit/111225380ec69b038ca83b20c23201601e205c03"
-               },
-               {
-                  "sha": "b4feed56af7b5bd058d3b283cdf94e86a1a4f043",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1705693603,
-                  "message": "pam: Properly handle session startup errors\n\nIf an error occurred we need to also return the model, otherwise we'd\nend up on a invalid memory address or nil pointer dereference in\nbubbletea",
-                  "url": "https://github.com/ubuntu/authd/commit/b4feed56af7b5bd058d3b283cdf94e86a1a4f043"
-               },
-               {
-                  "sha": "bbc1b60b40a8a68178f4a99bad96dfcd04c2a871",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1705524082,
-                  "message": "pam: Add PamClientType enum type and use to identify clients\n\nOur model may handle multiple pam client types, and depending on them it\ncould behave differently, so indicate this through an enum instead of a\nsimple boolean, since we will have multiple types not just interactive\nand non interactive clients.\n\nAs for now, just return an error if a non-interactive client is used,\nsince that's the only thing we support right now.",
-                  "url": "https://github.com/ubuntu/authd/commit/bbc1b60b40a8a68178f4a99bad96dfcd04c2a871"
                }
             ],
             "ciActions": [
