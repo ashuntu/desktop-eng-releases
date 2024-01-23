@@ -4272,7 +4272,7 @@
          {
             "name": "WSL",
             "defaultBranch": "main",
-            "newCommits": 334,
+            "newCommits": 338,
             "url": "https://github.com/ubuntu/WSL",
             "releases": [
                {
@@ -5777,7 +5777,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 48,
+            "newCommits": 65,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -5823,25 +5823,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0acebc3a6b0c427b96948c270a01801085efc39e",
-                  "author": "Gabriel Nagy",
-                  "timestamp": 1706010729,
-                  "message": "maint: fix debian/copyright inconsistencies (#177)\n\nThese were reported by an archive admin when the package was first\r\nuploaded. More details are in the linked card.\r\n\r\nFixes UDENG-1944",
-                  "url": "https://github.com/ubuntu/authd/commit/0acebc3a6b0c427b96948c270a01801085efc39e"
+                  "sha": "0577f8e7d722f84642e7a1288d1dc1ab820064e6",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1706016900,
+                  "message": "refactor(cache/users): Rework user management - Cache and NSS (#175)\n\nWe used to control the cache and the local groups separately through\r\ndifferent packages. The goal is to create a manager to handle user data\r\nthat can store/fetch it from the cache and add/delete it from the local\r\ngroups.\r\n\r\nThis PR comprehends the first set of changes and refactorings:\r\n\r\n1) Create a new package with a temporary transitional name (`newusers`\r\nin this case);\r\n2) Turn our cache into a subpackage of this new package;\r\n3) Extract the cleaning routine from the cache to the manager;\r\n4) Update existing services and tests;\r\n\r\nUDENG-1997",
+                  "url": "https://github.com/ubuntu/authd/commit/0577f8e7d722f84642e7a1288d1dc1ab820064e6"
                },
                {
-                  "sha": "7bb72000f36def2ea701c1370254bceccad2011b",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1705999394,
-                  "message": "feat(authd): rework brokers config file (#184)\n\nMove all key name under authd section. This way, we delimit the section\r\nmandatory for authd from others, the rest is available for the broker to\r\nreuse.\r\nAdapt existing and add additional tests for it.\r\n\r\nUDEENG-2007.",
-                  "url": "https://github.com/ubuntu/authd/commit/7bb72000f36def2ea701c1370254bceccad2011b"
+                  "sha": "45b940ce8243050ee9f07983f5cacf8612b816f1",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1705670648,
+                  "message": "Rework user types of cache and users pkgs",
+                  "url": "https://github.com/ubuntu/authd/commit/45b940ce8243050ee9f07983f5cacf8612b816f1"
                },
                {
-                  "sha": "cc41e59c3cffb1354c87f9c4d1d38aa956fa50f9",
-                  "author": "Didier Roche",
-                  "timestamp": 1705992331,
-                  "message": "Test case to ensure we ignore unkown configuration fields",
-                  "url": "https://github.com/ubuntu/authd/commit/cc41e59c3cffb1354c87f9c4d1d38aa956fa50f9"
+                  "sha": "87e21feec6b56f7dfd794bf301124a3beba0bc80",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1705412935,
+                  "message": "Add package tests for the newusers package",
+                  "url": "https://github.com/ubuntu/authd/commit/87e21feec6b56f7dfd794bf301124a3beba0bc80"
                }
             ],
             "ciActions": [
