@@ -5823,25 +5823,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ad698ea42d61f7e89ba3fbd2a65ab5e034376c7f",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1706197131,
+                  "message": "authd: Define AuthenticationData in proto and use to parse and encode values (#178)\n\nThe IsAuthenticated() rpc method used to send back to the broker the\r\nchallenge response from the UI, this is something that can be extended\r\ndepending on authentication methods, but right now we were defining the\r\nreturn values manually.\r\n\r\nThis is not optimal, and right now implies hand-writing JSON from PAM\r\nside without a proper data check.\r\n\r\nTo prevent this:\r\n- Add IARequest AuthenticationData type to the proto defined with the\r\npossible values right now, all optional.\r\n- Use the AuthenticationData in PAM side to send the IsAuthenticated()\r\nrequest to the daemon.\r\n- Use it in authd's brokers level to encode the result as the JSON that\r\nwill be sent to the actual broker.\r\n\r\nNote that we still continue passing the JSON as it is (e.g. as a string)\r\nto the brokers, since that's the current specification.\r\nSo we're just using the abstraction internally, for better coding\r\nexperience and avoid mistakes (as we have).\r\n\r\nHowever, this required fixing the examplebroker's parsing of requested\r\nstring, since according to the specs, the authenticationData should be a\r\nJSON value, but before we were not properly formatting the boolean\r\nitems, and so sending to brokers invalid JSON.",
+                  "url": "https://github.com/ubuntu/authd/commit/ad698ea42d61f7e89ba3fbd2a65ab5e034376c7f"
+               },
+               {
+                  "sha": "ef47f4acae4a7ccc34d77a523294445422832aa4",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1705603424,
+                  "message": "authd: Define AuthenticationData in proto and use to parse and encode values\n\nThe IsAuthenticated() rpc method used to send back to the broker the\nchallenge response from the UI, this is something that can be extended\ndepending on authentication methods, but right now we were defining\nthe return values manually.\n\nThis is not optimal, and right now implies hand-writing JSON from PAM\nside without a proper data check.\n\nTo prevent this:\n - Add IARequest AuthenticationData type to the proto defined with the\n   possible values right now, all optional.\n - Use the AuthenticationData in PAM side to send the IsAuthenticated()\n   request to the daemon.\n - Use it in authd's brokers level to encode the result as the JSON that\n   will be sent to the actual broker.\n\nNote that we still continue passing the JSON as it is to the brokers.",
+                  "url": "https://github.com/ubuntu/authd/commit/ef47f4acae4a7ccc34d77a523294445422832aa4"
+               },
+               {
                   "sha": "d564d33e8d19b784cecfc7756041fadfeb9244e8",
                   "author": "Denison Barbosa",
                   "timestamp": 1706194811,
                   "message": "refactor: Move dirty flag control to users manager (#186)\n\nWe now have a user manager to control the clean-up process for expired\r\nuser data and (soon) for cleaning local groups. To improve the\r\nconsistency of our codebase, it makes more sense that this manager also\r\nstarts controlling the dirty flag creation and the clearing process of\r\nthe database, rather than having the cache doing it on its own.",
                   "url": "https://github.com/ubuntu/authd/commit/d564d33e8d19b784cecfc7756041fadfeb9244e8"
-               },
-               {
-                  "sha": "6c92724fea21765c9d9529e6dc9d2f985ff7bb49",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1706184723,
-                  "message": "Increase cleanup wait time",
-                  "url": "https://github.com/ubuntu/authd/commit/6c92724fea21765c9d9529e6dc9d2f985ff7bb49"
-               },
-               {
-                  "sha": "c0ccbdd26d37c760adcd1819cd579388c923d232",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1706183928,
-                  "message": "Move dirty flag control to manager\n\nNow it is the Manager that controls the dirty flag writing and removing.\nAlso, some code was extracted to helper functions to prevent some\nrepetition.",
-                  "url": "https://github.com/ubuntu/authd/commit/c0ccbdd26d37c760adcd1819cd579388c923d232"
                }
             ],
             "ciActions": [
