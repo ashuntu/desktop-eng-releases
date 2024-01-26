@@ -5823,25 +5823,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b6956def5661d8ecd892691a0f81acbf03e60697",
+                  "sha": "03aae012350dcf4f6fb8db3d0c09d91fdd6bac7c",
                   "author": "Denison Barbosa",
-                  "timestamp": 1706273741,
-                  "message": "refactor: Rework users package - Local Groups (#185)\n\nThe final part of the refactoring of our `users` package:\r\n1) Move the remaining code to the new package;\r\n2) Switch it back to being `users`\r\n3) Adjust our API so we have only a single entry point for handling user\r\ndata: `(*manager).UpdateUser()`;\r\n4) Ensure our cleaning process is synchronized: If the cache gets\r\ncleared, local groups should also be cleared;\r\n\r\nI tried to organize the changes on separate commits to make the review\r\nas easy as possible, hopefully it worked.\r\n\r\nUDENG-2101",
-                  "url": "https://github.com/ubuntu/authd/commit/b6956def5661d8ecd892691a0f81acbf03e60697"
+                  "timestamp": 1706293725,
+                  "message": "tests: Switch to gpasswd mock helper functions (#187)\n\nWe had some duplicated code in our tests, but after #185 we now have the\r\n`gpasswd` mock setup wrapped in new helpers that allow us to deduplicate\r\nsome code.",
+                  "url": "https://github.com/ubuntu/authd/commit/03aae012350dcf4f6fb8db3d0c09d91fdd6bac7c"
                },
                {
-                  "sha": "fd105385ca0ccb529cce6be84dbc5db3d462816b",
+                  "sha": "51359952ed8d6d4de94f126511ab5cb20dfe07e4",
                   "author": "denisonbarbosa",
-                  "timestamp": 1706272085,
-                  "message": "Update tests, helpers and their fixtures\n\nAfter changing the API, we need to update our tests to maintain our\ncoverage standards and ensure our quality. This means adding new test\nfunctions, test cases and helpers to ensure everything is properly\ntested and working as expected.",
-                  "url": "https://github.com/ubuntu/authd/commit/fd105385ca0ccb529cce6be84dbc5db3d462816b"
+                  "timestamp": 1706279611,
+                  "message": "Migrate existing code to the helper functions\n\nWe already had some code that relied on relied on the mentioned\nfunctions or had a similar behavior. This updates their usage/replace\nduplicated code.",
+                  "url": "https://github.com/ubuntu/authd/commit/51359952ed8d6d4de94f126511ab5cb20dfe07e4"
                },
                {
-                  "sha": "237f37a07ff784abfe3dee31858c2544cdc256f2",
+                  "sha": "5d241354568c82b40e86093810a39f55f0c63322",
                   "author": "denisonbarbosa",
-                  "timestamp": 1706271986,
-                  "message": "Cleaning the cache will clean the local groups\n\nAfter every call to clear/clean the cache, we now also clear/clean the\nlocal groups from any unexistent/expired user as well.",
-                  "url": "https://github.com/ubuntu/authd/commit/237f37a07ff784abfe3dee31858c2544cdc256f2"
+                  "timestamp": 1706279499,
+                  "message": "Update functions to allow for more extensive usage\n\nWe rely on some helper functions in localgroups/tests to setup the\nGPasswd mock for our tests. Extending the arguments and improving the\nnames allow us to extend even more their usage in other tests.",
+                  "url": "https://github.com/ubuntu/authd/commit/5d241354568c82b40e86093810a39f55f0c63322"
                }
             ],
             "ciActions": [
