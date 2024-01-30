@@ -3006,6 +3006,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "09f05e66e0a6e562f75ca490d9f548db5c6e606d",
+                  "author": "nteodosio",
+                  "timestamp": 1706624222,
+                  "message": "fix: missing Serve statement for GRPC server (#15)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/09f05e66e0a6e562f75ca490d9f548db5c6e606d"
+               },
+               {
                   "sha": "e84ad3c66fd96561325a22fc0fffe9031f8b540c",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1705945812,
@@ -3018,13 +3025,6 @@
                   "timestamp": 1705002853,
                   "message": "Set up the back-end, start with hardware security API.",
                   "url": "https://github.com/canonical/desktop-security-center/commit/86ff340ef50f7ccf1d9f7ddbf7ce917d644c2c14"
-               },
-               {
-                  "sha": "7f702e7ac09341795ef14523cdbdfdb70326e8ba",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1704900679,
-                  "message": "Add CI for Go.",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/7f702e7ac09341795ef14523cdbdfdb70326e8ba"
                }
             ],
             "ciActions": null,
@@ -4340,37 +4340,32 @@
             "snap": null
          },
          {
-            "name": "decorate",
+            "name": "WSL",
             "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/ubuntu/decorate",
-            "releases": null,
-            "commits": [
+            "newCommits": 354,
+            "url": "https://github.com/ubuntu/WSL",
+            "releases": [
                {
-                  "sha": "69db9a41777a221afebe4b153b2159456dbdfaea",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1702284540,
-                  "message": "Merge pull request #19 from ubuntu/dependabot/github_actions/actions/setup-go-5",
-                  "url": "https://github.com/ubuntu/decorate/commit/69db9a41777a221afebe4b153b2159456dbdfaea"
+                  "id": 74244151,
+                  "version": "Ubuntu22.04LTS/2204.1.22",
+                  "timestamp": 1660250891,
+                  "title": "Ubuntu22.04LTS/2204.1.22",
+                  "body": "<h2>Issues / bug reports</h2>\n\n<ul>\n<li>Addressed crashes on the slide show application reported by the store insights (#199) by better handling exit requests (<a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/25\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/25</a>)</li>\n<li>Enabled collecting debug symbols of all compiled binaries as release assets for future crash analysis (#263, #261, #260, <a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/27\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/27</a> and <a href=\"https://github.com/canonical/ubuntu-desktop-installer/pull/1036\">#1036</a>)</li>\n<li>Added more languages to the slide show (<a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/18\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/18</a>, <a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/21\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/21</a>, <a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/23\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/23</a> and <a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/24\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/24</a>)</li>\n</ul>\n\n<h2>Other enhancements</h2>\n\n<ul>\n<li>Updated rootfs image to Ubuntu 22.04.1.</li>\n<li>Implemented a patch for the release upgrader policy (#239 and #264)</li>\n<li>Updated the store listing to point to the correct <a href=\"https://www.ubuntu.com/wsl\">Ubuntu WSL website</a> (#247)</li>\n</ul>\n\n<hr>\n\n<h3>What&rsquo;s Changed</h3>\n\n<blockquote>\n<p>Other enhancements are mostly relevant to the Ubuntu Preview app, which is not directly related to this release.</p>\n</blockquote>\n\n<ul>\n<li>Added check around optional splash access by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/207\">https://github.com/ubuntu/WSL/pull/207</a></li>\n<li>Fix no-return lambda warning by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/209\">https://github.com/ubuntu/WSL/pull/209</a></li>\n<li>Enable launcher command after exiting by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/210\">https://github.com/ubuntu/WSL/pull/210</a></li>\n<li>QA is cancelled when a new commit is pushed by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/215\">https://github.com/ubuntu/WSL/pull/215</a></li>\n<li>Bump runner version for the Jira sync workflow by <a href=\"http://github.com/GabrielNagy\">@GabrielNagy</a> in <a href=\"https://github.com/ubuntu/WSL/pull/216\">https://github.com/ubuntu/WSL/pull/216</a></li>\n<li>This app rootdir by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/220\">https://github.com/ubuntu/WSL/pull/220</a></li>\n<li>Prevents running the build workflow on draft PRs by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/219\">https://github.com/ubuntu/WSL/pull/219</a></li>\n<li>Enables checking if localhost forwarding is disabled by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/218\">https://github.com/ubuntu/WSL/pull/218</a></li>\n<li>Created class to deal with interprocess syncronization by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/221\">https://github.com/ubuntu/WSL/pull/221</a></li>\n<li>Solved some clang-tidy complaints by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/224\">https://github.com/ubuntu/WSL/pull/224</a></li>\n<li>Better testing proposal by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/222\">https://github.com/ubuntu/WSL/pull/222</a></li>\n<li>Refresh releases and assets by <a href=\"http://github.com/github-actions\">@github-actions</a> in <a href=\"https://github.com/ubuntu/WSL/pull/227\">https://github.com/ubuntu/WSL/pull/227</a></li>\n<li>Enables MSBuild to update and build the Flutter app if required by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/229\">https://github.com/ubuntu/WSL/pull/229</a></li>\n<li>Created class to temporarily  set root as  Ubuntu WSL user safely  by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/223\">https://github.com/ubuntu/WSL/pull/223</a></li>\n<li>Extracts the process handling out of the splash controller by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/233\">https://github.com/ubuntu/WSL/pull/233</a></li>\n<li>Enables downloading images from the c-i.u.c/wsl by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/235\">https://github.com/ubuntu/WSL/pull/235</a></li>\n<li>Skip C++ source linting for unrelevant PRs by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/236\">https://github.com/ubuntu/WSL/pull/236</a></li>\n<li>Refresh releases and assets by <a href=\"http://github.com/github-actions\">@github-actions</a> in <a href=\"https://github.com/ubuntu/WSL/pull/230\">https://github.com/ubuntu/WSL/pull/230</a></li>\n<li>Prevents filesystem exceptions by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/237\">https://github.com/ubuntu/WSL/pull/237</a></li>\n<li>Adapts the image base name to the new pipeline by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/238\">https://github.com/ubuntu/WSL/pull/238</a></li>\n<li>Removed Sudo::WslLaunch by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/240\">https://github.com/ubuntu/WSL/pull/240</a></li>\n<li>showConsoleWindow accepts topWindow nullptr by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/243\">https://github.com/ubuntu/WSL/pull/243</a></li>\n<li>[CI] Sets a 20 min timeout for clang-tidy by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/245\">https://github.com/ubuntu/WSL/pull/245</a></li>\n<li>[CI] Attempts to avoid break when diff consists of one whitespace only by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/244\">https://github.com/ubuntu/WSL/pull/244</a></li>\n<li>Abstraction on top of Win32 Named Events that can be set only once by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/242\">https://github.com/ubuntu/WSL/pull/242</a></li>\n<li>Temporarily fix flutter-action version by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/246\">https://github.com/ubuntu/WSL/pull/246</a></li>\n<li>Refresh releases and assets by <a href=\"http://github.com/github-actions\">@github-actions</a> in <a href=\"https://github.com/ubuntu/WSL/pull/248\">https://github.com/ubuntu/WSL/pull/248</a></li>\n<li>Selection of default upgrade policy by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/239\">https://github.com/ubuntu/WSL/pull/239</a></li>\n<li>Updates link ubuntu.com/wsl for store listing by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/247\">https://github.com/ubuntu/WSL/pull/247</a></li>\n<li>Use strings.Fields to split the checksum file. by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/241\">https://github.com/ubuntu/WSL/pull/241</a></li>\n<li>Checks whether the rootfs has UDI or Subiquity snaps by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/249\">https://github.com/ubuntu/WSL/pull/249</a></li>\n<li>Models the environment variable LAUNCHER_FORCE_MODE by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/251\">https://github.com/ubuntu/WSL/pull/251</a></li>\n<li>Refactor Application Strategies by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/250\">https://github.com/ubuntu/WSL/pull/250</a></li>\n<li>Updates ubuntu-wsl-splash by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/252\">https://github.com/ubuntu/WSL/pull/252</a></li>\n<li>Let SetOnceNamedEvent wait for confirmation by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/253\">https://github.com/ubuntu/WSL/pull/253</a></li>\n<li>New app strategy for ARM64 in the context of the new OOBE by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/254\">https://github.com/ubuntu/WSL/pull/254</a></li>\n<li>Implements the WinOobeStrategy by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/255\">https://github.com/ubuntu/WSL/pull/255</a></li>\n<li>No need for the registration event in reconfiguration workflow by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/257\">https://github.com/ubuntu/WSL/pull/257</a></li>\n<li>Traverse the filesystem only once when looking for UDI and Subiquity snaps. by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/258\">https://github.com/ubuntu/WSL/pull/258</a></li>\n<li>Per-app <code>#define</code>s by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/256\">https://github.com/ubuntu/WSL/pull/256</a></li>\n<li>Refactored starts_with and ends_with by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/259\">https://github.com/ubuntu/WSL/pull/259</a></li>\n<li>Upload program debug databases by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/260\">https://github.com/ubuntu/WSL/pull/260</a></li>\n<li>Updates splash submodule post PDB changes by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/261\">https://github.com/ubuntu/WSL/pull/261</a></li>\n<li>WindowTitle is the one which may have LTS in by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/264\">https://github.com/ubuntu/WSL/pull/264</a></li>\n<li>Implements the release workflow by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/263\">https://github.com/ubuntu/WSL/pull/263</a></li>\n</ul>\n\n<h2>New Contributors</h2>\n\n<ul>\n<li><a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> made their first contribution in <a href=\"https://github.com/ubuntu/WSL/pull/207\">https://github.com/ubuntu/WSL/pull/207</a></li>\n<li><a href=\"http://github.com/GabrielNagy\">@GabrielNagy</a> made their first contribution in <a href=\"https://github.com/ubuntu/WSL/pull/216\">https://github.com/ubuntu/WSL/pull/216</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu/WSL/compare/Ubuntu22.04LTS/2204.0.10...Ubuntu22.04LTS/2204.1.22\">https://github.com/ubuntu/WSL/compare/Ubuntu22.04LTS/2204.0.10&hellip;Ubuntu22.04LTS/2204.1.22</a></p>\n",
+                  "url": "https://github.com/ubuntu/WSL/releases/tag/Ubuntu22.04LTS/2204.1.22",
+                  "compareUrl": "https://github.com/ubuntu/WSL/compare/Ubuntu22.04LTS/2204.1.22...main"
                },
                {
-                  "sha": "7aa9a2658dda6e437269ed02c37b1d1d1e8d0d3c",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1701951214,
-                  "message": "Bump actions/setup-go from 4 to 5\n\nBumps [actions/setup-go](https://github.com/actions/setup-go) from 4 to 5.\n- [Release notes](https://github.com/actions/setup-go/releases)\n- [Commits](https://github.com/actions/setup-go/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-go\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/decorate/commit/7aa9a2658dda6e437269ed02c37b1d1d1e8d0d3c"
-               },
-               {
-                  "sha": "20629847d943e1aa4d80cdbcc9291bd053d7e0c0",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1698161474,
-                  "message": "Merge pull request #18 from ubuntu/s-enterprise\n\nRenamed component to Enterprise",
-                  "url": "https://github.com/ubuntu/decorate/commit/20629847d943e1aa4d80cdbcc9291bd053d7e0c0"
+                  "id": 68963368,
+                  "version": "Ubuntu22.04LTS/2204.0.10",
+                  "timestamp": 1654096224,
+                  "title": "",
+                  "body": "<h1>Issues / bug reports</h1>\n\n<ul>\n<li>Handle misreported error during installation when the GUI exits with SIGSEV due an OpenGL implementation issue (<a href=\"https://github.com/ubuntu/WSL/issues/180\">Installer reported failure but user was created · Issue #180 · ubuntu/WSL</a> )</li>\n<li>Eliminate a race condition causing the installer window to never close under certain conditions on latest Windows builds (<a href=\"https://github.com/ubuntu/WSL/issues/201\">[Ubuntu-Preview] Installer GUI won&rsquo;t close · Issue #201 · ubuntu/WSL</a> )</li>\n<li>Prevent the UI to translate itself into languages that require extra fonts not shipped with our rootfs (<a href=\"https://github.com/ubuntu/WSL/issues/172\">Missing fonts in the OOBE · Issue #172 · ubuntu/WSL</a> )</li>\n<li>Disallow selecting system-reserved usernames (<a href=\"https://github.com/ubuntu/WSL/issues/179\">OOBE - Disallow creation of system users and existing users · Issue #179 · ubuntu/WSL</a> )</li>\n<li>Hide the console window only if the installation was initiated from start menu or from the Windows store (<a href=\"https://github.com/ubuntu/WSL/issues/176\">Windows terminal hidden on first run of ubuntu2204.exe · Issue #176 · ubuntu/WSL</a> )</li>\n<li>Disable the hyperlink in the profile page due inability to invoke a web browser inside WSL at installation (<a href=\"https://github.com/ubuntu/WSL/issues/173\">The link https://aka.ms/wslusers does nothing · Issue #173 · ubuntu/WSL</a> )</li>\n<li>Make the slide show “We are almost done” dialog non-dismissible (<a href=\"https://github.com/ubuntu/WSL/issues/177\">User can dismiss &ldquo;We are almost done&rdquo; dialog · Issue #177 · ubuntu/WSL</a> )</li>\n<li>Fix the incomplete hint about the /etc/fstab file (<a href=\"a href=&quot;https://github.com/canonical/ubuntu-desktop-installer/pull/855&quot;&gt;#855&lt;/a\">WSL fstab hint by CarlosNihelton · Pull Request #855 · canonical/ubuntu-desktop-installer</a> )</li>\n<li>Avoid crash when user hits the HELP button on TUI (<a href=\"https://github.com/ubuntu/WSL/issues/202\">Installer crashes when users selects &ldquo;Help&rdquo; · Issue #202 · ubuntu/WSL</a> )</li>\n<li>Create versionless icons for sizes smaller than 32px (<a href=\"https://github.com/ubuntu/WSL/issues/193\">Create square versionless icons if size &lt; 32px · Issue #193 · ubuntu/WSL</a> )</li>\n<li>Prevent printing error messages related to username and language acquisition to prefill the UI (<a href=\"https://github.com/ubuntu/WSL/issues/170\">Recovery user information failed with code 80070534 · Issue #170 · ubuntu/WSL</a> )</li>\n<li>Started addressing the long time applying changes by avoiding repeated work during that phase (<a href=\"https://github.com/ubuntu/WSL/issues/187\">Installing language packs takes a while · Issue #187 · ubuntu/WSL</a> )</li>\n</ul>\n\n<h1>Other enhancements</h1>\n\n<ul>\n<li>Update theme to latest Yaru (<a href=\"a href=&quot;https://github.com/canonical/ubuntu-desktop-installer/pull/868&quot;&gt;#868&lt;/a\">Update yaru &amp; dbus + dependencies by jpnurmi · Pull Request #868 · canonical/ubuntu-desktop-installer</a> ). Wizard now transitions horizontally, alla iOS style.</li>\n</ul>\n",
+                  "url": "https://github.com/ubuntu/WSL/releases/tag/Ubuntu22.04LTS/2204.0.10",
+                  "compareUrl": "https://github.com/ubuntu/WSL/compare/Ubuntu22.04LTS/2204.0.10...main"
                }
             ],
-            "ciActions": [
-               "https://github.com/ubuntu/decorate/workflows/QA"
-            ],
+            "commits": null,
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -4583,6 +4578,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "09f05e66e0a6e562f75ca490d9f548db5c6e606d",
+                  "author": "nteodosio",
+                  "timestamp": 1706624222,
+                  "message": "fix: missing Serve statement for GRPC server (#15)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/09f05e66e0a6e562f75ca490d9f548db5c6e606d"
+               },
+               {
                   "sha": "e84ad3c66fd96561325a22fc0fffe9031f8b540c",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1705945812,
@@ -4595,13 +4597,6 @@
                   "timestamp": 1705002853,
                   "message": "Set up the back-end, start with hardware security API.",
                   "url": "https://github.com/canonical/desktop-security-center/commit/86ff340ef50f7ccf1d9f7ddbf7ce917d644c2c14"
-               },
-               {
-                  "sha": "7f702e7ac09341795ef14523cdbdfdb70326e8ba",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1704900679,
-                  "message": "Add CI for Go.",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/7f702e7ac09341795ef14523cdbdfdb70326e8ba"
                }
             ],
             "ciActions": null,
@@ -4781,69 +4776,71 @@
             "snap": null
          },
          {
-            "name": "gaming-graphics-test",
+            "name": "decorate",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/gaming-graphics-test",
+            "url": "https://github.com/ubuntu/decorate",
             "releases": null,
             "commits": [
                {
-                  "sha": "649c7c141bb85789f8111989d560ab828460d7d6",
-                  "author": "Ken VanDine",
-                  "timestamp": 1689721875,
-                  "message": "Merge pull request #2 from canonical/terminal-programs\n\nKeep terminal programs open until a key is pressed",
-                  "url": "https://github.com/canonical/gaming-graphics-test/commit/649c7c141bb85789f8111989d560ab828460d7d6"
+                  "sha": "69db9a41777a221afebe4b153b2159456dbdfaea",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1702284540,
+                  "message": "Merge pull request #19 from ubuntu/dependabot/github_actions/actions/setup-go-5",
+                  "url": "https://github.com/ubuntu/decorate/commit/69db9a41777a221afebe4b153b2159456dbdfaea"
                },
                {
-                  "sha": "24ecb8ab64327726120ba8bb1bb1509a7a234078",
-                  "author": "ashuntu",
-                  "timestamp": 1689718687,
-                  "message": "Keep terminal programs open until a key is pressed",
-                  "url": "https://github.com/canonical/gaming-graphics-test/commit/24ecb8ab64327726120ba8bb1bb1509a7a234078"
+                  "sha": "7aa9a2658dda6e437269ed02c37b1d1d1e8d0d3c",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1701951214,
+                  "message": "Bump actions/setup-go from 4 to 5\n\nBumps [actions/setup-go](https://github.com/actions/setup-go) from 4 to 5.\n- [Release notes](https://github.com/actions/setup-go/releases)\n- [Commits](https://github.com/actions/setup-go/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-go\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/decorate/commit/7aa9a2658dda6e437269ed02c37b1d1d1e8d0d3c"
                },
                {
-                  "sha": "2a405157f8d6737a3514d8152475531339a10ddf",
-                  "author": "ashuntu",
-                  "timestamp": 1689618782,
-                  "message": "Edit LD_LIBRARY_PATH and add EGL_VENDOR dirs",
-                  "url": "https://github.com/canonical/gaming-graphics-test/commit/2a405157f8d6737a3514d8152475531339a10ddf"
+                  "sha": "20629847d943e1aa4d80cdbcc9291bd053d7e0c0",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1698161474,
+                  "message": "Merge pull request #18 from ubuntu/s-enterprise\n\nRenamed component to Enterprise",
+                  "url": "https://github.com/ubuntu/decorate/commit/20629847d943e1aa4d80cdbcc9291bd053d7e0c0"
                }
             ],
-            "ciActions": [],
+            "ciActions": [
+               "https://github.com/ubuntu/decorate/workflows/QA"
+            ],
             "charm": null,
             "snap": null
          },
          {
-            "name": "simplestreams.dart",
+            "name": "geoclue.dart",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/simplestreams.dart",
+            "url": "https://github.com/canonical/geoclue.dart",
             "releases": null,
             "commits": [
                {
-                  "sha": "9a55c5ff1fa545d4d95ded509d2ac7e81ea1d296",
-                  "author": "J-P Nurmi",
-                  "timestamp": 1683804694,
-                  "message": "fix: analysis_options.yaml\n\n```\nAnalyzing simplestreams.dart...        0.3s\n\nwarning • analysis_options.yaml:9:5 • The option 'implicit-casts' is no longer supported. Try using the new 'strict-casts' option. •\n          analysis_option_deprecated\nwarning • analysis_options.yaml:10:5 • The option 'implicit-dynamic' is no longer supported. Try using the new 'strict-raw-types' option. •\n          analysis_option_deprecated\n\n2 issues found.\n```",
-                  "url": "https://github.com/canonical/simplestreams.dart/commit/9a55c5ff1fa545d4d95ded509d2ac7e81ea1d296"
+                  "sha": "5e63525cfe6bf8968abfed0a405a2f85b8d12145",
+                  "author": "jpnurmi",
+                  "timestamp": 1686569386,
+                  "message": "Regenerate files",
+                  "url": "https://github.com/canonical/geoclue.dart/commit/5e63525cfe6bf8968abfed0a405a2f85b8d12145"
                },
                {
-                  "sha": "45b09e1c37ca383b7deac3b6cc59fe7eecabf992",
-                  "author": "J-P Nurmi",
-                  "timestamp": 1683804405,
-                  "message": "Bump Dart SDK constraint",
-                  "url": "https://github.com/canonical/simplestreams.dart/commit/45b09e1c37ca383b7deac3b6cc59fe7eecabf992"
+                  "sha": "72e1fe07e4e01e334ced3b4f3f8388aea66a5236",
+                  "author": "renovate[bot]",
+                  "timestamp": 1686569324,
+                  "message": "chore(deps): update dependency mockito to v5.4.2 (#18)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/geoclue.dart/commit/72e1fe07e4e01e334ced3b4f3f8388aea66a5236"
                },
                {
-                  "sha": "f216beeda721ffb75a9a4659f6cf4ad619f75f60",
-                  "author": "J-P Nurmi",
-                  "timestamp": 1683804369,
-                  "message": "Regenerate mocks",
-                  "url": "https://github.com/canonical/simplestreams.dart/commit/f216beeda721ffb75a9a4659f6cf4ad619f75f60"
+                  "sha": "ce153bda880e706b653f6d6fc01bef4228b03001",
+                  "author": "renovate[bot]",
+                  "timestamp": 1683838619,
+                  "message": "chore(deps): update peter-evans/create-pull-request action to v5 (#19)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/geoclue.dart/commit/ce153bda880e706b653f6d6fc01bef4228b03001"
                }
             ],
             "ciActions": [
-               "https://github.com/canonical/simplestreams.dart/actions/workflows/ci.yaml"
+               "https://github.com/canonical/geoclue.dart/workflows/Tests"
             ],
             "charm": null,
             "snap": null
@@ -4970,32 +4967,37 @@
             "snap": null
          },
          {
-            "name": "WSL",
+            "name": "simplestreams.dart",
             "defaultBranch": "main",
-            "newCommits": 354,
-            "url": "https://github.com/ubuntu/WSL",
-            "releases": [
+            "newCommits": 0,
+            "url": "https://github.com/canonical/simplestreams.dart",
+            "releases": null,
+            "commits": [
                {
-                  "id": 74244151,
-                  "version": "Ubuntu22.04LTS/2204.1.22",
-                  "timestamp": 1660250891,
-                  "title": "Ubuntu22.04LTS/2204.1.22",
-                  "body": "<h2>Issues / bug reports</h2>\n\n<ul>\n<li>Addressed crashes on the slide show application reported by the store insights (#199) by better handling exit requests (<a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/25\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/25</a>)</li>\n<li>Enabled collecting debug symbols of all compiled binaries as release assets for future crash analysis (#263, #261, #260, <a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/27\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/27</a> and <a href=\"https://github.com/canonical/ubuntu-desktop-installer/pull/1036\">#1036</a>)</li>\n<li>Added more languages to the slide show (<a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/18\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/18</a>, <a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/21\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/21</a>, <a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/23\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/23</a> and <a href=\"https://github.com/ubuntu/ubuntu-wsl-splash/pull/24\">https://github.com/ubuntu/ubuntu-wsl-splash/pull/24</a>)</li>\n</ul>\n\n<h2>Other enhancements</h2>\n\n<ul>\n<li>Updated rootfs image to Ubuntu 22.04.1.</li>\n<li>Implemented a patch for the release upgrader policy (#239 and #264)</li>\n<li>Updated the store listing to point to the correct <a href=\"https://www.ubuntu.com/wsl\">Ubuntu WSL website</a> (#247)</li>\n</ul>\n\n<hr>\n\n<h3>What&rsquo;s Changed</h3>\n\n<blockquote>\n<p>Other enhancements are mostly relevant to the Ubuntu Preview app, which is not directly related to this release.</p>\n</blockquote>\n\n<ul>\n<li>Added check around optional splash access by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/207\">https://github.com/ubuntu/WSL/pull/207</a></li>\n<li>Fix no-return lambda warning by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/209\">https://github.com/ubuntu/WSL/pull/209</a></li>\n<li>Enable launcher command after exiting by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/210\">https://github.com/ubuntu/WSL/pull/210</a></li>\n<li>QA is cancelled when a new commit is pushed by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/215\">https://github.com/ubuntu/WSL/pull/215</a></li>\n<li>Bump runner version for the Jira sync workflow by <a href=\"http://github.com/GabrielNagy\">@GabrielNagy</a> in <a href=\"https://github.com/ubuntu/WSL/pull/216\">https://github.com/ubuntu/WSL/pull/216</a></li>\n<li>This app rootdir by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/220\">https://github.com/ubuntu/WSL/pull/220</a></li>\n<li>Prevents running the build workflow on draft PRs by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/219\">https://github.com/ubuntu/WSL/pull/219</a></li>\n<li>Enables checking if localhost forwarding is disabled by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/218\">https://github.com/ubuntu/WSL/pull/218</a></li>\n<li>Created class to deal with interprocess syncronization by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/221\">https://github.com/ubuntu/WSL/pull/221</a></li>\n<li>Solved some clang-tidy complaints by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/224\">https://github.com/ubuntu/WSL/pull/224</a></li>\n<li>Better testing proposal by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/222\">https://github.com/ubuntu/WSL/pull/222</a></li>\n<li>Refresh releases and assets by <a href=\"http://github.com/github-actions\">@github-actions</a> in <a href=\"https://github.com/ubuntu/WSL/pull/227\">https://github.com/ubuntu/WSL/pull/227</a></li>\n<li>Enables MSBuild to update and build the Flutter app if required by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/229\">https://github.com/ubuntu/WSL/pull/229</a></li>\n<li>Created class to temporarily  set root as  Ubuntu WSL user safely  by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/223\">https://github.com/ubuntu/WSL/pull/223</a></li>\n<li>Extracts the process handling out of the splash controller by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/233\">https://github.com/ubuntu/WSL/pull/233</a></li>\n<li>Enables downloading images from the c-i.u.c/wsl by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/235\">https://github.com/ubuntu/WSL/pull/235</a></li>\n<li>Skip C++ source linting for unrelevant PRs by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/236\">https://github.com/ubuntu/WSL/pull/236</a></li>\n<li>Refresh releases and assets by <a href=\"http://github.com/github-actions\">@github-actions</a> in <a href=\"https://github.com/ubuntu/WSL/pull/230\">https://github.com/ubuntu/WSL/pull/230</a></li>\n<li>Prevents filesystem exceptions by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/237\">https://github.com/ubuntu/WSL/pull/237</a></li>\n<li>Adapts the image base name to the new pipeline by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/238\">https://github.com/ubuntu/WSL/pull/238</a></li>\n<li>Removed Sudo::WslLaunch by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/240\">https://github.com/ubuntu/WSL/pull/240</a></li>\n<li>showConsoleWindow accepts topWindow nullptr by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/243\">https://github.com/ubuntu/WSL/pull/243</a></li>\n<li>[CI] Sets a 20 min timeout for clang-tidy by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/245\">https://github.com/ubuntu/WSL/pull/245</a></li>\n<li>[CI] Attempts to avoid break when diff consists of one whitespace only by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/244\">https://github.com/ubuntu/WSL/pull/244</a></li>\n<li>Abstraction on top of Win32 Named Events that can be set only once by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/242\">https://github.com/ubuntu/WSL/pull/242</a></li>\n<li>Temporarily fix flutter-action version by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/246\">https://github.com/ubuntu/WSL/pull/246</a></li>\n<li>Refresh releases and assets by <a href=\"http://github.com/github-actions\">@github-actions</a> in <a href=\"https://github.com/ubuntu/WSL/pull/248\">https://github.com/ubuntu/WSL/pull/248</a></li>\n<li>Selection of default upgrade policy by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/239\">https://github.com/ubuntu/WSL/pull/239</a></li>\n<li>Updates link ubuntu.com/wsl for store listing by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/247\">https://github.com/ubuntu/WSL/pull/247</a></li>\n<li>Use strings.Fields to split the checksum file. by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/241\">https://github.com/ubuntu/WSL/pull/241</a></li>\n<li>Checks whether the rootfs has UDI or Subiquity snaps by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/249\">https://github.com/ubuntu/WSL/pull/249</a></li>\n<li>Models the environment variable LAUNCHER_FORCE_MODE by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/251\">https://github.com/ubuntu/WSL/pull/251</a></li>\n<li>Refactor Application Strategies by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/250\">https://github.com/ubuntu/WSL/pull/250</a></li>\n<li>Updates ubuntu-wsl-splash by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/252\">https://github.com/ubuntu/WSL/pull/252</a></li>\n<li>Let SetOnceNamedEvent wait for confirmation by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/253\">https://github.com/ubuntu/WSL/pull/253</a></li>\n<li>New app strategy for ARM64 in the context of the new OOBE by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/254\">https://github.com/ubuntu/WSL/pull/254</a></li>\n<li>Implements the WinOobeStrategy by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/255\">https://github.com/ubuntu/WSL/pull/255</a></li>\n<li>No need for the registration event in reconfiguration workflow by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/257\">https://github.com/ubuntu/WSL/pull/257</a></li>\n<li>Traverse the filesystem only once when looking for UDI and Subiquity snaps. by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/258\">https://github.com/ubuntu/WSL/pull/258</a></li>\n<li>Per-app <code>#define</code>s by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/256\">https://github.com/ubuntu/WSL/pull/256</a></li>\n<li>Refactored starts_with and ends_with by <a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> in <a href=\"https://github.com/ubuntu/WSL/pull/259\">https://github.com/ubuntu/WSL/pull/259</a></li>\n<li>Upload program debug databases by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/260\">https://github.com/ubuntu/WSL/pull/260</a></li>\n<li>Updates splash submodule post PDB changes by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/261\">https://github.com/ubuntu/WSL/pull/261</a></li>\n<li>WindowTitle is the one which may have LTS in by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/264\">https://github.com/ubuntu/WSL/pull/264</a></li>\n<li>Implements the release workflow by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/ubuntu/WSL/pull/263\">https://github.com/ubuntu/WSL/pull/263</a></li>\n</ul>\n\n<h2>New Contributors</h2>\n\n<ul>\n<li><a href=\"http://github.com/EduardGomezEscandell\">@EduardGomezEscandell</a> made their first contribution in <a href=\"https://github.com/ubuntu/WSL/pull/207\">https://github.com/ubuntu/WSL/pull/207</a></li>\n<li><a href=\"http://github.com/GabrielNagy\">@GabrielNagy</a> made their first contribution in <a href=\"https://github.com/ubuntu/WSL/pull/216\">https://github.com/ubuntu/WSL/pull/216</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu/WSL/compare/Ubuntu22.04LTS/2204.0.10...Ubuntu22.04LTS/2204.1.22\">https://github.com/ubuntu/WSL/compare/Ubuntu22.04LTS/2204.0.10&hellip;Ubuntu22.04LTS/2204.1.22</a></p>\n",
-                  "url": "https://github.com/ubuntu/WSL/releases/tag/Ubuntu22.04LTS/2204.1.22",
-                  "compareUrl": "https://github.com/ubuntu/WSL/compare/Ubuntu22.04LTS/2204.1.22...main"
+                  "sha": "9a55c5ff1fa545d4d95ded509d2ac7e81ea1d296",
+                  "author": "J-P Nurmi",
+                  "timestamp": 1683804694,
+                  "message": "fix: analysis_options.yaml\n\n```\nAnalyzing simplestreams.dart...        0.3s\n\nwarning • analysis_options.yaml:9:5 • The option 'implicit-casts' is no longer supported. Try using the new 'strict-casts' option. •\n          analysis_option_deprecated\nwarning • analysis_options.yaml:10:5 • The option 'implicit-dynamic' is no longer supported. Try using the new 'strict-raw-types' option. •\n          analysis_option_deprecated\n\n2 issues found.\n```",
+                  "url": "https://github.com/canonical/simplestreams.dart/commit/9a55c5ff1fa545d4d95ded509d2ac7e81ea1d296"
                },
                {
-                  "id": 68963368,
-                  "version": "Ubuntu22.04LTS/2204.0.10",
-                  "timestamp": 1654096224,
-                  "title": "",
-                  "body": "<h1>Issues / bug reports</h1>\n\n<ul>\n<li>Handle misreported error during installation when the GUI exits with SIGSEV due an OpenGL implementation issue (<a href=\"https://github.com/ubuntu/WSL/issues/180\">Installer reported failure but user was created · Issue #180 · ubuntu/WSL</a> )</li>\n<li>Eliminate a race condition causing the installer window to never close under certain conditions on latest Windows builds (<a href=\"https://github.com/ubuntu/WSL/issues/201\">[Ubuntu-Preview] Installer GUI won&rsquo;t close · Issue #201 · ubuntu/WSL</a> )</li>\n<li>Prevent the UI to translate itself into languages that require extra fonts not shipped with our rootfs (<a href=\"https://github.com/ubuntu/WSL/issues/172\">Missing fonts in the OOBE · Issue #172 · ubuntu/WSL</a> )</li>\n<li>Disallow selecting system-reserved usernames (<a href=\"https://github.com/ubuntu/WSL/issues/179\">OOBE - Disallow creation of system users and existing users · Issue #179 · ubuntu/WSL</a> )</li>\n<li>Hide the console window only if the installation was initiated from start menu or from the Windows store (<a href=\"https://github.com/ubuntu/WSL/issues/176\">Windows terminal hidden on first run of ubuntu2204.exe · Issue #176 · ubuntu/WSL</a> )</li>\n<li>Disable the hyperlink in the profile page due inability to invoke a web browser inside WSL at installation (<a href=\"https://github.com/ubuntu/WSL/issues/173\">The link https://aka.ms/wslusers does nothing · Issue #173 · ubuntu/WSL</a> )</li>\n<li>Make the slide show “We are almost done” dialog non-dismissible (<a href=\"https://github.com/ubuntu/WSL/issues/177\">User can dismiss &ldquo;We are almost done&rdquo; dialog · Issue #177 · ubuntu/WSL</a> )</li>\n<li>Fix the incomplete hint about the /etc/fstab file (<a href=\"a href=&quot;https://github.com/canonical/ubuntu-desktop-installer/pull/855&quot;&gt;#855&lt;/a\">WSL fstab hint by CarlosNihelton · Pull Request #855 · canonical/ubuntu-desktop-installer</a> )</li>\n<li>Avoid crash when user hits the HELP button on TUI (<a href=\"https://github.com/ubuntu/WSL/issues/202\">Installer crashes when users selects &ldquo;Help&rdquo; · Issue #202 · ubuntu/WSL</a> )</li>\n<li>Create versionless icons for sizes smaller than 32px (<a href=\"https://github.com/ubuntu/WSL/issues/193\">Create square versionless icons if size &lt; 32px · Issue #193 · ubuntu/WSL</a> )</li>\n<li>Prevent printing error messages related to username and language acquisition to prefill the UI (<a href=\"https://github.com/ubuntu/WSL/issues/170\">Recovery user information failed with code 80070534 · Issue #170 · ubuntu/WSL</a> )</li>\n<li>Started addressing the long time applying changes by avoiding repeated work during that phase (<a href=\"https://github.com/ubuntu/WSL/issues/187\">Installing language packs takes a while · Issue #187 · ubuntu/WSL</a> )</li>\n</ul>\n\n<h1>Other enhancements</h1>\n\n<ul>\n<li>Update theme to latest Yaru (<a href=\"a href=&quot;https://github.com/canonical/ubuntu-desktop-installer/pull/868&quot;&gt;#868&lt;/a\">Update yaru &amp; dbus + dependencies by jpnurmi · Pull Request #868 · canonical/ubuntu-desktop-installer</a> ). Wizard now transitions horizontally, alla iOS style.</li>\n</ul>\n",
-                  "url": "https://github.com/ubuntu/WSL/releases/tag/Ubuntu22.04LTS/2204.0.10",
-                  "compareUrl": "https://github.com/ubuntu/WSL/compare/Ubuntu22.04LTS/2204.0.10...main"
+                  "sha": "45b09e1c37ca383b7deac3b6cc59fe7eecabf992",
+                  "author": "J-P Nurmi",
+                  "timestamp": 1683804405,
+                  "message": "Bump Dart SDK constraint",
+                  "url": "https://github.com/canonical/simplestreams.dart/commit/45b09e1c37ca383b7deac3b6cc59fe7eecabf992"
+               },
+               {
+                  "sha": "f216beeda721ffb75a9a4659f6cf4ad619f75f60",
+                  "author": "J-P Nurmi",
+                  "timestamp": 1683804369,
+                  "message": "Regenerate mocks",
+                  "url": "https://github.com/canonical/simplestreams.dart/commit/f216beeda721ffb75a9a4659f6cf4ad619f75f60"
                }
             ],
-            "commits": null,
-            "ciActions": [],
+            "ciActions": [
+               "https://github.com/canonical/simplestreams.dart/actions/workflows/ci.yaml"
+            ],
             "charm": null,
             "snap": null
          },
@@ -5035,37 +5037,35 @@
             "snap": null
          },
          {
-            "name": "geoclue.dart",
+            "name": "gaming-graphics-test",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/geoclue.dart",
+            "url": "https://github.com/canonical/gaming-graphics-test",
             "releases": null,
             "commits": [
                {
-                  "sha": "5e63525cfe6bf8968abfed0a405a2f85b8d12145",
-                  "author": "jpnurmi",
-                  "timestamp": 1686569386,
-                  "message": "Regenerate files",
-                  "url": "https://github.com/canonical/geoclue.dart/commit/5e63525cfe6bf8968abfed0a405a2f85b8d12145"
+                  "sha": "649c7c141bb85789f8111989d560ab828460d7d6",
+                  "author": "Ken VanDine",
+                  "timestamp": 1689721875,
+                  "message": "Merge pull request #2 from canonical/terminal-programs\n\nKeep terminal programs open until a key is pressed",
+                  "url": "https://github.com/canonical/gaming-graphics-test/commit/649c7c141bb85789f8111989d560ab828460d7d6"
                },
                {
-                  "sha": "72e1fe07e4e01e334ced3b4f3f8388aea66a5236",
-                  "author": "renovate[bot]",
-                  "timestamp": 1686569324,
-                  "message": "chore(deps): update dependency mockito to v5.4.2 (#18)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/geoclue.dart/commit/72e1fe07e4e01e334ced3b4f3f8388aea66a5236"
+                  "sha": "24ecb8ab64327726120ba8bb1bb1509a7a234078",
+                  "author": "ashuntu",
+                  "timestamp": 1689718687,
+                  "message": "Keep terminal programs open until a key is pressed",
+                  "url": "https://github.com/canonical/gaming-graphics-test/commit/24ecb8ab64327726120ba8bb1bb1509a7a234078"
                },
                {
-                  "sha": "ce153bda880e706b653f6d6fc01bef4228b03001",
-                  "author": "renovate[bot]",
-                  "timestamp": 1683838619,
-                  "message": "chore(deps): update peter-evans/create-pull-request action to v5 (#19)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/geoclue.dart/commit/ce153bda880e706b653f6d6fc01bef4228b03001"
+                  "sha": "2a405157f8d6737a3514d8152475531339a10ddf",
+                  "author": "ashuntu",
+                  "timestamp": 1689618782,
+                  "message": "Edit LD_LIBRARY_PATH and add EGL_VENDOR dirs",
+                  "url": "https://github.com/canonical/gaming-graphics-test/commit/2a405157f8d6737a3514d8152475531339a10ddf"
                }
             ],
-            "ciActions": [
-               "https://github.com/canonical/geoclue.dart/workflows/Tests"
-            ],
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -5555,6 +5555,41 @@
             "commits": null,
             "ciActions": [
                "https://github.com/canonical/ubuntu-flutter-plugins/workflows/CI"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "ubuntu-pro-for-wsl",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "cec3fff735fa0396c51aa2656d0a3df8fab89c8e",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706621109,
+                  "message": "maint(wsl-pro-service): Get rid of -parallel=4 in debian test rules (#518)\n\nThis flag existed because we thought the OOM was killing our tests. We\r\ndiscovered that was not the case and solved it in ef8c055. This means\r\nthat this flag unnecessary.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/cec3fff735fa0396c51aa2656d0a3df8fab89c8e"
+               },
+               {
+                  "sha": "d1804efb8afdea03335bd6f8432d6220859f728b",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706607004,
+                  "message": "Get rid of -parallel=4 in debian test rules\n\nThis flag existed because we thought the OOM was killing our tests. We\ndiscovered that was not the case and solved it in ef8c055. This means\nthat this flag unnecessary.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d1804efb8afdea03335bd6f8432d6220859f728b"
+               },
+               {
+                  "sha": "7a2017441f0be585ebb88efc9cf405679a428c6d",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706606911,
+                  "message": "Update workspace sums",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7a2017441f0be585ebb88efc9cf405679a428c6d"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/canonical/ubuntu-pro-for-windows/actions/workflows/qa.yaml"
             ],
             "charm": null,
             "snap": null
@@ -6378,13 +6413,13 @@
                   "compareUrl": "https://github.com/ubuntu/yaru_window.dart/compare/v0.1.2...main"
                },
                {
-                  "id": 92149823,
-                  "version": "v0.1.0",
-                  "timestamp": 1676220788,
-                  "title": "v0.1.0",
-                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Initial release</li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/yaru_window.dart/commits/v0.1.0\">https://github.com/ubuntu-flutter-community/yaru_window.dart/commits/v0.1.0</a></p>\n",
-                  "url": "https://github.com/ubuntu/yaru_window.dart/releases/tag/untagged-97cef9d17a0e4e057f6c",
-                  "compareUrl": "https://github.com/ubuntu/yaru_window.dart/compare/v0.1.0...main"
+                  "id": 92261563,
+                  "version": "v0.1.1",
+                  "timestamp": 1676315499,
+                  "title": "v0.1.1",
+                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update CI by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/9\">https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/9</a></li>\n<li>Web: window state by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/10\">https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/10</a></li>\n<li>Update dependency yaru_window_web to ^0.0.2 by <a href=\"http://github.com/renovate\">@renovate</a> in <a href=\"https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/11\">https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/11</a></li>\n<li>yaru_window_linux: emit button release at drag end by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/12\">https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/12</a></li>\n<li>Release 0.1.1 by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/13\">https://github.com/ubuntu-flutter-community/yaru_window.dart/pull/13</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/yaru_window.dart/compare/v0.1.0...v0.1.1\">https://github.com/ubuntu-flutter-community/yaru_window.dart/compare/v0.1.0&hellip;v0.1.1</a></p>\n",
+                  "url": "https://github.com/ubuntu/yaru_window.dart/releases/tag/untagged-658e87f866327e776548",
+                  "compareUrl": "https://github.com/ubuntu/yaru_window.dart/compare/v0.1.1...main"
                }
             ],
             "commits": null,
@@ -6532,6 +6567,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "09f05e66e0a6e562f75ca490d9f548db5c6e606d",
+                  "author": "nteodosio",
+                  "timestamp": 1706624222,
+                  "message": "fix: missing Serve statement for GRPC server (#15)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/09f05e66e0a6e562f75ca490d9f548db5c6e606d"
+               },
+               {
                   "sha": "e84ad3c66fd96561325a22fc0fffe9031f8b540c",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1705945812,
@@ -6544,13 +6586,6 @@
                   "timestamp": 1705002853,
                   "message": "Set up the back-end, start with hardware security API.",
                   "url": "https://github.com/canonical/desktop-security-center/commit/86ff340ef50f7ccf1d9f7ddbf7ce917d644c2c14"
-               },
-               {
-                  "sha": "7f702e7ac09341795ef14523cdbdfdb70326e8ba",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1704900679,
-                  "message": "Add CI for Go.",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/7f702e7ac09341795ef14523cdbdfdb70326e8ba"
                }
             ],
             "ciActions": null,
