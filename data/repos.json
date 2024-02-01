@@ -4342,7 +4342,7 @@
          {
             "name": "WSL",
             "defaultBranch": "main",
-            "newCommits": 367,
+            "newCommits": 372,
             "url": "https://github.com/ubuntu/WSL",
             "releases": [
                {
@@ -5567,6 +5567,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "63ead7490c84278f397231e30f8c18c6f3b2b853",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706777130,
+                  "message": "feat(config): Implement notification system for Config (#517)\n\nI want cloud-init & landscape to be pinged by the config every time\r\nsomething changes. However, I don't want these two utilities to be\r\ndependencies of config. If anything, I want the dependency the other way\r\naround! Cloud-init and Landscape should import config.\r\n\r\nSo I must somehow call these utilities from the config without importing\r\nthem. My solution: callbacks. Any utility can now wait on config changes\r\nby using:\r\n\r\n```go\r\nconf.Notify(func() {\r\n    fmt.Println(\"Hello, world\")\r\n})\r\n```\r\nand this function will be called every time the config is changed (via\r\nGUI, registry, or any future methods).\r\n\r\nThis is used in Landscape #515 and Cloud-init #506.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/63ead7490c84278f397231e30f8c18c6f3b2b853"
+               },
+               {
                   "sha": "807fa360cc2823913922bebb224a7ecb2bef28c3",
                   "author": "Jean-Baptiste Lallement",
                   "timestamp": 1706763521,
@@ -5579,13 +5586,6 @@
                   "timestamp": 1706732080,
                   "message": "docs: use direct link for ubuntu.com/pro",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/630d6f59e639f02246e1f370441fd0c91123e32b"
-               },
-               {
-                  "sha": "84a8849849c59062903c62102ce2f862e9334c0b",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1706732032,
-                  "message": "docs: renamed doc from windows -> wsl",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/84a8849849c59062903c62102ce2f862e9334c0b"
                }
             ],
             "ciActions": [
