@@ -5567,25 +5567,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7cf488d08d6fb77b07f4bf85a831a5843b2946f4",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706887629,
+                  "message": "fix(wsl-pro-service): Increase a couple of timeouts in the tests (#538)\n\nSome tests failed in the launchpad runner. See here:\r\nhttps://objectstorage.prodstack5.canonical.com/swift/v1/AUTH_0f9aae918d5b4744bf7b827671c86842/autopkgtest-noble/noble/armhf/w/wsl-pro-service/20240202_051125_c3828@/log.gz\r\n\r\nThey are all related to require.Eventually assertions, so I increased\r\ntheir timeouts. This may worsen performance when tests fail, but the\r\nhappy path remains just as fast.\r\n\r\nRelated to #535.\r\n\r\n---\r\n\r\nUDENG-2228",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7cf488d08d6fb77b07f4bf85a831a5843b2946f4"
+               },
+               {
+                  "sha": "0dba99f730c40aed048a096bc0743ddeb24a9a55",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706867970,
+                  "message": "Increase a couple of timeouts in the tests\n\nSome tests failed in the launchpad runner. See here:\nhttps://objectstorage.prodstack5.canonical.com/swift/v1/AUTH_0f9aae918d5b4744bf7b827671c86842/autopkgtest-noble/noble/armhf/w/wsl-pro-service/20240202_051125_c3828@/log.gz\n\nThey are all related to require.Eventually assertions, so I increased\ntheir timeouts. This may worsen performance when tests fail, but the\nhappy path remains just as fast.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0dba99f730c40aed048a096bc0743ddeb24a9a55"
+               },
+               {
                   "sha": "641ca4434e0101bd5d65140222cb8aebee09eac5",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1706806028,
                   "message": "maint: release wsl-pro-service 0.1 to noble (#534)\n\nUpdate changelog\r\n\r\nUDENG-1565",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/641ca4434e0101bd5d65140222cb8aebee09eac5"
-               },
-               {
-                  "sha": "b131020e58b64279909843eed9f40e35753ab72f",
-                  "author": "Didier Roche",
-                  "timestamp": 1706805490,
-                  "message": "Release wsl-pro-service 0.1 to noble",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b131020e58b64279909843eed9f40e35753ab72f"
-               },
-               {
-                  "sha": "f0ce971e3cb81085717d5c2bc22a3c646281b9bd",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1706793858,
-                  "message": "maint: Create ubuntupro dir and move address file inside of it (#526)\n\nWe'll soon have more \"public\" files (aka non restricted to the agent)\r\ndue to the need to store cloud-init files. We'll put all these files\r\ninside `$env:UserProfile/.ubuntupro` to avoid filling the home directory\r\nwith our garbage.\r\n\r\nThis PR does two things:\r\n1. Refactor directory management in the agent to clarify this public vs.\r\nprivate distinction.\r\n2. Move the address file into the public dir.\r\n3. (bonus) fix a lot of things that broke as a consequence.\r\n\r\n---\r\n\r\nUDENG-2222",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f0ce971e3cb81085717d5c2bc22a3c646281b9bd"
                }
             ],
             "ciActions": [
