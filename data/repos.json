@@ -3785,25 +3785,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "284357f0dfc8517f3d9649e135b15dbac57c18fc",
+                  "sha": "98e55feb0b2338c555339670ce4f7fb431cd19fa",
                   "author": "Dennis Loose",
-                  "timestamp": 1708355102,
-                  "message": "Merge pull request #441 from d-loose/renovate-git-submodules\n\nfix(renovate): enable git submodules",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/284357f0dfc8517f3d9649e135b15dbac57c18fc"
+                  "timestamp": 1708357434,
+                  "message": "Merge pull request #442 from d-loose/e2e-test\n\ntest: add end-to-end test for ubuntu-init + provd",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/98e55feb0b2338c555339670ce4f7fb431cd19fa"
                },
                {
-                  "sha": "629b4198da79b24ea5a4cbd044c25fad38610d46",
-                  "author": "Dennis Loose",
-                  "timestamp": 1708339327,
-                  "message": "fix(renovate): enable git submodules",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/629b4198da79b24ea5a4cbd044c25fad38610d46"
+                  "sha": "817dd021b92d0ba19079db21c4c1482b931c8893",
+                  "author": "Tim Holmes-Mitra",
+                  "timestamp": 1708356722,
+                  "message": "Merge pull request #443 from tim-hm/main\n\nci: Automate rebase to support multiple snaps",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/817dd021b92d0ba19079db21c4c1482b931c8893"
                },
                {
-                  "sha": "bef1abe4e04e5612fe48e34c6a94214375fa654b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1708339544,
-                  "message": "Merge pull request #413 from d-loose/provd-privacy-service\n\nfeat(init): migrate to provd privacy service",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bef1abe4e04e5612fe48e34c6a94214375fa654b"
+                  "sha": "e9257ef6667a810f6d7cbed1045ab33bf2f297db",
+                  "author": "Tim Holmes-Mitra",
+                  "timestamp": 1708350357,
+                  "message": "ci(main): Cancel in-progress ci runs on newer commits",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e9257ef6667a810f6d7cbed1045ab33bf2f297db"
                }
             ],
             "ciActions": [
@@ -5431,25 +5431,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "284357f0dfc8517f3d9649e135b15dbac57c18fc",
+                  "sha": "98e55feb0b2338c555339670ce4f7fb431cd19fa",
                   "author": "Dennis Loose",
-                  "timestamp": 1708355102,
-                  "message": "Merge pull request #441 from d-loose/renovate-git-submodules\n\nfix(renovate): enable git submodules",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/284357f0dfc8517f3d9649e135b15dbac57c18fc"
+                  "timestamp": 1708357434,
+                  "message": "Merge pull request #442 from d-loose/e2e-test\n\ntest: add end-to-end test for ubuntu-init + provd",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/98e55feb0b2338c555339670ce4f7fb431cd19fa"
                },
                {
-                  "sha": "629b4198da79b24ea5a4cbd044c25fad38610d46",
-                  "author": "Dennis Loose",
-                  "timestamp": 1708339327,
-                  "message": "fix(renovate): enable git submodules",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/629b4198da79b24ea5a4cbd044c25fad38610d46"
+                  "sha": "817dd021b92d0ba19079db21c4c1482b931c8893",
+                  "author": "Tim Holmes-Mitra",
+                  "timestamp": 1708356722,
+                  "message": "Merge pull request #443 from tim-hm/main\n\nci: Automate rebase to support multiple snaps",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/817dd021b92d0ba19079db21c4c1482b931c8893"
                },
                {
-                  "sha": "bef1abe4e04e5612fe48e34c6a94214375fa654b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1708339544,
-                  "message": "Merge pull request #413 from d-loose/provd-privacy-service\n\nfeat(init): migrate to provd privacy service",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bef1abe4e04e5612fe48e34c6a94214375fa654b"
+                  "sha": "e9257ef6667a810f6d7cbed1045ab33bf2f297db",
+                  "author": "Tim Holmes-Mitra",
+                  "timestamp": 1708350357,
+                  "message": "ci(main): Cancel in-progress ci runs on newer commits",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e9257ef6667a810f6d7cbed1045ab33bf2f297db"
                }
             ],
             "ciActions": [
@@ -5573,25 +5573,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1e2a837a84c9cf4fd425a167b548491ec9a8b787",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1708356767,
+                  "message": "fix(windows-agent): Fix deadlock in config Stop (#585)\n\nThis commit fixes a deadlock between config.Stop and any config\r\nnotifaction callback that uses a config Mutex.\r\n\r\nScenario:\r\n\r\n1. A config notification is triggered: the waitgroup count is increased\r\nby one and a single callback is called and starts executing. Waitgroup\r\ncount decrease is deferred until the callback returns.\r\n\r\n2. config.Stop is called, the config's ctx is cancelled but it is too\r\nlate: the callback has already started. Then the config mutex is locked\r\nand it waits on the config waitgroup. This blocks until the waitgroup\r\ncount reached 0.\r\n\r\n3. during its execution, the callback calls some getter in the config.\r\nThe mutex is already locked, so the getter cannot proceed, hence it\r\ncannot return. The deferred waitgroup count decrease never happens.\r\n\r\nThis is a deadlock! config.Stop is waiting on all callbacks to exit\r\nbefore releasing the mutex, but the callback cannot exit until the mutex\r\nis released.\r\n\r\nSince waitgroups are thread-safe, we can simply remove the mutex from\r\nconfig.Stop.\r\n\r\n\r\n---\r\n\r\nThis is not speculation, it happened here:\r\n\r\n\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/7961210145/job/21731894552?pr=506",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1e2a837a84c9cf4fd425a167b548491ec9a8b787"
+               },
+               {
+                  "sha": "70f2b8c08d34028626ee60698b1fe81a29c6f49b",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1708355045,
+                  "message": "fix(windows-agent): Fix deadlock in config Stop\n\nThis commit fixes a deadlock between config.Stop and any config\nnotifaction callback that uses a config Mutex.\n\nScenario:\n\n1. A config notification is triggered: the waitgroup count is increased\n   by one and a single callback is called and starts executing.\n   Waitgroup count decrease is deferred until the callback returns.\n\n2. config.Stop is called, the config's ctx is cancelled but it is too late:\n   the callback has already started. Then the config mutex is locked and\n   it waits on the config waitgroup. This blocks until the waitgroup\n   count reached 0.\n\n3. during its execution, the callback calls some getter in the config.\n   The mutex is already locked, so the getter cannot proceed, hence\n   it cannot return. The deferred waitgroup count decrease never happens.\n\nThis is a deadlock! config.Stop is waiting on all callbacks to exit\nbefore releasing the mutex, but the callback cannot exit until the mutex\nis released.\n\nSince waitgroups are thread-safe, we can simply remove the mutex from\nconfig.Stop.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/70f2b8c08d34028626ee60698b1fe81a29c6f49b"
+               },
+               {
                   "sha": "1fad00e0e1e9b0db9d9d22ad4769be0a6598fc95",
                   "author": "Edu Gómez Escandell",
                   "timestamp": 1708353012,
                   "message": "fix(windows-agent): Add Stop function to Config (#555)\n\nThis prevents using it during the process teardown. Particulary relevant\r\nto async work like the observers.\r\n\r\nUsing the config during teardown is, I believe, the reason why this test\r\nfails:\r\n\r\n\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/7813886532/job/21314974693?pr=506#step:8:38\r\n\r\nI think cloud-init is writing `agent.yaml` at the same time as the test\r\nteardown in trying to remove its temp directory. On Windows, you cannot\r\nremove an open file.",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1fad00e0e1e9b0db9d9d22ad4769be0a6598fc95"
-               },
-               {
-                  "sha": "7fc86aa444e9853fb677362fad690a17a0fdaea8",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1708350392,
-                  "message": "Fix erroneous test\n\nThe previous commit's refactor revealed a bug.\n\nThe config must reject introducing a token when a higher-priority one is\nactive. We were not loading the existing token, so we had an outdated\nview of the current subscription. So when setting the user token, we\nthought we had no active Store token, hence allowing it. There was even\na test asserting this missbehaviour!\n\nThis is fixed as of the previous commit, and this commit fixes the bad\ntest.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7fc86aa444e9853fb677362fad690a17a0fdaea8"
-               },
-               {
-                  "sha": "a36a1307bbd0fc2fc858f0af4331143b1ae92aa7",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1708349600,
-                  "message": "Encapsulate repetitive 'lock, stopped, load' pattern\n\nThe newly created configState (a bag of data) also removes the need for\nthe yaml helper.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a36a1307bbd0fc2fc858f0af4331143b1ae92aa7"
                }
             ],
             "ciActions": [
@@ -7356,25 +7356,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "284357f0dfc8517f3d9649e135b15dbac57c18fc",
+                  "sha": "98e55feb0b2338c555339670ce4f7fb431cd19fa",
                   "author": "Dennis Loose",
-                  "timestamp": 1708355102,
-                  "message": "Merge pull request #441 from d-loose/renovate-git-submodules\n\nfix(renovate): enable git submodules",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/284357f0dfc8517f3d9649e135b15dbac57c18fc"
+                  "timestamp": 1708357434,
+                  "message": "Merge pull request #442 from d-loose/e2e-test\n\ntest: add end-to-end test for ubuntu-init + provd",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/98e55feb0b2338c555339670ce4f7fb431cd19fa"
                },
                {
-                  "sha": "629b4198da79b24ea5a4cbd044c25fad38610d46",
-                  "author": "Dennis Loose",
-                  "timestamp": 1708339327,
-                  "message": "fix(renovate): enable git submodules",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/629b4198da79b24ea5a4cbd044c25fad38610d46"
+                  "sha": "817dd021b92d0ba19079db21c4c1482b931c8893",
+                  "author": "Tim Holmes-Mitra",
+                  "timestamp": 1708356722,
+                  "message": "Merge pull request #443 from tim-hm/main\n\nci: Automate rebase to support multiple snaps",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/817dd021b92d0ba19079db21c4c1482b931c8893"
                },
                {
-                  "sha": "bef1abe4e04e5612fe48e34c6a94214375fa654b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1708339544,
-                  "message": "Merge pull request #413 from d-loose/provd-privacy-service\n\nfeat(init): migrate to provd privacy service",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bef1abe4e04e5612fe48e34c6a94214375fa654b"
+                  "sha": "e9257ef6667a810f6d7cbed1045ab33bf2f297db",
+                  "author": "Tim Holmes-Mitra",
+                  "timestamp": 1708350357,
+                  "message": "ci(main): Cancel in-progress ci runs on newer commits",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e9257ef6667a810f6d7cbed1045ab33bf2f297db"
                }
             ],
             "ciActions": [
