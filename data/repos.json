@@ -5573,25 +5573,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "436c309cfdf00ebcb6c215b39702fa3ed5684f37",
+                  "author": "Ash",
+                  "timestamp": 1708450127,
+                  "message": "fix: Align subscription status page with Provisioning design (#583)\n\nThis PR redesigns the subscription status page to be more consistent\r\nwith the designs for Provisioning. It includes having clickable text\r\nlinks, centering the title, text, and buttons, and outlining the text\r\nwith a green background box.\r\n\r\nThis required changing the flow of the main layout and adding a\r\n`centered` option, so it may be more changes than you might suspect.\r\nThis same layout will likely be used for the Landscape status page as\r\nwell.\r\n\r\n**New design**\r\n\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/101582426/78e79aa2-b851-4d8f-84f7-cc06097779e7)\r\n\r\n**Old design (but with color changes and clickable link)**\r\n\r\n![Screenshot 2024-02-15\r\n134408](https://github.com/canonical/ubuntu-pro-for-wsl/assets/101582426/47cd3796-afc8-499c-80b9-18541ac9b78c)\r\n\r\n---\r\n\r\nUDENG-1786",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/436c309cfdf00ebcb6c215b39702fa3ed5684f37"
+               },
+               {
+                  "sha": "e79bab6b3947f09ab86b17dbcde7523767b655e1",
+                  "author": "ashuntu",
+                  "timestamp": 1708445060,
+                  "message": "Remove markdown syntax from translation string",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e79bab6b3947f09ab86b17dbcde7523767b655e1"
+               },
+               {
                   "sha": "1e2a837a84c9cf4fd425a167b548491ec9a8b787",
                   "author": "Edu Gómez Escandell",
                   "timestamp": 1708356767,
                   "message": "fix(windows-agent): Fix deadlock in config Stop (#585)\n\nThis commit fixes a deadlock between config.Stop and any config\r\nnotifaction callback that uses a config Mutex.\r\n\r\nScenario:\r\n\r\n1. A config notification is triggered: the waitgroup count is increased\r\nby one and a single callback is called and starts executing. Waitgroup\r\ncount decrease is deferred until the callback returns.\r\n\r\n2. config.Stop is called, the config's ctx is cancelled but it is too\r\nlate: the callback has already started. Then the config mutex is locked\r\nand it waits on the config waitgroup. This blocks until the waitgroup\r\ncount reached 0.\r\n\r\n3. during its execution, the callback calls some getter in the config.\r\nThe mutex is already locked, so the getter cannot proceed, hence it\r\ncannot return. The deferred waitgroup count decrease never happens.\r\n\r\nThis is a deadlock! config.Stop is waiting on all callbacks to exit\r\nbefore releasing the mutex, but the callback cannot exit until the mutex\r\nis released.\r\n\r\nSince waitgroups are thread-safe, we can simply remove the mutex from\r\nconfig.Stop.\r\n\r\n\r\n---\r\n\r\nThis is not speculation, it happened here:\r\n\r\n\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/7961210145/job/21731894552?pr=506",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1e2a837a84c9cf4fd425a167b548491ec9a8b787"
-               },
-               {
-                  "sha": "70f2b8c08d34028626ee60698b1fe81a29c6f49b",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1708355045,
-                  "message": "fix(windows-agent): Fix deadlock in config Stop\n\nThis commit fixes a deadlock between config.Stop and any config\nnotifaction callback that uses a config Mutex.\n\nScenario:\n\n1. A config notification is triggered: the waitgroup count is increased\n   by one and a single callback is called and starts executing.\n   Waitgroup count decrease is deferred until the callback returns.\n\n2. config.Stop is called, the config's ctx is cancelled but it is too late:\n   the callback has already started. Then the config mutex is locked and\n   it waits on the config waitgroup. This blocks until the waitgroup\n   count reached 0.\n\n3. during its execution, the callback calls some getter in the config.\n   The mutex is already locked, so the getter cannot proceed, hence\n   it cannot return. The deferred waitgroup count decrease never happens.\n\nThis is a deadlock! config.Stop is waiting on all callbacks to exit\nbefore releasing the mutex, but the callback cannot exit until the mutex\nis released.\n\nSince waitgroups are thread-safe, we can simply remove the mutex from\nconfig.Stop.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/70f2b8c08d34028626ee60698b1fe81a29c6f49b"
-               },
-               {
-                  "sha": "1fad00e0e1e9b0db9d9d22ad4769be0a6598fc95",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1708353012,
-                  "message": "fix(windows-agent): Add Stop function to Config (#555)\n\nThis prevents using it during the process teardown. Particulary relevant\r\nto async work like the observers.\r\n\r\nUsing the config during teardown is, I believe, the reason why this test\r\nfails:\r\n\r\n\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/7813886532/job/21314974693?pr=506#step:8:38\r\n\r\nI think cloud-init is writing `agent.yaml` at the same time as the test\r\nteardown in trying to remove its temp directory. On Windows, you cannot\r\nremove an open file.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1fad00e0e1e9b0db9d9d22ad4769be0a6598fc95"
                }
             ],
             "ciActions": [
