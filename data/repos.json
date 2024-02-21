@@ -5573,6 +5573,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b90d08b66247d4b2e4bd0798cb68ffa50e7bb3b9",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1708509625,
+                  "message": "feat(logging): Make logs public and print version (#560)\n\nTwo-fold pull request:\r\n- Windows Agent:\r\n    - The logs are moved to the public directory @ $HOME/.ubuntupro/log\r\n    - The logs print the version\r\n- WSL Pro Service:\r\n    - The logs print the version",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b90d08b66247d4b2e4bd0798cb68ffa50e7bb3b9"
+               },
+               {
                   "sha": "436c309cfdf00ebcb6c215b39702fa3ed5684f37",
                   "author": "Ash",
                   "timestamp": 1708450127,
@@ -5585,13 +5592,6 @@
                   "timestamp": 1708445060,
                   "message": "Remove markdown syntax from translation string",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e79bab6b3947f09ab86b17dbcde7523767b655e1"
-               },
-               {
-                  "sha": "1e2a837a84c9cf4fd425a167b548491ec9a8b787",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1708356767,
-                  "message": "fix(windows-agent): Fix deadlock in config Stop (#585)\n\nThis commit fixes a deadlock between config.Stop and any config\r\nnotifaction callback that uses a config Mutex.\r\n\r\nScenario:\r\n\r\n1. A config notification is triggered: the waitgroup count is increased\r\nby one and a single callback is called and starts executing. Waitgroup\r\ncount decrease is deferred until the callback returns.\r\n\r\n2. config.Stop is called, the config's ctx is cancelled but it is too\r\nlate: the callback has already started. Then the config mutex is locked\r\nand it waits on the config waitgroup. This blocks until the waitgroup\r\ncount reached 0.\r\n\r\n3. during its execution, the callback calls some getter in the config.\r\nThe mutex is already locked, so the getter cannot proceed, hence it\r\ncannot return. The deferred waitgroup count decrease never happens.\r\n\r\nThis is a deadlock! config.Stop is waiting on all callbacks to exit\r\nbefore releasing the mutex, but the callback cannot exit until the mutex\r\nis released.\r\n\r\nSince waitgroups are thread-safe, we can simply remove the mutex from\r\nconfig.Stop.\r\n\r\n\r\n---\r\n\r\nThis is not speculation, it happened here:\r\n\r\n\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/7961210145/job/21731894552?pr=506",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1e2a837a84c9cf4fd425a167b548491ec9a8b787"
                }
             ],
             "ciActions": [
