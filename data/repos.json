@@ -5573,25 +5573,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "276447602277471356ad3a9dca7fc5a44c84c247",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1708530397,
-                  "message": "deps(gui-ubuntupro): bump flutter_svg from 2.0.9 to 2.0.10+1 in /gui/packages/ubuntupro (#589)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/276447602277471356ad3a9dca7fc5a44c84c247"
+                  "sha": "b4a74cbe1741bfd1fb2c721f4c12cdcf044f357d",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1708607453,
+                  "message": "maint(ci): Allows that one percent coverage reduction (#590)\n\nShould allow CI to be happier with racy tests\r\nUntil we figure out the source of fluctuations I guess.\r\n\r\nAll cases in CI which we could forgive coverage drop reports were well\r\nunder 0.80%, so 1% seems not too tight.\r\n\r\nLet see how this goes.\r\n\r\nRef: \r\n- https://docs.codecov.com/docs/commit-status\r\n- https://docs.codecov.com/docs/codecov-yaml",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b4a74cbe1741bfd1fb2c721f4c12cdcf044f357d"
                },
                {
-                  "sha": "08d4e05b5d4068d30a4fc621bb3bfd685d50fbe4",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1708527737,
-                  "message": "deps(gui-ubuntupro): bump flutter_svg in /gui/packages/ubuntupro\n\nBumps [flutter_svg](https://github.com/dnfield/flutter_svg/tree/master/packages) from 2.0.9 to 2.0.10+1.\n- [Release notes](https://github.com/dnfield/flutter_svg/releases)\n- [Commits](https://github.com/dnfield/flutter_svg/commits/HEAD/packages)\n\n---\nupdated-dependencies:\n- dependency-name: flutter_svg\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/08d4e05b5d4068d30a4fc621bb3bfd685d50fbe4"
+                  "sha": "76cd4d47459bdd617d8bfa217dc9332f4b6d8cd4",
+                  "author": "Carlos",
+                  "timestamp": 1708605373,
+                  "message": "TODO comments to reduce the threshold\n\nand revisit the patch target vs range",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/76cd4d47459bdd617d8bfa217dc9332f4b6d8cd4"
                },
                {
-                  "sha": "c14ce16a1bb4414ef7f81828ee31045a2e7cf0b1",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1708526901,
-                  "message": "fix(Landscape): fix bad time staircase (#588)\n\nThe \"if error -> increase wait\" logic did not work.\r\n\r\nIt now does work, and we also consider short-lived connections as errors\r\n(to avoid spamming 1-second connections that the server rejects for\r\nwhatever reason, or spamming with flaky connections, etc).\r\n\r\nThis also fixes the recently flaky Landscape tests.\r\n\r\n---\r\n\r\nUDENG-2261",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c14ce16a1bb4414ef7f81828ee31045a2e7cf0b1"
+                  "sha": "c7084d6246ce92d4ed385c97cb109e49b07567b1",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1708533120,
+                  "message": "Tighter range for being green\n\nUsing only threshold percentage we could slowly loose coverage without\nnoticing.\nCombining it with a tighter range will flag us in case we drop too much\nearly enough.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c7084d6246ce92d4ed385c97cb109e49b07567b1"
                }
             ],
             "ciActions": [
