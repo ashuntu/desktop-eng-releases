@@ -5189,6 +5189,15 @@
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
+                  "id": 143239473,
+                  "version": "24.02.1",
+                  "timestamp": 1707950713,
+                  "title": "24.02.1",
+                  "body": "<ul>\n<li>LP:#2040654 - fix a regression in behavior of late-commands using\n<code>curtin in-target</code> and similar constructs.</li>\n<li>LP:#2040190 - merge a Curtin fix that addresses <code>efibootmgr</code> related install\nfailures that may occur on systems using &ldquo;EFI v1.1 by Apple&rdquo; or similar.</li>\n<li>LP:#2052524 - fix warning from Netplan about permissions.  In most cases\nthis is just a warning, but if non-wifi secrets were written in the Netplan\nYAML then they would be visible to non-root users.</li>\n<li>Text corrections related to Ubuntu Pro, SSH, and Identity.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/subiquity/releases/tag/24.02.1",
+                  "compareUrl": "https://github.com/canonical/subiquity/compare/24.02.1...main"
+               },
+               {
                   "id": 124793477,
                   "version": "23.10.1",
                   "timestamp": 1696976216,
@@ -5205,15 +5214,6 @@
                   "body": "<p>This release addresses an issue with amd64 installs (LP: #<a href=\"https://bugs.launchpad.net/subiquity/+bug/2033977\">2033977</a>) where the security pocket in sources.list can end up not configured matching documented <a href=\"https://wiki.ubuntu.com/SecurityTeam/FAQ#What_repositories_and_pockets_should_I_use_to_make_sure_my_systems_are_up_to_date.3F\">best practices</a>.  It is recommended to configure the $series-updates to come from security.ubuntu.com, to minimize the effect of mirroring delays.</p>\n\n<p>Affected systems will be AMD64 systems installed with Ubuntu 23.04, 22.04.3LTS, or installs done since April 2023 that accepted the snap version update.</p>\n\n<p>To correct systems already installed, please modify /etc/apt/sources.list, look for the lines containing <code>-security</code>, and update them to use <code>http://security.ubuntu.com</code>.</p>\n\n<p>&ldquo;Ports&rdquo; architectures (everyone but amd64) should not be affected by the above issue and should pull security updates from <a href=\"http://ports.ubuntu.com\">http://ports.ubuntu.com</a></p>\n",
                   "url": "https://github.com/canonical/subiquity/releases/tag/23.09.1",
                   "compareUrl": "https://github.com/canonical/subiquity/compare/23.09.1...main"
-               },
-               {
-                  "id": 115947054,
-                  "version": "23.08.1",
-                  "timestamp": 1691594928,
-                  "title": "23.08.1",
-                  "body": "<p>This release was done to address an issue with manual partitioning.</p>\n\n<p>Fixes:\n* LP: #<a href=\"https://bugs.launchpad.net/subiquity/+bug/2013201\">2013201</a> - When setting the size of a partition, Subiquity may crash with an error about &ldquo;size or offset not aligned&rdquo;</p>\n\n<p>Known issues:\n* 22.04.3 LTS live-server, which contains cloud-init version 22.2.1-0ubuntu0~22.04.1, is affected by bug <a href=\"https://github.com/canonical/cloud-init/issues/4271\">https://github.com/canonical/cloud-init/issues/4271</a>. The effect of this is that, when using cloud-init to provide autoinstall data, the <code>h</code> aka <code>local-hostname</code> or <code>i</code> aka <code>instance-id</code> nocloud datastore arguments should not be used.  For an example of a working configuration, please see the <a href=\"https://ubuntu.com/server/docs/install/autoinstall-quickstart\">autoinstall-quickstart</a> guide.</p>\n",
-                  "url": "https://github.com/canonical/subiquity/releases/tag/23.08.1",
-                  "compareUrl": "https://github.com/canonical/subiquity/compare/23.08.1...main"
                }
             ],
             "commits": null,
