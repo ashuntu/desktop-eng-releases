@@ -5851,7 +5851,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 56,
+            "newCommits": 63,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -5897,25 +5897,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5a37ec908c5c2ac3bfe5936779cb317c4029eb25",
-                  "author": "Gabriel Nagy",
-                  "timestamp": 1708533554,
-                  "message": "deps(go-tools): bump github.com/golangci/golangci-lint from 1.55.2 to 1.56.1 in /tools (#207)",
-                  "url": "https://github.com/ubuntu/authd/commit/5a37ec908c5c2ac3bfe5936779cb317c4029eb25"
+                  "sha": "92112e1cea22c33c99b8dfc9637fbd4b29a5e200",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1708604636,
+                  "message": "maint(ci): align coverage reporting with Pro for WSL project (#202)\n\nWe use a directory strategy to ship it, which is compatible with\r\nmultiple platforms using a relative directory, and rely on autosearch so\r\nthat only this subdirectory contains all codecov related content.",
+                  "url": "https://github.com/ubuntu/authd/commit/92112e1cea22c33c99b8dfc9637fbd4b29a5e200"
                },
                {
-                  "sha": "620a429cbcbddc2842aaf5f5c270f8b0671ebec4",
-                  "author": "Gabriel Nagy",
-                  "timestamp": 1708533336,
-                  "message": "ci: replace Rust sanity check with composite action (#217)\n\nThis mirrors the Go sanity action and adds the additional cargo-audit\r\ncheck.\r\n\r\nAction in action:\r\nhttps://github.com/GabrielNagy/authd/actions/runs/7975090675\r\n\r\nRelated PR: https://github.com/canonical/desktop-engineering/pull/24\r\n\r\nFixes UDENG-2233",
-                  "url": "https://github.com/ubuntu/authd/commit/620a429cbcbddc2842aaf5f5c270f8b0671ebec4"
+                  "sha": "28e21addb1ccb395b3440c18c64d6f02058dbc24",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1708604532,
+                  "message": "Auto update packaging related Rust files",
+                  "url": "https://github.com/ubuntu/authd/commit/28e21addb1ccb395b3440c18c64d6f02058dbc24"
                },
                {
-                  "sha": "26e6fed0b9dc0f8c84de4e803172cd44d8168b0a",
-                  "author": "Gabriel Nagy",
-                  "timestamp": 1708533100,
-                  "message": "Update go.mod versions to latest stable Go version",
-                  "url": "https://github.com/ubuntu/authd/commit/26e6fed0b9dc0f8c84de4e803172cd44d8168b0a"
+                  "sha": "3de66c5e057408a953d03201c5d3066c2bbd1b53",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1708604479,
+                  "message": "feat: Add functionality to pre-check a user to NSS service (#206)\n\nTo avoid problems with SSH authentication, we need a way for `authd` to\r\ncheck with the brokers whether a user exists or not. This check is\r\nattached to the GetPasswdByName method in our NSS service so that, if a\r\nuser is not found in the cache, we ask the available brokers if the user\r\nis valid or not. If so, we return a dummy `passwd` entry to prevent SSH\r\nfrom considering the user as invalid and redacting the login information\r\nthat we need.\r\n\r\nUDENG-2049",
+                  "url": "https://github.com/ubuntu/authd/commit/3de66c5e057408a953d03201c5d3066c2bbd1b53"
                }
             ],
             "ciActions": [
