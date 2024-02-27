@@ -4235,7 +4235,7 @@
          {
             "name": "WSL",
             "defaultBranch": "main",
-            "newCommits": 399,
+            "newCommits": 402,
             "url": "https://github.com/ubuntu/WSL",
             "releases": [
                {
@@ -5460,25 +5460,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2766b070baab84b778c95eca2c45092674e0f89b",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1708997842,
-                  "message": "refactor(windows-agent): Refactor the notification and task-distribution methods (#599)\n\nWe had differnt ways of distributing tasks for every flow (pro token vs.\r\nLandscape, GUI vs. MSStore vs. registry). This is now unified into a\r\nsingle way.\r\n\r\n1. Landscape and new ubuntupro modules listen to config changes.\r\n2. Landscape and new ubuntupro modules are solely responsible for task\r\ncreation and distribution¹.\r\n\r\nHence, changing a config is as easy as setting it via the config (e.g.\r\n`config.SetUserLandscapeConfig`). The config will notify the pertinent\r\nmodule (Landscape in this case), which will distribute it to the distros\r\nas well as do whatever other work (e.g. reconnect to Landscape).\r\n\r\n---\r\n\r\nUDENG-2358\r\n\r\n---\r\n¹ `config.ProvisioningTasks` also creates tasks, but this is soon to be\r\ndeprecated by cloud-init.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2766b070baab84b778c95eca2c45092674e0f89b"
+                  "sha": "8ce5c066b05358f632d29289d836f73859dea755",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1709052079,
+                  "message": "fix(windows-agent): Fix launcher flags when installing a distro (#612)\n\nAlso sneak in the wsl-pro-service build fix",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8ce5c066b05358f632d29289d836f73859dea755"
                },
                {
-                  "sha": "14d550f557c4962cb6323c3b4503dc1cb6831dad",
-                  "author": "Carlos",
-                  "timestamp": 1708995967,
-                  "message": "Allows breaking c.dump()\n\nTo increase coverage\nBy causing the existing config file to become read-only",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/14d550f557c4962cb6323c3b4503dc1cb6831dad"
+                  "sha": "e353eb0ecb407ffb7c9e01cb60eae4ff4bc40797",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1709051803,
+                  "message": "Revert \"The agent creates the registry key if it does not exist\"\n\nThis reverts commit 7eff339098f4115871514f7b3450cc6e3d039a90.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e353eb0ecb407ffb7c9e01cb60eae4ff4bc40797"
                },
                {
-                  "sha": "a53941baafb66a28b899400aadbc3aa4f28e4fd7",
-                  "author": "Carlos",
-                  "timestamp": 1708972405,
-                  "message": "Remove unnecessary trailing comma",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a53941baafb66a28b899400aadbc3aa4f28e4fd7"
+                  "sha": "7eff339098f4115871514f7b3450cc6e3d039a90",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1709051755,
+                  "message": "The agent creates the registry key if it does not exist",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7eff339098f4115871514f7b3450cc6e3d039a90"
                }
             ],
             "ciActions": [
@@ -5784,25 +5784,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ece51bb0b8d8ec2cdae63a3bd38338175aff5668",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1709053072,
+                  "message": "cleanup(pam/integration-tests): Do not hardcode the socket paths (#232)\n\nThe authd socket paths are hardcoded to a temporary location.\r\n\r\nWhile this is not a problem per se it also may potentially break the\r\nability of running tests in parallel or in setups where /tmp is not the\r\nthe $TMPDIR or $GOTMPDIR.\r\n\r\nSo, make this just more dynamic by runnig the tape files with an env\r\nvariable (we're in a terminal after all!), and run vhs with such\r\nvariable set to the temporary socket path that authd provides us",
+                  "url": "https://github.com/ubuntu/authd/commit/ece51bb0b8d8ec2cdae63a3bd38338175aff5668"
+               },
+               {
+                  "sha": "101747816d0443412badbf8c3b534b6794911087",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1708992665,
+                  "message": "pam/integration-tests: Do not hardcode the socket paths\n\nThe authd socket paths are hardcoded to a temporary location.\n\nWhile this is not a problem per se it also may potentially break\nthe ability of running tests in parallel or in setups where /tmp is\nnot the the $TMPDIR or $GOTMPDIR.\n\nSo, make this just more dynamic by runnig the tape files with an\nenv variable (we're in a terminal after all!), and run vhs with such\nvariable set to the temporary socket path that authd provides us",
+                  "url": "https://github.com/ubuntu/authd/commit/101747816d0443412badbf8c3b534b6794911087"
+               },
+               {
                   "sha": "ff21a9c1d3c2633d542700406527807f8c1e795d",
                   "author": "dependabot[bot]",
                   "timestamp": 1709029115,
                   "message": "Auto update packaging related Rust files",
                   "url": "https://github.com/ubuntu/authd/commit/ff21a9c1d3c2633d542700406527807f8c1e795d"
-               },
-               {
-                  "sha": "1893c8105b62d980d74f63e79ca0648c69a06ae7",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1709029067,
-                  "message": "deps(rust): bump ctor from 0.2.6 to 0.2.7 (#231)",
-                  "url": "https://github.com/ubuntu/authd/commit/1893c8105b62d980d74f63e79ca0648c69a06ae7"
-               },
-               {
-                  "sha": "9d5f8bddc5933b47b579e49b874eaebb8185cd32",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1709028191,
-                  "message": "Auto update packaging related Rust files",
-                  "url": "https://github.com/ubuntu/authd/commit/9d5f8bddc5933b47b579e49b874eaebb8185cd32"
                }
             ],
             "ciActions": [
