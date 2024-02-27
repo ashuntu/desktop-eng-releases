@@ -5495,25 +5495,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0b485b7f6a0e0d9407b4aa395f3996b2c1a5db91",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1708970701,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0b485b7f6a0e0d9407b4aa395f3996b2c1a5db91"
-               },
-               {
-                  "sha": "1b7275d345b1bf7125b17bb1fd0f9b3190a424c6",
+                  "sha": "2766b070baab84b778c95eca2c45092674e0f89b",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1708970663,
-                  "message": "maint(windows-agent): No TLS from agent to Landscape (#601)\n\nLandscape quick setup for now at least is not talking to the agent over\r\nTLS. The team was advised and they are working to enable such feature.\r\nIn the meanwhile let's use insecure credentials on the connection to\r\nLandscape. I'm doing this in a ugly but easy to revert way.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1b7275d345b1bf7125b17bb1fd0f9b3190a424c6"
+                  "timestamp": 1708997842,
+                  "message": "refactor(windows-agent): Refactor the notification and task-distribution methods (#599)\n\nWe had differnt ways of distributing tasks for every flow (pro token vs.\r\nLandscape, GUI vs. MSStore vs. registry). This is now unified into a\r\nsingle way.\r\n\r\n1. Landscape and new ubuntupro modules listen to config changes.\r\n2. Landscape and new ubuntupro modules are solely responsible for task\r\ncreation and distribution¹.\r\n\r\nHence, changing a config is as easy as setting it via the config (e.g.\r\n`config.SetUserLandscapeConfig`). The config will notify the pertinent\r\nmodule (Landscape in this case), which will distribute it to the distros\r\nas well as do whatever other work (e.g. reconnect to Landscape).\r\n\r\n---\r\n\r\nUDENG-2358\r\n\r\n---\r\n¹ `config.ProvisioningTasks` also creates tasks, but this is soon to be\r\ndeprecated by cloud-init.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2766b070baab84b778c95eca2c45092674e0f89b"
                },
                {
-                  "sha": "b9dc5dc413deafa9e9df3488ac7ab53a98e61d8d",
+                  "sha": "14d550f557c4962cb6323c3b4503dc1cb6831dad",
                   "author": "Carlos",
-                  "timestamp": 1708537932,
-                  "message": "No TLS from agent to Landscape",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b9dc5dc413deafa9e9df3488ac7ab53a98e61d8d"
+                  "timestamp": 1708995967,
+                  "message": "Allows breaking c.dump()\n\nTo increase coverage\nBy causing the existing config file to become read-only",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/14d550f557c4962cb6323c3b4503dc1cb6831dad"
+               },
+               {
+                  "sha": "a53941baafb66a28b899400aadbc3aa4f28e4fd7",
+                  "author": "Carlos",
+                  "timestamp": 1708972405,
+                  "message": "Remove unnecessary trailing comma",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a53941baafb66a28b899400aadbc3aa4f28e4fd7"
                }
             ],
             "ciActions": [
