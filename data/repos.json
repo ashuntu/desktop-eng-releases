@@ -5460,25 +5460,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8fe3e550d25a566ad83eeb9af725a6710f76954a",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1709125913,
-                  "message": "fix(msix): Restart automatically after receiving updates (#616)\n\nI played with this in different scenarios and ended up with the most\r\nobvious one: doing the call to register the application restart the\r\nearliest possible in `main`. I'd like to defer that registration to the\r\nlast moment possible (when the message `WM_QUERYENDSESSION` arrives to\r\nthe queue), but that would only work if I create a window, something we\r\ndon't do in the agent, which is a true console application, nor in the\r\nagent launcher, which is a fake window app, since it does not create a\r\nwindow.\r\n\r\nThis does what it promisses: once a build containing this patch is asked\r\nto close to install updates, the OS is tasked to restart the new version\r\nof the agent launcher (and consequently the agent). Notice that the\r\nrestart is ignored if the app gets closed due hang, crash or reboot\r\n(`RESTART_NO_CRASH | RESTART_NO_HANG | RESTART_NO_REBOOT`). The reboot\r\ncase is already handled by the startup task.\r\n\r\nFor more information about this topic, see:\r\n\r\n-\r\nhttps://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-registerapplicationrestart\r\nand\r\n-\r\nhttps://learn.microsoft.com/en-us/windows/apps/desktop/modernize/desktop-to-uwp-extensions#restart-automatically-after-receiving-an-update-from-the-microsoft-store",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8fe3e550d25a566ad83eeb9af725a6710f76954a"
+                  "sha": "bc3be051689027e273ab34c1f3afbb7192720773",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1709134321,
+                  "message": "maint: Clean up pre-beta tech debt (#617)\n\nThe rush and excitement of the upcoming beta made us cut some corners\r\nhere and there. This PR fixes some of those corners before they\r\ncristalize.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/bc3be051689027e273ab34c1f3afbb7192720773"
                },
                {
-                  "sha": "bcb7e791c8a405e35ad8bdc80e4329eed77d274a",
-                  "author": "Carlos",
-                  "timestamp": 1709123296,
-                  "message": "Reuse previous command line",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/bcb7e791c8a405e35ad8bdc80e4329eed77d274a"
+                  "sha": "6e819f765c22817064e825f5f37c87b55c0db09c",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1709130940,
+                  "message": "Registry watcher: rename key -> k",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6e819f765c22817064e825f5f37c87b55c0db09c"
                },
                {
-                  "sha": "f8ab430f38a2a6db68444d871a00258f2ac3f37f",
-                  "author": "Carlos",
-                  "timestamp": 1709090746,
-                  "message": "Request to restart if closed for updates",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f8ab430f38a2a6db68444d871a00258f2ac3f37f"
+                  "sha": "4eb562d14244b3b81d3662727225946164a38755",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1709130884,
+                  "message": "Move registry mock validPaths closer to usage",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4eb562d14244b3b81d3662727225946164a38755"
                }
             ],
             "ciActions": [
