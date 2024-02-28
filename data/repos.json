@@ -3672,25 +3672,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "01c0497146fdf3dacf3e797538b7877f6148e100",
+                  "author": "Dennis Loose",
+                  "timestamp": 1709125085,
+                  "message": "Merge pull request #467 from d-loose/fix-gdm-a11y-support-check\n\nfix(gnome-a11y): check access to all a11y settings",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/01c0497146fdf3dacf3e797538b7877f6148e100"
+               },
+               {
+                  "sha": "ca4bee4c593dfbcb30c05567c4a23742a9a0e8b5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1709123092,
+                  "message": "fix(gnome-a11y): check access to all a11y settings",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ca4bee4c593dfbcb30c05567c4a23742a9a0e8b5"
+               },
+               {
                   "sha": "8a569d2cf0c6911bb51cd2abd50ad9beff44aca0",
                   "author": "Dennis Loose",
                   "timestamp": 1709122267,
                   "message": "Merge pull request #466 from d-loose/try-or-install-readme\n\ndocs: add 'try-or-install' to list of bootstrap pages",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8a569d2cf0c6911bb51cd2abd50ad9beff44aca0"
-               },
-               {
-                  "sha": "dd355c7b97d2fe6ad769b159d5da38ff5374db92",
-                  "author": "Dennis Loose",
-                  "timestamp": 1709121567,
-                  "message": "docs: add 'try-or-install' to list of bootstrap pages",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/dd355c7b97d2fe6ad769b159d5da38ff5374db92"
-               },
-               {
-                  "sha": "cf9081002f59938214e9a853da5aa2c2c788628a",
-                  "author": "Dennis Loose",
-                  "timestamp": 1709120803,
-                  "message": "Merge pull request #464 from d-loose/fix-snap-tmp-path\n\nfix(init): patch /tmp/ path for gdm service in snap",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cf9081002f59938214e9a853da5aa2c2c788628a"
                }
             ],
             "ciActions": [
@@ -5318,25 +5318,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "01c0497146fdf3dacf3e797538b7877f6148e100",
+                  "author": "Dennis Loose",
+                  "timestamp": 1709125085,
+                  "message": "Merge pull request #467 from d-loose/fix-gdm-a11y-support-check\n\nfix(gnome-a11y): check access to all a11y settings",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/01c0497146fdf3dacf3e797538b7877f6148e100"
+               },
+               {
+                  "sha": "ca4bee4c593dfbcb30c05567c4a23742a9a0e8b5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1709123092,
+                  "message": "fix(gnome-a11y): check access to all a11y settings",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ca4bee4c593dfbcb30c05567c4a23742a9a0e8b5"
+               },
+               {
                   "sha": "8a569d2cf0c6911bb51cd2abd50ad9beff44aca0",
                   "author": "Dennis Loose",
                   "timestamp": 1709122267,
                   "message": "Merge pull request #466 from d-loose/try-or-install-readme\n\ndocs: add 'try-or-install' to list of bootstrap pages",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8a569d2cf0c6911bb51cd2abd50ad9beff44aca0"
-               },
-               {
-                  "sha": "dd355c7b97d2fe6ad769b159d5da38ff5374db92",
-                  "author": "Dennis Loose",
-                  "timestamp": 1709121567,
-                  "message": "docs: add 'try-or-install' to list of bootstrap pages",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/dd355c7b97d2fe6ad769b159d5da38ff5374db92"
-               },
-               {
-                  "sha": "cf9081002f59938214e9a853da5aa2c2c788628a",
-                  "author": "Dennis Loose",
-                  "timestamp": 1709120803,
-                  "message": "Merge pull request #464 from d-loose/fix-snap-tmp-path\n\nfix(init): patch /tmp/ path for gdm service in snap",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cf9081002f59938214e9a853da5aa2c2c788628a"
                }
             ],
             "ciActions": [
@@ -5460,25 +5460,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0ae5478d773ea02edac031512077ae363167f054",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1709056203,
-                  "message": "feat(windows-agent): The agent creates the registry key if it does not exist (#613)\n\nUDENG-2329",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0ae5478d773ea02edac031512077ae363167f054"
+                  "sha": "8fe3e550d25a566ad83eeb9af725a6710f76954a",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1709125913,
+                  "message": "fix(msix): Restart automatically after receiving updates (#616)\n\nI played with this in different scenarios and ended up with the most\r\nobvious one: doing the call to register the application restart the\r\nearliest possible in `main`. I'd like to defer that registration to the\r\nlast moment possible (when the message `WM_QUERYENDSESSION` arrives to\r\nthe queue), but that would only work if I create a window, something we\r\ndon't do in the agent, which is a true console application, nor in the\r\nagent launcher, which is a fake window app, since it does not create a\r\nwindow.\r\n\r\nThis does what it promisses: once a build containing this patch is asked\r\nto close to install updates, the OS is tasked to restart the new version\r\nof the agent launcher (and consequently the agent). Notice that the\r\nrestart is ignored if the app gets closed due hang, crash or reboot\r\n(`RESTART_NO_CRASH | RESTART_NO_HANG | RESTART_NO_REBOOT`). The reboot\r\ncase is already handled by the startup task.\r\n\r\nFor more information about this topic, see:\r\n\r\n-\r\nhttps://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-registerapplicationrestart\r\nand\r\n-\r\nhttps://learn.microsoft.com/en-us/windows/apps/desktop/modernize/desktop-to-uwp-extensions#restart-automatically-after-receiving-an-update-from-the-microsoft-store",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8fe3e550d25a566ad83eeb9af725a6710f76954a"
                },
                {
-                  "sha": "3f7a3424fb1187bc8f915729ddd2939efcf2b02d",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1709056189,
-                  "message": "fix(Landscape): Don't log when there is no configuration (#606)\n\nBefore, Landscape tried to connect every 1, 2, 4, 8... seconds every\r\ntime it failed, regardless of the cause of failure. Every failed attempt\r\nwould produce a log line.\r\n\r\nNow, when the issue is that Landscape is not configured (or there is no\r\nUbuntu Pro Token), Landscape stops retrying, hence also no longer\r\nlogging. If the config is changed, and enough info is in the config, a\r\nretrial will be attempted.\r\n\r\n---\r\n\r\nUDENG-2356\r\nUDENG-2363",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3f7a3424fb1187bc8f915729ddd2939efcf2b02d"
+                  "sha": "bcb7e791c8a405e35ad8bdc80e4329eed77d274a",
+                  "author": "Carlos",
+                  "timestamp": 1709123296,
+                  "message": "Reuse previous command line",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/bcb7e791c8a405e35ad8bdc80e4329eed77d274a"
                },
                {
-                  "sha": "03b1aafc15ec760a314eab0a0458e686463d09a4",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1709052201,
-                  "message": "Update windows-agent/internal/proservices/registrywatcher/registry/registry_windows.go",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/03b1aafc15ec760a314eab0a0458e686463d09a4"
+                  "sha": "f8ab430f38a2a6db68444d871a00258f2ac3f37f",
+                  "author": "Carlos",
+                  "timestamp": 1709090746,
+                  "message": "Request to restart if closed for updates",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f8ab430f38a2a6db68444d871a00258f2ac3f37f"
                }
             ],
             "ciActions": [
@@ -5738,9 +5738,18 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 70,
+            "newCommits": 0,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
+               {
+                  "id": 143996117,
+                  "version": "v0.14.0",
+                  "timestamp": 1709125391,
+                  "title": "v0.14.0",
+                  "body": "",
+                  "url": "https://github.com/ubuntu/adsys/releases/tag/v0.14.0",
+                  "compareUrl": "https://github.com/ubuntu/adsys/compare/v0.14.0...main"
+               },
                {
                   "id": 138663874,
                   "version": "v0.13.3",
@@ -5758,15 +5767,6 @@
                   "body": "",
                   "url": "https://github.com/ubuntu/adsys/releases/tag/v0.13.2",
                   "compareUrl": "https://github.com/ubuntu/adsys/compare/v0.13.2...main"
-               },
-               {
-                  "id": 122458179,
-                  "version": "v0.13.1",
-                  "timestamp": 1695651720,
-                  "title": "v0.13.1",
-                  "body": "",
-                  "url": "https://github.com/ubuntu/adsys/releases/tag/v0.13.1",
-                  "compareUrl": "https://github.com/ubuntu/adsys/compare/v0.13.1...main"
                }
             ],
             "commits": null,
@@ -5784,6 +5784,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "74f76e04c3377a1c0ddf39d9ee55d544ec94676f",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1709123693,
+                  "message": "fix(pam): Do not use fullscreen views in interactive mode (#236)\n\npam/adapter: Do not resize brokwerselection window on window changes\r\n\r\nIn terminal mode we're monitoring the window size and eventually\r\nchanging\r\nthe broker selection list (only) that forces a fullscreen view of them.\r\n\r\nThis is something that it's not needed on the kind of \"app\" we're\r\nbuilding because it brings user context away (e.g. What was I\r\nauthenticating for?!) but also it makes testing the interface very hard\r\nbecause will make bubbletea to potentially hide some error messages (as\r\ngolden files change shows).\r\n\r\nThis helps #233",
+                  "url": "https://github.com/ubuntu/authd/commit/74f76e04c3377a1c0ddf39d9ee55d544ec94676f"
+               },
+               {
                   "sha": "ece51bb0b8d8ec2cdae63a3bd38338175aff5668",
                   "author": "Denison Barbosa",
                   "timestamp": 1709053072,
@@ -5791,18 +5798,11 @@
                   "url": "https://github.com/ubuntu/authd/commit/ece51bb0b8d8ec2cdae63a3bd38338175aff5668"
                },
                {
-                  "sha": "101747816d0443412badbf8c3b534b6794911087",
+                  "sha": "5213a984317ee82daf4ee8b83fc8b352d33df9eb",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1708992665,
-                  "message": "pam/integration-tests: Do not hardcode the socket paths\n\nThe authd socket paths are hardcoded to a temporary location.\n\nWhile this is not a problem per se it also may potentially break\nthe ability of running tests in parallel or in setups where /tmp is\nnot the the $TMPDIR or $GOTMPDIR.\n\nSo, make this just more dynamic by runnig the tape files with an\nenv variable (we're in a terminal after all!), and run vhs with such\nvariable set to the temporary socket path that authd provides us",
-                  "url": "https://github.com/ubuntu/authd/commit/101747816d0443412badbf8c3b534b6794911087"
-               },
-               {
-                  "sha": "ff21a9c1d3c2633d542700406527807f8c1e795d",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1709029115,
-                  "message": "Auto update packaging related Rust files",
-                  "url": "https://github.com/ubuntu/authd/commit/ff21a9c1d3c2633d542700406527807f8c1e795d"
+                  "timestamp": 1709052029,
+                  "message": "adapter/model: Remove unused WindowSizeMsg listener",
+                  "url": "https://github.com/ubuntu/authd/commit/5213a984317ee82daf4ee8b83fc8b352d33df9eb"
                }
             ],
             "ciActions": [
@@ -7129,25 +7129,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "01c0497146fdf3dacf3e797538b7877f6148e100",
+                  "author": "Dennis Loose",
+                  "timestamp": 1709125085,
+                  "message": "Merge pull request #467 from d-loose/fix-gdm-a11y-support-check\n\nfix(gnome-a11y): check access to all a11y settings",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/01c0497146fdf3dacf3e797538b7877f6148e100"
+               },
+               {
+                  "sha": "ca4bee4c593dfbcb30c05567c4a23742a9a0e8b5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1709123092,
+                  "message": "fix(gnome-a11y): check access to all a11y settings",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ca4bee4c593dfbcb30c05567c4a23742a9a0e8b5"
+               },
+               {
                   "sha": "8a569d2cf0c6911bb51cd2abd50ad9beff44aca0",
                   "author": "Dennis Loose",
                   "timestamp": 1709122267,
                   "message": "Merge pull request #466 from d-loose/try-or-install-readme\n\ndocs: add 'try-or-install' to list of bootstrap pages",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8a569d2cf0c6911bb51cd2abd50ad9beff44aca0"
-               },
-               {
-                  "sha": "dd355c7b97d2fe6ad769b159d5da38ff5374db92",
-                  "author": "Dennis Loose",
-                  "timestamp": 1709121567,
-                  "message": "docs: add 'try-or-install' to list of bootstrap pages",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/dd355c7b97d2fe6ad769b159d5da38ff5374db92"
-               },
-               {
-                  "sha": "cf9081002f59938214e9a853da5aa2c2c788628a",
-                  "author": "Dennis Loose",
-                  "timestamp": 1709120803,
-                  "message": "Merge pull request #464 from d-loose/fix-snap-tmp-path\n\nfix(init): patch /tmp/ path for gdm service in snap",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cf9081002f59938214e9a853da5aa2c2c788628a"
                }
             ],
             "ciActions": [
