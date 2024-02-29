@@ -5460,25 +5460,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c60f8777a0f35644402f50e8d30141af5da5e8dd",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1709220463,
+                  "message": "deps(windows-agent): Update GoWSL dependency (#624)\n\nWe were currently pinned at a four-month-old commit. The only changes\r\nare dependabot things, but those may contain security fixes",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c60f8777a0f35644402f50e8d30141af5da5e8dd"
+               },
+               {
+                  "sha": "0e618ffe8d1991bc3bcbc81d0931f25ee7800def",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1709220178,
+                  "message": "fix(windows-agent): Fix race in ubuntupro tests (#623)\n\nWe were leaking the distro task processing. This caused a race in the\r\nremoval of the distro's working dir.\r\n\r\nSee race here:\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/8097649091/job/22129174184#step:7:72",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0e618ffe8d1991bc3bcbc81d0931f25ee7800def"
+               },
+               {
                   "sha": "155f0ddf65ad35cfc4e6e1320f36403639336700",
                   "author": "Didier Roche",
                   "timestamp": 1709219646,
                   "message": "releasing package wsl-pro-service version 0.1.2",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/155f0ddf65ad35cfc4e6e1320f36403639336700"
-               },
-               {
-                  "sha": "6a92725ac4bead3b8b8ec5dd3d4ed89779aea4ae",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1709219531,
-                  "message": "maint(wsl-pro-service): Bump wsl-pro-service version (#621)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6a92725ac4bead3b8b8ec5dd3d4ed89779aea4ae"
-               },
-               {
-                  "sha": "d7edad88f56f90a78d71ae2e0eb4ee7e772ef9d6",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1709218877,
-                  "message": "fix(wsl-pro-service): Fix bug where IPv6 addresses where badly concatenated with port (#622)\n\nThanks iosifache for noticing!\r\n\r\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d7edad88f56f90a78d71ae2e0eb4ee7e772ef9d6"
                }
             ],
             "ciActions": [
@@ -5784,25 +5784,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "31f1add8c0ec3e9826944f36d9fa41e4c8a28dd5",
+                  "sha": "f97ddf18686725585b9ce60cb76728de46b8c6ef",
                   "author": "Denison Barbosa",
-                  "timestamp": 1709149464,
-                  "message": "Gdm model improvements (#238)\n\nLike #226, but better",
-                  "url": "https://github.com/ubuntu/authd/commit/31f1add8c0ec3e9826944f36d9fa41e4c8a28dd5"
+                  "timestamp": 1709220914,
+                  "message": "debian: Cleanup build process using more debhelper features (#223)\n\nrefactor quite a bit the `debian/*` code so that we are less dependent\r\non our scripts, but instead we use debian tooling more.\r\n\r\nIn particular:\r\n- Ensure that generated go files are properly created when bootstrapping\r\nthe repo and removing them\r\n  - Use `dh-cargo` tools more, reducing duplication\r\n    - And when it's not possible, mimic its behavior more\r\n  - Address various lintian warnings\r\n  - Use install files to install the produced binaries\r\n- It has the benefit of fail if we miss something or if we're adding\r\nunexpected\r\n- Install the daemons in `/usr/libexec` instead of `/usr/sbin` (there's\r\nno need for them to be in `$PATH`)\r\n\r\nCloses: #218 \r\n\r\nUDENG-2342",
+                  "url": "https://github.com/ubuntu/authd/commit/f97ddf18686725585b9ce60cb76728de46b8c6ef"
                },
                {
-                  "sha": "4599f8068ba7d103090387b618e973bc8c72792d",
+                  "sha": "87985bd43df0ff10a0ff3ad4487a70f61d3bb3e0",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1708990897,
-                  "message": "pam/main-cli: Do not pass client arguments to PAM\n\nActions such as login/passwd are not arguments we support in the PAM\nlibrary so don't pass them at all.",
-                  "url": "https://github.com/ubuntu/authd/commit/4599f8068ba7d103090387b618e973bc8c72792d"
+                  "timestamp": 1708961427,
+                  "message": "debian/rules: Do not hardcode the authd daemons path",
+                  "url": "https://github.com/ubuntu/authd/commit/87985bd43df0ff10a0ff3ad4487a70f61d3bb3e0"
                },
                {
-                  "sha": "9b38fdde3f097c3e4296679efba3f0eb950f0cd4",
+                  "sha": "bea5daacc368701d491fb391e536976a69d04271",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1709125747,
-                  "message": "pam: Use authd namespace for pam data keys\n\nThese are shared between all the modules in the same stack so let's make\nthis clear.",
-                  "url": "https://github.com/ubuntu/authd/commit/9b38fdde3f097c3e4296679efba3f0eb950f0cd4"
+                  "timestamp": 1708954620,
+                  "message": "debian/rules: Explicitly set GOTOOLCHAIN=local\n\nThis is something that also dh-golang does but for some reason it's not\npicked up during build and so we may fail if bumping the toolchain",
+                  "url": "https://github.com/ubuntu/authd/commit/bea5daacc368701d491fb391e536976a69d04271"
                }
             ],
             "ciActions": [
