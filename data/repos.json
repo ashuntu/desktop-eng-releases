@@ -947,8 +947,8 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 221,
-                     "timestamp": 1708944628
+                     "revision": 223,
+                     "timestamp": 1709376688
                   },
                   {
                      "track": "latest",
@@ -5460,25 +5460,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "43ff61db2fe4d31a073e6b7f834914029d9fbeda",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1709307084,
-                  "message": "Update example `LandscapeConfig` (#633)\n\nUpdated to match the new example in the [Landscape Docs - How to\r\nconfigure Ubuntu Pro for\r\nWSL](https://ubuntu.com/landscape/docs/register-wsl-hosts-to-landscape).\r\n\r\nChanges:\r\n- `[host]` `url` shouldn't be sent with `https://`\r\n- `ssl_public_key` must be included in the `[client]` section with the\r\nrecent Landscape change for gRPC messages to use https",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/43ff61db2fe4d31a073e6b7f834914029d9fbeda"
+                  "sha": "df46ea2ff49727d4b86992ce0a87297bb7488c54",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1709376718,
+                  "message": "fix(gui): Regression: not checking subscription status on startup (#634)\n\nFor users it looks like the app forgotten the Pro token previously\r\nsupplied. The current state is always starting in the subscribe now\r\npage. When refactoring the app code, we mistakenly placed the call to\r\nget the current subscription status in the last screen, it should be on\r\nthe first.\r\n\r\nAdded an integration test to assert that behavior.\r\n\r\nAlso, notice the usage of `Wizard.of(context).replace()` instead of\r\n`.next()` or `.jump()`. It has the benefit of removing the current page\r\nfrom the navigator, thus allowing the `SubscriptionStatusPage` to\r\nconsider itself the only one if the apps starts with a pre-existing\r\nsubscription as well as prevents undesired back navigations (such as\r\ngoing back from the `SubscribeNowPage` to the `SubscriptionStatusPage`\r\nor the `StartupPage`).",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/df46ea2ff49727d4b86992ce0a87297bb7488c54"
                },
                {
-                  "sha": "c81f8e8c73c3ee093fb837aa20f1126a60e926e1",
-                  "author": "Yanisa Haley Scherber",
-                  "timestamp": 1709305658,
-                  "message": "Update example `LandscapeConfig`\n\nUpdated to match the new example in the [Landscape Docs - How to configure Ubuntu Pro for WSL](https://ubuntu.com/landscape/docs/register-wsl-hosts-to-landscape).\r\n\r\nChanges:\r\n- `[host]` `url` shouldn't be sent with `https://`\r\n- `ssl_public_key` must be included in the `[client]` section with the recent Landscape change for gRPC messages to use https",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c81f8e8c73c3ee093fb837aa20f1126a60e926e1"
+                  "sha": "91fdb9329d05f39bcc0d7b1bedc37ae9a7360ed7",
+                  "author": "Carlos",
+                  "timestamp": 1709314302,
+                  "message": "Test the navigation logic\n\nTo make sure the Wizard won't blow up.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/91fdb9329d05f39bcc0d7b1bedc37ae9a7360ed7"
                },
                {
-                  "sha": "d94b895bc8ee81704863409b7c7cc27f8d7ed8fa",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1709279626,
-                  "message": "feat(windows-agent): Create registry key with its default fields (#620)\n\nUDENG-2413",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d94b895bc8ee81704863409b7c7cc27f8d7ed8fa"
+                  "sha": "231998ede976e91737e8b305dffdb8d8cddae83a",
+                  "author": "Carlos",
+                  "timestamp": 1709307551,
+                  "message": "Better way to navigate from the subscription status page\n\nThis arrangement requires less knowledge about the existing routes\nIt makes sense to inquiry whether there is a previous page before requesting to go back.\n\nWsing Wizard.replace() on the startup page allows that trick, because that page will not count on the number of loaded pages.\n\nAlso, another advantage of using replace instead of next or jump is that we prevent the possibility of navigating back: the page is unloaded by the wizard router.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/231998ede976e91737e8b305dffdb8d8cddae83a"
                }
             ],
             "ciActions": [
