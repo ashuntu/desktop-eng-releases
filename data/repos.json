@@ -4064,7 +4064,7 @@
          {
             "name": "WSL",
             "defaultBranch": "main",
-            "newCommits": 406,
+            "newCommits": 408,
             "url": "https://github.com/ubuntu/WSL",
             "releases": [
                {
@@ -5291,25 +5291,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c1bc3e77c2e10ad79483ff11e5e31d227fb7cbf0",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1710170503,
-                  "message": "fix(wsl-pro-service): Don't break when processes print to Stderr (#682)\n\ncmd.exe prints random stuff to stderr. When attempting to parse the\r\noutput of `cmd.exe`, Stderr gets in the way and we fail.\r\n\r\nRegression introduced in 373a97d\r\n\r\n---\r\n\r\nUDENG-2476",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c1bc3e77c2e10ad79483ff11e5e31d227fb7cbf0"
+                  "sha": "a80ec9c62467d7fa0f984d74c7366010421b4ebe",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1710177609,
+                  "message": "feat(gui): Status bar containing app version, bug report link and agent status (#679)\n\nThis looks bigger than it really is, but it's still big. Better digest\r\nit commit by commit, as I put effort in telling the whole story there.\r\n\r\nThere are a few small tests I sneaked into this PR because it was\r\nalready looking big anyway.\r\n\r\nThe intent of this PR is to add an always present status bar to the GUI\r\nfeaturing:\r\n- the app version\r\n- a button to report bugs in GH\r\n- a button to restart the agent, if down.\r\n\r\nLike this:\r\n\r\n\r\n![ubuntupro_fDbAo46bi7](https://github.com/canonical/ubuntu-pro-for-wsl/assets/11138291/0e107166-acb9-44fb-9296-ac3243b0efba)\r\n\r\n\r\nThe changes are quite invasive because the status bar is always present,\r\nand requires allowing the agent to be restarted at any moment during the\r\napp lifecycle.\r\n\r\nWhen reviewing this, have in mind that:\r\n\r\n- The first 4 commits are test refactorings (either the fixes I\r\nmentioned above or preparation for what is coming)\r\n- Commits 5 to 12 are refactorings over AgentApiClient and\r\nAgentStartupMonitor. They are necessary because:\r\n\r\n- The AgentApiClient must remain the same object accross the app (since\r\nits registered as a global service)\r\n- The AgentApiClient must support connecting to a different port at any\r\ntime.\r\n- The AgentApiClient must expose the gRPC connectivity status change\r\nevents so we can report a disconnect event (notice it doesn't say it's\r\nconnected, it only reports changes).\r\n- Automatic reconnection on drop is out of scope because the agent\r\ndoesn't crash. If that happens, it's a real issue. We don't want to stay\r\non a hot loop restarting it forever.\r\n- The AgentStartupMonitor was originally designed to only exist in the\r\nscope of the startup page, never accessible outside of it.\r\n- The AgentStartupMonitor was meant to notify of a succesful agent\r\nstartup only those subscribed at its creation time, no way to add\r\nsubscribers ad hoc.\r\n- The AgentStartupMonitor didn't care to have a reference to the\r\nAgentApiClient since upon a succesful startup it would be out of the\r\ngame.\r\n\r\n- The subsequent commits are about the meat of this PR: \r\n\r\n- adding the AgentConnection ChangeNotifier capable of reporting a\r\nconnection loss and restarting the agent (not by itself, but reusing the\r\nAgentStartupMonitor)\r\n- and a StatusBar consuming this ChangeNotifier to report the app\r\nversion, and featuring a button to open an issue in GitHub and to\r\nrestart the agent if down.\r\n\r\nThere is one caveat: the StartupErrorWidget, only shown if the agent\r\ncannot start to begin with, turns the button to restart the agent\r\nmeaningless, so only for that widget, we hide that button, like this:\r\n\r\n\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/11138291/c214d91a-ade9-41d6-a907-4c6a384946b2)\r\n\r\n Closes UDENG-2458",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a80ec9c62467d7fa0f984d74c7366010421b4ebe"
                },
                {
-                  "sha": "a45b60919dff438f5383c08a51cb7fdb173663e6",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1710149909,
-                  "message": "fix(wsl-pro-service): Don't log key overrides in WSL-Pro-Service's landscape (#681)\n\nThanks @iosifache for noticing\r\nCloses #635\r\n\r\n---\r\n\r\nUDENG-2465",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a45b60919dff438f5383c08a51cb7fdb173663e6"
+                  "sha": "7c42a6eb231938e542149a520941c47a76607e71",
+                  "author": "Carlos",
+                  "timestamp": 1709919921,
+                  "message": "gRPC idle can be considered still connected\n\nIt quickly connects and dispatches any gRPC successfully\nSo from the point of view of the UI, it's still connected.\n\nAdding a test to assert that logic.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7c42a6eb231938e542149a520941c47a76607e71"
                },
                {
-                  "sha": "3a6cacc33516f0048cb0125f39028d457944381f",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1710149677,
-                  "message": "Test generated commands",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3a6cacc33516f0048cb0125f39028d457944381f"
+                  "sha": "91266b16d5cfc652206c119a1385a31cbaef39be",
+                  "author": "Carlos",
+                  "timestamp": 1709845482,
+                  "message": "Tristate AgentConnection\n\nThis enables showing the icon button yellow while connecting.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/91266b16d5cfc652206c119a1385a31cbaef39be"
                }
             ],
             "ciActions": [
