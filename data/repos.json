@@ -3396,25 +3396,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff",
+                  "author": "ZoopOTheGoop",
+                  "timestamp": 1710210638,
+                  "message": "fix: strip unreachable XDG dirs (#371)\n\nFixes #369 (?) This prevents any inadvisable directories from entering\r\nthe Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for\r\nsafety) `$XDG_SPECIAL_DIRS`.\r\n\r\nIn the future we may *also* want to give the snap environment access to\r\n`/var/lib/snapd/desktop` or other paths (such as\r\n`~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but\r\nthis should at least prevent SRL from *trying* to mount paths it simply\r\ncannot access. This also gives the snap in general some resiliency\r\nagainst users with various *other* unexpected directories stored in the\r\n`XDG_*` variables (such as the ones `flatpak` adds).\r\n\r\nCons: This could, in theory, strip directories that Steam actually\r\nexpects to be there in the future, without any App Armor denials to\r\ninform us. To mitigate (but not remove) this issue, the script does echo\r\nan `INFO: ` line during launch specifying any directories it has\r\nstripped for being unreachable.",
+                  "url": "https://github.com/canonical/steam-snap/commit/cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff"
+               },
+               {
+                  "sha": "e17af5123e4dc00f164849c51d0e46c4efea92e2",
+                  "author": "Zoe Spellman",
+                  "timestamp": 1709789630,
+                  "message": " fix: strip unreachable XDG dirs #371\n\nFixes #369 (?) This prevents any inadvisable directories from entering the Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for safety) `$XDG_SPECIAL_DIRS`.\n\nIn the future we may *also* want to give the snap environment access to `/var/lib/snapd/desktop` or other paths (such as `~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but this should at least prevent SRL from *trying* to mount paths it simply cannot access. This also gives the snap in general some resiliency against users with various *other* unexpected directories stored in the `XDG_*` variables (such as the ones `flatpak` adds).\n\nCons: This could, in theory, strip directories that Steam actually expects to be there in the future, without any App Armor denials to inform us. To mitigate (but not remove) this issue, the script does echo an `INFO: ` line during launch specifying any directories it has stripped for being unreachable.",
+                  "url": "https://github.com/canonical/steam-snap/commit/e17af5123e4dc00f164849c51d0e46c4efea92e2"
+               },
+               {
                   "sha": "191e2c95fcff7026f948f7e7e93b09964c3ccd3c",
                   "author": "Ash",
                   "timestamp": 1707510400,
                   "message": "fix: Remove duplicate staged paths (#366)\n\nVery small PR that just removes 2 duplicate paths from staging.\r\n\r\n`usr/**/libfontconfig*` was a direct duplicate. `usr/share/*/libgtk-3*`\r\nwas a duplicate since `usr/**/libgtk-3*` already overlaps that path.",
                   "url": "https://github.com/canonical/steam-snap/commit/191e2c95fcff7026f948f7e7e93b09964c3ccd3c"
-               },
-               {
-                  "sha": "ecc2177a6d5c58afcca05dc240db82b40e4b0502",
-                  "author": "ashuntu",
-                  "timestamp": 1707499323,
-                  "message": "fix: Remove duplicate staged paths",
-                  "url": "https://github.com/canonical/steam-snap/commit/ecc2177a6d5c58afcca05dc240db82b40e4b0502"
-               },
-               {
-                  "sha": "bf210744d68f3014ebbc7541e404e40d86bb23f9",
-                  "author": "Ash",
-                  "timestamp": 1705605511,
-                  "message": "fix: Remove libdrm bind #349 \n\nRemove libdrm bind",
-                  "url": "https://github.com/canonical/steam-snap/commit/bf210744d68f3014ebbc7541e404e40d86bb23f9"
                }
             ],
             "ciActions": [],
@@ -4941,25 +4941,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff",
+                  "author": "ZoopOTheGoop",
+                  "timestamp": 1710210638,
+                  "message": "fix: strip unreachable XDG dirs (#371)\n\nFixes #369 (?) This prevents any inadvisable directories from entering\r\nthe Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for\r\nsafety) `$XDG_SPECIAL_DIRS`.\r\n\r\nIn the future we may *also* want to give the snap environment access to\r\n`/var/lib/snapd/desktop` or other paths (such as\r\n`~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but\r\nthis should at least prevent SRL from *trying* to mount paths it simply\r\ncannot access. This also gives the snap in general some resiliency\r\nagainst users with various *other* unexpected directories stored in the\r\n`XDG_*` variables (such as the ones `flatpak` adds).\r\n\r\nCons: This could, in theory, strip directories that Steam actually\r\nexpects to be there in the future, without any App Armor denials to\r\ninform us. To mitigate (but not remove) this issue, the script does echo\r\nan `INFO: ` line during launch specifying any directories it has\r\nstripped for being unreachable.",
+                  "url": "https://github.com/canonical/steam-snap/commit/cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff"
+               },
+               {
+                  "sha": "e17af5123e4dc00f164849c51d0e46c4efea92e2",
+                  "author": "Zoe Spellman",
+                  "timestamp": 1709789630,
+                  "message": " fix: strip unreachable XDG dirs #371\n\nFixes #369 (?) This prevents any inadvisable directories from entering the Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for safety) `$XDG_SPECIAL_DIRS`.\n\nIn the future we may *also* want to give the snap environment access to `/var/lib/snapd/desktop` or other paths (such as `~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but this should at least prevent SRL from *trying* to mount paths it simply cannot access. This also gives the snap in general some resiliency against users with various *other* unexpected directories stored in the `XDG_*` variables (such as the ones `flatpak` adds).\n\nCons: This could, in theory, strip directories that Steam actually expects to be there in the future, without any App Armor denials to inform us. To mitigate (but not remove) this issue, the script does echo an `INFO: ` line during launch specifying any directories it has stripped for being unreachable.",
+                  "url": "https://github.com/canonical/steam-snap/commit/e17af5123e4dc00f164849c51d0e46c4efea92e2"
+               },
+               {
                   "sha": "191e2c95fcff7026f948f7e7e93b09964c3ccd3c",
                   "author": "Ash",
                   "timestamp": 1707510400,
                   "message": "fix: Remove duplicate staged paths (#366)\n\nVery small PR that just removes 2 duplicate paths from staging.\r\n\r\n`usr/**/libfontconfig*` was a direct duplicate. `usr/share/*/libgtk-3*`\r\nwas a duplicate since `usr/**/libgtk-3*` already overlaps that path.",
                   "url": "https://github.com/canonical/steam-snap/commit/191e2c95fcff7026f948f7e7e93b09964c3ccd3c"
-               },
-               {
-                  "sha": "ecc2177a6d5c58afcca05dc240db82b40e4b0502",
-                  "author": "ashuntu",
-                  "timestamp": 1707499323,
-                  "message": "fix: Remove duplicate staged paths",
-                  "url": "https://github.com/canonical/steam-snap/commit/ecc2177a6d5c58afcca05dc240db82b40e4b0502"
-               },
-               {
-                  "sha": "bf210744d68f3014ebbc7541e404e40d86bb23f9",
-                  "author": "Ash",
-                  "timestamp": 1705605511,
-                  "message": "fix: Remove libdrm bind #349 \n\nRemove libdrm bind",
-                  "url": "https://github.com/canonical/steam-snap/commit/bf210744d68f3014ebbc7541e404e40d86bb23f9"
                }
             ],
             "ciActions": [],
@@ -6689,25 +6689,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff",
+                  "author": "ZoopOTheGoop",
+                  "timestamp": 1710210638,
+                  "message": "fix: strip unreachable XDG dirs (#371)\n\nFixes #369 (?) This prevents any inadvisable directories from entering\r\nthe Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for\r\nsafety) `$XDG_SPECIAL_DIRS`.\r\n\r\nIn the future we may *also* want to give the snap environment access to\r\n`/var/lib/snapd/desktop` or other paths (such as\r\n`~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but\r\nthis should at least prevent SRL from *trying* to mount paths it simply\r\ncannot access. This also gives the snap in general some resiliency\r\nagainst users with various *other* unexpected directories stored in the\r\n`XDG_*` variables (such as the ones `flatpak` adds).\r\n\r\nCons: This could, in theory, strip directories that Steam actually\r\nexpects to be there in the future, without any App Armor denials to\r\ninform us. To mitigate (but not remove) this issue, the script does echo\r\nan `INFO: ` line during launch specifying any directories it has\r\nstripped for being unreachable.",
+                  "url": "https://github.com/canonical/steam-snap/commit/cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff"
+               },
+               {
+                  "sha": "e17af5123e4dc00f164849c51d0e46c4efea92e2",
+                  "author": "Zoe Spellman",
+                  "timestamp": 1709789630,
+                  "message": " fix: strip unreachable XDG dirs #371\n\nFixes #369 (?) This prevents any inadvisable directories from entering the Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for safety) `$XDG_SPECIAL_DIRS`.\n\nIn the future we may *also* want to give the snap environment access to `/var/lib/snapd/desktop` or other paths (such as `~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but this should at least prevent SRL from *trying* to mount paths it simply cannot access. This also gives the snap in general some resiliency against users with various *other* unexpected directories stored in the `XDG_*` variables (such as the ones `flatpak` adds).\n\nCons: This could, in theory, strip directories that Steam actually expects to be there in the future, without any App Armor denials to inform us. To mitigate (but not remove) this issue, the script does echo an `INFO: ` line during launch specifying any directories it has stripped for being unreachable.",
+                  "url": "https://github.com/canonical/steam-snap/commit/e17af5123e4dc00f164849c51d0e46c4efea92e2"
+               },
+               {
                   "sha": "191e2c95fcff7026f948f7e7e93b09964c3ccd3c",
                   "author": "Ash",
                   "timestamp": 1707510400,
                   "message": "fix: Remove duplicate staged paths (#366)\n\nVery small PR that just removes 2 duplicate paths from staging.\r\n\r\n`usr/**/libfontconfig*` was a direct duplicate. `usr/share/*/libgtk-3*`\r\nwas a duplicate since `usr/**/libgtk-3*` already overlaps that path.",
                   "url": "https://github.com/canonical/steam-snap/commit/191e2c95fcff7026f948f7e7e93b09964c3ccd3c"
-               },
-               {
-                  "sha": "ecc2177a6d5c58afcca05dc240db82b40e4b0502",
-                  "author": "ashuntu",
-                  "timestamp": 1707499323,
-                  "message": "fix: Remove duplicate staged paths",
-                  "url": "https://github.com/canonical/steam-snap/commit/ecc2177a6d5c58afcca05dc240db82b40e4b0502"
-               },
-               {
-                  "sha": "bf210744d68f3014ebbc7541e404e40d86bb23f9",
-                  "author": "Ash",
-                  "timestamp": 1705605511,
-                  "message": "fix: Remove libdrm bind #349 \n\nRemove libdrm bind",
-                  "url": "https://github.com/canonical/steam-snap/commit/bf210744d68f3014ebbc7541e404e40d86bb23f9"
                }
             ],
             "ciActions": [],
