@@ -4969,7 +4969,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 319,
+            "newCommits": 321,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -5291,6 +5291,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e88620c8caacbca6a2f3e4a0dcab026b87736218",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1710348120,
+                  "message": "fix(docs): Clean-up section in the tutorial (#686)\n\nThis removes a TODO item from the tutorial document, by adding a\r\nclean-up section that removes the Ubuntu WSL apps and instances and\r\noptionally the WSL app as well.\r\n\r\nI'm intentionally skipping cleaning-up the registry because all\r\nreferences to the registry will be replaced by the GUI, so no reason to\r\nadd dead content.\r\n\r\nUDENG-2449",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e88620c8caacbca6a2f3e4a0dcab026b87736218"
+               },
+               {
                   "sha": "edcec808bea8bab43ec9a4f0ec46341e08b67058",
                   "author": "Carlos Nihelton",
                   "timestamp": 1710274279,
@@ -5303,13 +5310,6 @@
                   "timestamp": 1710272820,
                   "message": "Auto update internal dependencies",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9433d11c9c2fce0122e1952794c62e320e2e53ac"
-               },
-               {
-                  "sha": "c4665ef95b370206e7d25cbe573a291f0fb805e8",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1710272793,
-                  "message": "fix(gui): Separate Landscape and Pro subscription sources (#684)\n\nWe originally considered that having a Pro subscription managed via the\r\norganization (represented by the existence of the Pro token inside the\r\nWindows registry) should also mean that Landscape configuration data\r\nshould be treated as if coming from the same source, even in cases which\r\nthe organization didn't set any data about Landscape.\r\n\r\nThis PR changes that assumption by:\r\n- Replacing the `GetSubscriptionInfo` RPC with `GetConfigSources`,\r\ngrouping both the Pro subscription and the Landscape config data\r\nsources, so the GUI can decide which elements and features to present or\r\nhide based on each source individually.\r\n- Replacing the main app state from being the `SubscriptionInfo` to\r\nbeing the `ConfigSources`, so we propagate that information letting the\r\nindividual pages decide which elements to display\r\n- Changing the declaration of the `LandscapeConfigPage` route in the\r\nWizard to skip that page if the Landscape config source is the\r\norganization\r\n- Conditionally hiding or presenting the `Configure Landscape` button in\r\nthe SubscriptionStatus page variants, which still have their main layout\r\ndefined by the Pro subscription source, but now allowing that button to\r\nshow if the Landscape source allows configuration via the GUI. For\r\nexample, the Pro subscription may come from the organization and we\r\nstill present the `Configure Landscape` button if there is no Landscape\r\ndata or if the user provided it.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c4665ef95b370206e7d25cbe573a291f0fb805e8"
                }
             ],
             "ciActions": [
