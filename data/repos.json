@@ -5582,25 +5582,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "80a2d4c20ac14db5fba549b55b710be7999cf59a",
+                  "sha": "f25f05ffa004355b63b768e475eb277dfba42814",
                   "author": "Denison Barbosa",
-                  "timestamp": 1710259347,
-                  "message": "tests(pam): Add GDM module integration tests (#203)\n\nCompile the module as a PAM library and load it using go-pam via libpam\r\nitself, at this point we use the defined conversations to communicate to\r\nthe module using the JSON protocol, ensuring that the expectations are\r\nmet.\r\n\r\nThis ensures that things work fine when we're in a real scenario.\r\n\r\nMarking this as draft as it's based on #190 \r\n\r\nUDENG-1467",
-                  "url": "https://github.com/ubuntu/authd/commit/80a2d4c20ac14db5fba549b55b710be7999cf59a"
+                  "timestamp": 1710325886,
+                  "message": "feat(pam): Cleanup logging, disable info messages in terminal mode and use journal when possible (#233)\n\nLog messages in the pam module were incomplete and at times they were\r\nusing an higher priority than expected, and when authenticating with\r\nsudo or friends in an interactive terminal they were often spamming the\r\nsession, breaking the bubbletea interface.\r\n\r\nAt the same time when running the module in such scenario or when it is\r\nloaded from other components such as ssh or desktop environments, it\r\nwasn't easy to debug it.\r\n\r\nSaid this:\r\n- Use PAM messages more to output errors when the interactive interface\r\nis over\r\n - Add client output to the integration tests logs\r\n - Add more debug messages where it matters\r\n- Implement `log` so that logging handlers can be defined for each level\r\n - Add a journal log handler that uses systemd journal as output\r\n - Use warning level logging in interactive terminals\r\n - pam module now supports these arguments:\r\n   - `disable_journal` to disable journal integration\r\n- `debug` to use debug level when enabled (I was considering exposing\r\n`loglevel` but that's probably too much)\r\n- `logfile` to write the log to a provided file, in such case journal is\r\nnot used.\r\n\r\nUDENG-2441",
+                  "url": "https://github.com/ubuntu/authd/commit/f25f05ffa004355b63b768e475eb277dfba42814"
                },
                {
-                  "sha": "330700288cb8be94569bd98621ac3802515756ce",
+                  "sha": "9bcac39bfc473c05df8d7b49c7b187395968e38a",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1709141600,
-                  "message": "cleanup: Do not use os.Extit(m.Run()) when not early-exiting\n\nReturn code will be handled by go itself",
-                  "url": "https://github.com/ubuntu/authd/commit/330700288cb8be94569bd98621ac3802515756ce"
+                  "timestamp": 1709011818,
+                  "message": "pam: Use warning level when using terminal client\n\nIn case an interactive terminal is used, using the Info Level as default\nis just bothering the bubbletea interface, leading to non-useful\nmessages being written in the terminal.\n\nSo just disable this in such case.",
+                  "url": "https://github.com/ubuntu/authd/commit/9bcac39bfc473c05df8d7b49c7b187395968e38a"
                },
                {
-                  "sha": "e55b3fc6eb295dc0515a5497c6464d9603a1dad0",
+                  "sha": "4dbd8a33be4562959d695eabea43d3ca25186082",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1708990204,
-                  "message": "pam/main-cli: Use pam.ModuleHandlerFunc type instead of redefininig it",
-                  "url": "https://github.com/ubuntu/authd/commit/e55b3fc6eb295dc0515a5497c6464d9603a1dad0"
+                  "timestamp": 1709010657,
+                  "message": "pam: Add support for logging into the systemd journal\n\nUnless disabled, we should write our logs to the systemd journal, this\nallows easy inspection of what happened and can be easily parsed in\nvarious ways",
+                  "url": "https://github.com/ubuntu/authd/commit/4dbd8a33be4562959d695eabea43d3ca25186082"
                }
             ],
             "ciActions": [
