@@ -5536,7 +5536,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 56,
+            "newCommits": 59,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -5582,25 +5582,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f25f05ffa004355b63b768e475eb277dfba42814",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1710325886,
-                  "message": "feat(pam): Cleanup logging, disable info messages in terminal mode and use journal when possible (#233)\n\nLog messages in the pam module were incomplete and at times they were\r\nusing an higher priority than expected, and when authenticating with\r\nsudo or friends in an interactive terminal they were often spamming the\r\nsession, breaking the bubbletea interface.\r\n\r\nAt the same time when running the module in such scenario or when it is\r\nloaded from other components such as ssh or desktop environments, it\r\nwasn't easy to debug it.\r\n\r\nSaid this:\r\n- Use PAM messages more to output errors when the interactive interface\r\nis over\r\n - Add client output to the integration tests logs\r\n - Add more debug messages where it matters\r\n- Implement `log` so that logging handlers can be defined for each level\r\n - Add a journal log handler that uses systemd journal as output\r\n - Use warning level logging in interactive terminals\r\n - pam module now supports these arguments:\r\n   - `disable_journal` to disable journal integration\r\n- `debug` to use debug level when enabled (I was considering exposing\r\n`loglevel` but that's probably too much)\r\n- `logfile` to write the log to a provided file, in such case journal is\r\nnot used.\r\n\r\nUDENG-2441",
-                  "url": "https://github.com/ubuntu/authd/commit/f25f05ffa004355b63b768e475eb277dfba42814"
+                  "sha": "9ac05aa968a0b0ef1e5e65b20c0677833e7152fa",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1710507385,
+                  "message": "feat(tests): use an env variable to update golden files (#252)\n\nUse TESTS_UPDATE_GOLDEN to update golden files\r\nThis will allow to update all golden files in one go, without having to\r\nendure the update flag installation and potential warning that the flag\r\nis not supported in some packages.\r\nAlign check if update flag is enabled on other projects.\r\n\r\nUDENG-2467",
+                  "url": "https://github.com/ubuntu/authd/commit/9ac05aa968a0b0ef1e5e65b20c0677833e7152fa"
                },
                {
-                  "sha": "9bcac39bfc473c05df8d7b49c7b187395968e38a",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1709011818,
-                  "message": "pam: Use warning level when using terminal client\n\nIn case an interactive terminal is used, using the Info Level as default\nis just bothering the bubbletea interface, leading to non-useful\nmessages being written in the terminal.\n\nSo just disable this in such case.",
-                  "url": "https://github.com/ubuntu/authd/commit/9bcac39bfc473c05df8d7b49c7b187395968e38a"
+                  "sha": "f27dc3f5f4811fefbb96690c9cf421fb0721c5a1",
+                  "author": "Didier Roche",
+                  "timestamp": 1710504817,
+                  "message": "Use TESTS_UPDATE_GOLDEN to update golden files\n\nThis will allow to update all golden files in one go, without having to\nendure the update flag installation and potential warning that the flag\nis not supported in some packages.",
+                  "url": "https://github.com/ubuntu/authd/commit/f27dc3f5f4811fefbb96690c9cf421fb0721c5a1"
                },
                {
-                  "sha": "4dbd8a33be4562959d695eabea43d3ca25186082",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1709010657,
-                  "message": "pam: Add support for logging into the systemd journal\n\nUnless disabled, we should write our logs to the systemd journal, this\nallows easy inspection of what happened and can be easily parsed in\nvarious ways",
-                  "url": "https://github.com/ubuntu/authd/commit/4dbd8a33be4562959d695eabea43d3ca25186082"
+                  "sha": "05ae6b8e75f0c5721e1272b43e29f2e6289509db",
+                  "author": "Didier Roche",
+                  "timestamp": 1710504597,
+                  "message": "Align update check with wsl-pro-for-windows\n\nWe want to reuse the same terminology and function names.",
+                  "url": "https://github.com/ubuntu/authd/commit/05ae6b8e75f0c5721e1272b43e29f2e6289509db"
                }
             ],
             "ciActions": [
