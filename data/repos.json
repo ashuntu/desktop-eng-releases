@@ -5582,25 +5582,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "793e2489a52097e44247c5c6e6911edc7d695d27",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1710842615,
+                  "message": "ci/qa: Try to install debug symbols from launchpad if ddebs fails (#261)\n\nUbuntu ddebs repos are a bit flaky, so in case of failures just go\r\nmanual.\r\n\r\nIt's far from being nice, but without symbols we can't skip do proper\r\nleak-checks, so the other option is skipping those in such case but I\r\nfeel it's worse.\r\n\r\n/cc @didrocks",
+                  "url": "https://github.com/ubuntu/authd/commit/793e2489a52097e44247c5c6e6911edc7d695d27"
+               },
+               {
+                  "sha": "b218d19a162b723609fa54003d0571c053c7fff7",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1710772081,
+                  "message": "ci/qa: Try to install debug symbols from launchpad if ddebs fails\n\nUbuntu ddebs repos are a bit flaky, so in case of failures just go\nmanual",
+                  "url": "https://github.com/ubuntu/authd/commit/b218d19a162b723609fa54003d0571c053c7fff7"
+               },
+               {
                   "sha": "c7efeef36080e00f7774b67c985009bb04119039",
                   "author": "Denison Barbosa",
                   "timestamp": 1710773933,
                   "message": "fix: authd will now wait for examplebroker to start (#257)\n\nIf built using the `withexamplebroker` tag, authd is expected to\r\nconfigure and run the examplebroker as a \"sub\" service. We used to\r\ndelegate the starting process to a go routine, but it created problems\r\nin some test environments (as the examplebroker could take too long to\r\nstart).\r\n\r\nNow starting the examplebroker is a blocking call and the daemon will\r\nwait until the broker is up and running.",
                   "url": "https://github.com/ubuntu/authd/commit/c7efeef36080e00f7774b67c985009bb04119039"
-               },
-               {
-                  "sha": "333671f55f34c972302d86f65fb90e5a2fcad1f9",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1710514995,
-                  "message": "authd will now wait for examplebroker to start\n\nIf built with the \"withexamplebroker\" tag, we expect authd to configure\nand run the examplebroker as a \"sub\" service. We used to delegate the\nstarting process to a go routine, but this was creating problems in some\ntest environments (as the examplebroker was taking too long to start).\nNow, starting the examplebroker is a blocking call and the daemon will\nwait until the broker is up and running.",
-                  "url": "https://github.com/ubuntu/authd/commit/333671f55f34c972302d86f65fb90e5a2fcad1f9"
-               },
-               {
-                  "sha": "e29f63ed3e1a7794aa20c5397692755e76dcfd18",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1710772568,
-                  "message": "fix: Add timeout to requests and skip dbus NSS lookup on dbus mock (#253)\n\ndbus can do some NSS calls and, if this happens during authd startup,\r\nthe daemon will hang (this mainly affected cases where we wanted to run\r\nauthd with the examplebroker built-in as, in order to do that, we were\r\nrunning a separate system bus of our own).\r\n\r\nTo prevent this from happening again and to add layers of protection,\r\nour NSS requests will have a timeout and we are also skipping the dbus\r\ncalls to NSS in our dbus mock.\r\n\r\nUDENG-2511\r\nUDENG-2510",
-                  "url": "https://github.com/ubuntu/authd/commit/e29f63ed3e1a7794aa20c5397692755e76dcfd18"
                }
             ],
             "ciActions": [
