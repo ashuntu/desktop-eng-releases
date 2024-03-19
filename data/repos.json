@@ -5582,6 +5582,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ef0755f189f2456a8f5a2908713afb54e9b5cf9a",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1710856368,
+                  "message": "ci: Update update dependency strategy (#259)\n\nOnly update them all on Thursday, decoupling them from security update.\r\nTry grouping the minor and patches change in the same PR, to ease\r\nmaintaince.\r\nAdd also dependabot configuration fix.\r\n\r\nUDENG-2525",
+                  "url": "https://github.com/ubuntu/authd/commit/ef0755f189f2456a8f5a2908713afb54e9b5cf9a"
+               },
+               {
                   "sha": "fa7e7486f56a0fe83a370ad57e9233966d5e8a0b",
                   "author": "Denison Barbosa",
                   "timestamp": 1710852217,
@@ -5594,13 +5601,6 @@
                   "timestamp": 1710777142,
                   "message": "Reduce timeout limit in NSS",
                   "url": "https://github.com/ubuntu/authd/commit/defd0722c72628922d1835ac8e4d4a7d032ccff6"
-               },
-               {
-                  "sha": "8d284282c47308d118aef2da122818ee2e7410b5",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1710772947,
-                  "message": "Add timeout when connecting to authd socket in PAM\n\nThis call could hang forever if the file was present but not ready yet,\nso we should add a timeout instead to prevent deadlocks.\n\nThe documentation states that \"By default, it's a non-blocking dial\n(the function won't wait for connections to be established, and\nconnecting happens in the background). To make it a blocking dial,\nuse WithBlock() dial option. In the non-blocking case, the ctx does\nnot act against the connection. It only controls the setup steps.\nIn the blocking case, ctx can be used to cancel or expire the\nending connection.\"\n\nThis means that we need a blocking Dial if we expect the timeout to\nhappen \"automatically\" when the context gets canceled.",
-                  "url": "https://github.com/ubuntu/authd/commit/8d284282c47308d118aef2da122818ee2e7410b5"
                }
             ],
             "ciActions": [
