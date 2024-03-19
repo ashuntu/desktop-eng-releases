@@ -5582,25 +5582,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "860faa3f043989857b942c7561c283b87f60efac",
+                  "sha": "fa7e7486f56a0fe83a370ad57e9233966d5e8a0b",
                   "author": "Denison Barbosa",
-                  "timestamp": 1710850281,
-                  "message": "feat(CI): save test artifacts on failures (#251)\n\nIn case of failures we should save the artifacts we have prepared so\r\nthat can be inspected better (or we can watch the .gif files).",
-                  "url": "https://github.com/ubuntu/authd/commit/860faa3f043989857b942c7561c283b87f60efac"
+                  "timestamp": 1710852217,
+                  "message": "fix: Add timeout when connecting to authd socket in PAM (#260)\n\nThis call could hang forever if the file was present but not ready yet,\r\nso we should add a timeout instead to prevent deadlocks.\r\n\r\nUDENG-2508",
+                  "url": "https://github.com/ubuntu/authd/commit/fa7e7486f56a0fe83a370ad57e9233966d5e8a0b"
                },
                {
-                  "sha": "793e2489a52097e44247c5c6e6911edc7d695d27",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1710842615,
-                  "message": "ci/qa: Try to install debug symbols from launchpad if ddebs fails (#261)\n\nUbuntu ddebs repos are a bit flaky, so in case of failures just go\r\nmanual.\r\n\r\nIt's far from being nice, but without symbols we can't skip do proper\r\nleak-checks, so the other option is skipping those in such case but I\r\nfeel it's worse.\r\n\r\n/cc @didrocks",
-                  "url": "https://github.com/ubuntu/authd/commit/793e2489a52097e44247c5c6e6911edc7d695d27"
+                  "sha": "defd0722c72628922d1835ac8e4d4a7d032ccff6",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1710777142,
+                  "message": "Reduce timeout limit in NSS",
+                  "url": "https://github.com/ubuntu/authd/commit/defd0722c72628922d1835ac8e4d4a7d032ccff6"
                },
                {
-                  "sha": "b218d19a162b723609fa54003d0571c053c7fff7",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1710772081,
-                  "message": "ci/qa: Try to install debug symbols from launchpad if ddebs fails\n\nUbuntu ddebs repos are a bit flaky, so in case of failures just go\nmanual",
-                  "url": "https://github.com/ubuntu/authd/commit/b218d19a162b723609fa54003d0571c053c7fff7"
+                  "sha": "8d284282c47308d118aef2da122818ee2e7410b5",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1710772947,
+                  "message": "Add timeout when connecting to authd socket in PAM\n\nThis call could hang forever if the file was present but not ready yet,\nso we should add a timeout instead to prevent deadlocks.\n\nThe documentation states that \"By default, it's a non-blocking dial\n(the function won't wait for connections to be established, and\nconnecting happens in the background). To make it a blocking dial,\nuse WithBlock() dial option. In the non-blocking case, the ctx does\nnot act against the connection. It only controls the setup steps.\nIn the blocking case, ctx can be used to cancel or expire the\nending connection.\"\n\nThis means that we need a blocking Dial if we expect the timeout to\nhappen \"automatically\" when the context gets canceled.",
+                  "url": "https://github.com/ubuntu/authd/commit/8d284282c47308d118aef2da122818ee2e7410b5"
                }
             ],
             "ciActions": [
