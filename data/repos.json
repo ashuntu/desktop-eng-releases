@@ -4969,7 +4969,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 342,
+            "newCommits": 344,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -5582,6 +5582,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "860faa3f043989857b942c7561c283b87f60efac",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1710850281,
+                  "message": "feat(CI): save test artifacts on failures (#251)\n\nIn case of failures we should save the artifacts we have prepared so\r\nthat can be inspected better (or we can watch the .gif files).",
+                  "url": "https://github.com/ubuntu/authd/commit/860faa3f043989857b942c7561c283b87f60efac"
+               },
+               {
                   "sha": "793e2489a52097e44247c5c6e6911edc7d695d27",
                   "author": "Denison Barbosa",
                   "timestamp": 1710842615,
@@ -5594,13 +5601,6 @@
                   "timestamp": 1710772081,
                   "message": "ci/qa: Try to install debug symbols from launchpad if ddebs fails\n\nUbuntu ddebs repos are a bit flaky, so in case of failures just go\nmanual",
                   "url": "https://github.com/ubuntu/authd/commit/b218d19a162b723609fa54003d0571c053c7fff7"
-               },
-               {
-                  "sha": "c7efeef36080e00f7774b67c985009bb04119039",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1710773933,
-                  "message": "fix: authd will now wait for examplebroker to start (#257)\n\nIf built using the `withexamplebroker` tag, authd is expected to\r\nconfigure and run the examplebroker as a \"sub\" service. We used to\r\ndelegate the starting process to a go routine, but it created problems\r\nin some test environments (as the examplebroker could take too long to\r\nstart).\r\n\r\nNow starting the examplebroker is a blocking call and the daemon will\r\nwait until the broker is up and running.",
-                  "url": "https://github.com/ubuntu/authd/commit/c7efeef36080e00f7774b67c985009bb04119039"
                }
             ],
             "ciActions": [
