@@ -5291,25 +5291,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b04e20b8bac296fb0eaab5ae84047c10d6c68755",
-                  "author": "Ash",
-                  "timestamp": 1710793677,
-                  "message": "feat(wsl-pro-service): Add default wsl tag to Landscape configs (#683)\n\nThis PR extends the already-existing modifications we make to Landscape\r\nconfigs in `wsl-pro-service`. It appends `tags = wsl` to the Landscape\r\nconfig if a `tags` key doesn't already exist. Any `tags` already present\r\nin the config (including empty tags) are *not* overridden.\r\n\r\n*For review, the [Landscape example\r\nconfiguration](https://github.com/canonical/landscape-client/blob/master/example.conf#L163-L167)\r\nmay be useful.*\r\n\r\n---\r\n\r\nUDENG-2372",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b04e20b8bac296fb0eaab5ae84047c10d6c68755"
+                  "sha": "ecdc45f67aacc5c35e4ce97288b60801c2d85d6a",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1710860812,
+                  "message": "docs: Improve style consistency everywhere, improve flow in setup prerequisites (#695)\n\nTouched up titles in Navigation to remove \"How to\" or to include just\r\nthe abbreviation.\r\n\r\nRestyled \"Ubuntu Pro for WSL\" everywhere *except for first occurrence on\r\nthe website, in the home, and the install page) as just \"UP4W\".\r\n\r\nTouched up See, See first, See more, See also style in all the docs\r\n- See: used when we link to something else for the entire content of a\r\npoint\r\n- See also: used at the top of a HTG section to link to the immediately\r\nrelevant reference\r\n- See more: used in HTGs to link to reference bits used in the HTG or in\r\nReference to link to external pages for more info\r\n- See first: used in the UP4W Dev docs to link to the bits that the dev\r\ndoc is adding to.\r\n\r\nIn the setup HTG, turned Prerequisites into a Check that you meet\r\nrequirements section. Also touched up the content to improve flow.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/ecdc45f67aacc5c35e4ce97288b60801c2d85d6a"
                },
                {
-                  "sha": "a4e6cd04d7d7debc7f81cdd647f2becee732d6d3",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1710766466,
-                  "message": "deps(wsl-pro-service): update the package name for ubuntu-advantage-tools (#687)\n\nFrom v31, ubuntu-advantage-tools has been renamed to ubuntu-pro-client.\r\nThe ubuntu-advantage-tools package name is now a transitional package.\r\nNoble currently has ubuntu-advantage-tools v31.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a4e6cd04d7d7debc7f81cdd647f2becee732d6d3"
+                  "sha": "523abb4273c870ca5b96a3a73c3ec98c19b4feaa",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1710859998,
+                  "message": "Update docs/dev/howto/02-install.md",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/523abb4273c870ca5b96a3a73c3ec98c19b4feaa"
                },
                {
-                  "sha": "8e3a407b43604b95bac6109966f3216b7e3e3fbd",
-                  "author": "Calvin Mwadime Makokha",
-                  "timestamp": 1710765386,
-                  "message": "wsl-pro-service: update the package name for ubuntu-advantage-tools\n\nFrom v31, ubuntu-advantage-tools has been renamed to ubuntu-pro-client.\nThe ubuntu-advantage-tools package name is now a transitional package.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8e3a407b43604b95bac6109966f3216b7e3e3fbd"
+                  "sha": "3da2179c30a8b3e66511d919e919b4e4346845c6",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1710859980,
+                  "message": "Update docs/reference/up4w-wsl_pro_service.md",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3da2179c30a8b3e66511d919e919b4e4346845c6"
                }
             ],
             "ciActions": [
@@ -5582,25 +5582,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ef0755f189f2456a8f5a2908713afb54e9b5cf9a",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1710856368,
-                  "message": "ci: Update update dependency strategy (#259)\n\nOnly update them all on Thursday, decoupling them from security update.\r\nTry grouping the minor and patches change in the same PR, to ease\r\nmaintaince.\r\nAdd also dependabot configuration fix.\r\n\r\nUDENG-2525",
-                  "url": "https://github.com/ubuntu/authd/commit/ef0755f189f2456a8f5a2908713afb54e9b5cf9a"
-               },
-               {
-                  "sha": "fa7e7486f56a0fe83a370ad57e9233966d5e8a0b",
+                  "sha": "c0d1c33b5cc535d15bbcff9fbfba55e78679c7f0",
                   "author": "Denison Barbosa",
-                  "timestamp": 1710852217,
-                  "message": "fix: Add timeout when connecting to authd socket in PAM (#260)\n\nThis call could hang forever if the file was present but not ready yet,\r\nso we should add a timeout instead to prevent deadlocks.\r\n\r\nUDENG-2508",
-                  "url": "https://github.com/ubuntu/authd/commit/fa7e7486f56a0fe83a370ad57e9233966d5e8a0b"
+                  "timestamp": 1710860289,
+                  "message": "refactor(NSS): Tune logging to Info instead of Debug (#239)\n\nWhen using the Debug level, we were getting spammed by a lot of gRPC\r\nconnection logs from tonic and it looks like we can't control the\r\nlogging level individually. So, instead, let's tune down our log\r\nmessages to Info instead of Debug so that we can have a cleaner output\r\nof what we want.",
+                  "url": "https://github.com/ubuntu/authd/commit/c0d1c33b5cc535d15bbcff9fbfba55e78679c7f0"
                },
                {
-                  "sha": "defd0722c72628922d1835ac8e4d4a7d032ccff6",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1710777142,
-                  "message": "Reduce timeout limit in NSS",
-                  "url": "https://github.com/ubuntu/authd/commit/defd0722c72628922d1835ac8e4d4a7d032ccff6"
+                  "sha": "2512b00e13fe49336d7fbb99b7bc273110374e3c",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1710860263,
+                  "message": "fix(pam): pam account registration integration (#263)\n\nThis ensures this is inserted at the correct place inside the pam stack.\r\nUse default=ignore to let the registration pass if we can't connect to\r\nauthd.\r\n\r\nUDENG-2495",
+                  "url": "https://github.com/ubuntu/authd/commit/2512b00e13fe49336d7fbb99b7bc273110374e3c"
+               },
+               {
+                  "sha": "0bc210aeccf3901206ea143bca4adef4fd873640",
+                  "author": "Didier Roche",
+                  "timestamp": 1710858546,
+                  "message": "Fix pam account registration integration\n\nThis ensures this is inserted at the correct place inside the pam stack.\nUse default=ignore to let the registration pass if we can't connect to\nauthd.",
+                  "url": "https://github.com/ubuntu/authd/commit/0bc210aeccf3901206ea143bca4adef4fd873640"
                }
             ],
             "ciActions": [
