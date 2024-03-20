@@ -4969,7 +4969,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 344,
+            "newCommits": 346,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -5582,25 +5582,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c0d1c33b5cc535d15bbcff9fbfba55e78679c7f0",
+                  "sha": "13fa71dfa4dba9429355df842c366fbc758cb3b9",
                   "author": "Denison Barbosa",
-                  "timestamp": 1710860289,
-                  "message": "refactor(NSS): Tune logging to Info instead of Debug (#239)\n\nWhen using the Debug level, we were getting spammed by a lot of gRPC\r\nconnection logs from tonic and it looks like we can't control the\r\nlogging level individually. So, instead, let's tune down our log\r\nmessages to Info instead of Debug so that we can have a cleaner output\r\nof what we want.",
-                  "url": "https://github.com/ubuntu/authd/commit/c0d1c33b5cc535d15bbcff9fbfba55e78679c7f0"
+                  "timestamp": 1710937416,
+                  "message": "feat: Add default user groups (#255)\n\nWe used to rely entirely on the groups information provided by the\r\nbroker, but this is unreasonable since we have some default groups in\r\nunix systems that are \"required\" but only make sense in the OS context.\r\n\r\nTo prevent errors and reduce frustration from misconfiguration, we now\r\nensure that the user will always be a part of his own group and that it will\r\nbe the main one.",
+                  "url": "https://github.com/ubuntu/authd/commit/13fa71dfa4dba9429355df842c366fbc758cb3b9"
                },
                {
-                  "sha": "2512b00e13fe49336d7fbb99b7bc273110374e3c",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1710860263,
-                  "message": "fix(pam): pam account registration integration (#263)\n\nThis ensures this is inserted at the correct place inside the pam stack.\r\nUse default=ignore to let the registration pass if we can't connect to\r\nauthd.\r\n\r\nUDENG-2495",
-                  "url": "https://github.com/ubuntu/authd/commit/2512b00e13fe49336d7fbb99b7bc273110374e3c"
+                  "sha": "d78df99f76f510723ce62cbf5af1dae721da232c",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1710512980,
+                  "message": "Updating tests and golden files",
+                  "url": "https://github.com/ubuntu/authd/commit/d78df99f76f510723ce62cbf5af1dae721da232c"
                },
                {
-                  "sha": "0bc210aeccf3901206ea143bca4adef4fd873640",
-                  "author": "Didier Roche",
-                  "timestamp": 1710858546,
-                  "message": "Fix pam account registration integration\n\nThis ensures this is inserted at the correct place inside the pam stack.\nUse default=ignore to let the registration pass if we can't connect to\nauthd.",
-                  "url": "https://github.com/ubuntu/authd/commit/0bc210aeccf3901206ea143bca4adef4fd873640"
+                  "sha": "c9df5edbb2a34c3af53f5dc90f5dbfbee3d477c2",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1710512794,
+                  "message": "Set default group for user\n\nWe used to rely entirely on the groups information provided by the\nbroker, but this is unreasonable since we have some default groups in\nunix systems that are \"required\" but only make sense in the OS context.\n\nTo prevent errors and reduce frustration from misconfiguration, we now\nensure that the user will always be a part of his own group and that it\nwill be the main group as well.\n\nCo-authored-by: Gabriel Nagy <GabrielNagy@users.noreply.github.com>\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>",
+                  "url": "https://github.com/ubuntu/authd/commit/c9df5edbb2a34c3af53f5dc90f5dbfbee3d477c2"
                }
             ],
             "ciActions": [
