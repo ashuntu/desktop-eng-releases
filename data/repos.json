@@ -3598,25 +3598,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "35a996b0704e684cadd1a3aebb5cc4df89c832f5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1711037131,
+                  "message": "Merge pull request #550 from d-loose/subiquity-client-warning\n\nfix(bootstrap): don't search for subiquity in live run",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/35a996b0704e684cadd1a3aebb5cc4df89c832f5"
+               },
+               {
+                  "sha": "62b4511bdc95279e09f2e339882417bf4494cdd3",
+                  "author": "Dennis Loose",
+                  "timestamp": 1711036094,
+                  "message": "fix(bootstrap): don't search for subiquity in live run",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/62b4511bdc95279e09f2e339882417bf4494cdd3"
+               },
+               {
                   "sha": "9f05a1085cb953698e0107d7f3cf5b5efd73f615",
                   "author": "Lukas Klingsbo",
                   "timestamp": 1711033119,
                   "message": "Merge pull request #549 from canonical/fix/snackbar-to-use-rich-text\n\nfix: Snackbars to use `RichText` instead of `HTML`",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9f05a1085cb953698e0107d7f3cf5b5efd73f615"
-               },
-               {
-                  "sha": "e90dc3a6260063b6b2b82530bfb5418dcaa449ad",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1711032373,
-                  "message": "Remove unused imports",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e90dc3a6260063b6b2b82530bfb5418dcaa449ad"
-               },
-               {
-                  "sha": "d6ebfe3af51fd1c2719e91a83796a7d134faaad4",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1711032094,
-                  "message": "Merge branch 'main' into fix/snackbar-to-use-rich-text",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d6ebfe3af51fd1c2719e91a83796a7d134faaad4"
                }
             ],
             "ciActions": [
@@ -5182,25 +5182,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "35a996b0704e684cadd1a3aebb5cc4df89c832f5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1711037131,
+                  "message": "Merge pull request #550 from d-loose/subiquity-client-warning\n\nfix(bootstrap): don't search for subiquity in live run",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/35a996b0704e684cadd1a3aebb5cc4df89c832f5"
+               },
+               {
+                  "sha": "62b4511bdc95279e09f2e339882417bf4494cdd3",
+                  "author": "Dennis Loose",
+                  "timestamp": 1711036094,
+                  "message": "fix(bootstrap): don't search for subiquity in live run",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/62b4511bdc95279e09f2e339882417bf4494cdd3"
+               },
+               {
                   "sha": "9f05a1085cb953698e0107d7f3cf5b5efd73f615",
                   "author": "Lukas Klingsbo",
                   "timestamp": 1711033119,
                   "message": "Merge pull request #549 from canonical/fix/snackbar-to-use-rich-text\n\nfix: Snackbars to use `RichText` instead of `HTML`",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9f05a1085cb953698e0107d7f3cf5b5efd73f615"
-               },
-               {
-                  "sha": "e90dc3a6260063b6b2b82530bfb5418dcaa449ad",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1711032373,
-                  "message": "Remove unused imports",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e90dc3a6260063b6b2b82530bfb5418dcaa449ad"
-               },
-               {
-                  "sha": "d6ebfe3af51fd1c2719e91a83796a7d134faaad4",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1711032094,
-                  "message": "Merge branch 'main' into fix/snackbar-to-use-rich-text",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d6ebfe3af51fd1c2719e91a83796a7d134faaad4"
                }
             ],
             "ciActions": [
@@ -5291,6 +5291,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fc7618d2ecca7bb28f461697ee675171062a37b8",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1711037596,
+                  "message": "feat(windows-agent): Daemon listens at the hyper-V adapter (#586)\n\nUp until now we listened to all interfaces, this of course exposed us to\r\nthe outside world.\r\n\r\nWith this change, we stay in our network, and we hope we'll also avoid\r\nugly Windows Defender firewall pop-ups.\r\n\r\nYou can get this address in Powershell with:\r\n```\r\nGet-NetIPAddress -InterfaceAlias 'vEthernet (WSL (Hyper-V firewall))' -AddressFamily \"IPv4\" | Select-Object -ExpandProperty IPAddress\r\n```\r\n\r\nI prefered to avoid unnecessary subprocessing, so we instead use the\r\nWin32 API:\r\n\r\n\r\nhttps://learn.microsoft.com/en-us/windows/win32/api/iphlpapi/nf-iphlpapi-getadaptersaddresses\r\n\r\n---\r\n\r\nUDENG-2320",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/fc7618d2ecca7bb28f461697ee675171062a37b8"
+               },
+               {
                   "sha": "7d7db8f033979f29e2bb070cab98b65486b3eb87",
                   "author": "dependabot[bot]",
                   "timestamp": 1711031282,
@@ -5303,13 +5310,6 @@
                   "timestamp": 1711014597,
                   "message": "deps(tools): bump github.com/golangci/golangci-lint in /tools\n\nBumps [github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint) from 1.56.2 to 1.57.1.\n- [Release notes](https://github.com/golangci/golangci-lint/releases)\n- [Changelog](https://github.com/golangci/golangci-lint/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/golangci/golangci-lint/compare/v1.56.2...v1.57.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golangci/golangci-lint\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/ebe1181c8ec1ae8b74132ebe7719a86d688cfe4c"
-               },
-               {
-                  "sha": "f5f0f76fe99220929222dfbeaf0af525e2987564",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1710942914,
-                  "message": "fix(end-to-end): Increase timeouts in pro attachment check (#698)\n\nsometimes pro attach is very slow",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f5f0f76fe99220929222dfbeaf0af525e2987564"
                }
             ],
             "ciActions": [
@@ -6891,25 +6891,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "35a996b0704e684cadd1a3aebb5cc4df89c832f5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1711037131,
+                  "message": "Merge pull request #550 from d-loose/subiquity-client-warning\n\nfix(bootstrap): don't search for subiquity in live run",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/35a996b0704e684cadd1a3aebb5cc4df89c832f5"
+               },
+               {
+                  "sha": "62b4511bdc95279e09f2e339882417bf4494cdd3",
+                  "author": "Dennis Loose",
+                  "timestamp": 1711036094,
+                  "message": "fix(bootstrap): don't search for subiquity in live run",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/62b4511bdc95279e09f2e339882417bf4494cdd3"
+               },
+               {
                   "sha": "9f05a1085cb953698e0107d7f3cf5b5efd73f615",
                   "author": "Lukas Klingsbo",
                   "timestamp": 1711033119,
                   "message": "Merge pull request #549 from canonical/fix/snackbar-to-use-rich-text\n\nfix: Snackbars to use `RichText` instead of `HTML`",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9f05a1085cb953698e0107d7f3cf5b5efd73f615"
-               },
-               {
-                  "sha": "e90dc3a6260063b6b2b82530bfb5418dcaa449ad",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1711032373,
-                  "message": "Remove unused imports",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e90dc3a6260063b6b2b82530bfb5418dcaa449ad"
-               },
-               {
-                  "sha": "d6ebfe3af51fd1c2719e91a83796a7d134faaad4",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1711032094,
-                  "message": "Merge branch 'main' into fix/snackbar-to-use-rich-text",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d6ebfe3af51fd1c2719e91a83796a7d134faaad4"
                }
             ],
             "ciActions": [
