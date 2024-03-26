@@ -5291,6 +5291,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0d826b2a7aabedff3cbcac1e2fe1bd2f7615035c",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1711474966,
+                  "message": "refactor(wslserviceapi): Remove double server in WSL (#697)\n\nNew diagram 🖌️ \r\n\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/47142856/45825bfc-fa75-43cc-b1bc-d789e56a8d7d)\r\n\r\n\r\n\r\n---\r\n\r\nUDENG-2509",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0d826b2a7aabedff3cbcac1e2fe1bd2f7615035c"
+               },
+               {
                   "sha": "71071cda94029281d3c1d66c14027dc9fdd88f3c",
                   "author": "Edu Gómez Escandell",
                   "timestamp": 1711460035,
@@ -5303,13 +5310,6 @@
                   "timestamp": 1711457026,
                   "message": "Avoid leaking proservices Manager on teardown\n\nWhen we call agent.Quit, we don't wait for the proServices to\nperform their cleanup. This means that the process can exit while the\nLandscape, registry watcher or database are in the middle of an\noperation.\n\nThis PR fixes this, somewhat: It guarantees to exit the process after\nproservices.Stop returns. We trust that the implementation of the\nteardown of these proservices is implemented properly.\n\nThis problem also affected tests, as the proServices could be writing to\ndisk while t.Cleanup tries to delete the temp directory, causing a race\nand then a test error.",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2483fdbaa5f628b078f1a5a3752b499fb32c4153"
-               },
-               {
-                  "sha": "e0d45f95c70b2d764248f25fa48c3e52cd538012",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1711456929,
-                  "message": "Update workspace checksums",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e0d45f95c70b2d764248f25fa48c3e52cd538012"
                }
             ],
             "ciActions": [
