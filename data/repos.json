@@ -4969,7 +4969,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 367,
+            "newCommits": 369,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -5291,25 +5291,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0d826b2a7aabedff3cbcac1e2fe1bd2f7615035c",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1711474966,
-                  "message": "refactor(wslserviceapi): Remove double server in WSL (#697)\n\nNew diagram 🖌️ \r\n\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/47142856/45825bfc-fa75-43cc-b1bc-d789e56a8d7d)\r\n\r\n\r\n\r\n---\r\n\r\nUDENG-2509",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0d826b2a7aabedff3cbcac1e2fe1bd2f7615035c"
+                  "sha": "9561146c0c5e6c6b59a26a2f0eafc7af854103fe",
+                  "author": "EduardGomezEscandell",
+                  "timestamp": 1711545718,
+                  "message": "Auto update internal dependencies",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9561146c0c5e6c6b59a26a2f0eafc7af854103fe"
                },
                {
-                  "sha": "71071cda94029281d3c1d66c14027dc9fdd88f3c",
+                  "sha": "1ec39befd105857a1ca5ba26173263780cef55e1",
                   "author": "Edu Gómez Escandell",
-                  "timestamp": 1711460035,
-                  "message": "fix(windows-agent): Avoid leaking proservices Manager on app teardown (#703)\n\nWhen we call agent.Quit, we don't wait for the proServices to perform\r\ntheir cleanup. This means that the process can exit while the Landscape,\r\nregistry watcher or database are in the middle of an operation.\r\n\r\nThis PR fixes this, somewhat: It guarantees to exit the process after\r\nproservices.Stop returns. We trust that the implementation of the\r\nteardown of these proservices is implemented properly (I gave it a quick\r\nglance and it seems to be the case).\r\n\r\nThis problem also affected tests, as the proServices could be writing to\r\ndisk while t.Cleanup tries to delete the temp directory, causing a race\r\nand then a test error.\r\n\r\n---\r\n\r\nExample test failure due to this:\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/8436243216/job/23103334236?pr=702#step:7:63\r\n\r\nHere, the proservices manager is still writing logs while we try to\r\nremove the log file, even though we already called Quit on the app.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/71071cda94029281d3c1d66c14027dc9fdd88f3c"
+                  "timestamp": 1711545677,
+                  "message": "maint: Use new linters in golangci-lint (#705)\n\n🍄\r\n⬆️",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1ec39befd105857a1ca5ba26173263780cef55e1"
                },
                {
-                  "sha": "2483fdbaa5f628b078f1a5a3752b499fb32c4153",
+                  "sha": "7ac965c6d854b6c3590a5a97bbcf7c02c896df3d",
                   "author": "Edu Gómez Escandell",
-                  "timestamp": 1711457026,
-                  "message": "Avoid leaking proservices Manager on teardown\n\nWhen we call agent.Quit, we don't wait for the proServices to\nperform their cleanup. This means that the process can exit while the\nLandscape, registry watcher or database are in the middle of an\noperation.\n\nThis PR fixes this, somewhat: It guarantees to exit the process after\nproservices.Stop returns. We trust that the implementation of the\nteardown of these proservices is implemented properly.\n\nThis problem also affected tests, as the proServices could be writing to\ndisk while t.Cleanup tries to delete the temp directory, causing a race\nand then a test error.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2483fdbaa5f628b078f1a5a3752b499fb32c4153"
+                  "timestamp": 1711536043,
+                  "message": "Use new intrange linter",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7ac965c6d854b6c3590a5a97bbcf7c02c896df3d"
                }
             ],
             "ciActions": [
