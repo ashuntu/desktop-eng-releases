@@ -4099,25 +4099,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "66e05bce56e09f646216d25b8f69bfe6436fcc12",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1710321069,
-                  "message": "fix: Fix formatting in distro_test.go",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/66e05bce56e09f646216d25b8f69bfe6436fcc12"
+                  "sha": "ae69cac77f2bcc1cc5ad9a3759b67f440bb8690d",
+                  "author": "Ash",
+                  "timestamp": 1711555308,
+                  "message": "feat: Implement importing a distribution with a rootfs (#108)\n\nThis adds functions for importing a WSL distro from a rootfs, which is\r\nalready supported by WSL itself.\r\n\r\n---\r\n\r\nUDENG-2553",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/ae69cac77f2bcc1cc5ad9a3759b67f440bb8690d"
                },
                {
-                  "sha": "bf12013bd76e2d248d613be1c1a1f060cb70abc3",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1710320674,
-                  "message": "feat: Return ErrNotExist when a distro does not exist (#106)\n\nI read somewhere (I think some python style guide) that there are two\r\npatterns to access resources:\r\n- _Ask for permission_: Check if the resource is available before using\r\nit.\r\n- _Ask for forgiveness_: Try to use the resource and emit a meaningful\r\nerror if it is unavailable.\r\n\r\n\r\nThe first is inherently racy as the availability of the resource may\r\nchange after asking for permission. This lead our implementation to\r\nbecome an _ask for permission, then ask for forgiveness_ sandwich which\r\nis needlesly verbose:\r\n```go\r\n// Ask for permission\r\nif ok, err := distro.IsRegistered(); err != nil {\r\n    return err\r\n} else if !ok {\r\n    return ...\r\n}\r\n\r\nif err := distro.DoTheThing(); err != nil {\r\n    // Ask for forgiveness\r\n    return err\r\n}\r\n```\r\n\r\nThis PR makes usage a bit safer and less redundant:\r\n```go\r\nerr := distro.DoTheThing()\r\nif errors.Is(err, wsl.ErrNotExist) {\r\n    // Ask for forgiveness\r\n    return ...\r\n} else if err != nil {\r\n    return err\r\n}\r\n```\r\n\r\nNote that internally we do ask for permission in some places,\r\nessentially every Win32 API call. This is because the error reporting of\r\nthese DLL calls is atrocious, and we cannot produce a meaningful error\r\nmessage from them.\r\n\r\n---\r\n\r\nThis is not for sport. The current implementation caused a test failure\r\ndue to a resource availability race:\r\n\r\nFailure:\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/8062559006/job/22022548242?pr=606#step:8:29\r\n\r\nCode:\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/blob/f31559d796e8f2421acfbf4056e86e8f06854171/windows-agent/internal/distros/distro/properties.go#L34-L46\r\n\r\n---\r\n\r\nPart of UDENG-2385",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/bf12013bd76e2d248d613be1c1a1f060cb70abc3"
+                  "sha": "eab47d417e66ebd5c3f66d66735d905333620d70",
+                  "author": "ashuntu",
+                  "timestamp": 1711480899,
+                  "message": "Switch to cleanup for distro uninstall",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/eab47d417e66ebd5c3f66d66735d905333620d70"
                },
                {
-                  "sha": "7ed9bc13eb65e753e55eae6ff3f679391b79c7c7",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1710259322,
-                  "message": "Remove extra whitespace in distro_test.go\n\nCo-authored-by: Carlos Nihelton <carlosnsoliveira@gmail.com>",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/7ed9bc13eb65e753e55eae6ff3f679391b79c7c7"
+                  "sha": "840848f5698218732fdd2ac9ad738f28e35b9eef",
+                  "author": "ashuntu",
+                  "timestamp": 1711480713,
+                  "message": "Correct import receiver name",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/840848f5698218732fdd2ac9ad738f28e35b9eef"
                }
             ],
             "ciActions": [
@@ -5291,25 +5291,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9561146c0c5e6c6b59a26a2f0eafc7af854103fe",
-                  "author": "EduardGomezEscandell",
-                  "timestamp": 1711545718,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9561146c0c5e6c6b59a26a2f0eafc7af854103fe"
+                  "sha": "fe6a83459e3eb1f602d503ec861c841b6d50fa0c",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1711553276,
+                  "message": "fix(docs): Replace registry with GUI instructions (#704)\n\nTeam agreed that the GUI fits best for the user's first contact with the\r\ntool.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/fe6a83459e3eb1f602d503ec861c841b6d50fa0c"
                },
                {
-                  "sha": "1ec39befd105857a1ca5ba26173263780cef55e1",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1711545677,
-                  "message": "maint: Use new linters in golangci-lint (#705)\n\n🍄\r\n⬆️",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1ec39befd105857a1ca5ba26173263780cef55e1"
+                  "sha": "18bb5772b0c80704b998d603f3e5911212e6debe",
+                  "author": "Carlos",
+                  "timestamp": 1711548898,
+                  "message": "Fix broken image link",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/18bb5772b0c80704b998d603f3e5911212e6debe"
                },
                {
-                  "sha": "7ac965c6d854b6c3590a5a97bbcf7c02c896df3d",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1711536043,
-                  "message": "Use new intrange linter",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7ac965c6d854b6c3590a5a97bbcf7c02c896df3d"
+                  "sha": "69e1344c2c8bfabbb550f7eda637a9115041c5c5",
+                  "author": "Carlos",
+                  "timestamp": 1711548847,
+                  "message": "Use appropriate namespaces for cross-references",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/69e1344c2c8bfabbb550f7eda637a9115041c5c5"
                }
             ],
             "ciActions": [
