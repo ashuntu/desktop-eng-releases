@@ -5582,25 +5582,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d0c1fba3c92f7f49804030b927cf302ee5e7af8f",
+                  "sha": "ecff4b8c8c3f78bdd75fd6a7b07b8a434a47a360",
                   "author": "Denison Barbosa",
-                  "timestamp": 1711619798,
-                  "message": "Fix: Compilation of fixes found during pairing sessions (#276)\n\nDetails for each fix are listed on their specific commits",
-                  "url": "https://github.com/ubuntu/authd/commit/d0c1fba3c92f7f49804030b927cf302ee5e7af8f"
+                  "timestamp": 1711622570,
+                  "message": "cleanup(pam): handle silent flag on module and improve logging on gdm tests (#272)\n\nSome cleanups on logging of PAM module and on tests:\r\n\r\n- Avoid spamming the CI logs with gdm logs unless we're failing\r\n- Disable any (stdout/stederr) output if pam silent flag is used\r\n- Use module debug logging when testing gdm too, but do not present it\r\nunless required",
+                  "url": "https://github.com/ubuntu/authd/commit/ecff4b8c8c3f78bdd75fd6a7b07b8a434a47a360"
                },
                {
-                  "sha": "2abcc21468c91d68e9b6ff72f9edb147bbe73caf",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1711558328,
-                  "message": "Add sudo user to ExampleBroker for manual tests",
-                  "url": "https://github.com/ubuntu/authd/commit/2abcc21468c91d68e9b6ff72f9edb147bbe73caf"
+                  "sha": "48501e676325949f3089ed3a7ac67f286b779eae",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1711389263,
+                  "message": "integration-tests/gdm: Use a log file to store all module debug logs\n\nEnable debug logging when doing gdm tests on the module and print them\nif we're in verbose mode or in case of failures.",
+                  "url": "https://github.com/ubuntu/authd/commit/48501e676325949f3089ed3a7ac67f286b779eae"
                },
                {
-                  "sha": "959dbb9b46ebd7330a1197a4ae6cf0924f361443",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1711558050,
-                  "message": "Remove check to skip NSS lookups if they come from dbus\n\nNow that we have timeouts for our NSS connections and requests, we don't\nneed to worry about deadlocking anymore.\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Jean-Baptiste Lallement <jibel@users.noreply.github.com>\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>",
-                  "url": "https://github.com/ubuntu/authd/commit/959dbb9b46ebd7330a1197a4ae6cf0924f361443"
+                  "sha": "f515ffa244b08e3c70c0cee6fb9d7aaa0360278b",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1711388960,
+                  "message": "pam: Handle pam.Silent flag by disabling the any log to the PAM output\n\nThis doesn't mean we're disabling logging output completely though,\nin fact:\n - If a log file is set, we still log there\n - If journal logging is enabled, we still log in the journal",
+                  "url": "https://github.com/ubuntu/authd/commit/f515ffa244b08e3c70c0cee6fb9d7aaa0360278b"
                }
             ],
             "ciActions": [
