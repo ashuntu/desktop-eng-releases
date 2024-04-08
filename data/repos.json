@@ -5582,25 +5582,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "abd890b06701424228c389f8d09031b736b7b760",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1712322749,
-                  "message": "fix(pam/main-cli): Set back pam_test.Ignore to pam.Ignore when transaction is done (#290)\n\nThis makes clearer what we really have returned in golden files\r\n\r\nUDENG-1613",
-                  "url": "https://github.com/ubuntu/authd/commit/abd890b06701424228c389f8d09031b736b7b760"
+                  "sha": "435f3e98f4c7815796904978caead847df99ee0e",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1712567265,
+                  "message": "Auto update packaging related Rust files",
+                  "url": "https://github.com/ubuntu/authd/commit/435f3e98f4c7815796904978caead847df99ee0e"
                },
                {
-                  "sha": "4e83c79fb619a8ef9f5cac78ba1150a61d3c0259",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1712314528,
-                  "message": "pam/main-cli: Set back pam_test.Ignore to pam.Ignore when transaction is done\n\nThis makes clearer what we really have returned in golden files\n\nUDENG-1613",
-                  "url": "https://github.com/ubuntu/authd/commit/4e83c79fb619a8ef9f5cac78ba1150a61d3c0259"
+                  "sha": "f33084dc4eece7cf560ffe02ad2053374ede0417",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1712567216,
+                  "message": "deps(rust): bump h2 from 0.3.24 to 0.3.26 (#291)",
+                  "url": "https://github.com/ubuntu/authd/commit/f33084dc4eece7cf560ffe02ad2053374ede0417"
                },
                {
-                  "sha": "1d0177743ec7f83ebfbf0d0f6ebfa99501e4be70",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1712244196,
-                  "message": "feat: Autoselect and return \"local\" for non authd users (#279)\n\nThis autoselect (even on first login) the local broker, any \"local\"\r\nusers.\r\nIt means:\r\n- Any users in the file service (passwd) will immediately being\r\nautoselected as local.\r\n- Other \"locally dealt but remote\" users (handled by sss, winbind…) will\r\nbe offered the broker prompt on its first login on the system. Once\r\nlogged in once, even without authd installed, then the user will be\r\nreachable through NSS, and the \"local\" broker will then be autoselected.\r\n- Any users in our cache will get through the traditional broker\r\nautoselection once the login was successful for this broker\r\n- Any users not in our cache and not resolved through NSS will be\r\noffered the broker selection dialog.\r\n\r\nFor local users which can be resolved with NSS, the NSS request will\r\nonly be performed once after the service starts for each user that\r\naren’t in authd cache. We do not store it in our database to avoid\r\nsyncing this list of local user with the ones existing on the system.\r\n\r\nUDENG-2496",
-                  "url": "https://github.com/ubuntu/authd/commit/1d0177743ec7f83ebfbf0d0f6ebfa99501e4be70"
+                  "sha": "150e5181cd745fffd303c821e357ec201b3d6453",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1712334020,
+                  "message": "deps(rust): bump h2 from 0.3.24 to 0.3.26\n\nBumps [h2](https://github.com/hyperium/h2) from 0.3.24 to 0.3.26.\n- [Release notes](https://github.com/hyperium/h2/releases)\n- [Changelog](https://github.com/hyperium/h2/blob/v0.3.26/CHANGELOG.md)\n- [Commits](https://github.com/hyperium/h2/compare/v0.3.24...v0.3.26)\n\n---\nupdated-dependencies:\n- dependency-name: h2\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/authd/commit/150e5181cd745fffd303c821e357ec201b3d6453"
                }
             ],
             "ciActions": [
