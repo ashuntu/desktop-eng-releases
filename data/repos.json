@@ -3637,25 +3637,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "07eaf67d38949bce28ad2585a1830fed0b6f3445",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1712842805,
+                  "message": "Merge pull request #626 from matthew-hagemann/provd-group-and-lc-managment\n\nfix(provd): use provd group, not gnome-initial-setup group",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/07eaf67d38949bce28ad2585a1830fed0b6f3445"
+               },
+               {
+                  "sha": "964fbc426014d0f52473dff563797756f7a5be7a",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1712830231,
+                  "message": "fix(provd): use provd group, not gnome-initial-setup group",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/964fbc426014d0f52473dff563797756f7a5be7a"
+               },
+               {
                   "sha": "5b5d3cf53dd6f2c248591f68500dd2aac79d5a6b",
                   "author": "Dennis Loose",
                   "timestamp": 1712834945,
                   "message": "Merge pull request #627 from d-loose/gsettings-input-source\n\nfeat(bootstrap): set input source directly",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/5b5d3cf53dd6f2c248591f68500dd2aac79d5a6b"
-               },
-               {
-                  "sha": "ee025ba9ca637ced0971e07be3bcc0d761a05c6c",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1712834882,
-                  "message": "Merge pull request #625 from canonical/fix/flavor-name-in-slides-2\n\nfix: Replace {{ DISTRO }} with flavor name in slides",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ee025ba9ca637ced0971e07be3bcc0d761a05c6c"
-               },
-               {
-                  "sha": "b5fafa601741ba7c2a6ed84d64f8b26d367fdfce",
-                  "author": "Dennis Loose",
-                  "timestamp": 1712833331,
-                  "message": "test(installer_wizard): add mock gsettings",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b5fafa601741ba7c2a6ed84d64f8b26d367fdfce"
                }
             ],
             "ciActions": [
@@ -4965,7 +4965,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 392,
+            "newCommits": 397,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -5178,25 +5178,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "07eaf67d38949bce28ad2585a1830fed0b6f3445",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1712842805,
+                  "message": "Merge pull request #626 from matthew-hagemann/provd-group-and-lc-managment\n\nfix(provd): use provd group, not gnome-initial-setup group",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/07eaf67d38949bce28ad2585a1830fed0b6f3445"
+               },
+               {
+                  "sha": "964fbc426014d0f52473dff563797756f7a5be7a",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1712830231,
+                  "message": "fix(provd): use provd group, not gnome-initial-setup group",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/964fbc426014d0f52473dff563797756f7a5be7a"
+               },
+               {
                   "sha": "5b5d3cf53dd6f2c248591f68500dd2aac79d5a6b",
                   "author": "Dennis Loose",
                   "timestamp": 1712834945,
                   "message": "Merge pull request #627 from d-loose/gsettings-input-source\n\nfeat(bootstrap): set input source directly",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/5b5d3cf53dd6f2c248591f68500dd2aac79d5a6b"
-               },
-               {
-                  "sha": "ee025ba9ca637ced0971e07be3bcc0d761a05c6c",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1712834882,
-                  "message": "Merge pull request #625 from canonical/fix/flavor-name-in-slides-2\n\nfix: Replace {{ DISTRO }} with flavor name in slides",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ee025ba9ca637ced0971e07be3bcc0d761a05c6c"
-               },
-               {
-                  "sha": "b5fafa601741ba7c2a6ed84d64f8b26d367fdfce",
-                  "author": "Dennis Loose",
-                  "timestamp": 1712833331,
-                  "message": "test(installer_wizard): add mock gsettings",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b5fafa601741ba7c2a6ed84d64f8b26d367fdfce"
                }
             ],
             "ciActions": [
@@ -5578,25 +5578,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "720a58ace9d6f9a929d872ffc6cce4ee1c6bdbef",
+                  "sha": "e181b4d7f9d451a1b02c80d5acd4c6700ccdf5db",
                   "author": "Denison Barbosa",
-                  "timestamp": 1712835000,
-                  "message": "deps(go): bump golang.org/x/term from 0.18.0 to 0.19.0 in the minor-updates group (#296)",
-                  "url": "https://github.com/ubuntu/authd/commit/720a58ace9d6f9a929d872ffc6cce4ee1c6bdbef"
+                  "timestamp": 1712843254,
+                  "message": "fix(pam/go-exec): Use per-action log handlers to log write logs (#298)\n\nOnly manage the module log domain by default so that loader apps won't\r\nbe affected and we ensure that every action can have its logging file.\r\n\r\nThis fixes a race that we hit in tests in arm since in some scenarios\r\nit could happen that:\r\n - pam_authd_exec.so is loaded by PAM\r\n - libglib is also loaded in memory as its dependency\r\n - pam_authd_exec.so is unloaded but libglib in memory is not unloaded\r\n - loading again pam_authd_exec.so in the same test binary may end up\r\n   setting the glib writer function again, which leads to an assertion.\r\n\r\nThis is not the case anymore since we have a local writer that is\r\ninvoked only when our log handler is called\r\n\r\nUDENG-2665",
+                  "url": "https://github.com/ubuntu/authd/commit/e181b4d7f9d451a1b02c80d5acd4c6700ccdf5db"
                },
                {
-                  "sha": "786ee3e04f03127ed9b2b11f2390422b3852fe98",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1712828880,
-                  "message": "fix: Prevent authd from trying to save local broker on DB (#295)\n\nRight now, after authenticating successfully, authd tries to save the\r\nbroker used by the user in `authd.db`. This creates problems when we are\r\ndealing with local users, since they don't exist in our database. To\r\nprevent this, we avoid storing the entry in our database if the selected\r\nbroker is the local one.\r\n\r\nUDENG-2660.",
-                  "url": "https://github.com/ubuntu/authd/commit/786ee3e04f03127ed9b2b11f2390422b3852fe98"
+                  "sha": "6e2e1aea81f2164de030526cc799e45bb7cc9a4e",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1712842985,
+                  "message": "Auto update packaging related Rust files",
+                  "url": "https://github.com/ubuntu/authd/commit/6e2e1aea81f2164de030526cc799e45bb7cc9a4e"
                },
                {
-                  "sha": "301a116402ca37baefdd96b6df7772b5eec4bc42",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1712826712,
-                  "message": "deps(go): bump golang.org/x/term in the minor-updates group\n\nBumps the minor-updates group with 1 update: [golang.org/x/term](https://github.com/golang/term).\n\n\nUpdates `golang.org/x/term` from 0.18.0 to 0.19.0\n- [Commits](https://github.com/golang/term/compare/v0.18.0...v0.19.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/term\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/301a116402ca37baefdd96b6df7772b5eec4bc42"
+                  "sha": "febdddee40f7cbb1a3495feaa603742b4e37d0bb",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1712842937,
+                  "message": "deps(rust): bump the minor-updates group with 2 updates (#297)",
+                  "url": "https://github.com/ubuntu/authd/commit/febdddee40f7cbb1a3495feaa603742b4e37d0bb"
                }
             ],
             "ciActions": [
@@ -6885,25 +6885,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5b5d3cf53dd6f2c248591f68500dd2aac79d5a6b",
+                  "sha": "e115cfcdc8f96e270f95762a4cb60b0e108b0d88",
                   "author": "Dennis Loose",
-                  "timestamp": 1712834945,
-                  "message": "Merge pull request #627 from d-loose/gsettings-input-source\n\nfeat(bootstrap): set input source directly",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/5b5d3cf53dd6f2c248591f68500dd2aac79d5a6b"
+                  "timestamp": 1712845223,
+                  "message": "Merge pull request #630 from canonical/renovate/packages-subiquity_client-subiquity-digest\n\nchore(deps): update packages/subiquity_client/subiquity digest to 6db2ff8",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e115cfcdc8f96e270f95762a4cb60b0e108b0d88"
                },
                {
-                  "sha": "ee025ba9ca637ced0971e07be3bcc0d761a05c6c",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1712834882,
-                  "message": "Merge pull request #625 from canonical/fix/flavor-name-in-slides-2\n\nfix: Replace {{ DISTRO }} with flavor name in slides",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ee025ba9ca637ced0971e07be3bcc0d761a05c6c"
+                  "sha": "28f761f73b185da4d5a5ee920d03e2f0854ba443",
+                  "author": "renovate[bot]",
+                  "timestamp": 1712844133,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 6db2ff8",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/28f761f73b185da4d5a5ee920d03e2f0854ba443"
                },
                {
-                  "sha": "b5fafa601741ba7c2a6ed84d64f8b26d367fdfce",
-                  "author": "Dennis Loose",
-                  "timestamp": 1712833331,
-                  "message": "test(installer_wizard): add mock gsettings",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b5fafa601741ba7c2a6ed84d64f8b26d367fdfce"
+                  "sha": "07eaf67d38949bce28ad2585a1830fed0b6f3445",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1712842805,
+                  "message": "Merge pull request #626 from matthew-hagemann/provd-group-and-lc-managment\n\nfix(provd): use provd group, not gnome-initial-setup group",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/07eaf67d38949bce28ad2585a1830fed0b6f3445"
                }
             ],
             "ciActions": [
