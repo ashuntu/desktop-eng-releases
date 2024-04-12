@@ -5578,25 +5578,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9057e5e6f7ec496223f0e3430c623fc9e0cba76d",
+                  "sha": "99ab7ce72c7efdaa8285b71212ce423faeca4d27",
                   "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1712850443,
-                  "message": "feat: detect traditional and integration tests (#300)\n\nAdd `MustBeTesting` assertion to ensure we run in tests. This assertion\r\nwill panic if we don’t run in traditional tests (gotest)\r\nor integration tests.\r\n\r\nAdd tests for detection tests\r\nThose tests address:\r\n- traditional tests detection started by go test\r\n- integration tests detection for a binary built with the\r\n  integrationtests tag.\r\n- ensure we don’t falsy report integration tests for binary without the\r\n  tag.\r\n\r\nHook up coverage report, even for the subprocess, with this.\r\n\r\nUDENG-2563\r\nUDENG-2584",
-                  "url": "https://github.com/ubuntu/authd/commit/9057e5e6f7ec496223f0e3430c623fc9e0cba76d"
+                  "timestamp": 1712902519,
+                  "message": "pam/integration-tests: Set the AUTHD_PAM_MODULES_PATH by default (#303)\n\nAs per commit c87e5928 we fail building on warnings, and we may get one\r\nif AUTHD_PAM_MODULES_PATH env variable is unset.\r\n\r\nTo prevent this, let's just guess it at test time if none is explicitly\r\nset so that developers life should be better",
+                  "url": "https://github.com/ubuntu/authd/commit/99ab7ce72c7efdaa8285b71212ce423faeca4d27"
                },
                {
-                  "sha": "29a6185a9e4c36a2a190aa63bcbf63d2d514619b",
-                  "author": "Didier Roche",
-                  "timestamp": 1712842580,
-                  "message": "Add tests for detection tests\n\nThose tests address:\n- traditional tests detection started by go test\n- integration tests detection for a binary built with the\n  integrationtests tag.\n- ensure we don’t falsy report integration tests for binary without the\n  tag.\n\nHook up coverage report, even for the subprocess, with this.",
-                  "url": "https://github.com/ubuntu/authd/commit/29a6185a9e4c36a2a190aa63bcbf63d2d514619b"
+                  "sha": "e135d4cf5d5dbc9a9eb61f4ec6df74d7f5888597",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1712900887,
+                  "message": "feat: authorizer to handle unix socket peer user (#302)\n\n* The Authorizer can decode from a context then current per user id (and\r\npid) which connected to an unix socket. Then, it provides methods for\r\nauthorization. One of them is only authorizing if the current user is\r\nroot.\r\n* Add unit and package tests for it.\r\n* Export test helpers for other package and integration tests  \r\n* Make available to other packages some helpers to modify authorizer\r\ncreation or lifecycle.\r\n    * Ensure we have helpers for integration tests too.\r\n* All those helpers can be run without panicking in other local or\r\nintegration tests.\r\n\r\nUDENG-2563\r\nUDENG-2584",
+                  "url": "https://github.com/ubuntu/authd/commit/e135d4cf5d5dbc9a9eb61f4ec6df74d7f5888597"
                },
                {
-                  "sha": "531a090e7e64b14d6c4b188b9fa4b508aecedf57",
-                  "author": "Didier Roche",
-                  "timestamp": 1712842505,
-                  "message": "MustBeTesting assertion to ensure we run in tests\n\nThis assertion will panic if we don’t run in traditional tests (gotest)\nor integration tests.",
-                  "url": "https://github.com/ubuntu/authd/commit/531a090e7e64b14d6c4b188b9fa4b508aecedf57"
+                  "sha": "9f8c3ba9f77ba35f112ce48ed676657b11e9dfef",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1712877773,
+                  "message": "pam/integration-tests: Set the AUTHD_PAM_MODULES_PATH by default\n\nAs per commit c87e5928 we fail building on warnings, and we may get one if\nAUTHD_PAM_MODULES_PATH env variable is unset.\n\nTo prevent this, let's just guess it at test time if none is explicitly\nset. To improve developers life.",
+                  "url": "https://github.com/ubuntu/authd/commit/9f8c3ba9f77ba35f112ce48ed676657b11e9dfef"
                }
             ],
             "ciActions": [
