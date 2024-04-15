@@ -4965,7 +4965,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 401,
+            "newCommits": 403,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -5578,25 +5578,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9bf36e8713309189f5b78990273a4384a0cd72ea",
+                  "sha": "c925b81d799820db82e4d72d41e7865fc64481ba",
                   "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1713159937,
-                  "message": "main: simplify annex daemon creation in NSS tests (#310)\n\nThis will allow to change the behaviour even with the default cache,\r\nwhile still allowing overriding it.\r\nnoDaemon takes precedences on any incompatible parameters.\r\n\r\nIt also avoids one identation!",
-                  "url": "https://github.com/ubuntu/authd/commit/9bf36e8713309189f5b78990273a4384a0cd72ea"
+                  "timestamp": 1713188097,
+                  "message": "feat: authorization management (#311)\n\nTo prevent spamming the service with invalid authentication request,\r\nonly allow root user to call PAM requests, and prevent some NSS (shadow)\r\nrequests too.\r\n\r\nAdd and adapt existing tests to be able to mock the root user. Add this\r\nas integration tests options.\r\n\r\nNote that we have some permission inconsistency to change the passwd for\r\ncurrent user, which is allowed for the current user.\r\n\r\nUDENG-2563\r\nUDENG-2584",
+                  "url": "https://github.com/ubuntu/authd/commit/c925b81d799820db82e4d72d41e7865fc64481ba"
                },
                {
-                  "sha": "e45a5c89e94d3ae0cbd0ba49645ddac9129add68",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1712952532,
-                  "message": "fix: Increase sleep time in some `internal/daemon` tests (#309)\n\nThese tests sometimes failed (both in CI and in Launchpad) likely due to\r\nslower runners not being able to setup the expected behavior in the\r\namount of time that we gave them, so increasing the wait time should\r\nprevent this from happening.",
-                  "url": "https://github.com/ubuntu/authd/commit/e45a5c89e94d3ae0cbd0ba49645ddac9129add68"
-               },
-               {
-                  "sha": "3dcd074a41d526db8d17f5b15d190e999f1ab0ae",
+                  "sha": "d10e49a7a0b69ef771a55058ffe3cddb91613b33",
                   "author": "Didier Roche",
-                  "timestamp": 1712931354,
-                  "message": "Simplify annex daemon creation in NSS tests\n\nThis will allow to change the behaviour even with the default cache,\nwhile still allowing overriding it.\nnoDaemon takes precedences on any incompatible parameters.\n\nIt also avoids one identation.",
-                  "url": "https://github.com/ubuntu/authd/commit/3dcd074a41d526db8d17f5b15d190e999f1ab0ae"
+                  "timestamp": 1713165891,
+                  "message": "New PAM integration tests for non root user\n\nAdd new tests for non root user authentication requests and password\nchange.\nNote that we have some inconsistency to change the passwd for current\nuser.",
+                  "url": "https://github.com/ubuntu/authd/commit/d10e49a7a0b69ef771a55058ffe3cddb91613b33"
+               },
+               {
+                  "sha": "cebca32dfbad5145af398db05ab4a9f0cb8494d9",
+                  "author": "Didier Roche",
+                  "timestamp": 1713165337,
+                  "message": "run authd helper in PAM integration tests\n\nWe are going to run it unprivilged to add new test cases.",
+                  "url": "https://github.com/ubuntu/authd/commit/cebca32dfbad5145af398db05ab4a9f0cb8494d9"
                }
             ],
             "ciActions": [
