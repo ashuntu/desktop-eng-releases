@@ -959,8 +959,8 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 240,
-                     "timestamp": 1712132633
+                     "revision": 243,
+                     "timestamp": 1713540459
                   },
                   {
                      "track": "latest",
@@ -5287,25 +5287,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f2eddb6bcc502105261451867eb464154c0a7035",
-                  "author": "Didier Roche",
-                  "timestamp": 1713507198,
-                  "message": "Release 0.1.4\n\nThis has a manual change on vendoring. We will fix it properly later.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f2eddb6bcc502105261451867eb464154c0a7035"
+                  "sha": "a60b370e823f6bc83ffe15e1594307e6ea2bdc0d",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1713541630,
+                  "message": "feat(cloud-init): Implement upcoming cloud-init WSL support (#506)\n\nCloud-init will, at some point, be able to pick up files from specified\nlocations in the Windows file-system. The plan is for UP4W’s agent to\nreceive cloud-init files from Landscape and put them at the appropriate\nlocation.\n\nFurthermore, system-wide config (Pro token and Landscape) must be\nwritten as well.\n\n---\n\nUDENG-2112",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a60b370e823f6bc83ffe15e1594307e6ea2bdc0d"
                },
                {
-                  "sha": "560010557a61f4b6236eb02ca973213d4139f623",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1713462891,
-                  "message": "deps(gui-ubuntupro): bump flutter_markdown from 0.6.22+1 to 0.6.23 in /gui/packages/ubuntupro (#733)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/560010557a61f4b6236eb02ca973213d4139f623"
+                  "sha": "d3426c8379c9f31c585279987ca8b8d1791fdf84",
+                  "author": "Carlos",
+                  "timestamp": 1713537170,
+                  "message": "[NEW!!!] Only stop proservices if err is nil\n\nIt'd be safe today to do so, but might not be tomorrow.\nThe good practice is always to not touch the returned object if err is not nil.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d3426c8379c9f31c585279987ca8b8d1791fdf84"
                },
                {
-                  "sha": "ad4e6d73c17b6f0b4dc32d1af948aca8c5b65096",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1713462859,
-                  "message": "deps(gui-ubuntupro): bump file_picker from 8.0.0+1 to 8.0.1 in /gui/packages/ubuntupro (#734)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/ad4e6d73c17b6f0b4dc32d1af948aca8c5b65096"
+                  "sha": "0cb6f356f595c037915cbd2a2f17d24141edbdc9",
+                  "author": "Carlos",
+                  "timestamp": 1713365041,
+                  "message": "Remove the golden assertions out of the defer clause\n\nStill need to find a way other than time-based programming\nto give cloudinit time to write the agent.yaml",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0cb6f356f595c037915cbd2a2f17d24141edbdc9"
                }
             ],
             "ciActions": [
@@ -5578,25 +5578,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a5a7d2dcc8a5842b418ebb5667f8fb6b21112661",
+                  "sha": "08a335758bbbe66fd872718cb4583a2f6627425d",
                   "author": "Denison Barbosa",
-                  "timestamp": 1713536868,
-                  "message": "tests: Add test to cover empty UGID in userinfo and JSON unmarshaling (#320)\n\nWe were missing these tests before, so this just adds them.\r\n\r\nUDENG-2538",
-                  "url": "https://github.com/ubuntu/authd/commit/a5a7d2dcc8a5842b418ebb5667f8fb6b21112661"
+                  "timestamp": 1713540305,
+                  "message": "feat: Validate username returned by the broker (#317)\n\nThe broker could return a username different from what was selected\r\nlocally and the authentication would be granted. To prevent this from\r\nhappening, we should check if the username returned by the broker is the\r\nsame as the one first selected in PAM.\r\n\r\nUDENG-2515",
+                  "url": "https://github.com/ubuntu/authd/commit/08a335758bbbe66fd872718cb4583a2f6627425d"
                },
                {
-                  "sha": "5f685e3ba65aa1c1dee7636c9d5e3074864304ff",
+                  "sha": "93e1237aa0a7ecbf29e3e1ea1c2dfea4b4e942d1",
                   "author": "denisonbarbosa",
-                  "timestamp": 1713532000,
-                  "message": "Add test to cover unmarshaling userinfo JSON",
-                  "url": "https://github.com/ubuntu/authd/commit/5f685e3ba65aa1c1dee7636c9d5e3074864304ff"
+                  "timestamp": 1713528342,
+                  "message": "Add tests for the username validation\n\nAdd tests to check the expected behavior when usernames don't match in\nour 3 layers of IsAuthenticated: internal/brokers/, internal/services/pam\nand pam/",
+                  "url": "https://github.com/ubuntu/authd/commit/93e1237aa0a7ecbf29e3e1ea1c2dfea4b4e942d1"
                },
                {
-                  "sha": "9e84c69cd7a3940e08262953f29852a3715666b4",
+                  "sha": "d86b97c0b5534815d20233964f8be6cc4322759b",
                   "author": "denisonbarbosa",
-                  "timestamp": 1713439736,
-                  "message": "Add test to cover group with empty UGID\n\nWe were missing this test case before",
-                  "url": "https://github.com/ubuntu/authd/commit/9e84c69cd7a3940e08262953f29852a3715666b4"
+                  "timestamp": 1713528252,
+                  "message": "Update affected golden files\n\nThe changes on the brokers will affect some of our existing golden\nfiles, so it's better to update them beforehand to avoid noise.",
+                  "url": "https://github.com/ubuntu/authd/commit/d86b97c0b5534815d20233964f8be6cc4322759b"
                }
             ],
             "ciActions": [
