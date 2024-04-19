@@ -947,14 +947,14 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 238,
-                     "timestamp": 1711998643
+                     "revision": 241,
+                     "timestamp": 1713536427
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 239,
-                     "timestamp": 1712129489
+                     "revision": 242,
+                     "timestamp": 1713539686
                   },
                   {
                      "track": "latest",
@@ -3435,25 +3435,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e4830b1d7e1215f34243f84fe5bea998737f81cd",
+                  "author": "Ash",
+                  "timestamp": 1713539758,
+                  "message": "fix: Update snapd assumes to 2.61.1 (#367)\n\nUpdates the required snapd version for Steam to 2.61.1 (latest) from\r\n2.55.4. This may need to change if the latest snapd version is different\r\nwhen the pressure vessel changes land in snapd, so this is a draft for\r\nnow.\r\n\r\n---\r\n\r\nUDENG-2293",
+                  "url": "https://github.com/canonical/steam-snap/commit/e4830b1d7e1215f34243f84fe5bea998737f81cd"
+               },
+               {
+                  "sha": "21a85fdcaaba49eb96c0841108743aa5a3f611fc",
+                  "author": "ashuntu",
+                  "timestamp": 1707790930,
+                  "message": "fix: Update snapd assumes to 2.62",
+                  "url": "https://github.com/canonical/steam-snap/commit/21a85fdcaaba49eb96c0841108743aa5a3f611fc"
+               },
+               {
                   "sha": "cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff",
                   "author": "ZoopOTheGoop",
                   "timestamp": 1710210638,
                   "message": "fix: strip unreachable XDG dirs (#371)\n\nFixes #369 (?) This prevents any inadvisable directories from entering\r\nthe Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for\r\nsafety) `$XDG_SPECIAL_DIRS`.\r\n\r\nIn the future we may *also* want to give the snap environment access to\r\n`/var/lib/snapd/desktop` or other paths (such as\r\n`~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but\r\nthis should at least prevent SRL from *trying* to mount paths it simply\r\ncannot access. This also gives the snap in general some resiliency\r\nagainst users with various *other* unexpected directories stored in the\r\n`XDG_*` variables (such as the ones `flatpak` adds).\r\n\r\nCons: This could, in theory, strip directories that Steam actually\r\nexpects to be there in the future, without any App Armor denials to\r\ninform us. To mitigate (but not remove) this issue, the script does echo\r\nan `INFO: ` line during launch specifying any directories it has\r\nstripped for being unreachable.",
                   "url": "https://github.com/canonical/steam-snap/commit/cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff"
-               },
-               {
-                  "sha": "e17af5123e4dc00f164849c51d0e46c4efea92e2",
-                  "author": "Zoe Spellman",
-                  "timestamp": 1709789630,
-                  "message": " fix: strip unreachable XDG dirs #371\n\nFixes #369 (?) This prevents any inadvisable directories from entering the Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for safety) `$XDG_SPECIAL_DIRS`.\n\nIn the future we may *also* want to give the snap environment access to `/var/lib/snapd/desktop` or other paths (such as `~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but this should at least prevent SRL from *trying* to mount paths it simply cannot access. This also gives the snap in general some resiliency against users with various *other* unexpected directories stored in the `XDG_*` variables (such as the ones `flatpak` adds).\n\nCons: This could, in theory, strip directories that Steam actually expects to be there in the future, without any App Armor denials to inform us. To mitigate (but not remove) this issue, the script does echo an `INFO: ` line during launch specifying any directories it has stripped for being unreachable.",
-                  "url": "https://github.com/canonical/steam-snap/commit/e17af5123e4dc00f164849c51d0e46c4efea92e2"
-               },
-               {
-                  "sha": "191e2c95fcff7026f948f7e7e93b09964c3ccd3c",
-                  "author": "Ash",
-                  "timestamp": 1707510400,
-                  "message": "fix: Remove duplicate staged paths (#366)\n\nVery small PR that just removes 2 duplicate paths from staging.\r\n\r\n`usr/**/libfontconfig*` was a direct duplicate. `usr/share/*/libgtk-3*`\r\nwas a duplicate since `usr/**/libgtk-3*` already overlaps that path.",
-                  "url": "https://github.com/canonical/steam-snap/commit/191e2c95fcff7026f948f7e7e93b09964c3ccd3c"
                }
             ],
             "ciActions": [],
@@ -4937,25 +4937,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e4830b1d7e1215f34243f84fe5bea998737f81cd",
+                  "author": "Ash",
+                  "timestamp": 1713539758,
+                  "message": "fix: Update snapd assumes to 2.61.1 (#367)\n\nUpdates the required snapd version for Steam to 2.61.1 (latest) from\r\n2.55.4. This may need to change if the latest snapd version is different\r\nwhen the pressure vessel changes land in snapd, so this is a draft for\r\nnow.\r\n\r\n---\r\n\r\nUDENG-2293",
+                  "url": "https://github.com/canonical/steam-snap/commit/e4830b1d7e1215f34243f84fe5bea998737f81cd"
+               },
+               {
+                  "sha": "21a85fdcaaba49eb96c0841108743aa5a3f611fc",
+                  "author": "ashuntu",
+                  "timestamp": 1707790930,
+                  "message": "fix: Update snapd assumes to 2.62",
+                  "url": "https://github.com/canonical/steam-snap/commit/21a85fdcaaba49eb96c0841108743aa5a3f611fc"
+               },
+               {
                   "sha": "cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff",
                   "author": "ZoopOTheGoop",
                   "timestamp": 1710210638,
                   "message": "fix: strip unreachable XDG dirs (#371)\n\nFixes #369 (?) This prevents any inadvisable directories from entering\r\nthe Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for\r\nsafety) `$XDG_SPECIAL_DIRS`.\r\n\r\nIn the future we may *also* want to give the snap environment access to\r\n`/var/lib/snapd/desktop` or other paths (such as\r\n`~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but\r\nthis should at least prevent SRL from *trying* to mount paths it simply\r\ncannot access. This also gives the snap in general some resiliency\r\nagainst users with various *other* unexpected directories stored in the\r\n`XDG_*` variables (such as the ones `flatpak` adds).\r\n\r\nCons: This could, in theory, strip directories that Steam actually\r\nexpects to be there in the future, without any App Armor denials to\r\ninform us. To mitigate (but not remove) this issue, the script does echo\r\nan `INFO: ` line during launch specifying any directories it has\r\nstripped for being unreachable.",
                   "url": "https://github.com/canonical/steam-snap/commit/cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff"
-               },
-               {
-                  "sha": "e17af5123e4dc00f164849c51d0e46c4efea92e2",
-                  "author": "Zoe Spellman",
-                  "timestamp": 1709789630,
-                  "message": " fix: strip unreachable XDG dirs #371\n\nFixes #369 (?) This prevents any inadvisable directories from entering the Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for safety) `$XDG_SPECIAL_DIRS`.\n\nIn the future we may *also* want to give the snap environment access to `/var/lib/snapd/desktop` or other paths (such as `~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but this should at least prevent SRL from *trying* to mount paths it simply cannot access. This also gives the snap in general some resiliency against users with various *other* unexpected directories stored in the `XDG_*` variables (such as the ones `flatpak` adds).\n\nCons: This could, in theory, strip directories that Steam actually expects to be there in the future, without any App Armor denials to inform us. To mitigate (but not remove) this issue, the script does echo an `INFO: ` line during launch specifying any directories it has stripped for being unreachable.",
-                  "url": "https://github.com/canonical/steam-snap/commit/e17af5123e4dc00f164849c51d0e46c4efea92e2"
-               },
-               {
-                  "sha": "191e2c95fcff7026f948f7e7e93b09964c3ccd3c",
-                  "author": "Ash",
-                  "timestamp": 1707510400,
-                  "message": "fix: Remove duplicate staged paths (#366)\n\nVery small PR that just removes 2 duplicate paths from staging.\r\n\r\n`usr/**/libfontconfig*` was a direct duplicate. `usr/share/*/libgtk-3*`\r\nwas a duplicate since `usr/**/libgtk-3*` already overlaps that path.",
-                  "url": "https://github.com/canonical/steam-snap/commit/191e2c95fcff7026f948f7e7e93b09964c3ccd3c"
                }
             ],
             "ciActions": [],
@@ -5578,25 +5578,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4daf3d3a38bcf54bf1678a79ce6c02513f47152d",
+                  "sha": "a5a7d2dcc8a5842b418ebb5667f8fb6b21112661",
                   "author": "Denison Barbosa",
-                  "timestamp": 1713439680,
-                  "message": "fix(pam): Start broker and user selection only if required, without touching terminal (#316)\n\nEnsure that terminal output is not touched unless we really need to.\r\n\r\nThis is something that is also required for #314 so having it earlier\r\nwould help that PR too.\r\n\r\nUDENG-2608",
-                  "url": "https://github.com/ubuntu/authd/commit/4daf3d3a38bcf54bf1678a79ce6c02513f47152d"
+                  "timestamp": 1713536868,
+                  "message": "tests: Add test to cover empty UGID in userinfo and JSON unmarshaling (#320)\n\nWe were missing these tests before, so this just adds them.\r\n\r\nUDENG-2538",
+                  "url": "https://github.com/ubuntu/authd/commit/a5a7d2dcc8a5842b418ebb5667f8fb6b21112661"
                },
                {
-                  "sha": "37ed6ef23b13ca75abf33e43ca99e24be20552ad",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1713438246,
-                  "message": "fix(pam/go-exec): Address SSH hangs by using simpler waitpid to monitor children lifetime  (#306)\n\nAs per my latest tests on main, I've noticed that once authd was\r\nperforming `setcred` in SSHd, we were not properly reacting to the\r\nsecond call to it leading to a total hang when connecting to any\r\nauthd-powered server, so went analyzing the causes and found the\r\nsolution for it.\r\n\r\nThis is the main reason:\r\n\r\nInstead of relying on signal as GLib does just use waitpid on a separate\r\nthread as this is safer to use because our library might be loaded by\r\nother applications that may set a different handler on SIGCHLD, breaking\r\nus, and making our wait to be never-ending.\r\n\r\nThis is particularly the case of sshd, because it creates a subprocess\r\nwhere actions are executed, replacing our SIGCHLD handler causing the\r\nmodule to hang forever during a second call to setcred.\r\n\r\nUDENG-2695",
-                  "url": "https://github.com/ubuntu/authd/commit/37ed6ef23b13ca75abf33e43ca99e24be20552ad"
-               },
-               {
-                  "sha": "c9bc9bd464cde4f6a7060dfb7f100d6cd5a94b74",
+                  "sha": "5f685e3ba65aa1c1dee7636c9d5e3074864304ff",
                   "author": "denisonbarbosa",
-                  "timestamp": 1713438154,
-                  "message": "Auto update packaging related Rust files",
-                  "url": "https://github.com/ubuntu/authd/commit/c9bc9bd464cde4f6a7060dfb7f100d6cd5a94b74"
+                  "timestamp": 1713532000,
+                  "message": "Add test to cover unmarshaling userinfo JSON",
+                  "url": "https://github.com/ubuntu/authd/commit/5f685e3ba65aa1c1dee7636c9d5e3074864304ff"
+               },
+               {
+                  "sha": "9e84c69cd7a3940e08262953f29852a3715666b4",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1713439736,
+                  "message": "Add test to cover group with empty UGID\n\nWe were missing this test case before",
+                  "url": "https://github.com/ubuntu/authd/commit/9e84c69cd7a3940e08262953f29852a3715666b4"
                }
             ],
             "ciActions": [
@@ -6683,25 +6683,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e4830b1d7e1215f34243f84fe5bea998737f81cd",
+                  "author": "Ash",
+                  "timestamp": 1713539758,
+                  "message": "fix: Update snapd assumes to 2.61.1 (#367)\n\nUpdates the required snapd version for Steam to 2.61.1 (latest) from\r\n2.55.4. This may need to change if the latest snapd version is different\r\nwhen the pressure vessel changes land in snapd, so this is a draft for\r\nnow.\r\n\r\n---\r\n\r\nUDENG-2293",
+                  "url": "https://github.com/canonical/steam-snap/commit/e4830b1d7e1215f34243f84fe5bea998737f81cd"
+               },
+               {
+                  "sha": "21a85fdcaaba49eb96c0841108743aa5a3f611fc",
+                  "author": "ashuntu",
+                  "timestamp": 1707790930,
+                  "message": "fix: Update snapd assumes to 2.62",
+                  "url": "https://github.com/canonical/steam-snap/commit/21a85fdcaaba49eb96c0841108743aa5a3f611fc"
+               },
+               {
                   "sha": "cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff",
                   "author": "ZoopOTheGoop",
                   "timestamp": 1710210638,
                   "message": "fix: strip unreachable XDG dirs (#371)\n\nFixes #369 (?) This prevents any inadvisable directories from entering\r\nthe Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for\r\nsafety) `$XDG_SPECIAL_DIRS`.\r\n\r\nIn the future we may *also* want to give the snap environment access to\r\n`/var/lib/snapd/desktop` or other paths (such as\r\n`~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but\r\nthis should at least prevent SRL from *trying* to mount paths it simply\r\ncannot access. This also gives the snap in general some resiliency\r\nagainst users with various *other* unexpected directories stored in the\r\n`XDG_*` variables (such as the ones `flatpak` adds).\r\n\r\nCons: This could, in theory, strip directories that Steam actually\r\nexpects to be there in the future, without any App Armor denials to\r\ninform us. To mitigate (but not remove) this issue, the script does echo\r\nan `INFO: ` line during launch specifying any directories it has\r\nstripped for being unreachable.",
                   "url": "https://github.com/canonical/steam-snap/commit/cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff"
-               },
-               {
-                  "sha": "e17af5123e4dc00f164849c51d0e46c4efea92e2",
-                  "author": "Zoe Spellman",
-                  "timestamp": 1709789630,
-                  "message": " fix: strip unreachable XDG dirs #371\n\nFixes #369 (?) This prevents any inadvisable directories from entering the Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for safety) `$XDG_SPECIAL_DIRS`.\n\nIn the future we may *also* want to give the snap environment access to `/var/lib/snapd/desktop` or other paths (such as `~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but this should at least prevent SRL from *trying* to mount paths it simply cannot access. This also gives the snap in general some resiliency against users with various *other* unexpected directories stored in the `XDG_*` variables (such as the ones `flatpak` adds).\n\nCons: This could, in theory, strip directories that Steam actually expects to be there in the future, without any App Armor denials to inform us. To mitigate (but not remove) this issue, the script does echo an `INFO: ` line during launch specifying any directories it has stripped for being unreachable.",
-                  "url": "https://github.com/canonical/steam-snap/commit/e17af5123e4dc00f164849c51d0e46c4efea92e2"
-               },
-               {
-                  "sha": "191e2c95fcff7026f948f7e7e93b09964c3ccd3c",
-                  "author": "Ash",
-                  "timestamp": 1707510400,
-                  "message": "fix: Remove duplicate staged paths (#366)\n\nVery small PR that just removes 2 duplicate paths from staging.\r\n\r\n`usr/**/libfontconfig*` was a direct duplicate. `usr/share/*/libgtk-3*`\r\nwas a duplicate since `usr/**/libgtk-3*` already overlaps that path.",
-                  "url": "https://github.com/canonical/steam-snap/commit/191e2c95fcff7026f948f7e7e93b09964c3ccd3c"
                }
             ],
             "ciActions": [],
