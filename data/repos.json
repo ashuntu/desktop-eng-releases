@@ -4181,25 +4181,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "08a7311f8e9266ce69544440792da7c5a4c525f5",
-                  "author": "Didier Roche",
-                  "timestamp": 1709117101,
-                  "message": "releasing package wsl-setup version 0.5.2",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/08a7311f8e9266ce69544440792da7c5a4c525f5"
+                  "sha": "a249d3ff11a30570eec04692aa1bdb2a295c8bf0",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1714661374,
+                  "message": "Merge pull request #12 from ubuntu/fix-cloudinit-default-user\n\nfix: Prevents creating an unexpected user",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a249d3ff11a30570eec04692aa1bdb2a295c8bf0"
                },
                {
-                  "sha": "14aee36c0d2054bf2b6d4d48bfd670c195d9ee80",
-                  "author": "Didier Roche",
-                  "timestamp": 1709117055,
-                  "message": "Ship cloud-init configuration file to enable WSL datasource",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/14aee36c0d2054bf2b6d4d48bfd670c195d9ee80"
+                  "sha": "a438d4d31f9327f92f8cf953be8a43a85d6fa540",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1714660166,
+                  "message": "Explains the need for a redundant `distro` subkey\n\nThe redundant \"distro\" subkey is necessary in order to match exactly what is in\n`/etc/cloud/cloud.cfg`, omitting it would result in the default user still being created\nas this would be a \"generic\" `system_info` while the one in `/etc/cloud/cloud.cfg` would be\nthe Ubuntu specific.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a438d4d31f9327f92f8cf953be8a43a85d6fa540"
                },
                {
-                  "sha": "0029f58a23e4ef80918c7dfe8c42d9d3721b9e38",
-                  "author": "Didier Roche",
-                  "timestamp": 1707301896,
-                  "message": "Release 0.5.1",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/0029f58a23e4ef80918c7dfe8c42d9d3721b9e38"
+                  "sha": "197615e6a4be6a2ec582a58330fc2583e71dfd62",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1714658468,
+                  "message": "Prevents creating an unexpected user\n\n`/etc/cloud/cloud.cfg` sets the default user \"ubuntu\" for any instance\nof the Ubuntu distro. Changing that is outside of our scope, as it would\naffect other platforms.\nInstead we override that key with nothing to prevent creating any user\nat all unless explicitely specified by user-data.\n\nFixes: https://github.com/ubuntu/WSL/issues/468",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/197615e6a4be6a2ec582a58330fc2583e71dfd62"
                }
             ],
             "ciActions": [],
@@ -5267,25 +5267,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6b311f7cd15f8c6c4be8b1137e5039a3c9a13405",
-                  "author": "Ash",
-                  "timestamp": 1714506797,
-                  "message": "feat(gui-ubuntupro): Add support for light theme (#746)\n\nPreviously, a dark themed app would be used for any OS theme. Now, the\r\ntheme is dynamic and changes to a light variant if the OS theme changes.\r\n\r\nRight now, the light theme doesn't have a background image like the dark\r\ntheme does, but it can be easily added.\r\n\r\nOn Windows 11, you can change your theme by going to Settings >\r\nPersonalization > Colors > \"Choose your mode\".\r\n\r\n*Screenshots below*\r\n\r\n<details>\r\n<summary>Light theme</summary>\r\n\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/101582426/e6a5fd77-f66d-4686-91cc-616e175ff89f)\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/101582426/1a518fa4-6a1f-46e7-a8d2-c6b2ac46c0b1)\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/101582426/68818f9c-7b0d-40ed-9d69-196dba2218a0)\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>Dark theme (same as before this change)</summary>\r\n\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/101582426/7b01417d-3ea5-4cd3-bf2f-bad6a9cd8cbf)\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/101582426/4b99d19e-0a81-4e1a-bb44-f444a8127e9d)\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/101582426/4aaab73f-7da0-4e7c-9e18-e212fe495301)\r\n\r\n</details>\r\n\r\n---\r\n\r\nUDENG-936",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6b311f7cd15f8c6c4be8b1137e5039a3c9a13405"
+                  "sha": "4647703fa4118ee9dc1f2346163d574f1e284dbc",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1714662491,
+                  "message": "deps(windows-agent): bump google.golang.org/protobuf from 1.33.0 to 1.34.0 in /windows-agent (#747)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4647703fa4118ee9dc1f2346163d574f1e284dbc"
                },
                {
-                  "sha": "c79846e35a921702c96154b7b4966cc504f0f42d",
-                  "author": "ashuntu",
-                  "timestamp": 1714499972,
-                  "message": "Removed background image from all themes",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c79846e35a921702c96154b7b4966cc504f0f42d"
+                  "sha": "189f19572981d8839a7a5b3bfd9a22f221ac72a2",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1714662472,
+                  "message": "deps(common): bump google.golang.org/protobuf from 1.33.0 to 1.34.0 in /common (#748)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/189f19572981d8839a7a5b3bfd9a22f221ac72a2"
                },
                {
-                  "sha": "dedd02acfbdb6168a93d6358fc398d28a751a6e2",
-                  "author": "ashuntu",
-                  "timestamp": 1714164619,
-                  "message": "Fix tests related to finding buttons\n\nAdding the light theme changed some buttons, so some tests needs to be corrected. Also, the light theme causes a tiny overflow due to weird text scaling in tests, so this fixes that as well.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/dedd02acfbdb6168a93d6358fc398d28a751a6e2"
+                  "sha": "fa427ec642c0c2a6021993a11ed729cb224ec5f9",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1714662452,
+                  "message": "deps(tools): bump google.golang.org/protobuf from 1.33.0 to 1.34.0 in /tools (#749)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/fa427ec642c0c2a6021993a11ed729cb224ec5f9"
                }
             ],
             "ciActions": [
@@ -5764,25 +5764,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "08a7311f8e9266ce69544440792da7c5a4c525f5",
-                  "author": "Didier Roche",
-                  "timestamp": 1709117101,
-                  "message": "releasing package wsl-setup version 0.5.2",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/08a7311f8e9266ce69544440792da7c5a4c525f5"
+                  "sha": "a249d3ff11a30570eec04692aa1bdb2a295c8bf0",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1714661374,
+                  "message": "Merge pull request #12 from ubuntu/fix-cloudinit-default-user\n\nfix: Prevents creating an unexpected user",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a249d3ff11a30570eec04692aa1bdb2a295c8bf0"
                },
                {
-                  "sha": "14aee36c0d2054bf2b6d4d48bfd670c195d9ee80",
-                  "author": "Didier Roche",
-                  "timestamp": 1709117055,
-                  "message": "Ship cloud-init configuration file to enable WSL datasource",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/14aee36c0d2054bf2b6d4d48bfd670c195d9ee80"
+                  "sha": "a438d4d31f9327f92f8cf953be8a43a85d6fa540",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1714660166,
+                  "message": "Explains the need for a redundant `distro` subkey\n\nThe redundant \"distro\" subkey is necessary in order to match exactly what is in\n`/etc/cloud/cloud.cfg`, omitting it would result in the default user still being created\nas this would be a \"generic\" `system_info` while the one in `/etc/cloud/cloud.cfg` would be\nthe Ubuntu specific.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a438d4d31f9327f92f8cf953be8a43a85d6fa540"
                },
                {
-                  "sha": "0029f58a23e4ef80918c7dfe8c42d9d3721b9e38",
-                  "author": "Didier Roche",
-                  "timestamp": 1707301896,
-                  "message": "Release 0.5.1",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/0029f58a23e4ef80918c7dfe8c42d9d3721b9e38"
+                  "sha": "197615e6a4be6a2ec582a58330fc2583e71dfd62",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1714658468,
+                  "message": "Prevents creating an unexpected user\n\n`/etc/cloud/cloud.cfg` sets the default user \"ubuntu\" for any instance\nof the Ubuntu distro. Changing that is outside of our scope, as it would\naffect other platforms.\nInstead we override that key with nothing to prevent creating any user\nat all unless explicitely specified by user-data.\n\nFixes: https://github.com/ubuntu/WSL/issues/468",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/197615e6a4be6a2ec582a58330fc2583e71dfd62"
                }
             ],
             "ciActions": [],
