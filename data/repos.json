@@ -5523,25 +5523,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7d81a1b106ca69712c375615eca355426783afef",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1715675281,
+                  "message": "tests: Update NSS integration tests expected error output (#336)\n\nWe used to check the error returned by the execution of the subprocess.\r\nWe are now checking if the getent command is returning the expected\r\nstatus code.\r\n\r\nThe `getent` command can have 4 possible status codes:\r\n0 - Success;\r\n1 - Missing arguments, or database unknown; (We don't care about this\r\none, since it's a command misusage and has nothing to do with our\r\nmodule)\r\n2 - One or more supplied keys could not be found in the database; (This\r\nis what we expect to receive in all of our error cases)\r\n3 - Enumeration is not supported on this database. (Not sure what this\r\none means, but I don't think it matters to us)\r\n\r\nUDENG-2693",
+                  "url": "https://github.com/ubuntu/authd/commit/7d81a1b106ca69712c375615eca355426783afef"
+               },
+               {
+                  "sha": "fe965397c260894fdaa2cd705c7347638997f6e0",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1715611965,
+                  "message": "Update NSS integration tests expected output\n\nWe used to check the error returned by the execution of the subprocess.\nInstead, we should ensure that the getent command is returning the\nexpected status code.",
+                  "url": "https://github.com/ubuntu/authd/commit/fe965397c260894fdaa2cd705c7347638997f6e0"
+               },
+               {
                   "sha": "6a10826d5c9f278a12ee1c3997348a708d61c2fd",
                   "author": "dependabot[bot]",
                   "timestamp": 1715257407,
                   "message": "Auto update packaging related Rust files",
                   "url": "https://github.com/ubuntu/authd/commit/6a10826d5c9f278a12ee1c3997348a708d61c2fd"
-               },
-               {
-                  "sha": "6333096031c55f78baa8126f6e6bc675e4642c9e",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1715257390,
-                  "message": "deps(go): bump the minor-updates group with 2 updates (#330)",
-                  "url": "https://github.com/ubuntu/authd/commit/6333096031c55f78baa8126f6e6bc675e4642c9e"
-               },
-               {
-                  "sha": "9ed12ba875886389bcd0cbde54202c50792105c2",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1715257358,
-                  "message": "deps(rust): bump the minor-updates group across 1 directory with 5 updates (#329)",
-                  "url": "https://github.com/ubuntu/authd/commit/9ed12ba875886389bcd0cbde54202c50792105c2"
                }
             ],
             "ciActions": [
