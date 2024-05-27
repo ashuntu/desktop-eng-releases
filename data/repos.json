@@ -5267,25 +5267,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e25839603306e2b11ec6918e17c63c81b19c51f8",
+                  "sha": "a9c7d605573cfef36eb89276d70200b3156e3911",
                   "author": "dependabot[bot]",
-                  "timestamp": 1715615384,
-                  "message": "deps(tools): bump github.com/golangci/golangci-lint from 1.57.2 to 1.58.1 in /tools (#762)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e25839603306e2b11ec6918e17c63c81b19c51f8"
+                  "timestamp": 1716815676,
+                  "message": "deps(tools): bump google.golang.org/protobuf from 1.34.0 to 1.34.1 in /tools (#761)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a9c7d605573cfef36eb89276d70200b3156e3911"
                },
                {
-                  "sha": "a0f01d7266bdad1a9b34d3a53282493d5a5970db",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1715615336,
-                  "message": "fix(agent): WSL net address selection (#740)\n\n@wck0 demonstrated that the agent might choose the wrong adapter address\r\nto listen to when the setup has more than one \"Hyper-V Virtual Ethernet\r\nAdapter\" (description goes numbered from the second on, by default).\r\n\r\nThis PR aims to desambiguate the case when more than one adapter is\r\nfound containing that string in the description (that cannot be easily\r\nchanged by the user). It does so by checking the presence of \"vEthernet\r\n(WSL\" in the friendly name, which the user can change, but I consider\r\nunlikely due the fact that the adapter is hidden by default.\r\n\r\nAdditionally, if the network stack is configured to the brand new\r\n\"mirrored\" mode, that adapter address won't be available inside the WSL\r\ninstances, thus we must listen on 127.0.0.1. The wsl-pro-service is\r\nalreay aware of that possibility, so no changes are required in there. A\r\ngood side effect of relying on `wsl --system` for that detection is that\r\nwe ensure the existence of the WSL network adapter by the time we look\r\nfor it by starting a WSL distro (we use the system one because that's\r\nthe only one we can assume always present).\r\n\r\nTesting the existing functionality (plus the added one) required mocking\r\nthe `wsl --system wslinfo --networking-mode` command as well as the\r\nWin32 `GetAdapterAddresses` function. The first is mocked by invoking\r\nthe current process (the test runner) with special arguments to trigger\r\nit to run a specific test function designed to emulate that command\r\n(`daemon/testutils`). As shown in the conversation in this PR, we've\r\nbeen mocking subprocesses in a suboptimal way, fixing all other places\r\nis subject to another PR. The Win32 `GetAdapterAddresses` requires a\r\nmore complex mock, because it deals with low level data structures and\r\nmemory allocation. We could have wrapped it with a little bit more logic\r\nand mock the wrapper instead, with less complexity, but that would hide\r\na significant portion of logic dealing with memory buffers, which should\r\nbe exercised to ensure correctness. Thus this PR takes the hard path of\r\ndealing with the low level structures, filling pointers/sizes pairs with\r\nlow level data (see `daemon/networking_mock.go` and\r\n`daemon/networking_windows.go`). In the end we get more fine grained\r\ncontrol over the test behavior and the complexity won't surface at the\r\ncall site.\r\n\r\n---\r\nFix: UDENG-2712",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a0f01d7266bdad1a9b34d3a53282493d5a5970db"
+                  "sha": "de4a4509eabb75bad75c1f6e25fdefd00727807a",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1716814408,
+                  "message": "deps(agentapi): bump google.golang.org/protobuf from 1.34.0 to 1.34.1 in /agentapi (#760)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/de4a4509eabb75bad75c1f6e25fdefd00727807a"
                },
                {
-                  "sha": "9df42d695204a745a870f958ff60889ebf5eb6ba",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1715615305,
-                  "message": "fix(ci): Warning about `staticcheck.go` being deprecated 🍃  (#753)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9df42d695204a745a870f958ff60889ebf5eb6ba"
+                  "sha": "5eb3fd6428fa298e666f9f761fbf1f605095a010",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1716814383,
+                  "message": "deps(common): bump google.golang.org/protobuf from 1.34.0 to 1.34.1 in /common (#763)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5eb3fd6428fa298e666f9f761fbf1f605095a010"
                }
             ],
             "ciActions": [
