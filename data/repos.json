@@ -5267,6 +5267,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4cf923dfa6c3657c531d638c2e54ed79f3bf97b1",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1716988478,
+                  "message": "fix(wsl-pro-service): Find host address when NAT + DNS tunneling ON (#777)\n\nWSL version 2.2.1 (pre-release) turns DNS tunneling ON by default\r\n(again). With DNS tunneling activated, the Windows host IP no longer\r\nmatches the nameserver IP found in /etc/resolv.conf but still matches\r\nthe default gateway. When that was the case the nameserver IP would\r\ncontain a loopback address, but since that version it contains an IP\r\naddress of type 10.0.0.0/8 . Attempting to connect to such address\r\nalways fails. If that behavior remains, we should change the\r\nwsl-pro-service IP selection to rely on the default gateway IP address\r\nfor all cases when networking mode is not “mirrored”, for which case it\r\nmust remain at 127.0.0.1 .\r\nThat’s of now the preferred method to find the host IP address as\r\ndocumented in\r\nhttps://learn.microsoft.com/en-us/windows/wsl/networking#accessing-windows-networking-apps-from-linux-host-ip\r\n\r\nThe gist is: we no longer need to read `/etc/resolv.conf`.\r\n\r\n---\r\nUDENG-2761",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4cf923dfa6c3657c531d638c2e54ed79f3bf97b1"
+               },
+               {
                   "sha": "cee0d8de4ccf4d3d08dc077823f466d87db672e4",
                   "author": "Carlos Nihelton",
                   "timestamp": 1716985717,
@@ -5279,13 +5286,6 @@
                   "timestamp": 1716929657,
                   "message": "Passant cleaning some whitespaces",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/91b0188508977f1c09866d779323cced752cde7c"
-               },
-               {
-                  "sha": "ded0d383fad63a5c9a48337bd3a563750283291a",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1716916901,
-                  "message": "s.setBlocking race with the Apply* methods\n\nAs the handlers that invoke the Apply* methods run in other goroutines\neven though the service.setBlocking is called before issuings RPCs\nthat will eventually be handled by the mockService, it may happen that\nthe goroutines could be running in different threads and thus have\nno visibility of the changes to the s.blockingCalls flag.\nEither using atomics or a RWMutex should suffice and make the test\nfuture proof, as we may decide to change the order of the calls for\nother reasons.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/ded0d383fad63a5c9a48337bd3a563750283291a"
                }
             ],
             "ciActions": [
