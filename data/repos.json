@@ -5744,25 +5744,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4cf923dfa6c3657c531d638c2e54ed79f3bf97b1",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1716988478,
-                  "message": "fix(wsl-pro-service): Find host address when NAT + DNS tunneling ON (#777)\n\nWSL version 2.2.1 (pre-release) turns DNS tunneling ON by default\r\n(again). With DNS tunneling activated, the Windows host IP no longer\r\nmatches the nameserver IP found in /etc/resolv.conf but still matches\r\nthe default gateway. When that was the case the nameserver IP would\r\ncontain a loopback address, but since that version it contains an IP\r\naddress of type 10.0.0.0/8 . Attempting to connect to such address\r\nalways fails. If that behavior remains, we should change the\r\nwsl-pro-service IP selection to rely on the default gateway IP address\r\nfor all cases when networking mode is not “mirrored”, for which case it\r\nmust remain at 127.0.0.1 .\r\nThat’s of now the preferred method to find the host IP address as\r\ndocumented in\r\nhttps://learn.microsoft.com/en-us/windows/wsl/networking#accessing-windows-networking-apps-from-linux-host-ip\r\n\r\nThe gist is: we no longer need to read `/etc/resolv.conf`.\r\n\r\n---\r\nUDENG-2761",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4cf923dfa6c3657c531d638c2e54ed79f3bf97b1"
+                  "sha": "09e0024d1eab3dadfe07cb72a67ef0cd307f5e85",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1717511172,
+                  "message": "deps(tools): bump github.com/golangci/golangci-lint from 1.58.2 to 1.59.0 in /tools (#779)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/09e0024d1eab3dadfe07cb72a67ef0cd307f5e85"
                },
                {
-                  "sha": "cee0d8de4ccf4d3d08dc077823f466d87db672e4",
+                  "sha": "292076d750d38e35c02e4b5d47aa2049d75d6b5a",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1716985717,
-                  "message": "fix(wsl-pro-service): Addressing some flakyness (#776)\n\nSome of the wsl-pro-service tests frequently show up as spurious\r\nfailures, such as `internal/streams/server_tests.go` `TestServe` and\r\n`TestStop`. Some observed both in GH CI as well as in Launchpad builds\r\n(autopkgtests).\r\n\r\nThis PR is an attempt to mitigate some non-deterministic failure\r\nbehavior in this module. Here I focused on the test code itself, as I\r\nthink I found opportunity for improvement in there. It's possible that\r\nsome flaky behavior I didn't see or address now will be adressed in\r\nfutures PRs where I plan to rework the gRPC client creation and\r\nreconnection logic, which will have more invasive changes in the\r\nproduction code anyways.\r\n\r\nHere's a gist of the reasoning behind the changes:\r\n\r\n- `streams.Server.Serve()` - test cases run it in a different goroutine\r\nspawn by the test code. The changes increase the slack of time in\r\nattempt to give the runtime more change to schedule starting the server.\r\nSimilarly, all checks to the mock agent's all connected getter\r\n(`agent.Service.AllConnected()`) got the same slack on\r\n`require.Eventually` check calls. Its work mentioning that the condition\r\nasserted by the require calls is already guarded by mutexes, so no\r\nraces.\r\n\r\n- `streams_tests.mockService` relies on a boolean flag to decide whether\r\nthe RPC's should fail or not, but as the RPCs happen in a different\r\ngoroutine, that might happen to run on a different thread, the effects\r\nof the call to `s.setBlocking` might not be visible to the thread\r\nhandling the RPCs. Thus a mutex is introduced into the mock service.\r\n\r\n---\r\nUDENG-2724",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/cee0d8de4ccf4d3d08dc077823f466d87db672e4"
+                  "timestamp": 1717506242,
+                  "message": "Checks for fmt.Scanf errors\n\nThat pleases the new linter warning.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/292076d750d38e35c02e4b5d47aa2049d75d6b5a"
                },
                {
-                  "sha": "91b0188508977f1c09866d779323cced752cde7c",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1716929657,
-                  "message": "Passant cleaning some whitespaces",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/91b0188508977f1c09866d779323cced752cde7c"
+                  "sha": "acc9ec5054b92d0de409aab750fc4210bbccb27b",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1717061183,
+                  "message": "deps(tools): bump github.com/golangci/golangci-lint in /tools\n\nBumps [github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint) from 1.58.2 to 1.59.0.\n- [Release notes](https://github.com/golangci/golangci-lint/releases)\n- [Changelog](https://github.com/golangci/golangci-lint/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/golangci/golangci-lint/compare/v1.58.2...v1.59.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golangci/golangci-lint\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/acc9ec5054b92d0de409aab750fc4210bbccb27b"
                }
             ],
             "ciActions": [
