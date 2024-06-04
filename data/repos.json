@@ -6099,25 +6099,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9bb4c846b229d6b93f90cbea4a4dea4704dfd10c",
+                  "sha": "02cf487e89a5fe73688d5a4bf2d142ba70a9f500",
                   "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1716985159,
-                  "message": "Tests: always use RequireGPasswdOutput for asserting on gpasswd calls (#350)\n\nWe previously had 2 ways on asserting the gpasswd output:\r\nRequireGPasswdOutput and IdempotentGPasswdOutput + assertion on golden\r\nfiles. Since the refactoring testsutils PR, they are both in the same\r\npackage. However, this duplication has lead to duplication and different\r\nassertion (in case the file doesn’t exist). Only use now one then.\r\n\r\nOne consequence is that for integration tests, we need to run one daemon\r\nper subtests. This is more correct as we don’t rely anymore only on one\r\nsingle subtest testing the gpasswd output file, nor we skip anymore on\r\nasserting not calling gpasswd. Also, this shouldn’t lead to more\r\nslowdown as we are running them in parallel, so just exercising more\r\ndaemons (which are not covered by the race detector already, as it’s a\r\nsubprocess).\r\n\r\nUDENG-2954",
-                  "url": "https://github.com/ubuntu/authd/commit/9bb4c846b229d6b93f90cbea4a4dea4704dfd10c"
+                  "timestamp": 1717510603,
+                  "message": "Standardize env variables for integration tests (#353)\n\nEnsure that all those env follows the same pattern.\r\n\r\nUDENG-2666",
+                  "url": "https://github.com/ubuntu/authd/commit/02cf487e89a5fe73688d5a4bf2d142ba70a9f500"
                },
                {
-                  "sha": "f1d8e18aabca574857f72b85436b2447aad2fc4c",
-                  "author": "Didier Roche",
-                  "timestamp": 1716968858,
-                  "message": "Fix coverage reporting when pam exec is built in subtests\n\nWe had some incorrect filepath.Dir() on the soname, which then truncated\nthe file and didn’t output the coverage to merge in the correct\ndirectory.",
-                  "url": "https://github.com/ubuntu/authd/commit/f1d8e18aabca574857f72b85436b2447aad2fc4c"
+                  "sha": "f03ca9215a2649d2415bfecd5a5d5fb1797d17cf",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1717509646,
+                  "message": "pam/go-exec: Expose the server address using an env variable (#351)\n\nEven though the server will only allow connections from a specific PID\r\n(the one that it launched), it's still better not to expose infos that\r\ncould give hint to potential attackers\r\n\r\nUDENG-2831",
+                  "url": "https://github.com/ubuntu/authd/commit/f03ca9215a2649d2415bfecd5a5d5fb1797d17cf"
                },
                {
-                  "sha": "d1a75d81107c7e0401647dc9992532412a4fa3d7",
-                  "author": "Didier Roche",
-                  "timestamp": 1716961972,
-                  "message": "tests: always use RequireGPasswdOutput for asserting on gpasswd calls\n\nWe previously had 2 ways on asserting the gpasswd output: RequireGPasswdOutput\nand IdempotentGPasswdOutput + assertion on golden files.\nSince the refactoring testsutils PR, they are both in the same package.\nHowever, this duplication has lead to duplication and different\nassertion (in case the file doesn’t exist). Only use now one then.\n\nOne consequence is that for integration tests, we need to run one daemon\nper subtests. This is more correct as we don’t rely anymore only on one single\nsubtest testing the gpasswd output file, nor we skip anymore on asserting\nnot calling gpasswd. Also, this shouldn’t lead to more slowdown as we\nare running them in parallel, so just exercising more daemons (which are\nnot covered by the race detector already, as it’s a subprocess).",
-                  "url": "https://github.com/ubuntu/authd/commit/d1a75d81107c7e0401647dc9992532412a4fa3d7"
+                  "sha": "9ecbf9562d6cbfbe200e7005302ed807b432dfbd",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1717151207,
+                  "message": "pam/go-exec: Expose the server address using an env variables\n\nEven though the server will only allow connections from a specific PID\n(the one that it launched), it's still better not to expose infos that\ncould give hint to potential attackers",
+                  "url": "https://github.com/ubuntu/authd/commit/9ecbf9562d6cbfbe200e7005302ed807b432dfbd"
                }
             ],
             "ciActions": [
