@@ -6099,25 +6099,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d18fbaaa42a7af98a58ef2c0333671826c9a6702",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1717591812,
+                  "message": "maint: Bump go to 1.22.4 to fix vulnerability in net module (#359)\n\nFixes Vulnerability #1: GO-2024-2887\r\nThe various Is methods (IsPrivate, IsLoopback, etc) did not work as\r\nexpected\r\nfor IPv4-mapped IPv6 addresses, returning false for addresses which\r\nwould\r\n  return true in their traditional IPv4 forms.\r\n\r\nMore info: https://pkg.go.dev/vuln/GO-2024-2887\r\n  Standard library\r\n    Found in: net@go1.21.0\r\n    Fixed in: net@go1.22.4",
+                  "url": "https://github.com/ubuntu/authd/commit/d18fbaaa42a7af98a58ef2c0333671826c9a6702"
+               },
+               {
+                  "sha": "d7da7b40a760677bb0f9fd24a3bfb8c49a4de6dc",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1717549837,
+                  "message": "maint: Bump go to 1.22.4 to fix vulnerability in net module\n\nFixes Vulnerability #1: GO-2024-2887\n  The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected\n  for IPv4-mapped IPv6 addresses, returning false for addresses which would\n  return true in their traditional IPv4 forms.\nMore info: https://pkg.go.dev/vuln/GO-2024-2887\n  Standard library\n    Found in: net@go1.21.0\n    Fixed in: net@go1.22.4",
+                  "url": "https://github.com/ubuntu/authd/commit/d7da7b40a760677bb0f9fd24a3bfb8c49a4de6dc"
+               },
+               {
                   "sha": "02cf487e89a5fe73688d5a4bf2d142ba70a9f500",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1717510603,
                   "message": "Standardize env variables for integration tests (#353)\n\nEnsure that all those env follows the same pattern.\r\n\r\nUDENG-2666",
                   "url": "https://github.com/ubuntu/authd/commit/02cf487e89a5fe73688d5a4bf2d142ba70a9f500"
-               },
-               {
-                  "sha": "f03ca9215a2649d2415bfecd5a5d5fb1797d17cf",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1717509646,
-                  "message": "pam/go-exec: Expose the server address using an env variable (#351)\n\nEven though the server will only allow connections from a specific PID\r\n(the one that it launched), it's still better not to expose infos that\r\ncould give hint to potential attackers\r\n\r\nUDENG-2831",
-                  "url": "https://github.com/ubuntu/authd/commit/f03ca9215a2649d2415bfecd5a5d5fb1797d17cf"
-               },
-               {
-                  "sha": "9ecbf9562d6cbfbe200e7005302ed807b432dfbd",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1717151207,
-                  "message": "pam/go-exec: Expose the server address using an env variables\n\nEven though the server will only allow connections from a specific PID\n(the one that it launched), it's still better not to expose infos that\ncould give hint to potential attackers",
-                  "url": "https://github.com/ubuntu/authd/commit/9ecbf9562d6cbfbe200e7005302ed807b432dfbd"
                }
             ],
             "ciActions": [
