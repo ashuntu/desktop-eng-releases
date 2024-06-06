@@ -6099,25 +6099,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "41bd919fc919ec34886957aa231a665dd50cd99d",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1717667778,
-                  "message": "ci: Use unique names for artifacts names (#357)\n\nUse both job id and the attempt so that we don't risk overwriting the\nprevious values\n\nThis should avoid uploading artifacts failures such as in\nhttps://github.com/ubuntu/authd/actions/runs/9367176490/job/25786282242",
-                  "url": "https://github.com/ubuntu/authd/commit/41bd919fc919ec34886957aa231a665dd50cd99d"
+                  "sha": "427d7e6e54c7c2964d5d18e337ece1c36426f732",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1717679338,
+                  "message": "tests: Fix database fixtures for tests (#356)\n\nSome of the database fixtures were missing the `UserToBroker` bucket (as\r\nit was added later during development). To keep our fixtures and tests\r\nas close as possible to a real environment, we need the database to be\r\nas complete as possible as well.\r\n\r\nUDENG-2582",
+                  "url": "https://github.com/ubuntu/authd/commit/427d7e6e54c7c2964d5d18e337ece1c36426f732"
                },
                {
-                  "sha": "d18fbaaa42a7af98a58ef2c0333671826c9a6702",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1717591812,
-                  "message": "maint: Bump go to 1.22.4 to fix vulnerability in net module (#359)\n\nFixes Vulnerability #1: GO-2024-2887\r\nThe various Is methods (IsPrivate, IsLoopback, etc) did not work as\r\nexpected\r\nfor IPv4-mapped IPv6 addresses, returning false for addresses which\r\nwould\r\n  return true in their traditional IPv4 forms.\r\n\r\nMore info: https://pkg.go.dev/vuln/GO-2024-2887\r\n  Standard library\r\n    Found in: net@go1.21.0\r\n    Fixed in: net@go1.22.4",
-                  "url": "https://github.com/ubuntu/authd/commit/d18fbaaa42a7af98a58ef2c0333671826c9a6702"
+                  "sha": "31aea015317df03362762df6e7926de010dc4c59",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1717503363,
+                  "message": "Update golden files of tests that use databases",
+                  "url": "https://github.com/ubuntu/authd/commit/31aea015317df03362762df6e7926de010dc4c59"
                },
                {
-                  "sha": "d7da7b40a760677bb0f9fd24a3bfb8c49a4de6dc",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1717549837,
-                  "message": "maint: Bump go to 1.22.4 to fix vulnerability in net module\n\nFixes Vulnerability #1: GO-2024-2887\n  The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected\n  for IPv4-mapped IPv6 addresses, returning false for addresses which would\n  return true in their traditional IPv4 forms.\nMore info: https://pkg.go.dev/vuln/GO-2024-2887\n  Standard library\n    Found in: net@go1.21.0\n    Fixed in: net@go1.22.4",
-                  "url": "https://github.com/ubuntu/authd/commit/d7da7b40a760677bb0f9fd24a3bfb8c49a4de6dc"
+                  "sha": "9cff5d5b159be1b0f9959e53df2c52109c465b9c",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1717503216,
+                  "message": "Add UserToBroker bucket to test db fixtures\n\nTests must try to replicate as best as possible the real environment in\nwhich the code will run. In order to improve this, we needed to add the\nUserToBroker bucket to the database fixtures that we were using, since\nthis feature came later in development.",
+                  "url": "https://github.com/ubuntu/authd/commit/9cff5d5b159be1b0f9959e53df2c52109c465b9c"
                }
             ],
             "ciActions": [
