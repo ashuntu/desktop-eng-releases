@@ -5731,25 +5731,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6bc9409e3bd093649ff42b7c4330f2c0df8c0465",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1718208802,
-                  "message": "fix(windows-agent): Find the rootfs checksum in the SHA256SUMS neighbour file (#780)\n\nWith the merge of\r\nhttps://github.com/canonical/landscape-hostagent-api/pull/16 Landscape\r\nwill no longer send the SHA256 checksum of the rootfs image intended to\r\nbe imported as part of the Install message as previously expected.\r\nInstead we rely on the assumption that the file server will to some\r\nextent mimic the structure we see in cloud-images.ubuntu.com, where one\r\nor more images are hosted alongside a SHA256SUMS file containing the\r\nchecksums of all those images, as exemplified below.\r\n\r\n``` \r\nSHA256SUMS                               2024-06-01 15:01  418   \r\nSHA256SUMS.gpg                           2024-06-01 15:01  833   \r\nubuntu-jammy-wsl-amd64-wsl.manifest      2024-05-31 21:38   12K  Package manifest file\r\nubuntu-jammy-wsl-amd64-wsl.rootfs.tar.gz 2024-05-31 21:38  225M  File system image and Kernel packed\r\nubuntu-jammy-wsl-arm64-wsl.manifest      2024-05-31 21:47   12K  Package manifest file\r\nubuntu-jammy-wsl-arm64-wsl.rootfs.tar.gz 2024-05-31 21:47  215M  File system image and Kernel packed\r\n[DIR] unpacked/                                2024-06-01 15:01    -  \r\n```\r\n\r\nWith the SHA256SUMS file contents are the familiar structure exemplfied\r\nbelow:\r\n\r\n```\r\n1835cb92926046a640d23c4c66e72b55d28e62570045b6d0e228c5b2ec3b69aa  ubuntu-jammy-wsl-amd64-wsl.manifest\r\n0aa21ea5b6da814bf615506e32d54d76c3f590f777cdc30048963cbac3d439fc  ubuntu-jammy-wsl-amd64-wsl.rootfs.tar.gz\r\n7de7f1013b9bc05cde162a55784977f85f4639d4899870a476be417cce89ef9b  ubuntu-jammy-wsl-arm64-wsl.manifest\r\nd98ff8f636c47d93c351cc16acccca72f13ba77695a8fceea88dd5f36d567bb2  ubuntu-jammy-wsl-arm64-wsl.rootfs.tar.gz\r\n```\r\n(The filename at the right side of the checksum value could contain an\r\nasterisk, as seen in the cloud-images, or not, as in the WSL images).\r\n\r\nThis PR updates the Landscape API dependency to the latest main to match\r\nthe changes mentioned above, and adapt the agent's Landscape command\r\nexecutor to deal with the changes. We no longer pass the rootfs URL\r\nblindly as a string, but rather parse it as URL so we can more easily\r\ncompute the URL of the neightbour SHA256SUMS file. We try to download it\r\nupfront, and bail out if that file doesn't exist. Otherwise we acquire\r\nthe expected checksum so we can preserve the logic to validate the image\r\nas we write it to the disk.\r\n\r\nFinally, for the that installation scenario, we validate the provided\r\ndistro ID to avoid clashing with the ones from the applications provided\r\nvia the MS Store.\r\n\r\n---\r\nUDENG-3055",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6bc9409e3bd093649ff42b7c4330f2c0df8c0465"
+                  "sha": "8b8da97784a4df29ed275d248a277c6aba2e5ce0",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1718283409,
+                  "message": "deps(gui-ubuntupro): bump file_picker from 8.0.3 to 8.0.5 in /gui/packages/ubuntupro (#793)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8b8da97784a4df29ed275d248a277c6aba2e5ce0"
                },
                {
-                  "sha": "da6305d58f69ebcbf64e691bb53895461073aea9",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1718199319,
-                  "message": "Serve files from cwd instead of using a CLI flag",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/da6305d58f69ebcbf64e691bb53895461073aea9"
+                  "sha": "a3cc54c1f082a1a36978254b2b3ed4a54179fbb1",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1718283381,
+                  "message": "deps(gui-ubuntupro): bump flutter_markdown from 0.7.1 to 0.7.2 in /gui/packages/ubuntupro (#794)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a3cc54c1f082a1a36978254b2b3ed4a54179fbb1"
                },
                {
-                  "sha": "00ab7e0879e1056fd30b329140d7d141dea81dcc",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1718197150,
-                  "message": "Missing checksums file should be Info\n\nnot Warning",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/00ab7e0879e1056fd30b329140d7d141dea81dcc"
+                  "sha": "3748e46206499a1fd4e78214550efc9059a39d10",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1718283342,
+                  "message": "deps(tools): bump golang.org/x/vuln from 1.1.1 to 1.1.2 in /tools (#799)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3748e46206499a1fd4e78214550efc9059a39d10"
                }
             ],
             "ciActions": [
