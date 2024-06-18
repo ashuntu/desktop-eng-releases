@@ -5731,25 +5731,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c6670e9bbc6ea71326a0489e9a30c505bf7111d5",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1718704551,
+                  "message": "maint: ensure vendorizing has been done when building source package (#804)\n\nSource package build can fail due to go mod vendor needed ssh key\r\naccess.\r\nEnsure we detect this case and fails early.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c6670e9bbc6ea71326a0489e9a30c505bf7111d5"
+               },
+               {
+                  "sha": "e3cfc19819c6ef1f56c9bbaed6539b560d9a72a7",
+                  "author": "Didier Roche",
+                  "timestamp": 1718702630,
+                  "message": "Ensure vendorizing has been done when building source package\n\nSource package build can fail due to go mod vendor needed ssh key\naccess.\nEnsure we detect this case and fails early.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e3cfc19819c6ef1f56c9bbaed6539b560d9a72a7"
+               },
+               {
                   "sha": "556d3a245b50ccf27c36e35d85892fcffc3c356f",
                   "author": "Carlos Nihelton",
                   "timestamp": 1718627046,
                   "message": "fix: Replace all calls of the grpc-go deprecated Dial* functions (#791)\n\nFinally I got time to put some love into this task to carefully analyze\nthe best way to replace `Dial` and `DialContext` in this project. I was\nespecially concerned about the way we depended on the context passed to\n`DialContext` in tests, but it turned out to be not that hard to do most\nof the necessary replacements.\n\nThe gRPC folks also call out for the builtin retry policies. That's a\ntopic for a follow-up PR, because that's more risky and involving that\njust the replacement of the deprecated APIs., wihch is just enough to\nunblock dependabot PR's gRPC and protobuf related PRs.\n\n---\nUDENG-2653.",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/556d3a245b50ccf27c36e35d85892fcffc3c356f"
-               },
-               {
-                  "sha": "69a8f795ee0c37a37443a2f1a7caade5d39a8591",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1718374362,
-                  "message": "deps(tools): bump github.com/golangci/golangci-lint from 1.59.0 to 1.59.1 in /tools (#797)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/69a8f795ee0c37a37443a2f1a7caade5d39a8591"
-               },
-               {
-                  "sha": "46ec814e294ecdd4a6673487ecafadf27ee18eb5",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1718372957,
-                  "message": "Registry mock openKey private method never errors out\n\nIt panics instead\nso no reason for returning an error.\nI realize that it was meant to make it easy on the exported methods\nBut it is equally easy to just append a nil to the return statement\nand please the unparam linter.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/46ec814e294ecdd4a6673487ecafadf27ee18eb5"
                }
             ],
             "ciActions": [
