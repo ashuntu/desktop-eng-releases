@@ -5731,25 +5731,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b53a4ad3f688ae35688a0ac1177aa92910aed736",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1718730333,
+                  "message": "deps(agentapi): bump google.golang.org/grpc from 1.63.2 to 1.64.0 in /agentapi (#771)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b53a4ad3f688ae35688a0ac1177aa92910aed736"
+               },
+               {
+                  "sha": "09330b851c70b50caddbb6aaf9dbeef91c2ef38a",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1718723953,
+                  "message": "deps(agentapi): bump google.golang.org/grpc in /agentapi\n\nBumps [google.golang.org/grpc](https://github.com/grpc/grpc-go) from 1.63.2 to 1.64.0.\n- [Release notes](https://github.com/grpc/grpc-go/releases)\n- [Commits](https://github.com/grpc/grpc-go/compare/v1.63.2...v1.64.0)\n\n---\nupdated-dependencies:\n- dependency-name: google.golang.org/grpc\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/09330b851c70b50caddbb6aaf9dbeef91c2ef38a"
+               },
+               {
                   "sha": "8e470c8599cddd37f08dd67ed2c8df429e9ab122",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1718720285,
                   "message": "fix: force all subprocessed commands in english (#805)\n\nAll commands should be set to english until we have a proper API for\r\neach of them.",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8e470c8599cddd37f08dd67ed2c8df429e9ab122"
-               },
-               {
-                  "sha": "71c268ad4be63203298dd466999cd2cb0e1ded03",
-                  "author": "Didier Roche",
-                  "timestamp": 1718716675,
-                  "message": "Fix: force all subprocessed commands in english\n\nAll commands should be set to english until we have a proper API for\neach of them.\n\nCo-authored-by: Jean-Baptiste Lallement <jean-baptiste@ubuntu.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/71c268ad4be63203298dd466999cd2cb0e1ded03"
-               },
-               {
-                  "sha": "c6670e9bbc6ea71326a0489e9a30c505bf7111d5",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1718704551,
-                  "message": "maint: ensure vendorizing has been done when building source package (#804)\n\nSource package build can fail due to go mod vendor needed ssh key\r\naccess.\r\nEnsure we detect this case and fails early.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c6670e9bbc6ea71326a0489e9a30c505bf7111d5"
                }
             ],
             "ciActions": [
@@ -6086,6 +6086,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "af63a9671fcf5f608036e25a4299afb422643d8f",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1718728305,
+                  "message": "pam/pam-exec: Use an enum for the action types (#352)\n\nUsing strings can be dangerous in case something changes, plus we are\r\ndoing string comparisons for some actions that can be handle better with\r\na switch.\r\n\r\nJust few cleanups I noticed...",
+                  "url": "https://github.com/ubuntu/authd/commit/af63a9671fcf5f608036e25a4299afb422643d8f"
+               },
+               {
                   "sha": "4c975976a212c1bdc1fabf31924bbf2991730afa",
                   "author": "Denison Barbosa",
                   "timestamp": 1718711953,
@@ -6098,13 +6105,6 @@
                   "timestamp": 1718622901,
                   "message": "Update proto files",
                   "url": "https://github.com/ubuntu/authd/commit/ad5426e7cc0c7507ec678b8016caceeb08b5c671"
-               },
-               {
-                  "sha": "723990a13458a1776a08f976f97cfad2755b345b",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1718620457,
-                  "message": "deps(go): bump google.golang.org/protobuf from 1.34.1 to 1.34.2 in the minor-updates group (#385)\n\nBumps the minor-updates group with 1 update: google.golang.org/protobuf.\r\n\r\nUpdates `google.golang.org/protobuf` from 1.34.1 to 1.34.2\r\n\r\n\r\n[![Dependabot compatibility\r\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=google.golang.org/protobuf&package-manager=go_modules&previous-version=1.34.1&new-version=1.34.2)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\r\n\r\nDependabot will resolve any conflicts with this PR as long as you don't\r\nalter it yourself. You can also trigger a rebase manually by commenting\r\n`@dependabot rebase`.\r\n\r\n[//]: # (dependabot-automerge-start)\r\n[//]: # (dependabot-automerge-end)\r\n\r\n---\r\n\r\n<details>\r\n<summary>Dependabot commands and options</summary>\r\n<br />\r\n\r\nYou can trigger Dependabot actions by commenting on this PR:\r\n- `@dependabot rebase` will rebase this PR\r\n- `@dependabot recreate` will recreate this PR, overwriting any edits\r\nthat have been made to it\r\n- `@dependabot merge` will merge this PR after your CI passes on it\r\n- `@dependabot squash and merge` will squash and merge this PR after\r\nyour CI passes on it\r\n- `@dependabot cancel merge` will cancel a previously requested merge\r\nand block automerging\r\n- `@dependabot reopen` will reopen this PR if it is closed\r\n- `@dependabot close` will close this PR and stop Dependabot recreating\r\nit. You can achieve the same result by closing it manually\r\n- `@dependabot show <dependency name> ignore conditions` will show all\r\nof the ignore conditions of the specified dependency\r\n- `@dependabot ignore <dependency name> major version` will close this\r\ngroup update PR and stop Dependabot creating any more for the specific\r\ndependency's major version (unless you unignore this specific\r\ndependency's major version or upgrade to it yourself)\r\n- `@dependabot ignore <dependency name> minor version` will close this\r\ngroup update PR and stop Dependabot creating any more for the specific\r\ndependency's minor version (unless you unignore this specific\r\ndependency's minor version or upgrade to it yourself)\r\n- `@dependabot ignore <dependency name>` will close this group update PR\r\nand stop Dependabot creating any more for the specific dependency\r\n(unless you unignore this specific dependency or upgrade to it yourself)\r\n- `@dependabot unignore <dependency name>` will remove all of the ignore\r\nconditions of the specified dependency\r\n- `@dependabot unignore <dependency name> <ignore condition>` will\r\nremove the ignore condition of the specified dependency and ignore\r\nconditions\r\n\r\n\r\n</details>",
-                  "url": "https://github.com/ubuntu/authd/commit/723990a13458a1776a08f976f97cfad2755b345b"
                }
             ],
             "ciActions": [
