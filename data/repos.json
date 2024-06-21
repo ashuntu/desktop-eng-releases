@@ -4348,25 +4348,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9a0c314f06a47d7460f5820101ecb49e65893df0",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1715091759,
-                  "message": "Bump golang.org/x/sys from 0.19.0 to 0.20.0 (#111)",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/9a0c314f06a47d7460f5820101ecb49e65893df0"
+                  "sha": "0ca2385d91534d46fe05a7c2b8ac19e00a50d5e0",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1718936511,
+                  "message": "fix: Sets some best-effort timeouts (#115)\n\nThose functions used the background context.\r\nWhen wslservice.exe hangs/crashes, wsl.exe commands might hang for very\r\nlong, so would those functions.\r\n\r\nWe're setting some generous timeouts to couple with a variety of\r\nhardware. In the happy paths, 1/100th to 1/10th of those timeouts should\r\nbe enough.\r\n\r\n---\r\nUDENG-3129",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/0ca2385d91534d46fe05a7c2b8ac19e00a50d5e0"
                },
                {
-                  "sha": "4c4a2686edd85543987f0ec47ce5f83bc4602189",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1715088420,
-                  "message": "Bump golangci/golangci-lint-action from 4 to 6 (#112)",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/4c4a2686edd85543987f0ec47ce5f83bc4602189"
+                  "sha": "0edba5b614849256480fd59f4e66161a28f6163a",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1718799970,
+                  "message": "Make the error value private\n\nUntil we have a definite reason to expose it.",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/0edba5b614849256480fd59f4e66161a28f6163a"
                },
                {
-                  "sha": "931fdf90e44ba9e8cdc1a1e1e6604f9b76f195bc",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1715081773,
-                  "message": "Bump golangci/golangci-lint-action from 4 to 6\n\nBumps [golangci/golangci-lint-action](https://github.com/golangci/golangci-lint-action) from 4 to 6.\n- [Release notes](https://github.com/golangci/golangci-lint-action/releases)\n- [Commits](https://github.com/golangci/golangci-lint-action/compare/v4...v6)\n\n---\nupdated-dependencies:\n- dependency-name: golangci/golangci-lint-action\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/931fdf90e44ba9e8cdc1a1e1e6604f9b76f195bc"
+                  "sha": "62215fbb7a6ff72221cfd58015da26247e025e08",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1718799404,
+                  "message": "More relaxed timeouts\n\nMinimum of 5s, with 10s for Shutdown which\nseems to do more work.",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/62215fbb7a6ff72221cfd58015da26247e025e08"
                }
             ],
             "ciActions": [
