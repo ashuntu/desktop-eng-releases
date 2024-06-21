@@ -6086,25 +6086,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7737e1ef8fd851a0b9d8a7b3cdc96cbfe7f61d93",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1718830958,
-                  "message": "fix(tests): Handle failures during debian packaging builds (#358)\n\nFix some issues I got while building packages both locally (with sbuild,\r\nthat as per commit 4a98eca runs as fakeroot) and in the PPA, mostly due\r\nto builders not being fast enough when spawning lots of parallel tests.\r\n\r\nSee failures: \r\n - https://launchpad.net/~3v1n0/+archive/ubuntu/authd/+build/28517439\r\n - https://launchpad.net/~3v1n0/+archive/ubuntu/authd/+build/28517440\r\n\r\nUDENG-3044",
-                  "url": "https://github.com/ubuntu/authd/commit/7737e1ef8fd851a0b9d8a7b3cdc96cbfe7f61d93"
+                  "sha": "0f3b2c4faf354b1d909f139dcc0bc99d4ff01cb4",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1718982360,
+                  "message": "feat(pam): Enforce password quality policy (#381)\n\nFixes the way we used to handle the preliminary checks of PAM (it was\r\ncreating problems for local users, see the commit message) and starts to\r\nenforce password quality using the checks provided by `libpwquality`.\r\n\r\nUDENG-3046\r\nUDENG-3198",
+                  "url": "https://github.com/ubuntu/authd/commit/0f3b2c4faf354b1d909f139dcc0bc99d4ff01cb4"
                },
                {
-                  "sha": "fd26a023c4db93c3e7407ef86d80713fab8fca4d",
+                  "sha": "e37868659434e524693eab67e3372e3812685395",
                   "author": "Marco Trevisan",
-                  "timestamp": 1718829676,
-                  "message": "maint(pam): Drop go loader Module (#389)\n\nIt's not used anymore so we can delete it and the tests using it",
-                  "url": "https://github.com/ubuntu/authd/commit/fd26a023c4db93c3e7407ef86d80713fab8fca4d"
+                  "timestamp": 1718981806,
+                  "message": "feat: Expose the login code as extra parameter in the QRCode model (#387)\n\nExpose the qrcode code as a required argument allowing to login with a login code.\r\n\r\nUDENG-3013",
+                  "url": "https://github.com/ubuntu/authd/commit/e37868659434e524693eab67e3372e3812685395"
                },
                {
-                  "sha": "abefdb345e4a870f9b096cab211b87f07acc74ae",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1712856556,
-                  "message": "pam: Drop go-loader module\n\nIt's not used anymore so we can delete it and the tests using it",
-                  "url": "https://github.com/ubuntu/authd/commit/abefdb345e4a870f9b096cab211b87f07acc74ae"
+                  "sha": "92dad6ce509d057cb6056bf929a0ee96283ca9d0",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1718895762,
+                  "message": "Add tests to cover password quality checks",
+                  "url": "https://github.com/ubuntu/authd/commit/92dad6ce509d057cb6056bf929a0ee96283ca9d0"
                }
             ],
             "ciActions": [
