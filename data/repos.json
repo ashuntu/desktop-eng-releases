@@ -5731,25 +5731,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "61de7a483868850bab0a3f4ec049190d5cb37c6e",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1718975226,
-                  "message": "maint: rename TestNew() subtest for system tests (#813)\n\nThis was lost in the previous PR rebase.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/61de7a483868850bab0a3f4ec049190d5cb37c6e"
+                  "sha": "fe1c859ae514f7d91ee1fcd3f4c2e49394044f70",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1719319079,
+                  "message": "fix: Remove the hostagent uid of the internal API (#808)\n\nThe `config` component is now responsible for placing the hostagent UID\r\nfield inside the Landscape client config, which it stores verbatim and\r\ndistributes to distros as tasks and via `agent.yaml`. Because of that,\r\nthe `config` now needs to perform some validation before accepting a new\r\nLandscape config value, either via user submission or via registry,\r\nbecause its needs to add the field to the `[client]` section of such\r\nconfiguration data, which is only possible if it holds a valid INI\r\nsyntax and contains that section.\r\n\r\nThe related `cloudinit` component didn't change much, other than tests,\r\nbecause it does a pretty blind marshalling of whatever the `config`\r\nholds inside `landscape.client`. That allowed the\r\n`tasks.LandscapeConfigure` to become even dummier, as the value it\r\nreceives its ready for distribution (no need to check whether the\r\nhostagent UID was empty or not - that decision is taken in the layer\r\nabove.\r\n`wsl-pro-service` updates were minimal, aiming to prevent merge\r\nconflicts with a related task that's ongoing in parallel with this one.\r\n\r\nI think I found some low hanging fruits to increase test coverage as I\r\nwas passing nearby.\r\n\r\n---\r\nUDENG-3279",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/fe1c859ae514f7d91ee1fcd3f4c2e49394044f70"
                },
                {
-                  "sha": "f2adfd4f96889b094d2d537c62108f0ce5ed4587",
-                  "author": "Didier Roche",
-                  "timestamp": 1718973292,
-                  "message": "Rename TestNew() subtest for system tests\n\nThis was lost in the previous PR rebase, sorry for it.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f2adfd4f96889b094d2d537c62108f0ce5ed4587"
+                  "sha": "75e0a86a4240cc0b96b37cc67903e1725742c039",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1719240072,
+                  "message": "[agent] Clean-up helper setAgentUIDAndUpdateClientConf\n\nWe were attempting to be too flexible with allowing an empty conf.\nWith an empty conf we woudl'nt talk to Landscape, thus wouldn't have\nan hostagentUID.\nSo, we can safely report \"no need to notify\" by returning an empty conf\nresult.\nThat simplifies the body, and we can get rid of the closure.\nAlso added a rollback in case a c.dump() fails.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/75e0a86a4240cc0b96b37cc67903e1725742c039"
                },
                {
-                  "sha": "62f6d1520c4411a441dd0ba1fefa3f079ca8099a",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1718952890,
-                  "message": "deps(tools): bump github.com/spf13/cobra from 1.8.0 to 1.8.1 in /tools (#810)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/62f6d1520c4411a441dd0ba1fefa3f079ca8099a"
+                  "sha": "858dee775d440ef81a8d7fa6b617e0cb6e753c06",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1719238067,
+                  "message": "[agent] Remove go.sum.orig file from git\n\nIt was commited by mistake",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/858dee775d440ef81a8d7fa6b617e0cb6e753c06"
                }
             ],
             "ciActions": [
