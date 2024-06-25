@@ -6086,6 +6086,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e3a273f505797a5b8ebde50746064c1a35adfa86",
+                  "author": "Gabriel Nagy",
+                  "timestamp": 1719303062,
+                  "message": "build: enable mkhomedir PAM module on first installation (#392)\n\nEnsure that home directories are automatically created for\r\nauthenticating users.\r\n\r\nFixes https://github.com/ubuntu/authd/issues/370 / UDENG-3117",
+                  "url": "https://github.com/ubuntu/authd/commit/e3a273f505797a5b8ebde50746064c1a35adfa86"
+               },
+               {
                   "sha": "012a0009d41892f998187a55b2fb8d148ceeceba",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1719219006,
@@ -6098,13 +6105,6 @@
                   "timestamp": 1719217682,
                   "message": "pam/go-exec: Fix a deadlock that happens if an invalid logpath is provided (#390)\n\nIf opening the log file fails, we may try to warn while we're still\r\nholding the logger lock file, causing a deadlock.\r\n\r\nFix this and add a test ensuring we're covered by this.",
                   "url": "https://github.com/ubuntu/authd/commit/ef90216f7f9c276eb0443713de8be19b70b5989a"
-               },
-               {
-                  "sha": "0f3b2c4faf354b1d909f139dcc0bc99d4ff01cb4",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1718982360,
-                  "message": "feat(pam): Enforce password quality policy (#381)\n\nFixes the way we used to handle the preliminary checks of PAM (it was\r\ncreating problems for local users, see the commit message) and starts to\r\nenforce password quality using the checks provided by `libpwquality`.\r\n\r\nUDENG-3046\r\nUDENG-3198",
-                  "url": "https://github.com/ubuntu/authd/commit/0f3b2c4faf354b1d909f139dcc0bc99d4ff01cb4"
                }
             ],
             "ciActions": [
