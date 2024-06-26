@@ -6086,25 +6086,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ca9b3a09a4829831ef60e016acb679da405210ef",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1719408890,
+                  "message": "fix(pam): Fix supported UI layout for the QR Code (#395)\n\nThe additional code entry in the layout must be optional, not required.\r\nOtherwise, this invalidates QR Codes with no code associated with them.",
+                  "url": "https://github.com/ubuntu/authd/commit/ca9b3a09a4829831ef60e016acb679da405210ef"
+               },
+               {
+                  "sha": "f3ceeab65ae054c1b68152eaf233be0e6dc7db08",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1719403376,
+                  "message": "Fix supported layout for the QR Code\n\nThe additional code entry in the layout must be optional, not required.\nOtherwise this invalidates QR Codes that do not have any code associated\nwith them.",
+                  "url": "https://github.com/ubuntu/authd/commit/f3ceeab65ae054c1b68152eaf233be0e6dc7db08"
+               },
+               {
                   "sha": "fa868acf4b4ab7f829d7500ba329f74d3e395175",
                   "author": "Marco Trevisan",
                   "timestamp": 1719333789,
                   "message": "pam/qrcodemodel: Use normal-size Qr code when in simple terminals (#393)\n\nIf the terminal is not advanced enough to support the more complex utf-8\r\ncharacters needed to print the small qrcode, just use the simpler\r\nimplementation via the big qrcode that uses characters that seems to be\r\nsupported everywhere.\r\n\r\nIn fact bigger qrcode use two times the character `█` to do a square,\r\nand\r\nthis is supported by the normal tty fonts:\r\n\r\n    getunimap | grep █ 0x0db\tU+2588\t# █\r\n    setfont -v -ou /dev/stdout | grep 0x0db\r\n\r\nWithout having to go through building one via `#`'s.\r\n\r\nIn theory we can inspect for font support on that, but it's not\r\nsomething we want to\r\nimplement for now.\r\n\r\nUDENG-3109\r\n\r\nCloses: #361",
                   "url": "https://github.com/ubuntu/authd/commit/fa868acf4b4ab7f829d7500ba329f74d3e395175"
-               },
-               {
-                  "sha": "4017b7c5f74a2d149b9bf27f72e6ad3efee787ed",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1718671977,
-                  "message": "pam/qrcodemodel: Use normal-size Qr code when in simple terminals\n\nIf the terminal is not advanced enough to support the more complex utf-8\ncharacters needed to print the small qrcode, just use the simpler\nimplementation via the big qrcode that uses characters that seems to be\nsupported everywhere.",
-                  "url": "https://github.com/ubuntu/authd/commit/4017b7c5f74a2d149b9bf27f72e6ad3efee787ed"
-               },
-               {
-                  "sha": "39fd00ac678afd0aa8e4fa7cc3a7e60cc1d6c6aa",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1719290623,
-                  "message": "pam/go-exec: Expose more terminal-related env variables to client\n\nThey are used by bubbletea to improve the rendering so expose them all",
-                  "url": "https://github.com/ubuntu/authd/commit/39fd00ac678afd0aa8e4fa7cc3a7e60cc1d6c6aa"
                }
             ],
             "ciActions": [
