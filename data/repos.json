@@ -660,14 +660,14 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 959,
-                     "timestamp": 1715071755
+                     "revision": 961,
+                     "timestamp": 1719420089
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 960,
-                     "timestamp": 1715074460
+                     "revision": 962,
+                     "timestamp": 1719420336
                   },
                   {
                      "track": "latest",
@@ -2556,14 +2556,14 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 959,
-                     "timestamp": 1715071755
+                     "revision": 961,
+                     "timestamp": 1719420089
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 960,
-                     "timestamp": 1715074460
+                     "revision": 962,
+                     "timestamp": 1719420336
                   },
                   {
                      "track": "latest",
@@ -5731,25 +5731,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "426bf0d3695a63ad810f3e8172eaae15c4f16662",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1719420858,
+                  "message": "fix(windows-agent): `NotifyConfigUpdate` only distributes the `[client]` section (#816)\n\nFor provisioning the cloudinit package already does this filtering, and\r\neven if there was no need for doing so that code wouldn't change because\r\nit needs to translate the `[client]` section to YAML.\r\n\r\nWe cannot just change `config.LandscapeClientConfig()` to filter stuff\r\nout because there are clients relying on it to access the host section.\r\nThat would imply creating another method to get the full config, which\r\nseems as fine as this.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/426bf0d3695a63ad810f3e8172eaae15c4f16662"
+               },
+               {
+                  "sha": "9c685cfd64671766bc20d9df3913a3bb601ec837",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1719411585,
+                  "message": "[agent] Allows TestNotifyUpdate to compare to agent.yaml.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9c685cfd64671766bc20d9df3913a3bb601ec837"
+               },
+               {
                   "sha": "8a12bde0ad1c1e3b0417ca785fef8a2684c2b1dc",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1719406854,
                   "message": "fix: prevent subprocesses to sent notification to systemd (#817)\n\nUnset NOTIFY_SOCKET just after forwarding readyness to systemd. This\r\nway, subprocesses will not attempt to notify systemd that they are\r\nready.\r\n\r\nUnfortunately, this could only be tested in some e2e tests, grepping for\r\nsubprocess warnings and we are not at that level of details yet in the\r\ne2e test infra.\r\n\r\nUDENG-3363",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8a12bde0ad1c1e3b0417ca785fef8a2684c2b1dc"
-               },
-               {
-                  "sha": "7eeb2f0d4185a371b10d268bc483a26e8ebce948",
-                  "author": "Shane Crowley",
-                  "timestamp": 1719392381,
-                  "message": "docs: Exclude diagrams readme (#818)\n\nThis adds the `readme.md` file in the diagrams directory of the docs to\r\nthe excluded list, which should prevent build errors associated with the attempt to render\r\nthe file on RtD.\r\n\r\nA small change is also made to the readme to update it based on recent changes to the diagram autogeneration workflow.\r\n\r\nUDENG-3361",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7eeb2f0d4185a371b10d268bc483a26e8ebce948"
-               },
-               {
-                  "sha": "6fd122249cb740db5428a81f57f5f012900fc0aa",
-                  "author": "shanecrowley",
-                  "timestamp": 1719391128,
-                  "message": "Update diagram readme based on new workflow logic",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6fd122249cb740db5428a81f57f5f012900fc0aa"
                }
             ],
             "ciActions": [
