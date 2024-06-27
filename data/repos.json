@@ -5757,25 +5757,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "426bf0d3695a63ad810f3e8172eaae15c4f16662",
+                  "sha": "de80e465699865b03498b083dc0062ab2a5baa84",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1719420858,
-                  "message": "fix(windows-agent): `NotifyConfigUpdate` only distributes the `[client]` section (#816)\n\nFor provisioning the cloudinit package already does this filtering, and\r\neven if there was no need for doing so that code wouldn't change because\r\nit needs to translate the `[client]` section to YAML.\r\n\r\nWe cannot just change `config.LandscapeClientConfig()` to filter stuff\r\nout because there are clients relying on it to access the host section.\r\nThat would imply creating another method to get the full config, which\r\nseems as fine as this.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/426bf0d3695a63ad810f3e8172eaae15c4f16662"
+                  "timestamp": 1719491458,
+                  "message": "fix(windows-agent): Adds `tags=wsl` by default (#819)\n\nAs with hostagent_uid field, this PR makes the `config` object to\r\nautomatically add a field `tags=wsl` into Landscape config client\r\nsection **if the user didn't provide any value to that field**.\r\n\r\nI changed some tests to use goldens because it was becoming hard to cope\r\nwith formatting and ordering of serialization when comparing strings of\r\nthe desired outputs in ini and YAML.\r\n\r\n---\r\nUDENG-3306",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/de80e465699865b03498b083dc0062ab2a5baa84"
                },
                {
-                  "sha": "9c685cfd64671766bc20d9df3913a3bb601ec837",
+                  "sha": "1ba7b032cee574356a54cdea0f0585213e6f885e",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1719411585,
-                  "message": "[agent] Allows TestNotifyUpdate to compare to agent.yaml.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9c685cfd64671766bc20d9df3913a3bb601ec837"
+                  "timestamp": 1719426063,
+                  "message": "TestNotifyConfigUpdateWithAgentYaml updates\n\nto verify the behavior of Landscape client config tags:\n - tags=wsl by default\n - preserve user provided tags otherwise\n\nAnd use goldens to ease coping with serialization mismatches.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1ba7b032cee574356a54cdea0f0585213e6f885e"
                },
                {
-                  "sha": "8a12bde0ad1c1e3b0417ca785fef8a2684c2b1dc",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1719406854,
-                  "message": "fix: prevent subprocesses to sent notification to systemd (#817)\n\nUnset NOTIFY_SOCKET just after forwarding readyness to systemd. This\r\nway, subprocesses will not attempt to notify systemd that they are\r\nready.\r\n\r\nUnfortunately, this could only be tested in some e2e tests, grepping for\r\nsubprocess warnings and we are not at that level of details yet in the\r\ne2e test infra.\r\n\r\nUDENG-3363",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8a12bde0ad1c1e3b0417ca785fef8a2684c2b1dc"
+                  "sha": "63c4324aeb4402ea6ed501ea2e93ffc4c811612a",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1719426286,
+                  "message": "config adds tags=wsl by default\n\nIf no other tags are present in the Landscape\nclient conf being completed/augmented.\n\nFailing to do so won't stop this function.\n\nGoldens updated to consider that tags come by default.\n\naddKeyValuePair() as its own function for better error coverage",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/63c4324aeb4402ea6ed501ea2e93ffc4c811612a"
                }
             ],
             "ciActions": [
@@ -6112,25 +6112,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a44a3e44dc825bbf80d6e279794f72b5394975af",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1719490185,
+                  "message": "fix(cache): Do not change homedir for user that already exists (#399)\n\nWe used to update every part of the user information in the cache but\r\nthis can create problems if the admin changes the homedir configuration\r\non the broker side, since it would update the homedir parsing for the\r\nuser resulting in PAM creating a new one for the user at login.\r\n\r\nUDENG-3125",
+                  "url": "https://github.com/ubuntu/authd/commit/a44a3e44dc825bbf80d6e279794f72b5394975af"
+               },
+               {
+                  "sha": "215739a5ecf89401991130929f7bea32e5da7d9c",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1719484879,
+                  "message": "Do not change homedir for user that already exists\n\nWe used to update every part of the user information in cache, but this\ncan create problems if the admin changes the homedir configuration in\nthe broker side, since it would update the homedir parsing for the user\nand, thus, \"losing\" access to the previous one.",
+                  "url": "https://github.com/ubuntu/authd/commit/215739a5ecf89401991130929f7bea32e5da7d9c"
+               },
+               {
                   "sha": "5132a3f15431d6c905464b9db83773eaf956d0a6",
                   "author": "Denison Barbosa",
                   "timestamp": 1719486242,
                   "message": "deps(go): bump github.com/charmbracelet/bubbletea from 0.26.4 to 0.26.6 in the minor-updates group (#397)",
                   "url": "https://github.com/ubuntu/authd/commit/5132a3f15431d6c905464b9db83773eaf956d0a6"
-               },
-               {
-                  "sha": "941686c1426ce310045669fde9593ba1fa48d889",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1719483987,
-                  "message": "Auto update packaging related Rust files",
-                  "url": "https://github.com/ubuntu/authd/commit/941686c1426ce310045669fde9593ba1fa48d889"
-               },
-               {
-                  "sha": "a92045c453f4de94500a46d1bc08615b91ae7709",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1719483941,
-                  "message": "deps(rust): bump cc from 1.0.99 to 1.0.101 in the minor-updates group (#396)",
-                  "url": "https://github.com/ubuntu/authd/commit/a92045c453f4de94500a46d1bc08615b91ae7709"
                }
             ],
             "ciActions": [
@@ -6250,25 +6250,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a26477769b012f11ad322c823849f4c8eca8b9be",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1719487195,
+                  "message": "build(oidc): Update install hook for the snap (#39)\n\nRemove the previous offline expiration setting and add/improve comments\r\non some of the sections.",
+                  "url": "https://github.com/ubuntu/oidc-broker/commit/a26477769b012f11ad322c823849f4c8eca8b9be"
+               },
+               {
+                  "sha": "b3c7f3d4640adfaf8a66e20d1dbfb0687583560f",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1719485604,
+                  "message": "Update install hook for the snap\n\nRemove the previous offline expiration setting and add/improve comments\non some of the sections.",
+                  "url": "https://github.com/ubuntu/oidc-broker/commit/b3c7f3d4640adfaf8a66e20d1dbfb0687583560f"
+               },
+               {
                   "sha": "af7dcb56326c89f6762e83215610f2b3c4cffa65",
                   "author": "Denison Barbosa",
                   "timestamp": 1718800436,
                   "message": "feat: Drop offline expiration control (#34)\n\nWe used to have a limited time for the user to authenticate offline. Now\r\nwe allow offline authentication as long as the user has a token.\r\n\r\nUDENG-3262",
                   "url": "https://github.com/ubuntu/oidc-broker/commit/af7dcb56326c89f6762e83215610f2b3c4cffa65"
-               },
-               {
-                  "sha": "4d1fc4de30b84f3ecbb32678c1a9af5cecc6c31b",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1718711628,
-                  "message": "Update broker to not rely on offline expiration\n\nWe used to have a limited amount of time for the user to authenticate\noffline. Now we allow offline authentication as long as the user have a\ntoken.",
-                  "url": "https://github.com/ubuntu/oidc-broker/commit/4d1fc4de30b84f3ecbb32678c1a9af5cecc6c31b"
-               },
-               {
-                  "sha": "3734ecd500c75df7708db67eb03152ec01576537",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1718718333,
-                  "message": "feat: Prevent empty local password (#35)\n\nEmpty strings (i.e. \"\") still worked as local passwords for the broker\r\nusers. We now prevent the user from setting an empty password as its\r\nlocal one.\r\n\r\nUDENG-3119",
-                  "url": "https://github.com/ubuntu/oidc-broker/commit/3734ecd500c75df7708db67eb03152ec01576537"
                }
             ],
             "ciActions": [
