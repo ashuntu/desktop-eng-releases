@@ -6112,6 +6112,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5a3066558ea60731c862ec95234ba28a3353d966",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1719495232,
+                  "message": "feat(pam/nativemodel): Add native PAM interface support (#314)\n\nIt allows interacting with authd from any pam client, regardless they're supporting\r\nauthd or not (including polkit, ssh and other DEs)\r\n\r\nUDENG-2289\r\nUDENG-3127\r\n\r\nCloses: #380",
+                  "url": "https://github.com/ubuntu/authd/commit/5a3066558ea60731c862ec95234ba28a3353d966"
+               },
+               {
                   "sha": "a44a3e44dc825bbf80d6e279794f72b5394975af",
                   "author": "Denison Barbosa",
                   "timestamp": 1719490185,
@@ -6124,13 +6131,6 @@
                   "timestamp": 1719484879,
                   "message": "Do not change homedir for user that already exists\n\nWe used to update every part of the user information in cache, but this\ncan create problems if the admin changes the homedir configuration in\nthe broker side, since it would update the homedir parsing for the user\nand, thus, \"losing\" access to the previous one.",
                   "url": "https://github.com/ubuntu/authd/commit/215739a5ecf89401991130929f7bea32e5da7d9c"
-               },
-               {
-                  "sha": "5132a3f15431d6c905464b9db83773eaf956d0a6",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1719486242,
-                  "message": "deps(go): bump github.com/charmbracelet/bubbletea from 0.26.4 to 0.26.6 in the minor-updates group (#397)",
-                  "url": "https://github.com/ubuntu/authd/commit/5132a3f15431d6c905464b9db83773eaf956d0a6"
                }
             ],
             "ciActions": [
@@ -6250,6 +6250,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d90d32a7d117f528bd762be7c3d5333a9ed439d6",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1719495123,
+                  "message": "fix(broker): Improvements to the authentication modes flow (#37)\n\nThis contains a couple of adjustments to our AuthenticationModes-related\r\nfunctions: GetAuthenticationModes and SelectAuthenticationMode (very\r\nminor). Details are explained in more detail in the commit messages, but\r\nthe TLDR is:\r\n1- Simplify a bit of the logic in the functions;\r\n2- Add support for the new `code` layout field introduced in\r\n[authd#387](https://github.com/ubuntu/authd/pull/387);\r\n3- Use a more comprehensive name for the authentication mode related to\r\nthe device authentication;\r\n4- Only show device authentication as a valid authentication mode if the\r\nprovider is reachable and supports this mode;\r\n\r\nUDENG-3121",
+                  "url": "https://github.com/ubuntu/oidc-broker/commit/d90d32a7d117f528bd762be7c3d5333a9ed439d6"
+               },
+               {
                   "sha": "a26477769b012f11ad322c823849f4c8eca8b9be",
                   "author": "Denison Barbosa",
                   "timestamp": 1719487195,
@@ -6262,13 +6269,6 @@
                   "timestamp": 1719485604,
                   "message": "Update install hook for the snap\n\nRemove the previous offline expiration setting and add/improve comments\non some of the sections.",
                   "url": "https://github.com/ubuntu/oidc-broker/commit/b3c7f3d4640adfaf8a66e20d1dbfb0687583560f"
-               },
-               {
-                  "sha": "af7dcb56326c89f6762e83215610f2b3c4cffa65",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1718800436,
-                  "message": "feat: Drop offline expiration control (#34)\n\nWe used to have a limited time for the user to authenticate offline. Now\r\nwe allow offline authentication as long as the user has a token.\r\n\r\nUDENG-3262",
-                  "url": "https://github.com/ubuntu/oidc-broker/commit/af7dcb56326c89f6762e83215610f2b3c4cffa65"
                }
             ],
             "ciActions": [
