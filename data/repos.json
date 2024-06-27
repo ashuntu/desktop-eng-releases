@@ -6112,25 +6112,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5a3066558ea60731c862ec95234ba28a3353d966",
+                  "sha": "e259fbad4e0f594e7c0e03d76f6d51d007a74d30",
+                  "author": "Gabriel Nagy",
+                  "timestamp": 1719504935,
+                  "message": "feat: rework newpasswd view for CLI (#394)\n\nInstead of showing both prompts from the get-go, and having `Enter`\r\nsubmit the form straight away (and only being able to navigate through\r\nit with `Tab`), such as:\r\n\r\n    Enter your new password\r\n    > ****\r\n    >\r\n\r\nWe now render a single input if the user has just been shown the form,\r\nwith an updated prompt:\r\n\r\n    Enter your new password\r\n\r\n    New password:\r\n    > ****\r\n\r\nWhen pressing `Enter` -- provided that the password passes our quality\r\nchecks -- the form changes to:\r\n\r\n    Enter your new password (confirm)\r\n\r\n    New password:\r\n    > ****\r\n    Confirm password:\r\n    > ****\r\n\r\nThis makes it clearer that we want the user to re-type their password.\r\nAs a result, `Tab` navigation is no longer supported in non-skippable\r\nviews, and the form can only be advanced by pressing `Enter`.\r\n\r\nFor skippable views (i.e. with a button), `Tab` (and `Shift-Tab`) only\r\nworks if the password is not filled in. This avoids opening a can of\r\nworms regarding to what fields we should be showing or not based on\r\nwhether password fields are filled in. Thus, the skippable experience\r\nbecomes:\r\n\r\n    Enter your new password (3 days until mandatory)\r\n\r\n    New password:\r\n    >\r\n\r\n    [ Skip ]  // Focusable\r\n\r\nand\r\n\r\n    Enter your new password (3 days until mandatory)\r\n\r\n    New password:\r\n    > *****\r\n\r\n    [ Skip ]  // No longer focusable, have to finish filling in the form\r\n              // (or clear it)\r\n\r\nOtherwise, I believe we should keep the form as simple as possible,\r\nwithout the possibility of jumping back to the previous password field\r\nonce it was filled in, at the sake of improved maintainability.\r\n\r\nFixes https://github.com/ubuntu/authd/issues/365 / UDENG-3112",
+                  "url": "https://github.com/ubuntu/authd/commit/e259fbad4e0f594e7c0e03d76f6d51d007a74d30"
+               },
+               {
+                  "sha": "aee4467673a71a8b9ccfd4f399e619efdf6161ee",
                   "author": "Marco Trevisan",
-                  "timestamp": 1719495232,
-                  "message": "feat(pam/nativemodel): Add native PAM interface support (#314)\n\nIt allows interacting with authd from any pam client, regardless they're supporting\r\nauthd or not (including polkit, ssh and other DEs)\r\n\r\nUDENG-2289\r\nUDENG-3127\r\n\r\nCloses: #380",
-                  "url": "https://github.com/ubuntu/authd/commit/5a3066558ea60731c862ec95234ba28a3353d966"
+                  "timestamp": 1719503169,
+                  "message": "pam/nativemodel: Fix typo on auth selection screen due to strings joining (#400)\n\nRelated to #314",
+                  "url": "https://github.com/ubuntu/authd/commit/aee4467673a71a8b9ccfd4f399e619efdf6161ee"
                },
                {
-                  "sha": "a44a3e44dc825bbf80d6e279794f72b5394975af",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1719490185,
-                  "message": "fix(cache): Do not change homedir for user that already exists (#399)\n\nWe used to update every part of the user information in the cache but\r\nthis can create problems if the admin changes the homedir configuration\r\non the broker side, since it would update the homedir parsing for the\r\nuser resulting in PAM creating a new one for the user at login.\r\n\r\nUDENG-3125",
-                  "url": "https://github.com/ubuntu/authd/commit/a44a3e44dc825bbf80d6e279794f72b5394975af"
-               },
-               {
-                  "sha": "215739a5ecf89401991130929f7bea32e5da7d9c",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1719484879,
-                  "message": "Do not change homedir for user that already exists\n\nWe used to update every part of the user information in cache, but this\ncan create problems if the admin changes the homedir configuration in\nthe broker side, since it would update the homedir parsing for the user\nand, thus, \"losing\" access to the previous one.",
-                  "url": "https://github.com/ubuntu/authd/commit/215739a5ecf89401991130929f7bea32e5da7d9c"
+                  "sha": "518d42a6ea2b7027d9fd17a73a44d179a4ab516a",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1719500970,
+                  "message": "pam/nativemodel: Fix typo on auth selection screen due to strings joining",
+                  "url": "https://github.com/ubuntu/authd/commit/518d42a6ea2b7027d9fd17a73a44d179a4ab516a"
                }
             ],
             "ciActions": [
