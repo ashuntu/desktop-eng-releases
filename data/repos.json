@@ -2216,20 +2216,20 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 483,
-                     "timestamp": 1684877718
+                     "revision": 486,
+                     "timestamp": 1719594441
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 484,
-                     "timestamp": 1684878194
+                     "revision": 487,
+                     "timestamp": 1719594741
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 485,
-                     "timestamp": 1684878258
+                     "revision": 488,
+                     "timestamp": 1719594860
                   }
                ],
                "channels": [
@@ -3640,25 +3640,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "175b4daa76acb5b71059a24a494551789ad2b741",
+                  "author": "jssotomdz",
+                  "timestamp": 1719592575,
+                  "message": "ci: add workflow dispatch build action trigger (#391)\n\ncurrently, if the build test fails in ci, there is no way to retrigger\r\nthe test unless commiting to the source branch\r\nthis adds the workflow dispatch parameter to allow the job to re-run",
+                  "url": "https://github.com/canonical/steam-snap/commit/175b4daa76acb5b71059a24a494551789ad2b741"
+               },
+               {
+                  "sha": "36637de37e801f625c9d3cf48ba7616b77347fd0",
+                  "author": "jssotomdz",
+                  "timestamp": 1719586869,
+                  "message": "ci: add workflow dispatch build action trigger",
+                  "url": "https://github.com/canonical/steam-snap/commit/36637de37e801f625c9d3cf48ba7616b77347fd0"
+               },
+               {
                   "sha": "e4830b1d7e1215f34243f84fe5bea998737f81cd",
                   "author": "Ash",
                   "timestamp": 1713539758,
                   "message": "fix: Update snapd assumes to 2.61.1 (#367)\n\nUpdates the required snapd version for Steam to 2.61.1 (latest) from\r\n2.55.4. This may need to change if the latest snapd version is different\r\nwhen the pressure vessel changes land in snapd, so this is a draft for\r\nnow.\r\n\r\n---\r\n\r\nUDENG-2293",
                   "url": "https://github.com/canonical/steam-snap/commit/e4830b1d7e1215f34243f84fe5bea998737f81cd"
-               },
-               {
-                  "sha": "21a85fdcaaba49eb96c0841108743aa5a3f611fc",
-                  "author": "ashuntu",
-                  "timestamp": 1707790930,
-                  "message": "fix: Update snapd assumes to 2.62",
-                  "url": "https://github.com/canonical/steam-snap/commit/21a85fdcaaba49eb96c0841108743aa5a3f611fc"
-               },
-               {
-                  "sha": "cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff",
-                  "author": "ZoopOTheGoop",
-                  "timestamp": 1710210638,
-                  "message": "fix: strip unreachable XDG dirs (#371)\n\nFixes #369 (?) This prevents any inadvisable directories from entering\r\nthe Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for\r\nsafety) `$XDG_SPECIAL_DIRS`.\r\n\r\nIn the future we may *also* want to give the snap environment access to\r\n`/var/lib/snapd/desktop` or other paths (such as\r\n`~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but\r\nthis should at least prevent SRL from *trying* to mount paths it simply\r\ncannot access. This also gives the snap in general some resiliency\r\nagainst users with various *other* unexpected directories stored in the\r\n`XDG_*` variables (such as the ones `flatpak` adds).\r\n\r\nCons: This could, in theory, strip directories that Steam actually\r\nexpects to be there in the future, without any App Armor denials to\r\ninform us. To mitigate (but not remove) this issue, the script does echo\r\nan `INFO: ` line during launch specifying any directories it has\r\nstripped for being unreachable.",
-                  "url": "https://github.com/canonical/steam-snap/commit/cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff"
                }
             ],
             "ciActions": [],
@@ -5407,25 +5407,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "175b4daa76acb5b71059a24a494551789ad2b741",
+                  "author": "jssotomdz",
+                  "timestamp": 1719592575,
+                  "message": "ci: add workflow dispatch build action trigger (#391)\n\ncurrently, if the build test fails in ci, there is no way to retrigger\r\nthe test unless commiting to the source branch\r\nthis adds the workflow dispatch parameter to allow the job to re-run",
+                  "url": "https://github.com/canonical/steam-snap/commit/175b4daa76acb5b71059a24a494551789ad2b741"
+               },
+               {
+                  "sha": "36637de37e801f625c9d3cf48ba7616b77347fd0",
+                  "author": "jssotomdz",
+                  "timestamp": 1719586869,
+                  "message": "ci: add workflow dispatch build action trigger",
+                  "url": "https://github.com/canonical/steam-snap/commit/36637de37e801f625c9d3cf48ba7616b77347fd0"
+               },
+               {
                   "sha": "e4830b1d7e1215f34243f84fe5bea998737f81cd",
                   "author": "Ash",
                   "timestamp": 1713539758,
                   "message": "fix: Update snapd assumes to 2.61.1 (#367)\n\nUpdates the required snapd version for Steam to 2.61.1 (latest) from\r\n2.55.4. This may need to change if the latest snapd version is different\r\nwhen the pressure vessel changes land in snapd, so this is a draft for\r\nnow.\r\n\r\n---\r\n\r\nUDENG-2293",
                   "url": "https://github.com/canonical/steam-snap/commit/e4830b1d7e1215f34243f84fe5bea998737f81cd"
-               },
-               {
-                  "sha": "21a85fdcaaba49eb96c0841108743aa5a3f611fc",
-                  "author": "ashuntu",
-                  "timestamp": 1707790930,
-                  "message": "fix: Update snapd assumes to 2.62",
-                  "url": "https://github.com/canonical/steam-snap/commit/21a85fdcaaba49eb96c0841108743aa5a3f611fc"
-               },
-               {
-                  "sha": "cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff",
-                  "author": "ZoopOTheGoop",
-                  "timestamp": 1710210638,
-                  "message": "fix: strip unreachable XDG dirs (#371)\n\nFixes #369 (?) This prevents any inadvisable directories from entering\r\nthe Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for\r\nsafety) `$XDG_SPECIAL_DIRS`.\r\n\r\nIn the future we may *also* want to give the snap environment access to\r\n`/var/lib/snapd/desktop` or other paths (such as\r\n`~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but\r\nthis should at least prevent SRL from *trying* to mount paths it simply\r\ncannot access. This also gives the snap in general some resiliency\r\nagainst users with various *other* unexpected directories stored in the\r\n`XDG_*` variables (such as the ones `flatpak` adds).\r\n\r\nCons: This could, in theory, strip directories that Steam actually\r\nexpects to be there in the future, without any App Armor denials to\r\ninform us. To mitigate (but not remove) this issue, the script does echo\r\nan `INFO: ` line during launch specifying any directories it has\r\nstripped for being unreachable.",
-                  "url": "https://github.com/canonical/steam-snap/commit/cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff"
                }
             ],
             "ciActions": [],
@@ -7409,25 +7409,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "175b4daa76acb5b71059a24a494551789ad2b741",
+                  "author": "jssotomdz",
+                  "timestamp": 1719592575,
+                  "message": "ci: add workflow dispatch build action trigger (#391)\n\ncurrently, if the build test fails in ci, there is no way to retrigger\r\nthe test unless commiting to the source branch\r\nthis adds the workflow dispatch parameter to allow the job to re-run",
+                  "url": "https://github.com/canonical/steam-snap/commit/175b4daa76acb5b71059a24a494551789ad2b741"
+               },
+               {
+                  "sha": "36637de37e801f625c9d3cf48ba7616b77347fd0",
+                  "author": "jssotomdz",
+                  "timestamp": 1719586869,
+                  "message": "ci: add workflow dispatch build action trigger",
+                  "url": "https://github.com/canonical/steam-snap/commit/36637de37e801f625c9d3cf48ba7616b77347fd0"
+               },
+               {
                   "sha": "e4830b1d7e1215f34243f84fe5bea998737f81cd",
                   "author": "Ash",
                   "timestamp": 1713539758,
                   "message": "fix: Update snapd assumes to 2.61.1 (#367)\n\nUpdates the required snapd version for Steam to 2.61.1 (latest) from\r\n2.55.4. This may need to change if the latest snapd version is different\r\nwhen the pressure vessel changes land in snapd, so this is a draft for\r\nnow.\r\n\r\n---\r\n\r\nUDENG-2293",
                   "url": "https://github.com/canonical/steam-snap/commit/e4830b1d7e1215f34243f84fe5bea998737f81cd"
-               },
-               {
-                  "sha": "21a85fdcaaba49eb96c0841108743aa5a3f611fc",
-                  "author": "ashuntu",
-                  "timestamp": 1707790930,
-                  "message": "fix: Update snapd assumes to 2.62",
-                  "url": "https://github.com/canonical/steam-snap/commit/21a85fdcaaba49eb96c0841108743aa5a3f611fc"
-               },
-               {
-                  "sha": "cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff",
-                  "author": "ZoopOTheGoop",
-                  "timestamp": 1710210638,
-                  "message": "fix: strip unreachable XDG dirs (#371)\n\nFixes #369 (?) This prevents any inadvisable directories from entering\r\nthe Snap environment via `XDG_CONFIG_DIRS`, `XDG_DATA_DIRS` and (for\r\nsafety) `$XDG_SPECIAL_DIRS`.\r\n\r\nIn the future we may *also* want to give the snap environment access to\r\n`/var/lib/snapd/desktop` or other paths (such as\r\n`~$USER/.config/kdedefaults` or `/etc/xdg`) via a `snapd` change, but\r\nthis should at least prevent SRL from *trying* to mount paths it simply\r\ncannot access. This also gives the snap in general some resiliency\r\nagainst users with various *other* unexpected directories stored in the\r\n`XDG_*` variables (such as the ones `flatpak` adds).\r\n\r\nCons: This could, in theory, strip directories that Steam actually\r\nexpects to be there in the future, without any App Armor denials to\r\ninform us. To mitigate (but not remove) this issue, the script does echo\r\nan `INFO: ` line during launch specifying any directories it has\r\nstripped for being unreachable.",
-                  "url": "https://github.com/canonical/steam-snap/commit/cd701ef9b0d7fd027e71469a4257f1f2ad5b8bff"
                }
             ],
             "ciActions": [],
