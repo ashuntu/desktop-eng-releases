@@ -5757,25 +5757,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "de80e465699865b03498b083dc0062ab2a5baa84",
+                  "sha": "1b1b88ebd5c48584d8e2c723567c55b8981898a9",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1719491458,
-                  "message": "fix(windows-agent): Adds `tags=wsl` by default (#819)\n\nAs with hostagent_uid field, this PR makes the `config` object to\r\nautomatically add a field `tags=wsl` into Landscape config client\r\nsection **if the user didn't provide any value to that field**.\r\n\r\nI changed some tests to use goldens because it was becoming hard to cope\r\nwith formatting and ordering of serialization when comparing strings of\r\nthe desired outputs in ini and YAML.\r\n\r\n---\r\nUDENG-3306",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/de80e465699865b03498b083dc0062ab2a5baa84"
+                  "timestamp": 1719577183,
+                  "message": "fix: Replaces Landscape \"FQDN\" with \"server address\" (#820)\n\nThat name is ubiquitous in Landscape docs\r\nBut look a bit cryptic to most users.\r\n\r\nHere's how it looks after this small change:\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/11138291/e250a3a6-0c95-440b-bb4f-ef1a492cd643)\r\n\r\n---\r\nFixes UDENG-3259 and #801",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1b1b88ebd5c48584d8e2c723567c55b8981898a9"
                },
                {
-                  "sha": "1ba7b032cee574356a54cdea0f0585213e6f885e",
+                  "sha": "33aa1f1989018c7a40bb99dd15574520a5e01708",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1719426063,
-                  "message": "TestNotifyConfigUpdateWithAgentYaml updates\n\nto verify the behavior of Landscape client config tags:\n - tags=wsl by default\n - preserve user provided tags otherwise\n\nAnd use goldens to ease coping with serialization mismatches.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1ba7b032cee574356a54cdea0f0585213e6f885e"
+                  "timestamp": 1719577080,
+                  "message": "fix(windows-agent): Deprecate `ubuntu_advantage`  (#821)\n\nWe should use `ubuntu_pro` module instead. `cloud-init` does understand\r\n`ubuntu_advantage`. Their docs state:\r\n> Activate only on keys: ubuntu_pro, ubuntu-advantage, ubuntu_advantage\r\n\r\nYet, there are about 4 months since they deprecated ubuntu_advantage:\r\nhttps://github.com/canonical/cloud-init/pull/4865\r\n\r\nDocs are up-to-date, so current users are likely to add `ubuntu_pro` key\r\nin their user-data. That wouldn't clash with the agent.yaml, in fact\r\nwhich token would then be applied can become unpredictable as both would\r\nreach cc_ubuntu_pro.py module.\r\n\r\nSo, inline with cloud-init docs, let's migrate to the `ubuntu_pro` key\r\n:)\r\n\r\nI suspect @didrocks and @jibel faced this exact behavior (mix of both\r\nkeys) during their tests.\r\n\r\nAh, I also sneaked a fix in the `#cloud-config` stenza. It's not been a\r\nproblem in our tests because we always tested user-provided user-data as\r\nYAML (the WSL datasource merges both and rewrites the final raw userdata\r\nthat is fed into the cloud-init pipeline). Should we put a shell script\r\ninstead, we'd see that cloud-init wouldn't understand the part coming\r\nfrom `agent.yaml`.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/33aa1f1989018c7a40bb99dd15574520a5e01708"
                },
                {
-                  "sha": "63c4324aeb4402ea6ed501ea2e93ffc4c811612a",
+                  "sha": "02723813f17d50bd360ea0e9e8052fd8a31d8632",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1719426286,
-                  "message": "config adds tags=wsl by default\n\nIf no other tags are present in the Landscape\nclient conf being completed/augmented.\n\nFailing to do so won't stop this function.\n\nGoldens updated to consider that tags come by default.\n\naddKeyValuePair() as its own function for better error coverage",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/63c4324aeb4402ea6ed501ea2e93ffc4c811612a"
+                  "timestamp": 1719522766,
+                  "message": "ubuntu_advantage is deprecated in cloud-init\n\nShould use ubuntu_pro module instead\ncloud-init does understand ubuntu_advantage. Their docs state:\n> Activate only on keys: ubuntu_pro, ubuntu-advantage, ubuntu_advantage\n\nYet, there are about 4 months since they deprecated ubuntu_advantage:\nhttps://github.com/canonical/cloud-init/pull/4865\n\nDocs are updated, so users are likely to add `ubuntu_pro` key in their user-data. That wouldn't clash with the agent.yaml,\nin fact it can become unpredictable which token would then be applied as both would reach cc_ubuntu_pro.py module.\n\nSo, inline with cloud-init docs, let's migrate to the `ubuntu_pro` key :)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/02723813f17d50bd360ea0e9e8052fd8a31d8632"
                }
             ],
             "ciActions": [
