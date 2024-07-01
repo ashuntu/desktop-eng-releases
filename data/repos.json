@@ -5744,25 +5744,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1b1b88ebd5c48584d8e2c723567c55b8981898a9",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1719577183,
-                  "message": "fix: Replaces Landscape \"FQDN\" with \"server address\" (#820)\n\nThat name is ubiquitous in Landscape docs\r\nBut look a bit cryptic to most users.\r\n\r\nHere's how it looks after this small change:\r\n\r\n![image](https://github.com/canonical/ubuntu-pro-for-wsl/assets/11138291/e250a3a6-0c95-440b-bb4f-ef1a492cd643)\r\n\r\n---\r\nFixes UDENG-3259 and #801",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1b1b88ebd5c48584d8e2c723567c55b8981898a9"
+                  "sha": "9633ba65cedd17199c328a3e5d1d37addc0f97df",
+                  "author": "Shane Crowley",
+                  "timestamp": 1719837054,
+                  "message": "docs: Reduce landscape setup in tutorial (#822)\n\nThis PR makes the tutorial shorter and more generic by reducing the\r\nemphasis on Landscape setup.\r\n\r\nThe material on Landscape server setup in WSL is moved to a separate\r\nhow-to.\r\n\r\nScreenshots of UI elements were changed to ensure they are up-to-date\r\nand in English.\r\n\r\nMinor additional changes were made to improve agreement with style\r\nguide.\r\n\r\nUDENG-3054",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9633ba65cedd17199c328a3e5d1d37addc0f97df"
                },
                {
-                  "sha": "33aa1f1989018c7a40bb99dd15574520a5e01708",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1719577080,
-                  "message": "fix(windows-agent): Deprecate `ubuntu_advantage`  (#821)\n\nWe should use `ubuntu_pro` module instead. `cloud-init` does understand\r\n`ubuntu_advantage`. Their docs state:\r\n> Activate only on keys: ubuntu_pro, ubuntu-advantage, ubuntu_advantage\r\n\r\nYet, there are about 4 months since they deprecated ubuntu_advantage:\r\nhttps://github.com/canonical/cloud-init/pull/4865\r\n\r\nDocs are up-to-date, so current users are likely to add `ubuntu_pro` key\r\nin their user-data. That wouldn't clash with the agent.yaml, in fact\r\nwhich token would then be applied can become unpredictable as both would\r\nreach cc_ubuntu_pro.py module.\r\n\r\nSo, inline with cloud-init docs, let's migrate to the `ubuntu_pro` key\r\n:)\r\n\r\nI suspect @didrocks and @jibel faced this exact behavior (mix of both\r\nkeys) during their tests.\r\n\r\nAh, I also sneaked a fix in the `#cloud-config` stenza. It's not been a\r\nproblem in our tests because we always tested user-provided user-data as\r\nYAML (the WSL datasource merges both and rewrites the final raw userdata\r\nthat is fed into the cloud-init pipeline). Should we put a shell script\r\ninstead, we'd see that cloud-init wouldn't understand the part coming\r\nfrom `agent.yaml`.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/33aa1f1989018c7a40bb99dd15574520a5e01708"
+                  "sha": "254137d27dfb36027b56778e0a527d3feb050294",
+                  "author": "shanecrowley",
+                  "timestamp": 1719830561,
+                  "message": "Provide more relevant link for Landscape install and configuration",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/254137d27dfb36027b56778e0a527d3feb050294"
                },
                {
-                  "sha": "02723813f17d50bd360ea0e9e8052fd8a31d8632",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1719522766,
-                  "message": "ubuntu_advantage is deprecated in cloud-init\n\nShould use ubuntu_pro module instead\ncloud-init does understand ubuntu_advantage. Their docs state:\n> Activate only on keys: ubuntu_pro, ubuntu-advantage, ubuntu_advantage\n\nYet, there are about 4 months since they deprecated ubuntu_advantage:\nhttps://github.com/canonical/cloud-init/pull/4865\n\nDocs are updated, so users are likely to add `ubuntu_pro` key in their user-data. That wouldn't clash with the agent.yaml,\nin fact it can become unpredictable which token would then be applied as both would reach cc_ubuntu_pro.py module.\n\nSo, inline with cloud-init docs, let's migrate to the `ubuntu_pro` key :)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/02723813f17d50bd360ea0e9e8052fd8a31d8632"
+                  "sha": "3bb11900a4624d560d9d0aaad82f5bba42449852",
+                  "author": "shanecrowley",
+                  "timestamp": 1719830536,
+                  "message": "Clarify PS commands for checking and deleting .wslconfig file",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3bb11900a4624d560d9d0aaad82f5bba42449852"
                }
             ],
             "ciActions": [
@@ -6099,25 +6099,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "903dfb214eba8c0903a02a4c9ea2ffc7ba6b0b8e",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1719835854,
+                  "message": "fix(nss): Improve NSS error logs (#403)\n\nNSS error messages lacked useful information due to missing data on the\r\nGRPC error. This improves the messages by a considerable amount by\r\nprinting the actual value the module is querying for and the return\r\nstatus of the request.\r\n\r\nNow we go from messages like:\r\n```\r\nauthd: error when getting passwd by name:\r\n```\r\nTo:\r\n```\r\nauthd: error when getting passwd by name 'nonexistent': Some requested entity was not found\r\n```\r\n\r\nUDENG-3410",
+                  "url": "https://github.com/ubuntu/authd/commit/903dfb214eba8c0903a02a4c9ea2ffc7ba6b0b8e"
+               },
+               {
+                  "sha": "11dec5bbd5a76f771b17d1dc435ce21661fb2cc5",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1719587217,
+                  "message": "Improve NSS error logs\n\nNSS error messages were definitely lacking useful information due to\nmissing data on the grpc Error. This improves the messages by a\nconsiderable amount by printing the actual value the module is querying\nfor and the return status of the request.",
+                  "url": "https://github.com/ubuntu/authd/commit/11dec5bbd5a76f771b17d1dc435ce21661fb2cc5"
+               },
+               {
                   "sha": "05ca1633274bc210dfd976092fb080535db5d601",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1719558885,
                   "message": "maint(pam/integration-tests): Add native QRCode tests and ensure they run as different users (#401)\n\nSome tests changes that were supposed part of #314 and got lost due to\r\npre-merging of https://github.com/ubuntu/authd/pull/393\r\n\r\nBut I also will use those assumptions in an upcoming branch.",
                   "url": "https://github.com/ubuntu/authd/commit/05ca1633274bc210dfd976092fb080535db5d601"
-               },
-               {
-                  "sha": "e259fbad4e0f594e7c0e03d76f6d51d007a74d30",
-                  "author": "Gabriel Nagy",
-                  "timestamp": 1719504935,
-                  "message": "feat: rework newpasswd view for CLI (#394)\n\nInstead of showing both prompts from the get-go, and having `Enter`\r\nsubmit the form straight away (and only being able to navigate through\r\nit with `Tab`), such as:\r\n\r\n    Enter your new password\r\n    > ****\r\n    >\r\n\r\nWe now render a single input if the user has just been shown the form,\r\nwith an updated prompt:\r\n\r\n    Enter your new password\r\n\r\n    New password:\r\n    > ****\r\n\r\nWhen pressing `Enter` -- provided that the password passes our quality\r\nchecks -- the form changes to:\r\n\r\n    Enter your new password (confirm)\r\n\r\n    New password:\r\n    > ****\r\n    Confirm password:\r\n    > ****\r\n\r\nThis makes it clearer that we want the user to re-type their password.\r\nAs a result, `Tab` navigation is no longer supported in non-skippable\r\nviews, and the form can only be advanced by pressing `Enter`.\r\n\r\nFor skippable views (i.e. with a button), `Tab` (and `Shift-Tab`) only\r\nworks if the password is not filled in. This avoids opening a can of\r\nworms regarding to what fields we should be showing or not based on\r\nwhether password fields are filled in. Thus, the skippable experience\r\nbecomes:\r\n\r\n    Enter your new password (3 days until mandatory)\r\n\r\n    New password:\r\n    >\r\n\r\n    [ Skip ]  // Focusable\r\n\r\nand\r\n\r\n    Enter your new password (3 days until mandatory)\r\n\r\n    New password:\r\n    > *****\r\n\r\n    [ Skip ]  // No longer focusable, have to finish filling in the form\r\n              // (or clear it)\r\n\r\nOtherwise, I believe we should keep the form as simple as possible,\r\nwithout the possibility of jumping back to the previous password field\r\nonce it was filled in, at the sake of improved maintainability.\r\n\r\nFixes https://github.com/ubuntu/authd/issues/365 / UDENG-3112",
-                  "url": "https://github.com/ubuntu/authd/commit/e259fbad4e0f594e7c0e03d76f6d51d007a74d30"
-               },
-               {
-                  "sha": "2a773427bf61b4d7b99855e5a0da4c7e0846a5d7",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1719502984,
-                  "message": "pam/integration-tests: Use always a different user for all qrcode tests\n\nThey share the same logic and tape but it's better to use different users\nin order to ensure we're using different sessions",
-                  "url": "https://github.com/ubuntu/authd/commit/2a773427bf61b4d7b99855e5a0da4c7e0846a5d7"
                }
             ],
             "ciActions": [
@@ -6237,25 +6237,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d701fedd57d44b0de2589ac633dec32af550ba4b",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1719835884,
+                  "message": "fix(broker): Improve newpassword label for passwd sessions (#42)\n\nWe used to show the same label for both sessions types (auth and\r\npasswd), but this could create confusion for users when, in passwd\r\nsessions, they were asked to \"Create local password\" instead of changing\r\nit. This commit should make things clearer and easier to navigate.\r\n\r\nUDENG-3423",
+                  "url": "https://github.com/ubuntu/oidc-broker/commit/d701fedd57d44b0de2589ac633dec32af550ba4b"
+               },
+               {
+                  "sha": "ba8b5e02f62808386d37c4b6e849965bfaea943c",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1719832908,
+                  "message": "Improve newpassword label for passwd sessions\n\nWe used to show the same label for both sessions types (auth and passwd), but\nthis could create confusion for users when, in passwd sessions, they\nwere asked to \"Create local password\" instead of changing it. This\ncommit should make things clearer and easier to navigate.",
+                  "url": "https://github.com/ubuntu/oidc-broker/commit/ba8b5e02f62808386d37c4b6e849965bfaea943c"
+               },
+               {
                   "sha": "d90d32a7d117f528bd762be7c3d5333a9ed439d6",
                   "author": "Denison Barbosa",
                   "timestamp": 1719495123,
                   "message": "fix(broker): Improvements to the authentication modes flow (#37)\n\nThis contains a couple of adjustments to our AuthenticationModes-related\r\nfunctions: GetAuthenticationModes and SelectAuthenticationMode (very\r\nminor). Details are explained in more detail in the commit messages, but\r\nthe TLDR is:\r\n1- Simplify a bit of the logic in the functions;\r\n2- Add support for the new `code` layout field introduced in\r\n[authd#387](https://github.com/ubuntu/authd/pull/387);\r\n3- Use a more comprehensive name for the authentication mode related to\r\nthe device authentication;\r\n4- Only show device authentication as a valid authentication mode if the\r\nprovider is reachable and supports this mode;\r\n\r\nUDENG-3121",
                   "url": "https://github.com/ubuntu/oidc-broker/commit/d90d32a7d117f528bd762be7c3d5333a9ed439d6"
-               },
-               {
-                  "sha": "a26477769b012f11ad322c823849f4c8eca8b9be",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1719487195,
-                  "message": "build(oidc): Update install hook for the snap (#39)\n\nRemove the previous offline expiration setting and add/improve comments\r\non some of the sections.",
-                  "url": "https://github.com/ubuntu/oidc-broker/commit/a26477769b012f11ad322c823849f4c8eca8b9be"
-               },
-               {
-                  "sha": "b3c7f3d4640adfaf8a66e20d1dbfb0687583560f",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1719485604,
-                  "message": "Update install hook for the snap\n\nRemove the previous offline expiration setting and add/improve comments\non some of the sections.",
-                  "url": "https://github.com/ubuntu/oidc-broker/commit/b3c7f3d4640adfaf8a66e20d1dbfb0687583560f"
                }
             ],
             "ciActions": [
