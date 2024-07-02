@@ -6099,25 +6099,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d3d60d3e20ab890d2e52ade7134a8fde5abd113b",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1719924139,
+                  "message": "fix: ensure we fail authentication when user auth failed (#406)\n\nAuthd has a high priority in the PAM stack. When we don’t ignore on\r\npurpose the authentication to pass to other modules, we should fail\r\nimmediately it.\r\nWe thus mirror requisite with still allowing the none authentication\r\naccess part to be skipped.\r\n\r\nUDENG-3413",
+                  "url": "https://github.com/ubuntu/authd/commit/d3d60d3e20ab890d2e52ade7134a8fde5abd113b"
+               },
+               {
+                  "sha": "676de031185b7956ecc7518084924c47841178e2",
+                  "author": "Didier Roche",
+                  "timestamp": 1719909308,
+                  "message": "Ensure we fail authentication when user auth failed\n\nAuthd has a high priority in the PAM stack. When we don’t ignore on\npurpose the authentication to pass to other modules, we should fail\nimmediately it.\nWe thus mirror requisite with still allowing the none authentication\naccess part to be skipped.",
+                  "url": "https://github.com/ubuntu/authd/commit/676de031185b7956ecc7518084924c47841178e2"
+               },
+               {
                   "sha": "e7a4bb0d0f768c1db6a9400c5f895a5cfaed23ce",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1719846267,
                   "message": "fix: remove comment from authd pam module to make it enable by default (#404)\n\nAuthd was not registered by pam-auth-update automatically due to the\r\ncomment which is unsupported by this tool.\r\n\r\nOne a blank machine, which never got the request, this will now enable\r\nit by default.\r\nThere is no format supporting comments unfortunately after reading the\r\nupstream perl source.\r\n\r\nUDENG-3408",
                   "url": "https://github.com/ubuntu/authd/commit/e7a4bb0d0f768c1db6a9400c5f895a5cfaed23ce"
-               },
-               {
-                  "sha": "4cc4aa7cf80e5be678e857f70d0d0cd084bc695a",
-                  "author": "Didier Roche",
-                  "timestamp": 1719844789,
-                  "message": "Fix authd pam integration\n\nAuthd was not registered by pam-auth-update automatically due to the\ncomment which is unsupported by this tool.\n\nOne a blank machine, which never got the request, this will now enable\nit by default.\nThere is no format supporting comments unfortunately after reading the\nupstream perl source.\n\nUDENG-3408",
-                  "url": "https://github.com/ubuntu/authd/commit/4cc4aa7cf80e5be678e857f70d0d0cd084bc695a"
-               },
-               {
-                  "sha": "903dfb214eba8c0903a02a4c9ea2ffc7ba6b0b8e",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1719835854,
-                  "message": "fix(nss): Improve NSS error logs (#403)\n\nNSS error messages lacked useful information due to missing data on the\r\nGRPC error. This improves the messages by a considerable amount by\r\nprinting the actual value the module is querying for and the return\r\nstatus of the request.\r\n\r\nNow we go from messages like:\r\n```\r\nauthd: error when getting passwd by name:\r\n```\r\nTo:\r\n```\r\nauthd: error when getting passwd by name 'nonexistent': Some requested entity was not found\r\n```\r\n\r\nUDENG-3410",
-                  "url": "https://github.com/ubuntu/authd/commit/903dfb214eba8c0903a02a4c9ea2ffc7ba6b0b8e"
                }
             ],
             "ciActions": [
