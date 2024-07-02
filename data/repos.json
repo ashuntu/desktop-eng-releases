@@ -6127,6 +6127,41 @@
             "snap": null
          },
          {
+            "name": "authd-oidc-brokers",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/ubuntu/authd-oidc-brokers",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "d701fedd57d44b0de2589ac633dec32af550ba4b",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1719835884,
+                  "message": "fix(broker): Improve newpassword label for passwd sessions (#42)\n\nWe used to show the same label for both sessions types (auth and\r\npasswd), but this could create confusion for users when, in passwd\r\nsessions, they were asked to \"Create local password\" instead of changing\r\nit. This commit should make things clearer and easier to navigate.\r\n\r\nUDENG-3423",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d701fedd57d44b0de2589ac633dec32af550ba4b"
+               },
+               {
+                  "sha": "ba8b5e02f62808386d37c4b6e849965bfaea943c",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1719832908,
+                  "message": "Improve newpassword label for passwd sessions\n\nWe used to show the same label for both sessions types (auth and passwd), but\nthis could create confusion for users when, in passwd sessions, they\nwere asked to \"Create local password\" instead of changing it. This\ncommit should make things clearer and easier to navigate.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/ba8b5e02f62808386d37c4b6e849965bfaea943c"
+               },
+               {
+                  "sha": "d90d32a7d117f528bd762be7c3d5333a9ed439d6",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1719495123,
+                  "message": "fix(broker): Improvements to the authentication modes flow (#37)\n\nThis contains a couple of adjustments to our AuthenticationModes-related\r\nfunctions: GetAuthenticationModes and SelectAuthenticationMode (very\r\nminor). Details are explained in more detail in the commit messages, but\r\nthe TLDR is:\r\n1- Simplify a bit of the logic in the functions;\r\n2- Add support for the new `code` layout field introduced in\r\n[authd#387](https://github.com/ubuntu/authd/pull/387);\r\n3- Use a more comprehensive name for the authentication mode related to\r\nthe device authentication;\r\n4- Only show device authentication as a valid authentication mode if the\r\nprovider is reachable and supports this mode;\r\n\r\nUDENG-3121",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d90d32a7d117f528bd762be7c3d5333a9ed439d6"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/ubuntu/oidc-broker/actions/workflows/ci.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "azure-resource-reaper",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -6225,41 +6260,6 @@
             ],
             "ciActions": [
                "https://github.com/ubuntu/go-i18n/actions/workflows/qa.yaml"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "oidc-broker",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/ubuntu/oidc-broker",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "d701fedd57d44b0de2589ac633dec32af550ba4b",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1719835884,
-                  "message": "fix(broker): Improve newpassword label for passwd sessions (#42)\n\nWe used to show the same label for both sessions types (auth and\r\npasswd), but this could create confusion for users when, in passwd\r\nsessions, they were asked to \"Create local password\" instead of changing\r\nit. This commit should make things clearer and easier to navigate.\r\n\r\nUDENG-3423",
-                  "url": "https://github.com/ubuntu/oidc-broker/commit/d701fedd57d44b0de2589ac633dec32af550ba4b"
-               },
-               {
-                  "sha": "ba8b5e02f62808386d37c4b6e849965bfaea943c",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1719832908,
-                  "message": "Improve newpassword label for passwd sessions\n\nWe used to show the same label for both sessions types (auth and passwd), but\nthis could create confusion for users when, in passwd sessions, they\nwere asked to \"Create local password\" instead of changing it. This\ncommit should make things clearer and easier to navigate.",
-                  "url": "https://github.com/ubuntu/oidc-broker/commit/ba8b5e02f62808386d37c4b6e849965bfaea943c"
-               },
-               {
-                  "sha": "d90d32a7d117f528bd762be7c3d5333a9ed439d6",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1719495123,
-                  "message": "fix(broker): Improvements to the authentication modes flow (#37)\n\nThis contains a couple of adjustments to our AuthenticationModes-related\r\nfunctions: GetAuthenticationModes and SelectAuthenticationMode (very\r\nminor). Details are explained in more detail in the commit messages, but\r\nthe TLDR is:\r\n1- Simplify a bit of the logic in the functions;\r\n2- Add support for the new `code` layout field introduced in\r\n[authd#387](https://github.com/ubuntu/authd/pull/387);\r\n3- Use a more comprehensive name for the authentication mode related to\r\nthe device authentication;\r\n4- Only show device authentication as a valid authentication mode if the\r\nprovider is reachable and supports this mode;\r\n\r\nUDENG-3121",
-                  "url": "https://github.com/ubuntu/oidc-broker/commit/d90d32a7d117f528bd762be7c3d5333a9ed439d6"
-               }
-            ],
-            "ciActions": [
-               "https://github.com/ubuntu/oidc-broker/actions/workflows/ci.yaml"
             ],
             "charm": null,
             "snap": null
