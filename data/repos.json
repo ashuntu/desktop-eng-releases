@@ -6132,6 +6132,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "2a559c83f4fda6f3d97f574e63deaf8f27c593f0",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1720020769,
+                  "message": "feat(qrcodemodel): Always include the content URI to the output (#407)\n\nIn some cases (e.g. small terminals, tty's) the qrcode is not properly\r\nrendered or is not fully visible, so make the URI to be always written\r\nso that it can be used also without a qrcode scanner\r\n\r\nUDENG-3324",
+                  "url": "https://github.com/ubuntu/authd/commit/2a559c83f4fda6f3d97f574e63deaf8f27c593f0"
+               },
+               {
                   "sha": "684d267fd01043c69b9a342bd9275de1f1660738",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1720014828,
@@ -6144,13 +6151,6 @@
                   "timestamp": 1720013064,
                   "message": "fix: do not explicitly call description on nss error\n\nAs in the documentation:\n/// If you only need description in `println`, `format`, `log` and other\n/// formatting contexts, you may want to use `Display` impl for `Code`\n/// instead.\n\nSo, let’s use the display trait as the error macro is using format.\n    /// If you only need description in `println`, `format`, `log` and other\n    /// formatting contexts, you may want to use `Display` impl for `Code`\n    /// instead.",
                   "url": "https://github.com/ubuntu/authd/commit/314ccc6cf92dd0dab5f03dc1992003adaf649a34"
-               },
-               {
-                  "sha": "dd7d4ced3efbb84f6f93e18be4218aa3d84e54e1",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1719994268,
-                  "message": "fix(examplebroker): Improve wording for the regenerate code button label (#408)\n\n  The user is allowed to regenerate the login code not the QR code, so\r\n  improve the wording here.\r\n  \r\n  Regenerate the golden files based on that\r\n\r\nThis is not strictly needed, but it's better to align with\r\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/47",
-                  "url": "https://github.com/ubuntu/authd/commit/dd7d4ced3efbb84f6f93e18be4218aa3d84e54e1"
                }
             ],
             "ciActions": [
@@ -6167,25 +6167,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fa363ec449a297eff59d5eaa0ce520bcd09a8766",
+                  "sha": "f5bc36137a1c8f89989842fdc7711d55c72857ae",
                   "author": "Denison Barbosa",
-                  "timestamp": 1720019934,
-                  "message": "refactor: Fail authentication sooner if failed to fetch user info (#50)\n\nWhen first authenticating with QRCode, the user would have to also\r\ncreate its local password before knowing if the authentication failed.\r\nNow, the user info is fetched before the password creation prompt, and\r\nauthentication will fail before asking for password creation.\r\n\r\nUDENG-3414",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/fa363ec449a297eff59d5eaa0ce520bcd09a8766"
+                  "timestamp": 1720022420,
+                  "message": "feat: Implement UserPreCheck (#49)\n\nThis adds the implementation for the UserPreCheck method on the broker.\r\nWithout it, users would never be able to authenticate through SSH\r\nwithout first authenticating locally in the machine, which is not ideal.\r\n\r\nUDENG-3415",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f5bc36137a1c8f89989842fdc7711d55c72857ae"
                },
                {
-                  "sha": "cc6184473e6a5a72744067a3c2073a338fb48113",
+                  "sha": "d6116da74ab51844b4b9055408afc634363c537e",
                   "author": "denisonbarbosa",
-                  "timestamp": 1720018149,
-                  "message": "Fail authentication sooner if failed to fetch user info\n\nWhen first authenticating with QRCode, the user would have to also\ncreate its local password before knowing if the authentication failed or\nnot. Now, the user info is fetched before the password creation prompt\nand authentication will now fail before it also.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/cc6184473e6a5a72744067a3c2073a338fb48113"
+                  "timestamp": 1720016798,
+                  "message": "Add impl. for UserPreCheck\n\nWithout prechecking, users would never be able to authenticate through\nSSH without first authenticating locally in the machine, which is not\nideal.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d6116da74ab51844b4b9055408afc634363c537e"
                },
                {
-                  "sha": "34577ad3ae9b6db0d0167cd4d21669c81bbc176a",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1720011375,
-                  "message": "fix/refactor(broker): Fix JSON generation of returned authentication data (userinfo and message) (#43)\n\nSome errors were causing our previous strategy of generating the JSON on\r\nthe go to fail, as some error messages could have double quotes. To\r\navoid this, it's better to use the native marshaling of strings that the\r\n`encode/json` package provides.\r\n\r\nUDENG-3428",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/34577ad3ae9b6db0d0167cd4d21669c81bbc176a"
+                  "sha": "0744463be769cae9ce979d9dae12656ae1f546c3",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1720016284,
+                  "message": "Update test helpers to improve broker creation",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0744463be769cae9ce979d9dae12656ae1f546c3"
                }
             ],
             "ciActions": [
