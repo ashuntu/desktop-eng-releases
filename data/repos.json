@@ -6132,25 +6132,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "684d267fd01043c69b9a342bd9275de1f1660738",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1720014828,
+                  "message": "fix: do not explicitly call description on nss error (#410)\n\nAs in the documentation:\r\n/// If you only need description in `println`, `format`, `log` and other\r\n/// formatting contexts, you may want to use `Display` impl for `Code`\r\n/// instead.\r\n\r\nSo, let’s use the display trait as the error macro is using format.\r\n\r\nNote that this is prior the logging refactoring.",
+                  "url": "https://github.com/ubuntu/authd/commit/684d267fd01043c69b9a342bd9275de1f1660738"
+               },
+               {
+                  "sha": "314ccc6cf92dd0dab5f03dc1992003adaf649a34",
+                  "author": "Didier Roche",
+                  "timestamp": 1720013064,
+                  "message": "fix: do not explicitly call description on nss error\n\nAs in the documentation:\n/// If you only need description in `println`, `format`, `log` and other\n/// formatting contexts, you may want to use `Display` impl for `Code`\n/// instead.\n\nSo, let’s use the display trait as the error macro is using format.\n    /// If you only need description in `println`, `format`, `log` and other\n    /// formatting contexts, you may want to use `Display` impl for `Code`\n    /// instead.",
+                  "url": "https://github.com/ubuntu/authd/commit/314ccc6cf92dd0dab5f03dc1992003adaf649a34"
+               },
+               {
                   "sha": "dd7d4ced3efbb84f6f93e18be4218aa3d84e54e1",
                   "author": "Marco Trevisan",
                   "timestamp": 1719994268,
                   "message": "fix(examplebroker): Improve wording for the regenerate code button label (#408)\n\n  The user is allowed to regenerate the login code not the QR code, so\r\n  improve the wording here.\r\n  \r\n  Regenerate the golden files based on that\r\n\r\nThis is not strictly needed, but it's better to align with\r\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/47",
                   "url": "https://github.com/ubuntu/authd/commit/dd7d4ced3efbb84f6f93e18be4218aa3d84e54e1"
-               },
-               {
-                  "sha": "d0004375b801fd9cfb521ff5e195a47f8b84a8da",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1719991483,
-                  "message": "cleanup(pam/integration-tests/cli): Do not build the module and pam clients for each test (#409)\n\nSince commit d1a75d811, for the cli tests we call prepareClientTest()\r\nfor each test in order to get the client folder, however this also\r\nimplies building the test client, the module and the exec client for\r\neach test even though this is not needed, since we can share those\r\nbinaries.\r\n\r\nSo just call this once in the main test.\r\n\r\nIdeally this should make CI a little quicker.",
-                  "url": "https://github.com/ubuntu/authd/commit/d0004375b801fd9cfb521ff5e195a47f8b84a8da"
-               },
-               {
-                  "sha": "4d26596c494ff4151e229898d0d9a0b16a2381cd",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1719947849,
-                  "message": "pam/integration-tests/cli: Do not build the module and pam clients for each test\n\nSince commit d1a75d811, for the cli tests we call prepareClientTest() for\neach test in order to get the client folder, however this also implies\nbuilding the test client, the module and the exec client for each test\neven though this is not needed, since we can share those binaries.\n\nSo just call this once in the main test.",
-                  "url": "https://github.com/ubuntu/authd/commit/4d26596c494ff4151e229898d0d9a0b16a2381cd"
                }
             ],
             "ciActions": [
