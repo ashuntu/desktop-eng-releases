@@ -6167,25 +6167,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d19fa7215b1d7c0c4726e495b0c19dce8e292be8",
+                  "sha": "34577ad3ae9b6db0d0167cd4d21669c81bbc176a",
                   "author": "Denison Barbosa",
-                  "timestamp": 1720010110,
-                  "message": "maint: Bump Go to 1.22.5 (#48)\n\nFixes Vulnerability: GO-2024-2963\r\n    Denial of service due to improper 100-continue handling in net/http\r\n  More info: https://pkg.go.dev/vuln/GO-2024-2963\r\n  Standard library\r\n    Found in: net/http@go1.22.4\r\n    Fixed in: net/http@go1.22.5",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d19fa7215b1d7c0c4726e495b0c19dce8e292be8"
+                  "timestamp": 1720011375,
+                  "message": "fix/refactor(broker): Fix JSON generation of returned authentication data (userinfo and message) (#43)\n\nSome errors were causing our previous strategy of generating the JSON on\r\nthe go to fail, as some error messages could have double quotes. To\r\navoid this, it's better to use the native marshaling of strings that the\r\n`encode/json` package provides.\r\n\r\nUDENG-3428",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/34577ad3ae9b6db0d0167cd4d21669c81bbc176a"
                },
                {
-                  "sha": "0e00f8e5cea9c29824cb3c0141f98dac6f5d40b1",
+                  "sha": "0a6045e094e9c334f6214600a455300227e81675",
                   "author": "denisonbarbosa",
-                  "timestamp": 1720003430,
-                  "message": "Bump Go to 1.22.5\n\nFixes Vulnerability #1: GO-2024-2963\n    Denial of service due to improper 100-continue handling in net/http\n  More info: https://pkg.go.dev/vuln/GO-2024-2963\n  Standard library\n    Found in: net/http@go1.22.4\n    Fixed in: net/http@go1.22.5",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0e00f8e5cea9c29824cb3c0141f98dac6f5d40b1"
+                  "timestamp": 1720010822,
+                  "message": "Refactor IsAuthenticated logic to ensure valid JSON return\n\nWe had some problems when error messages had double quotes in them, as\nit would break the JSON unmarshaling. To avoid this kind of errors\nagain, we now use separate types for the returned data and marshal them\nthrough json.Marshal, which prevents mistakes that could happen when\n\"manually\" generating the message.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0a6045e094e9c334f6214600a455300227e81675"
                },
                {
-                  "sha": "2a521d8675065b4cd8dae22053e1e3296d923d05",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1719985160,
-                  "message": "broker: Use better wording for the qrcode button (#47)\n\nThe button is selecting the authentication again, requesting a new login\r\ncode, not the qrcode itself.\r\n\r\nSo improve wording here a bit\r\n\r\nUDENG-3416",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2a521d8675065b4cd8dae22053e1e3296d923d05"
+                  "sha": "e5b7f666ffa8eab7c7f01c838b7f77c9c12e665d",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1720010487,
+                  "message": "Turn userInfo into own type and refactor FetchUserInfo\n\nTo prepare for the json marshaling changes, we need to turn the userInfo\ninto its own type and add json annotations to the struct so that it can\nbe marshaled correctly through json.Marshal.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e5b7f666ffa8eab7c7f01c838b7f77c9c12e665d"
                }
             ],
             "ciActions": [
