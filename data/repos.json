@@ -6167,25 +6167,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fa363ec449a297eff59d5eaa0ce520bcd09a8766",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1720019934,
+                  "message": "refactor: Fail authentication sooner if failed to fetch user info (#50)\n\nWhen first authenticating with QRCode, the user would have to also\r\ncreate its local password before knowing if the authentication failed.\r\nNow, the user info is fetched before the password creation prompt, and\r\nauthentication will fail before asking for password creation.\r\n\r\nUDENG-3414",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/fa363ec449a297eff59d5eaa0ce520bcd09a8766"
+               },
+               {
+                  "sha": "cc6184473e6a5a72744067a3c2073a338fb48113",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1720018149,
+                  "message": "Fail authentication sooner if failed to fetch user info\n\nWhen first authenticating with QRCode, the user would have to also\ncreate its local password before knowing if the authentication failed or\nnot. Now, the user info is fetched before the password creation prompt\nand authentication will now fail before it also.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/cc6184473e6a5a72744067a3c2073a338fb48113"
+               },
+               {
                   "sha": "34577ad3ae9b6db0d0167cd4d21669c81bbc176a",
                   "author": "Denison Barbosa",
                   "timestamp": 1720011375,
                   "message": "fix/refactor(broker): Fix JSON generation of returned authentication data (userinfo and message) (#43)\n\nSome errors were causing our previous strategy of generating the JSON on\r\nthe go to fail, as some error messages could have double quotes. To\r\navoid this, it's better to use the native marshaling of strings that the\r\n`encode/json` package provides.\r\n\r\nUDENG-3428",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/34577ad3ae9b6db0d0167cd4d21669c81bbc176a"
-               },
-               {
-                  "sha": "0a6045e094e9c334f6214600a455300227e81675",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1720010822,
-                  "message": "Refactor IsAuthenticated logic to ensure valid JSON return\n\nWe had some problems when error messages had double quotes in them, as\nit would break the JSON unmarshaling. To avoid this kind of errors\nagain, we now use separate types for the returned data and marshal them\nthrough json.Marshal, which prevents mistakes that could happen when\n\"manually\" generating the message.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0a6045e094e9c334f6214600a455300227e81675"
-               },
-               {
-                  "sha": "e5b7f666ffa8eab7c7f01c838b7f77c9c12e665d",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1720010487,
-                  "message": "Turn userInfo into own type and refactor FetchUserInfo\n\nTo prepare for the json marshaling changes, we need to turn the userInfo\ninto its own type and add json annotations to the struct so that it can\nbe marshaled correctly through json.Marshal.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e5b7f666ffa8eab7c7f01c838b7f77c9c12e665d"
                }
             ],
             "ciActions": [
