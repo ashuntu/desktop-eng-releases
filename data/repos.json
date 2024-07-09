@@ -2637,7 +2637,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 11,
+            "newCommits": 12,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -6198,25 +6198,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d6134359847bd206fe83630fb816da8f8e93f4ab",
+                  "sha": "66d74ceb75f97c66149bc7be401386141b1742c3",
                   "author": "Marco Trevisan",
-                  "timestamp": 1720478134,
-                  "message": "pam/integration-tests/cli: Increase the wait times on MFA test (#422)\n\nThe test is quite unreliable [1] when running in CI or under pressure,\r\nso let's see if we can make it more stable by increasing the wait times,\r\nuntil vhs will support officially the wait feature.\r\n\r\n[1]\r\nhttps://github.com/ubuntu/authd/actions/runs/9765222175/job/26955414933\r\n\r\nUDENG-3549",
-                  "url": "https://github.com/ubuntu/authd/commit/d6134359847bd206fe83630fb816da8f8e93f4ab"
+                  "timestamp": 1720520919,
+                  "message": "fix: IsAuthenticated cancellation races (#421)\n\nBoth on the client side and the server side we have some troubles in\r\nhandling repeated `IsAuthenticated` requests followed by cancellations.\r\n\r\nIn particular:\r\n- The client didn't wait for previous authentication/cancellation to be\r\ncompleted to start a new one\r\n- The server may end up sending the cancellation events to the broker\r\nwhen the Authentication wasn't started yet\r\n- The client may send a cancelled event to the authentication model\r\nwhile the broker is still in the process of cancelling a previous\r\nrequest, and the server may still forward it\r\n\r\nSee commits fixing (or workarounding) each issue here for deeper\r\nexplanations and the rationale for the fix or workaround in place.\r\n\r\nUDENG-3417",
+                  "url": "https://github.com/ubuntu/authd/commit/66d74ceb75f97c66149bc7be401386141b1742c3"
                },
                {
-                  "sha": "5dd74851cb681698b8a14b552b495553781286b1",
+                  "sha": "f0d159df101218be8a8f7675a84dcfc9b5e77ada",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1719994706,
-                  "message": "pam/integration-tests/cli: Increase the wait times on MFA test\n\nThe test is quite unreliable [1] when running in CI or under pressure, so\nlet's see if we can make it more stable by increasing the wait times,\nuntil vhs will support officially the wait feature.\n\n[1] https://github.com/ubuntu/authd/actions/runs/9765222175/job/26955414933",
-                  "url": "https://github.com/ubuntu/authd/commit/5dd74851cb681698b8a14b552b495553781286b1"
+                  "timestamp": 1719505085,
+                  "message": "pam/integration-tests: Regenerating the qrcode multiple times",
+                  "url": "https://github.com/ubuntu/authd/commit/f0d159df101218be8a8f7675a84dcfc9b5e77ada"
                },
                {
-                  "sha": "3ee92457c70281788927ec3a9da4be5f7f88f7fc",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1720182388,
-                  "message": "fix(NSS): Fix should_pre_check logic to identify sshd (#419)\n\nThe cmdline returned by calling proc.cmdline() has multiple strings that\r\nconsist of the entire command, which means that, instead of having\r\nsomething like this: [\"cmd\", \"arg1\", \"arg2, ..., \"argn\"] It looks like\r\nthis: [\"cmd arg1 arg2 ... argn\"]\r\n\r\nIn order to better limit the options, as this precheck can be a security\r\nbreach, we only allow the precheck if it comes from the common known\r\nsshd binary.\r\n\r\nUDENG-3415",
-                  "url": "https://github.com/ubuntu/authd/commit/3ee92457c70281788927ec3a9da4be5f7f88f7fc"
+                  "sha": "a2383a30cf48e0b118cba0372b57ce44b8ddc166",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1719501502,
+                  "message": "examplebroker: Simulate regeneration of qrcode for real\n\nExample broker did support qrcode's code regeneration, but this didn't\nlead to new content or code, making testing its actual functionality\nharder.\n\nSo, each time the qrcode is selected we now loop through different (but\npredictable) URIs and increase the code value.\n\nAs per this regenerate golden files so that the regeneration is tracked\n\nAdd support for `user-integration-static-qrcode` users so that we don't\nhave to track the content changes in brute-force tests where we don't\nhave a clear number of regeneration events and we don't care about such\nchanges.",
+                  "url": "https://github.com/ubuntu/authd/commit/a2383a30cf48e0b118cba0372b57ce44b8ddc166"
                }
             ],
             "ciActions": [
@@ -7315,7 +7315,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 11,
+            "newCommits": 12,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -8226,7 +8226,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 11,
+            "newCommits": 12,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
