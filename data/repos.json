@@ -6167,25 +6167,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ee79cec57658d95889a1d7159ada36eb49e97352",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1720432234,
-                  "message": "deps(go): bump golang.org/x/crypto from 0.24.0 to 0.25.0 (#51)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/ee79cec57658d95889a1d7159ada36eb49e97352"
+                  "sha": "628544f52ec40de93f91a4004d5c1beb211eac8e",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1720505247,
+                  "message": "fix: split config files and drop write-files plug (#52)\n\nTo be able to drop the write files permissions, let's split the config\r\nfile in 2 parts.\r\n\r\nThat will also allow us to not depend on the file on /etc by making that\r\nbuilt-in.\r\n\r\nUDENG-3485",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/628544f52ec40de93f91a4004d5c1beb211eac8e"
                },
                {
-                  "sha": "68cc461bc0eab489a1cfd96c4a38e8893ae3ddb5",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1720429013,
-                  "message": "deps(go): bump golang.org/x/crypto from 0.24.0 to 0.25.0\n\nBumps [golang.org/x/crypto](https://github.com/golang/crypto) from 0.24.0 to 0.25.0.\n- [Commits](https://github.com/golang/crypto/compare/v0.24.0...v0.25.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/crypto\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/68cc461bc0eab489a1cfd96c4a38e8893ae3ddb5"
+                  "sha": "bf2dcc7c3013addb745f08173392cc452411c3ea",
+                  "author": "Didier Roche",
+                  "timestamp": 1720447836,
+                  "message": "Change snap brand icon path to possible location\n\nAs can’t change that at build-time for now, use the path that may be\nused once we display the broker icon itself.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/bf2dcc7c3013addb745f08173392cc452411c3ea"
                },
                {
-                  "sha": "f5bc36137a1c8f89989842fdc7711d55c72857ae",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1720022420,
-                  "message": "feat: Implement UserPreCheck (#49)\n\nThis adds the implementation for the UserPreCheck method on the broker.\r\nWithout it, users would never be able to authenticate through SSH\r\nwithout first authenticating locally in the machine, which is not ideal.\r\n\r\nUDENG-3415",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f5bc36137a1c8f89989842fdc7711d55c72857ae"
+                  "sha": "5b284b21918fcb8e362e098718d0f8b6b8b4389d",
+                  "author": "Didier Roche",
+                  "timestamp": 1720436489,
+                  "message": "Ship the configuration file as brokers.conf in SNAP_DATA\n\nWe ship the broker configuration file now under current/ to have it per\nversion.\nThe hook is copying from the original file to this one if it does not\nexists, then the sysadmin can modify the broker configuration.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/5b284b21918fcb8e362e098718d0f8b6b8b4389d"
                }
             ],
             "ciActions": [
