@@ -3586,6 +3586,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1931da71d9f8863d6446f0ebfa0cdac9b499772c",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1720604861,
+                  "message": "Decrease number of days for reminders.\n\nThis \"has gone into production\" so put feasible numbers.",
+                  "url": "https://github.com/canonical/snap-expire/commit/1931da71d9f8863d6446f0ebfa0cdac9b499772c"
+               },
+               {
                   "sha": "a9b7a7813e93674f53097d49741a41f7b53069fc",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1720538310,
@@ -3598,13 +3605,6 @@
                   "timestamp": 1720512832,
                   "message": "Either MM_URL or APILOG has to be provided.",
                   "url": "https://github.com/canonical/snap-expire/commit/24ba3eb103c2fd35d306bdd369895039af2ae01c"
-               },
-               {
-                  "sha": "205cd302d3b322459ca466c8dbec859af6421127",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1720446337,
-                  "message": "README: Explain watched-snaps.",
-                  "url": "https://github.com/canonical/snap-expire/commit/205cd302d3b322459ca466c8dbec859af6421127"
                }
             ],
             "ciActions": [],
@@ -5386,6 +5386,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1931da71d9f8863d6446f0ebfa0cdac9b499772c",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1720604861,
+                  "message": "Decrease number of days for reminders.\n\nThis \"has gone into production\" so put feasible numbers.",
+                  "url": "https://github.com/canonical/snap-expire/commit/1931da71d9f8863d6446f0ebfa0cdac9b499772c"
+               },
+               {
                   "sha": "a9b7a7813e93674f53097d49741a41f7b53069fc",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1720538310,
@@ -5398,13 +5405,6 @@
                   "timestamp": 1720512832,
                   "message": "Either MM_URL or APILOG has to be provided.",
                   "url": "https://github.com/canonical/snap-expire/commit/24ba3eb103c2fd35d306bdd369895039af2ae01c"
-               },
-               {
-                  "sha": "205cd302d3b322459ca466c8dbec859af6421127",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1720446337,
-                  "message": "README: Explain watched-snaps.",
-                  "url": "https://github.com/canonical/snap-expire/commit/205cd302d3b322459ca466c8dbec859af6421127"
                }
             ],
             "ciActions": [],
@@ -6198,25 +6198,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "66d74ceb75f97c66149bc7be401386141b1742c3",
+                  "sha": "a5269feaf27cf57c08ef9f355b85e0f7a45c0380",
                   "author": "Marco Trevisan",
-                  "timestamp": 1720520919,
-                  "message": "fix: IsAuthenticated cancellation races (#421)\n\nBoth on the client side and the server side we have some troubles in\r\nhandling repeated `IsAuthenticated` requests followed by cancellations.\r\n\r\nIn particular:\r\n- The client didn't wait for previous authentication/cancellation to be\r\ncompleted to start a new one\r\n- The server may end up sending the cancellation events to the broker\r\nwhen the Authentication wasn't started yet\r\n- The client may send a cancelled event to the authentication model\r\nwhile the broker is still in the process of cancelling a previous\r\nrequest, and the server may still forward it\r\n\r\nSee commits fixing (or workarounding) each issue here for deeper\r\nexplanations and the rationale for the fix or workaround in place.\r\n\r\nUDENG-3417",
-                  "url": "https://github.com/ubuntu/authd/commit/66d74ceb75f97c66149bc7be401386141b1742c3"
+                  "timestamp": 1720606070,
+                  "message": "feat(pam/gdmmodel): Add support for password quality check (#423)\n\nSupport checking for password quality when logging-in with GDM, due to\r\nthe nature of GDM model, we can only provide the final check after the\r\nuser as typed the password twice, but that's still better than not\r\nhaving the check at all.\r\n\r\nTo keep the GDM model agnostic to the change, handle this only in the\r\n`authentication` backend, so that in the gdm case it's also doing an\r\nextra step to check the challenge before passing the data to the broker.\r\n\r\nAdd tests to handle the newpassword layout in gdm, since we had not them\r\nyet.\r\n\r\nUDENG-3374",
+                  "url": "https://github.com/ubuntu/authd/commit/a5269feaf27cf57c08ef9f355b85e0f7a45c0380"
                },
                {
-                  "sha": "f0d159df101218be8a8f7675a84dcfc9b5e77ada",
+                  "sha": "03304bd46b4d0bf461d2318990665a59969e7d26",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1719505085,
-                  "message": "pam/integration-tests: Regenerating the qrcode multiple times",
-                  "url": "https://github.com/ubuntu/authd/commit/f0d159df101218be8a8f7675a84dcfc9b5e77ada"
+                  "timestamp": 1720548988,
+                  "message": "pam/integration-tests: Ensure password can be changed again after first time\n\nEnsuring the previous commit broker change actually works",
+                  "url": "https://github.com/ubuntu/authd/commit/03304bd46b4d0bf461d2318990665a59969e7d26"
                },
                {
-                  "sha": "a2383a30cf48e0b118cba0372b57ce44b8ddc166",
+                  "sha": "c290dba5e28ff8c42dc13f7c41801c7890def691",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1719501502,
-                  "message": "examplebroker: Simulate regeneration of qrcode for real\n\nExample broker did support qrcode's code regeneration, but this didn't\nlead to new content or code, making testing its actual functionality\nharder.\n\nSo, each time the qrcode is selected we now loop through different (but\npredictable) URIs and increase the code value.\n\nAs per this regenerate golden files so that the regeneration is tracked\n\nAdd support for `user-integration-static-qrcode` users so that we don't\nhave to track the content changes in brute-force tests where we don't\nhave a clear number of regeneration events and we don't care about such\nchanges.",
-                  "url": "https://github.com/ubuntu/authd/commit/a2383a30cf48e0b118cba0372b57ce44b8ddc166"
+                  "timestamp": 1720547277,
+                  "message": "examplebroker: Require different password if current password has been updated\n\nWhen trying to change the password again when it has been changed to\n`authd2404`, we'd be now blocked by the password quality check since\nthe new password is matching the previous one, so in case it has been\nchanged already, reset it to `goodpass` again.\n\nAs per this also spot an issue we had in the native tape that didn't\nreally check what we wanted.",
+                  "url": "https://github.com/ubuntu/authd/commit/c290dba5e28ff8c42dc13f7c41801c7890def691"
                }
             ],
             "ciActions": [
@@ -7427,6 +7427,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1931da71d9f8863d6446f0ebfa0cdac9b499772c",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1720604861,
+                  "message": "Decrease number of days for reminders.\n\nThis \"has gone into production\" so put feasible numbers.",
+                  "url": "https://github.com/canonical/snap-expire/commit/1931da71d9f8863d6446f0ebfa0cdac9b499772c"
+               },
+               {
                   "sha": "a9b7a7813e93674f53097d49741a41f7b53069fc",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1720538310,
@@ -7439,13 +7446,6 @@
                   "timestamp": 1720512832,
                   "message": "Either MM_URL or APILOG has to be provided.",
                   "url": "https://github.com/canonical/snap-expire/commit/24ba3eb103c2fd35d306bdd369895039af2ae01c"
-               },
-               {
-                  "sha": "205cd302d3b322459ca466c8dbec859af6421127",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1720446337,
-                  "message": "README: Explain watched-snaps.",
-                  "url": "https://github.com/canonical/snap-expire/commit/205cd302d3b322459ca466c8dbec859af6421127"
                }
             ],
             "ciActions": [],
