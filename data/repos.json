@@ -4457,7 +4457,7 @@
          {
             "name": "WSL",
             "defaultBranch": "main",
-            "newCommits": 464,
+            "newCommits": 466,
             "url": "https://github.com/ubuntu/WSL",
             "releases": [
                {
@@ -6198,25 +6198,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5672b51389cc5787850399a0bcc54f56f92bfb29",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1720609330,
+                  "message": "cleanup: Fix few typos found in the codebase (#424)",
+                  "url": "https://github.com/ubuntu/authd/commit/5672b51389cc5787850399a0bcc54f56f92bfb29"
+               },
+               {
+                  "sha": "4bb309b5b5269c0c0a7fa859dc0be9a2420f7684",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1720605729,
+                  "message": "cleanup: Fix few typos found in the codebase",
+                  "url": "https://github.com/ubuntu/authd/commit/4bb309b5b5269c0c0a7fa859dc0be9a2420f7684"
+               },
+               {
                   "sha": "a5269feaf27cf57c08ef9f355b85e0f7a45c0380",
                   "author": "Marco Trevisan",
                   "timestamp": 1720606070,
                   "message": "feat(pam/gdmmodel): Add support for password quality check (#423)\n\nSupport checking for password quality when logging-in with GDM, due to\r\nthe nature of GDM model, we can only provide the final check after the\r\nuser as typed the password twice, but that's still better than not\r\nhaving the check at all.\r\n\r\nTo keep the GDM model agnostic to the change, handle this only in the\r\n`authentication` backend, so that in the gdm case it's also doing an\r\nextra step to check the challenge before passing the data to the broker.\r\n\r\nAdd tests to handle the newpassword layout in gdm, since we had not them\r\nyet.\r\n\r\nUDENG-3374",
                   "url": "https://github.com/ubuntu/authd/commit/a5269feaf27cf57c08ef9f355b85e0f7a45c0380"
-               },
-               {
-                  "sha": "03304bd46b4d0bf461d2318990665a59969e7d26",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1720548988,
-                  "message": "pam/integration-tests: Ensure password can be changed again after first time\n\nEnsuring the previous commit broker change actually works",
-                  "url": "https://github.com/ubuntu/authd/commit/03304bd46b4d0bf461d2318990665a59969e7d26"
-               },
-               {
-                  "sha": "c290dba5e28ff8c42dc13f7c41801c7890def691",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1720547277,
-                  "message": "examplebroker: Require different password if current password has been updated\n\nWhen trying to change the password again when it has been changed to\n`authd2404`, we'd be now blocked by the password quality check since\nthe new password is matching the previous one, so in case it has been\nchanged already, reset it to `goodpass` again.\n\nAs per this also spot an issue we had in the native tape that didn't\nreally check what we wanted.",
-                  "url": "https://github.com/ubuntu/authd/commit/c290dba5e28ff8c42dc13f7c41801c7890def691"
                }
             ],
             "ciActions": [
