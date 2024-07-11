@@ -6198,25 +6198,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5672b51389cc5787850399a0bcc54f56f92bfb29",
+                  "sha": "78832432c54de34ae61e804bd5ba36122eb20b18",
                   "author": "Marco Trevisan",
-                  "timestamp": 1720609330,
-                  "message": "cleanup: Fix few typos found in the codebase (#424)",
-                  "url": "https://github.com/ubuntu/authd/commit/5672b51389cc5787850399a0bcc54f56f92bfb29"
+                  "timestamp": 1720681648,
+                  "message": "fix(debian): Add pwquality dictionary check dependencies (#425)\n\nIn order to do password dictionary checks we need to use cracklib, but\nthe runtime isn't installed by default in debian so add a test\ndependency for it and, just in case, to debian too.\n\nAlso use the simplest password ever that would fail any dictionary check\n(and that's part of cracklib's cracklib-small dictionary)\n\nIt built fine at\nhttps://launchpad.net/~ubuntu-enterprise-desktop/+archive/ubuntu/authd/+sourcepub/16261392/+listing-archive-extra\n\nUDENG-3575",
+                  "url": "https://github.com/ubuntu/authd/commit/78832432c54de34ae61e804bd5ba36122eb20b18"
                },
                {
-                  "sha": "4bb309b5b5269c0c0a7fa859dc0be9a2420f7684",
+                  "sha": "ddff1f3e9df8642fa458b0417d3595b944733487",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1720605729,
-                  "message": "cleanup: Fix few typos found in the codebase",
-                  "url": "https://github.com/ubuntu/authd/commit/4bb309b5b5269c0c0a7fa859dc0be9a2420f7684"
+                  "timestamp": 1720643581,
+                  "message": "pam: Use simpler password for dictionary check failure test\n\nUse a password that is listed in the basic cracklib's cracklib-small\ndictionary so that it should be always supported",
+                  "url": "https://github.com/ubuntu/authd/commit/ddff1f3e9df8642fa458b0417d3595b944733487"
                },
                {
-                  "sha": "a5269feaf27cf57c08ef9f355b85e0f7a45c0380",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1720606070,
-                  "message": "feat(pam/gdmmodel): Add support for password quality check (#423)\n\nSupport checking for password quality when logging-in with GDM, due to\r\nthe nature of GDM model, we can only provide the final check after the\r\nuser as typed the password twice, but that's still better than not\r\nhaving the check at all.\r\n\r\nTo keep the GDM model agnostic to the change, handle this only in the\r\n`authentication` backend, so that in the gdm case it's also doing an\r\nextra step to check the challenge before passing the data to the broker.\r\n\r\nAdd tests to handle the newpassword layout in gdm, since we had not them\r\nyet.\r\n\r\nUDENG-3374",
-                  "url": "https://github.com/ubuntu/authd/commit/a5269feaf27cf57c08ef9f355b85e0f7a45c0380"
+                  "sha": "8ca43fc3f54bb0262ae6c7e82eee484ce7891664",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1720643532,
+                  "message": "debian, ci: Add explicit test dependency on cracklib-runtime\n\nIt's required for doing dictionary checks, so install it for testing",
+                  "url": "https://github.com/ubuntu/authd/commit/8ca43fc3f54bb0262ae6c7e82eee484ce7891664"
                }
             ],
             "ciActions": [
