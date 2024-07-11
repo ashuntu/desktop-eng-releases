@@ -6198,25 +6198,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "78832432c54de34ae61e804bd5ba36122eb20b18",
+                  "sha": "c7b4d3bc0873f4c6e2d12520b039236b553e62a1",
                   "author": "Marco Trevisan",
-                  "timestamp": 1720681648,
-                  "message": "fix(debian): Add pwquality dictionary check dependencies (#425)\n\nIn order to do password dictionary checks we need to use cracklib, but\nthe runtime isn't installed by default in debian so add a test\ndependency for it and, just in case, to debian too.\n\nAlso use the simplest password ever that would fail any dictionary check\n(and that's part of cracklib's cracklib-small dictionary)\n\nIt built fine at\nhttps://launchpad.net/~ubuntu-enterprise-desktop/+archive/ubuntu/authd/+sourcepub/16261392/+listing-archive-extra\n\nUDENG-3575",
-                  "url": "https://github.com/ubuntu/authd/commit/78832432c54de34ae61e804bd5ba36122eb20b18"
+                  "timestamp": 1720704401,
+                  "message": "fix(pam/authentication): Only save the current challenge if was used to authenticate (#428)\n\nDo not store the challenge when we authenticated with a system that does\r\nnot use challenge-based authentication such as qrcode or other waiting\r\nservices\r\n\r\nAdded tests for all the supported UIs (all failing previously)\r\n\r\nUDENG-3587",
+                  "url": "https://github.com/ubuntu/authd/commit/c7b4d3bc0873f4c6e2d12520b039236b553e62a1"
                },
                {
-                  "sha": "ddff1f3e9df8642fa458b0417d3595b944733487",
+                  "sha": "72bac94d54b301c6aef338752402f79a467762a7",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1720643581,
-                  "message": "pam: Use simpler password for dictionary check failure test\n\nUse a password that is listed in the basic cracklib's cracklib-small\ndictionary so that it should be always supported",
-                  "url": "https://github.com/ubuntu/authd/commit/ddff1f3e9df8642fa458b0417d3595b944733487"
+                  "timestamp": 1720698518,
+                  "message": "pam/integration-tests/native: Wait more on not-root tests\n\nWe are getting some random golden files mismatch (on empty content, not\nactual one), so let's wait more before recording again, hopefully it\nhelps.",
+                  "url": "https://github.com/ubuntu/authd/commit/72bac94d54b301c6aef338752402f79a467762a7"
                },
                {
-                  "sha": "8ca43fc3f54bb0262ae6c7e82eee484ce7891664",
+                  "sha": "0817d3c06abbd779151179018141953e7c1b1378",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1720643532,
-                  "message": "debian, ci: Add explicit test dependency on cracklib-runtime\n\nIt's required for doing dictionary checks, so install it for testing",
-                  "url": "https://github.com/ubuntu/authd/commit/8ca43fc3f54bb0262ae6c7e82eee484ce7891664"
+                  "timestamp": 1720696502,
+                  "message": "pam/integration-tests/gdm: Add test for password change with quality checks after MFA auth",
+                  "url": "https://github.com/ubuntu/authd/commit/0817d3c06abbd779151179018141953e7c1b1378"
                }
             ],
             "ciActions": [
