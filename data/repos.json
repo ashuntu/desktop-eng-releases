@@ -6198,25 +6198,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "2d72a8a09061a7de322783caeee8baf4c9e49c51",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1720789723,
+                  "message": "fix(pam/authentication): Ensure all cancellations are forwarded (#429)\n\nWhen triggering quick authentication re-selection requests we may end up\noverwriting the local cancelAuthFunc while another one has is in process\nof being set.\n\nDue to the nature of bubbletea, saving the data in the model isn't fully\nreliable since the model may not be updated when another request is\ncoming concurrently.\n\nSo, use the cancel function as the main authTracker check point so that\nit's always the same during each authentication request, and it allows\nto simplify some codepaths.\n\nThis is very easy to trigger by using the CLI, by just holding the Enter\nkey for a while, and the regeneration will stop, but it's not something\nI've been able to test in VHS since holding a key isn't really possible\nand the minimum key press delay isn't enough to trigger it.\n\nUDENG-3606",
+                  "url": "https://github.com/ubuntu/authd/commit/2d72a8a09061a7de322783caeee8baf4c9e49c51"
+               },
+               {
+                  "sha": "3775a37c84d357ac47d87b735a7d82389db6bf96",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1720711454,
+                  "message": "pam/authentication: Ensure cancellations are forwarded\n\nWhen triggering quick authentication re-selection requests we may end up\noverwriting the local cancelAuthFunc while another one has is in process\nof being set.\n\nDue to the nature of bubbletea, saving the data in the model isn't fully\nreliable since the model may not be updated when another request is\ncoming concurrently.\n\nSo, use the cancel function as the main authTracker check point so that\nit's always the same during each authentication request, and it allows\nto simplify some codepaths.\n\nThis is very easy to trigger by using the CLI, by just holding the Enter\nkey for a while, and the regeneration will stop, but it's not something\nI've been able to test in VHS since holding a key isn't really possible\nand the minimum key press delay isn't enough to trigger it.",
+                  "url": "https://github.com/ubuntu/authd/commit/3775a37c84d357ac47d87b735a7d82389db6bf96"
+               },
+               {
                   "sha": "c7b4d3bc0873f4c6e2d12520b039236b553e62a1",
                   "author": "Marco Trevisan",
                   "timestamp": 1720704401,
                   "message": "fix(pam/authentication): Only save the current challenge if was used to authenticate (#428)\n\nDo not store the challenge when we authenticated with a system that does\r\nnot use challenge-based authentication such as qrcode or other waiting\r\nservices\r\n\r\nAdded tests for all the supported UIs (all failing previously)\r\n\r\nUDENG-3587",
                   "url": "https://github.com/ubuntu/authd/commit/c7b4d3bc0873f4c6e2d12520b039236b553e62a1"
-               },
-               {
-                  "sha": "72bac94d54b301c6aef338752402f79a467762a7",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1720698518,
-                  "message": "pam/integration-tests/native: Wait more on not-root tests\n\nWe are getting some random golden files mismatch (on empty content, not\nactual one), so let's wait more before recording again, hopefully it\nhelps.",
-                  "url": "https://github.com/ubuntu/authd/commit/72bac94d54b301c6aef338752402f79a467762a7"
-               },
-               {
-                  "sha": "0817d3c06abbd779151179018141953e7c1b1378",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1720696502,
-                  "message": "pam/integration-tests/gdm: Add test for password change with quality checks after MFA auth",
-                  "url": "https://github.com/ubuntu/authd/commit/0817d3c06abbd779151179018141953e7c1b1378"
                }
             ],
             "ciActions": [
