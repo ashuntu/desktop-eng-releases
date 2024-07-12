@@ -6198,6 +6198,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "aabcb334192c7321c06520d13f18f7936f1578b7",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1720800878,
+                  "message": "deps(go): bump the minor-updates group with 3 updates (#427)",
+                  "url": "https://github.com/ubuntu/authd/commit/aabcb334192c7321c06520d13f18f7936f1578b7"
+               },
+               {
                   "sha": "2d72a8a09061a7de322783caeee8baf4c9e49c51",
                   "author": "Marco Trevisan",
                   "timestamp": 1720789723,
@@ -6210,13 +6217,6 @@
                   "timestamp": 1720711454,
                   "message": "pam/authentication: Ensure cancellations are forwarded\n\nWhen triggering quick authentication re-selection requests we may end up\noverwriting the local cancelAuthFunc while another one has is in process\nof being set.\n\nDue to the nature of bubbletea, saving the data in the model isn't fully\nreliable since the model may not be updated when another request is\ncoming concurrently.\n\nSo, use the cancel function as the main authTracker check point so that\nit's always the same during each authentication request, and it allows\nto simplify some codepaths.\n\nThis is very easy to trigger by using the CLI, by just holding the Enter\nkey for a while, and the regeneration will stop, but it's not something\nI've been able to test in VHS since holding a key isn't really possible\nand the minimum key press delay isn't enough to trigger it.",
                   "url": "https://github.com/ubuntu/authd/commit/3775a37c84d357ac47d87b735a7d82389db6bf96"
-               },
-               {
-                  "sha": "c7b4d3bc0873f4c6e2d12520b039236b553e62a1",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1720704401,
-                  "message": "fix(pam/authentication): Only save the current challenge if was used to authenticate (#428)\n\nDo not store the challenge when we authenticated with a system that does\r\nnot use challenge-based authentication such as qrcode or other waiting\r\nservices\r\n\r\nAdded tests for all the supported UIs (all failing previously)\r\n\r\nUDENG-3587",
-                  "url": "https://github.com/ubuntu/authd/commit/c7b4d3bc0873f4c6e2d12520b039236b553e62a1"
                }
             ],
             "ciActions": [
