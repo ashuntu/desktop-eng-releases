@@ -5843,25 +5843,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1e0f4fd1e8a4ad59d751af25ba6c088d886d970b",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1720792463,
+                  "message": "deps(gui-ubuntupro): bump flutter_markdown from 0.7.2 to 0.7.3 in /gui/packages/ubuntupro (#826)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1e0f4fd1e8a4ad59d751af25ba6c088d886d970b"
+               },
+               {
+                  "sha": "628ce2c490d5c167d386499ab160d3c1233809b6",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1720786483,
+                  "message": "deps(gui-ubuntupro): bump flutter_markdown in /gui/packages/ubuntupro\n\nBumps [flutter_markdown](https://github.com/flutter/packages/tree/main/packages) from 0.7.2 to 0.7.3.\n- [Release notes](https://github.com/flutter/packages/releases)\n- [Commits](https://github.com/flutter/packages/commits/flutter_markdown-v0.7.3/packages)\n\n---\nupdated-dependencies:\n- dependency-name: flutter_markdown\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/628ce2c490d5c167d386499ab160d3c1233809b6"
+               },
+               {
                   "sha": "a7c65d2338598ac0dea58b399835a2d4ef434874",
                   "author": "CarlosNihelton",
                   "timestamp": 1720786066,
                   "message": "Auto update internal dependencies",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a7c65d2338598ac0dea58b399835a2d4ef434874"
-               },
-               {
-                  "sha": "de2908c337a6587c983586a3c959750dcede17c6",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1720786028,
-                  "message": "maint: Upgrade Go to 1.22.5 (#834)\n\nPlus some dependencies.\r\n\r\nCI is red due vulnerabilities in Go stdlib net and gRPC as well. So\r\nupgrading just Go won't be enough to get a green CI.\r\nLet's `go get -u ./... && go mod tidy` across the board :see_no_evil:\r\n\r\n```\r\nVulnerability #1: GO-2024-2978\r\n    Private tokens could appear in logs if context containing gRPC metadata is\r\n    logged in google.golang.org/grpc\r\n  More info: https://pkg.go.dev/vuln/GO-2024-2978\r\n  Module: google.golang.org/grpc\r\n    Found in: google.golang.org/grpc@v1.64.0\r\n    Fixed in: google.golang.org/grpc@v1.64.1\r\n    Example traces found:\r\nError:       #1: grpc/logstreamer/client.go:103:22: logstreamer.logClientStream.RecvMsg calls fmt.Sprintf, which eventually calls metadata.MD.String\r\n```\r\n\r\n\r\n```\r\nVulnerability #1: GO-2024-2963\r\n    Denial of service due to improper 100-continue handling in net/http\r\n  More info: https://pkg.go.dev/vuln/GO-2024-2963\r\n  Standard library\r\n    Found in: net/http@go1.22.4\r\n    Fixed in: net/http@go1.22.5\r\n    Example traces found:\r\nError:       #1: internal/ubuntupro/contractclient/client.go:106:23: contractclient.Client.GetProToken calls http.Client.Do\r\nError:       #2: internal/proservices/landscape/executor.go:291:23: landscape.download calls http.Get\r\n```",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/de2908c337a6587c983586a3c959750dcede17c6"
-               },
-               {
-                  "sha": "5a3dc5a54aed5d770b12ae76b6de208018a47071",
-                  "author": "Shane Crowley",
-                  "timestamp": 1720772169,
-                  "message": "docs: Updated sphinx docs starter pack (#833)\n\nUpdated the documentation framework to the tip of main.\r\n\r\nUDENG-3362",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5a3dc5a54aed5d770b12ae76b6de208018a47071"
                }
             ],
             "ciActions": [
