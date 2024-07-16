@@ -5856,25 +5856,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "2f1353bac5799f961c2241e772416913f4ed2617",
+                  "author": "Shane Crowley",
+                  "timestamp": 1721136517,
+                  "message": "docs: Fix broken link to build script in contributing.md (#839)\n\nLink to script for building the Windows Agent was to `build-deb.ps1` but\r\nit should be `build-deb.sh`.\r\n\r\nNote: this is linked correctly in the most recent `CONTRIBUTING.md` for\r\nthe Ubuntu WSL docs.\r\n\r\nUDENG-3594",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2f1353bac5799f961c2241e772416913f4ed2617"
+               },
+               {
+                  "sha": "8c2b9db253854a31dc63035fa8649d22111847d1",
+                  "author": "shanecrowley",
+                  "timestamp": 1721122640,
+                  "message": "Link should be to sh script not ps1\n\nNote: this is linked correctly in the most recent contributing.md for\nthe Ubuntu WSL docs.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8c2b9db253854a31dc63035fa8649d22111847d1"
+               },
+               {
                   "sha": "f0ffd92c5679582d50cc3a2aa4ff7147ea2184fb",
                   "author": "Shane Crowley",
                   "timestamp": 1721134698,
                   "message": "docs: Fix broken link to Landscape install and config (#838)\n\nFixes broken link for Landscape Server installation and configuration.\r\n\r\nUDENG-3628",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f0ffd92c5679582d50cc3a2aa4ff7147ea2184fb"
-               },
-               {
-                  "sha": "a152c4da8fc00dc4dd56ecc89f714a7df3c81d1e",
-                  "author": "shanecrowley",
-                  "timestamp": 1721121205,
-                  "message": "Fix broken link to Landscape install and config",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a152c4da8fc00dc4dd56ecc89f714a7df3c81d1e"
-               },
-               {
-                  "sha": "a3ceb9859d6302f3320d9651c0334a2abe19c3a1",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1721046338,
-                  "message": "feat(gui): Conditionally hide the Landscape Config page based on registry (#835)\n\n(Opening this PR on top of #834 because otherwise CI won't go green ;) )\r\n\r\nThis implements a \"Settings\" feature on top of the Windows registry via\r\nwhich we can enable Landscape configuration and MS Store purchase\r\n(previously configured via an environment variable), which are both\r\ncurrently disabled by default.\r\nWe make sure to not depend on the Windows registry for integration\r\ntesting, i.e. everything is tested as if all features are enabled.\r\n\r\nFor smaller test cases we test with both features enabled and disabled\r\nto ensure correctness.\r\n\r\nThis PR keeps the dependency on the Settings on the highest level, only\r\npropagating the decision to the implementation of the related pages.\r\n\r\nWhile this is a simpler design, it has a drawback of not reacting to\r\nchanges in the underlying data source (the Windows registry).\r\n\r\nAdding a listener for registry changes is more complex and not worth in\r\nmy opinion.\r\n\r\n---\r\nUDENG-3360",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a3ceb9859d6302f3320d9651c0334a2abe19c3a1"
                }
             ],
             "ciActions": [
@@ -6246,25 +6246,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "071010096492f5183315484883550b8ce58df4fa",
+                  "sha": "3d944b0cf4129f87ed982cb13a3e3b214aa18062",
                   "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1720620493,
-                  "message": "Use usual markups for templated values (#54)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/071010096492f5183315484883550b8ce58df4fa"
+                  "timestamp": 1721136161,
+                  "message": "Remove todos (#59)\n\nRemove TODOs from README and bug templates. Mostly links them to the\r\nauthd getting started for now.\r\n\r\nUDENG-3486",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/3d944b0cf4129f87ed982cb13a3e3b214aa18062"
                },
                {
-                  "sha": "230b74d88732fb6900903dab7e8936418600cc08",
+                  "sha": "f715341a77983f64a0cd58993af03ba63a90df89",
                   "author": "Didier Roche",
-                  "timestamp": 1720620427,
-                  "message": "Use usual markups for templated values",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/230b74d88732fb6900903dab7e8936418600cc08"
+                  "timestamp": 1721122488,
+                  "message": "Update report templates for bugs and features\n\nRemove TODOs in them too.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f715341a77983f64a0cd58993af03ba63a90df89"
                },
                {
-                  "sha": "628544f52ec40de93f91a4004d5c1beb211eac8e",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1720505247,
-                  "message": "fix: split config files and drop write-files plug (#52)\n\nTo be able to drop the write files permissions, let's split the config\r\nfile in 2 parts.\r\n\r\nThat will also allow us to not depend on the file on /etc by making that\r\nbuilt-in.\r\n\r\nUDENG-3485",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/628544f52ec40de93f91a4004d5c1beb211eac8e"
+                  "sha": "420e833131b4075e29569c52fe04ae4c47829438",
+                  "author": "Didier Roche",
+                  "timestamp": 1721122471,
+                  "message": "Remove TODOs from README\n\nLink mostly to authd documentation",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/420e833131b4075e29569c52fe04ae4c47829438"
                }
             ],
             "ciActions": [
