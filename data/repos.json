@@ -6237,25 +6237,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "27b26db1c3ae56466fd16c4853ac4cc1bb943b59",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1721210943,
-                  "message": "fix: update issue template information (#433)\n\nWe are using a ppa, so can’t use ubuntu-bug for now, and link relevant\r\nconfiguration and logs.\r\nUDENG-3486",
-                  "url": "https://github.com/ubuntu/authd/commit/27b26db1c3ae56466fd16c4853ac4cc1bb943b59"
+                  "sha": "c148a79ef624ca6504017a4ea7365069ac0223d4",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1721228016,
+                  "message": "fix(PAM&NSS): Generate U(G)ID based on username and update UserPreCheck to return complete user info from broker (#430)\n\nWe used to generate the IDs based on the UU(G)IDs and the broker name.\r\nThis meant we could only get the right value after the user\r\nauthenticated at least once. For cases like SSH, where the user needs to\r\nbe pre-checked if it doesn't exist locally, the user info would be\r\ncached and the dummy ID would be used throughout the whole process\r\ninstead of the ID generated after authentication. Changing the\r\ngeneration to consider only the username and moving it to the\r\ninternal/users package means we can return the right UID when\r\npre-checking the user through NSS, avoiding mismatching issues later in\r\nthe stack.\r\n\r\nUDENG-3528",
+                  "url": "https://github.com/ubuntu/authd/commit/c148a79ef624ca6504017a4ea7365069ac0223d4"
                },
                {
-                  "sha": "02ec95d877b8629ece8760a93b9e738763cb7d13",
-                  "author": "Didier Roche",
-                  "timestamp": 1721206564,
-                  "message": "fix: Update issue template information\n\nWe are using a ppa, so can’t use ubuntu-bug for now, and link relevant\nconfiguration and logs.\nUDENG-3486",
-                  "url": "https://github.com/ubuntu/authd/commit/02ec95d877b8629ece8760a93b9e738763cb7d13"
+                  "sha": "9a043b2abb55a3d8042db11f07a6569232e7fdd4",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1721217037,
+                  "message": "Return user with actual values instead of dummy on UserPreCheck\n\nSSH caches the user information and relies on it through the entire\nauthentication process. To ensure we have the correct values since\nthe first authentication (such as homedir, shell, gecos and so on),\nwe need to return the complete user information from the PreCheck\ncall.",
+                  "url": "https://github.com/ubuntu/authd/commit/9a043b2abb55a3d8042db11f07a6569232e7fdd4"
                },
                {
-                  "sha": "aabcb334192c7321c06520d13f18f7936f1578b7",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1720800878,
-                  "message": "deps(go): bump the minor-updates group with 3 updates (#427)",
-                  "url": "https://github.com/ubuntu/authd/commit/aabcb334192c7321c06520d13f18f7936f1578b7"
+                  "sha": "ddbba26cddefd72f891bf95644126f861a39d206",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1721045238,
+                  "message": "Move generatedID to users and generate ID based on username\n\nRelying on the broker name + UUID meant that the user would always have\nto authenticate first before getting a uid. This is fine for cases where\nthe session is refreshed and updated constantly but, in others (such as\nSSH), the user information is cached and used throught the\nauthentication+session, so the id was never refreshed and problems\nhappened.",
+                  "url": "https://github.com/ubuntu/authd/commit/ddbba26cddefd72f891bf95644126f861a39d206"
                }
             ],
             "ciActions": [
