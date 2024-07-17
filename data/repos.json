@@ -6237,25 +6237,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "27b26db1c3ae56466fd16c4853ac4cc1bb943b59",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1721210943,
+                  "message": "fix: update issue template information (#433)\n\nWe are using a ppa, so can’t use ubuntu-bug for now, and link relevant\r\nconfiguration and logs.\r\nUDENG-3486",
+                  "url": "https://github.com/ubuntu/authd/commit/27b26db1c3ae56466fd16c4853ac4cc1bb943b59"
+               },
+               {
+                  "sha": "02ec95d877b8629ece8760a93b9e738763cb7d13",
+                  "author": "Didier Roche",
+                  "timestamp": 1721206564,
+                  "message": "fix: Update issue template information\n\nWe are using a ppa, so can’t use ubuntu-bug for now, and link relevant\nconfiguration and logs.\nUDENG-3486",
+                  "url": "https://github.com/ubuntu/authd/commit/02ec95d877b8629ece8760a93b9e738763cb7d13"
+               },
+               {
                   "sha": "aabcb334192c7321c06520d13f18f7936f1578b7",
                   "author": "dependabot[bot]",
                   "timestamp": 1720800878,
                   "message": "deps(go): bump the minor-updates group with 3 updates (#427)",
                   "url": "https://github.com/ubuntu/authd/commit/aabcb334192c7321c06520d13f18f7936f1578b7"
-               },
-               {
-                  "sha": "2d72a8a09061a7de322783caeee8baf4c9e49c51",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1720789723,
-                  "message": "fix(pam/authentication): Ensure all cancellations are forwarded (#429)\n\nWhen triggering quick authentication re-selection requests we may end up\noverwriting the local cancelAuthFunc while another one has is in process\nof being set.\n\nDue to the nature of bubbletea, saving the data in the model isn't fully\nreliable since the model may not be updated when another request is\ncoming concurrently.\n\nSo, use the cancel function as the main authTracker check point so that\nit's always the same during each authentication request, and it allows\nto simplify some codepaths.\n\nThis is very easy to trigger by using the CLI, by just holding the Enter\nkey for a while, and the regeneration will stop, but it's not something\nI've been able to test in VHS since holding a key isn't really possible\nand the minimum key press delay isn't enough to trigger it.\n\nUDENG-3606",
-                  "url": "https://github.com/ubuntu/authd/commit/2d72a8a09061a7de322783caeee8baf4c9e49c51"
-               },
-               {
-                  "sha": "3775a37c84d357ac47d87b735a7d82389db6bf96",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1720711454,
-                  "message": "pam/authentication: Ensure cancellations are forwarded\n\nWhen triggering quick authentication re-selection requests we may end up\noverwriting the local cancelAuthFunc while another one has is in process\nof being set.\n\nDue to the nature of bubbletea, saving the data in the model isn't fully\nreliable since the model may not be updated when another request is\ncoming concurrently.\n\nSo, use the cancel function as the main authTracker check point so that\nit's always the same during each authentication request, and it allows\nto simplify some codepaths.\n\nThis is very easy to trigger by using the CLI, by just holding the Enter\nkey for a while, and the regeneration will stop, but it's not something\nI've been able to test in VHS since holding a key isn't really possible\nand the minimum key press delay isn't enough to trigger it.",
-                  "url": "https://github.com/ubuntu/authd/commit/3775a37c84d357ac47d87b735a7d82389db6bf96"
                }
             ],
             "ciActions": [
