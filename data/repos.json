@@ -2655,6 +2655,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f25313b00472447f78f8aa41235533e539d529c7",
+                  "author": "Sebastien Bacher",
+                  "timestamp": 1721295021,
+                  "message": "Update to 128.0.1esr-build2",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/f25313b00472447f78f8aa41235533e539d529c7"
+               },
+               {
                   "sha": "88911741f9d02460cc77e6a395fffef30a69e5b5",
                   "author": "Sebastien Bacher",
                   "timestamp": 1720686550,
@@ -2667,13 +2674,6 @@
                   "timestamp": 1720564548,
                   "message": "use the correct version number",
                   "url": "https://github.com/ubuntu/thunderbird/commit/7166022ba3371b9ea7c6c94af9e9e5f231891c64"
-               },
-               {
-                  "sha": "b4a8d1351280ca0776d744ba65571f80a9db5990",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1720559601,
-                  "message": "Use the correct naming for the donation key",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/b4a8d1351280ca0776d744ba65571f80a9db5990"
                }
             ],
             "ciActions": null,
@@ -6244,25 +6244,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e9d1aa09aec11909f8f61c3f86c6a6640b18b9ea",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1721295432,
+                  "message": "deps(go): bump github.com/charmbracelet/lipgloss from 0.11.1 to 0.12.1 in the minor-updates group (#436)",
+                  "url": "https://github.com/ubuntu/authd/commit/e9d1aa09aec11909f8f61c3f86c6a6640b18b9ea"
+               },
+               {
+                  "sha": "cd59bfb8b51a6f929d3b4d7354e3d87dbaa81a9f",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1721293589,
+                  "message": "deps(go): bump github.com/charmbracelet/lipgloss\n\nBumps the minor-updates group with 1 update: [github.com/charmbracelet/lipgloss](https://github.com/charmbracelet/lipgloss).\n\n\nUpdates `github.com/charmbracelet/lipgloss` from 0.11.1 to 0.12.1\n- [Release notes](https://github.com/charmbracelet/lipgloss/releases)\n- [Changelog](https://github.com/charmbracelet/lipgloss/blob/master/.goreleaser.yml)\n- [Commits](https://github.com/charmbracelet/lipgloss/compare/v0.11.1...v0.12.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/charmbracelet/lipgloss\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/authd/commit/cd59bfb8b51a6f929d3b4d7354e3d87dbaa81a9f"
+               },
+               {
                   "sha": "c148a79ef624ca6504017a4ea7365069ac0223d4",
                   "author": "Denison Barbosa",
                   "timestamp": 1721228016,
                   "message": "fix(PAM&NSS): Generate U(G)ID based on username and update UserPreCheck to return complete user info from broker (#430)\n\nWe used to generate the IDs based on the UU(G)IDs and the broker name.\r\nThis meant we could only get the right value after the user\r\nauthenticated at least once. For cases like SSH, where the user needs to\r\nbe pre-checked if it doesn't exist locally, the user info would be\r\ncached and the dummy ID would be used throughout the whole process\r\ninstead of the ID generated after authentication. Changing the\r\ngeneration to consider only the username and moving it to the\r\ninternal/users package means we can return the right UID when\r\npre-checking the user through NSS, avoiding mismatching issues later in\r\nthe stack.\r\n\r\nUDENG-3528",
                   "url": "https://github.com/ubuntu/authd/commit/c148a79ef624ca6504017a4ea7365069ac0223d4"
-               },
-               {
-                  "sha": "9a043b2abb55a3d8042db11f07a6569232e7fdd4",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1721217037,
-                  "message": "Return user with actual values instead of dummy on UserPreCheck\n\nSSH caches the user information and relies on it through the entire\nauthentication process. To ensure we have the correct values since\nthe first authentication (such as homedir, shell, gecos and so on),\nwe need to return the complete user information from the PreCheck\ncall.",
-                  "url": "https://github.com/ubuntu/authd/commit/9a043b2abb55a3d8042db11f07a6569232e7fdd4"
-               },
-               {
-                  "sha": "ddbba26cddefd72f891bf95644126f861a39d206",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1721045238,
-                  "message": "Move generatedID to users and generate ID based on username\n\nRelying on the broker name + UUID meant that the user would always have\nto authenticate first before getting a uid. This is fine for cases where\nthe session is refreshed and updated constantly but, in others (such as\nSSH), the user information is cached and used throught the\nauthentication+session, so the id was never refreshed and problems\nhappened.",
-                  "url": "https://github.com/ubuntu/authd/commit/ddbba26cddefd72f891bf95644126f861a39d206"
                }
             ],
             "ciActions": [
