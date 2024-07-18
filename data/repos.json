@@ -6244,25 +6244,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f1c2c1f354a4e09e8243403fd6625c84461c4d75",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1721307346,
+                  "message": "feat: local broker preselection for unknown user when only local broker available (#435)\n\nWhen we only have the local broker available, autoselect it for unknown\r\nusers.\r\nCurrent implementation is temporarly and will be removed for v2, as this\r\nwill be all internal to authd.\r\n\r\nUDENG-3411",
+                  "url": "https://github.com/ubuntu/authd/commit/f1c2c1f354a4e09e8243403fd6625c84461c4d75"
+               },
+               {
+                  "sha": "233ee6a63f55396319a0396df05164161b28398e",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1721307233,
+                  "message": "More descriptive issues (#438)\n\n* Try to check if the issue is coming from the graphical or terminal\r\nonly. This will help debugging further\r\n* Request the version for GNOME Shell",
+                  "url": "https://github.com/ubuntu/authd/commit/233ee6a63f55396319a0396df05164161b28398e"
+               },
+               {
                   "sha": "e9d1aa09aec11909f8f61c3f86c6a6640b18b9ea",
                   "author": "dependabot[bot]",
                   "timestamp": 1721295432,
                   "message": "deps(go): bump github.com/charmbracelet/lipgloss from 0.11.1 to 0.12.1 in the minor-updates group (#436)",
                   "url": "https://github.com/ubuntu/authd/commit/e9d1aa09aec11909f8f61c3f86c6a6640b18b9ea"
-               },
-               {
-                  "sha": "cd59bfb8b51a6f929d3b4d7354e3d87dbaa81a9f",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1721293589,
-                  "message": "deps(go): bump github.com/charmbracelet/lipgloss\n\nBumps the minor-updates group with 1 update: [github.com/charmbracelet/lipgloss](https://github.com/charmbracelet/lipgloss).\n\n\nUpdates `github.com/charmbracelet/lipgloss` from 0.11.1 to 0.12.1\n- [Release notes](https://github.com/charmbracelet/lipgloss/releases)\n- [Changelog](https://github.com/charmbracelet/lipgloss/blob/master/.goreleaser.yml)\n- [Commits](https://github.com/charmbracelet/lipgloss/compare/v0.11.1...v0.12.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/charmbracelet/lipgloss\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/cd59bfb8b51a6f929d3b4d7354e3d87dbaa81a9f"
-               },
-               {
-                  "sha": "c148a79ef624ca6504017a4ea7365069ac0223d4",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1721228016,
-                  "message": "fix(PAM&NSS): Generate U(G)ID based on username and update UserPreCheck to return complete user info from broker (#430)\n\nWe used to generate the IDs based on the UU(G)IDs and the broker name.\r\nThis meant we could only get the right value after the user\r\nauthenticated at least once. For cases like SSH, where the user needs to\r\nbe pre-checked if it doesn't exist locally, the user info would be\r\ncached and the dummy ID would be used throughout the whole process\r\ninstead of the ID generated after authentication. Changing the\r\ngeneration to consider only the username and moving it to the\r\ninternal/users package means we can return the right UID when\r\npre-checking the user through NSS, avoiding mismatching issues later in\r\nthe stack.\r\n\r\nUDENG-3528",
-                  "url": "https://github.com/ubuntu/authd/commit/c148a79ef624ca6504017a4ea7365069ac0223d4"
                }
             ],
             "ciActions": [
@@ -6279,6 +6279,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e1ec3626016d644bf88dc129241bc354768fe2e7",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1721307284,
+                  "message": "More descriptive issues (#66)\n\n* Try to check if the issue is coming from the graphical or terminal\r\nonly. This will help debugging further\r\n* Request the version for GNOME Shell",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e1ec3626016d644bf88dc129241bc354768fe2e7"
+               },
+               {
                   "sha": "65a5db83f5e0426a4f5f9c338d4051b11462ca0a",
                   "author": "Denison Barbosa",
                   "timestamp": 1721303582,
@@ -6291,13 +6298,6 @@
                   "timestamp": 1721303308,
                   "message": "Print object if can not parse group object",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/3976c142ec5f2efce25473bb30b902d9256af9a7"
-               },
-               {
-                  "sha": "8c9b5f0fcb5355ee420667cef2901437bbaf7eb6",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1721233394,
-                  "message": "deps(go): bump github.com/microsoftgraph/msgraph-sdk-go from 1.45.0 to 1.46.0 (#57)\n\nBumps\r\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go)\r\nfrom 1.45.0 to 1.46.0.\r\n<details>\r\n<summary>Release notes</summary>\r\n<p><em>Sourced from <a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/releases\">github.com/microsoftgraph/msgraph-sdk-go's\r\nreleases</a>.</em></p>\r\n<blockquote>\r\n<h2>v1.46.0</h2>\r\n<h2><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.45.0...v1.46.0\">1.46.0</a>\r\n(2024-07-15)</h2>\r\n<h3>Features</h3>\r\n<ul>\r\n<li><strong>generation:</strong> update request builders and models (<a\r\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/742\">#742</a>)\r\n(<a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/279fa12e0a7c60bdc3f0b64a171f682b8cf242ee\">279fa12</a>)</li>\r\n</ul>\r\n</blockquote>\r\n</details>\r\n<details>\r\n<summary>Changelog</summary>\r\n<p><em>Sourced from <a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/blob/main/CHANGELOG.md\">github.com/microsoftgraph/msgraph-sdk-go's\r\nchangelog</a>.</em></p>\r\n<blockquote>\r\n<h2><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.45.0...v1.46.0\">1.46.0</a>\r\n(2024-07-15)</h2>\r\n<h3>Features</h3>\r\n<ul>\r\n<li><strong>generation:</strong> update request builders and models (<a\r\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/742\">#742</a>)\r\n(<a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/279fa12e0a7c60bdc3f0b64a171f682b8cf242ee\">279fa12</a>)</li>\r\n</ul>\r\n</blockquote>\r\n</details>\r\n<details>\r\n<summary>Commits</summary>\r\n<ul>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/bc9c64e7c0fa0240f14d2c2e87f257192329f79b\"><code>bc9c64e</code></a>\r\nchore(main): release 1.46.0 (<a\r\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/746\">#746</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/279fa12e0a7c60bdc3f0b64a171f682b8cf242ee\"><code>279fa12</code></a>\r\nfeat(generation): update request builders and models (<a\r\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/742\">#742</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/6a2744dfd14627b986d46f565f8dc8b5ea40bf84\"><code>6a2744d</code></a>\r\nFix, Revert breaking change (<a\r\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/738\">#738</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/62091652beca4103cdb9bc9c95014e93d5fd69b6\"><code>6209165</code></a>\r\nMerge pull request <a\r\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/744\">#744</a>\r\nfrom microsoftgraph/dependabot/go_modules/github.com/...</li>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/216522c6d644b57fb666717b293f0f3030851800\"><code>216522c</code></a>\r\nBump github.com/microsoft/kiota-abstractions-go from 1.6.0 to 1.6.1</li>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/b328456d039e42f667910d50f1b42cbeb778e777\"><code>b328456</code></a>\r\nMerge pull request <a\r\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/740\">#740</a>\r\nfrom microsoftgraph/dependabot/github_actions/dependa...</li>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/3b11240225bb61f81080e62ee5c4ea9c707a8571\"><code>3b11240</code></a>\r\nBump dependabot/fetch-metadata from 2.1.0 to 2.2.0</li>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/067c7ca48959fdc758e8798ad53887cd7e825d59\"><code>067c7ca</code></a>\r\nChore: Add issue templates (<a\r\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/736\">#736</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/540e0172b08ac8e87dc45f9db4cacc17896c2550\"><code>540e017</code></a>\r\nremove label waiting for author feedback if issue closes (<a\r\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/734\">#734</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/f660e77199650a8fdcb64e6bcd3106e48c7bbf36\"><code>f660e77</code></a>\r\nci: replaces project bot token task by official one</li>\r\n<li>Additional commits viewable in <a\r\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.45.0...v1.46.0\">compare\r\nview</a></li>\r\n</ul>\r\n</details>\r\n<br />\r\n\r\n\r\n[![Dependabot compatibility\r\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=github.com/microsoftgraph/msgraph-sdk-go&package-manager=go_modules&previous-version=1.45.0&new-version=1.46.0)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\r\n\r\nDependabot will resolve any conflicts with this PR as long as you don't\r\nalter it yourself. You can also trigger a rebase manually by commenting\r\n`@dependabot rebase`.\r\n\r\n[//]: # (dependabot-automerge-start)\r\n[//]: # (dependabot-automerge-end)\r\n\r\n---\r\n\r\n<details>\r\n<summary>Dependabot commands and options</summary>\r\n<br />\r\n\r\nYou can trigger Dependabot actions by commenting on this PR:\r\n- `@dependabot rebase` will rebase this PR\r\n- `@dependabot recreate` will recreate this PR, overwriting any edits\r\nthat have been made to it\r\n- `@dependabot merge` will merge this PR after your CI passes on it\r\n- `@dependabot squash and merge` will squash and merge this PR after\r\nyour CI passes on it\r\n- `@dependabot cancel merge` will cancel a previously requested merge\r\nand block automerging\r\n- `@dependabot reopen` will reopen this PR if it is closed\r\n- `@dependabot close` will close this PR and stop Dependabot recreating\r\nit. You can achieve the same result by closing it manually\r\n- `@dependabot show <dependency name> ignore conditions` will show all\r\nof the ignore conditions of the specified dependency\r\n- `@dependabot ignore this major version` will close this PR and stop\r\nDependabot creating any more for this major version (unless you reopen\r\nthe PR or upgrade to it yourself)\r\n- `@dependabot ignore this minor version` will close this PR and stop\r\nDependabot creating any more for this minor version (unless you reopen\r\nthe PR or upgrade to it yourself)\r\n- `@dependabot ignore this dependency` will close this PR and stop\r\nDependabot creating any more for this dependency (unless you reopen the\r\nPR or upgrade to it yourself)\r\n\r\n\r\n</details>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/8c9b5f0fcb5355ee420667cef2901437bbaf7eb6"
                }
             ],
             "ciActions": [
