@@ -6389,25 +6389,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1c435adf6c8041ab7891b9e83fdc5f3e5910f480",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1721380596,
-                  "message": "feat(errors): Add package to control errors returned by the services (#434)\n\nTo improve user experience, we need to remove some chained errors\r\ndisplayed when something fails during authentication. To keep the broker\r\nmessages intact, we now rely on a separate error type and gRPC\r\ninterceptors to remove and format the final error messages that are\r\ndisplayed.\r\n\r\nUDENG-3420\r\nUDENG-3419\r\nUDENG-3412\r\nUDENG-3418",
-                  "url": "https://github.com/ubuntu/authd/commit/1c435adf6c8041ab7891b9e83fdc5f3e5910f480"
+                  "sha": "57baca8861ba76608b4c4cfb22d60a69800590b0",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1721421227,
+                  "message": "fix(pam/nativemodel): Select local broker if user does not exist on SSH connection (#432)\n\nWhen the PAM module is loaded by SSHd we may not want to expose broker\r\ninformation to everyone that is connecting, so if the user is not known\r\nby any broker we should just not give the ability to even select the\r\nbroker but to just auto-select the local broker instead\r\n\r\nUDENG-3600",
+                  "url": "https://github.com/ubuntu/authd/commit/57baca8861ba76608b4c4cfb22d60a69800590b0"
                },
                {
-                  "sha": "1aa81fb04a58af2100df5606a7f9adc41dc13249",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1721233116,
-                  "message": "Add package to control errors returned by the services\n\nTo improve user experience, we need to remove some of the chained errors\nthat are displayed when something fails during authentication. To keep\nthe broker messages intact, we now rely on a separate error type and\ngRPC interceptors to remove and format the final error messages that are\ndisplayed.\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/1aa81fb04a58af2100df5606a7f9adc41dc13249"
+                  "sha": "41379fa6471ee8658dc7f1f44a249004a7b87a07",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1721414212,
+                  "message": "modulewrapper: Fix a comment typo",
+                  "url": "https://github.com/ubuntu/authd/commit/41379fa6471ee8658dc7f1f44a249004a7b87a07"
                },
                {
-                  "sha": "f1c2c1f354a4e09e8243403fd6625c84461c4d75",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1721307346,
-                  "message": "feat: local broker preselection for unknown user when only local broker available (#435)\n\nWhen we only have the local broker available, autoselect it for unknown\r\nusers.\r\nCurrent implementation is temporarly and will be removed for v2, as this\r\nwill be all internal to authd.\r\n\r\nUDENG-3411",
-                  "url": "https://github.com/ubuntu/authd/commit/f1c2c1f354a4e09e8243403fd6625c84461c4d75"
+                  "sha": "04d4cd89f2509f0f7036b6ee9c101ee932081318",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1721153556,
+                  "message": "pam: Wait for bubbletea to be done before resetting/closing the logging\n\nbubbletea's Run() returns as soon as it receives a quit message, however\nthere may still be goroutines running that have not been completed and\nthat may deliver messages with some delay.\n\nTo prevent these to cause us to log too early to stderr, and breaking\nour golden files, let's wait a bit before closing the logging.",
+                  "url": "https://github.com/ubuntu/authd/commit/04d4cd89f2509f0f7036b6ee9c101ee932081318"
                }
             ],
             "ciActions": [
