@@ -6040,25 +6040,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "65fbf929a7773a8e75313541e8355214b40d3610",
+                  "author": "Shane Crowley",
+                  "timestamp": 1721635001,
+                  "message": "docs: Make refs to config file extension more consistent with UI (#844)\n\nThis PR makes references to the Landscape configuration file in the docs\r\nmore consistent with the Ubuntu Pro For WSL UI, which includes a\r\nplaceholder for `landscape.conf` during setup.\r\n\r\nIn `reference/landscape.md` it is now mentioned that this is a plain\r\ntext file and that other extensions, such as `.ini` can also be used.\r\n\r\nUDENG-3592",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/65fbf929a7773a8e75313541e8355214b40d3610"
+               },
+               {
+                  "sha": "95e226b20d4f6c12f35dbaeb1d5ec80f8bdc8423",
+                  "author": "shanecrowley",
+                  "timestamp": 1721382003,
+                  "message": "Make refs to config file extension more consistent with UI",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/95e226b20d4f6c12f35dbaeb1d5ec80f8bdc8423"
+               },
+               {
                   "sha": "524a934a1d3d6266496fb5b970b6c2f741b3ec5a",
                   "author": "Carlos Nihelton",
                   "timestamp": 1721318153,
                   "message": "fix(agent): SHA256SUMS being looked up in the parent directory (#842)\n\nWe didn't notice this behaviour in tests because our mocked file server\r\nwas serving files in the root directory (since the parent of / is /\r\neverything just worked).\r\n\r\nChanging tests to serve and search files inside a subdirectory reveal\r\nthe problem: we're not looking for the checksums file beside the rootfs\r\nbut rather in the parent directory. We see log lines like below:\r\n\r\n> time=\"2024-07-18T10:42:53-03:00\" level=debug msg=\"Landscape: received\r\ncommand Install. Target:\r\ntestDistro_UP4W_TestInstall_Error_when_the_checksum_entry_is_missing_for_the_rootfs_5721719220902747386\"\r\n> time=\"2024-07-18T10:42:53-03:00\" level=info msg=\"checksums file\r\nhttp://127.0.0.1:57850/releases/SHA256SUM\" not found\"\r\n\r\n---\r\nUDENG-3669",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/524a934a1d3d6266496fb5b970b6c2f741b3ec5a"
-               },
-               {
-                  "sha": "2042e21a4fb1e09031a7dc6f0832a7c7f11f2072",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1721318130,
-                  "message": "fix(agent): Create the rootfs tarball in the download function (#843)\n\nWell, the download function might now be doing more than it should.\r\nBut WSL imposes the precondition that nobody else holds the rootfs file\r\nopen when registering the distro instance. So we must ensure the file is\r\nclosed by the time we call import. This is the most readable way to do\r\nso IMHO.\r\n\r\nWe could have wrapped the file creation and the call to download in a\r\nclosure. It would be more compliant to SRP, but less readable.\r\n\r\n---\r\nUDENG-3590",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2042e21a4fb1e09031a7dc6f0832a7c7f11f2072"
-               },
-               {
-                  "sha": "195025e238d61a21b2a0c24ac27bf3e05859a561",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1721311262,
-                  "message": "Create the tarball in the download function\n\nWell, it might now be doing more than it should,\nBut WSL imposes the precondition that nobody else holds the rootfs file open when registering the distro instance.\nSo we must ensure the file is closed by the time we call import.\nThis is the most readable way to do so IMHO.\n\nWe could have wrapped the file creation and the call to download in a closure. It would be more compliant to SRP,\nbut less readable.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/195025e238d61a21b2a0c24ac27bf3e05859a561"
                }
             ],
             "ciActions": [
