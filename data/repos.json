@@ -6436,25 +6436,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4561bcc05400022178f51710fa5b106b56a5d787",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1721915280,
+                  "message": "feat: Allow broker and sessions to start in offline mode (#92)\n\nEven though we \"allowed\" offline authentication, the broker would not\r\nstart without a network connection.\r\n\r\nNow, the broker does not rely on a connection to run and now sessions\r\nhave control over the auth config needed to authenticate the user\r\nonline. This means we can start sessions offline when we fail to connect\r\nto the provider.\r\n\r\nUDENG-3591\r\nUDENG-3593\r\nUDENG-3596",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4561bcc05400022178f51710fa5b106b56a5d787"
+               },
+               {
+                  "sha": "a71bcdc25087f5c4dfbd5b8e52957f99abfa2bed",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1721829099,
+                  "message": "Allow to start broker and sessions in offline mode\n\nEven though we \"allowed\" offline authentication, the broker would not\nstart without a network connection. Now, the broker does not rely on a\nconnection to run and now sessions have control over the auth config\nneeded to authenticate the user online. This means we can start\nsessions in offline mode when failing to connect to the provider.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a71bcdc25087f5c4dfbd5b8e52957f99abfa2bed"
+               },
+               {
                   "sha": "2ccebc31822af9fad25490180ae99fbf5a473a59",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1721894244,
                   "message": "Include transitive groups membership (#93)\n\nWhen Azure AD group membership are organized in a tree, it’s expected\r\nthat transitive inclusion to be taken into account. Change the API,\r\nwhich requires the same permission to follow this. The list of groups is\r\nthen flatten when going over the API, resulting in no other code change\r\nneeded.",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2ccebc31822af9fad25490180ae99fbf5a473a59"
-               },
-               {
-                  "sha": "dfa0656c0414de0b0a9ad46f7437685e33cb9902",
-                  "author": "Didier Roche",
-                  "timestamp": 1721891292,
-                  "message": "Include transitive groups membership\n\nWhen Azure AD group membership are organized in a tree, it’s expected\nthat transitive inclusion to be taken into account. Change the API,\nwhich requires the same permission to follow this.\nThe list of groups is then flatten when going over the API, resulting in\nno other code change needed.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/dfa0656c0414de0b0a9ad46f7437685e33cb9902"
-               },
-               {
-                  "sha": "d69730e5797dcc64b5c6925ed5e270d3a39ee1de",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1721821812,
-                  "message": "Check MSEntraID group access permissions (#89)\n\nCurrent user group membership always returns, with User.Read.All the\r\nlist of groups, but without their details.\r\nTo access their details, we need to list all groups that the user has\r\npotentially access too. Add a check for it to return a better error for\r\nthose use cases.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d69730e5797dcc64b5c6925ed5e270d3a39ee1de"
                }
             ],
             "ciActions": [
