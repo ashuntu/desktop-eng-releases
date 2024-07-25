@@ -6401,25 +6401,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7a243ee6d1cebb29aa0479850b043b3ea20db7ba",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1721894279,
+                  "message": "Update README.md (#440)\n\nPoint the README to the Wiki documentation",
+                  "url": "https://github.com/ubuntu/authd/commit/7a243ee6d1cebb29aa0479850b043b3ea20db7ba"
+               },
+               {
+                  "sha": "ec45f730c9b233e485a33db63f289528525417d2",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1721893696,
+                  "message": "Update README.md\n\nPoint the README to the Wiki documentation",
+                  "url": "https://github.com/ubuntu/authd/commit/ec45f730c9b233e485a33db63f289528525417d2"
+               },
+               {
                   "sha": "57baca8861ba76608b4c4cfb22d60a69800590b0",
                   "author": "Marco Trevisan",
                   "timestamp": 1721421227,
                   "message": "fix(pam/nativemodel): Select local broker if user does not exist on SSH connection (#432)\n\nWhen the PAM module is loaded by SSHd we may not want to expose broker\r\ninformation to everyone that is connecting, so if the user is not known\r\nby any broker we should just not give the ability to even select the\r\nbroker but to just auto-select the local broker instead\r\n\r\nUDENG-3600",
                   "url": "https://github.com/ubuntu/authd/commit/57baca8861ba76608b4c4cfb22d60a69800590b0"
-               },
-               {
-                  "sha": "41379fa6471ee8658dc7f1f44a249004a7b87a07",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1721414212,
-                  "message": "modulewrapper: Fix a comment typo",
-                  "url": "https://github.com/ubuntu/authd/commit/41379fa6471ee8658dc7f1f44a249004a7b87a07"
-               },
-               {
-                  "sha": "04d4cd89f2509f0f7036b6ee9c101ee932081318",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1721153556,
-                  "message": "pam: Wait for bubbletea to be done before resetting/closing the logging\n\nbubbletea's Run() returns as soon as it receives a quit message, however\nthere may still be goroutines running that have not been completed and\nthat may deliver messages with some delay.\n\nTo prevent these to cause us to log too early to stderr, and breaking\nour golden files, let's wait a bit before closing the logging.",
-                  "url": "https://github.com/ubuntu/authd/commit/04d4cd89f2509f0f7036b6ee9c101ee932081318"
                }
             ],
             "ciActions": [
@@ -6436,25 +6436,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "2ccebc31822af9fad25490180ae99fbf5a473a59",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1721894244,
+                  "message": "Include transitive groups membership (#93)\n\nWhen Azure AD group membership are organized in a tree, it’s expected\r\nthat transitive inclusion to be taken into account. Change the API,\r\nwhich requires the same permission to follow this. The list of groups is\r\nthen flatten when going over the API, resulting in no other code change\r\nneeded.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2ccebc31822af9fad25490180ae99fbf5a473a59"
+               },
+               {
+                  "sha": "dfa0656c0414de0b0a9ad46f7437685e33cb9902",
+                  "author": "Didier Roche",
+                  "timestamp": 1721891292,
+                  "message": "Include transitive groups membership\n\nWhen Azure AD group membership are organized in a tree, it’s expected\nthat transitive inclusion to be taken into account. Change the API,\nwhich requires the same permission to follow this.\nThe list of groups is then flatten when going over the API, resulting in\nno other code change needed.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/dfa0656c0414de0b0a9ad46f7437685e33cb9902"
+               },
+               {
                   "sha": "d69730e5797dcc64b5c6925ed5e270d3a39ee1de",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1721821812,
                   "message": "Check MSEntraID group access permissions (#89)\n\nCurrent user group membership always returns, with User.Read.All the\r\nlist of groups, but without their details.\r\nTo access their details, we need to list all groups that the user has\r\npotentially access too. Add a check for it to return a better error for\r\nthose use cases.",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d69730e5797dcc64b5c6925ed5e270d3a39ee1de"
-               },
-               {
-                  "sha": "fe43cccb81f54713fdb3c9995e0c8e19cec9da9a",
-                  "author": "Didier Roche",
-                  "timestamp": 1721818506,
-                  "message": "Check MSEntraID group access permissions\n\nCurrent user group membership always returns, with User.Read.All the\nlist of groups, but without their details.\nTo access their details, we need to list all groups that the user has\npotentially access too. Add a check for it to return a better error for\nthose use cases.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/fe43cccb81f54713fdb3c9995e0c8e19cec9da9a"
-               },
-               {
-                  "sha": "91bd2bd3c44ae599ed2624e8e8a3588f60acbc12",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1721821002,
-                  "message": "deps(go): bump github.com/Azure/azure-sdk-for-go/sdk/azcore from 1.12.0 to 1.13.0 (#79)\n\nBumps\r\n[github.com/Azure/azure-sdk-for-go/sdk/azcore](https://github.com/Azure/azure-sdk-for-go)\r\nfrom 1.12.0 to 1.13.0.\r\n<details>\r\n<summary>Release notes</summary>\r\n<p><em>Sourced from <a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/releases\">github.com/Azure/azure-sdk-for-go/sdk/azcore's\r\nreleases</a>.</em></p>\r\n<blockquote>\r\n<h2>sdk/azcore/v1.13.0</h2>\r\n<h2>1.13.0 (2024-07-16)</h2>\r\n<h3>Features Added</h3>\r\n<ul>\r\n<li>Added runtime.NewRequestFromRequest(), allowing for a policy.Request\r\nto be created from an existing *http.Request.</li>\r\n</ul>\r\n</blockquote>\r\n</details>\r\n<details>\r\n<summary>Commits</summary>\r\n<ul>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/94c22e63e8b44da25706894d4665dd6cc336df02\"><code>94c22e6</code></a>\r\n[azcore] prepping for release (<a\r\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/23192\">#23192</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/c5213b1289881cbfc61f125065acb04434b089be\"><code>c5213b1</code></a>\r\nRedesign persistent token cache API (<a\r\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/23114\">#23114</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/5df73f947f772051a037728a174b7ebc6a39a083\"><code>5df73f9</code></a>\r\n[azopenai]: Update custom_client.go to enable insecure credential with\r\nHTTP (...</li>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/b4b4721223468f57abdaa2856695e1da4a106187\"><code>b4b4721</code></a>\r\n[azcore] Adding in a function create a policy.Request using an existing\r\n*http...</li>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/80dbc7d99d4746c8eac6f91c1997459e7351e3c3\"><code>80dbc7d</code></a>\r\nUpdate CODEOWNERS_baseline_errors.txt (<a\r\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/23191\">#23191</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/d254d11b07b909d9f0152ac8080f5c081aacb490\"><code>d254d11</code></a>\r\nIncrement package version after release of internal (<a\r\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/23190\">#23190</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/62f7a3d0e97610a8303e313f25ab4502766b8886\"><code>62f7a3d</code></a>\r\nTest credential factory supports Pipelines federated auth (<a\r\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/23184\">#23184</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/5aaedf4bf939814d658494ab61c8ba1f517cf383\"><code>5aaedf4</code></a>\r\n[Release]\r\nsdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt/1.0....</li>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/ce39ed969686869f2013ce344c78879d1b01c7e8\"><code>ce39ed9</code></a>\r\nSync eng/common directory with azure-sdk-tools for PR 8598 (<a\r\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/23175\">#23175</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/75d30bbd4b5878d995c26e4e536f3ab44e6613cf\"><code>75d30bb</code></a>\r\nEnable use of pipeline credential. Fixes <a\r\nhref=\"https://github.com/microsoft/azure-p\">https://github.com/microsoft/azure-p</a>...</li>\r\n<li>Additional commits viewable in <a\r\nhref=\"https://github.com/Azure/azure-sdk-for-go/compare/sdk/azcore/v1.12.0...sdk/azcore/v1.13.0\">compare\r\nview</a></li>\r\n</ul>\r\n</details>\r\n<br />\r\n\r\n\r\n[![Dependabot compatibility\r\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=github.com/Azure/azure-sdk-for-go/sdk/azcore&package-manager=go_modules&previous-version=1.12.0&new-version=1.13.0)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\r\n\r\nDependabot will resolve any conflicts with this PR as long as you don't\r\nalter it yourself. You can also trigger a rebase manually by commenting\r\n`@dependabot rebase`.\r\n\r\n[//]: # (dependabot-automerge-start)\r\n[//]: # (dependabot-automerge-end)\r\n\r\n---\r\n\r\n<details>\r\n<summary>Dependabot commands and options</summary>\r\n<br />\r\n\r\nYou can trigger Dependabot actions by commenting on this PR:\r\n- `@dependabot rebase` will rebase this PR\r\n- `@dependabot recreate` will recreate this PR, overwriting any edits\r\nthat have been made to it\r\n- `@dependabot merge` will merge this PR after your CI passes on it\r\n- `@dependabot squash and merge` will squash and merge this PR after\r\nyour CI passes on it\r\n- `@dependabot cancel merge` will cancel a previously requested merge\r\nand block automerging\r\n- `@dependabot reopen` will reopen this PR if it is closed\r\n- `@dependabot close` will close this PR and stop Dependabot recreating\r\nit. You can achieve the same result by closing it manually\r\n- `@dependabot show <dependency name> ignore conditions` will show all\r\nof the ignore conditions of the specified dependency\r\n- `@dependabot ignore this major version` will close this PR and stop\r\nDependabot creating any more for this major version (unless you reopen\r\nthe PR or upgrade to it yourself)\r\n- `@dependabot ignore this minor version` will close this PR and stop\r\nDependabot creating any more for this minor version (unless you reopen\r\nthe PR or upgrade to it yourself)\r\n- `@dependabot ignore this dependency` will close this PR and stop\r\nDependabot creating any more for this dependency (unless you reopen the\r\nPR or upgrade to it yourself)\r\n\r\n\r\n</details>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/91bd2bd3c44ae599ed2624e8e8a3588f60acbc12"
                }
             ],
             "ciActions": [
