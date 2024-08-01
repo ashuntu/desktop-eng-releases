@@ -6436,25 +6436,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4e2773e17435b719bd1b9636abe789f24d116bb6",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1722513529,
+                  "message": "feat: Move fetchUserInfo logic to the providers pkg (#96)\n\nWe used to control how the ID token was parsed into claims in the\r\nbroker. This would become progressively unmaintainable as each provider\r\ncould understand the claims differently.\r\n\r\nInstead of enforcing the providers to use the email as the username for\r\nlocal authentication, they control what will be parsed from the ID Token\r\nand return a UserInfo to the broker, which only fills the empty values\r\nwith defaults (if any).\r\n\r\nubuntu/authd#439\r\n\r\nUDENG-3698",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4e2773e17435b719bd1b9636abe789f24d116bb6"
+               },
+               {
+                  "sha": "f1dfbd9b86e55aca21892b26b340f52ce532d35b",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1722339783,
+                  "message": "Move fetchUserInfo logic to the providers pkg\n\nWe used to control how the ID token was parsed into claims in the broker\nitself. This would become progressively unmaintainable as each provider\ncould understand the claims differently. Now, instead of having to\nenforce the providers to use the email as username for local\nauthentication, they control what will be parsed from the ID Token and\nreturn a UserInfo to broker, which then only fills the empty values with\ndefaults (if any).",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f1dfbd9b86e55aca21892b26b340f52ce532d35b"
+               },
+               {
                   "sha": "4561bcc05400022178f51710fa5b106b56a5d787",
                   "author": "Denison Barbosa",
                   "timestamp": 1721915280,
                   "message": "feat: Allow broker and sessions to start in offline mode (#92)\n\nEven though we \"allowed\" offline authentication, the broker would not\r\nstart without a network connection.\r\n\r\nNow, the broker does not rely on a connection to run and now sessions\r\nhave control over the auth config needed to authenticate the user\r\nonline. This means we can start sessions offline when we fail to connect\r\nto the provider.\r\n\r\nUDENG-3591\r\nUDENG-3593\r\nUDENG-3596",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4561bcc05400022178f51710fa5b106b56a5d787"
-               },
-               {
-                  "sha": "a71bcdc25087f5c4dfbd5b8e52957f99abfa2bed",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1721829099,
-                  "message": "Allow to start broker and sessions in offline mode\n\nEven though we \"allowed\" offline authentication, the broker would not\nstart without a network connection. Now, the broker does not rely on a\nconnection to run and now sessions have control over the auth config\nneeded to authenticate the user online. This means we can start\nsessions in offline mode when failing to connect to the provider.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a71bcdc25087f5c4dfbd5b8e52957f99abfa2bed"
-               },
-               {
-                  "sha": "2ccebc31822af9fad25490180ae99fbf5a473a59",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1721894244,
-                  "message": "Include transitive groups membership (#93)\n\nWhen Azure AD group membership are organized in a tree, it’s expected\r\nthat transitive inclusion to be taken into account. Change the API,\r\nwhich requires the same permission to follow this. The list of groups is\r\nthen flatten when going over the API, resulting in no other code change\r\nneeded.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2ccebc31822af9fad25490180ae99fbf5a473a59"
                }
             ],
             "ciActions": [
