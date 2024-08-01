@@ -6046,6 +6046,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f3fe23e829fc1ce65cf946c735ee5e6137ecd012",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1722522886,
+                  "message": "deps(gui-ubuntupro): bump win32 from 5.5.1 to 5.5.3 in /gui/packages/ubuntupro (#851)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f3fe23e829fc1ce65cf946c735ee5e6137ecd012"
+               },
+               {
                   "sha": "5cf9a1c539b8cd1d9c07fd911afe1e832e314d7a",
                   "author": "Carlos Nihelton",
                   "timestamp": 1722517067,
@@ -6053,18 +6060,11 @@
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5cf9a1c539b8cd1d9c07fd911afe1e832e314d7a"
                },
                {
-                  "sha": "87b614cd372466ea363d4b35ce515b666b8b0e76",
-                  "author": "Shane Crowley",
-                  "timestamp": 1722499195,
-                  "message": "docs: remove excess files from diagram autogeneration and disable titles in generated diagrams (#847)\n\nThis PR aimed to (1) reduce the number of excess files that are created\r\nin the repo during autogeneration of C4 diagrams and (2) leverage config\r\noptions passed to the renderer to disable excess information in the\r\ndiagrams, such as titles.\r\n\r\nOriginally, switching to an alternative rendering backend was trialled\r\nfor (1) but this failed during test workflow runs.\r\nThe alternative solution was to simply remove unwanted files with `rm`\r\nin the workflow after generation.\r\nThe workflow already removes junk generated during each run (.puml\r\nfiles), so it has now been amended to also remove key/legend files,\r\nwhich are not useful for our purposes. This removed 11 files of ~110 kb.\r\n\r\nThe existing plantuml rendering backend has limited config options but\r\nallows titles to be disabled in diagrams. This change was made and helps\r\nreduce visual noise in what are already already complex diagrams. This\r\nalso prevents naming conflicts; for example, terms like \"landscape\" and\r\n\"container\" are included in titles (according to the C4 convention) but\r\nthese could cause confusion when a technology called \"Landscape\" is also\r\nbeing referenced in a diagram and \"container\" has a variety of uses in\r\nsoftware.\r\n\r\nThe alt text used for one of the images in the docs was also fixed as it\r\nwasn't fit-for-purpose.\r\n\r\nUDENG-3731",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/87b614cd372466ea363d4b35ce515b666b8b0e76"
-               },
-               {
-                  "sha": "caf003964bd19f142472c32b6cb9c39a8cbd9fef",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1722449999,
-                  "message": "Only enables SaaS if compiled in debug mode\n\nStill useful for running tests but goes disabled in production.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/caf003964bd19f142472c32b6cb9c39a8cbd9fef"
+                  "sha": "3c1040e21181cdbc02a72ef3e1a842ef5d4e4ce4",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1722505004,
+                  "message": "deps(gui-ubuntupro): bump win32 in /gui/packages/ubuntupro\n\nBumps [win32](https://github.com/halildurmus/win32) from 5.5.1 to 5.5.3.\n- [Release notes](https://github.com/halildurmus/win32/releases)\n- [Commits](https://github.com/halildurmus/win32/compare/v5.5.1...v5.5.3)\n\n---\nupdated-dependencies:\n- dependency-name: win32\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3c1040e21181cdbc02a72ef3e1a842ef5d4e4ce4"
                }
             ],
             "ciActions": [
@@ -6401,25 +6401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "38ace8f0cefb47750f4d4a11db118f9addbc876e",
+                  "sha": "5ea852cce8b7d9831b8db485198f36f1f90ee78b",
                   "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1722507633,
-                  "message": "deps(go-tools): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc from 1.4.0 to 1.5.1 in /tools in the minor-updates group (#444)\n\nBumps the minor-updates group in /tools with 1 update:\r\n[google.golang.org/grpc/cmd/protoc-gen-go-grpc](https://github.com/grpc/grpc-go).\r\n\r\nUpdates `google.golang.org/grpc/cmd/protoc-gen-go-grpc` from 1.4.0 to\r\n1.5.1\r\n<details>\r\n<summary>Release notes</summary>\r\n<p><em>Sourced from <a\r\nhref=\"https://github.com/grpc/grpc-go/releases\">google.golang.org/grpc/cmd/protoc-gen-go-grpc's\r\nreleases</a>.</em></p>\r\n<blockquote>\r\n<h2>protoc-gen-go-grpc v1.5.1</h2>\r\n<h1>Dependencies</h1>\r\n<ul>\r\n<li>Removed <code>replace</code> directive (needed only for testing),\r\nsince it is incompatible with <code>go install</code> (<a\r\nhref=\"https://redirect.github.com/grpc/grpc-go/issues/7451\">#7451</a>).</li>\r\n</ul>\r\n<h2>protoc-gen-go-grpc v1.5.0</h2>\r\n<h1>Security</h1>\r\n<ul>\r\n<li>The generated function <code>Register&lt;Service&gt;Server</code>\r\nnow <strong>panics</strong> if the\r\n<code>Unimplemented&lt;Service&gt;Server</code> struct is embedded in a\r\nway that would otherwise lead to runtime panics if an unimplemented\r\nmethod was called. Users are advised to ensure they are properly\r\nembedding the <code>Unimplemented</code> struct for their service, and\r\nto regenerate their proto files to confirm. (<a\r\nhref=\"https://redirect.github.com/grpc/grpc-go/issues/7438\">#7438</a>)\r\n<ul>\r\n<li>Note: &quot;Proper embedding&quot; of the <code>Unimplemented</code>\r\nstruct means either embedding the struct by value (preferred) or\r\nensuring it is always initialized to a valid pointer. E.g.</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n<pre lang=\"go\"><code>struct MyServiceImpl {\r\n\tpb.UnimplementedMyServiceServer // embedded by value, not pointer\r\n\t// .. other struct fields ..\r\n}\r\n</code></pre>\r\n<h1>New Features</h1>\r\n<ul>\r\n<li>Generated code for services will produce streaming method\r\ndefinitions using one of six different generic types (e.g.\r\n<code>BidiStreamingServer</code> or <code>ClientStreamingClient</code>)\r\ninstead of producing complete interfaces and implementations for the\r\nstreaming methods. This can be disabled by setting\r\n<code>use_generic_streams_experimental=false</code>. Please file a bug\r\nif you encounter any issues with this behavior. (<a\r\nhref=\"https://redirect.github.com/grpc/grpc-go/issues/7387\">#7387</a>)</li>\r\n</ul>\r\n<h1>Bug Fixes</h1>\r\n<ul>\r\n<li>A period (.) is added to the end of the service interface doc\r\ncomment to comply with Godoc. (<a\r\nhref=\"https://redirect.github.com/grpc/grpc-go/issues/7392\">#7392</a>)</li>\r\n</ul>\r\n</blockquote>\r\n</details>\r\n<details>\r\n<summary>Commits</summary>\r\n<ul>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/b8669c35455183da6d5c474ea6e72fbf55183274\"><code>b8669c3</code></a>\r\nChange version to 1.5.1</li>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/5ad7775ee52e4ec85a5135b40ea21b778d3a7c0e\"><code>5ad7775</code></a>\r\nDo not create new addrConn when connection error happens (<a\r\nhref=\"https://redirect.github.com/grpc/grpc-go/issues/1369\">#1369</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/284c78bcedbaf3aec025e8dc492deaf85d358bd7\"><code>284c78b</code></a>\r\nChange version to 1.5.1-dev</li>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/172ccacff3cfbddedcf1ba5ea06cda943bc976c1\"><code>172ccac</code></a>\r\nChange version to 1.5.0</li>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/939edc09d6577e6c1221b4a65feb1e3d88ba6439\"><code>939edc0</code></a>\r\nRevert &quot;Use bufconn in end2end tests.&quot; (<a\r\nhref=\"https://redirect.github.com/grpc/grpc-go/issues/1381\">#1381</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/71260d21715bff9c2ac999d546349d4f4b77ef1d\"><code>71260d2</code></a>\r\nFix logging method (<a\r\nhref=\"https://redirect.github.com/grpc/grpc-go/issues/1375\">#1375</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/c7e2c00ed1df1690ec11b9984b3fa8da1bfafbdd\"><code>c7e2c00</code></a>\r\nUse bufconn in end2end tests.</li>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/9a71c7940b476fa96578035020a8ab48e04e7f0b\"><code>9a71c79</code></a>\r\nCreate bufconn package for a local, buffered net.Conn and\r\ndialer/listener</li>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/ce03e9cc712c2009613184c73f2c140cc42beffe\"><code>ce03e9c</code></a>\r\nFix a typo in examples/gotutorial.md (<a\r\nhref=\"https://redirect.github.com/grpc/grpc-go/issues/1374\">#1374</a>)</li>\r\n<li><a\r\nhref=\"https://github.com/grpc/grpc-go/commit/d6723916d2e73e8824d22a1ba5c52f8e6255e6f8\"><code>d672391</code></a>\r\nUse log severity and verbosity level (<a\r\nhref=\"https://redirect.github.com/grpc/grpc-go/issues/1340\">#1340</a>)</li>\r\n<li>Additional commits viewable in <a\r\nhref=\"https://github.com/grpc/grpc-go/compare/v1.4.0...v1.5.1\">compare\r\nview</a></li>\r\n</ul>\r\n</details>\r\n<br />\r\n\r\n\r\n[![Dependabot compatibility\r\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=google.golang.org/grpc/cmd/protoc-gen-go-grpc&package-manager=go_modules&previous-version=1.4.0&new-version=1.5.1)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\r\n\r\nDependabot will resolve any conflicts with this PR as long as you don't\r\nalter it yourself. You can also trigger a rebase manually by commenting\r\n`@dependabot rebase`.\r\n\r\n[//]: # (dependabot-automerge-start)\r\n[//]: # (dependabot-automerge-end)\r\n\r\n---\r\n\r\n<details>\r\n<summary>Dependabot commands and options</summary>\r\n<br />\r\n\r\nYou can trigger Dependabot actions by commenting on this PR:\r\n- `@dependabot rebase` will rebase this PR\r\n- `@dependabot recreate` will recreate this PR, overwriting any edits\r\nthat have been made to it\r\n- `@dependabot merge` will merge this PR after your CI passes on it\r\n- `@dependabot squash and merge` will squash and merge this PR after\r\nyour CI passes on it\r\n- `@dependabot cancel merge` will cancel a previously requested merge\r\nand block automerging\r\n- `@dependabot reopen` will reopen this PR if it is closed\r\n- `@dependabot close` will close this PR and stop Dependabot recreating\r\nit. You can achieve the same result by closing it manually\r\n- `@dependabot show <dependency name> ignore conditions` will show all\r\nof the ignore conditions of the specified dependency\r\n- `@dependabot ignore <dependency name> major version` will close this\r\ngroup update PR and stop Dependabot creating any more for the specific\r\ndependency's major version (unless you unignore this specific\r\ndependency's major version or upgrade to it yourself)\r\n- `@dependabot ignore <dependency name> minor version` will close this\r\ngroup update PR and stop Dependabot creating any more for the specific\r\ndependency's minor version (unless you unignore this specific\r\ndependency's minor version or upgrade to it yourself)\r\n- `@dependabot ignore <dependency name>` will close this group update PR\r\nand stop Dependabot creating any more for the specific dependency\r\n(unless you unignore this specific dependency or upgrade to it yourself)\r\n- `@dependabot unignore <dependency name>` will remove all of the ignore\r\nconditions of the specified dependency\r\n- `@dependabot unignore <dependency name> <ignore condition>` will\r\nremove the ignore condition of the specified dependency and ignore\r\nconditions\r\n\r\n\r\n</details>",
-                  "url": "https://github.com/ubuntu/authd/commit/38ace8f0cefb47750f4d4a11db118f9addbc876e"
+                  "timestamp": 1722523996,
+                  "message": "Broker conf file suffix support (#448)\n\nWe want all broker configuration files to ends up with .conf. Adapt and\r\nupdate the API for it.\r\nEnsure that local broker ID is Local, and that broker id is based on\r\nbroker name and not its config file.",
+                  "url": "https://github.com/ubuntu/authd/commit/5ea852cce8b7d9831b8db485198f36f1f90ee78b"
                },
                {
-                  "sha": "ce1b9e9d06de9bdeacdc26c8e0c3e8f53e7f1639",
+                  "sha": "8ec7215d09ab85711aa143e4eccd5ded4f9c5786",
                   "author": "Didier Roche",
-                  "timestamp": 1722504014,
-                  "message": "Regenerate protobuf code with latest grpc and protoc",
-                  "url": "https://github.com/ubuntu/authd/commit/ce1b9e9d06de9bdeacdc26c8e0c3e8f53e7f1639"
+                  "timestamp": 1722520834,
+                  "message": "Tests asserting we ignore invalid broker configuration file\n\nWe ignore any broker configuration file not ending up with .conf\nextension.\n\nCo-Authored-By: Denison Barbosa <denison.barbosa@canonical.com>",
+                  "url": "https://github.com/ubuntu/authd/commit/8ec7215d09ab85711aa143e4eccd5ded4f9c5786"
                },
                {
-                  "sha": "49ebb44f8302989be58b48e2c5fb9ff45f5b389b",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1722503337,
-                  "message": "deps(go-tools): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc\n\nBumps the minor-updates group in /tools with 1 update: [google.golang.org/grpc/cmd/protoc-gen-go-grpc](https://github.com/grpc/grpc-go).\n\n\nUpdates `google.golang.org/grpc/cmd/protoc-gen-go-grpc` from 1.4.0 to 1.5.1\n- [Release notes](https://github.com/grpc/grpc-go/releases)\n- [Commits](https://github.com/grpc/grpc-go/compare/v1.4.0...v1.5.1)\n\n---\nupdated-dependencies:\n- dependency-name: google.golang.org/grpc/cmd/protoc-gen-go-grpc\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/49ebb44f8302989be58b48e2c5fb9ff45f5b389b"
+                  "sha": "1198671f61215e6f3a230c5df797f32cb5e625e7",
+                  "author": "Didier Roche",
+                  "timestamp": 1722520750,
+                  "message": "Ignore brokers configuration without .conf suffix\n\nWe want to skip the temporary files that could be in brokers.d like swap\nfiles, dpkg temporary ones. Only rely on files ending up with .conf.",
+                  "url": "https://github.com/ubuntu/authd/commit/1198671f61215e6f3a230c5df797f32cb5e625e7"
                }
             ],
             "ciActions": [
