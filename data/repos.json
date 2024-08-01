@@ -6046,25 +6046,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f3fe23e829fc1ce65cf946c735ee5e6137ecd012",
+                  "sha": "47194c8c5d49b2bf9a1a530350e5b05dae058697",
                   "author": "dependabot[bot]",
-                  "timestamp": 1722522886,
-                  "message": "deps(gui-ubuntupro): bump win32 from 5.5.1 to 5.5.3 in /gui/packages/ubuntupro (#851)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f3fe23e829fc1ce65cf946c735ee5e6137ecd012"
+                  "timestamp": 1722535211,
+                  "message": "deps(gui-ubuntupro): bump win32_registry from 1.1.3 to 1.1.4 in /gui/packages/ubuntupro (#850)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/47194c8c5d49b2bf9a1a530350e5b05dae058697"
                },
                {
-                  "sha": "5cf9a1c539b8cd1d9c07fd911afe1e832e314d7a",
+                  "sha": "d53fc2e96b2ea25798b4becc234dae1aa84ed4ee",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1722517067,
-                  "message": "feat(gui): Landscape redesign to fit an input field for the SSL key (#849)\n\nAdding one single field motivated a whole UI redesign. The discussion\r\nand thought process is documented in #802 .\r\n\r\nThe key pilar to understand this PR is: we no longer show relationship\r\nbetween the form fields being displayed, but rather separate them into\r\nsubforms so the fields that are visible are the ones relevant to the\r\ntype of configuration the user is currently doing.\r\n\r\n[This comment in\r\n#802](https://github.com/canonical/ubuntu-pro-for-wsl/issues/802#issuecomment-2237200764)\r\nsummarizes what I mean by inter-field relationship, non-trivial logic\r\nthat would disable or enable or change the forbidden values of a form\r\nfield depending on the values of neighbour fields. The previous logic\r\nwas at the limit of being fine because the form was small, adding just\r\none extra field was enough to turn it complex enough to justify a\r\nredesign.\r\n\r\nWe now present those types of configuration as three distinct subforms:\r\nthe Landscape SaaS, self-hosted Landscape and an \"advanced\r\nconfiguration\" through which the user can supply a custom Landscape\r\nclient configuration file. That way input validation is much clearer now\r\nand there is no interleaved logic causing form fields to be visible in a\r\ndisabled state. The end result is a clearer UX.\r\n\r\nThe backing validation logic is split in subclasses mirroring the UI\r\nsplit in subforms.\r\n\r\nThe design is more horizontal now, the left side of the UI is havier on\r\nstatic text while the right side is more interactive.\r\n\r\nBecause of the way the widgets were composed to achieve this layout, an\r\nextra care was required to achieve a coherent tab navigation.\r\n\r\nBefore (good enough logic, tab navigation just worked):\r\n\r\n\r\n\r\nhttps://github.com/user-attachments/assets/6886e8b6-5f7d-4e3e-826d-45e86f897a66\r\n\r\n\r\n\r\nAfter (smaller and more focused subforms, no interleaving logic, tab\r\nnavigation works with a little more effort):\r\n\r\n\r\n\r\nhttps://github.com/user-attachments/assets/e001c436-fa70-49ae-a09b-7e463afb919d",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5cf9a1c539b8cd1d9c07fd911afe1e832e314d7a"
+                  "timestamp": 1722535081,
+                  "message": "fix(gui): SSL public key hint must have a certificate file extension (#854)\n\nThanks @edibotopic for noticing that :)\r\n\r\nAdditional to that fix. the first commit of this PR moves a user-facing\r\nstring (SSL Key input label) from the source code to the translatable\r\nresource, so it can be properly localized.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d53fc2e96b2ea25798b4becc234dae1aa84ed4ee"
                },
                {
-                  "sha": "3c1040e21181cdbc02a72ef3e1a842ef5d4e4ce4",
+                  "sha": "e3144475aac3e83e46acd0ecaff5c2f6fa626780",
                   "author": "dependabot[bot]",
-                  "timestamp": 1722505004,
-                  "message": "deps(gui-ubuntupro): bump win32 in /gui/packages/ubuntupro\n\nBumps [win32](https://github.com/halildurmus/win32) from 5.5.1 to 5.5.3.\n- [Release notes](https://github.com/halildurmus/win32/releases)\n- [Commits](https://github.com/halildurmus/win32/compare/v5.5.1...v5.5.3)\n\n---\nupdated-dependencies:\n- dependency-name: win32\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3c1040e21181cdbc02a72ef3e1a842ef5d4e4ce4"
+                  "timestamp": 1722523005,
+                  "message": "deps(gui-ubuntupro): bump win32_registry in /gui/packages/ubuntupro\n\nBumps [win32_registry](https://github.com/halildurmus/win32_registry) from 1.1.3 to 1.1.4.\n- [Release notes](https://github.com/halildurmus/win32_registry/releases)\n- [Changelog](https://github.com/halildurmus/win32_registry/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/halildurmus/win32_registry/compare/v1.1.3...v1.1.4)\n\n---\nupdated-dependencies:\n- dependency-name: win32_registry\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e3144475aac3e83e46acd0ecaff5c2f6fa626780"
                }
             ],
             "ciActions": [
