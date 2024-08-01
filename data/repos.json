@@ -6046,25 +6046,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e1563a9034a857520562a5b2bf5ea3dbc71564c2",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1722260012,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e1563a9034a857520562a5b2bf5ea3dbc71564c2"
+                  "sha": "87b614cd372466ea363d4b35ce515b666b8b0e76",
+                  "author": "Shane Crowley",
+                  "timestamp": 1722499195,
+                  "message": "docs: remove excess files from diagram autogeneration and disable titles in generated diagrams (#847)\n\nThis PR aimed to (1) reduce the number of excess files that are created\r\nin the repo during autogeneration of C4 diagrams and (2) leverage config\r\noptions passed to the renderer to disable excess information in the\r\ndiagrams, such as titles.\r\n\r\nOriginally, switching to an alternative rendering backend was trialled\r\nfor (1) but this failed during test workflow runs.\r\nThe alternative solution was to simply remove unwanted files with `rm`\r\nin the workflow after generation.\r\nThe workflow already removes junk generated during each run (.puml\r\nfiles), so it has now been amended to also remove key/legend files,\r\nwhich are not useful for our purposes. This removed 11 files of ~110 kb.\r\n\r\nThe existing plantuml rendering backend has limited config options but\r\nallows titles to be disabled in diagrams. This change was made and helps\r\nreduce visual noise in what are already already complex diagrams. This\r\nalso prevents naming conflicts; for example, terms like \"landscape\" and\r\n\"container\" are included in titles (according to the C4 convention) but\r\nthese could cause confusion when a technology called \"Landscape\" is also\r\nbeing referenced in a diagram and \"container\" has a variety of uses in\r\nsoftware.\r\n\r\nThe alt text used for one of the images in the docs was also fixed as it\r\nwasn't fit-for-purpose.\r\n\r\nUDENG-3731",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/87b614cd372466ea363d4b35ce515b666b8b0e76"
                },
                {
-                  "sha": "5898930fb913d42deec72d71a33ccb74f2784fc4",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1722259975,
-                  "message": "maint(gui): Upgrade flutter version (#845)\n\nAnd major versions of some dependencies that were previously held due\r\ninter-package constraints.\r\n\r\nFor instance grpc 4.0.0 requires minimum Dart version 3.2.0, but\r\nagentapi was holding Dart max version to 3.0.0, thus dependabot couldn't\r\nupgrade grpc.\r\n\r\nNothing required changes in the proto-generated Dart code.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5898930fb913d42deec72d71a33ccb74f2784fc4"
+                  "sha": "dc5b9cf3a691577c4ac7cc9a67e29fa326adf848",
+                  "author": "Shane Crowley",
+                  "timestamp": 1722340071,
+                  "message": "docs: Auto update diagram files (#848)\n\n[Auto-generated pull\r\nrequest](https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/autoupdate-structurizr-diagrams.yml)\r\nby GitHub Action",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/dc5b9cf3a691577c4ac7cc9a67e29fa326adf848"
                },
                {
-                  "sha": "549baf5c63600518f3ac96f637a6eee8ca58d0d8",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1722007409,
-                  "message": "Organize imports per latest lint recommendations",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/549baf5c63600518f3ac96f637a6eee8ca58d0d8"
+                  "sha": "c0f70caa6845f5b8e985fe39a982170705b23f51",
+                  "author": "edibotopic",
+                  "timestamp": 1722339807,
+                  "message": "Auto update diagrams",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c0f70caa6845f5b8e985fe39a982170705b23f51"
                }
             ],
             "ciActions": [
