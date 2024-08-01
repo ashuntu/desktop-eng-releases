@@ -6046,6 +6046,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5cf9a1c539b8cd1d9c07fd911afe1e832e314d7a",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1722517067,
+                  "message": "feat(gui): Landscape redesign to fit an input field for the SSL key (#849)\n\nAdding one single field motivated a whole UI redesign. The discussion\r\nand thought process is documented in #802 .\r\n\r\nThe key pilar to understand this PR is: we no longer show relationship\r\nbetween the form fields being displayed, but rather separate them into\r\nsubforms so the fields that are visible are the ones relevant to the\r\ntype of configuration the user is currently doing.\r\n\r\n[This comment in\r\n#802](https://github.com/canonical/ubuntu-pro-for-wsl/issues/802#issuecomment-2237200764)\r\nsummarizes what I mean by inter-field relationship, non-trivial logic\r\nthat would disable or enable or change the forbidden values of a form\r\nfield depending on the values of neighbour fields. The previous logic\r\nwas at the limit of being fine because the form was small, adding just\r\none extra field was enough to turn it complex enough to justify a\r\nredesign.\r\n\r\nWe now present those types of configuration as three distinct subforms:\r\nthe Landscape SaaS, self-hosted Landscape and an \"advanced\r\nconfiguration\" through which the user can supply a custom Landscape\r\nclient configuration file. That way input validation is much clearer now\r\nand there is no interleaved logic causing form fields to be visible in a\r\ndisabled state. The end result is a clearer UX.\r\n\r\nThe backing validation logic is split in subclasses mirroring the UI\r\nsplit in subforms.\r\n\r\nThe design is more horizontal now, the left side of the UI is havier on\r\nstatic text while the right side is more interactive.\r\n\r\nBecause of the way the widgets were composed to achieve this layout, an\r\nextra care was required to achieve a coherent tab navigation.\r\n\r\nBefore (good enough logic, tab navigation just worked):\r\n\r\n\r\n\r\nhttps://github.com/user-attachments/assets/6886e8b6-5f7d-4e3e-826d-45e86f897a66\r\n\r\n\r\n\r\nAfter (smaller and more focused subforms, no interleaving logic, tab\r\nnavigation works with a little more effort):\r\n\r\n\r\n\r\nhttps://github.com/user-attachments/assets/e001c436-fa70-49ae-a09b-7e463afb919d",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5cf9a1c539b8cd1d9c07fd911afe1e832e314d7a"
+               },
+               {
                   "sha": "87b614cd372466ea363d4b35ce515b666b8b0e76",
                   "author": "Shane Crowley",
                   "timestamp": 1722499195,
@@ -6053,18 +6060,11 @@
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/87b614cd372466ea363d4b35ce515b666b8b0e76"
                },
                {
-                  "sha": "dc5b9cf3a691577c4ac7cc9a67e29fa326adf848",
-                  "author": "Shane Crowley",
-                  "timestamp": 1722340071,
-                  "message": "docs: Auto update diagram files (#848)\n\n[Auto-generated pull\r\nrequest](https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/autoupdate-structurizr-diagrams.yml)\r\nby GitHub Action",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/dc5b9cf3a691577c4ac7cc9a67e29fa326adf848"
-               },
-               {
-                  "sha": "c0f70caa6845f5b8e985fe39a982170705b23f51",
-                  "author": "edibotopic",
-                  "timestamp": 1722339807,
-                  "message": "Auto update diagrams",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c0f70caa6845f5b8e985fe39a982170705b23f51"
+                  "sha": "caf003964bd19f142472c32b6cb9c39a8cbd9fef",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1722449999,
+                  "message": "Only enables SaaS if compiled in debug mode\n\nStill useful for running tests but goes disabled in production.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/caf003964bd19f142472c32b6cb9c39a8cbd9fef"
                }
             ],
             "ciActions": [
