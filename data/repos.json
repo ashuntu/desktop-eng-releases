@@ -6046,25 +6046,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1185b81a4d4352381e68e7717e0e573d6c5235b4",
+                  "author": "CarlosNihelton",
+                  "timestamp": 1722601949,
+                  "message": "Auto update internal dependencies",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1185b81a4d4352381e68e7717e0e573d6c5235b4"
+               },
+               {
+                  "sha": "3a85a9fcc9e299ad527eeaec6d282c7430b56a51",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1722601909,
+                  "message": "fix(gui): Landscape config serialization (#855)\n\nThe Landscape ping service doesn't support https by default.\r\n\r\nAdditionally, wslpath can fool wsl-pro-service, when the path passed to\r\nthe command line is an empty path it outputs the current working\r\ndirectory absolute path. Due systemd, cwd is `/`.\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/6d8cb161-cd06-48ea-9782-d7e478056fdd)\r\n\r\nWe should have wsl-pro-service checking for empty paths before invoking\r\nwslpath for added correctness (users could well assemble a config file\r\nby hand having `ssl_public_key = `), but it also makes sense to fix it\r\nhere, as we're aware of which fields are optional in the UI. But,\r\ninstead of treating this (or any path) field as special, I'm being more\r\ngeneric, **filtering out any line in the INI configuration output that\r\ncould have empty values**, i.e., we won't output lines with this shape :\r\n`key =`.\r\n\r\nMore test assertions were added validating those assumptions.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3a85a9fcc9e299ad527eeaec6d282c7430b56a51"
+               },
+               {
                   "sha": "69f592c1a0d115b690de3624d450a383136f7fbd",
                   "author": "dependabot[bot]",
                   "timestamp": 1722543980,
                   "message": "deps(common): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc from 1.4.0 to 1.5.1 in /common (#853)",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/69f592c1a0d115b690de3624d450a383136f7fbd"
-               },
-               {
-                  "sha": "708911e2a5ff5c229deb7d5d19a6d8cf899b652f",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1722540002,
-                  "message": "deps(common): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc\n\nBumps [google.golang.org/grpc/cmd/protoc-gen-go-grpc](https://github.com/grpc/grpc-go) from 1.4.0 to 1.5.1.\n- [Release notes](https://github.com/grpc/grpc-go/releases)\n- [Commits](https://github.com/grpc/grpc-go/compare/v1.4.0...v1.5.1)\n\n---\nupdated-dependencies:\n- dependency-name: google.golang.org/grpc/cmd/protoc-gen-go-grpc\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/708911e2a5ff5c229deb7d5d19a6d8cf899b652f"
-               },
-               {
-                  "sha": "4cfbd6efc19faa9b14e93b9a5c442137fc89b5f1",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1722539537,
-                  "message": "deps(tools): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc from 1.4.0 to 1.5.1 in /tools (#852)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4cfbd6efc19faa9b14e93b9a5c442137fc89b5f1"
                }
             ],
             "ciActions": [
@@ -6401,25 +6401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5ea852cce8b7d9831b8db485198f36f1f90ee78b",
+                  "sha": "63d8a59ce77750eec667113e7672f999870ae3a3",
                   "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1722523996,
-                  "message": "Broker conf file suffix support (#448)\n\nWe want all broker configuration files to ends up with .conf. Adapt and\r\nupdate the API for it.\r\nEnsure that local broker ID is Local, and that broker id is based on\r\nbroker name and not its config file.",
-                  "url": "https://github.com/ubuntu/authd/commit/5ea852cce8b7d9831b8db485198f36f1f90ee78b"
+                  "timestamp": 1722602221,
+                  "message": "maint: misc cleanups for broker configuration (#449)\n\nMisc cleanups based on Marco's suggestion on\r\nhttps://github.com/ubuntu/authd/pull/448.",
+                  "url": "https://github.com/ubuntu/authd/commit/63d8a59ce77750eec667113e7672f999870ae3a3"
                },
                {
-                  "sha": "8ec7215d09ab85711aa143e4eccd5ded4f9c5786",
+                  "sha": "184080b9745452f2f3c889f5d35ddfd5524b46a8",
                   "author": "Didier Roche",
-                  "timestamp": 1722520834,
-                  "message": "Tests asserting we ignore invalid broker configuration file\n\nWe ignore any broker configuration file not ending up with .conf\nextension.\n\nCo-Authored-By: Denison Barbosa <denison.barbosa@canonical.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/8ec7215d09ab85711aa143e4eccd5ded4f9c5786"
+                  "timestamp": 1722600658,
+                  "message": "Add comments explaining why we skip error checking.",
+                  "url": "https://github.com/ubuntu/authd/commit/184080b9745452f2f3c889f5d35ddfd5524b46a8"
                },
                {
-                  "sha": "1198671f61215e6f3a230c5df797f32cb5e625e7",
+                  "sha": "fbc931cb073309ae741d8a947d52e837894785c8",
                   "author": "Didier Roche",
-                  "timestamp": 1722520750,
-                  "message": "Ignore brokers configuration without .conf suffix\n\nWe want to skip the temporary files that could be in brokers.d like swap\nfiles, dpkg temporary ones. Only rely on files ending up with .conf.",
-                  "url": "https://github.com/ubuntu/authd/commit/1198671f61215e6f3a230c5df797f32cb5e625e7"
+                  "timestamp": 1722600561,
+                  "message": "Default to local broker and override if we have a config file\n\nThis avoids an else.",
+                  "url": "https://github.com/ubuntu/authd/commit/fbc931cb073309ae741d8a947d52e837894785c8"
                }
             ],
             "ciActions": [
