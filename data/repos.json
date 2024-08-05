@@ -6355,7 +6355,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 198,
+            "newCommits": 204,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -6401,25 +6401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "63d8a59ce77750eec667113e7672f999870ae3a3",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1722602221,
-                  "message": "maint: misc cleanups for broker configuration (#449)\n\nMisc cleanups based on Marco's suggestion on\r\nhttps://github.com/ubuntu/authd/pull/448.",
-                  "url": "https://github.com/ubuntu/authd/commit/63d8a59ce77750eec667113e7672f999870ae3a3"
+                  "sha": "2343ba470440c7a4e12b360b92627f57d3e8a120",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1722864299,
+                  "message": "feat: Check for U(G)ID conflict when authenticating (#447)\n\nWe used to not care about whether the IDs could conflict or not. Even\r\nthough it's unlikely, we must consider the possibility of UIDs and GIDs\r\nclashing with existing ones. Now, if there's a clash, we fail the\r\nauthentication.\r\n\r\nUDENG-3637",
+                  "url": "https://github.com/ubuntu/authd/commit/2343ba470440c7a4e12b360b92627f57d3e8a120"
                },
                {
-                  "sha": "184080b9745452f2f3c889f5d35ddfd5524b46a8",
-                  "author": "Didier Roche",
-                  "timestamp": 1722600658,
-                  "message": "Add comments explaining why we skip error checking.",
-                  "url": "https://github.com/ubuntu/authd/commit/184080b9745452f2f3c889f5d35ddfd5524b46a8"
+                  "sha": "c4cc243c9f149a4d23e225845fe10574fad6fe87",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1722516882,
+                  "message": "Check for U(G)ID conflict when authenticating\n\nWe used to not care about whether the IDs could conflict or not. Even\nthough it's unlikely to happen, we need to consider the possibility of\nUIDs and GIDs clashing with existing ones. Now, if there's a clash, we\nfail the authentication.",
+                  "url": "https://github.com/ubuntu/authd/commit/c4cc243c9f149a4d23e225845fe10574fad6fe87"
                },
                {
-                  "sha": "fbc931cb073309ae741d8a947d52e837894785c8",
-                  "author": "Didier Roche",
-                  "timestamp": 1722600561,
-                  "message": "Default to local broker and override if we have a config file\n\nThis avoids an else.",
-                  "url": "https://github.com/ubuntu/authd/commit/fbc931cb073309ae741d8a947d52e837894785c8"
+                  "sha": "520f4c451de7cb2b265c0f08d38e31d3fca76107",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1722602120,
+                  "message": "Fix bug in cache tests where db file was not removed",
+                  "url": "https://github.com/ubuntu/authd/commit/520f4c451de7cb2b265c0f08d38e31d3fca76107"
                }
             ],
             "ciActions": [
@@ -6436,25 +6436,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ea2c64410a6d0c0194049670be902110ee962875",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1722863740,
+                  "message": "tests: Add tests for concurrent IsAuthenticated calls (#99)\n\nThis is to ensure one session does not interfere with another when\r\nhappening at the same time on the broker. To understand better the\r\ntests, run them with the verbosity flag (-v) so that you can see the\r\nordering of the calls.\r\n\r\nUDENG-2974",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/ea2c64410a6d0c0194049670be902110ee962875"
+               },
+               {
+                  "sha": "86a6b87d946dd54a2c059cf49fd2c20d29e9f38e",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1722857036,
+                  "message": "Add tests for concurrent IsAuthenticated calls\n\nThis is to ensure one session does not interfere with another when\nhappening at the same time on the broker. In order to understand better\nthe tests, run them with the verbosity flag (-v) so that you can see the\nordering of the calls.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/86a6b87d946dd54a2c059cf49fd2c20d29e9f38e"
+               },
+               {
                   "sha": "4e2773e17435b719bd1b9636abe789f24d116bb6",
                   "author": "Denison Barbosa",
                   "timestamp": 1722513529,
                   "message": "feat: Move fetchUserInfo logic to the providers pkg (#96)\n\nWe used to control how the ID token was parsed into claims in the\r\nbroker. This would become progressively unmaintainable as each provider\r\ncould understand the claims differently.\r\n\r\nInstead of enforcing the providers to use the email as the username for\r\nlocal authentication, they control what will be parsed from the ID Token\r\nand return a UserInfo to the broker, which only fills the empty values\r\nwith defaults (if any).\r\n\r\nubuntu/authd#439\r\n\r\nUDENG-3698",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4e2773e17435b719bd1b9636abe789f24d116bb6"
-               },
-               {
-                  "sha": "f1dfbd9b86e55aca21892b26b340f52ce532d35b",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1722339783,
-                  "message": "Move fetchUserInfo logic to the providers pkg\n\nWe used to control how the ID token was parsed into claims in the broker\nitself. This would become progressively unmaintainable as each provider\ncould understand the claims differently. Now, instead of having to\nenforce the providers to use the email as username for local\nauthentication, they control what will be parsed from the ID Token and\nreturn a UserInfo to broker, which then only fills the empty values with\ndefaults (if any).",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f1dfbd9b86e55aca21892b26b340f52ce532d35b"
-               },
-               {
-                  "sha": "4561bcc05400022178f51710fa5b106b56a5d787",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1721915280,
-                  "message": "feat: Allow broker and sessions to start in offline mode (#92)\n\nEven though we \"allowed\" offline authentication, the broker would not\r\nstart without a network connection.\r\n\r\nNow, the broker does not rely on a connection to run and now sessions\r\nhave control over the auth config needed to authenticate the user\r\nonline. This means we can start sessions offline when we fail to connect\r\nto the provider.\r\n\r\nUDENG-3591\r\nUDENG-3593\r\nUDENG-3596",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4561bcc05400022178f51710fa5b106b56a5d787"
                }
             ],
             "ciActions": [
