@@ -6046,25 +6046,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1d4bac6f259f281b246320a3b4aefd6ad9b106fb",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1723036871,
+                  "message": "fix(wsl-pro-service): Do not translate empty paths (#858)\n\nI wanted this PR to be laser-focus, just a bugfix, thus I'm not\r\nrefactoring the executable-mocking just yet.\r\n\r\nThe issue is: when we invoke `wslpath -au ''` we get the absolute path\r\nof the current working directory.\r\nThat's surely not what we expect of a Windows path.\r\n\r\nIt could be problematic if the user passes a custom Landscape config\r\nfile containing this line `ssl_public_key= `, as we'd modify the final\r\nclient.conf into `ssl_public_key = /` (systemd makes it so our current\r\nworking directory is `/`). Landscape client would tolerate the empty\r\nvalue in the INI sintax, but this would force it to try to read `/` as a\r\ncertificate file. Clearly not what we want.\r\n\r\nA similar thing could happen in `system.UserProfileDir()`, but that's\r\neven funnier. Having %USERPROFILE% set to an empty string is indeed an\r\nodd edge case, so I'm not 100% sure the added code is worth it, as we're\r\nlikely to err out attempting to open inexistant directories. I think it\r\nworths it because we are sure on how we err out. Leaving as it was could\r\nlead us into reading files we were not supposed to.\r\n\r\nThey issues were:\r\n\r\n`echo %USERPROFILE%` would output `ECHO is on` if that environment\r\nvariable is empty. We fix it by running `echo.%USERPROFILE%` instead. It\r\noutputs an empty line for that case. Finally, if the output is empty, we\r\nbail out.\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/1fceae7f-3985-4148-b6e5-60a014068621)\r\n\r\nI made some modifications in the wslpath and cmd.exe mocks to get closer\r\nto the surprising behavior, so I could add test cases\r\ndemonstrating the surprising behavior.\r\n\r\n---\r\nCloses UDENG-3788",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1d4bac6f259f281b246320a3b4aefd6ad9b106fb"
+               },
+               {
+                  "sha": "3c874422929bafe1a2eff2c8b5026d5f416d8060",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1723035231,
+                  "message": "Don't use `` where \"\" will do it\n\nThe line not touched in this change uses backticks because of the\nbackslash (Windows path separator -.-).\nThe three lines below it had no reason to use the backtick syntax.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3c874422929bafe1a2eff2c8b5026d5f416d8060"
+               },
+               {
                   "sha": "a573e39ad9beffabd42dba53d781cfee4a7ce804",
                   "author": "Carlos Nihelton",
                   "timestamp": 1723032872,
                   "message": "feat(docs): Show how to enable opt-in features to devs/contributors. (#859)\n\nWe don't show Landscape config page nor the subscribe button by default.\r\nThose willing to test those features by hand need to enable them\r\nexplicitly via the Windows registry, since #835 .",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a573e39ad9beffabd42dba53d781cfee4a7ce804"
-               },
-               {
-                  "sha": "4db8262ae78f2c535e6dbcbef2db3dac490619a1",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1722965891,
-                  "message": "Adds the Ubuntu pro page to the linkchecker ignore list\n\nCI fails because it redirects to the SSO page.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4db8262ae78f2c535e6dbcbef2db3dac490619a1"
-               },
-               {
-                  "sha": "b2a7ca4f211924824b6a295ff3d23b4136fec62b",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1722965031,
-                  "message": "Adds 'DWORD' to the custom wordlist",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b2a7ca4f211924824b6a295ff3d23b4136fec62b"
                }
             ],
             "ciActions": [
@@ -6355,7 +6355,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 213,
+            "newCommits": 215,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
