@@ -6436,6 +6436,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "38232637c5fdda3c13a0d68efe91d6f4ec6878a1",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1723022331,
+                  "message": "deps(go): bump golang.org/x/oauth2 from 0.21.0 to 0.22.0 (#98)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/38232637c5fdda3c13a0d68efe91d6f4ec6878a1"
+               },
+               {
                   "sha": "ea2c64410a6d0c0194049670be902110ee962875",
                   "author": "Denison Barbosa",
                   "timestamp": 1722863740,
@@ -6448,13 +6455,6 @@
                   "timestamp": 1722857036,
                   "message": "Add tests for concurrent IsAuthenticated calls\n\nThis is to ensure one session does not interfere with another when\nhappening at the same time on the broker. In order to understand better\nthe tests, run them with the verbosity flag (-v) so that you can see the\nordering of the calls.",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/86a6b87d946dd54a2c059cf49fd2c20d29e9f38e"
-               },
-               {
-                  "sha": "4e2773e17435b719bd1b9636abe789f24d116bb6",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1722513529,
-                  "message": "feat: Move fetchUserInfo logic to the providers pkg (#96)\n\nWe used to control how the ID token was parsed into claims in the\r\nbroker. This would become progressively unmaintainable as each provider\r\ncould understand the claims differently.\r\n\r\nInstead of enforcing the providers to use the email as the username for\r\nlocal authentication, they control what will be parsed from the ID Token\r\nand return a UserInfo to the broker, which only fills the empty values\r\nwith defaults (if any).\r\n\r\nubuntu/authd#439\r\n\r\nUDENG-3698",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4e2773e17435b719bd1b9636abe789f24d116bb6"
                }
             ],
             "ciActions": [
