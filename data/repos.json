@@ -6046,25 +6046,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1185b81a4d4352381e68e7717e0e573d6c5235b4",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1722601949,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1185b81a4d4352381e68e7717e0e573d6c5235b4"
-               },
-               {
-                  "sha": "3a85a9fcc9e299ad527eeaec6d282c7430b56a51",
+                  "sha": "a573e39ad9beffabd42dba53d781cfee4a7ce804",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1722601909,
-                  "message": "fix(gui): Landscape config serialization (#855)\n\nThe Landscape ping service doesn't support https by default.\r\n\r\nAdditionally, wslpath can fool wsl-pro-service, when the path passed to\r\nthe command line is an empty path it outputs the current working\r\ndirectory absolute path. Due systemd, cwd is `/`.\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/6d8cb161-cd06-48ea-9782-d7e478056fdd)\r\n\r\nWe should have wsl-pro-service checking for empty paths before invoking\r\nwslpath for added correctness (users could well assemble a config file\r\nby hand having `ssl_public_key = `), but it also makes sense to fix it\r\nhere, as we're aware of which fields are optional in the UI. But,\r\ninstead of treating this (or any path) field as special, I'm being more\r\ngeneric, **filtering out any line in the INI configuration output that\r\ncould have empty values**, i.e., we won't output lines with this shape :\r\n`key =`.\r\n\r\nMore test assertions were added validating those assumptions.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3a85a9fcc9e299ad527eeaec6d282c7430b56a51"
+                  "timestamp": 1723032872,
+                  "message": "feat(docs): Show how to enable opt-in features to devs/contributors. (#859)\n\nWe don't show Landscape config page nor the subscribe button by default.\r\nThose willing to test those features by hand need to enable them\r\nexplicitly via the Windows registry, since #835 .",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a573e39ad9beffabd42dba53d781cfee4a7ce804"
                },
                {
-                  "sha": "69f592c1a0d115b690de3624d450a383136f7fbd",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1722543980,
-                  "message": "deps(common): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc from 1.4.0 to 1.5.1 in /common (#853)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/69f592c1a0d115b690de3624d450a383136f7fbd"
+                  "sha": "4db8262ae78f2c535e6dbcbef2db3dac490619a1",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1722965891,
+                  "message": "Adds the Ubuntu pro page to the linkchecker ignore list\n\nCI fails because it redirects to the SSO page.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4db8262ae78f2c535e6dbcbef2db3dac490619a1"
+               },
+               {
+                  "sha": "b2a7ca4f211924824b6a295ff3d23b4136fec62b",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1722965031,
+                  "message": "Adds 'DWORD' to the custom wordlist",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b2a7ca4f211924824b6a295ff3d23b4136fec62b"
                }
             ],
             "ciActions": [
@@ -6355,7 +6355,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 209,
+            "newCommits": 213,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
