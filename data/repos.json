@@ -6401,6 +6401,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "488323299398cc389571f2d4e6b4deb954586fe3",
+                  "author": "adombeck",
+                  "timestamp": 1723729012,
+                  "message": "debian: Also insert authd as NSS source on reinstall (#461)\n\ndebian: Also insert authd as NSS source on reinstall\r\n\r\nThe debian/postrm script removes authd as a source from\r\n/etc/nsswitch.conf, but the debian/postinst script only added it when\r\nthe package was installed for the fist time. That led to NSS not using\r\nauthd as a source when the package was reinstalled.\r\n\r\nWe now ensure that authd is always added as a source to the `passwd`,\r\n`group` and `shadow` databases in /etc/nsswitch.conf when the authd\r\npackage is installed.\r\n\r\nThat's done by always calling `insert_nss_entry` on install, which is\r\nalready implemented so that it only adds the `authd` string to those\r\n`passwd|group|shadow` lines in /etc/nsswitch.conf which don't already\r\ncontain it, so we can just always call that function on install.\r\n\r\nUDENG-3906",
+                  "url": "https://github.com/ubuntu/authd/commit/488323299398cc389571f2d4e6b4deb954586fe3"
+               },
+               {
                   "sha": "dcabc309eb126e19e370f6a58da652b6bd228b1b",
                   "author": "Denison Barbosa",
                   "timestamp": 1723722773,
@@ -6413,13 +6420,6 @@
                   "timestamp": 1723714281,
                   "message": "deps(go): bump golang.org/x/sys in the minor-updates group\n\nBumps the minor-updates group with 1 update: [golang.org/x/sys](https://github.com/golang/sys).\n\n\nUpdates `golang.org/x/sys` from 0.23.0 to 0.24.0\n- [Commits](https://github.com/golang/sys/compare/v0.23.0...v0.24.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
                   "url": "https://github.com/ubuntu/authd/commit/1451ee740ca62fc2f27d2261e7d69db2498298b2"
-               },
-               {
-                  "sha": "b23ff93d9bd9818d8b7b89892aec55ed917a101b",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1723451915,
-                  "message": "deps(go): bump the minor-updates group with 2 updates (#454)",
-                  "url": "https://github.com/ubuntu/authd/commit/b23ff93d9bd9818d8b7b89892aec55ed917a101b"
                }
             ],
             "ciActions": [
@@ -8401,25 +8401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6e28865e0ce55c0f95d17a25871618b1660e97b5",
+                  "sha": "f6574d605747a5d0fc754e90b0dbe08c0f398269",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1717546561,
+                  "timestamp": 1723729806,
                   "message": "Upload to oracular",
-                  "url": "https://github.com/ubuntu/yaru/commit/6e28865e0ce55c0f95d17a25871618b1660e97b5"
+                  "url": "https://github.com/ubuntu/yaru/commit/f6574d605747a5d0fc754e90b0dbe08c0f398269"
                },
                {
-                  "sha": "0c28f80d1c6b5fe1ed11684ac0310b10b785494e",
+                  "sha": "28d8a64c95493bc1e2a50179f7e1be9f6ef2e2cb",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1717546522,
+                  "timestamp": 1723729745,
                   "message": "Update changelog",
-                  "url": "https://github.com/ubuntu/yaru/commit/0c28f80d1c6b5fe1ed11684ac0310b10b785494e"
+                  "url": "https://github.com/ubuntu/yaru/commit/28d8a64c95493bc1e2a50179f7e1be9f6ef2e2cb"
                },
                {
-                  "sha": "8369b5665aaddb774b646c3fad87ab2c14a7627a",
+                  "sha": "a974f9a558e29e344bea5947c801a72a0c2e3706",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1717546080,
-                  "message": "build: Bump version to 24.04.3",
-                  "url": "https://github.com/ubuntu/yaru/commit/8369b5665aaddb774b646c3fad87ab2c14a7627a"
+                  "timestamp": 1723729719,
+                  "message": "meson: Release 24.10.1",
+                  "url": "https://github.com/ubuntu/yaru/commit/a974f9a558e29e344bea5947c801a72a0c2e3706"
                }
             ],
             "ciActions": [],
