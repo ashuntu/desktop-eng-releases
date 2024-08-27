@@ -3848,6 +3848,78 @@
             "snap": null
          },
          {
+            "name": "snapd-desktop-integration",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/snapd-desktop-integration",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "e13ba2235ae0c6d37c2d393436396cc5399013b9",
+                  "author": "Sergio Costas",
+                  "timestamp": 1721813931,
+                  "message": "Fix cancelled refreshes (#89)\n\nWhen a refresh was cancelled (for example, because the snap was\r\nlaunched before it has completed the refresh), the snap is\r\nreverted, but the current code fails to detect correctly this,\r\nand snapd-desktop-integration could be left in an invalid state,\r\nasking for already completed changes over and over again.\r\n\r\nThis patch fixes this bug.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/e13ba2235ae0c6d37c2d393436396cc5399013b9"
+               },
+               {
+                  "sha": "6903e45c6f293ab49634117dff4821f6e107f855",
+                  "author": "Sergio Costas",
+                  "timestamp": 1721739057,
+                  "message": "Don't launch several \"threads\" for same change (#90)\n\nWhen a change is processed, a timeout is set to continue\r\nmonitoring it. Unfortunately, when a change is sent again to the\r\nprogram, a new timeout is set, thus having two \"pseudothreads\"\r\nmonitoring the same change.\r\n\r\nThis patch checks if there is already a timeout for a change,\r\nand avoids creating a new timeout in that case, because the\r\ncurrent one will already manage new changes.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/6903e45c6f293ab49634117dff4821f6e107f855"
+               },
+               {
+                  "sha": "4e58f7c4fe3552ffbc806158fdb413dd888ae0ce",
+                  "author": "Sergio Costas",
+                  "timestamp": 1721735510,
+                  "message": "New notifications (#86)\n\nThis patch implements the new notification style for one, two, three, or more snaps.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4e58f7c4fe3552ffbc806158fdb413dd888ae0ce"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "snapd-glib",
+            "defaultBranch": "master",
+            "newCommits": 14,
+            "url": "https://github.com/canonical/snapd-glib",
+            "releases": [
+               {
+                  "id": 150322150,
+                  "version": "1.65",
+                  "timestamp": 1712633155,
+                  "title": "1.65",
+                  "body": "<ul>\n<li>New API:\n<pre><code> - `snapd_autorefresh_change_data_get_snap_names`\n - `snapd_autorefresh_change_data_get_refresh_forced`\n - `snapd_change_get_data`\n - `snapd_client_get_notices_async`\n - `snapd_client_get_notices_finish`\n - `snapd_client_get_notices_sync`\n - `snapd_client_get_notices_with_filters_async`\n - `snapd_client_get_notices_with_filters_finish`\n - `snapd_client_get_notices_with_filters_sync`\n - `snapd_notice_get_notice_type`\n - `snapd_notice_get_key`\n - `snapd_notice_get_first_occurred`\n - `snapd_notice_get_last_occurred`\n - `snapd_notice_get_last_repeated`\n - `snapd_notice_get_occurrences`\n - `snapd_notice_get_last_data`\n - `snapd_notice_get_repeat_after`\n - `snapd_notice_get_expire_after`\n - `snapd_snap_get_proceed_time`\n - `SNAPD_GET_SNAPS_FLAGS_REFRESH_INHIBITED`\n - `SNAPD_NOTICE_TYPE_UNKNOWN`\n - `SNAPD_NOTICE_TYPE_CHANGE_UPDATE`\n - `SNAPD_NOTICE_TYPE_REFRESH_INHIBIT`\n - `SNAPD_NOTICE_TYPE_SNAP_RUN_INHIBIT`\n</code></pre></li>\n<li>Port to Qt 6.</li>\n<li>Add support for refresh-inhibited snap parameter.</li>\n<li>Add support for DATA parameters in Changes.</li>\n<li>Add support for notify interface.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.65",
+                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.65...master"
+               },
+               {
+                  "id": 111872081,
+                  "version": "1.64",
+                  "timestamp": 1689115220,
+                  "title": "1.64",
+                  "body": "<ul>\n<li>New API:\n\n<ul>\n<li><code>snapd_category_details_get_name</code></li>\n<li><code>snapd_category_get_featured</code></li>\n<li><code>snapd_category_get_name</code></li>\n<li><code>snapd_client_find_category_async</code></li>\n<li><code>snapd_client_find_category_finish</code></li>\n<li><code>snapd_client_find_category_sync</code></li>\n<li><code>snapd_client_follow_logs_async</code></li>\n<li><code>snapd_client_follow_logs_finish</code></li>\n<li><code>snapd_client_follow_logs_sync</code></li>\n<li><code>snapd_client_get_categories_async</code></li>\n<li><code>snapd_client_get_categories_finish</code></li>\n<li><code>snapd_client_get_categories_sync</code></li>\n<li><code>snapd_client_get_logs_async</code></li>\n<li><code>snapd_client_get_logs_finish</code></li>\n<li><code>snapd_client_get_logs_sync</code></li>\n<li><code>snapd_log_get_message</code></li>\n<li><code>snapd_log_get_pid</code></li>\n<li><code>snapd_log_get_sid</code></li>\n<li><code>snapd_log_get_timestamp</code></li>\n<li><code>snapd_snap_get_categories</code></li>\n<li><code>snapd_snap_get_hold</code></li>\n<li><code>snapd_system_information_get_architecture</code></li>\n<li><code>SNAPD_ERROR_APP_NOT_FOUND</code></li>\n<li><code>SNAPD_ERROR_ARCHITECTURE_NOT_AVAILABLE</code></li>\n<li><code>SNAPD_ERROR_CHANGE_CONFLICT</code></li>\n<li><code>SNAPD_ERROR_INTERFACES_UNCHANGED</code></li>\n</ul></li>\n<li>Deprecated API:\n\n<ul>\n<li><code>snapd_client_find_section_sync</code></li>\n<li><code>snapd_client_find_section_async</code></li>\n<li><code>snapd_client_find_section_finish</code></li>\n<li><code>snapd_client_get_sections_sync</code></li>\n</ul></li>\n<li>Support snap hold date field.</li>\n<li>Support system information architecture field.</li>\n<li>Implement snap categories support, replacing sections.</li>\n<li>Support getting snap service logs.</li>\n<li>Fix buffer overflow reading assertions.</li>\n<li>Fix leak in themes API.</li>\n<li>Add more snapd errors.</li>\n<li>Fix tests failing on glib 2.77.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.64",
+                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.64...master"
+               },
+               {
+                  "id": 75285290,
+                  "version": "1.63",
+                  "timestamp": 1661379470,
+                  "title": "1.63",
+                  "body": "<ul>\n<li>Fix snapd-qt cmake configuration.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.63",
+                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.63...master"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "snapd.dart",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -4538,78 +4610,6 @@
                   "body": "",
                   "url": "https://github.com/canonical/has-signed-canonical-cla/releases/tag/1.1.2",
                   "compareUrl": "https://github.com/canonical/has-signed-canonical-cla/compare/1.1.2...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "snapd-desktop-integration",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/snapd-desktop-integration",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "e13ba2235ae0c6d37c2d393436396cc5399013b9",
-                  "author": "Sergio Costas",
-                  "timestamp": 1721813931,
-                  "message": "Fix cancelled refreshes (#89)\n\nWhen a refresh was cancelled (for example, because the snap was\r\nlaunched before it has completed the refresh), the snap is\r\nreverted, but the current code fails to detect correctly this,\r\nand snapd-desktop-integration could be left in an invalid state,\r\nasking for already completed changes over and over again.\r\n\r\nThis patch fixes this bug.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/e13ba2235ae0c6d37c2d393436396cc5399013b9"
-               },
-               {
-                  "sha": "6903e45c6f293ab49634117dff4821f6e107f855",
-                  "author": "Sergio Costas",
-                  "timestamp": 1721739057,
-                  "message": "Don't launch several \"threads\" for same change (#90)\n\nWhen a change is processed, a timeout is set to continue\r\nmonitoring it. Unfortunately, when a change is sent again to the\r\nprogram, a new timeout is set, thus having two \"pseudothreads\"\r\nmonitoring the same change.\r\n\r\nThis patch checks if there is already a timeout for a change,\r\nand avoids creating a new timeout in that case, because the\r\ncurrent one will already manage new changes.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/6903e45c6f293ab49634117dff4821f6e107f855"
-               },
-               {
-                  "sha": "4e58f7c4fe3552ffbc806158fdb413dd888ae0ce",
-                  "author": "Sergio Costas",
-                  "timestamp": 1721735510,
-                  "message": "New notifications (#86)\n\nThis patch implements the new notification style for one, two, three, or more snaps.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4e58f7c4fe3552ffbc806158fdb413dd888ae0ce"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "snapd-glib",
-            "defaultBranch": "master",
-            "newCommits": 10,
-            "url": "https://github.com/canonical/snapd-glib",
-            "releases": [
-               {
-                  "id": 150322150,
-                  "version": "1.65",
-                  "timestamp": 1712633155,
-                  "title": "1.65",
-                  "body": "<ul>\n<li>New API:\n<pre><code> - `snapd_autorefresh_change_data_get_snap_names`\n - `snapd_autorefresh_change_data_get_refresh_forced`\n - `snapd_change_get_data`\n - `snapd_client_get_notices_async`\n - `snapd_client_get_notices_finish`\n - `snapd_client_get_notices_sync`\n - `snapd_client_get_notices_with_filters_async`\n - `snapd_client_get_notices_with_filters_finish`\n - `snapd_client_get_notices_with_filters_sync`\n - `snapd_notice_get_notice_type`\n - `snapd_notice_get_key`\n - `snapd_notice_get_first_occurred`\n - `snapd_notice_get_last_occurred`\n - `snapd_notice_get_last_repeated`\n - `snapd_notice_get_occurrences`\n - `snapd_notice_get_last_data`\n - `snapd_notice_get_repeat_after`\n - `snapd_notice_get_expire_after`\n - `snapd_snap_get_proceed_time`\n - `SNAPD_GET_SNAPS_FLAGS_REFRESH_INHIBITED`\n - `SNAPD_NOTICE_TYPE_UNKNOWN`\n - `SNAPD_NOTICE_TYPE_CHANGE_UPDATE`\n - `SNAPD_NOTICE_TYPE_REFRESH_INHIBIT`\n - `SNAPD_NOTICE_TYPE_SNAP_RUN_INHIBIT`\n</code></pre></li>\n<li>Port to Qt 6.</li>\n<li>Add support for refresh-inhibited snap parameter.</li>\n<li>Add support for DATA parameters in Changes.</li>\n<li>Add support for notify interface.</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.65",
-                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.65...master"
-               },
-               {
-                  "id": 111872081,
-                  "version": "1.64",
-                  "timestamp": 1689115220,
-                  "title": "1.64",
-                  "body": "<ul>\n<li>New API:\n\n<ul>\n<li><code>snapd_category_details_get_name</code></li>\n<li><code>snapd_category_get_featured</code></li>\n<li><code>snapd_category_get_name</code></li>\n<li><code>snapd_client_find_category_async</code></li>\n<li><code>snapd_client_find_category_finish</code></li>\n<li><code>snapd_client_find_category_sync</code></li>\n<li><code>snapd_client_follow_logs_async</code></li>\n<li><code>snapd_client_follow_logs_finish</code></li>\n<li><code>snapd_client_follow_logs_sync</code></li>\n<li><code>snapd_client_get_categories_async</code></li>\n<li><code>snapd_client_get_categories_finish</code></li>\n<li><code>snapd_client_get_categories_sync</code></li>\n<li><code>snapd_client_get_logs_async</code></li>\n<li><code>snapd_client_get_logs_finish</code></li>\n<li><code>snapd_client_get_logs_sync</code></li>\n<li><code>snapd_log_get_message</code></li>\n<li><code>snapd_log_get_pid</code></li>\n<li><code>snapd_log_get_sid</code></li>\n<li><code>snapd_log_get_timestamp</code></li>\n<li><code>snapd_snap_get_categories</code></li>\n<li><code>snapd_snap_get_hold</code></li>\n<li><code>snapd_system_information_get_architecture</code></li>\n<li><code>SNAPD_ERROR_APP_NOT_FOUND</code></li>\n<li><code>SNAPD_ERROR_ARCHITECTURE_NOT_AVAILABLE</code></li>\n<li><code>SNAPD_ERROR_CHANGE_CONFLICT</code></li>\n<li><code>SNAPD_ERROR_INTERFACES_UNCHANGED</code></li>\n</ul></li>\n<li>Deprecated API:\n\n<ul>\n<li><code>snapd_client_find_section_sync</code></li>\n<li><code>snapd_client_find_section_async</code></li>\n<li><code>snapd_client_find_section_finish</code></li>\n<li><code>snapd_client_get_sections_sync</code></li>\n</ul></li>\n<li>Support snap hold date field.</li>\n<li>Support system information architecture field.</li>\n<li>Implement snap categories support, replacing sections.</li>\n<li>Support getting snap service logs.</li>\n<li>Fix buffer overflow reading assertions.</li>\n<li>Fix leak in themes API.</li>\n<li>Add more snapd errors.</li>\n<li>Fix tests failing on glib 2.77.</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.64",
-                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.64...master"
-               },
-               {
-                  "id": 75285290,
-                  "version": "1.63",
-                  "timestamp": 1661379470,
-                  "title": "1.63",
-                  "body": "<ul>\n<li>Fix snapd-qt cmake configuration.</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.63",
-                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.63...master"
                }
             ],
             "commits": null,
@@ -5748,6 +5748,78 @@
                   "url": "https://github.com/canonical/snap-expire/commit/dbabb6d1e753e9ee54f139898d76498f619034cc"
                }
             ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "snapd-desktop-integration",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/snapd-desktop-integration",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "e13ba2235ae0c6d37c2d393436396cc5399013b9",
+                  "author": "Sergio Costas",
+                  "timestamp": 1721813931,
+                  "message": "Fix cancelled refreshes (#89)\n\nWhen a refresh was cancelled (for example, because the snap was\r\nlaunched before it has completed the refresh), the snap is\r\nreverted, but the current code fails to detect correctly this,\r\nand snapd-desktop-integration could be left in an invalid state,\r\nasking for already completed changes over and over again.\r\n\r\nThis patch fixes this bug.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/e13ba2235ae0c6d37c2d393436396cc5399013b9"
+               },
+               {
+                  "sha": "6903e45c6f293ab49634117dff4821f6e107f855",
+                  "author": "Sergio Costas",
+                  "timestamp": 1721739057,
+                  "message": "Don't launch several \"threads\" for same change (#90)\n\nWhen a change is processed, a timeout is set to continue\r\nmonitoring it. Unfortunately, when a change is sent again to the\r\nprogram, a new timeout is set, thus having two \"pseudothreads\"\r\nmonitoring the same change.\r\n\r\nThis patch checks if there is already a timeout for a change,\r\nand avoids creating a new timeout in that case, because the\r\ncurrent one will already manage new changes.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/6903e45c6f293ab49634117dff4821f6e107f855"
+               },
+               {
+                  "sha": "4e58f7c4fe3552ffbc806158fdb413dd888ae0ce",
+                  "author": "Sergio Costas",
+                  "timestamp": 1721735510,
+                  "message": "New notifications (#86)\n\nThis patch implements the new notification style for one, two, three, or more snaps.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4e58f7c4fe3552ffbc806158fdb413dd888ae0ce"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "snapd-glib",
+            "defaultBranch": "master",
+            "newCommits": 14,
+            "url": "https://github.com/canonical/snapd-glib",
+            "releases": [
+               {
+                  "id": 150322150,
+                  "version": "1.65",
+                  "timestamp": 1712633155,
+                  "title": "1.65",
+                  "body": "<ul>\n<li>New API:\n<pre><code> - `snapd_autorefresh_change_data_get_snap_names`\n - `snapd_autorefresh_change_data_get_refresh_forced`\n - `snapd_change_get_data`\n - `snapd_client_get_notices_async`\n - `snapd_client_get_notices_finish`\n - `snapd_client_get_notices_sync`\n - `snapd_client_get_notices_with_filters_async`\n - `snapd_client_get_notices_with_filters_finish`\n - `snapd_client_get_notices_with_filters_sync`\n - `snapd_notice_get_notice_type`\n - `snapd_notice_get_key`\n - `snapd_notice_get_first_occurred`\n - `snapd_notice_get_last_occurred`\n - `snapd_notice_get_last_repeated`\n - `snapd_notice_get_occurrences`\n - `snapd_notice_get_last_data`\n - `snapd_notice_get_repeat_after`\n - `snapd_notice_get_expire_after`\n - `snapd_snap_get_proceed_time`\n - `SNAPD_GET_SNAPS_FLAGS_REFRESH_INHIBITED`\n - `SNAPD_NOTICE_TYPE_UNKNOWN`\n - `SNAPD_NOTICE_TYPE_CHANGE_UPDATE`\n - `SNAPD_NOTICE_TYPE_REFRESH_INHIBIT`\n - `SNAPD_NOTICE_TYPE_SNAP_RUN_INHIBIT`\n</code></pre></li>\n<li>Port to Qt 6.</li>\n<li>Add support for refresh-inhibited snap parameter.</li>\n<li>Add support for DATA parameters in Changes.</li>\n<li>Add support for notify interface.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.65",
+                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.65...master"
+               },
+               {
+                  "id": 111872081,
+                  "version": "1.64",
+                  "timestamp": 1689115220,
+                  "title": "1.64",
+                  "body": "<ul>\n<li>New API:\n\n<ul>\n<li><code>snapd_category_details_get_name</code></li>\n<li><code>snapd_category_get_featured</code></li>\n<li><code>snapd_category_get_name</code></li>\n<li><code>snapd_client_find_category_async</code></li>\n<li><code>snapd_client_find_category_finish</code></li>\n<li><code>snapd_client_find_category_sync</code></li>\n<li><code>snapd_client_follow_logs_async</code></li>\n<li><code>snapd_client_follow_logs_finish</code></li>\n<li><code>snapd_client_follow_logs_sync</code></li>\n<li><code>snapd_client_get_categories_async</code></li>\n<li><code>snapd_client_get_categories_finish</code></li>\n<li><code>snapd_client_get_categories_sync</code></li>\n<li><code>snapd_client_get_logs_async</code></li>\n<li><code>snapd_client_get_logs_finish</code></li>\n<li><code>snapd_client_get_logs_sync</code></li>\n<li><code>snapd_log_get_message</code></li>\n<li><code>snapd_log_get_pid</code></li>\n<li><code>snapd_log_get_sid</code></li>\n<li><code>snapd_log_get_timestamp</code></li>\n<li><code>snapd_snap_get_categories</code></li>\n<li><code>snapd_snap_get_hold</code></li>\n<li><code>snapd_system_information_get_architecture</code></li>\n<li><code>SNAPD_ERROR_APP_NOT_FOUND</code></li>\n<li><code>SNAPD_ERROR_ARCHITECTURE_NOT_AVAILABLE</code></li>\n<li><code>SNAPD_ERROR_CHANGE_CONFLICT</code></li>\n<li><code>SNAPD_ERROR_INTERFACES_UNCHANGED</code></li>\n</ul></li>\n<li>Deprecated API:\n\n<ul>\n<li><code>snapd_client_find_section_sync</code></li>\n<li><code>snapd_client_find_section_async</code></li>\n<li><code>snapd_client_find_section_finish</code></li>\n<li><code>snapd_client_get_sections_sync</code></li>\n</ul></li>\n<li>Support snap hold date field.</li>\n<li>Support system information architecture field.</li>\n<li>Implement snap categories support, replacing sections.</li>\n<li>Support getting snap service logs.</li>\n<li>Fix buffer overflow reading assertions.</li>\n<li>Fix leak in themes API.</li>\n<li>Add more snapd errors.</li>\n<li>Fix tests failing on glib 2.77.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.64",
+                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.64...master"
+               },
+               {
+                  "id": 75285290,
+                  "version": "1.63",
+                  "timestamp": 1661379470,
+                  "title": "1.63",
+                  "body": "<ul>\n<li>Fix snapd-qt cmake configuration.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.63",
+                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.63...master"
+               }
+            ],
+            "commits": null,
             "ciActions": [],
             "charm": null,
             "snap": null
@@ -7822,6 +7894,78 @@
                   "url": "https://github.com/canonical/snap-expire/commit/dbabb6d1e753e9ee54f139898d76498f619034cc"
                }
             ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "snapd-desktop-integration",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/snapd-desktop-integration",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "e13ba2235ae0c6d37c2d393436396cc5399013b9",
+                  "author": "Sergio Costas",
+                  "timestamp": 1721813931,
+                  "message": "Fix cancelled refreshes (#89)\n\nWhen a refresh was cancelled (for example, because the snap was\r\nlaunched before it has completed the refresh), the snap is\r\nreverted, but the current code fails to detect correctly this,\r\nand snapd-desktop-integration could be left in an invalid state,\r\nasking for already completed changes over and over again.\r\n\r\nThis patch fixes this bug.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/e13ba2235ae0c6d37c2d393436396cc5399013b9"
+               },
+               {
+                  "sha": "6903e45c6f293ab49634117dff4821f6e107f855",
+                  "author": "Sergio Costas",
+                  "timestamp": 1721739057,
+                  "message": "Don't launch several \"threads\" for same change (#90)\n\nWhen a change is processed, a timeout is set to continue\r\nmonitoring it. Unfortunately, when a change is sent again to the\r\nprogram, a new timeout is set, thus having two \"pseudothreads\"\r\nmonitoring the same change.\r\n\r\nThis patch checks if there is already a timeout for a change,\r\nand avoids creating a new timeout in that case, because the\r\ncurrent one will already manage new changes.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/6903e45c6f293ab49634117dff4821f6e107f855"
+               },
+               {
+                  "sha": "4e58f7c4fe3552ffbc806158fdb413dd888ae0ce",
+                  "author": "Sergio Costas",
+                  "timestamp": 1721735510,
+                  "message": "New notifications (#86)\n\nThis patch implements the new notification style for one, two, three, or more snaps.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4e58f7c4fe3552ffbc806158fdb413dd888ae0ce"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "snapd-glib",
+            "defaultBranch": "master",
+            "newCommits": 14,
+            "url": "https://github.com/canonical/snapd-glib",
+            "releases": [
+               {
+                  "id": 150322150,
+                  "version": "1.65",
+                  "timestamp": 1712633155,
+                  "title": "1.65",
+                  "body": "<ul>\n<li>New API:\n<pre><code> - `snapd_autorefresh_change_data_get_snap_names`\n - `snapd_autorefresh_change_data_get_refresh_forced`\n - `snapd_change_get_data`\n - `snapd_client_get_notices_async`\n - `snapd_client_get_notices_finish`\n - `snapd_client_get_notices_sync`\n - `snapd_client_get_notices_with_filters_async`\n - `snapd_client_get_notices_with_filters_finish`\n - `snapd_client_get_notices_with_filters_sync`\n - `snapd_notice_get_notice_type`\n - `snapd_notice_get_key`\n - `snapd_notice_get_first_occurred`\n - `snapd_notice_get_last_occurred`\n - `snapd_notice_get_last_repeated`\n - `snapd_notice_get_occurrences`\n - `snapd_notice_get_last_data`\n - `snapd_notice_get_repeat_after`\n - `snapd_notice_get_expire_after`\n - `snapd_snap_get_proceed_time`\n - `SNAPD_GET_SNAPS_FLAGS_REFRESH_INHIBITED`\n - `SNAPD_NOTICE_TYPE_UNKNOWN`\n - `SNAPD_NOTICE_TYPE_CHANGE_UPDATE`\n - `SNAPD_NOTICE_TYPE_REFRESH_INHIBIT`\n - `SNAPD_NOTICE_TYPE_SNAP_RUN_INHIBIT`\n</code></pre></li>\n<li>Port to Qt 6.</li>\n<li>Add support for refresh-inhibited snap parameter.</li>\n<li>Add support for DATA parameters in Changes.</li>\n<li>Add support for notify interface.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.65",
+                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.65...master"
+               },
+               {
+                  "id": 111872081,
+                  "version": "1.64",
+                  "timestamp": 1689115220,
+                  "title": "1.64",
+                  "body": "<ul>\n<li>New API:\n\n<ul>\n<li><code>snapd_category_details_get_name</code></li>\n<li><code>snapd_category_get_featured</code></li>\n<li><code>snapd_category_get_name</code></li>\n<li><code>snapd_client_find_category_async</code></li>\n<li><code>snapd_client_find_category_finish</code></li>\n<li><code>snapd_client_find_category_sync</code></li>\n<li><code>snapd_client_follow_logs_async</code></li>\n<li><code>snapd_client_follow_logs_finish</code></li>\n<li><code>snapd_client_follow_logs_sync</code></li>\n<li><code>snapd_client_get_categories_async</code></li>\n<li><code>snapd_client_get_categories_finish</code></li>\n<li><code>snapd_client_get_categories_sync</code></li>\n<li><code>snapd_client_get_logs_async</code></li>\n<li><code>snapd_client_get_logs_finish</code></li>\n<li><code>snapd_client_get_logs_sync</code></li>\n<li><code>snapd_log_get_message</code></li>\n<li><code>snapd_log_get_pid</code></li>\n<li><code>snapd_log_get_sid</code></li>\n<li><code>snapd_log_get_timestamp</code></li>\n<li><code>snapd_snap_get_categories</code></li>\n<li><code>snapd_snap_get_hold</code></li>\n<li><code>snapd_system_information_get_architecture</code></li>\n<li><code>SNAPD_ERROR_APP_NOT_FOUND</code></li>\n<li><code>SNAPD_ERROR_ARCHITECTURE_NOT_AVAILABLE</code></li>\n<li><code>SNAPD_ERROR_CHANGE_CONFLICT</code></li>\n<li><code>SNAPD_ERROR_INTERFACES_UNCHANGED</code></li>\n</ul></li>\n<li>Deprecated API:\n\n<ul>\n<li><code>snapd_client_find_section_sync</code></li>\n<li><code>snapd_client_find_section_async</code></li>\n<li><code>snapd_client_find_section_finish</code></li>\n<li><code>snapd_client_get_sections_sync</code></li>\n</ul></li>\n<li>Support snap hold date field.</li>\n<li>Support system information architecture field.</li>\n<li>Implement snap categories support, replacing sections.</li>\n<li>Support getting snap service logs.</li>\n<li>Fix buffer overflow reading assertions.</li>\n<li>Fix leak in themes API.</li>\n<li>Add more snapd errors.</li>\n<li>Fix tests failing on glib 2.77.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.64",
+                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.64...master"
+               },
+               {
+                  "id": 75285290,
+                  "version": "1.63",
+                  "timestamp": 1661379470,
+                  "title": "1.63",
+                  "body": "<ul>\n<li>Fix snapd-qt cmake configuration.</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/snapd-glib/releases/tag/1.63",
+                  "compareUrl": "https://github.com/canonical/snapd-glib/compare/1.63...master"
+               }
+            ],
+            "commits": null,
             "ciActions": [],
             "charm": null,
             "snap": null
