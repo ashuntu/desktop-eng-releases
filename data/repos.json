@@ -5934,7 +5934,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 242,
+            "newCommits": 244,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7b951656c81ca855ccdf7be6f20feb0c48b01459",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1724856719,
+                  "message": "deps(tools): bump github.com/golangci/golangci-lint from 1.60.1 to 1.60.2 in /tools (#877)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7b951656c81ca855ccdf7be6f20feb0c48b01459"
+               },
+               {
+                  "sha": "6afb8c39c3eda85a36084b9052cdd9b639a7e55f",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1724852356,
+                  "message": "fix: golangci-lint warnings about unsafe integer conversions (#882)\n\nMost of the warnings were not a real issue, but the one around the Win32\r\nGetAdapterAddersses was harder to prove with the previous implementation\r\nso I refactored it a little bit to make it easy to reach the piece of\r\nmind that we're not doing nasting error-prone narrowing conversions.\r\n\r\nThis should unblock #877 .\r\n\r\nUDENG-4234",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6afb8c39c3eda85a36084b9052cdd9b639a7e55f"
+               },
+               {
                   "sha": "f8f4a458751205198c7c554e9cdc0aa241c87807",
                   "author": "Carlos Nihelton",
                   "timestamp": 1724852333,
                   "message": "fix(agent): No empty cloudinit (#886)\n\nWhen the config is empty, the yaml serialization outputs {}. We still\r\nadded some commentary in the agent.yaml, resulting in a bunch of nothing\r\nthat confused cloud-init, because it's enablement is based on the\r\nexistence of the files, their contents are only checked later. That\r\nwouldn't be a problem per se, as the WSL datasource would recognize\r\nthere's nothing to do and bail out, but that would have costed\r\nunnecesary CPU cicles, and worse than that, the current implementation\r\nof cloud-init makes it log as an error the fact that there is nothing to\r\ndo at this point, which results in more noise if the user see the output\r\nof cloud-init status --long.\r\n\r\nThe fix is rather simple: do not write an empty object into agent.yaml.\r\nIf the config is empty we delete that file. This way, if there is\r\nnothing from the user nor the agent's perspective, cloud-init will\r\nremain trully disabled.\r\n\r\nI updated some tests that relied on the fact that cloud-init would\r\ncreate the agent.yaml file unconditionally, which is no longer the case.\r\n\r\nUDENG-4169",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f8f4a458751205198c7c554e9cdc0aa241c87807"
-               },
-               {
-                  "sha": "cebdb5bcf7e269ab8283356dd6ab5f2f4db1309c",
-                  "author": "Shane Crowley",
-                  "timestamp": 1724851836,
-                  "message": "docs: Update Landscape info for beta (#884)\n\nMinor updates for Beta release:\r\n\r\n- Updates screenshot of the Landscape config UI\r\n- Removes tips/callouts for manually enabling the Landscape config in\r\nthe Windows registry\r\n- Provides a better link from the setup-Landscape-server-in-WSL guide to\r\nthe relevant tutorial (deployment)\r\n\r\nUDENG-4098",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/cebdb5bcf7e269ab8283356dd6ab5f2f4db1309c"
-               },
-               {
-                  "sha": "48ffbf744d6f86344d87e5cd65c446b77901fea4",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1724847803,
-                  "message": "Separate initial from desired state in TestUpdate\n\nUsing the existence of goldens as the way to signal the test cases that\nagent.yaml should exist or not.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/48ffbf744d6f86344d87e5cd65c446b77901fea4"
                }
             ],
             "ciActions": [
@@ -6646,25 +6646,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9710d43215cc3612322ee7c3ec25c6f77cdaf0b5",
-                  "author": "adombeck",
-                  "timestamp": 1724745745,
-                  "message": "Use more descriptive error messages (#116)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/9710d43215cc3612322ee7c3ec25c6f77cdaf0b5"
-               },
-               {
-                  "sha": "2b2b5bad94ee97c80f4776c802b0ae366da2c8ff",
+                  "sha": "e45fe4d4180407d835ac9b48784b3ada494d72d1",
                   "author": "Denison Barbosa",
-                  "timestamp": 1724671325,
-                  "message": "deps(go-tools): bump github.com/golangci/golangci-lint from 1.60.1 to 1.60.3 in /tools (#118)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2b2b5bad94ee97c80f4776c802b0ae366da2c8ff"
+                  "timestamp": 1724856905,
+                  "message": "Improve errors when failing to parse config and create broker (#121)\n\nThe details are better explained in the commit messages, but TLDR: we\r\nnow have more directed errors to specific failures and are now\r\nevaluating whether the configuration file was edited or it's the same as\r\nthe template one.\r\n\r\nUDENG-3929",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e45fe4d4180407d835ac9b48784b3ada494d72d1"
                },
                {
-                  "sha": "4abe1e3311aaebdb9f2e0ddcba522082c62076a8",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1724228541,
-                  "message": "Use more descriptive error messages\n\nWe used \"could not get user info\" in too many places, making it hard to\ntell where this error message originated from.\n\nAlso, add a brief description to errors which originate in third-party\npackages before passing them up the call stack, to make it easier to\ntell where in our code we first encountered the error.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4abe1e3311aaebdb9f2e0ddcba522082c62076a8"
+                  "sha": "edb4ad784107ad5e1c5be0b46be3a916aea08ca8",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1724762060,
+                  "message": "Add tests for the config file parsing",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/edb4ad784107ad5e1c5be0b46be3a916aea08ca8"
+               },
+               {
+                  "sha": "2b6529d25ca941b4d20fcb19be61376ebb77acf0",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1724761785,
+                  "message": "Return error if config file was not edited\n\nSince we don't connect to the provider at broker creation anymore, we\ncan't know for certain if the config file was updated until the user\ntries to authenticate.\nWhile we still can't exactly know if the provider is valid, we can at\nleast check whether it was edited or not, so we can fail sooner.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2b6529d25ca941b4d20fcb19be61376ebb77acf0"
                }
             ],
             "ciActions": [
