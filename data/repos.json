@@ -4836,6 +4836,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "646160861f5f6f373092ca6b84f0989e5547d0e8",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1724854608,
+                  "message": "feat: Delivery of warnings via MotD if cloud-init doesn't succeed (#14)\n\n* Adds delivery of warning messages via motd if cloud-init doesn't succeed\r\n\r\nIf the stamp file doesn't exist in the current (WSL internal) user's home directory,\r\na warning message is shown if cloud-init log contains ERROR or WARNING messages,\r\nwhat matches the semantics of cloud-init extended status as we observed recently:\r\n- a call to LOG.error or LOG.warning automatically sets its extended status to degraded\r\neven if it \"completely succeeds\" applying the existing configuration.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/646160861f5f6f373092ca6b84f0989e5547d0e8"
+               },
+               {
                   "sha": "942144f8752f9c55a426915c49e4ef2a249ec7f2",
                   "author": "Carlos Nihelton",
                   "timestamp": 1721400043,
@@ -4848,13 +4855,6 @@
                   "timestamp": 1721399616,
                   "message": "fix(cloud-init): DS List should contain one additional datasource in order to skip running cloud-init when there is no user-data file\n\nSomehow we didn't notice this mistake, but the spec WS028 contains a discussion about why we should have two actual datasources in this list, being one WSL ofc.\r\n\r\nHaving `datasources_list: [WSL, None]` is the same as having `datasources_list: [WSL]`: `ds-identify` won't run but rather pick the WSL datasource and run cloud-init with that, resulting in inneficiency and minor UX issue with the latest changes in the distro launcher, as depicted below.\r\n\r\n```\r\nInstalling, this may take a few minutes...\r\nChecking for initialization tasks...\r\n\r\n.....\r\nstatus: done\r\nWARNING: initialization tasks partially succeeded, see below:\r\nstatus: done\r\nextended_status: degraded done\r\nboot_status_code: enabled-by-generator\r\nlast_update: Thu, 01 Jan 1970 01:29:19 +0000\r\ndetail: DataSourceNone\r\nerrors: []\r\nrecoverable_errors:\r\nWARNING:\r\n        - Used fallback datasource\r\n```\r\n\r\nThe spec suggested adding `NoCloud` instead, but somehow `None` landed here instead and I only noticed after playing with the new launcher for a while.\r\n\r\nWhat we want to see when there is no applicable cloud-config data is (cloud-init goes disabled):\r\n\r\n```\r\nInstalling, this may take a few minutes...\r\nChecking for initialization tasks...\r\n\r\n\r\nstatus: disabled\r\nERROR: no candidate default user was found\r\n\r\nPlease create a default UNIX user account. The username does not need to match your Windows username.\r\nFor more information visit: https://aka.ms/wslusers\r\nEnter new UNIX username:\r\n```\r\n\r\n(maye the `ERROR: no candidate default user was found` should be \"INFO\" instead or maybe print nothing related to cloud-init in case it's disabled, but that's another topic).",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/f9dc704b4724036a3e5ad8639a81cc2d82bdf863"
-               },
-               {
-                  "sha": "1823d8f4e873040fc207f37a11ec5830e75e6cff",
-                  "author": "Didier Roche",
-                  "timestamp": 1715324909,
-                  "message": "releasing package wsl-setup version 0.5.3",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/1823d8f4e873040fc207f37a11ec5830e75e6cff"
                }
             ],
             "ciActions": [],
@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ea26e2800e31e3d415f138ad388dd9ca6fbebf14",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1724410914,
-                  "message": "deps(gui-ubuntupro): bump file_picker from 8.1.1 to 8.1.2 in /gui/packages/ubuntupro (#876)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/ea26e2800e31e3d415f138ad388dd9ca6fbebf14"
-               },
-               {
-                  "sha": "c6f610dc46a97a2a71b64dee4519c17056a0de74",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1724317908,
-                  "message": "deps(gui-ubuntupro): bump file_picker in /gui/packages/ubuntupro\n\nBumps [file_picker](https://github.com/miguelpruivo/flutter_file_picker) from 8.1.1 to 8.1.2.\n- [Release notes](https://github.com/miguelpruivo/flutter_file_picker/releases)\n- [Changelog](https://github.com/miguelpruivo/flutter_file_picker/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/miguelpruivo/flutter_file_picker/commits)\n\n---\nupdated-dependencies:\n- dependency-name: file_picker\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c6f610dc46a97a2a71b64dee4519c17056a0de74"
-               },
-               {
-                  "sha": "0e4126b3943361a40efcab2706852777e7fe6025",
+                  "sha": "f8f4a458751205198c7c554e9cdc0aa241c87807",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1724200059,
-                  "message": "fix(gui): Remove spaces from the Pro token input field (#875)\n\nSometimes copy-pasting a pro token comes with trailing spaces. Neither\r\nleading, trailing or even middle spaces are alloweable in a token. This\r\nPR leverages Flutter builtin mechanisms to filter input supplied to the\r\ntoken text field such that any kind of whitespaces (not only the ASCII\r\nones) are discarded before any further processing.\r\n\r\nCloses #857 \r\n\r\n---\r\n\r\nI'm purposefully basing this PR on top of #873 so I can stress CI to\r\nexercise the changes therein introduced. There is no dependency between\r\nthe two tasks.\r\n\r\n---\r\nUDENG-3810",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0e4126b3943361a40efcab2706852777e7fe6025"
+                  "timestamp": 1724852333,
+                  "message": "fix(agent): No empty cloudinit (#886)\n\nWhen the config is empty, the yaml serialization outputs {}. We still\r\nadded some commentary in the agent.yaml, resulting in a bunch of nothing\r\nthat confused cloud-init, because it's enablement is based on the\r\nexistence of the files, their contents are only checked later. That\r\nwouldn't be a problem per se, as the WSL datasource would recognize\r\nthere's nothing to do and bail out, but that would have costed\r\nunnecesary CPU cicles, and worse than that, the current implementation\r\nof cloud-init makes it log as an error the fact that there is nothing to\r\ndo at this point, which results in more noise if the user see the output\r\nof cloud-init status --long.\r\n\r\nThe fix is rather simple: do not write an empty object into agent.yaml.\r\nIf the config is empty we delete that file. This way, if there is\r\nnothing from the user nor the agent's perspective, cloud-init will\r\nremain trully disabled.\r\n\r\nI updated some tests that relied on the fact that cloud-init would\r\ncreate the agent.yaml file unconditionally, which is no longer the case.\r\n\r\nUDENG-4169",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f8f4a458751205198c7c554e9cdc0aa241c87807"
+               },
+               {
+                  "sha": "cebdb5bcf7e269ab8283356dd6ab5f2f4db1309c",
+                  "author": "Shane Crowley",
+                  "timestamp": 1724851836,
+                  "message": "docs: Update Landscape info for beta (#884)\n\nMinor updates for Beta release:\r\n\r\n- Updates screenshot of the Landscape config UI\r\n- Removes tips/callouts for manually enabling the Landscape config in\r\nthe Windows registry\r\n- Provides a better link from the setup-Landscape-server-in-WSL guide to\r\nthe relevant tutorial (deployment)\r\n\r\nUDENG-4098",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/cebdb5bcf7e269ab8283356dd6ab5f2f4db1309c"
+               },
+               {
+                  "sha": "48ffbf744d6f86344d87e5cd65c446b77901fea4",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1724847803,
+                  "message": "Separate initial from desired state in TestUpdate\n\nUsing the existence of goldens as the way to signal the test cases that\nagent.yaml should exist or not.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/48ffbf744d6f86344d87e5cd65c446b77901fea4"
                }
             ],
             "ciActions": [
@@ -6852,6 +6852,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "646160861f5f6f373092ca6b84f0989e5547d0e8",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1724854608,
+                  "message": "feat: Delivery of warnings via MotD if cloud-init doesn't succeed (#14)\n\n* Adds delivery of warning messages via motd if cloud-init doesn't succeed\r\n\r\nIf the stamp file doesn't exist in the current (WSL internal) user's home directory,\r\na warning message is shown if cloud-init log contains ERROR or WARNING messages,\r\nwhat matches the semantics of cloud-init extended status as we observed recently:\r\n- a call to LOG.error or LOG.warning automatically sets its extended status to degraded\r\neven if it \"completely succeeds\" applying the existing configuration.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/646160861f5f6f373092ca6b84f0989e5547d0e8"
+               },
+               {
                   "sha": "942144f8752f9c55a426915c49e4ef2a249ec7f2",
                   "author": "Carlos Nihelton",
                   "timestamp": 1721400043,
@@ -6864,13 +6871,6 @@
                   "timestamp": 1721399616,
                   "message": "fix(cloud-init): DS List should contain one additional datasource in order to skip running cloud-init when there is no user-data file\n\nSomehow we didn't notice this mistake, but the spec WS028 contains a discussion about why we should have two actual datasources in this list, being one WSL ofc.\r\n\r\nHaving `datasources_list: [WSL, None]` is the same as having `datasources_list: [WSL]`: `ds-identify` won't run but rather pick the WSL datasource and run cloud-init with that, resulting in inneficiency and minor UX issue with the latest changes in the distro launcher, as depicted below.\r\n\r\n```\r\nInstalling, this may take a few minutes...\r\nChecking for initialization tasks...\r\n\r\n.....\r\nstatus: done\r\nWARNING: initialization tasks partially succeeded, see below:\r\nstatus: done\r\nextended_status: degraded done\r\nboot_status_code: enabled-by-generator\r\nlast_update: Thu, 01 Jan 1970 01:29:19 +0000\r\ndetail: DataSourceNone\r\nerrors: []\r\nrecoverable_errors:\r\nWARNING:\r\n        - Used fallback datasource\r\n```\r\n\r\nThe spec suggested adding `NoCloud` instead, but somehow `None` landed here instead and I only noticed after playing with the new launcher for a while.\r\n\r\nWhat we want to see when there is no applicable cloud-config data is (cloud-init goes disabled):\r\n\r\n```\r\nInstalling, this may take a few minutes...\r\nChecking for initialization tasks...\r\n\r\n\r\nstatus: disabled\r\nERROR: no candidate default user was found\r\n\r\nPlease create a default UNIX user account. The username does not need to match your Windows username.\r\nFor more information visit: https://aka.ms/wslusers\r\nEnter new UNIX username:\r\n```\r\n\r\n(maye the `ERROR: no candidate default user was found` should be \"INFO\" instead or maybe print nothing related to cloud-init in case it's disabled, but that's another topic).",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/f9dc704b4724036a3e5ad8639a81cc2d82bdf863"
-               },
-               {
-                  "sha": "1823d8f4e873040fc207f37a11ec5830e75e6cff",
-                  "author": "Didier Roche",
-                  "timestamp": 1715324909,
-                  "message": "releasing package wsl-setup version 0.5.3",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/1823d8f4e873040fc207f37a11ec5830e75e6cff"
                }
             ],
             "ciActions": [],
