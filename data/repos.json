@@ -4203,25 +4203,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "6775230c83ad19e6536b4d95e522183152a2c380",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1725456435,
+                  "message": "feat(reset-tools): Add permission check based on polkit (#803)\n\nThis feature adds polkit authorization before performing factory reset,\r\nboth in GUI and in CLI\r\n\r\nNeed to request for an additional `polkit` autoconnect:\r\nhttps://forum.snapcraft.io/t/factory-reset-tools-polkit-autoconnect-request/41632\r\n\r\nWhile implementing polkit interface for GUI applications seems to be\r\nstraightforward by adding authorization on the server side, doing it in\r\nthe CLI client is quite a problem.\r\n\r\nFirst, it is necessary to spawn `pkttyagent` by the user program to show\r\nthe text prompt, but to wait for the `pkttyagent` to be registered onto\r\n`polkitd`, `pkttyagent` uses a `--notify` channel which passes a file\r\ndescriptor that it should close, which, referring to [fwupd\r\nimplementation](https://github.com/fwupd/fwupd/blob/main/src/fu-polkit-agent.c),\r\nuses a pipe to implement. However, Dart does not have a low level\r\nfile/pipe mechanism available, therefore we have to use `dart:ffi` and a\r\nC helper to implement such feature.\r\n\r\nSecond, snapd seems not allow using `pkttyagent` without using\r\n`--fallback` to properly show text prompt. The discussion is in Snap\r\nForum:\r\nhttps://forum.snapcraft.io/t/polkit-interface-and-pkttyagent-in-snap/41616\r\n\r\nInternal Reference: SOMERVILLE-600",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6775230c83ad19e6536b4d95e522183152a2c380"
+               },
+               {
+                  "sha": "81613d37afe061fe1978de0f588c30be0fc25227",
+                  "author": "Yao Wei (魏銘廷)",
+                  "timestamp": 1724305232,
+                  "message": "reset-tools: add permission check based on polkit",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/81613d37afe061fe1978de0f588c30be0fc25227"
+               },
+               {
                   "sha": "298edf271695df828a169f153143da18712739c3",
                   "author": "Lukas Klingsbo",
                   "timestamp": 1724683796,
                   "message": "Merge pull request #802 from andersson1234/tpm-fde-dialog-box-fix-typo\n\nfix typos in tpm fde dialog box",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/298edf271695df828a169f153143da18712739c3"
-               },
-               {
-                  "sha": "2151e90284b4bfd2742a7458810175268246b7fb",
-                  "author": "Tim Andersson",
-                  "timestamp": 1724681748,
-                  "message": "fix typos in tpm fde dialog box\n\n\"before your choose this option\" -> \"before you choose this option\"",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2151e90284b4bfd2742a7458810175268246b7fb"
-               },
-               {
-                  "sha": "5c13df17c303d8e53c877d7b13466bba2a944ba7",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1724248755,
-                  "message": "Merge pull request #799 from s-makin/setup-sphinx\n\nSetup sphinx",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/5c13df17c303d8e53c877d7b13466bba2a944ba7"
                }
             ],
             "ciActions": [
@@ -6147,25 +6147,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "6775230c83ad19e6536b4d95e522183152a2c380",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1725456435,
+                  "message": "feat(reset-tools): Add permission check based on polkit (#803)\n\nThis feature adds polkit authorization before performing factory reset,\r\nboth in GUI and in CLI\r\n\r\nNeed to request for an additional `polkit` autoconnect:\r\nhttps://forum.snapcraft.io/t/factory-reset-tools-polkit-autoconnect-request/41632\r\n\r\nWhile implementing polkit interface for GUI applications seems to be\r\nstraightforward by adding authorization on the server side, doing it in\r\nthe CLI client is quite a problem.\r\n\r\nFirst, it is necessary to spawn `pkttyagent` by the user program to show\r\nthe text prompt, but to wait for the `pkttyagent` to be registered onto\r\n`polkitd`, `pkttyagent` uses a `--notify` channel which passes a file\r\ndescriptor that it should close, which, referring to [fwupd\r\nimplementation](https://github.com/fwupd/fwupd/blob/main/src/fu-polkit-agent.c),\r\nuses a pipe to implement. However, Dart does not have a low level\r\nfile/pipe mechanism available, therefore we have to use `dart:ffi` and a\r\nC helper to implement such feature.\r\n\r\nSecond, snapd seems not allow using `pkttyagent` without using\r\n`--fallback` to properly show text prompt. The discussion is in Snap\r\nForum:\r\nhttps://forum.snapcraft.io/t/polkit-interface-and-pkttyagent-in-snap/41616\r\n\r\nInternal Reference: SOMERVILLE-600",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6775230c83ad19e6536b4d95e522183152a2c380"
+               },
+               {
+                  "sha": "81613d37afe061fe1978de0f588c30be0fc25227",
+                  "author": "Yao Wei (魏銘廷)",
+                  "timestamp": 1724305232,
+                  "message": "reset-tools: add permission check based on polkit",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/81613d37afe061fe1978de0f588c30be0fc25227"
+               },
+               {
                   "sha": "298edf271695df828a169f153143da18712739c3",
                   "author": "Lukas Klingsbo",
                   "timestamp": 1724683796,
                   "message": "Merge pull request #802 from andersson1234/tpm-fde-dialog-box-fix-typo\n\nfix typos in tpm fde dialog box",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/298edf271695df828a169f153143da18712739c3"
-               },
-               {
-                  "sha": "2151e90284b4bfd2742a7458810175268246b7fb",
-                  "author": "Tim Andersson",
-                  "timestamp": 1724681748,
-                  "message": "fix typos in tpm fde dialog box\n\n\"before your choose this option\" -> \"before you choose this option\"",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2151e90284b4bfd2742a7458810175268246b7fb"
-               },
-               {
-                  "sha": "5c13df17c303d8e53c877d7b13466bba2a944ba7",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1724248755,
-                  "message": "Merge pull request #799 from s-makin/setup-sphinx\n\nSetup sphinx",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/5c13df17c303d8e53c877d7b13466bba2a944ba7"
                }
             ],
             "ciActions": [
@@ -6565,7 +6565,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 4,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8254,25 +8254,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "6775230c83ad19e6536b4d95e522183152a2c380",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1725456435,
+                  "message": "feat(reset-tools): Add permission check based on polkit (#803)\n\nThis feature adds polkit authorization before performing factory reset,\r\nboth in GUI and in CLI\r\n\r\nNeed to request for an additional `polkit` autoconnect:\r\nhttps://forum.snapcraft.io/t/factory-reset-tools-polkit-autoconnect-request/41632\r\n\r\nWhile implementing polkit interface for GUI applications seems to be\r\nstraightforward by adding authorization on the server side, doing it in\r\nthe CLI client is quite a problem.\r\n\r\nFirst, it is necessary to spawn `pkttyagent` by the user program to show\r\nthe text prompt, but to wait for the `pkttyagent` to be registered onto\r\n`polkitd`, `pkttyagent` uses a `--notify` channel which passes a file\r\ndescriptor that it should close, which, referring to [fwupd\r\nimplementation](https://github.com/fwupd/fwupd/blob/main/src/fu-polkit-agent.c),\r\nuses a pipe to implement. However, Dart does not have a low level\r\nfile/pipe mechanism available, therefore we have to use `dart:ffi` and a\r\nC helper to implement such feature.\r\n\r\nSecond, snapd seems not allow using `pkttyagent` without using\r\n`--fallback` to properly show text prompt. The discussion is in Snap\r\nForum:\r\nhttps://forum.snapcraft.io/t/polkit-interface-and-pkttyagent-in-snap/41616\r\n\r\nInternal Reference: SOMERVILLE-600",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6775230c83ad19e6536b4d95e522183152a2c380"
+               },
+               {
+                  "sha": "81613d37afe061fe1978de0f588c30be0fc25227",
+                  "author": "Yao Wei (魏銘廷)",
+                  "timestamp": 1724305232,
+                  "message": "reset-tools: add permission check based on polkit",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/81613d37afe061fe1978de0f588c30be0fc25227"
+               },
+               {
                   "sha": "298edf271695df828a169f153143da18712739c3",
                   "author": "Lukas Klingsbo",
                   "timestamp": 1724683796,
                   "message": "Merge pull request #802 from andersson1234/tpm-fde-dialog-box-fix-typo\n\nfix typos in tpm fde dialog box",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/298edf271695df828a169f153143da18712739c3"
-               },
-               {
-                  "sha": "2151e90284b4bfd2742a7458810175268246b7fb",
-                  "author": "Tim Andersson",
-                  "timestamp": 1724681748,
-                  "message": "fix typos in tpm fde dialog box\n\n\"before your choose this option\" -> \"before you choose this option\"",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2151e90284b4bfd2742a7458810175268246b7fb"
-               },
-               {
-                  "sha": "5c13df17c303d8e53c877d7b13466bba2a944ba7",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1724248755,
-                  "message": "Merge pull request #799 from s-makin/setup-sphinx\n\nSetup sphinx",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/5c13df17c303d8e53c877d7b13466bba2a944ba7"
                }
             ],
             "ciActions": [
