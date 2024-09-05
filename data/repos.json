@@ -4203,25 +4203,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6775230c83ad19e6536b4d95e522183152a2c380",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1725456435,
-                  "message": "feat(reset-tools): Add permission check based on polkit (#803)\n\nThis feature adds polkit authorization before performing factory reset,\r\nboth in GUI and in CLI\r\n\r\nNeed to request for an additional `polkit` autoconnect:\r\nhttps://forum.snapcraft.io/t/factory-reset-tools-polkit-autoconnect-request/41632\r\n\r\nWhile implementing polkit interface for GUI applications seems to be\r\nstraightforward by adding authorization on the server side, doing it in\r\nthe CLI client is quite a problem.\r\n\r\nFirst, it is necessary to spawn `pkttyagent` by the user program to show\r\nthe text prompt, but to wait for the `pkttyagent` to be registered onto\r\n`polkitd`, `pkttyagent` uses a `--notify` channel which passes a file\r\ndescriptor that it should close, which, referring to [fwupd\r\nimplementation](https://github.com/fwupd/fwupd/blob/main/src/fu-polkit-agent.c),\r\nuses a pipe to implement. However, Dart does not have a low level\r\nfile/pipe mechanism available, therefore we have to use `dart:ffi` and a\r\nC helper to implement such feature.\r\n\r\nSecond, snapd seems not allow using `pkttyagent` without using\r\n`--fallback` to properly show text prompt. The discussion is in Snap\r\nForum:\r\nhttps://forum.snapcraft.io/t/polkit-interface-and-pkttyagent-in-snap/41616\r\n\r\nInternal Reference: SOMERVILLE-600",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6775230c83ad19e6536b4d95e522183152a2c380"
+                  "sha": "a7e81d09fe47c696c6df2dc2669e7ac9ea2dc31c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1725531703,
+                  "message": "ci: move ubuntu-desktop-bootstrap to new branch setup (#805)\n\nWe've now setup the following snap branches for ubuntu-desktop-bootstrap\r\n(arrows point to the snap channels to which the builds are uploaded):\r\n\r\n`snap/ubuntu-desktop-bootstrap/24.04` -> `24.04/edge`,\r\n`latest/candidate` (\"legacy\", we need to continue maintaining the\r\n`latest` since the subiquity version shipped on the 24.04.x ISOs uses\r\nthat track for the refresh mechanism)\r\n`snap/ubuntu-desktop-bootstrap/main` -> `24.10/edge` (once we start\r\nworking on features for 25.04, we'll add a\r\n`snap/ubuntu-desktop-bootstrap/24.10` branch)\r\n\r\nThis PR removes 'bootstrap' from the 'rebase' workflow that creates the\r\nephemeral `ci/bootstrap` branch, which is now no longer used. We'll\r\nmigrate ubuntu-init and the reset-tools separately.\r\nWe'll also need to introduce development branches for released versions\r\nof the installer that aren't supposed to receive any features from new\r\nreleases (but might still need to get some bug fixes). Those will be\r\ncalled `ubuntu/24.04`, etc. The CI should run when opening a PR or\r\npushing to those branches as well.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a7e81d09fe47c696c6df2dc2669e7ac9ea2dc31c"
                },
                {
-                  "sha": "81613d37afe061fe1978de0f588c30be0fc25227",
+                  "sha": "0cccea5dad0f0dd78c5fd1854bb124dd5f5d4c48",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1725531072,
+                  "message": "fix(reset-tools): rename polkit plug name per request (#806)\n\nPer request from snapcraft reviewer:\r\nhttps://forum.snapcraft.io/t/factory-reset-tools-polkit-autoconnect-request/41632/3\r\n\r\n> to grant this the action-prefix needs to be encoded in the snap store\r\ndeclaration\r\n\r\nThis PR renames the polkit plug name into\r\n`polkit-com-canonical-oem-factory-reset-tools`, and change the policy\r\nfilename, since the interface takes the plug name for copying the policy\r\nfile, see https://snapcraft.io/docs/polkit-interface",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0cccea5dad0f0dd78c5fd1854bb124dd5f5d4c48"
+               },
+               {
+                  "sha": "2a0c647951a4faccaf6991c59dd7e6e1b21512ef",
                   "author": "Yao Wei (魏銘廷)",
-                  "timestamp": 1724305232,
-                  "message": "reset-tools: add permission check based on polkit",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/81613d37afe061fe1978de0f588c30be0fc25227"
-               },
-               {
-                  "sha": "298edf271695df828a169f153143da18712739c3",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1724683796,
-                  "message": "Merge pull request #802 from andersson1234/tpm-fde-dialog-box-fix-typo\n\nfix typos in tpm fde dialog box",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/298edf271695df828a169f153143da18712739c3"
+                  "timestamp": 1725529604,
+                  "message": "fix(reset-tools): rename polkit plug name per request",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2a0c647951a4faccaf6991c59dd7e6e1b21512ef"
                }
             ],
             "ciActions": [
@@ -6147,25 +6147,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6775230c83ad19e6536b4d95e522183152a2c380",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1725456435,
-                  "message": "feat(reset-tools): Add permission check based on polkit (#803)\n\nThis feature adds polkit authorization before performing factory reset,\r\nboth in GUI and in CLI\r\n\r\nNeed to request for an additional `polkit` autoconnect:\r\nhttps://forum.snapcraft.io/t/factory-reset-tools-polkit-autoconnect-request/41632\r\n\r\nWhile implementing polkit interface for GUI applications seems to be\r\nstraightforward by adding authorization on the server side, doing it in\r\nthe CLI client is quite a problem.\r\n\r\nFirst, it is necessary to spawn `pkttyagent` by the user program to show\r\nthe text prompt, but to wait for the `pkttyagent` to be registered onto\r\n`polkitd`, `pkttyagent` uses a `--notify` channel which passes a file\r\ndescriptor that it should close, which, referring to [fwupd\r\nimplementation](https://github.com/fwupd/fwupd/blob/main/src/fu-polkit-agent.c),\r\nuses a pipe to implement. However, Dart does not have a low level\r\nfile/pipe mechanism available, therefore we have to use `dart:ffi` and a\r\nC helper to implement such feature.\r\n\r\nSecond, snapd seems not allow using `pkttyagent` without using\r\n`--fallback` to properly show text prompt. The discussion is in Snap\r\nForum:\r\nhttps://forum.snapcraft.io/t/polkit-interface-and-pkttyagent-in-snap/41616\r\n\r\nInternal Reference: SOMERVILLE-600",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6775230c83ad19e6536b4d95e522183152a2c380"
+                  "sha": "a7e81d09fe47c696c6df2dc2669e7ac9ea2dc31c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1725531703,
+                  "message": "ci: move ubuntu-desktop-bootstrap to new branch setup (#805)\n\nWe've now setup the following snap branches for ubuntu-desktop-bootstrap\r\n(arrows point to the snap channels to which the builds are uploaded):\r\n\r\n`snap/ubuntu-desktop-bootstrap/24.04` -> `24.04/edge`,\r\n`latest/candidate` (\"legacy\", we need to continue maintaining the\r\n`latest` since the subiquity version shipped on the 24.04.x ISOs uses\r\nthat track for the refresh mechanism)\r\n`snap/ubuntu-desktop-bootstrap/main` -> `24.10/edge` (once we start\r\nworking on features for 25.04, we'll add a\r\n`snap/ubuntu-desktop-bootstrap/24.10` branch)\r\n\r\nThis PR removes 'bootstrap' from the 'rebase' workflow that creates the\r\nephemeral `ci/bootstrap` branch, which is now no longer used. We'll\r\nmigrate ubuntu-init and the reset-tools separately.\r\nWe'll also need to introduce development branches for released versions\r\nof the installer that aren't supposed to receive any features from new\r\nreleases (but might still need to get some bug fixes). Those will be\r\ncalled `ubuntu/24.04`, etc. The CI should run when opening a PR or\r\npushing to those branches as well.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a7e81d09fe47c696c6df2dc2669e7ac9ea2dc31c"
                },
                {
-                  "sha": "81613d37afe061fe1978de0f588c30be0fc25227",
+                  "sha": "0cccea5dad0f0dd78c5fd1854bb124dd5f5d4c48",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1725531072,
+                  "message": "fix(reset-tools): rename polkit plug name per request (#806)\n\nPer request from snapcraft reviewer:\r\nhttps://forum.snapcraft.io/t/factory-reset-tools-polkit-autoconnect-request/41632/3\r\n\r\n> to grant this the action-prefix needs to be encoded in the snap store\r\ndeclaration\r\n\r\nThis PR renames the polkit plug name into\r\n`polkit-com-canonical-oem-factory-reset-tools`, and change the policy\r\nfilename, since the interface takes the plug name for copying the policy\r\nfile, see https://snapcraft.io/docs/polkit-interface",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0cccea5dad0f0dd78c5fd1854bb124dd5f5d4c48"
+               },
+               {
+                  "sha": "2a0c647951a4faccaf6991c59dd7e6e1b21512ef",
                   "author": "Yao Wei (魏銘廷)",
-                  "timestamp": 1724305232,
-                  "message": "reset-tools: add permission check based on polkit",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/81613d37afe061fe1978de0f588c30be0fc25227"
-               },
-               {
-                  "sha": "298edf271695df828a169f153143da18712739c3",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1724683796,
-                  "message": "Merge pull request #802 from andersson1234/tpm-fde-dialog-box-fix-typo\n\nfix typos in tpm fde dialog box",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/298edf271695df828a169f153143da18712739c3"
+                  "timestamp": 1725529604,
+                  "message": "fix(reset-tools): rename polkit plug name per request",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2a0c647951a4faccaf6991c59dd7e6e1b21512ef"
                }
             ],
             "ciActions": [
@@ -8254,25 +8254,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6775230c83ad19e6536b4d95e522183152a2c380",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1725456435,
-                  "message": "feat(reset-tools): Add permission check based on polkit (#803)\n\nThis feature adds polkit authorization before performing factory reset,\r\nboth in GUI and in CLI\r\n\r\nNeed to request for an additional `polkit` autoconnect:\r\nhttps://forum.snapcraft.io/t/factory-reset-tools-polkit-autoconnect-request/41632\r\n\r\nWhile implementing polkit interface for GUI applications seems to be\r\nstraightforward by adding authorization on the server side, doing it in\r\nthe CLI client is quite a problem.\r\n\r\nFirst, it is necessary to spawn `pkttyagent` by the user program to show\r\nthe text prompt, but to wait for the `pkttyagent` to be registered onto\r\n`polkitd`, `pkttyagent` uses a `--notify` channel which passes a file\r\ndescriptor that it should close, which, referring to [fwupd\r\nimplementation](https://github.com/fwupd/fwupd/blob/main/src/fu-polkit-agent.c),\r\nuses a pipe to implement. However, Dart does not have a low level\r\nfile/pipe mechanism available, therefore we have to use `dart:ffi` and a\r\nC helper to implement such feature.\r\n\r\nSecond, snapd seems not allow using `pkttyagent` without using\r\n`--fallback` to properly show text prompt. The discussion is in Snap\r\nForum:\r\nhttps://forum.snapcraft.io/t/polkit-interface-and-pkttyagent-in-snap/41616\r\n\r\nInternal Reference: SOMERVILLE-600",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6775230c83ad19e6536b4d95e522183152a2c380"
+                  "sha": "a7e81d09fe47c696c6df2dc2669e7ac9ea2dc31c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1725531703,
+                  "message": "ci: move ubuntu-desktop-bootstrap to new branch setup (#805)\n\nWe've now setup the following snap branches for ubuntu-desktop-bootstrap\r\n(arrows point to the snap channels to which the builds are uploaded):\r\n\r\n`snap/ubuntu-desktop-bootstrap/24.04` -> `24.04/edge`,\r\n`latest/candidate` (\"legacy\", we need to continue maintaining the\r\n`latest` since the subiquity version shipped on the 24.04.x ISOs uses\r\nthat track for the refresh mechanism)\r\n`snap/ubuntu-desktop-bootstrap/main` -> `24.10/edge` (once we start\r\nworking on features for 25.04, we'll add a\r\n`snap/ubuntu-desktop-bootstrap/24.10` branch)\r\n\r\nThis PR removes 'bootstrap' from the 'rebase' workflow that creates the\r\nephemeral `ci/bootstrap` branch, which is now no longer used. We'll\r\nmigrate ubuntu-init and the reset-tools separately.\r\nWe'll also need to introduce development branches for released versions\r\nof the installer that aren't supposed to receive any features from new\r\nreleases (but might still need to get some bug fixes). Those will be\r\ncalled `ubuntu/24.04`, etc. The CI should run when opening a PR or\r\npushing to those branches as well.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a7e81d09fe47c696c6df2dc2669e7ac9ea2dc31c"
                },
                {
-                  "sha": "81613d37afe061fe1978de0f588c30be0fc25227",
+                  "sha": "0cccea5dad0f0dd78c5fd1854bb124dd5f5d4c48",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1725531072,
+                  "message": "fix(reset-tools): rename polkit plug name per request (#806)\n\nPer request from snapcraft reviewer:\r\nhttps://forum.snapcraft.io/t/factory-reset-tools-polkit-autoconnect-request/41632/3\r\n\r\n> to grant this the action-prefix needs to be encoded in the snap store\r\ndeclaration\r\n\r\nThis PR renames the polkit plug name into\r\n`polkit-com-canonical-oem-factory-reset-tools`, and change the policy\r\nfilename, since the interface takes the plug name for copying the policy\r\nfile, see https://snapcraft.io/docs/polkit-interface",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0cccea5dad0f0dd78c5fd1854bb124dd5f5d4c48"
+               },
+               {
+                  "sha": "2a0c647951a4faccaf6991c59dd7e6e1b21512ef",
                   "author": "Yao Wei (魏銘廷)",
-                  "timestamp": 1724305232,
-                  "message": "reset-tools: add permission check based on polkit",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/81613d37afe061fe1978de0f588c30be0fc25227"
-               },
-               {
-                  "sha": "298edf271695df828a169f153143da18712739c3",
-                  "author": "Lukas Klingsbo",
-                  "timestamp": 1724683796,
-                  "message": "Merge pull request #802 from andersson1234/tpm-fde-dialog-box-fix-typo\n\nfix typos in tpm fde dialog box",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/298edf271695df828a169f153143da18712739c3"
+                  "timestamp": 1725529604,
+                  "message": "fix(reset-tools): rename polkit plug name per request",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2a0c647951a4faccaf6991c59dd7e6e1b21512ef"
                }
             ],
             "ciActions": [
