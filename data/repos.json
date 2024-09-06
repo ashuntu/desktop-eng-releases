@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "06173a1377c0170e3a1c7bf11ab7bdb36e46bf65",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1725607765,
+                  "message": "deps(windows-agent): bump golang.org/x/sys from 0.24.0 to 0.25.0 in /windows-agent (#900)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/06173a1377c0170e3a1c7bf11ab7bdb36e46bf65"
+               },
+               {
+                  "sha": "41cc98d104751e328e891bed32eff17cf4560e3d",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1725529922,
+                  "message": "deps(windows-agent): bump golang.org/x/sys in /windows-agent\n\nBumps [golang.org/x/sys](https://github.com/golang/sys) from 0.24.0 to 0.25.0.\n- [Commits](https://github.com/golang/sys/compare/v0.24.0...v0.25.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/41cc98d104751e328e891bed32eff17cf4560e3d"
+               },
+               {
                   "sha": "7b4c5779b93a84930aa5c310b1953f4323deb7dd",
                   "author": "CarlosNihelton",
                   "timestamp": 1725029973,
                   "message": "Auto update internal dependencies",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7b4c5779b93a84930aa5c310b1953f4323deb7dd"
-               },
-               {
-                  "sha": "fc45e52d33dff351d1981c75c3f5bb8e21851122",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1725029934,
-                  "message": "fix(test): No `os.Exit()` calls in `TestMain` and no SA3000 warning (#883)\n\nWhen upgrading golangci-lint in #870 I introduced a bunch of os.Exit\r\ncalls in test functions blindily following the SA300 warning. That's\r\nbad, because it prevents the Go runtime to perform some clean-up after\r\n`m.Run()` returns.\r\nIn fact, [Go 1.15\r\nchangelog](https://go.dev/doc/go1.15#testingpkgtesting) clearly states\r\nthat m.Run() does the right thing in regards to the program's exit code.\r\n`staticcheck` running alone won't report that warning. `golangci-lint`\r\nis failing to propagate the go version, thus confusing the downstream\r\nlinter.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/fc45e52d33dff351d1981c75c3f5bb8e21851122"
-               },
-               {
-                  "sha": "96114af54c67b44078f5328b260cdd24d974b810",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1724763584,
-                  "message": "No os.Exit m.Run()",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/96114af54c67b44078f5328b260cdd24d974b810"
                }
             ],
             "ciActions": [
@@ -6784,25 +6784,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "07120073abb6fe8b66f258a369e03318d19ed5b3",
+                  "sha": "b28fb72c19ce6924caad73c339d865da2e290e3b",
                   "author": "dependabot[bot]",
-                  "timestamp": 1724262535,
-                  "message": "deps(go-tools): bump github.com/golangci/golangci-lint from 1.60.1 to 1.60.2 in /tools (#84)",
-                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/07120073abb6fe8b66f258a369e03318d19ed5b3"
+                  "timestamp": 1725608400,
+                  "message": "deps(go-tools): bump github.com/golangci/golangci-lint from 1.60.2 to 1.60.3 in /tools (#85)",
+                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/b28fb72c19ce6924caad73c339d865da2e290e3b"
                },
                {
-                  "sha": "621efd226d7ff1e7d8c2491fffefb2419cb9ad35",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1724262147,
-                  "message": "deps(go-tools): bump github.com/golangci/golangci-lint in /tools\n\nBumps [github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint) from 1.60.1 to 1.60.2.\n- [Release notes](https://github.com/golangci/golangci-lint/releases)\n- [Changelog](https://github.com/golangci/golangci-lint/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/golangci/golangci-lint/compare/v1.60.1...v1.60.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golangci/golangci-lint\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/621efd226d7ff1e7d8c2491fffefb2419cb9ad35"
+                  "sha": "8805adc2b56ef2553bcf91af1dc30bca707a8bbe",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1725608092,
+                  "message": "removed os.exit mistakenly added tests",
+                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/8805adc2b56ef2553bcf91af1dc30bca707a8bbe"
                },
                {
-                  "sha": "2c5b4b130e42827cfe5b3cc2683e3904cbf2f4c7",
+                  "sha": "5f11645da03113b09cdc271d06bd84d98f6aa4fe",
                   "author": "dependabot[bot]",
-                  "timestamp": 1724078724,
-                  "message": "deps(go-tools): bump github.com/golangci/golangci-lint from 1.59.1 to 1.60.1 in /tools (#83)",
-                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/2c5b4b130e42827cfe5b3cc2683e3904cbf2f4c7"
+                  "timestamp": 1724434791,
+                  "message": "deps(go-tools): bump github.com/golangci/golangci-lint in /tools\n\nBumps [github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint) from 1.60.2 to 1.60.3.\n- [Release notes](https://github.com/golangci/golangci-lint/releases)\n- [Changelog](https://github.com/golangci/golangci-lint/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/golangci/golangci-lint/compare/v1.60.2...v1.60.3)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golangci/golangci-lint\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/5f11645da03113b09cdc271d06bd84d98f6aa4fe"
                }
             ],
             "ciActions": [
@@ -8716,25 +8716,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "146f6a3f8dddb1acf3756e782d1bddf76ddc5cb4",
+                  "sha": "d7de06c21b7c49c56df3fdb540326941ad7f9ed7",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1725603928,
-                  "message": "build: Depend on meson 0.60\n\nAs we're using some features included in such version",
-                  "url": "https://github.com/ubuntu/yaru/commit/146f6a3f8dddb1acf3756e782d1bddf76ddc5cb4"
+                  "timestamp": 1725601847,
+                  "message": "gnome-shell: Merge with non-accent color related upstream changes\n\nWe prefer keeping the multi-css based theming for now since it allows\nfurther customization based on the accent itself (as the warty brown!).\n\nBut we can likely ignore those in future.",
+                  "url": "https://github.com/ubuntu/yaru/commit/d7de06c21b7c49c56df3fdb540326941ad7f9ed7"
                },
                {
-                  "sha": "cffbaed7bbfb90a96e19b604106e0753bb2fede0",
-                  "author": "3v1n0",
-                  "timestamp": 1725589337,
-                  "message": "New upstream snapshot for GNOME Shell Resources",
-                  "url": "https://github.com/ubuntu/yaru/commit/cffbaed7bbfb90a96e19b604106e0753bb2fede0"
+                  "sha": "5e771928304a7310044b93211e17f73583eaa09f",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1725595047,
+                  "message": "gnome-shell: Remove support for colorable assets\n\nIt was cool hacky code, but it's not needed anymore since the shell\ncan do colored assets without this, so drop this to simplify the whole\nlogic",
+                  "url": "https://github.com/ubuntu/yaru/commit/5e771928304a7310044b93211e17f73583eaa09f"
                },
                {
-                  "sha": "bc76b8c78b9a9bd091f29fd2858a152a278ee085",
-                  "author": "3v1n0",
-                  "timestamp": 1725589336,
-                  "message": "New upstream snapshot for GNOME Shell Icons",
-                  "url": "https://github.com/ubuntu/yaru/commit/bc76b8c78b9a9bd091f29fd2858a152a278ee085"
+                  "sha": "065ce65189e657ac5c826bbcbf9355667151736c",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1725594503,
+                  "message": "gnome-shell: Use CSS-based switches",
+                  "url": "https://github.com/ubuntu/yaru/commit/065ce65189e657ac5c826bbcbf9355667151736c"
                }
             ],
             "ciActions": [],
