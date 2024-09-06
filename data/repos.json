@@ -3754,25 +3754,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "90efeb745ea36eb874c5fad0a4003d3624bb3b14",
+                  "sha": "f2625e5145e6bf12df8695821e4ca74c6aba0ae2",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725534953,
-                  "message": "feat: adding new home pattern type to the GRPC API (#89)\n\nThe new variant isn't in use yet but I'm updating the Rust client next\r\nto include it in the generated options for subfolder paths. I missed\r\nupdating the conversion method for `PromptReplyResponse` in a previous\r\nchange and nearly did the same thing again here with `HomePatternType`\r\nso I've added some very simple regression tests that just iterate over\r\nthe protobuf enum variants and check to see if anything throws when it\r\ngets run through the conversion method. If there's a more idiomatic way\r\nto handle this sort of check then please let me know and I'll move us\r\nover to that instead :smile:\r\n\r\n> For context, I don't _think_ we can simply rely on the match being\r\nmarked as non-exhaustive as we are using generated \"enum-_like_\" classes\r\nwith an explicit list of variants rather than true enums. If I'm wrong\r\non this please let me know!\r\n\r\nThis also adds the new translation string required for the new option in\r\nthe UI with the caveat that we are using `directory` everywhere rather\r\nthan `folder` as this is what @local-optimum and Gustavo requested a\r\nwhile back. @juanruitina I see in your new Figma designs\r\n[here](https://www.figma.com/design/10xVr0m8efJh043Ff6SY4G/24.10-AppArmor-prompting?node-id=2084-4193&node-type=CANVAS&t=eFyJTz9wM1FfXMeS-0)\r\nthat `folder` is still being used? I think we probably want to confirm\r\nwith Oli which we are using when he's back and then either update the\r\nFigma or the translation strings accordingly. We use `directory`\r\neverywhere in the code base so the translation strings should be the\r\nonly place that needs changing if that's the way we end up going.\r\n\r\nEither way, I'll leave things as they currently stand for this PR rather\r\nthan flip-flop between the two terms until we can confirm things\r\n:slightly_smiling_face:",
-                  "url": "https://github.com/canonical/prompting-client/commit/90efeb745ea36eb874c5fad0a4003d3624bb3b14"
+                  "timestamp": 1725615426,
+                  "message": "fix: only show the about this app section when metadata is available (#93)\n\nhttps://github.com/canonical/snapd/pull/14473 addresses the underlying\r\ncause of the \"About this app\" section ending up without any data to\r\ndisplay (the rework of the prompting interface included trimming down\r\nthe permissions it granted so we lost access to `/v2/snaps/$name`). From\r\nour side we also need to make sure that if the app metadata is not\r\navailable, we no longer render the section in the prompt (see the\r\nscreenshot below).\r\n\r\nI've updated the tests in the UI to ensure that we don't render the\r\n\"About this app\" section when meta data is missing as a regression test\r\nfor this.\r\n\r\n\r\n![prompt-without-about](https://github.com/user-attachments/assets/18787d89-269b-4b16-88f0-2c2db1874317)\r\n\r\n> @juanruitina \"Custom path pattern\" is still there because I've not\r\nstarted work on the UI fixes yet I'm afraid.\r\n\r\nThis PR also fixes the melos targets we have so that they correctly use\r\n`fvm` now that we are relying on it for managing the flutter version of\r\nthe project.",
+                  "url": "https://github.com/canonical/prompting-client/commit/f2625e5145e6bf12df8695821e4ca74c6aba0ae2"
                },
                {
-                  "sha": "b38d08f4310ea20a29a54b066ecb92ed49d8d5d4",
+                  "sha": "2f3500bd215c3aba67d815d50abf9683d4f2a311",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725529176,
-                  "message": "feat: updating path patterns to match new designs",
-                  "url": "https://github.com/canonical/prompting-client/commit/b38d08f4310ea20a29a54b066ecb92ed49d8d5d4"
+                  "timestamp": 1725613201,
+                  "message": "fix: adding sdkPath to melos.yaml",
+                  "url": "https://github.com/canonical/prompting-client/commit/2f3500bd215c3aba67d815d50abf9683d4f2a311"
                },
                {
-                  "sha": "2d180c2da4e7ecb4accc0fa0de9a1e3138ef012d",
+                  "sha": "52d636566439b3814c458525e71fa403f013dd62",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725526120,
-                  "message": "fix: renaming directory to folder in UI strings",
-                  "url": "https://github.com/canonical/prompting-client/commit/2d180c2da4e7ecb4accc0fa0de9a1e3138ef012d"
+                  "timestamp": 1725610729,
+                  "message": "fix: only show the about this app section when metadata is available",
+                  "url": "https://github.com/canonical/prompting-client/commit/52d636566439b3814c458525e71fa403f013dd62"
                }
             ],
             "ciActions": [],
@@ -5659,25 +5659,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "90efeb745ea36eb874c5fad0a4003d3624bb3b14",
+                  "sha": "f2625e5145e6bf12df8695821e4ca74c6aba0ae2",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725534953,
-                  "message": "feat: adding new home pattern type to the GRPC API (#89)\n\nThe new variant isn't in use yet but I'm updating the Rust client next\r\nto include it in the generated options for subfolder paths. I missed\r\nupdating the conversion method for `PromptReplyResponse` in a previous\r\nchange and nearly did the same thing again here with `HomePatternType`\r\nso I've added some very simple regression tests that just iterate over\r\nthe protobuf enum variants and check to see if anything throws when it\r\ngets run through the conversion method. If there's a more idiomatic way\r\nto handle this sort of check then please let me know and I'll move us\r\nover to that instead :smile:\r\n\r\n> For context, I don't _think_ we can simply rely on the match being\r\nmarked as non-exhaustive as we are using generated \"enum-_like_\" classes\r\nwith an explicit list of variants rather than true enums. If I'm wrong\r\non this please let me know!\r\n\r\nThis also adds the new translation string required for the new option in\r\nthe UI with the caveat that we are using `directory` everywhere rather\r\nthan `folder` as this is what @local-optimum and Gustavo requested a\r\nwhile back. @juanruitina I see in your new Figma designs\r\n[here](https://www.figma.com/design/10xVr0m8efJh043Ff6SY4G/24.10-AppArmor-prompting?node-id=2084-4193&node-type=CANVAS&t=eFyJTz9wM1FfXMeS-0)\r\nthat `folder` is still being used? I think we probably want to confirm\r\nwith Oli which we are using when he's back and then either update the\r\nFigma or the translation strings accordingly. We use `directory`\r\neverywhere in the code base so the translation strings should be the\r\nonly place that needs changing if that's the way we end up going.\r\n\r\nEither way, I'll leave things as they currently stand for this PR rather\r\nthan flip-flop between the two terms until we can confirm things\r\n:slightly_smiling_face:",
-                  "url": "https://github.com/canonical/prompting-client/commit/90efeb745ea36eb874c5fad0a4003d3624bb3b14"
+                  "timestamp": 1725615426,
+                  "message": "fix: only show the about this app section when metadata is available (#93)\n\nhttps://github.com/canonical/snapd/pull/14473 addresses the underlying\r\ncause of the \"About this app\" section ending up without any data to\r\ndisplay (the rework of the prompting interface included trimming down\r\nthe permissions it granted so we lost access to `/v2/snaps/$name`). From\r\nour side we also need to make sure that if the app metadata is not\r\navailable, we no longer render the section in the prompt (see the\r\nscreenshot below).\r\n\r\nI've updated the tests in the UI to ensure that we don't render the\r\n\"About this app\" section when meta data is missing as a regression test\r\nfor this.\r\n\r\n\r\n![prompt-without-about](https://github.com/user-attachments/assets/18787d89-269b-4b16-88f0-2c2db1874317)\r\n\r\n> @juanruitina \"Custom path pattern\" is still there because I've not\r\nstarted work on the UI fixes yet I'm afraid.\r\n\r\nThis PR also fixes the melos targets we have so that they correctly use\r\n`fvm` now that we are relying on it for managing the flutter version of\r\nthe project.",
+                  "url": "https://github.com/canonical/prompting-client/commit/f2625e5145e6bf12df8695821e4ca74c6aba0ae2"
                },
                {
-                  "sha": "b38d08f4310ea20a29a54b066ecb92ed49d8d5d4",
+                  "sha": "2f3500bd215c3aba67d815d50abf9683d4f2a311",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725529176,
-                  "message": "feat: updating path patterns to match new designs",
-                  "url": "https://github.com/canonical/prompting-client/commit/b38d08f4310ea20a29a54b066ecb92ed49d8d5d4"
+                  "timestamp": 1725613201,
+                  "message": "fix: adding sdkPath to melos.yaml",
+                  "url": "https://github.com/canonical/prompting-client/commit/2f3500bd215c3aba67d815d50abf9683d4f2a311"
                },
                {
-                  "sha": "2d180c2da4e7ecb4accc0fa0de9a1e3138ef012d",
+                  "sha": "52d636566439b3814c458525e71fa403f013dd62",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725526120,
-                  "message": "fix: renaming directory to folder in UI strings",
-                  "url": "https://github.com/canonical/prompting-client/commit/2d180c2da4e7ecb4accc0fa0de9a1e3138ef012d"
+                  "timestamp": 1725610729,
+                  "message": "fix: only show the about this app section when metadata is available",
+                  "url": "https://github.com/canonical/prompting-client/commit/52d636566439b3814c458525e71fa403f013dd62"
                }
             ],
             "ciActions": [],
@@ -7805,25 +7805,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "90efeb745ea36eb874c5fad0a4003d3624bb3b14",
+                  "sha": "f2625e5145e6bf12df8695821e4ca74c6aba0ae2",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725534953,
-                  "message": "feat: adding new home pattern type to the GRPC API (#89)\n\nThe new variant isn't in use yet but I'm updating the Rust client next\r\nto include it in the generated options for subfolder paths. I missed\r\nupdating the conversion method for `PromptReplyResponse` in a previous\r\nchange and nearly did the same thing again here with `HomePatternType`\r\nso I've added some very simple regression tests that just iterate over\r\nthe protobuf enum variants and check to see if anything throws when it\r\ngets run through the conversion method. If there's a more idiomatic way\r\nto handle this sort of check then please let me know and I'll move us\r\nover to that instead :smile:\r\n\r\n> For context, I don't _think_ we can simply rely on the match being\r\nmarked as non-exhaustive as we are using generated \"enum-_like_\" classes\r\nwith an explicit list of variants rather than true enums. If I'm wrong\r\non this please let me know!\r\n\r\nThis also adds the new translation string required for the new option in\r\nthe UI with the caveat that we are using `directory` everywhere rather\r\nthan `folder` as this is what @local-optimum and Gustavo requested a\r\nwhile back. @juanruitina I see in your new Figma designs\r\n[here](https://www.figma.com/design/10xVr0m8efJh043Ff6SY4G/24.10-AppArmor-prompting?node-id=2084-4193&node-type=CANVAS&t=eFyJTz9wM1FfXMeS-0)\r\nthat `folder` is still being used? I think we probably want to confirm\r\nwith Oli which we are using when he's back and then either update the\r\nFigma or the translation strings accordingly. We use `directory`\r\neverywhere in the code base so the translation strings should be the\r\nonly place that needs changing if that's the way we end up going.\r\n\r\nEither way, I'll leave things as they currently stand for this PR rather\r\nthan flip-flop between the two terms until we can confirm things\r\n:slightly_smiling_face:",
-                  "url": "https://github.com/canonical/prompting-client/commit/90efeb745ea36eb874c5fad0a4003d3624bb3b14"
+                  "timestamp": 1725615426,
+                  "message": "fix: only show the about this app section when metadata is available (#93)\n\nhttps://github.com/canonical/snapd/pull/14473 addresses the underlying\r\ncause of the \"About this app\" section ending up without any data to\r\ndisplay (the rework of the prompting interface included trimming down\r\nthe permissions it granted so we lost access to `/v2/snaps/$name`). From\r\nour side we also need to make sure that if the app metadata is not\r\navailable, we no longer render the section in the prompt (see the\r\nscreenshot below).\r\n\r\nI've updated the tests in the UI to ensure that we don't render the\r\n\"About this app\" section when meta data is missing as a regression test\r\nfor this.\r\n\r\n\r\n![prompt-without-about](https://github.com/user-attachments/assets/18787d89-269b-4b16-88f0-2c2db1874317)\r\n\r\n> @juanruitina \"Custom path pattern\" is still there because I've not\r\nstarted work on the UI fixes yet I'm afraid.\r\n\r\nThis PR also fixes the melos targets we have so that they correctly use\r\n`fvm` now that we are relying on it for managing the flutter version of\r\nthe project.",
+                  "url": "https://github.com/canonical/prompting-client/commit/f2625e5145e6bf12df8695821e4ca74c6aba0ae2"
                },
                {
-                  "sha": "b38d08f4310ea20a29a54b066ecb92ed49d8d5d4",
+                  "sha": "2f3500bd215c3aba67d815d50abf9683d4f2a311",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725529176,
-                  "message": "feat: updating path patterns to match new designs",
-                  "url": "https://github.com/canonical/prompting-client/commit/b38d08f4310ea20a29a54b066ecb92ed49d8d5d4"
+                  "timestamp": 1725613201,
+                  "message": "fix: adding sdkPath to melos.yaml",
+                  "url": "https://github.com/canonical/prompting-client/commit/2f3500bd215c3aba67d815d50abf9683d4f2a311"
                },
                {
-                  "sha": "2d180c2da4e7ecb4accc0fa0de9a1e3138ef012d",
+                  "sha": "52d636566439b3814c458525e71fa403f013dd62",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725526120,
-                  "message": "fix: renaming directory to folder in UI strings",
-                  "url": "https://github.com/canonical/prompting-client/commit/2d180c2da4e7ecb4accc0fa0de9a1e3138ef012d"
+                  "timestamp": 1725610729,
+                  "message": "fix: only show the about this app section when metadata is available",
+                  "url": "https://github.com/canonical/prompting-client/commit/52d636566439b3814c458525e71fa403f013dd62"
                }
             ],
             "ciActions": [],
