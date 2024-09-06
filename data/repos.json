@@ -4735,25 +4735,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "049fd49bd93b53bd42f8b0907c8662af2e760656",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1725640331,
+                  "message": "fix(backend): Almost empty error when wsl.exe fails. (#120)\n\nIf wsl.exe doesn't exit 0, then we read the byte buffer to find\r\n\"Wsl/Service/WSL_E_DISTRO_NOT_FOUND\".\r\n\r\nBy doing so we're exhausting the reader, so the last line of this\r\nfunction essentially assembles an empty message, because there is\r\nnothing more to retrieve from the reader.\r\n\r\nThe fix is write the buffer contents into strings and use those when\r\ncomparing and generating error messages.\r\nThat could be a problem for very long outputs, but wsl.exe itself always\r\ngenerates short messages (currently at least).",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/049fd49bd93b53bd42f8b0907c8662af2e760656"
+               },
+               {
+                  "sha": "dc1fd28f75f6937c95b0afe64f681ccbdb388443",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1725634865,
+                  "message": "Fix almost empty error when wsl.exe fails.\n\nIf wsl.exe doesn't exit 0, then we read the byte buffer to find \"Wsl/Service/WSL_E_DISTRO_NOT_FOUND\".\n\nBy doing so we're exhausting the reader, so the last line of this function essentially assembles an empty message, because\nthere is nothing more to retrieve from the reader.\n\nThe fix is write the buffer contents into strings and use those when comparing and generating error messages.",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/dc1fd28f75f6937c95b0afe64f681ccbdb388443"
+               },
+               {
                   "sha": "bcd2165ef10056ebf63fa15488ac269f67a60c6b",
                   "author": "dependabot[bot]",
                   "timestamp": 1725629140,
                   "message": "Bump golang.org/x/sys from 0.24.0 to 0.25.0 (#119)",
                   "url": "https://github.com/ubuntu/GoWSL/commit/bcd2165ef10056ebf63fa15488ac269f67a60c6b"
-               },
-               {
-                  "sha": "73a07df9bb76ecc6d8444ef337951339a5ee47b5",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1725535029,
-                  "message": "Bump golang.org/x/sys from 0.24.0 to 0.25.0\n\nBumps [golang.org/x/sys](https://github.com/golang/sys) from 0.24.0 to 0.25.0.\n- [Commits](https://github.com/golang/sys/compare/v0.24.0...v0.25.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/73a07df9bb76ecc6d8444ef337951339a5ee47b5"
-               },
-               {
-                  "sha": "943d00aa955cd05a4f5aae066f017e6fc163c2dc",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1723205851,
-                  "message": "Bump golang.org/x/sys from 0.23.0 to 0.24.0 (#118)",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/943d00aa955cd05a4f5aae066f017e6fc163c2dc"
                }
             ],
             "ciActions": [
@@ -6611,6 +6611,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "500f480fd8d558998679fcc8f2c46da19ef377be",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1725641472,
+                  "message": "Ignore pam_unix_non_existent on getpwnam calls (#519)\n\nThis is a common call done by PAM to prevent attacks. We need to special\r\ncase it to avoid spamming the system logs with Not Found messages when\r\nthe call happens.\r\n\r\n\r\nCloses #468.\r\nUDENG-3934",
+                  "url": "https://github.com/ubuntu/authd/commit/500f480fd8d558998679fcc8f2c46da19ef377be"
+               },
+               {
                   "sha": "d3dcaa80d4669034b2bf567469a833a5630d9007",
                   "author": "Jean-Baptiste Lallement",
                   "timestamp": 1725637611,
@@ -6623,13 +6630,6 @@
                   "timestamp": 1725636331,
                   "message": "Update SECURITY.md\n\ns/lxd/authd",
                   "url": "https://github.com/ubuntu/authd/commit/01ad85fb44f43178e957faa45bd4363af5f5987c"
-               },
-               {
-                  "sha": "f358c88cc707898fcacf54f7a3745264c8a5055f",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1725634501,
-                  "message": "Create SECURITY.md",
-                  "url": "https://github.com/ubuntu/authd/commit/f358c88cc707898fcacf54f7a3745264c8a5055f"
                }
             ],
             "ciActions": [
