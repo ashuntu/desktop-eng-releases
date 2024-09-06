@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e85b68952fefe0dbf13776bfc34d8e3dd9e9af2d",
+                  "sha": "4d34a320911a03ab64f0f4340e260ff9beec8883",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1725630930,
-                  "message": "fix(windows-agent): Don't bail out if WSL adapter is not available (#896)\n\nThe key of this PR is enable a sensible behaviour for the Windows agent\r\nwhen there is no WSL network adapter, which is also when there is no WSL\r\ninstance registered. It's behaviour remain changed otherwise. When\r\nstarted under such condition:\r\n\r\n- The proservices skip registering the WSL instance gRPC service\r\n- The daemon subscribes to OS notifications related to additions of\r\nnetwork interfaces\r\n- If triggered with the WSL adapter in the list of new interfaces\r\nrecently added, restarts itself, i.e.\r\n  * stops the current gRPC server and \r\n  * creates a new one with all proservices enabled\r\n  \r\nA live demonstration of this huge patch on a fresh VM with the latest\r\nstable WSL and Ubuntu-24.04 from the package flight:\r\n\r\n\r\nhttps://github.com/user-attachments/assets/e35f36b8-318b-4d98-b6ab-0b59f4b1fff1\r\n\r\nThe daemon was not meant to be restarted, thus a huge part of this diff\r\nis changing its internals while preserving its interface and most of its\r\nsemantics. Clients (agent app) and collaborators (proservices) are\r\nmostly unaffected by such changes.\r\n\r\nI implemented the OS notification component as a thin wrapper on top of\r\nthe Windows registry relying on the stability of the network control set\r\nregistry path. It's maintained by the operating system and match the\r\nbehaviour observed with the virtual adapters (not removed when the last\r\nWSL instance is unregistered, until system reboot). When discussing\r\nWS035 we agreed in not exposing the registry as much looking into the\r\npossibility of reimplementing that layer using a more specific API. I\r\ndidn't find yet any Win32 API suitable for use in Go without CGo that\r\noffers the flexibility I found in the registry.\r\n\r\nAs you can notice in the recording, the daemon is restarted much before\r\nthe newly registered instance is ready, thus wsl-pro-service doesn't\r\nrequire any changes. By the time systemd kicks in, the agent is already\r\nlistening. There was one line removal on the GUI side to prevent it from\r\ndeleting the `.address` file upfront if it finds the agent\r\nnon-responsive, which could be the case of the daemon restarting. The\r\nGUI attempts to read the `.address` file, if not found then it attempts\r\nto start the agent application.\r\n\r\n---\r\n\r\nUDENG-3838",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e85b68952fefe0dbf13776bfc34d8e3dd9e9af2d"
+                  "timestamp": 1725638576,
+                  "message": "fix(windows-agent): Can't find config file inside the public dir (#901)\n\n`%USERPROFILE%\\.ubuntupro`.\r\n\r\nThe fix I'm proposing here is the simplest but maybe less correct if we\r\nconsider that the public dir could point to anywhere else other than the\r\ndefault (`%USERPROFILE%\\.ubuntupro` when in production).\r\n\r\nThe issue is: when configuring viper we added `$HOME/.ubuntupro` to the\r\nconfig paths. Since `$HOME` is not defined on Windows nor `/` is the\r\ndefault path separator, that addition never worked. By ensuring we use\r\nthe correct path separator, we allow viper to consider `%HOMEDRIVE%` ,\r\n`%HOMEPATH%` and `%USERPROFILE%` for `$HOME` (viper's implementation\r\ndetails).\r\n\r\nThe test case `\"When the config is in user's public directory\"` would\r\nonly fail on Windows.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4d34a320911a03ab64f0f4340e260ff9beec8883"
                },
                {
-                  "sha": "729c4c67e2a90dfc89cf181c0d47d6033216777d",
+                  "sha": "05132a756184a1077c2f161ff58b64c830efc390",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1725625409,
-                  "message": "Explicit wantServices in TestRegisterGRPCServices",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/729c4c67e2a90dfc89cf181c0d47d6033216777d"
+                  "timestamp": 1725632291,
+                  "message": "Fix config autodetection when config is in .ubuntupro\n\nAddConfigPath fails to find the config file\nif the path is written as \"$HOME\\.ubuntupro\"\nbecause \"$HOME\" is not defined on Windows\nnor \"\\\" is the default path separator.\nBy using the correct path separator we allow\nviper to consider \"$HOME\" as \"%USERPROFILE%\".",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/05132a756184a1077c2f161ff58b64c830efc390"
                },
                {
-                  "sha": "6f4c70da4ac82b3782ce6b2170d112a5801a9e3e",
+                  "sha": "1573786100b364c4d4c86a8d81193b004eec117f",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1725625295,
-                  "message": "Fix doc comments on tryServingOnce and newStopFunc\n\nThey both started with a verb, not idiomatic way in Go.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6f4c70da4ac82b3782ce6b2170d112a5801a9e3e"
+                  "timestamp": 1725632158,
+                  "message": "Test to reveal autodetect config is broken ...\n\nfor config file inside .ubuntupro",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1573786100b364c4d4c86a8d81193b004eec117f"
                }
             ],
             "ciActions": [
@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "35d5b9e22b10b3a918f827489b700327b38ff79c",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1725620965,
-                  "message": "Rework dbusbroker dbus calls to format errors (#518)\n\nWe now have a wrapper around the dbus calls to be able to intercept the\r\nerrors and format the messages in a way that is helpful to end user.\r\nThis helps avoiding error messages that are too technical, such as \"the\r\nobject X was not provided by any .service files\" which is returned when\r\nthe broker is not available on DBus.\r\n\r\nUDENG-4094",
-                  "url": "https://github.com/ubuntu/authd/commit/35d5b9e22b10b3a918f827489b700327b38ff79c"
+                  "sha": "d3dcaa80d4669034b2bf567469a833a5630d9007",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1725637611,
+                  "message": "Create SECURITY.md (#521)\n\nAdded SECURITY.md\r\n\r\ncloses #200 \r\nUDENG-2243",
+                  "url": "https://github.com/ubuntu/authd/commit/d3dcaa80d4669034b2bf567469a833a5630d9007"
                },
                {
-                  "sha": "4b312ca06e7a1f6645e8bc47e287e649d96df224",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1725539296,
-                  "message": "Rework dbusbroker dbus calls to format errors\n\nWe now have a wrapper around the dbus calls to be able to intercept the\nerrors and format the messages in a way that is helpful to end user.\nThis helps avoiding error messages that are too technical, such as \"the\nobject X was not provided by any .service files\" which is returned when\nthe broker is not available on DBus.\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/4b312ca06e7a1f6645e8bc47e287e649d96df224"
+                  "sha": "01ad85fb44f43178e957faa45bd4363af5f5987c",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1725636331,
+                  "message": "Update SECURITY.md\n\ns/lxd/authd",
+                  "url": "https://github.com/ubuntu/authd/commit/01ad85fb44f43178e957faa45bd4363af5f5987c"
                },
                {
-                  "sha": "e8309895b5dca7a66f0502a58da7667c57dfddae",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1725538460,
-                  "message": "deps(go): bump the minor-updates group with 3 updates (#516)",
-                  "url": "https://github.com/ubuntu/authd/commit/e8309895b5dca7a66f0502a58da7667c57dfddae"
+                  "sha": "f358c88cc707898fcacf54f7a3745264c8a5055f",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1725634501,
+                  "message": "Create SECURITY.md",
+                  "url": "https://github.com/ubuntu/authd/commit/f358c88cc707898fcacf54f7a3745264c8a5055f"
                }
             ],
             "ciActions": [
