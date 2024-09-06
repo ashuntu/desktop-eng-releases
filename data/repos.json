@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "06173a1377c0170e3a1c7bf11ab7bdb36e46bf65",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1725607765,
-                  "message": "deps(windows-agent): bump golang.org/x/sys from 0.24.0 to 0.25.0 in /windows-agent (#900)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/06173a1377c0170e3a1c7bf11ab7bdb36e46bf65"
+                  "sha": "e85b68952fefe0dbf13776bfc34d8e3dd9e9af2d",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1725630930,
+                  "message": "fix(windows-agent): Don't bail out if WSL adapter is not available (#896)\n\nThe key of this PR is enable a sensible behaviour for the Windows agent\r\nwhen there is no WSL network adapter, which is also when there is no WSL\r\ninstance registered. It's behaviour remain changed otherwise. When\r\nstarted under such condition:\r\n\r\n- The proservices skip registering the WSL instance gRPC service\r\n- The daemon subscribes to OS notifications related to additions of\r\nnetwork interfaces\r\n- If triggered with the WSL adapter in the list of new interfaces\r\nrecently added, restarts itself, i.e.\r\n  * stops the current gRPC server and \r\n  * creates a new one with all proservices enabled\r\n  \r\nA live demonstration of this huge patch on a fresh VM with the latest\r\nstable WSL and Ubuntu-24.04 from the package flight:\r\n\r\n\r\nhttps://github.com/user-attachments/assets/e35f36b8-318b-4d98-b6ab-0b59f4b1fff1\r\n\r\nThe daemon was not meant to be restarted, thus a huge part of this diff\r\nis changing its internals while preserving its interface and most of its\r\nsemantics. Clients (agent app) and collaborators (proservices) are\r\nmostly unaffected by such changes.\r\n\r\nI implemented the OS notification component as a thin wrapper on top of\r\nthe Windows registry relying on the stability of the network control set\r\nregistry path. It's maintained by the operating system and match the\r\nbehaviour observed with the virtual adapters (not removed when the last\r\nWSL instance is unregistered, until system reboot). When discussing\r\nWS035 we agreed in not exposing the registry as much looking into the\r\npossibility of reimplementing that layer using a more specific API. I\r\ndidn't find yet any Win32 API suitable for use in Go without CGo that\r\noffers the flexibility I found in the registry.\r\n\r\nAs you can notice in the recording, the daemon is restarted much before\r\nthe newly registered instance is ready, thus wsl-pro-service doesn't\r\nrequire any changes. By the time systemd kicks in, the agent is already\r\nlistening. There was one line removal on the GUI side to prevent it from\r\ndeleting the `.address` file upfront if it finds the agent\r\nnon-responsive, which could be the case of the daemon restarting. The\r\nGUI attempts to read the `.address` file, if not found then it attempts\r\nto start the agent application.\r\n\r\n---\r\n\r\nUDENG-3838",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e85b68952fefe0dbf13776bfc34d8e3dd9e9af2d"
                },
                {
-                  "sha": "41cc98d104751e328e891bed32eff17cf4560e3d",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1725529922,
-                  "message": "deps(windows-agent): bump golang.org/x/sys in /windows-agent\n\nBumps [golang.org/x/sys](https://github.com/golang/sys) from 0.24.0 to 0.25.0.\n- [Commits](https://github.com/golang/sys/compare/v0.24.0...v0.25.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/41cc98d104751e328e891bed32eff17cf4560e3d"
+                  "sha": "729c4c67e2a90dfc89cf181c0d47d6033216777d",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1725625409,
+                  "message": "Explicit wantServices in TestRegisterGRPCServices",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/729c4c67e2a90dfc89cf181c0d47d6033216777d"
                },
                {
-                  "sha": "7b4c5779b93a84930aa5c310b1953f4323deb7dd",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1725029973,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7b4c5779b93a84930aa5c310b1953f4323deb7dd"
+                  "sha": "6f4c70da4ac82b3782ce6b2170d112a5801a9e3e",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1725625295,
+                  "message": "Fix doc comments on tryServingOnce and newStopFunc\n\nThey both started with a verb, not idiomatic way in Go.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6f4c70da4ac82b3782ce6b2170d112a5801a9e3e"
                }
             ],
             "ciActions": [
