@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5cc9fcd4a68abbf2c29625e56e8040c0b12b35b9",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1725655732,
+                  "message": "deps(end-to-end): bump golang.org/x/sys from 0.24.0 to 0.25.0 in /end-to-end (#897)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5cc9fcd4a68abbf2c29625e56e8040c0b12b35b9"
+               },
+               {
+                  "sha": "54fba619d1c87efdc4b4d225e7225bd896022a69",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1725651022,
+                  "message": "deps(end-to-end): bump golang.org/x/sys in /end-to-end\n\nBumps [golang.org/x/sys](https://github.com/golang/sys) from 0.24.0 to 0.25.0.\n- [Commits](https://github.com/golang/sys/compare/v0.24.0...v0.25.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/54fba619d1c87efdc4b4d225e7225bd896022a69"
+               },
+               {
                   "sha": "4d34a320911a03ab64f0f4340e260ff9beec8883",
                   "author": "Carlos Nihelton",
                   "timestamp": 1725638576,
                   "message": "fix(windows-agent): Can't find config file inside the public dir (#901)\n\n`%USERPROFILE%\\.ubuntupro`.\r\n\r\nThe fix I'm proposing here is the simplest but maybe less correct if we\r\nconsider that the public dir could point to anywhere else other than the\r\ndefault (`%USERPROFILE%\\.ubuntupro` when in production).\r\n\r\nThe issue is: when configuring viper we added `$HOME/.ubuntupro` to the\r\nconfig paths. Since `$HOME` is not defined on Windows nor `/` is the\r\ndefault path separator, that addition never worked. By ensuring we use\r\nthe correct path separator, we allow viper to consider `%HOMEDRIVE%` ,\r\n`%HOMEPATH%` and `%USERPROFILE%` for `$HOME` (viper's implementation\r\ndetails).\r\n\r\nThe test case `\"When the config is in user's public directory\"` would\r\nonly fail on Windows.",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4d34a320911a03ab64f0f4340e260ff9beec8883"
-               },
-               {
-                  "sha": "05132a756184a1077c2f161ff58b64c830efc390",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1725632291,
-                  "message": "Fix config autodetection when config is in .ubuntupro\n\nAddConfigPath fails to find the config file\nif the path is written as \"$HOME\\.ubuntupro\"\nbecause \"$HOME\" is not defined on Windows\nnor \"\\\" is the default path separator.\nBy using the correct path separator we allow\nviper to consider \"$HOME\" as \"%USERPROFILE%\".",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/05132a756184a1077c2f161ff58b64c830efc390"
-               },
-               {
-                  "sha": "1573786100b364c4d4c86a8d81193b004eec117f",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1725632158,
-                  "message": "Test to reveal autodetect config is broken ...\n\nfor config file inside .ubuntupro",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1573786100b364c4d4c86a8d81193b004eec117f"
                }
             ],
             "ciActions": [
