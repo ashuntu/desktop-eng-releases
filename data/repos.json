@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5cc9fcd4a68abbf2c29625e56e8040c0b12b35b9",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1725655732,
-                  "message": "deps(end-to-end): bump golang.org/x/sys from 0.24.0 to 0.25.0 in /end-to-end (#897)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5cc9fcd4a68abbf2c29625e56e8040c0b12b35b9"
+                  "sha": "b045a9c2de524f72d45832521ec29c81a1183c28",
+                  "author": "didrocks",
+                  "timestamp": 1725893967,
+                  "message": "Auto update internal dependencies",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b045a9c2de524f72d45832521ec29c81a1183c28"
                },
                {
-                  "sha": "54fba619d1c87efdc4b4d225e7225bd896022a69",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1725651022,
-                  "message": "deps(end-to-end): bump golang.org/x/sys in /end-to-end\n\nBumps [golang.org/x/sys](https://github.com/golang/sys) from 0.24.0 to 0.25.0.\n- [Commits](https://github.com/golang/sys/compare/v0.24.0...v0.25.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/54fba619d1c87efdc4b4d225e7225bd896022a69"
+                  "sha": "7d0c1be6b020949a7ac4a059df2f83b9368564b2",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1725893928,
+                  "message": "maint: golang 1.23 update (#903)\n\nUpdate every parts to 1.23, including packages.\r\n\r\nUDENG-4447",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7d0c1be6b020949a7ac4a059df2f83b9368564b2"
                },
                {
-                  "sha": "4d34a320911a03ab64f0f4340e260ff9beec8883",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1725638576,
-                  "message": "fix(windows-agent): Can't find config file inside the public dir (#901)\n\n`%USERPROFILE%\\.ubuntupro`.\r\n\r\nThe fix I'm proposing here is the simplest but maybe less correct if we\r\nconsider that the public dir could point to anywhere else other than the\r\ndefault (`%USERPROFILE%\\.ubuntupro` when in production).\r\n\r\nThe issue is: when configuring viper we added `$HOME/.ubuntupro` to the\r\nconfig paths. Since `$HOME` is not defined on Windows nor `/` is the\r\ndefault path separator, that addition never worked. By ensuring we use\r\nthe correct path separator, we allow viper to consider `%HOMEDRIVE%` ,\r\n`%HOMEPATH%` and `%USERPROFILE%` for `$HOME` (viper's implementation\r\ndetails).\r\n\r\nThe test case `\"When the config is in user's public directory\"` would\r\nonly fail on Windows.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4d34a320911a03ab64f0f4340e260ff9beec8883"
+                  "sha": "c5137980354142acf102301220db6398a75be9b7",
+                  "author": "Didier Roche",
+                  "timestamp": 1725875364,
+                  "message": "Needed to set go toolchain in workspace mode too\n\nIn workspace mode, go.work takes precedences, so its toolchain needs to\nbe updated too.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c5137980354142acf102301220db6398a75be9b7"
                }
             ],
             "ciActions": [
@@ -6565,7 +6565,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 10,
+            "newCommits": 13,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
