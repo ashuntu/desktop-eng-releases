@@ -6646,25 +6646,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "2182c5f46230d201539a23972f2b1849e7c6be78",
+                  "author": "adombeck",
+                  "timestamp": 1725980459,
+                  "message": "Revert \"Update user info even on local authentication\" (#146)\n\nUDENG-4482",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2182c5f46230d201539a23972f2b1849e7c6be78"
+               },
+               {
+                  "sha": "b2de44fee278659f9c965b1543ef122188440d8a",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1725979167,
+                  "message": "Revert \"Update user info even on local authentication\"\n\nCommit 30d23aca2baedb29b3c0c60e87d8a300c0ff50b4 broke local\nauthentication when the access token is _not_ expired. With that commit,\nwe tried to get the groups with the locally stored token, which in case\nof the MSEntraID provider, returns an error when the scopes field\ndoesn't contain the GroupMember.Read.All scope. The problem is that we\ndon't store the extra scopes field of the token locally, so it always\nfails with:\n\n    could not get user info: failed to cast token scopes to string: <nil>.\n\nThis reverts commit 30d23aca2baedb29b3c0c60e87d8a300c0ff50b4.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/b2de44fee278659f9c965b1543ef122188440d8a"
+               },
+               {
                   "sha": "ee3fa2eb5dcf35a5a299a2cd58ab3aab14a6f82c",
                   "author": "Denison Barbosa",
                   "timestamp": 1725966252,
                   "message": "Update user info even on local authentication (#144)\n\nWe used to rely on the cached information if the access token was still\r\nvalid. Now, we always try to fetch the user information (username,\r\ngroups, etc) if the session is online, even if we did not refresh the\r\ntoken.\r\n\r\nUDENG-4436",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/ee3fa2eb5dcf35a5a299a2cd58ab3aab14a6f82c"
-               },
-               {
-                  "sha": "30d23aca2baedb29b3c0c60e87d8a300c0ff50b4",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1725961681,
-                  "message": "Update user info even on local authentication\n\nWe used to rely on the cached information if the access token was still\nvalid. Now, we always try to fetch the user information (username,\ngroups, etc) if the session is online, even if we did not refresh the\ntoken.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/30d23aca2baedb29b3c0c60e87d8a300c0ff50b4"
-               },
-               {
-                  "sha": "2b702bbfd875fc609a4e8a74b6fd0f3e0947d93d",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1725961600,
-                  "message": "Fix test for unreachable provider on password login",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2b702bbfd875fc609a4e8a74b6fd0f3e0947d93d"
                }
             ],
             "ciActions": [
