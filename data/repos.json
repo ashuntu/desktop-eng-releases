@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ceae541291b86b1f20de06d0938057bb40d3d1c3",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1726010168,
+                  "message": "qrcodemodel: Rate limit the emission of reselect auth mode events (#513)\n\nWhen hitting the Enter key for a while, bubbletea sends lots of events\r\nand we may imply sending reselectAuthMode{} events faster than we can\r\nactually handle the cancellation/reauthModeSelection in the whole stack.\r\n\r\nThis never happened (ever) when using the example broker, but it may\r\nactually happen in a real world scenario where the broker may not cancel\r\nthe requests quickly enough.\r\n\r\nDo this instead of avoiding the handling of the reselectAuthMode event\r\nbecause it's better to prevent bubbletea to break our (fragile) system.\r\n\r\nThe change is already tested by\r\n`authenticate_user_with_qr_code_after_many_regenerations` test.\r\n\r\nUDENG-4091",
+                  "url": "https://github.com/ubuntu/authd/commit/ceae541291b86b1f20de06d0938057bb40d3d1c3"
+               },
+               {
+                  "sha": "f3fb9ec228b4a06e934c4c9c39d2a8ac705b03c8",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1725511045,
+                  "message": "qrcodemodel: Rate limit the emission of reselect auth mode events\n\nWhen hitting the Enter key for a while, bubbletea sends lots of events\nand we may imply sending reselectAuthMode{} events faster than we can\nactually handle the cancellation/reauthModeSelection in the whole stack.\n\nThis never happened (ever) when using the example broker, but it may\nactually happen in a real world scenario where the broker may not cancel\nthe requests quickly enough.\n\nDo this instead of avoiding the handling of the reselectAuthMode event\nbecause it's better to prevent bubbletea to break our (fragile) system.",
+                  "url": "https://github.com/ubuntu/authd/commit/f3fb9ec228b4a06e934c4c9c39d2a8ac705b03c8"
+               },
+               {
                   "sha": "223a072ec87fbd432c3f31861e684042dfe1a941",
                   "author": "adombeck",
                   "timestamp": 1725886250,
                   "message": "deps(ci): bump the gh-actions group with 2 updates (#514)",
                   "url": "https://github.com/ubuntu/authd/commit/223a072ec87fbd432c3f31861e684042dfe1a941"
-               },
-               {
-                  "sha": "500f480fd8d558998679fcc8f2c46da19ef377be",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1725641472,
-                  "message": "Ignore pam_unix_non_existent on getpwnam calls (#519)\n\nThis is a common call done by PAM to prevent attacks. We need to special\r\ncase it to avoid spamming the system logs with Not Found messages when\r\nthe call happens.\r\n\r\n\r\nCloses #468.\r\nUDENG-3934",
-                  "url": "https://github.com/ubuntu/authd/commit/500f480fd8d558998679fcc8f2c46da19ef377be"
-               },
-               {
-                  "sha": "d3dcaa80d4669034b2bf567469a833a5630d9007",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1725637611,
-                  "message": "Create SECURITY.md (#521)\n\nAdded SECURITY.md\r\n\r\ncloses #200 \r\nUDENG-2243",
-                  "url": "https://github.com/ubuntu/authd/commit/d3dcaa80d4669034b2bf567469a833a5630d9007"
                }
             ],
             "ciActions": [
