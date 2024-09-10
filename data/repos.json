@@ -3754,6 +3754,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fc227e910897fb1aeb9fc19b4e0d9ef9c46a3ea4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1725964316,
+                  "message": "fix: small UI fixes (#95)\n\nThis is tracked internally by\r\nhttps://warthogs.atlassian.net/browse/UDENG-4402\r\n\r\n- [x] “Custom path pattern” is only ever visible when “more options” has\r\nbeen selected\r\n- [x] The text input field of the “custom path pattern” option is\r\naligned under the label text rather than the radio button\r\n- [x] “Learn about path patterns” is removed until we have documentation\r\nto link to\r\n- [ ] Text size for the radio button label text matches the other text\r\nin the UI\r\n- [x] The text for the “matching file extensions” option is corrected to\r\nread \"All {capitalised file extension} files\" instead of \"Matching file\r\nextension\"",
+                  "url": "https://github.com/canonical/prompting-client/commit/fc227e910897fb1aeb9fc19b4e0d9ef9c46a3ea4"
+               },
+               {
                   "sha": "479cafbf80ac582276bf18b8167e708b4b7d48e1",
                   "author": "Innes Anderson-Morrison",
                   "timestamp": 1725960968,
@@ -3761,18 +3768,11 @@
                   "url": "https://github.com/canonical/prompting-client/commit/479cafbf80ac582276bf18b8167e708b4b7d48e1"
                },
                {
-                  "sha": "64470f9b712e825c80c712187eaaa5bd4a5ed886",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725894346,
-                  "message": "feat(prompting-client): auto deny once if we timeout receiving a reply from the UI",
-                  "url": "https://github.com/canonical/prompting-client/commit/64470f9b712e825c80c712187eaaa5bd4a5ed886"
-               },
-               {
-                  "sha": "4ca0050a25aa484eb39976aae6d94e964f0c6206",
+                  "sha": "7a094c9a39dbf8de0d9a3a55888eda1d2fd89cb1",
                   "author": "Dennis Loose",
-                  "timestamp": 1725889381,
-                  "message": "fix(prompting_ui): ensure the window is resized correctly (#96)\n\nThis workaround fixes an issue presumably caused by a race condition\r\nduring the initialization of the GTK window and the flutter view within\r\nthat window.",
-                  "url": "https://github.com/canonical/prompting-client/commit/4ca0050a25aa484eb39976aae6d94e964f0c6206"
+                  "timestamp": 1725957531,
+                  "message": "fix: add missing trailing comma",
+                  "url": "https://github.com/canonical/prompting-client/commit/7a094c9a39dbf8de0d9a3a55888eda1d2fd89cb1"
                }
             ],
             "ciActions": [],
@@ -4836,25 +4836,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7fa1a6e3abf52796017a2b61ebf16fe044fdaa31",
+                  "author": "Didier Roche",
+                  "timestamp": 1725965636,
+                  "message": "releasing package wsl-setup version 0.5.4",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/7fa1a6e3abf52796017a2b61ebf16fe044fdaa31"
+               },
+               {
+                  "sha": "041283293601a6fdef09c2708928e6390e93ef83",
+                  "author": "Didier Roche",
+                  "timestamp": 1725965574,
+                  "message": "Update changelog",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/041283293601a6fdef09c2708928e6390e93ef83"
+               },
+               {
                   "sha": "646160861f5f6f373092ca6b84f0989e5547d0e8",
                   "author": "Carlos Nihelton",
                   "timestamp": 1724854608,
                   "message": "feat: Delivery of warnings via MotD if cloud-init doesn't succeed (#14)\n\n* Adds delivery of warning messages via motd if cloud-init doesn't succeed\r\n\r\nIf the stamp file doesn't exist in the current (WSL internal) user's home directory,\r\na warning message is shown if cloud-init log contains ERROR or WARNING messages,\r\nwhat matches the semantics of cloud-init extended status as we observed recently:\r\n- a call to LOG.error or LOG.warning automatically sets its extended status to degraded\r\neven if it \"completely succeeds\" applying the existing configuration.",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/646160861f5f6f373092ca6b84f0989e5547d0e8"
-               },
-               {
-                  "sha": "942144f8752f9c55a426915c49e4ef2a249ec7f2",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1721400043,
-                  "message": "Merge pull request #13 from ubuntu/fix-ds-list\n\nfix(cloud-init): DS List should contain one additional datasource in …",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/942144f8752f9c55a426915c49e4ef2a249ec7f2"
-               },
-               {
-                  "sha": "f9dc704b4724036a3e5ad8639a81cc2d82bdf863",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1721399616,
-                  "message": "fix(cloud-init): DS List should contain one additional datasource in order to skip running cloud-init when there is no user-data file\n\nSomehow we didn't notice this mistake, but the spec WS028 contains a discussion about why we should have two actual datasources in this list, being one WSL ofc.\r\n\r\nHaving `datasources_list: [WSL, None]` is the same as having `datasources_list: [WSL]`: `ds-identify` won't run but rather pick the WSL datasource and run cloud-init with that, resulting in inneficiency and minor UX issue with the latest changes in the distro launcher, as depicted below.\r\n\r\n```\r\nInstalling, this may take a few minutes...\r\nChecking for initialization tasks...\r\n\r\n.....\r\nstatus: done\r\nWARNING: initialization tasks partially succeeded, see below:\r\nstatus: done\r\nextended_status: degraded done\r\nboot_status_code: enabled-by-generator\r\nlast_update: Thu, 01 Jan 1970 01:29:19 +0000\r\ndetail: DataSourceNone\r\nerrors: []\r\nrecoverable_errors:\r\nWARNING:\r\n        - Used fallback datasource\r\n```\r\n\r\nThe spec suggested adding `NoCloud` instead, but somehow `None` landed here instead and I only noticed after playing with the new launcher for a while.\r\n\r\nWhat we want to see when there is no applicable cloud-config data is (cloud-init goes disabled):\r\n\r\n```\r\nInstalling, this may take a few minutes...\r\nChecking for initialization tasks...\r\n\r\n\r\nstatus: disabled\r\nERROR: no candidate default user was found\r\n\r\nPlease create a default UNIX user account. The username does not need to match your Windows username.\r\nFor more information visit: https://aka.ms/wslusers\r\nEnter new UNIX username:\r\n```\r\n\r\n(maye the `ERROR: no candidate default user was found` should be \"INFO\" instead or maybe print nothing related to cloud-init in case it's disabled, but that's another topic).",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/f9dc704b4724036a3e5ad8639a81cc2d82bdf863"
                }
             ],
             "ciActions": [],
@@ -5659,6 +5659,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fc227e910897fb1aeb9fc19b4e0d9ef9c46a3ea4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1725964316,
+                  "message": "fix: small UI fixes (#95)\n\nThis is tracked internally by\r\nhttps://warthogs.atlassian.net/browse/UDENG-4402\r\n\r\n- [x] “Custom path pattern” is only ever visible when “more options” has\r\nbeen selected\r\n- [x] The text input field of the “custom path pattern” option is\r\naligned under the label text rather than the radio button\r\n- [x] “Learn about path patterns” is removed until we have documentation\r\nto link to\r\n- [ ] Text size for the radio button label text matches the other text\r\nin the UI\r\n- [x] The text for the “matching file extensions” option is corrected to\r\nread \"All {capitalised file extension} files\" instead of \"Matching file\r\nextension\"",
+                  "url": "https://github.com/canonical/prompting-client/commit/fc227e910897fb1aeb9fc19b4e0d9ef9c46a3ea4"
+               },
+               {
                   "sha": "479cafbf80ac582276bf18b8167e708b4b7d48e1",
                   "author": "Innes Anderson-Morrison",
                   "timestamp": 1725960968,
@@ -5666,18 +5673,11 @@
                   "url": "https://github.com/canonical/prompting-client/commit/479cafbf80ac582276bf18b8167e708b4b7d48e1"
                },
                {
-                  "sha": "64470f9b712e825c80c712187eaaa5bd4a5ed886",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725894346,
-                  "message": "feat(prompting-client): auto deny once if we timeout receiving a reply from the UI",
-                  "url": "https://github.com/canonical/prompting-client/commit/64470f9b712e825c80c712187eaaa5bd4a5ed886"
-               },
-               {
-                  "sha": "4ca0050a25aa484eb39976aae6d94e964f0c6206",
+                  "sha": "7a094c9a39dbf8de0d9a3a55888eda1d2fd89cb1",
                   "author": "Dennis Loose",
-                  "timestamp": 1725889381,
-                  "message": "fix(prompting_ui): ensure the window is resized correctly (#96)\n\nThis workaround fixes an issue presumably caused by a race condition\r\nduring the initialization of the GTK window and the flutter view within\r\nthat window.",
-                  "url": "https://github.com/canonical/prompting-client/commit/4ca0050a25aa484eb39976aae6d94e964f0c6206"
+                  "timestamp": 1725957531,
+                  "message": "fix: add missing trailing comma",
+                  "url": "https://github.com/canonical/prompting-client/commit/7a094c9a39dbf8de0d9a3a55888eda1d2fd89cb1"
                }
             ],
             "ciActions": [],
@@ -5934,7 +5934,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 293,
+            "newCommits": 295,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -6646,25 +6646,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7829533f75b4f37f1ed4c2208af69fa6e4e90baa",
-                  "author": "adombeck",
-                  "timestamp": 1725902416,
-                  "message": "Fix permission error when listing groups of a guest account (#135)\n\nCloses [#517](https://github.com/ubuntu/authd/issues/517)\r\nUDENG-4419",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/7829533f75b4f37f1ed4c2208af69fa6e4e90baa"
-               },
-               {
-                  "sha": "c602d18a0a7f597430558f95f6308aefbb750855",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1725531701,
-                  "message": "Only fetch user's groups, not directory roles and administrative units\n\nWhen the user account is a guest account on the tenant, the existing\npermissions are not enough to list all the memberships, so the\n`TransitiveMemberOf().Get()` call results in a permission denied error.\n\nThe existing permissions are enough to list only the groups though, and\nthat's the only thing we're interested in.\n\nThis commit also removes the call to `client.Groups().Get()` which guest\naccounts are not permitted to use without additional privileges. That\ncall was introduced in fe43cccb81f54713fdb3c9995e0c8e19cec9da9a to check\nfor the `GroupMember.Read.All` permission and fail with a helpful error\nmessage when it's missing. Instead, we now check if the permission is\npresent in the `scopes` field of the access token. It's safe to do so\nbecause the permissions in the `scopes` field are valid even if the\npermissions of the app were changed (so if an admin removes the\n`GroupMember.Read.All` permission from the app, existing non-expired\naccess tokens still have that permission).",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/c602d18a0a7f597430558f95f6308aefbb750855"
-               },
-               {
-                  "sha": "0f39bbc81c7e96c2ff868533ea18f1d750934532",
+                  "sha": "ee3fa2eb5dcf35a5a299a2cd58ab3aab14a6f82c",
                   "author": "Denison Barbosa",
-                  "timestamp": 1725880404,
-                  "message": "deps(go): bump golang.org/x/oauth2 from 0.22.0 to 0.23.0 (#137)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0f39bbc81c7e96c2ff868533ea18f1d750934532"
+                  "timestamp": 1725966252,
+                  "message": "Update user info even on local authentication (#144)\n\nWe used to rely on the cached information if the access token was still\r\nvalid. Now, we always try to fetch the user information (username,\r\ngroups, etc) if the session is online, even if we did not refresh the\r\ntoken.\r\n\r\nUDENG-4436",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/ee3fa2eb5dcf35a5a299a2cd58ab3aab14a6f82c"
+               },
+               {
+                  "sha": "30d23aca2baedb29b3c0c60e87d8a300c0ff50b4",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1725961681,
+                  "message": "Update user info even on local authentication\n\nWe used to rely on the cached information if the access token was still\nvalid. Now, we always try to fetch the user information (username,\ngroups, etc) if the session is online, even if we did not refresh the\ntoken.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/30d23aca2baedb29b3c0c60e87d8a300c0ff50b4"
+               },
+               {
+                  "sha": "2b702bbfd875fc609a4e8a74b6fd0f3e0947d93d",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1725961600,
+                  "message": "Fix test for unreachable provider on password login",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2b702bbfd875fc609a4e8a74b6fd0f3e0947d93d"
                }
             ],
             "ciActions": [
@@ -6852,25 +6852,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7fa1a6e3abf52796017a2b61ebf16fe044fdaa31",
+                  "author": "Didier Roche",
+                  "timestamp": 1725965636,
+                  "message": "releasing package wsl-setup version 0.5.4",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/7fa1a6e3abf52796017a2b61ebf16fe044fdaa31"
+               },
+               {
+                  "sha": "041283293601a6fdef09c2708928e6390e93ef83",
+                  "author": "Didier Roche",
+                  "timestamp": 1725965574,
+                  "message": "Update changelog",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/041283293601a6fdef09c2708928e6390e93ef83"
+               },
+               {
                   "sha": "646160861f5f6f373092ca6b84f0989e5547d0e8",
                   "author": "Carlos Nihelton",
                   "timestamp": 1724854608,
                   "message": "feat: Delivery of warnings via MotD if cloud-init doesn't succeed (#14)\n\n* Adds delivery of warning messages via motd if cloud-init doesn't succeed\r\n\r\nIf the stamp file doesn't exist in the current (WSL internal) user's home directory,\r\na warning message is shown if cloud-init log contains ERROR or WARNING messages,\r\nwhat matches the semantics of cloud-init extended status as we observed recently:\r\n- a call to LOG.error or LOG.warning automatically sets its extended status to degraded\r\neven if it \"completely succeeds\" applying the existing configuration.",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/646160861f5f6f373092ca6b84f0989e5547d0e8"
-               },
-               {
-                  "sha": "942144f8752f9c55a426915c49e4ef2a249ec7f2",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1721400043,
-                  "message": "Merge pull request #13 from ubuntu/fix-ds-list\n\nfix(cloud-init): DS List should contain one additional datasource in …",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/942144f8752f9c55a426915c49e4ef2a249ec7f2"
-               },
-               {
-                  "sha": "f9dc704b4724036a3e5ad8639a81cc2d82bdf863",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1721399616,
-                  "message": "fix(cloud-init): DS List should contain one additional datasource in order to skip running cloud-init when there is no user-data file\n\nSomehow we didn't notice this mistake, but the spec WS028 contains a discussion about why we should have two actual datasources in this list, being one WSL ofc.\r\n\r\nHaving `datasources_list: [WSL, None]` is the same as having `datasources_list: [WSL]`: `ds-identify` won't run but rather pick the WSL datasource and run cloud-init with that, resulting in inneficiency and minor UX issue with the latest changes in the distro launcher, as depicted below.\r\n\r\n```\r\nInstalling, this may take a few minutes...\r\nChecking for initialization tasks...\r\n\r\n.....\r\nstatus: done\r\nWARNING: initialization tasks partially succeeded, see below:\r\nstatus: done\r\nextended_status: degraded done\r\nboot_status_code: enabled-by-generator\r\nlast_update: Thu, 01 Jan 1970 01:29:19 +0000\r\ndetail: DataSourceNone\r\nerrors: []\r\nrecoverable_errors:\r\nWARNING:\r\n        - Used fallback datasource\r\n```\r\n\r\nThe spec suggested adding `NoCloud` instead, but somehow `None` landed here instead and I only noticed after playing with the new launcher for a while.\r\n\r\nWhat we want to see when there is no applicable cloud-config data is (cloud-init goes disabled):\r\n\r\n```\r\nInstalling, this may take a few minutes...\r\nChecking for initialization tasks...\r\n\r\n\r\nstatus: disabled\r\nERROR: no candidate default user was found\r\n\r\nPlease create a default UNIX user account. The username does not need to match your Windows username.\r\nFor more information visit: https://aka.ms/wslusers\r\nEnter new UNIX username:\r\n```\r\n\r\n(maye the `ERROR: no candidate default user was found` should be \"INFO\" instead or maybe print nothing related to cloud-init in case it's disabled, but that's another topic).",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/f9dc704b4724036a3e5ad8639a81cc2d82bdf863"
                }
             ],
             "ciActions": [],
@@ -7805,6 +7805,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fc227e910897fb1aeb9fc19b4e0d9ef9c46a3ea4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1725964316,
+                  "message": "fix: small UI fixes (#95)\n\nThis is tracked internally by\r\nhttps://warthogs.atlassian.net/browse/UDENG-4402\r\n\r\n- [x] “Custom path pattern” is only ever visible when “more options” has\r\nbeen selected\r\n- [x] The text input field of the “custom path pattern” option is\r\naligned under the label text rather than the radio button\r\n- [x] “Learn about path patterns” is removed until we have documentation\r\nto link to\r\n- [ ] Text size for the radio button label text matches the other text\r\nin the UI\r\n- [x] The text for the “matching file extensions” option is corrected to\r\nread \"All {capitalised file extension} files\" instead of \"Matching file\r\nextension\"",
+                  "url": "https://github.com/canonical/prompting-client/commit/fc227e910897fb1aeb9fc19b4e0d9ef9c46a3ea4"
+               },
+               {
                   "sha": "479cafbf80ac582276bf18b8167e708b4b7d48e1",
                   "author": "Innes Anderson-Morrison",
                   "timestamp": 1725960968,
@@ -7812,18 +7819,11 @@
                   "url": "https://github.com/canonical/prompting-client/commit/479cafbf80ac582276bf18b8167e708b4b7d48e1"
                },
                {
-                  "sha": "64470f9b712e825c80c712187eaaa5bd4a5ed886",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1725894346,
-                  "message": "feat(prompting-client): auto deny once if we timeout receiving a reply from the UI",
-                  "url": "https://github.com/canonical/prompting-client/commit/64470f9b712e825c80c712187eaaa5bd4a5ed886"
-               },
-               {
-                  "sha": "4ca0050a25aa484eb39976aae6d94e964f0c6206",
+                  "sha": "7a094c9a39dbf8de0d9a3a55888eda1d2fd89cb1",
                   "author": "Dennis Loose",
-                  "timestamp": 1725889381,
-                  "message": "fix(prompting_ui): ensure the window is resized correctly (#96)\n\nThis workaround fixes an issue presumably caused by a race condition\r\nduring the initialization of the GTK window and the flutter view within\r\nthat window.",
-                  "url": "https://github.com/canonical/prompting-client/commit/4ca0050a25aa484eb39976aae6d94e964f0c6206"
+                  "timestamp": 1725957531,
+                  "message": "fix: add missing trailing comma",
+                  "url": "https://github.com/canonical/prompting-client/commit/7a094c9a39dbf8de0d9a3a55888eda1d2fd89cb1"
                }
             ],
             "ciActions": [],
