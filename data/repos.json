@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "13778451b70c13385007838945fab6b547946664",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1726129951,
+                  "message": "Revert dependency bump of tonic-build (#524)\n\nThe tonic-build crate had an update that breaks builds when rustc\r\nversion is < 1.77. The current available version in the archive is 1.75,\r\nso we need to revert the dependency bump while the bug is not fixed. The\r\nissue link for reference:\r\nhttps://github.com/hyperium/tonic/issues/1909",
+                  "url": "https://github.com/ubuntu/authd/commit/13778451b70c13385007838945fab6b547946664"
+               },
+               {
+                  "sha": "e76501c733ab548fb15a4c39fc1d47e187ddb91c",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1726087029,
+                  "message": "Revert dependency bump of tonic-build\n\nThe tonic-build crate had an update that breaks builds when rustc\nversion is < 1.77. The current available version in the archive is\n1.75, so we need to revert the dependency bump while the bug is not\nfixed. The issue link for reference:\nhttps://github.com/hyperium/tonic/issues/1909",
+                  "url": "https://github.com/ubuntu/authd/commit/e76501c733ab548fb15a4c39fc1d47e187ddb91c"
+               },
+               {
                   "sha": "f5c42eb64412b8e2992fe119b27867ef298a4fb9",
                   "author": "Denison Barbosa",
                   "timestamp": 1726086954,
                   "message": "Generate UIDs and GIDs from a wider range (#523)\n\n... to decrease the probability of a collision.",
                   "url": "https://github.com/ubuntu/authd/commit/f5c42eb64412b8e2992fe119b27867ef298a4fb9"
-               },
-               {
-                  "sha": "a6c85ed24b8d17a2d11c859e8d70f5a52fa69690",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1726062850,
-                  "message": "Generate UIDs and GIDs from a wider range\n\n... to decrease the probability of a collision.",
-                  "url": "https://github.com/ubuntu/authd/commit/a6c85ed24b8d17a2d11c859e8d70f5a52fa69690"
-               },
-               {
-                  "sha": "ceae541291b86b1f20de06d0938057bb40d3d1c3",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1726010168,
-                  "message": "qrcodemodel: Rate limit the emission of reselect auth mode events (#513)\n\nWhen hitting the Enter key for a while, bubbletea sends lots of events\r\nand we may imply sending reselectAuthMode{} events faster than we can\r\nactually handle the cancellation/reauthModeSelection in the whole stack.\r\n\r\nThis never happened (ever) when using the example broker, but it may\r\nactually happen in a real world scenario where the broker may not cancel\r\nthe requests quickly enough.\r\n\r\nDo this instead of avoiding the handling of the reselectAuthMode event\r\nbecause it's better to prevent bubbletea to break our (fragile) system.\r\n\r\nThe change is already tested by\r\n`authenticate_user_with_qr_code_after_many_regenerations` test.\r\n\r\nUDENG-4091",
-                  "url": "https://github.com/ubuntu/authd/commit/ceae541291b86b1f20de06d0938057bb40d3d1c3"
                }
             ],
             "ciActions": [
