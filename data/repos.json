@@ -6565,7 +6565,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 15,
+            "newCommits": 19,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -6646,25 +6646,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2182c5f46230d201539a23972f2b1849e7c6be78",
+                  "sha": "44bfe16e5d58907cabb3f1654ee228d393a84ca1",
                   "author": "adombeck",
-                  "timestamp": 1725980459,
-                  "message": "Revert \"Update user info even on local authentication\" (#146)\n\nUDENG-4482",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2182c5f46230d201539a23972f2b1849e7c6be78"
+                  "timestamp": 1726145983,
+                  "message": "Move user name comparison to provider (#133)\n\nUDENG-4414\r\nUDENG-4517",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/44bfe16e5d58907cabb3f1654ee228d393a84ca1"
                },
                {
-                  "sha": "b2de44fee278659f9c965b1543ef122188440d8a",
+                  "sha": "4b7f8f35d89ba2a9720a691f133a323015c9c827",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1725979167,
-                  "message": "Revert \"Update user info even on local authentication\"\n\nCommit 30d23aca2baedb29b3c0c60e87d8a300c0ff50b4 broke local\nauthentication when the access token is _not_ expired. With that commit,\nwe tried to get the groups with the locally stored token, which in case\nof the MSEntraID provider, returns an error when the scopes field\ndoesn't contain the GroupMember.Read.All scope. The problem is that we\ndon't store the extra scopes field of the token locally, so it always\nfails with:\n\n    could not get user info: failed to cast token scopes to string: <nil>.\n\nThis reverts commit 30d23aca2baedb29b3c0c60e87d8a300c0ff50b4.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/b2de44fee278659f9c965b1543ef122188440d8a"
+                  "timestamp": 1726140923,
+                  "message": "Check that usernames comply with the Microsoft Entra username policy\n\nWe must avoid that multiple users of the provider map to the same local\nuser. We currently use `strings.EqualFold` to compare the usernames,\nwhich considers some different Unicode characters the same (for example\nthe \"KELVIN SIGN\" (U+212A) and the ASCII \"K\"). To avoid that, we\nconsidered using a custom `toLowercase` function which only converts\nASCII characters to lowercase. However, we can just check if the\nusername is valid under the Microsoft Entra username policy.\n\nMicrosoft Entra enforces the username policy for the User Principal Name\n(UPN). We currently don't use the UPN as the username though, we use the\n`preferred_username` field from the ID token. The value of that field is\nequal to the UPN in some cases, in other cases it's equal to the user's\nemail address. It's not clear if the username policy is enforced for all\npossible values of the `preferred_username` field.\n\nSo to ensure that we don't have to care about the Unicode case-folding\nwhen comparing the usernames, we enforce the username policy ourselves.\n\nUDENG-4517",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4b7f8f35d89ba2a9720a691f133a323015c9c827"
                },
                {
-                  "sha": "ee3fa2eb5dcf35a5a299a2cd58ab3aab14a6f82c",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1725966252,
-                  "message": "Update user info even on local authentication (#144)\n\nWe used to rely on the cached information if the access token was still\r\nvalid. Now, we always try to fetch the user information (username,\r\ngroups, etc) if the session is online, even if we did not refresh the\r\ntoken.\r\n\r\nUDENG-4436",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/ee3fa2eb5dcf35a5a299a2cd58ab3aab14a6f82c"
+                  "sha": "62182901d79b0cfffab42f4202fc660d2ac0c9b1",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1726141784,
+                  "message": "Capitalize test names for consistency",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/62182901d79b0cfffab42f4202fc660d2ac0c9b1"
                }
             ],
             "ciActions": [
