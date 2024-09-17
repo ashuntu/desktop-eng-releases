@@ -3754,25 +3754,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d8336a354a2ffa157836bf2820ff644447cc2ceb",
+                  "sha": "37d212aabd71c5c8780eb179b9eb764e1b2da3da",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726478054,
-                  "message": "fix(daemon): exiting if we get permission denied on notices long poll (#106)\n\n- update our handling of snapd errors to make use of consistent error\r\ncodes\r\n- factor out repeated logic around checking if prompting is enabled\r\n- exit so systemd restarts us if we hit permission denied in the poll\r\nloop\r\n- retry with limited attempts and a sleep if we hit other errors in the\r\npoll loop",
-                  "url": "https://github.com/canonical/prompting-client/commit/d8336a354a2ffa157836bf2820ff644447cc2ceb"
+                  "timestamp": 1726584748,
+                  "message": "feat(scripted-client): supporting passing templating variables and a top level filter (#107)\n\n- Support specifying a top level filter to limit what prompts the\r\nsequence attempts to match against\r\n- Support specifying and using variables to allow for passing per-run\r\nspecific data (e.g. a temp directory)\r\n\r\nSee the updated sequence JSON files for examples of how this looks in\r\npractice.\r\n\r\nA full example \"spread\" test for a happy path read can be written as\r\nfollows:\r\n```bash\r\n#!/usr/bin/env sh\r\n\r\nPREFIX=\"$1\"\r\nTEST_DIR=\"/home/ubuntu/test/$PREFIX\"\r\n\r\nprompting-client.scripted \\\r\n  --script=\"$TEST_DIR/prompt-sequence.json\" \\\r\n  --var \"BASE_PATH:$TEST_DIR\" | tee \"$TEST_DIR/outfile\" &\r\n\r\n# Ensure that the test client is already listening\r\nsleep 0.2\r\nTEST_OUTPUT=\"$(aa-prompting-test.read \"$PREFIX\")\"\r\n\r\n# Ensure that the test client has time to write its output\r\n# For tests with a grace period this will need to be taken into account as well\r\nsleep 0.2\r\nCLIENT_OUTPUT=\"$(cat \"$TEST_DIR/outfile\")\"\r\n\r\nif [ \"$CLIENT_OUTPUT\" != \"success\" ]; then\r\n  echo \"test failed\"\r\n  echo \"output='$CLIENT_OUTPUT'\"\r\n  exit 1\r\nfi\r\n\r\nif [ \"$TEST_OUTPUT\" != \"testing testing 1 2 3\" ]; then\r\n  echo \"test script failed\"\r\n  exit 1\r\nfi\r\n```\r\n\r\n# Example output\r\n\r\nI'm not sure what to make about this error that I see from `update.go`\r\n@olivercalder? I'm assuming it is coming from snapd but I'm not sure why\r\nit shows up here in the output from running the scripted client...\r\n\r\nOutput when a sequence succeeds:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/edffdcfd-6f11-4dbd-947b-77c839cce0fa/prompt-sequence.json\r\nsuccess\r\ntest scripted_client_test_allow ... ok\r\n\r\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 28 filtered out; finished in 0.47s\r\n```\r\n\r\nOutput when a sequence fails:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/prompt-sequence.json\r\nfailed prompt sequence: prompt 0 did not match the provided sequence: [MatchFailure { field: \"requested_permissions\", expected: \"[\\\"write\\\"]\", seen: \"[\\\"read\\\"]\" }]\r\n\r\nscript: {\r\n  \"version\": 1,\r\n  \"prompt-filter\": {\r\n    \"snap\": \"aa-prompting-test\",\r\n    \"interface\": \"home\",\r\n    \"constraints\": {\r\n      \"path\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/.*\"\r\n    }\r\n  },\r\n  \"prompts\": [\r\n    {\r\n      \"prompt-filter\": {\r\n        \"constraints\": {\r\n          \"path\": \".*/test.txt\",\r\n          \"requested-permissions\": [ \"write\" ]\r\n        }\r\n      },\r\n      \"reply\": {\r\n        \"action\": \"allow\",\r\n        \"lifespan\": \"single\",\r\n        \"constraints\": {\r\n          \"path-pattern\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/test.txt\",\r\n          \"permissions\": [ \"read\" ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}\r\n```",
+                  "url": "https://github.com/canonical/prompting-client/commit/37d212aabd71c5c8780eb179b9eb764e1b2da3da"
                },
                {
-                  "sha": "ba8a2c65fdf79fd87788598b6288a1961bd7a52c",
+                  "sha": "efcf5eaf7c8e7cf2add43642653f416d504ff900",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726242245,
-                  "message": "fix(daemon): exiting if we get permission denied on notices long poll",
-                  "url": "https://github.com/canonical/prompting-client/commit/ba8a2c65fdf79fd87788598b6288a1961bd7a52c"
+                  "timestamp": 1726582073,
+                  "message": "chore(scripted-client): updating docs",
+                  "url": "https://github.com/canonical/prompting-client/commit/efcf5eaf7c8e7cf2add43642653f416d504ff900"
                },
                {
-                  "sha": "abed3acf08b7c27505a095347871ef652ee78b70",
+                  "sha": "d995a6485195d58b5caa7456494bd0b8e8c7b37d",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726244202,
-                  "message": "feat(daemon): support dynamically setting the logging level at runtime (#105)\n\nThis lets us do the following:\r\n```bash\r\n$ prompting-client.logging-level --filter=debug\r\n```\r\n\r\nand have the daemon update its logging filter without needing to restart\r\nthe service. By default we will now log at info level.",
-                  "url": "https://github.com/canonical/prompting-client/commit/abed3acf08b7c27505a095347871ef652ee78b70"
+                  "timestamp": 1726571221,
+                  "message": "feat(scripted-client): outputing resolved sequence when a prompt sequence fails",
+                  "url": "https://github.com/canonical/prompting-client/commit/d995a6485195d58b5caa7456494bd0b8e8c7b37d"
                }
             ],
             "ciActions": [],
@@ -5659,25 +5659,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d8336a354a2ffa157836bf2820ff644447cc2ceb",
+                  "sha": "37d212aabd71c5c8780eb179b9eb764e1b2da3da",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726478054,
-                  "message": "fix(daemon): exiting if we get permission denied on notices long poll (#106)\n\n- update our handling of snapd errors to make use of consistent error\r\ncodes\r\n- factor out repeated logic around checking if prompting is enabled\r\n- exit so systemd restarts us if we hit permission denied in the poll\r\nloop\r\n- retry with limited attempts and a sleep if we hit other errors in the\r\npoll loop",
-                  "url": "https://github.com/canonical/prompting-client/commit/d8336a354a2ffa157836bf2820ff644447cc2ceb"
+                  "timestamp": 1726584748,
+                  "message": "feat(scripted-client): supporting passing templating variables and a top level filter (#107)\n\n- Support specifying a top level filter to limit what prompts the\r\nsequence attempts to match against\r\n- Support specifying and using variables to allow for passing per-run\r\nspecific data (e.g. a temp directory)\r\n\r\nSee the updated sequence JSON files for examples of how this looks in\r\npractice.\r\n\r\nA full example \"spread\" test for a happy path read can be written as\r\nfollows:\r\n```bash\r\n#!/usr/bin/env sh\r\n\r\nPREFIX=\"$1\"\r\nTEST_DIR=\"/home/ubuntu/test/$PREFIX\"\r\n\r\nprompting-client.scripted \\\r\n  --script=\"$TEST_DIR/prompt-sequence.json\" \\\r\n  --var \"BASE_PATH:$TEST_DIR\" | tee \"$TEST_DIR/outfile\" &\r\n\r\n# Ensure that the test client is already listening\r\nsleep 0.2\r\nTEST_OUTPUT=\"$(aa-prompting-test.read \"$PREFIX\")\"\r\n\r\n# Ensure that the test client has time to write its output\r\n# For tests with a grace period this will need to be taken into account as well\r\nsleep 0.2\r\nCLIENT_OUTPUT=\"$(cat \"$TEST_DIR/outfile\")\"\r\n\r\nif [ \"$CLIENT_OUTPUT\" != \"success\" ]; then\r\n  echo \"test failed\"\r\n  echo \"output='$CLIENT_OUTPUT'\"\r\n  exit 1\r\nfi\r\n\r\nif [ \"$TEST_OUTPUT\" != \"testing testing 1 2 3\" ]; then\r\n  echo \"test script failed\"\r\n  exit 1\r\nfi\r\n```\r\n\r\n# Example output\r\n\r\nI'm not sure what to make about this error that I see from `update.go`\r\n@olivercalder? I'm assuming it is coming from snapd but I'm not sure why\r\nit shows up here in the output from running the scripted client...\r\n\r\nOutput when a sequence succeeds:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/edffdcfd-6f11-4dbd-947b-77c839cce0fa/prompt-sequence.json\r\nsuccess\r\ntest scripted_client_test_allow ... ok\r\n\r\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 28 filtered out; finished in 0.47s\r\n```\r\n\r\nOutput when a sequence fails:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/prompt-sequence.json\r\nfailed prompt sequence: prompt 0 did not match the provided sequence: [MatchFailure { field: \"requested_permissions\", expected: \"[\\\"write\\\"]\", seen: \"[\\\"read\\\"]\" }]\r\n\r\nscript: {\r\n  \"version\": 1,\r\n  \"prompt-filter\": {\r\n    \"snap\": \"aa-prompting-test\",\r\n    \"interface\": \"home\",\r\n    \"constraints\": {\r\n      \"path\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/.*\"\r\n    }\r\n  },\r\n  \"prompts\": [\r\n    {\r\n      \"prompt-filter\": {\r\n        \"constraints\": {\r\n          \"path\": \".*/test.txt\",\r\n          \"requested-permissions\": [ \"write\" ]\r\n        }\r\n      },\r\n      \"reply\": {\r\n        \"action\": \"allow\",\r\n        \"lifespan\": \"single\",\r\n        \"constraints\": {\r\n          \"path-pattern\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/test.txt\",\r\n          \"permissions\": [ \"read\" ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}\r\n```",
+                  "url": "https://github.com/canonical/prompting-client/commit/37d212aabd71c5c8780eb179b9eb764e1b2da3da"
                },
                {
-                  "sha": "ba8a2c65fdf79fd87788598b6288a1961bd7a52c",
+                  "sha": "efcf5eaf7c8e7cf2add43642653f416d504ff900",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726242245,
-                  "message": "fix(daemon): exiting if we get permission denied on notices long poll",
-                  "url": "https://github.com/canonical/prompting-client/commit/ba8a2c65fdf79fd87788598b6288a1961bd7a52c"
+                  "timestamp": 1726582073,
+                  "message": "chore(scripted-client): updating docs",
+                  "url": "https://github.com/canonical/prompting-client/commit/efcf5eaf7c8e7cf2add43642653f416d504ff900"
                },
                {
-                  "sha": "abed3acf08b7c27505a095347871ef652ee78b70",
+                  "sha": "d995a6485195d58b5caa7456494bd0b8e8c7b37d",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726244202,
-                  "message": "feat(daemon): support dynamically setting the logging level at runtime (#105)\n\nThis lets us do the following:\r\n```bash\r\n$ prompting-client.logging-level --filter=debug\r\n```\r\n\r\nand have the daemon update its logging filter without needing to restart\r\nthe service. By default we will now log at info level.",
-                  "url": "https://github.com/canonical/prompting-client/commit/abed3acf08b7c27505a095347871ef652ee78b70"
+                  "timestamp": 1726571221,
+                  "message": "feat(scripted-client): outputing resolved sequence when a prompt sequence fails",
+                  "url": "https://github.com/canonical/prompting-client/commit/d995a6485195d58b5caa7456494bd0b8e8c7b37d"
                }
             ],
             "ciActions": [],
@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "936e93c05e593256e793e4ee35c86beff164c3d8",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1726490133,
-                  "message": "fix(gui): Enable landscape by default (#887)\n\nIn #815 we disabled Landscape UI elements by default. \r\n\r\nThe new default is Landscape UI elements enabled. They go disabled if\r\nthe value `LandscapeConfigVisibility` under\r\n`HKEY_CURRENT_USER\\Software\\Canonical\\UbuntuPro\\` is set to `1`. If\r\nmissing, unset or set to anything else, we go with the new default.\r\nSince that PR only affected the GUI, agent remains untouched.\r\n\r\nThe value name might be a bit more mouthful but it has the property of\r\nnot conveying the default behaviour, allowing us to change it without\r\nsurprising new users.\r\n\r\nTests and dev docs are updated as well.\r\n\r\n---\r\n\r\nUDENG-4243",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/936e93c05e593256e793e4ee35c86beff164c3d8"
+                  "sha": "8518eea8cae0e847c83370d3c4edd75c9c246b54",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1726585887,
+                  "message": "deps(wsl-pro-service): bump google.golang.org/grpc from 1.66.0 to 1.66.2 in /wsl-pro-service (#910)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8518eea8cae0e847c83370d3c4edd75c9c246b54"
                },
                {
-                  "sha": "72272d89458bedf766a100389473483be53a4a48",
-                  "author": "Didier Roche",
-                  "timestamp": 1725968282,
-                  "message": "releasing package wsl-pro-service version 0.1.5",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/72272d89458bedf766a100389473483be53a4a48"
+                  "sha": "39687b4dd2a050d0dcd8da87cf10e3df4701e10f",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1726585854,
+                  "message": "deps(common): bump google.golang.org/grpc from 1.66.0 to 1.66.2 in /common (#909)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/39687b4dd2a050d0dcd8da87cf10e3df4701e10f"
                },
                {
-                  "sha": "4733fb602a3e594609c97e823e2595e79dedfeeb",
-                  "author": "Didier Roche",
-                  "timestamp": 1725968253,
-                  "message": "Update changelog for 0.1.5 wsl-pro-service release.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/4733fb602a3e594609c97e823e2595e79dedfeeb"
+                  "sha": "6548d364eb1519af86d85405eda10542412d63dd",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1726585759,
+                  "message": "deps(end-to-end): bump google.golang.org/grpc from 1.66.0 to 1.66.2 in /end-to-end (#907)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6548d364eb1519af86d85405eda10542412d63dd"
                }
             ],
             "ciActions": [
@@ -7805,25 +7805,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d8336a354a2ffa157836bf2820ff644447cc2ceb",
+                  "sha": "37d212aabd71c5c8780eb179b9eb764e1b2da3da",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726478054,
-                  "message": "fix(daemon): exiting if we get permission denied on notices long poll (#106)\n\n- update our handling of snapd errors to make use of consistent error\r\ncodes\r\n- factor out repeated logic around checking if prompting is enabled\r\n- exit so systemd restarts us if we hit permission denied in the poll\r\nloop\r\n- retry with limited attempts and a sleep if we hit other errors in the\r\npoll loop",
-                  "url": "https://github.com/canonical/prompting-client/commit/d8336a354a2ffa157836bf2820ff644447cc2ceb"
+                  "timestamp": 1726584748,
+                  "message": "feat(scripted-client): supporting passing templating variables and a top level filter (#107)\n\n- Support specifying a top level filter to limit what prompts the\r\nsequence attempts to match against\r\n- Support specifying and using variables to allow for passing per-run\r\nspecific data (e.g. a temp directory)\r\n\r\nSee the updated sequence JSON files for examples of how this looks in\r\npractice.\r\n\r\nA full example \"spread\" test for a happy path read can be written as\r\nfollows:\r\n```bash\r\n#!/usr/bin/env sh\r\n\r\nPREFIX=\"$1\"\r\nTEST_DIR=\"/home/ubuntu/test/$PREFIX\"\r\n\r\nprompting-client.scripted \\\r\n  --script=\"$TEST_DIR/prompt-sequence.json\" \\\r\n  --var \"BASE_PATH:$TEST_DIR\" | tee \"$TEST_DIR/outfile\" &\r\n\r\n# Ensure that the test client is already listening\r\nsleep 0.2\r\nTEST_OUTPUT=\"$(aa-prompting-test.read \"$PREFIX\")\"\r\n\r\n# Ensure that the test client has time to write its output\r\n# For tests with a grace period this will need to be taken into account as well\r\nsleep 0.2\r\nCLIENT_OUTPUT=\"$(cat \"$TEST_DIR/outfile\")\"\r\n\r\nif [ \"$CLIENT_OUTPUT\" != \"success\" ]; then\r\n  echo \"test failed\"\r\n  echo \"output='$CLIENT_OUTPUT'\"\r\n  exit 1\r\nfi\r\n\r\nif [ \"$TEST_OUTPUT\" != \"testing testing 1 2 3\" ]; then\r\n  echo \"test script failed\"\r\n  exit 1\r\nfi\r\n```\r\n\r\n# Example output\r\n\r\nI'm not sure what to make about this error that I see from `update.go`\r\n@olivercalder? I'm assuming it is coming from snapd but I'm not sure why\r\nit shows up here in the output from running the scripted client...\r\n\r\nOutput when a sequence succeeds:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/edffdcfd-6f11-4dbd-947b-77c839cce0fa/prompt-sequence.json\r\nsuccess\r\ntest scripted_client_test_allow ... ok\r\n\r\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 28 filtered out; finished in 0.47s\r\n```\r\n\r\nOutput when a sequence fails:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/prompt-sequence.json\r\nfailed prompt sequence: prompt 0 did not match the provided sequence: [MatchFailure { field: \"requested_permissions\", expected: \"[\\\"write\\\"]\", seen: \"[\\\"read\\\"]\" }]\r\n\r\nscript: {\r\n  \"version\": 1,\r\n  \"prompt-filter\": {\r\n    \"snap\": \"aa-prompting-test\",\r\n    \"interface\": \"home\",\r\n    \"constraints\": {\r\n      \"path\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/.*\"\r\n    }\r\n  },\r\n  \"prompts\": [\r\n    {\r\n      \"prompt-filter\": {\r\n        \"constraints\": {\r\n          \"path\": \".*/test.txt\",\r\n          \"requested-permissions\": [ \"write\" ]\r\n        }\r\n      },\r\n      \"reply\": {\r\n        \"action\": \"allow\",\r\n        \"lifespan\": \"single\",\r\n        \"constraints\": {\r\n          \"path-pattern\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/test.txt\",\r\n          \"permissions\": [ \"read\" ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}\r\n```",
+                  "url": "https://github.com/canonical/prompting-client/commit/37d212aabd71c5c8780eb179b9eb764e1b2da3da"
                },
                {
-                  "sha": "ba8a2c65fdf79fd87788598b6288a1961bd7a52c",
+                  "sha": "efcf5eaf7c8e7cf2add43642653f416d504ff900",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726242245,
-                  "message": "fix(daemon): exiting if we get permission denied on notices long poll",
-                  "url": "https://github.com/canonical/prompting-client/commit/ba8a2c65fdf79fd87788598b6288a1961bd7a52c"
+                  "timestamp": 1726582073,
+                  "message": "chore(scripted-client): updating docs",
+                  "url": "https://github.com/canonical/prompting-client/commit/efcf5eaf7c8e7cf2add43642653f416d504ff900"
                },
                {
-                  "sha": "abed3acf08b7c27505a095347871ef652ee78b70",
+                  "sha": "d995a6485195d58b5caa7456494bd0b8e8c7b37d",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726244202,
-                  "message": "feat(daemon): support dynamically setting the logging level at runtime (#105)\n\nThis lets us do the following:\r\n```bash\r\n$ prompting-client.logging-level --filter=debug\r\n```\r\n\r\nand have the daemon update its logging filter without needing to restart\r\nthe service. By default we will now log at info level.",
-                  "url": "https://github.com/canonical/prompting-client/commit/abed3acf08b7c27505a095347871ef652ee78b70"
+                  "timestamp": 1726571221,
+                  "message": "feat(scripted-client): outputing resolved sequence when a prompt sequence fails",
+                  "url": "https://github.com/canonical/prompting-client/commit/d995a6485195d58b5caa7456494bd0b8e8c7b37d"
                }
             ],
             "ciActions": [],
