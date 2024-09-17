@@ -4728,6 +4728,41 @@
             "snap": null
          },
          {
+            "name": "GoWSL",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/ubuntu/GoWSL",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "049fd49bd93b53bd42f8b0907c8662af2e760656",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1725640331,
+                  "message": "fix(backend): Almost empty error when wsl.exe fails. (#120)\n\nIf wsl.exe doesn't exit 0, then we read the byte buffer to find\r\n\"Wsl/Service/WSL_E_DISTRO_NOT_FOUND\".\r\n\r\nBy doing so we're exhausting the reader, so the last line of this\r\nfunction essentially assembles an empty message, because there is\r\nnothing more to retrieve from the reader.\r\n\r\nThe fix is write the buffer contents into strings and use those when\r\ncomparing and generating error messages.\r\nThat could be a problem for very long outputs, but wsl.exe itself always\r\ngenerates short messages (currently at least).",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/049fd49bd93b53bd42f8b0907c8662af2e760656"
+               },
+               {
+                  "sha": "dc1fd28f75f6937c95b0afe64f681ccbdb388443",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1725634865,
+                  "message": "Fix almost empty error when wsl.exe fails.\n\nIf wsl.exe doesn't exit 0, then we read the byte buffer to find \"Wsl/Service/WSL_E_DISTRO_NOT_FOUND\".\n\nBy doing so we're exhausting the reader, so the last line of this function essentially assembles an empty message, because\nthere is nothing more to retrieve from the reader.\n\nThe fix is write the buffer contents into strings and use those when comparing and generating error messages.",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/dc1fd28f75f6937c95b0afe64f681ccbdb388443"
+               },
+               {
+                  "sha": "bcd2165ef10056ebf63fa15488ac269f67a60c6b",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1725629140,
+                  "message": "Bump golang.org/x/sys from 0.24.0 to 0.25.0 (#119)",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/bcd2165ef10056ebf63fa15488ac269f67a60c6b"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/ubuntu/GoWSL/actions/workflows/qa-azure.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "WSL",
             "defaultBranch": "main",
             "newCommits": 517,
