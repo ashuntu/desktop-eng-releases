@@ -6611,6 +6611,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e7e07f2f0a10fd317e506e838ffcfe2364a0a89c",
+                  "author": "adombeck",
+                  "timestamp": 1726763427,
+                  "message": "Add debug output (#546)",
+                  "url": "https://github.com/ubuntu/authd/commit/e7e07f2f0a10fd317e506e838ffcfe2364a0a89c"
+               },
+               {
                   "sha": "11b99a8102eaa28e712403b5d96d513bd156ac3a",
                   "author": "adombeck",
                   "timestamp": 1726753952,
@@ -6618,18 +6625,11 @@
                   "url": "https://github.com/ubuntu/authd/commit/11b99a8102eaa28e712403b5d96d513bd156ac3a"
                },
                {
-                  "sha": "7921867c61378fa39c5ace9dc9dc64952c4eed53",
-                  "author": "adombeck",
-                  "timestamp": 1726735321,
-                  "message": "Make slog print debug messages when verbose mode is enabled (#541)\n\nUDENG-4624",
-                  "url": "https://github.com/ubuntu/authd/commit/7921867c61378fa39c5ace9dc9dc64952c4eed53"
-               },
-               {
-                  "sha": "618be111f06e8f91408d89f5fd5dc6f89203b6d5",
+                  "sha": "9c32bdf16d5be5a9f0134f056522474a2edd0c93",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1726696242,
-                  "message": "Avoid calling user.LookupId during authd startup\n\n`user.LookupId` calls `getpwuid` which queries NSS for the UID. Since\nauthd is installed as a NSS source itself, this leads to a timeout when\nauthd hasn't started up yet, because it can't respond to the query.\n\nWe avoid that by using the UIDs to identify the active users instead of\nthe user names.",
-                  "url": "https://github.com/ubuntu/authd/commit/618be111f06e8f91408d89f5fd5dc6f89203b6d5"
+                  "timestamp": 1726751910,
+                  "message": "Add debug output\n\nThis should help us debug cases where users which should have been added\nto the database can not be found.\n\nrefs: #536",
+                  "url": "https://github.com/ubuntu/authd/commit/9c32bdf16d5be5a9f0134f056522474a2edd0c93"
                }
             ],
             "ciActions": [
