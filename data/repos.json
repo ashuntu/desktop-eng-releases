@@ -3754,25 +3754,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5ac1ff3b17073b222a9f193910dee94028a8ab06",
-                  "author": "Dennis Loose",
-                  "timestamp": 1726588358,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#90)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\r\nfor [ubuntu-desktop-translations/Prompting\r\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\r\n\r\n\r\n\r\nCurrent translation status:\r\n\r\n![Weblate translation\r\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
-                  "url": "https://github.com/canonical/prompting-client/commit/5ac1ff3b17073b222a9f193910dee94028a8ab06"
+                  "sha": "a6508e1a8050ab41f40e63240ac83a8467455ddc",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1726739401,
+                  "message": "fix(prompting-client): fix home pattern generation when home is not under /home (#108)\n\nThe helper methods used for determining which category of path we are\r\ngenerating options for implicitly assumes that the user’s home directory\r\nis located in /home. This has the potential to generate invalid options\r\nor possibly hard error in the generation of options if the user has set\r\ntheir home directory to be somewhere else.\r\n\r\nWe now take the value of `$SNAP_REAL_HOME` into account when generating\r\nthe options rather than assuming the standard home directory location.\r\n\r\nI've also tidied up the method that generates the options to make it\r\neasier to read exactly which options will be provided in each of the\r\ncases outlined in @juanruitina's Figma design.\r\n\r\n---\r\n\r\nOne interesting side effect of sorting this out is that it has\r\nhighlighted that we have a very odd (but I think technically possible?)\r\nfailure mode: in principal we can get a home interface prompt from snapd\r\nthat is for a path not under `$SNAP_REAL_HOME`. I don't think that we\r\nshould ever hit this in practice, but nothing in the way the prompt\r\ndetails are provided from snapd prevents this so we need to account for\r\nit. For now I'm error logging and sending a deny once rather than\r\nattempting to serve the prompt as there is no way for us to sensibly\r\ngenerate the required options in this case.\r\n\r\n@olivercalder tagging you in case you have any thoughts on this one!",
+                  "url": "https://github.com/canonical/prompting-client/commit/a6508e1a8050ab41f40e63240ac83a8467455ddc"
                },
                {
-                  "sha": "37d212aabd71c5c8780eb179b9eb764e1b2da3da",
+                  "sha": "17b728b74b1b6524aad36f01f24df161aded9270",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726584748,
-                  "message": "feat(scripted-client): supporting passing templating variables and a top level filter (#107)\n\n- Support specifying a top level filter to limit what prompts the\r\nsequence attempts to match against\r\n- Support specifying and using variables to allow for passing per-run\r\nspecific data (e.g. a temp directory)\r\n\r\nSee the updated sequence JSON files for examples of how this looks in\r\npractice.\r\n\r\nA full example \"spread\" test for a happy path read can be written as\r\nfollows:\r\n```bash\r\n#!/usr/bin/env sh\r\n\r\nPREFIX=\"$1\"\r\nTEST_DIR=\"/home/ubuntu/test/$PREFIX\"\r\n\r\nprompting-client.scripted \\\r\n  --script=\"$TEST_DIR/prompt-sequence.json\" \\\r\n  --var \"BASE_PATH:$TEST_DIR\" | tee \"$TEST_DIR/outfile\" &\r\n\r\n# Ensure that the test client is already listening\r\nsleep 0.2\r\nTEST_OUTPUT=\"$(aa-prompting-test.read \"$PREFIX\")\"\r\n\r\n# Ensure that the test client has time to write its output\r\n# For tests with a grace period this will need to be taken into account as well\r\nsleep 0.2\r\nCLIENT_OUTPUT=\"$(cat \"$TEST_DIR/outfile\")\"\r\n\r\nif [ \"$CLIENT_OUTPUT\" != \"success\" ]; then\r\n  echo \"test failed\"\r\n  echo \"output='$CLIENT_OUTPUT'\"\r\n  exit 1\r\nfi\r\n\r\nif [ \"$TEST_OUTPUT\" != \"testing testing 1 2 3\" ]; then\r\n  echo \"test script failed\"\r\n  exit 1\r\nfi\r\n```\r\n\r\n# Example output\r\n\r\nI'm not sure what to make about this error that I see from `update.go`\r\n@olivercalder? I'm assuming it is coming from snapd but I'm not sure why\r\nit shows up here in the output from running the scripted client...\r\n\r\nOutput when a sequence succeeds:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/edffdcfd-6f11-4dbd-947b-77c839cce0fa/prompt-sequence.json\r\nsuccess\r\ntest scripted_client_test_allow ... ok\r\n\r\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 28 filtered out; finished in 0.47s\r\n```\r\n\r\nOutput when a sequence fails:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/prompt-sequence.json\r\nfailed prompt sequence: prompt 0 did not match the provided sequence: [MatchFailure { field: \"requested_permissions\", expected: \"[\\\"write\\\"]\", seen: \"[\\\"read\\\"]\" }]\r\n\r\nscript: {\r\n  \"version\": 1,\r\n  \"prompt-filter\": {\r\n    \"snap\": \"aa-prompting-test\",\r\n    \"interface\": \"home\",\r\n    \"constraints\": {\r\n      \"path\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/.*\"\r\n    }\r\n  },\r\n  \"prompts\": [\r\n    {\r\n      \"prompt-filter\": {\r\n        \"constraints\": {\r\n          \"path\": \".*/test.txt\",\r\n          \"requested-permissions\": [ \"write\" ]\r\n        }\r\n      },\r\n      \"reply\": {\r\n        \"action\": \"allow\",\r\n        \"lifespan\": \"single\",\r\n        \"constraints\": {\r\n          \"path-pattern\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/test.txt\",\r\n          \"permissions\": [ \"read\" ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}\r\n```",
-                  "url": "https://github.com/canonical/prompting-client/commit/37d212aabd71c5c8780eb179b9eb764e1b2da3da"
+                  "timestamp": 1726674912,
+                  "message": "fix: removing unused methods to satisfy clippy",
+                  "url": "https://github.com/canonical/prompting-client/commit/17b728b74b1b6524aad36f01f24df161aded9270"
                },
                {
-                  "sha": "efcf5eaf7c8e7cf2add43642653f416d504ff900",
+                  "sha": "4627422458ccf2e3c9de2df2304ab30ef049a910",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726582073,
-                  "message": "chore(scripted-client): updating docs",
-                  "url": "https://github.com/canonical/prompting-client/commit/efcf5eaf7c8e7cf2add43642653f416d504ff900"
+                  "timestamp": 1726674625,
+                  "message": "chore: removing unused trait method",
+                  "url": "https://github.com/canonical/prompting-client/commit/4627422458ccf2e3c9de2df2304ab30ef049a910"
                }
             ],
             "ciActions": [],
@@ -5659,25 +5659,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5ac1ff3b17073b222a9f193910dee94028a8ab06",
-                  "author": "Dennis Loose",
-                  "timestamp": 1726588358,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#90)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\r\nfor [ubuntu-desktop-translations/Prompting\r\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\r\n\r\n\r\n\r\nCurrent translation status:\r\n\r\n![Weblate translation\r\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
-                  "url": "https://github.com/canonical/prompting-client/commit/5ac1ff3b17073b222a9f193910dee94028a8ab06"
+                  "sha": "a6508e1a8050ab41f40e63240ac83a8467455ddc",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1726739401,
+                  "message": "fix(prompting-client): fix home pattern generation when home is not under /home (#108)\n\nThe helper methods used for determining which category of path we are\r\ngenerating options for implicitly assumes that the user’s home directory\r\nis located in /home. This has the potential to generate invalid options\r\nor possibly hard error in the generation of options if the user has set\r\ntheir home directory to be somewhere else.\r\n\r\nWe now take the value of `$SNAP_REAL_HOME` into account when generating\r\nthe options rather than assuming the standard home directory location.\r\n\r\nI've also tidied up the method that generates the options to make it\r\neasier to read exactly which options will be provided in each of the\r\ncases outlined in @juanruitina's Figma design.\r\n\r\n---\r\n\r\nOne interesting side effect of sorting this out is that it has\r\nhighlighted that we have a very odd (but I think technically possible?)\r\nfailure mode: in principal we can get a home interface prompt from snapd\r\nthat is for a path not under `$SNAP_REAL_HOME`. I don't think that we\r\nshould ever hit this in practice, but nothing in the way the prompt\r\ndetails are provided from snapd prevents this so we need to account for\r\nit. For now I'm error logging and sending a deny once rather than\r\nattempting to serve the prompt as there is no way for us to sensibly\r\ngenerate the required options in this case.\r\n\r\n@olivercalder tagging you in case you have any thoughts on this one!",
+                  "url": "https://github.com/canonical/prompting-client/commit/a6508e1a8050ab41f40e63240ac83a8467455ddc"
                },
                {
-                  "sha": "37d212aabd71c5c8780eb179b9eb764e1b2da3da",
+                  "sha": "17b728b74b1b6524aad36f01f24df161aded9270",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726584748,
-                  "message": "feat(scripted-client): supporting passing templating variables and a top level filter (#107)\n\n- Support specifying a top level filter to limit what prompts the\r\nsequence attempts to match against\r\n- Support specifying and using variables to allow for passing per-run\r\nspecific data (e.g. a temp directory)\r\n\r\nSee the updated sequence JSON files for examples of how this looks in\r\npractice.\r\n\r\nA full example \"spread\" test for a happy path read can be written as\r\nfollows:\r\n```bash\r\n#!/usr/bin/env sh\r\n\r\nPREFIX=\"$1\"\r\nTEST_DIR=\"/home/ubuntu/test/$PREFIX\"\r\n\r\nprompting-client.scripted \\\r\n  --script=\"$TEST_DIR/prompt-sequence.json\" \\\r\n  --var \"BASE_PATH:$TEST_DIR\" | tee \"$TEST_DIR/outfile\" &\r\n\r\n# Ensure that the test client is already listening\r\nsleep 0.2\r\nTEST_OUTPUT=\"$(aa-prompting-test.read \"$PREFIX\")\"\r\n\r\n# Ensure that the test client has time to write its output\r\n# For tests with a grace period this will need to be taken into account as well\r\nsleep 0.2\r\nCLIENT_OUTPUT=\"$(cat \"$TEST_DIR/outfile\")\"\r\n\r\nif [ \"$CLIENT_OUTPUT\" != \"success\" ]; then\r\n  echo \"test failed\"\r\n  echo \"output='$CLIENT_OUTPUT'\"\r\n  exit 1\r\nfi\r\n\r\nif [ \"$TEST_OUTPUT\" != \"testing testing 1 2 3\" ]; then\r\n  echo \"test script failed\"\r\n  exit 1\r\nfi\r\n```\r\n\r\n# Example output\r\n\r\nI'm not sure what to make about this error that I see from `update.go`\r\n@olivercalder? I'm assuming it is coming from snapd but I'm not sure why\r\nit shows up here in the output from running the scripted client...\r\n\r\nOutput when a sequence succeeds:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/edffdcfd-6f11-4dbd-947b-77c839cce0fa/prompt-sequence.json\r\nsuccess\r\ntest scripted_client_test_allow ... ok\r\n\r\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 28 filtered out; finished in 0.47s\r\n```\r\n\r\nOutput when a sequence fails:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/prompt-sequence.json\r\nfailed prompt sequence: prompt 0 did not match the provided sequence: [MatchFailure { field: \"requested_permissions\", expected: \"[\\\"write\\\"]\", seen: \"[\\\"read\\\"]\" }]\r\n\r\nscript: {\r\n  \"version\": 1,\r\n  \"prompt-filter\": {\r\n    \"snap\": \"aa-prompting-test\",\r\n    \"interface\": \"home\",\r\n    \"constraints\": {\r\n      \"path\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/.*\"\r\n    }\r\n  },\r\n  \"prompts\": [\r\n    {\r\n      \"prompt-filter\": {\r\n        \"constraints\": {\r\n          \"path\": \".*/test.txt\",\r\n          \"requested-permissions\": [ \"write\" ]\r\n        }\r\n      },\r\n      \"reply\": {\r\n        \"action\": \"allow\",\r\n        \"lifespan\": \"single\",\r\n        \"constraints\": {\r\n          \"path-pattern\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/test.txt\",\r\n          \"permissions\": [ \"read\" ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}\r\n```",
-                  "url": "https://github.com/canonical/prompting-client/commit/37d212aabd71c5c8780eb179b9eb764e1b2da3da"
+                  "timestamp": 1726674912,
+                  "message": "fix: removing unused methods to satisfy clippy",
+                  "url": "https://github.com/canonical/prompting-client/commit/17b728b74b1b6524aad36f01f24df161aded9270"
                },
                {
-                  "sha": "efcf5eaf7c8e7cf2add43642653f416d504ff900",
+                  "sha": "4627422458ccf2e3c9de2df2304ab30ef049a910",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726582073,
-                  "message": "chore(scripted-client): updating docs",
-                  "url": "https://github.com/canonical/prompting-client/commit/efcf5eaf7c8e7cf2add43642653f416d504ff900"
+                  "timestamp": 1726674625,
+                  "message": "chore: removing unused trait method",
+                  "url": "https://github.com/canonical/prompting-client/commit/4627422458ccf2e3c9de2df2304ab30ef049a910"
                }
             ],
             "ciActions": [],
@@ -7805,25 +7805,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5ac1ff3b17073b222a9f193910dee94028a8ab06",
-                  "author": "Dennis Loose",
-                  "timestamp": 1726588358,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#90)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\r\nfor [ubuntu-desktop-translations/Prompting\r\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\r\n\r\n\r\n\r\nCurrent translation status:\r\n\r\n![Weblate translation\r\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
-                  "url": "https://github.com/canonical/prompting-client/commit/5ac1ff3b17073b222a9f193910dee94028a8ab06"
+                  "sha": "a6508e1a8050ab41f40e63240ac83a8467455ddc",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1726739401,
+                  "message": "fix(prompting-client): fix home pattern generation when home is not under /home (#108)\n\nThe helper methods used for determining which category of path we are\r\ngenerating options for implicitly assumes that the user’s home directory\r\nis located in /home. This has the potential to generate invalid options\r\nor possibly hard error in the generation of options if the user has set\r\ntheir home directory to be somewhere else.\r\n\r\nWe now take the value of `$SNAP_REAL_HOME` into account when generating\r\nthe options rather than assuming the standard home directory location.\r\n\r\nI've also tidied up the method that generates the options to make it\r\neasier to read exactly which options will be provided in each of the\r\ncases outlined in @juanruitina's Figma design.\r\n\r\n---\r\n\r\nOne interesting side effect of sorting this out is that it has\r\nhighlighted that we have a very odd (but I think technically possible?)\r\nfailure mode: in principal we can get a home interface prompt from snapd\r\nthat is for a path not under `$SNAP_REAL_HOME`. I don't think that we\r\nshould ever hit this in practice, but nothing in the way the prompt\r\ndetails are provided from snapd prevents this so we need to account for\r\nit. For now I'm error logging and sending a deny once rather than\r\nattempting to serve the prompt as there is no way for us to sensibly\r\ngenerate the required options in this case.\r\n\r\n@olivercalder tagging you in case you have any thoughts on this one!",
+                  "url": "https://github.com/canonical/prompting-client/commit/a6508e1a8050ab41f40e63240ac83a8467455ddc"
                },
                {
-                  "sha": "37d212aabd71c5c8780eb179b9eb764e1b2da3da",
+                  "sha": "17b728b74b1b6524aad36f01f24df161aded9270",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726584748,
-                  "message": "feat(scripted-client): supporting passing templating variables and a top level filter (#107)\n\n- Support specifying a top level filter to limit what prompts the\r\nsequence attempts to match against\r\n- Support specifying and using variables to allow for passing per-run\r\nspecific data (e.g. a temp directory)\r\n\r\nSee the updated sequence JSON files for examples of how this looks in\r\npractice.\r\n\r\nA full example \"spread\" test for a happy path read can be written as\r\nfollows:\r\n```bash\r\n#!/usr/bin/env sh\r\n\r\nPREFIX=\"$1\"\r\nTEST_DIR=\"/home/ubuntu/test/$PREFIX\"\r\n\r\nprompting-client.scripted \\\r\n  --script=\"$TEST_DIR/prompt-sequence.json\" \\\r\n  --var \"BASE_PATH:$TEST_DIR\" | tee \"$TEST_DIR/outfile\" &\r\n\r\n# Ensure that the test client is already listening\r\nsleep 0.2\r\nTEST_OUTPUT=\"$(aa-prompting-test.read \"$PREFIX\")\"\r\n\r\n# Ensure that the test client has time to write its output\r\n# For tests with a grace period this will need to be taken into account as well\r\nsleep 0.2\r\nCLIENT_OUTPUT=\"$(cat \"$TEST_DIR/outfile\")\"\r\n\r\nif [ \"$CLIENT_OUTPUT\" != \"success\" ]; then\r\n  echo \"test failed\"\r\n  echo \"output='$CLIENT_OUTPUT'\"\r\n  exit 1\r\nfi\r\n\r\nif [ \"$TEST_OUTPUT\" != \"testing testing 1 2 3\" ]; then\r\n  echo \"test script failed\"\r\n  exit 1\r\nfi\r\n```\r\n\r\n# Example output\r\n\r\nI'm not sure what to make about this error that I see from `update.go`\r\n@olivercalder? I'm assuming it is coming from snapd but I'm not sure why\r\nit shows up here in the output from running the scripted client...\r\n\r\nOutput when a sequence succeeds:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/edffdcfd-6f11-4dbd-947b-77c839cce0fa/prompt-sequence.json\r\nsuccess\r\ntest scripted_client_test_allow ... ok\r\n\r\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 28 filtered out; finished in 0.47s\r\n```\r\n\r\nOutput when a sequence fails:\r\n```\r\nrunning 1 test\r\nupdate.go:85: cannot change mount namespace according to change mount (/run/user/1000/doc/by-app/snap.prompting-client /run/user/1000/doc none bind,rw,x-snapd.ignore-missing 0 0): cannot inspect \"/run/user/1000/doc\": lstat /run/user/1000/doc: permission denied\r\ncreating client\r\nscript path: /home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/prompt-sequence.json\r\nfailed prompt sequence: prompt 0 did not match the provided sequence: [MatchFailure { field: \"requested_permissions\", expected: \"[\\\"write\\\"]\", seen: \"[\\\"read\\\"]\" }]\r\n\r\nscript: {\r\n  \"version\": 1,\r\n  \"prompt-filter\": {\r\n    \"snap\": \"aa-prompting-test\",\r\n    \"interface\": \"home\",\r\n    \"constraints\": {\r\n      \"path\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/.*\"\r\n    }\r\n  },\r\n  \"prompts\": [\r\n    {\r\n      \"prompt-filter\": {\r\n        \"constraints\": {\r\n          \"path\": \".*/test.txt\",\r\n          \"requested-permissions\": [ \"write\" ]\r\n        }\r\n      },\r\n      \"reply\": {\r\n        \"action\": \"allow\",\r\n        \"lifespan\": \"single\",\r\n        \"constraints\": {\r\n          \"path-pattern\": \"/home/ubuntu/test/e61b1d06-8cbb-41b0-9cb2-2aedba30e4c1/test.txt\",\r\n          \"permissions\": [ \"read\" ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}\r\n```",
-                  "url": "https://github.com/canonical/prompting-client/commit/37d212aabd71c5c8780eb179b9eb764e1b2da3da"
+                  "timestamp": 1726674912,
+                  "message": "fix: removing unused methods to satisfy clippy",
+                  "url": "https://github.com/canonical/prompting-client/commit/17b728b74b1b6524aad36f01f24df161aded9270"
                },
                {
-                  "sha": "efcf5eaf7c8e7cf2add43642653f416d504ff900",
+                  "sha": "4627422458ccf2e3c9de2df2304ab30ef049a910",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726582073,
-                  "message": "chore(scripted-client): updating docs",
-                  "url": "https://github.com/canonical/prompting-client/commit/efcf5eaf7c8e7cf2add43642653f416d504ff900"
+                  "timestamp": 1726674625,
+                  "message": "chore: removing unused trait method",
+                  "url": "https://github.com/canonical/prompting-client/commit/4627422458ccf2e3c9de2df2304ab30ef049a910"
                }
             ],
             "ciActions": [],
