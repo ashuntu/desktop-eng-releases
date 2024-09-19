@@ -6611,6 +6611,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "11b99a8102eaa28e712403b5d96d513bd156ac3a",
+                  "author": "adombeck",
+                  "timestamp": 1726753952,
+                  "message": "Don't try to get passwd entry for UIDs which we know are orphaned (#543)\n\nCloses #542\r\nUDENG-4628",
+                  "url": "https://github.com/ubuntu/authd/commit/11b99a8102eaa28e712403b5d96d513bd156ac3a"
+               },
+               {
                   "sha": "7921867c61378fa39c5ace9dc9dc64952c4eed53",
                   "author": "adombeck",
                   "timestamp": 1726735321,
@@ -6618,18 +6625,11 @@
                   "url": "https://github.com/ubuntu/authd/commit/7921867c61378fa39c5ace9dc9dc64952c4eed53"
                },
                {
-                  "sha": "aafb208773386e780375caad751058eefac2b222",
+                  "sha": "618be111f06e8f91408d89f5fd5dc6f89203b6d5",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1726665292,
-                  "message": "Make slog print debug messages when verbose mode is enabled",
-                  "url": "https://github.com/ubuntu/authd/commit/aafb208773386e780375caad751058eefac2b222"
-               },
-               {
-                  "sha": "d40938bf410af45a7e94bef09dcecc5df507354b",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1726664482,
-                  "message": "Consistently use \"log/slog\" instead of \"golang.org/x/exp/slog\"",
-                  "url": "https://github.com/ubuntu/authd/commit/d40938bf410af45a7e94bef09dcecc5df507354b"
+                  "timestamp": 1726696242,
+                  "message": "Avoid calling user.LookupId during authd startup\n\n`user.LookupId` calls `getpwuid` which queries NSS for the UID. Since\nauthd is installed as a NSS source itself, this leads to a timeout when\nauthd hasn't started up yet, because it can't respond to the query.\n\nWe avoid that by using the UIDs to identify the active users instead of\nthe user names.",
+                  "url": "https://github.com/ubuntu/authd/commit/618be111f06e8f91408d89f5fd5dc6f89203b6d5"
                }
             ],
             "ciActions": [
