@@ -6611,6 +6611,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4946962aa4ac6e5b7d2b53503026659581c73907",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1726837018,
+                  "message": "pam/native-model: Do not render qr code in SSH sessions at all (#545)\n\nDo not renderer qrcode in SSH at all, the only clients supporting it are\r\nputty and `ssh` provided by ubuntu (>= 24.04), and it's not possible\r\n(yet) to detect this from PAM level, so let's just ignore it for now.\r\n\r\nAnd add an integration test covering this case.\r\n\r\nCloses: #497 \r\n\r\nUDENG-4279",
+                  "url": "https://github.com/ubuntu/authd/commit/4946962aa4ac6e5b7d2b53503026659581c73907"
+               },
+               {
                   "sha": "e7e07f2f0a10fd317e506e838ffcfe2364a0a89c",
                   "author": "adombeck",
                   "timestamp": 1726763427,
@@ -6623,13 +6630,6 @@
                   "timestamp": 1726753952,
                   "message": "Don't try to get passwd entry for UIDs which we know are orphaned (#543)\n\nCloses #542\r\nUDENG-4628",
                   "url": "https://github.com/ubuntu/authd/commit/11b99a8102eaa28e712403b5d96d513bd156ac3a"
-               },
-               {
-                  "sha": "9c32bdf16d5be5a9f0134f056522474a2edd0c93",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1726751910,
-                  "message": "Add debug output\n\nThis should help us debug cases where users which should have been added\nto the database can not be found.\n\nrefs: #536",
-                  "url": "https://github.com/ubuntu/authd/commit/9c32bdf16d5be5a9f0134f056522474a2edd0c93"
                }
             ],
             "ciActions": [
