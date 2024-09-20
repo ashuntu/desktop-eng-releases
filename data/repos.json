@@ -3754,25 +3754,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a6508e1a8050ab41f40e63240ac83a8467455ddc",
+                  "sha": "a0a3d7f0b492d7d2987f0fba27f99f5bd96fb1ed",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726739401,
-                  "message": "fix(prompting-client): fix home pattern generation when home is not under /home (#108)\n\nThe helper methods used for determining which category of path we are\r\ngenerating options for implicitly assumes that the user’s home directory\r\nis located in /home. This has the potential to generate invalid options\r\nor possibly hard error in the generation of options if the user has set\r\ntheir home directory to be somewhere else.\r\n\r\nWe now take the value of `$SNAP_REAL_HOME` into account when generating\r\nthe options rather than assuming the standard home directory location.\r\n\r\nI've also tidied up the method that generates the options to make it\r\neasier to read exactly which options will be provided in each of the\r\ncases outlined in @juanruitina's Figma design.\r\n\r\n---\r\n\r\nOne interesting side effect of sorting this out is that it has\r\nhighlighted that we have a very odd (but I think technically possible?)\r\nfailure mode: in principal we can get a home interface prompt from snapd\r\nthat is for a path not under `$SNAP_REAL_HOME`. I don't think that we\r\nshould ever hit this in practice, but nothing in the way the prompt\r\ndetails are provided from snapd prevents this so we need to account for\r\nit. For now I'm error logging and sending a deny once rather than\r\nattempting to serve the prompt as there is no way for us to sensibly\r\ngenerate the required options in this case.\r\n\r\n@olivercalder tagging you in case you have any thoughts on this one!",
-                  "url": "https://github.com/canonical/prompting-client/commit/a6508e1a8050ab41f40e63240ac83a8467455ddc"
+                  "timestamp": 1726835888,
+                  "message": "feat: no longer auto-selecting suggested permissions in the ui (#109)",
+                  "url": "https://github.com/canonical/prompting-client/commit/a0a3d7f0b492d7d2987f0fba27f99f5bd96fb1ed"
                },
                {
-                  "sha": "17b728b74b1b6524aad36f01f24df161aded9270",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726674912,
-                  "message": "fix: removing unused methods to satisfy clippy",
-                  "url": "https://github.com/canonical/prompting-client/commit/17b728b74b1b6524aad36f01f24df161aded9270"
+                  "sha": "568ea5906a010f495604da303442db0dc48218fd",
+                  "author": "Dennis Loose",
+                  "timestamp": 1726834904,
+                  "message": "feat: reveal custom path text field on error (#110)\n\nCurrently the UI expects the grpc server to only reply with an error\r\nstatus when sending a reply with a custom path pattern, so the\r\ncorresponding error message is displayed as a validation string for the\r\ntext field.\r\nHowever, it is possible that we receive errors for simpler replies as\r\nwell, and we should display those properly in the UI. As a workaround,\r\nthis PR simply ensures that the 'custom path' option gets selected and\r\nthe text field is revealed, if the server returns an error.\r\n\r\n[Screencast from 2024-09-20\r\n12-39-55.webm](https://github.com/user-attachments/assets/3ae6edb7-2af1-44bf-8c18-6522065825aa)",
+                  "url": "https://github.com/canonical/prompting-client/commit/568ea5906a010f495604da303442db0dc48218fd"
                },
                {
-                  "sha": "4627422458ccf2e3c9de2df2304ab30ef049a910",
+                  "sha": "b1ca446f4afdee3f831a7cb6fc5cbc698cd87973",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726674625,
-                  "message": "chore: removing unused trait method",
-                  "url": "https://github.com/canonical/prompting-client/commit/4627422458ccf2e3c9de2df2304ab30ef049a910"
+                  "timestamp": 1726834681,
+                  "message": "fix: update integration tests",
+                  "url": "https://github.com/canonical/prompting-client/commit/b1ca446f4afdee3f831a7cb6fc5cbc698cd87973"
                }
             ],
             "ciActions": [],
@@ -5659,25 +5659,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a6508e1a8050ab41f40e63240ac83a8467455ddc",
+                  "sha": "a0a3d7f0b492d7d2987f0fba27f99f5bd96fb1ed",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726739401,
-                  "message": "fix(prompting-client): fix home pattern generation when home is not under /home (#108)\n\nThe helper methods used for determining which category of path we are\r\ngenerating options for implicitly assumes that the user’s home directory\r\nis located in /home. This has the potential to generate invalid options\r\nor possibly hard error in the generation of options if the user has set\r\ntheir home directory to be somewhere else.\r\n\r\nWe now take the value of `$SNAP_REAL_HOME` into account when generating\r\nthe options rather than assuming the standard home directory location.\r\n\r\nI've also tidied up the method that generates the options to make it\r\neasier to read exactly which options will be provided in each of the\r\ncases outlined in @juanruitina's Figma design.\r\n\r\n---\r\n\r\nOne interesting side effect of sorting this out is that it has\r\nhighlighted that we have a very odd (but I think technically possible?)\r\nfailure mode: in principal we can get a home interface prompt from snapd\r\nthat is for a path not under `$SNAP_REAL_HOME`. I don't think that we\r\nshould ever hit this in practice, but nothing in the way the prompt\r\ndetails are provided from snapd prevents this so we need to account for\r\nit. For now I'm error logging and sending a deny once rather than\r\nattempting to serve the prompt as there is no way for us to sensibly\r\ngenerate the required options in this case.\r\n\r\n@olivercalder tagging you in case you have any thoughts on this one!",
-                  "url": "https://github.com/canonical/prompting-client/commit/a6508e1a8050ab41f40e63240ac83a8467455ddc"
+                  "timestamp": 1726835888,
+                  "message": "feat: no longer auto-selecting suggested permissions in the ui (#109)",
+                  "url": "https://github.com/canonical/prompting-client/commit/a0a3d7f0b492d7d2987f0fba27f99f5bd96fb1ed"
                },
                {
-                  "sha": "17b728b74b1b6524aad36f01f24df161aded9270",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726674912,
-                  "message": "fix: removing unused methods to satisfy clippy",
-                  "url": "https://github.com/canonical/prompting-client/commit/17b728b74b1b6524aad36f01f24df161aded9270"
+                  "sha": "568ea5906a010f495604da303442db0dc48218fd",
+                  "author": "Dennis Loose",
+                  "timestamp": 1726834904,
+                  "message": "feat: reveal custom path text field on error (#110)\n\nCurrently the UI expects the grpc server to only reply with an error\r\nstatus when sending a reply with a custom path pattern, so the\r\ncorresponding error message is displayed as a validation string for the\r\ntext field.\r\nHowever, it is possible that we receive errors for simpler replies as\r\nwell, and we should display those properly in the UI. As a workaround,\r\nthis PR simply ensures that the 'custom path' option gets selected and\r\nthe text field is revealed, if the server returns an error.\r\n\r\n[Screencast from 2024-09-20\r\n12-39-55.webm](https://github.com/user-attachments/assets/3ae6edb7-2af1-44bf-8c18-6522065825aa)",
+                  "url": "https://github.com/canonical/prompting-client/commit/568ea5906a010f495604da303442db0dc48218fd"
                },
                {
-                  "sha": "4627422458ccf2e3c9de2df2304ab30ef049a910",
+                  "sha": "b1ca446f4afdee3f831a7cb6fc5cbc698cd87973",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726674625,
-                  "message": "chore: removing unused trait method",
-                  "url": "https://github.com/canonical/prompting-client/commit/4627422458ccf2e3c9de2df2304ab30ef049a910"
+                  "timestamp": 1726834681,
+                  "message": "fix: update integration tests",
+                  "url": "https://github.com/canonical/prompting-client/commit/b1ca446f4afdee3f831a7cb6fc5cbc698cd87973"
                }
             ],
             "ciActions": [],
@@ -7805,25 +7805,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a6508e1a8050ab41f40e63240ac83a8467455ddc",
+                  "sha": "a0a3d7f0b492d7d2987f0fba27f99f5bd96fb1ed",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726739401,
-                  "message": "fix(prompting-client): fix home pattern generation when home is not under /home (#108)\n\nThe helper methods used for determining which category of path we are\r\ngenerating options for implicitly assumes that the user’s home directory\r\nis located in /home. This has the potential to generate invalid options\r\nor possibly hard error in the generation of options if the user has set\r\ntheir home directory to be somewhere else.\r\n\r\nWe now take the value of `$SNAP_REAL_HOME` into account when generating\r\nthe options rather than assuming the standard home directory location.\r\n\r\nI've also tidied up the method that generates the options to make it\r\neasier to read exactly which options will be provided in each of the\r\ncases outlined in @juanruitina's Figma design.\r\n\r\n---\r\n\r\nOne interesting side effect of sorting this out is that it has\r\nhighlighted that we have a very odd (but I think technically possible?)\r\nfailure mode: in principal we can get a home interface prompt from snapd\r\nthat is for a path not under `$SNAP_REAL_HOME`. I don't think that we\r\nshould ever hit this in practice, but nothing in the way the prompt\r\ndetails are provided from snapd prevents this so we need to account for\r\nit. For now I'm error logging and sending a deny once rather than\r\nattempting to serve the prompt as there is no way for us to sensibly\r\ngenerate the required options in this case.\r\n\r\n@olivercalder tagging you in case you have any thoughts on this one!",
-                  "url": "https://github.com/canonical/prompting-client/commit/a6508e1a8050ab41f40e63240ac83a8467455ddc"
+                  "timestamp": 1726835888,
+                  "message": "feat: no longer auto-selecting suggested permissions in the ui (#109)",
+                  "url": "https://github.com/canonical/prompting-client/commit/a0a3d7f0b492d7d2987f0fba27f99f5bd96fb1ed"
                },
                {
-                  "sha": "17b728b74b1b6524aad36f01f24df161aded9270",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726674912,
-                  "message": "fix: removing unused methods to satisfy clippy",
-                  "url": "https://github.com/canonical/prompting-client/commit/17b728b74b1b6524aad36f01f24df161aded9270"
+                  "sha": "568ea5906a010f495604da303442db0dc48218fd",
+                  "author": "Dennis Loose",
+                  "timestamp": 1726834904,
+                  "message": "feat: reveal custom path text field on error (#110)\n\nCurrently the UI expects the grpc server to only reply with an error\r\nstatus when sending a reply with a custom path pattern, so the\r\ncorresponding error message is displayed as a validation string for the\r\ntext field.\r\nHowever, it is possible that we receive errors for simpler replies as\r\nwell, and we should display those properly in the UI. As a workaround,\r\nthis PR simply ensures that the 'custom path' option gets selected and\r\nthe text field is revealed, if the server returns an error.\r\n\r\n[Screencast from 2024-09-20\r\n12-39-55.webm](https://github.com/user-attachments/assets/3ae6edb7-2af1-44bf-8c18-6522065825aa)",
+                  "url": "https://github.com/canonical/prompting-client/commit/568ea5906a010f495604da303442db0dc48218fd"
                },
                {
-                  "sha": "4627422458ccf2e3c9de2df2304ab30ef049a910",
+                  "sha": "b1ca446f4afdee3f831a7cb6fc5cbc698cd87973",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1726674625,
-                  "message": "chore: removing unused trait method",
-                  "url": "https://github.com/canonical/prompting-client/commit/4627422458ccf2e3c9de2df2304ab30ef049a910"
+                  "timestamp": 1726834681,
+                  "message": "fix: update integration tests",
+                  "url": "https://github.com/canonical/prompting-client/commit/b1ca446f4afdee3f831a7cb6fc5cbc698cd87973"
                }
             ],
             "ciActions": [],
