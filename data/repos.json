@@ -6646,25 +6646,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fc0b2e3546ba86b3cfd854c65787160ba8993104",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1726827225,
+                  "message": "generate snap version from current git tree state (#161)\n\nWe are starting to generate the snap version using the following rules:\r\nWhen considering a tag, if starting with \"<current branch name>-\" it\r\nwill have its prefix removed.\r\nFor instance:\r\n* 0.1 -> 0.1\r\n* msentraid-0.1 -> 0.1 on msentraid branch.\r\n\r\n1. If current commit is tagged, the version is directly the tag name.\r\n2. If current commit is not tagged, the version is:\r\n    a. <last tag name on current branch>+<commit_sha> for main branch.\r\nb. <last tag name on current branch (not in\r\nmain)>+<commit_sha>.<last_commit_merged_from_main> for other branches.\r\n\r\nAny of those version will be annoted with +dirty if there are local\r\nchanges.\r\n\r\nUDENG-4431",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/fc0b2e3546ba86b3cfd854c65787160ba8993104"
+               },
+               {
+                  "sha": "1a0701659172a4a59ec41342b489123b2708f117",
+                  "author": "Didier Roche",
+                  "timestamp": 1726670739,
+                  "message": "generate snap version from current git tree state\n\nWe are starting to generate the snap version using the following rules:\nWhen considering a tag, if starting with \"<current branch name>-\" it will have\nits prefix removed.\nFor instance:\n* 0.1 -> 0.1\n* msentraid-0.1 -> 0.1 on msentraid branch.\n\n1. If current commit is tagged, the version is directly the tag name.\n2. If current commit is not tagged, the version is:\n   a. <last tag name on current branch>+<commit_sha> for main branch.\n   b. <last tag name on current branch (not in main)>+<commit_sha>.<last_commit_merged_from_main> for other branches.\n\nAny of those version will be annoted with +dirty if there are local changes.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/1a0701659172a4a59ec41342b489123b2708f117"
+               },
+               {
                   "sha": "e6aac67a72bc1a61598bbc60c47ff72a471b347c",
                   "author": "adombeck",
                   "timestamp": 1726581189,
                   "message": "Replace deprecated linter 'exportloopref' with 'copyloopvar' (#158)",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e6aac67a72bc1a61598bbc60c47ff72a471b347c"
-               },
-               {
-                  "sha": "7f322c4d8f0df96dcf805b67f0bb80bb38457fc0",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1725892694,
-                  "message": "Replace deprecated linter 'exportloopref' with 'copyloopvar'\n\ngolangci-lint complained:\n\n    WARN The linter 'exportloopref' is deprecated (since v1.60.2) due to: Since Go1.22 (loopvar) this linter is no longer relevant. Replaced by copyloopvar.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/7f322c4d8f0df96dcf805b67f0bb80bb38457fc0"
-               },
-               {
-                  "sha": "2f0a9a9ad5dbf6d46684250eb0be706c06754615",
-                  "author": "adombeck",
-                  "timestamp": 1726579512,
-                  "message": "Explicitly request the required permissions (#156)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2f0a9a9ad5dbf6d46684250eb0be706c06754615"
                }
             ],
             "ciActions": [
