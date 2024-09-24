@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "faa84f297ff540bc432a0fab94f84f981dd3c0e3",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1727212358,
+                  "message": "fix(pam/nativemodel): Do not report the authentication denied PAM error twice (#553)\n\nIn case that the authentication failed, the authentication model sends a\r\npamError that includes the error message and that our pam module will\r\neventually write.\r\n\r\nSo, there's no need to handle the error again in the native module or\r\nwe'd duplicate such error string\r\n\r\nUDENG-4763",
+                  "url": "https://github.com/ubuntu/authd/commit/faa84f297ff540bc432a0fab94f84f981dd3c0e3"
+               },
+               {
+                  "sha": "affbc42741bb82eab8ea7243e75586e0e88c6747",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1727199114,
+                  "message": "pam/nativemodel: Do not report the authentication denied PAM error twice\n\nIn case that the authentication failed, the authentication model\nsends a pamError that includes the error message and that our pam module\nwill eventually write.\n\nSo, there's no need to handle the error again in the native module or\nwe'd duplicate such error string",
+                  "url": "https://github.com/ubuntu/authd/commit/affbc42741bb82eab8ea7243e75586e0e88c6747"
+               },
+               {
                   "sha": "1f7c6e50d0e467f99100a28d77baa3c4435570d4",
                   "author": "adombeck",
                   "timestamp": 1727157029,
                   "message": "Use UID/GID range that doesn't overlap with the range used by Debian (#548)\n\nCloses #547\r\nUDENG-4689",
                   "url": "https://github.com/ubuntu/authd/commit/1f7c6e50d0e467f99100a28d77baa3c4435570d4"
-               },
-               {
-                  "sha": "ce36b184561a459fc4dea8e8600cca5a0fe33a5b",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1727112114,
-                  "message": "Use UID/GID range that doesn't overlap with the range used by Debian\n\nSee https://www.debian.org/doc/debian-policy/ch-opersys.html#uid-and-gid-classes\n\nCloses #547",
-                  "url": "https://github.com/ubuntu/authd/commit/ce36b184561a459fc4dea8e8600cca5a0fe33a5b"
-               },
-               {
-                  "sha": "4946962aa4ac6e5b7d2b53503026659581c73907",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1726837018,
-                  "message": "pam/native-model: Do not render qr code in SSH sessions at all (#545)\n\nDo not renderer qrcode in SSH at all, the only clients supporting it are\r\nputty and `ssh` provided by ubuntu (>= 24.04), and it's not possible\r\n(yet) to detect this from PAM level, so let's just ignore it for now.\r\n\r\nAnd add an integration test covering this case.\r\n\r\nCloses: #497 \r\n\r\nUDENG-4279",
-                  "url": "https://github.com/ubuntu/authd/commit/4946962aa4ac6e5b7d2b53503026659581c73907"
                }
             ],
             "ciActions": [
