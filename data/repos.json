@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "faa84f297ff540bc432a0fab94f84f981dd3c0e3",
+                  "sha": "908d67e1952e95e8da9003d2978e812aca60626b",
                   "author": "Marco Trevisan",
-                  "timestamp": 1727212358,
-                  "message": "fix(pam/nativemodel): Do not report the authentication denied PAM error twice (#553)\n\nIn case that the authentication failed, the authentication model sends a\r\npamError that includes the error message and that our pam module will\r\neventually write.\r\n\r\nSo, there's no need to handle the error again in the native module or\r\nwe'd duplicate such error string\r\n\r\nUDENG-4763",
-                  "url": "https://github.com/ubuntu/authd/commit/faa84f297ff540bc432a0fab94f84f981dd3c0e3"
+                  "timestamp": 1727238398,
+                  "message": "pam/integration-tests/native: Check that the user 'r' is accepted (#554)\n\nThis is something that was already manually tested, but since 'r' is a\r\nspecial string in the native model, let's add an explicit check,\r\nensuring that a such user can work properly.\r\n\r\nAnd no, we won't support a 'r' secret, even though we could just wait\r\nfor a broker refusal before using it as a \"go back\" command, but at the\r\ndate there's not a real requirement for that to increase the model\r\ncomplexity.",
+                  "url": "https://github.com/ubuntu/authd/commit/908d67e1952e95e8da9003d2978e812aca60626b"
                },
                {
-                  "sha": "affbc42741bb82eab8ea7243e75586e0e88c6747",
+                  "sha": "02d20f6953194694eca7199c59b487847b69f832",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1727199114,
-                  "message": "pam/nativemodel: Do not report the authentication denied PAM error twice\n\nIn case that the authentication failed, the authentication model\nsends a pamError that includes the error message and that our pam module\nwill eventually write.\n\nSo, there's no need to handle the error again in the native module or\nwe'd duplicate such error string",
-                  "url": "https://github.com/ubuntu/authd/commit/affbc42741bb82eab8ea7243e75586e0e88c6747"
+                  "timestamp": 1727197994,
+                  "message": "pam/integration-tests/native: Check that the user 'r' is accepted\n\nThis is something that was manually tested, but since 'r' is a special\nstring in the native model, let's add an explicit check, ensuring that\na such user can work properly.\n\nAnd no, we won't support a 'r' secret, even though we could just wait\nfor a broker refusal before using it as a \"go back\" command.",
+                  "url": "https://github.com/ubuntu/authd/commit/02d20f6953194694eca7199c59b487847b69f832"
                },
                {
-                  "sha": "1f7c6e50d0e467f99100a28d77baa3c4435570d4",
-                  "author": "adombeck",
-                  "timestamp": 1727157029,
-                  "message": "Use UID/GID range that doesn't overlap with the range used by Debian (#548)\n\nCloses #547\r\nUDENG-4689",
-                  "url": "https://github.com/ubuntu/authd/commit/1f7c6e50d0e467f99100a28d77baa3c4435570d4"
+                  "sha": "41e4039733681f4f35398f4a782d94bc62fbe608",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1727236890,
+                  "message": "cleanup(pam/integration-tests): Highlight PAM error messages better (#552)\n\nEnsure they're clearly marked as such so that we don't confuse them with\r\nsimple info messages.",
+                  "url": "https://github.com/ubuntu/authd/commit/41e4039733681f4f35398f4a782d94bc62fbe608"
                }
             ],
             "ciActions": [
