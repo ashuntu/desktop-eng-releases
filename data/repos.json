@@ -3754,6 +3754,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d5d2b6db0c04a947eaf00476eb7cc5c97c75486d",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1727365209,
+                  "message": "feat: checking for last-data in notices from snapd (#116)\n\nThe data we get from the snapd notices endpoint now supports an optional\r\n`last-data` field which we can use to be a little more efficient in how\r\nwe pull prompt details.\r\n```\r\n    {\r\n      \"id\": \"1674\",\r\n      \"user-id\": 1000,\r\n      \"type\": \"interfaces-requests-prompt\",\r\n      \"key\": \"000000000000014E\",\r\n      \"first-occurred\": \"2024-09-13T13:05:05.189006863Z\",\r\n      \"last-occurred\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"last-repeated\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"occurrences\": 2,\r\n      \"last-data\": {\r\n        \"resolved\": \"replied\"\r\n      },\r\n      \"expire-after\": \"168h0m0s\"\r\n    }\r\n```\r\n\r\nIn the case where we get a notice with `last-data.resolved == \"replied\"`\r\nwe can treat this in the same way we currently treat getting a 404 when\r\npulling prompt details (i.e. removing our internal state for that\r\nprompt).",
+                  "url": "https://github.com/canonical/prompting-client/commit/d5d2b6db0c04a947eaf00476eb7cc5c97c75486d"
+               },
+               {
                   "sha": "c9f491c7d1be0702e1ebf53412b79f9089b3dda6",
                   "author": "Dennis Loose",
                   "timestamp": 1727358982,
@@ -3761,18 +3768,11 @@
                   "url": "https://github.com/canonical/prompting-client/commit/c9f491c7d1be0702e1ebf53412b79f9089b3dda6"
                },
                {
-                  "sha": "3a5d197aa8c3bc9237977f606151bac06821f9e6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1727354308,
-                  "message": "fix: add missing symlink for fvm setup",
-                  "url": "https://github.com/canonical/prompting-client/commit/3a5d197aa8c3bc9237977f606151bac06821f9e6"
-               },
-               {
-                  "sha": "abcedd65fb81c6ae65e619f6011f7d832b88a7f0",
-                  "author": "Dennis Loose",
-                  "timestamp": 1727354277,
-                  "message": "feat: upgrade to Flutter 3.24 and Yaru 5.x",
-                  "url": "https://github.com/canonical/prompting-client/commit/abcedd65fb81c6ae65e619f6011f7d832b88a7f0"
+                  "sha": "d19e67c81dcbca37eee9c3b0021239bacdfb0c2e",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1727356384,
+                  "message": "refactor: match on enum varients directly instead of using a method",
+                  "url": "https://github.com/canonical/prompting-client/commit/d19e67c81dcbca37eee9c3b0021239bacdfb0c2e"
                }
             ],
             "ciActions": [],
@@ -5659,6 +5659,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d5d2b6db0c04a947eaf00476eb7cc5c97c75486d",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1727365209,
+                  "message": "feat: checking for last-data in notices from snapd (#116)\n\nThe data we get from the snapd notices endpoint now supports an optional\r\n`last-data` field which we can use to be a little more efficient in how\r\nwe pull prompt details.\r\n```\r\n    {\r\n      \"id\": \"1674\",\r\n      \"user-id\": 1000,\r\n      \"type\": \"interfaces-requests-prompt\",\r\n      \"key\": \"000000000000014E\",\r\n      \"first-occurred\": \"2024-09-13T13:05:05.189006863Z\",\r\n      \"last-occurred\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"last-repeated\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"occurrences\": 2,\r\n      \"last-data\": {\r\n        \"resolved\": \"replied\"\r\n      },\r\n      \"expire-after\": \"168h0m0s\"\r\n    }\r\n```\r\n\r\nIn the case where we get a notice with `last-data.resolved == \"replied\"`\r\nwe can treat this in the same way we currently treat getting a 404 when\r\npulling prompt details (i.e. removing our internal state for that\r\nprompt).",
+                  "url": "https://github.com/canonical/prompting-client/commit/d5d2b6db0c04a947eaf00476eb7cc5c97c75486d"
+               },
+               {
                   "sha": "c9f491c7d1be0702e1ebf53412b79f9089b3dda6",
                   "author": "Dennis Loose",
                   "timestamp": 1727358982,
@@ -5666,18 +5673,11 @@
                   "url": "https://github.com/canonical/prompting-client/commit/c9f491c7d1be0702e1ebf53412b79f9089b3dda6"
                },
                {
-                  "sha": "3a5d197aa8c3bc9237977f606151bac06821f9e6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1727354308,
-                  "message": "fix: add missing symlink for fvm setup",
-                  "url": "https://github.com/canonical/prompting-client/commit/3a5d197aa8c3bc9237977f606151bac06821f9e6"
-               },
-               {
-                  "sha": "abcedd65fb81c6ae65e619f6011f7d832b88a7f0",
-                  "author": "Dennis Loose",
-                  "timestamp": 1727354277,
-                  "message": "feat: upgrade to Flutter 3.24 and Yaru 5.x",
-                  "url": "https://github.com/canonical/prompting-client/commit/abcedd65fb81c6ae65e619f6011f7d832b88a7f0"
+                  "sha": "d19e67c81dcbca37eee9c3b0021239bacdfb0c2e",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1727356384,
+                  "message": "refactor: match on enum varients directly instead of using a method",
+                  "url": "https://github.com/canonical/prompting-client/commit/d19e67c81dcbca37eee9c3b0021239bacdfb0c2e"
                }
             ],
             "ciActions": [],
@@ -7805,6 +7805,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d5d2b6db0c04a947eaf00476eb7cc5c97c75486d",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1727365209,
+                  "message": "feat: checking for last-data in notices from snapd (#116)\n\nThe data we get from the snapd notices endpoint now supports an optional\r\n`last-data` field which we can use to be a little more efficient in how\r\nwe pull prompt details.\r\n```\r\n    {\r\n      \"id\": \"1674\",\r\n      \"user-id\": 1000,\r\n      \"type\": \"interfaces-requests-prompt\",\r\n      \"key\": \"000000000000014E\",\r\n      \"first-occurred\": \"2024-09-13T13:05:05.189006863Z\",\r\n      \"last-occurred\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"last-repeated\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"occurrences\": 2,\r\n      \"last-data\": {\r\n        \"resolved\": \"replied\"\r\n      },\r\n      \"expire-after\": \"168h0m0s\"\r\n    }\r\n```\r\n\r\nIn the case where we get a notice with `last-data.resolved == \"replied\"`\r\nwe can treat this in the same way we currently treat getting a 404 when\r\npulling prompt details (i.e. removing our internal state for that\r\nprompt).",
+                  "url": "https://github.com/canonical/prompting-client/commit/d5d2b6db0c04a947eaf00476eb7cc5c97c75486d"
+               },
+               {
                   "sha": "c9f491c7d1be0702e1ebf53412b79f9089b3dda6",
                   "author": "Dennis Loose",
                   "timestamp": 1727358982,
@@ -7812,18 +7819,11 @@
                   "url": "https://github.com/canonical/prompting-client/commit/c9f491c7d1be0702e1ebf53412b79f9089b3dda6"
                },
                {
-                  "sha": "3a5d197aa8c3bc9237977f606151bac06821f9e6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1727354308,
-                  "message": "fix: add missing symlink for fvm setup",
-                  "url": "https://github.com/canonical/prompting-client/commit/3a5d197aa8c3bc9237977f606151bac06821f9e6"
-               },
-               {
-                  "sha": "abcedd65fb81c6ae65e619f6011f7d832b88a7f0",
-                  "author": "Dennis Loose",
-                  "timestamp": 1727354277,
-                  "message": "feat: upgrade to Flutter 3.24 and Yaru 5.x",
-                  "url": "https://github.com/canonical/prompting-client/commit/abcedd65fb81c6ae65e619f6011f7d832b88a7f0"
+                  "sha": "d19e67c81dcbca37eee9c3b0021239bacdfb0c2e",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1727356384,
+                  "message": "refactor: match on enum varients directly instead of using a method",
+                  "url": "https://github.com/canonical/prompting-client/commit/d19e67c81dcbca37eee9c3b0021239bacdfb0c2e"
                }
             ],
             "ciActions": [],
