@@ -3754,25 +3754,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d5d2b6db0c04a947eaf00476eb7cc5c97c75486d",
+                  "sha": "83f63df734b07722cd84b734909bca45cf71f713",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1727365209,
-                  "message": "feat: checking for last-data in notices from snapd (#116)\n\nThe data we get from the snapd notices endpoint now supports an optional\r\n`last-data` field which we can use to be a little more efficient in how\r\nwe pull prompt details.\r\n```\r\n    {\r\n      \"id\": \"1674\",\r\n      \"user-id\": 1000,\r\n      \"type\": \"interfaces-requests-prompt\",\r\n      \"key\": \"000000000000014E\",\r\n      \"first-occurred\": \"2024-09-13T13:05:05.189006863Z\",\r\n      \"last-occurred\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"last-repeated\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"occurrences\": 2,\r\n      \"last-data\": {\r\n        \"resolved\": \"replied\"\r\n      },\r\n      \"expire-after\": \"168h0m0s\"\r\n    }\r\n```\r\n\r\nIn the case where we get a notice with `last-data.resolved == \"replied\"`\r\nwe can treat this in the same way we currently treat getting a 404 when\r\npulling prompt details (i.e. removing our internal state for that\r\nprompt).",
-                  "url": "https://github.com/canonical/prompting-client/commit/d5d2b6db0c04a947eaf00476eb7cc5c97c75486d"
+                  "timestamp": 1727476000,
+                  "message": "feat: Scripted client nullable replies (#121)\n\nSupport not replying to every prompt in a scripted client\nprompt-sequence.\n\nCurrently, prompting-client.scripted accepts scripts which have a\ntop-level \"prompt-filter\" and a \"prompts\" list, which is a list of json\nobjects with two mandatory fields: \"prompt-filter\" and \"reply\". The\nscripted client expects relevant prompts to match the filters specified\nin the \"prompts\" list in order, and for each one, immediately sends back\nthe accompanying reply.\n\nHowever, to write a spread test which mimics the\n`create_multiple_actioned_by_other_pid` integration test, we need to be\nable to attempt multiple writes (and check that those attempts occurred\nas expected), and then on a subsequent attempt, reply with a rule which\nthen actions the previous prompts as well.\n\nThe docs update and new test data cover the new supported syntax for a\nprompt-sequence.\n\nTracked internally by https://warthogs.atlassian.net/browse/UDENG-4782",
+                  "url": "https://github.com/canonical/prompting-client/commit/83f63df734b07722cd84b734909bca45cf71f713"
                },
                {
-                  "sha": "c9f491c7d1be0702e1ebf53412b79f9089b3dda6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1727358982,
-                  "message": "feat: upgrade to Flutter 3.24 and Yaru 5.x (#117)\n\nHopefully no surprises here, no visible UI changes besides adding\r\nsupport for new GNOME accent colors\r\n\r\nUDENG-4599",
-                  "url": "https://github.com/canonical/prompting-client/commit/c9f491c7d1be0702e1ebf53412b79f9089b3dda6"
+                  "sha": "d217d51da328011a81e3055f81cfc0063029c970",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1727429726,
+                  "message": "feat(scripted client): updating docs to cover nullable reply template in the scripted client",
+                  "url": "https://github.com/canonical/prompting-client/commit/d217d51da328011a81e3055f81cfc0063029c970"
                },
                {
-                  "sha": "d19e67c81dcbca37eee9c3b0021239bacdfb0c2e",
+                  "sha": "741bdbebd370d320ca37fffeee9568e76f708b9a",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1727356384,
-                  "message": "refactor: match on enum varients directly instead of using a method",
-                  "url": "https://github.com/canonical/prompting-client/commit/d19e67c81dcbca37eee9c3b0021239bacdfb0c2e"
+                  "timestamp": 1727429450,
+                  "message": "feat(scripted client): support having the scripted client expect to see a prompt but not respond to it",
+                  "url": "https://github.com/canonical/prompting-client/commit/741bdbebd370d320ca37fffeee9568e76f708b9a"
                }
             ],
             "ciActions": [],
@@ -5659,25 +5659,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d5d2b6db0c04a947eaf00476eb7cc5c97c75486d",
+                  "sha": "83f63df734b07722cd84b734909bca45cf71f713",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1727365209,
-                  "message": "feat: checking for last-data in notices from snapd (#116)\n\nThe data we get from the snapd notices endpoint now supports an optional\r\n`last-data` field which we can use to be a little more efficient in how\r\nwe pull prompt details.\r\n```\r\n    {\r\n      \"id\": \"1674\",\r\n      \"user-id\": 1000,\r\n      \"type\": \"interfaces-requests-prompt\",\r\n      \"key\": \"000000000000014E\",\r\n      \"first-occurred\": \"2024-09-13T13:05:05.189006863Z\",\r\n      \"last-occurred\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"last-repeated\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"occurrences\": 2,\r\n      \"last-data\": {\r\n        \"resolved\": \"replied\"\r\n      },\r\n      \"expire-after\": \"168h0m0s\"\r\n    }\r\n```\r\n\r\nIn the case where we get a notice with `last-data.resolved == \"replied\"`\r\nwe can treat this in the same way we currently treat getting a 404 when\r\npulling prompt details (i.e. removing our internal state for that\r\nprompt).",
-                  "url": "https://github.com/canonical/prompting-client/commit/d5d2b6db0c04a947eaf00476eb7cc5c97c75486d"
+                  "timestamp": 1727476000,
+                  "message": "feat: Scripted client nullable replies (#121)\n\nSupport not replying to every prompt in a scripted client\nprompt-sequence.\n\nCurrently, prompting-client.scripted accepts scripts which have a\ntop-level \"prompt-filter\" and a \"prompts\" list, which is a list of json\nobjects with two mandatory fields: \"prompt-filter\" and \"reply\". The\nscripted client expects relevant prompts to match the filters specified\nin the \"prompts\" list in order, and for each one, immediately sends back\nthe accompanying reply.\n\nHowever, to write a spread test which mimics the\n`create_multiple_actioned_by_other_pid` integration test, we need to be\nable to attempt multiple writes (and check that those attempts occurred\nas expected), and then on a subsequent attempt, reply with a rule which\nthen actions the previous prompts as well.\n\nThe docs update and new test data cover the new supported syntax for a\nprompt-sequence.\n\nTracked internally by https://warthogs.atlassian.net/browse/UDENG-4782",
+                  "url": "https://github.com/canonical/prompting-client/commit/83f63df734b07722cd84b734909bca45cf71f713"
                },
                {
-                  "sha": "c9f491c7d1be0702e1ebf53412b79f9089b3dda6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1727358982,
-                  "message": "feat: upgrade to Flutter 3.24 and Yaru 5.x (#117)\n\nHopefully no surprises here, no visible UI changes besides adding\r\nsupport for new GNOME accent colors\r\n\r\nUDENG-4599",
-                  "url": "https://github.com/canonical/prompting-client/commit/c9f491c7d1be0702e1ebf53412b79f9089b3dda6"
+                  "sha": "d217d51da328011a81e3055f81cfc0063029c970",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1727429726,
+                  "message": "feat(scripted client): updating docs to cover nullable reply template in the scripted client",
+                  "url": "https://github.com/canonical/prompting-client/commit/d217d51da328011a81e3055f81cfc0063029c970"
                },
                {
-                  "sha": "d19e67c81dcbca37eee9c3b0021239bacdfb0c2e",
+                  "sha": "741bdbebd370d320ca37fffeee9568e76f708b9a",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1727356384,
-                  "message": "refactor: match on enum varients directly instead of using a method",
-                  "url": "https://github.com/canonical/prompting-client/commit/d19e67c81dcbca37eee9c3b0021239bacdfb0c2e"
+                  "timestamp": 1727429450,
+                  "message": "feat(scripted client): support having the scripted client expect to see a prompt but not respond to it",
+                  "url": "https://github.com/canonical/prompting-client/commit/741bdbebd370d320ca37fffeee9568e76f708b9a"
                }
             ],
             "ciActions": [],
@@ -7805,25 +7805,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d5d2b6db0c04a947eaf00476eb7cc5c97c75486d",
+                  "sha": "83f63df734b07722cd84b734909bca45cf71f713",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1727365209,
-                  "message": "feat: checking for last-data in notices from snapd (#116)\n\nThe data we get from the snapd notices endpoint now supports an optional\r\n`last-data` field which we can use to be a little more efficient in how\r\nwe pull prompt details.\r\n```\r\n    {\r\n      \"id\": \"1674\",\r\n      \"user-id\": 1000,\r\n      \"type\": \"interfaces-requests-prompt\",\r\n      \"key\": \"000000000000014E\",\r\n      \"first-occurred\": \"2024-09-13T13:05:05.189006863Z\",\r\n      \"last-occurred\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"last-repeated\": \"2024-09-13T13:05:05.232809028Z\",\r\n      \"occurrences\": 2,\r\n      \"last-data\": {\r\n        \"resolved\": \"replied\"\r\n      },\r\n      \"expire-after\": \"168h0m0s\"\r\n    }\r\n```\r\n\r\nIn the case where we get a notice with `last-data.resolved == \"replied\"`\r\nwe can treat this in the same way we currently treat getting a 404 when\r\npulling prompt details (i.e. removing our internal state for that\r\nprompt).",
-                  "url": "https://github.com/canonical/prompting-client/commit/d5d2b6db0c04a947eaf00476eb7cc5c97c75486d"
+                  "timestamp": 1727476000,
+                  "message": "feat: Scripted client nullable replies (#121)\n\nSupport not replying to every prompt in a scripted client\nprompt-sequence.\n\nCurrently, prompting-client.scripted accepts scripts which have a\ntop-level \"prompt-filter\" and a \"prompts\" list, which is a list of json\nobjects with two mandatory fields: \"prompt-filter\" and \"reply\". The\nscripted client expects relevant prompts to match the filters specified\nin the \"prompts\" list in order, and for each one, immediately sends back\nthe accompanying reply.\n\nHowever, to write a spread test which mimics the\n`create_multiple_actioned_by_other_pid` integration test, we need to be\nable to attempt multiple writes (and check that those attempts occurred\nas expected), and then on a subsequent attempt, reply with a rule which\nthen actions the previous prompts as well.\n\nThe docs update and new test data cover the new supported syntax for a\nprompt-sequence.\n\nTracked internally by https://warthogs.atlassian.net/browse/UDENG-4782",
+                  "url": "https://github.com/canonical/prompting-client/commit/83f63df734b07722cd84b734909bca45cf71f713"
                },
                {
-                  "sha": "c9f491c7d1be0702e1ebf53412b79f9089b3dda6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1727358982,
-                  "message": "feat: upgrade to Flutter 3.24 and Yaru 5.x (#117)\n\nHopefully no surprises here, no visible UI changes besides adding\r\nsupport for new GNOME accent colors\r\n\r\nUDENG-4599",
-                  "url": "https://github.com/canonical/prompting-client/commit/c9f491c7d1be0702e1ebf53412b79f9089b3dda6"
+                  "sha": "d217d51da328011a81e3055f81cfc0063029c970",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1727429726,
+                  "message": "feat(scripted client): updating docs to cover nullable reply template in the scripted client",
+                  "url": "https://github.com/canonical/prompting-client/commit/d217d51da328011a81e3055f81cfc0063029c970"
                },
                {
-                  "sha": "d19e67c81dcbca37eee9c3b0021239bacdfb0c2e",
+                  "sha": "741bdbebd370d320ca37fffeee9568e76f708b9a",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1727356384,
-                  "message": "refactor: match on enum varients directly instead of using a method",
-                  "url": "https://github.com/canonical/prompting-client/commit/d19e67c81dcbca37eee9c3b0021239bacdfb0c2e"
+                  "timestamp": 1727429450,
+                  "message": "feat(scripted client): support having the scripted client expect to see a prompt but not respond to it",
+                  "url": "https://github.com/canonical/prompting-client/commit/741bdbebd370d320ca37fffeee9568e76f708b9a"
                }
             ],
             "ciActions": [],
