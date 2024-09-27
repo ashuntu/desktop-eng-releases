@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1ba9bceb3c00e674145886b2e4971f8c11a60211",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1727420110,
+                  "message": "ci: Parallelize Go tests jobs (#558)\n\nTests start to take quite a bit of time an in case a specific test kind\nfails we have to restart the whole CI job.\n\nTo avoid this use a matrix to parallelize the go test jobs and skip the\nsteps that are not required in each step.\n\nThis is not optimal since we still repeat the setup (although some parts\nare cached and in general the common part takes less than a minute), but\nit still allows to get way faster builds (~ -50%) with a very minimal\neffort",
+                  "url": "https://github.com/ubuntu/authd/commit/1ba9bceb3c00e674145886b2e4971f8c11a60211"
+               },
+               {
+                  "sha": "f92cd8898f9b5744df9ff601bea2be9987a88f73",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1727415422,
+                  "message": "ci: Parallelize Go tests jobs\n\nTests start to take quite a bit of time an in case a specific test kind\nfails we have to restart the whole CI job.\n\nTo avoid this use a matrix to parallelize the go test jobs and skip the\nsteps that are not required in each step.\n\nThis is not optimal since we still repeat the setup (although some parts\nare cached and in general the common part takes less than a minute), but\nit allows to get faster builds with a very minimal effort",
+                  "url": "https://github.com/ubuntu/authd/commit/f92cd8898f9b5744df9ff601bea2be9987a88f73"
+               },
+               {
                   "sha": "8468a90828c9b0efebf7ea18744d5f60cade7a91",
                   "author": "Marco Trevisan",
                   "timestamp": 1727410772,
                   "message": "fix(pam/integration-tests): Fix potential failures depending on pam arguments\n\nPassing lots arguments to a pam library via the service file is not very much supported by older libpam libraries as the one we've in CI, so avoid failing on that by passing the same arguments to the exec-test client through a file when required.\r\n\r\nThen increase the go timeout to allow tests to work in slower runners",
                   "url": "https://github.com/ubuntu/authd/commit/8468a90828c9b0efebf7ea18744d5f60cade7a91"
-               },
-               {
-                  "sha": "1f50dd157a954339e40cdaf298a76d11aaad7816",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1727361578,
-                  "message": "pam/integration-tests/exec: Use a file to pass very long arguments",
-                  "url": "https://github.com/ubuntu/authd/commit/1f50dd157a954339e40cdaf298a76d11aaad7816"
-               },
-               {
-                  "sha": "e7aaa584ce2d4654ca7cb6c085e3d4016a9a5789",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1727356257,
-                  "message": "pam/integration-tests: Save generated services file artifacts",
-                  "url": "https://github.com/ubuntu/authd/commit/e7aaa584ce2d4654ca7cb6c085e3d4016a9a5789"
                }
             ],
             "ciActions": [
