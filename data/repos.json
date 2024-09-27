@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "908d67e1952e95e8da9003d2978e812aca60626b",
+                  "sha": "8468a90828c9b0efebf7ea18744d5f60cade7a91",
                   "author": "Marco Trevisan",
-                  "timestamp": 1727238398,
-                  "message": "pam/integration-tests/native: Check that the user 'r' is accepted (#554)\n\nThis is something that was already manually tested, but since 'r' is a\r\nspecial string in the native model, let's add an explicit check,\r\nensuring that a such user can work properly.\r\n\r\nAnd no, we won't support a 'r' secret, even though we could just wait\r\nfor a broker refusal before using it as a \"go back\" command, but at the\r\ndate there's not a real requirement for that to increase the model\r\ncomplexity.",
-                  "url": "https://github.com/ubuntu/authd/commit/908d67e1952e95e8da9003d2978e812aca60626b"
+                  "timestamp": 1727410772,
+                  "message": "fix(pam/integration-tests): Fix potential failures depending on pam arguments\n\nPassing lots arguments to a pam library via the service file is not very much supported by older libpam libraries as the one we've in CI, so avoid failing on that by passing the same arguments to the exec-test client through a file when required.\r\n\r\nThen increase the go timeout to allow tests to work in slower runners",
+                  "url": "https://github.com/ubuntu/authd/commit/8468a90828c9b0efebf7ea18744d5f60cade7a91"
                },
                {
-                  "sha": "02d20f6953194694eca7199c59b487847b69f832",
+                  "sha": "1f50dd157a954339e40cdaf298a76d11aaad7816",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1727197994,
-                  "message": "pam/integration-tests/native: Check that the user 'r' is accepted\n\nThis is something that was manually tested, but since 'r' is a special\nstring in the native model, let's add an explicit check, ensuring that\na such user can work properly.\n\nAnd no, we won't support a 'r' secret, even though we could just wait\nfor a broker refusal before using it as a \"go back\" command.",
-                  "url": "https://github.com/ubuntu/authd/commit/02d20f6953194694eca7199c59b487847b69f832"
+                  "timestamp": 1727361578,
+                  "message": "pam/integration-tests/exec: Use a file to pass very long arguments",
+                  "url": "https://github.com/ubuntu/authd/commit/1f50dd157a954339e40cdaf298a76d11aaad7816"
                },
                {
-                  "sha": "41e4039733681f4f35398f4a782d94bc62fbe608",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1727236890,
-                  "message": "cleanup(pam/integration-tests): Highlight PAM error messages better (#552)\n\nEnsure they're clearly marked as such so that we don't confuse them with\r\nsimple info messages.",
-                  "url": "https://github.com/ubuntu/authd/commit/41e4039733681f4f35398f4a782d94bc62fbe608"
+                  "sha": "e7aaa584ce2d4654ca7cb6c085e3d4016a9a5789",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1727356257,
+                  "message": "pam/integration-tests: Save generated services file artifacts",
+                  "url": "https://github.com/ubuntu/authd/commit/e7aaa584ce2d4654ca7cb6c085e3d4016a9a5789"
                }
             ],
             "ciActions": [
