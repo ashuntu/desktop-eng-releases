@@ -6611,6 +6611,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "90b23604eaa060d396629e493df588b9f39fe967",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1727698697,
+                  "message": "deps(go): bump the minor-updates group across 1 directory with 3 updates (#556)",
+                  "url": "https://github.com/ubuntu/authd/commit/90b23604eaa060d396629e493df588b9f39fe967"
+               },
+               {
                   "sha": "1ba9bceb3c00e674145886b2e4971f8c11a60211",
                   "author": "Marco Trevisan",
                   "timestamp": 1727420110,
@@ -6623,13 +6630,6 @@
                   "timestamp": 1727415422,
                   "message": "ci: Parallelize Go tests jobs\n\nTests start to take quite a bit of time an in case a specific test kind\nfails we have to restart the whole CI job.\n\nTo avoid this use a matrix to parallelize the go test jobs and skip the\nsteps that are not required in each step.\n\nThis is not optimal since we still repeat the setup (although some parts\nare cached and in general the common part takes less than a minute), but\nit allows to get faster builds with a very minimal effort",
                   "url": "https://github.com/ubuntu/authd/commit/f92cd8898f9b5744df9ff601bea2be9987a88f73"
-               },
-               {
-                  "sha": "8468a90828c9b0efebf7ea18744d5f60cade7a91",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1727410772,
-                  "message": "fix(pam/integration-tests): Fix potential failures depending on pam arguments\n\nPassing lots arguments to a pam library via the service file is not very much supported by older libpam libraries as the one we've in CI, so avoid failing on that by passing the same arguments to the exec-test client through a file when required.\r\n\r\nThen increase the go timeout to allow tests to work in slower runners",
-                  "url": "https://github.com/ubuntu/authd/commit/8468a90828c9b0efebf7ea18744d5f60cade7a91"
                }
             ],
             "ciActions": [
