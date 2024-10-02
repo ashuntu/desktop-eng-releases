@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "01af32804a2af1bf8807f7e5cdb879ae6b3ad167",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1727864511,
-                  "message": "Make content of golden file deterministic\n\nTo avoid random changes to the golden file when running tests with\nTESTS_UPDATE_GOLDEN=1.",
-                  "url": "https://github.com/ubuntu/authd/commit/01af32804a2af1bf8807f7e5cdb879ae6b3ad167"
+                  "sha": "e30462429adf32a22c6ee0455606ad15ffe958b6",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1727891088,
+                  "message": "fix(pam/integration-tests): Improve reliability of PAM integration tests and actually run them in race mode (#560)\n\nSince we rely a lot on sleeping on the integration tests, due to the\r\nfact we can't yet go with https://github.com/charmbracelet/vhs/pull/257,\r\nwe need to be able to tune this value depending on the context we're\r\nrunning the tests.\r\n\r\nIn general sanitizers slows down the runtime quite a bit (especially the\r\nthread one), so make possible to use dynamic sleep times values\r\ndepending on variables that we adjust depending on the context we're\r\nrunning in.\r\nTests can now slowed up/down using `AUTHD_TESTS_SLEEP_MULTIPLIER`\r\nvariable too (this can be used for helping local testing too, e.g.\r\npersonally I can reliably run the tests faster in my machine - with no\r\nfailures - using `AUTHD_TESTS_SLEEP_MULTIPLIER=0.3`; but also it helps\r\nto quickly \"fix\" slower machines).\r\n\r\nTune the tape files so that we don't miss some changing contents (as in\r\nthe MFA/QrCode tests) and make the example broker to be a bit lazier.\r\n\r\nThen, I noticed that we were not actually running the integration tests\r\nin `-race` mode, so fix this. Indeed this implies slower tests, but at\r\nleast now we're fully checking for races both the daemon and the client.\r\n\r\nThis worked fine in various builds both in my fork and in a private repo\r\nfork I did where the builders are way slower than the public ones.\r\n\r\nUDENG-4793",
+                  "url": "https://github.com/ubuntu/authd/commit/e30462429adf32a22c6ee0455606ad15ffe958b6"
                },
                {
-                  "sha": "0f277ab9ab699a9b2379161a3281d95659f617f5",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1727342770,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 3 updates\n\nBumps the minor-updates group with 3 updates in the / directory: [github.com/charmbracelet/bubbles](https://github.com/charmbracelet/bubbles), [github.com/charmbracelet/bubbletea](https://github.com/charmbracelet/bubbletea) and [google.golang.org/grpc](https://github.com/grpc/grpc-go).\n\n\nUpdates `github.com/charmbracelet/bubbles` from 0.19.0 to 0.20.0\n- [Release notes](https://github.com/charmbracelet/bubbles/releases)\n- [Changelog](https://github.com/charmbracelet/bubbles/blob/master/.goreleaser.yml)\n- [Commits](https://github.com/charmbracelet/bubbles/compare/v0.19.0...v0.20.0)\n\nUpdates `github.com/charmbracelet/bubbletea` from 1.1.0 to 1.1.1\n- [Release notes](https://github.com/charmbracelet/bubbletea/releases)\n- [Changelog](https://github.com/charmbracelet/bubbletea/blob/main/.goreleaser.yml)\n- [Commits](https://github.com/charmbracelet/bubbletea/compare/v1.1.0...v1.1.1)\n\nUpdates `google.golang.org/grpc` from 1.66.0 to 1.67.0\n- [Release notes](https://github.com/grpc/grpc-go/releases)\n- [Commits](https://github.com/grpc/grpc-go/compare/v1.66.0...v1.67.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/charmbracelet/bubbles\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: github.com/charmbracelet/bubbletea\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: google.golang.org/grpc\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/0f277ab9ab699a9b2379161a3281d95659f617f5"
+                  "sha": "89e8861d15c696b4a14ef19ee10cdf396da2db8b",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1727719667,
+                  "message": "pam/integration-tests/bad-pwquality: Sleep after Enter\n\nWe were sleeping after typing and before actually submitting the new\npassword, leading to potential failures.\n\nDo the other way around instead since it's after we hit Enter that we\ncould have slowdowns",
+                  "url": "https://github.com/ubuntu/authd/commit/89e8861d15c696b4a14ef19ee10cdf396da2db8b"
                },
                {
-                  "sha": "a31acc0a4e75a18b9eabc7e00532d4cbe8a7c1c9",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1727709684,
-                  "message": "Update changelog for 0.3.5\n\nFuel back also changelog for 0.3.4",
-                  "url": "https://github.com/ubuntu/authd/commit/a31acc0a4e75a18b9eabc7e00532d4cbe8a7c1c9"
+                  "sha": "c8bb7d0a6c99068f085fd0fa826921d15ae5d594",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1727708922,
+                  "message": "localgroups: Avoid racy read/writes on local groups\n\nWe are relying on local groups content in order to call gpasswd, but\nin case there are two concurrent writes, the gpasswd file content we're\nreading may not be updated, causing us to call --add or --remove twice\nfor the same content.\n\nSo use a mutex to avoid that we're trying to read from the filesystem\nbefore that the current write operation has been completed.",
+                  "url": "https://github.com/ubuntu/authd/commit/c8bb7d0a6c99068f085fd0fa826921d15ae5d594"
                }
             ],
             "ciActions": [
