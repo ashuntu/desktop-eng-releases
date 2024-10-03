@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b252fc74ea378660011aedc18b40ad1169dbc695",
+                  "sha": "86d9d825a332c2a92b4dda75b8bb6d99d8dba255",
                   "author": "Marco Trevisan",
-                  "timestamp": 1727993197,
-                  "message": "pam/gdm: Keep debugging all the events, sanitizing them if needed (#565)\n\nInstead of hiding the content authentication data completely, show the\r\nwhole challenge when `pam_gdm_debug` build tag is used, or when in\r\ntesting mode.\r\n\r\nOtherwise, just show a sanitized challenge so that we don't miss the\r\nfact that the event has happened.\r\n\r\nIn the same way, keep the conversation debugging alive so that we don't\r\nmiss pieces of what we got from GDM if the content is relevant.\r\n\r\nTo sanitize the JSON I preferred to go wild and just replace the\r\ncontent, since it's still something happening only when debugging only,\r\nso not really something in production code.\r\n\r\nFixes: ca47562d3153, 40fa85db968ff",
-                  "url": "https://github.com/ubuntu/authd/commit/b252fc74ea378660011aedc18b40ad1169dbc695"
+                  "timestamp": 1727995922,
+                  "message": "maint(pam/integration-tests): Cleanup tests code reducing duplicates and add some docs (#567)\n\nWe had almost equal tests definitions for integration tests using VHS,\r\nand since we're just about to add some more, it's time to try to\r\nfactorize the code so that we don't end up having 3 times the same code\r\nbeing repeated, with all the maintenance issues we know.\r\n\r\nSo:\r\n - Reduce the VHS initialization code, by using common wrappers\r\n- Cleanup and drop the misunderstanding between \"PAM Client\" vs \"PAM\r\nExec Client\" and \"CLI\"...\r\n - Move helpers code to helpers files\r\n- Add an [Hacking\r\ndocument](https://github.com/3v1n0/authd/blob/pam-cleanup-integration-dups/pam/Hacking.md)\r\nwith some technical details about how our complex PAM infrastructure\r\nworks and how to compile and test it.",
+                  "url": "https://github.com/ubuntu/authd/commit/86d9d825a332c2a92b4dda75b8bb6d99d8dba255"
                },
                {
-                  "sha": "c608853d2b6db17120e3a930f924f41dca331f02",
+                  "sha": "efa8336c395a8d55ab47de014f623805eee1af20",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1727896769,
-                  "message": "pam/gdm/conversation: Show the Poll response if non-empty\n\nIn case the gdm data poll response has content, it's still something we\nwant to show, even though we should sanitize the value when it contains\nthe challenge secret\n\nFixes: 40fa85db968ff",
-                  "url": "https://github.com/ubuntu/authd/commit/c608853d2b6db17120e3a930f924f41dca331f02"
+                  "timestamp": 1727911136,
+                  "message": "PAM: Add an Hacking document to explain better the architecture",
+                  "url": "https://github.com/ubuntu/authd/commit/efa8336c395a8d55ab47de014f623805eee1af20"
                },
                {
-                  "sha": "e9a71f22fc428bfb0eb7fe77e161d0535f2bfcad",
+                  "sha": "732bf945f0d5bc11a4b245cbd6dbbe6092718c07",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1727896560,
-                  "message": "pam/gdm: Show a sanitized challenge value when printing auth data in debug mode\n\nInstead of hiding the content authentication data completely, show the\nwhole challenge when `pam_gdm_debug` build tag is used, or when in\ntesting mode.\n\nOtherwise, just show a sanitized challenge so that we don't miss the\nfact that the event has happened\n\nFixes: ca47562d3153",
-                  "url": "https://github.com/ubuntu/authd/commit/e9a71f22fc428bfb0eb7fe77e161d0535f2bfcad"
+                  "timestamp": 1727891770,
+                  "message": "pam/integration-tests: Use multi-line test cases to improve maintainability\n\nAdding new options or settings to a test makes it hard to read, so\nsplit the test cases to be in multi-line mode",
+                  "url": "https://github.com/ubuntu/authd/commit/732bf945f0d5bc11a4b245cbd6dbbe6092718c07"
                }
             ],
             "ciActions": [
