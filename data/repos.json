@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "bda8d24f5fa842a3bcf2ca86dbe2f5946b281425",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1728051501,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/bda8d24f5fa842a3bcf2ca86dbe2f5946b281425"
+                  "sha": "89128eae7b100a1eba59fe7ef570c042e71c1c58",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1728308923,
+                  "message": "fix(windows-agent): Run cloud-init when installing from a tarball (#915)\n\nThis PR augments the touchdistro package to provide a function that\r\nwaits on cloud-init. Whether it errors or not only affect logging, thus\r\nwe can provide simpler mocks. The important part is: we need to run the\r\nnew function when installing a distro from a custom rootfs, when there\r\nis no distro launcher to do so.\r\n\r\n----\r\n\r\nUDENG-4066",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/89128eae7b100a1eba59fe7ef570c042e71c1c58"
                },
                {
-                  "sha": "e82d9cb0f00f72e9bc34e5c3d5c828a8a1d1b937",
+                  "sha": "0bba3e57a00280bcf4f8bbef8555d05a582ddb49",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1728051464,
-                  "message": "docs: How-to create WSL instances on multiple Windows machines via Landscape API (#928)\n\nThis PR makes heavy use of tabbed code blocks to show alternative ways\r\nto do things with Bash and PowerShell.\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/a35f3c82-2094-404d-8a68-f13a3c2ccf6c)\r\n\r\nBoth alternatives were tested. The bash one comes from the [Landscape\r\ndocumentation](https://ubuntu.com/landscape/docs/use-a-specific-ubuntu-image-source-for-wsl#installing-with-a-custom-image),\r\nI essentially extracted the piece I was more concerned about (custom\r\nrootfs with cloud-init data) and made a self-contained guide out of it\r\n(plus translating to PowerShell).\r\n\r\n---\r\n\r\nUDENG-4694",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e82d9cb0f00f72e9bc34e5c3d5c828a8a1d1b937"
+                  "timestamp": 1728303899,
+                  "message": "More precise wording\n\ncloud-init is launched by systemd,\nwe just wait for it to finish.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0bba3e57a00280bcf4f8bbef8555d05a582ddb49"
                },
                {
-                  "sha": "3fb6531119cd3d7110061e1fd4d736184ecb88a1",
+                  "sha": "c1d7f64574543529563ac60126e3db000817b595",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1728049764,
-                  "message": "Fix fixable links to MS Store apps\n\nThose links were timing out in CI linkcheck.\nThe UP4W is only accessible from authorised users logged in,\nlinkcheck will always fail, thus excluded.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3fb6531119cd3d7110061e1fd4d736184ecb88a1"
+                  "timestamp": 1728061295,
+                  "message": "Add a test case to simulate cloud-init failing to run",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c1d7f64574543529563ac60126e3db000817b595"
                }
             ],
             "ciActions": [
@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c6bb3bdbb2849295f2d902b97069b89b36295d98",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1728309848,
+                  "message": "Auto update packaging related Rust files",
+                  "url": "https://github.com/ubuntu/authd/commit/c6bb3bdbb2849295f2d902b97069b89b36295d98"
+               },
+               {
+                  "sha": "3b258a0f61fcb8a59c1dd800dab3d6b31c78072b",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1728309784,
+                  "message": "deps(rust): bump the minor-updates group across 1 directory with 5 updates (#570)\n\nBumps the minor-updates group with 5 updates in the / directory:\r\n\r\n| Package | From | To |\r\n| --- | --- | --- |\r\n| [libc](https://github.com/rust-lang/libc) | `0.2.158` | `0.2.159` |\r\n| [tonic](https://github.com/hyperium/tonic) | `0.12.2` | `0.12.3` |\r\n| [prost](https://github.com/tokio-rs/prost) | `0.13.2` | `0.13.3` |\r\n| [hyper-util](https://github.com/hyperium/hyper-util) | `0.1.8` |\r\n`0.1.9` |\r\n| [cc](https://github.com/rust-lang/cc-rs) | `1.1.19` | `1.1.24` |",
+                  "url": "https://github.com/ubuntu/authd/commit/3b258a0f61fcb8a59c1dd800dab3d6b31c78072b"
+               },
+               {
                   "sha": "87a34c43c6ae3176349b1f7be04d110831db6a8c",
                   "author": "Shane Crowley",
                   "timestamp": 1728057916,
                   "message": "CONTRIBUTING.md: remove repeated line under getting started (#571)\n\nHi! I found this repeated line while going through the contributing\r\nguide. This PR removes the same.\r\n\r\nI am new here. I found this project really interesting. Looking forward\r\nto making meaningful contributions to the project.",
                   "url": "https://github.com/ubuntu/authd/commit/87a34c43c6ae3176349b1f7be04d110831db6a8c"
-               },
-               {
-                  "sha": "fc4275e384e8a85e49e32cbbcb5844db20e1b9c0",
-                  "author": "Shiv Tyagi",
-                  "timestamp": 1727975400,
-                  "message": "CONTRIBUTING.md: remove repeated line under getting started",
-                  "url": "https://github.com/ubuntu/authd/commit/fc4275e384e8a85e49e32cbbcb5844db20e1b9c0"
-               },
-               {
-                  "sha": "86d9d825a332c2a92b4dda75b8bb6d99d8dba255",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1727995922,
-                  "message": "maint(pam/integration-tests): Cleanup tests code reducing duplicates and add some docs (#567)\n\nWe had almost equal tests definitions for integration tests using VHS,\r\nand since we're just about to add some more, it's time to try to\r\nfactorize the code so that we don't end up having 3 times the same code\r\nbeing repeated, with all the maintenance issues we know.\r\n\r\nSo:\r\n - Reduce the VHS initialization code, by using common wrappers\r\n- Cleanup and drop the misunderstanding between \"PAM Client\" vs \"PAM\r\nExec Client\" and \"CLI\"...\r\n - Move helpers code to helpers files\r\n- Add an [Hacking\r\ndocument](https://github.com/3v1n0/authd/blob/pam-cleanup-integration-dups/pam/Hacking.md)\r\nwith some technical details about how our complex PAM infrastructure\r\nworks and how to compile and test it.",
-                  "url": "https://github.com/ubuntu/authd/commit/86d9d825a332c2a92b4dda75b8bb6d99d8dba255"
                }
             ],
             "ciActions": [
@@ -6646,25 +6646,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "21625c413732677b8d80d8491a5bbe74c87b55bc",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1728309806,
+                  "message": "deps(go): bump golang.org/x/crypto from 0.27.0 to 0.28.0 (#167)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/21625c413732677b8d80d8491a5bbe74c87b55bc"
+               },
+               {
+                  "sha": "29e96ce252fa38e4b7c80d7b672a7a010650b3e7",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1728291081,
+                  "message": "deps(go): bump golang.org/x/crypto from 0.27.0 to 0.28.0\n\nBumps [golang.org/x/crypto](https://github.com/golang/crypto) from 0.27.0 to 0.28.0.\n- [Commits](https://github.com/golang/crypto/compare/v0.27.0...v0.28.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/crypto\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/29e96ce252fa38e4b7c80d7b672a7a010650b3e7"
+               },
+               {
                   "sha": "0f76acca09980373530da5cf5fdb33cedb3a7013",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1726839445,
                   "message": "Fix computing version script executable (#165)\n\nSnapcraft version on launchpad does not make build script executable.\r\nMake it then explicitely executable.",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0f76acca09980373530da5cf5fdb33cedb3a7013"
-               },
-               {
-                  "sha": "3fe848e2b688c8774ad8f92daaef08aefb6470f2",
-                  "author": "Didier Roche",
-                  "timestamp": 1726838427,
-                  "message": "Fix computing version script executable\n\nSnapcraft version on launchpad does not make build script executable.\nMake it then explicitely executable.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/3fe848e2b688c8774ad8f92daaef08aefb6470f2"
-               },
-               {
-                  "sha": "fc0b2e3546ba86b3cfd854c65787160ba8993104",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1726827225,
-                  "message": "generate snap version from current git tree state (#161)\n\nWe are starting to generate the snap version using the following rules:\r\nWhen considering a tag, if starting with \"<current branch name>-\" it\r\nwill have its prefix removed.\r\nFor instance:\r\n* 0.1 -> 0.1\r\n* msentraid-0.1 -> 0.1 on msentraid branch.\r\n\r\n1. If current commit is tagged, the version is directly the tag name.\r\n2. If current commit is not tagged, the version is:\r\n    a. <last tag name on current branch>+<commit_sha> for main branch.\r\nb. <last tag name on current branch (not in\r\nmain)>+<commit_sha>.<last_commit_merged_from_main> for other branches.\r\n\r\nAny of those version will be annoted with +dirty if there are local\r\nchanges.\r\n\r\nUDENG-4431",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/fc0b2e3546ba86b3cfd854c65787160ba8993104"
                }
             ],
             "ciActions": [
