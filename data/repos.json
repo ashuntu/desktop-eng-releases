@@ -5934,7 +5934,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 346,
+            "newCommits": 351,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -6256,25 +6256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0a7504a998f682337e97215f5b3e722a4d6c5f19",
+                  "sha": "28d5fcff73b797932d304ba6ddf59ac3ee8907f0",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1728566408,
-                  "message": "ci: Factor out building the MSIX (#930)\n\nMaking it in its own action will let us reuse that part when creating\r\nthe publishing CI workflow.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0a7504a998f682337e97215f5b3e722a4d6c5f19"
+                  "timestamp": 1728572544,
+                  "message": "ci: Creates a workflow to publish the MSIX automatically (#938)\n\nThis reuses the MSIX build action and relies on the StoreBroker\r\nPowerShell module to push the updates to the Partner Center.\r\n\r\nI'm tagging this commit as a \"fake release\" so we can see the workflow\r\nin action bumping the package version.\r\n\r\n## Important note about versioning\r\n\r\nWe only track package versioning in Git, the MSIX version is declared in\r\nthe appx manifest as 0.0.0.0 and should remain like that as we compute\r\nthe version dynamically from the closest Git tag and edit the appx\r\nmanifest on the fly as part of the CI job. Similarly the binaries have a\r\nfull version string computed in the same way, just more descriptive as\r\nthey also contain a build number and the commit short SHA-1 (remember\r\nthe last (fourth) section of the version number [is reserved for Store\r\nuse and must be left as\r\n0](https://learn.microsoft.com/en-us/windows/apps/publish/publish-your-app/msix/app-package-requirements#version-numbering-for-windows10-and-11-packages)\r\n).\r\n\r\n--- \r\n\r\n\r\nUDENG-2267",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/28d5fcff73b797932d304ba6ddf59ac3ee8907f0"
                },
                {
-                  "sha": "94790383e82343a83361f1936ac66b2d04af1107",
+                  "sha": "a5b6ae2a4f3066644a8fbc26ea7d64e83471139b",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1728393336,
-                  "message": "Factor out building the MSIX as its own action\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/94790383e82343a83361f1936ac66b2d04af1107"
+                  "timestamp": 1728569554,
+                  "message": "Add an action input to allow selecting StoreUpload or SideloadOnly\n\nAnd remove the unused Version property from msbuild CLI",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a5b6ae2a4f3066644a8fbc26ea7d64e83471139b"
                },
                {
-                  "sha": "89128eae7b100a1eba59fe7ef570c042e71c1c58",
+                  "sha": "7d2f178fa8989bd20d04e7db55901448def13ff6",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1728308923,
-                  "message": "fix(windows-agent): Run cloud-init when installing from a tarball (#915)\n\nThis PR augments the touchdistro package to provide a function that\r\nwaits on cloud-init. Whether it errors or not only affect logging, thus\r\nwe can provide simpler mocks. The important part is: we need to run the\r\nnew function when installing a distro from a custom rootfs, when there\r\nis no distro launcher to do so.\r\n\r\n----\r\n\r\nUDENG-4066",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/89128eae7b100a1eba59fe7ef570c042e71c1c58"
+                  "timestamp": 1728567652,
+                  "message": "Fix computing the version\n\nIf we are the tagged commit, git won't add a '-0' or anything alike,\nso expecting a '-' is a mistake.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7d2f178fa8989bd20d04e7db55901448def13ff6"
                }
             ],
             "ciActions": [
