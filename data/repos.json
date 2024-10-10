@@ -5934,7 +5934,7 @@
          {
             "name": "subiquity",
             "defaultBranch": "main",
-            "newCommits": 351,
+            "newCommits": 353,
             "url": "https://github.com/canonical/subiquity",
             "releases": [
                {
@@ -6646,25 +6646,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fb96382b0217ac5eca4cac3ab7f3b09fcceb8301",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1728562984,
-                  "message": "Implement JWT structure and logic for ID token in the provider mock (#162)\n\nThis implements the `/key` endpoint for the provider and also reworks\r\nthe ID token generation in the tests to resemble the \"real\" ones. By\r\ndoing this, we are better covered in our tests. More detailed\r\nexplanations can be seen in the commit messages.\r\n\r\nUDENG-3724",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/fb96382b0217ac5eca4cac3ab7f3b09fcceb8301"
+                  "sha": "149011e08b73e03e1a01c36ea91ab54421bed962",
+                  "author": "adombeck",
+                  "timestamp": 1728574022,
+                  "message": "Use paging to get all groups from graph API (#170)\n\nCloses #549\r\nUDENG-4908",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/149011e08b73e03e1a01c36ea91ab54421bed962"
                },
                {
-                  "sha": "21625c413732677b8d80d8491a5bbe74c87b55bc",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1728309806,
-                  "message": "deps(go): bump golang.org/x/crypto from 0.27.0 to 0.28.0 (#167)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/21625c413732677b8d80d8491a5bbe74c87b55bc"
+                  "sha": "a7ca0e55bd15d9dc1ac486ab7f15cfbf2049916c",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1728568123,
+                  "message": "refactor: Simplify getGroups\n\n* Use GetID() and GetDisplayName() instead of GetBackingStore().Get()\n* Get the ID before the display name, so that we don't have to get it\n  via a separate call when getting the display name fails. That means\n  that we're also getting the ID if we don't need it at all (in the case\n  that getting the display name succeeds and it's a local group, so we\n  don't return the ID), but that's fine because its value is already\n  stored in memory, so it's cheap to get it.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a7ca0e55bd15d9dc1ac486ab7f15cfbf2049916c"
                },
                {
-                  "sha": "29e96ce252fa38e4b7c80d7b672a7a010650b3e7",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1728291081,
-                  "message": "deps(go): bump golang.org/x/crypto from 0.27.0 to 0.28.0\n\nBumps [golang.org/x/crypto](https://github.com/golang/crypto) from 0.27.0 to 0.28.0.\n- [Commits](https://github.com/golang/crypto/compare/v0.27.0...v0.28.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/crypto\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/29e96ce252fa38e4b7c80d7b672a7a010650b3e7"
+                  "sha": "5fc4296a9ded699678228c309e03f55e2fb9db4b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1728503899,
+                  "message": "Use paging to get all groups from graph API\n\nBy default, Microsoft Graph API only returns 100 objects per call. If\nthere are more objects, it returns a \"@odata.nextLink\" property with a\nlink to the next page of results.\n\nCloses #549",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/5fc4296a9ded699678228c309e03f55e2fb9db4b"
                }
             ],
             "ciActions": [
