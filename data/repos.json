@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "320c20ac3000fa03a96def204c190915aa156c44",
+                  "sha": "e6acbb4803546687fbfb74f560b0eeb2e0fe5249",
                   "author": "Marco Trevisan",
-                  "timestamp": 1728600007,
-                  "message": "maint(pam/pwquality): Protect access to pwquality calls with a mutex (#581)\n\nIn some tests we are failing withe errors such as:\r\n - The password fails the dictionary check - error loading dictionary\r\n\r\nThis is likely due to the fact that we're accessing to the data from\r\nmultiple threads, while the library doesn't seem to be thread-safe so\r\nadd a mutex to ensure this",
-                  "url": "https://github.com/ubuntu/authd/commit/320c20ac3000fa03a96def204c190915aa156c44"
+                  "timestamp": 1728931333,
+                  "message": "fix(pam): Avoid duplicate auth-mode selection race (#585)\n\nSee each commit for details, but this comes up to fix races such as\r\nhttps://github.com/ubuntu/authd/actions/runs/11325604248/job/31492851219\r\nwhere we may end up doing duplicate requests to `GetAuthenticationModes`\r\nthat eventually lead to two `selectAuthMode(firstAuthModeID)` which may\r\nbreak our \"go-back\" requests.\r\n\r\nAlso simplify the handling of `supportedUILayouts` so that it's\r\nfollowing more the ELM architecture.\r\n\r\nThis implies that no broker requests is done until we've the supported\r\nUI defined now, but it's definitely a prerequisite to continue, so\r\nmaking this more explicit looks cleaner to me.\r\n\r\nUDENG-4943",
+                  "url": "https://github.com/ubuntu/authd/commit/e6acbb4803546687fbfb74f560b0eeb2e0fe5249"
                },
                {
-                  "sha": "861aa71dd0317b779cb249feffba4dd5dfac4fce",
+                  "sha": "9d5fadbc9438ae9833d84adb090af0e46cb0cc7d",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1728583957,
-                  "message": "pam/pwquality: Protect access to pwquality calls with a mutex\n\nIn some tests we are failing withe errors such as:\n - The password fails the dictionary check - error loading dictionary\n\nThis is likely due to the fact that we're accessing to the data from\nmultiple threads, while the library doesn't seem to be thread-safe so\nadd a mutex to ensure this",
-                  "url": "https://github.com/ubuntu/authd/commit/861aa71dd0317b779cb249feffba4dd5dfac4fce"
+                  "timestamp": 1728904407,
+                  "message": "pam/authmodeselection: Simplify supported layouts handling\n\nAs per previous commits we can now avoid having the special handling for\nthe supported UI layouts value that is not fully following the ELM\narchitecture, since we were accessing to a value via a pointer struct\ninstead of relying on what was saved in the previous model update.\n\nWe don't need to do this anymore since the supported UI layouts are now\na startup prerequisite",
+                  "url": "https://github.com/ubuntu/authd/commit/9d5fadbc9438ae9833d84adb090af0e46cb0cc7d"
                },
                {
-                  "sha": "ab89e4faa8cd9fb1d6ca98ebf8683ad8f29cc21a",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1728402131,
-                  "message": "Add changelog entry for 0.3.6",
-                  "url": "https://github.com/ubuntu/authd/commit/ab89e4faa8cd9fb1d6ca98ebf8683ad8f29cc21a"
+                  "sha": "385e56955cc5750f0bc387c2aa1a977e1a55a06c",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1728903792,
+                  "message": "brokerSelection: Do not start any broker selection util we know the supported UI\n\nAvoid starting the whole PAM session request until we didn't receive\nthe supported UI from the model, as this is a prerequisite for the\nwhole process to start anyways.\n\nIf the UI does not support anything we can't just proceed, so make the\nprevious commit change safe and more explicit",
+                  "url": "https://github.com/ubuntu/authd/commit/385e56955cc5750f0bc387c2aa1a977e1a55a06c"
                }
             ],
             "ciActions": [
