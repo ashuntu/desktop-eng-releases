@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e6acbb4803546687fbfb74f560b0eeb2e0fe5249",
+                  "sha": "2ff47eb21f1b8d379e1a81a97753acb6ca69ce70",
                   "author": "Marco Trevisan",
-                  "timestamp": 1728931333,
-                  "message": "fix(pam): Avoid duplicate auth-mode selection race (#585)\n\nSee each commit for details, but this comes up to fix races such as\r\nhttps://github.com/ubuntu/authd/actions/runs/11325604248/job/31492851219\r\nwhere we may end up doing duplicate requests to `GetAuthenticationModes`\r\nthat eventually lead to two `selectAuthMode(firstAuthModeID)` which may\r\nbreak our \"go-back\" requests.\r\n\r\nAlso simplify the handling of `supportedUILayouts` so that it's\r\nfollowing more the ELM architecture.\r\n\r\nThis implies that no broker requests is done until we've the supported\r\nUI defined now, but it's definitely a prerequisite to continue, so\r\nmaking this more explicit looks cleaner to me.\r\n\r\nUDENG-4943",
-                  "url": "https://github.com/ubuntu/authd/commit/e6acbb4803546687fbfb74f560b0eeb2e0fe5249"
+                  "timestamp": 1728993691,
+                  "message": "pam/gdmmodel-test: Ignore brokers checks on PAM errors (#587)\n\nWe didn't care about checking broker details on error, but we where just\r\nignoring all the Pam.ErrSystem's instead of only the ones due to a test\r\nearly stop request.\r\n\r\nSo fix this, fixing various test races:\r\n-\r\nhttps://github.com/ubuntu/authd/actions/runs/11332985482/job/31516241957\r\n-\r\nhttps://github.com/ubuntu/authd/actions/runs/11332985482/job/31517065552",
+                  "url": "https://github.com/ubuntu/authd/commit/2ff47eb21f1b8d379e1a81a97753acb6ca69ce70"
                },
                {
-                  "sha": "9d5fadbc9438ae9833d84adb090af0e46cb0cc7d",
+                  "sha": "578dd5c5b58683d49ae2dac1ee189089fa3df9b3",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1728904407,
-                  "message": "pam/authmodeselection: Simplify supported layouts handling\n\nAs per previous commits we can now avoid having the special handling for\nthe supported UI layouts value that is not fully following the ELM\narchitecture, since we were accessing to a value via a pointer struct\ninstead of relying on what was saved in the previous model update.\n\nWe don't need to do this anymore since the supported UI layouts are now\na startup prerequisite",
-                  "url": "https://github.com/ubuntu/authd/commit/9d5fadbc9438ae9833d84adb090af0e46cb0cc7d"
+                  "timestamp": 1728935064,
+                  "message": "pam/gdmmodel-test: Do not check for received infos on explicit quits\n\nhttps://github.com/ubuntu/authd/actions/runs/11332985482/job/31517065552",
+                  "url": "https://github.com/ubuntu/authd/commit/578dd5c5b58683d49ae2dac1ee189089fa3df9b3"
                },
                {
-                  "sha": "385e56955cc5750f0bc387c2aa1a977e1a55a06c",
+                  "sha": "c87424a0f08b169a32c492cfaeb13f1c3cce693c",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1728903792,
-                  "message": "brokerSelection: Do not start any broker selection util we know the supported UI\n\nAvoid starting the whole PAM session request until we didn't receive\nthe supported UI from the model, as this is a prerequisite for the\nwhole process to start anyways.\n\nIf the UI does not support anything we can't just proceed, so make the\nprevious commit change safe and more explicit",
-                  "url": "https://github.com/ubuntu/authd/commit/385e56955cc5750f0bc387c2aa1a977e1a55a06c"
+                  "timestamp": 1728934238,
+                  "message": "pam/gdmmodel-test: Actually ignore brokers checks on PAM errors\n\nWe didn't care about checking broker details on error, but we where just\nignoring all the Pam.ErrSystem's instead of only the ones due to a test\nearly stop request.\n\nSo fix this, fixing various test races:\n  https://github.com/ubuntu/authd/actions/runs/11332985482/job/31516241957",
+                  "url": "https://github.com/ubuntu/authd/commit/c87424a0f08b169a32c492cfaeb13f1c3cce693c"
                }
             ],
             "ciActions": [
@@ -6646,25 +6646,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "63b335834c4b5ec653c9a1176e011fc5aa007601",
-                  "author": "adombeck",
-                  "timestamp": 1728649486,
-                  "message": "Always try to refresh the user info on local password login (#171)\n\nCloses #520\r\nUDENG-4436",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/63b335834c4b5ec653c9a1176e011fc5aa007601"
+                  "sha": "0229b6defe581f9a8418fd46d7ce76b47539a1d2",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1728993592,
+                  "message": "Google provider (#180)\n\nWe need to override the generic provider to remove the offline_access\r\nscope. For TV and limited input devices apps, Google APIs will reject\r\nany request with this scope, while still allowing non interactive user\r\naccess token refresh.\r\nAll the rest of the functionalities is aligned with the NoProvider one.\r\nAdded tests and \"withgoogle\" build tag for it.\r\n\r\nUDENG-4953",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0229b6defe581f9a8418fd46d7ce76b47539a1d2"
                },
                {
-                  "sha": "4318f5ce4cdb52b876bb93e5fa5b9772da3b9de3",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1728510286,
-                  "message": "Store the extra field \"scope\" of the token persistently\n\nSo that we can also check it when refreshing the UserInfo with a token\nloaded from disk.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4318f5ce4cdb52b876bb93e5fa5b9772da3b9de3"
+                  "sha": "b70b1e198ef1f8afb4e6e5be08626fb10bb8d370",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1728992730,
+                  "message": "Use email for generic provider as the identifier (#179)\n\nMost web login platform are using the user email address as an\r\nidentifier. Let’s align the generic \"no provider\" on this, which can\r\nthen be overriden by specific provider code.\r\nAlign tests on using emails as identifier for generic provider.\r\n\r\nUDENG-4950",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/b70b1e198ef1f8afb4e6e5be08626fb10bb8d370"
                },
                {
-                  "sha": "97dc7a8df88a8722d2d1fdcbc944aebeb715b2ac",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1725618590,
-                  "message": "Add debug output",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/97dc7a8df88a8722d2d1fdcbc944aebeb715b2ac"
+                  "sha": "e64935dbca2e55fe130710f27ac9ea53f0d68653",
+                  "author": "Didier Roche",
+                  "timestamp": 1728984840,
+                  "message": "withgoogle build tag to build with the google provider\n\nWe will have a dedicated snap and its own branch to build with it.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e64935dbca2e55fe130710f27ac9ea53f0d68653"
                }
             ],
             "ciActions": [
