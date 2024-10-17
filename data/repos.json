@@ -3754,25 +3754,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "02e97f3b22c339cbadd67e9977778997aee0ae30",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1728636559,
-                  "message": "fix(daemon): set TOKIO_WORKER_THREADS to stop tokio trying to read cgroup files which will result in apparmor denials (#129)\n\nAddresses the issue reported in\r\nhttps://github.com/canonical/desktop-security-center/issues/71\r\n\r\n@olivercalder confirms that this removes the log spam when running in a\r\nVM without a desktop session but he's still seeing the following denial\r\nwhich I'm yet to track down:\r\n```\r\nOct 10 16:13:26 integration-oracular kernel: audit: type=1400 audit(1728576806.803:30728): apparmor=\"DENIED\" operation=\"open\" class=\"file\" profile=\"snap-update-ns.prompting-client\" name=\"/proc/417652/maps\" pid=417652 comm=\"5\" requested_mask=\"r\" denied_mask=\"r\" fsuid=1000 ouid=0\r\n```\r\n\r\nI've also reduced multiple log lines from `INFO` to `DEBUG` so the\r\nprompting client is less chatty by default.",
-                  "url": "https://github.com/canonical/prompting-client/commit/02e97f3b22c339cbadd67e9977778997aee0ae30"
+                  "sha": "fa044c1da99a86869b79bd38a7c4e9aa272cdabc",
+                  "author": "Dennis Loose",
+                  "timestamp": 1729158646,
+                  "message": "feat(prompt_ui): add error message box (#131)\n\nAdds an error box to the prompting UI to display generic errors received\r\nfrom the rust client when submitting a reply.\r\n\r\nThe only error we currently handle explicitly is `PROMPT_NOT_FOUND`, in\r\nwhich case UI closes normally when the reply is submitted, without any\r\nindication to the user that the prompt has already been handled and\r\ntheir reply is ignored (we have this as an issue in our backlog to come\r\nback to).\r\n\r\nFor `UNKNOWN` errors, all we can currently do is show a generic message\r\nalong with the raw error string, see screen recording. We've previously\r\nshown the raw error message only as part of the text field validation\r\nfor the custom path pattern. Generally, we don't know whether the error\r\nis related to the custom path pattern, so in this generic case we should\r\ncompletely disentangle the error message box and the field validation.\r\nOnce there is a defined set of possible errors, we can show the text\r\nfield error in addition to the message for errors that are related to\r\nthe custom path submitted by the user.\r\n\r\n[Screencast from 2024-10-16\r\n11-51-14.webm](https://github.com/user-attachments/assets/ce5044ce-df45-4d3a-8417-a306da3cab1f)\r\n\r\n@juanruitina do we want the error message to disappear again, once the\r\nuser changes their selection in the UI?\r\n\r\nUDENG-4963",
+                  "url": "https://github.com/canonical/prompting-client/commit/fa044c1da99a86869b79bd38a7c4e9aa272cdabc"
                },
                {
-                  "sha": "2c4ddf39c37efcf5325482aa2534631a5995e3dc",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1728578196,
-                  "message": "fix(daemon): set TOKIO_WORKER_THREADS to stop tokio trying to read cgroup files which will result in apparmor denials #71",
-                  "url": "https://github.com/canonical/prompting-client/commit/2c4ddf39c37efcf5325482aa2534631a5995e3dc"
+                  "sha": "9d1eb91ea369174f3ef5804e9622279c17a0c578",
+                  "author": "Dennis Loose",
+                  "timestamp": 1729154215,
+                  "message": "fix: adjust error message l10n strings",
+                  "url": "https://github.com/canonical/prompting-client/commit/9d1eb91ea369174f3ef5804e9622279c17a0c578"
                },
                {
-                  "sha": "0dad8499434a34be4a3279ae06a1eefe1dd2fa25",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1728314244,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#113)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\r\nfor [ubuntu-desktop-translations/Prompting\r\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\r\n\r\n\r\n\r\nCurrent translation status:\r\n\r\n![Weblate translation\r\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
-                  "url": "https://github.com/canonical/prompting-client/commit/0dad8499434a34be4a3279ae06a1eefe1dd2fa25"
+                  "sha": "4a42fead5c0cd7a4107fe13d93cc0a8aade52d39",
+                  "author": "Dennis Loose",
+                  "timestamp": 1729071314,
+                  "message": "test: update test data to match output from rust client",
+                  "url": "https://github.com/canonical/prompting-client/commit/4a42fead5c0cd7a4107fe13d93cc0a8aade52d39"
                }
             ],
             "ciActions": [],
@@ -5659,25 +5659,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "02e97f3b22c339cbadd67e9977778997aee0ae30",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1728636559,
-                  "message": "fix(daemon): set TOKIO_WORKER_THREADS to stop tokio trying to read cgroup files which will result in apparmor denials (#129)\n\nAddresses the issue reported in\r\nhttps://github.com/canonical/desktop-security-center/issues/71\r\n\r\n@olivercalder confirms that this removes the log spam when running in a\r\nVM without a desktop session but he's still seeing the following denial\r\nwhich I'm yet to track down:\r\n```\r\nOct 10 16:13:26 integration-oracular kernel: audit: type=1400 audit(1728576806.803:30728): apparmor=\"DENIED\" operation=\"open\" class=\"file\" profile=\"snap-update-ns.prompting-client\" name=\"/proc/417652/maps\" pid=417652 comm=\"5\" requested_mask=\"r\" denied_mask=\"r\" fsuid=1000 ouid=0\r\n```\r\n\r\nI've also reduced multiple log lines from `INFO` to `DEBUG` so the\r\nprompting client is less chatty by default.",
-                  "url": "https://github.com/canonical/prompting-client/commit/02e97f3b22c339cbadd67e9977778997aee0ae30"
+                  "sha": "fa044c1da99a86869b79bd38a7c4e9aa272cdabc",
+                  "author": "Dennis Loose",
+                  "timestamp": 1729158646,
+                  "message": "feat(prompt_ui): add error message box (#131)\n\nAdds an error box to the prompting UI to display generic errors received\r\nfrom the rust client when submitting a reply.\r\n\r\nThe only error we currently handle explicitly is `PROMPT_NOT_FOUND`, in\r\nwhich case UI closes normally when the reply is submitted, without any\r\nindication to the user that the prompt has already been handled and\r\ntheir reply is ignored (we have this as an issue in our backlog to come\r\nback to).\r\n\r\nFor `UNKNOWN` errors, all we can currently do is show a generic message\r\nalong with the raw error string, see screen recording. We've previously\r\nshown the raw error message only as part of the text field validation\r\nfor the custom path pattern. Generally, we don't know whether the error\r\nis related to the custom path pattern, so in this generic case we should\r\ncompletely disentangle the error message box and the field validation.\r\nOnce there is a defined set of possible errors, we can show the text\r\nfield error in addition to the message for errors that are related to\r\nthe custom path submitted by the user.\r\n\r\n[Screencast from 2024-10-16\r\n11-51-14.webm](https://github.com/user-attachments/assets/ce5044ce-df45-4d3a-8417-a306da3cab1f)\r\n\r\n@juanruitina do we want the error message to disappear again, once the\r\nuser changes their selection in the UI?\r\n\r\nUDENG-4963",
+                  "url": "https://github.com/canonical/prompting-client/commit/fa044c1da99a86869b79bd38a7c4e9aa272cdabc"
                },
                {
-                  "sha": "2c4ddf39c37efcf5325482aa2534631a5995e3dc",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1728578196,
-                  "message": "fix(daemon): set TOKIO_WORKER_THREADS to stop tokio trying to read cgroup files which will result in apparmor denials #71",
-                  "url": "https://github.com/canonical/prompting-client/commit/2c4ddf39c37efcf5325482aa2534631a5995e3dc"
+                  "sha": "9d1eb91ea369174f3ef5804e9622279c17a0c578",
+                  "author": "Dennis Loose",
+                  "timestamp": 1729154215,
+                  "message": "fix: adjust error message l10n strings",
+                  "url": "https://github.com/canonical/prompting-client/commit/9d1eb91ea369174f3ef5804e9622279c17a0c578"
                },
                {
-                  "sha": "0dad8499434a34be4a3279ae06a1eefe1dd2fa25",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1728314244,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#113)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\r\nfor [ubuntu-desktop-translations/Prompting\r\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\r\n\r\n\r\n\r\nCurrent translation status:\r\n\r\n![Weblate translation\r\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
-                  "url": "https://github.com/canonical/prompting-client/commit/0dad8499434a34be4a3279ae06a1eefe1dd2fa25"
+                  "sha": "4a42fead5c0cd7a4107fe13d93cc0a8aade52d39",
+                  "author": "Dennis Loose",
+                  "timestamp": 1729071314,
+                  "message": "test: update test data to match output from rust client",
+                  "url": "https://github.com/canonical/prompting-client/commit/4a42fead5c0cd7a4107fe13d93cc0a8aade52d39"
                }
             ],
             "ciActions": [],
@@ -7805,25 +7805,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "02e97f3b22c339cbadd67e9977778997aee0ae30",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1728636559,
-                  "message": "fix(daemon): set TOKIO_WORKER_THREADS to stop tokio trying to read cgroup files which will result in apparmor denials (#129)\n\nAddresses the issue reported in\r\nhttps://github.com/canonical/desktop-security-center/issues/71\r\n\r\n@olivercalder confirms that this removes the log spam when running in a\r\nVM without a desktop session but he's still seeing the following denial\r\nwhich I'm yet to track down:\r\n```\r\nOct 10 16:13:26 integration-oracular kernel: audit: type=1400 audit(1728576806.803:30728): apparmor=\"DENIED\" operation=\"open\" class=\"file\" profile=\"snap-update-ns.prompting-client\" name=\"/proc/417652/maps\" pid=417652 comm=\"5\" requested_mask=\"r\" denied_mask=\"r\" fsuid=1000 ouid=0\r\n```\r\n\r\nI've also reduced multiple log lines from `INFO` to `DEBUG` so the\r\nprompting client is less chatty by default.",
-                  "url": "https://github.com/canonical/prompting-client/commit/02e97f3b22c339cbadd67e9977778997aee0ae30"
+                  "sha": "fa044c1da99a86869b79bd38a7c4e9aa272cdabc",
+                  "author": "Dennis Loose",
+                  "timestamp": 1729158646,
+                  "message": "feat(prompt_ui): add error message box (#131)\n\nAdds an error box to the prompting UI to display generic errors received\r\nfrom the rust client when submitting a reply.\r\n\r\nThe only error we currently handle explicitly is `PROMPT_NOT_FOUND`, in\r\nwhich case UI closes normally when the reply is submitted, without any\r\nindication to the user that the prompt has already been handled and\r\ntheir reply is ignored (we have this as an issue in our backlog to come\r\nback to).\r\n\r\nFor `UNKNOWN` errors, all we can currently do is show a generic message\r\nalong with the raw error string, see screen recording. We've previously\r\nshown the raw error message only as part of the text field validation\r\nfor the custom path pattern. Generally, we don't know whether the error\r\nis related to the custom path pattern, so in this generic case we should\r\ncompletely disentangle the error message box and the field validation.\r\nOnce there is a defined set of possible errors, we can show the text\r\nfield error in addition to the message for errors that are related to\r\nthe custom path submitted by the user.\r\n\r\n[Screencast from 2024-10-16\r\n11-51-14.webm](https://github.com/user-attachments/assets/ce5044ce-df45-4d3a-8417-a306da3cab1f)\r\n\r\n@juanruitina do we want the error message to disappear again, once the\r\nuser changes their selection in the UI?\r\n\r\nUDENG-4963",
+                  "url": "https://github.com/canonical/prompting-client/commit/fa044c1da99a86869b79bd38a7c4e9aa272cdabc"
                },
                {
-                  "sha": "2c4ddf39c37efcf5325482aa2534631a5995e3dc",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1728578196,
-                  "message": "fix(daemon): set TOKIO_WORKER_THREADS to stop tokio trying to read cgroup files which will result in apparmor denials #71",
-                  "url": "https://github.com/canonical/prompting-client/commit/2c4ddf39c37efcf5325482aa2534631a5995e3dc"
+                  "sha": "9d1eb91ea369174f3ef5804e9622279c17a0c578",
+                  "author": "Dennis Loose",
+                  "timestamp": 1729154215,
+                  "message": "fix: adjust error message l10n strings",
+                  "url": "https://github.com/canonical/prompting-client/commit/9d1eb91ea369174f3ef5804e9622279c17a0c578"
                },
                {
-                  "sha": "0dad8499434a34be4a3279ae06a1eefe1dd2fa25",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1728314244,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#113)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\r\nfor [ubuntu-desktop-translations/Prompting\r\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\r\n\r\n\r\n\r\nCurrent translation status:\r\n\r\n![Weblate translation\r\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
-                  "url": "https://github.com/canonical/prompting-client/commit/0dad8499434a34be4a3279ae06a1eefe1dd2fa25"
+                  "sha": "4a42fead5c0cd7a4107fe13d93cc0a8aade52d39",
+                  "author": "Dennis Loose",
+                  "timestamp": 1729071314,
+                  "message": "test: update test data to match output from rust client",
+                  "url": "https://github.com/canonical/prompting-client/commit/4a42fead5c0cd7a4107fe13d93cc0a8aade52d39"
                }
             ],
             "ciActions": [],
