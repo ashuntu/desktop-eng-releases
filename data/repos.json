@@ -6565,7 +6565,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 52,
+            "newCommits": 58,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fcb5642d2160be3ccbadbca55cec20730dd5964d",
+                  "sha": "3e0f11bcbf681c996190b3c8db054c4ef379753e",
                   "author": "Marco Trevisan",
-                  "timestamp": 1729530789,
-                  "message": "maint(pam/integration-tests) Drop 28k empty lines (e.g. Drop all the final empty lines from the golden files) (#598)\n\nWe may have lots of duplicated lines if the golden file size height is\r\nbig enough, and they don't serve us much a part from making reading the\r\ngolden files harder for us.\r\n\r\nSo let's just drop them using a regex.",
-                  "url": "https://github.com/ubuntu/authd/commit/fcb5642d2160be3ccbadbca55cec20730dd5964d"
+                  "timestamp": 1729592778,
+                  "message": "maint(pam/formmodel): Use uniform style for password entries (#597)\n\nIn the CLI interface we used to use EchoPassword entry mode for the new\r\npassword form, while an empty field for other operations.\r\n\r\nThis is quite inconsistent, so since we've an unique type for handling\r\nthe input models (not used at the moment), just use it to ensure that\r\nwe're using always the same policy in all the password entries we have.",
+                  "url": "https://github.com/ubuntu/authd/commit/3e0f11bcbf681c996190b3c8db054c4ef379753e"
                },
                {
-                  "sha": "d4fbe12464259ebf1792fd5ea50536adc2c81379",
+                  "sha": "6a40de00ca3fe46fa674005c0d159b429b1c5893",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1729503886,
-                  "message": "pam/integration-tests: Drop golden files for (re)moved tests",
-                  "url": "https://github.com/ubuntu/authd/commit/d4fbe12464259ebf1792fd5ea50536adc2c81379"
+                  "timestamp": 1729554167,
+                  "message": "pam/authentication: Unset the current model once authentication is done\n\nWhen we got an authentication result, whether is positive or negative,\nwe may avoid drawing the current authentication model or we may end up\nshowing it again when the authentication is completed, as golden files\nwere highlighting.\n\nSo fix this.",
+                  "url": "https://github.com/ubuntu/authd/commit/6a40de00ca3fe46fa674005c0d159b429b1c5893"
                },
                {
-                  "sha": "af70e2c931ddd82c163c919887c6362d1d12f078",
+                  "sha": "81fd0ad86699ba2483142eb9036e4e33eedf1a4a",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1729283444,
-                  "message": "pam/integration-tests: Drop all the final empty lines from the golden files\n\nWe may have lots of duplicated lines if the golden file size height is\nbig enough, and they don't serve us much a part from making reading the\ngolden files harder for us.\n\nSo let's just drop them using a regex.",
-                  "url": "https://github.com/ubuntu/authd/commit/af70e2c931ddd82c163c919887c6362d1d12f078"
+                  "timestamp": 1729553892,
+                  "message": "pam/formmodel: Do not show potential empty labels lines",
+                  "url": "https://github.com/ubuntu/authd/commit/81fd0ad86699ba2483142eb9036e4e33eedf1a4a"
                }
             ],
             "ciActions": [
