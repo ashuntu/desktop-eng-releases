@@ -3297,25 +3297,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7983059c6b40fb4d34371a5d37dc036554c929e5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1728481295,
-                  "message": "Merge pull request #313 from d-loose/user-agent\n\nfeat: make user agent string comply with LVFS requirements",
-                  "url": "https://github.com/canonical/firmware-updater/commit/7983059c6b40fb4d34371a5d37dc036554c929e5"
+                  "sha": "12d7eb84c5ad64ef581ac2dca7c8bf2b2b65f313",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1729605458,
+                  "message": "Merge pull request #315 from weblate/weblate-ubuntu-desktop-translations-firmware-updater\n\nTranslations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/firmware-updater/commit/12d7eb84c5ad64ef581ac2dca7c8bf2b2b65f313"
                },
                {
-                  "sha": "d6e3ed5e9891c6d4fd27047eabf533475984b908",
-                  "author": "Dennis Loose",
-                  "timestamp": 1728477450,
-                  "message": "fix: remove trailing newlines from uname output",
-                  "url": "https://github.com/canonical/firmware-updater/commit/d6e3ed5e9891c6d4fd27047eabf533475984b908"
+                  "sha": "3113c3637f2a1523643a0b2211924b65f5b005bf",
+                  "author": "AefghThreenine",
+                  "timestamp": 1728963240,
+                  "message": "Translated using Weblate (Thai)\n\nCurrently translated at 0.9% (1 of 105 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/th/",
+                  "url": "https://github.com/canonical/firmware-updater/commit/3113c3637f2a1523643a0b2211924b65f5b005bf"
                },
                {
-                  "sha": "3b361712a141a54c466287215e31ca7a42f7a5d2",
-                  "author": "Dennis Loose",
-                  "timestamp": 1728475776,
-                  "message": "fix: make _userAgent mutable",
-                  "url": "https://github.com/canonical/firmware-updater/commit/3b361712a141a54c466287215e31ca7a42f7a5d2"
+                  "sha": "fc1464ad6220ba7b9c37abff03413495e4b2a25f",
+                  "author": "Jung Hoe Hyeong",
+                  "timestamp": 1728845310,
+                  "message": "Translated using Weblate (Korean)\n\nCurrently translated at 14.2% (15 of 105 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/ko/",
+                  "url": "https://github.com/canonical/firmware-updater/commit/fc1464ad6220ba7b9c37abff03413495e4b2a25f"
                }
             ],
             "ciActions": [
@@ -3754,25 +3754,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fa044c1da99a86869b79bd38a7c4e9aa272cdabc",
-                  "author": "Dennis Loose",
-                  "timestamp": 1729158646,
-                  "message": "feat(prompt_ui): add error message box (#131)\n\nAdds an error box to the prompting UI to display generic errors received\r\nfrom the rust client when submitting a reply.\r\n\r\nThe only error we currently handle explicitly is `PROMPT_NOT_FOUND`, in\r\nwhich case UI closes normally when the reply is submitted, without any\r\nindication to the user that the prompt has already been handled and\r\ntheir reply is ignored (we have this as an issue in our backlog to come\r\nback to).\r\n\r\nFor `UNKNOWN` errors, all we can currently do is show a generic message\r\nalong with the raw error string, see screen recording. We've previously\r\nshown the raw error message only as part of the text field validation\r\nfor the custom path pattern. Generally, we don't know whether the error\r\nis related to the custom path pattern, so in this generic case we should\r\ncompletely disentangle the error message box and the field validation.\r\nOnce there is a defined set of possible errors, we can show the text\r\nfield error in addition to the message for errors that are related to\r\nthe custom path submitted by the user.\r\n\r\n[Screencast from 2024-10-16\r\n11-51-14.webm](https://github.com/user-attachments/assets/ce5044ce-df45-4d3a-8417-a306da3cab1f)\r\n\r\n@juanruitina do we want the error message to disappear again, once the\r\nuser changes their selection in the UI?\r\n\r\nUDENG-4963",
-                  "url": "https://github.com/canonical/prompting-client/commit/fa044c1da99a86869b79bd38a7c4e9aa272cdabc"
+                  "sha": "f56bd245614999766d1e7433f0bef86b62294260",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1729606185,
+                  "message": "feat: structured error responses (#132)\n\nThis wires in the structured error responses now provided by snapd so\r\nthat we can serve better error messages to the user in the UI. The proto\r\nfiles have been updated to cover what we expect to be the full list of\r\npossible errors that can be returned from snapd, including a catch all\r\n\"raw\" variant that just provides the raw error message as a string. This\r\nis used when there is no structured data from snapd (internal server\r\nerror, outdated snapd API etc) or if we are unable to parse the\r\nstructured data included in the error response (breaking API changes,\r\nuser running misaligned versions of the client & snapd etc).",
+                  "url": "https://github.com/canonical/prompting-client/commit/f56bd245614999766d1e7433f0bef86b62294260"
                },
                {
-                  "sha": "9d1eb91ea369174f3ef5804e9622279c17a0c578",
-                  "author": "Dennis Loose",
-                  "timestamp": 1729154215,
-                  "message": "fix: adjust error message l10n strings",
-                  "url": "https://github.com/canonical/prompting-client/commit/9d1eb91ea369174f3ef5804e9622279c17a0c578"
+                  "sha": "564b62121d790ade825c072348eec367c636cf51",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1729605127,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#130)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\r\nfor [ubuntu-desktop-translations/Prompting\r\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\r\n\r\n\r\n\r\nCurrent translation status:\r\n\r\n![Weblate translation\r\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
+                  "url": "https://github.com/canonical/prompting-client/commit/564b62121d790ade825c072348eec367c636cf51"
                },
                {
-                  "sha": "4a42fead5c0cd7a4107fe13d93cc0a8aade52d39",
+                  "sha": "8e8eb72102a685243bb558c51026b023bf118ab7",
                   "author": "Dennis Loose",
-                  "timestamp": 1729071314,
-                  "message": "test: update test data to match output from rust client",
-                  "url": "https://github.com/canonical/prompting-client/commit/4a42fead5c0cd7a4107fe13d93cc0a8aade52d39"
+                  "timestamp": 1729600785,
+                  "message": "refactor: `Data` -> `PromptReplyType` in generated dart types",
+                  "url": "https://github.com/canonical/prompting-client/commit/8e8eb72102a685243bb558c51026b023bf118ab7"
                }
             ],
             "ciActions": [],
@@ -4266,7 +4266,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 275,
+            "newCommits": 276,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -5169,25 +5169,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7983059c6b40fb4d34371a5d37dc036554c929e5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1728481295,
-                  "message": "Merge pull request #313 from d-loose/user-agent\n\nfeat: make user agent string comply with LVFS requirements",
-                  "url": "https://github.com/canonical/firmware-updater/commit/7983059c6b40fb4d34371a5d37dc036554c929e5"
+                  "sha": "12d7eb84c5ad64ef581ac2dca7c8bf2b2b65f313",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1729605458,
+                  "message": "Merge pull request #315 from weblate/weblate-ubuntu-desktop-translations-firmware-updater\n\nTranslations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/firmware-updater/commit/12d7eb84c5ad64ef581ac2dca7c8bf2b2b65f313"
                },
                {
-                  "sha": "d6e3ed5e9891c6d4fd27047eabf533475984b908",
-                  "author": "Dennis Loose",
-                  "timestamp": 1728477450,
-                  "message": "fix: remove trailing newlines from uname output",
-                  "url": "https://github.com/canonical/firmware-updater/commit/d6e3ed5e9891c6d4fd27047eabf533475984b908"
+                  "sha": "3113c3637f2a1523643a0b2211924b65f5b005bf",
+                  "author": "AefghThreenine",
+                  "timestamp": 1728963240,
+                  "message": "Translated using Weblate (Thai)\n\nCurrently translated at 0.9% (1 of 105 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/th/",
+                  "url": "https://github.com/canonical/firmware-updater/commit/3113c3637f2a1523643a0b2211924b65f5b005bf"
                },
                {
-                  "sha": "3b361712a141a54c466287215e31ca7a42f7a5d2",
-                  "author": "Dennis Loose",
-                  "timestamp": 1728475776,
-                  "message": "fix: make _userAgent mutable",
-                  "url": "https://github.com/canonical/firmware-updater/commit/3b361712a141a54c466287215e31ca7a42f7a5d2"
+                  "sha": "fc1464ad6220ba7b9c37abff03413495e4b2a25f",
+                  "author": "Jung Hoe Hyeong",
+                  "timestamp": 1728845310,
+                  "message": "Translated using Weblate (Korean)\n\nCurrently translated at 14.2% (15 of 105 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/ko/",
+                  "url": "https://github.com/canonical/firmware-updater/commit/fc1464ad6220ba7b9c37abff03413495e4b2a25f"
                }
             ],
             "ciActions": [
@@ -5659,25 +5659,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fa044c1da99a86869b79bd38a7c4e9aa272cdabc",
-                  "author": "Dennis Loose",
-                  "timestamp": 1729158646,
-                  "message": "feat(prompt_ui): add error message box (#131)\n\nAdds an error box to the prompting UI to display generic errors received\r\nfrom the rust client when submitting a reply.\r\n\r\nThe only error we currently handle explicitly is `PROMPT_NOT_FOUND`, in\r\nwhich case UI closes normally when the reply is submitted, without any\r\nindication to the user that the prompt has already been handled and\r\ntheir reply is ignored (we have this as an issue in our backlog to come\r\nback to).\r\n\r\nFor `UNKNOWN` errors, all we can currently do is show a generic message\r\nalong with the raw error string, see screen recording. We've previously\r\nshown the raw error message only as part of the text field validation\r\nfor the custom path pattern. Generally, we don't know whether the error\r\nis related to the custom path pattern, so in this generic case we should\r\ncompletely disentangle the error message box and the field validation.\r\nOnce there is a defined set of possible errors, we can show the text\r\nfield error in addition to the message for errors that are related to\r\nthe custom path submitted by the user.\r\n\r\n[Screencast from 2024-10-16\r\n11-51-14.webm](https://github.com/user-attachments/assets/ce5044ce-df45-4d3a-8417-a306da3cab1f)\r\n\r\n@juanruitina do we want the error message to disappear again, once the\r\nuser changes their selection in the UI?\r\n\r\nUDENG-4963",
-                  "url": "https://github.com/canonical/prompting-client/commit/fa044c1da99a86869b79bd38a7c4e9aa272cdabc"
+                  "sha": "f56bd245614999766d1e7433f0bef86b62294260",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1729606185,
+                  "message": "feat: structured error responses (#132)\n\nThis wires in the structured error responses now provided by snapd so\r\nthat we can serve better error messages to the user in the UI. The proto\r\nfiles have been updated to cover what we expect to be the full list of\r\npossible errors that can be returned from snapd, including a catch all\r\n\"raw\" variant that just provides the raw error message as a string. This\r\nis used when there is no structured data from snapd (internal server\r\nerror, outdated snapd API etc) or if we are unable to parse the\r\nstructured data included in the error response (breaking API changes,\r\nuser running misaligned versions of the client & snapd etc).",
+                  "url": "https://github.com/canonical/prompting-client/commit/f56bd245614999766d1e7433f0bef86b62294260"
                },
                {
-                  "sha": "9d1eb91ea369174f3ef5804e9622279c17a0c578",
-                  "author": "Dennis Loose",
-                  "timestamp": 1729154215,
-                  "message": "fix: adjust error message l10n strings",
-                  "url": "https://github.com/canonical/prompting-client/commit/9d1eb91ea369174f3ef5804e9622279c17a0c578"
+                  "sha": "564b62121d790ade825c072348eec367c636cf51",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1729605127,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#130)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\r\nfor [ubuntu-desktop-translations/Prompting\r\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\r\n\r\n\r\n\r\nCurrent translation status:\r\n\r\n![Weblate translation\r\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
+                  "url": "https://github.com/canonical/prompting-client/commit/564b62121d790ade825c072348eec367c636cf51"
                },
                {
-                  "sha": "4a42fead5c0cd7a4107fe13d93cc0a8aade52d39",
+                  "sha": "8e8eb72102a685243bb558c51026b023bf118ab7",
                   "author": "Dennis Loose",
-                  "timestamp": 1729071314,
-                  "message": "test: update test data to match output from rust client",
-                  "url": "https://github.com/canonical/prompting-client/commit/4a42fead5c0cd7a4107fe13d93cc0a8aade52d39"
+                  "timestamp": 1729600785,
+                  "message": "refactor: `Data` -> `PromptReplyType` in generated dart types",
+                  "url": "https://github.com/canonical/prompting-client/commit/8e8eb72102a685243bb558c51026b023bf118ab7"
                }
             ],
             "ciActions": [],
@@ -6210,7 +6210,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 275,
+            "newCommits": 276,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -7348,25 +7348,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7983059c6b40fb4d34371a5d37dc036554c929e5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1728481295,
-                  "message": "Merge pull request #313 from d-loose/user-agent\n\nfeat: make user agent string comply with LVFS requirements",
-                  "url": "https://github.com/canonical/firmware-updater/commit/7983059c6b40fb4d34371a5d37dc036554c929e5"
+                  "sha": "12d7eb84c5ad64ef581ac2dca7c8bf2b2b65f313",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1729605458,
+                  "message": "Merge pull request #315 from weblate/weblate-ubuntu-desktop-translations-firmware-updater\n\nTranslations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/firmware-updater/commit/12d7eb84c5ad64ef581ac2dca7c8bf2b2b65f313"
                },
                {
-                  "sha": "d6e3ed5e9891c6d4fd27047eabf533475984b908",
-                  "author": "Dennis Loose",
-                  "timestamp": 1728477450,
-                  "message": "fix: remove trailing newlines from uname output",
-                  "url": "https://github.com/canonical/firmware-updater/commit/d6e3ed5e9891c6d4fd27047eabf533475984b908"
+                  "sha": "3113c3637f2a1523643a0b2211924b65f5b005bf",
+                  "author": "AefghThreenine",
+                  "timestamp": 1728963240,
+                  "message": "Translated using Weblate (Thai)\n\nCurrently translated at 0.9% (1 of 105 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/th/",
+                  "url": "https://github.com/canonical/firmware-updater/commit/3113c3637f2a1523643a0b2211924b65f5b005bf"
                },
                {
-                  "sha": "3b361712a141a54c466287215e31ca7a42f7a5d2",
-                  "author": "Dennis Loose",
-                  "timestamp": 1728475776,
-                  "message": "fix: make _userAgent mutable",
-                  "url": "https://github.com/canonical/firmware-updater/commit/3b361712a141a54c466287215e31ca7a42f7a5d2"
+                  "sha": "fc1464ad6220ba7b9c37abff03413495e4b2a25f",
+                  "author": "Jung Hoe Hyeong",
+                  "timestamp": 1728845310,
+                  "message": "Translated using Weblate (Korean)\n\nCurrently translated at 14.2% (15 of 105 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/ko/",
+                  "url": "https://github.com/canonical/firmware-updater/commit/fc1464ad6220ba7b9c37abff03413495e4b2a25f"
                }
             ],
             "ciActions": [
@@ -7805,25 +7805,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fa044c1da99a86869b79bd38a7c4e9aa272cdabc",
-                  "author": "Dennis Loose",
-                  "timestamp": 1729158646,
-                  "message": "feat(prompt_ui): add error message box (#131)\n\nAdds an error box to the prompting UI to display generic errors received\r\nfrom the rust client when submitting a reply.\r\n\r\nThe only error we currently handle explicitly is `PROMPT_NOT_FOUND`, in\r\nwhich case UI closes normally when the reply is submitted, without any\r\nindication to the user that the prompt has already been handled and\r\ntheir reply is ignored (we have this as an issue in our backlog to come\r\nback to).\r\n\r\nFor `UNKNOWN` errors, all we can currently do is show a generic message\r\nalong with the raw error string, see screen recording. We've previously\r\nshown the raw error message only as part of the text field validation\r\nfor the custom path pattern. Generally, we don't know whether the error\r\nis related to the custom path pattern, so in this generic case we should\r\ncompletely disentangle the error message box and the field validation.\r\nOnce there is a defined set of possible errors, we can show the text\r\nfield error in addition to the message for errors that are related to\r\nthe custom path submitted by the user.\r\n\r\n[Screencast from 2024-10-16\r\n11-51-14.webm](https://github.com/user-attachments/assets/ce5044ce-df45-4d3a-8417-a306da3cab1f)\r\n\r\n@juanruitina do we want the error message to disappear again, once the\r\nuser changes their selection in the UI?\r\n\r\nUDENG-4963",
-                  "url": "https://github.com/canonical/prompting-client/commit/fa044c1da99a86869b79bd38a7c4e9aa272cdabc"
+                  "sha": "f56bd245614999766d1e7433f0bef86b62294260",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1729606185,
+                  "message": "feat: structured error responses (#132)\n\nThis wires in the structured error responses now provided by snapd so\r\nthat we can serve better error messages to the user in the UI. The proto\r\nfiles have been updated to cover what we expect to be the full list of\r\npossible errors that can be returned from snapd, including a catch all\r\n\"raw\" variant that just provides the raw error message as a string. This\r\nis used when there is no structured data from snapd (internal server\r\nerror, outdated snapd API etc) or if we are unable to parse the\r\nstructured data included in the error response (breaking API changes,\r\nuser running misaligned versions of the client & snapd etc).",
+                  "url": "https://github.com/canonical/prompting-client/commit/f56bd245614999766d1e7433f0bef86b62294260"
                },
                {
-                  "sha": "9d1eb91ea369174f3ef5804e9622279c17a0c578",
-                  "author": "Dennis Loose",
-                  "timestamp": 1729154215,
-                  "message": "fix: adjust error message l10n strings",
-                  "url": "https://github.com/canonical/prompting-client/commit/9d1eb91ea369174f3ef5804e9622279c17a0c578"
+                  "sha": "564b62121d790ade825c072348eec367c636cf51",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1729605127,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#130)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\r\nfor [ubuntu-desktop-translations/Prompting\r\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\r\n\r\n\r\n\r\nCurrent translation status:\r\n\r\n![Weblate translation\r\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
+                  "url": "https://github.com/canonical/prompting-client/commit/564b62121d790ade825c072348eec367c636cf51"
                },
                {
-                  "sha": "4a42fead5c0cd7a4107fe13d93cc0a8aade52d39",
+                  "sha": "8e8eb72102a685243bb558c51026b023bf118ab7",
                   "author": "Dennis Loose",
-                  "timestamp": 1729071314,
-                  "message": "test: update test data to match output from rust client",
-                  "url": "https://github.com/canonical/prompting-client/commit/4a42fead5c0cd7a4107fe13d93cc0a8aade52d39"
+                  "timestamp": 1729600785,
+                  "message": "refactor: `Data` -> `PromptReplyType` in generated dart types",
+                  "url": "https://github.com/canonical/prompting-client/commit/8e8eb72102a685243bb558c51026b023bf118ab7"
                }
             ],
             "ciActions": [],
@@ -8352,7 +8352,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 275,
+            "newCommits": 276,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
