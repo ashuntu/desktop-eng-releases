@@ -6611,6 +6611,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ab5a98a9f00ac6fc699efd0580299882951e81a8",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1730737104,
+                  "message": "maint(pam/integration-tests/gdm): Use unique authd instance for gdm tests (#590)\n\nWe were running a new authd instance for each gdm test, but this is not\nneeded anymore as we're using unique user names (since commit 7a77d331),\nso let's just add more concurrency to the game, ensuring that authd is\nstill behaving well when multiple requests are happening concurrently\nwith gdm too",
+                  "url": "https://github.com/ubuntu/authd/commit/ab5a98a9f00ac6fc699efd0580299882951e81a8"
+               },
+               {
                   "sha": "169d33cd4000c24c87dd6311e3e3f33d3757a280",
                   "author": "adombeck",
                   "timestamp": 1730713141,
@@ -6623,13 +6630,6 @@
                   "timestamp": 1730210748,
                   "message": "ci: Cache grcov installed via cargo install\n\nUse a GitHub Action which caches the grcov binary installed via cargo install.",
                   "url": "https://github.com/ubuntu/authd/commit/226ed8cdac1d53151e0cea9a4cb719ff105eb858"
-               },
-               {
-                  "sha": "ffae569ea2ea5383c9f8ce5ab6f01a588fbd42da",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1729765492,
-                  "message": "fix(pam/integration-tests/cli): Update empty-user test golden file (#604)\n\nI forgot to rebase https://github.com/ubuntu/authd/pull/594 before\r\nmerging, and there was a new golden file there, so fix it here",
-                  "url": "https://github.com/ubuntu/authd/commit/ffae569ea2ea5383c9f8ce5ab6f01a588fbd42da"
                }
             ],
             "ciActions": [
