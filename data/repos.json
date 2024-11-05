@@ -4581,7 +4581,7 @@
          {
             "name": "has-signed-canonical-cla",
             "defaultBranch": "main",
-            "newCommits": 21,
+            "newCommits": 23,
             "url": "https://github.com/canonical/has-signed-canonical-cla",
             "releases": [
                {
@@ -6646,6 +6646,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "2cb8a5983be82fc19ebb7133614017f118cc5863",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1730808076,
+                  "message": "config option to refer to the oidc configuration (#187)\n\nWe unfortunately have 2 configurations as I just noticed:\r\n- one for the system paths + verbosity (the viper/daemon configuration)\r\n- one for the oidc part.\r\n\r\n--config was referring to the first one. This PR introduce\r\n--paths-config for the first one and --config is now targetting the\r\nsecond one, overriding this specific system path configuration for\r\nbroker config.\r\n\r\nThose 2 configurations should really be merged in a single file and let\r\nviper handling this. This would have the net benefit of supporting\r\nmultiple configuration format too and remove a bunch of manual parsing.\r\nHowever, PR #134 has quite some configuration related changes already\r\nand that would conflict with it.\r\n\r\nSo, here, this change is to minimize the conflict with it, while still\r\nallowing being merged beforehand to unblock other teams.\r\n\r\nA followup action (once the config change PR will be merged) will be on\r\nmerging both and handling the parsing by viper, which should greatly\r\nsimplify the overall structure.\r\n\r\nUDENG-5083",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2cb8a5983be82fc19ebb7133614017f118cc5863"
+               },
+               {
                   "sha": "f8aa1dcfe19b1ee5607c082701107320db1aea7b",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1730799342,
@@ -6658,13 +6665,6 @@
                   "timestamp": 1729074397,
                   "message": "Add instructions on how to report security issues",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f1cd76bbd903c779d0b03ac25240828a2aaea977"
-               },
-               {
-                  "sha": "0229b6defe581f9a8418fd46d7ce76b47539a1d2",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1728993592,
-                  "message": "Google provider (#180)\n\nWe need to override the generic provider to remove the offline_access\r\nscope. For TV and limited input devices apps, Google APIs will reject\r\nany request with this scope, while still allowing non interactive user\r\naccess token refresh.\r\nAll the rest of the functionalities is aligned with the NoProvider one.\r\nAdded tests and \"withgoogle\" build tag for it.\r\n\r\nUDENG-4953",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0229b6defe581f9a8418fd46d7ce76b47539a1d2"
                }
             ],
             "ciActions": [
