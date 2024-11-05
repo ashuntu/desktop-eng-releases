@@ -6646,25 +6646,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2cb8a5983be82fc19ebb7133614017f118cc5863",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1730808076,
-                  "message": "config option to refer to the oidc configuration (#187)\n\nWe unfortunately have 2 configurations as I just noticed:\r\n- one for the system paths + verbosity (the viper/daemon configuration)\r\n- one for the oidc part.\r\n\r\n--config was referring to the first one. This PR introduce\r\n--paths-config for the first one and --config is now targetting the\r\nsecond one, overriding this specific system path configuration for\r\nbroker config.\r\n\r\nThose 2 configurations should really be merged in a single file and let\r\nviper handling this. This would have the net benefit of supporting\r\nmultiple configuration format too and remove a bunch of manual parsing.\r\nHowever, PR #134 has quite some configuration related changes already\r\nand that would conflict with it.\r\n\r\nSo, here, this change is to minimize the conflict with it, while still\r\nallowing being merged beforehand to unblock other teams.\r\n\r\nA followup action (once the config change PR will be merged) will be on\r\nmerging both and handling the parsing by viper, which should greatly\r\nsimplify the overall structure.\r\n\r\nUDENG-5083",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2cb8a5983be82fc19ebb7133614017f118cc5863"
+                  "sha": "918f3f8bec8d370d107d5f1852c9eba2c03a199a",
+                  "author": "adombeck",
+                  "timestamp": 1730814644,
+                  "message": "Handle file changes done by `snapcraft --destructive-mode` (#190)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/918f3f8bec8d370d107d5f1852c9eba2c03a199a"
                },
                {
-                  "sha": "f8aa1dcfe19b1ee5607c082701107320db1aea7b",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1730799342,
-                  "message": "Add instructions on how to report security issues (#183)\n\nQuoting SEC0026 - SSDLC\r\n\r\n> SECURITY.md (V1.1)\r\n> Any public repository must also include a SECURITY.md file in the root\r\ndirectory, which educates users/contributors on\r\n> how to report a security concern.\r\n\r\nThe content of the file is based on the template referenced in the spec\r\nand what other Canonical repository are already using",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f8aa1dcfe19b1ee5607c082701107320db1aea7b"
+                  "sha": "7c3c59e416b7c8e26f5c427e7c49ee5b20450b85",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1730812492,
+                  "message": "Ignore directories created by `snapcraft --destructive-mode`",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/7c3c59e416b7c8e26f5c427e7c49ee5b20450b85"
                },
                {
-                  "sha": "f1cd76bbd903c779d0b03ac25240828a2aaea977",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1729074397,
-                  "message": "Add instructions on how to report security issues",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f1cd76bbd903c779d0b03ac25240828a2aaea977"
+                  "sha": "e9266e4ac89ac5737bf789f72a3ea92a84156182",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1730812353,
+                  "message": "Make snap/hooks/install executable\n\nThat's done by `snapcraft --destructive-mode`, which I'm using because\nof spurious failures of `snapcraft --use-lxd`.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e9266e4ac89ac5737bf789f72a3ea92a84156182"
                }
             ],
             "ciActions": [
