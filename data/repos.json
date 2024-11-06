@@ -6611,6 +6611,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "885f022eaa7714b95347e7601824827163507e14",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1730922207,
+                  "message": "feat(pam): Add support for exposing if the UI supports qrcode rendering (#586)\n\nAs we know not all the PAM client supports rendering the qrcode properly\r\nso the broker must be aware of this in order to provide the proper user\r\nguidance.\r\n\r\nTo make this possible, add a further value to the UI layout that exposes\r\nif a client is able to render the qr code or not, and depending on this\r\nthe broker can behave.\r\n\r\nSince this is a new feature, we don't want to make the old brokers\r\ndepending on it, or we'll break their assumptions, so in case a client\r\ndoesn't support this feature, we just assume that rendering is supported\r\nas it was before.\r\n\r\nUDENG-4814\r\n\r\nBroker side: https://github.com/ubuntu/authd-oidc-brokers/pull/186",
+                  "url": "https://github.com/ubuntu/authd/commit/885f022eaa7714b95347e7601824827163507e14"
+               },
+               {
                   "sha": "2b0f1d145e7a8b2b1e0ad38820ee7e74f380b774",
                   "author": "adombeck",
                   "timestamp": 1730918447,
@@ -6618,18 +6625,11 @@
                   "url": "https://github.com/ubuntu/authd/commit/2b0f1d145e7a8b2b1e0ad38820ee7e74f380b774"
                },
                {
-                  "sha": "d02000641ade03bfc62f51d4ea4bbc1638468622",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1730912306,
-                  "message": "Fix example broker D-Bus XML file\n\n\"a{s}s\" is not a valid GVariant type, it should be \"a{ss}\" instead.",
-                  "url": "https://github.com/ubuntu/authd/commit/d02000641ade03bfc62f51d4ea4bbc1638468622"
-               },
-               {
-                  "sha": "c91dd5b49ebe01b642d566572efd3f7117d7203a",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1730911439,
-                  "message": "maint(pam/nativemodel): Improve wording and consistency of strings (#599)\n\nUse the same terminology and similar behavior of the CLI mode, preserving Polkit functionality\r\n\r\nUDENG-5012",
-                  "url": "https://github.com/ubuntu/authd/commit/c91dd5b49ebe01b642d566572efd3f7117d7203a"
+                  "sha": "656f11742024a8075bd9c9d960b9292bdd49dfd4",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1728927620,
+                  "message": "pam: Add support for exposing if the UI supports qrcode rendering\n\nAs we know not all the PAM client supports rendering the qrcode properly\nso the broker must be aware of this in order to provide the proper user\nguidance.\n\nTo make this possible, add a further value to the UI layout that exposes\nif a client is able to render the qr code or not, and depending on this\nthe broker can behave.\n\nSince this is a new feature, we don't want to make the old brokers\ndepending on it, or we'll break their assumptions, so in case a client\ndoesn't support this feature, we just assume that rendering is supported\nas it was before.",
+                  "url": "https://github.com/ubuntu/authd/commit/656f11742024a8075bd9c9d960b9292bdd49dfd4"
                }
             ],
             "ciActions": [
