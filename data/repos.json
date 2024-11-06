@@ -6611,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ab5a98a9f00ac6fc699efd0580299882951e81a8",
+                  "sha": "c91dd5b49ebe01b642d566572efd3f7117d7203a",
                   "author": "Marco Trevisan",
-                  "timestamp": 1730737104,
-                  "message": "maint(pam/integration-tests/gdm): Use unique authd instance for gdm tests (#590)\n\nWe were running a new authd instance for each gdm test, but this is not\nneeded anymore as we're using unique user names (since commit 7a77d331),\nso let's just add more concurrency to the game, ensuring that authd is\nstill behaving well when multiple requests are happening concurrently\nwith gdm too",
-                  "url": "https://github.com/ubuntu/authd/commit/ab5a98a9f00ac6fc699efd0580299882951e81a8"
+                  "timestamp": 1730911439,
+                  "message": "maint(pam/nativemodel): Improve wording and consistency of strings (#599)\n\nUse the same terminology and similar behavior of the CLI mode, preserving Polkit functionality\r\n\r\nUDENG-5012",
+                  "url": "https://github.com/ubuntu/authd/commit/c91dd5b49ebe01b642d566572efd3f7117d7203a"
                },
                {
-                  "sha": "169d33cd4000c24c87dd6311e3e3f33d3757a280",
-                  "author": "adombeck",
-                  "timestamp": 1730713141,
-                  "message": "ci: Cache grcov installed via cargo install (#612)\n\nUse a GitHub Action which caches the grcov binary installed via cargo\r\ninstall.\r\n\r\nThis reduces the runtime of the \"Install grcov\" step in the \"Go: Tests (coverage)\" job from ~1m13s to ~3s.",
-                  "url": "https://github.com/ubuntu/authd/commit/169d33cd4000c24c87dd6311e3e3f33d3757a280"
+                  "sha": "2de0fe289914423a23cdc5ff6789cba66f4d9bda",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1730906825,
+                  "message": "pam/nativemodel: Improve wording on invalid input errors\n\nCo-Authored-By: Adrian Dombeck <adrian.dombeck@canonical.com>",
+                  "url": "https://github.com/ubuntu/authd/commit/2de0fe289914423a23cdc5ff6789cba66f4d9bda"
                },
                {
-                  "sha": "226ed8cdac1d53151e0cea9a4cb719ff105eb858",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1730210748,
-                  "message": "ci: Cache grcov installed via cargo install\n\nUse a GitHub Action which caches the grcov binary installed via cargo install.",
-                  "url": "https://github.com/ubuntu/authd/commit/226ed8cdac1d53151e0cea9a4cb719ff105eb858"
+                  "sha": "79f21be649ffec33469579b1353f42b04c962bca",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1730847567,
+                  "message": "pam/native-module: Detach the instructions from the prompt\n\nIn native modules the prompt should be only the text shown on the\nfield, while the rest of information should be exposed as PAM info\nmessages.\n\nDo this to ensure that both all PAM implementations we care about (ssh\nand polkit) keep a reasonable UI.",
+                  "url": "https://github.com/ubuntu/authd/commit/79f21be649ffec33469579b1353f42b04c962bca"
                }
             ],
             "ciActions": [
