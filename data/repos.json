@@ -6572,25 +6572,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0704179ca9674d4cfeda8bc2d76df0937ead8d6e",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1731329373,
+                  "message": "pam/userselection: Do not draw the model when not enabled (#627)\n\nWhen the model is not enabled we may still have it focused, since it's\r\nthe default initial model that we have in the CLI mode.\r\n\r\nThis may cause to a visual issue (not a security one, since the input is\r\ndisabled for this):\r\n - login with the UI using a preset user\r\n- while the client is connecting to the server we may show a \"frozen\"\r\nuser selection view with the pre-selected user written in.\r\n\r\nThis is not really something we need to show, so do not draw anything\r\nuntil we've something to show.\r\n\r\nThis can be replicated easily by applying:\r\n\r\n```diff\r\ndiff --git a/pam/internal/adapter/brokerselection.go b/pam/internal/adapter/brokerselection.go\r\nindex 54725222..31c56f7b 100644\r\n--- a/pam/internal/adapter/brokerselection.go\r\n+++ b/pam/internal/adapter/brokerselection.go\r\n@@ -5,6 +5,7 @@ import (\r\n \t\"fmt\"\r\n \t\"io\"\r\n \t\"strconv\"\r\n+\t\"time\"\r\n \r\n \t\"github.com/charmbracelet/bubbles/list\"\r\n \ttea \"github.com/charmbracelet/bubbletea\"\r\n@@ -254,6 +255,7 @@ func (d itemLayout) Render(w io.Writer, m list.Model, index int, item list.Item)\r\n // getAvailableBrokers returns available broker list from authd.\r\n func getAvailableBrokers(client authd.PAMClient) tea.Cmd {\r\n \treturn func() tea.Msg {\r\n+\t\ttime.Sleep(5 * time.Second)\r\n \t\tbrokersInfo, err := client.AvailableBrokers(context.TODO(), &authd.Empty{})\r\n \t\tif err != nil {\r\n \t\t\treturn pamError{\r\n```\r\n\r\nAnd then running `env AUTHD_PAM_RUNNER_USER=user@foo.bar go run\r\n-tags=withpamrunner ./pam/tools/pam-client login`\r\n\r\nUDENG-5166",
+                  "url": "https://github.com/ubuntu/authd/commit/0704179ca9674d4cfeda8bc2d76df0937ead8d6e"
+               },
+               {
+                  "sha": "381738e93b16f4c8a8c2198d90e3ca5e2a58aab6",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1731040801,
+                  "message": "pam/userselection: Do not draw the model when not enabled\n\nWhen the model is not enabled we may still have it focused, since it's\nthe default initial model that we have in the CLI mode.\n\nThis may cause to a visual issue (not a security one, since the input\nis disabled for this):\n - login with the UI using a preset user\n - while the client is connecting to the server we may show a \"frozen\"\n   user selection view with the pre-selected  user written in.\n\nThis is not really something we need to show, so do not draw anything\nuntil we've something to show.",
+                  "url": "https://github.com/ubuntu/authd/commit/381738e93b16f4c8a8c2198d90e3ca5e2a58aab6"
+               },
+               {
                   "sha": "36f3d0ad38c908589a43681afdecbdb0f52a2631",
                   "author": "Marco Trevisan",
                   "timestamp": 1731040264,
                   "message": "fix(pam/model): Initialize user only after we've got the brokers list (#616)\n\nOne of the races we were facing (mostly in native model) is that we\r\ncould end up in a situation in which we receive an authd error on\r\ngetting the brokers list *after* that the user selection view is already\r\nshown, leading to racy golden files ordering.\r\n\r\nThis is because what it could happen is:\r\n - We start in parallel:\r\n   -> User selection\r\n   -> UI Layouts -> Available brokers fetching\r\n\r\nNow let's \"imagine\" that the brokers fetching fails (as when we've not\r\nthe permissions to read it, as for being not root).\r\n\r\nIf the user selection result arrives first, then we end up showing the\r\nuser selection UI (that is blocking in the native model) and only then\r\nwe handle the AvailableBrokers result (the error).\r\n\r\nIf the broker selection arrives first, we show first the error instead.\r\n\r\nNow, this kind of approach made sense when we had no errors during this\r\nphases, to get the user name as early as possible, but since we're now\r\ndoing various permissions checks in the broker, it's better to always go\r\nin order instead of performing such operations in parallel, so now:\r\n - UI Layouts -> Available brokers fetching\r\n - User selection starts\r\n\r\nBlocking as soon as we've a failure, as highlighted by the new golden\r\nfiles.\r\n\r\nYou can see an example of this failure in this CI job:\r\n-\r\nhttps://github.com/ubuntu/authd/actions/runs/11708304677/job/32609750206?pr=619\r\n\r\nUDENG-5161",
                   "url": "https://github.com/ubuntu/authd/commit/36f3d0ad38c908589a43681afdecbdb0f52a2631"
-               },
-               {
-                  "sha": "9372736680415a48eada5298a96f3241d9fd85c2",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1730892440,
-                  "message": "pam/model: Rename UsernameAndBrokerListReceived into UsernameSelected\n\nThis event is now used by the user name selection model only and given\nthat we go in order by default it's not strictly needed to check again\nfor brokers availability",
-                  "url": "https://github.com/ubuntu/authd/commit/9372736680415a48eada5298a96f3241d9fd85c2"
-               },
-               {
-                  "sha": "2352195849d2f5368d13c32a2dfaf5986f4f6a5c",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1730892265,
-                  "message": "pam/integration-tests/native: Remove unneeded empty user selection on root-checks\n\nWe now do it early on the stage, so avoid showing hitting enter again.",
-                  "url": "https://github.com/ubuntu/authd/commit/2352195849d2f5368d13c32a2dfaf5986f4f6a5c"
                }
             ],
             "ciActions": [
