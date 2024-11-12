@@ -6572,25 +6572,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d527cf1f1252f442aad3b5688d472ceb20f75f17",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1731449290,
+                  "message": "fix(pam/integration-tests/gdm): Handle broker selection when on such stage (#603)\n\nWe have some races in gdm tests caused by the fact we may send the\r\n`brokerSelected` event too late, in particular when we received the\r\nbroker list, but at that point we may be have done other steps already.\r\n\r\nInstead, handle the broker selection only when we're in broker selection\r\nstage, and not too early or too late.",
+                  "url": "https://github.com/ubuntu/authd/commit/d527cf1f1252f442aad3b5688d472ceb20f75f17"
+               },
+               {
+                  "sha": "48db8521609682884df7226a107e6fce8d5db648",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1729691825,
+                  "message": "pam/integration-tests/gdm: Handle broker selection when on such stage\n\nWe have some races in gdm tests caused by the fact we may send the\nbrokerSelection event too late, in particular when we received the\nbroker list, but at that point we may be have done other steps already.\n\nInstead, handle the broker selection only when we're in broker selection\nstage, and not too early or too late.",
+                  "url": "https://github.com/ubuntu/authd/commit/48db8521609682884df7226a107e6fce8d5db648"
+               },
+               {
                   "sha": "0704179ca9674d4cfeda8bc2d76df0937ead8d6e",
                   "author": "Marco Trevisan",
                   "timestamp": 1731329373,
                   "message": "pam/userselection: Do not draw the model when not enabled (#627)\n\nWhen the model is not enabled we may still have it focused, since it's\r\nthe default initial model that we have in the CLI mode.\r\n\r\nThis may cause to a visual issue (not a security one, since the input is\r\ndisabled for this):\r\n - login with the UI using a preset user\r\n- while the client is connecting to the server we may show a \"frozen\"\r\nuser selection view with the pre-selected user written in.\r\n\r\nThis is not really something we need to show, so do not draw anything\r\nuntil we've something to show.\r\n\r\nThis can be replicated easily by applying:\r\n\r\n```diff\r\ndiff --git a/pam/internal/adapter/brokerselection.go b/pam/internal/adapter/brokerselection.go\r\nindex 54725222..31c56f7b 100644\r\n--- a/pam/internal/adapter/brokerselection.go\r\n+++ b/pam/internal/adapter/brokerselection.go\r\n@@ -5,6 +5,7 @@ import (\r\n \t\"fmt\"\r\n \t\"io\"\r\n \t\"strconv\"\r\n+\t\"time\"\r\n \r\n \t\"github.com/charmbracelet/bubbles/list\"\r\n \ttea \"github.com/charmbracelet/bubbletea\"\r\n@@ -254,6 +255,7 @@ func (d itemLayout) Render(w io.Writer, m list.Model, index int, item list.Item)\r\n // getAvailableBrokers returns available broker list from authd.\r\n func getAvailableBrokers(client authd.PAMClient) tea.Cmd {\r\n \treturn func() tea.Msg {\r\n+\t\ttime.Sleep(5 * time.Second)\r\n \t\tbrokersInfo, err := client.AvailableBrokers(context.TODO(), &authd.Empty{})\r\n \t\tif err != nil {\r\n \t\t\treturn pamError{\r\n```\r\n\r\nAnd then running `env AUTHD_PAM_RUNNER_USER=user@foo.bar go run\r\n-tags=withpamrunner ./pam/tools/pam-client login`\r\n\r\nUDENG-5166",
                   "url": "https://github.com/ubuntu/authd/commit/0704179ca9674d4cfeda8bc2d76df0937ead8d6e"
-               },
-               {
-                  "sha": "381738e93b16f4c8a8c2198d90e3ca5e2a58aab6",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1731040801,
-                  "message": "pam/userselection: Do not draw the model when not enabled\n\nWhen the model is not enabled we may still have it focused, since it's\nthe default initial model that we have in the CLI mode.\n\nThis may cause to a visual issue (not a security one, since the input\nis disabled for this):\n - login with the UI using a preset user\n - while the client is connecting to the server we may show a \"frozen\"\n   user selection view with the pre-selected  user written in.\n\nThis is not really something we need to show, so do not draw anything\nuntil we've something to show.",
-                  "url": "https://github.com/ubuntu/authd/commit/381738e93b16f4c8a8c2198d90e3ca5e2a58aab6"
-               },
-               {
-                  "sha": "36f3d0ad38c908589a43681afdecbdb0f52a2631",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1731040264,
-                  "message": "fix(pam/model): Initialize user only after we've got the brokers list (#616)\n\nOne of the races we were facing (mostly in native model) is that we\r\ncould end up in a situation in which we receive an authd error on\r\ngetting the brokers list *after* that the user selection view is already\r\nshown, leading to racy golden files ordering.\r\n\r\nThis is because what it could happen is:\r\n - We start in parallel:\r\n   -> User selection\r\n   -> UI Layouts -> Available brokers fetching\r\n\r\nNow let's \"imagine\" that the brokers fetching fails (as when we've not\r\nthe permissions to read it, as for being not root).\r\n\r\nIf the user selection result arrives first, then we end up showing the\r\nuser selection UI (that is blocking in the native model) and only then\r\nwe handle the AvailableBrokers result (the error).\r\n\r\nIf the broker selection arrives first, we show first the error instead.\r\n\r\nNow, this kind of approach made sense when we had no errors during this\r\nphases, to get the user name as early as possible, but since we're now\r\ndoing various permissions checks in the broker, it's better to always go\r\nin order instead of performing such operations in parallel, so now:\r\n - UI Layouts -> Available brokers fetching\r\n - User selection starts\r\n\r\nBlocking as soon as we've a failure, as highlighted by the new golden\r\nfiles.\r\n\r\nYou can see an example of this failure in this CI job:\r\n-\r\nhttps://github.com/ubuntu/authd/actions/runs/11708304677/job/32609750206?pr=619\r\n\r\nUDENG-5161",
-                  "url": "https://github.com/ubuntu/authd/commit/36f3d0ad38c908589a43681afdecbdb0f52a2631"
                }
             ],
             "ciActions": [
@@ -6607,25 +6607,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "df70bc6ed8df2e9bedac7bda2d51c67a39821401",
+                  "sha": "8ccb82eb3db6c4c1e35015862b31f8adcaeddf04",
                   "author": "adombeck",
-                  "timestamp": 1731442993,
-                  "message": "Rename tests (#198)\n\nUDENG-5165",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/df70bc6ed8df2e9bedac7bda2d51c67a39821401"
+                  "timestamp": 1731449467,
+                  "message": " Use the subtest name as the golden file/dir name (#206)\n\nUDENG-5196",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/8ccb82eb3db6c4c1e35015862b31f8adcaeddf04"
                },
                {
-                  "sha": "14fad3f6097345f9c1aa8b8e4ec8a781a2bfa8e1",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1731431507,
-                  "message": "Optional client secret for some providers (#178)\n\nSome providers, like google, request a client secret for the device\r\nauthentication. Make it optional, so that the admin can set it if\r\nrequired in the generic broker.\r\n\r\nThere is no integration tests for now that could make use of it, but all\r\nexisting tests are passing. I have also tested manually with google and\r\nmsentraid.\r\n\r\nUDENG-4954",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/14fad3f6097345f9c1aa8b8e4ec8a781a2bfa8e1"
+                  "sha": "21b0befdbc36aad8aa232936d7aa454f1b0db0f6",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1731345810,
+                  "message": "Update names of golden files\n\nUpdate the names of the golden files according to the previous commit,\nby running:\n\n    git rm \"*/testdata/*\" && TESTS_UPDATE_GOLDEN=1 go test ./...",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/21b0befdbc36aad8aa232936d7aa454f1b0db0f6"
                },
                {
-                  "sha": "d2cc6713ed82a220f7a532cef9852b5d3914191a",
-                  "author": "Didier Roche",
-                  "timestamp": 1731417328,
-                  "message": "Update golden files for config with new optional secret",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d2cc6713ed82a220f7a532cef9852b5d3914191a"
+                  "sha": "6b12ccb53da917ddd0b19bd85b0f9eeba59f0ca6",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1731344797,
+                  "message": "Use the subtest name as the golden file/dir name\n\nAnd check if the subtest name contains any characters that we don't want\nto allow in golden file names.\n\nThis allows us to copy/paste the name of the golden file to search for\nthe test definition and vice versa.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/6b12ccb53da917ddd0b19bd85b0f9eeba59f0ca6"
                }
             ],
             "ciActions": [
