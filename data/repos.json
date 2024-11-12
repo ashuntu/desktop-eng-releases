@@ -4203,25 +4203,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fc5b688fed12e67f116dc70ba8de807fcdfa330b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1731420321,
-                  "message": "ci: release automation (#860)\n\nThis PR adds two github workflows that allow us to automatically raise\r\nsnap build PRs (`snap/*` branches) driven by labels on mainline PRs.\r\n\r\n- `check-snap-label.yaml`\r\nChecks if mainline PRs are labeled with at least one of:\r\n  - `snap/ubuntu-desktop-bootstrap`\r\n  - `snap/ubuntu-desktop-init`\r\n  - `snap/factory-reset-tools`\r\n- `snap/none` (used for PRs that shouldn't trigger any snap release PRs,\r\ne.g. documentation changes, ..)\r\n- `snap-release.yaml`\r\n  - Runs when a PR is merged into a mainline branch\r\n- Parses the labels from the merged PR and translates them into the\r\nnames of the release branches, e.g. `snap/ubuntu-desktop-bootstrap` ->\r\n`snap/ubuntu-desktop-bootstrap/main` for a PR targeting `main`, or\r\n`snap/ubuntu-desktop-bootstrap` -> `snap/ubuntu-desktop-init/24.04` for\r\na PR targeting `ubuntu/24.04` (will need backporting to `ubuntu/24.04`)\r\n- Replaces the `commit-ref` for the corresponding `part` in the\r\nsnapcraft.yaml with the commit hash of the PR's merge commit\r\n- Pushes the changes to a dedicated release branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main-release`) or updates the branch if\r\nit already exists\r\n- Opens a PR from that branch to the corresponding snap branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main`) or updates it.\r\n\r\nUDENG-5076",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fc5b688fed12e67f116dc70ba8de807fcdfa330b"
+                  "sha": "36f38a314f4a4b1131df8c4e758cb08759cb342e",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1731429857,
+                  "message": "refactor: moving applications to a top level apps directory (#862)\n\nOther than the relative path imports in some of the test files this\nshould be a straight move of the three application packages out to\n`/apps`. I've also added some initial notes on the proposed structure\nthat I'm aiming to move things to in follow up PRs.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/36f38a314f4a4b1131df8c4e758cb08759cb342e"
                },
                {
-                  "sha": "699c2c41358a685c41fcaaaeb23b6b78dbe29273",
-                  "author": "Dennis Loose",
-                  "timestamp": 1731411664,
-                  "message": "ci: add PR author as reviewer for release PR",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/699c2c41358a685c41fcaaaeb23b6b78dbe29273"
+                  "sha": "64712aa0c903e70e229cf93697f3292d77dbbf39",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1731427655,
+                  "message": "fix: fixing YAML structure in CI workflow",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/64712aa0c903e70e229cf93697f3292d77dbbf39"
                },
                {
-                  "sha": "4946f944ef87f2e0088aa9e19162ae5c1dfb748d",
-                  "author": "Dennis Loose",
-                  "timestamp": 1730994299,
-                  "message": "ci: add release workflow",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4946f944ef87f2e0088aa9e19162ae5c1dfb748d"
+                  "sha": "829fd69052cd9f1b56006e10264b4a426be7b503",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1731427356,
+                  "message": "fix: updating CI to account for the new repo structure",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/829fd69052cd9f1b56006e10264b4a426be7b503"
                }
             ],
             "ciActions": [
@@ -6108,25 +6108,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fc5b688fed12e67f116dc70ba8de807fcdfa330b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1731420321,
-                  "message": "ci: release automation (#860)\n\nThis PR adds two github workflows that allow us to automatically raise\r\nsnap build PRs (`snap/*` branches) driven by labels on mainline PRs.\r\n\r\n- `check-snap-label.yaml`\r\nChecks if mainline PRs are labeled with at least one of:\r\n  - `snap/ubuntu-desktop-bootstrap`\r\n  - `snap/ubuntu-desktop-init`\r\n  - `snap/factory-reset-tools`\r\n- `snap/none` (used for PRs that shouldn't trigger any snap release PRs,\r\ne.g. documentation changes, ..)\r\n- `snap-release.yaml`\r\n  - Runs when a PR is merged into a mainline branch\r\n- Parses the labels from the merged PR and translates them into the\r\nnames of the release branches, e.g. `snap/ubuntu-desktop-bootstrap` ->\r\n`snap/ubuntu-desktop-bootstrap/main` for a PR targeting `main`, or\r\n`snap/ubuntu-desktop-bootstrap` -> `snap/ubuntu-desktop-init/24.04` for\r\na PR targeting `ubuntu/24.04` (will need backporting to `ubuntu/24.04`)\r\n- Replaces the `commit-ref` for the corresponding `part` in the\r\nsnapcraft.yaml with the commit hash of the PR's merge commit\r\n- Pushes the changes to a dedicated release branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main-release`) or updates the branch if\r\nit already exists\r\n- Opens a PR from that branch to the corresponding snap branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main`) or updates it.\r\n\r\nUDENG-5076",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fc5b688fed12e67f116dc70ba8de807fcdfa330b"
+                  "sha": "36f38a314f4a4b1131df8c4e758cb08759cb342e",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1731429857,
+                  "message": "refactor: moving applications to a top level apps directory (#862)\n\nOther than the relative path imports in some of the test files this\nshould be a straight move of the three application packages out to\n`/apps`. I've also added some initial notes on the proposed structure\nthat I'm aiming to move things to in follow up PRs.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/36f38a314f4a4b1131df8c4e758cb08759cb342e"
                },
                {
-                  "sha": "699c2c41358a685c41fcaaaeb23b6b78dbe29273",
-                  "author": "Dennis Loose",
-                  "timestamp": 1731411664,
-                  "message": "ci: add PR author as reviewer for release PR",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/699c2c41358a685c41fcaaaeb23b6b78dbe29273"
+                  "sha": "64712aa0c903e70e229cf93697f3292d77dbbf39",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1731427655,
+                  "message": "fix: fixing YAML structure in CI workflow",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/64712aa0c903e70e229cf93697f3292d77dbbf39"
                },
                {
-                  "sha": "4946f944ef87f2e0088aa9e19162ae5c1dfb748d",
-                  "author": "Dennis Loose",
-                  "timestamp": 1730994299,
-                  "message": "ci: add release workflow",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4946f944ef87f2e0088aa9e19162ae5c1dfb748d"
+                  "sha": "829fd69052cd9f1b56006e10264b4a426be7b503",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1731427356,
+                  "message": "fix: updating CI to account for the new repo structure",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/829fd69052cd9f1b56006e10264b4a426be7b503"
                }
             ],
             "ciActions": [
@@ -6607,25 +6607,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "14fad3f6097345f9c1aa8b8e4ec8a781a2bfa8e1",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1731431507,
+                  "message": "Optional client secret for some providers (#178)\n\nSome providers, like google, request a client secret for the device\r\nauthentication. Make it optional, so that the admin can set it if\r\nrequired in the generic broker.\r\n\r\nThere is no integration tests for now that could make use of it, but all\r\nexisting tests are passing. I have also tested manually with google and\r\nmsentraid.\r\n\r\nUDENG-4954",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/14fad3f6097345f9c1aa8b8e4ec8a781a2bfa8e1"
+               },
+               {
+                  "sha": "d2cc6713ed82a220f7a532cef9852b5d3914191a",
+                  "author": "Didier Roche",
+                  "timestamp": 1731417328,
+                  "message": "Update golden files for config with new optional secret",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d2cc6713ed82a220f7a532cef9852b5d3914191a"
+               },
+               {
                   "sha": "ed309a24a8c5047346f1be38c95a5da733becf01",
                   "author": "Denison Barbosa",
                   "timestamp": 1731407938,
                   "message": "deps(go): bump golang.org/x/oauth2 from 0.23.0 to 0.24.0 (#202)",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/ed309a24a8c5047346f1be38c95a5da733becf01"
-               },
-               {
-                  "sha": "c498a6868b91e351ea37293d6cdb8fc5afc25a11",
-                  "author": "adombeck",
-                  "timestamp": 1731407679,
-                  "message": "Update golden files env var (#199)\n\nUpdate golden files via the TESTS_UPDATE_GOLDEN env var\r\n\r\nUDENG-5173",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/c498a6868b91e351ea37293d6cdb8fc5afc25a11"
-               },
-               {
-                  "sha": "0b2ef1f6e31b5437b0e81ffe6f8b784e11028ca0",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1731407286,
-                  "message": "deps(go): bump golang.org/x/oauth2 from 0.23.0 to 0.24.0\n\nBumps [golang.org/x/oauth2](https://github.com/golang/oauth2) from 0.23.0 to 0.24.0.\n- [Commits](https://github.com/golang/oauth2/compare/v0.23.0...v0.24.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/oauth2\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0b2ef1f6e31b5437b0e81ffe6f8b784e11028ca0"
                }
             ],
             "ciActions": [
@@ -8215,25 +8215,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fc5b688fed12e67f116dc70ba8de807fcdfa330b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1731420321,
-                  "message": "ci: release automation (#860)\n\nThis PR adds two github workflows that allow us to automatically raise\r\nsnap build PRs (`snap/*` branches) driven by labels on mainline PRs.\r\n\r\n- `check-snap-label.yaml`\r\nChecks if mainline PRs are labeled with at least one of:\r\n  - `snap/ubuntu-desktop-bootstrap`\r\n  - `snap/ubuntu-desktop-init`\r\n  - `snap/factory-reset-tools`\r\n- `snap/none` (used for PRs that shouldn't trigger any snap release PRs,\r\ne.g. documentation changes, ..)\r\n- `snap-release.yaml`\r\n  - Runs when a PR is merged into a mainline branch\r\n- Parses the labels from the merged PR and translates them into the\r\nnames of the release branches, e.g. `snap/ubuntu-desktop-bootstrap` ->\r\n`snap/ubuntu-desktop-bootstrap/main` for a PR targeting `main`, or\r\n`snap/ubuntu-desktop-bootstrap` -> `snap/ubuntu-desktop-init/24.04` for\r\na PR targeting `ubuntu/24.04` (will need backporting to `ubuntu/24.04`)\r\n- Replaces the `commit-ref` for the corresponding `part` in the\r\nsnapcraft.yaml with the commit hash of the PR's merge commit\r\n- Pushes the changes to a dedicated release branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main-release`) or updates the branch if\r\nit already exists\r\n- Opens a PR from that branch to the corresponding snap branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main`) or updates it.\r\n\r\nUDENG-5076",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fc5b688fed12e67f116dc70ba8de807fcdfa330b"
+                  "sha": "36f38a314f4a4b1131df8c4e758cb08759cb342e",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1731429857,
+                  "message": "refactor: moving applications to a top level apps directory (#862)\n\nOther than the relative path imports in some of the test files this\nshould be a straight move of the three application packages out to\n`/apps`. I've also added some initial notes on the proposed structure\nthat I'm aiming to move things to in follow up PRs.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/36f38a314f4a4b1131df8c4e758cb08759cb342e"
                },
                {
-                  "sha": "699c2c41358a685c41fcaaaeb23b6b78dbe29273",
-                  "author": "Dennis Loose",
-                  "timestamp": 1731411664,
-                  "message": "ci: add PR author as reviewer for release PR",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/699c2c41358a685c41fcaaaeb23b6b78dbe29273"
+                  "sha": "64712aa0c903e70e229cf93697f3292d77dbbf39",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1731427655,
+                  "message": "fix: fixing YAML structure in CI workflow",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/64712aa0c903e70e229cf93697f3292d77dbbf39"
                },
                {
-                  "sha": "4946f944ef87f2e0088aa9e19162ae5c1dfb748d",
-                  "author": "Dennis Loose",
-                  "timestamp": 1730994299,
-                  "message": "ci: add release workflow",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4946f944ef87f2e0088aa9e19162ae5c1dfb748d"
+                  "sha": "829fd69052cd9f1b56006e10264b4a426be7b503",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1731427356,
+                  "message": "fix: updating CI to account for the new repo structure",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/829fd69052cd9f1b56006e10264b4a426be7b503"
                }
             ],
             "ciActions": [
