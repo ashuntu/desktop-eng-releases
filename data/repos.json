@@ -4203,25 +4203,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6151663b824262b62aacbc77171e5db7750fa43e",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1731412933,
-                  "message": "refactor: move tester navigation out of integration tests (#859)\n\nA small refactor to move repeated navigation functions into their test\nfunctions for better test readability to help me get more comfortable\nwith navigating the installer project :slightly_smiling_face:",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6151663b824262b62aacbc77171e5db7750fa43e"
+                  "sha": "fc5b688fed12e67f116dc70ba8de807fcdfa330b",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731420321,
+                  "message": "ci: release automation (#860)\n\nThis PR adds two github workflows that allow us to automatically raise\r\nsnap build PRs (`snap/*` branches) driven by labels on mainline PRs.\r\n\r\n- `check-snap-label.yaml`\r\nChecks if mainline PRs are labeled with at least one of:\r\n  - `snap/ubuntu-desktop-bootstrap`\r\n  - `snap/ubuntu-desktop-init`\r\n  - `snap/factory-reset-tools`\r\n- `snap/none` (used for PRs that shouldn't trigger any snap release PRs,\r\ne.g. documentation changes, ..)\r\n- `snap-release.yaml`\r\n  - Runs when a PR is merged into a mainline branch\r\n- Parses the labels from the merged PR and translates them into the\r\nnames of the release branches, e.g. `snap/ubuntu-desktop-bootstrap` ->\r\n`snap/ubuntu-desktop-bootstrap/main` for a PR targeting `main`, or\r\n`snap/ubuntu-desktop-bootstrap` -> `snap/ubuntu-desktop-init/24.04` for\r\na PR targeting `ubuntu/24.04` (will need backporting to `ubuntu/24.04`)\r\n- Replaces the `commit-ref` for the corresponding `part` in the\r\nsnapcraft.yaml with the commit hash of the PR's merge commit\r\n- Pushes the changes to a dedicated release branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main-release`) or updates the branch if\r\nit already exists\r\n- Opens a PR from that branch to the corresponding snap branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main`) or updates it.\r\n\r\nUDENG-5076",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fc5b688fed12e67f116dc70ba8de807fcdfa330b"
                },
                {
-                  "sha": "33bb29030099ad6310575fef7d2af1df7a05c516",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1731408341,
-                  "message": "chore: adding comment re: failing individual tests",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/33bb29030099ad6310575fef7d2af1df7a05c516"
+                  "sha": "699c2c41358a685c41fcaaaeb23b6b78dbe29273",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731411664,
+                  "message": "ci: add PR author as reviewer for release PR",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/699c2c41358a685c41fcaaaeb23b6b78dbe29273"
                },
                {
-                  "sha": "4a86fadb18be739222c4b93b9bd281995556981d",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1731407647,
-                  "message": "Translations update from Hosted Weblate (#855)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Provision\nCommon](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-common/).\n\n\nIt also includes following components:\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n2](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-2/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n7](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-7/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n8](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-8/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n5](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-5/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n3](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-3/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n9](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-9/)\n\n* [ubuntu-desktop-translations/Factory Reset\nTools](https://hosted.weblate.org/projects/ubuntu-desktop-translations/factory-reset-tools/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n4](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-4/)\n\n* [ubuntu-desktop-translations/Provision Stages 4 and 5\nInit](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stages-4-and-5-init/)\n\n* [ubuntu-desktop-translations/Provision Stage 3\nBootstrap](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n6](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-6/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n1](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-1/)\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/provision-common/horizontal-auto.svg)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4a86fadb18be739222c4b93b9bd281995556981d"
+                  "sha": "4946f944ef87f2e0088aa9e19162ae5c1dfb748d",
+                  "author": "Dennis Loose",
+                  "timestamp": 1730994299,
+                  "message": "ci: add release workflow",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4946f944ef87f2e0088aa9e19162ae5c1dfb748d"
                }
             ],
             "ciActions": [
@@ -6108,25 +6108,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6151663b824262b62aacbc77171e5db7750fa43e",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1731412933,
-                  "message": "refactor: move tester navigation out of integration tests (#859)\n\nA small refactor to move repeated navigation functions into their test\nfunctions for better test readability to help me get more comfortable\nwith navigating the installer project :slightly_smiling_face:",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6151663b824262b62aacbc77171e5db7750fa43e"
+                  "sha": "fc5b688fed12e67f116dc70ba8de807fcdfa330b",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731420321,
+                  "message": "ci: release automation (#860)\n\nThis PR adds two github workflows that allow us to automatically raise\r\nsnap build PRs (`snap/*` branches) driven by labels on mainline PRs.\r\n\r\n- `check-snap-label.yaml`\r\nChecks if mainline PRs are labeled with at least one of:\r\n  - `snap/ubuntu-desktop-bootstrap`\r\n  - `snap/ubuntu-desktop-init`\r\n  - `snap/factory-reset-tools`\r\n- `snap/none` (used for PRs that shouldn't trigger any snap release PRs,\r\ne.g. documentation changes, ..)\r\n- `snap-release.yaml`\r\n  - Runs when a PR is merged into a mainline branch\r\n- Parses the labels from the merged PR and translates them into the\r\nnames of the release branches, e.g. `snap/ubuntu-desktop-bootstrap` ->\r\n`snap/ubuntu-desktop-bootstrap/main` for a PR targeting `main`, or\r\n`snap/ubuntu-desktop-bootstrap` -> `snap/ubuntu-desktop-init/24.04` for\r\na PR targeting `ubuntu/24.04` (will need backporting to `ubuntu/24.04`)\r\n- Replaces the `commit-ref` for the corresponding `part` in the\r\nsnapcraft.yaml with the commit hash of the PR's merge commit\r\n- Pushes the changes to a dedicated release branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main-release`) or updates the branch if\r\nit already exists\r\n- Opens a PR from that branch to the corresponding snap branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main`) or updates it.\r\n\r\nUDENG-5076",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fc5b688fed12e67f116dc70ba8de807fcdfa330b"
                },
                {
-                  "sha": "33bb29030099ad6310575fef7d2af1df7a05c516",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1731408341,
-                  "message": "chore: adding comment re: failing individual tests",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/33bb29030099ad6310575fef7d2af1df7a05c516"
+                  "sha": "699c2c41358a685c41fcaaaeb23b6b78dbe29273",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731411664,
+                  "message": "ci: add PR author as reviewer for release PR",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/699c2c41358a685c41fcaaaeb23b6b78dbe29273"
                },
                {
-                  "sha": "4a86fadb18be739222c4b93b9bd281995556981d",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1731407647,
-                  "message": "Translations update from Hosted Weblate (#855)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Provision\nCommon](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-common/).\n\n\nIt also includes following components:\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n2](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-2/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n7](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-7/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n8](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-8/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n5](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-5/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n3](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-3/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n9](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-9/)\n\n* [ubuntu-desktop-translations/Factory Reset\nTools](https://hosted.weblate.org/projects/ubuntu-desktop-translations/factory-reset-tools/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n4](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-4/)\n\n* [ubuntu-desktop-translations/Provision Stages 4 and 5\nInit](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stages-4-and-5-init/)\n\n* [ubuntu-desktop-translations/Provision Stage 3\nBootstrap](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n6](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-6/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n1](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-1/)\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/provision-common/horizontal-auto.svg)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4a86fadb18be739222c4b93b9bd281995556981d"
+                  "sha": "4946f944ef87f2e0088aa9e19162ae5c1dfb748d",
+                  "author": "Dennis Loose",
+                  "timestamp": 1730994299,
+                  "message": "ci: add release workflow",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4946f944ef87f2e0088aa9e19162ae5c1dfb748d"
                }
             ],
             "ciActions": [
@@ -8215,25 +8215,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6151663b824262b62aacbc77171e5db7750fa43e",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1731412933,
-                  "message": "refactor: move tester navigation out of integration tests (#859)\n\nA small refactor to move repeated navigation functions into their test\nfunctions for better test readability to help me get more comfortable\nwith navigating the installer project :slightly_smiling_face:",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6151663b824262b62aacbc77171e5db7750fa43e"
+                  "sha": "fc5b688fed12e67f116dc70ba8de807fcdfa330b",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731420321,
+                  "message": "ci: release automation (#860)\n\nThis PR adds two github workflows that allow us to automatically raise\r\nsnap build PRs (`snap/*` branches) driven by labels on mainline PRs.\r\n\r\n- `check-snap-label.yaml`\r\nChecks if mainline PRs are labeled with at least one of:\r\n  - `snap/ubuntu-desktop-bootstrap`\r\n  - `snap/ubuntu-desktop-init`\r\n  - `snap/factory-reset-tools`\r\n- `snap/none` (used for PRs that shouldn't trigger any snap release PRs,\r\ne.g. documentation changes, ..)\r\n- `snap-release.yaml`\r\n  - Runs when a PR is merged into a mainline branch\r\n- Parses the labels from the merged PR and translates them into the\r\nnames of the release branches, e.g. `snap/ubuntu-desktop-bootstrap` ->\r\n`snap/ubuntu-desktop-bootstrap/main` for a PR targeting `main`, or\r\n`snap/ubuntu-desktop-bootstrap` -> `snap/ubuntu-desktop-init/24.04` for\r\na PR targeting `ubuntu/24.04` (will need backporting to `ubuntu/24.04`)\r\n- Replaces the `commit-ref` for the corresponding `part` in the\r\nsnapcraft.yaml with the commit hash of the PR's merge commit\r\n- Pushes the changes to a dedicated release branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main-release`) or updates the branch if\r\nit already exists\r\n- Opens a PR from that branch to the corresponding snap branch (e.g.\r\n`snap/ubuntu-desktop-bootstrap/main`) or updates it.\r\n\r\nUDENG-5076",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fc5b688fed12e67f116dc70ba8de807fcdfa330b"
                },
                {
-                  "sha": "33bb29030099ad6310575fef7d2af1df7a05c516",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1731408341,
-                  "message": "chore: adding comment re: failing individual tests",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/33bb29030099ad6310575fef7d2af1df7a05c516"
+                  "sha": "699c2c41358a685c41fcaaaeb23b6b78dbe29273",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731411664,
+                  "message": "ci: add PR author as reviewer for release PR",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/699c2c41358a685c41fcaaaeb23b6b78dbe29273"
                },
                {
-                  "sha": "4a86fadb18be739222c4b93b9bd281995556981d",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1731407647,
-                  "message": "Translations update from Hosted Weblate (#855)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Provision\nCommon](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-common/).\n\n\nIt also includes following components:\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n2](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-2/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n7](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-7/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n8](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-8/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n5](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-5/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n3](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-3/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n9](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-9/)\n\n* [ubuntu-desktop-translations/Factory Reset\nTools](https://hosted.weblate.org/projects/ubuntu-desktop-translations/factory-reset-tools/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n4](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-4/)\n\n* [ubuntu-desktop-translations/Provision Stages 4 and 5\nInit](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stages-4-and-5-init/)\n\n* [ubuntu-desktop-translations/Provision Stage 3\nBootstrap](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n6](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-6/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n1](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-1/)\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/provision-common/horizontal-auto.svg)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4a86fadb18be739222c4b93b9bd281995556981d"
+                  "sha": "4946f944ef87f2e0088aa9e19162ae5c1dfb748d",
+                  "author": "Dennis Loose",
+                  "timestamp": 1730994299,
+                  "message": "ci: add release workflow",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4946f944ef87f2e0088aa9e19162ae5c1dfb748d"
                }
             ],
             "ciActions": [
