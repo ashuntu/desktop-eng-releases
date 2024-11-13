@@ -4203,25 +4203,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "95460f7b6db50dddadc40e4cb60e1cadb1ecd953",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731494955,
+                  "message": "fix: cache action glob pattern doesn't support braces (#863)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/95460f7b6db50dddadc40e4cb60e1cadb1ecd953"
+               },
+               {
+                  "sha": "c08d44bbc3fb1f81bc15372c37c515d303d0d9b9",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731491781,
+                  "message": "fix: cache action glob pattern doesn't support braces",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c08d44bbc3fb1f81bc15372c37c515d303d0d9b9"
+               },
+               {
                   "sha": "36f38a314f4a4b1131df8c4e758cb08759cb342e",
                   "author": "Innes Anderson-Morrison",
                   "timestamp": 1731429857,
                   "message": "refactor: moving applications to a top level apps directory (#862)\n\nOther than the relative path imports in some of the test files this\nshould be a straight move of the three application packages out to\n`/apps`. I've also added some initial notes on the proposed structure\nthat I'm aiming to move things to in follow up PRs.",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/36f38a314f4a4b1131df8c4e758cb08759cb342e"
-               },
-               {
-                  "sha": "64712aa0c903e70e229cf93697f3292d77dbbf39",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1731427655,
-                  "message": "fix: fixing YAML structure in CI workflow",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/64712aa0c903e70e229cf93697f3292d77dbbf39"
-               },
-               {
-                  "sha": "829fd69052cd9f1b56006e10264b4a426be7b503",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1731427356,
-                  "message": "fix: updating CI to account for the new repo structure",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/829fd69052cd9f1b56006e10264b4a426be7b503"
                }
             ],
             "ciActions": [
@@ -6108,25 +6108,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "95460f7b6db50dddadc40e4cb60e1cadb1ecd953",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731494955,
+                  "message": "fix: cache action glob pattern doesn't support braces (#863)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/95460f7b6db50dddadc40e4cb60e1cadb1ecd953"
+               },
+               {
+                  "sha": "c08d44bbc3fb1f81bc15372c37c515d303d0d9b9",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731491781,
+                  "message": "fix: cache action glob pattern doesn't support braces",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c08d44bbc3fb1f81bc15372c37c515d303d0d9b9"
+               },
+               {
                   "sha": "36f38a314f4a4b1131df8c4e758cb08759cb342e",
                   "author": "Innes Anderson-Morrison",
                   "timestamp": 1731429857,
                   "message": "refactor: moving applications to a top level apps directory (#862)\n\nOther than the relative path imports in some of the test files this\nshould be a straight move of the three application packages out to\n`/apps`. I've also added some initial notes on the proposed structure\nthat I'm aiming to move things to in follow up PRs.",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/36f38a314f4a4b1131df8c4e758cb08759cb342e"
-               },
-               {
-                  "sha": "64712aa0c903e70e229cf93697f3292d77dbbf39",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1731427655,
-                  "message": "fix: fixing YAML structure in CI workflow",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/64712aa0c903e70e229cf93697f3292d77dbbf39"
-               },
-               {
-                  "sha": "829fd69052cd9f1b56006e10264b4a426be7b503",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1731427356,
-                  "message": "fix: updating CI to account for the new repo structure",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/829fd69052cd9f1b56006e10264b4a426be7b503"
                }
             ],
             "ciActions": [
@@ -6526,7 +6526,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 69,
+            "newCommits": 71,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -6607,25 +6607,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a3c6e71c5a0c816f927ffdcfeda7f6d58999d7d2",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1731456720,
-                  "message": "broker: Explicitly use Device auth mode for testing errors (#213)\n\nWe have tests checking error cases using the qrcode auth mode, but we\r\nwere not doing the same with the device case.\r\n\r\nCloses: https://github.com/ubuntu/authd/issues/629",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a3c6e71c5a0c816f927ffdcfeda7f6d58999d7d2"
+                  "sha": "023510197699aad9053bad6e5feddd6125ae70fa",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1731495523,
+                  "message": "fix: use AuthURLParam to set client id and secret (#216)\n\nWorkaround to deal with golang/oauth2#320\r\n\r\ntldr is that IDP servers tend to not be fully compliant with how client\r\ncredentials are passed and have bespoke arrangements so anything goes\r\nthis enforces the standard implementation from the RFC and has it working\r\nfor any RFC compliant OIDC server\r\n\r\nfull info here https://github.com/golang/oauth2/issues/320",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/023510197699aad9053bad6e5feddd6125ae70fa"
                },
                {
-                  "sha": "39256e8ddd72042c9a38db86a951b0a88a71329c",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1731444699,
-                  "message": "broker: Explicitly use Device auth mode for testing errors\n\nWe have tests checking error cases using the qrcode auth mode, but we\nwere not doing the same with the device case.\n\nCloses: https://github.com/ubuntu/authd/issues/629",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/39256e8ddd72042c9a38db86a951b0a88a71329c"
+                  "sha": "6df54011fa35e0ab0de8bbda040ad4b7cef853f1",
+                  "author": "shipperizer",
+                  "timestamp": 1730660076,
+                  "message": "fix: use AuthURLParam to set client id and secret\n\nCo-authored-by: 3v1n0 <mail@3v1n0.net>\n\nworkaround to deal with golang/oauth2#320\n\ntldr is that IDP servers tend to not be fully compliant with how client\ncredentials are passed and have bespoke arrangements so anything goes\nthis enforces the standard implementation from the RFC and has it working\nfor any RFC compliant OIDC server\n\nfull info here https://github.com/golang/oauth2/issues/320",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/6df54011fa35e0ab0de8bbda040ad4b7cef853f1"
                },
                {
-                  "sha": "8ccb82eb3db6c4c1e35015862b31f8adcaeddf04",
-                  "author": "adombeck",
-                  "timestamp": 1731449467,
-                  "message": " Use the subtest name as the golden file/dir name (#206)\n\nUDENG-5196",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/8ccb82eb3db6c4c1e35015862b31f8adcaeddf04"
+                  "sha": "c296d9f05fdeb2951470ed2da31d0295de5a72d6",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1731494605,
+                  "message": "deps(go-tools): bump github.com/golangci/golangci-lint from 1.61.0 to 1.62.0 in /tools (#203)\n\nNew linter update",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/c296d9f05fdeb2951470ed2da31d0295de5a72d6"
                }
             ],
             "ciActions": [
@@ -8215,25 +8215,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "95460f7b6db50dddadc40e4cb60e1cadb1ecd953",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731494955,
+                  "message": "fix: cache action glob pattern doesn't support braces (#863)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/95460f7b6db50dddadc40e4cb60e1cadb1ecd953"
+               },
+               {
+                  "sha": "c08d44bbc3fb1f81bc15372c37c515d303d0d9b9",
+                  "author": "Dennis Loose",
+                  "timestamp": 1731491781,
+                  "message": "fix: cache action glob pattern doesn't support braces",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c08d44bbc3fb1f81bc15372c37c515d303d0d9b9"
+               },
+               {
                   "sha": "36f38a314f4a4b1131df8c4e758cb08759cb342e",
                   "author": "Innes Anderson-Morrison",
                   "timestamp": 1731429857,
                   "message": "refactor: moving applications to a top level apps directory (#862)\n\nOther than the relative path imports in some of the test files this\nshould be a straight move of the three application packages out to\n`/apps`. I've also added some initial notes on the proposed structure\nthat I'm aiming to move things to in follow up PRs.",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/36f38a314f4a4b1131df8c4e758cb08759cb342e"
-               },
-               {
-                  "sha": "64712aa0c903e70e229cf93697f3292d77dbbf39",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1731427655,
-                  "message": "fix: fixing YAML structure in CI workflow",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/64712aa0c903e70e229cf93697f3292d77dbbf39"
-               },
-               {
-                  "sha": "829fd69052cd9f1b56006e10264b4a426be7b503",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1731427356,
-                  "message": "fix: updating CI to account for the new repo structure",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/829fd69052cd9f1b56006e10264b4a426be7b503"
                }
             ],
             "ciActions": [
