@@ -6217,25 +6217,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e02b29fff135c78101d9dcd6fa386c453140bd46",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1731506258,
+                  "message": "feat(docs): How-to guides about UP4W agent startup (#944)\n\nAs agreed in WS037, I'm bringing two pieces of documentation about how\r\nsystem administrators can have UP4W background agent start without\r\nexplicit end user interaction.\r\n\r\nOne guide relies on being able to start the agent via CLI (reason why\r\nthis PR is based on #941 ) by deploying an one-shot PowerShell script\r\nvia Intune to be executed with the current user's credentials.\r\n\r\nThe other guide relies on the registry, but leverages [Intune\r\nRemediations](https://learn.microsoft.com/en-us/mem/intune/fundamentals/remediations)\r\nto make that approach more reliable, by having that tool automatically\r\nchecking and fixing non-compliant state, thus multi-shot (should end\r\nusers disable the startup task, Intune would eventually find it and fix\r\nit).\r\n\r\n---\r\n\r\nThis PR completes UDENG-4623 and closes #912 .",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e02b29fff135c78101d9dcd6fa386c453140bd46"
+               },
+               {
+                  "sha": "9419e907ef3270d056311dddffbfa7dfc8203b1a",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1731506126,
+                  "message": "feat(windows-agent): Allow users to run it via CLI (#941)\n\nWe modify the MSIX packaging to create an [app execution\r\nalias](https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-uap3-appexecutionalias),\r\nwhich causes a dummy binary to be created in a well-known location (by\r\ndefault `%LOCALAPPDATA%\\Microsoft\\WindowsApps`) which is included in\r\nuser's `%PATH%` such that it becomes possible for the user (or scripts\r\nrunning in user's behalf) to run the agent via CLI. That's preferrable\r\nover declaring the agent as an\r\n[Application](https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-application)\r\nbecause it won't be \"promoted\" in the start menu as an application\r\nwould. Users can still find the CLI executable by searching for its\r\nexact name ( `ubuntu-pro-agent` in this case - the `.exe` is optional in\r\nthe search but required in the appx manifest declaration).\r\n\r\nSince we didn't remove the startup task declaration, starting the agent\r\nvia the CLI app execution alias is also considered by the OS as a user\r\ninteraction with the app, thus the startup task is enabled for that user\r\nsuch that the subsequent logons will have the agent starting\r\nautomatically.\r\n\r\nThe agent is made into a single-instance application so we prevent a\r\nsecond instance to overwrite logs, replace the gRPC service bindings and\r\ncorrupt the state of an already running process. We achieve that with a\r\nsimple mechanism of writing a lock file in the agent's private\r\ndirectory, opened with exclusive access, so a process attempting to open\r\nit a second time won't succeed. Since the already-running instance could\r\nbe child of the ubuntu-pro-agent-launcher.exe (which is an invisible\r\nGUI) it's better to not implement the common pattern of GUI apps of\r\nactivating the already running process window when a instance detects\r\nitself as the second one.\r\n\r\nThe end result looks like the following:\r\n\r\n![Screenshot 2024-10-14\r\n151735](https://github.com/user-attachments/assets/ca017a9f-f40a-46a4-b013-d4155b6d3667)\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/3d98fcd9-c71d-4ac8-b8b2-07209c2fb076)\r\n\r\n- `ubuntu-pro-agent.exe` in PATH\r\n- `ubuntu-pro-agent` can be found in the start menu\r\n- A terminal window running it is and remains visible\r\n- clean, completion, help and version commands still work on a second\r\ninstance\r\n- the default command does not work and exits early enough before\r\ntouching logs, disk or network resources.\r\n\r\n--- \r\n\r\nUDENG-4623\r\n\r\nP.S.: I sneaked one minor unrelated fix in\r\n6c1f70ed395f70bb280d14352cea86ffc78b314e because I was passing nearby.\r\nAlso 114d65600b862b5fbeac1cd6e1b4e8ec8898017f is temporary and should be\r\nfixed after I workout the documentation PR (coming next) related to this\r\none.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9419e907ef3270d056311dddffbfa7dfc8203b1a"
+               },
+               {
                   "sha": "9e1963c8d89245c890dbcede75d6b936c9539212",
                   "author": "ashuntu",
                   "timestamp": 1731442257,
                   "message": "fix(gui-ubuntupro): Add filters for cert files in file picker (#947)\n\nThe file picker for Landscape configuration certificates now filters to\r\nonly .cer, .crt, .der, and .pem file types.\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/fcd96598-1338-45c7-a23e-e2b7868d0d84)\r\n\r\nFixes https://github.com/canonical/ubuntu-pro-for-wsl/issues/878\r\n\r\n---\r\n\r\nUDENG-5110",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9e1963c8d89245c890dbcede75d6b936c9539212"
-               },
-               {
-                  "sha": "f79bdc4d9d92b495cb0daf9ce3f4490e107f1e6f",
-                  "author": "ashuntu",
-                  "timestamp": 1731440105,
-                  "message": "Cleanup test finders",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f79bdc4d9d92b495cb0daf9ce3f4490e107f1e6f"
-               },
-               {
-                  "sha": "f9359a54f199ece81a3a3b9f3bde708be744e270",
-                  "author": "ashuntu",
-                  "timestamp": 1731431149,
-                  "message": "Fix variable names",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f9359a54f199ece81a3a3b9f3bde708be744e270"
                }
             ],
             "ciActions": [
@@ -6526,7 +6526,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 73,
+            "newCommits": 75,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
