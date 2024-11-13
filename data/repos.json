@@ -3162,25 +3162,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5b6eda19564b1a0630dc1ff2317b6af2532e6edf",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1731427083,
-                  "message": "fix: print the URL of the new cards instead of just the reference (#38)\n\nit makes it easier to open the card in a browser",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/5b6eda19564b1a0630dc1ff2317b6af2532e6edf"
+                  "sha": "6e15fc56e5e6264017793e525203b1e5c1b1a95c",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1731456214,
+                  "message": "feat(build-debian): Use docker to manually run build and prepare steps and add tests (#28)\n\nAs underlined in\r\nhttps://github.com/ubuntu/authd/pull/130#issuecomment-1963005213 using\r\n`jtdor/build-deb-action` for building debian packages has some problems\r\nthat are yet not clear, and it also does not seem to properly support\r\nbuilding non-native packages.\r\n\r\nAs per this, given that the code needed for handling the build inside a\r\nsimpler docker container is quite small, I've moved the build to manual\r\nhandling which allows us some more control over the steps at the cost of\r\nbeing a bit more verbose.\r\n\r\nAs bonus:\r\n- We now only build as user (not the sources, since there's no much\r\npoint)\r\n- All the network traffic is totally blocked for the builder user (not\r\njust HTTPS)\r\n- ~~`DEB_BUILD_OPTIONS` can be customized for special builds (e.g.\r\n`nocheck`)~~\r\n - Version uses actual distro version\r\n\r\nI've added some commits from #22, but not included the lintian build yet\r\n(that I've ready\r\n[here](https://github.com/3v1n0/desktop-engineering/commit/1b72205f715fc15abbbeb33708215a6a14be2815))\r\nnot to make this PR harder to check, but also because I think those\r\ncould instead be part of another action to allow more parallelization\r\nwhen used.\r\n\r\nBy doing this change, not only both test cases pass, but also authd is\r\ncorrectly built: https://github.com/ubuntu/authd/pull/130 (e.g.\r\nhttps://github.com/ubuntu/authd/actions/runs/8044158864)\r\n\r\nUDENG-2439",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/6e15fc56e5e6264017793e525203b1e5c1b1a95c"
                },
                {
-                  "sha": "364325794768500176fcd96588efb8b4ea3f5691",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1731427036,
-                  "message": "feat: allow setting new cards descriptions from the cmdline (#39)\n\nA non interactive mode makes it easier to use in a script",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/364325794768500176fcd96588efb8b4ea3f5691"
+                  "sha": "542f160f29cb86d1ffd7b0de57b63304ab4ea6dd",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1731449824,
+                  "message": "build-debian: Install fakeroot by default\n\nSince we're building as user",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/542f160f29cb86d1ffd7b0de57b63304ab4ea6dd"
                },
                {
-                  "sha": "71eac6d6fe5c70c1651ab8633e466107f8ea5dc2",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1731420958,
-                  "message": "fix: print the URL of the new cards instead of just the reference\n\nit makes it easier to open the card in a browser",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/71eac6d6fe5c70c1651ab8633e466107f8ea5dc2"
+                  "sha": "005736acf129663126f2d9d1d36c90aaa462b625",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1708959178,
+                  "message": "debian-build: Use version number so that it can override last release\n\nUse a +git syntax and there we use incremental version values.\n\nFinally add the distro version as a minor factor, so that builds on the\nsame code for different distros only rely on that",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/005736acf129663126f2d9d1d36c90aaa462b625"
                }
             ],
             "ciActions": [],
@@ -5034,25 +5034,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5b6eda19564b1a0630dc1ff2317b6af2532e6edf",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1731427083,
-                  "message": "fix: print the URL of the new cards instead of just the reference (#38)\n\nit makes it easier to open the card in a browser",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/5b6eda19564b1a0630dc1ff2317b6af2532e6edf"
+                  "sha": "6e15fc56e5e6264017793e525203b1e5c1b1a95c",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1731456214,
+                  "message": "feat(build-debian): Use docker to manually run build and prepare steps and add tests (#28)\n\nAs underlined in\r\nhttps://github.com/ubuntu/authd/pull/130#issuecomment-1963005213 using\r\n`jtdor/build-deb-action` for building debian packages has some problems\r\nthat are yet not clear, and it also does not seem to properly support\r\nbuilding non-native packages.\r\n\r\nAs per this, given that the code needed for handling the build inside a\r\nsimpler docker container is quite small, I've moved the build to manual\r\nhandling which allows us some more control over the steps at the cost of\r\nbeing a bit more verbose.\r\n\r\nAs bonus:\r\n- We now only build as user (not the sources, since there's no much\r\npoint)\r\n- All the network traffic is totally blocked for the builder user (not\r\njust HTTPS)\r\n- ~~`DEB_BUILD_OPTIONS` can be customized for special builds (e.g.\r\n`nocheck`)~~\r\n - Version uses actual distro version\r\n\r\nI've added some commits from #22, but not included the lintian build yet\r\n(that I've ready\r\n[here](https://github.com/3v1n0/desktop-engineering/commit/1b72205f715fc15abbbeb33708215a6a14be2815))\r\nnot to make this PR harder to check, but also because I think those\r\ncould instead be part of another action to allow more parallelization\r\nwhen used.\r\n\r\nBy doing this change, not only both test cases pass, but also authd is\r\ncorrectly built: https://github.com/ubuntu/authd/pull/130 (e.g.\r\nhttps://github.com/ubuntu/authd/actions/runs/8044158864)\r\n\r\nUDENG-2439",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/6e15fc56e5e6264017793e525203b1e5c1b1a95c"
                },
                {
-                  "sha": "364325794768500176fcd96588efb8b4ea3f5691",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1731427036,
-                  "message": "feat: allow setting new cards descriptions from the cmdline (#39)\n\nA non interactive mode makes it easier to use in a script",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/364325794768500176fcd96588efb8b4ea3f5691"
+                  "sha": "542f160f29cb86d1ffd7b0de57b63304ab4ea6dd",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1731449824,
+                  "message": "build-debian: Install fakeroot by default\n\nSince we're building as user",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/542f160f29cb86d1ffd7b0de57b63304ab4ea6dd"
                },
                {
-                  "sha": "71eac6d6fe5c70c1651ab8633e466107f8ea5dc2",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1731420958,
-                  "message": "fix: print the URL of the new cards instead of just the reference\n\nit makes it easier to open the card in a browser",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/71eac6d6fe5c70c1651ab8633e466107f8ea5dc2"
+                  "sha": "005736acf129663126f2d9d1d36c90aaa462b625",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1708959178,
+                  "message": "debian-build: Use version number so that it can override last release\n\nUse a +git syntax and there we use incremental version values.\n\nFinally add the distro version as a minor factor, so that builds on the\nsame code for different distros only rely on that",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/005736acf129663126f2d9d1d36c90aaa462b625"
                }
             ],
             "ciActions": [],
@@ -6607,25 +6607,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a3c6e71c5a0c816f927ffdcfeda7f6d58999d7d2",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1731456720,
+                  "message": "broker: Explicitly use Device auth mode for testing errors (#213)\n\nWe have tests checking error cases using the qrcode auth mode, but we\r\nwere not doing the same with the device case.\r\n\r\nCloses: https://github.com/ubuntu/authd/issues/629",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a3c6e71c5a0c816f927ffdcfeda7f6d58999d7d2"
+               },
+               {
+                  "sha": "39256e8ddd72042c9a38db86a951b0a88a71329c",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1731444699,
+                  "message": "broker: Explicitly use Device auth mode for testing errors\n\nWe have tests checking error cases using the qrcode auth mode, but we\nwere not doing the same with the device case.\n\nCloses: https://github.com/ubuntu/authd/issues/629",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/39256e8ddd72042c9a38db86a951b0a88a71329c"
+               },
+               {
                   "sha": "8ccb82eb3db6c4c1e35015862b31f8adcaeddf04",
                   "author": "adombeck",
                   "timestamp": 1731449467,
                   "message": " Use the subtest name as the golden file/dir name (#206)\n\nUDENG-5196",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/8ccb82eb3db6c4c1e35015862b31f8adcaeddf04"
-               },
-               {
-                  "sha": "21b0befdbc36aad8aa232936d7aa454f1b0db0f6",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1731345810,
-                  "message": "Update names of golden files\n\nUpdate the names of the golden files according to the previous commit,\nby running:\n\n    git rm \"*/testdata/*\" && TESTS_UPDATE_GOLDEN=1 go test ./...",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/21b0befdbc36aad8aa232936d7aa454f1b0db0f6"
-               },
-               {
-                  "sha": "6b12ccb53da917ddd0b19bd85b0f9eeba59f0ca6",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1731344797,
-                  "message": "Use the subtest name as the golden file/dir name\n\nAnd check if the subtest name contains any characters that we don't want\nto allow in golden file names.\n\nThis allows us to copy/paste the name of the golden file to search for\nthe test definition and vice versa.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/6b12ccb53da917ddd0b19bd85b0f9eeba59f0ca6"
                }
             ],
             "ciActions": [
@@ -7174,25 +7174,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5b6eda19564b1a0630dc1ff2317b6af2532e6edf",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1731427083,
-                  "message": "fix: print the URL of the new cards instead of just the reference (#38)\n\nit makes it easier to open the card in a browser",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/5b6eda19564b1a0630dc1ff2317b6af2532e6edf"
+                  "sha": "6e15fc56e5e6264017793e525203b1e5c1b1a95c",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1731456214,
+                  "message": "feat(build-debian): Use docker to manually run build and prepare steps and add tests (#28)\n\nAs underlined in\r\nhttps://github.com/ubuntu/authd/pull/130#issuecomment-1963005213 using\r\n`jtdor/build-deb-action` for building debian packages has some problems\r\nthat are yet not clear, and it also does not seem to properly support\r\nbuilding non-native packages.\r\n\r\nAs per this, given that the code needed for handling the build inside a\r\nsimpler docker container is quite small, I've moved the build to manual\r\nhandling which allows us some more control over the steps at the cost of\r\nbeing a bit more verbose.\r\n\r\nAs bonus:\r\n- We now only build as user (not the sources, since there's no much\r\npoint)\r\n- All the network traffic is totally blocked for the builder user (not\r\njust HTTPS)\r\n- ~~`DEB_BUILD_OPTIONS` can be customized for special builds (e.g.\r\n`nocheck`)~~\r\n - Version uses actual distro version\r\n\r\nI've added some commits from #22, but not included the lintian build yet\r\n(that I've ready\r\n[here](https://github.com/3v1n0/desktop-engineering/commit/1b72205f715fc15abbbeb33708215a6a14be2815))\r\nnot to make this PR harder to check, but also because I think those\r\ncould instead be part of another action to allow more parallelization\r\nwhen used.\r\n\r\nBy doing this change, not only both test cases pass, but also authd is\r\ncorrectly built: https://github.com/ubuntu/authd/pull/130 (e.g.\r\nhttps://github.com/ubuntu/authd/actions/runs/8044158864)\r\n\r\nUDENG-2439",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/6e15fc56e5e6264017793e525203b1e5c1b1a95c"
                },
                {
-                  "sha": "364325794768500176fcd96588efb8b4ea3f5691",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1731427036,
-                  "message": "feat: allow setting new cards descriptions from the cmdline (#39)\n\nA non interactive mode makes it easier to use in a script",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/364325794768500176fcd96588efb8b4ea3f5691"
+                  "sha": "542f160f29cb86d1ffd7b0de57b63304ab4ea6dd",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1731449824,
+                  "message": "build-debian: Install fakeroot by default\n\nSince we're building as user",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/542f160f29cb86d1ffd7b0de57b63304ab4ea6dd"
                },
                {
-                  "sha": "71eac6d6fe5c70c1651ab8633e466107f8ea5dc2",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1731420958,
-                  "message": "fix: print the URL of the new cards instead of just the reference\n\nit makes it easier to open the card in a browser",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/71eac6d6fe5c70c1651ab8633e466107f8ea5dc2"
+                  "sha": "005736acf129663126f2d9d1d36c90aaa462b625",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1708959178,
+                  "message": "debian-build: Use version number so that it can override last release\n\nUse a +git syntax and there we use incremental version values.\n\nFinally add the distro version as a minor factor, so that builds on the\nsame code for different distros only rely on that",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/005736acf129663126f2d9d1d36c90aaa462b625"
                }
             ],
             "ciActions": [],
