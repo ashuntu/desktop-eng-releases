@@ -2840,7 +2840,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -6572,25 +6572,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "93d8d066a56db59c8825414bfbb2e14611c483a0",
-                  "author": "adombeck",
-                  "timestamp": 1731497355,
-                  "message": "ci: Use gotestfmt to format go test output (#608)\n\nUDENG-4788",
-                  "url": "https://github.com/ubuntu/authd/commit/93d8d066a56db59c8825414bfbb2e14611c483a0"
-               },
-               {
-                  "sha": "d527cf1f1252f442aad3b5688d472ceb20f75f17",
+                  "sha": "7e8299d1e0a1ea0dc70fd44a794888dba3dff88a",
                   "author": "Marco Trevisan",
-                  "timestamp": 1731449290,
-                  "message": "fix(pam/integration-tests/gdm): Handle broker selection when on such stage (#603)\n\nWe have some races in gdm tests caused by the fact we may send the\r\n`brokerSelected` event too late, in particular when we received the\r\nbroker list, but at that point we may be have done other steps already.\r\n\r\nInstead, handle the broker selection only when we're in broker selection\r\nstage, and not too early or too late.",
-                  "url": "https://github.com/ubuntu/authd/commit/d527cf1f1252f442aad3b5688d472ceb20f75f17"
+                  "timestamp": 1731515907,
+                  "message": "fix(pam/gdmmodel): Forward public AuthModeSelected to GDM (#631)\n\nauthModeSelected event we were listening to is an event that may be\r\nignored or adjusted depending on authModeSelection model logic, so it's\r\nwhat we should also expose to GDM.\r\n\r\nWe couldn't do that though since the event wasn't forwarded, so do it.\r\n\r\nAlso simplify user selection on GDM tests, by mimicking more what we\r\nreally do.\r\n\r\nIt should help with flacky tests such as [1].\r\n\r\n[1]\r\nhttps://github.com/ubuntu/authd/actions/runs/11802896113/job/32879602555?pr=583",
+                  "url": "https://github.com/ubuntu/authd/commit/7e8299d1e0a1ea0dc70fd44a794888dba3dff88a"
                },
                {
-                  "sha": "48db8521609682884df7226a107e6fce8d5db648",
+                  "sha": "75bdc4885a52083dc8a63300d6cb3c1a59a9c257",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1729691825,
-                  "message": "pam/integration-tests/gdm: Handle broker selection when on such stage\n\nWe have some races in gdm tests caused by the fact we may send the\nbrokerSelection event too late, in particular when we received the\nbroker list, but at that point we may be have done other steps already.\n\nInstead, handle the broker selection only when we're in broker selection\nstage, and not too early or too late.",
-                  "url": "https://github.com/ubuntu/authd/commit/48db8521609682884df7226a107e6fce8d5db648"
+                  "timestamp": 1731513805,
+                  "message": "pam/gdmmodel-test: Never inject userSelected events in tests simulating daemon\n\nWe don't really support user-selection from the daemon, so it's not\nworth to test it, while the user can be pre-set using PAM instead so\nstress testing on this case instead.\n\nAs per this drop some duplicated tests we had (they were covered already\nby \"Broker selection stage caused by PAM user selection\")",
+                  "url": "https://github.com/ubuntu/authd/commit/75bdc4885a52083dc8a63300d6cb3c1a59a9c257"
+               },
+               {
+                  "sha": "2cd9c710e0a26543a5bef28902ea94195ed48625",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1731513705,
+                  "message": "gdmmodel: Use utility function we already have for user selection",
+                  "url": "https://github.com/ubuntu/authd/commit/2cd9c710e0a26543a5bef28902ea94195ed48625"
                }
             ],
             "ciActions": [
@@ -6846,7 +6846,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -8705,7 +8705,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
