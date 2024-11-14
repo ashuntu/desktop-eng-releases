@@ -6572,25 +6572,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "33931bbc099b34596cf2a884b8c104efa619e81b",
+                  "sha": "f7ec4164d7ff319499f0f02067d59aa10c7295d2",
                   "author": "Marco Trevisan",
-                  "timestamp": 1731587005,
-                  "message": "cleanup: Update golangci-lint and address new linter issues (#637)",
-                  "url": "https://github.com/ubuntu/authd/commit/33931bbc099b34596cf2a884b8c104efa619e81b"
+                  "timestamp": 1731596649,
+                  "message": "fix(pam/gdmmodel-test): Send authentication data only if in challenge stage (#638)\n\nDo not send the authentication data too early as we may not be in the\r\nchallenge stage yet.\r\n\r\nFixes races that we're seeing when optimizing constants: [1]\r\n\r\n[1] https://github.com/ubuntu/authd/actions/runs/11835831306/attempts/1\r\n\r\nUDENG-5261",
+                  "url": "https://github.com/ubuntu/authd/commit/f7ec4164d7ff319499f0f02067d59aa10c7295d2"
                },
                {
-                  "sha": "025381c6c422fe0d06b2ac6ad89d084378e7b4a9",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1731576264,
-                  "message": "deps(go-tools): bump github.com/golangci/golangci-lint\n\nBumps the minor-updates group in /tools with 1 update: [github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint).\n\n\nUpdates `github.com/golangci/golangci-lint` from 1.61.0 to 1.62.0\n- [Release notes](https://github.com/golangci/golangci-lint/releases)\n- [Changelog](https://github.com/golangci/golangci-lint/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/golangci/golangci-lint/compare/v1.61.0...v1.62.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golangci/golangci-lint\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/025381c6c422fe0d06b2ac6ad89d084378e7b4a9"
+                  "sha": "b9fd526e57bee7a41be143aba140f5afc8e20b3f",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1731594686,
+                  "message": "feat(pam/integration-tests): Add SSH authentication tests (#583)\n\nRepeat all the tests using the actual SSH daemon to simulate better the\r\nreal environment.\r\nIt comes con various cleanups that are prerequisite to achieve all this\r\nreducing duplications.\r\n\r\nThis is not using the NSS module yet because that's something to be done\r\noutside the PAM scope.\r\n\r\nSee each commit for details, from the main one:\r\n\r\n```\r\npam/integration-tests: Add PAM tests using SSHd\r\n\r\nWe have tests simulating SSH behavior, but it's definitely better to\r\nensure that SSH works as expected using the actual server and client\r\nwhen used with authd.\r\n\r\nIn order to get sshd to be fully usable for this simulation, however, we\r\nneed to \"mock\" it by using a LD_PRELOAD'ed library that has to be in C\r\n(as the cgo version I initially done would trigger the well known issues\r\nwe have with go libraries and threads) and that we use it for mocking\r\nthe sshd requests on getpwnam and to make sshd to open our pam file\r\n(that is hardcoded in sshd).\r\n\r\nTo handle the getpwnam we could even have used __nss_configure_lookup()\r\nwith a fake module or our own, but this is just a simpler solution for\r\nnow, while in future we may want to add full integration tests where\r\nalso our own NSS library is used instead, but this was outside the scope\r\nof this change, that is mainly focused on the behavior of the PAM module\r\nonly.\r\n\r\nAs for the rest, just repeat all the native tests that make sense using\r\nSSH instead, by de facto re-using the same tape files, minus the removal\r\nof the user selection.\r\n```\r\n\r\nUDENG-4691",
+                  "url": "https://github.com/ubuntu/authd/commit/b9fd526e57bee7a41be143aba140f5afc8e20b3f"
                },
                {
-                  "sha": "729f829e5f6e5ac4f286e48eb12b6fe85f4fcca3",
+                  "sha": "00f1a920760e64dda637e2b5266a5f59a2b7f826",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1731582794,
-                  "message": "pam/pwquality: Do not redefine built-in 'new' function",
-                  "url": "https://github.com/ubuntu/authd/commit/729f829e5f6e5ac4f286e48eb12b6fe85f4fcca3"
+                  "timestamp": 1731523224,
+                  "message": "pam/integration-tests/ssh: Ignore SSH tests when running on unsupported OS\n\nSSH output changes from old jammy (where CI is) to noble and greater\nversions (as per the OpenSSH server changes we carry on), so to be able\nto run the tests in a reliable way we need to be on such context.\n\nWhile we target noble, we didn't force our CI to be updated, so for now\nlet's just enable the tests in older ubuntu versions where CI resides\nskipping it otherwise.\n\nAdded also a further check so that when CI changes we get an error about",
+                  "url": "https://github.com/ubuntu/authd/commit/00f1a920760e64dda637e2b5266a5f59a2b7f826"
                }
             ],
             "ciActions": [
