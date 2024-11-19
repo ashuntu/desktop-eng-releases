@@ -6217,25 +6217,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f2953a1c8c17ebc07f17447b66f09f149287a947",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1731949050,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f2953a1c8c17ebc07f17447b66f09f149287a947"
+                  "sha": "26d33e3f607ab11e10447966842d4f429722d350",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1732033853,
+                  "message": "deps(agentapi): bump google.golang.org/grpc from 1.67.1 to 1.68.0 in /agentapi (#960)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/26d33e3f607ab11e10447966842d4f429722d350"
                },
                {
-                  "sha": "124fffa50a0a2b94798e88974b834a6162dd8eee",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1731949014,
-                  "message": "feat(windows-agent): Send CommandStatus messages to Landscape server (#948)\n\nMatched by the server issued request ID.\r\n\r\nWith https://github.com/canonical/landscape-hostagent-api/pull/20 and\r\nhttps://github.com/canonical/landscape-hostagent-api/pull/21, the\r\nLandscape hostagent API now allows the server to assign a request ID\r\nwhen sending a command and receive feedback from the Windows agent on\r\nthe status of handling such command, which is also a good vehicle for\r\nreporting errors back to the server.\r\n\r\nThis PR changes the Landscape command executor component inside the\r\nWindows agent to enforce sending status messages as the command handling\r\nproceeds. As each command handler method knows best when all validation\r\nsteps are finished and the actual execution started, I'm deliberately\r\npassing the request ID. Except for the AssignHost command. That's\r\nspecial because the server sends it as a one-shot command and terminates\r\nthe connection. There is no feedback expected. The actual feedback is a\r\nnew connection with the hostagent_UID assigned.\r\n\r\nA new test function is introduced to validate that commands send status\r\nmessages, for which I had to change the Landscape mock server to keep a\r\nlog of such messages for later evaluation. Testing the commands\r\nthemselves is not the objective here, but rather assert that status\r\nmessages are sent.\r\n\r\n---\r\n\r\nUDENG-1174",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/124fffa50a0a2b94798e88974b834a6162dd8eee"
+                  "sha": "320fd6f6127d908ccc106fa0a5e0014eac651fc5",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1732033793,
+                  "message": "deps(agentapi): bump google.golang.org/grpc in /agentapi\n\nBumps [google.golang.org/grpc](https://github.com/grpc/grpc-go) from 1.67.1 to 1.68.0.\n- [Release notes](https://github.com/grpc/grpc-go/releases)\n- [Commits](https://github.com/grpc/grpc-go/compare/v1.67.1...v1.68.0)\n\n---\nupdated-dependencies:\n- dependency-name: google.golang.org/grpc\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/320fd6f6127d908ccc106fa0a5e0014eac651fc5"
                },
                {
-                  "sha": "b1611cec81812d55f688156769aff4f68a8b047a",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1731588003,
-                  "message": "Adds means for the server to fail on SendCommandStatus",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b1611cec81812d55f688156769aff4f68a8b047a"
+                  "sha": "a987860176af8a79c5237c96d26e5b61f4744509",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1732033791,
+                  "message": "deps(end-to-end): bump golang.org/x/sys from 0.26.0 to 0.27.0 in /end-to-end (#953)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a987860176af8a79c5237c96d26e5b61f4744509"
                }
             ],
             "ciActions": [
