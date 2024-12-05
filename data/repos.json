@@ -6217,25 +6217,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9aca9a10632124b8a98a215cac0d61bffe19f2ff",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1733339889,
-                  "message": "fix(windows-agent): Delegates `agent.WaitReady` to the daemon (#982)\n\nSince #896 the agent might sometimes close the `a.ready` channel too\r\nearly, giving the possibility of a call to `a.WaitReady()` exiting\r\nbefore the daemon really starts serving, thus not really waiting.\r\n\r\nThe deamon knows best when is the most likely moment to be serving, thus\r\nthis PR slightly modifies `a.WaitReady()` to check with the daemon,\r\nwhich had to implement its own `daemon.WaitReady()`.\r\n\r\nThe `a.ready` channel is still useful to synchronize the access to\r\n`a.daemon`, preventing nil pointer access when the deamon is not yet\r\ninitialized. Checking for `nil` is still needed, as the `a.ready`\r\nchannel may be closed without ever serving, such as on a failure case.\r\n\r\nThis adds a test for `daemon.WaitReady()`, but the agent tests don't\r\nneed to change, as their \"flakyness\" reveal the problem.\r\n\r\n---\r\n\r\nUDENG-4900",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9aca9a10632124b8a98a215cac0d61bffe19f2ff"
+                  "sha": "7e2b64b4283043c23cb5c1c1cc8409c97a423054",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1733422544,
+                  "message": "deps(windows-agent): bump golang.org/x/sys from 0.27.0 to 0.28.0 in /windows-agent (#1001)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7e2b64b4283043c23cb5c1c1cc8409c97a423054"
                },
                {
-                  "sha": "82ce6947f4ea32d06863fbf2bb760dfd682e8a49",
-                  "author": "ashuntu",
-                  "timestamp": 1733327849,
-                  "message": "fix: Vertically center window title bar controls (#996)\n\nCenters the title bar control buttons, but they will not be the full\r\nheight of the title bar until Yaru is updated to include\r\nhttps://github.com/ubuntu/yaru.dart/pull/967 (will require a version\r\nbump on our end in the future).\r\n\r\n| Existing | Current state of this PR | With the Yaru update |\r\n|----------|--------------------------|----------------------|\r\n|\r\n![image](https://github.com/user-attachments/assets/0aa75361-b065-4abf-b734-64c5936a6a00)\r\n|\r\n![image](https://github.com/user-attachments/assets/eebb0dee-656a-4443-93d2-c954a45bb8c7)\r\n|\r\n![image](https://github.com/user-attachments/assets/63aa2cbf-d027-4caf-bed7-1be1d07621e2)\r\n|\r\n\r\n---\r\n\r\nUDENG-5289",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/82ce6947f4ea32d06863fbf2bb760dfd682e8a49"
+                  "sha": "f1418c941b5019cbcb39666851f17970c4895f79",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1733420366,
+                  "message": "deps(windows-agent): bump golang.org/x/sys in /windows-agent\n\nBumps [golang.org/x/sys](https://github.com/golang/sys) from 0.27.0 to 0.28.0.\n- [Commits](https://github.com/golang/sys/compare/v0.27.0...v0.28.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f1418c941b5019cbcb39666851f17970c4895f79"
                },
                {
-                  "sha": "941a09b8b88540cb6199d9d3d9152614c62db0d4",
-                  "author": "ashuntu",
-                  "timestamp": 1733254004,
-                  "message": "Vertically center window title bar controls\n\nCenters the title bar control buttons, but they will not be the full height of the title bar until Yaru is updated to include https://github.com/ubuntu/yaru.dart/pull/967",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/941a09b8b88540cb6199d9d3d9152614c62db0d4"
+                  "sha": "7d54fbfc2a2a9aec4897dfa6e41151f080e750a5",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1733420346,
+                  "message": "deps(gui-ubuntupro): bump win32 from 5.8.0 to 5.9.0 in /gui/packages/ubuntupro (#1005)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7d54fbfc2a2a9aec4897dfa6e41151f080e750a5"
                }
             ],
             "ciActions": [
