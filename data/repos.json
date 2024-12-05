@@ -4735,25 +4735,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "49e7d31afd18db4e1bab08e6792a17147bd64597",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1733435729,
+                  "message": "Bump golang.org/x/sys from 0.25.0 to 0.28.0 (#127)",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/49e7d31afd18db4e1bab08e6792a17147bd64597"
+               },
+               {
+                  "sha": "c30bdfda072cf2cb4d18b2f4bb177a43277b0738",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1733432993,
+                  "message": "Bump golang.org/x/sys from 0.25.0 to 0.28.0\n\nBumps [golang.org/x/sys](https://github.com/golang/sys) from 0.25.0 to 0.28.0.\n- [Commits](https://github.com/golang/sys/compare/v0.25.0...v0.28.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/c30bdfda072cf2cb4d18b2f4bb177a43277b0738"
+               },
+               {
                   "sha": "e95f7201ed9663fd65c152e411d9a800ea57bbc8",
                   "author": "Carlos Nihelton",
                   "timestamp": 1733432846,
                   "message": "fix: TestShell timeouts (#128)\n\nIt's been a while that GoWSL CI has been shown issues with TestShell.\r\n\r\nAfter some investigation I figured that first boot of the images used\r\nfor testing is taking longer than what the test cases expect. Thus the\r\ntimeout.\r\nFrom GoWSL's point-of-view it'd be better to use lighter images, without\r\nsystemd for example. But since GoWSL's main use case is with Ubuntu,\r\nlet's keep the images as is and just give the tests more time to run.",
                   "url": "https://github.com/ubuntu/GoWSL/commit/e95f7201ed9663fd65c152e411d9a800ea57bbc8"
-               },
-               {
-                  "sha": "2aba035237ab3f281e1e9f633c649e984b32d24a",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1733426708,
-                  "message": "Do the same for command tests",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/2aba035237ab3f281e1e9f633c649e984b32d24a"
-               },
-               {
-                  "sha": "2b5eca3c513d11ae066337128a20e5b574f38cb2",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1733425779,
-                  "message": "Fix TestShell timeouts\n\nIt's been a while that GoWSL CI has been shown issues with TestShell.\n\nAfter some investigation I figured that first boot of the images used for testing is taking longer than what the test cases expect.\nThus the timeout.\nFrom GoWSL's point-of-view it'd be better to use lighter images, without systemd for example.\nBut since GoWSL's main use case is with Ubuntu, let's keep the images as is and just give the tests more time to run.",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/2b5eca3c513d11ae066337128a20e5b574f38cb2"
                }
             ],
             "ciActions": [
@@ -6572,25 +6572,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1469430d750a00cea5370b3bcc595db327c95fc7",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1733415594,
-                  "message": "docs: Update README and SECURITY for docs migration (#671)\n\nThe authd docs have been migrated from the GH wiki to Read the Docs.\nThis PR updates links to the documentation in the README.md and\nSECURITY.md .\nIn addition, a docs badge (build pass/fail) was added to the README.md.\n\nOther minor changes:\n\n- Removed capitalisation in first letter of authd for consistency of\nbranding\n- Reduced direct links to doc pages in README (maintenance issue at this\nstage in the docs development)\n- Shortened line lengths in README (for source readability)\n\nUDENG-5515",
-                  "url": "https://github.com/ubuntu/authd/commit/1469430d750a00cea5370b3bcc595db327c95fc7"
-               },
-               {
-                  "sha": "3d7d1125711af6f4caac174ce5a171ba6e81aa70",
+                  "sha": "b2323c9c74610101e0ad886072cfd4a7b2ac832d",
                   "author": "adombeck",
-                  "timestamp": 1733414801,
-                  "message": "Change database dir from /var/cache/authd/ to /var/lib/authd/ (#676)",
-                  "url": "https://github.com/ubuntu/authd/commit/3d7d1125711af6f4caac174ce5a171ba6e81aa70"
+                  "timestamp": 1733437066,
+                  "message": "Fix user removed from local groups (#644)\n\nCloses #576\r\nUDENG-4918",
+                  "url": "https://github.com/ubuntu/authd/commit/b2323c9c74610101e0ad886072cfd4a7b2ac832d"
                },
                {
-                  "sha": "f68935530c130a249dbdc340d475907728ed2d57",
+                  "sha": "09ddf89d0d2c0bd6b8d8d60e64af2da55371cfff",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1733331476,
-                  "message": "systemd: Automatically create /var/lib/authd with the correct permissions",
-                  "url": "https://github.com/ubuntu/authd/commit/f68935530c130a249dbdc340d475907728ed2d57"
+                  "timestamp": 1731974405,
+                  "message": "Test removal from local groups",
+                  "url": "https://github.com/ubuntu/authd/commit/09ddf89d0d2c0bd6b8d8d60e64af2da55371cfff"
+               },
+               {
+                  "sha": "8181e6dd5ab354706f85dfa95dae49978c7e8d4b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1731971510,
+                  "message": "Fix user removed from local groups\n\nOnly remove the user from local groups which the user was added to by\nauthd. Previously, authd removed the user from all local groups which\nare not configured in Microsoft Entra, so if the user was added to any\nlocal groups manually, it was removed from those groups again during the\nnext login.\n\nCloses #576",
+                  "url": "https://github.com/ubuntu/authd/commit/8181e6dd5ab354706f85dfa95dae49978c7e8d4b"
                }
             ],
             "ciActions": [
