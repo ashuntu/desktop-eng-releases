@@ -1618,6 +1618,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5f19ecb77980776e88991a19f909e33f10851aa7",
+                  "author": "nteodosio",
+                  "timestamp": 1733415197,
+                  "message": "Describe relationship between SDK and normal snaps and point to their build farms. (#169)",
+                  "url": "https://github.com/ubuntu/gnome-sdk/commit/5f19ecb77980776e88991a19f909e33f10851aa7"
+               },
+               {
                   "sha": "7b93019526c96fa052808b1a67336c706e92e7be",
                   "author": "Sebastien Bacher",
                   "timestamp": 1727962376,
@@ -1630,13 +1637,6 @@
                   "timestamp": 1728064125,
                   "message": "Merge pull request #244 from 3v1n0/new-accents-2204\n\n[gnome-42-2204] Update libadwaita and add new yaru accent colors",
                   "url": "https://github.com/ubuntu/gnome-sdk/commit/9036dbc43b5b92df03398dc22bba73abc51acf8a"
-               },
-               {
-                  "sha": "706ab49de535bb1866538e7effa63bb3e69a9e95",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1727950822,
-                  "message": "libadwaita/patches/accent-color: Add yellow accent support\n\nThis is a new upstream accent color and we should support it in the snap\nso that applications running in ubuntu >= 22.10 can use the same accent\nthat was configured in settings",
-                  "url": "https://github.com/ubuntu/gnome-sdk/commit/706ab49de535bb1866538e7effa63bb3e69a9e95"
                }
             ],
             "ciActions": [],
@@ -4203,25 +4203,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e0a1532695e0f9775f3c97fd910dddce740076b5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1733312818,
-                  "message": "feat: prevent formatting `/boot` as `VFAT` in partition editor (#886)\n\nOne of the most common errors related to manual partitioning seems to be\nusers trying to use `VFAT` for `/boot`, see e.g.\n[lp:2064678](https://bugs.launchpad.net/subiquity/+bug/2064678).\n\nTo prevent the user from doing so, this PR disables the \"Ok\" button in\nthe partition creation and modification dialogs and shows an error\nmessage. Eventually, it'd be desirable to have an additional check with\nan appropriate error response in subiquity.\n\nI've briefly explored some richer error messaging with @anasereijo, but\nultimately decided to keep it short, based on @seb128's recommendation.\n\n![Screenshot From 2024-12-03\n16-26-49](https://github.com/user-attachments/assets/1fb3217f-69f6-40ba-afd9-d5af7a0183cc)\n\n@sminez I mentioned that I'd try to refactor this somewhat old-timey\nFlutter code, but postponed it for now since it's (once again) more work\nthan expected.\n\nUDENG-5519",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e0a1532695e0f9775f3c97fd910dddce740076b5"
+                  "sha": "ccf8ba2ffbbcced040126158c9878f3a5e2684c2",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1733412796,
+                  "message": "docs: adding dev-docs for adding a new page to the installer (#884)\n\nBased on my learnings from stubbing out landscape integratino in #882, I\nhave put together some `dev-docs` outlining the broad steps required for\nadding a new page to the insatller, as well as adding some doc comments\non some relevant dart components that did not have any.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ccf8ba2ffbbcced040126158c9878f3a5e2684c2"
                },
                {
-                  "sha": "e9b64e40b9ec9d43742359e2c67aa894139204f9",
-                  "author": "Dennis Loose",
-                  "timestamp": 1733239501,
-                  "message": "l10n: add localized error message",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e9b64e40b9ec9d43742359e2c67aa894139204f9"
+                  "sha": "ed5c4a0ab23b8e2de508c7790f8c97020ac4cf14",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1733383474,
+                  "message": "style: run the formatter",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ed5c4a0ab23b8e2de508c7790f8c97020ac4cf14"
                },
                {
-                  "sha": "e06c897b394676d3c0493adcfe9cc1d579dd9a51",
-                  "author": "Dennis Loose",
-                  "timestamp": 1733239413,
-                  "message": "test: add test case for VFAT+/boot",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e06c897b394676d3c0493adcfe9cc1d579dd9a51"
+                  "sha": "ac619750e35a2c57d2b7510c1d4c229611fbe149",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1733383300,
+                  "message": "docs: feedback from code review",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ac619750e35a2c57d2b7510c1d4c229611fbe149"
                }
             ],
             "ciActions": [
@@ -6108,25 +6108,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e0a1532695e0f9775f3c97fd910dddce740076b5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1733312818,
-                  "message": "feat: prevent formatting `/boot` as `VFAT` in partition editor (#886)\n\nOne of the most common errors related to manual partitioning seems to be\nusers trying to use `VFAT` for `/boot`, see e.g.\n[lp:2064678](https://bugs.launchpad.net/subiquity/+bug/2064678).\n\nTo prevent the user from doing so, this PR disables the \"Ok\" button in\nthe partition creation and modification dialogs and shows an error\nmessage. Eventually, it'd be desirable to have an additional check with\nan appropriate error response in subiquity.\n\nI've briefly explored some richer error messaging with @anasereijo, but\nultimately decided to keep it short, based on @seb128's recommendation.\n\n![Screenshot From 2024-12-03\n16-26-49](https://github.com/user-attachments/assets/1fb3217f-69f6-40ba-afd9-d5af7a0183cc)\n\n@sminez I mentioned that I'd try to refactor this somewhat old-timey\nFlutter code, but postponed it for now since it's (once again) more work\nthan expected.\n\nUDENG-5519",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e0a1532695e0f9775f3c97fd910dddce740076b5"
+                  "sha": "ccf8ba2ffbbcced040126158c9878f3a5e2684c2",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1733412796,
+                  "message": "docs: adding dev-docs for adding a new page to the installer (#884)\n\nBased on my learnings from stubbing out landscape integratino in #882, I\nhave put together some `dev-docs` outlining the broad steps required for\nadding a new page to the insatller, as well as adding some doc comments\non some relevant dart components that did not have any.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ccf8ba2ffbbcced040126158c9878f3a5e2684c2"
                },
                {
-                  "sha": "e9b64e40b9ec9d43742359e2c67aa894139204f9",
-                  "author": "Dennis Loose",
-                  "timestamp": 1733239501,
-                  "message": "l10n: add localized error message",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e9b64e40b9ec9d43742359e2c67aa894139204f9"
+                  "sha": "ed5c4a0ab23b8e2de508c7790f8c97020ac4cf14",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1733383474,
+                  "message": "style: run the formatter",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ed5c4a0ab23b8e2de508c7790f8c97020ac4cf14"
                },
                {
-                  "sha": "e06c897b394676d3c0493adcfe9cc1d579dd9a51",
-                  "author": "Dennis Loose",
-                  "timestamp": 1733239413,
-                  "message": "test: add test case for VFAT+/boot",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e06c897b394676d3c0493adcfe9cc1d579dd9a51"
+                  "sha": "ac619750e35a2c57d2b7510c1d4c229611fbe149",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1733383300,
+                  "message": "docs: feedback from code review",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ac619750e35a2c57d2b7510c1d4c229611fbe149"
                }
             ],
             "ciActions": [
@@ -6572,25 +6572,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cae1354b54cbda4ea13f9dc99ae4758d2791957a",
+                  "sha": "1469430d750a00cea5370b3bcc595db327c95fc7",
                   "author": "Marco Trevisan",
-                  "timestamp": 1733372481,
-                  "message": "cleanup: Use const values to handle layout / entries well known values and generate strings instead of hardcoding them (#626)\n\nWe've various of hardcoded strings around that are often repeated and\nmakes the code hard to maintain and refactor in a safely way.\n\nSo replace them with const values and add some utility functions to\ngenerate previously hardcoded values.\n\nI've put them into the internal package, but I feel that some of these\ndefinitions would be actually better if exported to be re-usable by\n`authd-oidc-brokers` too, or at least to an intermediate library for\nwriting authd brokers.\n\nMeanwhile, this makes authd code a bit less fragile and ideally easier\nto refactor.\n\nUDENG-5162",
-                  "url": "https://github.com/ubuntu/authd/commit/cae1354b54cbda4ea13f9dc99ae4758d2791957a"
+                  "timestamp": 1733415594,
+                  "message": "docs: Update README and SECURITY for docs migration (#671)\n\nThe authd docs have been migrated from the GH wiki to Read the Docs.\nThis PR updates links to the documentation in the README.md and\nSECURITY.md .\nIn addition, a docs badge (build pass/fail) was added to the README.md.\n\nOther minor changes:\n\n- Removed capitalisation in first letter of authd for consistency of\nbranding\n- Reduced direct links to doc pages in README (maintenance issue at this\nstage in the docs development)\n- Shortened line lengths in README (for source readability)\n\nUDENG-5515",
+                  "url": "https://github.com/ubuntu/authd/commit/1469430d750a00cea5370b3bcc595db327c95fc7"
                },
                {
-                  "sha": "e9ec26889693e72eed877d0f2c07ad69c8baf8ab",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1733370056,
-                  "message": "pam/integration-tests/ssh: Update golden files with missing data",
-                  "url": "https://github.com/ubuntu/authd/commit/e9ec26889693e72eed877d0f2c07ad69c8baf8ab"
+                  "sha": "3d7d1125711af6f4caac174ce5a171ba6e81aa70",
+                  "author": "adombeck",
+                  "timestamp": 1733414801,
+                  "message": "Change database dir from /var/cache/authd/ to /var/lib/authd/ (#676)",
+                  "url": "https://github.com/ubuntu/authd/commit/3d7d1125711af6f4caac174ce5a171ba6e81aa70"
                },
                {
-                  "sha": "763da842e4285aa000aaaa06a4c3f194327106d8",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1732111312,
-                  "message": "cleanup: Move authd protocol definitions to internal library\n\nWe don't need to expose the proto externally, since we are now re-usable\nso if something of it has to be exposed we should do it manually",
-                  "url": "https://github.com/ubuntu/authd/commit/763da842e4285aa000aaaa06a4c3f194327106d8"
+                  "sha": "f68935530c130a249dbdc340d475907728ed2d57",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1733331476,
+                  "message": "systemd: Automatically create /var/lib/authd with the correct permissions",
+                  "url": "https://github.com/ubuntu/authd/commit/f68935530c130a249dbdc340d475907728ed2d57"
                }
             ],
             "ciActions": [
@@ -8215,25 +8215,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e0a1532695e0f9775f3c97fd910dddce740076b5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1733312818,
-                  "message": "feat: prevent formatting `/boot` as `VFAT` in partition editor (#886)\n\nOne of the most common errors related to manual partitioning seems to be\nusers trying to use `VFAT` for `/boot`, see e.g.\n[lp:2064678](https://bugs.launchpad.net/subiquity/+bug/2064678).\n\nTo prevent the user from doing so, this PR disables the \"Ok\" button in\nthe partition creation and modification dialogs and shows an error\nmessage. Eventually, it'd be desirable to have an additional check with\nan appropriate error response in subiquity.\n\nI've briefly explored some richer error messaging with @anasereijo, but\nultimately decided to keep it short, based on @seb128's recommendation.\n\n![Screenshot From 2024-12-03\n16-26-49](https://github.com/user-attachments/assets/1fb3217f-69f6-40ba-afd9-d5af7a0183cc)\n\n@sminez I mentioned that I'd try to refactor this somewhat old-timey\nFlutter code, but postponed it for now since it's (once again) more work\nthan expected.\n\nUDENG-5519",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e0a1532695e0f9775f3c97fd910dddce740076b5"
+                  "sha": "ccf8ba2ffbbcced040126158c9878f3a5e2684c2",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1733412796,
+                  "message": "docs: adding dev-docs for adding a new page to the installer (#884)\n\nBased on my learnings from stubbing out landscape integratino in #882, I\nhave put together some `dev-docs` outlining the broad steps required for\nadding a new page to the insatller, as well as adding some doc comments\non some relevant dart components that did not have any.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ccf8ba2ffbbcced040126158c9878f3a5e2684c2"
                },
                {
-                  "sha": "e9b64e40b9ec9d43742359e2c67aa894139204f9",
-                  "author": "Dennis Loose",
-                  "timestamp": 1733239501,
-                  "message": "l10n: add localized error message",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e9b64e40b9ec9d43742359e2c67aa894139204f9"
+                  "sha": "ed5c4a0ab23b8e2de508c7790f8c97020ac4cf14",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1733383474,
+                  "message": "style: run the formatter",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ed5c4a0ab23b8e2de508c7790f8c97020ac4cf14"
                },
                {
-                  "sha": "e06c897b394676d3c0493adcfe9cc1d579dd9a51",
-                  "author": "Dennis Loose",
-                  "timestamp": 1733239413,
-                  "message": "test: add test case for VFAT+/boot",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e06c897b394676d3c0493adcfe9cc1d579dd9a51"
+                  "sha": "ac619750e35a2c57d2b7510c1d4c229611fbe149",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1733383300,
+                  "message": "docs: feedback from code review",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ac619750e35a2c57d2b7510c1d4c229611fbe149"
                }
             ],
             "ciActions": [
