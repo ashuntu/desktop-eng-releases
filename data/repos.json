@@ -6572,25 +6572,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "33ff59ab54590f95edcf4569a1702dc7a947d0e9",
-                  "author": "adombeck",
-                  "timestamp": 1733334008,
-                  "message": "Fix golangci-lint complaint (#677)",
-                  "url": "https://github.com/ubuntu/authd/commit/33ff59ab54590f95edcf4569a1702dc7a947d0e9"
+                  "sha": "cae1354b54cbda4ea13f9dc99ae4758d2791957a",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1733372481,
+                  "message": "cleanup: Use const values to handle layout / entries well known values and generate strings instead of hardcoding them (#626)\n\nWe've various of hardcoded strings around that are often repeated and\nmakes the code hard to maintain and refactor in a safely way.\n\nSo replace them with const values and add some utility functions to\ngenerate previously hardcoded values.\n\nI've put them into the internal package, but I feel that some of these\ndefinitions would be actually better if exported to be re-usable by\n`authd-oidc-brokers` too, or at least to an intermediate library for\nwriting authd brokers.\n\nMeanwhile, this makes authd code a bit less fragile and ideally easier\nto refactor.\n\nUDENG-5162",
+                  "url": "https://github.com/ubuntu/authd/commit/cae1354b54cbda4ea13f9dc99ae4758d2791957a"
                },
                {
-                  "sha": "3718fd5d89f586808448d6a40ec265f5dd1850d2",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1733333459,
-                  "message": "Fix golangci-lint complaint\n\nI'm not sure why, but since 48eb235d845ff4c717eea6111153b44048239bc4\ngolangci-lint fails with:\n\n    internal/users/localgroups/testutils/gpasswd.go:3:1: directive `//nolint:gci // We import unsafe as it is needed for go:linkname, but the nolint comment confuses gofmt and it adds` is unused for linter \"gci\" (nolintlint)\n\nRemoving that line fixes it.",
-                  "url": "https://github.com/ubuntu/authd/commit/3718fd5d89f586808448d6a40ec265f5dd1850d2"
+                  "sha": "e9ec26889693e72eed877d0f2c07ad69c8baf8ab",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1733370056,
+                  "message": "pam/integration-tests/ssh: Update golden files with missing data",
+                  "url": "https://github.com/ubuntu/authd/commit/e9ec26889693e72eed877d0f2c07ad69c8baf8ab"
                },
                {
-                  "sha": "feb3745f9fde55f218531c149aa39925ebe18144",
-                  "author": "adombeck",
-                  "timestamp": 1733327073,
-                  "message": "Copy improvements to golden files from broker repo (#645)\n\nUDENG-5447",
-                  "url": "https://github.com/ubuntu/authd/commit/feb3745f9fde55f218531c149aa39925ebe18144"
+                  "sha": "763da842e4285aa000aaaa06a4c3f194327106d8",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1732111312,
+                  "message": "cleanup: Move authd protocol definitions to internal library\n\nWe don't need to expose the proto externally, since we are now re-usable\nso if something of it has to be exposed we should do it manually",
+                  "url": "https://github.com/ubuntu/authd/commit/763da842e4285aa000aaaa06a4c3f194327106d8"
                }
             ],
             "ciActions": [
