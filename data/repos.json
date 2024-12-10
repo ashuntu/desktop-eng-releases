@@ -6217,25 +6217,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "85cf2790d424f71076b8d4905ac61dcac18f572d",
+                  "author": "CarlosNihelton",
+                  "timestamp": 1733849144,
+                  "message": "Auto update internal dependencies",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/85cf2790d424f71076b8d4905ac61dcac18f572d"
+               },
+               {
+                  "sha": "dad318dc0c019e7bfaf04c6560400937a818b4e5",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1733849109,
+                  "message": "maint(windows-agent): Investigate skipping distros (#902)\n\n```\r\ntime=2024-07-24T12:17:10-07:00 level=error msg=Landscape:  skipping distro \"Ubuntu-24.04\" from landscape info: could not get distro \"Ubuntu-24.04\"'s state: could not get states of distros: exit status 1. Stdout: . Stderr:\r\n```\r\n\r\nThat happens during construction of the status message sent to\r\nLandscape. If we skip a distro, Landscape understands it doesn't exist\r\nanymore and removes it from the dashboard. But that happens sometimes\r\nwhen an existing distro. It seems a WSL internal error.\r\n\r\nhttps://github.com/ubuntu/GoWSL/pull/120 should prevent the stdout and\r\nstderr messages to come empty as shown above.\r\nThus I'm updating GoWSL here.\r\n\r\nThat doesn't prevent the issue itself.\r\n\r\nI couldn’t reproduce this outside of UP4W. I attempted building a small\r\nbinary in Go doing the same steps as GoWSL does and put it to run during\r\nsystem startup in loop, rebooted the OS many times but no success. The\r\nfew times I’ve seen this happening in the logs were early during app\r\nstartup, so I suspect it may happen because some WSL internal component\r\nis not yet ready. Thus this PR: adding one-time retry if an error\r\nhappens when attempting to retrieve a distro state.\r\n\r\nEither that will prevent the issue once for all or at least give us more\r\ncontext about what causes that error.\r\n\r\n---\r\n\r\nUDENG-3722",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/dad318dc0c019e7bfaf04c6560400937a818b4e5"
+               },
+               {
                   "sha": "f952c9f98d381d4d6bbd1872d01663fed5e634e5",
                   "author": "ashuntu",
                   "timestamp": 1733517630,
                   "message": "Auto update internal dependencies",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f952c9f98d381d4d6bbd1872d01663fed5e634e5"
-               },
-               {
-                  "sha": "3564f35181e3ad4c583f7cbf260373fef519028e",
-                  "author": "ashuntu",
-                  "timestamp": 1733517593,
-                  "message": "fix(windows-agent): Check that IPs are convertible to ipv4 (#1006)\n\nIf the system receives an IPv6 address, then running the agent with\r\nmocks (for example, when running integration tests) can result in\r\npanics. This fixes that issue by checking if the IP is convertible to\r\nIpv4.\r\n\r\nFor context, this came up when I attempted to run the Flutter\r\nintegration tests on a network and host that technically support IPv6.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/3564f35181e3ad4c583f7cbf260373fef519028e"
-               },
-               {
-                  "sha": "bd7ec298a0ccbfd89292ff89f85ecb69027254fb",
-                  "author": "ashuntu",
-                  "timestamp": 1733512946,
-                  "message": "Update function name to more accurately reflect requirements",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/bd7ec298a0ccbfd89292ff89f85ecb69027254fb"
                }
             ],
             "ciActions": [
