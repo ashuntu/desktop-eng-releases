@@ -4836,25 +4836,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f231c6588373603905dab256a5b51319c761858a",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1733923078,
+                  "message": "Only wait on cloud init when it will run (#17)\n\nEnsure the unit is enabled under a systemd enabled distribution. This\r\nwill also make it compatible with WSL1.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/f231c6588373603905dab256a5b51319c761858a"
+               },
+               {
+                  "sha": "9f1da66125678cfb8aef42c3f0b9af622796e946",
+                  "author": "Didier Roche",
+                  "timestamp": 1733912937,
+                  "message": "Only wait on cloud init when it will run\n\nEnsure the unit is enabled under a systemd enabled distribution.\nThis will also make it compatible with WSL1.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/9f1da66125678cfb8aef42c3f0b9af622796e946"
+               },
+               {
                   "sha": "e773bfbad51646ac88b734cf7f99b72a69beafac",
                   "author": "Didier Roche",
                   "timestamp": 1733835912,
                   "message": "releasing package wsl-setup version 0.5.6",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/e773bfbad51646ac88b734cf7f99b72a69beafac"
-               },
-               {
-                  "sha": "c17fbd66b9632932423d86edde765de879ca3d6e",
-                  "author": "Didier Roche",
-                  "timestamp": 1733835875,
-                  "message": "Depends on cloud-init\n\nThis is used by the wsl-setup script.\n\nCo-authored-by: Carlos Nihelton <carlos.santanadeoliveira@canonical.com>",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/c17fbd66b9632932423d86edde765de879ca3d6e"
-               },
-               {
-                  "sha": "7600ea37f7cc81032137fafd3c37497d72df23c8",
-                  "author": "Didier Roche",
-                  "timestamp": 1733753029,
-                  "message": "releasing package wsl-setup version 0.5.5",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/7600ea37f7cc81032137fafd3c37497d72df23c8"
                }
             ],
             "ciActions": [],
@@ -6217,25 +6217,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "360e479725d5dc1acc3869d44e2ce9b9d6cc25b0",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1733922854,
+                  "message": "fix(windows-agent): Landscape TLS by default (#995)\n\nPreviously, if the Landscape server's SSL public key wasn't provided\r\nwe'd default to insecure credentials for gRPC.\r\nThat's not nice when the system trusts the server cert. A browser would\r\nhappily render the page as safe, but the agent would fail to connect to\r\nthe server's hostagent messenger.\r\nWe should assume TLS by default. If the server cert path is not\r\nprovided, load the system's cert pool and try to connect based on the\r\nsystem's chain of trust.\r\nTo avoid complicating the existing tests, we preserve the use of\r\ninsecure credentials via a context value. If set, we don't even check\r\nthe cert path.\r\nOtherwise, TLS by default.\r\n\r\nI considered but didn't implement a more global way of requesting\r\ninsecure credentials. We could either pass a command line flag to the\r\nagent or use an environment variable at the top level then derive a\r\ncontext with the value set for insecure credentials. In my local tests,\r\nat least, I don't feel the need for that as I'm always running Landscape\r\nwiths self-signed certificates.\r\n\r\n---\r\nUDENG-5412",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/360e479725d5dc1acc3869d44e2ce9b9d6cc25b0"
+               },
+               {
+                  "sha": "ded1051e97e9ba0c56cd5361e42aa476c68cb5b8",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1733920874,
+                  "message": "Adding a new line termination on testdata landscape.conf",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/ded1051e97e9ba0c56cd5361e42aa476c68cb5b8"
+               },
+               {
                   "sha": "85cf2790d424f71076b8d4905ac61dcac18f572d",
                   "author": "CarlosNihelton",
                   "timestamp": 1733849144,
                   "message": "Auto update internal dependencies",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/85cf2790d424f71076b8d4905ac61dcac18f572d"
-               },
-               {
-                  "sha": "dad318dc0c019e7bfaf04c6560400937a818b4e5",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1733849109,
-                  "message": "maint(windows-agent): Investigate skipping distros (#902)\n\n```\r\ntime=2024-07-24T12:17:10-07:00 level=error msg=Landscape:  skipping distro \"Ubuntu-24.04\" from landscape info: could not get distro \"Ubuntu-24.04\"'s state: could not get states of distros: exit status 1. Stdout: . Stderr:\r\n```\r\n\r\nThat happens during construction of the status message sent to\r\nLandscape. If we skip a distro, Landscape understands it doesn't exist\r\nanymore and removes it from the dashboard. But that happens sometimes\r\nwhen an existing distro. It seems a WSL internal error.\r\n\r\nhttps://github.com/ubuntu/GoWSL/pull/120 should prevent the stdout and\r\nstderr messages to come empty as shown above.\r\nThus I'm updating GoWSL here.\r\n\r\nThat doesn't prevent the issue itself.\r\n\r\nI couldn’t reproduce this outside of UP4W. I attempted building a small\r\nbinary in Go doing the same steps as GoWSL does and put it to run during\r\nsystem startup in loop, rebooted the OS many times but no success. The\r\nfew times I’ve seen this happening in the logs were early during app\r\nstartup, so I suspect it may happen because some WSL internal component\r\nis not yet ready. Thus this PR: adding one-time retry if an error\r\nhappens when attempting to retrieve a distro state.\r\n\r\nEither that will prevent the issue once for all or at least give us more\r\ncontext about what causes that error.\r\n\r\n---\r\n\r\nUDENG-3722",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/dad318dc0c019e7bfaf04c6560400937a818b4e5"
-               },
-               {
-                  "sha": "f952c9f98d381d4d6bbd1872d01663fed5e634e5",
-                  "author": "ashuntu",
-                  "timestamp": 1733517630,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f952c9f98d381d4d6bbd1872d01663fed5e634e5"
                }
             ],
             "ciActions": [
@@ -6813,25 +6813,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f231c6588373603905dab256a5b51319c761858a",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1733923078,
+                  "message": "Only wait on cloud init when it will run (#17)\n\nEnsure the unit is enabled under a systemd enabled distribution. This\r\nwill also make it compatible with WSL1.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/f231c6588373603905dab256a5b51319c761858a"
+               },
+               {
+                  "sha": "9f1da66125678cfb8aef42c3f0b9af622796e946",
+                  "author": "Didier Roche",
+                  "timestamp": 1733912937,
+                  "message": "Only wait on cloud init when it will run\n\nEnsure the unit is enabled under a systemd enabled distribution.\nThis will also make it compatible with WSL1.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/9f1da66125678cfb8aef42c3f0b9af622796e946"
+               },
+               {
                   "sha": "e773bfbad51646ac88b734cf7f99b72a69beafac",
                   "author": "Didier Roche",
                   "timestamp": 1733835912,
                   "message": "releasing package wsl-setup version 0.5.6",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/e773bfbad51646ac88b734cf7f99b72a69beafac"
-               },
-               {
-                  "sha": "c17fbd66b9632932423d86edde765de879ca3d6e",
-                  "author": "Didier Roche",
-                  "timestamp": 1733835875,
-                  "message": "Depends on cloud-init\n\nThis is used by the wsl-setup script.\n\nCo-authored-by: Carlos Nihelton <carlos.santanadeoliveira@canonical.com>",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/c17fbd66b9632932423d86edde765de879ca3d6e"
-               },
-               {
-                  "sha": "7600ea37f7cc81032137fafd3c37497d72df23c8",
-                  "author": "Didier Roche",
-                  "timestamp": 1733753029,
-                  "message": "releasing package wsl-setup version 0.5.5",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/7600ea37f7cc81032137fafd3c37497d72df23c8"
                }
             ],
             "ciActions": [],
