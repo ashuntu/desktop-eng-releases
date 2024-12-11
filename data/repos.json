@@ -6217,25 +6217,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d5ce3223cf6fc9ca16a24d609159de5b45f046b4",
+                  "sha": "2eae2933a7df45be31c014b72be64ab587c38be0",
                   "author": "ashuntu",
-                  "timestamp": 1733939930,
-                  "message": "feat: Skip landscape page (#997)\n\nThis a fairly large PR since there are a few moving pieces to adding\r\nthis page. The existing Landscape page needs its skip functionality\r\nremoved, the skip page uses an updated version of copy, the skip page\r\nuses an entirely new layout, etc.\r\n\r\nI plan on expanding the use of reusable navigation and other layout\r\nwidgets since the new designs will be much more consistent across pages.\r\nNotably, when I reorganize the Landscape page, we can unify a lot of the\r\nnavigation and tile widgets.\r\n\r\n![Screenshot of the new\r\npage](https://github.com/user-attachments/assets/65a7c98b-545d-4ba0-9550-b628552b8870)\r\n\r\n---\r\n\r\nUDENG-5287",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d5ce3223cf6fc9ca16a24d609159de5b45f046b4"
+                  "timestamp": 1733948187,
+                  "message": "fix: Fix radio background (#1011)\n\nAdds a border to the radio tiles, as well as a background to unselected\r\ntiles.\r\n\r\n| | Dark | Light |\r\n|-|------|-------|\r\n| Existing |\r\n![image](https://github.com/user-attachments/assets/2ef62668-b341-48b0-b263-4bfdd0283393)\r\n|\r\n![image](https://github.com/user-attachments/assets/1c91dcf4-d825-47f7-8708-1c15a75d4273)\r\n|\r\n| New |\r\n![image](https://github.com/user-attachments/assets/584b61e2-19c1-4657-aa3c-349ed98008b9)\r\n|\r\n![image](https://github.com/user-attachments/assets/72094385-06c9-46ca-b00e-bf1a8c223fa9)\r\n|\r\n\r\nThis is also based on\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/pull/997 and relies on\r\nit being merged first.\r\n\r\n---\r\n\r\nUDENG-5593",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2eae2933a7df45be31c014b72be64ab587c38be0"
                },
                {
-                  "sha": "6d5257308bc1bbd84095f8f112e044c2c0b97c36",
+                  "sha": "51af9dc20460946eb8c669115e1aea590f58adf5",
                   "author": "ashuntu",
-                  "timestamp": 1733938611,
-                  "message": "Convert relative import to constant import",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6d5257308bc1bbd84095f8f112e044c2c0b97c36"
+                  "timestamp": 1733948178,
+                  "message": "fix: Use YaruInfoBox for notification boxes (#1010)\n\nThis effectively aligns the colors correctly with what is used by Yaru\r\nfor info boxes, which you can see at https://ubuntu.github.io/yaru.dart\r\nunder the \"YaruInfo\" tab. Our colors in light mode were identical to\r\nYaru, but dark mode colors were not. This fixes that issue and\r\nsimplifies the widget code significantly by just using the\r\n`YaruInfoBox`.\r\n\r\nThis page still needs more changes in the future, but this should be\r\nsufficient for notification colors for the time being.\r\n\r\n| | Dark | Light |\r\n|-|------|-------|\r\n| Existing |\r\n![image](https://github.com/user-attachments/assets/31c464f3-90f5-4914-80ef-8f7734c65d0d)|\r\n![image](https://github.com/user-attachments/assets/cca4c2a4-5374-4795-804f-ba5ccf116e31)\r\n|\r\n| New |\r\n![image](https://github.com/user-attachments/assets/2cf363ef-d4c8-4a8b-a053-7a68d4260ad6)\r\n|\r\n![image](https://github.com/user-attachments/assets/c62815b9-aa2e-43f1-a410-a6d646593148)\r\n|\r\n\r\n---\r\n\r\nUDENG-5590",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/51af9dc20460946eb8c669115e1aea590f58adf5"
                },
                {
-                  "sha": "360e479725d5dc1acc3869d44e2ce9b9d6cc25b0",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1733922854,
-                  "message": "fix(windows-agent): Landscape TLS by default (#995)\n\nPreviously, if the Landscape server's SSL public key wasn't provided\r\nwe'd default to insecure credentials for gRPC.\r\nThat's not nice when the system trusts the server cert. A browser would\r\nhappily render the page as safe, but the agent would fail to connect to\r\nthe server's hostagent messenger.\r\nWe should assume TLS by default. If the server cert path is not\r\nprovided, load the system's cert pool and try to connect based on the\r\nsystem's chain of trust.\r\nTo avoid complicating the existing tests, we preserve the use of\r\ninsecure credentials via a context value. If set, we don't even check\r\nthe cert path.\r\nOtherwise, TLS by default.\r\n\r\nI considered but didn't implement a more global way of requesting\r\ninsecure credentials. We could either pass a command line flag to the\r\nagent or use an environment variable at the top level then derive a\r\ncontext with the value set for insecure credentials. In my local tests,\r\nat least, I don't feel the need for that as I'm always running Landscape\r\nwiths self-signed certificates.\r\n\r\n---\r\nUDENG-5412",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/360e479725d5dc1acc3869d44e2ce9b9d6cc25b0"
+                  "sha": "2d03b1d7526c9622191a5de836f65f454be35432",
+                  "author": "ashuntu",
+                  "timestamp": 1733862639,
+                  "message": "Make links the same color as surrounding text",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2d03b1d7526c9622191a5de836f65f454be35432"
                }
             ],
             "ciActions": [
