@@ -6526,7 +6526,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 4,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -6607,25 +6607,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4227a64cd96c11d954ea3f50828835e739263a5f",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1734003266,
+                  "message": "Remove incorrect os.Exit(m.Run()) calls (#251)\n\nThis is not needed since Go 1.15, where the test runtime registers the\r\ntest result itself.\r\nAlso, os.Exit() would skip any defer() being called before, which might\r\npollute the system running the tests.\r\n\r\nUDENG-5633",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4227a64cd96c11d954ea3f50828835e739263a5f"
+               },
+               {
+                  "sha": "43a0d28f86f2b8060ab97325fc40577b13af82a4",
+                  "author": "Didier Roche",
+                  "timestamp": 1734001440,
+                  "message": "Remove incorrect os.Exit(m.Run()) calls\n\nThis is not needed since Go 1.15, where the test runtime registers the\ntest result itself.\nAlso, os.Exit() would skip any defer() being called before, which might\npollute the system running the tests.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/43a0d28f86f2b8060ab97325fc40577b13af82a4"
+               },
+               {
                   "sha": "d4248d893bdc38e16638f10c1546cf030a79800b",
                   "author": "adombeck",
                   "timestamp": 1733828881,
                   "message": "Fix nil pointer dereference (again) (#247)\n\nCloses https://github.com/ubuntu/authd/issues/460",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d4248d893bdc38e16638f10c1546cf030a79800b"
-               },
-               {
-                  "sha": "7d387de10162b70261ced0112626955d7a3b915a",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1733786628,
-                  "message": "Fix nil pointer dereference (again)\n\nCommit c602d18a0a7f597430558f95f6308aefbb750855 unintentionally removed\nthe nil check that was introduced by\n64841d12cca8b77ddf1126e75952069e1c10c40b.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/7d387de10162b70261ced0112626955d7a3b915a"
-               },
-               {
-                  "sha": "f272cc16ae6718ccd36e54b6e655c493f9547ce8",
-                  "author": "adombeck",
-                  "timestamp": 1733418194,
-                  "message": "fix client authn request parameter name (#236)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f272cc16ae6718ccd36e54b6e655c493f9547ce8"
                }
             ],
             "ciActions": [
