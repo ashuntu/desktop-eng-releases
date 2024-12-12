@@ -6572,6 +6572,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7e6d77e29c16351e978e3d668546994b5f6a10b5",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1734030064,
+                  "message": "debian/pam-configs/authd: Ignore connection errors (#273)\n\n - If authd ignored the request, then we should ignore too.\n - If we can't connect to authd, we should ignore to select next method.\n - If we fail hard for other reason, then user should not be\n   authenticated.\n\nRemoved the handling of user_unknown case because we never return this\nfrom the PAM module for security reasons.\n\nUDENG-5636",
+                  "url": "https://github.com/ubuntu/authd/commit/7e6d77e29c16351e978e3d668546994b5f6a10b5"
+               },
+               {
                   "sha": "fd53f12dff593879fab5a14480da8c73bd3377b5",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1734014098,
@@ -6584,13 +6591,6 @@
                   "timestamp": 1734002186,
                   "message": "Ensure we properly cleanup when setting up our tests\n\nWe previously didn’t cleanup if any intermediate step in setting up the\nmock brokers was failing. Do it now.",
                   "url": "https://github.com/ubuntu/authd/commit/861b8ce6b41f268a16ed2313803891e5a75ab689"
-               },
-               {
-                  "sha": "1f72a7bf90c4180c7b50845c3d0895c39f027aee",
-                  "author": "3v1n0",
-                  "timestamp": 1734010036,
-                  "message": "Auto update packaging related Rust files",
-                  "url": "https://github.com/ubuntu/authd/commit/1f72a7bf90c4180c7b50845c3d0895c39f027aee"
                }
             ],
             "ciActions": [
