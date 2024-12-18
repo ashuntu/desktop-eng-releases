@@ -6591,25 +6591,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7e6d77e29c16351e978e3d668546994b5f6a10b5",
+                  "sha": "7263b090ac08e6360606d2e345a6d862ff2da45b",
                   "author": "Marco Trevisan",
-                  "timestamp": 1734030064,
-                  "message": "debian/pam-configs/authd: Ignore connection errors (#273)\n\n - If authd ignored the request, then we should ignore too.\n - If we can't connect to authd, we should ignore to select next method.\n - If we fail hard for other reason, then user should not be\n   authenticated.\n\nRemoved the handling of user_unknown case because we never return this\nfrom the PAM module for security reasons.\n\nUDENG-5636",
-                  "url": "https://github.com/ubuntu/authd/commit/7e6d77e29c16351e978e3d668546994b5f6a10b5"
+                  "timestamp": 1734528750,
+                  "message": "pam: Do not save or check for local broker ID in module data and drop PamIgnore (#695)\n\nAs per commit 4fd03a407e69 we're just not storing if the local broker\nhas been used, as per this we don't even care about saving it in the\nmodule since we'd just return with pam.ErrIgnore anyways if the broker\nauthentication ID isn't stored or is null\n\nThus we don't need to return anymore the ID of the local broker if we\nwant to be used, so we can also remove the complexity of\nPamIgnore, by just considering it a particular case of pamError\n\nUDENG-5576",
+                  "url": "https://github.com/ubuntu/authd/commit/7263b090ac08e6360606d2e345a6d862ff2da45b"
                },
                {
-                  "sha": "fd53f12dff593879fab5a14480da8c73bd3377b5",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1734014098,
-                  "message": "Remove incorrect os.Exit(m.Run()) calls (#691)\n\nThis is not needed since Go 1.15, where the test runtime registers the\r\ntest result itself.\r\nAlso, os.Exit() would skip any defer() being called before, which might\r\npollute the system running the tests.\r\n\r\nNote that we only kept 2 occurences when subprocessing as a mock, as we\r\nshouldn't expect to have defer() beforehand in TestMain.\r\n\r\nUDENG-5632",
-                  "url": "https://github.com/ubuntu/authd/commit/fd53f12dff593879fab5a14480da8c73bd3377b5"
+                  "sha": "80c69b435f55464a168d375d22eb26174bd05d65",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734060724,
+                  "message": "pam: Improve logging in case of unknown exit status type",
+                  "url": "https://github.com/ubuntu/authd/commit/80c69b435f55464a168d375d22eb26174bd05d65"
                },
                {
-                  "sha": "861b8ce6b41f268a16ed2313803891e5a75ab689",
-                  "author": "Didier Roche",
-                  "timestamp": 1734002186,
-                  "message": "Ensure we properly cleanup when setting up our tests\n\nWe previously didn’t cleanup if any intermediate step in setting up the\nmock brokers was failing. Do it now.",
-                  "url": "https://github.com/ubuntu/authd/commit/861b8ce6b41f268a16ed2313803891e5a75ab689"
+                  "sha": "a34ffbfccc63d90586adfb72b2c96a8acf287e72",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734060481,
+                  "message": "pam: Remove PamIgnore definition, relying on generic PamReturnError\n\nAs per previous commit we don't need to return anymore the ID of the\nlocal broker if we want to be used, so we can also remove the complexity\nof PamIgnore, by just considering it a particular case of pamError",
+                  "url": "https://github.com/ubuntu/authd/commit/a34ffbfccc63d90586adfb72b2c96a8acf287e72"
                }
             ],
             "ciActions": [
@@ -8332,7 +8332,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 281,
+            "newCommits": 282,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
