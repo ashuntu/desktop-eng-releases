@@ -3162,25 +3162,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6cbd29265a4ea1c57c74346ffe3f0080f1d9da6b",
-                  "author": "adombeck",
-                  "timestamp": 1734360795,
-                  "message": "fix: Fix error handling (#55)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/6cbd29265a4ea1c57c74346ffe3f0080f1d9da6b"
-               },
-               {
-                  "sha": "12e6dd27aecfcca414a0850ac974f35653c286ff",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1734342006,
-                  "message": "fix: Fix error handling\n\n`jq` returns \"null\" when the \"key\" field is not present in the response.\n\nAlso, print the response (which contains the error message returned by\nthe server) on error.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/12e6dd27aecfcca414a0850ac974f35653c286ff"
-               },
-               {
-                  "sha": "872370708ca3b9e691f977ed60c9ead20900fe1d",
+                  "sha": "d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f",
                   "author": "Marco Trevisan",
-                  "timestamp": 1733149595,
-                  "message": "ci(build-deb): Perform lintian checks on sources and binary packages (#40)\n\nUDENG-5415",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/872370708ca3b9e691f977ed60c9ead20900fe1d"
+                  "timestamp": 1734543451,
+                  "message": "feat(gh-actions/build-debian): Support running a workflow script at build-source phase (#54)\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for example in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can do\nmore advanced configurations in the docker instance that is used only\nduring the source-preparation phase.\n\nThis is required in order to be able to do a `cargo install --root=/usr\ncargo-vendor-filterer` to build the source package of rust programs as\nrequired by authd in https://github.com/ubuntu/authd/pull/130\n\nUDENG-2343",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f"
+               },
+               {
+                  "sha": "26328413e89791829916d13eeb797b8ab261f14c",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734469209,
+                  "message": "gh-actions/build-debian: Install git dependency only if GITHUB_TOKEN is defined\n\nIt's the only reason why we need it so far, so if a project really\nrequires it, it should add it to the extra source build dependencies",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/26328413e89791829916d13eeb797b8ab261f14c"
+               },
+               {
+                  "sha": "18d7e453cf6fdb47c2ce756ddb51cbc60ddff287",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734177426,
+                  "message": "gh-actions/build-debian: Support running a workflow script at build-source phase\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for examples in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can\ndo more advanced configurations in the docker instance that is used\nonly during the source-preparation phase.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/18d7e453cf6fdb47c2ce756ddb51cbc60ddff287"
                }
             ],
             "ciActions": [],
@@ -5053,25 +5053,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6cbd29265a4ea1c57c74346ffe3f0080f1d9da6b",
-                  "author": "adombeck",
-                  "timestamp": 1734360795,
-                  "message": "fix: Fix error handling (#55)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/6cbd29265a4ea1c57c74346ffe3f0080f1d9da6b"
-               },
-               {
-                  "sha": "12e6dd27aecfcca414a0850ac974f35653c286ff",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1734342006,
-                  "message": "fix: Fix error handling\n\n`jq` returns \"null\" when the \"key\" field is not present in the response.\n\nAlso, print the response (which contains the error message returned by\nthe server) on error.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/12e6dd27aecfcca414a0850ac974f35653c286ff"
-               },
-               {
-                  "sha": "872370708ca3b9e691f977ed60c9ead20900fe1d",
+                  "sha": "d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f",
                   "author": "Marco Trevisan",
-                  "timestamp": 1733149595,
-                  "message": "ci(build-deb): Perform lintian checks on sources and binary packages (#40)\n\nUDENG-5415",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/872370708ca3b9e691f977ed60c9ead20900fe1d"
+                  "timestamp": 1734543451,
+                  "message": "feat(gh-actions/build-debian): Support running a workflow script at build-source phase (#54)\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for example in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can do\nmore advanced configurations in the docker instance that is used only\nduring the source-preparation phase.\n\nThis is required in order to be able to do a `cargo install --root=/usr\ncargo-vendor-filterer` to build the source package of rust programs as\nrequired by authd in https://github.com/ubuntu/authd/pull/130\n\nUDENG-2343",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f"
+               },
+               {
+                  "sha": "26328413e89791829916d13eeb797b8ab261f14c",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734469209,
+                  "message": "gh-actions/build-debian: Install git dependency only if GITHUB_TOKEN is defined\n\nIt's the only reason why we need it so far, so if a project really\nrequires it, it should add it to the extra source build dependencies",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/26328413e89791829916d13eeb797b8ab261f14c"
+               },
+               {
+                  "sha": "18d7e453cf6fdb47c2ce756ddb51cbc60ddff287",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734177426,
+                  "message": "gh-actions/build-debian: Support running a workflow script at build-source phase\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for examples in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can\ndo more advanced configurations in the docker instance that is used\nonly during the source-preparation phase.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/18d7e453cf6fdb47c2ce756ddb51cbc60ddff287"
                }
             ],
             "ciActions": [],
@@ -6236,25 +6236,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7de727118624b2625acfc8699a356d184deeb170",
+                  "sha": "aea00b5be695114151c9e825776407841740d77f",
                   "author": "ashuntu",
-                  "timestamp": 1734534121,
-                  "message": "fix: Reorganize subscribenow (#1015)\n\nReorganizes the subscribe now page to be in the new two-column layout.\r\n\r\nThis moves the ownership of the token to the model of the page, instead\r\nof the text field owning it as a stateful field. This allows us to\r\nsubmit from any button on the page, and control the state of the text\r\nfield independently. This results in a surprising about of side effects,\r\nas the previous logic had the input field handling virtually everything.\r\n\r\nNote that the diff may be misleading, a lot of it is new mock generation\r\nand fixing existing tests to pass with the new ownership model.\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/3bee77cb-b9d7-4b7c-a718-43051184547e)\r\n\r\n---\r\n\r\nUDENG-5589",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7de727118624b2625acfc8699a356d184deeb170"
+                  "timestamp": 1734543172,
+                  "message": "fix: Reorganize subscription status (#1017)\n\nReorganizes the subscription status page (the last past) according to\r\nnew designs. Notably, this changes some copy, moves management links to\r\nfooter text links, and uses generally the same look no matter what type\r\nof management.\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/efcdc0e6-7526-4dc2-93fe-9591a568379b)\r\n\r\n*Note that this page will change significantly in the future to support\r\nLandscape configuration statuses. This is just a UI update only.*\r\n\r\n---\r\n\r\nUDENG-5591",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/aea00b5be695114151c9e825776407841740d77f"
                },
                {
-                  "sha": "a36c5e317c2e09e17c4d61d280e75898490a4c86",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1734524668,
-                  "message": "fix(docs): Explicits the agent's requirement on the server SSL public key (#1016)\n\nUntil version 0.1.15 (the current version tag) of Ubuntu Pro for WSL,\r\nthe app explicitly requires referencing a path to the SSL certificate on\r\na Windows host machine.\r\n\r\nThe fix was implemented in #995. Now the agent completely follows the\r\nWindows OS certificate stores, only requiring reference to that\r\ncertificate if the machine running the Landscape server is not trusted\r\non a particular network. But we didn't issue a new release since then.\r\nSo, to avoid a new release so close to the end-of-year holidays, let's\r\nupdate the docs in an atomic way, so we can easily revert if we deem\r\nworth it after the new year and a new release comes out.\r\n\r\nThe changes herein introduced look like the following:\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/7cb8c7e4-6047-4915-b178-b36ef3419224)\r\n\r\nand\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/1d94396c-3526-4588-a51c-e20c29e15345)\r\n\r\n---\r\n\r\nUDENG-5654",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/a36c5e317c2e09e17c4d61d280e75898490a4c86"
+                  "sha": "2af76cbba673cdbb7719c00290981a1b7501bdfd",
+                  "author": "ashuntu",
+                  "timestamp": 1734540941,
+                  "message": "Remove LandingPage since it is not used anymore",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2af76cbba673cdbb7719c00290981a1b7501bdfd"
                },
                {
-                  "sha": "af572971b9fe972209c7c5a477cbe1f2657e1fec",
+                  "sha": "63fbed2fa48996d77c6d6b282cf705bf308d1f97",
                   "author": "ashuntu",
-                  "timestamp": 1734471037,
-                  "message": "Dispose of TextEditingController",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/af572971b9fe972209c7c5a477cbe1f2657e1fec"
+                  "timestamp": 1734534655,
+                  "message": "Rename manage ubuntu pro translation string",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/63fbed2fa48996d77c6d6b282cf705bf308d1f97"
                }
             ],
             "ciActions": [
@@ -7193,25 +7193,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6cbd29265a4ea1c57c74346ffe3f0080f1d9da6b",
-                  "author": "adombeck",
-                  "timestamp": 1734360795,
-                  "message": "fix: Fix error handling (#55)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/6cbd29265a4ea1c57c74346ffe3f0080f1d9da6b"
-               },
-               {
-                  "sha": "12e6dd27aecfcca414a0850ac974f35653c286ff",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1734342006,
-                  "message": "fix: Fix error handling\n\n`jq` returns \"null\" when the \"key\" field is not present in the response.\n\nAlso, print the response (which contains the error message returned by\nthe server) on error.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/12e6dd27aecfcca414a0850ac974f35653c286ff"
-               },
-               {
-                  "sha": "872370708ca3b9e691f977ed60c9ead20900fe1d",
+                  "sha": "d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f",
                   "author": "Marco Trevisan",
-                  "timestamp": 1733149595,
-                  "message": "ci(build-deb): Perform lintian checks on sources and binary packages (#40)\n\nUDENG-5415",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/872370708ca3b9e691f977ed60c9ead20900fe1d"
+                  "timestamp": 1734543451,
+                  "message": "feat(gh-actions/build-debian): Support running a workflow script at build-source phase (#54)\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for example in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can do\nmore advanced configurations in the docker instance that is used only\nduring the source-preparation phase.\n\nThis is required in order to be able to do a `cargo install --root=/usr\ncargo-vendor-filterer` to build the source package of rust programs as\nrequired by authd in https://github.com/ubuntu/authd/pull/130\n\nUDENG-2343",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f"
+               },
+               {
+                  "sha": "26328413e89791829916d13eeb797b8ab261f14c",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734469209,
+                  "message": "gh-actions/build-debian: Install git dependency only if GITHUB_TOKEN is defined\n\nIt's the only reason why we need it so far, so if a project really\nrequires it, it should add it to the extra source build dependencies",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/26328413e89791829916d13eeb797b8ab261f14c"
+               },
+               {
+                  "sha": "18d7e453cf6fdb47c2ce756ddb51cbc60ddff287",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734177426,
+                  "message": "gh-actions/build-debian: Support running a workflow script at build-source phase\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for examples in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can\ndo more advanced configurations in the docker instance that is used\nonly during the source-preparation phase.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/18d7e453cf6fdb47c2ce756ddb51cbc60ddff287"
                }
             ],
             "ciActions": [],
