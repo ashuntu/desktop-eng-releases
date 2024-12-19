@@ -6591,25 +6591,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d01e5b35d62cfc90423f1db3e1f607f2314c4da5",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1734637661,
-                  "message": "pam: Block until the connection with the daemon is ready (#694)\n\nAn authd instance running is a strong prerequisite for for the authd PAM\nmodule too, so instead of failing at the first grpc method invocation\nwith a system error, let's just try to connect first and in case of\nfailure, we just fail (as expected) with pam.ErrAuthinfoUnavail so that\nthe service files can decide what to do with it (normally: ignore it).\n\nAlso add support for heath check grpc events that allows to stop\n\"grecefully\" the transactions if authd is stopped.\n\nAdd tests.\n\nA followup of #273, to make sure we're actually returning the expected\nerror on connection failures.\n\nCloses #535\nUDENG-4695\nUDENG-5639",
-                  "url": "https://github.com/ubuntu/authd/commit/d01e5b35d62cfc90423f1db3e1f607f2314c4da5"
+                  "sha": "edd2399ca70972eddad58e355b6897ca4f3c3f1c",
+                  "author": "adombeck",
+                  "timestamp": 1734650023,
+                  "message": "Store UGID in database to handle group renames at provider's end  (#647)\n\nCloses #620\r\nUDENG-5160",
+                  "url": "https://github.com/ubuntu/authd/commit/edd2399ca70972eddad58e355b6897ca4f3c3f1c"
                },
                {
-                  "sha": "5d719dcf51df2fff6acb369b365ff4ebafc72094",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1734405034,
-                  "message": "pam: Monitor authd connection health and stop the client if authd stopped\n\nThis is something that we were advertising only once the user was\nperforming an action, while we can now just end the PAM session once\nauthd disappeared.",
-                  "url": "https://github.com/ubuntu/authd/commit/5d719dcf51df2fff6acb369b365ff4ebafc72094"
+                  "sha": "74e0b9a164d4a88a372db84c15613ca29e88e5e7",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1734363012,
+                  "message": "Update golden files",
+                  "url": "https://github.com/ubuntu/authd/commit/74e0b9a164d4a88a372db84c15613ca29e88e5e7"
                },
                {
-                  "sha": "a8a84078028d79cbf92cc92cecde0f7a69a75aee",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1734394689,
-                  "message": "pam: Move clients initialization into the module init phase\n\nSo we can just pass the connection to the adapter, without client\nthemselves",
-                  "url": "https://github.com/ubuntu/authd/commit/a8a84078028d79cbf92cc92cecde0f7a69a75aee"
+                  "sha": "f2018008b3d423756defe06effb351f0f49f9558",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1734364517,
+                  "message": "fix: Add UGID to testdata databases",
+                  "url": "https://github.com/ubuntu/authd/commit/f2018008b3d423756defe06effb351f0f49f9558"
                }
             ],
             "ciActions": [
