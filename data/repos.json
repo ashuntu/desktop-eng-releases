@@ -2879,7 +2879,7 @@
          {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
-            "newCommits": 3,
+            "newCommits": 4,
             "url": "https://github.com/ubuntu/yaru_test.dart",
             "releases": [
                {
@@ -6591,25 +6591,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5d3d8326a784eb5a8347126061eabc08917b816a",
+                  "sha": "cbe0d7e9642b8347f998228ca621c1f4bf2e2862",
                   "author": "Marco Trevisan",
-                  "timestamp": 1734552933,
-                  "message": "Add device ownership configuration docs (#693)\n\nIAM-1259\n\nThis PR adds the new device ownership changes that are described in\nUD084 and introduced by\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/249. I could not find\nany reference docs or any information about non-entraID providers, the\n`broker.conf.d` folder or any of the other configuration sections.\nPlease let me know if you think that I should add info somewhere else as\nwell.\n\ncc @adombeck @edibotopic",
-                  "url": "https://github.com/ubuntu/authd/commit/5d3d8326a784eb5a8347126061eabc08917b816a"
+                  "timestamp": 1734630949,
+                  "message": "feat(pam/integration-tests): Use VHS Wait command on test tapes (#661)\n\nWe were relying on sleeping when running integration tests tapes, but\nthis is quite unreliable because:\n - Depends on the speed of the machine running the tests\n- Using generous sleeping times implies slower tests (this saves around\n10m on CI tests...)\n\nSo, use `Wait` commands from VHS\nhttps://github.com/charmbracelet/vhs/pull/257 to only send input once\nthe UI has the expected contents.\n\nAdded some `Wait+$Extensions` to make regular expressions easier to\nmaintain, and reducing complexity of the tape files.\n\nFix some potential races that I've found while testing this.\n\nBased on #641 \n\nUDENG-4964",
+                  "url": "https://github.com/ubuntu/authd/commit/cbe0d7e9642b8347f998228ca621c1f4bf2e2862"
                },
                {
-                  "sha": "4ed5bd4e0940142e975faa2ba8a554600bdf314f",
-                  "author": "Nikos",
-                  "timestamp": 1734008486,
-                  "message": "docs: add device ownership configuration docs",
-                  "url": "https://github.com/ubuntu/authd/commit/4ed5bd4e0940142e975faa2ba8a554600bdf314f"
+                  "sha": "bd134ad3b81e919d1336f2f0e4f76369206c05ac",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734629293,
+                  "message": "pam/integration-tests/vhs: Add utility command to type and verify visible prompts\n\nSo we can avoid to hit enter too early in CLI (not a problem in native\nmodel), or the UI may not have been synchronized yet, leading to mismatching\ngolden files.",
+                  "url": "https://github.com/ubuntu/authd/commit/bd134ad3b81e919d1336f2f0e4f76369206c05ac"
                },
                {
-                  "sha": "7263b090ac08e6360606d2e345a6d862ff2da45b",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1734528750,
-                  "message": "pam: Do not save or check for local broker ID in module data and drop PamIgnore (#695)\n\nAs per commit 4fd03a407e69 we're just not storing if the local broker\nhas been used, as per this we don't even care about saving it in the\nmodule since we'd just return with pam.ErrIgnore anyways if the broker\nauthentication ID isn't stored or is null\n\nThus we don't need to return anymore the ID of the local broker if we\nwant to be used, so we can also remove the complexity of\nPamIgnore, by just considering it a particular case of pamError\n\nUDENG-5576",
-                  "url": "https://github.com/ubuntu/authd/commit/7263b090ac08e6360606d2e345a6d862ff2da45b"
+                  "sha": "74e5b357a096c1f26c0395ca8590ef619dd7942c",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734628848,
+                  "message": "pam/integration-tests/vhs: Use bigger wait time for qrcode regeneration\n\nAs per commit ba04d1c88 we've bumped the reauthentication minimum wait\ntime, so let's sync with it in tests too.",
+                  "url": "https://github.com/ubuntu/authd/commit/74e5b357a096c1f26c0395ca8590ef619dd7942c"
                }
             ],
             "ciActions": [
@@ -6943,7 +6943,7 @@
          {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
-            "newCommits": 3,
+            "newCommits": 4,
             "url": "https://github.com/ubuntu/yaru_test.dart",
             "releases": [
                {
@@ -8763,7 +8763,7 @@
          {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
-            "newCommits": 3,
+            "newCommits": 4,
             "url": "https://github.com/ubuntu/yaru_test.dart",
             "releases": [
                {
