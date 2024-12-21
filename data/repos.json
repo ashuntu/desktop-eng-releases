@@ -6626,6 +6626,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "133b4b7d8431c6253fab6a2948abbecd69df7164",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1734794596,
+                  "message": "daemon: Always close the ready channel on error (#264)\n\nWe were not closing it in case broker.New failed, so let's just use a\ndeferred function to ensure that this always happens, unless we're done\nit already explicitly",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/133b4b7d8431c6253fab6a2948abbecd69df7164"
+               },
+               {
                   "sha": "f2dda6261302d1fa76871109b384a62c7f71b4c5",
                   "author": "dependabot[bot]",
                   "timestamp": 1734679952,
@@ -6633,18 +6640,11 @@
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f2dda6261302d1fa76871109b384a62c7f71b4c5"
                },
                {
-                  "sha": "f6d72c563f76171253723e4c41ae8483a8c9ef10",
-                  "author": "adombeck",
-                  "timestamp": 1734625674,
-                  "message": "Device ownership migration (#257)\n\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/249 introduces a\r\nbreaking change. The default behavior before was that ALL users were\r\nallowed, but now only the owner is allowed.\r\n\r\nIn order to migrate the config, we set a new snapctl config param. If\r\nthat is not present, that means that we need to migrate the config.\r\n\r\nIAM-1249",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f6d72c563f76171253723e4c41ae8483a8c9ef10"
-               },
-               {
-                  "sha": "6419b91ac6da87987f5de07b0e90f3f8a751ba7b",
-                  "author": "Nikos",
-                  "timestamp": 1734606661,
-                  "message": "fix: check for equal in version_less_than\n\n`version_less_than` would return true if the two versions were equal",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/6419b91ac6da87987f5de07b0e90f3f8a751ba7b"
+                  "sha": "4dfc8e89c39768cb5a41599e6ffc3bd1f4c1f349",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1734588428,
+                  "message": "daemon: Always close the ready channel on error\n\nWe were not closing it in case broker.New failed, so let's just use\na deferred function to ensure that this always happens, unless we're\ndone it already explicitly",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4dfc8e89c39768cb5a41599e6ffc3bd1f4c1f349"
                }
             ],
             "ciActions": [
