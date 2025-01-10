@@ -6607,25 +6607,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2e0785122cb110f692c8b48d0d42b3a3fd1f2a59",
+                  "sha": "973ae5d8832331e066d867f7c9c64a299e1c3bf6",
                   "author": "adombeck",
-                  "timestamp": 1736269494,
-                  "message": "Fix \"GID already in use by a different group\" (#714)\n\nUDENG-5716",
-                  "url": "https://github.com/ubuntu/authd/commit/2e0785122cb110f692c8b48d0d42b3a3fd1f2a59"
+                  "timestamp": 1736520221,
+                  "message": "Better error messages in test output (#718)\n\nUDENG-5722",
+                  "url": "https://github.com/ubuntu/authd/commit/973ae5d8832331e066d867f7c9c64a299e1c3bf6"
                },
                {
-                  "sha": "88a0000bd88d763eb717420847af3453c0b1fdd8",
+                  "sha": "b7f44584a5e1c4586583e92936d4fc63589a7e6b",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1736244288,
-                  "message": "fix: Add UGID to testdata databases",
-                  "url": "https://github.com/ubuntu/authd/commit/88a0000bd88d763eb717420847af3453c0b1fdd8"
+                  "timestamp": 1736352728,
+                  "message": "Remove requireEqualServices\n\nThe order of the services is deterministic because we sort them before\ncomparing.",
+                  "url": "https://github.com/ubuntu/authd/commit/b7f44584a5e1c4586583e92936d4fc63589a7e6b"
                },
                {
-                  "sha": "33ee0ec0e4a015037668dad819239c65386c490f",
+                  "sha": "434ab0fd79c6d7d436bcdfe8bcfdf0ef33e9dffc",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1736201946,
-                  "message": "Fix \"GID already in use by a different group\"\n\nWe didn't store the UGID in 0.3.7 and earlier, so the UGID comparison\nalways failed for groups which already exist in the database from one of\nthose versions.",
-                  "url": "https://github.com/ubuntu/authd/commit/33ee0ec0e4a015037668dad819239c65386c490f"
+                  "timestamp": 1736352375,
+                  "message": "Remove requireExportedEquals\n\nWe don't need requireExportedEquals, CheckOrUpdateYAML already only\ncompares the exported fields because it converts to YAML first and then\ncompares with the golden file content.",
+                  "url": "https://github.com/ubuntu/authd/commit/434ab0fd79c6d7d436bcdfe8bcfdf0ef33e9dffc"
                }
             ],
             "ciActions": [
@@ -6642,25 +6642,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "38205566e0441950e6887d02201058cd14506495",
+                  "author": "adombeck",
+                  "timestamp": 1736521879,
+                  "message": "Fix get_version script (#301)\n\nUDENG-5759",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/38205566e0441950e6887d02201058cd14506495"
+               },
+               {
+                  "sha": "61621432fd9f44fd38d6a097e05f93ad774a57bb",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1736440992,
+                  "message": "Fix get_version script\n\nBuilding from main or any other branch that's not \"msentraid\" or\n\"google\" failed because it used \"notag\" which is not a valid semantic\nversion.\n\nIt now first tries to use the highest version tag prefixed with the branch\nname (e.g. \"msentraid-0.2.0\" when on the msentraid branch) and if there\nis none, just uses the highest version tag on the branch which starts\nwith a number (to avoid an invalid SemVer when tag \"msentraid-0.2.0\" is\non a branch that's not \"msentraid\").",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/61621432fd9f44fd38d6a097e05f93ad774a57bb"
+               },
+               {
                   "sha": "a42fed3b15b6abddaded60fc5100f8d7fd514047",
                   "author": "adombeck",
                   "timestamp": 1736501670,
                   "message": "Support showing INFO messages without DEBUG messages (#302)",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a42fed3b15b6abddaded60fc5100f8d7fd514047"
-               },
-               {
-                  "sha": "7dd001068798aeebde50c2763b86a783dd75da36",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1736442176,
-                  "message": "Support showing INFO messages without DEBUG messages\n\nCurrently, we only show WARN messages when verbose mode is disabled, and\nwhen there's at least one \"-v\" flag, we show both INFO and DEBUG\nmessages.\n\nWith this commit, we change that behavior to the same as authd: When\nthere is one \"-v\" flag, we show INFO messages, when there's at least\ntwo, we also show DEBUG messages.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/7dd001068798aeebde50c2763b86a783dd75da36"
-               },
-               {
-                  "sha": "1a729e2b0326fd17d8d92e23a12aeb33db47de99",
-                  "author": "adombeck",
-                  "timestamp": 1736431149,
-                  "message": "Correctly handle pre-release versions in post-refresh hook (#298)\n\nUDENG-5714",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/1a729e2b0326fd17d8d92e23a12aeb33db47de99"
                }
             ],
             "ciActions": [
