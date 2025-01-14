@@ -3149,25 +3149,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bb19f0264541bf15a0d0af0a55579989f66eef0a",
+                  "author": "adombeck",
+                  "timestamp": 1736866255,
+                  "message": "fix(gotestfmt): Fix incorrect gotestfmt output (#59)\n\nUDENG-5451",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/bb19f0264541bf15a0d0af0a55579989f66eef0a"
+               },
+               {
+                  "sha": "0fd3ef4f00e00c0dc6a0132e68025d549befe83e",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1736173579,
+                  "message": "Fix incorrect gotestfmt output\n\nUse our fork until\n\n    https://github.com/GoTestTools/gotestfmt/pull/62\n\nhas been merged by upstream.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/0fd3ef4f00e00c0dc6a0132e68025d549befe83e"
+               },
+               {
                   "sha": "d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f",
                   "author": "Marco Trevisan",
                   "timestamp": 1734543451,
                   "message": "feat(gh-actions/build-debian): Support running a workflow script at build-source phase (#54)\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for example in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can do\nmore advanced configurations in the docker instance that is used only\nduring the source-preparation phase.\n\nThis is required in order to be able to do a `cargo install --root=/usr\ncargo-vendor-filterer` to build the source package of rust programs as\nrequired by authd in https://github.com/ubuntu/authd/pull/130\n\nUDENG-2343",
                   "url": "https://github.com/canonical/desktop-engineering/commit/d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f"
-               },
-               {
-                  "sha": "26328413e89791829916d13eeb797b8ab261f14c",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1734469209,
-                  "message": "gh-actions/build-debian: Install git dependency only if GITHUB_TOKEN is defined\n\nIt's the only reason why we need it so far, so if a project really\nrequires it, it should add it to the extra source build dependencies",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/26328413e89791829916d13eeb797b8ab261f14c"
-               },
-               {
-                  "sha": "18d7e453cf6fdb47c2ce756ddb51cbc60ddff287",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1734177426,
-                  "message": "gh-actions/build-debian: Support running a workflow script at build-source phase\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for examples in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can\ndo more advanced configurations in the docker instance that is used\nonly during the source-preparation phase.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/18d7e453cf6fdb47c2ce756ddb51cbc60ddff287"
                }
             ],
             "ciActions": [],
@@ -5056,25 +5056,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bb19f0264541bf15a0d0af0a55579989f66eef0a",
+                  "author": "adombeck",
+                  "timestamp": 1736866255,
+                  "message": "fix(gotestfmt): Fix incorrect gotestfmt output (#59)\n\nUDENG-5451",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/bb19f0264541bf15a0d0af0a55579989f66eef0a"
+               },
+               {
+                  "sha": "0fd3ef4f00e00c0dc6a0132e68025d549befe83e",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1736173579,
+                  "message": "Fix incorrect gotestfmt output\n\nUse our fork until\n\n    https://github.com/GoTestTools/gotestfmt/pull/62\n\nhas been merged by upstream.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/0fd3ef4f00e00c0dc6a0132e68025d549befe83e"
+               },
+               {
                   "sha": "d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f",
                   "author": "Marco Trevisan",
                   "timestamp": 1734543451,
                   "message": "feat(gh-actions/build-debian): Support running a workflow script at build-source phase (#54)\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for example in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can do\nmore advanced configurations in the docker instance that is used only\nduring the source-preparation phase.\n\nThis is required in order to be able to do a `cargo install --root=/usr\ncargo-vendor-filterer` to build the source package of rust programs as\nrequired by authd in https://github.com/ubuntu/authd/pull/130\n\nUDENG-2343",
                   "url": "https://github.com/canonical/desktop-engineering/commit/d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f"
-               },
-               {
-                  "sha": "26328413e89791829916d13eeb797b8ab261f14c",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1734469209,
-                  "message": "gh-actions/build-debian: Install git dependency only if GITHUB_TOKEN is defined\n\nIt's the only reason why we need it so far, so if a project really\nrequires it, it should add it to the extra source build dependencies",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/26328413e89791829916d13eeb797b8ab261f14c"
-               },
-               {
-                  "sha": "18d7e453cf6fdb47c2ce756ddb51cbc60ddff287",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1734177426,
-                  "message": "gh-actions/build-debian: Support running a workflow script at build-source phase\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for examples in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can\ndo more advanced configurations in the docker instance that is used\nonly during the source-preparation phase.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/18d7e453cf6fdb47c2ce756ddb51cbc60ddff287"
                }
             ],
             "ciActions": [],
@@ -7196,25 +7196,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bb19f0264541bf15a0d0af0a55579989f66eef0a",
+                  "author": "adombeck",
+                  "timestamp": 1736866255,
+                  "message": "fix(gotestfmt): Fix incorrect gotestfmt output (#59)\n\nUDENG-5451",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/bb19f0264541bf15a0d0af0a55579989f66eef0a"
+               },
+               {
+                  "sha": "0fd3ef4f00e00c0dc6a0132e68025d549befe83e",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1736173579,
+                  "message": "Fix incorrect gotestfmt output\n\nUse our fork until\n\n    https://github.com/GoTestTools/gotestfmt/pull/62\n\nhas been merged by upstream.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/0fd3ef4f00e00c0dc6a0132e68025d549befe83e"
+               },
+               {
                   "sha": "d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f",
                   "author": "Marco Trevisan",
                   "timestamp": 1734543451,
                   "message": "feat(gh-actions/build-debian): Support running a workflow script at build-source phase (#54)\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for example in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can do\nmore advanced configurations in the docker instance that is used only\nduring the source-preparation phase.\n\nThis is required in order to be able to do a `cargo install --root=/usr\ncargo-vendor-filterer` to build the source package of rust programs as\nrequired by authd in https://github.com/ubuntu/authd/pull/130\n\nUDENG-2343",
                   "url": "https://github.com/canonical/desktop-engineering/commit/d671aa34e9be7cdb3f3edd1a8ffd97ab21b2021f"
-               },
-               {
-                  "sha": "26328413e89791829916d13eeb797b8ab261f14c",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1734469209,
-                  "message": "gh-actions/build-debian: Install git dependency only if GITHUB_TOKEN is defined\n\nIt's the only reason why we need it so far, so if a project really\nrequires it, it should add it to the extra source build dependencies",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/26328413e89791829916d13eeb797b8ab261f14c"
-               },
-               {
-                  "sha": "18d7e453cf6fdb47c2ce756ddb51cbc60ddff287",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1734177426,
-                  "message": "gh-actions/build-debian: Support running a workflow script at build-source phase\n\nWhen building some packages we may need to prepare the build environment\nbefore preparing the source package, for examples in some cases we may\nneed to enable git access (to compute the package version or similar) or\nwe may need to install tools that are used during debian source building\nthat are not provided in the archive (such as rust crates, hello\ncargo-vendor-filterer!!).\n\nSo instead of polluting this generic action with package-specific\nrequirements, let's just make it support running a script that can\ndo more advanced configurations in the docker instance that is used\nonly during the source-preparation phase.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/18d7e453cf6fdb47c2ce756ddb51cbc60ddff287"
                }
             ],
             "ciActions": [],
