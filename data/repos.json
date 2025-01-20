@@ -592,6 +592,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fb5b4f29cca87eff3240a0661c553be0a5ba3543",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1737383950,
+                  "message": "Update to core24, use newer qemu-virgil update gnome-boxes to 47 and depedency to stable releases and support USB redirection (#28)\n\n* snap: Do not make spice-protocol depend on libphodav\r\n\r\nIt's totally not required by it\r\n\r\n* snap: Do not add libvirt-dev as build package\r\n\r\nWe already build libvirt ourself, so there's no need to depend on it\r\n\r\n* snap: Base on core24 as per newer qemu\r\n\r\nqemu-virgil has a very old stable release, so we want to track edge as\r\nwe used to do before.\r\n\r\nHowever the latest qemu-virgil is based on core24 so we should do the\r\nsame or we'll end up in ABI / API issues (as various libraries won't\r\nmatch).\r\n\r\nSo let's do it, but we also require some more changes though, in\r\nparticular:\r\n - Bump libvirt version (using the old one was almost possible after\r\n   some patching, but qemu is just too new at this point to work with a\r\n   such old version of libvirt, so let's get the newest one we can)\r\n - drop custom libphodav: just use the archive version\r\n - Expose the libvirt daemons to the $PATH\r\n - Adapt pci.ids path to be in the (legacy) expected one by libvirt\r\n - Adapt some commands and dependencies\r\n\r\n* snapcraft: Use latest stable version of libvirt-glib\r\n\r\n* snap: Do not build osinfo-db after libraries\r\n\r\nThis can work without any previous requirement\r\n\r\n* snap: Do not handle qemu snap after the libraries\r\n\r\nThe order here doesn't matter much\r\n\r\n* snap: Bump version of libosinfo to latest stable version\r\n\r\n* snap: Bump version to gnome boxes 47\r\n\r\nIt's the latest stable version and safe enough to use\r\n\r\n* snap: Do not prime development files\r\n\r\n* snap: Use debian-default parameters to compile spice-gtk for USB support\r\n\r\nAlthough the usb access isn't working yet by default, but let's at least\r\nadd all the dependencies and move the ones they belong to\r\n\r\n* snap: Add more meaningful error to libspice helper failure\r\n\r\nAnd also it avoids being blocked by the confinement when trying to set\r\nthe ACL.\r\n\r\n* patches: Show a dialog explaining how to get user permissions on USB devices\r\n\r\nIt allows proper USB redirection, but it requires user intervention\r\n\r\n* snap: Remove unneeded build environment on gnome-boxes\r\n\r\nIt's not required being already implicit\r\n\r\n* launcher: Do not hardcode the arch triplet\r\n\r\n* launcher: Save the PID in the snap runtime path instead of tmp\r\n\r\n* snap: Add removable media permission\r\n\r\nCloses: #26\r\n\r\n* snap: Drop tracker part and dependency\r\n\r\nIt's not required anymore as per upstream commit dbc5cc586 (44.0), so\r\nremove it for us too\r\n\r\n* snap: Explicitly enable egl and webdav in spice-gtk\r\n\r\n* snap: Only prime osinfo relevant data",
+                  "url": "https://github.com/ubuntu/gnome-boxes/commit/fb5b4f29cca87eff3240a0661c553be0a5ba3543"
+               },
+               {
                   "sha": "8e583066175bb19637d958efec5d80d6cceae61e",
                   "author": "jssotomdz",
                   "timestamp": 1726240784,
@@ -604,13 +611,6 @@
                   "timestamp": 1719904883,
                   "message": "Update tag",
                   "url": "https://github.com/ubuntu/gnome-boxes/commit/4ba5e7360b0bd6ccc7596b5f2b05225e3d68b1a9"
-               },
-               {
-                  "sha": "4e2e87f8441b13b0d9b743a33cf3032effd6d850",
-                  "author": "jssotomdz",
-                  "timestamp": 1719585654,
-                  "message": "ci: fix workflow dispatch typo build action trigger",
-                  "url": "https://github.com/ubuntu/gnome-boxes/commit/4e2e87f8441b13b0d9b743a33cf3032effd6d850"
                }
             ],
             "ciActions": [],
@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "067f53d5c629936499e4863d6cd5335294724b00",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1737386092,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 782dbb6 (#912)\n\nThis PR contains the following updates:\r\n\r\n| Package | Update | Change |\r\n|---|---|---|\r\n| packages/subiquity_client/subiquity | digest | `4913e6f` -> `782dbb6`",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/067f53d5c629936499e4863d6cd5335294724b00"
+               },
+               {
+                  "sha": "f70ef57851357d16cd90930140f5e2593d60de50",
+                  "author": "renovate[bot]",
+                  "timestamp": 1737381574,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 782dbb6",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f70ef57851357d16cd90930140f5e2593d60de50"
+               },
+               {
                   "sha": "3898841647a3fcb710b3cfa1ebd729397e40e362",
                   "author": "Dennis Loose",
                   "timestamp": 1737381521,
                   "message": "feat: implement new autoinstall UI (#910)\n\nBreaks up the existing autoinstall page into multiple steps and adds a\nfile picker for local paths.\n\n![Screenshot From 2025-01-10\n16-53-59](https://github.com/user-attachments/assets/8c7f8b50-fb3d-40e9-8410-493458f8c1d6)\n![Screenshot From 2025-01-10\n16-54-09](https://github.com/user-attachments/assets/e247aa85-9cac-4922-bf77-94cdc7e1b6af)\n![Screenshot From 2025-01-10\n16-54-26](https://github.com/user-attachments/assets/fb44796f-d428-4684-a65a-82861492f697)\n![Screenshot From 2025-01-10\n16-56-09](https://github.com/user-attachments/assets/2f3b9379-4013-4178-8d80-cf37b0c6c6a8)\n![Screenshot From 2025-01-10\n16-58-10](https://github.com/user-attachments/assets/c4ac850b-4393-405a-a4ab-d589dbf3380e)\n\n- Extracts non-UI logic into `AutoinstallService`\n- `AutoinstallModel` now only holds the state of the autoinstall type:\n`none` (interactive), `direct` (load file from URL or local path),\n`landscape` (obtain file via landscape). It also provides a method to\nrestart the UI.\n- New `AutoinstallDirectModel` holds the UI state of the URL text box\nand file picker which have been moved to a separate page. It also\nprovides a method to show the file picker (via xdg desktop portals)\n\nError handling still needs improving, but I'd do that in a follow-up PR.\n\nUDENG-5748",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3898841647a3fcb710b3cfa1ebd729397e40e362"
-               },
-               {
-                  "sha": "971c37e4b4e4fa0bacd77f2eece3591127357cdb",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737380014,
-                  "message": "chore: clarify test utils changes",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/971c37e4b4e4fa0bacd77f2eece3591127357cdb"
-               },
-               {
-                  "sha": "c80507be3f015adc27df5e895b1c3d482d3901e1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737379471,
-                  "message": "chore: remove unused code",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c80507be3f015adc27df5e895b1c3d482d3901e1"
                }
             ],
             "ciActions": [
@@ -6130,25 +6130,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "067f53d5c629936499e4863d6cd5335294724b00",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1737386092,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 782dbb6 (#912)\n\nThis PR contains the following updates:\r\n\r\n| Package | Update | Change |\r\n|---|---|---|\r\n| packages/subiquity_client/subiquity | digest | `4913e6f` -> `782dbb6`",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/067f53d5c629936499e4863d6cd5335294724b00"
+               },
+               {
+                  "sha": "f70ef57851357d16cd90930140f5e2593d60de50",
+                  "author": "renovate[bot]",
+                  "timestamp": 1737381574,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 782dbb6",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f70ef57851357d16cd90930140f5e2593d60de50"
+               },
+               {
                   "sha": "3898841647a3fcb710b3cfa1ebd729397e40e362",
                   "author": "Dennis Loose",
                   "timestamp": 1737381521,
                   "message": "feat: implement new autoinstall UI (#910)\n\nBreaks up the existing autoinstall page into multiple steps and adds a\nfile picker for local paths.\n\n![Screenshot From 2025-01-10\n16-53-59](https://github.com/user-attachments/assets/8c7f8b50-fb3d-40e9-8410-493458f8c1d6)\n![Screenshot From 2025-01-10\n16-54-09](https://github.com/user-attachments/assets/e247aa85-9cac-4922-bf77-94cdc7e1b6af)\n![Screenshot From 2025-01-10\n16-54-26](https://github.com/user-attachments/assets/fb44796f-d428-4684-a65a-82861492f697)\n![Screenshot From 2025-01-10\n16-56-09](https://github.com/user-attachments/assets/2f3b9379-4013-4178-8d80-cf37b0c6c6a8)\n![Screenshot From 2025-01-10\n16-58-10](https://github.com/user-attachments/assets/c4ac850b-4393-405a-a4ab-d589dbf3380e)\n\n- Extracts non-UI logic into `AutoinstallService`\n- `AutoinstallModel` now only holds the state of the autoinstall type:\n`none` (interactive), `direct` (load file from URL or local path),\n`landscape` (obtain file via landscape). It also provides a method to\nrestart the UI.\n- New `AutoinstallDirectModel` holds the UI state of the URL text box\nand file picker which have been moved to a separate page. It also\nprovides a method to show the file picker (via xdg desktop portals)\n\nError handling still needs improving, but I'd do that in a follow-up PR.\n\nUDENG-5748",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3898841647a3fcb710b3cfa1ebd729397e40e362"
-               },
-               {
-                  "sha": "971c37e4b4e4fa0bacd77f2eece3591127357cdb",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737380014,
-                  "message": "chore: clarify test utils changes",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/971c37e4b4e4fa0bacd77f2eece3591127357cdb"
-               },
-               {
-                  "sha": "c80507be3f015adc27df5e895b1c3d482d3901e1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737379471,
-                  "message": "chore: remove unused code",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c80507be3f015adc27df5e895b1c3d482d3901e1"
                }
             ],
             "ciActions": [
@@ -6594,6 +6594,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ab2da286882fe5d2e9c0c099756b31849c4017a1",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1737385587,
+                  "message": "debian/authd.service: Use even more restrictive access for authd (#740)\n\nLimit the authd access on system resources even more, to prevent\nunexpected behaviors.\n\nUDENG-5583",
+                  "url": "https://github.com/ubuntu/authd/commit/ab2da286882fe5d2e9c0c099756b31849c4017a1"
+               },
+               {
                   "sha": "ca8dc3b2292747a7537c2612f973e435a86e4c08",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1737382398,
@@ -6601,18 +6608,11 @@
                   "url": "https://github.com/ubuntu/authd/commit/ca8dc3b2292747a7537c2612f973e435a86e4c08"
                },
                {
-                  "sha": "f5613cf9638eca046501bdd608744248300c9433",
-                  "author": "Nikos",
-                  "timestamp": 1736853300,
-                  "message": "docs: move group management to separate file",
-                  "url": "https://github.com/ubuntu/authd/commit/f5613cf9638eca046501bdd608744248300c9433"
-               },
-               {
-                  "sha": "ac33a0190c14fd23adb9396e6460ea93eda4e328",
-                  "author": "Nikos",
-                  "timestamp": 1736789744,
-                  "message": "docs: auto-generate anchors\n\nChecks were failing when referencing anchors from different files",
-                  "url": "https://github.com/ubuntu/authd/commit/ac33a0190c14fd23adb9396e6460ea93eda4e328"
+                  "sha": "c55b79b6031fb4966f69837f1b5554d585e2b47b",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1737172840,
+                  "message": "debian/authd.service: Give read-only access to main sensitive /etc paths\n\nWhile we can't use /etc in read-only mode via ProtectSystem=full,\nbecause we use gpasswd to write on /etc/groups and /etc/gshadow, we can\nstill limit the access to the most sensible /etc paths.",
+                  "url": "https://github.com/ubuntu/authd/commit/c55b79b6031fb4966f69837f1b5554d585e2b47b"
                }
             ],
             "ciActions": [
@@ -8237,25 +8237,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "067f53d5c629936499e4863d6cd5335294724b00",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1737386092,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 782dbb6 (#912)\n\nThis PR contains the following updates:\r\n\r\n| Package | Update | Change |\r\n|---|---|---|\r\n| packages/subiquity_client/subiquity | digest | `4913e6f` -> `782dbb6`",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/067f53d5c629936499e4863d6cd5335294724b00"
+               },
+               {
+                  "sha": "f70ef57851357d16cd90930140f5e2593d60de50",
+                  "author": "renovate[bot]",
+                  "timestamp": 1737381574,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 782dbb6",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f70ef57851357d16cd90930140f5e2593d60de50"
+               },
+               {
                   "sha": "3898841647a3fcb710b3cfa1ebd729397e40e362",
                   "author": "Dennis Loose",
                   "timestamp": 1737381521,
                   "message": "feat: implement new autoinstall UI (#910)\n\nBreaks up the existing autoinstall page into multiple steps and adds a\nfile picker for local paths.\n\n![Screenshot From 2025-01-10\n16-53-59](https://github.com/user-attachments/assets/8c7f8b50-fb3d-40e9-8410-493458f8c1d6)\n![Screenshot From 2025-01-10\n16-54-09](https://github.com/user-attachments/assets/e247aa85-9cac-4922-bf77-94cdc7e1b6af)\n![Screenshot From 2025-01-10\n16-54-26](https://github.com/user-attachments/assets/fb44796f-d428-4684-a65a-82861492f697)\n![Screenshot From 2025-01-10\n16-56-09](https://github.com/user-attachments/assets/2f3b9379-4013-4178-8d80-cf37b0c6c6a8)\n![Screenshot From 2025-01-10\n16-58-10](https://github.com/user-attachments/assets/c4ac850b-4393-405a-a4ab-d589dbf3380e)\n\n- Extracts non-UI logic into `AutoinstallService`\n- `AutoinstallModel` now only holds the state of the autoinstall type:\n`none` (interactive), `direct` (load file from URL or local path),\n`landscape` (obtain file via landscape). It also provides a method to\nrestart the UI.\n- New `AutoinstallDirectModel` holds the UI state of the URL text box\nand file picker which have been moved to a separate page. It also\nprovides a method to show the file picker (via xdg desktop portals)\n\nError handling still needs improving, but I'd do that in a follow-up PR.\n\nUDENG-5748",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3898841647a3fcb710b3cfa1ebd729397e40e362"
-               },
-               {
-                  "sha": "971c37e4b4e4fa0bacd77f2eece3591127357cdb",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737380014,
-                  "message": "chore: clarify test utils changes",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/971c37e4b4e4fa0bacd77f2eece3591127357cdb"
-               },
-               {
-                  "sha": "c80507be3f015adc27df5e895b1c3d482d3901e1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737379471,
-                  "message": "chore: remove unused code",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c80507be3f015adc27df5e895b1c3d482d3901e1"
                }
             ],
             "ciActions": [
