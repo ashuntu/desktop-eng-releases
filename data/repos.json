@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cc0c80322906f69c1a459019282cfb07306e95dd",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737363882,
-                  "message": "feat: Erase and install (#892)\n\nThis is work in progress for adding support for \"Erase & Install\" based\r\nthe Subiquity work being done [here](https://github.com/canonical/subiquity/pull/2117). We wont be\r\nable to land this before [this bug](https://bugs.launchpad.net/subiquity/+bug/2091172) around logical\r\npartitions being re-labelled and breaking the mapping between installed OS and partition is fixed.\r\n\r\nUDENG-5549",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cc0c80322906f69c1a459019282cfb07306e95dd"
+                  "sha": "3898841647a3fcb710b3cfa1ebd729397e40e362",
+                  "author": "Dennis Loose",
+                  "timestamp": 1737381521,
+                  "message": "feat: implement new autoinstall UI (#910)\n\nBreaks up the existing autoinstall page into multiple steps and adds a\nfile picker for local paths.\n\n![Screenshot From 2025-01-10\n16-53-59](https://github.com/user-attachments/assets/8c7f8b50-fb3d-40e9-8410-493458f8c1d6)\n![Screenshot From 2025-01-10\n16-54-09](https://github.com/user-attachments/assets/e247aa85-9cac-4922-bf77-94cdc7e1b6af)\n![Screenshot From 2025-01-10\n16-54-26](https://github.com/user-attachments/assets/fb44796f-d428-4684-a65a-82861492f697)\n![Screenshot From 2025-01-10\n16-56-09](https://github.com/user-attachments/assets/2f3b9379-4013-4178-8d80-cf37b0c6c6a8)\n![Screenshot From 2025-01-10\n16-58-10](https://github.com/user-attachments/assets/c4ac850b-4393-405a-a4ab-d589dbf3380e)\n\n- Extracts non-UI logic into `AutoinstallService`\n- `AutoinstallModel` now only holds the state of the autoinstall type:\n`none` (interactive), `direct` (load file from URL or local path),\n`landscape` (obtain file via landscape). It also provides a method to\nrestart the UI.\n- New `AutoinstallDirectModel` holds the UI state of the URL text box\nand file picker which have been moved to a separate page. It also\nprovides a method to show the file picker (via xdg desktop portals)\n\nError handling still needs improving, but I'd do that in a follow-up PR.\n\nUDENG-5748",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3898841647a3fcb710b3cfa1ebd729397e40e362"
                },
                {
-                  "sha": "631b6de000302aa65fce5987cf46fca3b3a1c716",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737129666,
-                  "message": "fix: fixing broken test",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/631b6de000302aa65fce5987cf46fca3b3a1c716"
+                  "sha": "971c37e4b4e4fa0bacd77f2eece3591127357cdb",
+                  "author": "Dennis Loose",
+                  "timestamp": 1737380014,
+                  "message": "chore: clarify test utils changes",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/971c37e4b4e4fa0bacd77f2eece3591127357cdb"
                },
                {
-                  "sha": "997ef87b1dc0917d5cd87981d2d295a2b55702ee",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737127920,
-                  "message": "fix: updating output from _resolvePartitionMethod for erase and install",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/997ef87b1dc0917d5cd87981d2d295a2b55702ee"
+                  "sha": "c80507be3f015adc27df5e895b1c3d482d3901e1",
+                  "author": "Dennis Loose",
+                  "timestamp": 1737379471,
+                  "message": "chore: remove unused code",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c80507be3f015adc27df5e895b1c3d482d3901e1"
                }
             ],
             "ciActions": [
@@ -6130,25 +6130,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cc0c80322906f69c1a459019282cfb07306e95dd",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737363882,
-                  "message": "feat: Erase and install (#892)\n\nThis is work in progress for adding support for \"Erase & Install\" based\r\nthe Subiquity work being done [here](https://github.com/canonical/subiquity/pull/2117). We wont be\r\nable to land this before [this bug](https://bugs.launchpad.net/subiquity/+bug/2091172) around logical\r\npartitions being re-labelled and breaking the mapping between installed OS and partition is fixed.\r\n\r\nUDENG-5549",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cc0c80322906f69c1a459019282cfb07306e95dd"
+                  "sha": "3898841647a3fcb710b3cfa1ebd729397e40e362",
+                  "author": "Dennis Loose",
+                  "timestamp": 1737381521,
+                  "message": "feat: implement new autoinstall UI (#910)\n\nBreaks up the existing autoinstall page into multiple steps and adds a\nfile picker for local paths.\n\n![Screenshot From 2025-01-10\n16-53-59](https://github.com/user-attachments/assets/8c7f8b50-fb3d-40e9-8410-493458f8c1d6)\n![Screenshot From 2025-01-10\n16-54-09](https://github.com/user-attachments/assets/e247aa85-9cac-4922-bf77-94cdc7e1b6af)\n![Screenshot From 2025-01-10\n16-54-26](https://github.com/user-attachments/assets/fb44796f-d428-4684-a65a-82861492f697)\n![Screenshot From 2025-01-10\n16-56-09](https://github.com/user-attachments/assets/2f3b9379-4013-4178-8d80-cf37b0c6c6a8)\n![Screenshot From 2025-01-10\n16-58-10](https://github.com/user-attachments/assets/c4ac850b-4393-405a-a4ab-d589dbf3380e)\n\n- Extracts non-UI logic into `AutoinstallService`\n- `AutoinstallModel` now only holds the state of the autoinstall type:\n`none` (interactive), `direct` (load file from URL or local path),\n`landscape` (obtain file via landscape). It also provides a method to\nrestart the UI.\n- New `AutoinstallDirectModel` holds the UI state of the URL text box\nand file picker which have been moved to a separate page. It also\nprovides a method to show the file picker (via xdg desktop portals)\n\nError handling still needs improving, but I'd do that in a follow-up PR.\n\nUDENG-5748",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3898841647a3fcb710b3cfa1ebd729397e40e362"
                },
                {
-                  "sha": "631b6de000302aa65fce5987cf46fca3b3a1c716",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737129666,
-                  "message": "fix: fixing broken test",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/631b6de000302aa65fce5987cf46fca3b3a1c716"
+                  "sha": "971c37e4b4e4fa0bacd77f2eece3591127357cdb",
+                  "author": "Dennis Loose",
+                  "timestamp": 1737380014,
+                  "message": "chore: clarify test utils changes",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/971c37e4b4e4fa0bacd77f2eece3591127357cdb"
                },
                {
-                  "sha": "997ef87b1dc0917d5cd87981d2d295a2b55702ee",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737127920,
-                  "message": "fix: updating output from _resolvePartitionMethod for erase and install",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/997ef87b1dc0917d5cd87981d2d295a2b55702ee"
+                  "sha": "c80507be3f015adc27df5e895b1c3d482d3901e1",
+                  "author": "Dennis Loose",
+                  "timestamp": 1737379471,
+                  "message": "chore: remove unused code",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c80507be3f015adc27df5e895b1c3d482d3901e1"
                }
             ],
             "ciActions": [
@@ -6594,25 +6594,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "aba1e3c582e6e27e29ed352c4a983c60d6f354f6",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1737116952,
-                  "message": "Generate unique UIDs and GIDs (#663)\n\nThese changes have already partly been reviewed in\nhttps://github.com/canonical/authd-private/pull/9.\n\nCloses #509 \nUDENG-5416\nUDENG-4352",
-                  "url": "https://github.com/ubuntu/authd/commit/aba1e3c582e6e27e29ed352c4a983c60d6f354f6"
+                  "sha": "ca8dc3b2292747a7537c2612f973e435a86e4c08",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1737382398,
+                  "message": "Add google authd-broker documentation (#724)\n\nUDENG-5740\r\n\r\nAdded the documentation changes that we discussed to include the newly\r\npublished google authd broker snap. I deviated very slightly from some\r\nof the discussed changes, please let me know if you agree or not.\r\n\r\ncc @edibotopic",
+                  "url": "https://github.com/ubuntu/authd/commit/ca8dc3b2292747a7537c2612f973e435a86e4c08"
                },
                {
-                  "sha": "eaeae4894eebb5879dc1ec7e0bd6eb171a4c337b",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1736528263,
-                  "message": "move errno code to own package\n\nAdded tests too",
-                  "url": "https://github.com/ubuntu/authd/commit/eaeae4894eebb5879dc1ec7e0bd6eb171a4c337b"
+                  "sha": "f5613cf9638eca046501bdd608744248300c9433",
+                  "author": "Nikos",
+                  "timestamp": 1736853300,
+                  "message": "docs: move group management to separate file",
+                  "url": "https://github.com/ubuntu/authd/commit/f5613cf9638eca046501bdd608744248300c9433"
                },
                {
-                  "sha": "a8f987e80bcfe39a4b3c3b90b9dbe12bdef313f6",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1736521499,
-                  "message": "users/localentries: Use more go-style errors handling for errno",
-                  "url": "https://github.com/ubuntu/authd/commit/a8f987e80bcfe39a4b3c3b90b9dbe12bdef313f6"
+                  "sha": "ac33a0190c14fd23adb9396e6460ea93eda4e328",
+                  "author": "Nikos",
+                  "timestamp": 1736789744,
+                  "message": "docs: auto-generate anchors\n\nChecks were failing when referencing anchors from different files",
+                  "url": "https://github.com/ubuntu/authd/commit/ac33a0190c14fd23adb9396e6460ea93eda4e328"
                }
             ],
             "ciActions": [
@@ -8237,25 +8237,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cc0c80322906f69c1a459019282cfb07306e95dd",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737363882,
-                  "message": "feat: Erase and install (#892)\n\nThis is work in progress for adding support for \"Erase & Install\" based\r\nthe Subiquity work being done [here](https://github.com/canonical/subiquity/pull/2117). We wont be\r\nable to land this before [this bug](https://bugs.launchpad.net/subiquity/+bug/2091172) around logical\r\npartitions being re-labelled and breaking the mapping between installed OS and partition is fixed.\r\n\r\nUDENG-5549",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cc0c80322906f69c1a459019282cfb07306e95dd"
+                  "sha": "3898841647a3fcb710b3cfa1ebd729397e40e362",
+                  "author": "Dennis Loose",
+                  "timestamp": 1737381521,
+                  "message": "feat: implement new autoinstall UI (#910)\n\nBreaks up the existing autoinstall page into multiple steps and adds a\nfile picker for local paths.\n\n![Screenshot From 2025-01-10\n16-53-59](https://github.com/user-attachments/assets/8c7f8b50-fb3d-40e9-8410-493458f8c1d6)\n![Screenshot From 2025-01-10\n16-54-09](https://github.com/user-attachments/assets/e247aa85-9cac-4922-bf77-94cdc7e1b6af)\n![Screenshot From 2025-01-10\n16-54-26](https://github.com/user-attachments/assets/fb44796f-d428-4684-a65a-82861492f697)\n![Screenshot From 2025-01-10\n16-56-09](https://github.com/user-attachments/assets/2f3b9379-4013-4178-8d80-cf37b0c6c6a8)\n![Screenshot From 2025-01-10\n16-58-10](https://github.com/user-attachments/assets/c4ac850b-4393-405a-a4ab-d589dbf3380e)\n\n- Extracts non-UI logic into `AutoinstallService`\n- `AutoinstallModel` now only holds the state of the autoinstall type:\n`none` (interactive), `direct` (load file from URL or local path),\n`landscape` (obtain file via landscape). It also provides a method to\nrestart the UI.\n- New `AutoinstallDirectModel` holds the UI state of the URL text box\nand file picker which have been moved to a separate page. It also\nprovides a method to show the file picker (via xdg desktop portals)\n\nError handling still needs improving, but I'd do that in a follow-up PR.\n\nUDENG-5748",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3898841647a3fcb710b3cfa1ebd729397e40e362"
                },
                {
-                  "sha": "631b6de000302aa65fce5987cf46fca3b3a1c716",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737129666,
-                  "message": "fix: fixing broken test",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/631b6de000302aa65fce5987cf46fca3b3a1c716"
+                  "sha": "971c37e4b4e4fa0bacd77f2eece3591127357cdb",
+                  "author": "Dennis Loose",
+                  "timestamp": 1737380014,
+                  "message": "chore: clarify test utils changes",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/971c37e4b4e4fa0bacd77f2eece3591127357cdb"
                },
                {
-                  "sha": "997ef87b1dc0917d5cd87981d2d295a2b55702ee",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737127920,
-                  "message": "fix: updating output from _resolvePartitionMethod for erase and install",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/997ef87b1dc0917d5cd87981d2d295a2b55702ee"
+                  "sha": "c80507be3f015adc27df5e895b1c3d482d3901e1",
+                  "author": "Dennis Loose",
+                  "timestamp": 1737379471,
+                  "message": "chore: remove unused code",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c80507be3f015adc27df5e895b1c3d482d3901e1"
                }
             ],
             "ciActions": [
