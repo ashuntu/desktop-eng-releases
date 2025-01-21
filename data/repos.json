@@ -3842,6 +3842,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "faa3cb58432ec2382e21e1dc0d869e26c0affdc6",
+                  "author": "Sergio Costas",
+                  "timestamp": 1737454026,
+                  "message": "Move the pre-built coverage files into coverage_base (#131)\n\nThe first partially successful test shown several errors saying\r\nthat there were duplicated entries for coverage; specifically,\r\nthose were four times in the data. This matches with the fact that\r\nthere are four coberturaXXX.xml files inside the coverage folder:\r\ntwo pre-computed with the manual tests, another created during the\r\nCI/CD pass for the rest of the code, and the final one which\r\nmerges those three into a single file.\r\n\r\nThis patch moves the pre-computed and the temporal cobertura\r\nfiles into coverage_base folder, and leaves only the final\r\ncobertura.xml file inside the coverage folder. It should fix\r\nthat bug.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/faa3cb58432ec2382e21e1dc0d869e26c0affdc6"
+               },
+               {
                   "sha": "b0ddfd6c669340e60dcfae8305a10d69888ae644",
                   "author": "Sergio Costas",
                   "timestamp": 1737391537,
@@ -3854,13 +3861,6 @@
                   "timestamp": 1737390858,
                   "message": "Add TICS workflow for CI/CD (#127)\n\n* Add TICS workflow for CI/CD\r\n\r\nThis patch uses a different CI/CD workflow to generate the\r\ncoverage data and upload it to tiobe.\r\n\r\n* Test to check if everything works as expected\r\n\r\n* Testing again\r\n\r\n* Fix conditions\r\n\r\n* Try with company-wide secret\r\n\r\n* Update based on SEC0024 - SSDLC\r\n\r\n* Updating to noble due to meson requirement\r\n\r\n* The change doesn't work. Requires noble\r\n\r\n* Seems to not work with @v3\r\n\r\n* Restore v3",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/a5a54cd80b2d450c760ab62d2f79a87c45f40365"
-               },
-               {
-                  "sha": "ac4d94df0e9732328dc4d3f7032a336ad90aef65",
-                  "author": "Sergio Costas",
-                  "timestamp": 1734452534,
-                  "message": "Refactor window with progress dialogs (#99)\n\n* Refactored all the window progress code\r\n\r\nThis PR moves the GTK window and dock progress bars management\r\ninto their own classes, letting the `SdiRefreshMonitor` object\r\nto process the events from snapd and just send signals with the\r\nchanges, signals that are connected to the new\r\n`SdiProgressWindow` and `SdiProgressDock` objects, which are\r\nresponsible of creating a window if needed, update the progress\r\nbars in each element, and close a window, for the former object,\r\nand update the progress bar in the dock for the later.\r\n\r\nThis separation simplifies the code and, along with #97, allows\r\nto isolate the event management code, which will allow to create\r\nunitary tests for the process.\r\n\r\n* Update tests/test-sdi-progress-dock.c\r\n\r\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>\r\n\r\n* Update tests/test-sdi-progress-dock.c\r\n\r\nOk\r\n\r\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>\r\n\r\n---------\r\n\r\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/ac4d94df0e9732328dc4d3f7032a336ad90aef65"
                }
             ],
             "ciActions": [],
@@ -5782,6 +5782,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "faa3cb58432ec2382e21e1dc0d869e26c0affdc6",
+                  "author": "Sergio Costas",
+                  "timestamp": 1737454026,
+                  "message": "Move the pre-built coverage files into coverage_base (#131)\n\nThe first partially successful test shown several errors saying\r\nthat there were duplicated entries for coverage; specifically,\r\nthose were four times in the data. This matches with the fact that\r\nthere are four coberturaXXX.xml files inside the coverage folder:\r\ntwo pre-computed with the manual tests, another created during the\r\nCI/CD pass for the rest of the code, and the final one which\r\nmerges those three into a single file.\r\n\r\nThis patch moves the pre-computed and the temporal cobertura\r\nfiles into coverage_base folder, and leaves only the final\r\ncobertura.xml file inside the coverage folder. It should fix\r\nthat bug.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/faa3cb58432ec2382e21e1dc0d869e26c0affdc6"
+               },
+               {
                   "sha": "b0ddfd6c669340e60dcfae8305a10d69888ae644",
                   "author": "Sergio Costas",
                   "timestamp": 1737391537,
@@ -5794,13 +5801,6 @@
                   "timestamp": 1737390858,
                   "message": "Add TICS workflow for CI/CD (#127)\n\n* Add TICS workflow for CI/CD\r\n\r\nThis patch uses a different CI/CD workflow to generate the\r\ncoverage data and upload it to tiobe.\r\n\r\n* Test to check if everything works as expected\r\n\r\n* Testing again\r\n\r\n* Fix conditions\r\n\r\n* Try with company-wide secret\r\n\r\n* Update based on SEC0024 - SSDLC\r\n\r\n* Updating to noble due to meson requirement\r\n\r\n* The change doesn't work. Requires noble\r\n\r\n* Seems to not work with @v3\r\n\r\n* Restore v3",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/a5a54cd80b2d450c760ab62d2f79a87c45f40365"
-               },
-               {
-                  "sha": "ac4d94df0e9732328dc4d3f7032a336ad90aef65",
-                  "author": "Sergio Costas",
-                  "timestamp": 1734452534,
-                  "message": "Refactor window with progress dialogs (#99)\n\n* Refactored all the window progress code\r\n\r\nThis PR moves the GTK window and dock progress bars management\r\ninto their own classes, letting the `SdiRefreshMonitor` object\r\nto process the events from snapd and just send signals with the\r\nchanges, signals that are connected to the new\r\n`SdiProgressWindow` and `SdiProgressDock` objects, which are\r\nresponsible of creating a window if needed, update the progress\r\nbars in each element, and close a window, for the former object,\r\nand update the progress bar in the dock for the later.\r\n\r\nThis separation simplifies the code and, along with #97, allows\r\nto isolate the event management code, which will allow to create\r\nunitary tests for the process.\r\n\r\n* Update tests/test-sdi-progress-dock.c\r\n\r\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>\r\n\r\n* Update tests/test-sdi-progress-dock.c\r\n\r\nOk\r\n\r\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>\r\n\r\n---------\r\n\r\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/ac4d94df0e9732328dc4d3f7032a336ad90aef65"
                }
             ],
             "ciActions": [],
@@ -7889,6 +7889,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "faa3cb58432ec2382e21e1dc0d869e26c0affdc6",
+                  "author": "Sergio Costas",
+                  "timestamp": 1737454026,
+                  "message": "Move the pre-built coverage files into coverage_base (#131)\n\nThe first partially successful test shown several errors saying\r\nthat there were duplicated entries for coverage; specifically,\r\nthose were four times in the data. This matches with the fact that\r\nthere are four coberturaXXX.xml files inside the coverage folder:\r\ntwo pre-computed with the manual tests, another created during the\r\nCI/CD pass for the rest of the code, and the final one which\r\nmerges those three into a single file.\r\n\r\nThis patch moves the pre-computed and the temporal cobertura\r\nfiles into coverage_base folder, and leaves only the final\r\ncobertura.xml file inside the coverage folder. It should fix\r\nthat bug.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/faa3cb58432ec2382e21e1dc0d869e26c0affdc6"
+               },
+               {
                   "sha": "b0ddfd6c669340e60dcfae8305a10d69888ae644",
                   "author": "Sergio Costas",
                   "timestamp": 1737391537,
@@ -7901,13 +7908,6 @@
                   "timestamp": 1737390858,
                   "message": "Add TICS workflow for CI/CD (#127)\n\n* Add TICS workflow for CI/CD\r\n\r\nThis patch uses a different CI/CD workflow to generate the\r\ncoverage data and upload it to tiobe.\r\n\r\n* Test to check if everything works as expected\r\n\r\n* Testing again\r\n\r\n* Fix conditions\r\n\r\n* Try with company-wide secret\r\n\r\n* Update based on SEC0024 - SSDLC\r\n\r\n* Updating to noble due to meson requirement\r\n\r\n* The change doesn't work. Requires noble\r\n\r\n* Seems to not work with @v3\r\n\r\n* Restore v3",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/a5a54cd80b2d450c760ab62d2f79a87c45f40365"
-               },
-               {
-                  "sha": "ac4d94df0e9732328dc4d3f7032a336ad90aef65",
-                  "author": "Sergio Costas",
-                  "timestamp": 1734452534,
-                  "message": "Refactor window with progress dialogs (#99)\n\n* Refactored all the window progress code\r\n\r\nThis PR moves the GTK window and dock progress bars management\r\ninto their own classes, letting the `SdiRefreshMonitor` object\r\nto process the events from snapd and just send signals with the\r\nchanges, signals that are connected to the new\r\n`SdiProgressWindow` and `SdiProgressDock` objects, which are\r\nresponsible of creating a window if needed, update the progress\r\nbars in each element, and close a window, for the former object,\r\nand update the progress bar in the dock for the later.\r\n\r\nThis separation simplifies the code and, along with #97, allows\r\nto isolate the event management code, which will allow to create\r\nunitary tests for the process.\r\n\r\n* Update tests/test-sdi-progress-dock.c\r\n\r\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>\r\n\r\n* Update tests/test-sdi-progress-dock.c\r\n\r\nOk\r\n\r\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>\r\n\r\n---------\r\n\r\nCo-authored-by: Marco Trevisan <mail@3v1n0.net>",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/ac4d94df0e9732328dc4d3f7032a336ad90aef65"
                }
             ],
             "ciActions": [],
