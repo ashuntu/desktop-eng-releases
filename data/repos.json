@@ -3842,6 +3842,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f1c87079d2bb2a99fbee34339a62ec60f7913880",
+                  "author": "Sergio Costas",
+                  "timestamp": 1737639523,
+                  "message": "Add tests coverage (#132)\n\nThis patch adds coverage to the tests files themselves. It is\r\njust a quick&dirty solution, since those files shouldn't be\r\nchecked for coverage. But since the TIOBE analysis tool shows\r\nan error if it isn't there...",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/f1c87079d2bb2a99fbee34339a62ec60f7913880"
+               },
+               {
                   "sha": "8647afa25df60a5a8c57a5433a575c584b2728f8",
                   "author": "Sergio Costas",
                   "timestamp": 1737630832,
@@ -3854,13 +3861,6 @@
                   "timestamp": 1737454026,
                   "message": "Move the pre-built coverage files into coverage_base (#131)\n\nThe first partially successful test shown several errors saying\r\nthat there were duplicated entries for coverage; specifically,\r\nthose were four times in the data. This matches with the fact that\r\nthere are four coberturaXXX.xml files inside the coverage folder:\r\ntwo pre-computed with the manual tests, another created during the\r\nCI/CD pass for the rest of the code, and the final one which\r\nmerges those three into a single file.\r\n\r\nThis patch moves the pre-computed and the temporal cobertura\r\nfiles into coverage_base folder, and leaves only the final\r\ncobertura.xml file inside the coverage folder. It should fix\r\nthat bug.",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/faa3cb58432ec2382e21e1dc0d869e26c0affdc6"
-               },
-               {
-                  "sha": "b0ddfd6c669340e60dcfae8305a10d69888ae644",
-                  "author": "Sergio Costas",
-                  "timestamp": 1737391537,
-                  "message": "Fix TICS test (#130)\n\n* Fix TICS test\r\n\r\nNow the test is launched when the MAIN (not MASTER) branch is merged\r\n\r\n* Only run at merge",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/b0ddfd6c669340e60dcfae8305a10d69888ae644"
                }
             ],
             "ciActions": [],
@@ -5782,6 +5782,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f1c87079d2bb2a99fbee34339a62ec60f7913880",
+                  "author": "Sergio Costas",
+                  "timestamp": 1737639523,
+                  "message": "Add tests coverage (#132)\n\nThis patch adds coverage to the tests files themselves. It is\r\njust a quick&dirty solution, since those files shouldn't be\r\nchecked for coverage. But since the TIOBE analysis tool shows\r\nan error if it isn't there...",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/f1c87079d2bb2a99fbee34339a62ec60f7913880"
+               },
+               {
                   "sha": "8647afa25df60a5a8c57a5433a575c584b2728f8",
                   "author": "Sergio Costas",
                   "timestamp": 1737630832,
@@ -5794,13 +5801,6 @@
                   "timestamp": 1737454026,
                   "message": "Move the pre-built coverage files into coverage_base (#131)\n\nThe first partially successful test shown several errors saying\r\nthat there were duplicated entries for coverage; specifically,\r\nthose were four times in the data. This matches with the fact that\r\nthere are four coberturaXXX.xml files inside the coverage folder:\r\ntwo pre-computed with the manual tests, another created during the\r\nCI/CD pass for the rest of the code, and the final one which\r\nmerges those three into a single file.\r\n\r\nThis patch moves the pre-computed and the temporal cobertura\r\nfiles into coverage_base folder, and leaves only the final\r\ncobertura.xml file inside the coverage folder. It should fix\r\nthat bug.",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/faa3cb58432ec2382e21e1dc0d869e26c0affdc6"
-               },
-               {
-                  "sha": "b0ddfd6c669340e60dcfae8305a10d69888ae644",
-                  "author": "Sergio Costas",
-                  "timestamp": 1737391537,
-                  "message": "Fix TICS test (#130)\n\n* Fix TICS test\r\n\r\nNow the test is launched when the MAIN (not MASTER) branch is merged\r\n\r\n* Only run at merge",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/b0ddfd6c669340e60dcfae8305a10d69888ae644"
                }
             ],
             "ciActions": [],
@@ -6239,25 +6239,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e8dc58d1660c4c11f0697d587b3fb3005c5104bc",
-                  "author": "ashuntu",
-                  "timestamp": 1737572665,
-                  "message": "fix: Add option to use non-elevated buttons for navigation (#1070)\n\nAdds an option to use elevated or outlined buttons for \"next\"\r\nnavigation. Non-action buttons should be outlined instead of elevated.\r\n\r\n\r\n![image](https://github.com/user-attachments/assets/00828a08-5968-49ff-afaf-6e5ef41b8f04)\r\n*Note \"Next\" is outlined instead of green*",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e8dc58d1660c4c11f0697d587b3fb3005c5104bc"
+                  "sha": "f5fb9abdb72979850d0f60b1c9e79ab23d574267",
+                  "author": "Shane Crowley",
+                  "timestamp": 1737639509,
+                  "message": "docs: More consistent tutorials terminology (#1072)\n\nThis is a minor fixup.\r\n\r\nWhen merging the WSL documentation sets, the section called \"Tutorials\"\r\nwas changed to \"Tutorial\".\r\nThis was in keeping with the idea that the documentation would ideally\r\nhave one self-contained tutorial, even if it consisted of multiple\r\nparts.\r\n\r\nThis reverts the change. While the tutorials follow a logical sequence,\r\ntwo require Pro, which adds some friction; users shouldn't get the\r\nimpression that they only get only one-third of a tutorial when they\r\nread the Ubuntu WSL-specific one (it is standalone).\r\nIn addition, the minor change in spelling introduces the need for\r\nadditional redirects (tutorials/ -> tutorial/*), which introduces\r\nneedless complexity.\r\nLastly, this fixes a broken link to /tutorials/ on the WSL product page.\r\n\r\nOther changes include:\r\n\r\n* Fix cases where \"guide\" was used in reference to \"tutorial\"\r\n* Update some redirects\r\n* Link to contributing guide on rendered docs site rather than GitHub\r\n* Spell out first use of UP4W on homepage to prevent confusion",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f5fb9abdb72979850d0f60b1c9e79ab23d574267"
                },
                {
-                  "sha": "10bd82df8f03268b64bbc0d4731b70be1316c941",
-                  "author": "ashuntu",
-                  "timestamp": 1737570300,
-                  "message": "Rename elevation variable",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/10bd82df8f03268b64bbc0d4731b70be1316c941"
+                  "sha": "b43a79fddbdf17113677efdd241de599b0c5ae78",
+                  "author": "shanecrowley",
+                  "timestamp": 1737637694,
+                  "message": "ensure old tutorial/ pages redirect to tutorials/\n\ne.g., tutorial/deployment should go to tutorials/deployment\n\nalso removed duplicate redirects",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b43a79fddbdf17113677efdd241de599b0c5ae78"
                },
                {
-                  "sha": "2d6cb999c129e97488df4fc84aca9388dd9b21bf",
-                  "author": "ashuntu",
-                  "timestamp": 1737562635,
-                  "message": "Add option to use non-elevated buttons for navigation",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2d6cb999c129e97488df4fc84aca9388dd9b21bf"
+                  "sha": "fd45eb35a751b5fcfd323701dc13f03bc119a87f",
+                  "author": "shanecrowley",
+                  "timestamp": 1737632796,
+                  "message": "link to contributing guide in docs not GitHub",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/fd45eb35a751b5fcfd323701dc13f03bc119a87f"
                }
             ],
             "ciActions": [
@@ -6548,7 +6548,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 41,
+            "newCommits": 46,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -7889,6 +7889,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f1c87079d2bb2a99fbee34339a62ec60f7913880",
+                  "author": "Sergio Costas",
+                  "timestamp": 1737639523,
+                  "message": "Add tests coverage (#132)\n\nThis patch adds coverage to the tests files themselves. It is\r\njust a quick&dirty solution, since those files shouldn't be\r\nchecked for coverage. But since the TIOBE analysis tool shows\r\nan error if it isn't there...",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/f1c87079d2bb2a99fbee34339a62ec60f7913880"
+               },
+               {
                   "sha": "8647afa25df60a5a8c57a5433a575c584b2728f8",
                   "author": "Sergio Costas",
                   "timestamp": 1737630832,
@@ -7901,13 +7908,6 @@
                   "timestamp": 1737454026,
                   "message": "Move the pre-built coverage files into coverage_base (#131)\n\nThe first partially successful test shown several errors saying\r\nthat there were duplicated entries for coverage; specifically,\r\nthose were four times in the data. This matches with the fact that\r\nthere are four coberturaXXX.xml files inside the coverage folder:\r\ntwo pre-computed with the manual tests, another created during the\r\nCI/CD pass for the rest of the code, and the final one which\r\nmerges those three into a single file.\r\n\r\nThis patch moves the pre-computed and the temporal cobertura\r\nfiles into coverage_base folder, and leaves only the final\r\ncobertura.xml file inside the coverage folder. It should fix\r\nthat bug.",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/faa3cb58432ec2382e21e1dc0d869e26c0affdc6"
-               },
-               {
-                  "sha": "b0ddfd6c669340e60dcfae8305a10d69888ae644",
-                  "author": "Sergio Costas",
-                  "timestamp": 1737391537,
-                  "message": "Fix TICS test (#130)\n\n* Fix TICS test\r\n\r\nNow the test is launched when the MAIN (not MASTER) branch is merged\r\n\r\n* Only run at merge",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/b0ddfd6c669340e60dcfae8305a10d69888ae644"
                }
             ],
             "ciActions": [],
