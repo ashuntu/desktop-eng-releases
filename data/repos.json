@@ -3842,6 +3842,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8647afa25df60a5a8c57a5433a575c584b2728f8",
+                  "author": "Sergio Costas",
+                  "timestamp": 1737630832,
+                  "message": "Fix theme change test (#134)\n\nWhen launching the theme-change test, it is done through Weston\r\nwindow manager, because it requires it. Unfortunately, if the\r\ntest fails and returns a non-zero value, Weston doesn't\r\npropagate it, so it always returns a zero, thus cheating the\r\nCI/CD pipeline and making it believe that the test passed.\r\n\r\nThis patch fixes this by checking the return value of the test\r\nand sending a SIGKILL to Weston if the test failed; this makes\r\nWeston to return a non-zero value, thus notifying to the CI/CD\r\npipeline that the test failed.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/8647afa25df60a5a8c57a5433a575c584b2728f8"
+               },
+               {
                   "sha": "faa3cb58432ec2382e21e1dc0d869e26c0affdc6",
                   "author": "Sergio Costas",
                   "timestamp": 1737454026,
@@ -3854,13 +3861,6 @@
                   "timestamp": 1737391537,
                   "message": "Fix TICS test (#130)\n\n* Fix TICS test\r\n\r\nNow the test is launched when the MAIN (not MASTER) branch is merged\r\n\r\n* Only run at merge",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/b0ddfd6c669340e60dcfae8305a10d69888ae644"
-               },
-               {
-                  "sha": "a5a54cd80b2d450c760ab62d2f79a87c45f40365",
-                  "author": "Sergio Costas",
-                  "timestamp": 1737390858,
-                  "message": "Add TICS workflow for CI/CD (#127)\n\n* Add TICS workflow for CI/CD\r\n\r\nThis patch uses a different CI/CD workflow to generate the\r\ncoverage data and upload it to tiobe.\r\n\r\n* Test to check if everything works as expected\r\n\r\n* Testing again\r\n\r\n* Fix conditions\r\n\r\n* Try with company-wide secret\r\n\r\n* Update based on SEC0024 - SSDLC\r\n\r\n* Updating to noble due to meson requirement\r\n\r\n* The change doesn't work. Requires noble\r\n\r\n* Seems to not work with @v3\r\n\r\n* Restore v3",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/a5a54cd80b2d450c760ab62d2f79a87c45f40365"
                }
             ],
             "ciActions": [],
@@ -5782,6 +5782,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8647afa25df60a5a8c57a5433a575c584b2728f8",
+                  "author": "Sergio Costas",
+                  "timestamp": 1737630832,
+                  "message": "Fix theme change test (#134)\n\nWhen launching the theme-change test, it is done through Weston\r\nwindow manager, because it requires it. Unfortunately, if the\r\ntest fails and returns a non-zero value, Weston doesn't\r\npropagate it, so it always returns a zero, thus cheating the\r\nCI/CD pipeline and making it believe that the test passed.\r\n\r\nThis patch fixes this by checking the return value of the test\r\nand sending a SIGKILL to Weston if the test failed; this makes\r\nWeston to return a non-zero value, thus notifying to the CI/CD\r\npipeline that the test failed.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/8647afa25df60a5a8c57a5433a575c584b2728f8"
+               },
+               {
                   "sha": "faa3cb58432ec2382e21e1dc0d869e26c0affdc6",
                   "author": "Sergio Costas",
                   "timestamp": 1737454026,
@@ -5794,13 +5801,6 @@
                   "timestamp": 1737391537,
                   "message": "Fix TICS test (#130)\n\n* Fix TICS test\r\n\r\nNow the test is launched when the MAIN (not MASTER) branch is merged\r\n\r\n* Only run at merge",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/b0ddfd6c669340e60dcfae8305a10d69888ae644"
-               },
-               {
-                  "sha": "a5a54cd80b2d450c760ab62d2f79a87c45f40365",
-                  "author": "Sergio Costas",
-                  "timestamp": 1737390858,
-                  "message": "Add TICS workflow for CI/CD (#127)\n\n* Add TICS workflow for CI/CD\r\n\r\nThis patch uses a different CI/CD workflow to generate the\r\ncoverage data and upload it to tiobe.\r\n\r\n* Test to check if everything works as expected\r\n\r\n* Testing again\r\n\r\n* Fix conditions\r\n\r\n* Try with company-wide secret\r\n\r\n* Update based on SEC0024 - SSDLC\r\n\r\n* Updating to noble due to meson requirement\r\n\r\n* The change doesn't work. Requires noble\r\n\r\n* Seems to not work with @v3\r\n\r\n* Restore v3",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/a5a54cd80b2d450c760ab62d2f79a87c45f40365"
                }
             ],
             "ciActions": [],
@@ -6594,25 +6594,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ca201b3e716c57a334e4393a01b4b713cdd5e35e",
+                  "sha": "5599495a75a4cd596116e58dbbfa96758578e711",
                   "author": "adombeck",
-                  "timestamp": 1737628093,
-                  "message": "Revert removal of groups in example broker (#744)",
-                  "url": "https://github.com/ubuntu/authd/commit/ca201b3e716c57a334e4393a01b4b713cdd5e35e"
+                  "timestamp": 1737629645,
+                  "message": "Auto update packaging related Rust files",
+                  "url": "https://github.com/ubuntu/authd/commit/5599495a75a4cd596116e58dbbfa96758578e711"
                },
                {
-                  "sha": "ef61d9942ada5eb109babffad96cfe41508d6e34",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1737489021,
-                  "message": "Revert removal of groups in example broker\n\nI don't remember why I removed those. Let's try reverting the change.\n\nThis partly reverts 7a1442fbf3becf374947b4f443f1b1eb12c9da17.",
-                  "url": "https://github.com/ubuntu/authd/commit/ef61d9942ada5eb109babffad96cfe41508d6e34"
+                  "sha": "a820566608c34e3b7bde8313fec51acd51d3fe75",
+                  "author": "adombeck",
+                  "timestamp": 1737629599,
+                  "message": "deps(rust): bump the minor-updates group with 2 updates (#750)",
+                  "url": "https://github.com/ubuntu/authd/commit/a820566608c34e3b7bde8313fec51acd51d3fe75"
                },
                {
-                  "sha": "af286fcab79c3d73c45f73addbce58b46034f632",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1737577829,
-                  "message": "pam: Always Honor PAM_TTY if set (#722)\n\nIn case a PAM tty is used, we should do our terminal checks against that\ninstead of the stdin value, since they may differ.\n\nDo this check also to ensure that we can run the interactive CLI UI.\n\nA follow-up of\nhttps://github.com/ubuntu/authd/pull/720#discussion_r1910410356\n\nUDENG-5760",
-                  "url": "https://github.com/ubuntu/authd/commit/af286fcab79c3d73c45f73addbce58b46034f632"
+                  "sha": "a03fcfb81ae2215fd73bbf16ed022e70228e29fa",
+                  "author": "adombeck",
+                  "timestamp": 1737628265,
+                  "message": "Replace spaces in test names with underscores (#743)\n\nUDENG-5822",
+                  "url": "https://github.com/ubuntu/authd/commit/a03fcfb81ae2215fd73bbf16ed022e70228e29fa"
                }
             ],
             "ciActions": [
@@ -6629,6 +6629,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a12ceb7dcc4f719c8870a3502c6afb007da86452",
+                  "author": "adombeck",
+                  "timestamp": 1737629574,
+                  "message": "deps(go): bump github.com/microsoftgraph/msgraph-sdk-go from 1.57.0 to 1.58.0 (#326)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a12ceb7dcc4f719c8870a3502c6afb007da86452"
+               },
+               {
                   "sha": "c364754b41bc9cacf3005195b74fcc8caa251c94",
                   "author": "adombeck",
                   "timestamp": 1737549729,
@@ -6641,13 +6648,6 @@
                   "timestamp": 1737547550,
                   "message": "Add test for old secret field name",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/9797e19bc096aa545b88c68736d86ea097c8d682"
-               },
-               {
-                  "sha": "612e715e4c9b6b8fed9330195ed7fc1def5b8470",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1737546788,
-                  "message": "Replace some literal strings with the new AuthDataSecret constant",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/612e715e4c9b6b8fed9330195ed7fc1def5b8470"
                }
             ],
             "ciActions": [
@@ -7889,6 +7889,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8647afa25df60a5a8c57a5433a575c584b2728f8",
+                  "author": "Sergio Costas",
+                  "timestamp": 1737630832,
+                  "message": "Fix theme change test (#134)\n\nWhen launching the theme-change test, it is done through Weston\r\nwindow manager, because it requires it. Unfortunately, if the\r\ntest fails and returns a non-zero value, Weston doesn't\r\npropagate it, so it always returns a zero, thus cheating the\r\nCI/CD pipeline and making it believe that the test passed.\r\n\r\nThis patch fixes this by checking the return value of the test\r\nand sending a SIGKILL to Weston if the test failed; this makes\r\nWeston to return a non-zero value, thus notifying to the CI/CD\r\npipeline that the test failed.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/8647afa25df60a5a8c57a5433a575c584b2728f8"
+               },
+               {
                   "sha": "faa3cb58432ec2382e21e1dc0d869e26c0affdc6",
                   "author": "Sergio Costas",
                   "timestamp": 1737454026,
@@ -7901,13 +7908,6 @@
                   "timestamp": 1737391537,
                   "message": "Fix TICS test (#130)\n\n* Fix TICS test\r\n\r\nNow the test is launched when the MAIN (not MASTER) branch is merged\r\n\r\n* Only run at merge",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/b0ddfd6c669340e60dcfae8305a10d69888ae644"
-               },
-               {
-                  "sha": "a5a54cd80b2d450c760ab62d2f79a87c45f40365",
-                  "author": "Sergio Costas",
-                  "timestamp": 1737390858,
-                  "message": "Add TICS workflow for CI/CD (#127)\n\n* Add TICS workflow for CI/CD\r\n\r\nThis patch uses a different CI/CD workflow to generate the\r\ncoverage data and upload it to tiobe.\r\n\r\n* Test to check if everything works as expected\r\n\r\n* Testing again\r\n\r\n* Fix conditions\r\n\r\n* Try with company-wide secret\r\n\r\n* Update based on SEC0024 - SSDLC\r\n\r\n* Updating to noble due to meson requirement\r\n\r\n* The change doesn't work. Requires noble\r\n\r\n* Seems to not work with @v3\r\n\r\n* Restore v3",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/a5a54cd80b2d450c760ab62d2f79a87c45f40365"
                }
             ],
             "ciActions": [],
