@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6c2980d24f709e7ea588548ef57af031e8b6d572",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1737738022,
-                  "message": "Fix systemd service warnings (#753)\n\nFixes two warnings caused by the changes made to the systemd service\ndefinition:\n\n```\nauthd.service: ConfigurationDirectory 'authd' already exists but the mode is different. (File system: 755 ConfigurationDirectoryMode: 700)\n```\n\nand \n\n```\nBoth old and new database directories exist, can't migrate \"/var/cache/authd/\" to \"/var/lib/authd/\"\n```\n\nUDENG-5857\nUDENG-5858",
-                  "url": "https://github.com/ubuntu/authd/commit/6c2980d24f709e7ea588548ef57af031e8b6d572"
+                  "sha": "e06c6648dfbef9520c4da525320baca0d48cf505",
+                  "author": "adombeck",
+                  "timestamp": 1737759647,
+                  "message": "Fix incorrect uses of the term \"challenge\" (#747)\n\nUDENG-5180",
+                  "url": "https://github.com/ubuntu/authd/commit/e06c6648dfbef9520c4da525320baca0d48cf505"
                },
                {
-                  "sha": "9ff0d1a3840db0d1dc46a05cfc260c7d23897ba0",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1737648058,
-                  "message": "debian: Ensure that /etc/authd has mode 700\n\nIn versions 0.3.7 and earlier, /etc/authd was created mode 0777 - umask\n(so 0755 by default). Since 1d8254abdf9a9ed70e189c594d374203bf6f06c1, we\ntell systemd that it should create the directory with mode 0700, which\nresults in the following warning in the journal:\n\n   authd.service: ConfigurationDirectory 'authd' already exists but the mode\n   is different. (File system: 755 ConfigurationDirectoryMode: 700)\n\nTo avoid that, this commit ensures that the mode is changed to 0700 when\nwe upgrade from version 0.3.7 or earlier.",
-                  "url": "https://github.com/ubuntu/authd/commit/9ff0d1a3840db0d1dc46a05cfc260c7d23897ba0"
+                  "sha": "8e0c7c756afb20ea3c8543ad218efa2bab0013f4",
+                  "author": "adombeck",
+                  "timestamp": 1737739431,
+                  "message": "Update pam/internal/gdm/conversation.go\n\nCo-authored-by: Marco Trevisan <marco.trevisan@canonical.com>",
+                  "url": "https://github.com/ubuntu/authd/commit/8e0c7c756afb20ea3c8543ad218efa2bab0013f4"
                },
                {
-                  "sha": "82691ebf41260390969e19d03bf27f4ccf6bb032",
+                  "sha": "98200c86fcca8b046770813104f0ef6b2a6d9b5e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1737647640,
-                  "message": "debian/authd.service: Don't create unused cache directory\n\nWe don't use the cache directory currently, and we still have code for\nmigrating the database from the old path (/var/cache/authd) to the new\npath (/var/lib/authd), which results in this warning if both directories\nexist:\n\n    Both old and new database directories exist, can't migrate \"/var/cache/authd/\" to \"/var/lib/authd/\"",
-                  "url": "https://github.com/ubuntu/authd/commit/82691ebf41260390969e19d03bf27f4ccf6bb032"
+                  "timestamp": 1737464950,
+                  "message": "Fix incorrect uses of the term \"challenge\"\n\nDepending on the context, we now use either \"secret\" or \"password\".",
+                  "url": "https://github.com/ubuntu/authd/commit/98200c86fcca8b046770813104f0ef6b2a6d9b5e"
                }
             ],
             "ciActions": [
@@ -6560,25 +6560,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a12ceb7dcc4f719c8870a3502c6afb007da86452",
+                  "sha": "e7bf4f5713f9ce0534585c9cc3e52839a428de3a",
                   "author": "adombeck",
-                  "timestamp": 1737629574,
-                  "message": "deps(go): bump github.com/microsoftgraph/msgraph-sdk-go from 1.57.0 to 1.58.0 (#326)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a12ceb7dcc4f719c8870a3502c6afb007da86452"
+                  "timestamp": 1737758735,
+                  "message": "Fix allowed users migration (#337)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e7bf4f5713f9ce0534585c9cc3e52839a428de3a"
                },
                {
-                  "sha": "c364754b41bc9cacf3005195b74fcc8caa251c94",
-                  "author": "adombeck",
-                  "timestamp": 1737549729,
-                  "message": "Fix incorrect uses of the term \"challenge\" (#327)\n\nUDENG-5829",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/c364754b41bc9cacf3005195b74fcc8caa251c94"
-               },
-               {
-                  "sha": "9797e19bc096aa545b88c68736d86ea097c8d682",
+                  "sha": "f39babcf0719f02b643a7803a845b1ebb5383ee3",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1737547550,
-                  "message": "Add test for old secret field name",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/9797e19bc096aa545b88c68736d86ea097c8d682"
+                  "timestamp": 1737734554,
+                  "message": "Log error if source directory of allowed users migration doesn't exist\n\nWould have helped to debug the bug that was fixed by the previous\ncommit.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f39babcf0719f02b643a7803a845b1ebb5383ee3"
+               },
+               {
+                  "sha": "864077dbf7ae6bee3f16f3291870f0f970eb4f24",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1737734491,
+                  "message": "Fix allowed users migration\n\nThe INITIAL_ALLOWED_USERS_VERSION was changed in\n1d98bf26fda178f0e76f5942b8d6c152819e05e6 but the migrations directory\nwas not renamed, so no files were copied.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/864077dbf7ae6bee3f16f3291870f0f970eb4f24"
                }
             ],
             "ciActions": [
