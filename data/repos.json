@@ -4121,25 +4121,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b627b7881e17ef21878d6e14c286eee3e9bbc0e1",
+                  "author": "Dennis Loose",
+                  "timestamp": 1738060022,
+                  "message": "chore: bump go toolchain (#920)\n\nNeeded to fix two vulnerabilities:\n\n```\nVulnerability #1: GO-2025-3420\n    Sensitive headers incorrectly sent after cross-domain redirect in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3420\n  Standard library\n    Found in: net/http@go1.22.5\n    Fixed in: net/http@go1.22.11\n    Example traces found:\n      #1: internal/services/telemetry/telemetry.go:38:31: telemetry.sysmetricsImpl.SendDecline calls sysmetrics.SendDecline, which eventually calls http.Client.Do\n\nVulnerability #2: GO-2025-3373\n    Usage of IPv6 zone IDs can bypass URI name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-3373\n  Standard library\n    Found in: crypto/x509@go1.22.5\n    Fixed in: crypto/x509@go1.22.11\n    Example traces found:\n      #1: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.CertPool.AppendCertsFromPEM\n      #2: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\n      #3: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.VerifyHostname\n      #4: cmd/provd/daemon/daemon_test.go:449:25: daemon_test.TestMain calls fmt.Sprintf, which eventually calls x509.HostnameError.Error\n      #5: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.ParseCertificate\n```",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b627b7881e17ef21878d6e14c286eee3e9bbc0e1"
+               },
+               {
+                  "sha": "4fca47e1c9f6500784388788a9b67bae3da3e8ff",
+                  "author": "Dennis Loose",
+                  "timestamp": 1738059045,
+                  "message": "chore: bump go toolchain\n\nNeeded to fix two vulnerabilities:\n\n```\nVulnerability #1: GO-2025-3420\n    Sensitive headers incorrectly sent after cross-domain redirect in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3420\n  Standard library\n    Found in: net/http@go1.22.5\n    Fixed in: net/http@go1.22.11\n    Example traces found:\n      #1: internal/services/telemetry/telemetry.go:38:31: telemetry.sysmetricsImpl.SendDecline calls sysmetrics.SendDecline, which eventually calls http.Client.Do\n\nVulnerability #2: GO-2025-3373\n    Usage of IPv6 zone IDs can bypass URI name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-3373\n  Standard library\n    Found in: crypto/x509@go1.22.5\n    Fixed in: crypto/x509@go1.22.11\n    Example traces found:\n      #1: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.CertPool.AppendCertsFromPEM\n      #2: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\n      #3: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.VerifyHostname\n      #4: cmd/provd/daemon/daemon_test.go:449:25: daemon_test.TestMain calls fmt.Sprintf, which eventually calls x509.HostnameError.Error\n      #5: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.ParseCertificate\n```",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4fca47e1c9f6500784388788a9b67bae3da3e8ff"
+               },
+               {
                   "sha": "6bbf6cfea64423c33e2a45b91f7f0f9a731d530f",
                   "author": "Dennis Loose",
                   "timestamp": 1737723955,
                   "message": "feat: autoinstall UI improvements and error handling (#914)\n\nUpdates l10n strings, adds an error enum and a 'clear file' button to\nclear the file path selected through the picker.\n\n![Screenshot From 2025-01-22\n15-03-14](https://github.com/user-attachments/assets/d3bab88f-45a8-4468-bca0-c04f32a2814b)\n![Screenshot From 2025-01-22\n15-02-53](https://github.com/user-attachments/assets/a6ba4563-4c5b-4dae-a2a4-c311262fc913)\n![Screenshot From 2025-01-22\n15-02-45](https://github.com/user-attachments/assets/2fc909f3-e2b4-446d-b258-b4c09c247282)\n\n\nUDENG-5802",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6bbf6cfea64423c33e2a45b91f7f0f9a731d530f"
-               },
-               {
-                  "sha": "06265eeb25f3d8c58c9554f5e003a7aeac65cf7e",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737723786,
-                  "message": "feat: update l10n strings",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/06265eeb25f3d8c58c9554f5e003a7aeac65cf7e"
-               },
-               {
-                  "sha": "7e9418a488649963ff3adcef5f5f65bc938478b6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737627491,
-                  "message": "feat: add title for 'unknown error'",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7e9418a488649963ff3adcef5f5f65bc938478b6"
                }
             ],
             "ciActions": [
@@ -6061,25 +6061,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b627b7881e17ef21878d6e14c286eee3e9bbc0e1",
+                  "author": "Dennis Loose",
+                  "timestamp": 1738060022,
+                  "message": "chore: bump go toolchain (#920)\n\nNeeded to fix two vulnerabilities:\n\n```\nVulnerability #1: GO-2025-3420\n    Sensitive headers incorrectly sent after cross-domain redirect in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3420\n  Standard library\n    Found in: net/http@go1.22.5\n    Fixed in: net/http@go1.22.11\n    Example traces found:\n      #1: internal/services/telemetry/telemetry.go:38:31: telemetry.sysmetricsImpl.SendDecline calls sysmetrics.SendDecline, which eventually calls http.Client.Do\n\nVulnerability #2: GO-2025-3373\n    Usage of IPv6 zone IDs can bypass URI name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-3373\n  Standard library\n    Found in: crypto/x509@go1.22.5\n    Fixed in: crypto/x509@go1.22.11\n    Example traces found:\n      #1: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.CertPool.AppendCertsFromPEM\n      #2: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\n      #3: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.VerifyHostname\n      #4: cmd/provd/daemon/daemon_test.go:449:25: daemon_test.TestMain calls fmt.Sprintf, which eventually calls x509.HostnameError.Error\n      #5: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.ParseCertificate\n```",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b627b7881e17ef21878d6e14c286eee3e9bbc0e1"
+               },
+               {
+                  "sha": "4fca47e1c9f6500784388788a9b67bae3da3e8ff",
+                  "author": "Dennis Loose",
+                  "timestamp": 1738059045,
+                  "message": "chore: bump go toolchain\n\nNeeded to fix two vulnerabilities:\n\n```\nVulnerability #1: GO-2025-3420\n    Sensitive headers incorrectly sent after cross-domain redirect in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3420\n  Standard library\n    Found in: net/http@go1.22.5\n    Fixed in: net/http@go1.22.11\n    Example traces found:\n      #1: internal/services/telemetry/telemetry.go:38:31: telemetry.sysmetricsImpl.SendDecline calls sysmetrics.SendDecline, which eventually calls http.Client.Do\n\nVulnerability #2: GO-2025-3373\n    Usage of IPv6 zone IDs can bypass URI name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-3373\n  Standard library\n    Found in: crypto/x509@go1.22.5\n    Fixed in: crypto/x509@go1.22.11\n    Example traces found:\n      #1: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.CertPool.AppendCertsFromPEM\n      #2: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\n      #3: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.VerifyHostname\n      #4: cmd/provd/daemon/daemon_test.go:449:25: daemon_test.TestMain calls fmt.Sprintf, which eventually calls x509.HostnameError.Error\n      #5: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.ParseCertificate\n```",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4fca47e1c9f6500784388788a9b67bae3da3e8ff"
+               },
+               {
                   "sha": "6bbf6cfea64423c33e2a45b91f7f0f9a731d530f",
                   "author": "Dennis Loose",
                   "timestamp": 1737723955,
                   "message": "feat: autoinstall UI improvements and error handling (#914)\n\nUpdates l10n strings, adds an error enum and a 'clear file' button to\nclear the file path selected through the picker.\n\n![Screenshot From 2025-01-22\n15-03-14](https://github.com/user-attachments/assets/d3bab88f-45a8-4468-bca0-c04f32a2814b)\n![Screenshot From 2025-01-22\n15-02-53](https://github.com/user-attachments/assets/a6ba4563-4c5b-4dae-a2a4-c311262fc913)\n![Screenshot From 2025-01-22\n15-02-45](https://github.com/user-attachments/assets/2fc909f3-e2b4-446d-b258-b4c09c247282)\n\n\nUDENG-5802",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6bbf6cfea64423c33e2a45b91f7f0f9a731d530f"
-               },
-               {
-                  "sha": "06265eeb25f3d8c58c9554f5e003a7aeac65cf7e",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737723786,
-                  "message": "feat: update l10n strings",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/06265eeb25f3d8c58c9554f5e003a7aeac65cf7e"
-               },
-               {
-                  "sha": "7e9418a488649963ff3adcef5f5f65bc938478b6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737627491,
-                  "message": "feat: add title for 'unknown error'",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7e9418a488649963ff3adcef5f5f65bc938478b6"
                }
             ],
             "ciActions": [
@@ -6479,7 +6479,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 48,
+            "newCommits": 50,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8168,25 +8168,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b627b7881e17ef21878d6e14c286eee3e9bbc0e1",
+                  "author": "Dennis Loose",
+                  "timestamp": 1738060022,
+                  "message": "chore: bump go toolchain (#920)\n\nNeeded to fix two vulnerabilities:\n\n```\nVulnerability #1: GO-2025-3420\n    Sensitive headers incorrectly sent after cross-domain redirect in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3420\n  Standard library\n    Found in: net/http@go1.22.5\n    Fixed in: net/http@go1.22.11\n    Example traces found:\n      #1: internal/services/telemetry/telemetry.go:38:31: telemetry.sysmetricsImpl.SendDecline calls sysmetrics.SendDecline, which eventually calls http.Client.Do\n\nVulnerability #2: GO-2025-3373\n    Usage of IPv6 zone IDs can bypass URI name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-3373\n  Standard library\n    Found in: crypto/x509@go1.22.5\n    Fixed in: crypto/x509@go1.22.11\n    Example traces found:\n      #1: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.CertPool.AppendCertsFromPEM\n      #2: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\n      #3: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.VerifyHostname\n      #4: cmd/provd/daemon/daemon_test.go:449:25: daemon_test.TestMain calls fmt.Sprintf, which eventually calls x509.HostnameError.Error\n      #5: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.ParseCertificate\n```",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b627b7881e17ef21878d6e14c286eee3e9bbc0e1"
+               },
+               {
+                  "sha": "4fca47e1c9f6500784388788a9b67bae3da3e8ff",
+                  "author": "Dennis Loose",
+                  "timestamp": 1738059045,
+                  "message": "chore: bump go toolchain\n\nNeeded to fix two vulnerabilities:\n\n```\nVulnerability #1: GO-2025-3420\n    Sensitive headers incorrectly sent after cross-domain redirect in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3420\n  Standard library\n    Found in: net/http@go1.22.5\n    Fixed in: net/http@go1.22.11\n    Example traces found:\n      #1: internal/services/telemetry/telemetry.go:38:31: telemetry.sysmetricsImpl.SendDecline calls sysmetrics.SendDecline, which eventually calls http.Client.Do\n\nVulnerability #2: GO-2025-3373\n    Usage of IPv6 zone IDs can bypass URI name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-3373\n  Standard library\n    Found in: crypto/x509@go1.22.5\n    Fixed in: crypto/x509@go1.22.11\n    Example traces found:\n      #1: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.CertPool.AppendCertsFromPEM\n      #2: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\n      #3: cmd/provd/daemon/daemon_test.go:224:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.VerifyHostname\n      #4: cmd/provd/daemon/daemon_test.go:449:25: daemon_test.TestMain calls fmt.Sprintf, which eventually calls x509.HostnameError.Error\n      #5: internal/testutils/systembus.go:35:10: testutils.StartLocalSystemBus calls sync.Once.Do, which eventually calls x509.ParseCertificate\n```",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4fca47e1c9f6500784388788a9b67bae3da3e8ff"
+               },
+               {
                   "sha": "6bbf6cfea64423c33e2a45b91f7f0f9a731d530f",
                   "author": "Dennis Loose",
                   "timestamp": 1737723955,
                   "message": "feat: autoinstall UI improvements and error handling (#914)\n\nUpdates l10n strings, adds an error enum and a 'clear file' button to\nclear the file path selected through the picker.\n\n![Screenshot From 2025-01-22\n15-03-14](https://github.com/user-attachments/assets/d3bab88f-45a8-4468-bca0-c04f32a2814b)\n![Screenshot From 2025-01-22\n15-02-53](https://github.com/user-attachments/assets/a6ba4563-4c5b-4dae-a2a4-c311262fc913)\n![Screenshot From 2025-01-22\n15-02-45](https://github.com/user-attachments/assets/2fc909f3-e2b4-446d-b258-b4c09c247282)\n\n\nUDENG-5802",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6bbf6cfea64423c33e2a45b91f7f0f9a731d530f"
-               },
-               {
-                  "sha": "06265eeb25f3d8c58c9554f5e003a7aeac65cf7e",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737723786,
-                  "message": "feat: update l10n strings",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/06265eeb25f3d8c58c9554f5e003a7aeac65cf7e"
-               },
-               {
-                  "sha": "7e9418a488649963ff3adcef5f5f65bc938478b6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1737627491,
-                  "message": "feat: add title for 'unknown error'",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7e9418a488649963ff3adcef5f5f65bc938478b6"
                }
             ],
             "ciActions": [
