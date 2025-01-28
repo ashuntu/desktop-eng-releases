@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b98b25f2135165ae3462e9e1b2db746051525412",
-                  "author": "adombeck",
-                  "timestamp": 1738070278,
-                  "message": "Don't delete empty groups from database (#758)\n\nUDENG-5873",
-                  "url": "https://github.com/ubuntu/authd/commit/b98b25f2135165ae3462e9e1b2db746051525412"
+                  "sha": "f8877ecd9b7b721375b1ecee6cf86277940a7472",
+                  "author": "3v1n0",
+                  "timestamp": 1738080925,
+                  "message": "Auto update packaging related Rust files",
+                  "url": "https://github.com/ubuntu/authd/commit/f8877ecd9b7b721375b1ecee6cf86277940a7472"
                },
                {
-                  "sha": "1b15684a73534934b9e6a6da24bf4760b8ae79a0",
-                  "author": "adombeck",
-                  "timestamp": 1738065937,
-                  "message": "deps(go): bump the minor-updates group with 2 updates (#761)",
-                  "url": "https://github.com/ubuntu/authd/commit/1b15684a73534934b9e6a6da24bf4760b8ae79a0"
+                  "sha": "9161d60a0baa44427d40201d46b0f2080d4f2b84",
+                  "author": "3v1n0",
+                  "timestamp": 1738080869,
+                  "message": "Auto update packaging related Rust files",
+                  "url": "https://github.com/ubuntu/authd/commit/9161d60a0baa44427d40201d46b0f2080d4f2b84"
                },
                {
-                  "sha": "e3d5b6b8a743c1bd2ca350ba8a3e7a781c60da9d",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1738064269,
-                  "message": "deps(go): bump the minor-updates group with 2 updates\n\nBumps the minor-updates group with 2 updates: [google.golang.org/grpc](https://github.com/grpc/grpc-go) and google.golang.org/protobuf.\n\n\nUpdates `google.golang.org/grpc` from 1.69.4 to 1.70.0\n- [Release notes](https://github.com/grpc/grpc-go/releases)\n- [Commits](https://github.com/grpc/grpc-go/compare/v1.69.4...v1.70.0)\n\nUpdates `google.golang.org/protobuf` from 1.36.3 to 1.36.4\n\n---\nupdated-dependencies:\n- dependency-name: google.golang.org/grpc\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: google.golang.org/protobuf\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/e3d5b6b8a743c1bd2ca350ba8a3e7a781c60da9d"
+                  "sha": "4719408a0d6e589c1a35354496030fcaaeba77b4",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1738080804,
+                  "message": "ci/auto-updates: Filter rust vendored sources following dh-cargo logic (#760)\n\nAs per the plucky changes on dh-cargo we need to use a filtered\n`XS-Vendored-Sources-Rust` value in `debian/control`.\n\nThe logic we had in the CI job that is in charge of updating such field\nbecome then incorrect.\nSo, use the same logic that we have during debian package cleanup and\nsupport targeting different branches.\n\nFor now we don't fully branch for noble but this allows to be prepared\nto that event (that is likely to have to happen soon).\n\nFixed also an issue that lead to ignoring dh-cargo issues when running\nthe script.\n\nIt shares few commits with #754\n\nUDENG-5865",
+                  "url": "https://github.com/ubuntu/authd/commit/4719408a0d6e589c1a35354496030fcaaeba77b4"
                }
             ],
             "ciActions": [
