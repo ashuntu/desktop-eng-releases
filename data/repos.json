@@ -6170,25 +6170,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f623211004328f0a92dc428951621067d0743047",
-                  "author": "ashuntu",
-                  "timestamp": 1737648438,
-                  "message": "fix: Fix spacing between fields with errors (#1071)\n\nFixes the spacing for the Landscape page by aligning the page to the top\r\nso errors push the fields down, instead of being aligned center and\r\npushing the entire page.\r\n\r\nAlso, increases the spacing slightly above the token input field.\r\n\r\nNew token field spacing:\r\n\r\n![image](https://github.com/user-attachments/assets/93de0e10-e3a8-46ed-85a7-73e239095877)\r\n\r\nNew Landscape page spacing:\r\n\r\n![image](https://github.com/user-attachments/assets/5f2117e4-031f-4daa-bd71-af05719916e9)\r\n\r\nFor reviewers: note this should work when the window is maximized as\r\nwell\r\n\r\n---\r\n\r\nUDENG-5853",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f623211004328f0a92dc428951621067d0743047"
+                  "sha": "bbb77297ffccff6cb2a4ac30d5dea72cbad9fd9f",
+                  "author": "CarlosNihelton",
+                  "timestamp": 1738153988,
+                  "message": "Auto update internal dependencies",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/bbb77297ffccff6cb2a4ac30d5dea72cbad9fd9f"
                },
                {
-                  "sha": "f5fb9abdb72979850d0f60b1c9e79ab23d574267",
-                  "author": "Shane Crowley",
-                  "timestamp": 1737639509,
-                  "message": "docs: More consistent tutorials terminology (#1072)\n\nThis is a minor fixup.\r\n\r\nWhen merging the WSL documentation sets, the section called \"Tutorials\"\r\nwas changed to \"Tutorial\".\r\nThis was in keeping with the idea that the documentation would ideally\r\nhave one self-contained tutorial, even if it consisted of multiple\r\nparts.\r\n\r\nThis reverts the change. While the tutorials follow a logical sequence,\r\ntwo require Pro, which adds some friction; users shouldn't get the\r\nimpression that they only get only one-third of a tutorial when they\r\nread the Ubuntu WSL-specific one (it is standalone).\r\nIn addition, the minor change in spelling introduces the need for\r\nadditional redirects (tutorials/ -> tutorial/*), which introduces\r\nneedless complexity.\r\nLastly, this fixes a broken link to /tutorials/ on the WSL product page.\r\n\r\nOther changes include:\r\n\r\n* Fix cases where \"guide\" was used in reference to \"tutorial\"\r\n* Update some redirects\r\n* Link to contributing guide on rendered docs site rather than GitHub\r\n* Spell out first use of UP4W on homepage to prevent confusion",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f5fb9abdb72979850d0f60b1c9e79ab23d574267"
+                  "sha": "20cb1ebd9d20b63efc548a53d1f243d20746f9b7",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1738153948,
+                  "message": "docs: Fix typo (#1075)\n\nI think this is a typo. I don't actually have UP4W set up so I can't\r\nverify, but pretty sure. (Just passing by)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/20cb1ebd9d20b63efc548a53d1f243d20746f9b7"
                },
                {
-                  "sha": "b43a79fddbdf17113677efdd241de599b0c5ae78",
-                  "author": "shanecrowley",
-                  "timestamp": 1737637694,
-                  "message": "ensure old tutorial/ pages redirect to tutorials/\n\ne.g., tutorial/deployment should go to tutorials/deployment\n\nalso removed duplicate redirects",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b43a79fddbdf17113677efdd241de599b0c5ae78"
+                  "sha": "f48435ae5ee3638916738395d736e5fff8843098",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1738153929,
+                  "message": "deps: Upgrading the Go toolchain (#1077)\n\nDue a vulnerability report:\r\n\r\nVulnerability #1: GO-2025-3373\r\nUsage of IPv6 zone IDs can bypass URI name constraints in crypto/x509\r\n  More info: https://pkg.go.dev/vuln/GO-2025-3373\r\n  Standard library\r\n    Found in: crypto/x509@go1.23.1\r\n    Fixed in: crypto/x509@go1.23.5",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f48435ae5ee3638916738395d736e5fff8843098"
                }
             ],
             "ciActions": [
@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8741a045bd1e583ad2467ddf1f16cccd5f34ec3d",
+                  "author": "adombeck",
+                  "timestamp": 1738154636,
+                  "message": "GitHub issue template: Use sudo to collect config file contents (#769)",
+                  "url": "https://github.com/ubuntu/authd/commit/8741a045bd1e583ad2467ddf1f16cccd5f34ec3d"
+               },
+               {
+                  "sha": "7a34eb5d57ad8068d543a03853916342503c44b1",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1738153939,
+                  "message": "GitHub issue template: Use sudo to collect config file contents\n\nThe config files are only readable by root since\n\n    9ff0d1a3840db0d1dc46a05cfc260c7d23897ba0\n\nand\n\n    https://github.com/ubuntu/authd-oidc-brokers/commit/6116ba9c70d0fcae9df197d02c0e1c766d5fc9cd",
+                  "url": "https://github.com/ubuntu/authd/commit/7a34eb5d57ad8068d543a03853916342503c44b1"
+               },
+               {
                   "sha": "8890fd9b1840d5c1322ca290fac431129b39cf1a",
                   "author": "adombeck",
                   "timestamp": 1738091286,
                   "message": "Run go mod tidy (#767)\n\nFixes cce45f0ff6165ffaa06aa227ac1b5ba556e28e80",
                   "url": "https://github.com/ubuntu/authd/commit/8890fd9b1840d5c1322ca290fac431129b39cf1a"
-               },
-               {
-                  "sha": "1615a22cc42c2f6c0c2d0d31c1e2baf9ae0eecb2",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1738089895,
-                  "message": "Run go mod tidy",
-                  "url": "https://github.com/ubuntu/authd/commit/1615a22cc42c2f6c0c2d0d31c1e2baf9ae0eecb2"
-               },
-               {
-                  "sha": "9adf070d972b59796bc62029ff7bf25257a29fd5",
-                  "author": "adombeck",
-                  "timestamp": 1738089387,
-                  "message": "Bump Go toolchain version to 1.23.5 (#762)",
-                  "url": "https://github.com/ubuntu/authd/commit/9adf070d972b59796bc62029ff7bf25257a29fd5"
                }
             ],
             "ciActions": [
