@@ -6170,6 +6170,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "64f93d844b17c4b875234833de1b1c06a39e73d4",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1738244181,
+                  "message": "Revert \"Wait 5s after installing a distro per Landscape request\"\n\nThis reverts commit 25433195b70c36cd24ffeb84a98ebfc72197dadf.\nShouldn't commit directly to \"main\".",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/64f93d844b17c4b875234833de1b1c06a39e73d4"
+               },
+               {
                   "sha": "25433195b70c36cd24ffeb84a98ebfc72197dadf",
                   "author": "Carlos Nihelton",
                   "timestamp": 1738243125,
@@ -6182,13 +6189,6 @@
                   "timestamp": 1738185140,
                   "message": "feat(windows-agent): cloudinit module to defer Landscape registration (#1076)\n\nAnd prevent schema warnings.\r\n\r\nFollowing the prescription of the spec WS040, I'm adding the three\r\nfields to the serialized Landscape client config into `agent.yaml` so\r\nthat when cloud-init invokes `landscape-config`, instead of attempting a\r\nnew registration right away, it will just write the client configuration\r\nfile, possibly incomplete at this point in time.\r\n\r\n`wsl-pro-service` is already prepared to complete that configuration\r\nfile and issue the registration request.\r\n\r\n---\r\nUDENG-5888",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0d69ac2024aa5bb29108ede7584a876da2bfb9c1"
-               },
-               {
-                  "sha": "f48af38a7dd58e1c3b5e125319e0f7f48efb7d9f",
-                  "author": "ashuntu",
-                  "timestamp": 1738170540,
-                  "message": "ci: Ignore CLA for Weblate PRs (#1080)\n\nSkips running the CLA check if the PR is opened by Weblate, since we\r\ncan't guarantee verification.\r\n\r\nSame as\r\nhttps://github.com/ubuntu/app-center/blob/main/.github/workflows/pr.yaml#L7C5-L7C89\r\n\r\nExample of a failing Weblate PR for reference:\r\nhttps://github.com/canonical/ubuntu-pro-for-wsl/pull/1079\r\n\r\n---\r\n\r\nUDENG-266",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f48af38a7dd58e1c3b5e125319e0f7f48efb7d9f"
                }
             ],
             "ciActions": [
