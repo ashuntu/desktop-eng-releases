@@ -6560,25 +6560,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0d0d6c739aa309b7d332198089280964464650ab",
+                  "author": "adombeck",
+                  "timestamp": 1738584952,
+                  "message": "Fix snap releases still having version 0.2.0-pre1 instead of 0.2.0 (#359)\n\nUDENG-5906",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0d0d6c739aa309b7d332198089280964464650ab"
+               },
+               {
+                  "sha": "276d4cd22d45d85f1630df43dbedfb18628a79ea",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1738579050,
+                  "message": "Fix snap releases still having version 0.2.0-pre1 instead of 0.2.0\n\n`git tag --sort=-v:refname` sorts tagnames with the same base version\nbut different suffixes in lexicographical order, causing prerelease tags\nto be listed as higher than the main release. This results in the snaps\nstill having `0.2.0-pre1+...` versions instead of `0.2.0+...`.\n\nGit supports the `versionsort.suffix` option to avoid exactly that, so\nlet's use it.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/276d4cd22d45d85f1630df43dbedfb18628a79ea"
+               },
+               {
                   "sha": "dbb2fd5820d3f61f63d673ba790eb048d2b75d62",
                   "author": "adombeck",
                   "timestamp": 1738330315,
                   "message": "Fix security group filter in msentraid.go (#355)\n\nCloses #352",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/dbb2fd5820d3f61f63d673ba790eb048d2b75d62"
-               },
-               {
-                  "sha": "e457bdd3db420715708da9d97ea09ff93863acfc",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1738329972,
-                  "message": "Refactor",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e457bdd3db420715708da9d97ea09ff93863acfc"
-               },
-               {
-                  "sha": "9fbe1977306a1b65b6908be5091a3571016dcffc",
-                  "author": "Simon Hanna",
-                  "timestamp": 1738326054,
-                  "message": "Fix security group filter in msentraid.go\n\nPreviously it was modifying the array it was iterating over causing a\nruntime error\n\nCloses: #352",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/9fbe1977306a1b65b6908be5091a3571016dcffc"
                }
             ],
             "ciActions": [
