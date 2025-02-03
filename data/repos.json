@@ -6479,9 +6479,18 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 0,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
+               {
+                  "id": 198127078,
+                  "version": "v0.16.2",
+                  "timestamp": 1738596059,
+                  "title": "v0.16.2",
+                  "body": "",
+                  "url": "https://github.com/ubuntu/adsys/releases/tag/v0.16.2",
+                  "compareUrl": "https://github.com/ubuntu/adsys/compare/v0.16.2...main"
+               },
                {
                   "id": 197559806,
                   "version": "v0.16.1",
@@ -6499,15 +6508,6 @@
                   "body": "",
                   "url": "https://github.com/ubuntu/adsys/releases/tag/v0.16.0",
                   "compareUrl": "https://github.com/ubuntu/adsys/compare/v0.16.0...main"
-               },
-               {
-                  "id": 173037164,
-                  "version": "v0.15.1",
-                  "timestamp": 1725278794,
-                  "title": "v0.15.1",
-                  "body": "",
-                  "url": "https://github.com/ubuntu/adsys/releases/tag/v0.15.1",
-                  "compareUrl": "https://github.com/ubuntu/adsys/compare/v0.15.1...main"
                }
             ],
             "commits": null,
@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "331e79b93281555ae55ee96dd1f7673ecc76708c",
+                  "sha": "a499f298f969f3bca84325fbf3fc3f588499cf8c",
                   "author": "adombeck",
-                  "timestamp": 1738253763,
-                  "message": "Add changelog entry for 0.4.1 (#772)",
-                  "url": "https://github.com/ubuntu/authd/commit/331e79b93281555ae55ee96dd1f7673ecc76708c"
+                  "timestamp": 1738598243,
+                  "message": "Support logging to the journal with priority \"notice\" (#763)\n\nUDENG-5920",
+                  "url": "https://github.com/ubuntu/authd/commit/a499f298f969f3bca84325fbf3fc3f588499cf8c"
                },
                {
-                  "sha": "5229decb49e1dd5ce1b15219ab62dafa93723571",
+                  "sha": "bb2fe1e442db206f20faa39dc03ebf54e30840ec",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1738246305,
-                  "message": "Upload 0.4.1 to plucky",
-                  "url": "https://github.com/ubuntu/authd/commit/5229decb49e1dd5ce1b15219ab62dafa93723571"
+                  "timestamp": 1738073709,
+                  "message": "Log notice level messages by default\n\nWe want users to see notice level messages, which are used for important\nevents that may require special handling.",
+                  "url": "https://github.com/ubuntu/authd/commit/bb2fe1e442db206f20faa39dc03ebf54e30840ec"
                },
                {
-                  "sha": "9a4fba6730ea4bf6a1c42e6c099f0f852a14fcc6",
+                  "sha": "94321ff1a4ee083f8ba86cb1df1529fa3a09888e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1738246050,
-                  "message": "Add changelog entry for 0.4.1\n\nTo be able to upload to Launchpad again. The build of 0.4.0 failed\nbecause the XS-Vendored-Sources-Rust value in debian/control, which\nallowed me to build the package on my host, caused the build to fail on\nLaunchpad.",
-                  "url": "https://github.com/ubuntu/authd/commit/9a4fba6730ea4bf6a1c42e6c099f0f852a14fcc6"
+                  "timestamp": 1738073592,
+                  "message": "Support logging to the journal with priority \"notice\"\n\nThe notice level is a syslog severity level between the info and warning\nlevels. It's meant for important events which are not error conditions,\nbut that may require special handling.",
+                  "url": "https://github.com/ubuntu/authd/commit/94321ff1a4ee083f8ba86cb1df1529fa3a09888e"
                }
             ],
             "ciActions": [
@@ -6560,25 +6560,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0d0d6c739aa309b7d332198089280964464650ab",
+                  "sha": "e7141e40ba85cc66fe2d4381a89f151f7a263bfb",
                   "author": "adombeck",
-                  "timestamp": 1738584952,
-                  "message": "Fix snap releases still having version 0.2.0-pre1 instead of 0.2.0 (#359)\n\nUDENG-5906",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0d0d6c739aa309b7d332198089280964464650ab"
+                  "timestamp": 1738598270,
+                  "message": "Support changing the password if refreshing token or user info fails (#350)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/e7141e40ba85cc66fe2d4381a89f151f7a263bfb"
                },
                {
-                  "sha": "276d4cd22d45d85f1630df43dbedfb18628a79ea",
+                  "sha": "fc8abea1d460b93c66fcd69a74c52ffab1d64383",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1738579050,
-                  "message": "Fix snap releases still having version 0.2.0-pre1 instead of 0.2.0\n\n`git tag --sort=-v:refname` sorts tagnames with the same base version\nbut different suffixes in lexicographical order, causing prerelease tags\nto be listed as higher than the main release. This results in the snaps\nstill having `0.2.0-pre1+...` versions instead of `0.2.0+...`.\n\nGit supports the `versionsort.suffix` option to avoid exactly that, so\nlet's use it.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/276d4cd22d45d85f1630df43dbedfb18628a79ea"
+                  "timestamp": 1738594718,
+                  "message": "Test authenticating to change password when fetching user info fails\n\nRegression test for the previous commit",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/fc8abea1d460b93c66fcd69a74c52ffab1d64383"
                },
                {
-                  "sha": "dbb2fd5820d3f61f63d673ba790eb048d2b75d62",
-                  "author": "adombeck",
-                  "timestamp": 1738330315,
-                  "message": "Fix security group filter in msentraid.go (#355)\n\nCloses #352",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/dbb2fd5820d3f61f63d673ba790eb048d2b75d62"
+                  "sha": "5d51231b381f613b14e7be80fc87072ef9864cb0",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1737122486,
+                  "message": "Support changing the password if refreshing token or user info fails\n\nWe don't need to refresh the token and user info if the session is for\nchanging the password.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/5d51231b381f613b14e7be80fc87072ef9864cb0"
                }
             ],
             "ciActions": [
