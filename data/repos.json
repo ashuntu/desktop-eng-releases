@@ -3672,25 +3672,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1756bbf122c0c1efbdf58e21e206f4cead0585b7",
+                  "sha": "309f4b7312efdb02b1e37a833f5d4dd7d1a8c982",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1738232226,
-                  "message": "feat: supporting arbitrary paths outside of the users home directory (#171)\n\nFix for https://github.com/canonical/desktop-security-center/issues/105\r\n\r\nUDENG-5867",
-                  "url": "https://github.com/canonical/prompting-client/commit/1756bbf122c0c1efbdf58e21e206f4cead0585b7"
+                  "timestamp": 1738841309,
+                  "message": "chore: setting up TiCS CI integration (#180)\n\nThis is now hooked up and \"working\" for a given definition of working (a\r\ngreen run can be found\r\n[here](https://github.com/canonical/prompting-client/actions/runs/13160779575)).\r\n\r\nFor some reason, TiCS is reporting that it can find coverage for some\r\nfiles in the project (such as\r\n`flutter/apps/prompting_client_ui/lib/l10n.dart`) but not others when\r\nthey are contained in the same coverage file (such as\r\n`flutter/apps/prompting_client_ui/lib/l10n_x.dart`). From what I can see\r\nlocally when generating the coverage I'd expect it to find neither or\r\nboth, and all I can see that is different in the output from the\r\nworkflow run is that the files which _are_ found have a `(recheck)`\r\nsuffix to their relevant log lines.\r\n\r\nInterestingly the files in the `flutter/packages` seem to be processed\r\ncorrectly so I am wondering if this might be a configuration issue on\r\nthe TiCS side? But then that doesn't explain why some of the files under\r\n`flutter/apps` _are_ picked up :shrug:\r\n\r\nI've tried adding the manual conversion to the Cobertura XML format as\r\ncovered by Security in their docs, placing the resulting files in a\r\n`.coverage` directory in the root of the repo but that doesn't appear to\r\nhave helped. I've left this in for now given that the docs call out\r\nhandling it explicitly but we will need to chase things up to see what\r\nit is we are missing.\r\n\r\n:crab: There is then also the issue that TiCS is not currently looking\r\nat the Rust code at all which also needs chasing up. :crab:\r\n\r\n---\r\n\r\nFor future reference, in the case described above the relevant section\r\nof `flutter/apps/prompting_client_ui/coverage/lcov.info` looks like\r\nthis:\r\n```\r\n...\r\nTN:\r\nSF:lib/l10n.dart\r\nFNF:0\r\nFNH:0\r\nDA:8,0\r\nDA:9,0\r\nDA:10,0\r\nDA:11,0\r\nLF:4\r\nLH:0\r\nend_of_record\r\nTN:\r\nSF:lib/l10n_x.dart\r\nFNF:0\r\nFNH:0\r\nDA:5,1\r\nDA:6,2\r\nDA:7,2\r\nDA:12,1\r\nDA:13,2\r\nDA:14,1\r\nDA:15,2\r\nDA:20,4\r\nDA:21,4\r\nDA:22,2\r\nDA:23,2\r\nDA:24,4\r\nDA:25,2\r\nDA:26,2\r\nDA:27,10\r\nDA:29,2\r\nDA:30,2\r\nDA:31,4\r\nDA:32,2\r\nDA:33,2\r\nDA:34,8\r\nDA:36,2\r\nDA:37,2\r\nDA:42,1\r\nDA:43,2\r\nDA:44,2\r\nDA:45,2\r\nLF:27\r\nLH:27\r\nend_of_record\r\n...\r\n```",
+                  "url": "https://github.com/canonical/prompting-client/commit/309f4b7312efdb02b1e37a833f5d4dd7d1a8c982"
                },
                {
-                  "sha": "e53594e8ab5c0bba330c6e76fd4a5e4739ca10b2",
+                  "sha": "de41b61d5627ad4d2a99226f932b685ad2f280c4",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1738143546,
-                  "message": "fix(deps): update rust crate hyper to v1.6.0 (#175)\n\nThis PR contains the following updates:\r\n\r\n| Package | Type | Update | Change |\r\n|---|---|---|---|\r\n| [hyper](https://hyper.rs)\r\n([source](https://redirect.github.com/hyperium/hyper)) | dependencies |\r\nminor | `1.5.2` -> `1.6.0` |",
-                  "url": "https://github.com/canonical/prompting-client/commit/e53594e8ab5c0bba330c6e76fd4a5e4739ca10b2"
+                  "timestamp": 1738832279,
+                  "message": "fix: removing unrequired package",
+                  "url": "https://github.com/canonical/prompting-client/commit/de41b61d5627ad4d2a99226f932b685ad2f280c4"
                },
                {
-                  "sha": "3c42a9dd9351715861889ed4f5879ace8f634818",
+                  "sha": "f4668b7ed27a190de5593dc846825752afabb0b9",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1738143198,
-                  "message": "fix(deps): update rust crate serde_json to v1.0.138 (#176)\n\nThis PR contains the following updates:\r\n\r\n| Package | Type | Update | Change |\r\n|---|---|---|---|\r\n| [serde_json](https://redirect.github.com/serde-rs/json) | dependencies\r\n| patch | `1.0.137` -> `1.0.138` |",
-                  "url": "https://github.com/canonical/prompting-client/commit/3c42a9dd9351715861889ed4f5879ace8f634818"
+                  "timestamp": 1738772512,
+                  "message": "chore: updating tics.yaml workflow to run conditionally",
+                  "url": "https://github.com/canonical/prompting-client/commit/f4668b7ed27a190de5593dc846825752afabb0b9"
                }
             ],
             "ciActions": [],
@@ -5612,25 +5612,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1756bbf122c0c1efbdf58e21e206f4cead0585b7",
+                  "sha": "309f4b7312efdb02b1e37a833f5d4dd7d1a8c982",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1738232226,
-                  "message": "feat: supporting arbitrary paths outside of the users home directory (#171)\n\nFix for https://github.com/canonical/desktop-security-center/issues/105\r\n\r\nUDENG-5867",
-                  "url": "https://github.com/canonical/prompting-client/commit/1756bbf122c0c1efbdf58e21e206f4cead0585b7"
+                  "timestamp": 1738841309,
+                  "message": "chore: setting up TiCS CI integration (#180)\n\nThis is now hooked up and \"working\" for a given definition of working (a\r\ngreen run can be found\r\n[here](https://github.com/canonical/prompting-client/actions/runs/13160779575)).\r\n\r\nFor some reason, TiCS is reporting that it can find coverage for some\r\nfiles in the project (such as\r\n`flutter/apps/prompting_client_ui/lib/l10n.dart`) but not others when\r\nthey are contained in the same coverage file (such as\r\n`flutter/apps/prompting_client_ui/lib/l10n_x.dart`). From what I can see\r\nlocally when generating the coverage I'd expect it to find neither or\r\nboth, and all I can see that is different in the output from the\r\nworkflow run is that the files which _are_ found have a `(recheck)`\r\nsuffix to their relevant log lines.\r\n\r\nInterestingly the files in the `flutter/packages` seem to be processed\r\ncorrectly so I am wondering if this might be a configuration issue on\r\nthe TiCS side? But then that doesn't explain why some of the files under\r\n`flutter/apps` _are_ picked up :shrug:\r\n\r\nI've tried adding the manual conversion to the Cobertura XML format as\r\ncovered by Security in their docs, placing the resulting files in a\r\n`.coverage` directory in the root of the repo but that doesn't appear to\r\nhave helped. I've left this in for now given that the docs call out\r\nhandling it explicitly but we will need to chase things up to see what\r\nit is we are missing.\r\n\r\n:crab: There is then also the issue that TiCS is not currently looking\r\nat the Rust code at all which also needs chasing up. :crab:\r\n\r\n---\r\n\r\nFor future reference, in the case described above the relevant section\r\nof `flutter/apps/prompting_client_ui/coverage/lcov.info` looks like\r\nthis:\r\n```\r\n...\r\nTN:\r\nSF:lib/l10n.dart\r\nFNF:0\r\nFNH:0\r\nDA:8,0\r\nDA:9,0\r\nDA:10,0\r\nDA:11,0\r\nLF:4\r\nLH:0\r\nend_of_record\r\nTN:\r\nSF:lib/l10n_x.dart\r\nFNF:0\r\nFNH:0\r\nDA:5,1\r\nDA:6,2\r\nDA:7,2\r\nDA:12,1\r\nDA:13,2\r\nDA:14,1\r\nDA:15,2\r\nDA:20,4\r\nDA:21,4\r\nDA:22,2\r\nDA:23,2\r\nDA:24,4\r\nDA:25,2\r\nDA:26,2\r\nDA:27,10\r\nDA:29,2\r\nDA:30,2\r\nDA:31,4\r\nDA:32,2\r\nDA:33,2\r\nDA:34,8\r\nDA:36,2\r\nDA:37,2\r\nDA:42,1\r\nDA:43,2\r\nDA:44,2\r\nDA:45,2\r\nLF:27\r\nLH:27\r\nend_of_record\r\n...\r\n```",
+                  "url": "https://github.com/canonical/prompting-client/commit/309f4b7312efdb02b1e37a833f5d4dd7d1a8c982"
                },
                {
-                  "sha": "e53594e8ab5c0bba330c6e76fd4a5e4739ca10b2",
+                  "sha": "de41b61d5627ad4d2a99226f932b685ad2f280c4",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1738143546,
-                  "message": "fix(deps): update rust crate hyper to v1.6.0 (#175)\n\nThis PR contains the following updates:\r\n\r\n| Package | Type | Update | Change |\r\n|---|---|---|---|\r\n| [hyper](https://hyper.rs)\r\n([source](https://redirect.github.com/hyperium/hyper)) | dependencies |\r\nminor | `1.5.2` -> `1.6.0` |",
-                  "url": "https://github.com/canonical/prompting-client/commit/e53594e8ab5c0bba330c6e76fd4a5e4739ca10b2"
+                  "timestamp": 1738832279,
+                  "message": "fix: removing unrequired package",
+                  "url": "https://github.com/canonical/prompting-client/commit/de41b61d5627ad4d2a99226f932b685ad2f280c4"
                },
                {
-                  "sha": "3c42a9dd9351715861889ed4f5879ace8f634818",
+                  "sha": "f4668b7ed27a190de5593dc846825752afabb0b9",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1738143198,
-                  "message": "fix(deps): update rust crate serde_json to v1.0.138 (#176)\n\nThis PR contains the following updates:\r\n\r\n| Package | Type | Update | Change |\r\n|---|---|---|---|\r\n| [serde_json](https://redirect.github.com/serde-rs/json) | dependencies\r\n| patch | `1.0.137` -> `1.0.138` |",
-                  "url": "https://github.com/canonical/prompting-client/commit/3c42a9dd9351715861889ed4f5879ace8f634818"
+                  "timestamp": 1738772512,
+                  "message": "chore: updating tics.yaml workflow to run conditionally",
+                  "url": "https://github.com/canonical/prompting-client/commit/f4668b7ed27a190de5593dc846825752afabb0b9"
                }
             ],
             "ciActions": [],
@@ -7719,25 +7719,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1756bbf122c0c1efbdf58e21e206f4cead0585b7",
+                  "sha": "309f4b7312efdb02b1e37a833f5d4dd7d1a8c982",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1738232226,
-                  "message": "feat: supporting arbitrary paths outside of the users home directory (#171)\n\nFix for https://github.com/canonical/desktop-security-center/issues/105\r\n\r\nUDENG-5867",
-                  "url": "https://github.com/canonical/prompting-client/commit/1756bbf122c0c1efbdf58e21e206f4cead0585b7"
+                  "timestamp": 1738841309,
+                  "message": "chore: setting up TiCS CI integration (#180)\n\nThis is now hooked up and \"working\" for a given definition of working (a\r\ngreen run can be found\r\n[here](https://github.com/canonical/prompting-client/actions/runs/13160779575)).\r\n\r\nFor some reason, TiCS is reporting that it can find coverage for some\r\nfiles in the project (such as\r\n`flutter/apps/prompting_client_ui/lib/l10n.dart`) but not others when\r\nthey are contained in the same coverage file (such as\r\n`flutter/apps/prompting_client_ui/lib/l10n_x.dart`). From what I can see\r\nlocally when generating the coverage I'd expect it to find neither or\r\nboth, and all I can see that is different in the output from the\r\nworkflow run is that the files which _are_ found have a `(recheck)`\r\nsuffix to their relevant log lines.\r\n\r\nInterestingly the files in the `flutter/packages` seem to be processed\r\ncorrectly so I am wondering if this might be a configuration issue on\r\nthe TiCS side? But then that doesn't explain why some of the files under\r\n`flutter/apps` _are_ picked up :shrug:\r\n\r\nI've tried adding the manual conversion to the Cobertura XML format as\r\ncovered by Security in their docs, placing the resulting files in a\r\n`.coverage` directory in the root of the repo but that doesn't appear to\r\nhave helped. I've left this in for now given that the docs call out\r\nhandling it explicitly but we will need to chase things up to see what\r\nit is we are missing.\r\n\r\n:crab: There is then also the issue that TiCS is not currently looking\r\nat the Rust code at all which also needs chasing up. :crab:\r\n\r\n---\r\n\r\nFor future reference, in the case described above the relevant section\r\nof `flutter/apps/prompting_client_ui/coverage/lcov.info` looks like\r\nthis:\r\n```\r\n...\r\nTN:\r\nSF:lib/l10n.dart\r\nFNF:0\r\nFNH:0\r\nDA:8,0\r\nDA:9,0\r\nDA:10,0\r\nDA:11,0\r\nLF:4\r\nLH:0\r\nend_of_record\r\nTN:\r\nSF:lib/l10n_x.dart\r\nFNF:0\r\nFNH:0\r\nDA:5,1\r\nDA:6,2\r\nDA:7,2\r\nDA:12,1\r\nDA:13,2\r\nDA:14,1\r\nDA:15,2\r\nDA:20,4\r\nDA:21,4\r\nDA:22,2\r\nDA:23,2\r\nDA:24,4\r\nDA:25,2\r\nDA:26,2\r\nDA:27,10\r\nDA:29,2\r\nDA:30,2\r\nDA:31,4\r\nDA:32,2\r\nDA:33,2\r\nDA:34,8\r\nDA:36,2\r\nDA:37,2\r\nDA:42,1\r\nDA:43,2\r\nDA:44,2\r\nDA:45,2\r\nLF:27\r\nLH:27\r\nend_of_record\r\n...\r\n```",
+                  "url": "https://github.com/canonical/prompting-client/commit/309f4b7312efdb02b1e37a833f5d4dd7d1a8c982"
                },
                {
-                  "sha": "e53594e8ab5c0bba330c6e76fd4a5e4739ca10b2",
+                  "sha": "de41b61d5627ad4d2a99226f932b685ad2f280c4",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1738143546,
-                  "message": "fix(deps): update rust crate hyper to v1.6.0 (#175)\n\nThis PR contains the following updates:\r\n\r\n| Package | Type | Update | Change |\r\n|---|---|---|---|\r\n| [hyper](https://hyper.rs)\r\n([source](https://redirect.github.com/hyperium/hyper)) | dependencies |\r\nminor | `1.5.2` -> `1.6.0` |",
-                  "url": "https://github.com/canonical/prompting-client/commit/e53594e8ab5c0bba330c6e76fd4a5e4739ca10b2"
+                  "timestamp": 1738832279,
+                  "message": "fix: removing unrequired package",
+                  "url": "https://github.com/canonical/prompting-client/commit/de41b61d5627ad4d2a99226f932b685ad2f280c4"
                },
                {
-                  "sha": "3c42a9dd9351715861889ed4f5879ace8f634818",
+                  "sha": "f4668b7ed27a190de5593dc846825752afabb0b9",
                   "author": "Innes Anderson-Morrison",
-                  "timestamp": 1738143198,
-                  "message": "fix(deps): update rust crate serde_json to v1.0.138 (#176)\n\nThis PR contains the following updates:\r\n\r\n| Package | Type | Update | Change |\r\n|---|---|---|---|\r\n| [serde_json](https://redirect.github.com/serde-rs/json) | dependencies\r\n| patch | `1.0.137` -> `1.0.138` |",
-                  "url": "https://github.com/canonical/prompting-client/commit/3c42a9dd9351715861889ed4f5879ace8f634818"
+                  "timestamp": 1738772512,
+                  "message": "chore: updating tics.yaml workflow to run conditionally",
+                  "url": "https://github.com/canonical/prompting-client/commit/f4668b7ed27a190de5593dc846825752afabb0b9"
                }
             ],
             "ciActions": [],
