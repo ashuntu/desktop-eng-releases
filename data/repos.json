@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0baa9fe05d81f7604e7b6b44346633e3bcd3f8f4",
+                  "sha": "680cf8da86f2c0889b471bedaba13368329c2e40",
                   "author": "Marco Trevisan",
-                  "timestamp": 1739209012,
-                  "message": "maint(pam/integration-tests): Run all the tests with a shared authd in race mode (#593)\n\nRun by default all the tests using an unique instance of authd daemon\nrunning so that we can test better that all the codepaths work well with\nlots of concurrency.\n\nUDENG-5377",
-                  "url": "https://github.com/ubuntu/authd/commit/0baa9fe05d81f7604e7b6b44346633e3bcd3f8f4"
+                  "timestamp": 1739250045,
+                  "message": "pam/native: Do not support device authentication mode in polkit (#768)\n\nPolkit UI is quite limited so, although the device authentication works\nas expected, it's far from being user friendly so disable the \"qrcode\"\nUI at all in such case.\n\nUltimately it should be up to the broker to decide whether to support an\nUI or not, but since we can't provide it the service name, we have to\nhandle it in the module.\n\nAt the same time, ignore the local broker when using polkit service.\n\n---\n\nThat said this avoids polkit to show the device authentication as it's\nsomething we already mentioned we don't want, but we can't by design do\nthis kind of filtering in the PAM module, that should be thinnest layer\nbetween authd and the broker, but instead I think we should re-consider\nrefactoring this so that:\n1. The broker mandates the supported authentication modes depending on\nthe PAM environment (service name, interactive or not)\n2. It's up to authd to enable or not the availability of a broker (the\nlocal one in this case).\n\nUDENG-5154",
+                  "url": "https://github.com/ubuntu/authd/commit/680cf8da86f2c0889b471bedaba13368329c2e40"
                },
                {
-                  "sha": "b31346ec1e1bbc2f75dcd6ee2324684600d128cd",
-                  "author": "adombeck",
-                  "timestamp": 1739209004,
-                  "message": "Improve warning logged when home directory has incorrect owner/group (#780)",
-                  "url": "https://github.com/ubuntu/authd/commit/b31346ec1e1bbc2f75dcd6ee2324684600d128cd"
+                  "sha": "1870405d88257b3c524ff9e222721ce058377256",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1738099522,
+                  "message": "nativemodel: Do not allow using the local broker in polkit\n\nPolkit UI is something that is shown when the user is already logged in\nso we assume that's under the authd control, thus it's not needed to\nswitch to it.",
+                  "url": "https://github.com/ubuntu/authd/commit/1870405d88257b3c524ff9e222721ce058377256"
                },
                {
-                  "sha": "0243afc341009f03a8734ea42736ff8580fc4458",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1739208926,
-                  "message": "Fix home directory printed without quotes in chmod command",
-                  "url": "https://github.com/ubuntu/authd/commit/0243afc341009f03a8734ea42736ff8580fc4458"
+                  "sha": "14f559237ed5986494643788a9511e632eafa604",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1738094971,
+                  "message": "pam/integration-tests: Verify clients behavior with a subset of auth modes\n\nWe did tested the cases in which many authentication modes were\navailable but we never tested the case in which only one or two are,\nso here it is!",
+                  "url": "https://github.com/ubuntu/authd/commit/14f559237ed5986494643788a9511e632eafa604"
                }
             ],
             "ciActions": [
