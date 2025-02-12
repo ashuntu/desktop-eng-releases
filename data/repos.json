@@ -6525,6 +6525,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4b77502f85ab656994fe716e582223cddadc6bd5",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1739366150,
+                  "message": "pam/integration-tests: Some more tests races fixes (#787)\n\nIn particular handle the `Test.*/Exit_if_authd_is_stopped` cases.\n\nThese may fail due to the fact that we're stopping authd from\nthe test file and this may happen before than vhs is actually running\nthe tape script.\n\nMove the control to the tape instead, so that there's less risk that the\nUI has not started yet when we do the request of stopping authd.\n\nSee for example:\nhttps://github.com/ubuntu/authd/actions/runs/13240235009/job/36953774080?pr=785\n\nUDENG-5993",
+                  "url": "https://github.com/ubuntu/authd/commit/4b77502f85ab656994fe716e582223cddadc6bd5"
+               },
+               {
                   "sha": "6024cc959b14ff265cd259724e351364d64798fc",
                   "author": "Marco Trevisan",
                   "timestamp": 1739286323,
@@ -6537,13 +6544,6 @@
                   "timestamp": 1737120766,
                   "message": "Use more descriptive session mode names\n\n* PASSWD -> CHANGE_PASSWORD: Session mode PASSWD is ambiguous, because\n  authentication includes password authentication. CHANGE_PASSWORD\n  should be clearer.\n* AUTH -> LOGIN: We also authenticate the user when the session mode is\n  CHANGE_PASSWORD. LOGIN makes it clear that the session is for logging\n  the user in.",
                   "url": "https://github.com/ubuntu/authd/commit/8c2dfbfc014cde7b2920de425e280e161e5c77af"
-               },
-               {
-                  "sha": "680cf8da86f2c0889b471bedaba13368329c2e40",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1739250045,
-                  "message": "pam/native: Do not support device authentication mode in polkit (#768)\n\nPolkit UI is quite limited so, although the device authentication works\nas expected, it's far from being user friendly so disable the \"qrcode\"\nUI at all in such case.\n\nUltimately it should be up to the broker to decide whether to support an\nUI or not, but since we can't provide it the service name, we have to\nhandle it in the module.\n\nAt the same time, ignore the local broker when using polkit service.\n\n---\n\nThat said this avoids polkit to show the device authentication as it's\nsomething we already mentioned we don't want, but we can't by design do\nthis kind of filtering in the PAM module, that should be thinnest layer\nbetween authd and the broker, but instead I think we should re-consider\nrefactoring this so that:\n1. The broker mandates the supported authentication modes depending on\nthe PAM environment (service name, interactive or not)\n2. It's up to authd to enable or not the availability of a broker (the\nlocal one in this case).\n\nUDENG-5154",
-                  "url": "https://github.com/ubuntu/authd/commit/680cf8da86f2c0889b471bedaba13368329c2e40"
                }
             ],
             "ciActions": [
