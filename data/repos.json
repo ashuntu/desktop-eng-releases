@@ -3672,6 +3672,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3aa9d8a5be5e859a47d9d8b467905303c54a1e72",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1739444276,
+                  "message": "chore: pull out all interface specific logic into the SnapInterface trait (#183)\n\nWe still had a couple of places outside of the `SnapInterface` trait\r\nthat were specific to the current home interface support. None of the\r\nbusiness logic is changing as part of this PR, but those interface\r\nspecific pieces of logic have been moved out to live either in the trait\r\nitself or in associated helper types, so that adding support for a new\r\ninterface doesn't need to touch other parts of the codebase.\r\n\r\nCurrently work in progress:\r\n\r\n- [x] refactor prompt types to be more driven by `SnapInterface`\r\n- [x] add documentation to the `SnapInterface` trait and associated\r\nhelper types\r\n- [x] refactor the GRPC server to be interface agnostic",
+                  "url": "https://github.com/canonical/prompting-client/commit/3aa9d8a5be5e859a47d9d8b467905303c54a1e72"
+               },
+               {
                   "sha": "997f555ced506b5405f4e390b32ddd090774c783",
                   "author": "Dennis Loose",
                   "timestamp": 1739362005,
@@ -3684,13 +3691,6 @@
                   "timestamp": 1739353690,
                   "message": "maint: migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5951",
                   "url": "https://github.com/canonical/prompting-client/commit/55b54707e20dbca6f220042aec1d28c8f388aff1"
-               },
-               {
-                  "sha": "a494a93da96d9e10bd945bf319a9a15466edd00b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1738857473,
-                  "message": "feat: add high contrast theme (#181)\n\nAdds the missing high contrast theme for the prompting UI\n\n![Screenshot From 2025-02-06\n16-38-07](https://github.com/user-attachments/assets/65a5209f-01c8-4ff0-b8d5-e7c8b36ccfbd)\n![Screenshot From 2025-02-06\n16-38-01](https://github.com/user-attachments/assets/48ba3909-9c7a-4559-ad61-8f5d03550e5d)",
-                  "url": "https://github.com/canonical/prompting-client/commit/a494a93da96d9e10bd945bf319a9a15466edd00b"
                }
             ],
             "ciActions": [],
@@ -5612,6 +5612,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3aa9d8a5be5e859a47d9d8b467905303c54a1e72",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1739444276,
+                  "message": "chore: pull out all interface specific logic into the SnapInterface trait (#183)\n\nWe still had a couple of places outside of the `SnapInterface` trait\r\nthat were specific to the current home interface support. None of the\r\nbusiness logic is changing as part of this PR, but those interface\r\nspecific pieces of logic have been moved out to live either in the trait\r\nitself or in associated helper types, so that adding support for a new\r\ninterface doesn't need to touch other parts of the codebase.\r\n\r\nCurrently work in progress:\r\n\r\n- [x] refactor prompt types to be more driven by `SnapInterface`\r\n- [x] add documentation to the `SnapInterface` trait and associated\r\nhelper types\r\n- [x] refactor the GRPC server to be interface agnostic",
+                  "url": "https://github.com/canonical/prompting-client/commit/3aa9d8a5be5e859a47d9d8b467905303c54a1e72"
+               },
+               {
                   "sha": "997f555ced506b5405f4e390b32ddd090774c783",
                   "author": "Dennis Loose",
                   "timestamp": 1739362005,
@@ -5624,13 +5631,6 @@
                   "timestamp": 1739353690,
                   "message": "maint: migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5951",
                   "url": "https://github.com/canonical/prompting-client/commit/55b54707e20dbca6f220042aec1d28c8f388aff1"
-               },
-               {
-                  "sha": "a494a93da96d9e10bd945bf319a9a15466edd00b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1738857473,
-                  "message": "feat: add high contrast theme (#181)\n\nAdds the missing high contrast theme for the prompting UI\n\n![Screenshot From 2025-02-06\n16-38-07](https://github.com/user-attachments/assets/65a5209f-01c8-4ff0-b8d5-e7c8b36ccfbd)\n![Screenshot From 2025-02-06\n16-38-01](https://github.com/user-attachments/assets/48ba3909-9c7a-4559-ad61-8f5d03550e5d)",
-                  "url": "https://github.com/canonical/prompting-client/commit/a494a93da96d9e10bd945bf319a9a15466edd00b"
                }
             ],
             "ciActions": [],
@@ -6479,7 +6479,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 8,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ffd8d6c610eea76c5eab62815381eb62a9660275",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1739367209,
-                  "message": "Migrate to org GitHub to Jira application (#790)\n\nWe have a new GitHub to Jira global organization application. The\r\nprevious gh workflow action is now deprecated.\r\n\r\nUDENG-5946",
-                  "url": "https://github.com/ubuntu/authd/commit/ffd8d6c610eea76c5eab62815381eb62a9660275"
+                  "sha": "35bd83a3a66e52adda2d7c9ac4a75aa6fefed972",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1739445360,
+                  "message": "Fix linter warning\n\nSA1019: bbolt.ErrDatabaseNotOpen is deprecated: Use the error variables defined in the bbolt/errors package. (staticcheck)",
+                  "url": "https://github.com/ubuntu/authd/commit/35bd83a3a66e52adda2d7c9ac4a75aa6fefed972"
                },
                {
-                  "sha": "4b77502f85ab656994fe716e582223cddadc6bd5",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1739366150,
-                  "message": "pam/integration-tests: Some more tests races fixes (#787)\n\nIn particular handle the `Test.*/Exit_if_authd_is_stopped` cases.\n\nThese may fail due to the fact that we're stopping authd from\nthe test file and this may happen before than vhs is actually running\nthe tape script.\n\nMove the control to the tape instead, so that there's less risk that the\nUI has not started yet when we do the request of stopping authd.\n\nSee for example:\nhttps://github.com/ubuntu/authd/actions/runs/13240235009/job/36953774080?pr=785\n\nUDENG-5993",
-                  "url": "https://github.com/ubuntu/authd/commit/4b77502f85ab656994fe716e582223cddadc6bd5"
+                  "sha": "410bd5e19cb110efa51c65e254a78f834f88cec0",
+                  "author": "adombeck",
+                  "timestamp": 1739444504,
+                  "message": "deps(go): bump the minor-updates group across 1 directory with 5 updates (#793)",
+                  "url": "https://github.com/ubuntu/authd/commit/410bd5e19cb110efa51c65e254a78f834f88cec0"
                },
                {
-                  "sha": "08f09f1e51e8e8aee6c22c470edcaa47297b4c34",
-                  "author": "Didier Roche",
-                  "timestamp": 1739355274,
-                  "message": "Migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5946",
-                  "url": "https://github.com/ubuntu/authd/commit/08f09f1e51e8e8aee6c22c470edcaa47297b4c34"
+                  "sha": "33984110e46dabc9ce1dfc4b3220c8326d4feaaf",
+                  "author": "adombeck",
+                  "timestamp": 1739444168,
+                  "message": "Auto update packaging related Rust files",
+                  "url": "https://github.com/ubuntu/authd/commit/33984110e46dabc9ce1dfc4b3220c8326d4feaaf"
                }
             ],
             "ciActions": [
@@ -7719,6 +7719,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3aa9d8a5be5e859a47d9d8b467905303c54a1e72",
+                  "author": "Innes Anderson-Morrison",
+                  "timestamp": 1739444276,
+                  "message": "chore: pull out all interface specific logic into the SnapInterface trait (#183)\n\nWe still had a couple of places outside of the `SnapInterface` trait\r\nthat were specific to the current home interface support. None of the\r\nbusiness logic is changing as part of this PR, but those interface\r\nspecific pieces of logic have been moved out to live either in the trait\r\nitself or in associated helper types, so that adding support for a new\r\ninterface doesn't need to touch other parts of the codebase.\r\n\r\nCurrently work in progress:\r\n\r\n- [x] refactor prompt types to be more driven by `SnapInterface`\r\n- [x] add documentation to the `SnapInterface` trait and associated\r\nhelper types\r\n- [x] refactor the GRPC server to be interface agnostic",
+                  "url": "https://github.com/canonical/prompting-client/commit/3aa9d8a5be5e859a47d9d8b467905303c54a1e72"
+               },
+               {
                   "sha": "997f555ced506b5405f4e390b32ddd090774c783",
                   "author": "Dennis Loose",
                   "timestamp": 1739362005,
@@ -7731,13 +7738,6 @@
                   "timestamp": 1739353690,
                   "message": "maint: migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5951",
                   "url": "https://github.com/canonical/prompting-client/commit/55b54707e20dbca6f220042aec1d28c8f388aff1"
-               },
-               {
-                  "sha": "a494a93da96d9e10bd945bf319a9a15466edd00b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1738857473,
-                  "message": "feat: add high contrast theme (#181)\n\nAdds the missing high contrast theme for the prompting UI\n\n![Screenshot From 2025-02-06\n16-38-07](https://github.com/user-attachments/assets/65a5209f-01c8-4ff0-b8d5-e7c8b36ccfbd)\n![Screenshot From 2025-02-06\n16-38-01](https://github.com/user-attachments/assets/48ba3909-9c7a-4559-ad61-8f5d03550e5d)",
-                  "url": "https://github.com/canonical/prompting-client/commit/a494a93da96d9e10bd945bf319a9a15466edd00b"
                }
             ],
             "ciActions": [],
