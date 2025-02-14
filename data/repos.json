@@ -4653,25 +4653,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1805c43b865965366e20acc3756d9272630c88b1",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1739504269,
+                  "message": "Bump golang.org/x/sys from 0.29.0 to 0.30.0 (#132)",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/1805c43b865965366e20acc3756d9272630c88b1"
+               },
+               {
+                  "sha": "5e5e0dd2f808fe40639f7274fc53cf86c37f4256",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1739503272,
+                  "message": "Bump golang.org/x/sys from 0.29.0 to 0.30.0\n\nBumps [golang.org/x/sys](https://github.com/golang/sys) from 0.29.0 to 0.30.0.\n- [Commits](https://github.com/golang/sys/compare/v0.29.0...v0.30.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/5e5e0dd2f808fe40639f7274fc53cf86c37f4256"
+               },
+               {
                   "sha": "a7e5fd793d4117fde3d697dbff176ace1b2a68a6",
                   "author": "Carlos Nihelton",
                   "timestamp": 1739501979,
                   "message": "feat(ci): Move to GH hosted runners (#134)\n\nThis will reduce our maintenance burden. Also, GitHub (large) runners\r\nare more capable than the Azure VM set for this CI.\r\n\r\nI pinned Windows 2025 for a few reasons:\r\n\r\n- Previous versions don't support winget.\r\n- It's a hassle to make winget work on Windows 2022.\r\n- Our workflows rely a lot on winget on Windows.\r\n- Not sure if that would even work in CI (reboots could be required)\r\n- Finally, Windows 2025 is not yet considered the latest stable runner.\r\n\r\nOnce GH addresses the last point, we'd be able to replace windows-2025\r\nwith windows-latest.\r\n\r\nAs we won't have a default distro instance and `wsl --list --verbsoe`\r\nprints to stderr, what makes powershell interpret that as a failure when\r\nwe try to backup the default distro instance, I'm changing the\r\nimplementation in favor of `wsl --status`, which is also much simpler to\r\nparse. That condition should not be an error, to begin with.\r\n\r\n---\r\n\r\nUDENG-6048\r\n\r\nMore about the windows-2025 runner:\r\nhttps://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md\r\nMore about winget on Windows Server 2025:\r\nhttps://learn.microsoft.com/en-us/windows-server/get-started/whats-new-windows-server-2025#winget",
                   "url": "https://github.com/ubuntu/GoWSL/commit/a7e5fd793d4117fde3d697dbff176ace1b2a68a6"
-               },
-               {
-                  "sha": "25e9da144c3ef5e8a0110a4e93c97e4906e05e79",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1739371063,
-                  "message": "Simpler way to detect the default distro via wsl.exe for tests\n\nInstead of parsing the output of wsl --list --verbose, which is more complicated,\nwe parse wsl --status, far simpler.",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/25e9da144c3ef5e8a0110a4e93c97e4906e05e79"
-               },
-               {
-                  "sha": "270cd325ff563f68eecb9bc99effde8a2284d5e2",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1739471214,
-                  "message": "Remove the Azure workflow",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/270cd325ff563f68eecb9bc99effde8a2284d5e2"
                }
             ],
             "ciActions": [
