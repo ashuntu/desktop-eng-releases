@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "35bd83a3a66e52adda2d7c9ac4a75aa6fefed972",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1739445360,
-                  "message": "Fix linter warning\n\nSA1019: bbolt.ErrDatabaseNotOpen is deprecated: Use the error variables defined in the bbolt/errors package. (staticcheck)",
-                  "url": "https://github.com/ubuntu/authd/commit/35bd83a3a66e52adda2d7c9ac4a75aa6fefed972"
+                  "sha": "0b9e98f5b70e311c07c575cce73099418b56fbdb",
+                  "author": "Shane Crowley",
+                  "timestamp": 1739541121,
+                  "message": "docs: Surface brokers in docs (#791)\n\nThis implements the discussed plans for better surfacing broker-specific\r\ncontent in the documentation.\r\n\r\n## Surfacing the broker content with queryable tabs\r\n\r\nThe most notable change is the **introduction of tab-based content for\r\ndifferent brokers**. This style of presentation is used immediately on\r\nthe homepage. The motivation for that change is that the homepage tends\r\nto be the most popular page and the first encounter a user has with the\r\ndocumentation; it is therefore a good opportunity to show that there are\r\nmultiple brokers to choose from, along with supporting documentation.\r\nThe user can choose the provider/broker that most interests them and\r\nthey will be pointed directly to broker-specific content. This is made\r\npossible by using URL query parameters, which allow toggling of tabs on\r\npage visit. When a user chooses `broker x` from a set of tabs on one\r\npage, all other tabs will be set to `broker x` on that page, in addition\r\nto other pages in the documentation (where that choice is presented).\r\n\r\n## Readability, discoverability and SEO\r\n\r\n* **Addition of meta descriptions:** a limitation of the tab-based\r\napproach is that we lose the opportunity to give a top-level heading for\r\nsome broker-specific content, which could otherwise help with search\r\nengine optimisation (SEO). To help alleviate that problem, meta\r\ndescriptions are added to affected pages. These are not readable in the\r\ndocs but are consumed by search engines and can help with\r\ndiscoverability.\r\n* **More descriptive page titles:** the top-level header has a\r\nsignificant impact on SEO. Several of the existing headers were\r\nnondescript and have been made more descriptive for user readability but\r\nalso SEO and discoverability.\r\n* **Rewritten homepage:** the homepage blurb was long and dense. It has\r\nbeen shortened and simplified to serve as a better introduction to authd\r\nand its brokers. Where more detail is required it should be found in the\r\nrest of the docs.\r\n* **Cloud provider reference:** adds a table (to be extended over time)\r\nthat summarises some key information, commands and links relating to\r\nspecific brokers/providers.\r\n* **Better landing pages:** structures the content of the landing pages\r\n(howto/index, explanation/index, reference/index) to present the content\r\nin a more organised way to the user.\r\n* **Misc**: removed some syntax from contributing.md that did not play\r\nnicely with the rendered docs.\r\n\r\n## Note on use of raw HTML links\r\n\r\nWhen linking internally to pages using URL query params, raw HTML anchor\r\nlinks are used instead of markdown links. The markdown parser does not\r\nseem to work well with the parameterised URLs when used for internal\r\nlinks.\r\n\r\nUDENG-5902",
+                  "url": "https://github.com/ubuntu/authd/commit/0b9e98f5b70e311c07c575cce73099418b56fbdb"
                },
                {
-                  "sha": "410bd5e19cb110efa51c65e254a78f834f88cec0",
-                  "author": "adombeck",
-                  "timestamp": 1739444504,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 5 updates (#793)",
-                  "url": "https://github.com/ubuntu/authd/commit/410bd5e19cb110efa51c65e254a78f834f88cec0"
+                  "sha": "85f0efb5b4617d6508f26765177f06942b2d7a78",
+                  "author": "shanecrowley",
+                  "timestamp": 1739468743,
+                  "message": "group journalctl commands together\n\nalso adds a log command for authd and all brokers.",
+                  "url": "https://github.com/ubuntu/authd/commit/85f0efb5b4617d6508f26765177f06942b2d7a78"
                },
                {
-                  "sha": "33984110e46dabc9ce1dfc4b3220c8326d4feaaf",
-                  "author": "adombeck",
-                  "timestamp": 1739444168,
-                  "message": "Auto update packaging related Rust files",
-                  "url": "https://github.com/ubuntu/authd/commit/33984110e46dabc9ce1dfc4b3220c8326d4feaaf"
+                  "sha": "1c957ea2a419bcb8f8d79b291e03de7ad2b2a435",
+                  "author": "shanecrowley",
+                  "timestamp": 1739468091,
+                  "message": "make choice for desktop and server persist\n\nthis choice should now persist across sessions.\nit's not currentl queryable, but that's not needed.",
+                  "url": "https://github.com/ubuntu/authd/commit/1c957ea2a419bcb8f8d79b291e03de7ad2b2a435"
                }
             ],
             "ciActions": [
