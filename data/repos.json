@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "af2c753ff86a80c740e295e1b20c4546643bf892",
-                  "author": "adombeck",
-                  "timestamp": 1740135320,
-                  "message": "Add log messages for cases where broker config files are not used (#797)",
-                  "url": "https://github.com/ubuntu/authd/commit/af2c753ff86a80c740e295e1b20c4546643bf892"
+                  "sha": "71483d84d073cdb18b78efa06784a3552d19d76e",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1740424881,
+                  "message": "pam/gdm: Redefine jsonProtoMessage type for go 1.24 (#808)\n\nFix the definition as it wouldn't work in newer go:\n\n```\n# github.com/ubuntu/authd/pam/internal/gdm [github.com/ubuntu/authd/pam/internal/gdm.test]\n./extension.go:91:12: cannot define new methods on non-local type jsonProtoMessage\n./extension.go:106:12: cannot define new methods on non-local type jsonProtoMessage\n./extension.go:115:12: cannot define new methods on non-local type jsonProtoMessage\n./extension.go:119:12: cannot define new methods on non-local type jsonProtoMessage\n./extension.go:123:12: cannot define new methods on non-local type jsonProtoMessage\n./extension.go:137:12: cannot define new methods on non-local type jsonProtoMessage\nFAIL\tgithub.com/ubuntu/authd/pam/internal/gdm [build failed]\n```\n\nSee: https://github.com/golang/go/issues/71917\n\nUDENG-6160",
+                  "url": "https://github.com/ubuntu/authd/commit/71483d84d073cdb18b78efa06784a3552d19d76e"
                },
                {
-                  "sha": "bc039f7d0807234d6d677ec5ebe2b60e6a088df2",
-                  "author": "adombeck",
-                  "timestamp": 1740135251,
-                  "message": "More useful error message (#799)",
-                  "url": "https://github.com/ubuntu/authd/commit/bc039f7d0807234d6d677ec5ebe2b60e6a088df2"
+                  "sha": "6148f83797fb4d10ad1b954f9da9fe0e322314b9",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1740406017,
+                  "message": "pam/gdm/conversation: Drop unneeded C import\n\nIt's not used anywhere in code",
+                  "url": "https://github.com/ubuntu/authd/commit/6148f83797fb4d10ad1b954f9da9fe0e322314b9"
                },
                {
-                  "sha": "65ec1d5cb4a5531d715197dcdf45c2c62852a3a4",
-                  "author": "adombeck",
-                  "timestamp": 1740072038,
-                  "message": "Revert usage of unexplained <ISSUER_URL> placeholder (#806)\n\nCloses #800\nUDENG-6141",
-                  "url": "https://github.com/ubuntu/authd/commit/65ec1d5cb4a5531d715197dcdf45c2c62852a3a4"
+                  "sha": "88963993755ed354ad351fde0968c0ce14fc335f",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1740404895,
+                  "message": "pam/gdm/extension: Redefine jsonProtoMessage type\n\nBy using type alias instead we were getting compile errors in Go 1.24\n\nSee: https://github.com/golang/go/issues/71917",
+                  "url": "https://github.com/ubuntu/authd/commit/88963993755ed354ad351fde0968c0ce14fc335f"
                }
             ],
             "ciActions": [
