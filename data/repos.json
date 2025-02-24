@@ -6170,25 +6170,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "34f1590bd69e09020734d75f6395aa4803710d0b",
-                  "author": "Shane Crowley",
-                  "timestamp": 1740410426,
-                  "message": "docs: Better headers and metas (#1133)\n\nSearch results for these docs are primarily determined by the top-level\nheader and the meta descriptions used.\nWe currently don't set meta descriptions, so the first line of text\nafter the title is used in search results.\n\nFor example, here is search result for installing Ubuntu Pro for WSL. It\nis possible that a user reads the title (from the title of the page) and\ndescription (defaulting to first line after title) and thinks \"what is\nUP4W?\"\n\n![Screenshot from 2025-02-24\n10-08-00](https://github.com/user-attachments/assets/221f89a6-0f7d-4769-b192-ce1903eac51d)\n\nIn this example, it would be difficult to tell that this page even\nrelates to WSL, unless someone looks carefully at the URL:\n\n![Screenshot from 2025-02-24\n10-06-58](https://github.com/user-attachments/assets/45ae172d-bcb0-4236-980b-a0e7a8cd52d1)\n\n\nThe changes in this PR attempt to add more descriptive titles to\nindividual pages, which will be more informative when read as an\nisolated search result; in addition, meta descriptions are added so that\nwe have more control over how pages are described in these search\nresults.\n\nThe markdown meta information included at the top of a given markdown\npages gets converted into html, like so:\n\n```html\n<meta content=\"A complete Ubuntu environment on Windows using WSL, with enhanced security and remote management provided by Ubuntu Pro for WSL.\" lang=\"en\" name=\"description\" xml:lang=\"en\" />\n```\n\nOther changes:\n\n* Dev docs notice: adds a notice when a page is primarily intended for a\ndeveloper audience, to better account for a scenario where a user ends\nup on the installation guide for developers, for example\n* Redirects: added some more redirects to account for the recent merge\nand based on a survey of 404 frequency for the documentation.\n* Fixups: spacing, wording and other small issues\n\n\nUDENG-6053",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/34f1590bd69e09020734d75f6395aa4803710d0b"
+                  "sha": "8cd874906e3fdb61161e5870db58e35099edf2da",
+                  "author": "CarlosNihelton",
+                  "timestamp": 1740413977,
+                  "message": "Auto update internal dependencies",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8cd874906e3fdb61161e5870db58e35099edf2da"
                },
                {
-                  "sha": "843496a40b58e3a979a151af384113d2addbb579",
-                  "author": "shanecrowley",
-                  "timestamp": 1740401671,
-                  "message": "update redirects\n\n* cleans up comments\n* adds additional redirects based on 404-ing pages\n* adds redirect for deprecated autoinstall",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/843496a40b58e3a979a151af384113d2addbb579"
+                  "sha": "0f048a330575da98b40f72d916689b78361617f4",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1740413930,
+                  "message": "feat(windows-agent): Landscape executor to install modern distros (#1106)\n\nI think this is better reviewed commit by commit, as there are some\n\"peasant fixes\" along the way which do not exactly strictly meet the\ncore of this PR, but they were small enough to not deserve a new PR (I\nthink :) ).\n\nThis \"feature\" addresses one specific problem made more evident now that\nthe latest stable version of WSL handles \"modern distros\" (those whose\ndistribution model no longer relies on MS Store nor Windows application\npackages). The problem is: when Landscape sends a message to install an\ninstance, we execute `wsl --install` if that's a stock Ubuntu release.\nThat used to install an APPX, so we'd later run the distro launcher to\nprovision the new instance. But now, `wsl --install Ubuntu` or `wsl\n--install Ubuntu-24.04` would install the modern, tar-based, distro,\nwhich no longer has a launcher to subprocess. So we replace the launcher\ninvocation with just subprocessing `cloud-init status --wait` to wait\nfor the complete provisioning and later check if the default user was\ncreated or not, creating one behind the scenes (preserving the current\nbehaviour).\n\nTo make the error condition of launcher not found distinguishable I\ncreate a specific error type. PowerShell always exits 1 for any error,\nso that's not enough to determine which error was. Instead we need to\nlook into it's output. There is a bunch of small test-related\nshenanigans I had to do to exercise some error paths along the way.\n\n---\n\nUDENG-5929",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0f048a330575da98b40f72d916689b78361617f4"
                },
                {
-                  "sha": "98c5880de9ecbae0f87d567d33c2285617ff6b95",
-                  "author": "shanecrowley",
-                  "timestamp": 1740399794,
-                  "message": "add dev docs notice\n\nit is possible that a regular user could visit a page intended for\ndevelopers.\n\nfor example, a user who wants to install UP4W to use it on their machine\nends up in the installation page for developers.\n\nthis adds a notice that these are not for general use.\n\nin future, we might want to move them, but this is OK for now.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/98c5880de9ecbae0f87d567d33c2285617ff6b95"
+                  "sha": "b017898aa767a534604bc18cf91a2523cc70b50f",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1740413869,
+                  "message": "deps(tools): bump github.com/golangci/golangci-lint from 1.64.4 to 1.64.5 in /tools (#1125)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b017898aa767a534604bc18cf91a2523cc70b50f"
                }
             ],
             "ciActions": [
