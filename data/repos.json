@@ -6170,6 +6170,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "54fc44859337a45bbc9ff1232c041ff30e7844a5",
+                  "author": "ashuntu",
+                  "timestamp": 1740422261,
+                  "message": "feat(l10n): Translations update from Hosted Weblate (#1102)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Ubuntu Pro for\nWSL](https://hosted.weblate.org/projects/ubuntu-desktop-translations/ubuntu-pro-for-wsl/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/ubuntu-pro-for-wsl/horizontal-auto.svg)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/54fc44859337a45bbc9ff1232c041ff30e7844a5"
+               },
+               {
                   "sha": "8cd874906e3fdb61161e5870db58e35099edf2da",
                   "author": "CarlosNihelton",
                   "timestamp": 1740413977,
@@ -6182,13 +6189,6 @@
                   "timestamp": 1740413930,
                   "message": "feat(windows-agent): Landscape executor to install modern distros (#1106)\n\nI think this is better reviewed commit by commit, as there are some\n\"peasant fixes\" along the way which do not exactly strictly meet the\ncore of this PR, but they were small enough to not deserve a new PR (I\nthink :) ).\n\nThis \"feature\" addresses one specific problem made more evident now that\nthe latest stable version of WSL handles \"modern distros\" (those whose\ndistribution model no longer relies on MS Store nor Windows application\npackages). The problem is: when Landscape sends a message to install an\ninstance, we execute `wsl --install` if that's a stock Ubuntu release.\nThat used to install an APPX, so we'd later run the distro launcher to\nprovision the new instance. But now, `wsl --install Ubuntu` or `wsl\n--install Ubuntu-24.04` would install the modern, tar-based, distro,\nwhich no longer has a launcher to subprocess. So we replace the launcher\ninvocation with just subprocessing `cloud-init status --wait` to wait\nfor the complete provisioning and later check if the default user was\ncreated or not, creating one behind the scenes (preserving the current\nbehaviour).\n\nTo make the error condition of launcher not found distinguishable I\ncreate a specific error type. PowerShell always exits 1 for any error,\nso that's not enough to determine which error was. Instead we need to\nlook into it's output. There is a bunch of small test-related\nshenanigans I had to do to exercise some error paths along the way.\n\n---\n\nUDENG-5929",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0f048a330575da98b40f72d916689b78361617f4"
-               },
-               {
-                  "sha": "b017898aa767a534604bc18cf91a2523cc70b50f",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1740413869,
-                  "message": "deps(tools): bump github.com/golangci/golangci-lint from 1.64.4 to 1.64.5 in /tools (#1125)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b017898aa767a534604bc18cf91a2523cc70b50f"
                }
             ],
             "ciActions": [
@@ -6560,25 +6560,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "41abb41cc72de461c1b1cdabce27d0c16700b432",
+                  "author": "adombeck",
+                  "timestamp": 1740424161,
+                  "message": "deps(go): bump golang.org/x/crypto from 0.33.0 to 0.34.0 (#403)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/41abb41cc72de461c1b1cdabce27d0c16700b432"
+               },
+               {
+                  "sha": "fdeac50f22bc35aa21ced5c8d30b0cc30f178186",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1740386232,
+                  "message": "deps(go): bump golang.org/x/crypto from 0.33.0 to 0.34.0\n\nBumps [golang.org/x/crypto](https://github.com/golang/crypto) from 0.33.0 to 0.34.0.\n- [Commits](https://github.com/golang/crypto/compare/v0.33.0...v0.34.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/crypto\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/fdeac50f22bc35aa21ced5c8d30b0cc30f178186"
+               },
+               {
                   "sha": "5eda4f82e1fa50d4d3e777d99e4920aab543742d",
                   "author": "adombeck",
                   "timestamp": 1739894746,
                   "message": "Automatic device authentication when refresh token is expired (#325)\n\nCloses https://github.com/ubuntu/authd/issues/575\r\nUDENG-4911",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/5eda4f82e1fa50d4d3e777d99e4920aab543742d"
-               },
-               {
-                  "sha": "6bae33cb0ce73c10b732566b57f2bf94ea164870",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1737131197,
-                  "message": "Add another test for device authentication as next auth mode",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/6bae33cb0ce73c10b732566b57f2bf94ea164870"
-               },
-               {
-                  "sha": "fea001f3a953a9b797cad3d8202c4939fe6e254d",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1737128240,
-                  "message": "Rename test cases\n\nFor consistency",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/fea001f3a953a9b797cad3d8202c4939fe6e254d"
                }
             ],
             "ciActions": [
