@@ -4543,25 +4543,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3282550442378f0e05fad9e1ffaa74a81c087769",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1740442453,
+                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#861)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/3282550442378f0e05fad9e1ffaa74a81c087769"
+               },
+               {
+                  "sha": "dc6aacbf99ad7de450e866a3ce78c15798e9769b",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1740442337,
+                  "message": "Update bootstrap/light screenshots on `main` (#860)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/dc6aacbf99ad7de450e866a3ce78c15798e9769b"
+               },
+               {
                   "sha": "ac3b6f0d00aa0c36deabe840d6d5de3635d6bb45",
                   "author": "github-actions[bot]",
                   "timestamp": 1740356038,
                   "message": "Update bootstrap/light screenshots on `main` (#859)\n\nCo-authored-by: GitHub <noreply@github.com>",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/ac3b6f0d00aa0c36deabe840d6d5de3635d6bb45"
-               },
-               {
-                  "sha": "2af34eba3957a49c9c241f8164b5ccae343696ca",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1740356021,
-                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#858)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/2af34eba3957a49c9c241f8164b5ccae343696ca"
-               },
-               {
-                  "sha": "4dcb1375b96be171f6d3bdee65aa63b1af34c4c1",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1740269555,
-                  "message": "Update init/light screenshots on `main` (#857)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/4dcb1375b96be171f6d3bdee65aa63b1af34c4c1"
                }
             ],
             "ciActions": [
@@ -6170,25 +6170,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0b0d40e306b812aa0f043ddb56378328751c13f3",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1740442551,
+                  "message": "deps(gui-ubuntupro): bump file_picker from 8.3.5 to 9.0.0 in /gui/packages/ubuntupro (#1130)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0b0d40e306b812aa0f043ddb56378328751c13f3"
+               },
+               {
+                  "sha": "02ab9d7be92c4443b599ec2179af67d5e5347b80",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1740442250,
+                  "message": "deps(wsl-pro-service): bump github.com/spf13/cobra from 1.8.1 to 1.9.1 in /wsl-pro-service (#1126)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/02ab9d7be92c4443b599ec2179af67d5e5347b80"
+               },
+               {
                   "sha": "54fc44859337a45bbc9ff1232c041ff30e7844a5",
                   "author": "ashuntu",
                   "timestamp": 1740422261,
                   "message": "feat(l10n): Translations update from Hosted Weblate (#1102)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Ubuntu Pro for\nWSL](https://hosted.weblate.org/projects/ubuntu-desktop-translations/ubuntu-pro-for-wsl/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/ubuntu-pro-for-wsl/horizontal-auto.svg)",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/54fc44859337a45bbc9ff1232c041ff30e7844a5"
-               },
-               {
-                  "sha": "8cd874906e3fdb61161e5870db58e35099edf2da",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1740413977,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8cd874906e3fdb61161e5870db58e35099edf2da"
-               },
-               {
-                  "sha": "0f048a330575da98b40f72d916689b78361617f4",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1740413930,
-                  "message": "feat(windows-agent): Landscape executor to install modern distros (#1106)\n\nI think this is better reviewed commit by commit, as there are some\n\"peasant fixes\" along the way which do not exactly strictly meet the\ncore of this PR, but they were small enough to not deserve a new PR (I\nthink :) ).\n\nThis \"feature\" addresses one specific problem made more evident now that\nthe latest stable version of WSL handles \"modern distros\" (those whose\ndistribution model no longer relies on MS Store nor Windows application\npackages). The problem is: when Landscape sends a message to install an\ninstance, we execute `wsl --install` if that's a stock Ubuntu release.\nThat used to install an APPX, so we'd later run the distro launcher to\nprovision the new instance. But now, `wsl --install Ubuntu` or `wsl\n--install Ubuntu-24.04` would install the modern, tar-based, distro,\nwhich no longer has a launcher to subprocess. So we replace the launcher\ninvocation with just subprocessing `cloud-init status --wait` to wait\nfor the complete provisioning and later check if the default user was\ncreated or not, creating one behind the scenes (preserving the current\nbehaviour).\n\nTo make the error condition of launcher not found distinguishable I\ncreate a specific error type. PowerShell always exits 1 for any error,\nso that's not enough to determine which error was. Instead we need to\nlook into it's output. There is a bunch of small test-related\nshenanigans I had to do to exercise some error paths along the way.\n\n---\n\nUDENG-5929",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0f048a330575da98b40f72d916689b78361617f4"
                }
             ],
             "ciActions": [
@@ -8203,25 +8203,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3282550442378f0e05fad9e1ffaa74a81c087769",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1740442453,
+                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#861)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/3282550442378f0e05fad9e1ffaa74a81c087769"
+               },
+               {
+                  "sha": "dc6aacbf99ad7de450e866a3ce78c15798e9769b",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1740442337,
+                  "message": "Update bootstrap/light screenshots on `main` (#860)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/dc6aacbf99ad7de450e866a3ce78c15798e9769b"
+               },
+               {
                   "sha": "ac3b6f0d00aa0c36deabe840d6d5de3635d6bb45",
                   "author": "github-actions[bot]",
                   "timestamp": 1740356038,
                   "message": "Update bootstrap/light screenshots on `main` (#859)\n\nCo-authored-by: GitHub <noreply@github.com>",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/ac3b6f0d00aa0c36deabe840d6d5de3635d6bb45"
-               },
-               {
-                  "sha": "2af34eba3957a49c9c241f8164b5ccae343696ca",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1740356021,
-                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#858)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/2af34eba3957a49c9c241f8164b5ccae343696ca"
-               },
-               {
-                  "sha": "4dcb1375b96be171f6d3bdee65aa63b1af34c4c1",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1740269555,
-                  "message": "Update init/light screenshots on `main` (#857)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/4dcb1375b96be171f6d3bdee65aa63b1af34c4c1"
                }
             ],
             "ciActions": [
