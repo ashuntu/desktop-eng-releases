@@ -6170,25 +6170,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9137776e4ce9f0e56212803b8b7606d00f9d26b4",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1741364486,
+                  "message": "feat(l10n): Translations update from Hosted Weblate (#1147)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Ubuntu Pro for\nWSL](https://hosted.weblate.org/projects/ubuntu-desktop-translations/ubuntu-pro-for-wsl/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/ubuntu-pro-for-wsl/horizontal-auto.svg)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9137776e4ce9f0e56212803b8b7606d00f9d26b4"
+               },
+               {
+                  "sha": "9369f1e81e3ec555c004b96f31556a28acc23aed",
+                  "author": "Peter Vančo",
+                  "timestamp": 1740827970,
+                  "message": "Translated using Weblate (Slovak)\n\nCurrently translated at 100.0% (63 of 63 strings)\n\nTranslation: ubuntu-desktop-translations/Ubuntu Pro for WSL\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/ubuntu-pro-for-wsl/sk/",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9369f1e81e3ec555c004b96f31556a28acc23aed"
+               },
+               {
                   "sha": "446db3655e89997ee5721bb9f9f36b7bd6ed0a63",
                   "author": "dependabot[bot]",
                   "timestamp": 1740666257,
                   "message": "deps(gui-ubuntupro): bump file_picker from 9.0.0 to 9.0.1 in /gui/packages/ubuntupro (#1146)",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/446db3655e89997ee5721bb9f9f36b7bd6ed0a63"
-               },
-               {
-                  "sha": "735f9a9213480d8c9bcb851234906f4871e07363",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1740665507,
-                  "message": "deps(gui-ubuntupro): bump file_picker in /gui/packages/ubuntupro\n\nBumps [file_picker](https://github.com/miguelpruivo/flutter_file_picker) from 9.0.0 to 9.0.1.\n- [Release notes](https://github.com/miguelpruivo/flutter_file_picker/releases)\n- [Changelog](https://github.com/miguelpruivo/flutter_file_picker/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/miguelpruivo/flutter_file_picker/commits)\n\n---\nupdated-dependencies:\n- dependency-name: file_picker\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/735f9a9213480d8c9bcb851234906f4871e07363"
-               },
-               {
-                  "sha": "dd82530aef6f0d31742c18f1b6066beb8cea970c",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1740665340,
-                  "message": "fix(wsl-pro-service): wait for cloud-init before fixing Landscape client.conf (#1137)\n\nWith the current behaviour wsl-pro-service and cloud-init race for the\nLandscape client.conf file during first boot.\nIt's possible that wsl-pro-service passes by the routine supposed to fix\nthat configuration file before it exists, thus the instance wouldn't be\nregistered with Landscape before a reboot.\n\nWe cannot simply order them via the systemd units because the Landscape\nconfiguration happens in cloud-init's final stage. The sync point for\nthat stage is cloud-init.target. But that systemd target\n`Wants=multi-user.target` so it won't be reached before the login\nfinishes. `wsl-pro.service`on the other hand declares itself as\n`WantedBy=multi-user.target` so it has a systemd target against which\nit's installed (otherwise it wouldn't be enabled), which makes it a\ndependency for the boot, thus making it impossible to make it\n`After=cloud-init.target` or `Wants=cloud-init.target`. That would\nresult in a cycle.\nThere is no other meaningful systemd target we could make\n`wsl-pro.service` a dependency of to solve this cycle.\n\nSo let's sync in code. \n\nI'm doing the now popular snippet to check if the cloud-init.service is\nenabled before running `cloud-init --wait` to prevent hangs in case the\nunit goes disabled. I'm not checking if systemd is running because we\nare a child of systemd. Since I'm doing the check right before\nattempting to touch the client.conf file, and waiting on cloud-init\ncould make systemd time us out, I'm moving that check to a place after\nwe notify systemd that we are ready, thus unblocking the boot. I'm also\nadding a test case to make sure a broken client.conf won't interfere\nwith wsl-pro-service's communication with the windows agent.\n\nAs a final quality-of-life measure I'm adding this line to the systemd\nunit:\n\n```diff\n[Service]\nType=notify\n+ NotifyAccess=all\nExecStart=/usr/libexec/wsl-pro-service\nRestart=always\nRestartSec=2s\n```\nbecause I saw systemd logging many times complaints about\nwsl-pro-service notifying readiness from another PID than the one\nsystemd originally started. This should allow any subprocess or thread\nof wsl-pro-service to notify it without that annoying log line.\n\n\n---\nUDENG-5890",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/dd82530aef6f0d31742c18f1b6066beb8cea970c"
                }
             ],
             "ciActions": [
