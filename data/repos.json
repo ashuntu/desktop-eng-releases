@@ -4789,25 +4789,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0d86ae287b6798817205561f5ce4e22f643a8a7b",
+                  "sha": "6f0f09dc69e6306b6547a3e4cea8276b7672188d",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1741699497,
-                  "message": "Using WSL_DISTRO_NAME instead of the wslpath technique (#20)\n\nAs recommended by the MS WSL Team.\n\nI confirmed this and other interesting WSL_* environment variables are\navailable for this script.\nI wish systemd services had the same.\n\n\n![image](https://github.com/user-attachments/assets/ef423d56-817f-483f-b34a-46768163e8ed)\n\n\n---\nUDENG-6170",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/0d86ae287b6798817205561f5ce4e22f643a8a7b"
+                  "timestamp": 1741704658,
+                  "message": "Wait for cloud init in a separate script (#21)\n\nThis snippet being removed here is duplicated in a bunch of places now.\nWith the breaking changes introduced in cloud-init 24.3, we would have\nto change the systemd unit we check in that snippet in a bunch of places\nfor the next LTS (Noble is and remains unaffected by that breaking\nchange). Ref:\nhttps://cloudinit.readthedocs.io/en/latest/reference/breaking_changes.html#id3.\n\nSo this PR addresses the duplication and handles that breaking change at\nthe same time before it becomes an issue. We do so by:\n- Moving the snippet that checks and blocks on cloud-init into a\nseparate script, such that other places where this code is present must\njust invoke this script instead;\n- check for `cloud-init-local.service` instead of `cloud-init.service`\nthat won't exist for other releases after Noble. The first exists before\nand after the breaking changes.\n\nCloud-init documentation advises that:\n\n> Any external services which are ordered after or depend on the old\ncloud-init.service name can safely switch to cloud-config.target, which\nshould provide the same point in boot order before and after this\nchange.\n\nBut that target is statically enabled\n\n```\n~$ systemctl is-enabled cloud-config.target\nstatic\n```\n\nThus, not a good one to check for enablement.\n\n---\nUDENG-6143",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/6f0f09dc69e6306b6547a3e4cea8276b7672188d"
                },
                {
-                  "sha": "e112817bff3be808c0290ff6b5ef2b73888bfdd6",
+                  "sha": "74d31ea9c1c7ecd42d6d2a124c43e256efb99d3c",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1741639162,
-                  "message": "Using WSL_DISTRO_NAME instead of the wslpath technique\n\nAs recommended by the MS WSL Team.\n\nI confirmed this and other interesting WSL_* environment variables\nare available for this script.\nI wish systemd services had the same.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/e112817bff3be808c0290ff6b5ef2b73888bfdd6"
+                  "timestamp": 1741703962,
+                  "message": "Sources from the computed directory\n\ninstead of relying that pwd won't change.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/74d31ea9c1c7ecd42d6d2a124c43e256efb99d3c"
                },
                {
-                  "sha": "59eacc5aeec96060f181148b9b7d414745f6096b",
-                  "author": "Didier Roche",
-                  "timestamp": 1737549767,
-                  "message": "releasing package wsl-setup version 0.5.8",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/59eacc5aeec96060f181148b9b7d414745f6096b"
+                  "sha": "6832b477576353c3953457d838cb1e909a9f8e7e",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1741702751,
+                  "message": "Add wait-for-cloud-init to debian/install",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/6832b477576353c3953457d838cb1e909a9f8e7e"
                }
             ],
             "ciActions": [],
@@ -6766,25 +6766,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0d86ae287b6798817205561f5ce4e22f643a8a7b",
+                  "sha": "6f0f09dc69e6306b6547a3e4cea8276b7672188d",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1741699497,
-                  "message": "Using WSL_DISTRO_NAME instead of the wslpath technique (#20)\n\nAs recommended by the MS WSL Team.\n\nI confirmed this and other interesting WSL_* environment variables are\navailable for this script.\nI wish systemd services had the same.\n\n\n![image](https://github.com/user-attachments/assets/ef423d56-817f-483f-b34a-46768163e8ed)\n\n\n---\nUDENG-6170",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/0d86ae287b6798817205561f5ce4e22f643a8a7b"
+                  "timestamp": 1741704658,
+                  "message": "Wait for cloud init in a separate script (#21)\n\nThis snippet being removed here is duplicated in a bunch of places now.\nWith the breaking changes introduced in cloud-init 24.3, we would have\nto change the systemd unit we check in that snippet in a bunch of places\nfor the next LTS (Noble is and remains unaffected by that breaking\nchange). Ref:\nhttps://cloudinit.readthedocs.io/en/latest/reference/breaking_changes.html#id3.\n\nSo this PR addresses the duplication and handles that breaking change at\nthe same time before it becomes an issue. We do so by:\n- Moving the snippet that checks and blocks on cloud-init into a\nseparate script, such that other places where this code is present must\njust invoke this script instead;\n- check for `cloud-init-local.service` instead of `cloud-init.service`\nthat won't exist for other releases after Noble. The first exists before\nand after the breaking changes.\n\nCloud-init documentation advises that:\n\n> Any external services which are ordered after or depend on the old\ncloud-init.service name can safely switch to cloud-config.target, which\nshould provide the same point in boot order before and after this\nchange.\n\nBut that target is statically enabled\n\n```\n~$ systemctl is-enabled cloud-config.target\nstatic\n```\n\nThus, not a good one to check for enablement.\n\n---\nUDENG-6143",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/6f0f09dc69e6306b6547a3e4cea8276b7672188d"
                },
                {
-                  "sha": "e112817bff3be808c0290ff6b5ef2b73888bfdd6",
+                  "sha": "74d31ea9c1c7ecd42d6d2a124c43e256efb99d3c",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1741639162,
-                  "message": "Using WSL_DISTRO_NAME instead of the wslpath technique\n\nAs recommended by the MS WSL Team.\n\nI confirmed this and other interesting WSL_* environment variables\nare available for this script.\nI wish systemd services had the same.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/e112817bff3be808c0290ff6b5ef2b73888bfdd6"
+                  "timestamp": 1741703962,
+                  "message": "Sources from the computed directory\n\ninstead of relying that pwd won't change.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/74d31ea9c1c7ecd42d6d2a124c43e256efb99d3c"
                },
                {
-                  "sha": "59eacc5aeec96060f181148b9b7d414745f6096b",
-                  "author": "Didier Roche",
-                  "timestamp": 1737549767,
-                  "message": "releasing package wsl-setup version 0.5.8",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/59eacc5aeec96060f181148b9b7d414745f6096b"
+                  "sha": "6832b477576353c3953457d838cb1e909a9f8e7e",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1741702751,
+                  "message": "Add wait-for-cloud-init to debian/install",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/6832b477576353c3953457d838cb1e909a9f8e7e"
                }
             ],
             "ciActions": [],
