@@ -6525,6 +6525,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4adde505bfc0b4ec7ee916f1a9969d99f889ab1f",
+                  "author": "adombeck",
+                  "timestamp": 1742467420,
+                  "message": "Apply suggestions from SQLite FAQ to avoid the \"database is locked\" error (#849)\n\nCloses #845\nUDENG-6472",
+                  "url": "https://github.com/ubuntu/authd/commit/4adde505bfc0b4ec7ee916f1a9969d99f889ab1f"
+               },
+               {
                   "sha": "71113353f58e7f1507153b0c565125090c50fd7e",
                   "author": "adombeck",
                   "timestamp": 1742461697,
@@ -6537,13 +6544,6 @@
                   "timestamp": 1742388648,
                   "message": "Test database removed when schema creation fails",
                   "url": "https://github.com/ubuntu/authd/commit/7f8f24ba1055100d700f6789eb6fbb17b2401d23"
-               },
-               {
-                  "sha": "e3ce9c1f4250cdf8516f6ddc2a2301c33a441ade",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1741968634,
-                  "message": "Remove database on schema creation failure\n\nI noticed that if the schema creation fails (e.g. because the schema is\ninvalid), the database file is still created and authd uses it the next\ntime it's started. That results in authd starting up successfully but in\nfailure of each request which uses the broken database.\n\nLet's avoid that by ensuring that the database file is removed when the\nschema creation fails.",
-                  "url": "https://github.com/ubuntu/authd/commit/e3ce9c1f4250cdf8516f6ddc2a2301c33a441ade"
                }
             ],
             "ciActions": [
