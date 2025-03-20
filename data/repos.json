@@ -4121,25 +4121,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c7e2a8c27727563f23c2adbfeb17ba4bbc216654",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742486065,
+                  "message": "fix: info badge alignment (#993)\n\nFixes the 'experimental' badge alignment issues as discussed with\n@juanruitina\n\nBefore:\n\n[Screencast From 2025-03-20\n16-07-02.webm](https://github.com/user-attachments/assets/5e995490-05c5-4826-9d9c-fafe8dd5e290)\n\nAfter:\n\n[Screencast From 2025-03-20\n16-08-11.webm](https://github.com/user-attachments/assets/432d703c-4b82-4954-9b78-246b83ada43b)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c7e2a8c27727563f23c2adbfeb17ba4bbc216654"
+               },
+               {
+                  "sha": "582c2a082c821ea1d641600ebca060d50b62b149",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742483364,
+                  "message": "fix: info badge alignment",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/582c2a082c821ea1d641600ebca060d50b62b149"
+               },
+               {
                   "sha": "6c65d57c354d8ca04627b474644f609a80ad9e07",
                   "author": "Dennis Loose",
                   "timestamp": 1742479270,
                   "message": "fix: disable delete partition button while waiting for reply (#992)\n\nFixes a bug on the manual storage page where pressing the `-` button (to\ndelete a partition) multiple times in quick succession, can lead to an\nerror in subiquity. To prevent sending the same request twice before\nsubiquity responds, this PR adds some logic to disable the button while\nwe wait for the server reply. We should consider introducing a proper UI\nloading state in the future, though.\n\nExample with artificial delay in subiquity:\n```diff\ndiff --git i/subiquity/server/controllers/filesystem.py w/subiquity/server/controllers/filesystem.py\nindex a12b6fe8..1b065b97 100644\n--- i/subiquity/server/controllers/filesystem.py\n+++ w/subiquity/server/controllers/filesystem.py\n@@ -1482,6 +1482,7 @@ class FilesystemController(SubiquityController, FilesystemManipulator):\n         self, data: ModifyPartitionV2\n     ) -> StorageResponseV2:\n         log.debug(data)\n+        await asyncio.sleep(2)\n         self.locked_probe_data = True\n         disk = self.model._one(id=data.disk_id)\n         if disk.ptable == \"unsupported\":\n\n```\n\nBefore:\n\n[Screencast From 2025-03-20\n14-09-16.webm](https://github.com/user-attachments/assets/15bd9874-6e51-4bf8-99e3-d0319886635b)\n\nAfter\n\n[Screencast From 2025-03-20\n14-07-03.webm](https://github.com/user-attachments/assets/468a7790-29fa-4b7d-84d9-18c45ea7e2c0)\n\n\n[lp:2103662](https://bugs.launchpad.net/subiquity/+bug/2103662)\nUDENG-6491",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6c65d57c354d8ca04627b474644f609a80ad9e07"
-               },
-               {
-                  "sha": "35b91319025520f4099e16386843d80ac6a06ace",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742476039,
-                  "message": "fix: disable delete partition button while waiting for reply",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/35b91319025520f4099e16386843d80ac6a06ace"
-               },
-               {
-                  "sha": "821833f5779ba8a8737e2dbc46e121a3a021982c",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742382101,
-                  "message": "fix: reset storage before setting a guided target (#986)\n\nI've explored a few different options for fixing this, but ultimately\ndecided that resetting the storage before setting the guided target\n(which is currently being done when the confirmation page is loaded) is\nthe simplest solution.\nMy preferred solution would be posting to `/storage/v2/guided` once the\nuser finishes the storage configuration, but since all pages in the\nstorage wizard potentially affect the request we need to send, we'd have\nto do the request either on the last page in the wizard (currently the\n'passphrase' page) or on the first page that follows just after the\nstorage wizard (currently the 'identity' page). Both seem like arbitrary\nchoices and we'd have to move the logic around again in case these pages\nare moved to a different place.\nIf we find some time to refactor the `wizard_router`, we could also add\nan `onDone` callback to the `Wizard`.\n\nFix [lp:2097271](https://bugs.launchpad.net/subiquity/+bug/2097271)\nUDENG-6411",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/821833f5779ba8a8737e2dbc46e121a3a021982c"
                }
             ],
             "ciActions": [
@@ -6061,25 +6061,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c7e2a8c27727563f23c2adbfeb17ba4bbc216654",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742486065,
+                  "message": "fix: info badge alignment (#993)\n\nFixes the 'experimental' badge alignment issues as discussed with\n@juanruitina\n\nBefore:\n\n[Screencast From 2025-03-20\n16-07-02.webm](https://github.com/user-attachments/assets/5e995490-05c5-4826-9d9c-fafe8dd5e290)\n\nAfter:\n\n[Screencast From 2025-03-20\n16-08-11.webm](https://github.com/user-attachments/assets/432d703c-4b82-4954-9b78-246b83ada43b)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c7e2a8c27727563f23c2adbfeb17ba4bbc216654"
+               },
+               {
+                  "sha": "582c2a082c821ea1d641600ebca060d50b62b149",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742483364,
+                  "message": "fix: info badge alignment",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/582c2a082c821ea1d641600ebca060d50b62b149"
+               },
+               {
                   "sha": "6c65d57c354d8ca04627b474644f609a80ad9e07",
                   "author": "Dennis Loose",
                   "timestamp": 1742479270,
                   "message": "fix: disable delete partition button while waiting for reply (#992)\n\nFixes a bug on the manual storage page where pressing the `-` button (to\ndelete a partition) multiple times in quick succession, can lead to an\nerror in subiquity. To prevent sending the same request twice before\nsubiquity responds, this PR adds some logic to disable the button while\nwe wait for the server reply. We should consider introducing a proper UI\nloading state in the future, though.\n\nExample with artificial delay in subiquity:\n```diff\ndiff --git i/subiquity/server/controllers/filesystem.py w/subiquity/server/controllers/filesystem.py\nindex a12b6fe8..1b065b97 100644\n--- i/subiquity/server/controllers/filesystem.py\n+++ w/subiquity/server/controllers/filesystem.py\n@@ -1482,6 +1482,7 @@ class FilesystemController(SubiquityController, FilesystemManipulator):\n         self, data: ModifyPartitionV2\n     ) -> StorageResponseV2:\n         log.debug(data)\n+        await asyncio.sleep(2)\n         self.locked_probe_data = True\n         disk = self.model._one(id=data.disk_id)\n         if disk.ptable == \"unsupported\":\n\n```\n\nBefore:\n\n[Screencast From 2025-03-20\n14-09-16.webm](https://github.com/user-attachments/assets/15bd9874-6e51-4bf8-99e3-d0319886635b)\n\nAfter\n\n[Screencast From 2025-03-20\n14-07-03.webm](https://github.com/user-attachments/assets/468a7790-29fa-4b7d-84d9-18c45ea7e2c0)\n\n\n[lp:2103662](https://bugs.launchpad.net/subiquity/+bug/2103662)\nUDENG-6491",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6c65d57c354d8ca04627b474644f609a80ad9e07"
-               },
-               {
-                  "sha": "35b91319025520f4099e16386843d80ac6a06ace",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742476039,
-                  "message": "fix: disable delete partition button while waiting for reply",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/35b91319025520f4099e16386843d80ac6a06ace"
-               },
-               {
-                  "sha": "821833f5779ba8a8737e2dbc46e121a3a021982c",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742382101,
-                  "message": "fix: reset storage before setting a guided target (#986)\n\nI've explored a few different options for fixing this, but ultimately\ndecided that resetting the storage before setting the guided target\n(which is currently being done when the confirmation page is loaded) is\nthe simplest solution.\nMy preferred solution would be posting to `/storage/v2/guided` once the\nuser finishes the storage configuration, but since all pages in the\nstorage wizard potentially affect the request we need to send, we'd have\nto do the request either on the last page in the wizard (currently the\n'passphrase' page) or on the first page that follows just after the\nstorage wizard (currently the 'identity' page). Both seem like arbitrary\nchoices and we'd have to move the logic around again in case these pages\nare moved to a different place.\nIf we find some time to refactor the `wizard_router`, we could also add\nan `onDone` callback to the `Wizard`.\n\nFix [lp:2097271](https://bugs.launchpad.net/subiquity/+bug/2097271)\nUDENG-6411",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/821833f5779ba8a8737e2dbc46e121a3a021982c"
                }
             ],
             "ciActions": [
@@ -8168,25 +8168,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c7e2a8c27727563f23c2adbfeb17ba4bbc216654",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742486065,
+                  "message": "fix: info badge alignment (#993)\n\nFixes the 'experimental' badge alignment issues as discussed with\n@juanruitina\n\nBefore:\n\n[Screencast From 2025-03-20\n16-07-02.webm](https://github.com/user-attachments/assets/5e995490-05c5-4826-9d9c-fafe8dd5e290)\n\nAfter:\n\n[Screencast From 2025-03-20\n16-08-11.webm](https://github.com/user-attachments/assets/432d703c-4b82-4954-9b78-246b83ada43b)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c7e2a8c27727563f23c2adbfeb17ba4bbc216654"
+               },
+               {
+                  "sha": "582c2a082c821ea1d641600ebca060d50b62b149",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742483364,
+                  "message": "fix: info badge alignment",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/582c2a082c821ea1d641600ebca060d50b62b149"
+               },
+               {
                   "sha": "6c65d57c354d8ca04627b474644f609a80ad9e07",
                   "author": "Dennis Loose",
                   "timestamp": 1742479270,
                   "message": "fix: disable delete partition button while waiting for reply (#992)\n\nFixes a bug on the manual storage page where pressing the `-` button (to\ndelete a partition) multiple times in quick succession, can lead to an\nerror in subiquity. To prevent sending the same request twice before\nsubiquity responds, this PR adds some logic to disable the button while\nwe wait for the server reply. We should consider introducing a proper UI\nloading state in the future, though.\n\nExample with artificial delay in subiquity:\n```diff\ndiff --git i/subiquity/server/controllers/filesystem.py w/subiquity/server/controllers/filesystem.py\nindex a12b6fe8..1b065b97 100644\n--- i/subiquity/server/controllers/filesystem.py\n+++ w/subiquity/server/controllers/filesystem.py\n@@ -1482,6 +1482,7 @@ class FilesystemController(SubiquityController, FilesystemManipulator):\n         self, data: ModifyPartitionV2\n     ) -> StorageResponseV2:\n         log.debug(data)\n+        await asyncio.sleep(2)\n         self.locked_probe_data = True\n         disk = self.model._one(id=data.disk_id)\n         if disk.ptable == \"unsupported\":\n\n```\n\nBefore:\n\n[Screencast From 2025-03-20\n14-09-16.webm](https://github.com/user-attachments/assets/15bd9874-6e51-4bf8-99e3-d0319886635b)\n\nAfter\n\n[Screencast From 2025-03-20\n14-07-03.webm](https://github.com/user-attachments/assets/468a7790-29fa-4b7d-84d9-18c45ea7e2c0)\n\n\n[lp:2103662](https://bugs.launchpad.net/subiquity/+bug/2103662)\nUDENG-6491",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6c65d57c354d8ca04627b474644f609a80ad9e07"
-               },
-               {
-                  "sha": "35b91319025520f4099e16386843d80ac6a06ace",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742476039,
-                  "message": "fix: disable delete partition button while waiting for reply",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/35b91319025520f4099e16386843d80ac6a06ace"
-               },
-               {
-                  "sha": "821833f5779ba8a8737e2dbc46e121a3a021982c",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742382101,
-                  "message": "fix: reset storage before setting a guided target (#986)\n\nI've explored a few different options for fixing this, but ultimately\ndecided that resetting the storage before setting the guided target\n(which is currently being done when the confirmation page is loaded) is\nthe simplest solution.\nMy preferred solution would be posting to `/storage/v2/guided` once the\nuser finishes the storage configuration, but since all pages in the\nstorage wizard potentially affect the request we need to send, we'd have\nto do the request either on the last page in the wizard (currently the\n'passphrase' page) or on the first page that follows just after the\nstorage wizard (currently the 'identity' page). Both seem like arbitrary\nchoices and we'd have to move the logic around again in case these pages\nare moved to a different place.\nIf we find some time to refactor the `wizard_router`, we could also add\nan `onDone` callback to the `Wizard`.\n\nFix [lp:2097271](https://bugs.launchpad.net/subiquity/+bug/2097271)\nUDENG-6411",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/821833f5779ba8a8737e2dbc46e121a3a021982c"
                }
             ],
             "ciActions": [
