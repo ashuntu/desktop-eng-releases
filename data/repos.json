@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "93ae6486698dffb4fb4528656b8bd2f1a1946b29",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1742397775,
-                  "message": "pam/cli: Factorize list views code and remove empty vertical spaces (#840)\n\nWe have two stages using lists at the moment that are basically\nrepeating the same code in most logic, avoid such duplication and handle\neverything in a new list type that is used as base of both the broker\nand authentication selection stages.\n\nThen, Bubbletea by default shows lists in full screen mode, however this\nis far from optimal in our implementation because the command triggering\nthe pam request is hidden making the user to lose the context in a\nsecurity-related operation.\n\nUDENG-6445",
-                  "url": "https://github.com/ubuntu/authd/commit/93ae6486698dffb4fb4528656b8bd2f1a1946b29"
+                  "sha": "71113353f58e7f1507153b0c565125090c50fd7e",
+                  "author": "adombeck",
+                  "timestamp": 1742461697,
+                  "message": "Remove database on schema creation failure (#837)\n\nUDENG-6482",
+                  "url": "https://github.com/ubuntu/authd/commit/71113353f58e7f1507153b0c565125090c50fd7e"
                },
                {
-                  "sha": "75499a074c80e5fe98cf16ca6c8dbf25c9129797",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1742392734,
-                  "message": "Add tags to ignore static check on helper files (#842)\n\nWe have a lot of helper files to help us test our project and those are\nprotected to not be built with \"go build\" to avoid having those in the\nrelease binary. To avoid having to update tics configuration every time\nwe rename those files or add new ones, let's tag them and filter those\nout in the analysis.",
-                  "url": "https://github.com/ubuntu/authd/commit/75499a074c80e5fe98cf16ca6c8dbf25c9129797"
+                  "sha": "7f8f24ba1055100d700f6789eb6fbb17b2401d23",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1742388648,
+                  "message": "Test database removed when schema creation fails",
+                  "url": "https://github.com/ubuntu/authd/commit/7f8f24ba1055100d700f6789eb6fbb17b2401d23"
                },
                {
-                  "sha": "7015a83d96e4f96daa1cf8e830a95fcb5c3f2418",
-                  "author": "Shane Crowley",
-                  "timestamp": 1742382050,
-                  "message": "docs: change github_folder to repo_folder (#848)\n\n`github_folder` was deprecated in a recent update to the starter pack\nand is now replaced with the more generic `repo_folder`.\n\nThe change caused failed builds on Read the Docs, which should be fixed\nby this PR.",
-                  "url": "https://github.com/ubuntu/authd/commit/7015a83d96e4f96daa1cf8e830a95fcb5c3f2418"
+                  "sha": "e3ce9c1f4250cdf8516f6ddc2a2301c33a441ade",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1741968634,
+                  "message": "Remove database on schema creation failure\n\nI noticed that if the schema creation fails (e.g. because the schema is\ninvalid), the database file is still created and authd uses it the next\ntime it's started. That results in authd starting up successfully but in\nfailure of each request which uses the broken database.\n\nLet's avoid that by ensuring that the database file is removed when the\nschema creation fails.",
+                  "url": "https://github.com/ubuntu/authd/commit/e3ce9c1f4250cdf8516f6ddc2a2301c33a441ade"
                }
             ],
             "ciActions": [
