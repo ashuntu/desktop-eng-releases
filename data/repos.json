@@ -6525,25 +6525,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4adde505bfc0b4ec7ee916f1a9969d99f889ab1f",
-                  "author": "adombeck",
-                  "timestamp": 1742467420,
-                  "message": "Apply suggestions from SQLite FAQ to avoid the \"database is locked\" error (#849)\n\nCloses #845\nUDENG-6472",
-                  "url": "https://github.com/ubuntu/authd/commit/4adde505bfc0b4ec7ee916f1a9969d99f889ab1f"
+                  "sha": "64510eecf767ea7af9904b1dd72cd9ae362a3403",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1742502249,
+                  "message": "pam: Fix races handling in VHS tests and fix bubbletea models implementations (#846)\n\nSee commits for details, but basically lots of cleanups to ensure that\nthe races are properly monitored and that the artifacts saved in CI,\nthen I decided to tackle the root cause of\nhttps://github.com/charmbracelet/bubbletea/issues/909 that was mostly\ndue to the fact that we were, in various cases, updating the models with\npointer receivers, instead of relying on the returned and modified\nvalue.\n\nComing with various cleanups.\n\nUDENG-6474",
+                  "url": "https://github.com/ubuntu/authd/commit/64510eecf767ea7af9904b1dd72cd9ae362a3403"
                },
                {
-                  "sha": "71113353f58e7f1507153b0c565125090c50fd7e",
-                  "author": "adombeck",
-                  "timestamp": 1742461697,
-                  "message": "Remove database on schema creation failure (#837)\n\nUDENG-6482",
-                  "url": "https://github.com/ubuntu/authd/commit/71113353f58e7f1507153b0c565125090c50fd7e"
+                  "sha": "5846129340559741f188961f67b75f2fa5c78e44",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1742500394,
+                  "message": "ci/build-deb: Push the debian sources to packaging branches (#852)\n\nIn order to be able to build authd from launchpad recipes we need to use\na synchronized repository that contains the sources in a ready-to-build\nform, however our sources requires vendording the dependencies and cargo\nfiltering and this does not work in builders without an internet\nconnection (and without very recent cargo either).\n\nThe good thing is that we're already building the sources ourselves, so\nwe can provide launchpad just them.\n\nWhile dput'ing the built sources would be an option, it would also\nrequires having an uploader bot with its GPG key, and that's somewhat\nunsafer, so let's instead just put the sources in a branch that is\nupdated at every push to main and that launchpad can fetch for creating\nthe packages.\n\nThis will be handled by\nhttps://code.launchpad.net/~ubuntu-enterprise-desktop/+recipe/authd-edge-devel\n\nUDENG-6396",
+                  "url": "https://github.com/ubuntu/authd/commit/5846129340559741f188961f67b75f2fa5c78e44"
                },
                {
-                  "sha": "7f8f24ba1055100d700f6789eb6fbb17b2401d23",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1742388648,
-                  "message": "Test database removed when schema creation fails",
-                  "url": "https://github.com/ubuntu/authd/commit/7f8f24ba1055100d700f6789eb6fbb17b2401d23"
+                  "sha": "dd3f7977f0abce962c0d9a83643bbe94e19f79e4",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1742402282,
+                  "message": "pam/newpasswordmodel: Do not ignore the potential Focus command on clear\n\nDuring Clear we were focusing again the focus widget, however the Focus\ncall may return a command that should still be delivered and not ignored\n\nSo do it.",
+                  "url": "https://github.com/ubuntu/authd/commit/dd3f7977f0abce962c0d9a83643bbe94e19f79e4"
                }
             ],
             "ciActions": [
