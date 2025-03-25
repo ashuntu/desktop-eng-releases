@@ -3202,25 +3202,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc38a71a7c038e3bea6817b8918b844e32fda43c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742892253,
+                  "message": "ci: add osv scanner (#335)\n\nUDENG-6420",
+                  "url": "https://github.com/canonical/firmware-updater/commit/dc38a71a7c038e3bea6817b8918b844e32fda43c"
+               },
+               {
+                  "sha": "b6a31fa2b3a723932ebd83d62bdeb6e126909853",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742563795,
+                  "message": "ci: add osv scanner",
+                  "url": "https://github.com/canonical/firmware-updater/commit/b6a31fa2b3a723932ebd83d62bdeb6e126909853"
+               },
+               {
                   "sha": "4ca9bb1bd4f485d0df31b32a18926992db3ca9a8",
                   "author": "Dennis Loose",
                   "timestamp": 1742564519,
                   "message": "Update cla-check to v2 (#333)",
                   "url": "https://github.com/canonical/firmware-updater/commit/4ca9bb1bd4f485d0df31b32a18926992db3ca9a8"
-               },
-               {
-                  "sha": "43b0ba464920d88eb4cac1e8b17f3e2085fdd766",
-                  "author": "Maksim Beliaev",
-                  "timestamp": 1742218951,
-                  "message": "Update cla-check to v2",
-                  "url": "https://github.com/canonical/firmware-updater/commit/43b0ba464920d88eb4cac1e8b17f3e2085fdd766"
-               },
-               {
-                  "sha": "65c99e2291a15cc6581a765954a5ca854f5566b1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1741818099,
-                  "message": "chore: update issue templates (#332)\n\nStop pinging Innes about bugs and feature requests :)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/65c99e2291a15cc6581a765954a5ca854f5566b1"
                }
             ],
             "ciActions": [
@@ -3659,25 +3659,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "83b6f1f11ad7d92207a7f397bcd531a90209a303",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742892155,
+                  "message": "ci: add osv scanner (#196)\n\nUDENG-6422",
+                  "url": "https://github.com/canonical/prompting-client/commit/83b6f1f11ad7d92207a7f397bcd531a90209a303"
+               },
+               {
+                  "sha": "56b308b2373148740a331cfdc56b959dc9547a81",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742562404,
+                  "message": "ci: add osv scanner",
+                  "url": "https://github.com/canonical/prompting-client/commit/56b308b2373148740a331cfdc56b959dc9547a81"
+               },
+               {
                   "sha": "7d37e5ae80adf0c684af80ca64e44dcb0656df32",
                   "author": "Matthew Hagemann",
                   "timestamp": 1742482351,
                   "message": "Abstract snapd snap socket support (#194)\n\nAdded support for the upcoming snapd abstract snap socket:\n- bumped `tokio` to 1.40, where support for abstract sockets was first\nintroduced\n- added check for abstract socket and a fall back to the current snapd\nsocket\n\nThe `tokio` implementation of `UnixStream::connect` is `async`, so I\nalso propagated that where appropriate. Unfortunately, the `Default`\ntrait is synchronous, so I had to drop that in favor of having clients\ncall `new().await` directly.\n\nThere is a way to call connect on abstract sockets via the\n[SocketAddrExt](https://doc.rust-lang.org/stable/std/os/linux/net/trait.SocketAddrExt.html),\nbut its not as simple as calling `UnixStream::connet`, and I felt\ndropping the `Default` and making the `new` function async was simpler.\nOpen to doing it the other way if we think `new().await` is too messy\n:slightly_smiling_face:",
                   "url": "https://github.com/canonical/prompting-client/commit/7d37e5ae80adf0c684af80ca64e44dcb0656df32"
-               },
-               {
-                  "sha": "46761b0aa5c5049993b71e2539aefd6ad37a0a1f",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1742475930,
-                  "message": "feat: adding support for abstract snapd-snap socket",
-                  "url": "https://github.com/canonical/prompting-client/commit/46761b0aa5c5049993b71e2539aefd6ad37a0a1f"
-               },
-               {
-                  "sha": "7f6af1644ae2d790154285a71a4e4487ae6a54f0",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1742397486,
-                  "message": "fix(deps): update rust crate http-body-util to v0.1.3 (#190)\n\nThis PR contains the following updates:\n\n| Package | Type | Update | Change |\n|---|---|---|---|\n| [http-body-util](https://redirect.github.com/hyperium/http-body) |\ndependencies | patch | `0.1.2` -> `0.1.3` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the Dependency\nDashboard for more information.\n\n---\n\n### Release Notes\n\n<details>\n<summary>hyperium/http-body (http-body-util)</summary>\n\n###\n[`v0.1.3`](https://redirect.github.com/hyperium/http-body/releases/tag/http-body-util-v0.1.3):\nhttp-body-util v0.1.3\n\n[Compare\nSource](https://redirect.github.com/hyperium/http-body/compare/http-body-util-v0.1.2...http-body-util-v0.1.3)\n\n#### Features\n\n-   Add `Channel`, a body type backed by an async channel.\n-   Make `Empty::new()` to be `const fn`.\n\n#### Thanks!\n\n-   [@&#8203;cratelyn](https://redirect.github.com/cratelyn)\n-   [@&#8203;wgyt](https://redirect.github.com/wgyt)\n-   [@&#8203;tottoto](https://redirect.github.com/tottoto)\n-   [@&#8203;jplatte](https://redirect.github.com/jplatte)\n-   [@&#8203;goto-bus-stop](https://redirect.github.com/goto-bus-stop)\n-   [@&#8203;seanmonstar](https://redirect.github.com/seanmonstar)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - At any time (no schedule defined),\nAutomerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/prompting-client).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiIzOS4yMDcuMSIsInVwZGF0ZWRJblZlciI6IjM5LjIwNy4xIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/prompting-client/commit/7f6af1644ae2d790154285a71a4e4487ae6a54f0"
                }
             ],
             "ciActions": [],
@@ -4108,25 +4108,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b232f1fea9702ce96559807d653db81458b336c4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742892093,
+                  "message": "ci: add osv scanner (#996)\n\nUDENG-6419\nUDENG-6421",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b232f1fea9702ce96559807d653db81458b336c4"
+               },
+               {
+                  "sha": "2f08e09ac79fc9e2167f8076ed4e8ff7867e6baa",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742567620,
+                  "message": "ci: add osv scanner",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2f08e09ac79fc9e2167f8076ed4e8ff7867e6baa"
+               },
+               {
                   "sha": "c7e2a8c27727563f23c2adbfeb17ba4bbc216654",
                   "author": "Dennis Loose",
                   "timestamp": 1742486065,
                   "message": "fix: info badge alignment (#993)\n\nFixes the 'experimental' badge alignment issues as discussed with\n@juanruitina\n\nBefore:\n\n[Screencast From 2025-03-20\n16-07-02.webm](https://github.com/user-attachments/assets/5e995490-05c5-4826-9d9c-fafe8dd5e290)\n\nAfter:\n\n[Screencast From 2025-03-20\n16-08-11.webm](https://github.com/user-attachments/assets/432d703c-4b82-4954-9b78-246b83ada43b)",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c7e2a8c27727563f23c2adbfeb17ba4bbc216654"
-               },
-               {
-                  "sha": "582c2a082c821ea1d641600ebca060d50b62b149",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742483364,
-                  "message": "fix: info badge alignment",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/582c2a082c821ea1d641600ebca060d50b62b149"
-               },
-               {
-                  "sha": "6c65d57c354d8ca04627b474644f609a80ad9e07",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742479270,
-                  "message": "fix: disable delete partition button while waiting for reply (#992)\n\nFixes a bug on the manual storage page where pressing the `-` button (to\ndelete a partition) multiple times in quick succession, can lead to an\nerror in subiquity. To prevent sending the same request twice before\nsubiquity responds, this PR adds some logic to disable the button while\nwe wait for the server reply. We should consider introducing a proper UI\nloading state in the future, though.\n\nExample with artificial delay in subiquity:\n```diff\ndiff --git i/subiquity/server/controllers/filesystem.py w/subiquity/server/controllers/filesystem.py\nindex a12b6fe8..1b065b97 100644\n--- i/subiquity/server/controllers/filesystem.py\n+++ w/subiquity/server/controllers/filesystem.py\n@@ -1482,6 +1482,7 @@ class FilesystemController(SubiquityController, FilesystemManipulator):\n         self, data: ModifyPartitionV2\n     ) -> StorageResponseV2:\n         log.debug(data)\n+        await asyncio.sleep(2)\n         self.locked_probe_data = True\n         disk = self.model._one(id=data.disk_id)\n         if disk.ptable == \"unsupported\":\n\n```\n\nBefore:\n\n[Screencast From 2025-03-20\n14-09-16.webm](https://github.com/user-attachments/assets/15bd9874-6e51-4bf8-99e3-d0319886635b)\n\nAfter\n\n[Screencast From 2025-03-20\n14-07-03.webm](https://github.com/user-attachments/assets/468a7790-29fa-4b7d-84d9-18c45ea7e2c0)\n\n\n[lp:2103662](https://bugs.launchpad.net/subiquity/+bug/2103662)\nUDENG-6491",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6c65d57c354d8ca04627b474644f609a80ad9e07"
                }
             ],
             "ciActions": [
@@ -5109,25 +5109,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc38a71a7c038e3bea6817b8918b844e32fda43c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742892253,
+                  "message": "ci: add osv scanner (#335)\n\nUDENG-6420",
+                  "url": "https://github.com/canonical/firmware-updater/commit/dc38a71a7c038e3bea6817b8918b844e32fda43c"
+               },
+               {
+                  "sha": "b6a31fa2b3a723932ebd83d62bdeb6e126909853",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742563795,
+                  "message": "ci: add osv scanner",
+                  "url": "https://github.com/canonical/firmware-updater/commit/b6a31fa2b3a723932ebd83d62bdeb6e126909853"
+               },
+               {
                   "sha": "4ca9bb1bd4f485d0df31b32a18926992db3ca9a8",
                   "author": "Dennis Loose",
                   "timestamp": 1742564519,
                   "message": "Update cla-check to v2 (#333)",
                   "url": "https://github.com/canonical/firmware-updater/commit/4ca9bb1bd4f485d0df31b32a18926992db3ca9a8"
-               },
-               {
-                  "sha": "43b0ba464920d88eb4cac1e8b17f3e2085fdd766",
-                  "author": "Maksim Beliaev",
-                  "timestamp": 1742218951,
-                  "message": "Update cla-check to v2",
-                  "url": "https://github.com/canonical/firmware-updater/commit/43b0ba464920d88eb4cac1e8b17f3e2085fdd766"
-               },
-               {
-                  "sha": "65c99e2291a15cc6581a765954a5ca854f5566b1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1741818099,
-                  "message": "chore: update issue templates (#332)\n\nStop pinging Innes about bugs and feature requests :)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/65c99e2291a15cc6581a765954a5ca854f5566b1"
                }
             ],
             "ciActions": [
@@ -5599,25 +5599,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "83b6f1f11ad7d92207a7f397bcd531a90209a303",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742892155,
+                  "message": "ci: add osv scanner (#196)\n\nUDENG-6422",
+                  "url": "https://github.com/canonical/prompting-client/commit/83b6f1f11ad7d92207a7f397bcd531a90209a303"
+               },
+               {
+                  "sha": "56b308b2373148740a331cfdc56b959dc9547a81",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742562404,
+                  "message": "ci: add osv scanner",
+                  "url": "https://github.com/canonical/prompting-client/commit/56b308b2373148740a331cfdc56b959dc9547a81"
+               },
+               {
                   "sha": "7d37e5ae80adf0c684af80ca64e44dcb0656df32",
                   "author": "Matthew Hagemann",
                   "timestamp": 1742482351,
                   "message": "Abstract snapd snap socket support (#194)\n\nAdded support for the upcoming snapd abstract snap socket:\n- bumped `tokio` to 1.40, where support for abstract sockets was first\nintroduced\n- added check for abstract socket and a fall back to the current snapd\nsocket\n\nThe `tokio` implementation of `UnixStream::connect` is `async`, so I\nalso propagated that where appropriate. Unfortunately, the `Default`\ntrait is synchronous, so I had to drop that in favor of having clients\ncall `new().await` directly.\n\nThere is a way to call connect on abstract sockets via the\n[SocketAddrExt](https://doc.rust-lang.org/stable/std/os/linux/net/trait.SocketAddrExt.html),\nbut its not as simple as calling `UnixStream::connet`, and I felt\ndropping the `Default` and making the `new` function async was simpler.\nOpen to doing it the other way if we think `new().await` is too messy\n:slightly_smiling_face:",
                   "url": "https://github.com/canonical/prompting-client/commit/7d37e5ae80adf0c684af80ca64e44dcb0656df32"
-               },
-               {
-                  "sha": "46761b0aa5c5049993b71e2539aefd6ad37a0a1f",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1742475930,
-                  "message": "feat: adding support for abstract snapd-snap socket",
-                  "url": "https://github.com/canonical/prompting-client/commit/46761b0aa5c5049993b71e2539aefd6ad37a0a1f"
-               },
-               {
-                  "sha": "7f6af1644ae2d790154285a71a4e4487ae6a54f0",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1742397486,
-                  "message": "fix(deps): update rust crate http-body-util to v0.1.3 (#190)\n\nThis PR contains the following updates:\n\n| Package | Type | Update | Change |\n|---|---|---|---|\n| [http-body-util](https://redirect.github.com/hyperium/http-body) |\ndependencies | patch | `0.1.2` -> `0.1.3` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the Dependency\nDashboard for more information.\n\n---\n\n### Release Notes\n\n<details>\n<summary>hyperium/http-body (http-body-util)</summary>\n\n###\n[`v0.1.3`](https://redirect.github.com/hyperium/http-body/releases/tag/http-body-util-v0.1.3):\nhttp-body-util v0.1.3\n\n[Compare\nSource](https://redirect.github.com/hyperium/http-body/compare/http-body-util-v0.1.2...http-body-util-v0.1.3)\n\n#### Features\n\n-   Add `Channel`, a body type backed by an async channel.\n-   Make `Empty::new()` to be `const fn`.\n\n#### Thanks!\n\n-   [@&#8203;cratelyn](https://redirect.github.com/cratelyn)\n-   [@&#8203;wgyt](https://redirect.github.com/wgyt)\n-   [@&#8203;tottoto](https://redirect.github.com/tottoto)\n-   [@&#8203;jplatte](https://redirect.github.com/jplatte)\n-   [@&#8203;goto-bus-stop](https://redirect.github.com/goto-bus-stop)\n-   [@&#8203;seanmonstar](https://redirect.github.com/seanmonstar)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - At any time (no schedule defined),\nAutomerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/prompting-client).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiIzOS4yMDcuMSIsInVwZGF0ZWRJblZlciI6IjM5LjIwNy4xIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/prompting-client/commit/7f6af1644ae2d790154285a71a4e4487ae6a54f0"
                }
             ],
             "ciActions": [],
@@ -6048,25 +6048,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b232f1fea9702ce96559807d653db81458b336c4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742892093,
+                  "message": "ci: add osv scanner (#996)\n\nUDENG-6419\nUDENG-6421",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b232f1fea9702ce96559807d653db81458b336c4"
+               },
+               {
+                  "sha": "2f08e09ac79fc9e2167f8076ed4e8ff7867e6baa",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742567620,
+                  "message": "ci: add osv scanner",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2f08e09ac79fc9e2167f8076ed4e8ff7867e6baa"
+               },
+               {
                   "sha": "c7e2a8c27727563f23c2adbfeb17ba4bbc216654",
                   "author": "Dennis Loose",
                   "timestamp": 1742486065,
                   "message": "fix: info badge alignment (#993)\n\nFixes the 'experimental' badge alignment issues as discussed with\n@juanruitina\n\nBefore:\n\n[Screencast From 2025-03-20\n16-07-02.webm](https://github.com/user-attachments/assets/5e995490-05c5-4826-9d9c-fafe8dd5e290)\n\nAfter:\n\n[Screencast From 2025-03-20\n16-08-11.webm](https://github.com/user-attachments/assets/432d703c-4b82-4954-9b78-246b83ada43b)",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c7e2a8c27727563f23c2adbfeb17ba4bbc216654"
-               },
-               {
-                  "sha": "582c2a082c821ea1d641600ebca060d50b62b149",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742483364,
-                  "message": "fix: info badge alignment",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/582c2a082c821ea1d641600ebca060d50b62b149"
-               },
-               {
-                  "sha": "6c65d57c354d8ca04627b474644f609a80ad9e07",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742479270,
-                  "message": "fix: disable delete partition button while waiting for reply (#992)\n\nFixes a bug on the manual storage page where pressing the `-` button (to\ndelete a partition) multiple times in quick succession, can lead to an\nerror in subiquity. To prevent sending the same request twice before\nsubiquity responds, this PR adds some logic to disable the button while\nwe wait for the server reply. We should consider introducing a proper UI\nloading state in the future, though.\n\nExample with artificial delay in subiquity:\n```diff\ndiff --git i/subiquity/server/controllers/filesystem.py w/subiquity/server/controllers/filesystem.py\nindex a12b6fe8..1b065b97 100644\n--- i/subiquity/server/controllers/filesystem.py\n+++ w/subiquity/server/controllers/filesystem.py\n@@ -1482,6 +1482,7 @@ class FilesystemController(SubiquityController, FilesystemManipulator):\n         self, data: ModifyPartitionV2\n     ) -> StorageResponseV2:\n         log.debug(data)\n+        await asyncio.sleep(2)\n         self.locked_probe_data = True\n         disk = self.model._one(id=data.disk_id)\n         if disk.ptable == \"unsupported\":\n\n```\n\nBefore:\n\n[Screencast From 2025-03-20\n14-09-16.webm](https://github.com/user-attachments/assets/15bd9874-6e51-4bf8-99e3-d0319886635b)\n\nAfter\n\n[Screencast From 2025-03-20\n14-07-03.webm](https://github.com/user-attachments/assets/468a7790-29fa-4b7d-84d9-18c45ea7e2c0)\n\n\n[lp:2103662](https://bugs.launchpad.net/subiquity/+bug/2103662)\nUDENG-6491",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6c65d57c354d8ca04627b474644f609a80ad9e07"
                }
             ],
             "ciActions": [
@@ -7249,25 +7249,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc38a71a7c038e3bea6817b8918b844e32fda43c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742892253,
+                  "message": "ci: add osv scanner (#335)\n\nUDENG-6420",
+                  "url": "https://github.com/canonical/firmware-updater/commit/dc38a71a7c038e3bea6817b8918b844e32fda43c"
+               },
+               {
+                  "sha": "b6a31fa2b3a723932ebd83d62bdeb6e126909853",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742563795,
+                  "message": "ci: add osv scanner",
+                  "url": "https://github.com/canonical/firmware-updater/commit/b6a31fa2b3a723932ebd83d62bdeb6e126909853"
+               },
+               {
                   "sha": "4ca9bb1bd4f485d0df31b32a18926992db3ca9a8",
                   "author": "Dennis Loose",
                   "timestamp": 1742564519,
                   "message": "Update cla-check to v2 (#333)",
                   "url": "https://github.com/canonical/firmware-updater/commit/4ca9bb1bd4f485d0df31b32a18926992db3ca9a8"
-               },
-               {
-                  "sha": "43b0ba464920d88eb4cac1e8b17f3e2085fdd766",
-                  "author": "Maksim Beliaev",
-                  "timestamp": 1742218951,
-                  "message": "Update cla-check to v2",
-                  "url": "https://github.com/canonical/firmware-updater/commit/43b0ba464920d88eb4cac1e8b17f3e2085fdd766"
-               },
-               {
-                  "sha": "65c99e2291a15cc6581a765954a5ca854f5566b1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1741818099,
-                  "message": "chore: update issue templates (#332)\n\nStop pinging Innes about bugs and feature requests :)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/65c99e2291a15cc6581a765954a5ca854f5566b1"
                }
             ],
             "ciActions": [
@@ -7706,25 +7706,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "83b6f1f11ad7d92207a7f397bcd531a90209a303",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742892155,
+                  "message": "ci: add osv scanner (#196)\n\nUDENG-6422",
+                  "url": "https://github.com/canonical/prompting-client/commit/83b6f1f11ad7d92207a7f397bcd531a90209a303"
+               },
+               {
+                  "sha": "56b308b2373148740a331cfdc56b959dc9547a81",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742562404,
+                  "message": "ci: add osv scanner",
+                  "url": "https://github.com/canonical/prompting-client/commit/56b308b2373148740a331cfdc56b959dc9547a81"
+               },
+               {
                   "sha": "7d37e5ae80adf0c684af80ca64e44dcb0656df32",
                   "author": "Matthew Hagemann",
                   "timestamp": 1742482351,
                   "message": "Abstract snapd snap socket support (#194)\n\nAdded support for the upcoming snapd abstract snap socket:\n- bumped `tokio` to 1.40, where support for abstract sockets was first\nintroduced\n- added check for abstract socket and a fall back to the current snapd\nsocket\n\nThe `tokio` implementation of `UnixStream::connect` is `async`, so I\nalso propagated that where appropriate. Unfortunately, the `Default`\ntrait is synchronous, so I had to drop that in favor of having clients\ncall `new().await` directly.\n\nThere is a way to call connect on abstract sockets via the\n[SocketAddrExt](https://doc.rust-lang.org/stable/std/os/linux/net/trait.SocketAddrExt.html),\nbut its not as simple as calling `UnixStream::connet`, and I felt\ndropping the `Default` and making the `new` function async was simpler.\nOpen to doing it the other way if we think `new().await` is too messy\n:slightly_smiling_face:",
                   "url": "https://github.com/canonical/prompting-client/commit/7d37e5ae80adf0c684af80ca64e44dcb0656df32"
-               },
-               {
-                  "sha": "46761b0aa5c5049993b71e2539aefd6ad37a0a1f",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1742475930,
-                  "message": "feat: adding support for abstract snapd-snap socket",
-                  "url": "https://github.com/canonical/prompting-client/commit/46761b0aa5c5049993b71e2539aefd6ad37a0a1f"
-               },
-               {
-                  "sha": "7f6af1644ae2d790154285a71a4e4487ae6a54f0",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1742397486,
-                  "message": "fix(deps): update rust crate http-body-util to v0.1.3 (#190)\n\nThis PR contains the following updates:\n\n| Package | Type | Update | Change |\n|---|---|---|---|\n| [http-body-util](https://redirect.github.com/hyperium/http-body) |\ndependencies | patch | `0.1.2` -> `0.1.3` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the Dependency\nDashboard for more information.\n\n---\n\n### Release Notes\n\n<details>\n<summary>hyperium/http-body (http-body-util)</summary>\n\n###\n[`v0.1.3`](https://redirect.github.com/hyperium/http-body/releases/tag/http-body-util-v0.1.3):\nhttp-body-util v0.1.3\n\n[Compare\nSource](https://redirect.github.com/hyperium/http-body/compare/http-body-util-v0.1.2...http-body-util-v0.1.3)\n\n#### Features\n\n-   Add `Channel`, a body type backed by an async channel.\n-   Make `Empty::new()` to be `const fn`.\n\n#### Thanks!\n\n-   [@&#8203;cratelyn](https://redirect.github.com/cratelyn)\n-   [@&#8203;wgyt](https://redirect.github.com/wgyt)\n-   [@&#8203;tottoto](https://redirect.github.com/tottoto)\n-   [@&#8203;jplatte](https://redirect.github.com/jplatte)\n-   [@&#8203;goto-bus-stop](https://redirect.github.com/goto-bus-stop)\n-   [@&#8203;seanmonstar](https://redirect.github.com/seanmonstar)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - At any time (no schedule defined),\nAutomerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/prompting-client).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiIzOS4yMDcuMSIsInVwZGF0ZWRJblZlciI6IjM5LjIwNy4xIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/prompting-client/commit/7f6af1644ae2d790154285a71a4e4487ae6a54f0"
                }
             ],
             "ciActions": [],
@@ -8155,25 +8155,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b232f1fea9702ce96559807d653db81458b336c4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742892093,
+                  "message": "ci: add osv scanner (#996)\n\nUDENG-6419\nUDENG-6421",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b232f1fea9702ce96559807d653db81458b336c4"
+               },
+               {
+                  "sha": "2f08e09ac79fc9e2167f8076ed4e8ff7867e6baa",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742567620,
+                  "message": "ci: add osv scanner",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2f08e09ac79fc9e2167f8076ed4e8ff7867e6baa"
+               },
+               {
                   "sha": "c7e2a8c27727563f23c2adbfeb17ba4bbc216654",
                   "author": "Dennis Loose",
                   "timestamp": 1742486065,
                   "message": "fix: info badge alignment (#993)\n\nFixes the 'experimental' badge alignment issues as discussed with\n@juanruitina\n\nBefore:\n\n[Screencast From 2025-03-20\n16-07-02.webm](https://github.com/user-attachments/assets/5e995490-05c5-4826-9d9c-fafe8dd5e290)\n\nAfter:\n\n[Screencast From 2025-03-20\n16-08-11.webm](https://github.com/user-attachments/assets/432d703c-4b82-4954-9b78-246b83ada43b)",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c7e2a8c27727563f23c2adbfeb17ba4bbc216654"
-               },
-               {
-                  "sha": "582c2a082c821ea1d641600ebca060d50b62b149",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742483364,
-                  "message": "fix: info badge alignment",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/582c2a082c821ea1d641600ebca060d50b62b149"
-               },
-               {
-                  "sha": "6c65d57c354d8ca04627b474644f609a80ad9e07",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742479270,
-                  "message": "fix: disable delete partition button while waiting for reply (#992)\n\nFixes a bug on the manual storage page where pressing the `-` button (to\ndelete a partition) multiple times in quick succession, can lead to an\nerror in subiquity. To prevent sending the same request twice before\nsubiquity responds, this PR adds some logic to disable the button while\nwe wait for the server reply. We should consider introducing a proper UI\nloading state in the future, though.\n\nExample with artificial delay in subiquity:\n```diff\ndiff --git i/subiquity/server/controllers/filesystem.py w/subiquity/server/controllers/filesystem.py\nindex a12b6fe8..1b065b97 100644\n--- i/subiquity/server/controllers/filesystem.py\n+++ w/subiquity/server/controllers/filesystem.py\n@@ -1482,6 +1482,7 @@ class FilesystemController(SubiquityController, FilesystemManipulator):\n         self, data: ModifyPartitionV2\n     ) -> StorageResponseV2:\n         log.debug(data)\n+        await asyncio.sleep(2)\n         self.locked_probe_data = True\n         disk = self.model._one(id=data.disk_id)\n         if disk.ptable == \"unsupported\":\n\n```\n\nBefore:\n\n[Screencast From 2025-03-20\n14-09-16.webm](https://github.com/user-attachments/assets/15bd9874-6e51-4bf8-99e3-d0319886635b)\n\nAfter\n\n[Screencast From 2025-03-20\n14-07-03.webm](https://github.com/user-attachments/assets/468a7790-29fa-4b7d-84d9-18c45ea7e2c0)\n\n\n[lp:2103662](https://bugs.launchpad.net/subiquity/+bug/2103662)\nUDENG-6491",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6c65d57c354d8ca04627b474644f609a80ad9e07"
                }
             ],
             "ciActions": [
