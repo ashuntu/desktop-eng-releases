@@ -4108,6 +4108,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "45c08d525e16935d49286d5985dc32de04865ddf",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742995626,
+                  "message": "chore: update go and dependencies (#997)\n\nThis should fix the dependabot alert\nhttps://github.com/canonical/ubuntu-desktop-provision/security/dependabot/7.\nI don't completely understand what dependabot is doing in #980. Since\nwe're already using renovate to update dependencies and osv-scanner\n(#996) for vulnerability scanning, maybe we should simply get rid of\ndependabot?",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/45c08d525e16935d49286d5985dc32de04865ddf"
+               },
+               {
                   "sha": "9fb0b0c8717bf786f5dd39f816c27b5ce8967adc",
                   "author": "Dennis Loose",
                   "timestamp": 1742921210,
@@ -4120,13 +4127,6 @@
                   "timestamp": 1742919332,
                   "message": "chore(deps): update packages/subiquity_client/subiquity digest to f5d09d0",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/35c93a9f1d5bd124a179c5bee14e3b80e41e2a53"
-               },
-               {
-                  "sha": "b232f1fea9702ce96559807d653db81458b336c4",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742892093,
-                  "message": "ci: add osv scanner (#996)\n\nUDENG-6419\nUDENG-6421",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b232f1fea9702ce96559807d653db81458b336c4"
                }
             ],
             "ciActions": [
@@ -6048,6 +6048,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "45c08d525e16935d49286d5985dc32de04865ddf",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742995626,
+                  "message": "chore: update go and dependencies (#997)\n\nThis should fix the dependabot alert\nhttps://github.com/canonical/ubuntu-desktop-provision/security/dependabot/7.\nI don't completely understand what dependabot is doing in #980. Since\nwe're already using renovate to update dependencies and osv-scanner\n(#996) for vulnerability scanning, maybe we should simply get rid of\ndependabot?",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/45c08d525e16935d49286d5985dc32de04865ddf"
+               },
+               {
                   "sha": "9fb0b0c8717bf786f5dd39f816c27b5ce8967adc",
                   "author": "Dennis Loose",
                   "timestamp": 1742921210,
@@ -6060,13 +6067,6 @@
                   "timestamp": 1742919332,
                   "message": "chore(deps): update packages/subiquity_client/subiquity digest to f5d09d0",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/35c93a9f1d5bd124a179c5bee14e3b80e41e2a53"
-               },
-               {
-                  "sha": "b232f1fea9702ce96559807d653db81458b336c4",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742892093,
-                  "message": "ci: add osv scanner (#996)\n\nUDENG-6419\nUDENG-6421",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b232f1fea9702ce96559807d653db81458b336c4"
                }
             ],
             "ciActions": [
@@ -6157,25 +6157,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b8612d934bae15b5054ecb9cc0a13817d623ab9e",
+                  "sha": "f745b14c806bd28ce21964867c365cd3c4820371",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1742576150,
-                  "message": "fix: Adapts the ubuntu/WSL SECURITY.md contents for this repository (#1173)\n\nI got a bit surprised to notice that we're not linking to a specific\nsecurity policy in this repository when referring to this topic\ninternally.\n\nSo I took the contents of ubuntu/WSL's SECURITY.md and adjusted slightly\nto be specific to this repository meanwhile both repositories exist for\ndistinct purposes.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b8612d934bae15b5054ecb9cc0a13817d623ab9e"
+                  "timestamp": 1742994798,
+                  "message": "feat(docs): Explanation about binfmt and Ubuntu specifics (#1165)\n\nWhile https://github.com/ubuntu/WSL/issues/512 is a representative\nissue, I've seen similar complains in the upstream repository about\nbinfmt_misc registration mediated by systemd not working. I've also seen\na bunch of other complains in the past about WSL binary interoperability\nnot working because of some surprising interaction with\n`systemd-binfmt.service`.\n\nThis explanation page aims to eliminate (or at least decrease the amount\nof) surprises by:\n- Explaining power users why we chose to disable that service\n- Giving them knowledge to do the opposite and deal with potential\nconsequences\n\nI have high hopes (based on conversations I already had with upstream)\nthat we'll see strong improvements in this area still in the WSL 2.5.x\nrelease series.\n\n---\n\nUDENG-6366",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f745b14c806bd28ce21964867c365cd3c4820371"
                },
                {
-                  "sha": "f64e8f735412f5621e8795bbaa3425aa76fc539f",
+                  "sha": "89f75ee40324384fa0c57f54a619e2b1375f965d",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1742575767,
-                  "message": "Fix typos\n\nCo-authored-by: Shane Crowley <66971213+edibotopic@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f64e8f735412f5621e8795bbaa3425aa76fc539f"
+                  "timestamp": 1742913234,
+                  "message": "Replace spelling-flagged words",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/89f75ee40324384fa0c57f54a619e2b1375f965d"
                },
                {
-                  "sha": "9e360accda75611a1360b38c3763ff40fed77ec4",
+                  "sha": "e830ea213f7db39a2b1d90d0e5c71d49aa8613d3",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1742575747,
-                  "message": "Apply style suggestions from code review\n\nCo-authored-by: Shane Crowley <66971213+edibotopic@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9e360accda75611a1360b38c3763ff40fed77ec4"
+                  "timestamp": 1742911657,
+                  "message": "Better explains the current state of WSL measures ...\n\n... implemented to protect binfmt and its limitations.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e830ea213f7db39a2b1d90d0e5c71d49aa8613d3"
                }
             ],
             "ciActions": [
@@ -6466,7 +6466,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 79,
+            "newCommits": 83,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -6547,25 +6547,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "575587eed6a8242a0549f9052ce94910c3bb8dfb",
+                  "sha": "0334c2d1362734729d7a9e5744f87b4beffea7b7",
                   "author": "adombeck",
-                  "timestamp": 1742810963,
-                  "message": "deps(go): bump github.com/microsoftgraph/msgraph-sdk-go from 1.65.0 to 1.66.0 (#464)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/575587eed6a8242a0549f9052ce94910c3bb8dfb"
+                  "timestamp": 1742995205,
+                  "message": "Fix invalid msgraph host (#472)\n\nCloses https://github.com/ubuntu/authd/issues/858\nUDENG-6537",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0334c2d1362734729d7a9e5744f87b4beffea7b7"
                },
                {
-                  "sha": "1b2f0f6e6fb94eac186bddd9135efe1d37550232",
-                  "author": "adombeck",
-                  "timestamp": 1742810946,
-                  "message": "deps(go): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to 5.2.2 (#465)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/1b2f0f6e6fb94eac186bddd9135efe1d37550232"
+                  "sha": "9649956891dbac4a981302621d028f37d4419ed0",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1742993446,
+                  "message": "Fix invalid msgraph host\n\nSince commit 5fc98520c45294ffb85bb27a81929e2ec1b89fcb, we store the full\nURL to the msgraph host in the provider metadata. However, the metadata\non disk is not updated, so it can still contain only the domain name of\nthe msgraph host, resulting in a failure to get the groups via msgraph:\n\n    Could not fetch user info: could not get user info: failed to get user groups: failed to get user groups: Get \"graph.microsoft.com/me/transitiveMemberOf/graph.group\": unsupported protocol scheme \"\". Using cached user info.\n\nThis commit fixes that by supporting both the old and new formats of the\nmsgraph host field in the provider metadata.\n\nCloses #858",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/9649956891dbac4a981302621d028f37d4419ed0"
                },
                {
-                  "sha": "2bb33f46a1ca013a8abe11bb471a3d5fdd7be94a",
-                  "author": "adombeck",
-                  "timestamp": 1742810931,
-                  "message": "deps(go): bump github.com/Azure/azure-sdk-for-go/sdk/azcore from 1.17.0 to 1.17.1 (#466)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2bb33f46a1ca013a8abe11bb471a3d5fdd7be94a"
+                  "sha": "b4293d52d52b7af2f38962828ad4aec8c72c8777",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1742993014,
+                  "message": "Fix duplicate information in error message\n\n\"failed to get user groups\" is already added to the error message in\n`getSecurityGroups` if it's the call to\n`client.Me().TransitiveMemberOf().GraphGroup()` which fails, which\nresulted in duplicate information (even more than we already have):\n\n    Could not fetch user info: could not get user info: failed to get user groups: failed to get user groups: Get \"graph.microsoft.com/me/transitiveMemberOf/graph.group\": unsupported protocol scheme \"\". Using cached user info.\n\n`getSecurityGroups` is only called in this one location, so we don't\nneed to add information to the error message to reconstruct the call\nstack.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/b4293d52d52b7af2f38962828ad4aec8c72c8777"
                }
             ],
             "ciActions": [
@@ -8155,6 +8155,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "45c08d525e16935d49286d5985dc32de04865ddf",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742995626,
+                  "message": "chore: update go and dependencies (#997)\n\nThis should fix the dependabot alert\nhttps://github.com/canonical/ubuntu-desktop-provision/security/dependabot/7.\nI don't completely understand what dependabot is doing in #980. Since\nwe're already using renovate to update dependencies and osv-scanner\n(#996) for vulnerability scanning, maybe we should simply get rid of\ndependabot?",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/45c08d525e16935d49286d5985dc32de04865ddf"
+               },
+               {
                   "sha": "9fb0b0c8717bf786f5dd39f816c27b5ce8967adc",
                   "author": "Dennis Loose",
                   "timestamp": 1742921210,
@@ -8167,13 +8174,6 @@
                   "timestamp": 1742919332,
                   "message": "chore(deps): update packages/subiquity_client/subiquity digest to f5d09d0",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/35c93a9f1d5bd124a179c5bee14e3b80e41e2a53"
-               },
-               {
-                  "sha": "b232f1fea9702ce96559807d653db81458b336c4",
-                  "author": "Dennis Loose",
-                  "timestamp": 1742892093,
-                  "message": "ci: add osv scanner (#996)\n\nUDENG-6419\nUDENG-6421",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b232f1fea9702ce96559807d653db81458b336c4"
                }
             ],
             "ciActions": [
