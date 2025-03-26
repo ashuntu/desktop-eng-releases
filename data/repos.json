@@ -3067,25 +3067,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "479865b6b8c7bf0907388f0da7628c2700e66e44",
+                  "author": "Dennis Loose",
+                  "timestamp": 1743005983,
+                  "message": "feat(gh-actions): add common OSV scanner action (#66)\n\nAdds a GitHub action that runs\n[osv-scanner](https://google.github.io/osv-scanner/) recursively in the\ncurrent directory.\nWe've been testing this in a few repositories this week, including\nhttps://github.com/canonical/ubuntu-desktop-provision/. Adding this to\nour common actions here would simplify maintenance.\nSo far the action uses the default options of the `osv-scanner-action`\nand doesn't expose any parameters. I'd be open to adding some if further\nconfiguration is needed - e.g. by default the action returns with an\nerror status if a vulnerability is found, which might not always be\ndesirable (the GitHub security tab complains about a configuration error\nin this case). It'd also be possible to run the action only for a\nspecific set of directories or lock files if we added a parameter for\nthat.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/479865b6b8c7bf0907388f0da7628c2700e66e44"
+               },
+               {
+                  "sha": "bfebb56dfd50e6482b9575032dc13b8e2d65e6d7",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742986037,
+                  "message": "feat(gh-actions): add common OSV scanner action",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/bfebb56dfd50e6482b9575032dc13b8e2d65e6d7"
+               },
+               {
                   "sha": "292bc91c1ed803d3d7b9ae31d5ff455bbfea4fbd",
                   "author": "Marco Trevisan",
                   "timestamp": 1742416402,
                   "message": "maint(test-build-deb): Test skipping linitian o source build (#62)\n\nWe're doing it in other jobs but we didn't test the skip case",
                   "url": "https://github.com/canonical/desktop-engineering/commit/292bc91c1ed803d3d7b9ae31d5ff455bbfea4fbd"
-               },
-               {
-                  "sha": "e3a6d0426cdb2e6d7fff575b33e1fec488a137a6",
-                  "author": "Sergio Costas",
-                  "timestamp": 1742383534,
-                  "message": "feat(gh-actions): Add an action for checking C format (#56)\n\nThis action and script allows to automatically check the format style in\na C/C++ project, using clang-format. It also can be configured as a GIT\nhook, to also check it automatically before a commit.\n\nThe idea is to simplify adding the local check (as a GIT hook) and\nformatting, by having a single script that \"does everything\", thus\nremoving the need to dive into a .github action to see what is doing to\nimplement the same at .git/hooks/pre-commit; just calling the same\nscript used upstream is enough to guarantee consistency.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e3a6d0426cdb2e6d7fff575b33e1fec488a137a6"
-               },
-               {
-                  "sha": "8caa3ad7fad19b8eb9c95970c07b4386e4a4d641",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1742376432,
-                  "message": "Allow it to work with folders with blank spaces\n\nThis patch makes the script work when any of the parent folders\nhave blank spaces in their name.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/8caa3ad7fad19b8eb9c95970c07b4386e4a4d641"
                }
             ],
             "ciActions": [],
@@ -4675,25 +4675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "839ea981305137d34a0b36a62e9588e2b3ba9caa",
+                  "sha": "1176fdf4eb3e72674b719d5d4da83ffb6fd85198",
                   "author": "Kat",
-                  "timestamp": 1742585434,
-                  "message": "Merge pull request #65 from ubuntu/UDENG-6503-fix-windows-screen-collection\n\nfeat(hardware): Improve Windows display collection logic",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/839ea981305137d34a0b36a62e9588e2b3ba9caa"
+                  "timestamp": 1743004556,
+                  "message": "Merge pull request #67 from ubuntu/UDENG-6494-handling-of-nested-partitions-mbr-lvm\n\nfeat(hardware): Improved disk/partition children handling",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/1176fdf4eb3e72674b719d5d4da83ffb6fd85198"
                },
                {
-                  "sha": "da03df74e8c629438437deebf143c0891500ebb5",
+                  "sha": "8b8fe479871f91f6ab3e192689da11093b5f7cf4",
                   "author": "hk21702",
-                  "timestamp": 1742579517,
-                  "message": "Improve Windows display collection logic",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/da03df74e8c629438437deebf143c0891500ebb5"
+                  "timestamp": 1742913562,
+                  "message": "Add test case for bad block nesting depth in Linux collector",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8b8fe479871f91f6ab3e192689da11093b5f7cf4"
                },
                {
-                  "sha": "6efce13b61448cf1727d2c99f03a4d1cf7e5b40d",
-                  "author": "Kat",
-                  "timestamp": 1742574289,
-                  "message": "Merge pull request #64 from ubuntu/UDENG-6495-remove-screen-names\n\nfeat(hardware): Remove 'Name' field from screen struct across collectors",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6efce13b61448cf1727d2c99f03a4d1cf7e5b40d"
+                  "sha": "9b4897df52d13182737f1d68ed22d29920c1cee5",
+                  "author": "hk21702",
+                  "timestamp": 1742845936,
+                  "message": "Rename 'Partitions' field to 'Children' in disk struct for consistency across collectors",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9b4897df52d13182737f1d68ed22d29920c1cee5"
                }
             ],
             "ciActions": [
@@ -4974,25 +4974,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "479865b6b8c7bf0907388f0da7628c2700e66e44",
+                  "author": "Dennis Loose",
+                  "timestamp": 1743005983,
+                  "message": "feat(gh-actions): add common OSV scanner action (#66)\n\nAdds a GitHub action that runs\n[osv-scanner](https://google.github.io/osv-scanner/) recursively in the\ncurrent directory.\nWe've been testing this in a few repositories this week, including\nhttps://github.com/canonical/ubuntu-desktop-provision/. Adding this to\nour common actions here would simplify maintenance.\nSo far the action uses the default options of the `osv-scanner-action`\nand doesn't expose any parameters. I'd be open to adding some if further\nconfiguration is needed - e.g. by default the action returns with an\nerror status if a vulnerability is found, which might not always be\ndesirable (the GitHub security tab complains about a configuration error\nin this case). It'd also be possible to run the action only for a\nspecific set of directories or lock files if we added a parameter for\nthat.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/479865b6b8c7bf0907388f0da7628c2700e66e44"
+               },
+               {
+                  "sha": "bfebb56dfd50e6482b9575032dc13b8e2d65e6d7",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742986037,
+                  "message": "feat(gh-actions): add common OSV scanner action",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/bfebb56dfd50e6482b9575032dc13b8e2d65e6d7"
+               },
+               {
                   "sha": "292bc91c1ed803d3d7b9ae31d5ff455bbfea4fbd",
                   "author": "Marco Trevisan",
                   "timestamp": 1742416402,
                   "message": "maint(test-build-deb): Test skipping linitian o source build (#62)\n\nWe're doing it in other jobs but we didn't test the skip case",
                   "url": "https://github.com/canonical/desktop-engineering/commit/292bc91c1ed803d3d7b9ae31d5ff455bbfea4fbd"
-               },
-               {
-                  "sha": "e3a6d0426cdb2e6d7fff575b33e1fec488a137a6",
-                  "author": "Sergio Costas",
-                  "timestamp": 1742383534,
-                  "message": "feat(gh-actions): Add an action for checking C format (#56)\n\nThis action and script allows to automatically check the format style in\na C/C++ project, using clang-format. It also can be configured as a GIT\nhook, to also check it automatically before a commit.\n\nThe idea is to simplify adding the local check (as a GIT hook) and\nformatting, by having a single script that \"does everything\", thus\nremoving the need to dive into a .github action to see what is doing to\nimplement the same at .git/hooks/pre-commit; just calling the same\nscript used upstream is enough to guarantee consistency.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e3a6d0426cdb2e6d7fff575b33e1fec488a137a6"
-               },
-               {
-                  "sha": "8caa3ad7fad19b8eb9c95970c07b4386e4a4d641",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1742376432,
-                  "message": "Allow it to work with folders with blank spaces\n\nThis patch makes the script work when any of the parent folders\nhave blank spaces in their name.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/8caa3ad7fad19b8eb9c95970c07b4386e4a4d641"
                }
             ],
             "ciActions": [],
@@ -7114,25 +7114,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "479865b6b8c7bf0907388f0da7628c2700e66e44",
+                  "author": "Dennis Loose",
+                  "timestamp": 1743005983,
+                  "message": "feat(gh-actions): add common OSV scanner action (#66)\n\nAdds a GitHub action that runs\n[osv-scanner](https://google.github.io/osv-scanner/) recursively in the\ncurrent directory.\nWe've been testing this in a few repositories this week, including\nhttps://github.com/canonical/ubuntu-desktop-provision/. Adding this to\nour common actions here would simplify maintenance.\nSo far the action uses the default options of the `osv-scanner-action`\nand doesn't expose any parameters. I'd be open to adding some if further\nconfiguration is needed - e.g. by default the action returns with an\nerror status if a vulnerability is found, which might not always be\ndesirable (the GitHub security tab complains about a configuration error\nin this case). It'd also be possible to run the action only for a\nspecific set of directories or lock files if we added a parameter for\nthat.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/479865b6b8c7bf0907388f0da7628c2700e66e44"
+               },
+               {
+                  "sha": "bfebb56dfd50e6482b9575032dc13b8e2d65e6d7",
+                  "author": "Dennis Loose",
+                  "timestamp": 1742986037,
+                  "message": "feat(gh-actions): add common OSV scanner action",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/bfebb56dfd50e6482b9575032dc13b8e2d65e6d7"
+               },
+               {
                   "sha": "292bc91c1ed803d3d7b9ae31d5ff455bbfea4fbd",
                   "author": "Marco Trevisan",
                   "timestamp": 1742416402,
                   "message": "maint(test-build-deb): Test skipping linitian o source build (#62)\n\nWe're doing it in other jobs but we didn't test the skip case",
                   "url": "https://github.com/canonical/desktop-engineering/commit/292bc91c1ed803d3d7b9ae31d5ff455bbfea4fbd"
-               },
-               {
-                  "sha": "e3a6d0426cdb2e6d7fff575b33e1fec488a137a6",
-                  "author": "Sergio Costas",
-                  "timestamp": 1742383534,
-                  "message": "feat(gh-actions): Add an action for checking C format (#56)\n\nThis action and script allows to automatically check the format style in\na C/C++ project, using clang-format. It also can be configured as a GIT\nhook, to also check it automatically before a commit.\n\nThe idea is to simplify adding the local check (as a GIT hook) and\nformatting, by having a single script that \"does everything\", thus\nremoving the need to dive into a .github action to see what is doing to\nimplement the same at .git/hooks/pre-commit; just calling the same\nscript used upstream is enough to guarantee consistency.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e3a6d0426cdb2e6d7fff575b33e1fec488a137a6"
-               },
-               {
-                  "sha": "8caa3ad7fad19b8eb9c95970c07b4386e4a4d641",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1742376432,
-                  "message": "Allow it to work with folders with blank spaces\n\nThis patch makes the script work when any of the parent folders\nhave blank spaces in their name.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/8caa3ad7fad19b8eb9c95970c07b4386e4a4d641"
                }
             ],
             "ciActions": [],
