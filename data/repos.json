@@ -3760,6 +3760,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "562c8faddda43a1d1eff35cda49d93f84c63bb1b",
+                  "author": "Sergio Costas",
+                  "timestamp": 1742991976,
+                  "message": "Add support for snapd abstract socket (#139)\n\nSnapd has changed to an abstract socket when used from inside a\nsnap, so a change was required in snapd-glib. Now, the library\nautomagically detects if it is inside a snap and chooses, in\nthat case, the new abstract socket if it exists, or the old,\nnormal socket if the abstract doesn't exist, so the current code\nto set the socket if we are inside a snap not only is not needed\nanymore, but it will stop working in the next snapd version,\nso it must be removed and let snapd-glib to choose the right\nsocket.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/562c8faddda43a1d1eff35cda49d93f84c63bb1b"
+               },
+               {
                   "sha": "ff0141b6f3d8d7e95f8c29ab1434ef1038909134",
                   "author": "Sergio Costas",
                   "timestamp": 1741885413,
@@ -3772,13 +3779,6 @@
                   "timestamp": 1741884307,
                   "message": "Remove timeout source on destroy (#137)\n\n* Remove timeout source on destroy\n\nWhen a sdi-refresh-monitor object is destroyed, there could\nremain some g_timeout_once() sources. This patch ensures that\nthey are clean up.\n\n* Fix coverage tests",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/ab2fe3801a325b00f3244f0fa9881876c82c8f40"
-               },
-               {
-                  "sha": "35f1c0a33881f62afb323458efe9b3ab8060d3ac",
-                  "author": "Sergio Costas",
-                  "timestamp": 1741883593,
-                  "message": "Make test-sdi-progress-window automatic (#129)\n\nThis patch makes the test-sdi-progress-window test runable in\nCI/CD.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/35f1c0a33881f62afb323458efe9b3ab8060d3ac"
                }
             ],
             "ciActions": [],
@@ -5700,6 +5700,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "562c8faddda43a1d1eff35cda49d93f84c63bb1b",
+                  "author": "Sergio Costas",
+                  "timestamp": 1742991976,
+                  "message": "Add support for snapd abstract socket (#139)\n\nSnapd has changed to an abstract socket when used from inside a\nsnap, so a change was required in snapd-glib. Now, the library\nautomagically detects if it is inside a snap and chooses, in\nthat case, the new abstract socket if it exists, or the old,\nnormal socket if the abstract doesn't exist, so the current code\nto set the socket if we are inside a snap not only is not needed\nanymore, but it will stop working in the next snapd version,\nso it must be removed and let snapd-glib to choose the right\nsocket.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/562c8faddda43a1d1eff35cda49d93f84c63bb1b"
+               },
+               {
                   "sha": "ff0141b6f3d8d7e95f8c29ab1434ef1038909134",
                   "author": "Sergio Costas",
                   "timestamp": 1741885413,
@@ -5712,13 +5719,6 @@
                   "timestamp": 1741884307,
                   "message": "Remove timeout source on destroy (#137)\n\n* Remove timeout source on destroy\n\nWhen a sdi-refresh-monitor object is destroyed, there could\nremain some g_timeout_once() sources. This patch ensures that\nthey are clean up.\n\n* Fix coverage tests",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/ab2fe3801a325b00f3244f0fa9881876c82c8f40"
-               },
-               {
-                  "sha": "35f1c0a33881f62afb323458efe9b3ab8060d3ac",
-                  "author": "Sergio Costas",
-                  "timestamp": 1741883593,
-                  "message": "Make test-sdi-progress-window automatic (#129)\n\nThis patch makes the test-sdi-progress-window test runable in\nCI/CD.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/35f1c0a33881f62afb323458efe9b3ab8060d3ac"
                }
             ],
             "ciActions": [],
@@ -7807,6 +7807,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "562c8faddda43a1d1eff35cda49d93f84c63bb1b",
+                  "author": "Sergio Costas",
+                  "timestamp": 1742991976,
+                  "message": "Add support for snapd abstract socket (#139)\n\nSnapd has changed to an abstract socket when used from inside a\nsnap, so a change was required in snapd-glib. Now, the library\nautomagically detects if it is inside a snap and chooses, in\nthat case, the new abstract socket if it exists, or the old,\nnormal socket if the abstract doesn't exist, so the current code\nto set the socket if we are inside a snap not only is not needed\nanymore, but it will stop working in the next snapd version,\nso it must be removed and let snapd-glib to choose the right\nsocket.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/562c8faddda43a1d1eff35cda49d93f84c63bb1b"
+               },
+               {
                   "sha": "ff0141b6f3d8d7e95f8c29ab1434ef1038909134",
                   "author": "Sergio Costas",
                   "timestamp": 1741885413,
@@ -7819,13 +7826,6 @@
                   "timestamp": 1741884307,
                   "message": "Remove timeout source on destroy (#137)\n\n* Remove timeout source on destroy\n\nWhen a sdi-refresh-monitor object is destroyed, there could\nremain some g_timeout_once() sources. This patch ensures that\nthey are clean up.\n\n* Fix coverage tests",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/ab2fe3801a325b00f3244f0fa9881876c82c8f40"
-               },
-               {
-                  "sha": "35f1c0a33881f62afb323458efe9b3ab8060d3ac",
-                  "author": "Sergio Costas",
-                  "timestamp": 1741883593,
-                  "message": "Make test-sdi-progress-window automatic (#129)\n\nThis patch makes the test-sdi-progress-window test runable in\nCI/CD.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/35f1c0a33881f62afb323458efe9b3ab8060d3ac"
                }
             ],
             "ciActions": [],
