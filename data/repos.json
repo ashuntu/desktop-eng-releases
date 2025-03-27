@@ -6157,25 +6157,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f745b14c806bd28ce21964867c365cd3c4820371",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1742994798,
-                  "message": "feat(docs): Explanation about binfmt and Ubuntu specifics (#1165)\n\nWhile https://github.com/ubuntu/WSL/issues/512 is a representative\nissue, I've seen similar complains in the upstream repository about\nbinfmt_misc registration mediated by systemd not working. I've also seen\na bunch of other complains in the past about WSL binary interoperability\nnot working because of some surprising interaction with\n`systemd-binfmt.service`.\n\nThis explanation page aims to eliminate (or at least decrease the amount\nof) surprises by:\n- Explaining power users why we chose to disable that service\n- Giving them knowledge to do the opposite and deal with potential\nconsequences\n\nI have high hopes (based on conversations I already had with upstream)\nthat we'll see strong improvements in this area still in the WSL 2.5.x\nrelease series.\n\n---\n\nUDENG-6366",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f745b14c806bd28ce21964867c365cd3c4820371"
+                  "sha": "5f4cbe163b0a0b38546fdf4b2f1533fac2a9ad89",
+                  "author": "ashuntu",
+                  "timestamp": 1743088941,
+                  "message": "fix(windows-agent): Cleanup cloud init files for invalid distros (#1166)\n\nIf a distro is invalidated (the user deletes it, for example), its\ncloud-init files may stick around without being cleaned up. This could\nlead to unwanted behavior if a new distro with the same name is created.\n\nAlso, if a Landscape install falls, the corresponding cloud-init file is\nnot cleaned up. This fixes that as well.\n\n---\n\nUDENG-6343",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5f4cbe163b0a0b38546fdf4b2f1533fac2a9ad89"
                },
                {
-                  "sha": "89f75ee40324384fa0c57f54a619e2b1375f965d",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1742913234,
-                  "message": "Replace spelling-flagged words",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/89f75ee40324384fa0c57f54a619e2b1375f965d"
+                  "sha": "b5907ac8e9600d3ef6085cc437bfe90a89a652c7",
+                  "author": "Shane Crowley",
+                  "timestamp": 1743087508,
+                  "message": "docs: add a security overview (#1171)\n\nAdds a new security overview page to the Explanation section of the\ndocs.\n\nThis page outlines security consideration when using Ubuntu on WSL,\nincludes links to relevant security information found elsewhere, and\nbriefly mentions some tips for configuring features relevant to\nsecurity.\n\nIn future, this could possibly be broken down into individual pages if\nsome of the content was to be developed further, but for now a single\npage is sufficient.\n\nUDENG-6389",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b5907ac8e9600d3ef6085cc437bfe90a89a652c7"
                },
                {
-                  "sha": "e830ea213f7db39a2b1d90d0e5c71d49aa8613d3",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1742911657,
-                  "message": "Better explains the current state of WSL measures ...\n\n... implemented to protect binfmt and its limitations.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e830ea213f7db39a2b1d90d0e5c71d49aa8613d3"
+                  "sha": "ae7e7808b997cfeb34f467a3719501a62689ab17",
+                  "author": "ashuntu",
+                  "timestamp": 1743016593,
+                  "message": "Log when distro data removal fails",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/ae7e7808b997cfeb34f467a3719501a62689ab17"
                }
             ],
             "ciActions": [
