@@ -6466,7 +6466,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 83,
+            "newCommits": 85,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -6547,6 +6547,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "aae4e73853f1665522b9c294bb6f493aedec8565",
+                  "author": "adombeck",
+                  "timestamp": 1743416909,
+                  "message": "Add option to force authentication with the identity provider during login (#459)\n\nCloses #813\nUDENG-6177",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/aae4e73853f1665522b9c294bb6f493aedec8565"
+               },
+               {
                   "sha": "0334c2d1362734729d7a9e5744f87b4beffea7b7",
                   "author": "adombeck",
                   "timestamp": 1742995205,
@@ -6559,13 +6566,6 @@
                   "timestamp": 1742993446,
                   "message": "Fix invalid msgraph host\n\nSince commit 5fc98520c45294ffb85bb27a81929e2ec1b89fcb, we store the full\nURL to the msgraph host in the provider metadata. However, the metadata\non disk is not updated, so it can still contain only the domain name of\nthe msgraph host, resulting in a failure to get the groups via msgraph:\n\n    Could not fetch user info: could not get user info: failed to get user groups: failed to get user groups: Get \"graph.microsoft.com/me/transitiveMemberOf/graph.group\": unsupported protocol scheme \"\". Using cached user info.\n\nThis commit fixes that by supporting both the old and new formats of the\nmsgraph host field in the provider metadata.\n\nCloses #858",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/9649956891dbac4a981302621d028f37d4419ed0"
-               },
-               {
-                  "sha": "b4293d52d52b7af2f38962828ad4aec8c72c8777",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1742993014,
-                  "message": "Fix duplicate information in error message\n\n\"failed to get user groups\" is already added to the error message in\n`getSecurityGroups` if it's the call to\n`client.Me().TransitiveMemberOf().GraphGroup()` which fails, which\nresulted in duplicate information (even more than we already have):\n\n    Could not fetch user info: could not get user info: failed to get user groups: failed to get user groups: Get \"graph.microsoft.com/me/transitiveMemberOf/graph.group\": unsupported protocol scheme \"\". Using cached user info.\n\n`getSecurityGroups` is only called in this one location, so we don't\nneed to add information to the error message to reconstruct the call\nstack.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/b4293d52d52b7af2f38962828ad4aec8c72c8777"
                }
             ],
             "ciActions": [
