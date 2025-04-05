@@ -6512,25 +6512,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c26ff5549a5a654545a4779b9c14bd426ebe6442",
-                  "author": "adombeck",
-                  "timestamp": 1743720544,
-                  "message": "deps(go): bump the minor-updates group with 2 updates (#868)",
-                  "url": "https://github.com/ubuntu/authd/commit/c26ff5549a5a654545a4779b9c14bd426ebe6442"
+                  "sha": "91785244d381b65352fa94936c966e06c62089c4",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1743838380,
+                  "message": "pam/integration-tests: Use authd NSS module to perform the pre-check on SSH tests (#864)\n\nIn our SSH integration tests we’re already quite close to check reality,\nbut we’re currently mocking the broker behavior when it comes to perform\nthe NSS queries.\n\nGiven that we already had most of the pieces setup, using our NSS module\nwas an exercise for the reader.\nNow it's time to implement it so that:\n- The authd NSS library is used to get passwd elements from \n- The authd NSS library does precheck when sshd is the parent \n- Bonus point: user homes are created via `pam_mkhomedir.so` as we do in\nreality",
+                  "url": "https://github.com/ubuntu/authd/commit/91785244d381b65352fa94936c966e06c62089c4"
                },
                {
-                  "sha": "6bd8afea990877dc89aa9a62a68cee36ff6266ad",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1743710441,
-                  "message": "Bump Go version to 1.24\n\nRequired by golang.org/x/sys@v0.31.0 and golang.org/x/net@v0.36.0:\n\n    Error: /home/runner/go/pkg/mod/golang.org/x/sys@v0.31.0/unix/vgetrandom_linux.go:7:9: file requires newer Go version go1.24 (application built with go1.23)\n    Error: /home/runner/go/pkg/mod/golang.org/x/net@v0.36.0/http2/config_go124.go:7:9: file requires newer Go version go1.24 (application built with go1.23)",
-                  "url": "https://github.com/ubuntu/authd/commit/6bd8afea990877dc89aa9a62a68cee36ff6266ad"
+                  "sha": "7b38403222db33b1386a1c0095327a9f81136414",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1743815918,
+                  "message": "pam/integration-tests/ssh: Add a few more NSS checks\n\n - Ensure the user did not exist before and it's returned by NSS later\n - Check that the user passwd value is matching what we expect\n - Check that the user group value is matching what we expect\n - Run getent with our NSS module and verify that the returned value\n   matches the expected values for passwd and group databases\n\nWe can then also check the existence of the home dir that has been\ncrated by PAM mkhomedir\n\nFactorize some code in few helpers to make it easier future reusage",
+                  "url": "https://github.com/ubuntu/authd/commit/7b38403222db33b1386a1c0095327a9f81136414"
                },
                {
-                  "sha": "c7f732e790e8f0f5df3fe4be3f1a717f6dc36084",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1743671047,
-                  "message": "deps(go): bump the minor-updates group with 2 updates\n\nBumps the minor-updates group with 2 updates: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3) and [google.golang.org/grpc](https://github.com/grpc/grpc-go).\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.24 to 1.14.27\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.24...v1.14.27)\n\nUpdates `google.golang.org/grpc` from 1.71.0 to 1.71.1\n- [Release notes](https://github.com/grpc/grpc-go/releases)\n- [Commits](https://github.com/grpc/grpc-go/compare/v1.71.0...v1.71.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.27\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: google.golang.org/grpc\n  dependency-version: 1.71.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/c7f732e790e8f0f5df3fe4be3f1a717f6dc36084"
+                  "sha": "1b462c068c59d47b5898c0361a3ef4c125d68530",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1743791151,
+                  "message": "pam/integration-tests: Rename the main file to respect what it is\n\nIt's not anymore just the cli tester",
+                  "url": "https://github.com/ubuntu/authd/commit/1b462c068c59d47b5898c0361a3ef4c125d68530"
                }
             ],
             "ciActions": [
