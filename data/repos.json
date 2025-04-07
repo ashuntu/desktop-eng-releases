@@ -6512,25 +6512,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "91785244d381b65352fa94936c966e06c62089c4",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1743838380,
-                  "message": "pam/integration-tests: Use authd NSS module to perform the pre-check on SSH tests (#864)\n\nIn our SSH integration tests we’re already quite close to check reality,\nbut we’re currently mocking the broker behavior when it comes to perform\nthe NSS queries.\n\nGiven that we already had most of the pieces setup, using our NSS module\nwas an exercise for the reader.\nNow it's time to implement it so that:\n- The authd NSS library is used to get passwd elements from \n- The authd NSS library does precheck when sshd is the parent \n- Bonus point: user homes are created via `pam_mkhomedir.so` as we do in\nreality",
-                  "url": "https://github.com/ubuntu/authd/commit/91785244d381b65352fa94936c966e06c62089c4"
+                  "sha": "38dd8d4d58a7366f401b4201fc59ce218f1d2001",
+                  "author": "adombeck",
+                  "timestamp": 1744022193,
+                  "message": "Revert \"deps(go): bump the minor-updates group with 2 updates\" (#873)\n\nWe can't bump Go to 1.24 yet, because it's not available in Noble.\n\nSee https://github.com/ubuntu/authd/pull/868#issuecomment-2779345828.\n\nReverts ubuntu/authd#868",
+                  "url": "https://github.com/ubuntu/authd/commit/38dd8d4d58a7366f401b4201fc59ce218f1d2001"
                },
                {
-                  "sha": "7b38403222db33b1386a1c0095327a9f81136414",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1743815918,
-                  "message": "pam/integration-tests/ssh: Add a few more NSS checks\n\n - Ensure the user did not exist before and it's returned by NSS later\n - Check that the user passwd value is matching what we expect\n - Check that the user group value is matching what we expect\n - Run getent with our NSS module and verify that the returned value\n   matches the expected values for passwd and group databases\n\nWe can then also check the existence of the home dir that has been\ncrated by PAM mkhomedir\n\nFactorize some code in few helpers to make it easier future reusage",
-                  "url": "https://github.com/ubuntu/authd/commit/7b38403222db33b1386a1c0095327a9f81136414"
+                  "sha": "744faf6c2fcb74c21717a94118848b2e22216633",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1744022005,
+                  "message": "Parse coverage to Cobertura format and upload artifact (#796)\n\nIn order to submit our coverage to TiCS, we need them parsed in\nCobertura format. Since we need to parse this for TiCS, let's reuse the\nassets and upload those Cobertura reports to Codecov as well.\n\nUDENG-5893",
+                  "url": "https://github.com/ubuntu/authd/commit/744faf6c2fcb74c21717a94118848b2e22216633"
                },
                {
-                  "sha": "1b462c068c59d47b5898c0361a3ef4c125d68530",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1743791151,
-                  "message": "pam/integration-tests: Rename the main file to respect what it is\n\nIt's not anymore just the cli tester",
-                  "url": "https://github.com/ubuntu/authd/commit/1b462c068c59d47b5898c0361a3ef4c125d68530"
+                  "sha": "52de785201b9c20eaa846ff66efc56c45b5e979b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1744016089,
+                  "message": "Revert \"deps(go): bump the minor-updates group with 2 updates\"",
+                  "url": "https://github.com/ubuntu/authd/commit/52de785201b9c20eaa846ff66efc56c45b5e979b"
                }
             ],
             "ciActions": [
