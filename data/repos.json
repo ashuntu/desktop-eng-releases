@@ -1724,8 +1724,8 @@
                   {
                      "track": "latest",
                      "channel": "stable",
-                     "revision": 36,
-                     "timestamp": 1686860157
+                     "revision": 40,
+                     "timestamp": 1744141772
                   },
                   {
                      "track": "latest",
@@ -6505,25 +6505,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e28f2bf1f6994bc5ec85d85abdf540308b38ca64",
-                  "author": "Shane Crowley",
-                  "timestamp": 1744114540,
-                  "message": "docs: document enabling forced authentication in config guide (#870)\n\n- includes description of forced auth config\n- description is consolidated from config comments\n- want to avoid detailed explanations in how-to, ideally (token refresh\naspect could be described in a future, standalone authentication\nmechanism explanation)\n\nUDENG-6585",
-                  "url": "https://github.com/ubuntu/authd/commit/e28f2bf1f6994bc5ec85d85abdf540308b38ca64"
+                  "sha": "a9326c36bfe832e425b17f67995a54528fd120bf",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1744141086,
+                  "message": "pam/integration-tests: Cleanups and Selected UI layout GDM test fix (#878)\n\nSome small cleanups I had around, see commits for details\n\nUDENG-6667",
+                  "url": "https://github.com/ubuntu/authd/commit/a9326c36bfe832e425b17f67995a54528fd120bf"
                },
                {
-                  "sha": "a4b0970707fee66b89293823363f214870579e34",
-                  "author": "shanecrowley",
-                  "timestamp": 1744107847,
-                  "message": "place emphasis on remote auth not remote provider\n\nreferring to a remote identity provider introduces needless ambiguity",
-                  "url": "https://github.com/ubuntu/authd/commit/a4b0970707fee66b89293823363f214870579e34"
+                  "sha": "cf9361274b080b507d3c3e6c776e63b38b0e9db5",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1744120872,
+                  "message": "pam/gdmmodel-test: Increase timeout of qrcode layout test\n\nAll theother qr code tests had higher timeouts since we're waiting,\nadapt the last missing one.",
+                  "url": "https://github.com/ubuntu/authd/commit/cf9361274b080b507d3c3e6c776e63b38b0e9db5"
                },
                {
-                  "sha": "45ec381b296830e389a01bafe2406c4304f2dccd",
-                  "author": "shanecrowley",
-                  "timestamp": 1744016539,
-                  "message": "be more explicit about meaning of forced auth\n\nMakes more clear that when force_provider_authentication is true:\n\n- user needs to be online and provider needs to be reachable\n- the authentication is therefore ONLINE with the REMOTE provider\n\nFurther explanation is beyond the scope a how-to but the how-to can link\nto a supplmentary explanation at a later date.",
-                  "url": "https://github.com/ubuntu/authd/commit/45ec381b296830e389a01bafe2406c4304f2dccd"
+                  "sha": "f1b6e0c8eabba1d7bc11b995817c615c9a81a561",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1744052239,
+                  "message": "pam/integration-tests/gdm: Add more tests simulating auth mode selection switch\n\nAs per previous commits we're mostly only replicating what gdm does when\nswitching the authentication mode from the \"key\" button, and so from\nchallenge stage, without going back to the auth mode selection first.\n\nNow, add tests for a more common scenario where a user may hit escape or\nthe \"back\" button to change the authentication mode.\nAnd now do it safely, without requesting the auth mode selection too\nearly.\n\nSo, change the tests so that:\n - We get automatically redirected to password selection\n - Request a change stage to auth mode selection\n - Once back to auth mode selection, select the new auth mode\n - Use it to authenticate",
+                  "url": "https://github.com/ubuntu/authd/commit/f1b6e0c8eabba1d7bc11b995817c615c9a81a561"
                }
             ],
             "ciActions": [
