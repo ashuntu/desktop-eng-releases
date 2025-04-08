@@ -190,14 +190,14 @@
                   {
                      "track": "latest",
                      "channel": "stable",
-                     "revision": 728,
-                     "timestamp": 1713951144
+                     "revision": 736,
+                     "timestamp": 1744112904
                   },
                   {
                      "track": "latest",
                      "channel": "stable",
-                     "revision": 729,
-                     "timestamp": 1713951145
+                     "revision": 737,
+                     "timestamp": 1744112905
                   },
                   {
                      "track": "latest",
@@ -630,18 +630,11 @@
                      "channel": "candidate",
                      "revision": 11,
                      "timestamp": 1704211697
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 1,
-                     "timestamp": 1649249903
                   }
                ],
                "channels": [
                   "stable",
-                  "candidate",
-                  "edge"
+                  "candidate"
                ],
                "tracks": [
                   "latest"
@@ -3659,25 +3652,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "83b6f1f11ad7d92207a7f397bcd531a90209a303",
+                  "sha": "c0d2e3a0f2183db6d716fdd5ff5bf3ee8c2b9f6a",
                   "author": "Dennis Loose",
-                  "timestamp": 1742892155,
-                  "message": "ci: add osv scanner (#196)\n\nUDENG-6422",
-                  "url": "https://github.com/canonical/prompting-client/commit/83b6f1f11ad7d92207a7f397bcd531a90209a303"
+                  "timestamp": 1744114986,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#177)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Prompting\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
+                  "url": "https://github.com/canonical/prompting-client/commit/c0d2e3a0f2183db6d716fdd5ff5bf3ee8c2b9f6a"
                },
                {
-                  "sha": "56b308b2373148740a331cfdc56b959dc9547a81",
+                  "sha": "a93794ce9eeff76d2a90aa871f55d36ada68ebae",
                   "author": "Dennis Loose",
-                  "timestamp": 1742562404,
-                  "message": "ci: add osv scanner",
-                  "url": "https://github.com/canonical/prompting-client/commit/56b308b2373148740a331cfdc56b959dc9547a81"
+                  "timestamp": 1744103773,
+                  "message": "fix(l10n): translated using Weblate (Tamil)\n\nCurrently translated at 95.0% (38 of 40 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/ta/",
+                  "url": "https://github.com/canonical/prompting-client/commit/a93794ce9eeff76d2a90aa871f55d36ada68ebae"
                },
                {
-                  "sha": "7d37e5ae80adf0c684af80ca64e44dcb0656df32",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1742482351,
-                  "message": "Abstract snapd snap socket support (#194)\n\nAdded support for the upcoming snapd abstract snap socket:\n- bumped `tokio` to 1.40, where support for abstract sockets was first\nintroduced\n- added check for abstract socket and a fall back to the current snapd\nsocket\n\nThe `tokio` implementation of `UnixStream::connect` is `async`, so I\nalso propagated that where appropriate. Unfortunately, the `Default`\ntrait is synchronous, so I had to drop that in favor of having clients\ncall `new().await` directly.\n\nThere is a way to call connect on abstract sockets via the\n[SocketAddrExt](https://doc.rust-lang.org/stable/std/os/linux/net/trait.SocketAddrExt.html),\nbut its not as simple as calling `UnixStream::connet`, and I felt\ndropping the `Default` and making the `new` function async was simpler.\nOpen to doing it the other way if we think `new().await` is too messy\n:slightly_smiling_face:",
-                  "url": "https://github.com/canonical/prompting-client/commit/7d37e5ae80adf0c684af80ca64e44dcb0656df32"
+                  "sha": "268431d8fe5618b8a9d7c9a08a656a090aaa371a",
+                  "author": "ei9",
+                  "timestamp": 1744011791,
+                  "message": "fix(l10n): translated using Weblate (Chinese (Traditional Han script))\n\nCurrently translated at 100.0% (40 of 40 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/zh_Hant/",
+                  "url": "https://github.com/canonical/prompting-client/commit/268431d8fe5618b8a9d7c9a08a656a090aaa371a"
                }
             ],
             "ciActions": [],
@@ -4108,25 +4101,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "92a29e2bf7fccc9d3426ce81cc879d8402463f85",
+                  "author": "Dennis Loose",
+                  "timestamp": 1744114265,
+                  "message": "Bump tokio from 1.43.0 to 1.43.1 in /packages/landscape_mock_server (#1034)\n\nBumps [tokio](https://github.com/tokio-rs/tokio) from 1.43.0 to 1.43.1.\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/a7b658c35bd40f6811e557aeb97cbb361b612c56\"><code>a7b658c</code></a>\nchore: prepare Tokio v1.43.1 release</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/c1c8d1033d637d7027fdc137ec8008c5801cbc0d\"><code>c1c8d10</code></a>\nMerge remote-tracking branch 'origin/tokio-1.38.x' into\nforward-port-1.38.x</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/aa303bc2051f7c21b48bb7bfcafe8fd4f39afd21\"><code>aa303bc</code></a>\nchore: prepare Tokio v1.38.2 release</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/7b6ccb515ff067151ed62db835f735e5653f8784\"><code>7b6ccb5</code></a>\nchore: backport CI fixes</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/4b174ce2c95fe1d1a217917db93fcc935e17e0da\"><code>4b174ce</code></a>\nsync: fix cloning value when receiving from broadcast channel</li>\n<li>See full diff in <a\nhref=\"https://github.com/tokio-rs/tokio/compare/tokio-1.43.0...tokio-1.43.1\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=tokio&package-manager=cargo&previous-version=1.43.0&new-version=1.43.1)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot merge` will merge this PR after your CI passes on it\n- `@dependabot squash and merge` will squash and merge this PR after\nyour CI passes on it\n- `@dependabot cancel merge` will cancel a previously requested merge\nand block automerging\n- `@dependabot reopen` will reopen this PR if it is closed\n- `@dependabot close` will close this PR and stop Dependabot recreating\nit. You can achieve the same result by closing it manually\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore this major version` will close this PR and stop\nDependabot creating any more for this major version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this minor version` will close this PR and stop\nDependabot creating any more for this minor version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this dependency` will close this PR and stop\nDependabot creating any more for this dependency (unless you reopen the\nPR or upgrade to it yourself)\nYou can disable automated security fix PRs for this repo from the\n[Security Alerts\npage](https://github.com/canonical/ubuntu-desktop-provision/network/alerts).\n\n</details>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/92a29e2bf7fccc9d3426ce81cc879d8402463f85"
+               },
+               {
+                  "sha": "95af9c6188da8ec6e77436f60df9ba975baf985a",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1744078332,
+                  "message": "Bump tokio from 1.43.0 to 1.43.1 in /packages/landscape_mock_server\n\nBumps [tokio](https://github.com/tokio-rs/tokio) from 1.43.0 to 1.43.1.\n- [Release notes](https://github.com/tokio-rs/tokio/releases)\n- [Commits](https://github.com/tokio-rs/tokio/compare/tokio-1.43.0...tokio-1.43.1)\n\n---\nupdated-dependencies:\n- dependency-name: tokio\n  dependency-version: 1.43.1\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/95af9c6188da8ec6e77436f60df9ba975baf985a"
+               },
+               {
                   "sha": "af130434c3f3cb66f170201475e400ebcf20b16d",
                   "author": "Dennis Loose",
                   "timestamp": 1743687013,
                   "message": "Translations update from Hosted Weblate (#987)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Provision\nCommon](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-common/).\n\n\nIt also includes following components:\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n7](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-7/)\n\n* [ubuntu-desktop-translations/Provision Stages 4 and 5\nInit](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stages-4-and-5-init/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n9](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-9/)\n\n* [ubuntu-desktop-translations/Factory Reset\nTools](https://hosted.weblate.org/projects/ubuntu-desktop-translations/factory-reset-tools/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n8](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-8/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n6](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-6/)\n\n* [ubuntu-desktop-translations/Provision Stage 3\nBootstrap](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n5](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-5/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n3](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-3/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n4](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-4/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n1](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-1/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n2](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-2/)\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/provision-common/horizontal-auto.svg)",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/af130434c3f3cb66f170201475e400ebcf20b16d"
-               },
-               {
-                  "sha": "0408807436b31b9619c2b6bfaaee8f7adcbd9e54",
-                  "author": "Dennis Loose",
-                  "timestamp": 1743686243,
-                  "message": "chore: regenerate l10n",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0408807436b31b9619c2b6bfaaee8f7adcbd9e54"
-               },
-               {
-                  "sha": "b83f61e83cb5c86f342f88bcef13b1e6247d6e4d",
-                  "author": "Quentin PAGÈS",
-                  "timestamp": 1743655271,
-                  "message": "Translated using Weblate (Occitan)\n\nCurrently translated at 96.2% (312 of 324 strings)\n\nTranslation: ubuntu-desktop-translations/Provision Stage 3 Bootstrap\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap/oc/",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b83f61e83cb5c86f342f88bcef13b1e6247d6e4d"
                }
             ],
             "ciActions": [
@@ -5599,25 +5592,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "83b6f1f11ad7d92207a7f397bcd531a90209a303",
+                  "sha": "c0d2e3a0f2183db6d716fdd5ff5bf3ee8c2b9f6a",
                   "author": "Dennis Loose",
-                  "timestamp": 1742892155,
-                  "message": "ci: add osv scanner (#196)\n\nUDENG-6422",
-                  "url": "https://github.com/canonical/prompting-client/commit/83b6f1f11ad7d92207a7f397bcd531a90209a303"
+                  "timestamp": 1744114986,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#177)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Prompting\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
+                  "url": "https://github.com/canonical/prompting-client/commit/c0d2e3a0f2183db6d716fdd5ff5bf3ee8c2b9f6a"
                },
                {
-                  "sha": "56b308b2373148740a331cfdc56b959dc9547a81",
+                  "sha": "a93794ce9eeff76d2a90aa871f55d36ada68ebae",
                   "author": "Dennis Loose",
-                  "timestamp": 1742562404,
-                  "message": "ci: add osv scanner",
-                  "url": "https://github.com/canonical/prompting-client/commit/56b308b2373148740a331cfdc56b959dc9547a81"
+                  "timestamp": 1744103773,
+                  "message": "fix(l10n): translated using Weblate (Tamil)\n\nCurrently translated at 95.0% (38 of 40 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/ta/",
+                  "url": "https://github.com/canonical/prompting-client/commit/a93794ce9eeff76d2a90aa871f55d36ada68ebae"
                },
                {
-                  "sha": "7d37e5ae80adf0c684af80ca64e44dcb0656df32",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1742482351,
-                  "message": "Abstract snapd snap socket support (#194)\n\nAdded support for the upcoming snapd abstract snap socket:\n- bumped `tokio` to 1.40, where support for abstract sockets was first\nintroduced\n- added check for abstract socket and a fall back to the current snapd\nsocket\n\nThe `tokio` implementation of `UnixStream::connect` is `async`, so I\nalso propagated that where appropriate. Unfortunately, the `Default`\ntrait is synchronous, so I had to drop that in favor of having clients\ncall `new().await` directly.\n\nThere is a way to call connect on abstract sockets via the\n[SocketAddrExt](https://doc.rust-lang.org/stable/std/os/linux/net/trait.SocketAddrExt.html),\nbut its not as simple as calling `UnixStream::connet`, and I felt\ndropping the `Default` and making the `new` function async was simpler.\nOpen to doing it the other way if we think `new().await` is too messy\n:slightly_smiling_face:",
-                  "url": "https://github.com/canonical/prompting-client/commit/7d37e5ae80adf0c684af80ca64e44dcb0656df32"
+                  "sha": "268431d8fe5618b8a9d7c9a08a656a090aaa371a",
+                  "author": "ei9",
+                  "timestamp": 1744011791,
+                  "message": "fix(l10n): translated using Weblate (Chinese (Traditional Han script))\n\nCurrently translated at 100.0% (40 of 40 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/zh_Hant/",
+                  "url": "https://github.com/canonical/prompting-client/commit/268431d8fe5618b8a9d7c9a08a656a090aaa371a"
                }
             ],
             "ciActions": [],
@@ -6048,25 +6041,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "92a29e2bf7fccc9d3426ce81cc879d8402463f85",
+                  "author": "Dennis Loose",
+                  "timestamp": 1744114265,
+                  "message": "Bump tokio from 1.43.0 to 1.43.1 in /packages/landscape_mock_server (#1034)\n\nBumps [tokio](https://github.com/tokio-rs/tokio) from 1.43.0 to 1.43.1.\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/a7b658c35bd40f6811e557aeb97cbb361b612c56\"><code>a7b658c</code></a>\nchore: prepare Tokio v1.43.1 release</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/c1c8d1033d637d7027fdc137ec8008c5801cbc0d\"><code>c1c8d10</code></a>\nMerge remote-tracking branch 'origin/tokio-1.38.x' into\nforward-port-1.38.x</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/aa303bc2051f7c21b48bb7bfcafe8fd4f39afd21\"><code>aa303bc</code></a>\nchore: prepare Tokio v1.38.2 release</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/7b6ccb515ff067151ed62db835f735e5653f8784\"><code>7b6ccb5</code></a>\nchore: backport CI fixes</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/4b174ce2c95fe1d1a217917db93fcc935e17e0da\"><code>4b174ce</code></a>\nsync: fix cloning value when receiving from broadcast channel</li>\n<li>See full diff in <a\nhref=\"https://github.com/tokio-rs/tokio/compare/tokio-1.43.0...tokio-1.43.1\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=tokio&package-manager=cargo&previous-version=1.43.0&new-version=1.43.1)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot merge` will merge this PR after your CI passes on it\n- `@dependabot squash and merge` will squash and merge this PR after\nyour CI passes on it\n- `@dependabot cancel merge` will cancel a previously requested merge\nand block automerging\n- `@dependabot reopen` will reopen this PR if it is closed\n- `@dependabot close` will close this PR and stop Dependabot recreating\nit. You can achieve the same result by closing it manually\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore this major version` will close this PR and stop\nDependabot creating any more for this major version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this minor version` will close this PR and stop\nDependabot creating any more for this minor version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this dependency` will close this PR and stop\nDependabot creating any more for this dependency (unless you reopen the\nPR or upgrade to it yourself)\nYou can disable automated security fix PRs for this repo from the\n[Security Alerts\npage](https://github.com/canonical/ubuntu-desktop-provision/network/alerts).\n\n</details>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/92a29e2bf7fccc9d3426ce81cc879d8402463f85"
+               },
+               {
+                  "sha": "95af9c6188da8ec6e77436f60df9ba975baf985a",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1744078332,
+                  "message": "Bump tokio from 1.43.0 to 1.43.1 in /packages/landscape_mock_server\n\nBumps [tokio](https://github.com/tokio-rs/tokio) from 1.43.0 to 1.43.1.\n- [Release notes](https://github.com/tokio-rs/tokio/releases)\n- [Commits](https://github.com/tokio-rs/tokio/compare/tokio-1.43.0...tokio-1.43.1)\n\n---\nupdated-dependencies:\n- dependency-name: tokio\n  dependency-version: 1.43.1\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/95af9c6188da8ec6e77436f60df9ba975baf985a"
+               },
+               {
                   "sha": "af130434c3f3cb66f170201475e400ebcf20b16d",
                   "author": "Dennis Loose",
                   "timestamp": 1743687013,
                   "message": "Translations update from Hosted Weblate (#987)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Provision\nCommon](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-common/).\n\n\nIt also includes following components:\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n7](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-7/)\n\n* [ubuntu-desktop-translations/Provision Stages 4 and 5\nInit](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stages-4-and-5-init/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n9](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-9/)\n\n* [ubuntu-desktop-translations/Factory Reset\nTools](https://hosted.weblate.org/projects/ubuntu-desktop-translations/factory-reset-tools/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n8](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-8/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n6](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-6/)\n\n* [ubuntu-desktop-translations/Provision Stage 3\nBootstrap](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n5](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-5/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n3](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-3/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n4](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-4/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n1](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-1/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n2](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-2/)\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/provision-common/horizontal-auto.svg)",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/af130434c3f3cb66f170201475e400ebcf20b16d"
-               },
-               {
-                  "sha": "0408807436b31b9619c2b6bfaaee8f7adcbd9e54",
-                  "author": "Dennis Loose",
-                  "timestamp": 1743686243,
-                  "message": "chore: regenerate l10n",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0408807436b31b9619c2b6bfaaee8f7adcbd9e54"
-               },
-               {
-                  "sha": "b83f61e83cb5c86f342f88bcef13b1e6247d6e4d",
-                  "author": "Quentin PAGÈS",
-                  "timestamp": 1743655271,
-                  "message": "Translated using Weblate (Occitan)\n\nCurrently translated at 96.2% (312 of 324 strings)\n\nTranslation: ubuntu-desktop-translations/Provision Stage 3 Bootstrap\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap/oc/",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b83f61e83cb5c86f342f88bcef13b1e6247d6e4d"
                }
             ],
             "ciActions": [
@@ -6512,25 +6505,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0c54c71d9dc7255b98f020af124cff7a7190967a",
+                  "sha": "e28f2bf1f6994bc5ec85d85abdf540308b38ca64",
                   "author": "Shane Crowley",
-                  "timestamp": 1744108847,
-                  "message": "docs: recovery mode (#871)\n\nIncludes steps for entering recovery mode when login fails in\nTroubleshooting section.\n\n- documents steps for entering recovery mode\n- mentions option to login as root user or other admin\n\nUDENG-6590",
-                  "url": "https://github.com/ubuntu/authd/commit/0c54c71d9dc7255b98f020af124cff7a7190967a"
+                  "timestamp": 1744114540,
+                  "message": "docs: document enabling forced authentication in config guide (#870)\n\n- includes description of forced auth config\n- description is consolidated from config comments\n- want to avoid detailed explanations in how-to, ideally (token refresh\naspect could be described in a future, standalone authentication\nmechanism explanation)\n\nUDENG-6585",
+                  "url": "https://github.com/ubuntu/authd/commit/e28f2bf1f6994bc5ec85d85abdf540308b38ca64"
                },
                {
-                  "sha": "1624582548e245482836cc7e7909e7ea3f770be9",
+                  "sha": "a4b0970707fee66b89293823363f214870579e34",
                   "author": "shanecrowley",
-                  "timestamp": 1743774317,
-                  "message": "minor fixups\n\nsome changes in wording and punctuation",
-                  "url": "https://github.com/ubuntu/authd/commit/1624582548e245482836cc7e7909e7ea3f770be9"
+                  "timestamp": 1744107847,
+                  "message": "place emphasis on remote auth not remote provider\n\nreferring to a remote identity provider introduces needless ambiguity",
+                  "url": "https://github.com/ubuntu/authd/commit/a4b0970707fee66b89293823363f214870579e34"
                },
                {
-                  "sha": "573ffa9fbeb4ed1d803bf7c302707b81b61223f3",
+                  "sha": "45ec381b296830e389a01bafe2406c4304f2dccd",
                   "author": "shanecrowley",
-                  "timestamp": 1743774284,
-                  "message": "recommend right SHIFT to enter recovery mode\n\nthis should work on most devices.\nif there are edge cases, we can update.",
-                  "url": "https://github.com/ubuntu/authd/commit/573ffa9fbeb4ed1d803bf7c302707b81b61223f3"
+                  "timestamp": 1744016539,
+                  "message": "be more explicit about meaning of forced auth\n\nMakes more clear that when force_provider_authentication is true:\n\n- user needs to be online and provider needs to be reachable\n- the authentication is therefore ONLINE with the REMOTE provider\n\nFurther explanation is beyond the scope a how-to but the how-to can link\nto a supplmentary explanation at a later date.",
+                  "url": "https://github.com/ubuntu/authd/commit/45ec381b296830e389a01bafe2406c4304f2dccd"
                }
             ],
             "ciActions": [
@@ -7706,25 +7699,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "83b6f1f11ad7d92207a7f397bcd531a90209a303",
+                  "sha": "c0d2e3a0f2183db6d716fdd5ff5bf3ee8c2b9f6a",
                   "author": "Dennis Loose",
-                  "timestamp": 1742892155,
-                  "message": "ci: add osv scanner (#196)\n\nUDENG-6422",
-                  "url": "https://github.com/canonical/prompting-client/commit/83b6f1f11ad7d92207a7f397bcd531a90209a303"
+                  "timestamp": 1744114986,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#177)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Prompting\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/horizontal-auto.svg)",
+                  "url": "https://github.com/canonical/prompting-client/commit/c0d2e3a0f2183db6d716fdd5ff5bf3ee8c2b9f6a"
                },
                {
-                  "sha": "56b308b2373148740a331cfdc56b959dc9547a81",
+                  "sha": "a93794ce9eeff76d2a90aa871f55d36ada68ebae",
                   "author": "Dennis Loose",
-                  "timestamp": 1742562404,
-                  "message": "ci: add osv scanner",
-                  "url": "https://github.com/canonical/prompting-client/commit/56b308b2373148740a331cfdc56b959dc9547a81"
+                  "timestamp": 1744103773,
+                  "message": "fix(l10n): translated using Weblate (Tamil)\n\nCurrently translated at 95.0% (38 of 40 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/ta/",
+                  "url": "https://github.com/canonical/prompting-client/commit/a93794ce9eeff76d2a90aa871f55d36ada68ebae"
                },
                {
-                  "sha": "7d37e5ae80adf0c684af80ca64e44dcb0656df32",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1742482351,
-                  "message": "Abstract snapd snap socket support (#194)\n\nAdded support for the upcoming snapd abstract snap socket:\n- bumped `tokio` to 1.40, where support for abstract sockets was first\nintroduced\n- added check for abstract socket and a fall back to the current snapd\nsocket\n\nThe `tokio` implementation of `UnixStream::connect` is `async`, so I\nalso propagated that where appropriate. Unfortunately, the `Default`\ntrait is synchronous, so I had to drop that in favor of having clients\ncall `new().await` directly.\n\nThere is a way to call connect on abstract sockets via the\n[SocketAddrExt](https://doc.rust-lang.org/stable/std/os/linux/net/trait.SocketAddrExt.html),\nbut its not as simple as calling `UnixStream::connet`, and I felt\ndropping the `Default` and making the `new` function async was simpler.\nOpen to doing it the other way if we think `new().await` is too messy\n:slightly_smiling_face:",
-                  "url": "https://github.com/canonical/prompting-client/commit/7d37e5ae80adf0c684af80ca64e44dcb0656df32"
+                  "sha": "268431d8fe5618b8a9d7c9a08a656a090aaa371a",
+                  "author": "ei9",
+                  "timestamp": 1744011791,
+                  "message": "fix(l10n): translated using Weblate (Chinese (Traditional Han script))\n\nCurrently translated at 100.0% (40 of 40 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/zh_Hant/",
+                  "url": "https://github.com/canonical/prompting-client/commit/268431d8fe5618b8a9d7c9a08a656a090aaa371a"
                }
             ],
             "ciActions": [],
@@ -8155,25 +8148,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "92a29e2bf7fccc9d3426ce81cc879d8402463f85",
+                  "author": "Dennis Loose",
+                  "timestamp": 1744114265,
+                  "message": "Bump tokio from 1.43.0 to 1.43.1 in /packages/landscape_mock_server (#1034)\n\nBumps [tokio](https://github.com/tokio-rs/tokio) from 1.43.0 to 1.43.1.\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/a7b658c35bd40f6811e557aeb97cbb361b612c56\"><code>a7b658c</code></a>\nchore: prepare Tokio v1.43.1 release</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/c1c8d1033d637d7027fdc137ec8008c5801cbc0d\"><code>c1c8d10</code></a>\nMerge remote-tracking branch 'origin/tokio-1.38.x' into\nforward-port-1.38.x</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/aa303bc2051f7c21b48bb7bfcafe8fd4f39afd21\"><code>aa303bc</code></a>\nchore: prepare Tokio v1.38.2 release</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/7b6ccb515ff067151ed62db835f735e5653f8784\"><code>7b6ccb5</code></a>\nchore: backport CI fixes</li>\n<li><a\nhref=\"https://github.com/tokio-rs/tokio/commit/4b174ce2c95fe1d1a217917db93fcc935e17e0da\"><code>4b174ce</code></a>\nsync: fix cloning value when receiving from broadcast channel</li>\n<li>See full diff in <a\nhref=\"https://github.com/tokio-rs/tokio/compare/tokio-1.43.0...tokio-1.43.1\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=tokio&package-manager=cargo&previous-version=1.43.0&new-version=1.43.1)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot merge` will merge this PR after your CI passes on it\n- `@dependabot squash and merge` will squash and merge this PR after\nyour CI passes on it\n- `@dependabot cancel merge` will cancel a previously requested merge\nand block automerging\n- `@dependabot reopen` will reopen this PR if it is closed\n- `@dependabot close` will close this PR and stop Dependabot recreating\nit. You can achieve the same result by closing it manually\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore this major version` will close this PR and stop\nDependabot creating any more for this major version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this minor version` will close this PR and stop\nDependabot creating any more for this minor version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this dependency` will close this PR and stop\nDependabot creating any more for this dependency (unless you reopen the\nPR or upgrade to it yourself)\nYou can disable automated security fix PRs for this repo from the\n[Security Alerts\npage](https://github.com/canonical/ubuntu-desktop-provision/network/alerts).\n\n</details>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/92a29e2bf7fccc9d3426ce81cc879d8402463f85"
+               },
+               {
+                  "sha": "95af9c6188da8ec6e77436f60df9ba975baf985a",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1744078332,
+                  "message": "Bump tokio from 1.43.0 to 1.43.1 in /packages/landscape_mock_server\n\nBumps [tokio](https://github.com/tokio-rs/tokio) from 1.43.0 to 1.43.1.\n- [Release notes](https://github.com/tokio-rs/tokio/releases)\n- [Commits](https://github.com/tokio-rs/tokio/compare/tokio-1.43.0...tokio-1.43.1)\n\n---\nupdated-dependencies:\n- dependency-name: tokio\n  dependency-version: 1.43.1\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/95af9c6188da8ec6e77436f60df9ba975baf985a"
+               },
+               {
                   "sha": "af130434c3f3cb66f170201475e400ebcf20b16d",
                   "author": "Dennis Loose",
                   "timestamp": 1743687013,
                   "message": "Translations update from Hosted Weblate (#987)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Provision\nCommon](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-common/).\n\n\nIt also includes following components:\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n7](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-7/)\n\n* [ubuntu-desktop-translations/Provision Stages 4 and 5\nInit](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stages-4-and-5-init/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n9](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-9/)\n\n* [ubuntu-desktop-translations/Factory Reset\nTools](https://hosted.weblate.org/projects/ubuntu-desktop-translations/factory-reset-tools/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n8](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-8/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n6](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-6/)\n\n* [ubuntu-desktop-translations/Provision Stage 3\nBootstrap](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n5](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-5/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n3](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-3/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n4](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-4/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n1](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-1/)\n\n* [ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide\n2](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-2/)\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/provision-common/horizontal-auto.svg)",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/af130434c3f3cb66f170201475e400ebcf20b16d"
-               },
-               {
-                  "sha": "0408807436b31b9619c2b6bfaaee8f7adcbd9e54",
-                  "author": "Dennis Loose",
-                  "timestamp": 1743686243,
-                  "message": "chore: regenerate l10n",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0408807436b31b9619c2b6bfaaee8f7adcbd9e54"
-               },
-               {
-                  "sha": "b83f61e83cb5c86f342f88bcef13b1e6247d6e4d",
-                  "author": "Quentin PAGÈS",
-                  "timestamp": 1743655271,
-                  "message": "Translated using Weblate (Occitan)\n\nCurrently translated at 96.2% (312 of 324 strings)\n\nTranslation: ubuntu-desktop-translations/Provision Stage 3 Bootstrap\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap/oc/",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b83f61e83cb5c86f342f88bcef13b1e6247d6e4d"
                }
             ],
             "ciActions": [
