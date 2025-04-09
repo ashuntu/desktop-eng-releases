@@ -40,20 +40,20 @@
                   {
                      "track": "latest",
                      "channel": "stable",
-                     "revision": 40,
-                     "timestamp": 1704815465
+                     "revision": 69,
+                     "timestamp": 1744200556
                   },
                   {
                      "track": "latest",
                      "channel": "stable",
-                     "revision": 42,
-                     "timestamp": 1704815466
+                     "revision": 68,
+                     "timestamp": 1744200556
                   },
                   {
                      "track": "latest",
                      "channel": "stable",
-                     "revision": 41,
-                     "timestamp": 1704815466
+                     "revision": 67,
+                     "timestamp": 1744200555
                   },
                   {
                      "track": "latest",
@@ -277,8 +277,8 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 206,
-                     "timestamp": 1743608578
+                     "revision": 209,
+                     "timestamp": 1744198448
                   }
                ],
                "channels": [
@@ -6124,6 +6124,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d2613e2293aa88ad79cd324d808f3e3898357036",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1744200966,
+                  "message": "fix(wsl-pro-service): Less logging (#1184)\n\nThe current implementation of wsl-pro-service's `daemon.Serve()` keeps\ntrying to connect to the Windows agent indefinitely, with exponential\nback-off starting at 1 second and saturating at 60 min with a power of 2\ngrowth factor. That means it will roughly take 2 minutes to saturate the\nback-off wait time and then keep retrying at every minute. Since most\nWSL users don't have the Windows agent running, that means one log line\nbeing added to the journal by default every minute. That's not a good\ndefault.\n\nWith this PR I aim to make wsl-pro-service quit gracefully after a\npredefined number of consecutive retry attempts to connect to the\nWindows agent. Since systemd is set to restart it always, I'm changing\nthe restart interval from 2 seconds to 20 minutes. So we'd be trying to\nconnect to the Windows agent for roughly 10 min, bailing out and staying\nquiet and silent for 20 minutes before trying again.\n\nWe could consider alternatively asking systemd to only restart us on\nfailure, and staying quiet for the entire duration of a boot instead. Or\neven establishing specific error codes for when systemd should and\nshould not restart us.\n\nThose alternatives as well as the magic numbers sprinkled here and there\nare pretty much open for debate.\n\nOne final note: I did a major refactoring of `daemon.Serve()` because\notherwise adding a test case to verify that method would return no error\nwhen the maximum number of retrial attempts is reached would require\nhaving such test case running for 10min or more, just waiting.\nDecoupling the retrial logic allows us to infer that indirectly by\ncovering all possible retry scenarios in half a second, and trusting\nthat `daemon.Serve()` won't error out if `retryConfig.Run()` doesn't. I\ncould have stopped the changes in Go code at the first commit but that\nwould be suboptimal IMHO.\n\n---\n\nUDENG-6571",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d2613e2293aa88ad79cd324d808f3e3898357036"
+               },
+               {
                   "sha": "13d225b12fb7f3649b031e2d44f0695e3e5ad1b2",
                   "author": "Carlos Nihelton",
                   "timestamp": 1744144899,
@@ -6136,13 +6143,6 @@
                   "timestamp": 1743618072,
                   "message": "ci: Convert coverage reports to xml and combine into single report (#1187)\n\nThis PR makes each test that outputs coverage to convert their coverage\nreports to XML and upload it as an artifact. Then, when all tests with\ncoverage are done, the artifacts are collected and combined to submit to\ncodecov.\n\n---\n\nUDENG-6504",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d63340c000110094d25837731a94bb98d8478b24"
-               },
-               {
-                  "sha": "b8b14fc16dbfca86a43fee11203114bd611a7e98",
-                  "author": "ashuntu",
-                  "timestamp": 1743613273,
-                  "message": "Only run coverage on success and use proper search directory",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b8b14fc16dbfca86a43fee11203114bd611a7e98"
                }
             ],
             "ciActions": [
