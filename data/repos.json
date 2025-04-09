@@ -2751,7 +2751,7 @@
          {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru_test.dart",
             "releases": [
                {
@@ -4138,7 +4138,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 283,
+            "newCommits": 284,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -6078,7 +6078,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 283,
+            "newCommits": 284,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -6124,25 +6124,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "da15921f418c89c17e86bfda0b42d8d4bf1e6011",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1744211828,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/da15921f418c89c17e86bfda0b42d8d4bf1e6011"
+                  "sha": "9d9ac3c8683ae8ec5e34949a8fb398b20697b661",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1744213423,
+                  "message": "deps(end-to-end): bump google.golang.org/grpc from 1.71.0 to 1.71.1 in /end-to-end (#1192)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9d9ac3c8683ae8ec5e34949a8fb398b20697b661"
                },
                {
-                  "sha": "8a69ba81c70ee0d085facef97ab5823ed16c86be",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1744211775,
-                  "message": "fix: Upgrade go toolchain and fixes CI (#1195)\n\nCi is pretty broken due new vulnerability disclosures in the Go\ntoolchain, such as:\n\n```\n Checking known vulnerabilities\n=== Symbol Results ===\n\nVulnerability #1: GO-2025-3563\n    Request smuggling due to acceptance of invalid chunked data in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3563\n  Standard library\n    Found in: net/http/internal@go1.23.6\n    Fixed in: net/http/internal@go1.23.8\n    Example traces found:\nError:       #1: internal/system/system.go:264:13: system.System.findCmdExe calls bufio.Scanner.Scan, which eventually calls internal.chunkedReader.Read\n\nYour code is affected by 1 vulnerability from the Go standard library.\nThis scan found no other vulnerabilities in packages you import or modules you\nrequire.\n```\n\nAlso, I introduced a racy test in my previous PR.\n`TestRetryLogic/With_a_precancelled_context` is inherently racy a\nbecause a pre-cancelled context makes the Run() method race wit\ntime.After(). It's the case because the initial wait is 0, so which of\nctx.Done() or time.After(0) will be preferred is unknown.\n\nThis fixes the test to assume that race condition and change the\nassertions slightly.\n\n```go\n\t\tselect {\n\t\tcase <-ctx.Done():\n\t\t\treturn nil\n\t\tcase <-time.After(wait):\n\t\t}\n\n```\n\n---\nUDENG-6698",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8a69ba81c70ee0d085facef97ab5823ed16c86be"
+                  "sha": "1100cc429aacc4d7dc80e87f430f3b19238907a0",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1744213403,
+                  "message": "deps(wsl-pro-service): bump google.golang.org/grpc from 1.71.0 to 1.71.1 in /wsl-pro-service (#1193)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1100cc429aacc4d7dc80e87f430f3b19238907a0"
                },
                {
-                  "sha": "eb653a4fc0c33c8c64213cc0cd95ad060cb8fc76",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1744209041,
-                  "message": "Fix wsl-pro-service deamon test case TestRetryLogic\n\na pre-cancelled context makes the Run() method race:\nIt's the case because the initial wait is 0, so which of ctx.Done() or\ntime.After(0) will be preferred is unknown.\nThis fixes the test to assume that race condition and change the\nassertions slightly.\n\n```go\n\t\tselect {\n\t\tcase <-ctx.Done():\n\t\t\treturn nil\n\t\tcase <-time.After(wait):\n\t\t}\n\n```",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/eb653a4fc0c33c8c64213cc0cd95ad060cb8fc76"
+                  "sha": "83f0188d59fb04821d3f89dfe626813a5c3c4c86",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1744213388,
+                  "message": "deps(common): bump google.golang.org/grpc from 1.71.0 to 1.71.1 in /common (#1194)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/83f0188d59fb04821d3f89dfe626813a5c3c4c86"
                }
             ],
             "ciActions": [
@@ -6792,7 +6792,7 @@
          {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru_test.dart",
             "releases": [
                {
@@ -8220,7 +8220,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 283,
+            "newCommits": 284,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -8651,7 +8651,7 @@
          {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru_test.dart",
             "releases": [
                {
