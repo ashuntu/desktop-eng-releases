@@ -2751,7 +2751,7 @@
          {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/ubuntu/yaru_test.dart",
             "releases": [
                {
@@ -4642,25 +4642,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cd57a21df2edb9337ed11e386a43b854fea25f83",
+                  "author": "Kat",
+                  "timestamp": 1744210597,
+                  "message": "Merge pull request #84 from ubuntu/update-readme\n\nfeat(readme): Update WSL example in README",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/cd57a21df2edb9337ed11e386a43b854fea25f83"
+               },
+               {
+                  "sha": "52d2eec4ca0eafd84af26faed58fcf7f8fb7562c",
+                  "author": "kkuo",
+                  "timestamp": 1744129868,
+                  "message": "Update WSL example",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/52d2eec4ca0eafd84af26faed58fcf7f8fb7562c"
+               },
+               {
                   "sha": "39af41dd7b327d31472167c79d3bee499a118b4c",
                   "author": "Kat",
                   "timestamp": 1744124176,
                   "message": "Merge pull request #82 from ubuntu/UDENG-6637-revamp-wsl-interop-detection\n\nfeat(platform_linux): Use wsl.conf based detection of interop state",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/39af41dd7b327d31472167c79d3bee499a118b4c"
-               },
-               {
-                  "sha": "6c6804b3b49d576529f9376674bf1cdcc8871a75",
-                  "author": "Kat",
-                  "timestamp": 1744120687,
-                  "message": "Merge pull request #83 from ubuntu/windows-virtual-disks\n\nfeat(hardware): Ignore Windows virtual disks",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6c6804b3b49d576529f9376674bf1cdcc8871a75"
-               },
-               {
-                  "sha": "8b1ed49503d9157a05ab765b9d110d4365c343e4",
-                  "author": "kkuo",
-                  "timestamp": 1744051465,
-                  "message": "Use wsl.conf based detection of interop state",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8b1ed49503d9157a05ab765b9d110d4365c343e4"
                }
             ],
             "ciActions": [
@@ -6124,25 +6124,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d2613e2293aa88ad79cd324d808f3e3898357036",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1744200966,
-                  "message": "fix(wsl-pro-service): Less logging (#1184)\n\nThe current implementation of wsl-pro-service's `daemon.Serve()` keeps\ntrying to connect to the Windows agent indefinitely, with exponential\nback-off starting at 1 second and saturating at 60 min with a power of 2\ngrowth factor. That means it will roughly take 2 minutes to saturate the\nback-off wait time and then keep retrying at every minute. Since most\nWSL users don't have the Windows agent running, that means one log line\nbeing added to the journal by default every minute. That's not a good\ndefault.\n\nWith this PR I aim to make wsl-pro-service quit gracefully after a\npredefined number of consecutive retry attempts to connect to the\nWindows agent. Since systemd is set to restart it always, I'm changing\nthe restart interval from 2 seconds to 20 minutes. So we'd be trying to\nconnect to the Windows agent for roughly 10 min, bailing out and staying\nquiet and silent for 20 minutes before trying again.\n\nWe could consider alternatively asking systemd to only restart us on\nfailure, and staying quiet for the entire duration of a boot instead. Or\neven establishing specific error codes for when systemd should and\nshould not restart us.\n\nThose alternatives as well as the magic numbers sprinkled here and there\nare pretty much open for debate.\n\nOne final note: I did a major refactoring of `daemon.Serve()` because\notherwise adding a test case to verify that method would return no error\nwhen the maximum number of retrial attempts is reached would require\nhaving such test case running for 10min or more, just waiting.\nDecoupling the retrial logic allows us to infer that indirectly by\ncovering all possible retry scenarios in half a second, and trusting\nthat `daemon.Serve()` won't error out if `retryConfig.Run()` doesn't. I\ncould have stopped the changes in Go code at the first commit but that\nwould be suboptimal IMHO.\n\n---\n\nUDENG-6571",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d2613e2293aa88ad79cd324d808f3e3898357036"
+                  "sha": "da15921f418c89c17e86bfda0b42d8d4bf1e6011",
+                  "author": "CarlosNihelton",
+                  "timestamp": 1744211828,
+                  "message": "Auto update internal dependencies",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/da15921f418c89c17e86bfda0b42d8d4bf1e6011"
                },
                {
-                  "sha": "13d225b12fb7f3649b031e2d44f0695e3e5ad1b2",
+                  "sha": "8a69ba81c70ee0d085facef97ab5823ed16c86be",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1744144899,
-                  "message": "fix(wsl-pro-service): Raise systemd restrictions again (#1186)\n\nIn #814 we lowered systemd confinement a little bit to permit the\npro-client to execute livepatch, even though it's currently not\napplicable for WSL (and even undesirable as it delays pro attaching to\ninstall that snap).\n\nWith ubuntu-pro-client version 35, currently in `-proposed` for the\ninteresting LTSes, that behaviour was fixed, pro client correctly\ndetects WSL and no longer attempts to run livepatch, not even when\nsubprocessed through a confined systemd service.\n\nThat fix allows us to raise the systemd restrictions again.\n\n--- \n\nUDENG-3358",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/13d225b12fb7f3649b031e2d44f0695e3e5ad1b2"
+                  "timestamp": 1744211775,
+                  "message": "fix: Upgrade go toolchain and fixes CI (#1195)\n\nCi is pretty broken due new vulnerability disclosures in the Go\ntoolchain, such as:\n\n```\n Checking known vulnerabilities\n=== Symbol Results ===\n\nVulnerability #1: GO-2025-3563\n    Request smuggling due to acceptance of invalid chunked data in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3563\n  Standard library\n    Found in: net/http/internal@go1.23.6\n    Fixed in: net/http/internal@go1.23.8\n    Example traces found:\nError:       #1: internal/system/system.go:264:13: system.System.findCmdExe calls bufio.Scanner.Scan, which eventually calls internal.chunkedReader.Read\n\nYour code is affected by 1 vulnerability from the Go standard library.\nThis scan found no other vulnerabilities in packages you import or modules you\nrequire.\n```\n\nAlso, I introduced a racy test in my previous PR.\n`TestRetryLogic/With_a_precancelled_context` is inherently racy a\nbecause a pre-cancelled context makes the Run() method race wit\ntime.After(). It's the case because the initial wait is 0, so which of\nctx.Done() or time.After(0) will be preferred is unknown.\n\nThis fixes the test to assume that race condition and change the\nassertions slightly.\n\n```go\n\t\tselect {\n\t\tcase <-ctx.Done():\n\t\t\treturn nil\n\t\tcase <-time.After(wait):\n\t\t}\n\n```\n\n---\nUDENG-6698",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/8a69ba81c70ee0d085facef97ab5823ed16c86be"
                },
                {
-                  "sha": "d63340c000110094d25837731a94bb98d8478b24",
-                  "author": "ashuntu",
-                  "timestamp": 1743618072,
-                  "message": "ci: Convert coverage reports to xml and combine into single report (#1187)\n\nThis PR makes each test that outputs coverage to convert their coverage\nreports to XML and upload it as an artifact. Then, when all tests with\ncoverage are done, the artifacts are collected and combined to submit to\ncodecov.\n\n---\n\nUDENG-6504",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d63340c000110094d25837731a94bb98d8478b24"
+                  "sha": "eb653a4fc0c33c8c64213cc0cd95ad060cb8fc76",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1744209041,
+                  "message": "Fix wsl-pro-service deamon test case TestRetryLogic\n\na pre-cancelled context makes the Run() method race:\nIt's the case because the initial wait is 0, so which of ctx.Done() or\ntime.After(0) will be preferred is unknown.\nThis fixes the test to assume that race condition and change the\nassertions slightly.\n\n```go\n\t\tselect {\n\t\tcase <-ctx.Done():\n\t\t\treturn nil\n\t\tcase <-time.After(wait):\n\t\t}\n\n```",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/eb653a4fc0c33c8c64213cc0cd95ad060cb8fc76"
                }
             ],
             "ciActions": [
@@ -6792,7 +6792,7 @@
          {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/ubuntu/yaru_test.dart",
             "releases": [
                {
@@ -8651,7 +8651,7 @@
          {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/ubuntu/yaru_test.dart",
             "releases": [
                {
