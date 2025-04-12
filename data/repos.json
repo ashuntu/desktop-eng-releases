@@ -6479,25 +6479,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5afa74e8ffb5abc7e015caf97e7e763fc91ae89f",
+                  "sha": "3385af3b60fd7fb0f1c3c3f6ec7f3abd40a0c996",
                   "author": "Marco Trevisan",
-                  "timestamp": 1744384700,
-                  "message": "Bump Go toolchain version to 1.23.8 (#882)\n\ngovulncheck reports the following vulnerability in go1.23.6\n\n```\nVulnerability #1: GO-2025-3563\n    Request smuggling due to acceptance of invalid chunked data in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3563\n  Standard library\n    Found in: net/http/internal@go1.23.6\n    Fixed in: net/http/internal@go1.23.8\n```",
-                  "url": "https://github.com/ubuntu/authd/commit/5afa74e8ffb5abc7e015caf97e7e763fc91ae89f"
+                  "timestamp": 1744413931,
+                  "message": "pam/tests: Fix failures due to timing issues as per recent go updates (#883)\n\nAs per #882 SSH tests take way more to return back to the terminal, and\nthis leads to random failures in CI.\n\nSo give these tests more time to wait for being completed, sadly.\n\nIt's also weird that a minor upgrade has such performances implications,\nbut not something we can easily track.",
+                  "url": "https://github.com/ubuntu/authd/commit/3385af3b60fd7fb0f1c3c3f6ec7f3abd40a0c996"
                },
                {
-                  "sha": "58016f4376374b5d40103892964b3d50997f3f2f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1744369479,
-                  "message": "Bump Go toolchain version to 1.23.8\n\ngovulncheck reports the following vulnerability in go1.23.6\n\nVulnerability #1: GO-2025-3563\n    Request smuggling due to acceptance of invalid chunked data in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-3563\n  Standard library\n    Found in: net/http/internal@go1.23.6\n    Fixed in: net/http/internal@go1.23.8",
-                  "url": "https://github.com/ubuntu/authd/commit/58016f4376374b5d40103892964b3d50997f3f2f"
+                  "sha": "998507d43237fd85c0b9dd072cb7ecdded776776",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1744411429,
+                  "message": "pam/integration-tests/ssh: Also wait more when entering in the SSH shell",
+                  "url": "https://github.com/ubuntu/authd/commit/998507d43237fd85c0b9dd072cb7ecdded776776"
                },
                {
-                  "sha": "a9326c36bfe832e425b17f67995a54528fd120bf",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1744141086,
-                  "message": "pam/integration-tests: Cleanups and Selected UI layout GDM test fix (#878)\n\nSome small cleanups I had around, see commits for details\n\nUDENG-6667",
-                  "url": "https://github.com/ubuntu/authd/commit/a9326c36bfe832e425b17f67995a54528fd120bf"
+                  "sha": "507cde1bc6de554b33e3104dc578197106a39488",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1744403910,
+                  "message": "pam/integration-tests/cli: Use longer waits for CLI tests with buttons\n\nWe have these tests failing regularly although it's not clear why since\nthe data seems all there... Let's see if waiting more can help.",
+                  "url": "https://github.com/ubuntu/authd/commit/507cde1bc6de554b33e3104dc578197106a39488"
                }
             ],
             "ciActions": [
