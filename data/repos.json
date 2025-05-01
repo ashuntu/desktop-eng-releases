@@ -4630,25 +4630,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9096aea738ed7e9b6fcf906ea79f06dd23abd080",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1746058439,
+                  "message": "Update init/high-contrast-dark screenshots on `main` (#943)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/9096aea738ed7e9b6fcf906ea79f06dd23abd080"
+               },
+               {
+                  "sha": "496759658551d136d27a608da0b22ef2fc974d26",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1746058356,
+                  "message": "Update init/light screenshots on `main` (#942)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/496759658551d136d27a608da0b22ef2fc974d26"
+               },
+               {
                   "sha": "63a72d57e93daec591b74d77c4e1e4771a34367d",
                   "author": "github-actions[bot]",
                   "timestamp": 1745971927,
                   "message": "Update init/light screenshots on `main` (#941)\n\nCo-authored-by: GitHub <noreply@github.com>",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/63a72d57e93daec591b74d77c4e1e4771a34367d"
-               },
-               {
-                  "sha": "368a13997e9aa04c46858a7cf2b4144c3e9c60e0",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1745971899,
-                  "message": "Update init/dark screenshots on `main` (#940)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/368a13997e9aa04c46858a7cf2b4144c3e9c60e0"
-               },
-               {
-                  "sha": "d54812ddd51d2d506968c1274ac81b798aee4023",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1745799403,
-                  "message": "Update init/high-contrast-dark screenshots on `main` (#939)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/d54812ddd51d2d506968c1274ac81b798aee4023"
                }
             ],
             "ciActions": [
@@ -6612,25 +6612,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5863e338c2377e5cc6b18f0cbeb43096973480c2",
+                  "sha": "59be8dd94c0c51fdfab1615971fb86bab6304d2b",
                   "author": "Marco Trevisan",
-                  "timestamp": 1745969246,
-                  "message": "Use lowercase usernames (#723)\n\nAll the brokers we currently support (msentraid and google) use\ncase-insensitive usernames. Currently, logging in with a username which\ndiffers in upper or lowercase from the username in the broker results\nin an authentication failure. We want to fix that.\n\nThe easiest way to do that is to convert all usernames to lowercase\nbefore storing them in our database or passing them to the broker, and\nalso convert the Name argument of GetPassdByName to lowercase before\nquerying the database.\n\nIf we (or anyone else) ever wants to add a broker for a provider which\ndoes *not* use case-insensitive usernames, we will have to revisit this\nand decide whether we want to support that.\n\nReview and merge together with\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/314\n\nCloses #530, #531 \nUDENG-4518\nUDENG-4519\nUDENG-6636\nUDENG-6822",
-                  "url": "https://github.com/ubuntu/authd/commit/5863e338c2377e5cc6b18f0cbeb43096973480c2"
+                  "timestamp": 1746055902,
+                  "message": "Lowercase user names migrations fixes (#902)\n\nSome fixes and cleanups after some more local testing",
+                  "url": "https://github.com/ubuntu/authd/commit/59be8dd94c0c51fdfab1615971fb86bab6304d2b"
                },
                {
-                  "sha": "c52722102b36ba0136cbc676827d87c4c5813999",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1745966060,
-                  "message": "ci/qa: Use failfast argument flag for tests (#900)\n\nAvoid running all the tests if one is failing, since we'd likely need to\ntrigger another test job.\n\nThus avoid wasting resources",
-                  "url": "https://github.com/ubuntu/authd/commit/c52722102b36ba0136cbc676827d87c4c5813999"
-               },
-               {
-                  "sha": "b6cc7cb17d68d2a8fa2f2aa0e01268f6c75614ec",
+                  "sha": "c27fba1bf2b674457efa4527dfc839335dc58969",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1745519970,
-                  "message": "fileutils: Improve SymlinkResolutionError handling\n\nDo comparisons per error type, since we don't care about the actual\nerror content, but also allow unwrapping to the actual internal error",
-                  "url": "https://github.com/ubuntu/authd/commit/b6cc7cb17d68d2a8fa2f2aa0e01268f6c75614ec"
+                  "timestamp": 1745980307,
+                  "message": "authd/integrationtests: Use group file and override locking mechanism\n\nWe don't want to act on files in /etc but rather on mock files, so let's\noverride them during integration tests",
+                  "url": "https://github.com/ubuntu/authd/commit/c27fba1bf2b674457efa4527dfc839335dc58969"
+               },
+               {
+                  "sha": "8e687897dd9883dc79e8fbe6d476394ae8854953",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1745979956,
+                  "message": "users/db/migration: Fix parsing of group file with empty groups\n\nIf a group contains no users, the fields splitting mechanism will return\njust three elements. While we could handle the specific case, it's just\nbetter to rely on simpler strings.SplitN, even if less efficient\n\nFixes:\n  ERROR error applying schema migration: failed to rename users in /etc/group\n  file: unexpected number of fields in /etc/group line (expected 4, got 3):\n  root:x:0:",
+                  "url": "https://github.com/ubuntu/authd/commit/8e687897dd9883dc79e8fbe6d476394ae8854953"
                }
             ],
             "ciActions": [
@@ -8290,25 +8290,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9096aea738ed7e9b6fcf906ea79f06dd23abd080",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1746058439,
+                  "message": "Update init/high-contrast-dark screenshots on `main` (#943)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/9096aea738ed7e9b6fcf906ea79f06dd23abd080"
+               },
+               {
+                  "sha": "496759658551d136d27a608da0b22ef2fc974d26",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1746058356,
+                  "message": "Update init/light screenshots on `main` (#942)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/496759658551d136d27a608da0b22ef2fc974d26"
+               },
+               {
                   "sha": "63a72d57e93daec591b74d77c4e1e4771a34367d",
                   "author": "github-actions[bot]",
                   "timestamp": 1745971927,
                   "message": "Update init/light screenshots on `main` (#941)\n\nCo-authored-by: GitHub <noreply@github.com>",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/63a72d57e93daec591b74d77c4e1e4771a34367d"
-               },
-               {
-                  "sha": "368a13997e9aa04c46858a7cf2b4144c3e9c60e0",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1745971899,
-                  "message": "Update init/dark screenshots on `main` (#940)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/368a13997e9aa04c46858a7cf2b4144c3e9c60e0"
-               },
-               {
-                  "sha": "d54812ddd51d2d506968c1274ac81b798aee4023",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1745799403,
-                  "message": "Update init/high-contrast-dark screenshots on `main` (#939)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/d54812ddd51d2d506968c1274ac81b798aee4023"
                }
             ],
             "ciActions": [
