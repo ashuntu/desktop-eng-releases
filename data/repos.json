@@ -6774,25 +6774,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "59be8dd94c0c51fdfab1615971fb86bab6304d2b",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1746055902,
-                  "message": "Lowercase user names migrations fixes (#902)\n\nSome fixes and cleanups after some more local testing",
-                  "url": "https://github.com/ubuntu/authd/commit/59be8dd94c0c51fdfab1615971fb86bab6304d2b"
+                  "sha": "110afe82948cc489769259a859e870b513177610",
+                  "author": "adombeck",
+                  "timestamp": 1746290882,
+                  "message": "Create gRPC service to be used by the CLI (#855)\n\nThe current state of https://github.com/ubuntu/authd/pull/782 adds the\ngRPC methods used by the CLI to the NSS service. They don't belong\nthere, so this PR adds a new gRPC service which provides methods\nintended for use by the CLI.\n\nUDENG-6492",
+                  "url": "https://github.com/ubuntu/authd/commit/110afe82948cc489769259a859e870b513177610"
                },
                {
-                  "sha": "c27fba1bf2b674457efa4527dfc839335dc58969",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1745980307,
-                  "message": "authd/integrationtests: Use group file and override locking mechanism\n\nWe don't want to act on files in /etc but rather on mock files, so let's\noverride them during integration tests",
-                  "url": "https://github.com/ubuntu/authd/commit/c27fba1bf2b674457efa4527dfc839335dc58969"
+                  "sha": "62ffae0fee6b331c4003bac0b9bd8d153dfe91e9",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1743507942,
+                  "message": "Replace NSS service by user service\n\nThe NSS service duplicated functionality from the user service.",
+                  "url": "https://github.com/ubuntu/authd/commit/62ffae0fee6b331c4003bac0b9bd8d153dfe91e9"
                },
                {
-                  "sha": "8e687897dd9883dc79e8fbe6d476394ae8854953",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1745979956,
-                  "message": "users/db/migration: Fix parsing of group file with empty groups\n\nIf a group contains no users, the fields splitting mechanism will return\njust three elements. While we could handle the specific case, it's just\nbetter to rely on simpler strings.SplitN, even if less efficient\n\nFixes:\n  ERROR error applying schema migration: failed to rename users in /etc/group\n  file: unexpected number of fields in /etc/group line (expected 4, got 3):\n  root:x:0:",
-                  "url": "https://github.com/ubuntu/authd/commit/8e687897dd9883dc79e8fbe6d476394ae8854953"
+                  "sha": "fff21ee235b041884d678352943661534ecd1314",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1742553467,
+                  "message": "Add tests for the gRPC user service",
+                  "url": "https://github.com/ubuntu/authd/commit/fff21ee235b041884d678352943661534ecd1314"
                }
             ],
             "ciActions": [
