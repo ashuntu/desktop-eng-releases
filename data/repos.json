@@ -6419,25 +6419,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "084059569bfda368ceeeae68727c2832fa05ea44",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1745957773,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/084059569bfda368ceeeae68727c2832fa05ea44"
+                  "sha": "6143667a0ccb98e9ed1c0c6b4e1d9924e5063b3e",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1746621814,
+                  "message": "feat(windows-agent): Sets the Landscape installation_request_ID via cloud-init (#1211)\n\nWe discussed the details of this implementation in the specification\nWS042. The gist of it is:\n- The Landscape server wants to track the completion of a child instance\ninstallation via a new field added to the client configuration\n- The field is called `installation_request_id` and the client sends\nthat value as part of the registration message\n- The server expects that value to match the `requestID` of the\ninstallation command sent to the UP4W agent.\n- That's a unique, per instance, value, only assigned to instances\ninstalled upon a Landscape server request, thus won't fit into\nagent.yaml.\n- It has the same semantics of a machine ID or cloud-init instance ID.\n- Thus, we agreed to make the WSL datasource assign\n`metadata.instance-id` to that value if a Landscape client config exists\nbut without the `installation_request_id` field\n\nCloud-init PR https://github.com/canonical/cloud-init/pull/6200 handles\nthe changes needed in the datasource itself. Implementation details may\nchange, but we agreed in the spec that reusing the\n`metadata.instance-id` for this purpose just makes sense, so I believe\nwe can proceed with the agent side in the meanwhile.\n\n---\nUDENG-6772",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6143667a0ccb98e9ed1c0c6b4e1d9924e5063b3e"
                },
                {
-                  "sha": "f9cc5fd0c498ab3042e346225f549bd980a3bdb8",
+                  "sha": "21b3f0e4f60c15455acd9a57de55de548750c07b",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1745957738,
-                  "message": "Bulk upgrade golang.org/x/net to v0.39 (#1209)\n\nDue potential security issues.\n\nEssentially run `go get -u golang.org/x/net; go mod tidy` on the\naffected modules followed by a final `go work sync`.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f9cc5fd0c498ab3042e346225f549bd980a3bdb8"
+                  "timestamp": 1746540832,
+                  "message": "Prioritize writing metadata\n\nThis is unlikely to fail, but if that happened under a situation where\nthis data would be used to initialize an instance per Landscape request,\nit would be an annoying experience, as the instance would be created and\ninitialised properly, except that the server would never tie such\ninstance to the activity that requested its creation. So making the\npriority to write metadata first allows us to bail out early and retry\nor whatever other recovery method may fit.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/21b3f0e4f60c15455acd9a57de55de548750c07b"
                },
                {
-                  "sha": "0c548aa59e85f53e4ed0ad61060618bdebeb9a5f",
+                  "sha": "985f5e852a24145959712f3fae98e5d07e00b6ce",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1745949898,
-                  "message": "Tidy the forgotten microsoftstore Go wrapper module",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/0c548aa59e85f53e4ed0ad61060618bdebeb9a5f"
+                  "timestamp": 1746457333,
+                  "message": "Updates landscape tests to ensure cloud-init receives the requestID",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/985f5e852a24145959712f3fae98e5d07e00b6ce"
                }
             ],
             "ciActions": [
