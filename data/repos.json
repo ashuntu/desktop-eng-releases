@@ -6774,6 +6774,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4718d06ae33b835b55d32d888f7634a1cc8c2afc",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1746623630,
+                  "message": "pam: Use safer handler for debugging bubble tea messages without disclosing information (#876)\n\nWhen debug mode is enabled, during ssh sessions we are disclosing some\nnew-password information.\n\nSo avoid this to happen, but also take the occasion to make the messages\nlogging safer and more helpful in debug and test builds so that we can\nshow all the information when it's safe, while not expose anything\nrelevant in release builds.\n\nUDENG-6647",
+                  "url": "https://github.com/ubuntu/authd/commit/4718d06ae33b835b55d32d888f7634a1cc8c2afc"
+               },
+               {
                   "sha": "9677639116a183f6b1a5b962931440b9bd0b3074",
                   "author": "Shane Crowley",
                   "timestamp": 1746433922,
@@ -6786,13 +6793,6 @@
                   "timestamp": 1746097775,
                   "message": "migrate docs starter pack to v1.0.1\n\nmain changes:\n\n- migrates to the latest extension-based version of the docs starter\npack\n- significantly reduces number of files in the /docs/ directory\n- adds an edit this page pencil icon\n- cancels queued RTD doc builds if there are no changes in /docs/\n- includes a convenience script for updating the starter pack (run with\n`make update`)\n\nother changes:\n\n- sequential navigation toggled for the docs (previous/next page)\n\nCo-authored-by: adombeck <18482300+adombeck@users.noreply.github.com>",
                   "url": "https://github.com/ubuntu/authd/commit/220884d8cd8b3ebe94a7d5a0ba6d5b444173f115"
-               },
-               {
-                  "sha": "110afe82948cc489769259a859e870b513177610",
-                  "author": "adombeck",
-                  "timestamp": 1746290882,
-                  "message": "Create gRPC service to be used by the CLI (#855)\n\nThe current state of https://github.com/ubuntu/authd/pull/782 adds the\ngRPC methods used by the CLI to the NSS service. They don't belong\nthere, so this PR adds a new gRPC service which provides methods\nintended for use by the CLI.\n\nUDENG-6492",
-                  "url": "https://github.com/ubuntu/authd/commit/110afe82948cc489769259a859e870b513177610"
                }
             ],
             "ciActions": [
