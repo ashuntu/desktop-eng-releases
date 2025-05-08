@@ -6419,25 +6419,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6143667a0ccb98e9ed1c0c6b4e1d9924e5063b3e",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1746621814,
-                  "message": "feat(windows-agent): Sets the Landscape installation_request_ID via cloud-init (#1211)\n\nWe discussed the details of this implementation in the specification\nWS042. The gist of it is:\n- The Landscape server wants to track the completion of a child instance\ninstallation via a new field added to the client configuration\n- The field is called `installation_request_id` and the client sends\nthat value as part of the registration message\n- The server expects that value to match the `requestID` of the\ninstallation command sent to the UP4W agent.\n- That's a unique, per instance, value, only assigned to instances\ninstalled upon a Landscape server request, thus won't fit into\nagent.yaml.\n- It has the same semantics of a machine ID or cloud-init instance ID.\n- Thus, we agreed to make the WSL datasource assign\n`metadata.instance-id` to that value if a Landscape client config exists\nbut without the `installation_request_id` field\n\nCloud-init PR https://github.com/canonical/cloud-init/pull/6200 handles\nthe changes needed in the datasource itself. Implementation details may\nchange, but we agreed in the spec that reusing the\n`metadata.instance-id` for this purpose just makes sense, so I believe\nwe can proceed with the agent side in the meanwhile.\n\n---\nUDENG-6772",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6143667a0ccb98e9ed1c0c6b4e1d9924e5063b3e"
+                  "sha": "18225fe2c9a8f995a60c50d75c9923ed07549a5f",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1746714615,
+                  "message": "deps(end-to-end): bump golang.org/x/sys from 0.32.0 to 0.33.0 in /end-to-end (#1213)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/18225fe2c9a8f995a60c50d75c9923ed07549a5f"
                },
                {
-                  "sha": "21b3f0e4f60c15455acd9a57de55de548750c07b",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1746540832,
-                  "message": "Prioritize writing metadata\n\nThis is unlikely to fail, but if that happened under a situation where\nthis data would be used to initialize an instance per Landscape request,\nit would be an annoying experience, as the instance would be created and\ninitialised properly, except that the server would never tie such\ninstance to the activity that requested its creation. So making the\npriority to write metadata first allows us to bail out early and retry\nor whatever other recovery method may fit.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/21b3f0e4f60c15455acd9a57de55de548750c07b"
+                  "sha": "eb00b81afad2ed2504ff8d2cda81485fe48a17b4",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1746714611,
+                  "message": "deps(windows-agent): bump golang.org/x/sys from 0.32.0 to 0.33.0 in /windows-agent (#1212)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/eb00b81afad2ed2504ff8d2cda81485fe48a17b4"
                },
                {
-                  "sha": "985f5e852a24145959712f3fae98e5d07e00b6ce",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1746457333,
-                  "message": "Updates landscape tests to ensure cloud-init receives the requestID",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/985f5e852a24145959712f3fae98e5d07e00b6ce"
+                  "sha": "f55ed54d71ad80e7867ad45139b85f7e8de3429a",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1746696660,
+                  "message": "deps(end-to-end): bump golang.org/x/sys in /end-to-end\n\nBumps [golang.org/x/sys](https://github.com/golang/sys) from 0.32.0 to 0.33.0.\n- [Commits](https://github.com/golang/sys/compare/v0.32.0...v0.33.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-version: 0.33.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f55ed54d71ad80e7867ad45139b85f7e8de3429a"
                }
             ],
             "ciActions": [
