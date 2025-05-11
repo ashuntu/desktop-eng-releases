@@ -6774,6 +6774,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "db995dc3e2c6a95bacca276bae2e9bc96fd777ad",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1746956771,
+                  "message": "authmodeselection: Actually mark list as focused on focus request (#913)\n\nIf the list gets focused we were doing the authentication mode selection\nbut we didn't properly mark the list as focused (as per not properly\noverriding the listFocused message), thus breaking the focus model,\nsince at global level the user selection was instead considered\nfocused.\n\nThis can break the auto-selection (as seen in some GDM tests), because\non further focus requests the autoSelectedAuthModeID value was set set\nagain (even if unnecessary) causing further focus calls to lazily using\nit.\n\nThis should help fixing the gdm [tests\nfailure](https://github.com/ubuntu/authd/actions/runs/14884282528/attempts/1)\nwe got recently due to too-early authentication mode selection.\n\nI still have further improvements ready for that, but let's go simpler\nfirst.",
+                  "url": "https://github.com/ubuntu/authd/commit/db995dc3e2c6a95bacca276bae2e9bc96fd777ad"
+               },
+               {
                   "sha": "0dfbd8c9b60dc8e7744b3d8ab6a5f2fb9d760ccb",
                   "author": "adombeck",
                   "timestamp": 1746740449,
@@ -6786,13 +6793,6 @@
                   "timestamp": 1746740392,
                   "message": "deps(rust): bump the minor-updates group across 1 directory with 5 updates (#911)",
                   "url": "https://github.com/ubuntu/authd/commit/5f69d1c4acf27556b0fbc507ddc9bcd45cd39977"
-               },
-               {
-                  "sha": "a9497a29e70a1cbbb223cefac51df2fe7c16c6a3",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1746739484,
-                  "message": "Regenerate Cargo.lock with cargo from noble",
-                  "url": "https://github.com/ubuntu/authd/commit/a9497a29e70a1cbbb223cefac51df2fe7c16c6a3"
                }
             ],
             "ciActions": [
