@@ -7303,6 +7303,39 @@
             "snap": null
          },
          {
+            "name": "core-base-desktop",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/core-base-desktop",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "28a34e3c535c62c0e6ce97193c111075faa28087",
+                  "author": "Ken VanDine",
+                  "timestamp": 1711558968,
+                  "message": "Merge pull request #58 from sergio-costas/add-systemd-journal-user\n\nAdd systemd-journal user",
+                  "url": "https://github.com/canonical/core-base-desktop/commit/28a34e3c535c62c0e6ce97193c111075faa28087"
+               },
+               {
+                  "sha": "5e53e6ed69af6c1c887a7fbc8272e3e2a43c5878",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1704906080,
+                  "message": "Add systemd-journal user\n\nFor the new systemd version it seems that this user is required.\nThis patch adds it. But wait until the 249.11-0ubuntu3.12\nversion of systemd has been moved to backports.",
+                  "url": "https://github.com/canonical/core-base-desktop/commit/5e53e6ed69af6c1c887a7fbc8272e3e2a43c5878"
+               },
+               {
+                  "sha": "fe31c99cde99489d39360455a0288980acc08e08",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1701799863,
+                  "message": "Remove unneeded dconf-cli",
+                  "url": "https://github.com/canonical/core-base-desktop/commit/fe31c99cde99489d39360455a0288980acc08e08"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "dbus.dart",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -8022,6 +8055,39 @@
                   "timestamp": 1743498104,
                   "message": "Send URL of test run when run fails.",
                   "url": "https://github.com/canonical/snap-expire/commit/191aac8c1ba67abbd5fc7262990fddea832de04a"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "snapd-desktop-integration",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/snapd-desktop-integration",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "2e59f4593972164354fd6c97c8019a3973e2a7c8",
+                  "author": "Sebastien Bacher",
+                  "timestamp": 1744832058,
+                  "message": "Merge pull request #142 from sergio-costas/update-github-building\n\nUpdate ubuntu version in test",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/2e59f4593972164354fd6c97c8019a3973e2a7c8"
+               },
+               {
+                  "sha": "5db963a44e5620e5b28bc39e682b2284c5437f27",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1744815791,
+                  "message": "Update ubuntu version in test\n\nThe ubuntu 20.04 actions runner is being deprecated, so we must\nupdate it to a more recent one.\n\nhttps://github.com/actions/runner-images/issues/11101",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/5db963a44e5620e5b28bc39e682b2284c5437f27"
+               },
+               {
+                  "sha": "4505e7e4b57c4b32aa3ba1323dc5b397a05d0be0",
+                  "author": "Sergio Costas",
+                  "timestamp": 1743593453,
+                  "message": "Don't show notifications with negative expiration time (#140)\n\n* Don't show notifications with negative expiration time\n\nSometimes, snapd notifies us with an event that has a negative\ntime for a forced quit, when, in fact, there are no pending\nupdates for that snap. This is a very undesirable effect,\nbecause it confuses the final user.\n\nThis patch ensures that no notification with a negative value\nis shown.\n\nfix https://github.com/canonical/snapd-desktop-integration/issues/135\n\nCo-authored-by: Alessandro Astone <ales.astone@gmail.com>",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4505e7e4b57c4b32aa3ba1323dc5b397a05d0be0"
                }
             ],
             "ciActions": [],
