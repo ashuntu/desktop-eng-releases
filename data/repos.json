@@ -4112,25 +4112,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "649061170433e77397d59f2cd333b0783efd97e5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1749219674,
+                  "message": "ci: move away from ubuntu-20.04 (#124)\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101",
+                  "url": "https://github.com/canonical/snapd.dart/commit/649061170433e77397d59f2cd333b0783efd97e5"
+               },
+               {
+                  "sha": "df9a1cb3364889305e684ba8e4fae6e15f12d49f",
+                  "author": "Soumyadeep Ghosh",
+                  "timestamp": 1749071246,
+                  "message": "ci: move away from ubuntu-20.04\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101\n\nSigned-off-by: Soumyadeep Ghosh <soumyadeepghosh2004@zohomail.in>",
+                  "url": "https://github.com/canonical/snapd.dart/commit/df9a1cb3364889305e684ba8e4fae6e15f12d49f"
+               },
+               {
                   "sha": "6dde37c7694244c047d3129d305a4e90e69873dd",
                   "author": "Innes Anderson-Morrison",
                   "timestamp": 1737034898,
                   "message": "chore: release 0.7.0 (#122)",
                   "url": "https://github.com/canonical/snapd.dart/commit/6dde37c7694244c047d3129d305a4e90e69873dd"
-               },
-               {
-                  "sha": "e1691ea093f93934c78314aa1c7d2aeab6cb6c4f",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737034556,
-                  "message": "chore: release 0.7.0",
-                  "url": "https://github.com/canonical/snapd.dart/commit/e1691ea093f93934c78314aa1c7d2aeab6cb6c4f"
-               },
-               {
-                  "sha": "8754e8ddda29b2f934595a779a7fca0c86373b90",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737027752,
-                  "message": "feat: updating usage of rules APIs to be forwards compatible for upcoming snapd changes (#121)\n\nPretty much as the title says: this moves us to using `Map<String,\r\ndynamic>` for prompting rule constraints, with the parsing of that data\r\nmoving over to live in the Security Center so we can handle the upcoming\r\nbreaking API change in Snapd.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/8754e8ddda29b2f934595a779a7fca0c86373b90"
                }
             ],
             "ciActions": [],
@@ -4388,25 +4388,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0c4e42642fa83eed43ba434ab0e40c7acf9811cd",
+                  "sha": "6ca08e6be536ffc057e3088e412d0d9d9d389f4e",
                   "author": "Dennis Loose",
-                  "timestamp": 1749211695,
-                  "message": "chore:update TiCS URL (#1080)\n\nLast week TiCS jobs started failing with\n```\n[ERROR 5056] Project 'ubuntu-desktop-provision' not defined in PROJECTS.yaml. Use TicsBuildConfig to add this project.\nTICS closed with code -1\n```\n\nThis is because of an update on the tiobe side that requires us to\nchange the url in the github action.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0c4e42642fa83eed43ba434ab0e40c7acf9811cd"
+                  "timestamp": 1749219761,
+                  "message": "feat: add file picker to recovery key page (#1076)\n\nAdds a file picker to the recovery page to allow the user to save the\nkey to a file.\nIf the user selects a directory anywhere in `/target` or a directory\nunder a mountpoint that has the `/cow` file system as a source (i.e. the\nephemeral overlay fs of the live iso), an error is raised.\n~The error handling UX is still WIP~\n\nUDENG-7047",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6ca08e6be536ffc057e3088e412d0d9d9d389f4e"
                },
                {
-                  "sha": "70716b68d9e1c0bcec22876e8b276b7bb4ab0836",
+                  "sha": "f48a040a39b26d7df4d3fee24d326d0037246aa9",
                   "author": "Dennis Loose",
-                  "timestamp": 1749205365,
-                  "message": "chore: update TiCS URL",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/70716b68d9e1c0bcec22876e8b276b7bb4ab0836"
+                  "timestamp": 1749215560,
+                  "message": "feat: disallow saving key file to directories on a `tmpfs`",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f48a040a39b26d7df4d3fee24d326d0037246aa9"
                },
                {
-                  "sha": "fd62879212dbaaca50c6528e26d7cac71484c909",
+                  "sha": "66e5564961e73e755fa23199064122efbf117a5e",
                   "author": "Dennis Loose",
-                  "timestamp": 1749202679,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to d376cfb (#1079)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n| packages/subiquity_client/subiquity | digest | `6ea6952` -> `d376cfb`\n|\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the Dependency\nDashboard for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0MC40MC4zIiwidXBkYXRlZEluVmVyIjoiNDAuNDAuMyIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fd62879212dbaaca50c6528e26d7cac71484c909"
+                  "timestamp": 1749212989,
+                  "message": "fix: display raw error string for unknown errors",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/66e5564961e73e755fa23199064122efbf117a5e"
                }
             ],
             "ciActions": [
@@ -6052,25 +6052,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "649061170433e77397d59f2cd333b0783efd97e5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1749219674,
+                  "message": "ci: move away from ubuntu-20.04 (#124)\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101",
+                  "url": "https://github.com/canonical/snapd.dart/commit/649061170433e77397d59f2cd333b0783efd97e5"
+               },
+               {
+                  "sha": "df9a1cb3364889305e684ba8e4fae6e15f12d49f",
+                  "author": "Soumyadeep Ghosh",
+                  "timestamp": 1749071246,
+                  "message": "ci: move away from ubuntu-20.04\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101\n\nSigned-off-by: Soumyadeep Ghosh <soumyadeepghosh2004@zohomail.in>",
+                  "url": "https://github.com/canonical/snapd.dart/commit/df9a1cb3364889305e684ba8e4fae6e15f12d49f"
+               },
+               {
                   "sha": "6dde37c7694244c047d3129d305a4e90e69873dd",
                   "author": "Innes Anderson-Morrison",
                   "timestamp": 1737034898,
                   "message": "chore: release 0.7.0 (#122)",
                   "url": "https://github.com/canonical/snapd.dart/commit/6dde37c7694244c047d3129d305a4e90e69873dd"
-               },
-               {
-                  "sha": "e1691ea093f93934c78314aa1c7d2aeab6cb6c4f",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737034556,
-                  "message": "chore: release 0.7.0",
-                  "url": "https://github.com/canonical/snapd.dart/commit/e1691ea093f93934c78314aa1c7d2aeab6cb6c4f"
-               },
-               {
-                  "sha": "8754e8ddda29b2f934595a779a7fca0c86373b90",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737027752,
-                  "message": "feat: updating usage of rules APIs to be forwards compatible for upcoming snapd changes (#121)\n\nPretty much as the title says: this moves us to using `Map<String,\r\ndynamic>` for prompting rule constraints, with the parsing of that data\r\nmoving over to live in the Security Center so we can handle the upcoming\r\nbreaking API change in Snapd.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/8754e8ddda29b2f934595a779a7fca0c86373b90"
                }
             ],
             "ciActions": [],
@@ -6328,25 +6328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0c4e42642fa83eed43ba434ab0e40c7acf9811cd",
+                  "sha": "6ca08e6be536ffc057e3088e412d0d9d9d389f4e",
                   "author": "Dennis Loose",
-                  "timestamp": 1749211695,
-                  "message": "chore:update TiCS URL (#1080)\n\nLast week TiCS jobs started failing with\n```\n[ERROR 5056] Project 'ubuntu-desktop-provision' not defined in PROJECTS.yaml. Use TicsBuildConfig to add this project.\nTICS closed with code -1\n```\n\nThis is because of an update on the tiobe side that requires us to\nchange the url in the github action.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0c4e42642fa83eed43ba434ab0e40c7acf9811cd"
+                  "timestamp": 1749219761,
+                  "message": "feat: add file picker to recovery key page (#1076)\n\nAdds a file picker to the recovery page to allow the user to save the\nkey to a file.\nIf the user selects a directory anywhere in `/target` or a directory\nunder a mountpoint that has the `/cow` file system as a source (i.e. the\nephemeral overlay fs of the live iso), an error is raised.\n~The error handling UX is still WIP~\n\nUDENG-7047",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6ca08e6be536ffc057e3088e412d0d9d9d389f4e"
                },
                {
-                  "sha": "70716b68d9e1c0bcec22876e8b276b7bb4ab0836",
+                  "sha": "f48a040a39b26d7df4d3fee24d326d0037246aa9",
                   "author": "Dennis Loose",
-                  "timestamp": 1749205365,
-                  "message": "chore: update TiCS URL",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/70716b68d9e1c0bcec22876e8b276b7bb4ab0836"
+                  "timestamp": 1749215560,
+                  "message": "feat: disallow saving key file to directories on a `tmpfs`",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f48a040a39b26d7df4d3fee24d326d0037246aa9"
                },
                {
-                  "sha": "fd62879212dbaaca50c6528e26d7cac71484c909",
+                  "sha": "66e5564961e73e755fa23199064122efbf117a5e",
                   "author": "Dennis Loose",
-                  "timestamp": 1749202679,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to d376cfb (#1079)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n| packages/subiquity_client/subiquity | digest | `6ea6952` -> `d376cfb`\n|\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the Dependency\nDashboard for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0MC40MC4zIiwidXBkYXRlZEluVmVyIjoiNDAuNDAuMyIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fd62879212dbaaca50c6528e26d7cac71484c909"
+                  "timestamp": 1749212989,
+                  "message": "fix: display raw error string for unknown errors",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/66e5564961e73e755fa23199064122efbf117a5e"
                }
             ],
             "ciActions": [
@@ -8159,25 +8159,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "649061170433e77397d59f2cd333b0783efd97e5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1749219674,
+                  "message": "ci: move away from ubuntu-20.04 (#124)\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101",
+                  "url": "https://github.com/canonical/snapd.dart/commit/649061170433e77397d59f2cd333b0783efd97e5"
+               },
+               {
+                  "sha": "df9a1cb3364889305e684ba8e4fae6e15f12d49f",
+                  "author": "Soumyadeep Ghosh",
+                  "timestamp": 1749071246,
+                  "message": "ci: move away from ubuntu-20.04\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101\n\nSigned-off-by: Soumyadeep Ghosh <soumyadeepghosh2004@zohomail.in>",
+                  "url": "https://github.com/canonical/snapd.dart/commit/df9a1cb3364889305e684ba8e4fae6e15f12d49f"
+               },
+               {
                   "sha": "6dde37c7694244c047d3129d305a4e90e69873dd",
                   "author": "Innes Anderson-Morrison",
                   "timestamp": 1737034898,
                   "message": "chore: release 0.7.0 (#122)",
                   "url": "https://github.com/canonical/snapd.dart/commit/6dde37c7694244c047d3129d305a4e90e69873dd"
-               },
-               {
-                  "sha": "e1691ea093f93934c78314aa1c7d2aeab6cb6c4f",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737034556,
-                  "message": "chore: release 0.7.0",
-                  "url": "https://github.com/canonical/snapd.dart/commit/e1691ea093f93934c78314aa1c7d2aeab6cb6c4f"
-               },
-               {
-                  "sha": "8754e8ddda29b2f934595a779a7fca0c86373b90",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737027752,
-                  "message": "feat: updating usage of rules APIs to be forwards compatible for upcoming snapd changes (#121)\n\nPretty much as the title says: this moves us to using `Map<String,\r\ndynamic>` for prompting rule constraints, with the parsing of that data\r\nmoving over to live in the Security Center so we can handle the upcoming\r\nbreaking API change in Snapd.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/8754e8ddda29b2f934595a779a7fca0c86373b90"
                }
             ],
             "ciActions": [],
@@ -8435,25 +8435,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0c4e42642fa83eed43ba434ab0e40c7acf9811cd",
+                  "sha": "6ca08e6be536ffc057e3088e412d0d9d9d389f4e",
                   "author": "Dennis Loose",
-                  "timestamp": 1749211695,
-                  "message": "chore:update TiCS URL (#1080)\n\nLast week TiCS jobs started failing with\n```\n[ERROR 5056] Project 'ubuntu-desktop-provision' not defined in PROJECTS.yaml. Use TicsBuildConfig to add this project.\nTICS closed with code -1\n```\n\nThis is because of an update on the tiobe side that requires us to\nchange the url in the github action.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0c4e42642fa83eed43ba434ab0e40c7acf9811cd"
+                  "timestamp": 1749219761,
+                  "message": "feat: add file picker to recovery key page (#1076)\n\nAdds a file picker to the recovery page to allow the user to save the\nkey to a file.\nIf the user selects a directory anywhere in `/target` or a directory\nunder a mountpoint that has the `/cow` file system as a source (i.e. the\nephemeral overlay fs of the live iso), an error is raised.\n~The error handling UX is still WIP~\n\nUDENG-7047",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6ca08e6be536ffc057e3088e412d0d9d9d389f4e"
                },
                {
-                  "sha": "70716b68d9e1c0bcec22876e8b276b7bb4ab0836",
+                  "sha": "f48a040a39b26d7df4d3fee24d326d0037246aa9",
                   "author": "Dennis Loose",
-                  "timestamp": 1749205365,
-                  "message": "chore: update TiCS URL",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/70716b68d9e1c0bcec22876e8b276b7bb4ab0836"
+                  "timestamp": 1749215560,
+                  "message": "feat: disallow saving key file to directories on a `tmpfs`",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f48a040a39b26d7df4d3fee24d326d0037246aa9"
                },
                {
-                  "sha": "fd62879212dbaaca50c6528e26d7cac71484c909",
+                  "sha": "66e5564961e73e755fa23199064122efbf117a5e",
                   "author": "Dennis Loose",
-                  "timestamp": 1749202679,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to d376cfb (#1079)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n| packages/subiquity_client/subiquity | digest | `6ea6952` -> `d376cfb`\n|\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the Dependency\nDashboard for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0MC40MC4zIiwidXBkYXRlZEluVmVyIjoiNDAuNDAuMyIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fd62879212dbaaca50c6528e26d7cac71484c909"
+                  "timestamp": 1749212989,
+                  "message": "fix: display raw error string for unknown errors",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/66e5564961e73e755fa23199064122efbf117a5e"
                }
             ],
             "ciActions": [
