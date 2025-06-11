@@ -479,8 +479,8 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 697,
-                     "timestamp": 1746008919
+                     "revision": 701,
+                     "timestamp": 1749637707
                   },
                   {
                      "track": "latest",
@@ -724,14 +724,14 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 972,
-                     "timestamp": 1745498371
+                     "revision": 975,
+                     "timestamp": 1749637509
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 973,
-                     "timestamp": 1745498971
+                     "revision": 976,
+                     "timestamp": 1749637701
                   },
                   {
                      "track": "latest",
@@ -2964,14 +2964,14 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 972,
-                     "timestamp": 1745498371
+                     "revision": 975,
+                     "timestamp": 1749637509
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 973,
-                     "timestamp": 1745498971
+                     "revision": 976,
+                     "timestamp": 1749637701
                   },
                   {
                      "track": "latest",
@@ -3380,25 +3380,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ad1074d7661a8ed346ee35c4fee20a34f32bbbbf",
+                  "sha": "e42bbbb8715bb6995e2d143847b3a917a1a67dde",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1749125667,
-                  "message": "Merge pull request #125 from matthew-hagemann/regenerate-recovery-key\n\nCheck recovery key",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/ad1074d7661a8ed346ee35c4fee20a34f32bbbbf"
+                  "timestamp": 1749634956,
+                  "message": "Merge pull request #126 from matthew-hagemann/replace-recovery-key\n\nfeat: replace recovery key flow",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/e42bbbb8715bb6995e2d143847b3a917a1a67dde"
                },
                {
-                  "sha": "6d14aae91a405a81b469eac8216f0f5610eff2cd",
+                  "sha": "98484e3a722a6aa09fe6d4616f492fc3c55e9ed8",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1749120982,
-                  "message": "feat: copy change",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/6d14aae91a405a81b469eac8216f0f5610eff2cd"
+                  "timestamp": 1749633345,
+                  "message": "fix: move save key error messaging under save button",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/98484e3a722a6aa09fe6d4616f492fc3c55e9ed8"
                },
                {
-                  "sha": "0f9103b86d8d503271852c41937e5c19c9cfae24",
+                  "sha": "9f431333ac9c61321bb97dd39da6eced1d0d505a",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1749119789,
-                  "message": "chore: revert formatting",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/0f9103b86d8d503271852c41937e5c19c9cfae24"
+                  "timestamp": 1749557294,
+                  "message": "fix: wrap dialog in scafold for SnackBar to sit on",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9f431333ac9c61321bb97dd39da6eced1d0d505a"
                }
             ],
             "ciActions": [],
@@ -4040,6 +4040,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b",
+                  "author": "Sergio Costas",
+                  "timestamp": 1749636522,
+                  "message": "Add a workaround for Ubuntu Budgie (#141)\n\n* Add a workaround for Ubuntu Budgie\n\nUbuntu Budgie has a bug in its notifications system: when the\nuser clicks on an action (for example, \"Yes\" for installing\nnew themes from the Snap Store), it sends the button action\n(thus, \"yes\" action), but after that also sends the default\naction. Instead, both Gnome and KDE only sends the button\naction.\n\nThis results in odd behavior in this system: since the default\naction does the same than the \"yes\" action, if the user presses\n\"Yes\", two install processes will run concurrently, conflicting\nbetween them and resulting in an installation error shown (due\nto one of the processes being unable to install the themes),\nwhile, at the same time, the themes are correctly installed (by\nthe second process).\n\nAlso, if the user presses \"No\", the \"no\" action is just ignored\nand nothing is done; but the next \"default\" action is honored\nand the themes are installed; exactly the opposite of what the\nuser wanted.\n\nThis workaround ensures that only one action is honored for\neach notification, and any extra action is ignored until the\ninstall notification is closed and a new notification is\nshown.\n\nIt also adds extra tests to ensure that everything works as\nexpected.\n\nFix https://github.com/canonical/snapd-desktop-integration/issues/52\n\n* Fixes asked by Nathan\n\n* Fix for build",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b"
+               },
+               {
                   "sha": "2e59f4593972164354fd6c97c8019a3973e2a7c8",
                   "author": "Sebastien Bacher",
                   "timestamp": 1744832058,
@@ -4052,13 +4059,6 @@
                   "timestamp": 1744815791,
                   "message": "Update ubuntu version in test\n\nThe ubuntu 20.04 actions runner is being deprecated, so we must\nupdate it to a more recent one.\n\nhttps://github.com/actions/runner-images/issues/11101",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/5db963a44e5620e5b28bc39e682b2284c5437f27"
-               },
-               {
-                  "sha": "4505e7e4b57c4b32aa3ba1323dc5b397a05d0be0",
-                  "author": "Sergio Costas",
-                  "timestamp": 1743593453,
-                  "message": "Don't show notifications with negative expiration time (#140)\n\n* Don't show notifications with negative expiration time\n\nSometimes, snapd notifies us with an event that has a negative\ntime for a forced quit, when, in fact, there are no pending\nupdates for that snap. This is a very undesirable effect,\nbecause it confuses the final user.\n\nThis patch ensures that no notification with a negative value\nis shown.\n\nfix https://github.com/canonical/snapd-desktop-integration/issues/135\n\nCo-authored-by: Alessandro Astone <ales.astone@gmail.com>",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4505e7e4b57c4b32aa3ba1323dc5b397a05d0be0"
                }
             ],
             "ciActions": [],
@@ -4112,25 +4112,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "649061170433e77397d59f2cd333b0783efd97e5",
+                  "sha": "d05b743d75b77705697efb1df2e49ce0aea31f54",
                   "author": "Dennis Loose",
-                  "timestamp": 1749219674,
-                  "message": "ci: move away from ubuntu-20.04 (#124)\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101",
-                  "url": "https://github.com/canonical/snapd.dart/commit/649061170433e77397d59f2cd333b0783efd97e5"
+                  "timestamp": 1749634743,
+                  "message": "chore: release 0.7.1 (#126)\n\nRelease `0.7.1` with added support for `Snap.links` (#125)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/d05b743d75b77705697efb1df2e49ce0aea31f54"
                },
                {
-                  "sha": "df9a1cb3364889305e684ba8e4fae6e15f12d49f",
-                  "author": "Soumyadeep Ghosh",
-                  "timestamp": 1749071246,
-                  "message": "ci: move away from ubuntu-20.04\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101\n\nSigned-off-by: Soumyadeep Ghosh <soumyadeepghosh2004@zohomail.in>",
-                  "url": "https://github.com/canonical/snapd.dart/commit/df9a1cb3364889305e684ba8e4fae6e15f12d49f"
+                  "sha": "dac5aa5d2a1f555eb57f2aff1888f3e5c2f84d9a",
+                  "author": "Dennis Loose",
+                  "timestamp": 1749634478,
+                  "message": "chore: release 0.7.1",
+                  "url": "https://github.com/canonical/snapd.dart/commit/dac5aa5d2a1f555eb57f2aff1888f3e5c2f84d9a"
                },
                {
-                  "sha": "6dde37c7694244c047d3129d305a4e90e69873dd",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737034898,
-                  "message": "chore: release 0.7.0 (#122)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/6dde37c7694244c047d3129d305a4e90e69873dd"
+                  "sha": "7d6a4ced67f7dcb4dc6458787a8e9d6b964784d9",
+                  "author": "Dennis Loose",
+                  "timestamp": 1749634332,
+                  "message": "snapd: implement support for links (#125)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/7d6a4ced67f7dcb4dc6458787a8e9d6b964784d9"
                }
             ],
             "ciActions": [],
@@ -5287,25 +5287,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ad1074d7661a8ed346ee35c4fee20a34f32bbbbf",
+                  "sha": "e42bbbb8715bb6995e2d143847b3a917a1a67dde",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1749125667,
-                  "message": "Merge pull request #125 from matthew-hagemann/regenerate-recovery-key\n\nCheck recovery key",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/ad1074d7661a8ed346ee35c4fee20a34f32bbbbf"
+                  "timestamp": 1749634956,
+                  "message": "Merge pull request #126 from matthew-hagemann/replace-recovery-key\n\nfeat: replace recovery key flow",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/e42bbbb8715bb6995e2d143847b3a917a1a67dde"
                },
                {
-                  "sha": "6d14aae91a405a81b469eac8216f0f5610eff2cd",
+                  "sha": "98484e3a722a6aa09fe6d4616f492fc3c55e9ed8",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1749120982,
-                  "message": "feat: copy change",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/6d14aae91a405a81b469eac8216f0f5610eff2cd"
+                  "timestamp": 1749633345,
+                  "message": "fix: move save key error messaging under save button",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/98484e3a722a6aa09fe6d4616f492fc3c55e9ed8"
                },
                {
-                  "sha": "0f9103b86d8d503271852c41937e5c19c9cfae24",
+                  "sha": "9f431333ac9c61321bb97dd39da6eced1d0d505a",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1749119789,
-                  "message": "chore: revert formatting",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/0f9103b86d8d503271852c41937e5c19c9cfae24"
+                  "timestamp": 1749557294,
+                  "message": "fix: wrap dialog in scafold for SnackBar to sit on",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9f431333ac9c61321bb97dd39da6eced1d0d505a"
                }
             ],
             "ciActions": [],
@@ -5980,6 +5980,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b",
+                  "author": "Sergio Costas",
+                  "timestamp": 1749636522,
+                  "message": "Add a workaround for Ubuntu Budgie (#141)\n\n* Add a workaround for Ubuntu Budgie\n\nUbuntu Budgie has a bug in its notifications system: when the\nuser clicks on an action (for example, \"Yes\" for installing\nnew themes from the Snap Store), it sends the button action\n(thus, \"yes\" action), but after that also sends the default\naction. Instead, both Gnome and KDE only sends the button\naction.\n\nThis results in odd behavior in this system: since the default\naction does the same than the \"yes\" action, if the user presses\n\"Yes\", two install processes will run concurrently, conflicting\nbetween them and resulting in an installation error shown (due\nto one of the processes being unable to install the themes),\nwhile, at the same time, the themes are correctly installed (by\nthe second process).\n\nAlso, if the user presses \"No\", the \"no\" action is just ignored\nand nothing is done; but the next \"default\" action is honored\nand the themes are installed; exactly the opposite of what the\nuser wanted.\n\nThis workaround ensures that only one action is honored for\neach notification, and any extra action is ignored until the\ninstall notification is closed and a new notification is\nshown.\n\nIt also adds extra tests to ensure that everything works as\nexpected.\n\nFix https://github.com/canonical/snapd-desktop-integration/issues/52\n\n* Fixes asked by Nathan\n\n* Fix for build",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b"
+               },
+               {
                   "sha": "2e59f4593972164354fd6c97c8019a3973e2a7c8",
                   "author": "Sebastien Bacher",
                   "timestamp": 1744832058,
@@ -5992,13 +5999,6 @@
                   "timestamp": 1744815791,
                   "message": "Update ubuntu version in test\n\nThe ubuntu 20.04 actions runner is being deprecated, so we must\nupdate it to a more recent one.\n\nhttps://github.com/actions/runner-images/issues/11101",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/5db963a44e5620e5b28bc39e682b2284c5437f27"
-               },
-               {
-                  "sha": "4505e7e4b57c4b32aa3ba1323dc5b397a05d0be0",
-                  "author": "Sergio Costas",
-                  "timestamp": 1743593453,
-                  "message": "Don't show notifications with negative expiration time (#140)\n\n* Don't show notifications with negative expiration time\n\nSometimes, snapd notifies us with an event that has a negative\ntime for a forced quit, when, in fact, there are no pending\nupdates for that snap. This is a very undesirable effect,\nbecause it confuses the final user.\n\nThis patch ensures that no notification with a negative value\nis shown.\n\nfix https://github.com/canonical/snapd-desktop-integration/issues/135\n\nCo-authored-by: Alessandro Astone <ales.astone@gmail.com>",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4505e7e4b57c4b32aa3ba1323dc5b397a05d0be0"
                }
             ],
             "ciActions": [],
@@ -6052,25 +6052,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "649061170433e77397d59f2cd333b0783efd97e5",
+                  "sha": "d05b743d75b77705697efb1df2e49ce0aea31f54",
                   "author": "Dennis Loose",
-                  "timestamp": 1749219674,
-                  "message": "ci: move away from ubuntu-20.04 (#124)\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101",
-                  "url": "https://github.com/canonical/snapd.dart/commit/649061170433e77397d59f2cd333b0783efd97e5"
+                  "timestamp": 1749634743,
+                  "message": "chore: release 0.7.1 (#126)\n\nRelease `0.7.1` with added support for `Snap.links` (#125)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/d05b743d75b77705697efb1df2e49ce0aea31f54"
                },
                {
-                  "sha": "df9a1cb3364889305e684ba8e4fae6e15f12d49f",
-                  "author": "Soumyadeep Ghosh",
-                  "timestamp": 1749071246,
-                  "message": "ci: move away from ubuntu-20.04\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101\n\nSigned-off-by: Soumyadeep Ghosh <soumyadeepghosh2004@zohomail.in>",
-                  "url": "https://github.com/canonical/snapd.dart/commit/df9a1cb3364889305e684ba8e4fae6e15f12d49f"
+                  "sha": "dac5aa5d2a1f555eb57f2aff1888f3e5c2f84d9a",
+                  "author": "Dennis Loose",
+                  "timestamp": 1749634478,
+                  "message": "chore: release 0.7.1",
+                  "url": "https://github.com/canonical/snapd.dart/commit/dac5aa5d2a1f555eb57f2aff1888f3e5c2f84d9a"
                },
                {
-                  "sha": "6dde37c7694244c047d3129d305a4e90e69873dd",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737034898,
-                  "message": "chore: release 0.7.0 (#122)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/6dde37c7694244c047d3129d305a4e90e69873dd"
+                  "sha": "7d6a4ced67f7dcb4dc6458787a8e9d6b964784d9",
+                  "author": "Dennis Loose",
+                  "timestamp": 1749634332,
+                  "message": "snapd: implement support for links (#125)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/7d6a4ced67f7dcb4dc6458787a8e9d6b964784d9"
                }
             ],
             "ciActions": [],
@@ -7427,25 +7427,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ad1074d7661a8ed346ee35c4fee20a34f32bbbbf",
+                  "sha": "e42bbbb8715bb6995e2d143847b3a917a1a67dde",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1749125667,
-                  "message": "Merge pull request #125 from matthew-hagemann/regenerate-recovery-key\n\nCheck recovery key",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/ad1074d7661a8ed346ee35c4fee20a34f32bbbbf"
+                  "timestamp": 1749634956,
+                  "message": "Merge pull request #126 from matthew-hagemann/replace-recovery-key\n\nfeat: replace recovery key flow",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/e42bbbb8715bb6995e2d143847b3a917a1a67dde"
                },
                {
-                  "sha": "6d14aae91a405a81b469eac8216f0f5610eff2cd",
+                  "sha": "98484e3a722a6aa09fe6d4616f492fc3c55e9ed8",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1749120982,
-                  "message": "feat: copy change",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/6d14aae91a405a81b469eac8216f0f5610eff2cd"
+                  "timestamp": 1749633345,
+                  "message": "fix: move save key error messaging under save button",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/98484e3a722a6aa09fe6d4616f492fc3c55e9ed8"
                },
                {
-                  "sha": "0f9103b86d8d503271852c41937e5c19c9cfae24",
+                  "sha": "9f431333ac9c61321bb97dd39da6eced1d0d505a",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1749119789,
-                  "message": "chore: revert formatting",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/0f9103b86d8d503271852c41937e5c19c9cfae24"
+                  "timestamp": 1749557294,
+                  "message": "fix: wrap dialog in scafold for SnackBar to sit on",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9f431333ac9c61321bb97dd39da6eced1d0d505a"
                }
             ],
             "ciActions": [],
@@ -8087,6 +8087,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b",
+                  "author": "Sergio Costas",
+                  "timestamp": 1749636522,
+                  "message": "Add a workaround for Ubuntu Budgie (#141)\n\n* Add a workaround for Ubuntu Budgie\n\nUbuntu Budgie has a bug in its notifications system: when the\nuser clicks on an action (for example, \"Yes\" for installing\nnew themes from the Snap Store), it sends the button action\n(thus, \"yes\" action), but after that also sends the default\naction. Instead, both Gnome and KDE only sends the button\naction.\n\nThis results in odd behavior in this system: since the default\naction does the same than the \"yes\" action, if the user presses\n\"Yes\", two install processes will run concurrently, conflicting\nbetween them and resulting in an installation error shown (due\nto one of the processes being unable to install the themes),\nwhile, at the same time, the themes are correctly installed (by\nthe second process).\n\nAlso, if the user presses \"No\", the \"no\" action is just ignored\nand nothing is done; but the next \"default\" action is honored\nand the themes are installed; exactly the opposite of what the\nuser wanted.\n\nThis workaround ensures that only one action is honored for\neach notification, and any extra action is ignored until the\ninstall notification is closed and a new notification is\nshown.\n\nIt also adds extra tests to ensure that everything works as\nexpected.\n\nFix https://github.com/canonical/snapd-desktop-integration/issues/52\n\n* Fixes asked by Nathan\n\n* Fix for build",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b"
+               },
+               {
                   "sha": "2e59f4593972164354fd6c97c8019a3973e2a7c8",
                   "author": "Sebastien Bacher",
                   "timestamp": 1744832058,
@@ -8099,13 +8106,6 @@
                   "timestamp": 1744815791,
                   "message": "Update ubuntu version in test\n\nThe ubuntu 20.04 actions runner is being deprecated, so we must\nupdate it to a more recent one.\n\nhttps://github.com/actions/runner-images/issues/11101",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/5db963a44e5620e5b28bc39e682b2284c5437f27"
-               },
-               {
-                  "sha": "4505e7e4b57c4b32aa3ba1323dc5b397a05d0be0",
-                  "author": "Sergio Costas",
-                  "timestamp": 1743593453,
-                  "message": "Don't show notifications with negative expiration time (#140)\n\n* Don't show notifications with negative expiration time\n\nSometimes, snapd notifies us with an event that has a negative\ntime for a forced quit, when, in fact, there are no pending\nupdates for that snap. This is a very undesirable effect,\nbecause it confuses the final user.\n\nThis patch ensures that no notification with a negative value\nis shown.\n\nfix https://github.com/canonical/snapd-desktop-integration/issues/135\n\nCo-authored-by: Alessandro Astone <ales.astone@gmail.com>",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4505e7e4b57c4b32aa3ba1323dc5b397a05d0be0"
                }
             ],
             "ciActions": [],
@@ -8159,25 +8159,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "649061170433e77397d59f2cd333b0783efd97e5",
+                  "sha": "d05b743d75b77705697efb1df2e49ce0aea31f54",
                   "author": "Dennis Loose",
-                  "timestamp": 1749219674,
-                  "message": "ci: move away from ubuntu-20.04 (#124)\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101",
-                  "url": "https://github.com/canonical/snapd.dart/commit/649061170433e77397d59f2cd333b0783efd97e5"
+                  "timestamp": 1749634743,
+                  "message": "chore: release 0.7.1 (#126)\n\nRelease `0.7.1` with added support for `Snap.links` (#125)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/d05b743d75b77705697efb1df2e49ce0aea31f54"
                },
                {
-                  "sha": "df9a1cb3364889305e684ba8e4fae6e15f12d49f",
-                  "author": "Soumyadeep Ghosh",
-                  "timestamp": 1749071246,
-                  "message": "ci: move away from ubuntu-20.04\n\ndeprecated in github ci runners\nhttps://github.com/actions/runner-images/issues/11101\n\nSigned-off-by: Soumyadeep Ghosh <soumyadeepghosh2004@zohomail.in>",
-                  "url": "https://github.com/canonical/snapd.dart/commit/df9a1cb3364889305e684ba8e4fae6e15f12d49f"
+                  "sha": "dac5aa5d2a1f555eb57f2aff1888f3e5c2f84d9a",
+                  "author": "Dennis Loose",
+                  "timestamp": 1749634478,
+                  "message": "chore: release 0.7.1",
+                  "url": "https://github.com/canonical/snapd.dart/commit/dac5aa5d2a1f555eb57f2aff1888f3e5c2f84d9a"
                },
                {
-                  "sha": "6dde37c7694244c047d3129d305a4e90e69873dd",
-                  "author": "Innes Anderson-Morrison",
-                  "timestamp": 1737034898,
-                  "message": "chore: release 0.7.0 (#122)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/6dde37c7694244c047d3129d305a4e90e69873dd"
+                  "sha": "7d6a4ced67f7dcb4dc6458787a8e9d6b964784d9",
+                  "author": "Dennis Loose",
+                  "timestamp": 1749634332,
+                  "message": "snapd: implement support for links (#125)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/7d6a4ced67f7dcb4dc6458787a8e9d6b964784d9"
                }
             ],
             "ciActions": [],
