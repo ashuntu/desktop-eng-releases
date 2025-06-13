@@ -2601,6 +2601,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8d2fb709f8b13796b927072cf3ed033102d52af6",
+                  "author": "Jeremy Bícha",
+                  "timestamp": 1749825768,
+                  "message": "Revert patches to fix version numbering\n\nThis reverts commit 87c979fc5b0a73a218239117d72315ebd06b5504.\nThis reverts commit bbb023fd94a01872d0d63ad9dd432cb0a1b8624c.",
+                  "url": "https://github.com/ubuntu/shotwell/commit/8d2fb709f8b13796b927072cf3ed033102d52af6"
+               },
+               {
                   "sha": "973d1a89b0037550b2377bf055d18278b2b18c9c",
                   "author": "github-actions[bot]",
                   "timestamp": 1749808302,
@@ -2613,13 +2620,6 @@
                   "timestamp": 1746112787,
                   "message": "Add another patch to fix version numbering",
                   "url": "https://github.com/ubuntu/shotwell/commit/87c979fc5b0a73a218239117d72315ebd06b5504"
-               },
-               {
-                  "sha": "bbb023fd94a01872d0d63ad9dd432cb0a1b8624c",
-                  "author": "Jeremy Bícha",
-                  "timestamp": 1746111435,
-                  "message": "Add patch to fix version numbering\n\nupstream accidentally tagged the release before updating\nthe version number",
-                  "url": "https://github.com/ubuntu/shotwell/commit/bbb023fd94a01872d0d63ad9dd432cb0a1b8624c"
                }
             ],
             "ciActions": [],
@@ -2649,14 +2649,14 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 17,
-                     "timestamp": 1749638723
+                     "revision": 20,
+                     "timestamp": 1749827554
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 18,
-                     "timestamp": 1749639244
+                     "revision": 21,
+                     "timestamp": 1749828248
                   },
                   {
                      "track": "latest",
@@ -6824,25 +6824,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4f9e74c9404ffc92518ea66dabf4bc01bd7a5a2a",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1749825035,
+                  "message": "authd/daemon: Fix parsing users config if was not defined (#967)\n\nIn case the users config was not set we ended up with an invalid one,\nsince by default we were initializing a zeroed pam.UsersConfig value\ninstead of the default one.\n\nThis is likely not an issue in reality, but be consistent with what we\ndo for other configuration parameters and add tests to ensure that the\nuser parameters behave as expected",
+                  "url": "https://github.com/ubuntu/authd/commit/4f9e74c9404ffc92518ea66dabf4bc01bd7a5a2a"
+               },
+               {
+                  "sha": "0d72d2a5b763d5a3d159159cbc1c5bfcd50c5362",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1749752702,
+                  "message": "authd/daemon: Fix parsing users config if was not defined\n\nIn case the users config was not set we ended up with an invalid one, since\nby default we were initializing a zeroed pam.UsersConfig value instead\nof the default one.\n\nThis is likely not an issue in reality, but be consistent with what we\ndo for other configuration parameters and add tests to ensure that\nthe user parameters behave as expected",
+                  "url": "https://github.com/ubuntu/authd/commit/0d72d2a5b763d5a3d159159cbc1c5bfcd50c5362"
+               },
+               {
                   "sha": "718609218b484b515bc858c64c40abfc04936999",
                   "author": "adombeck",
                   "timestamp": 1749815707,
                   "message": "Improve log message (#930)",
                   "url": "https://github.com/ubuntu/authd/commit/718609218b484b515bc858c64c40abfc04936999"
-               },
-               {
-                  "sha": "3261404402e040bce56b5e354b5d266e4f28a95a",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1747904971,
-                  "message": "Print log message with log level \"notice\"\n\nThe default log level for authd is \"notice\", so messages with log level\n\"info\" are not displayed by default. That caused me some confusion when\nI added the user to a new \"linux-\" group in Entra, which the user wasn't\nadded to during login and nothing showed up about it in the logs.\n\nThe reason was that the group name contained a typo, so gpasswd couldn't\nfind a local group of the same name. We should print a log message\nthat's shown in the default log level when that happens.",
-                  "url": "https://github.com/ubuntu/authd/commit/3261404402e040bce56b5e354b5d266e4f28a95a"
-               },
-               {
-                  "sha": "cd774ed472a09eccb827eca3e1c668ab892622e5",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1747904609,
-                  "message": "Improve log message\n\nMake it clearer why we're ignoring the error.",
-                  "url": "https://github.com/ubuntu/authd/commit/cd774ed472a09eccb827eca3e1c668ab892622e5"
                }
             ],
             "ciActions": [
