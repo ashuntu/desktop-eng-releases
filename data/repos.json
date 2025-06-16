@@ -3379,25 +3379,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9a390104ba3d1bd2d5bbe2ff710c0eba29fb26ee",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1750081078,
+                  "message": "Merge pull request #68 from 3v1n0/dnsmasq-for-lxd\n\nfix(gh-actions/run-autopkgtests): Install dnsmasq-base",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/9a390104ba3d1bd2d5bbe2ff710c0eba29fb26ee"
+               },
+               {
+                  "sha": "e65a43a2e58a42b7e16646902553ca64c91d1fbf",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1750079997,
+                  "message": "gh-actions/run-autopkgtests: Install dnsmasq-base\n\nThis seems to be now a required component by autopkgtest-build-lxd\n\nSee: https://github.com/canonical/setup-lxd/issues/31",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/e65a43a2e58a42b7e16646902553ca64c91d1fbf"
+               },
+               {
                   "sha": "38cfbf4afd95b0692e68aa2dde843c569eef2e36",
                   "author": "adombeck",
                   "timestamp": 1745585163,
                   "message": "fix(rust/code-sanity): Fix \"rustfmt-check\" step (#67)",
                   "url": "https://github.com/canonical/desktop-engineering/commit/38cfbf4afd95b0692e68aa2dde843c569eef2e36"
-               },
-               {
-                  "sha": "9cdf39527b062e3164050d9a599f31bea40439e2",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1744016428,
-                  "message": "fix(rust/code-sanity): Fix \"rustfmt-check\" step\n\nThe step succeeded even if the Rust code is not formatted correctly.\nThat's because running `cargo fmt` formats the code and exits with 0.\nWe want `cargo fmt --check` instead, which doesn't actually format the\ncode but checks if it needs formatting, and exits with 1.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9cdf39527b062e3164050d9a599f31bea40439e2"
-               },
-               {
-                  "sha": "479865b6b8c7bf0907388f0da7628c2700e66e44",
-                  "author": "Dennis Loose",
-                  "timestamp": 1743005983,
-                  "message": "feat(gh-actions): add common OSV scanner action (#66)\n\nAdds a GitHub action that runs\n[osv-scanner](https://google.github.io/osv-scanner/) recursively in the\ncurrent directory.\nWe've been testing this in a few repositories this week, including\nhttps://github.com/canonical/ubuntu-desktop-provision/. Adding this to\nour common actions here would simplify maintenance.\nSo far the action uses the default options of the `osv-scanner-action`\nand doesn't expose any parameters. I'd be open to adding some if further\nconfiguration is needed - e.g. by default the action returns with an\nerror status if a vulnerability is found, which might not always be\ndesirable (the GitHub security tab complains about a configuration error\nin this case). It'd also be possible to run the action only for a\nspecific set of directories or lock files if we added a parameter for\nthat.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/479865b6b8c7bf0907388f0da7628c2700e66e44"
                }
             ],
             "ciActions": [],
@@ -5286,25 +5286,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9a390104ba3d1bd2d5bbe2ff710c0eba29fb26ee",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1750081078,
+                  "message": "Merge pull request #68 from 3v1n0/dnsmasq-for-lxd\n\nfix(gh-actions/run-autopkgtests): Install dnsmasq-base",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/9a390104ba3d1bd2d5bbe2ff710c0eba29fb26ee"
+               },
+               {
+                  "sha": "e65a43a2e58a42b7e16646902553ca64c91d1fbf",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1750079997,
+                  "message": "gh-actions/run-autopkgtests: Install dnsmasq-base\n\nThis seems to be now a required component by autopkgtest-build-lxd\n\nSee: https://github.com/canonical/setup-lxd/issues/31",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/e65a43a2e58a42b7e16646902553ca64c91d1fbf"
+               },
+               {
                   "sha": "38cfbf4afd95b0692e68aa2dde843c569eef2e36",
                   "author": "adombeck",
                   "timestamp": 1745585163,
                   "message": "fix(rust/code-sanity): Fix \"rustfmt-check\" step (#67)",
                   "url": "https://github.com/canonical/desktop-engineering/commit/38cfbf4afd95b0692e68aa2dde843c569eef2e36"
-               },
-               {
-                  "sha": "9cdf39527b062e3164050d9a599f31bea40439e2",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1744016428,
-                  "message": "fix(rust/code-sanity): Fix \"rustfmt-check\" step\n\nThe step succeeded even if the Rust code is not formatted correctly.\nThat's because running `cargo fmt` formats the code and exits with 0.\nWe want `cargo fmt --check` instead, which doesn't actually format the\ncode but checks if it needs formatting, and exits with 1.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9cdf39527b062e3164050d9a599f31bea40439e2"
-               },
-               {
-                  "sha": "479865b6b8c7bf0907388f0da7628c2700e66e44",
-                  "author": "Dennis Loose",
-                  "timestamp": 1743005983,
-                  "message": "feat(gh-actions): add common OSV scanner action (#66)\n\nAdds a GitHub action that runs\n[osv-scanner](https://google.github.io/osv-scanner/) recursively in the\ncurrent directory.\nWe've been testing this in a few repositories this week, including\nhttps://github.com/canonical/ubuntu-desktop-provision/. Adding this to\nour common actions here would simplify maintenance.\nSo far the action uses the default options of the `osv-scanner-action`\nand doesn't expose any parameters. I'd be open to adding some if further\nconfiguration is needed - e.g. by default the action returns with an\nerror status if a vulnerability is found, which might not always be\ndesirable (the GitHub security tab complains about a configuration error\nin this case). It'd also be possible to run the action only for a\nspecific set of directories or lock files if we added a parameter for\nthat.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/479865b6b8c7bf0907388f0da7628c2700e66e44"
                }
             ],
             "ciActions": [],
@@ -7426,25 +7426,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9a390104ba3d1bd2d5bbe2ff710c0eba29fb26ee",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1750081078,
+                  "message": "Merge pull request #68 from 3v1n0/dnsmasq-for-lxd\n\nfix(gh-actions/run-autopkgtests): Install dnsmasq-base",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/9a390104ba3d1bd2d5bbe2ff710c0eba29fb26ee"
+               },
+               {
+                  "sha": "e65a43a2e58a42b7e16646902553ca64c91d1fbf",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1750079997,
+                  "message": "gh-actions/run-autopkgtests: Install dnsmasq-base\n\nThis seems to be now a required component by autopkgtest-build-lxd\n\nSee: https://github.com/canonical/setup-lxd/issues/31",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/e65a43a2e58a42b7e16646902553ca64c91d1fbf"
+               },
+               {
                   "sha": "38cfbf4afd95b0692e68aa2dde843c569eef2e36",
                   "author": "adombeck",
                   "timestamp": 1745585163,
                   "message": "fix(rust/code-sanity): Fix \"rustfmt-check\" step (#67)",
                   "url": "https://github.com/canonical/desktop-engineering/commit/38cfbf4afd95b0692e68aa2dde843c569eef2e36"
-               },
-               {
-                  "sha": "9cdf39527b062e3164050d9a599f31bea40439e2",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1744016428,
-                  "message": "fix(rust/code-sanity): Fix \"rustfmt-check\" step\n\nThe step succeeded even if the Rust code is not formatted correctly.\nThat's because running `cargo fmt` formats the code and exits with 0.\nWe want `cargo fmt --check` instead, which doesn't actually format the\ncode but checks if it needs formatting, and exits with 1.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9cdf39527b062e3164050d9a599f31bea40439e2"
-               },
-               {
-                  "sha": "479865b6b8c7bf0907388f0da7628c2700e66e44",
-                  "author": "Dennis Loose",
-                  "timestamp": 1743005983,
-                  "message": "feat(gh-actions): add common OSV scanner action (#66)\n\nAdds a GitHub action that runs\n[osv-scanner](https://google.github.io/osv-scanner/) recursively in the\ncurrent directory.\nWe've been testing this in a few repositories this week, including\nhttps://github.com/canonical/ubuntu-desktop-provision/. Adding this to\nour common actions here would simplify maintenance.\nSo far the action uses the default options of the `osv-scanner-action`\nand doesn't expose any parameters. I'd be open to adding some if further\nconfiguration is needed - e.g. by default the action returns with an\nerror status if a vulnerability is found, which might not always be\ndesirable (the GitHub security tab complains about a configuration error\nin this case). It'd also be possible to run the action only for a\nspecific set of directories or lock files if we added a parameter for\nthat.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/479865b6b8c7bf0907388f0da7628c2700e66e44"
                }
             ],
             "ciActions": [],
