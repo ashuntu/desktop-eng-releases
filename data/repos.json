@@ -6824,25 +6824,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "50083649eec05b67923c7c9a1298cf802d1c3caa",
+                  "sha": "2a9f21e0f13c7b2d757010dbf103d7cc69ac29d0",
                   "author": "adombeck",
-                  "timestamp": 1750073068,
-                  "message": "Start authd.socket before accounts-daemon.service (#970)\n\nCloses #965",
-                  "url": "https://github.com/ubuntu/authd/commit/50083649eec05b67923c7c9a1298cf802d1c3caa"
+                  "timestamp": 1750082008,
+                  "message": "Fix TestSSHAuthenticate (#975)",
+                  "url": "https://github.com/ubuntu/authd/commit/2a9f21e0f13c7b2d757010dbf103d7cc69ac29d0"
                },
                {
-                  "sha": "d8091510b0f544b1d46cf86d6a2bf3afe9b46981",
+                  "sha": "ab76b86cf98982d31c4c00ad1b22528c5e6cd620",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1749815549,
-                  "message": "Start authd.socket before nss-user-lookup.target is reached\n\nElse services might send NSS requests which are not handled by authd.\nWe've seen that happen for the accounts service, which depends on\nnss-user-lookup.target\n\nQuoting https://github.com/systemd/systemd/blob/main/docs/UIDS-GIDS.md#notes-on-resolvability-of-user-and-group-names:\n\n> if you hack on some networked user database project, then make sure\n> you order your service Before=nss-user-lookup.target and that you pull\n> it in with Wants=nss-user-lookup.target",
-                  "url": "https://github.com/ubuntu/authd/commit/d8091510b0f544b1d46cf86d6a2bf3afe9b46981"
+                  "timestamp": 1750081682,
+                  "message": "Print error message when UID and GID don't match\n\nMakes it easier to debug tests failing due to this assertion.",
+                  "url": "https://github.com/ubuntu/authd/commit/ab76b86cf98982d31c4c00ad1b22528c5e6cd620"
                },
                {
-                  "sha": "7d1cb02743f0cc447bc29b6993fadb34ef9c7ac8",
+                  "sha": "b7a3701b1fe8de14c7b92d64a101743665509621",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1750072901,
-                  "message": "Merge remote-tracking branch 'private/release-0.5.4'",
-                  "url": "https://github.com/ubuntu/authd/commit/7d1cb02743f0cc447bc29b6993fadb34ef9c7ac8"
+                  "timestamp": 1750081489,
+                  "message": "Fix TestSSHAuthenticate\n\nThe assertion that a user's UID and GID are equal failed for some\ntestdata.",
+                  "url": "https://github.com/ubuntu/authd/commit/b7a3701b1fe8de14c7b92d64a101743665509621"
                }
             ],
             "ciActions": [
