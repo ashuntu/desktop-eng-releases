@@ -6824,25 +6824,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "bbbb6722de01b2eea3f61589d788efd7a4d033a2",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1750125131,
-                  "message": "Improve debugging for exec client actions and tests (#978)\n\nLet's see if we can get some more info to handle #969",
-                  "url": "https://github.com/ubuntu/authd/commit/bbbb6722de01b2eea3f61589d788efd7a4d033a2"
+                  "sha": "12365779117b8a6705b0c6fbca61cd7703ddb03a",
+                  "author": "adombeck",
+                  "timestamp": 1750161563,
+                  "message": "Fix error message \"GetUserByName: no result matching  in\" (#980)",
+                  "url": "https://github.com/ubuntu/authd/commit/12365779117b8a6705b0c6fbca61cd7703ddb03a"
                },
                {
-                  "sha": "b2c3579092d60c32cf091a35168507b129af5712",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1750092356,
-                  "message": "testutils/args: Drop custom IsVerbose and replace with testing.Verbose()\n\nOurs didn't catch when -v was set to some other value, such as test2json",
-                  "url": "https://github.com/ubuntu/authd/commit/b2c3579092d60c32cf091a35168507b129af5712"
+                  "sha": "72b72419496b54cf0caf002f7069825780cf127a",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1750113018,
+                  "message": "Remove redundant code\n\nThere is no reason to return an empty NoDataFoundError here, we can just\nreturn the instance we already got from db.UserByName().",
+                  "url": "https://github.com/ubuntu/authd/commit/72b72419496b54cf0caf002f7069825780cf127a"
                },
                {
-                  "sha": "130b2b7b837a3c6550bbd2808dcfc0a4387bed01",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1750091635,
-                  "message": "pam/integration-tests/vhs-helpers: Use ASAN options to run test clients",
-                  "url": "https://github.com/ubuntu/authd/commit/130b2b7b837a3c6550bbd2808dcfc0a4387bed01"
+                  "sha": "6bb6736183a461e7bca643cf6cb1641f5e8afaf1",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1750112884,
+                  "message": "Fix error message \"GetUserByName: no result matching  in\"\n\nThe functions of the tempentries package returned empty\nNoDataFoundError{} instances, which are converted to the string\n\"no result matching  in\".\n\nThis commit extracts exported functions to create instances of a\nNoDataFoundError which are now used both in the db package and the\ntempentries package.",
+                  "url": "https://github.com/ubuntu/authd/commit/6bb6736183a461e7bca643cf6cb1641f5e8afaf1"
                }
             ],
             "ciActions": [
