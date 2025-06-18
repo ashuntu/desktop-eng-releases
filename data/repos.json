@@ -6824,25 +6824,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "018129368708ff354b9ac1631bbb25883d914321",
+                  "author": "Shane Crowley",
+                  "timestamp": 1750251667,
+                  "message": "docs: add information on configuring ID ranges for LXD (#982)\n\nA user reported issues authenticating with authd from LXD containers:\nhttps://github.com/ubuntu/authd/issues/819\n\nThis PR is based on the solutions offered in response. It adds:\n\n* A brief and self-contained how-to guide **Use authd with LXD** on\nconfiguring UID/GID ranges for LXD. _I considered adding this to the\ngeneral installation and configuration guide, but it seemed too specific\nand could distract users interested in more conventional use-cases._\n* A brief section on the LXD issue in the **Troubleshooting** reference\nthat points to the new guide. _This helps increase the probability that\npeople looking for the solution will find it._\n* A reference to the file for configuring the authd service to the\n**Configure authd** guide. _There might be other contexts in which users\nwant to change the ID ranges, so it's good to mention the file here in\nthis general configuration guide. It also provides a natural lead-in to\na link pointing to the LXD guide_\n\nOther minor changes:\n\n* Added some fixes for the spellchecker\n* Made a change to a heading `System configuration -> Configure login\ntimeout` in the config guide to be more specific and also separated\nsentences in that section for better readability\n\nUDENG-6740",
+                  "url": "https://github.com/ubuntu/authd/commit/018129368708ff354b9ac1631bbb25883d914321"
+               },
+               {
+                  "sha": "78827bebbd8f6821b4a5faf250b02e8471450f5e",
+                  "author": "shanecrowley",
+                  "timestamp": 1750162785,
+                  "message": "add sections and pages on configuring ID ranges for LXD\n\n* adds guide on additional UID/GID configurations needed for LXD\n* adds section in troubleshooting that points to new LXD guide\n* adds note in generic configuration guide that points to new LXD guide\n\nadd fixes for spellchecker\n\n* updates wordlist\n* ignores captions in codeblocks",
+                  "url": "https://github.com/ubuntu/authd/commit/78827bebbd8f6821b4a5faf250b02e8471450f5e"
+               },
+               {
                   "sha": "825c7e127f5bfc6e9fa1515069dd10fbb344a188",
                   "author": "adombeck",
                   "timestamp": 1750185110,
                   "message": "docs: Do not document setting option to default value (#984)",
                   "url": "https://github.com/ubuntu/authd/commit/825c7e127f5bfc6e9fa1515069dd10fbb344a188"
-               },
-               {
-                  "sha": "c2883a838aec4dda3eb8e3f51b5461f0adccf20f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1750182463,
-                  "message": "docs: Do not document setting option to default value\n\nThe force_provider_authentication option is set to false by default, and\nit's documented in the default broker.conf file, so users don't need to\nset it to false themselves.",
-                  "url": "https://github.com/ubuntu/authd/commit/c2883a838aec4dda3eb8e3f51b5461f0adccf20f"
-               },
-               {
-                  "sha": "12365779117b8a6705b0c6fbca61cd7703ddb03a",
-                  "author": "adombeck",
-                  "timestamp": 1750161563,
-                  "message": "Fix error message \"GetUserByName: no result matching  in\" (#980)",
-                  "url": "https://github.com/ubuntu/authd/commit/12365779117b8a6705b0c6fbca61cd7703ddb03a"
                }
             ],
             "ciActions": [
@@ -8467,25 +8467,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a70e425fa55d7e92dcf3e2c7bfdfd4d6c045f270",
+                  "sha": "387852e9a2344c8bede60ba164aebd83f2034586",
                   "author": "Dennis Loose",
-                  "timestamp": 1750234144,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2354993 (#1090)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n| packages/subiquity_client/subiquity | digest | `6a58e8e` -> `2354993`\n|\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the Dependency\nDashboard for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0MC42MC4xIiwidXBkYXRlZEluVmVyIjoiNDAuNjAuMSIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a70e425fa55d7e92dcf3e2c7bfdfd4d6c045f270"
+                  "timestamp": 1750254096,
+                  "message": "feat: expose pin/passphrase entropy for tpm/fde (snapd 2.68) (#1091)\n\nSplit off from #1085 with some small adaptations to use the more limited\nAPI implemented in https://github.com/canonical/subiquity/pull/2221.\nThis means, since subiquity only exposes the `entropy` and\n`minimumRequired` at this point, we can only display two different\nstates in the UI (Weak PIN/pass, Strong pass / Long enough PIN). We'll\nbe able to introduce the intermediate threshold in #1085 once\nhttps://github.com/canonical/subiquity/pull/2220 lands.\n\n[Screencast From 2025-06-18\n10-26-20.webm](https://github.com/user-attachments/assets/3a5a78ae-b3ad-47fd-8077-f3364d33a93e)\n\nUDENG-7050",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/387852e9a2344c8bede60ba164aebd83f2034586"
                },
                {
-                  "sha": "48721bb36962f8acf302db9153999c2534afe2ff",
-                  "author": "renovate[bot]",
-                  "timestamp": 1750233496,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2354993",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/48721bb36962f8acf302db9153999c2534afe2ff"
+                  "sha": "572dcc2d2e14c1137c0cb29c19c5ba51501b55b8",
+                  "author": "Dennis Loose",
+                  "timestamp": 1750169668,
+                  "message": "feat: adapt pin/pass page to simplified API",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/572dcc2d2e14c1137c0cb29c19c5ba51501b55b8"
                },
                {
-                  "sha": "71a5b9e42150ab7d287df44334609a15743b4ba9",
+                  "sha": "4a7bb4ced2a0649cc730dcd18c0d99db50f6de00",
                   "author": "Dennis Loose",
-                  "timestamp": 1750153486,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 6a58e8e (#1088)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n| packages/subiquity_client/subiquity | digest | `6f3f72c` -> `6a58e8e`\n|\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the Dependency\nDashboard for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0MC41MC4wIiwidXBkYXRlZEluVmVyIjoiNDAuNTAuMCIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/71a5b9e42150ab7d287df44334609a15743b4ba9"
+                  "timestamp": 1750169556,
+                  "message": "feat(subiquity_client): adapt to snapd 2.68 compatible API",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4a7bb4ced2a0649cc730dcd18c0d99db50f6de00"
                }
             ],
             "ciActions": [
