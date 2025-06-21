@@ -4846,25 +4846,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2dd51c96f93d33fdf30269cde2501e89cdb49294",
+                  "sha": "9edccfe9d226288a6a3651d7198288485ab8a1da",
                   "author": "github-actions[bot]",
-                  "timestamp": 1750378556,
-                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#1050)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/2dd51c96f93d33fdf30269cde2501e89cdb49294"
+                  "timestamp": 1750464816,
+                  "message": "Update init/high-contrast-dark screenshots on `main` (#1053)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/9edccfe9d226288a6a3651d7198288485ab8a1da"
                },
                {
-                  "sha": "771ad9250cc68c14d7ccda147e4955d74ccfaa3a",
+                  "sha": "ae313bb1b69fb1d1ec33fb6b29a8fe1220e02450",
                   "author": "github-actions[bot]",
-                  "timestamp": 1750378337,
-                  "message": "Update init/dark screenshots on `main` (#1049)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/771ad9250cc68c14d7ccda147e4955d74ccfaa3a"
+                  "timestamp": 1750464738,
+                  "message": "Update init/light screenshots on `main` (#1052)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/ae313bb1b69fb1d1ec33fb6b29a8fe1220e02450"
                },
                {
-                  "sha": "bf65b675e7625ac2651bd7955f7371a86bb5ec49",
+                  "sha": "093c863f71b5e6c2df64ee89f9b5620946d09d16",
                   "author": "github-actions[bot]",
-                  "timestamp": 1750378332,
-                  "message": "Update init/light screenshots on `main` (#1048)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/bf65b675e7625ac2651bd7955f7371a86bb5ec49"
+                  "timestamp": 1750464720,
+                  "message": "Update init/dark screenshots on `main` (#1051)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/093c863f71b5e6c2df64ee89f9b5620946d09d16"
                }
             ],
             "ciActions": [
@@ -6828,25 +6828,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a24d7472d46665a9186fc3415f56a404c2ff574e",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1750463614,
+                  "message": "locking: Return ErrLockTimeout on EINTR (#959)\n\nWe've seen the test fail in the CI with:\n\nError Trace:\n/home/runner/work/authd/authd/internal/users/locking/locking_bwrap_test.go:266\n    Error:       Target error should be in err chain:\nexpected: \"failed to lock the shadow password database: timeout\"\nin chain: \"failed to lock the shadow password database: Interrupted\nsystem call\"\n    Test:        TestLockingLockedDatabaseFailsAfterTimeout\n\nThe reason is probably that the alarm set by lckpwdf does sometimes work\nin the CI, so lckpwdf returns an error before our own 16 second timeout\nis reached, resulting in a different error to be returned.\n\nReturn a ErrLockTimeout when that happens.",
+                  "url": "https://github.com/ubuntu/authd/commit/a24d7472d46665a9186fc3415f56a404c2ff574e"
+               },
+               {
+                  "sha": "a5fa1b2b4256d36dff5380991c9c75c81970cd66",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1750427565,
+                  "message": "users/locking: Do not use sleep duration in tests\n\nSince the counterpart (libc) is not using any sleep multiplier, let's\njust use the actual values or we may end up in unexpected failures",
+                  "url": "https://github.com/ubuntu/authd/commit/a5fa1b2b4256d36dff5380991c9c75c81970cd66"
+               },
+               {
                   "sha": "743e1b51917d6e68b09cd6840d635fbc23d2688d",
                   "author": "adombeck",
                   "timestamp": 1750265486,
                   "message": "Make errors when checking home dir owner non-fatal (#985)",
                   "url": "https://github.com/ubuntu/authd/commit/743e1b51917d6e68b09cd6840d635fbc23d2688d"
-               },
-               {
-                  "sha": "018129368708ff354b9ac1631bbb25883d914321",
-                  "author": "Shane Crowley",
-                  "timestamp": 1750251667,
-                  "message": "docs: add information on configuring ID ranges for LXD (#982)\n\nA user reported issues authenticating with authd from LXD containers:\nhttps://github.com/ubuntu/authd/issues/819\n\nThis PR is based on the solutions offered in response. It adds:\n\n* A brief and self-contained how-to guide **Use authd with LXD** on\nconfiguring UID/GID ranges for LXD. _I considered adding this to the\ngeneral installation and configuration guide, but it seemed too specific\nand could distract users interested in more conventional use-cases._\n* A brief section on the LXD issue in the **Troubleshooting** reference\nthat points to the new guide. _This helps increase the probability that\npeople looking for the solution will find it._\n* A reference to the file for configuring the authd service to the\n**Configure authd** guide. _There might be other contexts in which users\nwant to change the ID ranges, so it's good to mention the file here in\nthis general configuration guide. It also provides a natural lead-in to\na link pointing to the LXD guide_\n\nOther minor changes:\n\n* Added some fixes for the spellchecker\n* Made a change to a heading `System configuration -> Configure login\ntimeout` in the config guide to be more specific and also separated\nsentences in that section for better readability\n\nUDENG-6740",
-                  "url": "https://github.com/ubuntu/authd/commit/018129368708ff354b9ac1631bbb25883d914321"
-               },
-               {
-                  "sha": "78827bebbd8f6821b4a5faf250b02e8471450f5e",
-                  "author": "shanecrowley",
-                  "timestamp": 1750162785,
-                  "message": "add sections and pages on configuring ID ranges for LXD\n\n* adds guide on additional UID/GID configurations needed for LXD\n* adds section in troubleshooting that points to new LXD guide\n* adds note in generic configuration guide that points to new LXD guide\n\nadd fixes for spellchecker\n\n* updates wordlist\n* ignores captions in codeblocks",
-                  "url": "https://github.com/ubuntu/authd/commit/78827bebbd8f6821b4a5faf250b02e8471450f5e"
                }
             ],
             "ciActions": [
@@ -8506,25 +8506,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2dd51c96f93d33fdf30269cde2501e89cdb49294",
+                  "sha": "9edccfe9d226288a6a3651d7198288485ab8a1da",
                   "author": "github-actions[bot]",
-                  "timestamp": 1750378556,
-                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#1050)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/2dd51c96f93d33fdf30269cde2501e89cdb49294"
+                  "timestamp": 1750464816,
+                  "message": "Update init/high-contrast-dark screenshots on `main` (#1053)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/9edccfe9d226288a6a3651d7198288485ab8a1da"
                },
                {
-                  "sha": "771ad9250cc68c14d7ccda147e4955d74ccfaa3a",
+                  "sha": "ae313bb1b69fb1d1ec33fb6b29a8fe1220e02450",
                   "author": "github-actions[bot]",
-                  "timestamp": 1750378337,
-                  "message": "Update init/dark screenshots on `main` (#1049)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/771ad9250cc68c14d7ccda147e4955d74ccfaa3a"
+                  "timestamp": 1750464738,
+                  "message": "Update init/light screenshots on `main` (#1052)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/ae313bb1b69fb1d1ec33fb6b29a8fe1220e02450"
                },
                {
-                  "sha": "bf65b675e7625ac2651bd7955f7371a86bb5ec49",
+                  "sha": "093c863f71b5e6c2df64ee89f9b5620946d09d16",
                   "author": "github-actions[bot]",
-                  "timestamp": 1750378332,
-                  "message": "Update init/light screenshots on `main` (#1048)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/bf65b675e7625ac2651bd7955f7371a86bb5ec49"
+                  "timestamp": 1750464720,
+                  "message": "Update init/dark screenshots on `main` (#1051)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/093c863f71b5e6c2df64ee89f9b5620946d09d16"
                }
             ],
             "ciActions": [
