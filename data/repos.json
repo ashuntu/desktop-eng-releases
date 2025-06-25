@@ -6828,25 +6828,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ca1380e9022132cedef3c133500f8d0221c942b8",
-                  "author": "adombeck",
-                  "timestamp": 1750845642,
-                  "message": "testutils: Get current effective UID via os.Geteuid (#992)",
-                  "url": "https://github.com/ubuntu/authd/commit/ca1380e9022132cedef3c133500f8d0221c942b8"
+                  "sha": "57eb1aba68e317913db041378465c20b7305c17d",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1750871124,
+                  "message": "users/localentries/get{pw,gr}ent: Use safer *_r implementations (#995)\n\nWe are getting some races for the way we handle the errno, which is by\ndesign unsafe, especially in a multi-threading context.\n\nglibc provides some safer implementations that instead of setting errno,\nthey actually return the error we got.\n\nUse them instead, to avoid having races.\n\nAlso, while `get*ent_r` are not thread safe, `get*nam_r` are, thus\nwe don't need any more an errno implicit lock.\n\nTest both working in parallel to.\n\nIdeally this should avoid us in troubles as per #991\n\nUDENG-7209",
+                  "url": "https://github.com/ubuntu/authd/commit/57eb1aba68e317913db041378465c20b7305c17d"
                },
                {
-                  "sha": "7b936e1c9d9432d7f4359752e118d8c18b3808d8",
+                  "sha": "109ddd3546404f9a2e10b1fafdaaac831d2ee20e",
                   "author": "adombeck",
-                  "timestamp": 1750839728,
-                  "message": "More readable logs of pam integration tests (#990)",
-                  "url": "https://github.com/ubuntu/authd/commit/7b936e1c9d9432d7f4359752e118d8c18b3808d8"
+                  "timestamp": 1750870505,
+                  "message": "Fix TestUsersLockingInBubbleWrap/TestReadWhileLocked (#994)",
+                  "url": "https://github.com/ubuntu/authd/commit/109ddd3546404f9a2e10b1fafdaaac831d2ee20e"
                },
                {
-                  "sha": "dcfa694115998427bf30bcd8610e6b94c9d2ba95",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1750689980,
-                  "message": "log: More readable messages when using SetOutput\n\nSetOutput used the slog.TextHandler instead of the default\nslog.defaultHandler.\n\nThat produced output like this:\n\n    time=2025-06-23T16:48:23.615+02:00 level=DEBUG msg=\"Sending to GDM: {\\\"type\\\":\\\"request\\\",\\\"request\\\":{\\\"type\\\":\\\"uiLayoutCapabilities\\\",\\\"uiLayoutCapabilities\\\":{}}}\"\n\nThis commit uses a custom handler which produces output similar to the\nslog.defaultHandler (which we can't use because it's not exported),\nexcept that it omits the date and only prints the time instead (because\nwe're generally not interested in the date when looking at test logs).\n\nIt produces output like this:\n\n    16:48:09 DEBUG Sending to GDM: {\"type\":\"request\",\"request\":{\"type\":\"uiLayoutCapabilities\",\"uiLayoutCapabilities\":{}}}",
-                  "url": "https://github.com/ubuntu/authd/commit/dcfa694115998427bf30bcd8610e6b94c9d2ba95"
+                  "sha": "877955b15521b8fae7e60f357e068dbd1169cbdd",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1750868168,
+                  "message": "users/localentries/getpwent: Use safer *_r implementations\n\nAs in previous commit...\n\nWe are getting some races for the way we handle the errno, which is by\ndesign unsafe, especially in a multi-threading context.\n\nglibc provides some safer implementations that instead of setting errno,\nthey actually return the error we got.\n\nUse them instead to avoid having races.\n\nAlso, while `getpwent_r` is not thread safe, `getpwnam_r` it is, thus\nwe don't need any more an errno implicit lock.\n\nTest both working in parallel too",
+                  "url": "https://github.com/ubuntu/authd/commit/877955b15521b8fae7e60f357e068dbd1169cbdd"
                }
             ],
             "ciActions": [
