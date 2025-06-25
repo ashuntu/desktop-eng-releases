@@ -6828,6 +6828,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ca1380e9022132cedef3c133500f8d0221c942b8",
+                  "author": "adombeck",
+                  "timestamp": 1750845642,
+                  "message": "testutils: Get current effective UID via os.Geteuid (#992)",
+                  "url": "https://github.com/ubuntu/authd/commit/ca1380e9022132cedef3c133500f8d0221c942b8"
+               },
+               {
                   "sha": "7b936e1c9d9432d7f4359752e118d8c18b3808d8",
                   "author": "adombeck",
                   "timestamp": 1750839728,
@@ -6840,13 +6847,6 @@
                   "timestamp": 1750689980,
                   "message": "log: More readable messages when using SetOutput\n\nSetOutput used the slog.TextHandler instead of the default\nslog.defaultHandler.\n\nThat produced output like this:\n\n    time=2025-06-23T16:48:23.615+02:00 level=DEBUG msg=\"Sending to GDM: {\\\"type\\\":\\\"request\\\",\\\"request\\\":{\\\"type\\\":\\\"uiLayoutCapabilities\\\",\\\"uiLayoutCapabilities\\\":{}}}\"\n\nThis commit uses a custom handler which produces output similar to the\nslog.defaultHandler (which we can't use because it's not exported),\nexcept that it omits the date and only prints the time instead (because\nwe're generally not interested in the date when looking at test logs).\n\nIt produces output like this:\n\n    16:48:09 DEBUG Sending to GDM: {\"type\":\"request\",\"request\":{\"type\":\"uiLayoutCapabilities\",\"uiLayoutCapabilities\":{}}}",
                   "url": "https://github.com/ubuntu/authd/commit/dcfa694115998427bf30bcd8610e6b94c9d2ba95"
-               },
-               {
-                  "sha": "510acd0ebd50456d345528559601e3904c5c751d",
-                  "author": "adombeck",
-                  "timestamp": 1750691809,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#961)",
-                  "url": "https://github.com/ubuntu/authd/commit/510acd0ebd50456d345528559601e3904c5c751d"
                }
             ],
             "ciActions": [
