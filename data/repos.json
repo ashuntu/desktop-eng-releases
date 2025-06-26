@@ -6828,25 +6828,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "57eb1aba68e317913db041378465c20b7305c17d",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1750871124,
-                  "message": "users/localentries/get{pw,gr}ent: Use safer *_r implementations (#995)\n\nWe are getting some races for the way we handle the errno, which is by\ndesign unsafe, especially in a multi-threading context.\n\nglibc provides some safer implementations that instead of setting errno,\nthey actually return the error we got.\n\nUse them instead, to avoid having races.\n\nAlso, while `get*ent_r` are not thread safe, `get*nam_r` are, thus\nwe don't need any more an errno implicit lock.\n\nTest both working in parallel to.\n\nIdeally this should avoid us in troubles as per #991\n\nUDENG-7209",
-                  "url": "https://github.com/ubuntu/authd/commit/57eb1aba68e317913db041378465c20b7305c17d"
-               },
-               {
-                  "sha": "109ddd3546404f9a2e10b1fafdaaac831d2ee20e",
+                  "sha": "2e51e1b5c155c34c237e16303d9202cecd67fbc6",
                   "author": "adombeck",
-                  "timestamp": 1750870505,
-                  "message": "Fix TestUsersLockingInBubbleWrap/TestReadWhileLocked (#994)",
-                  "url": "https://github.com/ubuntu/authd/commit/109ddd3546404f9a2e10b1fafdaaac831d2ee20e"
+                  "timestamp": 1750971590,
+                  "message": "Remove unused golden files (#996)",
+                  "url": "https://github.com/ubuntu/authd/commit/2e51e1b5c155c34c237e16303d9202cecd67fbc6"
                },
                {
-                  "sha": "877955b15521b8fae7e60f357e068dbd1169cbdd",
+                  "sha": "f75acea1486ecc6aa31628275fe440468ea23b68",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1750868168,
-                  "message": "users/localentries/getpwent: Use safer *_r implementations\n\nAs in previous commit...\n\nWe are getting some races for the way we handle the errno, which is by\ndesign unsafe, especially in a multi-threading context.\n\nglibc provides some safer implementations that instead of setting errno,\nthey actually return the error we got.\n\nUse them instead to avoid having races.\n\nAlso, while `getpwent_r` is not thread safe, `getpwnam_r` it is, thus\nwe don't need any more an errno implicit lock.\n\nTest both working in parallel too",
-                  "url": "https://github.com/ubuntu/authd/commit/877955b15521b8fae7e60f357e068dbd1169cbdd"
+                  "timestamp": 1750692353,
+                  "message": "pam/integration-tests: Drop unused golden files",
+                  "url": "https://github.com/ubuntu/authd/commit/f75acea1486ecc6aa31628275fe440468ea23b68"
+               },
+               {
+                  "sha": "8b6155f276fcf10c963f5e574ad35c815999413b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1750931389,
+                  "message": "Remove unused golden files\n\nThese are leftovers from removed or renamed test cases.",
+                  "url": "https://github.com/ubuntu/authd/commit/8b6155f276fcf10c963f5e574ad35c815999413b"
                }
             ],
             "ciActions": [
@@ -8933,6 +8933,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fb84cfd61d084e33d87c87818818b922be57ea5c",
+                  "author": "Vincent Renzo Quilon",
+                  "timestamp": 1750973062,
+                  "message": "Icon For Papers (#4221)",
+                  "url": "https://github.com/ubuntu/yaru/commit/fb84cfd61d084e33d87c87818818b922be57ea5c"
+               },
+               {
                   "sha": "df5b7832235419b1f72723ec0660a6f73316133f",
                   "author": "walangpart2",
                   "timestamp": 1745739923,
@@ -8945,13 +8952,6 @@
                   "timestamp": 1744768028,
                   "message": "Upload to plucky",
                   "url": "https://github.com/ubuntu/yaru/commit/1ea94a379e743ab03d8ae87cac036ba65aa1fa7a"
-               },
-               {
-                  "sha": "2f2cd2a6e7104a9532c236456a4a89c5523477c6",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1744767945,
-                  "message": "debian/changelog: Update",
-                  "url": "https://github.com/ubuntu/yaru/commit/2f2cd2a6e7104a9532c236456a4a89c5523477c6"
                }
             ],
             "ciActions": [],
