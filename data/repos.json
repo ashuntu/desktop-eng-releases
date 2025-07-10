@@ -6905,25 +6905,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "61cb2e86c3e4ce3dd369d7d4593af9e75cac2652",
+                  "sha": "77f2dccc870d453d42f4dbd01c19871c1b20ca9e",
                   "author": "adombeck",
-                  "timestamp": 1752181231,
-                  "message": "Fix NSS integration tests (#1018)",
-                  "url": "https://github.com/ubuntu/authd/commit/61cb2e86c3e4ce3dd369d7d4593af9e75cac2652"
+                  "timestamp": 1752186036,
+                  "message": "localentries: Remove unused functions (#1010)",
+                  "url": "https://github.com/ubuntu/authd/commit/77f2dccc870d453d42f4dbd01c19871c1b20ca9e"
                },
                {
-                  "sha": "59f8bfa638f6dec53348c1c43698f3f863fcc35f",
+                  "sha": "229aa56b13b3404574cdc60938f53be56cf9c658",
+                  "author": "adombeck",
+                  "timestamp": 1752185989,
+                  "message": "Log UserPreCheck errors (#1004)",
+                  "url": "https://github.com/ubuntu/authd/commit/229aa56b13b3404574cdc60938f53be56cf9c658"
+               },
+               {
+                  "sha": "bb28ada38ffc6e6a52905308ec0bb10f5035efda",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1752163305,
-                  "message": "Fix NSS integration tests\n\nThe test was using the authd instance running on my system, causing the\ntests which expect authd to not be running to fail.",
-                  "url": "https://github.com/ubuntu/authd/commit/59f8bfa638f6dec53348c1c43698f3f863fcc35f"
-               },
-               {
-                  "sha": "5e4a668d65a06f6853c2260fc37c45aae73d89cc",
-                  "author": "adombeck",
-                  "timestamp": 1752181174,
-                  "message": "Fix TestAutoDetectConfig (#1017)",
-                  "url": "https://github.com/ubuntu/authd/commit/5e4a668d65a06f6853c2260fc37c45aae73d89cc"
+                  "timestamp": 1751627910,
+                  "message": "localentries: Remove unused functions\n\nThese functions were never used. On\nhttps://github.com/ubuntu/authd/pull/993 we had a use case for them, but\nthen decided to use `user.Lookup`/`user.LookupGroup` instead, so let's\nremove them.",
+                  "url": "https://github.com/ubuntu/authd/commit/bb28ada38ffc6e6a52905308ec0bb10f5035efda"
                }
             ],
             "ciActions": [
@@ -6940,25 +6940,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3c5230182654e5c847e2821135d78d10b7e00b73",
+                  "author": "adombeck",
+                  "timestamp": 1752185957,
+                  "message": "UserPreCheck: Don't return error if user is not permitted (#568)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/3c5230182654e5c847e2821135d78d10b7e00b73"
+               },
+               {
+                  "sha": "d82087536b6ce9858ad0413a0ded4913acc5d04a",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1751198581,
+                  "message": "UserPreCheck: Don't return error if user is not permitted\n\nLets make it easier for the caller to differentiate between the expected\nerror that the user is not permitted to log in and an unexpected error,\nby returning an empty string in the first case and an error in the\nlatter.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d82087536b6ce9858ad0413a0ded4913acc5d04a"
+               },
+               {
                   "sha": "86bdf17ae30d63e583cedc95e2bca836be44c12e",
                   "author": "adombeck",
                   "timestamp": 1751886415,
                   "message": "deps(go): bump github.com/microsoftgraph/msgraph-sdk-go from 1.76.0 to 1.77.0 (#573)",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/86bdf17ae30d63e583cedc95e2bca836be44c12e"
-               },
-               {
-                  "sha": "0db14dfe76261c927096ff7c9291b7ae0fbbfa96",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1751883062,
-                  "message": "deps(go): bump github.com/microsoftgraph/msgraph-sdk-go\n\n---\nupdated-dependencies:\n- dependency-name: github.com/microsoftgraph/msgraph-sdk-go\n  dependency-version: 1.77.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0db14dfe76261c927096ff7c9291b7ae0fbbfa96"
-               },
-               {
-                  "sha": "a74092bc40faa987390c5928b50746a29a1eaa6d",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1751546713,
-                  "message": "Update behavior for `ssh_allowed_suffixes` setting (#560)\n\nWe used to allow every user to authenticate for the first time through\nSSH if this setting was not configured. This behavior could be\nmisleading and result in unexpected situations for the users.\n\nTo improve this, we now consider \" \" (empty string) to mean 'disallow\nall' and have a new \"*\" value to represent the 'allow all' option, in\ncase users still want to keep this.\n\nUDENG-7132",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a74092bc40faa987390c5928b50746a29a1eaa6d"
                }
             ],
             "ciActions": [
