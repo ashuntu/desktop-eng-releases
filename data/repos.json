@@ -6905,25 +6905,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "11648856be4d0baa54e35607fae7bd8588187b3d",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1752176367,
-                  "message": "users: Use lckpwdf to lock the database when manipulating users or groups (#993)\n\nTo prevent races with other NSS providers when creating or changing\nusers or groups we were supposed to always lock the the shadow/password\ndatabase, but we only did during the migration phase.\n\nSo always use the locking every time that we need to:\n - Update the local groups\n - Create or Update brokers users or groups\n - Create pre-auth users\n\nThis implied lots of refactory, in particular:\n- The group file is now fully read and written by authd without using\nany gpasswd call\n- The brokers users and groups aren't anymore exposed to NSS during\ntheir creation (we're locked!)\n- Pre-auth users are exposed as before\n- Removed various logical locks and reduced a lot of duplicated NSS\nrequests\n- Fixed various potential races in which we might have created users or\ngroups with duplicated names or UIDs/GIDs\n- Added helpers to ensure that we act in locked mode when working with\nusers or groups\n- Improved ID generation logic\n\nIt all comes fully tested.\n\nI also have some further updates on top of this (like a native go\nimplementation for `lckpwdf`), but this should be enough for now.\n\nUDENG-6745",
-                  "url": "https://github.com/ubuntu/authd/commit/11648856be4d0baa54e35607fae7bd8588187b3d"
-               },
-               {
-                  "sha": "8630ded0d0f27f7d1dd26b7f53aa124a055bff0e",
+                  "sha": "61cb2e86c3e4ce3dd369d7d4593af9e75cac2652",
                   "author": "adombeck",
-                  "timestamp": 1752163046,
-                  "message": "Avoid printing each \"error\" returned by a gRPC method (#1003)\n\nCloses #954 \nUDENG-7161",
-                  "url": "https://github.com/ubuntu/authd/commit/8630ded0d0f27f7d1dd26b7f53aa124a055bff0e"
+                  "timestamp": 1752181231,
+                  "message": "Fix NSS integration tests (#1018)",
+                  "url": "https://github.com/ubuntu/authd/commit/61cb2e86c3e4ce3dd369d7d4593af9e75cac2652"
                },
                {
-                  "sha": "0818a910639d56845cb42705a63986c76b12732c",
+                  "sha": "59f8bfa638f6dec53348c1c43698f3f863fcc35f",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1751043446,
-                  "message": "Log errors in gRPC method implementations\n\nWe don't log the errors in the RedactErrorInterceptor and instead log\nthem in the gRPC method implementations with the adequate log level:\ndebug or info for informational messages which result from normal\nbehavior, warning for abnormal but non-critical events, error for error\nconditions requiring attention.",
-                  "url": "https://github.com/ubuntu/authd/commit/0818a910639d56845cb42705a63986c76b12732c"
+                  "timestamp": 1752163305,
+                  "message": "Fix NSS integration tests\n\nThe test was using the authd instance running on my system, causing the\ntests which expect authd to not be running to fail.",
+                  "url": "https://github.com/ubuntu/authd/commit/59f8bfa638f6dec53348c1c43698f3f863fcc35f"
+               },
+               {
+                  "sha": "5e4a668d65a06f6853c2260fc37c45aae73d89cc",
+                  "author": "adombeck",
+                  "timestamp": 1752181174,
+                  "message": "Fix TestAutoDetectConfig (#1017)",
+                  "url": "https://github.com/ubuntu/authd/commit/5e4a668d65a06f6853c2260fc37c45aae73d89cc"
                }
             ],
             "ciActions": [
