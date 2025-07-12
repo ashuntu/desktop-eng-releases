@@ -6940,6 +6940,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cd10e0de3833c2babb9eb485eb0b9d14bc419af2",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1751496354,
+                  "message": "snap: Run `go mod vendor` as part of the broker build\n\nI had a snap build fail because I didn't run `go mod vendor` before\nrunning `snapcraft build`. That should really be done as part of the\nsnap build.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/cd10e0de3833c2babb9eb485eb0b9d14bc419af2"
+               },
+               {
                   "sha": "ff781987b9045bf500877a38f48ebad417cd93f9",
                   "author": "adombeck",
                   "timestamp": 1752186647,
@@ -6952,13 +6959,6 @@
                   "timestamp": 1752185957,
                   "message": "UserPreCheck: Don't return error if user is not permitted (#568)",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/3c5230182654e5c847e2821135d78d10b7e00b73"
-               },
-               {
-                  "sha": "d82087536b6ce9858ad0413a0ded4913acc5d04a",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1751198581,
-                  "message": "UserPreCheck: Don't return error if user is not permitted\n\nLets make it easier for the caller to differentiate between the expected\nerror that the user is not permitted to log in and an unexpected error,\nby returning an empty string in the first case and an error in the\nlatter.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d82087536b6ce9858ad0413a0ded4913acc5d04a"
                }
             ],
             "ciActions": [
