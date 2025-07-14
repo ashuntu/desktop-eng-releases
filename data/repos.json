@@ -5039,25 +5039,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "932c954ed862fb625f37f8ba704fad9cc5044365",
+                  "sha": "a9376bfb1ee46ef7f1416d670d9d3f3331202d2c",
                   "author": "Kat",
-                  "timestamp": 1752509480,
-                  "message": "feat: Go API Collect returns report  (#159)\n\nThis PR changes the Go API such that the Collect method returns the\ncompiled report in a pretty printed JSON byte slice format. Note that\nsince it is returning the compiled report, what is actually written to\ndisk may differ based on the provided flags or the current consent\nstate. For example, if consent is false, Collect will still return a\nfull report, but an OptOut payload will be written to disk.\n\nIn combination with #158, these changes mark tagged version 0.2.0, but\ndo not necessitate a new Debian package release.\n\n---\n[UDENG-7280](https://warthogs.atlassian.net/browse/UDENG-7280)\n\n[UDENG-7280]:\nhttps://warthogs.atlassian.net/browse/UDENG-7280?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/932c954ed862fb625f37f8ba704fad9cc5044365"
+                  "timestamp": 1752513445,
+                  "message": "fix: Fix insights armhf builds (#162)\n\nFix for insights armhf builds.\n\nIn `waylandtest_linux.go`, it seems that `1 << 30` was too large for\narmhf. 28 seems to fix it. Ironically, the overflow check in uploader is\nalso capable of overflowing on 32-bit systems, though I'm surprised that\nthe builds on x86 didn't fail due to it, but they did on armhf.\n\nThis PR also includes some spelling/formatting fixes and a new initial\nentry for 0.2.0, as it is expected that the API changes will get merged\nin before this build gets uploaded. At the time of upload, a new PR will\nbe made to set the changelog version to a native version and to update\nthe time.\n\n---\n[UDENG-7359](https://warthogs.atlassian.net/browse/UDENG-7359)\n\n[UDENG-7359]:\nhttps://warthogs.atlassian.net/browse/UDENG-7359?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a9376bfb1ee46ef7f1416d670d9d3f3331202d2c"
                },
                {
-                  "sha": "e0978974f690d273ea160225ea7d19277f6b8ff0",
+                  "sha": "656080844606ea0e61131a53be05c1da18825433",
                   "author": "Kat",
-                  "timestamp": 1752507053,
-                  "message": "maint: Remove go.work.sum from VCS (#168)\n\nAfter some discussions, it was determined that it would be best to\nremove `go.work.sum` from version control. It quite often gets out of\nsync, Dependabot doesn't update it, and there are module-specific\n`go.sum` files that have their completeness enforced via CIs that ensure\nreproducibility of the builds. However, given the structure of the\nrepository as a monorepo, `go.work` is still included in version\ncontrol.\n\nThis PR removes `go.work.sum` from the repository, removes references to\nit in CI workflows, and adds it to `.gitignore`.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e0978974f690d273ea160225ea7d19277f6b8ff0"
+                  "timestamp": 1752513117,
+                  "message": "ci: Autopkgtest workflow (#155)\n\nThis PR adds a job to the `qa-debian` workflow to run `autopkgtest` on\nthe source output of the build Debian package job.\n\nIt also renames the workflow name to something a little shorter.\n\nThe GitHub Linux runners do seem to have universal [support for nested\nvirtualization](https://github.com/orgs/community/discussions/160591#discussioncomment-9018826).\nBut the user needs to be [added to the `kvm`\ngroup](https://github.blog/changelog/2023-02-23-hardware-accelerated-android-virtualization-on-actions-windows-and-linux-larger-hosted-runners/).\n\n`autopkgtest-buildvm-ubuntu-cloud` pulls the minimal latest development\nrelease of the distribution that we are calling from (presently,\nhttps://cloud-images.ubuntu.com/minimal/daily/questing/current/questing-minimal-cloudimg-amd64.img)\nwhich is what we are looking for, as we want Ubuntu Insights to always\ntarget the development release. The downside of doing this though is\nthat caching isn't really possible, resulting in this workflow taking\nlonger than all the others.\n\n---\n[UDENG-7294](https://warthogs.atlassian.net/browse/UDENG-7294)\n\n[UDENG-7294]:\nhttps://warthogs.atlassian.net/browse/UDENG-7294?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/656080844606ea0e61131a53be05c1da18825433"
                },
                {
-                  "sha": "ee42b3f29956c09fbbc9fe4bd3b6950e98d2932b",
-                  "author": "Kat",
-                  "timestamp": 1752507036,
-                  "message": "maint: Remove wsl_setup app from migration scripts (#164)\n\nThis PR removes the `wsl_setup` app from the migration scripts. It is\ncurrently still unclear how Insights will be integrated into WSL, so for\nnow, while the Charm downstream still hasn't been published, the\nmigration script is to be removed. Once the Charm is published, these\nscripts can't be modified directly, and any changes to the migration\nprocess need to take the form of a new step.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/ee42b3f29956c09fbbc9fe4bd3b6950e98d2932b"
+                  "sha": "0d22e712e367396e9e0032759eb862b7afdece7b",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1752511652,
+                  "message": "deps(go-insights): bump golang.org/x/text from 0.26.0 to 0.27.0 in /insights in the minor-updates group (#167)",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0d22e712e367396e9e0032759eb862b7afdece7b"
                }
             ],
             "ciActions": [
