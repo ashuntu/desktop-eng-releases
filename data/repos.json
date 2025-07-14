@@ -5039,25 +5039,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e3a75052e546d59b2b6bafc96cff0b9d279de946",
+                  "sha": "e0978974f690d273ea160225ea7d19277f6b8ff0",
                   "author": "Kat",
-                  "timestamp": 1752242387,
-                  "message": "ci: Update Dependabot for Go modules (#166)\n\nThis PR updates the Dependabot configuration to work with the repository\norganization implemented in #144. Since it looks for go.mod only in the\ndirectory specified, we need to tell it about every individual module.\nFor finer per-module control, this PR utilizes multiple\n`package-ecosystem` entries instead of a single entry with\n`directories`. This allows for things such as unique commit message\nprefixes per entry.\n\nNote that Dependabot does not know how to handle `go.work`, and will not\nrun `go work sync`. This is something we'd have to do manually every so\noften.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e3a75052e546d59b2b6bafc96cff0b9d279de946"
+                  "timestamp": 1752507053,
+                  "message": "maint: Remove go.work.sum from VCS (#168)\n\nAfter some discussions, it was determined that it would be best to\nremove `go.work.sum` from version control. It quite often gets out of\nsync, Dependabot doesn't update it, and there are module-specific\n`go.sum` files that have their completeness enforced via CIs that ensure\nreproducibility of the builds. However, given the structure of the\nrepository as a monorepo, `go.work` is still included in version\ncontrol.\n\nThis PR removes `go.work.sum` from the repository, removes references to\nit in CI workflows, and adds it to `.gitignore`.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e0978974f690d273ea160225ea7d19277f6b8ff0"
                },
                {
-                  "sha": "bd6cfcfab8c1f39c480dc36f267ff358b6588562",
+                  "sha": "ee42b3f29956c09fbbc9fe4bd3b6950e98d2932b",
+                  "author": "Kat",
+                  "timestamp": 1752507036,
+                  "message": "maint: Remove wsl_setup app from migration scripts (#164)\n\nThis PR removes the `wsl_setup` app from the migration scripts. It is\ncurrently still unclear how Insights will be integrated into WSL, so for\nnow, while the Charm downstream still hasn't been published, the\nmigration script is to be removed. Once the Charm is published, these\nscripts can't be modified directly, and any changes to the migration\nprocess need to take the form of a new step.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/ee42b3f29956c09fbbc9fe4bd3b6950e98d2932b"
+               },
+               {
+                  "sha": "7662a569548803a82aa1fd72cdbbfdc165c6d659",
                   "author": "kkuo",
-                  "timestamp": 1752171680,
-                  "message": "Update dependabot Go dependencies configuration for insights, server, and common",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/bd6cfcfab8c1f39c480dc36f267ff358b6588562"
-               },
-               {
-                  "sha": "5da3ec8cffee6f90f42d46686583a8fcb51a450e",
-                  "author": "Kat",
-                  "timestamp": 1752166914,
-                  "message": "refactor: API changes (#158)\n\nThis PR changes a few things for both the Go and C API (Mostly focusing\non the Go API) to make both easier to use, and more idiomatic.\n\n- Consent\n- Getters now return a boolean and error instead of an enum to have\nimproved consistency across the API and to be more idiomatic in the\nmethod declarations (C bindings still utilize an enum)\n - Logging\n- Allow loggers to be passed directly through the Config for the Go API\n- Remove the verbosity field from the Config for the Go API, as being\nable to pass a logger makes this redundant\n- Default to using text handlers instead of JSON handlers as that is\nmore common\n   - Default to using Info level as that is the default for slog\n - Move source out of config and directly into the method definitions\n   - Allows upload to take a list of sources instead of just one\n- Though technically optional, most of the time callers will be setting\n`source` so it may be a little clearer to include it as a parameter\ninstead of in the struct\n - General documentation fixes\n- Rename `seter` and `geter` to the more common form of `setter` and\n`getter`\n  \n Golden files were regenerated as needed.\n \nThese API changes are fairly significant and would warrant a 0.2.0 tag.\nBut, I'm also planning on making another PR for another API change, so\nwill hold off on that still.\n \n ---\n [UDENG-7278](https://warthogs.atlassian.net/browse/UDENG-7278)\n\n\n\n[UDENG-7278]:\nhttps://warthogs.atlassian.net/browse/UDENG-7278?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/5da3ec8cffee6f90f42d46686583a8fcb51a450e"
+                  "timestamp": 1752242779,
+                  "message": "Remove go.work.sum from VCS",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7662a569548803a82aa1fd72cdbbfdc165c6d659"
                }
             ],
             "ciActions": [
