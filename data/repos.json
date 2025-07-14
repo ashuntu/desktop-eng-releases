@@ -5039,25 +5039,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "812d4922ca4117220e2a99d619b0a84256aea444",
+                  "author": "Kat",
+                  "timestamp": 1752523488,
+                  "message": "build: Bump changelog to 0.2.0 for release (#163)\n\nThis PR bumps the changelog version to a native 0.2.0. It is to be\nmerged just before uploading the Debian package downstream. Once merged,\ntag `v0.2.0` should be associated with the merge commit on main.\n\nIn addition to being a client release to be uploaded to Launchpad, the\ntagged version `v0.2.0` includes changes relevant in the API/bindings\nand server contexts.\n- Debian Package\n  - Fixed armhf builds\n- Client API/C bindings\n\t- Go API specific\n- Replace passing of verbosity level with optional passing of a slogger\nobject.\n\t  - Consent getter now returns (bool, error) instead of a custom enum.\n- Collect now returns the report in a manner like the CLI printing the\ncompiled report on collect.\n\t- Both the Go API and C bindings\n- Upload now takes a list of sources instead of a single string source.\n\t  - Changed default sloggers to text handlers at an info level.\n- Move source(s) out of the config object/struct and directly into the\nmethod definitions.\n- Server\n  - Added missing index to `ubuntu_report` table.\n- Breaking changes to the SQL migration scripts. Migrations need to be\nreapplied from a clean slate and cannot be merely run ontop of an\nexisting database.\n\t  - Removed the `wsl_setup` app table\n\n\nBlocked by #162 and #159.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/812d4922ca4117220e2a99d619b0a84256aea444"
+               },
+               {
+                  "sha": "dab3c844db6a9233c5969d17ed081f8c72f65994",
+                  "author": "kkuo",
+                  "timestamp": 1752079086,
+                  "message": "Bump changelog to 0.2.0 for release",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/dab3c844db6a9233c5969d17ed081f8c72f65994"
+               },
+               {
                   "sha": "a9376bfb1ee46ef7f1416d670d9d3f3331202d2c",
                   "author": "Kat",
                   "timestamp": 1752513445,
                   "message": "fix: Fix insights armhf builds (#162)\n\nFix for insights armhf builds.\n\nIn `waylandtest_linux.go`, it seems that `1 << 30` was too large for\narmhf. 28 seems to fix it. Ironically, the overflow check in uploader is\nalso capable of overflowing on 32-bit systems, though I'm surprised that\nthe builds on x86 didn't fail due to it, but they did on armhf.\n\nThis PR also includes some spelling/formatting fixes and a new initial\nentry for 0.2.0, as it is expected that the API changes will get merged\nin before this build gets uploaded. At the time of upload, a new PR will\nbe made to set the changelog version to a native version and to update\nthe time.\n\n---\n[UDENG-7359](https://warthogs.atlassian.net/browse/UDENG-7359)\n\n[UDENG-7359]:\nhttps://warthogs.atlassian.net/browse/UDENG-7359?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/a9376bfb1ee46ef7f1416d670d9d3f3331202d2c"
-               },
-               {
-                  "sha": "656080844606ea0e61131a53be05c1da18825433",
-                  "author": "Kat",
-                  "timestamp": 1752513117,
-                  "message": "ci: Autopkgtest workflow (#155)\n\nThis PR adds a job to the `qa-debian` workflow to run `autopkgtest` on\nthe source output of the build Debian package job.\n\nIt also renames the workflow name to something a little shorter.\n\nThe GitHub Linux runners do seem to have universal [support for nested\nvirtualization](https://github.com/orgs/community/discussions/160591#discussioncomment-9018826).\nBut the user needs to be [added to the `kvm`\ngroup](https://github.blog/changelog/2023-02-23-hardware-accelerated-android-virtualization-on-actions-windows-and-linux-larger-hosted-runners/).\n\n`autopkgtest-buildvm-ubuntu-cloud` pulls the minimal latest development\nrelease of the distribution that we are calling from (presently,\nhttps://cloud-images.ubuntu.com/minimal/daily/questing/current/questing-minimal-cloudimg-amd64.img)\nwhich is what we are looking for, as we want Ubuntu Insights to always\ntarget the development release. The downside of doing this though is\nthat caching isn't really possible, resulting in this workflow taking\nlonger than all the others.\n\n---\n[UDENG-7294](https://warthogs.atlassian.net/browse/UDENG-7294)\n\n[UDENG-7294]:\nhttps://warthogs.atlassian.net/browse/UDENG-7294?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/656080844606ea0e61131a53be05c1da18825433"
-               },
-               {
-                  "sha": "0d22e712e367396e9e0032759eb862b7afdece7b",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1752511652,
-                  "message": "deps(go-insights): bump golang.org/x/text from 0.26.0 to 0.27.0 in /insights in the minor-updates group (#167)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0d22e712e367396e9e0032759eb862b7afdece7b"
                }
             ],
             "ciActions": [
