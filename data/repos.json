@@ -6587,25 +6587,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "86d6a26761f0d62d0af079653b26f03266981633",
-                  "author": "Shane Crowley",
-                  "timestamp": 1752174990,
-                  "message": "docs: update CODA section in Contributing (#1241)\n\n* Updates CODA section to include standard recommended wording\n* Adds WSL-specific links for the CODA repo\n* Updates wordlist (Fosstodon) and linkignore (Matrix URL)\n\nUDENG-7297",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/86d6a26761f0d62d0af079653b26f03266981633"
+                  "sha": "d3399c6c088eeda95804adf814256a7854683386",
+                  "author": "CarlosNihelton",
+                  "timestamp": 1752698963,
+                  "message": "Auto update internal dependencies",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d3399c6c088eeda95804adf814256a7854683386"
                },
                {
-                  "sha": "1085b7f77e402d5e2268af636cb9321fc84d3130",
-                  "author": "shanecrowley",
-                  "timestamp": 1752056278,
-                  "message": "update CODA section in Contributing\n\n* Updates CODA section to include standard recommended wording\n* Adds WSL-specific links for the CODA repo\n* Updates wordlist (Fosstodon) and linkignore (Matrix URL)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1085b7f77e402d5e2268af636cb9321fc84d3130"
+                  "sha": "236bd98bca4c2bd698ab9d23142d6ad31172a517",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1752698930,
+                  "message": "maint: Regenerate dart bindings and pin Win 11 SDK version (#1245)\n\nThe recommended way to install the Dart protoc plugin is via `dart pub\nglobal activate` ( [see the\ndocs](https://pub.dev/packages/protoc_plugin) ) which doesn't record the\nversion in the application's pubspec files. While that command allows\nhardcoding the version, if we do so in the CI workflows/actions, then it\nbecomes one more place to remember to upgrade manually from time to\ntime, as dependabot wouldn't know how to handle that. So we trust that\nCI fails from time to time when a new version of that plugin introduces\na breaking change. It'd be good if we turn that failure into an\nautomated PR. That will come eventually. In the meanwhile I'm doing the\nregeneration of the bindings by hand :)\n\nThat should unblock the outstanding pull requests by dependabot.\n\nAdditionally CI also failed due recent changes in the Windows GH hosted\nrunners, bundling the latest version of the Windows 11 SDK\n(10.0.26100.4388), which seems to cause some missing symbols in debug\nbuilds. [See this\nrun](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/16267662210/job/45927014027)\nfor example. The fix would be to pin the specific version of that SDK\nthat was known to work (10.0.26100.3916) (which requires installing it\nas an additional CI step) or stick to some older version that invokes\ncompatibility (for Windows 11 that's 10.0.22621.0 - remember that the\ntrailing `.0` means the latest build version, same version already used\nin the MSIX packaging project as the target).\n\n<img width=\"1298\" height=\"187\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/b8659d2d-425c-4f93-b286-aca139e11010\"\n/>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/236bd98bca4c2bd698ab9d23142d6ad31172a517"
                },
                {
-                  "sha": "980f794dba63b63a8480f417940c001ba897d79b",
-                  "author": "Shane Crowley",
-                  "timestamp": 1751040566,
-                  "message": "docs: guide on customising a distro for WSL (#1238)\n\nAdds a how-to guide for:\n\n* downloading an Ubuntu distro in the new format\n* customising the distro in a variety of ways\n* packaging the distro back up and installing it\n\nUDENG-7108",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/980f794dba63b63a8480f417940c001ba897d79b"
+                  "sha": "f8158ccb3f5de99bdb51048a3dd5cade81faa7eb",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1752501194,
+                  "message": "Pins Windows SDK version where relevant\n\nversion 26200 has issues with debug builds in CI (missing symbols).",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f8158ccb3f5de99bdb51048a3dd5cade81faa7eb"
                }
             ],
             "ciActions": [
