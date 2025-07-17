@@ -3048,25 +3048,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c743ce2c0e6048ceb6e919b85e8c286d66ef6a0c",
+                  "sha": "d775975a3b44d23d843fa04e0d8a0c308c65feed",
                   "author": "Marek Suchánek",
-                  "timestamp": 1752681654,
-                  "message": "+ and - to interact with collapsible trees",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/c743ce2c0e6048ceb6e919b85e8c286d66ef6a0c"
+                  "timestamp": 1752756264,
+                  "message": "Merge pull request #10 from ubuntu/orca-commands\n\nAdd Orca commands",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/d775975a3b44d23d843fa04e0d8a0c308c65feed"
                },
                {
-                  "sha": "d278eb9faf1e7b8810fe3b0245d892da53be8276",
+                  "sha": "220f75a0f46ca63f4f879987f779e560c6198bb7",
                   "author": "Marek Suchánek",
-                  "timestamp": 1752662162,
-                  "message": "Shortening",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/d278eb9faf1e7b8810fe3b0245d892da53be8276"
+                  "timestamp": 1752756110,
+                  "message": "Orca: Read chat room messages",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/220f75a0f46ca63f4f879987f779e560c6198bb7"
                },
                {
-                  "sha": "7f3cd67c0d81c63a5a0cf26f10b3b6a5652d833a",
+                  "sha": "7f0d77182c8686f975e3e9533962ca17a5961d1c",
                   "author": "Marek Suchánek",
-                  "timestamp": 1752659964,
-                  "message": "Little improvements to screen recording",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/7f3cd67c0d81c63a5a0cf26f10b3b6a5652d833a"
+                  "timestamp": 1752755770,
+                  "message": "Disable Orca mouse commands (broken)",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/7f0d77182c8686f975e3e9533962ca17a5961d1c"
                }
             ],
             "ciActions": [
@@ -6905,6 +6905,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "723bd6afec7996b7188a765587565a08758e5263",
+                  "author": "adombeck",
+                  "timestamp": 1752754007,
+                  "message": "Change default UID/GID range to 10000:60000 (#1020)\n\nRegular users (from /etc/passwd and other NSS sources) usually use the\nUID/GID range 1000 to 60000 (see https://systemd.io/UIDS-GIDS/#summary).\n\nTo make it easier to distinguish authd users from local users, we use\nUIDs and GIDs above 10000.\n\nThis also fixes that our old ID range (starting at 1000000000) was\noverlapping with the ID range used by LXD for ID mapping (also starting\nat 1000000000), which caused issues with LXD containers (#819).\n\nCloses #819, #1022\nUDENG-6889",
+                  "url": "https://github.com/ubuntu/authd/commit/723bd6afec7996b7188a765587565a08758e5263"
+               },
+               {
                   "sha": "7eb672a1e1b4949fa3639329dd95702f5b3cc271",
                   "author": "Shane Crowley",
                   "timestamp": 1752570812,
@@ -6917,13 +6924,6 @@
                   "timestamp": 1752074478,
                   "message": "add docs section to contributing guide\n\n* added section on CODA to contributing guide\n* fixed old link to wiki-based docs\n* added ignore for linkcheck on matrix URLs\n* updated spelling ignore wordlist\n* fixed typo",
                   "url": "https://github.com/ubuntu/authd/commit/6c430eba54ece4edcc2da54775d8b2cb6e026ba4"
-               },
-               {
-                  "sha": "77f2dccc870d453d42f4dbd01c19871c1b20ca9e",
-                  "author": "adombeck",
-                  "timestamp": 1752186036,
-                  "message": "localentries: Remove unused functions (#1010)",
-                  "url": "https://github.com/ubuntu/authd/commit/77f2dccc870d453d42f4dbd01c19871c1b20ca9e"
                }
             ],
             "ciActions": [
