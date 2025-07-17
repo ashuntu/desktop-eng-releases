@@ -5039,25 +5039,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "11808b52bd8d97419404357d0014d197bab8c320",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1752787213,
+                  "message": "deps(go-server): bump the minor-updates group in /server with 2 updates (#169)",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/11808b52bd8d97419404357d0014d197bab8c320"
+               },
+               {
+                  "sha": "06683a28214a8a2fc97011a1620ec8fd13ea5f89",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1752744509,
+                  "message": "deps(go-server): bump the minor-updates group in /server with 2 updates\n\nBumps the minor-updates group in /server with 2 updates: [github.com/go-viper/mapstructure/v2](https://github.com/go-viper/mapstructure) and [github.com/testcontainers/testcontainers-go](https://github.com/testcontainers/testcontainers-go).\n\n\nUpdates `github.com/go-viper/mapstructure/v2` from 2.3.0 to 2.4.0\n- [Release notes](https://github.com/go-viper/mapstructure/releases)\n- [Changelog](https://github.com/go-viper/mapstructure/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/go-viper/mapstructure/compare/v2.3.0...v2.4.0)\n\nUpdates `github.com/testcontainers/testcontainers-go` from 0.37.0 to 0.38.0\n- [Release notes](https://github.com/testcontainers/testcontainers-go/releases)\n- [Commits](https://github.com/testcontainers/testcontainers-go/compare/v0.37.0...v0.38.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/go-viper/mapstructure/v2\n  dependency-version: 2.4.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: github.com/testcontainers/testcontainers-go\n  dependency-version: 0.38.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/06683a28214a8a2fc97011a1620ec8fd13ea5f89"
+               },
+               {
                   "sha": "812d4922ca4117220e2a99d619b0a84256aea444",
                   "author": "Kat",
                   "timestamp": 1752523488,
                   "message": "build: Bump changelog to 0.2.0 for release (#163)\n\nThis PR bumps the changelog version to a native 0.2.0. It is to be\nmerged just before uploading the Debian package downstream. Once merged,\ntag `v0.2.0` should be associated with the merge commit on main.\n\nIn addition to being a client release to be uploaded to Launchpad, the\ntagged version `v0.2.0` includes changes relevant in the API/bindings\nand server contexts.\n- Debian Package\n  - Fixed armhf builds\n- Client API/C bindings\n\t- Go API specific\n- Replace passing of verbosity level with optional passing of a slogger\nobject.\n\t  - Consent getter now returns (bool, error) instead of a custom enum.\n- Collect now returns the report in a manner like the CLI printing the\ncompiled report on collect.\n\t- Both the Go API and C bindings\n- Upload now takes a list of sources instead of a single string source.\n\t  - Changed default sloggers to text handlers at an info level.\n- Move source(s) out of the config object/struct and directly into the\nmethod definitions.\n- Server\n  - Added missing index to `ubuntu_report` table.\n- Breaking changes to the SQL migration scripts. Migrations need to be\nreapplied from a clean slate and cannot be merely run ontop of an\nexisting database.\n\t  - Removed the `wsl_setup` app table\n\n\nBlocked by #162 and #159.",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/812d4922ca4117220e2a99d619b0a84256aea444"
-               },
-               {
-                  "sha": "dab3c844db6a9233c5969d17ed081f8c72f65994",
-                  "author": "kkuo",
-                  "timestamp": 1752079086,
-                  "message": "Bump changelog to 0.2.0 for release",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/dab3c844db6a9233c5969d17ed081f8c72f65994"
-               },
-               {
-                  "sha": "a9376bfb1ee46ef7f1416d670d9d3f3331202d2c",
-                  "author": "Kat",
-                  "timestamp": 1752513445,
-                  "message": "fix: Fix insights armhf builds (#162)\n\nFix for insights armhf builds.\n\nIn `waylandtest_linux.go`, it seems that `1 << 30` was too large for\narmhf. 28 seems to fix it. Ironically, the overflow check in uploader is\nalso capable of overflowing on 32-bit systems, though I'm surprised that\nthe builds on x86 didn't fail due to it, but they did on armhf.\n\nThis PR also includes some spelling/formatting fixes and a new initial\nentry for 0.2.0, as it is expected that the API changes will get merged\nin before this build gets uploaded. At the time of upload, a new PR will\nbe made to set the changelog version to a native version and to update\nthe time.\n\n---\n[UDENG-7359](https://warthogs.atlassian.net/browse/UDENG-7359)\n\n[UDENG-7359]:\nhttps://warthogs.atlassian.net/browse/UDENG-7359?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a9376bfb1ee46ef7f1416d670d9d3f3331202d2c"
                }
             ],
             "ciActions": [
