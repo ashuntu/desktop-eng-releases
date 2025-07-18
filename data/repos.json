@@ -3402,6 +3402,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc8ba5259272bc594f52a68d565397663050222b",
+                  "author": "ashuntu",
+                  "timestamp": 1752867759,
+                  "message": "Merge pull request #16 from ashuntu/issue-flow\n\nfeat: Add issue flow",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/dc8ba5259272bc594f52a68d565397663050222b"
+               },
+               {
                   "sha": "9a390104ba3d1bd2d5bbe2ff710c0eba29fb26ee",
                   "author": "Marco Trevisan",
                   "timestamp": 1750081078,
@@ -3414,13 +3421,6 @@
                   "timestamp": 1750079997,
                   "message": "gh-actions/run-autopkgtests: Install dnsmasq-base\n\nThis seems to be now a required component by autopkgtest-build-lxd\n\nSee: https://github.com/canonical/setup-lxd/issues/31",
                   "url": "https://github.com/canonical/desktop-engineering/commit/e65a43a2e58a42b7e16646902553ca64c91d1fbf"
-               },
-               {
-                  "sha": "38cfbf4afd95b0692e68aa2dde843c569eef2e36",
-                  "author": "adombeck",
-                  "timestamp": 1745585163,
-                  "message": "fix(rust/code-sanity): Fix \"rustfmt-check\" step (#67)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/38cfbf4afd95b0692e68aa2dde843c569eef2e36"
                }
             ],
             "ciActions": [],
@@ -5027,25 +5027,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "11808b52bd8d97419404357d0014d197bab8c320",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1752787213,
-                  "message": "deps(go-server): bump the minor-updates group in /server with 2 updates (#169)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/11808b52bd8d97419404357d0014d197bab8c320"
-               },
-               {
-                  "sha": "06683a28214a8a2fc97011a1620ec8fd13ea5f89",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1752744509,
-                  "message": "deps(go-server): bump the minor-updates group in /server with 2 updates\n\nBumps the minor-updates group in /server with 2 updates: [github.com/go-viper/mapstructure/v2](https://github.com/go-viper/mapstructure) and [github.com/testcontainers/testcontainers-go](https://github.com/testcontainers/testcontainers-go).\n\n\nUpdates `github.com/go-viper/mapstructure/v2` from 2.3.0 to 2.4.0\n- [Release notes](https://github.com/go-viper/mapstructure/releases)\n- [Changelog](https://github.com/go-viper/mapstructure/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/go-viper/mapstructure/compare/v2.3.0...v2.4.0)\n\nUpdates `github.com/testcontainers/testcontainers-go` from 0.37.0 to 0.38.0\n- [Release notes](https://github.com/testcontainers/testcontainers-go/releases)\n- [Commits](https://github.com/testcontainers/testcontainers-go/compare/v0.37.0...v0.38.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/go-viper/mapstructure/v2\n  dependency-version: 2.4.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: github.com/testcontainers/testcontainers-go\n  dependency-version: 0.38.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/06683a28214a8a2fc97011a1620ec8fd13ea5f89"
-               },
-               {
-                  "sha": "812d4922ca4117220e2a99d619b0a84256aea444",
+                  "sha": "29ecc71e3edd7d924625cd974c9027a1c0fbe9fd",
                   "author": "Kat",
-                  "timestamp": 1752523488,
-                  "message": "build: Bump changelog to 0.2.0 for release (#163)\n\nThis PR bumps the changelog version to a native 0.2.0. It is to be\nmerged just before uploading the Debian package downstream. Once merged,\ntag `v0.2.0` should be associated with the merge commit on main.\n\nIn addition to being a client release to be uploaded to Launchpad, the\ntagged version `v0.2.0` includes changes relevant in the API/bindings\nand server contexts.\n- Debian Package\n  - Fixed armhf builds\n- Client API/C bindings\n\t- Go API specific\n- Replace passing of verbosity level with optional passing of a slogger\nobject.\n\t  - Consent getter now returns (bool, error) instead of a custom enum.\n- Collect now returns the report in a manner like the CLI printing the\ncompiled report on collect.\n\t- Both the Go API and C bindings\n- Upload now takes a list of sources instead of a single string source.\n\t  - Changed default sloggers to text handlers at an info level.\n- Move source(s) out of the config object/struct and directly into the\nmethod definitions.\n- Server\n  - Added missing index to `ubuntu_report` table.\n- Breaking changes to the SQL migration scripts. Migrations need to be\nreapplied from a clean slate and cannot be merely run ontop of an\nexisting database.\n\t  - Removed the `wsl_setup` app table\n\n\nBlocked by #162 and #159.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/812d4922ca4117220e2a99d619b0a84256aea444"
+                  "timestamp": 1752869593,
+                  "message": "docs: Add usage instructions to server README (#170)\n\nThis PR adds basic usage instructions to the server README file. It\nincludes the commands and flags currently being reported by the `help`\ncommand and includes additional details about using the daemon config\nfile.\n\n---\n[UDENG-7259](https://warthogs.atlassian.net/browse/UDENG-7259)\n\n[UDENG-7259]:\nhttps://warthogs.atlassian.net/browse/UDENG-7259?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/29ecc71e3edd7d924625cd974c9027a1c0fbe9fd"
+               },
+               {
+                  "sha": "f165b6041f99655d69cfee4bc9de64cb6e11cbbc",
+                  "author": "kkuo",
+                  "timestamp": 1752781546,
+                  "message": "Update server README with usage instructions for the web and ingest services",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f165b6041f99655d69cfee4bc9de64cb6e11cbbc"
+               },
+               {
+                  "sha": "214f9bd0696a6b85fb1d566ffbe7f5898fdeeca6",
+                  "author": "Kat",
+                  "timestamp": 1752869367,
+                  "message": "fix: Cleanup Server CLIs (#171)\n\nThis PR makes non-breaking changes to the CLIs for the server services,\nimproving their clarity and consistency , and changing persistent flags\nin the root command that don't need to be persistent flags into standard\nflags.\n\nIt also updates `.gitignore` to include Go build artifact names should\n`go build` be run without changing the output name.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/214f9bd0696a6b85fb1d566ffbe7f5898fdeeca6"
                }
             ],
             "ciActions": [
@@ -5326,6 +5326,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc8ba5259272bc594f52a68d565397663050222b",
+                  "author": "ashuntu",
+                  "timestamp": 1752867759,
+                  "message": "Merge pull request #16 from ashuntu/issue-flow\n\nfeat: Add issue flow",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/dc8ba5259272bc594f52a68d565397663050222b"
+               },
+               {
                   "sha": "9a390104ba3d1bd2d5bbe2ff710c0eba29fb26ee",
                   "author": "Marco Trevisan",
                   "timestamp": 1750081078,
@@ -5338,13 +5345,6 @@
                   "timestamp": 1750079997,
                   "message": "gh-actions/run-autopkgtests: Install dnsmasq-base\n\nThis seems to be now a required component by autopkgtest-build-lxd\n\nSee: https://github.com/canonical/setup-lxd/issues/31",
                   "url": "https://github.com/canonical/desktop-engineering/commit/e65a43a2e58a42b7e16646902553ca64c91d1fbf"
-               },
-               {
-                  "sha": "38cfbf4afd95b0692e68aa2dde843c569eef2e36",
-                  "author": "adombeck",
-                  "timestamp": 1745585163,
-                  "message": "fix(rust/code-sanity): Fix \"rustfmt-check\" step (#67)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/38cfbf4afd95b0692e68aa2dde843c569eef2e36"
                }
             ],
             "ciActions": [],
@@ -7483,6 +7483,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc8ba5259272bc594f52a68d565397663050222b",
+                  "author": "ashuntu",
+                  "timestamp": 1752867759,
+                  "message": "Merge pull request #16 from ashuntu/issue-flow\n\nfeat: Add issue flow",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/dc8ba5259272bc594f52a68d565397663050222b"
+               },
+               {
                   "sha": "9a390104ba3d1bd2d5bbe2ff710c0eba29fb26ee",
                   "author": "Marco Trevisan",
                   "timestamp": 1750081078,
@@ -7495,13 +7502,6 @@
                   "timestamp": 1750079997,
                   "message": "gh-actions/run-autopkgtests: Install dnsmasq-base\n\nThis seems to be now a required component by autopkgtest-build-lxd\n\nSee: https://github.com/canonical/setup-lxd/issues/31",
                   "url": "https://github.com/canonical/desktop-engineering/commit/e65a43a2e58a42b7e16646902553ca64c91d1fbf"
-               },
-               {
-                  "sha": "38cfbf4afd95b0692e68aa2dde843c569eef2e36",
-                  "author": "adombeck",
-                  "timestamp": 1745585163,
-                  "message": "fix(rust/code-sanity): Fix \"rustfmt-check\" step (#67)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/38cfbf4afd95b0692e68aa2dde843c569eef2e36"
                }
             ],
             "ciActions": [],
