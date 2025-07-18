@@ -6905,25 +6905,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7b737401d52a30a514f0fb945a0ba45a4dccd373",
+                  "author": "Shane Crowley",
+                  "timestamp": 1752831702,
+                  "message": "docs: reorganise troubleshooting content (#1021)\n\nThe Troubleshooting reference contains good information but is getting\ncomplex and hard-to-follow. Some of the information, such as switching\nversions, is also not necessarily restricted to troubleshooting and\ncould be more generally useful. Lastly, the content largely consists of\nstep-by-step guides, so is more appropriate under the how-to section of\nthe docs.\n\nMajor changes:\n\n* Specific troubleshooting content (logging, changing versions,\nrecovery) that was sufficiently developed and useful was moved to\nstandalone pages.\n* Guidance on configuring users (only the first logged-in user has\naccess) was moved to the dedicated configuration guide where it is most\nrelevant and discoverable.\n* The Troubleshooting page remains as a reference, but was rewritten to\nprimarily link out to relevant material. It can be developed further in\nthis way. This also means that no redirects should be necessary.\n\nMinor changes:\n\n* Minor fixups after reorganisation of content: update header levels;\nupdate how-to index; typographical fixes.\n* More consistent verb form in side-nav TOC\n\nUDENG-7325",
+                  "url": "https://github.com/ubuntu/authd/commit/7b737401d52a30a514f0fb945a0ba45a4dccd373"
+               },
+               {
+                  "sha": "84b7bb54c13c117cade3f3c99e1db7f7a00ba36d",
+                  "author": "shanecrowley",
+                  "timestamp": 1752504061,
+                  "message": "reorganise troubleshooting content\n\nThe Troubleshooting reference contained useful information but it was\ngetting complex and disorganised. Some of the information, such as\nswitching versions, was also not necessarily restricted to\ntroubleshooting. Lastly, the content involved step-by-step guides, so is\nmore appropriate under the how-to section.\n\n* Specific troubleshooting content that was sufficiently developed and useful was moved to\n  standalone pages.\n* Guidance on configuring users was moved to the dedicated configuration\n  guide where it is most relevant and discoverable.\n* The Troubleshooting page remains as a reference, but was rewritten to primarily link out\n  to relevant material. It can be developed further in this way.\n* Minor fixups after reorganisation of content: update header\n  levels; update how-to index; typographical fixes.",
+                  "url": "https://github.com/ubuntu/authd/commit/84b7bb54c13c117cade3f3c99e1db7f7a00ba36d"
+               },
+               {
                   "sha": "fd0d76e26eb74be5e12207053736b8ca887680ed",
                   "author": "adombeck",
                   "timestamp": 1752763797,
                   "message": "deps(go): bump the minor-updates group across 1 directory with 3 updates (#1023)",
                   "url": "https://github.com/ubuntu/authd/commit/fd0d76e26eb74be5e12207053736b8ca887680ed"
-               },
-               {
-                  "sha": "723bd6afec7996b7188a765587565a08758e5263",
-                  "author": "adombeck",
-                  "timestamp": 1752754007,
-                  "message": "Change default UID/GID range to 10000:60000 (#1020)\n\nRegular users (from /etc/passwd and other NSS sources) usually use the\nUID/GID range 1000 to 60000 (see https://systemd.io/UIDS-GIDS/#summary).\n\nTo make it easier to distinguish authd users from local users, we use\nUIDs and GIDs above 10000.\n\nThis also fixes that our old ID range (starting at 1000000000) was\noverlapping with the ID range used by LXD for ID mapping (also starting\nat 1000000000), which caused issues with LXD containers (#819).\n\nCloses #819, #1022\nUDENG-6889",
-                  "url": "https://github.com/ubuntu/authd/commit/723bd6afec7996b7188a765587565a08758e5263"
-               },
-               {
-                  "sha": "795d1cfdd4bf313a4d7f910b7a6dbddcc0bebc95",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1752743573,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 3 updates\n\nBumps the minor-updates group with 3 updates in the / directory: [golang.org/x/sys](https://github.com/golang/sys), [golang.org/x/term](https://github.com/golang/term) and [google.golang.org/grpc](https://github.com/grpc/grpc-go).\n\n\nUpdates `golang.org/x/sys` from 0.33.0 to 0.34.0\n- [Commits](https://github.com/golang/sys/compare/v0.33.0...v0.34.0)\n\nUpdates `golang.org/x/term` from 0.32.0 to 0.33.0\n- [Commits](https://github.com/golang/term/compare/v0.32.0...v0.33.0)\n\nUpdates `google.golang.org/grpc` from 1.73.0 to 1.74.0\n- [Release notes](https://github.com/grpc/grpc-go/releases)\n- [Commits](https://github.com/grpc/grpc-go/compare/v1.73.0...v1.74.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sys\n  dependency-version: 0.34.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/term\n  dependency-version: 0.33.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: google.golang.org/grpc\n  dependency-version: 1.74.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/795d1cfdd4bf313a4d7f910b7a6dbddcc0bebc95"
                }
             ],
             "ciActions": [
