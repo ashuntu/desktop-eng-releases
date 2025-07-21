@@ -5128,25 +5128,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "839a9293f9804d8eff93a56dee275d09b005c35b",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1753136734,
+                  "message": "fix: PowerShell to spell UTF8 when output is collected (#24)\n\nMismatch between Windows and Linux char encodings can easily surface if\nthe username or some folder name uses high level characters. That leads\nto errors in the wsl-setup shell script that induces WSL to consider the\nnew instance being setup never ready.\n\nThis changes all occurrences where powershell.exe output is collected\ninto a variable in the wsl-setup shell script to force UTF8.\n\nFixes #23",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/839a9293f9804d8eff93a56dee275d09b005c35b"
+               },
+               {
+                  "sha": "a94c144a6bafa1bb560e02110ee98bc32996a47a",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1753128201,
+                  "message": "PowerShell to spell UTF8 when output is collected\n\nMismatch between Windows and Linux char encodings can easily surface if\nthe username or some folder name uses high level characters.\nThis changes all occurences where powershell.exe output is collected\ninto a variable in the wsl-setup shell script to force UTF8.\n\nFixes #23",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a94c144a6bafa1bb560e02110ee98bc32996a47a"
+               },
+               {
                   "sha": "6f0f09dc69e6306b6547a3e4cea8276b7672188d",
                   "author": "Carlos Nihelton",
                   "timestamp": 1741704658,
                   "message": "Wait for cloud init in a separate script (#21)\n\nThis snippet being removed here is duplicated in a bunch of places now.\nWith the breaking changes introduced in cloud-init 24.3, we would have\nto change the systemd unit we check in that snippet in a bunch of places\nfor the next LTS (Noble is and remains unaffected by that breaking\nchange). Ref:\nhttps://cloudinit.readthedocs.io/en/latest/reference/breaking_changes.html#id3.\n\nSo this PR addresses the duplication and handles that breaking change at\nthe same time before it becomes an issue. We do so by:\n- Moving the snippet that checks and blocks on cloud-init into a\nseparate script, such that other places where this code is present must\njust invoke this script instead;\n- check for `cloud-init-local.service` instead of `cloud-init.service`\nthat won't exist for other releases after Noble. The first exists before\nand after the breaking changes.\n\nCloud-init documentation advises that:\n\n> Any external services which are ordered after or depend on the old\ncloud-init.service name can safely switch to cloud-config.target, which\nshould provide the same point in boot order before and after this\nchange.\n\nBut that target is statically enabled\n\n```\n~$ systemctl is-enabled cloud-config.target\nstatic\n```\n\nThus, not a good one to check for enablement.\n\n---\nUDENG-6143",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/6f0f09dc69e6306b6547a3e4cea8276b7672188d"
-               },
-               {
-                  "sha": "74d31ea9c1c7ecd42d6d2a124c43e256efb99d3c",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1741703962,
-                  "message": "Sources from the computed directory\n\ninstead of relying that pwd won't change.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/74d31ea9c1c7ecd42d6d2a124c43e256efb99d3c"
-               },
-               {
-                  "sha": "6832b477576353c3953457d838cb1e909a9f8e7e",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1741702751,
-                  "message": "Add wait-for-cloud-init to debian/install",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/6832b477576353c3953457d838cb1e909a9f8e7e"
                }
             ],
             "ciActions": [],
@@ -7122,25 +7122,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "839a9293f9804d8eff93a56dee275d09b005c35b",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1753136734,
+                  "message": "fix: PowerShell to spell UTF8 when output is collected (#24)\n\nMismatch between Windows and Linux char encodings can easily surface if\nthe username or some folder name uses high level characters. That leads\nto errors in the wsl-setup shell script that induces WSL to consider the\nnew instance being setup never ready.\n\nThis changes all occurrences where powershell.exe output is collected\ninto a variable in the wsl-setup shell script to force UTF8.\n\nFixes #23",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/839a9293f9804d8eff93a56dee275d09b005c35b"
+               },
+               {
+                  "sha": "a94c144a6bafa1bb560e02110ee98bc32996a47a",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1753128201,
+                  "message": "PowerShell to spell UTF8 when output is collected\n\nMismatch between Windows and Linux char encodings can easily surface if\nthe username or some folder name uses high level characters.\nThis changes all occurences where powershell.exe output is collected\ninto a variable in the wsl-setup shell script to force UTF8.\n\nFixes #23",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a94c144a6bafa1bb560e02110ee98bc32996a47a"
+               },
+               {
                   "sha": "6f0f09dc69e6306b6547a3e4cea8276b7672188d",
                   "author": "Carlos Nihelton",
                   "timestamp": 1741704658,
                   "message": "Wait for cloud init in a separate script (#21)\n\nThis snippet being removed here is duplicated in a bunch of places now.\nWith the breaking changes introduced in cloud-init 24.3, we would have\nto change the systemd unit we check in that snippet in a bunch of places\nfor the next LTS (Noble is and remains unaffected by that breaking\nchange). Ref:\nhttps://cloudinit.readthedocs.io/en/latest/reference/breaking_changes.html#id3.\n\nSo this PR addresses the duplication and handles that breaking change at\nthe same time before it becomes an issue. We do so by:\n- Moving the snippet that checks and blocks on cloud-init into a\nseparate script, such that other places where this code is present must\njust invoke this script instead;\n- check for `cloud-init-local.service` instead of `cloud-init.service`\nthat won't exist for other releases after Noble. The first exists before\nand after the breaking changes.\n\nCloud-init documentation advises that:\n\n> Any external services which are ordered after or depend on the old\ncloud-init.service name can safely switch to cloud-config.target, which\nshould provide the same point in boot order before and after this\nchange.\n\nBut that target is statically enabled\n\n```\n~$ systemctl is-enabled cloud-config.target\nstatic\n```\n\nThus, not a good one to check for enablement.\n\n---\nUDENG-6143",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/6f0f09dc69e6306b6547a3e4cea8276b7672188d"
-               },
-               {
-                  "sha": "74d31ea9c1c7ecd42d6d2a124c43e256efb99d3c",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1741703962,
-                  "message": "Sources from the computed directory\n\ninstead of relying that pwd won't change.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/74d31ea9c1c7ecd42d6d2a124c43e256efb99d3c"
-               },
-               {
-                  "sha": "6832b477576353c3953457d838cb1e909a9f8e7e",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1741702751,
-                  "message": "Add wait-for-cloud-init to debian/install",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/6832b477576353c3953457d838cb1e909a9f8e7e"
                }
             ],
             "ciActions": [],
