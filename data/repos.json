@@ -6916,25 +6916,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "18c3d6b493fa8b63942f9f4de3662a219c4226a3",
+                  "sha": "5497a4ca9ba9d39d1bcb44471ae92e5e9d4c6d5d",
                   "author": "adombeck",
-                  "timestamp": 1753102441,
-                  "message": "deps(go): bump github.com/microsoftgraph/msgraph-sdk-go from 1.78.0 to 1.79.0 (#590)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/18c3d6b493fa8b63942f9f4de3662a219c4226a3"
+                  "timestamp": 1753183216,
+                  "message": "Refactor script to get/set snap version (#595)\n\nTo support setting `consts.Version` at build time.\n\nUDENG-7439",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/5497a4ca9ba9d39d1bcb44471ae92e5e9d4c6d5d"
                },
                {
-                  "sha": "77002e53a766cb8ecce56e3b47c1310f7f295ae3",
+                  "sha": "eaa96a0e807c98bc6b8bccd0665a8a3967174c67",
                   "author": "adombeck",
-                  "timestamp": 1753102431,
-                  "message": "deps(go): bump github.com/golang-jwt/jwt/v5 from 5.2.2 to 5.2.3 (#591)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/77002e53a766cb8ecce56e3b47c1310f7f295ae3"
+                  "timestamp": 1753183182,
+                  "message": "Remove support for old encrypted token (#594)\n\nWe don’t store the token encrypted anymore since commit\n524fb8216f6aef0781d3b0efea60f70cafa98d7c which was merged on Nov 7, 2024\nand released in v0.2.0 of the broker on Jan 30, 2025. That should be\nlong enough ago that we don’t need to support it anymore, all active\nusers should have had re-authenticate via device auth by now, which will\nhave created a new, unencrypted token.\n\nThis simplifies things for the device registration PR, where we need to\nparse the token in GetAuthenticationModes to decide if local password\nauthentication should be offered or not (it should not in case that\ndevice registration is enabled in the broker config and the stored token\nis an old token which can’t be used for device registration).\n\nUDENG-7438",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/eaa96a0e807c98bc6b8bccd0665a8a3967174c67"
                },
                {
-                  "sha": "8b2d3563120750fd1552bd74fcf431f29ac16c52",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1753089866,
-                  "message": "deps(go): bump github.com/golang-jwt/jwt/v5 from 5.2.2 to 5.2.3\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golang-jwt/jwt/v5\n  dependency-version: 5.2.3\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/8b2d3563120750fd1552bd74fcf431f29ac16c52"
+                  "sha": "c0b4873aee0e0740208d6b3da084fa169d52ea42",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1753130419,
+                  "message": "Refactor script to get/set snap version\n\nTo support setting consts.Version at build time.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/c0b4873aee0e0740208d6b3da084fa169d52ea42"
                }
             ],
             "ciActions": [
