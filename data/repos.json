@@ -5036,25 +5036,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ca4e861c375bfff09dc51c96568b326126a70957",
+                  "sha": "339ab628787b080ecfa8836ca4c993997efa26ac",
                   "author": "Kat",
-                  "timestamp": 1753371425,
-                  "message": "feat(server): Use map to search allow list where reasonable (#173)\n\nThis PR modifies the server services to utilize a cached\n`map[string]struct{}` object to do lookups on the allow list instead of\na loop or `slices.Contains` (which is a for loop underneath) . This\nset-like object is stored within the config manager and set whenever the\n`allowList` is also set. Consumers access this map by passing in the\nstring they'd like to match within the 'set' to the `Allows` lookup\nmethod.\n\nThough the allow list will typically be relatively small, with maybe 20\nor so items, at this size it is already faster to utilize a map when\ntrying to check if a structure contains a string (on average the\nbreakpoint is typically around 5 items, though this could be improved\nwith sorting heuristics).\n\nPerformance here is more important for the web service since it does a\nlookup every time it receives an upload request. Over thousands of\nrequests, things add up.\n\nThe ingest service was already using a map when syncing workers, so this\nPR just refactors it slightly to utilize the new allowSet map managed by\nthe config manager.\n\nThis PR also includes a small refactor to return copies when using the\n`AllowList` method in `config` and to move the Provider interface out of\n`config`, closer to the consumers.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/ca4e861c375bfff09dc51c96568b326126a70957"
+                  "timestamp": 1753385824,
+                  "message": "fix(insights): Ensure system information collection uses 64-bit memory handling (#176)\n\nThis PR enforces 64-bit handling of memory when collecting from the\nsystem, fixing a test failure on armhf systems.\n\nThough in a real environment this shouldn't be an issue, our test cases\nhave mock 32 GB of memory, resulting in an overflow when running on\n32-bit systems. Instead of creating unique test cases for this\narchitecture, this PR should allow for this theoretical situation to be\nhandled.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/339ab628787b080ecfa8836ca4c993997efa26ac"
                },
                {
-                  "sha": "c16785eb9471f6287fa6681bddbab4eeefd51df6",
-                  "author": "kkuo",
-                  "timestamp": 1753312958,
-                  "message": "Add IsAllowed checks in config reload tests",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c16785eb9471f6287fa6681bddbab4eeefd51df6"
+                  "sha": "bf9d73a1e2036f7641b96c8009d879ae970fddd6",
+                  "author": "Kat",
+                  "timestamp": 1753385799,
+                  "message": "fix(insights): Restrict min-age and period inputs to 32-bit values only (#174)\n\nThis PR modifies the type for the min-age and period inputs to be\nunsigned 32-bit integers. This simplifies the maintenance requirements\nto support 32-bit architectures while also fixing the broken armhf\nbuilds.\n\nThere is also a fix to prevent overflows when doing exponential backoff\ncalculations.\n\nSince this change introduces breaking modifications to the API and\nbindings, it will be considered a version bump to `0.3.0` once uploaded.\n\nThere are also a few minor changes to fix some leftover typos and remove\na method that hasn't been used and won't be used in the future.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/bf9d73a1e2036f7641b96c8009d879ae970fddd6"
                },
                {
-                  "sha": "f0fd2ab5eb68c5696e77ddd5196ce4c043ed1f29",
-                  "author": "kkuo",
-                  "timestamp": 1753312525,
-                  "message": "refactor: Rename Allows method to IsAllowed",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f0fd2ab5eb68c5696e77ddd5196ce4c043ed1f29"
+                  "sha": "0c17705e75d2a27dbf711ec6f1592a57e3c51642",
+                  "author": "Kat",
+                  "timestamp": 1753385681,
+                  "message": "build(insights): Sync changelog with 0.2.2 and add missing attributions (#175)\n\nThis PR syncs the changelog with what is currently present in the\npackage uploaded to downstream as `0.2.2` while also adding some\nattributions that were missing for `0.2.0`.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0c17705e75d2a27dbf711ec6f1592a57e3c51642"
                }
             ],
             "ciActions": [
