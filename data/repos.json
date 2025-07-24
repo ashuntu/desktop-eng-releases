@@ -5036,25 +5036,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "29ecc71e3edd7d924625cd974c9027a1c0fbe9fd",
+                  "sha": "ca4e861c375bfff09dc51c96568b326126a70957",
                   "author": "Kat",
-                  "timestamp": 1752869593,
-                  "message": "docs: Add usage instructions to server README (#170)\n\nThis PR adds basic usage instructions to the server README file. It\nincludes the commands and flags currently being reported by the `help`\ncommand and includes additional details about using the daemon config\nfile.\n\n---\n[UDENG-7259](https://warthogs.atlassian.net/browse/UDENG-7259)\n\n[UDENG-7259]:\nhttps://warthogs.atlassian.net/browse/UDENG-7259?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/29ecc71e3edd7d924625cd974c9027a1c0fbe9fd"
+                  "timestamp": 1753371425,
+                  "message": "feat(server): Use map to search allow list where reasonable (#173)\n\nThis PR modifies the server services to utilize a cached\n`map[string]struct{}` object to do lookups on the allow list instead of\na loop or `slices.Contains` (which is a for loop underneath) . This\nset-like object is stored within the config manager and set whenever the\n`allowList` is also set. Consumers access this map by passing in the\nstring they'd like to match within the 'set' to the `Allows` lookup\nmethod.\n\nThough the allow list will typically be relatively small, with maybe 20\nor so items, at this size it is already faster to utilize a map when\ntrying to check if a structure contains a string (on average the\nbreakpoint is typically around 5 items, though this could be improved\nwith sorting heuristics).\n\nPerformance here is more important for the web service since it does a\nlookup every time it receives an upload request. Over thousands of\nrequests, things add up.\n\nThe ingest service was already using a map when syncing workers, so this\nPR just refactors it slightly to utilize the new allowSet map managed by\nthe config manager.\n\nThis PR also includes a small refactor to return copies when using the\n`AllowList` method in `config` and to move the Provider interface out of\n`config`, closer to the consumers.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/ca4e861c375bfff09dc51c96568b326126a70957"
                },
                {
-                  "sha": "f165b6041f99655d69cfee4bc9de64cb6e11cbbc",
+                  "sha": "c16785eb9471f6287fa6681bddbab4eeefd51df6",
                   "author": "kkuo",
-                  "timestamp": 1752781546,
-                  "message": "Update server README with usage instructions for the web and ingest services",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f165b6041f99655d69cfee4bc9de64cb6e11cbbc"
+                  "timestamp": 1753312958,
+                  "message": "Add IsAllowed checks in config reload tests",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c16785eb9471f6287fa6681bddbab4eeefd51df6"
                },
                {
-                  "sha": "214f9bd0696a6b85fb1d566ffbe7f5898fdeeca6",
-                  "author": "Kat",
-                  "timestamp": 1752869367,
-                  "message": "fix: Cleanup Server CLIs (#171)\n\nThis PR makes non-breaking changes to the CLIs for the server services,\nimproving their clarity and consistency , and changing persistent flags\nin the root command that don't need to be persistent flags into standard\nflags.\n\nIt also updates `.gitignore` to include Go build artifact names should\n`go build` be run without changing the output name.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/214f9bd0696a6b85fb1d566ffbe7f5898fdeeca6"
+                  "sha": "f0fd2ab5eb68c5696e77ddd5196ce4c043ed1f29",
+                  "author": "kkuo",
+                  "timestamp": 1753312525,
+                  "message": "refactor: Rename Allows method to IsAllowed",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f0fd2ab5eb68c5696e77ddd5196ce4c043ed1f29"
                }
             ],
             "ciActions": [
