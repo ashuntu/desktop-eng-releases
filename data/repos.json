@@ -6581,6 +6581,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cd8f7a45289c79b59906a9c3eaa738a3ee7e3865",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1753385170,
+                  "message": "maint: Upgrades Flutter SDK to 3.32 (#1257)\n\nThis version deprecates the synthetic `package:flutter_gen` created\nautomatically for certain code generation tasks, like the one that turns\ntranslations into code. With that we can no longer import\n`package:flutter_gen/gen_l10n/app_localizations.dart` as the package\nwill no longer exist. Instead, generated files go into `lib/l10n` and\nare directly importable in the app package (reason why we now ignore\n`/packages/*/lib/l10n/*.dart` ). For further reference see the migration\nnotes at\nhttps://docs.flutter.dev/release/breaking-changes/flutter-generate-i10n-source.\n\nAs usual, we also upgrade major versions of certain dependencies that\nare quite often tight coupled with the SDK version. I'm specially\ninterested in the latest version of Yaru released today as it contains\nsome of the latest developments in a11y.\n\nThe current version of the dart formatter seems sensible to code\ncorrectness, yielding inconsistent results if ran before codegen, thus I\nswapped those steps in CI.\n\nFinally some import shuffling was needed to keep the imports lexically\nsorted.\n\n---\n\nUDENG-6598",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/cd8f7a45289c79b59906a9c3eaa738a3ee7e3865"
+               },
+               {
                   "sha": "316e9f1f7f63275c26228cd5ac3e64795175ba5b",
                   "author": "Carlos Nihelton",
                   "timestamp": 1753217990,
@@ -6593,13 +6600,6 @@
                   "timestamp": 1753217913,
                   "message": "Update README.md\n\nI wish I could have not seen this",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/fbabcc98bc81820bfeb8acef90092a4e245ceaf1"
-               },
-               {
-                  "sha": "6cd684a79d30fec5b02dbb1ac901b5b749107028",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1752779446,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/6cd684a79d30fec5b02dbb1ac901b5b749107028"
                }
             ],
             "ciActions": [
