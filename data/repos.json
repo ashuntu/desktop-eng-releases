@@ -2506,14 +2506,14 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 33,
-                     "timestamp": 1745763204
+                     "revision": 36,
+                     "timestamp": 1753394668
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 34,
-                     "timestamp": 1745763682
+                     "revision": 37,
+                     "timestamp": 1753395621
                   },
                   {
                      "track": "latest",
@@ -5036,25 +5036,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "339ab628787b080ecfa8836ca4c993997efa26ac",
+                  "sha": "f0bec2c025371d6139ca0cbc1252e2abb82b6ffb",
                   "author": "Kat",
-                  "timestamp": 1753385824,
-                  "message": "fix(insights): Ensure system information collection uses 64-bit memory handling (#176)\n\nThis PR enforces 64-bit handling of memory when collecting from the\nsystem, fixing a test failure on armhf systems.\n\nThough in a real environment this shouldn't be an issue, our test cases\nhave mock 32 GB of memory, resulting in an overflow when running on\n32-bit systems. Instead of creating unique test cases for this\narchitecture, this PR should allow for this theoretical situation to be\nhandled.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/339ab628787b080ecfa8836ca4c993997efa26ac"
+                  "timestamp": 1753393302,
+                  "message": "feat(insights): Add fixed limits to concurrent report and source processing when uploading (#179)\n\nAdd fixed limits to concurrent report and source processing when\nuploading.\n\nPresently, the theoretical infinite number of goroutines can be spawned\nwhen the client is processing and uploading reports. Where `r` is the\nnumber of reports across all targeted sources and `s` is the number of\ntargeted sources, there is a maximum limit of `r+s` goroutines that may\nbe spawned, with r routines potentially attempting to send out HTTP\nrequests.\n\nThere is a 150 report limit per source on how many reports are allowed\nto be on the disk. Typically, a collection call will remove old reports\nif there are too many already on the disk, limiting the impact of the go\nroutine spawns. But it is possible for abuse to result in a considerable\nnumber of sources and reports that the uploader will treat as valid.\nShould the HTTP requests block or be stuck in retry loops, this can be\nproblematic.\n\nThis PR also includes a test to ensure that the limits are being\nrespected.\n\nThere is also a small fix to ensure that the root directory isn't being\nprocessed when traversing a directory to search for reports. This change\ndoesn't cause any behavioral changes other than preventing a bit of\nunnecessary log spam.\n\n---\n[UDENG-7470](https://warthogs.atlassian.net/browse/UDENG-7470)\n\n[UDENG-7470]:\nhttps://warthogs.atlassian.net/browse/UDENG-7470?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f0bec2c025371d6139ca0cbc1252e2abb82b6ffb"
                },
                {
-                  "sha": "bf9d73a1e2036f7641b96c8009d879ae970fddd6",
+                  "sha": "7a17fa2aa47aa75c424f0967f795905fc77488c2",
                   "author": "Kat",
-                  "timestamp": 1753385799,
-                  "message": "fix(insights): Restrict min-age and period inputs to 32-bit values only (#174)\n\nThis PR modifies the type for the min-age and period inputs to be\nunsigned 32-bit integers. This simplifies the maintenance requirements\nto support 32-bit architectures while also fixing the broken armhf\nbuilds.\n\nThere is also a fix to prevent overflows when doing exponential backoff\ncalculations.\n\nSince this change introduces breaking modifications to the API and\nbindings, it will be considered a version bump to `0.3.0` once uploaded.\n\nThere are also a few minor changes to fix some leftover typos and remove\na method that hasn't been used and won't be used in the future.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/bf9d73a1e2036f7641b96c8009d879ae970fddd6"
+                  "timestamp": 1753393286,
+                  "message": "build(insights): Fix build time tests (#180)\n\nThis PR addresses an issue where only the tests that were present in\n`insights/cmd/insights` were being run when building the\n`ubuntu-insights` Debian package. Instead, now all tests are run in a\nbehavior similar to autopkgtest as expected.\n\nThere is additional logic to ensure that the C libs aren't being shipped\nwith the package while still allowing for tests to be run for them.\n\nThis PR also cleans up and removes the unnecessary `dh_dwz_override` in\nthe `control` file.\n\nThe changelog has been updated with new entries to reflect these\nchanges.\n\n---\n[UDENG-7468](https://warthogs.atlassian.net/browse/UDENG-7468)\n\n\n[UDENG-7468]:\nhttps://warthogs.atlassian.net/browse/UDENG-7468?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7a17fa2aa47aa75c424f0967f795905fc77488c2"
                },
                {
-                  "sha": "0c17705e75d2a27dbf711ec6f1592a57e3c51642",
+                  "sha": "b6b46be307fec60b5dd29f89d409983a5af216ca",
                   "author": "Kat",
-                  "timestamp": 1753385681,
-                  "message": "build(insights): Sync changelog with 0.2.2 and add missing attributions (#175)\n\nThis PR syncs the changelog with what is currently present in the\npackage uploaded to downstream as `0.2.2` while also adding some\nattributions that were missing for `0.2.0`.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0c17705e75d2a27dbf711ec6f1592a57e3c51642"
+                  "timestamp": 1753393252,
+                  "message": "build: Bump control standards version to 4.7.2 and update changelog (#181)\n\nThis PR bumps the control standards version to 4.7.2 to silence a\nlintian info message, and updates the changelog to a state ready for a\nrelease to 0.3.0.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b6b46be307fec60b5dd29f89d409983a5af216ca"
                }
             ],
             "ciActions": [
@@ -5137,25 +5137,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "839a9293f9804d8eff93a56dee275d09b005c35b",
+                  "sha": "f83e4df49b3583272d5ca499ca63b426b934a1f3",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753136734,
-                  "message": "fix: PowerShell to spell UTF8 when output is collected (#24)\n\nMismatch between Windows and Linux char encodings can easily surface if\nthe username or some folder name uses high level characters. That leads\nto errors in the wsl-setup shell script that induces WSL to consider the\nnew instance being setup never ready.\n\nThis changes all occurrences where powershell.exe output is collected\ninto a variable in the wsl-setup shell script to force UTF8.\n\nFixes #23",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/839a9293f9804d8eff93a56dee275d09b005c35b"
+                  "timestamp": 1753393210,
+                  "message": "Remove the systemd-binfmt override (#25)\n\nSince WSL 2.5.7 we have a systemd generator that protects interop by\nregenerating the WSL binfmt entry.\nThus, services like systemd-binfmt are no longer a concern.\n\nUsers on older versions of WSL should rely on docs while those on the\nlatest stable should find the expected behaviour by default.\n\nAs a precaution I confirmed locally that dpkg indeed removes the file\nupon upgrade.\n\nCloses #11\n\n---\nUDENG-6126",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/f83e4df49b3583272d5ca499ca63b426b934a1f3"
                },
                {
-                  "sha": "a94c144a6bafa1bb560e02110ee98bc32996a47a",
+                  "sha": "e6fda479213d3139fc792ef60174c2a950dbef85",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753128201,
-                  "message": "PowerShell to spell UTF8 when output is collected\n\nMismatch between Windows and Linux char encodings can easily surface if\nthe username or some folder name uses high level characters.\nThis changes all occurences where powershell.exe output is collected\ninto a variable in the wsl-setup shell script to force UTF8.\n\nFixes #23",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/a94c144a6bafa1bb560e02110ee98bc32996a47a"
+                  "timestamp": 1753391996,
+                  "message": "Update changelog\n\nThe commit 2941379bfe8ac71d3ac1cf9da14207e7b583fa56 that releases\nversion 0.5.9 is detached from the main branch (sorry).\nThat's why we see 0.5.9 and 0.5.10 being added here.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/e6fda479213d3139fc792ef60174c2a950dbef85"
                },
                {
-                  "sha": "6f0f09dc69e6306b6547a3e4cea8276b7672188d",
+                  "sha": "254e28002b2e85816a5383cf0722e92c7ae1cd87",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1741704658,
-                  "message": "Wait for cloud init in a separate script (#21)\n\nThis snippet being removed here is duplicated in a bunch of places now.\nWith the breaking changes introduced in cloud-init 24.3, we would have\nto change the systemd unit we check in that snippet in a bunch of places\nfor the next LTS (Noble is and remains unaffected by that breaking\nchange). Ref:\nhttps://cloudinit.readthedocs.io/en/latest/reference/breaking_changes.html#id3.\n\nSo this PR addresses the duplication and handles that breaking change at\nthe same time before it becomes an issue. We do so by:\n- Moving the snippet that checks and blocks on cloud-init into a\nseparate script, such that other places where this code is present must\njust invoke this script instead;\n- check for `cloud-init-local.service` instead of `cloud-init.service`\nthat won't exist for other releases after Noble. The first exists before\nand after the breaking changes.\n\nCloud-init documentation advises that:\n\n> Any external services which are ordered after or depend on the old\ncloud-init.service name can safely switch to cloud-config.target, which\nshould provide the same point in boot order before and after this\nchange.\n\nBut that target is statically enabled\n\n```\n~$ systemctl is-enabled cloud-config.target\nstatic\n```\n\nThus, not a good one to check for enablement.\n\n---\nUDENG-6143",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/6f0f09dc69e6306b6547a3e4cea8276b7672188d"
+                  "timestamp": 1753388252,
+                  "message": "Remove the systemd-binfmt override\n\nSince WSL 2.5.7 we have a systemd generator that protects interop\nby regenerating the WSL binfmt entry.\nThus, services like systemd-binfmt are no longer a concern.\n\nUsers on older versions of WSL should rely on docs while those on the\nlatest stable should find the expected behaviour by default.\n\nCloses #11",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/254e28002b2e85816a5383cf0722e92c7ae1cd87"
                }
             ],
             "ciActions": [],
@@ -7140,25 +7140,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "839a9293f9804d8eff93a56dee275d09b005c35b",
+                  "sha": "f83e4df49b3583272d5ca499ca63b426b934a1f3",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753136734,
-                  "message": "fix: PowerShell to spell UTF8 when output is collected (#24)\n\nMismatch between Windows and Linux char encodings can easily surface if\nthe username or some folder name uses high level characters. That leads\nto errors in the wsl-setup shell script that induces WSL to consider the\nnew instance being setup never ready.\n\nThis changes all occurrences where powershell.exe output is collected\ninto a variable in the wsl-setup shell script to force UTF8.\n\nFixes #23",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/839a9293f9804d8eff93a56dee275d09b005c35b"
+                  "timestamp": 1753393210,
+                  "message": "Remove the systemd-binfmt override (#25)\n\nSince WSL 2.5.7 we have a systemd generator that protects interop by\nregenerating the WSL binfmt entry.\nThus, services like systemd-binfmt are no longer a concern.\n\nUsers on older versions of WSL should rely on docs while those on the\nlatest stable should find the expected behaviour by default.\n\nAs a precaution I confirmed locally that dpkg indeed removes the file\nupon upgrade.\n\nCloses #11\n\n---\nUDENG-6126",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/f83e4df49b3583272d5ca499ca63b426b934a1f3"
                },
                {
-                  "sha": "a94c144a6bafa1bb560e02110ee98bc32996a47a",
+                  "sha": "e6fda479213d3139fc792ef60174c2a950dbef85",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753128201,
-                  "message": "PowerShell to spell UTF8 when output is collected\n\nMismatch between Windows and Linux char encodings can easily surface if\nthe username or some folder name uses high level characters.\nThis changes all occurences where powershell.exe output is collected\ninto a variable in the wsl-setup shell script to force UTF8.\n\nFixes #23",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/a94c144a6bafa1bb560e02110ee98bc32996a47a"
+                  "timestamp": 1753391996,
+                  "message": "Update changelog\n\nThe commit 2941379bfe8ac71d3ac1cf9da14207e7b583fa56 that releases\nversion 0.5.9 is detached from the main branch (sorry).\nThat's why we see 0.5.9 and 0.5.10 being added here.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/e6fda479213d3139fc792ef60174c2a950dbef85"
                },
                {
-                  "sha": "6f0f09dc69e6306b6547a3e4cea8276b7672188d",
+                  "sha": "254e28002b2e85816a5383cf0722e92c7ae1cd87",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1741704658,
-                  "message": "Wait for cloud init in a separate script (#21)\n\nThis snippet being removed here is duplicated in a bunch of places now.\nWith the breaking changes introduced in cloud-init 24.3, we would have\nto change the systemd unit we check in that snippet in a bunch of places\nfor the next LTS (Noble is and remains unaffected by that breaking\nchange). Ref:\nhttps://cloudinit.readthedocs.io/en/latest/reference/breaking_changes.html#id3.\n\nSo this PR addresses the duplication and handles that breaking change at\nthe same time before it becomes an issue. We do so by:\n- Moving the snippet that checks and blocks on cloud-init into a\nseparate script, such that other places where this code is present must\njust invoke this script instead;\n- check for `cloud-init-local.service` instead of `cloud-init.service`\nthat won't exist for other releases after Noble. The first exists before\nand after the breaking changes.\n\nCloud-init documentation advises that:\n\n> Any external services which are ordered after or depend on the old\ncloud-init.service name can safely switch to cloud-config.target, which\nshould provide the same point in boot order before and after this\nchange.\n\nBut that target is statically enabled\n\n```\n~$ systemctl is-enabled cloud-config.target\nstatic\n```\n\nThus, not a good one to check for enablement.\n\n---\nUDENG-6143",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/6f0f09dc69e6306b6547a3e4cea8276b7672188d"
+                  "timestamp": 1753388252,
+                  "message": "Remove the systemd-binfmt override\n\nSince WSL 2.5.7 we have a systemd generator that protects interop\nby regenerating the WSL binfmt entry.\nThus, services like systemd-binfmt are no longer a concern.\n\nUsers on older versions of WSL should rely on docs while those on the\nlatest stable should find the expected behaviour by default.\n\nCloses #11",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/254e28002b2e85816a5383cf0722e92c7ae1cd87"
                }
             ],
             "ciActions": [],
