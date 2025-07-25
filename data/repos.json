@@ -6581,25 +6581,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1a55e8ae09ee60be6decde503ded0411fd00f9ce",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1753457362,
-                  "message": "ci: Passes along the GH token to prevent API rate limiting ... (#1256)\n\nwhen setting up protoc. Importantly the token we pass has an empty\npermissions set. I tested this in a personal repository and it proved to\nbe still possible to execute many actions we run in our CI while making\nsure in case downstream actions get compromised the permissions attached\nto our GH token are the minimum possible. [This run also confirms\nit](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/16355485002/job/46212676558?pr=1256).\n\nFor now the quality-go job points to a branch in the desktop-engineering\nproject in which we pass the input token along. Once\nhttps://github.com/canonical/desktop-engineering/pull/69 is merged ,\nI'll change this one again to point to main.\n\nThis is a quality of life improvement specially when dealing with\ndependabot PRs, which spawns lots of CI workflows often hitting the API\nrate limits.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1a55e8ae09ee60be6decde503ded0411fd00f9ce"
-               },
-               {
-                  "sha": "38e5a069e49111346f644b66b664fc22368990c7",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1752699886,
-                  "message": "Pass a no permission token\n\nTo desktop-engineering actions to pass along\ntill it reaches setup-protoc",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/38e5a069e49111346f644b66b664fc22368990c7"
-               },
-               {
-                  "sha": "2c6eaa7fdd39b7d32067ccc948d1ad9e921fdff3",
+                  "sha": "9e17122641f530600574b2cad957ffa72a29126b",
                   "author": "dependabot[bot]",
-                  "timestamp": 1753455013,
-                  "message": "deps(end-to-end): bump golang.org/x/sys from 0.33.0 to 0.34.0 in /end-to-end (#1243)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2c6eaa7fdd39b7d32067ccc948d1ad9e921fdff3"
+                  "timestamp": 1753461267,
+                  "message": "deps(windows-agent): bump golang.org/x/sys from 0.33.0 to 0.34.0 in /windows-agent (#1242)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9e17122641f530600574b2cad957ffa72a29126b"
+               },
+               {
+                  "sha": "9af68725bce032544b148f9fae6d71cc922efa37",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1753461252,
+                  "message": "deps(wsl-pro-service): bump google.golang.org/grpc from 1.73.0 to 1.74.2 in /wsl-pro-service (#1264)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9af68725bce032544b148f9fae6d71cc922efa37"
+               },
+               {
+                  "sha": "b2d713ff99e29584af7b33d5b852b2ba8429b819",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1753461205,
+                  "message": "deps(end-to-end): bump google.golang.org/grpc from 1.73.0 to 1.74.2 in /end-to-end (#1262)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b2d713ff99e29584af7b33d5b852b2ba8429b819"
                }
             ],
             "ciActions": [
