@@ -3402,25 +3402,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c2bd61df19f3b5e4f647df75fe002783e38c3a65",
+                  "sha": "3da05f4139712d8cae3bc7f40aafda0024bf1c5a",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753450677,
-                  "message": "Merge pull request #70 from canonical/fix-gh-perms\n\nfix: GH perms action run steps missing shell",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/c2bd61df19f3b5e4f647df75fe002783e38c3a65"
+                  "timestamp": 1753455120,
+                  "message": "Merge pull request #71 from canonical/fix-gh-perms-shell\n\nfix: One more missing required shell",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/3da05f4139712d8cae3bc7f40aafda0024bf1c5a"
                },
                {
-                  "sha": "c565e9528a6dbed0a985f5a9d3867d377ee2c104",
+                  "sha": "095b3a722c2e35de66d623d1c00185e89d504e34",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753447296,
-                  "message": "Fix GH perms action\n\nShell is required in composite actions.\nAlso the token in an input.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/c565e9528a6dbed0a985f5a9d3867d377ee2c104"
+                  "timestamp": 1753451757,
+                  "message": "Swap shell and run",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/095b3a722c2e35de66d623d1c00185e89d504e34"
                },
                {
-                  "sha": "52f91a1894a53e88eae80fb6bb35e2cc5ae71bc5",
+                  "sha": "a985cb95f394e4091b7768cbe41ca5623606e675",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753446980,
-                  "message": "Merge pull request #69 from canonical/setup-protoc-token\n\nmaint: Allows supplying a GH token",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/52f91a1894a53e88eae80fb6bb35e2cc5ae71bc5"
+                  "timestamp": 1753451033,
+                  "message": "One more missing required shell",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/a985cb95f394e4091b7768cbe41ca5623606e675"
                }
             ],
             "ciActions": [],
@@ -5036,25 +5036,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e3f769009f90a347992592a7f312907383dee9c1",
+                  "author": "Kat",
+                  "timestamp": 1753457196,
+                  "message": "maint(insights): Sync changelog 0.3.0 with downstream release (#182)\n\nSyncs the changelog for 0.3.0 with the downstream package release.\n- Formatting fix\n- Reference release launchpad bug\n\nA git tag should be pushed once this PR is merged.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e3f769009f90a347992592a7f312907383dee9c1"
+               },
+               {
+                  "sha": "8468650b5d1b1e348c2b2939426ccb97870999e7",
+                  "author": "kkuo",
+                  "timestamp": 1753449296,
+                  "message": "maint: Sync changelog 0.3.0 with downstream release",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8468650b5d1b1e348c2b2939426ccb97870999e7"
+               },
+               {
                   "sha": "f0bec2c025371d6139ca0cbc1252e2abb82b6ffb",
                   "author": "Kat",
                   "timestamp": 1753393302,
                   "message": "feat(insights): Add fixed limits to concurrent report and source processing when uploading (#179)\n\nAdd fixed limits to concurrent report and source processing when\nuploading.\n\nPresently, the theoretical infinite number of goroutines can be spawned\nwhen the client is processing and uploading reports. Where `r` is the\nnumber of reports across all targeted sources and `s` is the number of\ntargeted sources, there is a maximum limit of `r+s` goroutines that may\nbe spawned, with r routines potentially attempting to send out HTTP\nrequests.\n\nThere is a 150 report limit per source on how many reports are allowed\nto be on the disk. Typically, a collection call will remove old reports\nif there are too many already on the disk, limiting the impact of the go\nroutine spawns. But it is possible for abuse to result in a considerable\nnumber of sources and reports that the uploader will treat as valid.\nShould the HTTP requests block or be stuck in retry loops, this can be\nproblematic.\n\nThis PR also includes a test to ensure that the limits are being\nrespected.\n\nThere is also a small fix to ensure that the root directory isn't being\nprocessed when traversing a directory to search for reports. This change\ndoesn't cause any behavioral changes other than preventing a bit of\nunnecessary log spam.\n\n---\n[UDENG-7470](https://warthogs.atlassian.net/browse/UDENG-7470)\n\n[UDENG-7470]:\nhttps://warthogs.atlassian.net/browse/UDENG-7470?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/f0bec2c025371d6139ca0cbc1252e2abb82b6ffb"
-               },
-               {
-                  "sha": "7a17fa2aa47aa75c424f0967f795905fc77488c2",
-                  "author": "Kat",
-                  "timestamp": 1753393286,
-                  "message": "build(insights): Fix build time tests (#180)\n\nThis PR addresses an issue where only the tests that were present in\n`insights/cmd/insights` were being run when building the\n`ubuntu-insights` Debian package. Instead, now all tests are run in a\nbehavior similar to autopkgtest as expected.\n\nThere is additional logic to ensure that the C libs aren't being shipped\nwith the package while still allowing for tests to be run for them.\n\nThis PR also cleans up and removes the unnecessary `dh_dwz_override` in\nthe `control` file.\n\nThe changelog has been updated with new entries to reflect these\nchanges.\n\n---\n[UDENG-7468](https://warthogs.atlassian.net/browse/UDENG-7468)\n\n\n[UDENG-7468]:\nhttps://warthogs.atlassian.net/browse/UDENG-7468?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7a17fa2aa47aa75c424f0967f795905fc77488c2"
-               },
-               {
-                  "sha": "b6b46be307fec60b5dd29f89d409983a5af216ca",
-                  "author": "Kat",
-                  "timestamp": 1753393252,
-                  "message": "build: Bump control standards version to 4.7.2 and update changelog (#181)\n\nThis PR bumps the control standards version to 4.7.2 to silence a\nlintian info message, and updates the changelog to a state ready for a\nrelease to 0.3.0.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b6b46be307fec60b5dd29f89d409983a5af216ca"
                }
             ],
             "ciActions": [
@@ -5335,25 +5335,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c2bd61df19f3b5e4f647df75fe002783e38c3a65",
+                  "sha": "3da05f4139712d8cae3bc7f40aafda0024bf1c5a",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753450677,
-                  "message": "Merge pull request #70 from canonical/fix-gh-perms\n\nfix: GH perms action run steps missing shell",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/c2bd61df19f3b5e4f647df75fe002783e38c3a65"
+                  "timestamp": 1753455120,
+                  "message": "Merge pull request #71 from canonical/fix-gh-perms-shell\n\nfix: One more missing required shell",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/3da05f4139712d8cae3bc7f40aafda0024bf1c5a"
                },
                {
-                  "sha": "c565e9528a6dbed0a985f5a9d3867d377ee2c104",
+                  "sha": "095b3a722c2e35de66d623d1c00185e89d504e34",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753447296,
-                  "message": "Fix GH perms action\n\nShell is required in composite actions.\nAlso the token in an input.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/c565e9528a6dbed0a985f5a9d3867d377ee2c104"
+                  "timestamp": 1753451757,
+                  "message": "Swap shell and run",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/095b3a722c2e35de66d623d1c00185e89d504e34"
                },
                {
-                  "sha": "52f91a1894a53e88eae80fb6bb35e2cc5ae71bc5",
+                  "sha": "a985cb95f394e4091b7768cbe41ca5623606e675",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753446980,
-                  "message": "Merge pull request #69 from canonical/setup-protoc-token\n\nmaint: Allows supplying a GH token",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/52f91a1894a53e88eae80fb6bb35e2cc5ae71bc5"
+                  "timestamp": 1753451033,
+                  "message": "One more missing required shell",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/a985cb95f394e4091b7768cbe41ca5623606e675"
                }
             ],
             "ciActions": [],
@@ -6581,25 +6581,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cd8f7a45289c79b59906a9c3eaa738a3ee7e3865",
+                  "sha": "1a55e8ae09ee60be6decde503ded0411fd00f9ce",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753385170,
-                  "message": "maint: Upgrades Flutter SDK to 3.32 (#1257)\n\nThis version deprecates the synthetic `package:flutter_gen` created\nautomatically for certain code generation tasks, like the one that turns\ntranslations into code. With that we can no longer import\n`package:flutter_gen/gen_l10n/app_localizations.dart` as the package\nwill no longer exist. Instead, generated files go into `lib/l10n` and\nare directly importable in the app package (reason why we now ignore\n`/packages/*/lib/l10n/*.dart` ). For further reference see the migration\nnotes at\nhttps://docs.flutter.dev/release/breaking-changes/flutter-generate-i10n-source.\n\nAs usual, we also upgrade major versions of certain dependencies that\nare quite often tight coupled with the SDK version. I'm specially\ninterested in the latest version of Yaru released today as it contains\nsome of the latest developments in a11y.\n\nThe current version of the dart formatter seems sensible to code\ncorrectness, yielding inconsistent results if ran before codegen, thus I\nswapped those steps in CI.\n\nFinally some import shuffling was needed to keep the imports lexically\nsorted.\n\n---\n\nUDENG-6598",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/cd8f7a45289c79b59906a9c3eaa738a3ee7e3865"
+                  "timestamp": 1753457362,
+                  "message": "ci: Passes along the GH token to prevent API rate limiting ... (#1256)\n\nwhen setting up protoc. Importantly the token we pass has an empty\npermissions set. I tested this in a personal repository and it proved to\nbe still possible to execute many actions we run in our CI while making\nsure in case downstream actions get compromised the permissions attached\nto our GH token are the minimum possible. [This run also confirms\nit](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/16355485002/job/46212676558?pr=1256).\n\nFor now the quality-go job points to a branch in the desktop-engineering\nproject in which we pass the input token along. Once\nhttps://github.com/canonical/desktop-engineering/pull/69 is merged ,\nI'll change this one again to point to main.\n\nThis is a quality of life improvement specially when dealing with\ndependabot PRs, which spawns lots of CI workflows often hitting the API\nrate limits.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1a55e8ae09ee60be6decde503ded0411fd00f9ce"
                },
                {
-                  "sha": "316e9f1f7f63275c26228cd5ac3e64795175ba5b",
+                  "sha": "38e5a069e49111346f644b66b664fc22368990c7",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753217990,
-                  "message": "maint(docs): Update README.md (#1260)\n\nI wish I could have not seen this",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/316e9f1f7f63275c26228cd5ac3e64795175ba5b"
+                  "timestamp": 1752699886,
+                  "message": "Pass a no permission token\n\nTo desktop-engineering actions to pass along\ntill it reaches setup-protoc",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/38e5a069e49111346f644b66b664fc22368990c7"
                },
                {
-                  "sha": "fbabcc98bc81820bfeb8acef90092a4e245ceaf1",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1753217913,
-                  "message": "Update README.md\n\nI wish I could have not seen this",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/fbabcc98bc81820bfeb8acef90092a4e245ceaf1"
+                  "sha": "2c6eaa7fdd39b7d32067ccc948d1ad9e921fdff3",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1753455013,
+                  "message": "deps(end-to-end): bump golang.org/x/sys from 0.33.0 to 0.34.0 in /end-to-end (#1243)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/2c6eaa7fdd39b7d32067ccc948d1ad9e921fdff3"
                }
             ],
             "ciActions": [
@@ -7501,25 +7501,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c2bd61df19f3b5e4f647df75fe002783e38c3a65",
+                  "sha": "3da05f4139712d8cae3bc7f40aafda0024bf1c5a",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753450677,
-                  "message": "Merge pull request #70 from canonical/fix-gh-perms\n\nfix: GH perms action run steps missing shell",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/c2bd61df19f3b5e4f647df75fe002783e38c3a65"
+                  "timestamp": 1753455120,
+                  "message": "Merge pull request #71 from canonical/fix-gh-perms-shell\n\nfix: One more missing required shell",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/3da05f4139712d8cae3bc7f40aafda0024bf1c5a"
                },
                {
-                  "sha": "c565e9528a6dbed0a985f5a9d3867d377ee2c104",
+                  "sha": "095b3a722c2e35de66d623d1c00185e89d504e34",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753447296,
-                  "message": "Fix GH perms action\n\nShell is required in composite actions.\nAlso the token in an input.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/c565e9528a6dbed0a985f5a9d3867d377ee2c104"
+                  "timestamp": 1753451757,
+                  "message": "Swap shell and run",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/095b3a722c2e35de66d623d1c00185e89d504e34"
                },
                {
-                  "sha": "52f91a1894a53e88eae80fb6bb35e2cc5ae71bc5",
+                  "sha": "a985cb95f394e4091b7768cbe41ca5623606e675",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753446980,
-                  "message": "Merge pull request #69 from canonical/setup-protoc-token\n\nmaint: Allows supplying a GH token",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/52f91a1894a53e88eae80fb6bb35e2cc5ae71bc5"
+                  "timestamp": 1753451033,
+                  "message": "One more missing required shell",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/a985cb95f394e4091b7768cbe41ca5623606e675"
                }
             ],
             "ciActions": [],
