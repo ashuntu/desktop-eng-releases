@@ -6581,25 +6581,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "31456a0808cc7bb1d6f1b5c8b7b76970a8ba6971",
+                  "sha": "aed8d4c8444c3bd3b9ed2c7b280224b93c7ddac8",
                   "author": "CarlosNihelton",
-                  "timestamp": 1753728215,
+                  "timestamp": 1753882449,
                   "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/31456a0808cc7bb1d6f1b5c8b7b76970a8ba6971"
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/aed8d4c8444c3bd3b9ed2c7b280224b93c7ddac8"
                },
                {
-                  "sha": "f4580f699513e68903dcadd3fc9bc1a6868ff8bf",
+                  "sha": "12b3927444dfc8da426c2253b8e1753e38252641",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753728170,
-                  "message": "feat(msix): Integrates the App installer file (#1258)\n\nSpec WS044 and its backing proof of concept details the work being done\nhere. Essentially we aim to provide an alternative to MS Store when\ndistributing this application with some integration with the OS at least\nfor automatic updates. Windows provides this feature via the App\nInstaller file. This PR defines the app installer file for UP4W that\nassumes the MSIX packages will remain stored as GH release assets.\nDifferent from the PoC here we care about the packaging having a trusted\nsignature, thus we cannot immediately publish it, instead the GH release\nautomatically created by CI remains in draft until we acquire and upload\nthe signed version and edit the release draft manually.\n\nThe targeted Windows versions are also changed, keeping consistency\nbetween the multiple places where we refer to them.\n\nInspecting the \"production\" version of the msixbundle from [this\nrun](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/16407431475)\nwe can confirm that the app installer file was added to the package and\nits contents refer to the current repository tag:\n\n<img width=\"1778\" height=\"610\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/056ed99a-021b-4003-b7d5-4dc68a89ea3e\"\n/>\n\n\nUDENG-7331",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f4580f699513e68903dcadd3fc9bc1a6868ff8bf"
+                  "timestamp": 1753882414,
+                  "message": "feat(l10n): Translations update from Hosted Weblate (#1239)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Ubuntu Pro for\nWSL](https://hosted.weblate.org/projects/ubuntu-desktop-translations/ubuntu-pro-for-wsl/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/ubuntu-pro-for-wsl/horizontal-auto.svg)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/12b3927444dfc8da426c2253b8e1753e38252641"
                },
                {
-                  "sha": "406f586bd7acaed8ea3af57a4f9bd79439c900a0",
+                  "sha": "e58fcfeee4a0260fc0e8db18812147fa2d2cfbba",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753724720,
-                  "message": "Sprinkle some comments in the AppInstaller file.",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/406f586bd7acaed8ea3af57a4f9bd79439c900a0"
+                  "timestamp": 1753882392,
+                  "message": "fix(CI): `needs` is child of `job`, not `step` [plus some go deps] (#1267)\n\nBut steps can refer to each other by ID anyways.\n\nI wonder why we only see that once the error lands in main:\nhttps://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/16577445433/workflow\n\n---\n\nGo vulncheck won't let this complete without upgrading\n`github.com/go-viper/mapstructure/v2` and I'm not too excited to open\nanother PR just for that.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e58fcfeee4a0260fc0e8db18812147fa2d2cfbba"
                }
             ],
             "ciActions": [
