@@ -5045,25 +5045,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d03c8728c661694d4082321f51d8db1042d21800",
+                  "author": "Kat",
+                  "timestamp": 1754425959,
+                  "message": "ci(qa-deb): Matrix support for target Ubuntu version and autopkgtest host runner (#189)\n\nThis PR implements matrix support for setting the target Ubuntu version\nas well as setting the autopkgtest host runner.\n\nNote that this PR does not implement support for setting the host runner\nfor trivial tests. Due to how artifact naming is done in the action we\nuse, architecture changes will cause artifact name conflict errors.\nhttps://github.com/canonical/desktop-engineering/blob/main/gh-actions/common/build-debian/action.yml\n\n---\n[UDENG-7384](https://warthogs.atlassian.net/browse/UDENG-7384)\n\n[UDENG-7384]:\nhttps://warthogs.atlassian.net/browse/UDENG-7384?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/d03c8728c661694d4082321f51d8db1042d21800"
+               },
+               {
+                  "sha": "3cc1772361a2b33daa0bebe5214b798ed83ed196",
+                  "author": "kkuo",
+                  "timestamp": 1754055020,
+                  "message": "ci: Matrix support for target Ubuntu version and autopkgtest host runner\n - Matrix support for the host GitHub runner for autopkgtest\n - Matrix support for the target Ubuntu version",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/3cc1772361a2b33daa0bebe5214b798ed83ed196"
+               },
+               {
                   "sha": "50d104f25d4367e0e0274d1f697daff2bb61d0f3",
                   "author": "Kat",
                   "timestamp": 1754414370,
                   "message": "feat(insights): Go API defaults to global slogger if one is not passed (#186)\n\nThis PR changes the Go API behavior to utilize the global slogger\ninstead of a new logger defined and configured internally.\n\nThis change is intended to improve the experience for use cases where\nthe caller application is using the global default slogger, possibly\nmodifying this logger. By defaulting to this slogger, the caller no\nlonger needs to pass it if they are using it. If they are not using it,\nthe old internal logger matches what the default logger would have been,\nso there is no behavior change there.\n\nIt is important to note that we don't make changes internally to the\ndefault slogger other than in parts of the CLI implementation, meaning\nwe don't interfere with the Go API consumer's default slogger.",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/50d104f25d4367e0e0274d1f697daff2bb61d0f3"
-               },
-               {
-                  "sha": "684eaca44a9a0d31eb9fb26ccce80fc252166a58",
-                  "author": "Kat",
-                  "timestamp": 1754414342,
-                  "message": "feat(insights): collectInsights C bindings returns the report output (#185)\n\nThis PR implements the returning of the collected report to the caller\nin the `collectInsights` function of the C bindings. This should bring\nthe C bindings to feature parity with the existing Go API.\n\nIf the caller passes non-nil pointers to `out_report` and\n`out_report_len`, and the whole of `collectInsights` succeeds, then the\ncollected report (what is returned matches the behavior of the Go API in\nthat the returned report may not necessarily be the one written to\ndisk).\n\nNote that this is a breaking change for the C bindings as it changes the\nfunction parameters.\n\n- Breaking change: Implement report output returns for collectInsights,\nreaching feature parity with its Go API equivalent.\n - Document behavior and memory responsibilities of out_report\n - Add new tests related to returning the report\n \nThis PR also includes a correction to the documentation comments that\nincorrectly implied that the passed config can't be null.\n\n---\n[UDENG-7279](https://warthogs.atlassian.net/browse/UDENG-7279)\n\n[UDENG-7279]:\nhttps://warthogs.atlassian.net/browse/UDENG-7279?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/684eaca44a9a0d31eb9fb26ccce80fc252166a58"
-               },
-               {
-                  "sha": "f25ab674c1113b1a80193924d58ff4cc117c695c",
-                  "author": "kkuo",
-                  "timestamp": 1754344009,
-                  "message": "fix: resolve possible memory leak",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f25ab674c1113b1a80193924d58ff4cc117c695c"
                }
             ],
             "ciActions": [
