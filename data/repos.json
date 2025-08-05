@@ -5045,25 +5045,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "be2a61e209a230a643591c49a37e4f3a4a276e63",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1753992617,
-                  "message": "deps(go-server): Bump github.com/prometheus/common from 0.62.0 to 0.65.0 in /server in the minor-updates group (#188)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/be2a61e209a230a643591c49a37e4f3a4a276e63"
+                  "sha": "50d104f25d4367e0e0274d1f697daff2bb61d0f3",
+                  "author": "Kat",
+                  "timestamp": 1754414370,
+                  "message": "feat(insights): Go API defaults to global slogger if one is not passed (#186)\n\nThis PR changes the Go API behavior to utilize the global slogger\ninstead of a new logger defined and configured internally.\n\nThis change is intended to improve the experience for use cases where\nthe caller application is using the global default slogger, possibly\nmodifying this logger. By defaulting to this slogger, the caller no\nlonger needs to pass it if they are using it. If they are not using it,\nthe old internal logger matches what the default logger would have been,\nso there is no behavior change there.\n\nIt is important to note that we don't make changes internally to the\ndefault slogger other than in parts of the CLI implementation, meaning\nwe don't interfere with the Go API consumer's default slogger.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/50d104f25d4367e0e0274d1f697daff2bb61d0f3"
                },
                {
-                  "sha": "c62aa6fd054808d09a833492dd71ada3a6445cfb",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1753954820,
-                  "message": "deps(go-server): Bump github.com/prometheus/common\n\nBumps the minor-updates group in /server with 1 update: [github.com/prometheus/common](https://github.com/prometheus/common).\n\n\nUpdates `github.com/prometheus/common` from 0.62.0 to 0.65.0\n- [Release notes](https://github.com/prometheus/common/releases)\n- [Changelog](https://github.com/prometheus/common/blob/main/RELEASE.md)\n- [Commits](https://github.com/prometheus/common/compare/v0.62.0...v0.65.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/common\n  dependency-version: 0.65.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c62aa6fd054808d09a833492dd71ada3a6445cfb"
+                  "sha": "684eaca44a9a0d31eb9fb26ccce80fc252166a58",
+                  "author": "Kat",
+                  "timestamp": 1754414342,
+                  "message": "feat(insights): collectInsights C bindings returns the report output (#185)\n\nThis PR implements the returning of the collected report to the caller\nin the `collectInsights` function of the C bindings. This should bring\nthe C bindings to feature parity with the existing Go API.\n\nIf the caller passes non-nil pointers to `out_report` and\n`out_report_len`, and the whole of `collectInsights` succeeds, then the\ncollected report (what is returned matches the behavior of the Go API in\nthat the returned report may not necessarily be the one written to\ndisk).\n\nNote that this is a breaking change for the C bindings as it changes the\nfunction parameters.\n\n- Breaking change: Implement report output returns for collectInsights,\nreaching feature parity with its Go API equivalent.\n - Document behavior and memory responsibilities of out_report\n - Add new tests related to returning the report\n \nThis PR also includes a correction to the documentation comments that\nincorrectly implied that the passed config can't be null.\n\n---\n[UDENG-7279](https://warthogs.atlassian.net/browse/UDENG-7279)\n\n[UDENG-7279]:\nhttps://warthogs.atlassian.net/browse/UDENG-7279?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/684eaca44a9a0d31eb9fb26ccce80fc252166a58"
                },
                {
-                  "sha": "9f59ea896728d23c499a528efafd377ba5321505",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1753900118,
-                  "message": "deps(go-server): Bump github.com/docker/docker from 28.2.2+incompatible to 28.3.3+incompatible in /server (#187)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9f59ea896728d23c499a528efafd377ba5321505"
+                  "sha": "f25ab674c1113b1a80193924d58ff4cc117c695c",
+                  "author": "kkuo",
+                  "timestamp": 1754344009,
+                  "message": "fix: resolve possible memory leak",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f25ab674c1113b1a80193924d58ff4cc117c695c"
                }
             ],
             "ciActions": [
