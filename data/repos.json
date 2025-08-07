@@ -5045,25 +5045,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e3158d178e40472f3c25b8faad2869a82567a59f",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1754584423,
-                  "message": "deps(go-server): bump github.com/prometheus/client_golang from 1.22.0 to 1.23.0 in /server in the minor-updates group (#193)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e3158d178e40472f3c25b8faad2869a82567a59f"
+                  "sha": "f954ce4c151b83627fe6f3393515e5246fc195d1",
+                  "author": "Kat",
+                  "timestamp": 1754598153,
+                  "message": "feat(insights): Expose typed errors in the Go API (#195)\n\nThis PR ensures that certain typed errors are exposed in the Go API.\nThis is to allow for API callers to react to these errors more precisely\nand easily.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f954ce4c151b83627fe6f3393515e5246fc195d1"
                },
                {
-                  "sha": "60a8ccd10c06a94a645f9c3dc534669a90970781",
+                  "sha": "a6a0aeb268652e671c7c4ebc4fc9e80ea1bc0194",
                   "author": "Kat",
-                  "timestamp": 1754576676,
-                  "message": "docs(server): Update ingest service flags documentation (#184)\n\nThis PR updates the server `README.md` file with the new flags added in\n#183 for use with the ingest service's metrics endpoint.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/60a8ccd10c06a94a645f9c3dc534669a90970781"
+                  "timestamp": 1754598117,
+                  "message": "maint: Pin ubuntu-insights/common dependency to v0.3.0 (#194)\n\nThis PR pins the `ubuntu-insights/common` dependency for the `insights`\nand `server` modules to `v0.3.0` following the creation of the\n`common/v0.3.0` tag. This makes this more parsable and helps with\ndependency management should these two modules be imported elsewhere.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a6a0aeb268652e671c7c4ebc4fc9e80ea1bc0194"
                },
                {
-                  "sha": "e1f28f441dc977a7d91623e38eda4ab3d525b211",
+                  "sha": "8a4e671953c72a1958203890b09f52e90a659141",
                   "author": "Kat",
-                  "timestamp": 1754576198,
-                  "message": "feat(ingest): Add reports cache size metrics (#190)\n\nThis PR adds instrumentation to keep track of how large the files in the\nreports cache are.\n\nThis metric is particularly important as it is difficult to scale the\nsize of this cache in Juju. By default it is 1 GB, but unlike most other\nthings, it is something that has to be changed in the Charm definition\nitself, with a new revision. The only fast way of scaling it would be to\nincrease the number of units, but that scales everything. It can be an\nindication of significant issues, or impending issues.\n\nNaturally, this does add some performance overhead, so I've included a\nbenchmark for the ProcessFiles method with a mock database that doesn't\ndo anything. Based on this, the instrumentation increases the time to\nprocess 6000 entries by about 3% given instant database operations.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e1f28f441dc977a7d91623e38eda4ab3d525b211"
+                  "timestamp": 1754598065,
+                  "message": "deps: Bump toolchain to 1.24.6 (#196)\n\nBumps toolchain to 1.24.6 to resolve `GO-2025-3849` which is present in\nthe server module.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8a4e671953c72a1958203890b09f52e90a659141"
                }
             ],
             "ciActions": [
