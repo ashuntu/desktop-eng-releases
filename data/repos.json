@@ -3080,7 +3080,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 5,
+            "newCommits": 6,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -5045,25 +5045,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "af905961f423d817c85e8159e7a7e73e96adfbf4",
+                  "author": "Kat",
+                  "timestamp": 1754602636,
+                  "message": "ci(qa-deb): Change trigger conditions (#191)\n\nThis PR modifies the trigger conditions of the qa-deb workflow,\nincluding adding a supporting job to get the diff.\n\nThe `Check modified files` job was copied from the Authd repository with\nsome changes to support our needs.\n\nThis workflow now uses mostly an allow method when triggering on pull\nrequest events to be more specific.\n - Anything in the `insights/` directory\n - This workflow `.github/workflows/qa-debian.yaml`\n - Excluding markdown file only changes\n \nUsing the new `Check modified files` job, autopkgtests now only run with\nthe following additional triggers:\n - Push events to main branch\n - When a file in the insights/debian/ directory is modified\n - When this file is modified\n - When a tag is pushed\n - When a release is created\n \nThis was done as this job can add a good amount of extra time, and it is\nmostly just running the standard Go tests anyway. Changes to the\n`insights/debian/` directory can cause how and what the trigger is for,\nso we want to run autopkgtest in this case.\n\n---\n[UDENG-7384](https://warthogs.atlassian.net/browse/UDENG-7384)\n\n[UDENG-7384]:\nhttps://warthogs.atlassian.net/browse/UDENG-7384?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/af905961f423d817c85e8159e7a7e73e96adfbf4"
+               },
+               {
+                  "sha": "b10d4ce9bc72be207f6c1de4e7cb537b28ea1e1d",
+                  "author": "kkuo",
+                  "timestamp": 1754515578,
+                  "message": "ci: Switch to using gh pr diff to get the list of modified files",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b10d4ce9bc72be207f6c1de4e7cb537b28ea1e1d"
+               },
+               {
                   "sha": "f954ce4c151b83627fe6f3393515e5246fc195d1",
                   "author": "Kat",
                   "timestamp": 1754598153,
                   "message": "feat(insights): Expose typed errors in the Go API (#195)\n\nThis PR ensures that certain typed errors are exposed in the Go API.\nThis is to allow for API callers to react to these errors more precisely\nand easily.",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/f954ce4c151b83627fe6f3393515e5246fc195d1"
-               },
-               {
-                  "sha": "a6a0aeb268652e671c7c4ebc4fc9e80ea1bc0194",
-                  "author": "Kat",
-                  "timestamp": 1754598117,
-                  "message": "maint: Pin ubuntu-insights/common dependency to v0.3.0 (#194)\n\nThis PR pins the `ubuntu-insights/common` dependency for the `insights`\nand `server` modules to `v0.3.0` following the creation of the\n`common/v0.3.0` tag. This makes this more parsable and helps with\ndependency management should these two modules be imported elsewhere.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a6a0aeb268652e671c7c4ebc4fc9e80ea1bc0194"
-               },
-               {
-                  "sha": "8a4e671953c72a1958203890b09f52e90a659141",
-                  "author": "Kat",
-                  "timestamp": 1754598065,
-                  "message": "deps: Bump toolchain to 1.24.6 (#196)\n\nBumps toolchain to 1.24.6 to resolve `GO-2025-3849` which is present in\nthe server module.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8a4e671953c72a1958203890b09f52e90a659141"
                }
             ],
             "ciActions": [
@@ -7191,7 +7191,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 5,
+            "newCommits": 6,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -9085,7 +9085,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 5,
+            "newCommits": 6,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
