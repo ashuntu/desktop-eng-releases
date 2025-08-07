@@ -1436,20 +1436,32 @@
          {
             "name": "gnome-mines",
             "defaultBranch": "stable",
-            "newCommits": 17,
+            "newCommits": 0,
             "url": "https://github.com/ubuntu/gnome-mines",
-            "releases": [
+            "releases": null,
+            "commits": [
                {
-                  "id": 54902954,
-                  "version": "40.0-20211208",
-                  "timestamp": 1638994908,
-                  "title": "40.0",
-                  "body": "",
-                  "url": "https://github.com/ubuntu/gnome-mines/releases/tag/40.0-20211208",
-                  "compareUrl": "https://github.com/ubuntu/gnome-mines/compare/40.0-20211208...stable"
+                  "sha": "be43730f0742c555f72a42cda3fcbfaf4397580a",
+                  "author": "Jeremy Bícha",
+                  "timestamp": 1745411936,
+                  "message": "Completely remove build-packages\n\nMakes the resulting snap much smaller again",
+                  "url": "https://github.com/ubuntu/gnome-mines/commit/be43730f0742c555f72a42cda3fcbfaf4397580a"
+               },
+               {
+                  "sha": "12a7e9822c1f45687bdff24ed109013a7027df05",
+                  "author": "Jeremy Bícha",
+                  "timestamp": 1745410686,
+                  "message": "Use libgnome-games-support 2 instead of libgnome-games-support 1\n\n2 is for gtk4",
+                  "url": "https://github.com/ubuntu/gnome-mines/commit/12a7e9822c1f45687bdff24ed109013a7027df05"
+               },
+               {
+                  "sha": "10edf7b4461a645c4f22a622bf99dc8e295d01f5",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1744874812,
+                  "message": "Update tag",
+                  "url": "https://github.com/ubuntu/gnome-mines/commit/10edf7b4461a645c4f22a622bf99dc8e295d01f5"
                }
             ],
-            "commits": null,
             "ciActions": [],
             "charm": null,
             "snap": {
@@ -5045,25 +5057,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d03c8728c661694d4082321f51d8db1042d21800",
+                  "sha": "60a8ccd10c06a94a645f9c3dc534669a90970781",
                   "author": "Kat",
-                  "timestamp": 1754425959,
-                  "message": "ci(qa-deb): Matrix support for target Ubuntu version and autopkgtest host runner (#189)\n\nThis PR implements matrix support for setting the target Ubuntu version\nas well as setting the autopkgtest host runner.\n\nNote that this PR does not implement support for setting the host runner\nfor trivial tests. Due to how artifact naming is done in the action we\nuse, architecture changes will cause artifact name conflict errors.\nhttps://github.com/canonical/desktop-engineering/blob/main/gh-actions/common/build-debian/action.yml\n\n---\n[UDENG-7384](https://warthogs.atlassian.net/browse/UDENG-7384)\n\n[UDENG-7384]:\nhttps://warthogs.atlassian.net/browse/UDENG-7384?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/d03c8728c661694d4082321f51d8db1042d21800"
+                  "timestamp": 1754576676,
+                  "message": "docs(server): Update ingest service flags documentation (#184)\n\nThis PR updates the server `README.md` file with the new flags added in\n#183 for use with the ingest service's metrics endpoint.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/60a8ccd10c06a94a645f9c3dc534669a90970781"
                },
                {
-                  "sha": "3cc1772361a2b33daa0bebe5214b798ed83ed196",
-                  "author": "kkuo",
-                  "timestamp": 1754055020,
-                  "message": "ci: Matrix support for target Ubuntu version and autopkgtest host runner\n - Matrix support for the host GitHub runner for autopkgtest\n - Matrix support for the target Ubuntu version",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/3cc1772361a2b33daa0bebe5214b798ed83ed196"
+                  "sha": "e1f28f441dc977a7d91623e38eda4ab3d525b211",
+                  "author": "Kat",
+                  "timestamp": 1754576198,
+                  "message": "feat(ingest): Add reports cache size metrics (#190)\n\nThis PR adds instrumentation to keep track of how large the files in the\nreports cache are.\n\nThis metric is particularly important as it is difficult to scale the\nsize of this cache in Juju. By default it is 1 GB, but unlike most other\nthings, it is something that has to be changed in the Charm definition\nitself, with a new revision. The only fast way of scaling it would be to\nincrease the number of units, but that scales everything. It can be an\nindication of significant issues, or impending issues.\n\nNaturally, this does add some performance overhead, so I've included a\nbenchmark for the ProcessFiles method with a mock database that doesn't\ndo anything. Based on this, the instrumentation increases the time to\nprocess 6000 entries by about 3% given instant database operations.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e1f28f441dc977a7d91623e38eda4ab3d525b211"
                },
                {
-                  "sha": "50d104f25d4367e0e0274d1f697daff2bb61d0f3",
+                  "sha": "c2cbc6ec5ba3fefabc49f618117452644d4ec81c",
                   "author": "Kat",
-                  "timestamp": 1754414370,
-                  "message": "feat(insights): Go API defaults to global slogger if one is not passed (#186)\n\nThis PR changes the Go API behavior to utilize the global slogger\ninstead of a new logger defined and configured internally.\n\nThis change is intended to improve the experience for use cases where\nthe caller application is using the global default slogger, possibly\nmodifying this logger. By defaulting to this slogger, the caller no\nlonger needs to pass it if they are using it. If they are not using it,\nthe old internal logger matches what the default logger would have been,\nso there is no behavior change there.\n\nIt is important to note that we don't make changes internally to the\ndefault slogger other than in parts of the CLI implementation, meaning\nwe don't interfere with the Go API consumer's default slogger.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/50d104f25d4367e0e0274d1f697daff2bb61d0f3"
+                  "timestamp": 1754576166,
+                  "message": "feat(ingest-service): Integrate Prometheus with the Ingest Service  (#183)\n\nThis PR integrates Prometheus with the Ingest Service, instrumenting its\nprocesses and also implementing an HTTP server to host a metrics\nendpoint for it.\n\nTo support the integration better, `ingest.go` was refactored to move\nall the worker management logic into a new separate `workers` package.\nThe metrics HTTP server was implemented in a shared space such that a\nrefactor can allow for the web service to utilize the same code.\n\nThe default port is intentionally different from that used by the web\nservice.\n\n---\n[UDENG-7455](https://warthogs.atlassian.net/browse/UDENG-7455)\n\n[UDENG-7455]:\nhttps://warthogs.atlassian.net/browse/UDENG-7455?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c2cbc6ec5ba3fefabc49f618117452644d4ec81c"
                }
             ],
             "ciActions": [
@@ -6599,25 +6611,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "42f167695b92e4767c74433d1fc4f26037bf18b5",
+                  "sha": "5eb808c0b168fcf9eb2e82eb6e59a7491ab28368",
                   "author": "dependabot[bot]",
-                  "timestamp": 1754054560,
-                  "message": "deps(gui-ubuntupro): bump mockito from 5.4.6 to 5.5.0 in /gui/packages/ubuntupro (#1270)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/42f167695b92e4767c74433d1fc4f26037bf18b5"
+                  "timestamp": 1754574400,
+                  "message": "deps(gui-ubuntupro): bump file_picker from 10.2.0 to 10.2.1 in /gui/packages/ubuntupro (#1272)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5eb808c0b168fcf9eb2e82eb6e59a7491ab28368"
                },
                {
-                  "sha": "d80c09dd443dc512b4331be94bf14ea3e1a93b39",
+                  "sha": "9b0655044d3c8ec96c064e98e634f22a9e88ae3e",
                   "author": "dependabot[bot]",
-                  "timestamp": 1753953286,
-                  "message": "deps(gui-ubuntupro): bump mockito in /gui/packages/ubuntupro\n\nBumps [mockito](https://github.com/dart-lang/mockito) from 5.4.6 to 5.5.0.\n- [Release notes](https://github.com/dart-lang/mockito/releases)\n- [Changelog](https://github.com/dart-lang/mockito/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/dart-lang/mockito/commits)\n\n---\nupdated-dependencies:\n- dependency-name: mockito\n  dependency-version: 5.5.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/d80c09dd443dc512b4331be94bf14ea3e1a93b39"
+                  "timestamp": 1754574383,
+                  "message": "deps(gh-actions): bump actions/download-artifact from 4 to 5 (#1273)",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9b0655044d3c8ec96c064e98e634f22a9e88ae3e"
                },
                {
-                  "sha": "aed8d4c8444c3bd3b9ed2c7b280224b93c7ddac8",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1753882449,
-                  "message": "Auto update internal dependencies",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/aed8d4c8444c3bd3b9ed2c7b280224b93c7ddac8"
+                  "sha": "e9b3e523b9f17daacad7ba5893ddaed1964ecbd4",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1754560681,
+                  "message": "deps(gh-actions): bump actions/download-artifact from 4 to 5\n\nBumps [actions/download-artifact](https://github.com/actions/download-artifact) from 4 to 5.\n- [Release notes](https://github.com/actions/download-artifact/releases)\n- [Commits](https://github.com/actions/download-artifact/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/download-artifact\n  dependency-version: '5'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e9b3e523b9f17daacad7ba5893ddaed1964ecbd4"
                }
             ],
             "ciActions": [
