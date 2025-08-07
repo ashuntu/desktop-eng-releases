@@ -5045,6 +5045,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e3158d178e40472f3c25b8faad2869a82567a59f",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1754584423,
+                  "message": "deps(go-server): bump github.com/prometheus/client_golang from 1.22.0 to 1.23.0 in /server in the minor-updates group (#193)",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e3158d178e40472f3c25b8faad2869a82567a59f"
+               },
+               {
                   "sha": "60a8ccd10c06a94a645f9c3dc534669a90970781",
                   "author": "Kat",
                   "timestamp": 1754576676,
@@ -5057,13 +5064,6 @@
                   "timestamp": 1754576198,
                   "message": "feat(ingest): Add reports cache size metrics (#190)\n\nThis PR adds instrumentation to keep track of how large the files in the\nreports cache are.\n\nThis metric is particularly important as it is difficult to scale the\nsize of this cache in Juju. By default it is 1 GB, but unlike most other\nthings, it is something that has to be changed in the Charm definition\nitself, with a new revision. The only fast way of scaling it would be to\nincrease the number of units, but that scales everything. It can be an\nindication of significant issues, or impending issues.\n\nNaturally, this does add some performance overhead, so I've included a\nbenchmark for the ProcessFiles method with a mock database that doesn't\ndo anything. Based on this, the instrumentation increases the time to\nprocess 6000 entries by about 3% given instant database operations.",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/e1f28f441dc977a7d91623e38eda4ab3d525b211"
-               },
-               {
-                  "sha": "c2cbc6ec5ba3fefabc49f618117452644d4ec81c",
-                  "author": "Kat",
-                  "timestamp": 1754576166,
-                  "message": "feat(ingest-service): Integrate Prometheus with the Ingest Service  (#183)\n\nThis PR integrates Prometheus with the Ingest Service, instrumenting its\nprocesses and also implementing an HTTP server to host a metrics\nendpoint for it.\n\nTo support the integration better, `ingest.go` was refactored to move\nall the worker management logic into a new separate `workers` package.\nThe metrics HTTP server was implemented in a shared space such that a\nrefactor can allow for the web service to utilize the same code.\n\nThe default port is intentionally different from that used by the web\nservice.\n\n---\n[UDENG-7455](https://warthogs.atlassian.net/browse/UDENG-7455)\n\n[UDENG-7455]:\nhttps://warthogs.atlassian.net/browse/UDENG-7455?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c2cbc6ec5ba3fefabc49f618117452644d4ec81c"
                }
             ],
             "ciActions": [
