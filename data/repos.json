@@ -5045,25 +5045,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "af905961f423d817c85e8159e7a7e73e96adfbf4",
+                  "sha": "8abc88c9f71157c990158c2780b1c5a73f733cda",
                   "author": "Kat",
-                  "timestamp": 1754602636,
-                  "message": "ci(qa-deb): Change trigger conditions (#191)\n\nThis PR modifies the trigger conditions of the qa-deb workflow,\nincluding adding a supporting job to get the diff.\n\nThe `Check modified files` job was copied from the Authd repository with\nsome changes to support our needs.\n\nThis workflow now uses mostly an allow method when triggering on pull\nrequest events to be more specific.\n - Anything in the `insights/` directory\n - This workflow `.github/workflows/qa-debian.yaml`\n - Excluding markdown file only changes\n \nUsing the new `Check modified files` job, autopkgtests now only run with\nthe following additional triggers:\n - Push events to main branch\n - When a file in the insights/debian/ directory is modified\n - When this file is modified\n - When a tag is pushed\n - When a release is created\n \nThis was done as this job can add a good amount of extra time, and it is\nmostly just running the standard Go tests anyway. Changes to the\n`insights/debian/` directory can cause how and what the trigger is for,\nso we want to run autopkgtest in this case.\n\n---\n[UDENG-7384](https://warthogs.atlassian.net/browse/UDENG-7384)\n\n[UDENG-7384]:\nhttps://warthogs.atlassian.net/browse/UDENG-7384?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/af905961f423d817c85e8159e7a7e73e96adfbf4"
+                  "timestamp": 1754664720,
+                  "message": "feat(insights): Implement C bindings packaging (#197)\n\nThis PR implements deb packaging for the C bindings, adding\n`libinsights0` for the shared library and `libinsights-dev` for the\nheader files.\n\nTo facilitate this, how the binaries are generated was reworked slightly\nfor Linux.\n\n[UDENG-7587](https://warthogs.atlassian.net/browse/UDENG-7587)\n\n[UDENG-7587]:\nhttps://warthogs.atlassian.net/browse/UDENG-7587?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8abc88c9f71157c990158c2780b1c5a73f733cda"
                },
                {
-                  "sha": "b10d4ce9bc72be207f6c1de4e7cb537b28ea1e1d",
+                  "sha": "cdcaa4767e9cd85b826391043c5187b665362d62",
                   "author": "kkuo",
-                  "timestamp": 1754515578,
-                  "message": "ci: Switch to using gh pr diff to get the list of modified files",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b10d4ce9bc72be207f6c1de4e7cb537b28ea1e1d"
+                  "timestamp": 1754645751,
+                  "message": "maint(insights): Add changelog entry for 0.5.0",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/cdcaa4767e9cd85b826391043c5187b665362d62"
                },
                {
-                  "sha": "f954ce4c151b83627fe6f3393515e5246fc195d1",
-                  "author": "Kat",
-                  "timestamp": 1754598153,
-                  "message": "feat(insights): Expose typed errors in the Go API (#195)\n\nThis PR ensures that certain typed errors are exposed in the Go API.\nThis is to allow for API callers to react to these errors more precisely\nand easily.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f954ce4c151b83627fe6f3393515e5246fc195d1"
+                  "sha": "e7c7eb8396d6638bc62886d18c78da0b65e28bfb",
+                  "author": "kkuo",
+                  "timestamp": 1754644228,
+                  "message": "feat(insights): Add libinsights symbols file",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e7c7eb8396d6638bc62886d18c78da0b65e28bfb"
                }
             ],
             "ciActions": [
