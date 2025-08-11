@@ -5045,6 +5045,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5d448bf281423b799f649aa3517cafca0eed70f3",
+                  "author": "Kat",
+                  "timestamp": 1754938922,
+                  "message": "fix(insights): Clean up generated sources in prepare-source.sh (#201)\n\nPreviously, if `go generate` was ran locally, it wouldn't get cleaned\nbefore packaging. Especially since that folder is included in\n`.gitignore`, it was easy to overlook this and actually create deb\npackage sources that include the `generated` folder. This is especially\nan issue if the C bindings shared libs were generated.\n\nThis PR simply ensures that this folder is removed.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/5d448bf281423b799f649aa3517cafca0eed70f3"
+               },
+               {
                   "sha": "4dbbf4eae4c21c49a51c691be84c7ec44ccd04a2",
                   "author": "Kat",
                   "timestamp": 1754936627,
@@ -5052,18 +5059,11 @@
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/4dbbf4eae4c21c49a51c691be84c7ec44ccd04a2"
                },
                {
-                  "sha": "e755e31ecdde776ce77c89548bbdec6d258ba0d7",
+                  "sha": "2accb25cf1bcfc32e8e1fd21a9d3f8d72b88435c",
                   "author": "kkuo",
-                  "timestamp": 1754923525,
-                  "message": "refactor(insights): rename functions and types for consistency in C API",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e755e31ecdde776ce77c89548bbdec6d258ba0d7"
-               },
-               {
-                  "sha": "8f1b426ee2ef64db5171009bc5ebb9d2917f2199",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1754918390,
-                  "message": "deps(ci): bump actions/download-artifact from 4 to 5 in the gh-actions group (#192)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8f1b426ee2ef64db5171009bc5ebb9d2917f2199"
+                  "timestamp": 1754930166,
+                  "message": "fix(insights): Clean up generated sources in prepare-source.sh",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/2accb25cf1bcfc32e8e1fd21a9d3f8d72b88435c"
                }
             ],
             "ciActions": [
