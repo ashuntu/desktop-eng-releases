@@ -6599,25 +6599,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5eb808c0b168fcf9eb2e82eb6e59a7491ab28368",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1754574400,
-                  "message": "deps(gui-ubuntupro): bump file_picker from 10.2.0 to 10.2.1 in /gui/packages/ubuntupro (#1272)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5eb808c0b168fcf9eb2e82eb6e59a7491ab28368"
+                  "sha": "b081163fd4207a1c83c2166a670072ccb8af2cbd",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1754915801,
+                  "message": "fix: Enforce Landscape host.url to be HOST:PORT (#1271)\n\nPieces of documentation like\nhttps://documentation.ubuntu.com/landscape/how-to-guides/wsl-integration/register-wsl-hosts/\nsuggest that Landscape `[host].url` should not be an actual URL but\nrather `HOST:PORT`. While the GUI most often assembled that correctly,\nit was possible to pass an entire URL like `http://host.org.com` via\nloading a custom configuration file which would completely break\nLandscape connection because of the way we're parsing URLs. Also, the\nGUI only checked for https, but other schemes, though unexpected, could\neasily break the agent later on.\n\nWorse was troubleshooting that because we didn't log the server address\nwe're attempting to connect to and then facing \"name resolver error\"\nwithout a clear indication of what name we're trying to resolve.\n\nWith this PR we change a few things related to how the GUI assembles the\n`host.url` field in the Landscape configuration in the manual\nconfiguration flow and add some validation in the agent itself:\n\n- 1. Users are still allowed to just copy and paste the Landscape server\naddress from their browser: we strip the scheme for the `host.url` field\nand its port value is set to 6554 by default.\n- 2. If a PORT is passed by the user, we use it instead.\n- 3. Though technically attempting to parse a URL as `HOST:PORT` is\nmalformed, resulting in `SCHEME:HOST` instead, we do a fix up for that\nvery specific case because it's advertised everywhere in Landscape\nconfiguration.\n- 4. For the `client` section, we enforce `http` for the `ping_url` .\nFor the `client.url` field we use any scheme the user may provide\ndefaulting to `https` otherwise.\n- 5. When reading a Landscape config submitted either via the UI or\nWindows Registry, the agent validates the `host.url` matches the\nexpected `HOST:PORT` shape, erroring out in many new ways.\n\n---\nUDENG-7374",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/b081163fd4207a1c83c2166a670072ccb8af2cbd"
                },
                {
-                  "sha": "9b0655044d3c8ec96c064e98e634f22a9e88ae3e",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1754574383,
-                  "message": "deps(gh-actions): bump actions/download-artifact from 4 to 5 (#1273)",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9b0655044d3c8ec96c064e98e634f22a9e88ae3e"
+                  "sha": "9e187d0c6c460b5d742c3ce825c22dea086fe280",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1754577680,
+                  "message": "Update tests to testify the client URL assumptions\n\nMy next PR will implement golden tests for this.\nIt became too tricky to do with just contains.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/9e187d0c6c460b5d742c3ce825c22dea086fe280"
                },
                {
-                  "sha": "e9b3e523b9f17daacad7ba5893ddaed1964ecbd4",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1754560681,
-                  "message": "deps(gh-actions): bump actions/download-artifact from 4 to 5\n\nBumps [actions/download-artifact](https://github.com/actions/download-artifact) from 4 to 5.\n- [Release notes](https://github.com/actions/download-artifact/releases)\n- [Commits](https://github.com/actions/download-artifact/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/download-artifact\n  dependency-version: '5'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/e9b3e523b9f17daacad7ba5893ddaed1964ecbd4"
+                  "sha": "954e217a8023f500ab552d6027f6df21075bb6c6",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1754577593,
+                  "message": "URL and PING_URL should have no ports\n\nPING_URL is always http\nURL is whatever scheme is provided, thus the port should be inferred by\nthe protocol\nThe port is solely about the gRPC server component, which only affects\nthe host.url.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/954e217a8023f500ab552d6027f6df21075bb6c6"
                }
             ],
             "ciActions": [
@@ -6952,25 +6952,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "56d907c6ac6dd14bbc725d7020bda51a364489d3",
+                  "sha": "5c26edb65d0f7ee0b85c9092a882212bc86b906f",
                   "author": "adombeck",
-                  "timestamp": 1754911277,
-                  "message": "deps(go): bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.4.0 (#618)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/56d907c6ac6dd14bbc725d7020bda51a364489d3"
+                  "timestamp": 1754913939,
+                  "message": "deps(go): bump github.com/coreos/go-oidc/v3 from 3.14.1 to 3.15.0 (#614)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/5c26edb65d0f7ee0b85c9092a882212bc86b906f"
                },
                {
-                  "sha": "947b35cd7c77c1462ea0c9c8e1cceb268b533f60",
-                  "author": "adombeck",
-                  "timestamp": 1754911238,
-                  "message": "dependabot: Group minor updates (#619)\n\nSame as in the authd repo, to reduce the manual effort of merging and\nrebasing dependabot PRs.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/947b35cd7c77c1462ea0c9c8e1cceb268b533f60"
+                  "sha": "d126f14932cce5fe06ab13f4b755b1c1a933e0ee",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1754913560,
+                  "message": "deps(go): bump github.com/coreos/go-oidc/v3 from 3.14.1 to 3.15.0\n\nBumps [github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc) from 3.14.1 to 3.15.0.\n- [Release notes](https://github.com/coreos/go-oidc/releases)\n- [Commits](https://github.com/coreos/go-oidc/compare/v3.14.1...v3.15.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/coreos/go-oidc/v3\n  dependency-version: 3.15.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d126f14932cce5fe06ab13f4b755b1c1a933e0ee"
                },
                {
-                  "sha": "ce752ee7c2642fd0743b3fcea04bc38c492484e8",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1754908732,
-                  "message": "deps(go): bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.4.0\n\ngovulncheck reports the following vulnerability:\n\n    Vulnerability #1: GO-2025-3787\n        May leak sensitive information in logs when processing malformed data in\n        github.com/go-viper/mapstructure\n      More info: https://pkg.go.dev/vuln/GO-2025-3787\n      Module: github.com/go-viper/mapstructure/v2\n        Found in: github.com/go-viper/mapstructure/v2@v2.2.1\n        Fixed in: github.com/go-viper/mapstructure/v2@v2.3.0\n\nDependabot doesn't create a PR which updates that dependency because\nit's an indirect dependency.",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/ce752ee7c2642fd0743b3fcea04bc38c492484e8"
+                  "sha": "07fce500e0688907653374866067d239c6ef2bd6",
+                  "author": "adombeck",
+                  "timestamp": 1754913385,
+                  "message": "deps(go): bump github.com/go-jose/go-jose/v4 from 4.1.1 to 4.1.2 (#610)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/07fce500e0688907653374866067d239c6ef2bd6"
                }
             ],
             "ciActions": [
