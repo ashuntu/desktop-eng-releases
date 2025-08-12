@@ -595,20 +595,32 @@
          {
             "name": "gnome-2048",
             "defaultBranch": "stable",
-            "newCommits": 19,
+            "newCommits": 0,
             "url": "https://github.com/ubuntu/gnome-2048",
-            "releases": [
+            "releases": null,
+            "commits": [
                {
-                  "id": 58045542,
-                  "version": "3.38.2-20220126",
-                  "timestamp": 1625737984,
-                  "title": "",
-                  "body": "",
-                  "url": "https://github.com/ubuntu/gnome-2048/releases/tag/3.38.2-20220126",
-                  "compareUrl": "https://github.com/ubuntu/gnome-2048/compare/3.38.2-20220126...stable"
+                  "sha": "1e0bfa1af9e4af61c7d5c46e7c67d2a016ee5e2a",
+                  "author": "Jeremy Bícha",
+                  "timestamp": 1745775956,
+                  "message": "Revert \"Remove DISABLE_WAYLAND\"\n\nThis reverts commit c3fe9c3aa5f9b934fa4ce5bb7cf2a86e8d601617.",
+                  "url": "https://github.com/ubuntu/gnome-2048/commit/1e0bfa1af9e4af61c7d5c46e7c67d2a016ee5e2a"
+               },
+               {
+                  "sha": "c3fe9c3aa5f9b934fa4ce5bb7cf2a86e8d601617",
+                  "author": "Jeremy Bícha",
+                  "timestamp": 1745773160,
+                  "message": "Remove DISABLE_WAYLAND",
+                  "url": "https://github.com/ubuntu/gnome-2048/commit/c3fe9c3aa5f9b934fa4ce5bb7cf2a86e8d601617"
+               },
+               {
+                  "sha": "c04fa055feacfcba16909cc65ac79812315fe2c1",
+                  "author": "Jeremy Bícha",
+                  "timestamp": 1744921230,
+                  "message": "Remove version locking",
+                  "url": "https://github.com/ubuntu/gnome-2048/commit/c04fa055feacfcba16909cc65ac79812315fe2c1"
                }
             ],
-            "commits": null,
             "ciActions": [],
             "charm": null,
             "snap": {
@@ -838,84 +850,6 @@
             }
          },
          {
-            "name": "gnome-clocks",
-            "defaultBranch": "stable",
-            "newCommits": 24,
-            "url": "https://github.com/ubuntu/gnome-clocks",
-            "releases": [
-               {
-                  "id": 56478780,
-                  "version": "41.0",
-                  "timestamp": 1639590303,
-                  "title": "41.0",
-                  "body": "",
-                  "url": "https://github.com/ubuntu/gnome-clocks/releases/tag/41.0",
-                  "compareUrl": "https://github.com/ubuntu/gnome-clocks/compare/41.0...stable"
-               },
-               {
-                  "id": 50083092,
-                  "version": "40.0",
-                  "timestamp": 1632337514,
-                  "title": "40.0",
-                  "body": "",
-                  "url": "https://github.com/ubuntu/gnome-clocks/releases/tag/40.0",
-                  "compareUrl": "https://github.com/ubuntu/gnome-clocks/compare/40.0...stable"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": null,
-            "snap": {
-               "name": "gnome-clocks",
-               "url": "https://snapcraft.io/gnome-clocks",
-               "releases": [
-                  {
-                     "track": "latest",
-                     "channel": "stable",
-                     "revision": 484,
-                     "timestamp": 1746185729
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "stable",
-                     "revision": 485,
-                     "timestamp": 1746185730
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "stable",
-                     "revision": 483,
-                     "timestamp": 1746185731
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "candidate",
-                     "revision": 492,
-                     "timestamp": 1750344796
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "candidate",
-                     "revision": 493,
-                     "timestamp": 1750344806
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "candidate",
-                     "revision": 494,
-                     "timestamp": 1750344818
-                  }
-               ],
-               "channels": [
-                  "stable",
-                  "candidate"
-               ],
-               "tracks": [
-                  "latest"
-               ]
-            }
-         },
-         {
             "name": "gnome-chess",
             "defaultBranch": "stable",
             "newCommits": 20,
@@ -973,6 +907,87 @@
                      "channel": "candidate",
                      "revision": 100,
                      "timestamp": 1746009159
+                  }
+               ],
+               "channels": [
+                  "stable",
+                  "candidate"
+               ],
+               "tracks": [
+                  "latest"
+               ]
+            }
+         },
+         {
+            "name": "gnome-clocks",
+            "defaultBranch": "stable",
+            "newCommits": 0,
+            "url": "https://github.com/ubuntu/gnome-clocks",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "3e59b4eef2cc335ecc042c278c59818718e59e29",
+                  "author": "Sergio Costas",
+                  "timestamp": 1749653331,
+                  "message": "Merge pull request #9 from sergio-costas/UDENG-789-snapped-versions-of-gnome-clocks-and-gnome-weather-dont-show-up-in-the-top-bar\n\nAllow to be detected by gnome shell",
+                  "url": "https://github.com/ubuntu/gnome-clocks/commit/3e59b4eef2cc335ecc042c278c59818718e59e29"
+               },
+               {
+                  "sha": "864b2250c672845763c1e9644b5022e0fc61e00f",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1749472483,
+                  "message": "Allow to be detected by gnome shell\n\nGnome Shell expects an org.gnome.clocks.desktop file to detect\nClocks. This patch uses the DESKTOP plug to define it.\n\nIt also fixes the TRIPLET environment variables.",
+                  "url": "https://github.com/ubuntu/gnome-clocks/commit/864b2250c672845763c1e9644b5022e0fc61e00f"
+               },
+               {
+                  "sha": "9bafb975e58984fb167e4fd0de437935678ae03e",
+                  "author": "Jeremy Bícha",
+                  "timestamp": 1745504581,
+                  "message": "minor cleanup",
+                  "url": "https://github.com/ubuntu/gnome-clocks/commit/9bafb975e58984fb167e4fd0de437935678ae03e"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": {
+               "name": "gnome-clocks",
+               "url": "https://snapcraft.io/gnome-clocks",
+               "releases": [
+                  {
+                     "track": "latest",
+                     "channel": "stable",
+                     "revision": 484,
+                     "timestamp": 1746185729
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "stable",
+                     "revision": 485,
+                     "timestamp": 1746185730
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "stable",
+                     "revision": 483,
+                     "timestamp": 1746185731
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "candidate",
+                     "revision": 492,
+                     "timestamp": 1750344796
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "candidate",
+                     "revision": 493,
+                     "timestamp": 1750344806
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "candidate",
+                     "revision": 494,
+                     "timestamp": 1750344818
                   }
                ],
                "channels": [
@@ -4027,25 +4042,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b65acd149e736b3249d1cf298d30292d86af9282",
+                  "author": "Dennis Loose",
+                  "timestamp": 1755006105,
+                  "message": "Merge pull request #231 from canonical/update-flutter-docs\n\ndocs: update CONTRIBUTING.md (asdf -> fvm)",
+                  "url": "https://github.com/canonical/prompting-client/commit/b65acd149e736b3249d1cf298d30292d86af9282"
+               },
+               {
+                  "sha": "3162f99b48ea802d0d6867ab58bcddd4aad801b2",
+                  "author": "Dennis Loose",
+                  "timestamp": 1754304993,
+                  "message": "docs: update CONTRIBUTING.md (asdf -> fvm)",
+                  "url": "https://github.com/canonical/prompting-client/commit/3162f99b48ea802d0d6867ab58bcddd4aad801b2"
+               },
+               {
                   "sha": "3eced8cb2fe707aa9e6c11358c8d6b9b3e1e5e62",
                   "author": "Dennis Loose",
                   "timestamp": 1754910808,
                   "message": "Merge pull request #236 from canonical/remove-local-cla-check\n\nci: remove local CLA check",
                   "url": "https://github.com/canonical/prompting-client/commit/3eced8cb2fe707aa9e6c11358c8d6b9b3e1e5e62"
-               },
-               {
-                  "sha": "15f6a7c26872f96a52dab992c3be7d5699fc8677",
-                  "author": "Dennis Loose",
-                  "timestamp": 1754906891,
-                  "message": "ci: remove local CLA check\n\nSince there's now an org-wide CLA action, the local workflow is\nobsolete.",
-                  "url": "https://github.com/canonical/prompting-client/commit/15f6a7c26872f96a52dab992c3be7d5699fc8677"
-               },
-               {
-                  "sha": "04c3733f937df9e60a93869c4241f5e857c4a5f7",
-                  "author": "Dennis Loose",
-                  "timestamp": 1754486885,
-                  "message": "Merge pull request #232 from canonical/protobuf-dep\n\nfix(deps): deb `protobuf-compiler` instead of snap `protobuf`",
-                  "url": "https://github.com/canonical/prompting-client/commit/04c3733f937df9e60a93869c4241f5e857c4a5f7"
                }
             ],
             "ciActions": [],
@@ -6002,25 +6017,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b65acd149e736b3249d1cf298d30292d86af9282",
+                  "author": "Dennis Loose",
+                  "timestamp": 1755006105,
+                  "message": "Merge pull request #231 from canonical/update-flutter-docs\n\ndocs: update CONTRIBUTING.md (asdf -> fvm)",
+                  "url": "https://github.com/canonical/prompting-client/commit/b65acd149e736b3249d1cf298d30292d86af9282"
+               },
+               {
+                  "sha": "3162f99b48ea802d0d6867ab58bcddd4aad801b2",
+                  "author": "Dennis Loose",
+                  "timestamp": 1754304993,
+                  "message": "docs: update CONTRIBUTING.md (asdf -> fvm)",
+                  "url": "https://github.com/canonical/prompting-client/commit/3162f99b48ea802d0d6867ab58bcddd4aad801b2"
+               },
+               {
                   "sha": "3eced8cb2fe707aa9e6c11358c8d6b9b3e1e5e62",
                   "author": "Dennis Loose",
                   "timestamp": 1754910808,
                   "message": "Merge pull request #236 from canonical/remove-local-cla-check\n\nci: remove local CLA check",
                   "url": "https://github.com/canonical/prompting-client/commit/3eced8cb2fe707aa9e6c11358c8d6b9b3e1e5e62"
-               },
-               {
-                  "sha": "15f6a7c26872f96a52dab992c3be7d5699fc8677",
-                  "author": "Dennis Loose",
-                  "timestamp": 1754906891,
-                  "message": "ci: remove local CLA check\n\nSince there's now an org-wide CLA action, the local workflow is\nobsolete.",
-                  "url": "https://github.com/canonical/prompting-client/commit/15f6a7c26872f96a52dab992c3be7d5699fc8677"
-               },
-               {
-                  "sha": "04c3733f937df9e60a93869c4241f5e857c4a5f7",
-                  "author": "Dennis Loose",
-                  "timestamp": 1754486885,
-                  "message": "Merge pull request #232 from canonical/protobuf-dep\n\nfix(deps): deb `protobuf-compiler` instead of snap `protobuf`",
-                  "url": "https://github.com/canonical/prompting-client/commit/04c3733f937df9e60a93869c4241f5e857c4a5f7"
                }
             ],
             "ciActions": [],
@@ -8144,25 +8159,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b65acd149e736b3249d1cf298d30292d86af9282",
+                  "author": "Dennis Loose",
+                  "timestamp": 1755006105,
+                  "message": "Merge pull request #231 from canonical/update-flutter-docs\n\ndocs: update CONTRIBUTING.md (asdf -> fvm)",
+                  "url": "https://github.com/canonical/prompting-client/commit/b65acd149e736b3249d1cf298d30292d86af9282"
+               },
+               {
+                  "sha": "3162f99b48ea802d0d6867ab58bcddd4aad801b2",
+                  "author": "Dennis Loose",
+                  "timestamp": 1754304993,
+                  "message": "docs: update CONTRIBUTING.md (asdf -> fvm)",
+                  "url": "https://github.com/canonical/prompting-client/commit/3162f99b48ea802d0d6867ab58bcddd4aad801b2"
+               },
+               {
                   "sha": "3eced8cb2fe707aa9e6c11358c8d6b9b3e1e5e62",
                   "author": "Dennis Loose",
                   "timestamp": 1754910808,
                   "message": "Merge pull request #236 from canonical/remove-local-cla-check\n\nci: remove local CLA check",
                   "url": "https://github.com/canonical/prompting-client/commit/3eced8cb2fe707aa9e6c11358c8d6b9b3e1e5e62"
-               },
-               {
-                  "sha": "15f6a7c26872f96a52dab992c3be7d5699fc8677",
-                  "author": "Dennis Loose",
-                  "timestamp": 1754906891,
-                  "message": "ci: remove local CLA check\n\nSince there's now an org-wide CLA action, the local workflow is\nobsolete.",
-                  "url": "https://github.com/canonical/prompting-client/commit/15f6a7c26872f96a52dab992c3be7d5699fc8677"
-               },
-               {
-                  "sha": "04c3733f937df9e60a93869c4241f5e857c4a5f7",
-                  "author": "Dennis Loose",
-                  "timestamp": 1754486885,
-                  "message": "Merge pull request #232 from canonical/protobuf-dep\n\nfix(deps): deb `protobuf-compiler` instead of snap `protobuf`",
-                  "url": "https://github.com/canonical/prompting-client/commit/04c3733f937df9e60a93869c4241f5e857c4a5f7"
                }
             ],
             "ciActions": [],
@@ -8689,45 +8704,6 @@
             "snap": null
          },
          {
-            "name": "ubuntu-insights-k8s-operator",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
-            "releases": [
-               {
-                  "id": 237689069,
-                  "version": "rev5",
-                  "timestamp": 1754403506,
-                  "title": "Revision 5",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 5</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:20 UTC on 5 Aug 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(database): handle exceptions when fetching relation data by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/15\">#15</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev4...rev5\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev4&hellip;rev5</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev5",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev5...main"
-               },
-               {
-                  "id": 237679581,
-                  "version": "rev4",
-                  "timestamp": 1754401837,
-                  "title": "Revision 4",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 4</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:52 UTC on 5 Aug 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: update ubuntu insights source-tag to v0.3.0 by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/16\">#16</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev3...rev4\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev3&hellip;rev4</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev4",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev4...main"
-               },
-               {
-                  "id": 234374596,
-                  "version": "rev3",
-                  "timestamp": 1753202190,
-                  "title": "Revision 3",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 3</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 21:14 UTC on 22 Jul 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>refactor(database): Refactor database handling into its own module by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/14\">#14</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev2...rev3\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev2&hellip;rev3</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev3",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev3...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
             "newCommits": 301,
@@ -8765,6 +8741,39 @@
             "ciActions": [
                "https://github.com/canonical/ubuntu-flutter-plugins/workflows/CI"
             ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "ubuntu-insights-k8s-operator",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "190c1698a23115ea8567f1b8fc290719bd99c51b",
+                  "author": "Kat",
+                  "timestamp": 1754403506,
+                  "message": "Merge pull request #15 from canonical/fix-rc\n\nfix(database): handle exceptions when fetching relation data",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/commit/190c1698a23115ea8567f1b8fc290719bd99c51b"
+               },
+               {
+                  "sha": "e028b4a26a9c86f0d949edd1df1df66c9aaab274",
+                  "author": "kkuo",
+                  "timestamp": 1754316300,
+                  "message": "test(charm): add tests for charm destruction and scale down functionality\n\nSigned-off-by: kkuo <kat.kuo@canonical.com>",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/commit/e028b4a26a9c86f0d949edd1df1df66c9aaab274"
+               },
+               {
+                  "sha": "dd31af2d3c9566c9055251b79f826253b0500a10",
+                  "author": "kkuo",
+                  "timestamp": 1754315558,
+                  "message": "test(charm): add scale down test for charm functionality\n\nSigned-off-by: kkuo <kat.kuo@canonical.com>",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/commit/dd31af2d3c9566c9055251b79f826253b0500a10"
+               }
+            ],
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -9013,38 +9022,32 @@
          {
             "name": "handy_window.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 0,
             "url": "https://github.com/ubuntu/handy_window.dart",
-            "releases": [
+            "releases": null,
+            "commits": [
                {
-                  "id": 145724233,
-                  "version": "v0.4.0",
+                  "sha": "ab21122b2d586aeb763e497d6a9f71150768934e",
+                  "author": "Paul Kepinski",
+                  "timestamp": 1710080420,
+                  "message": "chore(GithubActions): fix changelog github action (#49)",
+                  "url": "https://github.com/ubuntu/handy_window.dart/commit/ab21122b2d586aeb763e497d6a9f71150768934e"
+               },
+               {
+                  "sha": "a8d160e9961457e0f23a91689ba0360b153a73a7",
+                  "author": "github-actions[bot]",
                   "timestamp": 1710079277,
-                  "title": "v0.4.0",
-                  "body": "<h2><a href=\"https://github.com/ubuntu/handy_window.dart/compare/v0.3.1...v0.4.0\">0.4.0</a> (2024-03-09)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>use yaru.dart colors for window background (<a href=\"https://github.com/ubuntu/handy_window.dart/issues/47\">#47</a>) (<a href=\"https://github.com/ubuntu/handy_window.dart/commit/5f0dbafe41ba1901718a2b5e52e1c7c083c90a05\">5f0dbaf</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/ubuntu/handy_window.dart/releases/tag/v0.4.0",
-                  "compareUrl": "https://github.com/ubuntu/handy_window.dart/compare/v0.4.0...main"
+                  "message": "chore(main): release 0.4.0 (#48)\n\nCo-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/ubuntu/handy_window.dart/commit/a8d160e9961457e0f23a91689ba0360b153a73a7"
                },
                {
-                  "id": 92195307,
-                  "version": "v0.3.1",
-                  "timestamp": 1676283575,
-                  "title": "v0.3.1",
-                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Fix Adwaita white line on top when maximized by <a href=\"http://github.com/Jupi007\">@Jupi007</a> in <a href=\"https://github.com/ubuntu-flutter-community/handy_window/pull/32\">https://github.com/ubuntu-flutter-community/handy_window/pull/32</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/handy_window/compare/v0.3.0...v0.3.1\">https://github.com/ubuntu-flutter-community/handy_window/compare/v0.3.0&hellip;v0.3.1</a></p>\n",
-                  "url": "https://github.com/ubuntu/handy_window.dart/releases/tag/v0.3.1",
-                  "compareUrl": "https://github.com/ubuntu/handy_window.dart/compare/v0.3.1...main"
-               },
-               {
-                  "id": 91609397,
-                  "version": "v0.3.0",
-                  "timestamp": 1675780021,
-                  "title": "v0.3.0",
-                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update dependency yaru to ^0.5.0 by <a href=\"http://github.com/renovate\">@renovate</a> in <a href=\"https://github.com/ubuntu-flutter-community/handy_window/pull/25\">https://github.com/ubuntu-flutter-community/handy_window/pull/25</a></li>\n<li>Add option to use libhandy without widget tree manipulation by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/handy_window/pull/28\">https://github.com/ubuntu-flutter-community/handy_window/pull/28</a></li>\n<li>Revert shadow to Gtk3 one by <a href=\"http://github.com/Jupi007\">@Jupi007</a> in <a href=\"https://github.com/ubuntu-flutter-community/handy_window/pull/29\">https://github.com/ubuntu-flutter-community/handy_window/pull/29</a></li>\n<li>Release 0.3.0 by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/handy_window/pull/30\">https://github.com/ubuntu-flutter-community/handy_window/pull/30</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/handy_window/compare/v0.2.1...v0.3.0\">https://github.com/ubuntu-flutter-community/handy_window/compare/v0.2.1&hellip;v0.3.0</a></p>\n",
-                  "url": "https://github.com/ubuntu/handy_window.dart/releases/tag/v0.3.0",
-                  "compareUrl": "https://github.com/ubuntu/handy_window.dart/compare/v0.3.0...main"
+                  "sha": "5f0dbafe41ba1901718a2b5e52e1c7c083c90a05",
+                  "author": "Paul Kepinski",
+                  "timestamp": 1710015221,
+                  "message": "feat: use yaru.dart colors for window background (#47)",
+                  "url": "https://github.com/ubuntu/handy_window.dart/commit/5f0dbafe41ba1901718a2b5e52e1c7c083c90a05"
                }
             ],
-            "commits": null,
             "ciActions": [],
             "charm": null,
             "snap": null
