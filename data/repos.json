@@ -5114,25 +5114,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8762cbfb6c2cf0b725f9cf4a9a8c86409c85fad2",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1755273128,
+                  "message": "deps(go-insights): bump golang.org/x/text from 0.27.0 to 0.28.0 in /insights in the minor-updates group (#211)",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8762cbfb6c2cf0b725f9cf4a9a8c86409c85fad2"
+               },
+               {
+                  "sha": "270066849895667462e02839a7b162f7f249059e",
+                  "author": "Kat",
+                  "timestamp": 1755273101,
+                  "message": "feat(insights): Rework collector duplicate report/period logic (#209)\n\nPresently, the duplicate report/period logic for report collection is\nflawed. Period start is calculated with the formula ( time.Now() -\n(time.Now() % period ), meaning that it is fixed given the same period\nand a time that fits within the same window. While this is beneficial\nfor easy name collisions, it is problematic in that if collect is called\nright on the border of the window, no duplicate is detected. Unexpected\nbehavior can happen, it isn’t intuitive, and there is a potential\nconcern of large numbers of reports being uploaded at once from large\nnumbers of clients.\n\nTo fix this a number of things were changed in this PR:\n1. Swap to using (time - period) to get the period start for duplication\nchecks\n2. When write is forced without the dryRun flag such that duplicates are\nto be overwritten, local reports that haven’t not been uploaded younger\nthan period should be deleted (this may have some consequences if a\nsource’s period isn’t fixed, but they shouldn’t be doing this anyway).\n3. Write to disk with a file name matching the collection time (with\ncurrent time as backup) instead of the period start.\n\nAdditionally, this PR refactors the internal handling of report dirs and\ntime to simplify things and improve theoretical performance in certain\ncases.\n\n---\n[UDENG-7620](https://warthogs.atlassian.net/browse/UDENG-7620)\n\n[UDENG-7620]:\nhttps://warthogs.atlassian.net/browse/UDENG-7620?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/270066849895667462e02839a7b162f7f249059e"
+               },
+               {
                   "sha": "31ac0fcfc5adf207130217b56fd8becd4337b888",
                   "author": "dependabot[bot]",
                   "timestamp": 1755229239,
                   "message": "deps(ci): bump actions/checkout from 4 to 5 in the gh-actions group (#210)",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/31ac0fcfc5adf207130217b56fd8becd4337b888"
-               },
-               {
-                  "sha": "9a7e639960572f0a74e0027a6273251ab80521e3",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1755164155,
-                  "message": "deps(ci): bump actions/checkout from 4 to 5 in the gh-actions group\n\nBumps the gh-actions group with 1 update: [actions/checkout](https://github.com/actions/checkout).\n\n\nUpdates `actions/checkout` from 4 to 5\n- [Release notes](https://github.com/actions/checkout/releases)\n- [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/actions/checkout/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/checkout\n  dependency-version: '5'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n  dependency-group: gh-actions\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9a7e639960572f0a74e0027a6273251ab80521e3"
-               },
-               {
-                  "sha": "33a893324181c05a7824949ab7af3dc02990b2f3",
-                  "author": "Kat",
-                  "timestamp": 1755093915,
-                  "message": "fix(insights): Update log message for consent opt-out scenario (#208)\n\nThis PR downgrades the opt-out log at write time from `Warn` to `Info`\nas this is standard business logic and not indicative of an exception.\nAdditionally, the message itself has been rewritten for consistency and\nclarity.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/33a893324181c05a7824949ab7af3dc02990b2f3"
                }
             ],
             "ciActions": [
