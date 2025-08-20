@@ -5114,6 +5114,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8b74d0e50c66fdd4398704efc754bf58bd82d335",
+                  "author": "Kat",
+                  "timestamp": 1755655472,
+                  "message": "fix(insights): Fix systemd permissions error in certain environments (#217)\n\nIn certain environments, collections triggered by systemd fail due to a\npermissions error when trying to create the `~/.cache/ubuntu-insights\nfolder`. It is likely this happens with other folders as well. This only\noccurs with systemd-triggered collections and does not occur when\nrunning the same command without systemd containment. Additionally, it\nalso appears not to be an issue on Plucky or Questing, though this could\nbe due to the test environment not triggering `ProtectHome`.\n\n```\nERROR failed to collect insights: failed to create cache directory: mkdir ~: permission denied\n```\n\nThis PR resolves this issue while preserving the same containment score\nas before.\n\n---\n[UDENG-7697](https://warthogs.atlassian.net/browse/UDENG-7697)\n\n\n[UDENG-7697]:\nhttps://warthogs.atlassian.net/browse/UDENG-7697?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8b74d0e50c66fdd4398704efc754bf58bd82d335"
+               },
+               {
                   "sha": "c88e214476abb2642efc48962b2c60b166a9898d",
                   "author": "Kat",
                   "timestamp": 1755647498,
@@ -5121,18 +5128,11 @@
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/c88e214476abb2642efc48962b2c60b166a9898d"
                },
                {
-                  "sha": "50026feb4b3c5220d376075ddcb0bb26c257c27f",
+                  "sha": "0acca7b4a84a890661ddaaa36cb94f5405a3da63",
                   "author": "kkuo",
-                  "timestamp": 1755618118,
-                  "message": "docs: Add security policy and vulnerability reporting guidelines",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/50026feb4b3c5220d376075ddcb0bb26c257c27f"
-               },
-               {
-                  "sha": "8f2dc8b08f69aca2ae23986a151182311d8aec7d",
-                  "author": "Kat",
-                  "timestamp": 1755616888,
-                  "message": "fix(insights): Fix upload timer description to reflect 8 minutes after boot (#214)\n\nFixes the upload systemd timer description to reflect the 8-minute\npost-boot timer, not 5 minutes.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8f2dc8b08f69aca2ae23986a151182311d8aec7d"
+                  "timestamp": 1755645716,
+                  "message": "fix(insights): Fix systemd permissions error in certain environments",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0acca7b4a84a890661ddaaa36cb94f5405a3da63"
                }
             ],
             "ciActions": [
