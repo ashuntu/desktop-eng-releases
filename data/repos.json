@@ -5114,25 +5114,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "22cb838b23735507e4d6fa8ec2fe0bba879cabbe",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1756129088,
-                  "message": "deps(go-insights): bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0 in /insights (#223)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/22cb838b23735507e4d6fa8ec2fe0bba879cabbe"
+                  "sha": "a38cb622f8d420b2f483fa71640f4e3ba2f37ec5",
+                  "author": "Kat",
+                  "timestamp": 1756148072,
+                  "message": "fix(insights): Fix misleading \"No source provided\" log when using Compile (#226)\n\nThis PR prevents the misleading log \"No source provided, defaulting to\nplatform\" from being printed when using `Compile` via either the Go API\nor C bindings. Since `source` has no meaning when using `Compile`, this\nmessage does not make sense.\n\nThis is only a workaround for now until the collector is refactored.\nCurrently, this message is caused by the sanitation of the collector\nconfig when a new collector is being made. If the source is not set at\nsanitation time, then this message is logged. Since `source` is\nmeaningless when only compiling, this workaround just sets it to an\narbitrary value.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a38cb622f8d420b2f483fa71640f4e3ba2f37ec5"
                },
                {
-                  "sha": "0f55ed9ecbf48c8da51d6b197914a601c587980e",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1756129064,
-                  "message": "deps(go-tools): bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0 in /tools (#224)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0f55ed9ecbf48c8da51d6b197914a601c587980e"
+                  "sha": "0fa0e22977c1f6009899c3999e227fc07e39d87d",
+                  "author": "Kat",
+                  "timestamp": 1756148052,
+                  "message": "feat(common): Implement function to set slog to use a JSON handler (#220)\n\nThis PR adds the SetSlog to the `common` module, allowing for the level\nas well as whether a JSON handler is used for the default logger.\n\nThese changes do not result in breaking or behavioral changes to users\nalready using `SetVerbosity`.\n\nThough it isn't planned for the client to support JSON logging, by\nimplementing this logic within the `common` module, we can leverage and\nmaintain consistency with the defaults defined by the `common` module.\nFor simplicity, the new function only takes an int level and a boolean,\nas we don't expect to ever need handlers other than the default text\none, and JSON.\n\nThis change requires a new tag to be pushed for the `common` module.\n\n---\n[UDENG-7662](https://warthogs.atlassian.net/browse/UDENG-7662)\n\n\n[UDENG-7662]:\nhttps://warthogs.atlassian.net/browse/UDENG-7662?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0fa0e22977c1f6009899c3999e227fc07e39d87d"
                },
                {
-                  "sha": "908ffa2a52494f9cda6f44e5ba39358e58d9549d",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1756129045,
-                  "message": "deps(go-common): bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0 in /common (#225)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/908ffa2a52494f9cda6f44e5ba39358e58d9549d"
+                  "sha": "9c7018d3d506c824da826ec295c4dd52636eb708",
+                  "author": "Kat",
+                  "timestamp": 1756147331,
+                  "message": "fix(insights): Change all references to \"global consent\" to \"default consent\" (#222)\n\nThis PR changes all references to \"global consent,\" both in\ndocumentation and in internal names and test fixtures, to \"default\nconsent.\" This is because \"global consent' does not properly describe\nthe behavior that truly occurs with this special consent type. \"Default\nconsent\" is a more accurate term, as it is the consent that the\napplication defaults to should it be unable to determine a more specific\nconsent.\n\nAdditionally, one unused golden file was deleted.\n\nThese changes cause no breaking changes and are only noticeable to end\nusers in the changes to documentation and to logs.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9c7018d3d506c824da826ec295c4dd52636eb708"
                }
             ],
             "ciActions": [
