@@ -6581,29 +6581,6 @@
             "snap": null
          },
          {
-            "name": "ubuntu-pro-for-wsl",
-            "defaultBranch": "main",
-            "newCommits": 2,
-            "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
-            "releases": [
-               {
-                  "id": 242636265,
-                  "version": "0.9999.2b1",
-                  "timestamp": 1756226410,
-                  "title": "0.9999.2.0",
-                  "body": "<p>Test</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/0.9999.2b1",
-                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/0.9999.2b1...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [
-               "https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/qa.yaml"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -6679,6 +6656,41 @@
             "commits": null,
             "ciActions": [
                "https://github.com/canonical/ubuntu-flutter-plugins/workflows/CI"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "ubuntu-pro-for-wsl",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "ba1cf19437554ca369f2f3ec3264c4ebf282a159",
+                  "author": "Shane Crowley",
+                  "timestamp": 1756200422,
+                  "message": "fix(docs): tar create command, add one-file-system parameter to ignore chroot (#1305)\n\nThe documented tar command doesn't work as followed for two reasons:\n\n1. The tar parameters are out of order, resulting in a failure.\n2. The tar command does not ignore the chrooted directories, resulting\nin tar getting stuck.\n\nUnsure if this is the best way to solve it as I looked around at the WSL\nimage, ubuntu minimal, and even ubuntu base. Some stack overflow posts\nrecommend re-mounting the rootfs to another path to also grab the\nstatically-created files under /dev. However, in my testing it didn't\nappear this mattered as the WSL image loaded successfully and WSL\nre-created /dev.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/ba1cf19437554ca369f2f3ec3264c4ebf282a159"
+               },
+               {
+                  "sha": "f6a548602410cdfc062bf897dcc0f3f6327db842",
+                  "author": "miketheitguy",
+                  "timestamp": 1756011522,
+                  "message": "fix tar create command, add one-file-system parameter to ignore chroot",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f6a548602410cdfc062bf897dcc0f3f6327db842"
+               },
+               {
+                  "sha": "47b88bc481e0b0a2b61fb3a425948d59a838285f",
+                  "author": "Shane Crowley",
+                  "timestamp": 1755875243,
+                  "message": "docs: install guide fixes (#1302)\n\nSeveral changes are made here to improve the install guide:\n\n* Clarification of what the `wsl --install` command does (installs and\nenables WSL on a fresh system)\n* Clarification that a reboot is required after installing and enabling\nWSL\n* Clarification that the default WSL distro is Ubuntu but that it can be\nchanged\n* Simplification of section on install from Microsoft Store\n* Deletion of image assets that we don't need\n* Some minor fixes for style and flow\n\nUDENG-7611",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/47b88bc481e0b0a2b61fb3a425948d59a838285f"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/qa.yaml"
             ],
             "charm": null,
             "snap": null
