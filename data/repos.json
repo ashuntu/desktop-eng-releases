@@ -5114,25 +5114,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fe615cfabce82f65edac9d4f9bd3b0ec298b00a7",
+                  "author": "Kat",
+                  "timestamp": 1756209873,
+                  "message": "maint(insights): Correct spelling of 'initializePaths' function (#229)",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/fe615cfabce82f65edac9d4f9bd3b0ec298b00a7"
+               },
+               {
+                  "sha": "3d6062dc72b9ef2e0f33d64dd6080c5ac7d4c085",
+                  "author": "kkuo",
+                  "timestamp": 1756172586,
+                  "message": "insights: Correct spelling of 'initializePaths' function",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/3d6062dc72b9ef2e0f33d64dd6080c5ac7d4c085"
+               },
+               {
                   "sha": "a38cb622f8d420b2f483fa71640f4e3ba2f37ec5",
                   "author": "Kat",
                   "timestamp": 1756148072,
                   "message": "fix(insights): Fix misleading \"No source provided\" log when using Compile (#226)\n\nThis PR prevents the misleading log \"No source provided, defaulting to\nplatform\" from being printed when using `Compile` via either the Go API\nor C bindings. Since `source` has no meaning when using `Compile`, this\nmessage does not make sense.\n\nThis is only a workaround for now until the collector is refactored.\nCurrently, this message is caused by the sanitation of the collector\nconfig when a new collector is being made. If the source is not set at\nsanitation time, then this message is logged. Since `source` is\nmeaningless when only compiling, this workaround just sets it to an\narbitrary value.",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/a38cb622f8d420b2f483fa71640f4e3ba2f37ec5"
-               },
-               {
-                  "sha": "0fa0e22977c1f6009899c3999e227fc07e39d87d",
-                  "author": "Kat",
-                  "timestamp": 1756148052,
-                  "message": "feat(common): Implement function to set slog to use a JSON handler (#220)\n\nThis PR adds the SetSlog to the `common` module, allowing for the level\nas well as whether a JSON handler is used for the default logger.\n\nThese changes do not result in breaking or behavioral changes to users\nalready using `SetVerbosity`.\n\nThough it isn't planned for the client to support JSON logging, by\nimplementing this logic within the `common` module, we can leverage and\nmaintain consistency with the defaults defined by the `common` module.\nFor simplicity, the new function only takes an int level and a boolean,\nas we don't expect to ever need handlers other than the default text\none, and JSON.\n\nThis change requires a new tag to be pushed for the `common` module.\n\n---\n[UDENG-7662](https://warthogs.atlassian.net/browse/UDENG-7662)\n\n\n[UDENG-7662]:\nhttps://warthogs.atlassian.net/browse/UDENG-7662?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0fa0e22977c1f6009899c3999e227fc07e39d87d"
-               },
-               {
-                  "sha": "9c7018d3d506c824da826ec295c4dd52636eb708",
-                  "author": "Kat",
-                  "timestamp": 1756147331,
-                  "message": "fix(insights): Change all references to \"global consent\" to \"default consent\" (#222)\n\nThis PR changes all references to \"global consent,\" both in\ndocumentation and in internal names and test fixtures, to \"default\nconsent.\" This is because \"global consent' does not properly describe\nthe behavior that truly occurs with this special consent type. \"Default\nconsent\" is a more accurate term, as it is the consent that the\napplication defaults to should it be unable to determine a more specific\nconsent.\n\nAdditionally, one unused golden file was deleted.\n\nThese changes cause no breaking changes and are only noticeable to end\nusers in the changes to documentation and to logs.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9c7018d3d506c824da826ec295c4dd52636eb708"
                }
             ],
             "ciActions": [
@@ -7216,6 +7216,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "13b688088e64d9cbd9cbbf725298673fe9971581",
+                  "author": "adombeck",
+                  "timestamp": 1756207869,
+                  "message": "Bump Go toolchain version to 1.23.10 (#123)",
+                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/13b688088e64d9cbd9cbbf725298673fe9971581"
+               },
+               {
                   "sha": "38a1599cbd93ff8fdd8a43d348d02e4997ef05d4",
                   "author": "adombeck",
                   "timestamp": 1756197088,
@@ -7228,13 +7235,6 @@
                   "timestamp": 1756196967,
                   "message": "deps(ci): bump actions/checkout from 4 to 5 (#121)",
                   "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/9b1cd64090d0b1f7b0cb2559547eb6193fcc9987"
-               },
-               {
-                  "sha": "83258b8b3b48a7ca7ad24f81d0570c56e3121ea2",
-                  "author": "adombeck",
-                  "timestamp": 1756196945,
-                  "message": "deps(go-tools): bump golang.org/x/tools from 0.31.0 to 0.36.0 in /tools (#120)",
-                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/83258b8b3b48a7ca7ad24f81d0570c56e3121ea2"
                }
             ],
             "ciActions": [
@@ -9252,25 +9252,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "40cbbe904499f7ef89e5a1205e5a2ae547645e78",
-                  "author": "Vincent Renzo Quilon",
-                  "timestamp": 1754159409,
-                  "message": "Added missing bluetooth-acquiring-symbolic icon (#4267)",
-                  "url": "https://github.com/ubuntu/yaru/commit/40cbbe904499f7ef89e5a1205e5a2ae547645e78"
+                  "sha": "0959d6f38445630733b3d6d882ec1d56f985de8c",
+                  "author": "ochi12",
+                  "timestamp": 1753357245,
+                  "message": "Added Small Changes\n- fold effect\n- changed base color and screen color\n- decresed the bezel size of 32x32 icon. Keeped the bezel size of 16x16\n  icon as it turns out to be too thin (1px bezel) when adjusted",
+                  "url": "https://github.com/ubuntu/yaru/commit/0959d6f38445630733b3d6d882ec1d56f985de8c"
                },
                {
-                  "sha": "2bee87ad378df34c1516127d20f0ae18f95263f4",
-                  "author": "Vincent Renzo Quilon",
-                  "timestamp": 1753302772,
-                  "message": "Added missing cog-wheel-symbolic icon for gnome settings (#4258)\n\n* Added missing cog-wheel-symbolic icon for gnome settings\n\n* Included 'org.gnome.Settings' to the context list inside generate-symlinks.sh\n\n* Deleted duplicate cog wheel icons\n\n* Added new symlink list file named 'org.gnome.Settings.list'  and transformed the previously deleted duplicate cog wheel icons to symlinks",
-                  "url": "https://github.com/ubuntu/yaru/commit/2bee87ad378df34c1516127d20f0ae18f95263f4"
+                  "sha": "4e73f9cab182f926bd359f58e48ea4f997283b76",
+                  "author": "ochi12",
+                  "timestamp": 1748660937,
+                  "message": "fixed size 24 icons",
+                  "url": "https://github.com/ubuntu/yaru/commit/4e73f9cab182f926bd359f58e48ea4f997283b76"
                },
                {
-                  "sha": "23db86c6335f11d55cc53a4f195cb5c4806cd41a",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1752206454,
-                  "message": "Upload to questing",
-                  "url": "https://github.com/ubuntu/yaru/commit/23db86c6335f11d55cc53a4f195cb5c4806cd41a"
+                  "sha": "74ec01062b468c705297d04dbb29597aa98986cf",
+                  "author": "ochi12",
+                  "timestamp": 1748611690,
+                  "message": "Initial Commit",
+                  "url": "https://github.com/ubuntu/yaru/commit/74ec01062b468c705297d04dbb29597aa98986cf"
                }
             ],
             "ciActions": [],
