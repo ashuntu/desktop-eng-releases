@@ -992,6 +992,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ecdc0fb8b61ccedd9b32835986506bc4ec4410bd",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1756452319,
+                  "message": "Update tag",
+                  "url": "https://github.com/ubuntu/gnome-contacts/commit/ecdc0fb8b61ccedd9b32835986506bc4ec4410bd"
+               },
+               {
                   "sha": "d16d34e4f4d6e9352e645a7aaa6297270e721e20",
                   "author": "github-actions[bot]",
                   "timestamp": 1754033659,
@@ -1004,13 +1011,6 @@
                   "timestamp": 1751009270,
                   "message": "Update tag",
                   "url": "https://github.com/ubuntu/gnome-contacts/commit/12f7a0e030e85f788e2dd6d1ab7821ade2d13edb"
-               },
-               {
-                  "sha": "2086e86ef5090da8e81485d805d80db9a58d7c19",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1749628640,
-                  "message": "Fix deprecated CRAFT_ARCH_TRIPLET.",
-                  "url": "https://github.com/ubuntu/gnome-contacts/commit/2086e86ef5090da8e81485d805d80db9a58d7c19"
                }
             ],
             "ciActions": [],
@@ -7043,25 +7043,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "21e891f46e542be0f18f80dacef1e3f933f00a43",
+                  "sha": "736d6e86c2a6205d9e68d48b9021b88857da87bd",
                   "author": "adombeck",
-                  "timestamp": 1756379504,
-                  "message": "deps(go): bump github.com/stretchr/testify from 1.10.0 to 1.11.1 in the minor-updates group (#1044)",
-                  "url": "https://github.com/ubuntu/authd/commit/21e891f46e542be0f18f80dacef1e3f933f00a43"
+                  "timestamp": 1756455361,
+                  "message": "Improve log messages printed by the nss module (#1043)\n\nUDENG-7780",
+                  "url": "https://github.com/ubuntu/authd/commit/736d6e86c2a6205d9e68d48b9021b88857da87bd"
                },
                {
-                  "sha": "e6eeef16fa6ac5a9b0b308fede2c0e4de13756cd",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1756376801,
-                  "message": "deps(go): bump github.com/stretchr/testify in the minor-updates group\n\nBumps the minor-updates group with 1 update: [github.com/stretchr/testify](https://github.com/stretchr/testify).\n\n\nUpdates `github.com/stretchr/testify` from 1.10.0 to 1.11.1\n- [Release notes](https://github.com/stretchr/testify/releases)\n- [Commits](https://github.com/stretchr/testify/compare/v1.10.0...v1.11.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/stretchr/testify\n  dependency-version: 1.11.1\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd/commit/e6eeef16fa6ac5a9b0b308fede2c0e4de13756cd"
+                  "sha": "7c66aa123bbb435b33fa15a8be1e8e55c07201cd",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1756328582,
+                  "message": "nss: Prefix the syslog log messages with [nss-authd]\n\nPrefix messages printed to the syslog with a [nss-authd] tag, so that\nit's clear that it's the authd NSS module which prints these messages.\n\nAlso, omit the date from messages printed to stderr.\n\nThis changes messages printed to stderr from:\n\n    2025-08-27T21:17:23.792Z INFO  [nss_authd::logs] authd: Log output set to stderr\n\nto:\n\n    11:44:45 INFO [nss-authd::logs] Log output set to stderr\n\nand messages printed to the syslog from:\n\n    getent[274318]: authd: Log output set to syslog\n\nto:\n\n    getent[274561]: [nss-authd] Log output set to syslog",
+                  "url": "https://github.com/ubuntu/authd/commit/7c66aa123bbb435b33fa15a8be1e8e55c07201cd"
                },
                {
-                  "sha": "9cd59b96b98f645febb7b81a6db40bb7103f704e",
-                  "author": "adombeck",
-                  "timestamp": 1756152871,
-                  "message": "deps(go): bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0 (#1038)",
-                  "url": "https://github.com/ubuntu/authd/commit/9cd59b96b98f645febb7b81a6db40bb7103f704e"
+                  "sha": "5160c500370e5c564a47204b8e1e272c8dbb566d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1756328472,
+                  "message": "nss: Use actual process name in syslog messages\n\nThe NSS module is a library that's being used by other processes. Let's\nnot pretend that the process name is \"authd\" but use the name of\nthe executable of the process.\n\nThis changes the messages from:\n\n    authd[274318]: authd: Log output set to syslog\n\nto:\n\n    getent[274416]: authd: Log output set to syslog",
+                  "url": "https://github.com/ubuntu/authd/commit/5160c500370e5c564a47204b8e1e272c8dbb566d"
                }
             ],
             "ciActions": [
