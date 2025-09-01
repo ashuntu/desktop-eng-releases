@@ -7043,25 +7043,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "736d6e86c2a6205d9e68d48b9021b88857da87bd",
+                  "sha": "8b9eec5b5e538412292382fb2071175be14c8179",
                   "author": "adombeck",
-                  "timestamp": 1756455361,
-                  "message": "Improve log messages printed by the nss module (#1043)\n\nUDENG-7780",
-                  "url": "https://github.com/ubuntu/authd/commit/736d6e86c2a6205d9e68d48b9021b88857da87bd"
+                  "timestamp": 1756732928,
+                  "message": "deps(rust): bump the minor-updates group with 5 updates (#1045)",
+                  "url": "https://github.com/ubuntu/authd/commit/8b9eec5b5e538412292382fb2071175be14c8179"
                },
                {
-                  "sha": "7c66aa123bbb435b33fa15a8be1e8e55c07201cd",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1756328582,
-                  "message": "nss: Prefix the syslog log messages with [nss-authd]\n\nPrefix messages printed to the syslog with a [nss-authd] tag, so that\nit's clear that it's the authd NSS module which prints these messages.\n\nAlso, omit the date from messages printed to stderr.\n\nThis changes messages printed to stderr from:\n\n    2025-08-27T21:17:23.792Z INFO  [nss_authd::logs] authd: Log output set to stderr\n\nto:\n\n    11:44:45 INFO [nss-authd::logs] Log output set to stderr\n\nand messages printed to the syslog from:\n\n    getent[274318]: authd: Log output set to syslog\n\nto:\n\n    getent[274561]: [nss-authd] Log output set to syslog",
-                  "url": "https://github.com/ubuntu/authd/commit/7c66aa123bbb435b33fa15a8be1e8e55c07201cd"
+                  "sha": "a30d2fdbd55ebc266c40b064f71e7bee49c2e2e4",
+                  "author": "adombeck",
+                  "timestamp": 1756732441,
+                  "message": "Fix cargo always treating nss crate as dirty (#1042)\n\nUDENG-7825",
+                  "url": "https://github.com/ubuntu/authd/commit/a30d2fdbd55ebc266c40b064f71e7bee49c2e2e4"
                },
                {
-                  "sha": "5160c500370e5c564a47204b8e1e272c8dbb566d",
+                  "sha": "3d2b7887cad04c39d4e3fc9958ce9ebad81d5741",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1756328472,
-                  "message": "nss: Use actual process name in syslog messages\n\nThe NSS module is a library that's being used by other processes. Let's\nnot pretend that the process name is \"authd\" but use the name of\nthe executable of the process.\n\nThis changes the messages from:\n\n    authd[274318]: authd: Log output set to syslog\n\nto:\n\n    getent[274416]: authd: Log output set to syslog",
-                  "url": "https://github.com/ubuntu/authd/commit/5160c500370e5c564a47204b8e1e272c8dbb566d"
+                  "timestamp": 1756332682,
+                  "message": "tests: Run cargo with --verbose flag if AUTHD_TEST_VERBOSITY is set",
+                  "url": "https://github.com/ubuntu/authd/commit/3d2b7887cad04c39d4e3fc9958ce9ebad81d5741"
                }
             ],
             "ciActions": [
