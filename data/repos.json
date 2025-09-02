@@ -5114,25 +5114,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8a7369b736f2344e5db59bb4deeb6260007fc7b3",
+                  "sha": "34cc0235eb578dd0c97ebfe643ddec268ea8b257",
                   "author": "Kat",
-                  "timestamp": 1756823495,
-                  "message": "ci: Use go/code-sanity@v1 (#237)\n\nWe're about to merge a breaking change in the `go/code-sanity` GitHub\nAction ([use of golangci-lint v2 instead of\nv1](https://github.com/canonical/desktop-engineering/pull/75)), so to\navoid breaking the CI, we need to switch to `go/code-sanity@v1` instead\nof `go/code-sanity@main`.\n\nOnce the change has been merged, I will prepare a follow-up PR to\nmigrate the `.golangci.yaml` to the v2 format and use\n`go/code-sanity@v2`.\n\nUDENG-7801",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8a7369b736f2344e5db59bb4deeb6260007fc7b3"
+                  "timestamp": 1756844811,
+                  "message": "fix(ingest-service): Fix potential leaking of credentials in logs  (#227)\n\nThis PR fixes a number of potential leaks of database credentials in\nlogs.\n\n- The parsed config in the logs when starting the ingest service now\nredacts the password first.\n- URI building for both standard operation and for the migrate command\nhas been reworked to improve its reciliency.\n- This change prevents a situation where errors would cause leaks should\na password but no user be passed to the service.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/34cc0235eb578dd0c97ebfe643ddec268ea8b257"
                },
                {
-                  "sha": "2da6b14ecad67c9e4de179bc7ed617708db7b62b",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1756744912,
-                  "message": "ci: Use go/code-sanity@v1\n\nWe're about to merge a breaking change in the go/code-sanity GitHub\nAction (use of golangci-lint v2 instead of v1), so to avoid breaking the\nCI, we need to switch to go/code-sanity@v1 instead of\ngo/code-sanity@main.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/2da6b14ecad67c9e4de179bc7ed617708db7b62b"
+                  "sha": "950235d8eb0ba0377ab35a15bb4468c667f23c36",
+                  "author": "kkuo",
+                  "timestamp": 1756162429,
+                  "message": "ingest-server: Fix possible leaks of the database password",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/950235d8eb0ba0377ab35a15bb4468c667f23c36"
                },
                {
-                  "sha": "2e562301841bf043a0e86856fa7813f481d5430c",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1756391755,
-                  "message": "deps(go-server): bump github.com/stretchr/testify from 1.10.0 to 1.11.1 in /server in the minor-updates group (#232)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/2e562301841bf043a0e86856fa7813f481d5430c"
+                  "sha": "47ba5bf0afd7236d110a4b24338c6e8ee59eb4f6",
+                  "author": "kkuo",
+                  "timestamp": 1756152486,
+                  "message": "ingest-server: Fix misleading pool creation log and add database ping check when creating pool",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/47ba5bf0afd7236d110a4b24338c6e8ee59eb4f6"
                }
             ],
             "ciActions": [
