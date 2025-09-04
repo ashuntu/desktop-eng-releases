@@ -5215,25 +5215,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f83e4df49b3583272d5ca499ca63b426b934a1f3",
+                  "sha": "a212661c0e5197f420f82f8a15914cc677d45076",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753393210,
-                  "message": "Remove the systemd-binfmt override (#25)\n\nSince WSL 2.5.7 we have a systemd generator that protects interop by\nregenerating the WSL binfmt entry.\nThus, services like systemd-binfmt are no longer a concern.\n\nUsers on older versions of WSL should rely on docs while those on the\nlatest stable should find the expected behaviour by default.\n\nAs a precaution I confirmed locally that dpkg indeed removes the file\nupon upgrade.\n\nCloses #11\n\n---\nUDENG-6126",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/f83e4df49b3583272d5ca499ca63b426b934a1f3"
+                  "timestamp": 1757006739,
+                  "message": "fix: Case-fold the Windows  username before sanitization (#26)\n\nThe `wsl-setup` script reads the Windows user name and sanitizes it,\ndropping invalid characters for a Linux user name, including ASCII upper\ncase letters. We could case fold the username first and then drop the\ninvalid ones, making it a bit less surprising. That would still have\nsome nasty cases we cannot handle in a smart way, like `MartínJoão`\nbeing\nconverted into `martnjoo` but that’s why we prompt for the username, to\nlet users edit that before actual submission.\n\nWhile case folding can be done with `tr \"[:upper:]\" \"[:lower:]\"` or even\nbetter `awk '{print tolower(0)}'` (awk handles Unicode better), better\nyet\nis to leverage PowerShell because then we're guaranteed to respect the\nWindows user locale (a WSL instance could be set up with a different\nlocale and the case-folding results couldn't match the user's\nexpectation).\n\nTo illustrate how this works:\n\n```bash\nj@DESKTOP-551PQ9O:~$ lsb_release -a\nNo LSB modules are available.\nDistributor ID: Ubuntu\nDescription:    Ubuntu 20.04.6 LTS\nRelease:        20.04\nCodename:       focal\n\nj@DESKTOP-551PQ9O:~$ powershell.exe -Command '$Env:Username'\nJoão\n\nj@DESKTOP-551PQ9O:~$ var=\"Username\"; powershell.exe -NoProfile -Command '& {\n[Console]::OutputEncoding = [System.Text.Encoding]::UTF8\n$Env:'\"${var}\"'}'\nJoão\n\nj@DESKTOP-551PQ9O:~$ var=\"Username.ToLower()\"; powershell.exe -NoProfile -Command '& {\n[Console]::OutputEncoding = [System.Text.Encoding]::UTF8\n$Env:'\"${var}\"'}'\njoão\n\n```\n\nIn the example above the username would be sanitized to: `oo`\nbut with the changes it would at least be: `joo`\n(the 'ã' is still dropped, but it's much easier to add it).\n\nThe motivation for this change came from a user named `AdminUser`.\nThat would originally be sanitized to: `dminser`\nbut now it becomes: `adminuser`\n\nOne must remember that in the end this name is just a suggestion\nprefilling a read input. User is free to edit it before hitting enter\nand submitting the username to the `adduser` program.\n\n---\n\nUDENG-7489",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a212661c0e5197f420f82f8a15914cc677d45076"
                },
                {
-                  "sha": "e6fda479213d3139fc792ef60174c2a950dbef85",
+                  "sha": "dbb9dc07ebbbf7e97835be09d19fc398114e637a",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753391996,
-                  "message": "Update changelog\n\nThe commit 2941379bfe8ac71d3ac1cf9da14207e7b583fa56 that releases\nversion 0.5.9 is detached from the main branch (sorry).\nThat's why we see 0.5.9 and 0.5.10 being added here.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/e6fda479213d3139fc792ef60174c2a950dbef85"
+                  "timestamp": 1756994995,
+                  "message": "Update the changelog",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/dbb9dc07ebbbf7e97835be09d19fc398114e637a"
                },
                {
-                  "sha": "254e28002b2e85816a5383cf0722e92c7ae1cd87",
+                  "sha": "8c9fe314b77217c30a33a58f21c1464696382e96",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753388252,
-                  "message": "Remove the systemd-binfmt override\n\nSince WSL 2.5.7 we have a systemd generator that protects interop\nby regenerating the WSL binfmt entry.\nThus, services like systemd-binfmt are no longer a concern.\n\nUsers on older versions of WSL should rely on docs while those on the\nlatest stable should find the expected behaviour by default.\n\nCloses #11",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/254e28002b2e85816a5383cf0722e92c7ae1cd87"
+                  "timestamp": 1756993790,
+                  "message": "PowerShell to output Windows username case-folded\n\nThe wsl-setup script reads the Windows user name and sanitizes it,\ndropping invalid characters for a Linux user name, including ASCII upper\ncase letters. We could case fold the username first and then drop the\ninvalid ones, making it a bit less surprising. That would still have\nsome nasty cases we cannot handle in a smart way, like; MartínJoão being\nconverted into martnjoo but that’s why we prompt for the username, to\nlet users edit that before actual submission.\n\nWhile case folding can be done with  tr \"[:upper:]\" \"[:lower:]\" or even\nbetter awk '{print tolower(0)}' (awk handles Unicode better), better yet\nis to leverage PowerShell because then we're guaranteed to respect the\nWindows user locale (a WSL instance could be set up with a different\nlocale and the case-folding results couldn't match the user's\nexpectation).\n\nTo illustrate how this works:\n\n```bash\nj@DESKTOP-551PQ9O:~$ lsb_release -a\nNo LSB modules are available.\nDistributor ID: Ubuntu\nDescription:    Ubuntu 20.04.6 LTS\nRelease:        20.04\nCodename:       focal\n\nj@DESKTOP-551PQ9O:~$ powershell.exe -Command '$Env:Username'\nJoão\n\nj@DESKTOP-551PQ9O:~$ var=\"Username\"; powershell.exe -NoProfile -Command '& {\n[Console]::OutputEncoding = [System.Text.Encoding]::UTF8\n$Env:'\"${var}\"'}'\nJoão\n\nj@DESKTOP-551PQ9O:~$ var=\"Username.ToLower()\"; powershell.exe -NoProfile -Command '& {\n[Console]::OutputEncoding = [System.Text.Encoding]::UTF8\n$Env:'\"${var}\"'}'\njoão\n\n```\n\nIn the example above the username would be sanitized to: oo\nbut with the changes it would at least be: joo\n(the 'ã' is still dropped, but it's much easier to add it).\n\nThe motivation for this change came from a user named AdminUser.\nThat would originally be sanitized to: dminser\nbut now it becomes: adminuser\n\nOne must remember that in the end this name is just a suggestion\nprefilling a read input. User is free to edit it before hitting enter\nand submitting the username to the adduser program.\n\n---\n\nUDENG-7489",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/8c9fe314b77217c30a33a58f21c1464696382e96"
                }
             ],
             "ciActions": [],
@@ -7296,25 +7296,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f83e4df49b3583272d5ca499ca63b426b934a1f3",
+                  "sha": "a212661c0e5197f420f82f8a15914cc677d45076",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753393210,
-                  "message": "Remove the systemd-binfmt override (#25)\n\nSince WSL 2.5.7 we have a systemd generator that protects interop by\nregenerating the WSL binfmt entry.\nThus, services like systemd-binfmt are no longer a concern.\n\nUsers on older versions of WSL should rely on docs while those on the\nlatest stable should find the expected behaviour by default.\n\nAs a precaution I confirmed locally that dpkg indeed removes the file\nupon upgrade.\n\nCloses #11\n\n---\nUDENG-6126",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/f83e4df49b3583272d5ca499ca63b426b934a1f3"
+                  "timestamp": 1757006739,
+                  "message": "fix: Case-fold the Windows  username before sanitization (#26)\n\nThe `wsl-setup` script reads the Windows user name and sanitizes it,\ndropping invalid characters for a Linux user name, including ASCII upper\ncase letters. We could case fold the username first and then drop the\ninvalid ones, making it a bit less surprising. That would still have\nsome nasty cases we cannot handle in a smart way, like `MartínJoão`\nbeing\nconverted into `martnjoo` but that’s why we prompt for the username, to\nlet users edit that before actual submission.\n\nWhile case folding can be done with `tr \"[:upper:]\" \"[:lower:]\"` or even\nbetter `awk '{print tolower(0)}'` (awk handles Unicode better), better\nyet\nis to leverage PowerShell because then we're guaranteed to respect the\nWindows user locale (a WSL instance could be set up with a different\nlocale and the case-folding results couldn't match the user's\nexpectation).\n\nTo illustrate how this works:\n\n```bash\nj@DESKTOP-551PQ9O:~$ lsb_release -a\nNo LSB modules are available.\nDistributor ID: Ubuntu\nDescription:    Ubuntu 20.04.6 LTS\nRelease:        20.04\nCodename:       focal\n\nj@DESKTOP-551PQ9O:~$ powershell.exe -Command '$Env:Username'\nJoão\n\nj@DESKTOP-551PQ9O:~$ var=\"Username\"; powershell.exe -NoProfile -Command '& {\n[Console]::OutputEncoding = [System.Text.Encoding]::UTF8\n$Env:'\"${var}\"'}'\nJoão\n\nj@DESKTOP-551PQ9O:~$ var=\"Username.ToLower()\"; powershell.exe -NoProfile -Command '& {\n[Console]::OutputEncoding = [System.Text.Encoding]::UTF8\n$Env:'\"${var}\"'}'\njoão\n\n```\n\nIn the example above the username would be sanitized to: `oo`\nbut with the changes it would at least be: `joo`\n(the 'ã' is still dropped, but it's much easier to add it).\n\nThe motivation for this change came from a user named `AdminUser`.\nThat would originally be sanitized to: `dminser`\nbut now it becomes: `adminuser`\n\nOne must remember that in the end this name is just a suggestion\nprefilling a read input. User is free to edit it before hitting enter\nand submitting the username to the `adduser` program.\n\n---\n\nUDENG-7489",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a212661c0e5197f420f82f8a15914cc677d45076"
                },
                {
-                  "sha": "e6fda479213d3139fc792ef60174c2a950dbef85",
+                  "sha": "dbb9dc07ebbbf7e97835be09d19fc398114e637a",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753391996,
-                  "message": "Update changelog\n\nThe commit 2941379bfe8ac71d3ac1cf9da14207e7b583fa56 that releases\nversion 0.5.9 is detached from the main branch (sorry).\nThat's why we see 0.5.9 and 0.5.10 being added here.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/e6fda479213d3139fc792ef60174c2a950dbef85"
+                  "timestamp": 1756994995,
+                  "message": "Update the changelog",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/dbb9dc07ebbbf7e97835be09d19fc398114e637a"
                },
                {
-                  "sha": "254e28002b2e85816a5383cf0722e92c7ae1cd87",
+                  "sha": "8c9fe314b77217c30a33a58f21c1464696382e96",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1753388252,
-                  "message": "Remove the systemd-binfmt override\n\nSince WSL 2.5.7 we have a systemd generator that protects interop\nby regenerating the WSL binfmt entry.\nThus, services like systemd-binfmt are no longer a concern.\n\nUsers on older versions of WSL should rely on docs while those on the\nlatest stable should find the expected behaviour by default.\n\nCloses #11",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/254e28002b2e85816a5383cf0722e92c7ae1cd87"
+                  "timestamp": 1756993790,
+                  "message": "PowerShell to output Windows username case-folded\n\nThe wsl-setup script reads the Windows user name and sanitizes it,\ndropping invalid characters for a Linux user name, including ASCII upper\ncase letters. We could case fold the username first and then drop the\ninvalid ones, making it a bit less surprising. That would still have\nsome nasty cases we cannot handle in a smart way, like; MartínJoão being\nconverted into martnjoo but that’s why we prompt for the username, to\nlet users edit that before actual submission.\n\nWhile case folding can be done with  tr \"[:upper:]\" \"[:lower:]\" or even\nbetter awk '{print tolower(0)}' (awk handles Unicode better), better yet\nis to leverage PowerShell because then we're guaranteed to respect the\nWindows user locale (a WSL instance could be set up with a different\nlocale and the case-folding results couldn't match the user's\nexpectation).\n\nTo illustrate how this works:\n\n```bash\nj@DESKTOP-551PQ9O:~$ lsb_release -a\nNo LSB modules are available.\nDistributor ID: Ubuntu\nDescription:    Ubuntu 20.04.6 LTS\nRelease:        20.04\nCodename:       focal\n\nj@DESKTOP-551PQ9O:~$ powershell.exe -Command '$Env:Username'\nJoão\n\nj@DESKTOP-551PQ9O:~$ var=\"Username\"; powershell.exe -NoProfile -Command '& {\n[Console]::OutputEncoding = [System.Text.Encoding]::UTF8\n$Env:'\"${var}\"'}'\nJoão\n\nj@DESKTOP-551PQ9O:~$ var=\"Username.ToLower()\"; powershell.exe -NoProfile -Command '& {\n[Console]::OutputEncoding = [System.Text.Encoding]::UTF8\n$Env:'\"${var}\"'}'\njoão\n\n```\n\nIn the example above the username would be sanitized to: oo\nbut with the changes it would at least be: joo\n(the 'ã' is still dropped, but it's much easier to add it).\n\nThe motivation for this change came from a user named AdminUser.\nThat would originally be sanitized to: dminser\nbut now it becomes: adminuser\n\nOne must remember that in the end this name is just a suggestion\nprefilling a read input. User is free to edit it before hitting enter\nand submitting the username to the adduser program.\n\n---\n\nUDENG-7489",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/8c9fe314b77217c30a33a58f21c1464696382e96"
                }
             ],
             "ciActions": [],
