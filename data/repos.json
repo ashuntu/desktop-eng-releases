@@ -6668,25 +6668,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "854b55572c11cc198cfaa67fd81a71372c869bd2",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1756995309,
+                  "message": "feat: Surface agent early errors when connecting to Landscape (#1285)\n\nNow it's time for a real UI proposal:\n\nA few error samples (now with the suggested UI enhancements ❤️ ):\n\n\nhttps://github.com/user-attachments/assets/67baf15f-edf8-45bc-a16c-4cbee44de1f4\n\n\nhttps://github.com/user-attachments/assets/7bf47e96-21d5-434a-8ce2-5d7957264063\n\n\nAnd the success case\n\n\nhttps://github.com/user-attachments/assets/635779e8-8402-445b-848a-c19d21be2701\n\n----\n\nThe Flutter side of this PR is rather simple. A small refactoring in the\n`NavigationRow` to allow us to customise the \"next\" button. I'm\noverlaying the `CiruclarProgressIndicator` and zeroing the text opacity\nto keep the button size stable. While just replacing the Text widget\nwith the spinner would do it, the button resizes and that's a bit\ndisturbing. Despite that, a change in the `LandscapeModel`'s `tryApply`\nmethod enforces the return of a `GrpcError` object in all cases, which\nallows the UI to `switch(err.code)` and select a few interesting cases\nto customize the title and contents of the modal alert dialog shown\ncontaining feedback about the error, especially the error sent by the\nagent is placed in a `SelectableText` so one can easily copy that and\npaste in a bug report. The fact that the alert is modal is important to\nme because there is some serious acknowledgement and maybe action taking\ngoing on, being barrier-dismissible makes it too easy to unintentionally\ndismiss the alert. The user needs to read the alert and decide what's\nnext. They can proceed anyway, storing the apparently wrong\nconfiguration if they have reasons for doing so (let's not block the\nuser) or they can go back to where they were and fix potential mistakes.\n\nThe Go side is orders of magnitude more complicated because of the way\nwe track and restart the command stream. At the transport layer, gRPC\nhandles autoreconnection as needed when RPCs are initiated, so a healthy\nconnection can go `Idle` and that's normal and expected. But the\nreconnection doesn't restart streams, that's why we have the intricated\narrangement of the Landscape component methods `keepConnected()`,\n`connectOnce` (that sets up a connectivity monitoring goroutine) and the\n`receiveCommands()` which blocks on receiving commands from the gRPC\nstream. It's especially tricky to declare that we have a good\nconnection, because it means the `receiveCommands` goroutine is blocked\nin `grpcClient.Recv()`. The fact that the Landscape server sends us a\nhostagent UID before validating our credentials also complicates things\nbecause we cannot assume everything is right when the first command is\nreceived and executed, as we discussed in my previous PR. We need to\ntrack changes to the hostagent UID and consider that in addition to\nbeing blocked in the `Recv` plus having a good connectivity state\n(`Idle` or `Ready`).\n\nI added extensive comments around those methods (which to me is already\na code smell) because there are non-local effects affecting their\nbehaviour. For the near future I think we'll need to rewrite this\ncomponent to make this look more local and easier to reason about.\n\nThere were also a caveat about the `Config` component not propagating\nthe data submitted when it's not new (which is right, no need to wake up\nWSL instances to reconnect to the same Landscape server with the same\ncredentials) but that would cause the UI RPC to block forever waiting a\ncompletion signal, so I changed the semantics of this part to become an\nerror, thus unblocking the UI RPC early.\n\n---\nUDENG-7432",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/854b55572c11cc198cfaa67fd81a71372c869bd2"
+               },
+               {
+                  "sha": "36fcfb6ee80d4c80e5ddcacfffa8a60b70c2cddc",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1756989271,
+                  "message": "Apply phrasing suggestions from review\n\nCo-authored-by: Shane Crowley <66971213+edibotopic@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/36fcfb6ee80d4c80e5ddcacfffa8a60b70c2cddc"
+               },
+               {
                   "sha": "c80960cd4939a330b867cce3733df25df2682f1a",
                   "author": "Shane Crowley",
                   "timestamp": 1756977961,
                   "message": "docs: Fixes to GPU/NVIDIA guide (#1318)\n\n- Linked an external AMD documentation related to WSL\n- Updated the Further Resources section with an external link to CUDA on WSL User Guide\n- Replaced the non-standard note blocks with MySt-style note blocks\n- Consolidated into one section \"What you will need\" secton and \"Prerequisites\" section.\n- Updated link named for \"NVIDIA’s CUDA Post Installation Actions\"",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c80960cd4939a330b867cce3733df25df2682f1a"
-               },
-               {
-                  "sha": "f6f7f04b330ba0dca50e6aba5034916b42bf42c2",
-                  "author": "Adeola Abdulramon",
-                  "timestamp": 1756943941,
-                  "message": "Fixed spellchecker error\n\nCo-authored-by: Shane Crowley <66971213+edibotopic@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/f6f7f04b330ba0dca50e6aba5034916b42bf42c2"
-               },
-               {
-                  "sha": "31d09dab709a5906582bd6e6e2c69f4d5361fc9d",
-                  "author": "KrownWealth",
-                  "timestamp": 1756856349,
-                  "message": "Fixed the conflict issue on the ```tip",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/31d09dab709a5906582bd6e6e2c69f4d5361fc9d"
                }
             ],
             "ciActions": [
