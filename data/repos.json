@@ -3402,6 +3402,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bf3cfb5166627fd3c9630f72737dede1a370c483",
+                  "author": "Kat",
+                  "timestamp": 1756996570,
+                  "message": "Merge pull request #74 from canonical/go-sanity-darwin-fix\n\nfix(go/code-sanity): Remove macOS jq installation step",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/bf3cfb5166627fd3c9630f72737dede1a370c483"
+               },
+               {
                   "sha": "74eea258fe0380902f82525376df5225f639f568",
                   "author": "adombeck",
                   "timestamp": 1756975262,
@@ -3414,13 +3421,6 @@
                   "timestamp": 1756913053,
                   "message": "Replace unmaintained actions-rs GitHub Actions\n\nThe actions-rs GitHub Actions were archived in Oct 2023.\n\nWe don't need a GitHub Action anymore to install Rust, because we can\njust use rustup for that, which is pre-installed on the GitHub runner\nimages.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/c68a248869c9230c7dde716bfae222230ff612e0"
-               },
-               {
-                  "sha": "7fbc729803e7883193457bbbfe4bb3f51203d276",
-                  "author": "adombeck",
-                  "timestamp": 1756904303,
-                  "message": "Merge pull request #75 from canonical/golangci-lint-v2\n\nUDENG-7801",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/7fbc729803e7883193457bbbfe4bb3f51203d276"
                }
             ],
             "ciActions": [],
@@ -5413,6 +5413,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bf3cfb5166627fd3c9630f72737dede1a370c483",
+                  "author": "Kat",
+                  "timestamp": 1756996570,
+                  "message": "Merge pull request #74 from canonical/go-sanity-darwin-fix\n\nfix(go/code-sanity): Remove macOS jq installation step",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/bf3cfb5166627fd3c9630f72737dede1a370c483"
+               },
+               {
                   "sha": "74eea258fe0380902f82525376df5225f639f568",
                   "author": "adombeck",
                   "timestamp": 1756975262,
@@ -5425,13 +5432,6 @@
                   "timestamp": 1756913053,
                   "message": "Replace unmaintained actions-rs GitHub Actions\n\nThe actions-rs GitHub Actions were archived in Oct 2023.\n\nWe don't need a GitHub Action anymore to install Rust, because we can\njust use rustup for that, which is pre-installed on the GitHub runner\nimages.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/c68a248869c9230c7dde716bfae222230ff612e0"
-               },
-               {
-                  "sha": "7fbc729803e7883193457bbbfe4bb3f51203d276",
-                  "author": "adombeck",
-                  "timestamp": 1756904303,
-                  "message": "Merge pull request #75 from canonical/golangci-lint-v2\n\nUDENG-7801",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/7fbc729803e7883193457bbbfe4bb3f51203d276"
                }
             ],
             "ciActions": [],
@@ -6668,25 +6668,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "854b55572c11cc198cfaa67fd81a71372c869bd2",
+                  "sha": "5b287c3b5d1d7eec4e1b900abb13082445b01528",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1756995309,
-                  "message": "feat: Surface agent early errors when connecting to Landscape (#1285)\n\nNow it's time for a real UI proposal:\n\nA few error samples (now with the suggested UI enhancements ❤️ ):\n\n\nhttps://github.com/user-attachments/assets/67baf15f-edf8-45bc-a16c-4cbee44de1f4\n\n\nhttps://github.com/user-attachments/assets/7bf47e96-21d5-434a-8ce2-5d7957264063\n\n\nAnd the success case\n\n\nhttps://github.com/user-attachments/assets/635779e8-8402-445b-848a-c19d21be2701\n\n----\n\nThe Flutter side of this PR is rather simple. A small refactoring in the\n`NavigationRow` to allow us to customise the \"next\" button. I'm\noverlaying the `CiruclarProgressIndicator` and zeroing the text opacity\nto keep the button size stable. While just replacing the Text widget\nwith the spinner would do it, the button resizes and that's a bit\ndisturbing. Despite that, a change in the `LandscapeModel`'s `tryApply`\nmethod enforces the return of a `GrpcError` object in all cases, which\nallows the UI to `switch(err.code)` and select a few interesting cases\nto customize the title and contents of the modal alert dialog shown\ncontaining feedback about the error, especially the error sent by the\nagent is placed in a `SelectableText` so one can easily copy that and\npaste in a bug report. The fact that the alert is modal is important to\nme because there is some serious acknowledgement and maybe action taking\ngoing on, being barrier-dismissible makes it too easy to unintentionally\ndismiss the alert. The user needs to read the alert and decide what's\nnext. They can proceed anyway, storing the apparently wrong\nconfiguration if they have reasons for doing so (let's not block the\nuser) or they can go back to where they were and fix potential mistakes.\n\nThe Go side is orders of magnitude more complicated because of the way\nwe track and restart the command stream. At the transport layer, gRPC\nhandles autoreconnection as needed when RPCs are initiated, so a healthy\nconnection can go `Idle` and that's normal and expected. But the\nreconnection doesn't restart streams, that's why we have the intricated\narrangement of the Landscape component methods `keepConnected()`,\n`connectOnce` (that sets up a connectivity monitoring goroutine) and the\n`receiveCommands()` which blocks on receiving commands from the gRPC\nstream. It's especially tricky to declare that we have a good\nconnection, because it means the `receiveCommands` goroutine is blocked\nin `grpcClient.Recv()`. The fact that the Landscape server sends us a\nhostagent UID before validating our credentials also complicates things\nbecause we cannot assume everything is right when the first command is\nreceived and executed, as we discussed in my previous PR. We need to\ntrack changes to the hostagent UID and consider that in addition to\nbeing blocked in the `Recv` plus having a good connectivity state\n(`Idle` or `Ready`).\n\nI added extensive comments around those methods (which to me is already\na code smell) because there are non-local effects affecting their\nbehaviour. For the near future I think we'll need to rewrite this\ncomponent to make this look more local and easier to reason about.\n\nThere were also a caveat about the `Config` component not propagating\nthe data submitted when it's not new (which is right, no need to wake up\nWSL instances to reconnect to the same Landscape server with the same\ncredentials) but that would cause the UI RPC to block forever waiting a\ncompletion signal, so I changed the semantics of this part to become an\nerror, thus unblocking the UI RPC early.\n\n---\nUDENG-7432",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/854b55572c11cc198cfaa67fd81a71372c869bd2"
+                  "timestamp": 1756997836,
+                  "message": "fix(docs): Note about PowerShell version required (#1322)\n\nTo follow the howto/custom-rootfs-multiple-targets.md.\n\nThe rest of the documentation work on either PowerShell 5.1 or 7.0 and\nlater without changes AFAICT, but this one is special because it assumes\nthe `-Authentication` parameter is available for the `Invoke-WebRequest`\ncmdlet, which is only the case on PowerShell 6 (no longer supported) and\nlater.\n\nI'd add a note somewhere saying that throughout the documentation we\nassume PowerShell 5.1 or later, but I don't know where to place it 😅 .\nIf you have recommendations I'm happy to implement them.\n\n\n---\n\nUDENG-7639",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5b287c3b5d1d7eec4e1b900abb13082445b01528"
                },
                {
-                  "sha": "36fcfb6ee80d4c80e5ddcacfffa8a60b70c2cddc",
+                  "sha": "1aafc148eef599e4c3a40b91b79776258a2f831c",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1756989271,
-                  "message": "Apply phrasing suggestions from review\n\nCo-authored-by: Shane Crowley <66971213+edibotopic@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/36fcfb6ee80d4c80e5ddcacfffa8a60b70c2cddc"
+                  "timestamp": 1756997480,
+                  "message": "Apply review suggestions\n\nCo-authored-by: Shane Crowley <66971213+edibotopic@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1aafc148eef599e4c3a40b91b79776258a2f831c"
                },
                {
-                  "sha": "c80960cd4939a330b867cce3733df25df2682f1a",
-                  "author": "Shane Crowley",
-                  "timestamp": 1756977961,
-                  "message": "docs: Fixes to GPU/NVIDIA guide (#1318)\n\n- Linked an external AMD documentation related to WSL\n- Updated the Further Resources section with an external link to CUDA on WSL User Guide\n- Replaced the non-standard note blocks with MySt-style note blocks\n- Consolidated into one section \"What you will need\" secton and \"Prerequisites\" section.\n- Updated link named for \"NVIDIA’s CUDA Post Installation Actions\"",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/c80960cd4939a330b867cce3733df25df2682f1a"
+                  "sha": "89366e4b041de25c0ecaf4df70581402325182b8",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1756996039,
+                  "message": "fix(docs): More emphasis about Landscape FQDN (#1311)\n\nIt has to be a Fully Qualified Domain Name. Submitting complete URLs\nbreak communication attempts in many ways. Those errors were mostly\nsilent, specially when the user submitted the config via the Advanced\nconfiguration option (where they crafted the config by hand).\n\nAn effort is being made in #1285 to present those errors to the UI, but\nthat's still not enough.\n\nUDENG-7545",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/89366e4b041de25c0ecaf4df70581402325182b8"
                }
             ],
             "ciActions": [
@@ -7657,6 +7657,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bf3cfb5166627fd3c9630f72737dede1a370c483",
+                  "author": "Kat",
+                  "timestamp": 1756996570,
+                  "message": "Merge pull request #74 from canonical/go-sanity-darwin-fix\n\nfix(go/code-sanity): Remove macOS jq installation step",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/bf3cfb5166627fd3c9630f72737dede1a370c483"
+               },
+               {
                   "sha": "74eea258fe0380902f82525376df5225f639f568",
                   "author": "adombeck",
                   "timestamp": 1756975262,
@@ -7669,13 +7676,6 @@
                   "timestamp": 1756913053,
                   "message": "Replace unmaintained actions-rs GitHub Actions\n\nThe actions-rs GitHub Actions were archived in Oct 2023.\n\nWe don't need a GitHub Action anymore to install Rust, because we can\njust use rustup for that, which is pre-installed on the GitHub runner\nimages.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/c68a248869c9230c7dde716bfae222230ff612e0"
-               },
-               {
-                  "sha": "7fbc729803e7883193457bbbfe4bb3f51203d276",
-                  "author": "adombeck",
-                  "timestamp": 1756904303,
-                  "message": "Merge pull request #75 from canonical/golangci-lint-v2\n\nUDENG-7801",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/7fbc729803e7883193457bbbfe4bb3f51203d276"
                }
             ],
             "ciActions": [],
