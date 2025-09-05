@@ -4543,6 +4543,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 245205406,
+                  "version": "rev13",
+                  "timestamp": 1757112657,
+                  "title": "Revision 13",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 13</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:54 UTC on 5 Sep 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>ci: Add TiCS integration by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/24\">#24</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev12...rev13\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev12&hellip;rev13</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev13",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev13...main"
+               },
+               {
                   "id": 244458012,
                   "version": "rev12",
                   "timestamp": 1756907962,
@@ -4559,15 +4568,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 11</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:30 UTC on 21 Aug 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Add .gitkeep to silence missing alerts directories warning by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/23\">#23</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev10...rev11\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev10&hellip;rev11</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev11",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev11...main"
-               },
-               {
-                  "id": 241257903,
-                  "version": "rev10",
-                  "timestamp": 1755704984,
-                  "title": "Revision 10",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 10</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 15:52 UTC on 20 Aug 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Swap ingress interface library to the Nginx route by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/22\">#22</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev9...rev10\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev9&hellip;rev10</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev10",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev10...main"
                }
             ],
             "commits": null,
@@ -5114,25 +5114,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f644464ad4f38b627353868e43b8408850eccb29",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1757090428,
-                  "message": "deps(go-common): bump github.com/spf13/cobra from 1.9.1 to 1.10.1 in /common in the minor-updates group (#241)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f644464ad4f38b627353868e43b8408850eccb29"
+                  "sha": "6b47b03d9288d98308d917cc81aa8a9e94446b17",
+                  "author": "Kat",
+                  "timestamp": 1757113518,
+                  "message": "ci: Refactor QA & sanity checks workflow and add TiCS integration (#231)\n\nThis PR refactors the \"QA & sanity checks\" workflow and adds TiCS\nintegration.\n\nThe integration of TiCS surfaced some challenges with the prior setup\nfor the QA workflow, as it requires you to upload coverage files from a\nvery specific place. In the process of doing this, the workflow has been\nrefactored with a number of additional fixes and changes. Since\neverything ties in with each other, it is a bit difficult to split up\nthis PR\n\n- Add new scheduled trigger\n  - 4:15 UTC weekly on Monday to try and avoid heavy hours\n- We don't really need a daily since we also trigger on push to main.\n- Create a new `process-coverage` job\n- Processes the coverage outputs from the coverage tests, combining and\nconverting them to Cobertura\n  - Upload all coverage results to Codecov in one go\n  - Trigger TiCS depending on the workflow event trigger\n    - Client mode (quality gate) if PR\n    - QServer mode if push to main or scheduled \n- Though the push is only triggered by tags and push-to-main events, the\nconditional is explicit in case it is ever changed.\n- Split race and coverage tests into independent jobs\n- Though there is overlap in setup for the two tasks, by splitting we\ncan allow for the coverage processing job to not need to potentially\nwait for race tests to complete\n - Coverage only changes:\n   - Filter out the \"testdetection\" module from coverage outputs\n- Remove the filtering out of the `pb.go` file since we don't have that\n - Improved `gotestfmt` integration\n- Following far too much investigation, a true workaround has been\nimplemented for the issue where we had a large string of broken pipe\nerrors coupled with a cryptic panic from `gotestfmt`. The fixes have\nbeen merged here in our upstream wrapper:\nhttps://github.com/canonical/desktop-engineering/pull/\n- Re-enable `gotestfmt` integration on macOS runners for Go `-race`\ntests\n        - Add `gotestfmt` integration for coverage tests\n  - Fixed test artifact outputs on Windows\n- Though `mktemp` can run on Windows, it behaves as if on a Unix system.\nThus, the outputs are a little wonky on Windows, resulting in the\nartifact uploader being unable to pick up the artifacts. This triggered\na warning before.\n- Since the uniqueness of `mktemp` isn't really necessary for our use\ncase, and since its behavior differs not only between Unix and Windows,\nbut between Linux, Windows, *and* Darwin, it was simpler to just replace\nit with a simplified method.\n - Go: Sanity\n- Upstream fix for warning about `jq` already being installed on macOS\nrunners https://github.com/canonical/desktop-engineering/pull/74\n - General refactoring and cleanup\n   - Default the shell to `bash` always\n- Use a dynamic planning job to create the matrices used for the sanity\nand test jobs\n- Refactor out the setup of full repository dependencies to a separate\naction (implemented for lrc-qa as well)\n   \n  ---\n  [UDENG-7552](https://warthogs.atlassian.net/browse/UDENG-7552)\n  [UDENG-7258](https://warthogs.atlassian.net/browse/UDENG-7258)\n\n[UDENG-7552]:\nhttps://warthogs.atlassian.net/browse/UDENG-7552?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6b47b03d9288d98308d917cc81aa8a9e94446b17"
                },
                {
-                  "sha": "0cec99c892012dc2e9c8a25e8efbfec3a09e1943",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1757090364,
-                  "message": "deps(go-server): bump the minor-updates group in /server with 3 updates (#238)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0cec99c892012dc2e9c8a25e8efbfec3a09e1943"
+                  "sha": "6247935efe7a6efdaf5805bdc9120934ea12d3cb",
+                  "author": "kkuo",
+                  "timestamp": 1757113038,
+                  "message": "Improve comments for clarity in the Create test plan job",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6247935efe7a6efdaf5805bdc9120934ea12d3cb"
                },
                {
-                  "sha": "f8e94a8941eb3329543f1186b0bf7db2bdde2828",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1757081600,
-                  "message": "deps(ci): Bump actions/setup-go from 5 to 6 in the gh-actions group across 1 directory (#243)",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f8e94a8941eb3329543f1186b0bf7db2bdde2828"
+                  "sha": "08ffd4c6b195e112ea818f039c1d13867c59c9ea",
+                  "author": "kkuo",
+                  "timestamp": 1757091305,
+                  "message": "Remove setup-go cache workaround fixed in v6",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/08ffd4c6b195e112ea818f039c1d13867c59c9ea"
                }
             ],
             "ciActions": [
@@ -6587,6 +6587,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 245205406,
+                  "version": "rev13",
+                  "timestamp": 1757112657,
+                  "title": "Revision 13",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 13</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:54 UTC on 5 Sep 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>ci: Add TiCS integration by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/24\">#24</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev12...rev13\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev12&hellip;rev13</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev13",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev13...main"
+               },
+               {
                   "id": 244458012,
                   "version": "rev12",
                   "timestamp": 1756907962,
@@ -6603,15 +6612,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 11</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:30 UTC on 21 Aug 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Add .gitkeep to silence missing alerts directories warning by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/23\">#23</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev10...rev11\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev10&hellip;rev11</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev11",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev11...main"
-               },
-               {
-                  "id": 241257903,
-                  "version": "rev10",
-                  "timestamp": 1755704984,
-                  "title": "Revision 10",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 10</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 15:52 UTC on 20 Aug 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Swap ingress interface library to the Nginx route by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/22\">#22</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev9...rev10\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev9&hellip;rev10</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev10",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev10...main"
                }
             ],
             "commits": null,
@@ -6668,25 +6668,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7b6787b0e845f0534c754eea307678891eaaf0f3",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1757111614,
+                  "message": "fix(windows-agent): Won't reconnect in certain config changes (#1321)\n\nIf I submit a Landscape config with valid data but a wrong registration\nkey, the connection fails and the UI explains why as expected. If I then\nsubmit a new config fixing the error, nothing happens and the UI gets\nstuck.\n\nThat's because before attempting to reconnect to Landscape we check if\nthe config changes are worth a connection attempt. While that makes\nsense we're too shallow on what would be the reasons for reconnecting.\nWe only considered changes to the following fields:\n\n```go\n// connectionSettings contains data that is immutable for a connection.\n// A change of these settings requires a reconnect.\ntype connectionSettings struct {\n\turl             string\n\tcertificatePath string\n}\n\n```\n\nThus a change in the registration key or account name wouldn't trigger a\nre-connection.\n\nInstead, I'm proposing we use the entire of the `landscapeHostConf`,\nbecause a change in any of those values are indeed worth a reconnection\nattempt.\n\n```go\n// landscapeHostConf is the subset of the landscape configuration relevant to the agent.\ntype landscapeHostConf struct {\n\tsslPublicKey    string\n\taccountName     string\n\tregistrationKey string\n\thostagentURL    string\n\tubuntuProToken  string\n}\n```\n\nFields like `[client].log_level` are definitely not worth an attempt, so\nwe don't include them in the data being compared for changes. In such\ncase we notify the UI service about the error immediately, because we\ndon't have a better way to bubble up this particular error (that's\nanother motivation for a future rewrite of this component).\n\n---\n\nUDENG-7773",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/7b6787b0e845f0534c754eea307678891eaaf0f3"
+               },
+               {
+                  "sha": "cc6c4c5e4da384382f3e02ad81135bc02a33f080",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1757107632,
+                  "message": "Renames connection.settings into connection.hostConf.\n\nFollowing code review suggestions loosely.",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/cc6c4c5e4da384382f3e02ad81135bc02a33f080"
+               },
+               {
                   "sha": "5b287c3b5d1d7eec4e1b900abb13082445b01528",
                   "author": "Carlos Nihelton",
                   "timestamp": 1756997836,
                   "message": "fix(docs): Note about PowerShell version required (#1322)\n\nTo follow the howto/custom-rootfs-multiple-targets.md.\n\nThe rest of the documentation work on either PowerShell 5.1 or 7.0 and\nlater without changes AFAICT, but this one is special because it assumes\nthe `-Authentication` parameter is available for the `Invoke-WebRequest`\ncmdlet, which is only the case on PowerShell 6 (no longer supported) and\nlater.\n\nI'd add a note somewhere saying that throughout the documentation we\nassume PowerShell 5.1 or later, but I don't know where to place it 😅 .\nIf you have recommendations I'm happy to implement them.\n\n\n---\n\nUDENG-7639",
                   "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/5b287c3b5d1d7eec4e1b900abb13082445b01528"
-               },
-               {
-                  "sha": "1aafc148eef599e4c3a40b91b79776258a2f831c",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1756997480,
-                  "message": "Apply review suggestions\n\nCo-authored-by: Shane Crowley <66971213+edibotopic@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/1aafc148eef599e4c3a40b91b79776258a2f831c"
-               },
-               {
-                  "sha": "89366e4b041de25c0ecaf4df70581402325182b8",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1756996039,
-                  "message": "fix(docs): More emphasis about Landscape FQDN (#1311)\n\nIt has to be a Fully Qualified Domain Name. Submitting complete URLs\nbreak communication attempts in many ways. Those errors were mostly\nsilent, specially when the user submitted the config via the Advanced\nconfiguration option (where they crafted the config by hand).\n\nAn effort is being made in #1285 to present those errors to the UI, but\nthat's still not enough.\n\nUDENG-7545",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/commit/89366e4b041de25c0ecaf4df70581402325182b8"
                }
             ],
             "ciActions": [
@@ -8833,6 +8833,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 245205406,
+                  "version": "rev13",
+                  "timestamp": 1757112657,
+                  "title": "Revision 13",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 13</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:54 UTC on 5 Sep 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>ci: Add TiCS integration by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/24\">#24</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev12...rev13\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev12&hellip;rev13</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev13",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev13...main"
+               },
+               {
                   "id": 244458012,
                   "version": "rev12",
                   "timestamp": 1756907962,
@@ -8849,15 +8858,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 11</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:30 UTC on 21 Aug 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Add .gitkeep to silence missing alerts directories warning by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/23\">#23</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev10...rev11\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev10&hellip;rev11</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev11",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev11...main"
-               },
-               {
-                  "id": 241257903,
-                  "version": "rev10",
-                  "timestamp": 1755704984,
-                  "title": "Revision 10",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 10</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 15:52 UTC on 20 Aug 2025</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Swap ingress interface library to the Nginx route by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/22\">#22</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev9...rev10\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev9&hellip;rev10</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev10",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev10...main"
                }
             ],
             "commits": null,
