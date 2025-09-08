@@ -3402,25 +3402,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cea3036d484d9ace3cdbf84554db0f41e7dd6944",
+                  "sha": "99ba24ed8ae84a2b24c9599b61e7df0a96df4906",
                   "author": "adombeck",
-                  "timestamp": 1757318406,
-                  "message": "Merge pull request #80 from canonical/fix-c-format-source\n\nfix: Fix syntax of C/format-source action",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/cea3036d484d9ace3cdbf84554db0f41e7dd6944"
+                  "timestamp": 1757347505,
+                  "message": "Merge pull request #81 from canonical/more-consistency",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/99ba24ed8ae84a2b24c9599b61e7df0a96df4906"
                },
                {
-                  "sha": "a2d22bca6f38cbdfc1e94a052bf4a37d8a62bf59",
+                  "sha": "20a861860f9b746346715f78202d202f0e983fc5",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757083854,
-                  "message": "Fix syntax of C/format-source action\n\nThe syntax was invalid.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/a2d22bca6f38cbdfc1e94a052bf4a37d8a62bf59"
+                  "timestamp": 1757083477,
+                  "message": "Set \"-eu\" directly via the shell command\n\nWe can avoid starting each multi-line command with `set -eu` if we just\nstart the shell with those options.\n\nIn fact, the command that's run by the GitHub runner when using just\n\"bash\" as the shell parameter did already use `-e`. The full command run\nin that case is:\n\n    bash --noprofile --norc -eo pipefail {0}\n\nSource: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell\n\nWe just need to add the `-u` option to that, so we get:\n\n    bash --noprofile --norc -euo pipefail {0}",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/20a861860f9b746346715f78202d202f0e983fc5"
                },
                {
-                  "sha": "00f0bfc305993fa793445e372dbb23b4c2c623d2",
+                  "sha": "c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757083713,
-                  "message": "Consistently use the filename \"action.yaml\"",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/00f0bfc305993fa793445e372dbb23b4c2c623d2"
+                  "timestamp": 1757077276,
+                  "message": "Improve output and formatting and always use `set -eu`\n\n1. Always use `set -eu` in multi-line commands, to ensure that the\n   step fails if any of the commands fail or an undefined variable is\n   used.\n\n2. Add a comment as the first line of each multi-line command, which\n   will be shown as the title of the expandable log line in the GitHub\n   workflow log.\n\n3. For steps which produce a lot of output (which is not related to the\n   actual checks we want to perform), we are now (more or less)\n   consistently using the ::group:: command to produce an extendable log\n   line below the unavoidable \"Run ...\" line:\n\n       ▶ Run # Install govulncheck\n       ▶ Install govulncheck\n\n   The former expands to the multi-line command that is executed, the\n   latter to the output of that command. It's not perfect, but better\n   than the status quo, and I don't see a way to improve it further with\n   the limitations imposed by GitHub.\n\n4. Use single-line syntax (`run: <command>`) if there is only a single\n   command.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8"
                }
             ],
             "ciActions": [],
@@ -5413,25 +5413,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cea3036d484d9ace3cdbf84554db0f41e7dd6944",
+                  "sha": "99ba24ed8ae84a2b24c9599b61e7df0a96df4906",
                   "author": "adombeck",
-                  "timestamp": 1757318406,
-                  "message": "Merge pull request #80 from canonical/fix-c-format-source\n\nfix: Fix syntax of C/format-source action",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/cea3036d484d9ace3cdbf84554db0f41e7dd6944"
+                  "timestamp": 1757347505,
+                  "message": "Merge pull request #81 from canonical/more-consistency",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/99ba24ed8ae84a2b24c9599b61e7df0a96df4906"
                },
                {
-                  "sha": "a2d22bca6f38cbdfc1e94a052bf4a37d8a62bf59",
+                  "sha": "20a861860f9b746346715f78202d202f0e983fc5",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757083854,
-                  "message": "Fix syntax of C/format-source action\n\nThe syntax was invalid.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/a2d22bca6f38cbdfc1e94a052bf4a37d8a62bf59"
+                  "timestamp": 1757083477,
+                  "message": "Set \"-eu\" directly via the shell command\n\nWe can avoid starting each multi-line command with `set -eu` if we just\nstart the shell with those options.\n\nIn fact, the command that's run by the GitHub runner when using just\n\"bash\" as the shell parameter did already use `-e`. The full command run\nin that case is:\n\n    bash --noprofile --norc -eo pipefail {0}\n\nSource: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell\n\nWe just need to add the `-u` option to that, so we get:\n\n    bash --noprofile --norc -euo pipefail {0}",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/20a861860f9b746346715f78202d202f0e983fc5"
                },
                {
-                  "sha": "00f0bfc305993fa793445e372dbb23b4c2c623d2",
+                  "sha": "c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757083713,
-                  "message": "Consistently use the filename \"action.yaml\"",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/00f0bfc305993fa793445e372dbb23b4c2c623d2"
+                  "timestamp": 1757077276,
+                  "message": "Improve output and formatting and always use `set -eu`\n\n1. Always use `set -eu` in multi-line commands, to ensure that the\n   step fails if any of the commands fail or an undefined variable is\n   used.\n\n2. Add a comment as the first line of each multi-line command, which\n   will be shown as the title of the expandable log line in the GitHub\n   workflow log.\n\n3. For steps which produce a lot of output (which is not related to the\n   actual checks we want to perform), we are now (more or less)\n   consistently using the ::group:: command to produce an extendable log\n   line below the unavoidable \"Run ...\" line:\n\n       ▶ Run # Install govulncheck\n       ▶ Install govulncheck\n\n   The former expands to the multi-line command that is executed, the\n   latter to the output of that command. It's not perfect, but better\n   than the status quo, and I don't see a way to improve it further with\n   the limitations imposed by GitHub.\n\n4. Use single-line syntax (`run: <command>`) if there is only a single\n   command.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8"
                }
             ],
             "ciActions": [],
@@ -7657,25 +7657,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cea3036d484d9ace3cdbf84554db0f41e7dd6944",
+                  "sha": "99ba24ed8ae84a2b24c9599b61e7df0a96df4906",
                   "author": "adombeck",
-                  "timestamp": 1757318406,
-                  "message": "Merge pull request #80 from canonical/fix-c-format-source\n\nfix: Fix syntax of C/format-source action",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/cea3036d484d9ace3cdbf84554db0f41e7dd6944"
+                  "timestamp": 1757347505,
+                  "message": "Merge pull request #81 from canonical/more-consistency",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/99ba24ed8ae84a2b24c9599b61e7df0a96df4906"
                },
                {
-                  "sha": "a2d22bca6f38cbdfc1e94a052bf4a37d8a62bf59",
+                  "sha": "20a861860f9b746346715f78202d202f0e983fc5",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757083854,
-                  "message": "Fix syntax of C/format-source action\n\nThe syntax was invalid.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/a2d22bca6f38cbdfc1e94a052bf4a37d8a62bf59"
+                  "timestamp": 1757083477,
+                  "message": "Set \"-eu\" directly via the shell command\n\nWe can avoid starting each multi-line command with `set -eu` if we just\nstart the shell with those options.\n\nIn fact, the command that's run by the GitHub runner when using just\n\"bash\" as the shell parameter did already use `-e`. The full command run\nin that case is:\n\n    bash --noprofile --norc -eo pipefail {0}\n\nSource: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell\n\nWe just need to add the `-u` option to that, so we get:\n\n    bash --noprofile --norc -euo pipefail {0}",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/20a861860f9b746346715f78202d202f0e983fc5"
                },
                {
-                  "sha": "00f0bfc305993fa793445e372dbb23b4c2c623d2",
+                  "sha": "c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757083713,
-                  "message": "Consistently use the filename \"action.yaml\"",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/00f0bfc305993fa793445e372dbb23b4c2c623d2"
+                  "timestamp": 1757077276,
+                  "message": "Improve output and formatting and always use `set -eu`\n\n1. Always use `set -eu` in multi-line commands, to ensure that the\n   step fails if any of the commands fail or an undefined variable is\n   used.\n\n2. Add a comment as the first line of each multi-line command, which\n   will be shown as the title of the expandable log line in the GitHub\n   workflow log.\n\n3. For steps which produce a lot of output (which is not related to the\n   actual checks we want to perform), we are now (more or less)\n   consistently using the ::group:: command to produce an extendable log\n   line below the unavoidable \"Run ...\" line:\n\n       ▶ Run # Install govulncheck\n       ▶ Install govulncheck\n\n   The former expands to the multi-line command that is executed, the\n   latter to the output of that command. It's not perfect, but better\n   than the status quo, and I don't see a way to improve it further with\n   the limitations imposed by GitHub.\n\n4. Use single-line syntax (`run: <command>`) if there is only a single\n   command.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8"
                }
             ],
             "ciActions": [],
