@@ -3402,25 +3402,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7addf52e7cf46d55f265e30dbf29db57a0a7d905",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1757438974,
+                  "message": "Merge pull request #84 from canonical/no-sudo-if-already-root\n\nfix: Only use sudo if we're not already root",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7addf52e7cf46d55f265e30dbf29db57a0a7d905"
+               },
+               {
+                  "sha": "0c3af4548a81986e0ddfdf0a31ddbfbb6ab7604d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757419745,
+                  "message": "Only use sudo if we're not already root\n\nFixes `sudo: command not found` when using this action in a container\nthat's running as root and doesn't have sudo installed (e.g.\n`ubuntu:rolling`).",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/0c3af4548a81986e0ddfdf0a31ddbfbb6ab7604d"
+               },
+               {
                   "sha": "473863f9a1ce635ba046bd44a18393ca1164c89b",
                   "author": "adombeck",
                   "timestamp": 1757412925,
                   "message": "Merge pull request #79 from canonical/dpkg-exclude-locales-and-manpages\n\nUDENG-7865",
                   "url": "https://github.com/canonical/desktop-engineering/commit/473863f9a1ce635ba046bd44a18393ca1164c89b"
-               },
-               {
-                  "sha": "94a3d0cba42f45ca6528e6eb21cfb8ada3021a64",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757410728,
-                  "message": "Rename dpkg-exclude-locales-and-manpages -> dpkg-install-speedup\n\nAs discussed on the PR, we want to use a more generic name, so that in\nthe future we can add more functionality which improves the installation\nspeed without having rename the action.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/94a3d0cba42f45ca6528e6eb21cfb8ada3021a64"
-               },
-               {
-                  "sha": "a675bffb96d7d5422b9175f47cf547b5e8174606",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1756997779,
-                  "message": "feat: Add GitHub Action common/dpkg-exclude-locales-and-manpages\n\nThis GitHub Action configures dpkg to exclude locales and manpages from\ninstalled packages, speeding up package installation. We should use it\nin all jobs which use APT to install packages, because it can\nsignificantly speed up the installation time. Avoiding the man-db\ntriggers alone can reduce the installation time by up to two minutes.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/a675bffb96d7d5422b9175f47cf547b5e8174606"
                }
             ],
             "ciActions": [],
@@ -5114,25 +5114,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0d4e35c3bcf8d6be71a3b347006fad9cb973331c",
+                  "author": "Kat",
+                  "timestamp": 1757442370,
+                  "message": "ci: Fix missing dependency for TiCS QServer mode (#245)\n\nThis PR aims to fix the missing build dependency error present with TiCS\nanalysis runs in QServer mode.\n\nAs part of this, the decision of whether to use QServer or Client mode\nhas been abstracted out into a separate step.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0d4e35c3bcf8d6be71a3b347006fad9cb973331c"
+               },
+               {
+                  "sha": "f4bbdf20d9a176a0d65aea927fa418c5ec6ee5ed",
+                  "author": "kkuo",
+                  "timestamp": 1757366584,
+                  "message": "ci: Fix missing dependency for TiCS QServer mode",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f4bbdf20d9a176a0d65aea927fa418c5ec6ee5ed"
+               },
+               {
                   "sha": "6b47b03d9288d98308d917cc81aa8a9e94446b17",
                   "author": "Kat",
                   "timestamp": 1757113518,
                   "message": "ci: Refactor QA & sanity checks workflow and add TiCS integration (#231)\n\nThis PR refactors the \"QA & sanity checks\" workflow and adds TiCS\nintegration.\n\nThe integration of TiCS surfaced some challenges with the prior setup\nfor the QA workflow, as it requires you to upload coverage files from a\nvery specific place. In the process of doing this, the workflow has been\nrefactored with a number of additional fixes and changes. Since\neverything ties in with each other, it is a bit difficult to split up\nthis PR\n\n- Add new scheduled trigger\n  - 4:15 UTC weekly on Monday to try and avoid heavy hours\n- We don't really need a daily since we also trigger on push to main.\n- Create a new `process-coverage` job\n- Processes the coverage outputs from the coverage tests, combining and\nconverting them to Cobertura\n  - Upload all coverage results to Codecov in one go\n  - Trigger TiCS depending on the workflow event trigger\n    - Client mode (quality gate) if PR\n    - QServer mode if push to main or scheduled \n- Though the push is only triggered by tags and push-to-main events, the\nconditional is explicit in case it is ever changed.\n- Split race and coverage tests into independent jobs\n- Though there is overlap in setup for the two tasks, by splitting we\ncan allow for the coverage processing job to not need to potentially\nwait for race tests to complete\n - Coverage only changes:\n   - Filter out the \"testdetection\" module from coverage outputs\n- Remove the filtering out of the `pb.go` file since we don't have that\n - Improved `gotestfmt` integration\n- Following far too much investigation, a true workaround has been\nimplemented for the issue where we had a large string of broken pipe\nerrors coupled with a cryptic panic from `gotestfmt`. The fixes have\nbeen merged here in our upstream wrapper:\nhttps://github.com/canonical/desktop-engineering/pull/\n- Re-enable `gotestfmt` integration on macOS runners for Go `-race`\ntests\n        - Add `gotestfmt` integration for coverage tests\n  - Fixed test artifact outputs on Windows\n- Though `mktemp` can run on Windows, it behaves as if on a Unix system.\nThus, the outputs are a little wonky on Windows, resulting in the\nartifact uploader being unable to pick up the artifacts. This triggered\na warning before.\n- Since the uniqueness of `mktemp` isn't really necessary for our use\ncase, and since its behavior differs not only between Unix and Windows,\nbut between Linux, Windows, *and* Darwin, it was simpler to just replace\nit with a simplified method.\n - Go: Sanity\n- Upstream fix for warning about `jq` already being installed on macOS\nrunners https://github.com/canonical/desktop-engineering/pull/74\n - General refactoring and cleanup\n   - Default the shell to `bash` always\n- Use a dynamic planning job to create the matrices used for the sanity\nand test jobs\n- Refactor out the setup of full repository dependencies to a separate\naction (implemented for lrc-qa as well)\n   \n  ---\n  [UDENG-7552](https://warthogs.atlassian.net/browse/UDENG-7552)\n  [UDENG-7258](https://warthogs.atlassian.net/browse/UDENG-7258)\n\n[UDENG-7552]:\nhttps://warthogs.atlassian.net/browse/UDENG-7552?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/6b47b03d9288d98308d917cc81aa8a9e94446b17"
-               },
-               {
-                  "sha": "6247935efe7a6efdaf5805bdc9120934ea12d3cb",
-                  "author": "kkuo",
-                  "timestamp": 1757113038,
-                  "message": "Improve comments for clarity in the Create test plan job",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6247935efe7a6efdaf5805bdc9120934ea12d3cb"
-               },
-               {
-                  "sha": "08ffd4c6b195e112ea818f039c1d13867c59c9ea",
-                  "author": "kkuo",
-                  "timestamp": 1757091305,
-                  "message": "Remove setup-go cache workaround fixed in v6",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/08ffd4c6b195e112ea818f039c1d13867c59c9ea"
                }
             ],
             "ciActions": [
@@ -5413,25 +5413,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7addf52e7cf46d55f265e30dbf29db57a0a7d905",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1757438974,
+                  "message": "Merge pull request #84 from canonical/no-sudo-if-already-root\n\nfix: Only use sudo if we're not already root",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7addf52e7cf46d55f265e30dbf29db57a0a7d905"
+               },
+               {
+                  "sha": "0c3af4548a81986e0ddfdf0a31ddbfbb6ab7604d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757419745,
+                  "message": "Only use sudo if we're not already root\n\nFixes `sudo: command not found` when using this action in a container\nthat's running as root and doesn't have sudo installed (e.g.\n`ubuntu:rolling`).",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/0c3af4548a81986e0ddfdf0a31ddbfbb6ab7604d"
+               },
+               {
                   "sha": "473863f9a1ce635ba046bd44a18393ca1164c89b",
                   "author": "adombeck",
                   "timestamp": 1757412925,
                   "message": "Merge pull request #79 from canonical/dpkg-exclude-locales-and-manpages\n\nUDENG-7865",
                   "url": "https://github.com/canonical/desktop-engineering/commit/473863f9a1ce635ba046bd44a18393ca1164c89b"
-               },
-               {
-                  "sha": "94a3d0cba42f45ca6528e6eb21cfb8ada3021a64",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757410728,
-                  "message": "Rename dpkg-exclude-locales-and-manpages -> dpkg-install-speedup\n\nAs discussed on the PR, we want to use a more generic name, so that in\nthe future we can add more functionality which improves the installation\nspeed without having rename the action.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/94a3d0cba42f45ca6528e6eb21cfb8ada3021a64"
-               },
-               {
-                  "sha": "a675bffb96d7d5422b9175f47cf547b5e8174606",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1756997779,
-                  "message": "feat: Add GitHub Action common/dpkg-exclude-locales-and-manpages\n\nThis GitHub Action configures dpkg to exclude locales and manpages from\ninstalled packages, speeding up package installation. We should use it\nin all jobs which use APT to install packages, because it can\nsignificantly speed up the installation time. Avoiding the man-db\ntriggers alone can reduce the installation time by up to two minutes.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/a675bffb96d7d5422b9175f47cf547b5e8174606"
                }
             ],
             "ciActions": [],
@@ -7657,25 +7657,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7addf52e7cf46d55f265e30dbf29db57a0a7d905",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1757438974,
+                  "message": "Merge pull request #84 from canonical/no-sudo-if-already-root\n\nfix: Only use sudo if we're not already root",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7addf52e7cf46d55f265e30dbf29db57a0a7d905"
+               },
+               {
+                  "sha": "0c3af4548a81986e0ddfdf0a31ddbfbb6ab7604d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757419745,
+                  "message": "Only use sudo if we're not already root\n\nFixes `sudo: command not found` when using this action in a container\nthat's running as root and doesn't have sudo installed (e.g.\n`ubuntu:rolling`).",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/0c3af4548a81986e0ddfdf0a31ddbfbb6ab7604d"
+               },
+               {
                   "sha": "473863f9a1ce635ba046bd44a18393ca1164c89b",
                   "author": "adombeck",
                   "timestamp": 1757412925,
                   "message": "Merge pull request #79 from canonical/dpkg-exclude-locales-and-manpages\n\nUDENG-7865",
                   "url": "https://github.com/canonical/desktop-engineering/commit/473863f9a1ce635ba046bd44a18393ca1164c89b"
-               },
-               {
-                  "sha": "94a3d0cba42f45ca6528e6eb21cfb8ada3021a64",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757410728,
-                  "message": "Rename dpkg-exclude-locales-and-manpages -> dpkg-install-speedup\n\nAs discussed on the PR, we want to use a more generic name, so that in\nthe future we can add more functionality which improves the installation\nspeed without having rename the action.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/94a3d0cba42f45ca6528e6eb21cfb8ada3021a64"
-               },
-               {
-                  "sha": "a675bffb96d7d5422b9175f47cf547b5e8174606",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1756997779,
-                  "message": "feat: Add GitHub Action common/dpkg-exclude-locales-and-manpages\n\nThis GitHub Action configures dpkg to exclude locales and manpages from\ninstalled packages, speeding up package installation. We should use it\nin all jobs which use APT to install packages, because it can\nsignificantly speed up the installation time. Avoiding the man-db\ntriggers alone can reduce the installation time by up to two minutes.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/a675bffb96d7d5422b9175f47cf547b5e8174606"
                }
             ],
             "ciActions": [],
