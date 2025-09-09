@@ -3402,25 +3402,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "99ba24ed8ae84a2b24c9599b61e7df0a96df4906",
+                  "sha": "473863f9a1ce635ba046bd44a18393ca1164c89b",
                   "author": "adombeck",
-                  "timestamp": 1757347505,
-                  "message": "Merge pull request #81 from canonical/more-consistency",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/99ba24ed8ae84a2b24c9599b61e7df0a96df4906"
+                  "timestamp": 1757412925,
+                  "message": "Merge pull request #79 from canonical/dpkg-exclude-locales-and-manpages\n\nUDENG-7865",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/473863f9a1ce635ba046bd44a18393ca1164c89b"
                },
                {
-                  "sha": "20a861860f9b746346715f78202d202f0e983fc5",
+                  "sha": "94a3d0cba42f45ca6528e6eb21cfb8ada3021a64",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757083477,
-                  "message": "Set \"-eu\" directly via the shell command\n\nWe can avoid starting each multi-line command with `set -eu` if we just\nstart the shell with those options.\n\nIn fact, the command that's run by the GitHub runner when using just\n\"bash\" as the shell parameter did already use `-e`. The full command run\nin that case is:\n\n    bash --noprofile --norc -eo pipefail {0}\n\nSource: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell\n\nWe just need to add the `-u` option to that, so we get:\n\n    bash --noprofile --norc -euo pipefail {0}",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/20a861860f9b746346715f78202d202f0e983fc5"
+                  "timestamp": 1757410728,
+                  "message": "Rename dpkg-exclude-locales-and-manpages -> dpkg-install-speedup\n\nAs discussed on the PR, we want to use a more generic name, so that in\nthe future we can add more functionality which improves the installation\nspeed without having rename the action.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/94a3d0cba42f45ca6528e6eb21cfb8ada3021a64"
                },
                {
-                  "sha": "c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8",
+                  "sha": "a675bffb96d7d5422b9175f47cf547b5e8174606",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757077276,
-                  "message": "Improve output and formatting and always use `set -eu`\n\n1. Always use `set -eu` in multi-line commands, to ensure that the\n   step fails if any of the commands fail or an undefined variable is\n   used.\n\n2. Add a comment as the first line of each multi-line command, which\n   will be shown as the title of the expandable log line in the GitHub\n   workflow log.\n\n3. For steps which produce a lot of output (which is not related to the\n   actual checks we want to perform), we are now (more or less)\n   consistently using the ::group:: command to produce an extendable log\n   line below the unavoidable \"Run ...\" line:\n\n       ▶ Run # Install govulncheck\n       ▶ Install govulncheck\n\n   The former expands to the multi-line command that is executed, the\n   latter to the output of that command. It's not perfect, but better\n   than the status quo, and I don't see a way to improve it further with\n   the limitations imposed by GitHub.\n\n4. Use single-line syntax (`run: <command>`) if there is only a single\n   command.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8"
+                  "timestamp": 1756997779,
+                  "message": "feat: Add GitHub Action common/dpkg-exclude-locales-and-manpages\n\nThis GitHub Action configures dpkg to exclude locales and manpages from\ninstalled packages, speeding up package installation. We should use it\nin all jobs which use APT to install packages, because it can\nsignificantly speed up the installation time. Avoiding the man-db\ntriggers alone can reduce the installation time by up to two minutes.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/a675bffb96d7d5422b9175f47cf547b5e8174606"
                }
             ],
             "ciActions": [],
@@ -5413,25 +5413,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "99ba24ed8ae84a2b24c9599b61e7df0a96df4906",
+                  "sha": "473863f9a1ce635ba046bd44a18393ca1164c89b",
                   "author": "adombeck",
-                  "timestamp": 1757347505,
-                  "message": "Merge pull request #81 from canonical/more-consistency",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/99ba24ed8ae84a2b24c9599b61e7df0a96df4906"
+                  "timestamp": 1757412925,
+                  "message": "Merge pull request #79 from canonical/dpkg-exclude-locales-and-manpages\n\nUDENG-7865",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/473863f9a1ce635ba046bd44a18393ca1164c89b"
                },
                {
-                  "sha": "20a861860f9b746346715f78202d202f0e983fc5",
+                  "sha": "94a3d0cba42f45ca6528e6eb21cfb8ada3021a64",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757083477,
-                  "message": "Set \"-eu\" directly via the shell command\n\nWe can avoid starting each multi-line command with `set -eu` if we just\nstart the shell with those options.\n\nIn fact, the command that's run by the GitHub runner when using just\n\"bash\" as the shell parameter did already use `-e`. The full command run\nin that case is:\n\n    bash --noprofile --norc -eo pipefail {0}\n\nSource: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell\n\nWe just need to add the `-u` option to that, so we get:\n\n    bash --noprofile --norc -euo pipefail {0}",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/20a861860f9b746346715f78202d202f0e983fc5"
+                  "timestamp": 1757410728,
+                  "message": "Rename dpkg-exclude-locales-and-manpages -> dpkg-install-speedup\n\nAs discussed on the PR, we want to use a more generic name, so that in\nthe future we can add more functionality which improves the installation\nspeed without having rename the action.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/94a3d0cba42f45ca6528e6eb21cfb8ada3021a64"
                },
                {
-                  "sha": "c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8",
+                  "sha": "a675bffb96d7d5422b9175f47cf547b5e8174606",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757077276,
-                  "message": "Improve output and formatting and always use `set -eu`\n\n1. Always use `set -eu` in multi-line commands, to ensure that the\n   step fails if any of the commands fail or an undefined variable is\n   used.\n\n2. Add a comment as the first line of each multi-line command, which\n   will be shown as the title of the expandable log line in the GitHub\n   workflow log.\n\n3. For steps which produce a lot of output (which is not related to the\n   actual checks we want to perform), we are now (more or less)\n   consistently using the ::group:: command to produce an extendable log\n   line below the unavoidable \"Run ...\" line:\n\n       ▶ Run # Install govulncheck\n       ▶ Install govulncheck\n\n   The former expands to the multi-line command that is executed, the\n   latter to the output of that command. It's not perfect, but better\n   than the status quo, and I don't see a way to improve it further with\n   the limitations imposed by GitHub.\n\n4. Use single-line syntax (`run: <command>`) if there is only a single\n   command.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8"
+                  "timestamp": 1756997779,
+                  "message": "feat: Add GitHub Action common/dpkg-exclude-locales-and-manpages\n\nThis GitHub Action configures dpkg to exclude locales and manpages from\ninstalled packages, speeding up package installation. We should use it\nin all jobs which use APT to install packages, because it can\nsignificantly speed up the installation time. Avoiding the man-db\ntriggers alone can reduce the installation time by up to two minutes.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/a675bffb96d7d5422b9175f47cf547b5e8174606"
                }
             ],
             "ciActions": [],
@@ -7657,25 +7657,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "99ba24ed8ae84a2b24c9599b61e7df0a96df4906",
+                  "sha": "473863f9a1ce635ba046bd44a18393ca1164c89b",
                   "author": "adombeck",
-                  "timestamp": 1757347505,
-                  "message": "Merge pull request #81 from canonical/more-consistency",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/99ba24ed8ae84a2b24c9599b61e7df0a96df4906"
+                  "timestamp": 1757412925,
+                  "message": "Merge pull request #79 from canonical/dpkg-exclude-locales-and-manpages\n\nUDENG-7865",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/473863f9a1ce635ba046bd44a18393ca1164c89b"
                },
                {
-                  "sha": "20a861860f9b746346715f78202d202f0e983fc5",
+                  "sha": "94a3d0cba42f45ca6528e6eb21cfb8ada3021a64",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757083477,
-                  "message": "Set \"-eu\" directly via the shell command\n\nWe can avoid starting each multi-line command with `set -eu` if we just\nstart the shell with those options.\n\nIn fact, the command that's run by the GitHub runner when using just\n\"bash\" as the shell parameter did already use `-e`. The full command run\nin that case is:\n\n    bash --noprofile --norc -eo pipefail {0}\n\nSource: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell\n\nWe just need to add the `-u` option to that, so we get:\n\n    bash --noprofile --norc -euo pipefail {0}",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/20a861860f9b746346715f78202d202f0e983fc5"
+                  "timestamp": 1757410728,
+                  "message": "Rename dpkg-exclude-locales-and-manpages -> dpkg-install-speedup\n\nAs discussed on the PR, we want to use a more generic name, so that in\nthe future we can add more functionality which improves the installation\nspeed without having rename the action.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/94a3d0cba42f45ca6528e6eb21cfb8ada3021a64"
                },
                {
-                  "sha": "c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8",
+                  "sha": "a675bffb96d7d5422b9175f47cf547b5e8174606",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1757077276,
-                  "message": "Improve output and formatting and always use `set -eu`\n\n1. Always use `set -eu` in multi-line commands, to ensure that the\n   step fails if any of the commands fail or an undefined variable is\n   used.\n\n2. Add a comment as the first line of each multi-line command, which\n   will be shown as the title of the expandable log line in the GitHub\n   workflow log.\n\n3. For steps which produce a lot of output (which is not related to the\n   actual checks we want to perform), we are now (more or less)\n   consistently using the ::group:: command to produce an extendable log\n   line below the unavoidable \"Run ...\" line:\n\n       ▶ Run # Install govulncheck\n       ▶ Install govulncheck\n\n   The former expands to the multi-line command that is executed, the\n   latter to the output of that command. It's not perfect, but better\n   than the status quo, and I don't see a way to improve it further with\n   the limitations imposed by GitHub.\n\n4. Use single-line syntax (`run: <command>`) if there is only a single\n   command.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/c0f3f6ab4743c0b1952851a70e20a00c5e8adfc8"
+                  "timestamp": 1756997779,
+                  "message": "feat: Add GitHub Action common/dpkg-exclude-locales-and-manpages\n\nThis GitHub Action configures dpkg to exclude locales and manpages from\ninstalled packages, speeding up package installation. We should use it\nin all jobs which use APT to install packages, because it can\nsignificantly speed up the installation time. Avoiding the man-db\ntriggers alone can reduce the installation time by up to two minutes.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/a675bffb96d7d5422b9175f47cf547b5e8174606"
                }
             ],
             "ciActions": [],
