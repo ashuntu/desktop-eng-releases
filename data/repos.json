@@ -5147,25 +5147,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0d4e35c3bcf8d6be71a3b347006fad9cb973331c",
+                  "sha": "36ea98559b0ac2a8e82d3e896ca7c540d5ccbbec",
                   "author": "Kat",
-                  "timestamp": 1757442370,
-                  "message": "ci: Fix missing dependency for TiCS QServer mode (#245)\n\nThis PR aims to fix the missing build dependency error present with TiCS\nanalysis runs in QServer mode.\n\nAs part of this, the decision of whether to use QServer or Client mode\nhas been abstracted out into a separate step.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0d4e35c3bcf8d6be71a3b347006fad9cb973331c"
+                  "timestamp": 1757617369,
+                  "message": "ci: TiCS adjustments  (#246)\n\nThis PR adds some adjustments to the TiCS CI.\n\nFirstly, we now upload the processed coverage file as an artifact for\ndebugging purposes. The file is minimal, so this shouldn't be\nproblematic in the long term. It also acts as an additional hedge that\nensures that the coverage file does exist.\n\nAdditionally, this PR makes it so that the coverage files are not\nmerged. The merging of the files might cause TiCS to become confused, so\nwe instead put everything in the coverage folder and rename the files to\nnot clash. This might cause other problems, but we'll have to see.\n\nFor QServer executions, we now pre-process the Go dependencies as well.\nThough TiCS does download them, there are certain cases, particularly\nwith the tools module, where it has strange behavior. Additionally, by\ndoing this outside of TiCS, we can take advantage of caches,\naccelerating the process.\n\nFinally, tags have been added to test helper files so that TiCS ignores\nthem.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/36ea98559b0ac2a8e82d3e896ca7c540d5ccbbec"
                },
                {
-                  "sha": "f4bbdf20d9a176a0d65aea927fa418c5ec6ee5ed",
+                  "sha": "9e54620e9b9d200c8d07c13ae8d49c698f169b0e",
                   "author": "kkuo",
-                  "timestamp": 1757366584,
-                  "message": "ci: Fix missing dependency for TiCS QServer mode",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f4bbdf20d9a176a0d65aea927fa418c5ec6ee5ed"
+                  "timestamp": 1757601074,
+                  "message": "Don't merge all the coverage reports",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9e54620e9b9d200c8d07c13ae8d49c698f169b0e"
                },
                {
-                  "sha": "6b47b03d9288d98308d917cc81aa8a9e94446b17",
-                  "author": "Kat",
-                  "timestamp": 1757113518,
-                  "message": "ci: Refactor QA & sanity checks workflow and add TiCS integration (#231)\n\nThis PR refactors the \"QA & sanity checks\" workflow and adds TiCS\nintegration.\n\nThe integration of TiCS surfaced some challenges with the prior setup\nfor the QA workflow, as it requires you to upload coverage files from a\nvery specific place. In the process of doing this, the workflow has been\nrefactored with a number of additional fixes and changes. Since\neverything ties in with each other, it is a bit difficult to split up\nthis PR\n\n- Add new scheduled trigger\n  - 4:15 UTC weekly on Monday to try and avoid heavy hours\n- We don't really need a daily since we also trigger on push to main.\n- Create a new `process-coverage` job\n- Processes the coverage outputs from the coverage tests, combining and\nconverting them to Cobertura\n  - Upload all coverage results to Codecov in one go\n  - Trigger TiCS depending on the workflow event trigger\n    - Client mode (quality gate) if PR\n    - QServer mode if push to main or scheduled \n- Though the push is only triggered by tags and push-to-main events, the\nconditional is explicit in case it is ever changed.\n- Split race and coverage tests into independent jobs\n- Though there is overlap in setup for the two tasks, by splitting we\ncan allow for the coverage processing job to not need to potentially\nwait for race tests to complete\n - Coverage only changes:\n   - Filter out the \"testdetection\" module from coverage outputs\n- Remove the filtering out of the `pb.go` file since we don't have that\n - Improved `gotestfmt` integration\n- Following far too much investigation, a true workaround has been\nimplemented for the issue where we had a large string of broken pipe\nerrors coupled with a cryptic panic from `gotestfmt`. The fixes have\nbeen merged here in our upstream wrapper:\nhttps://github.com/canonical/desktop-engineering/pull/\n- Re-enable `gotestfmt` integration on macOS runners for Go `-race`\ntests\n        - Add `gotestfmt` integration for coverage tests\n  - Fixed test artifact outputs on Windows\n- Though `mktemp` can run on Windows, it behaves as if on a Unix system.\nThus, the outputs are a little wonky on Windows, resulting in the\nartifact uploader being unable to pick up the artifacts. This triggered\na warning before.\n- Since the uniqueness of `mktemp` isn't really necessary for our use\ncase, and since its behavior differs not only between Unix and Windows,\nbut between Linux, Windows, *and* Darwin, it was simpler to just replace\nit with a simplified method.\n - Go: Sanity\n- Upstream fix for warning about `jq` already being installed on macOS\nrunners https://github.com/canonical/desktop-engineering/pull/74\n - General refactoring and cleanup\n   - Default the shell to `bash` always\n- Use a dynamic planning job to create the matrices used for the sanity\nand test jobs\n- Refactor out the setup of full repository dependencies to a separate\naction (implemented for lrc-qa as well)\n   \n  ---\n  [UDENG-7552](https://warthogs.atlassian.net/browse/UDENG-7552)\n  [UDENG-7258](https://warthogs.atlassian.net/browse/UDENG-7258)\n\n[UDENG-7552]:\nhttps://warthogs.atlassian.net/browse/UDENG-7552?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6b47b03d9288d98308d917cc81aa8a9e94446b17"
+                  "sha": "19c2d9d8916d3fd17265d80fd4f571c7827f32a0",
+                  "author": "kkuo",
+                  "timestamp": 1757540500,
+                  "message": "Add tags to ignore TiCS on test helper files",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/19c2d9d8916d3fd17265d80fd4f571c7827f32a0"
                }
             ],
             "ciActions": [
