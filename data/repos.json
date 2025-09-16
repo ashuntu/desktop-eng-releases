@@ -3402,25 +3402,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c5e282e9a1a3b293a824481a8c6081487b046100",
+                  "author": "adombeck",
+                  "timestamp": 1758029935,
+                  "message": "fix: Install govulncheck with the correct Go toolchain version (#87)\n\nUDENG-8058",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c5e282e9a1a3b293a824481a8c6081487b046100"
+               },
+               {
+                  "sha": "8a48366f25234b5c223db6aac399ec660c4ea8c7",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757067073,
+                  "message": "Install govulncheck with the correct Go toolchain version\n\nUnless GOTOOLCHAIN is specified, the Go version used by `go install` to\nbuild the binary is determined by:\n1. The toolchain directive in the go.mod of the module being installed\n2. If there is no toolchain directive in the go.mod of the module being\n   installed, the system's Go is used (the one in PATH).\n\nWe specify the Go version that should be used for tools like govulncheck\nin tools/go.mod. So we need to point GOTOOLCHAIN to that to actually use\nthat Go version when building govulncheck.\n\nThis avoids errors like:\n\n    Error: /home/runner/go/pkg/mod/golang.org/x/sys@v0.35.0/unix/vgetrandom_linux.go:7:9: file requires newer Go version go1.24 (application built with go1.23)\n\nwhich occur when govulncheck is built with an older Go version than the\nrequired version of the module that it should check.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/8a48366f25234b5c223db6aac399ec660c4ea8c7"
+               },
+               {
                   "sha": "e5fca28516caca483b7b13d4cda6eb8426f3b9d0",
                   "author": "Marco Trevisan",
                   "timestamp": 1757699143,
                   "message": "Merge pull request #85 from canonical/govulncheck-fix\n\nfix(go/code-sanity): correct path passed to govulncheck",
                   "url": "https://github.com/canonical/desktop-engineering/commit/e5fca28516caca483b7b13d4cda6eb8426f3b9d0"
-               },
-               {
-                  "sha": "e0521d6c8bb13fc9084aa1311812053229ae7939",
-                  "author": "kkuo",
-                  "timestamp": 1757698110,
-                  "message": "fix: correct path passed to govulncheck",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e0521d6c8bb13fc9084aa1311812053229ae7939"
-               },
-               {
-                  "sha": "21fdb9df39849765acd9ff6ec32a60a5b07c388a",
-                  "author": "adombeck",
-                  "timestamp": 1757485823,
-                  "message": "Merge pull request #83 from canonical/dpkg-install-speedup\n\nUDENG-7865",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/21fdb9df39849765acd9ff6ec32a60a5b07c388a"
                }
             ],
             "ciActions": [],
@@ -5446,25 +5446,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c5e282e9a1a3b293a824481a8c6081487b046100",
+                  "author": "adombeck",
+                  "timestamp": 1758029935,
+                  "message": "fix: Install govulncheck with the correct Go toolchain version (#87)\n\nUDENG-8058",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c5e282e9a1a3b293a824481a8c6081487b046100"
+               },
+               {
+                  "sha": "8a48366f25234b5c223db6aac399ec660c4ea8c7",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757067073,
+                  "message": "Install govulncheck with the correct Go toolchain version\n\nUnless GOTOOLCHAIN is specified, the Go version used by `go install` to\nbuild the binary is determined by:\n1. The toolchain directive in the go.mod of the module being installed\n2. If there is no toolchain directive in the go.mod of the module being\n   installed, the system's Go is used (the one in PATH).\n\nWe specify the Go version that should be used for tools like govulncheck\nin tools/go.mod. So we need to point GOTOOLCHAIN to that to actually use\nthat Go version when building govulncheck.\n\nThis avoids errors like:\n\n    Error: /home/runner/go/pkg/mod/golang.org/x/sys@v0.35.0/unix/vgetrandom_linux.go:7:9: file requires newer Go version go1.24 (application built with go1.23)\n\nwhich occur when govulncheck is built with an older Go version than the\nrequired version of the module that it should check.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/8a48366f25234b5c223db6aac399ec660c4ea8c7"
+               },
+               {
                   "sha": "e5fca28516caca483b7b13d4cda6eb8426f3b9d0",
                   "author": "Marco Trevisan",
                   "timestamp": 1757699143,
                   "message": "Merge pull request #85 from canonical/govulncheck-fix\n\nfix(go/code-sanity): correct path passed to govulncheck",
                   "url": "https://github.com/canonical/desktop-engineering/commit/e5fca28516caca483b7b13d4cda6eb8426f3b9d0"
-               },
-               {
-                  "sha": "e0521d6c8bb13fc9084aa1311812053229ae7939",
-                  "author": "kkuo",
-                  "timestamp": 1757698110,
-                  "message": "fix: correct path passed to govulncheck",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e0521d6c8bb13fc9084aa1311812053229ae7939"
-               },
-               {
-                  "sha": "21fdb9df39849765acd9ff6ec32a60a5b07c388a",
-                  "author": "adombeck",
-                  "timestamp": 1757485823,
-                  "message": "Merge pull request #83 from canonical/dpkg-install-speedup\n\nUDENG-7865",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/21fdb9df39849765acd9ff6ec32a60a5b07c388a"
                }
             ],
             "ciActions": [],
@@ -7711,25 +7711,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c5e282e9a1a3b293a824481a8c6081487b046100",
+                  "author": "adombeck",
+                  "timestamp": 1758029935,
+                  "message": "fix: Install govulncheck with the correct Go toolchain version (#87)\n\nUDENG-8058",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c5e282e9a1a3b293a824481a8c6081487b046100"
+               },
+               {
+                  "sha": "8a48366f25234b5c223db6aac399ec660c4ea8c7",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757067073,
+                  "message": "Install govulncheck with the correct Go toolchain version\n\nUnless GOTOOLCHAIN is specified, the Go version used by `go install` to\nbuild the binary is determined by:\n1. The toolchain directive in the go.mod of the module being installed\n2. If there is no toolchain directive in the go.mod of the module being\n   installed, the system's Go is used (the one in PATH).\n\nWe specify the Go version that should be used for tools like govulncheck\nin tools/go.mod. So we need to point GOTOOLCHAIN to that to actually use\nthat Go version when building govulncheck.\n\nThis avoids errors like:\n\n    Error: /home/runner/go/pkg/mod/golang.org/x/sys@v0.35.0/unix/vgetrandom_linux.go:7:9: file requires newer Go version go1.24 (application built with go1.23)\n\nwhich occur when govulncheck is built with an older Go version than the\nrequired version of the module that it should check.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/8a48366f25234b5c223db6aac399ec660c4ea8c7"
+               },
+               {
                   "sha": "e5fca28516caca483b7b13d4cda6eb8426f3b9d0",
                   "author": "Marco Trevisan",
                   "timestamp": 1757699143,
                   "message": "Merge pull request #85 from canonical/govulncheck-fix\n\nfix(go/code-sanity): correct path passed to govulncheck",
                   "url": "https://github.com/canonical/desktop-engineering/commit/e5fca28516caca483b7b13d4cda6eb8426f3b9d0"
-               },
-               {
-                  "sha": "e0521d6c8bb13fc9084aa1311812053229ae7939",
-                  "author": "kkuo",
-                  "timestamp": 1757698110,
-                  "message": "fix: correct path passed to govulncheck",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e0521d6c8bb13fc9084aa1311812053229ae7939"
-               },
-               {
-                  "sha": "21fdb9df39849765acd9ff6ec32a60a5b07c388a",
-                  "author": "adombeck",
-                  "timestamp": 1757485823,
-                  "message": "Merge pull request #83 from canonical/dpkg-install-speedup\n\nUDENG-7865",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/21fdb9df39849765acd9ff6ec32a60a5b07c388a"
                }
             ],
             "ciActions": [],
