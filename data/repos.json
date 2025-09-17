@@ -5147,25 +5147,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9840f5c1c129978e78d54c62f3e4ec629dd24288",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1758117052,
+                  "message": "deps(go-server): Bump the minor-updates group in /server with 4 updates (#248)",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9840f5c1c129978e78d54c62f3e4ec629dd24288"
+               },
+               {
+                  "sha": "39f2ea47389a65c6d64eb7cdd6e07c25e5eaa258",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1758116414,
+                  "message": "deps(go-server): Bump the minor-updates group in /server with 4 updates\n\nBumps the minor-updates group in /server with 4 updates: [github.com/jackc/pgx/v5](https://github.com/jackc/pgx), [github.com/prometheus/client_golang](https://github.com/prometheus/client_golang), [github.com/prometheus/common](https://github.com/prometheus/common) and [github.com/spf13/viper](https://github.com/spf13/viper).\n\n\nUpdates `github.com/jackc/pgx/v5` from 5.7.5 to 5.7.6\n- [Changelog](https://github.com/jackc/pgx/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/jackc/pgx/compare/v5.7.5...v5.7.6)\n\nUpdates `github.com/prometheus/client_golang` from 1.23.0 to 1.23.2\n- [Release notes](https://github.com/prometheus/client_golang/releases)\n- [Changelog](https://github.com/prometheus/client_golang/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/prometheus/client_golang/compare/v1.23.0...v1.23.2)\n\nUpdates `github.com/prometheus/common` from 0.66.0 to 0.66.1\n- [Release notes](https://github.com/prometheus/common/releases)\n- [Changelog](https://github.com/prometheus/common/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/prometheus/common/compare/v0.66.0...v0.66.1)\n\nUpdates `github.com/spf13/viper` from 1.20.1 to 1.21.0\n- [Release notes](https://github.com/spf13/viper/releases)\n- [Commits](https://github.com/spf13/viper/compare/v1.20.1...v1.21.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/jackc/pgx/v5\n  dependency-version: 5.7.6\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: github.com/prometheus/client_golang\n  dependency-version: 1.23.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: github.com/prometheus/common\n  dependency-version: 0.66.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: github.com/spf13/viper\n  dependency-version: 1.21.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/39f2ea47389a65c6d64eb7cdd6e07c25e5eaa258"
+               },
+               {
                   "sha": "63cef343a64af1fee6dae413bd05c40977d7dcf9",
                   "author": "Kat",
                   "timestamp": 1757947401,
                   "message": "ci: Cleanup annotations in QA workflow (#250)\n\nThis PR aims to clean up the annotations in the QA workflow, helping\nreduce notification fatigue and clearing out irrelevant annotations.\n\nThese are the annotations on the summary page of a [recent\nrun](https://github.com/ubuntu/ubuntu-insights/actions/runs/17679179093)\ntriggered by a push to main:\n<img width=\"1588\" height=\"980\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/bf66af89-df07-4099-bc7d-2635b00a5c94\"\n/>\n\nThe TiCS annotations are all false positives or irrelevant, with no\nactions on our front that could really resolve them. There are so many\nthat it hits GitHub's 10 error annotations per step limit. There is a\nway for action developers to get past this limit, but it appears the\nTiCS developers aren't using it:\nhttps://github.com/orgs/community/discussions/26680. Either way, it is\nunclear how useful the annotations would be with that many anyway. Thus,\ngiven how they aren't useful, it is better to just disable the\nannotations.\n\n---\n[UDENG-7908](https://warthogs.atlassian.net/browse/UDENG-7908)\n\n[UDENG-7908]:\nhttps://warthogs.atlassian.net/browse/UDENG-7908?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/63cef343a64af1fee6dae413bd05c40977d7dcf9"
-               },
-               {
-                  "sha": "921b0ba101afd414f55da51fca488da3c1a1aa36",
-                  "author": "kkuo",
-                  "timestamp": 1757694819,
-                  "message": "ci: Disable post annotations in TICS configuration to avoid false positives",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/921b0ba101afd414f55da51fca488da3c1a1aa36"
-               },
-               {
-                  "sha": "59dc3d9a9a4559c16df44812e324e5e50bdcca6c",
-                  "author": "Kat",
-                  "timestamp": 1757691506,
-                  "message": "ci: Disable TiCS client mode and filter for only ubuntu-24.04 coverage  (#249)\n\nAs discussed, due to the limitations in how TiCS presents issues in\nclient mode being problematic for OSS, we now only use the qserver mode\nof TiCS. To avoid duplicate work, excessive use of the runners, and also\navoid the \"skipped job\" annotation on every PR, everything is still in\nthe same job. While the TiCS items could be split into their own\nworkflow, the steps to generate the coverage data aren't trivial enough\nto justify running it twice, given we still want the QA workflow to run\non push to main. Additionally, while it is possible to have a workflow\ndownload artifacts from an independent workflow, this can be rather\nfragile.\n\nIn addition, we now filter coverage reports fed to TiCS such that only\nreports generated by the Ubuntu-24.04 run are used. This is necessary\nsince TiCS does not support multiple coverage lines for the same file.\nIf there are multiple coverage lines that match a particular file, it\nwill error and not have any coverage stats for that file at all.\n\nThis PR also adds a step that forces `go download` for each of the\nmodules so that dependencies are downloaded, not just cached when we\nenter TiCS.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/59dc3d9a9a4559c16df44812e324e5e50bdcca6c"
                }
             ],
             "ciActions": [
@@ -6652,6 +6652,15 @@
             "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
+               {
+                  "id": 247998285,
+                  "version": "0.9999b6",
+                  "timestamp": 1758118145,
+                  "title": "0.9999.6.0",
+                  "body": "",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/untagged-6f6bf5ee1808fcb34332",
+                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/0.9999b6...main"
+               },
                {
                   "id": 247900724,
                   "version": "0.9999b5",
@@ -8369,25 +8378,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c73fc6c5da1de2eb98b3582c36147b979b8a788a",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1757674568,
-                  "message": "Merge pull request #259 from canonical/refactor-align-left\n\nrefactor: align-left policy for `camera` and `home` interfaces",
-                  "url": "https://github.com/canonical/prompting-client/commit/c73fc6c5da1de2eb98b3582c36147b979b8a788a"
+                  "sha": "11bb8d495b1fdff79f3ceeb0fb5bf69845765f51",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758119248,
+                  "message": "feat: fetch snap icons from snapd and display them in prompts (#261)\n\nSnap icons are retrieved from the `/v2/icons/{snap}/icon` API endpoint\nin snapd and sent to the UI via grpc alongside the other snap metadata.\n\nUI for snaps with an icon:\n<img width=\"1224\" height=\"1018\" alt=\"Screenshot From 2025-09-17\n12-21-56\"\nsrc=\"https://github.com/user-attachments/assets/9f73ce6f-66a0-4379-a93e-03fbc5e92598\"\n/>\n\nUI for snaps without an icon (unchanged):\n<img width=\"1224\" height=\"1018\" alt=\"Screenshot From 2025-09-17\n12-22-49\"\nsrc=\"https://github.com/user-attachments/assets/17534ad0-7fe8-45f8-8255-4781f2308d27\"\n/>\n\n\n\nUDENG-7931",
+                  "url": "https://github.com/canonical/prompting-client/commit/11bb8d495b1fdff79f3ceeb0fb5bf69845765f51"
                },
                {
-                  "sha": "c1b95b31ea12d16255c6a455216118d95bcea991",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1757674348,
-                  "message": "Merge pull request #256 from matthew-hagemann/microphone-flutter-ui\n\nfeat(flutter): microphone flutter UI",
-                  "url": "https://github.com/canonical/prompting-client/commit/c1b95b31ea12d16255c6a455216118d95bcea991"
+                  "sha": "65e2b38e82789e6b58689ca3d899fafae0c36b11",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758117169,
+                  "message": "fix: parse error in raw response if status != 200",
+                  "url": "https://github.com/canonical/prompting-client/commit/65e2b38e82789e6b58689ca3d899fafae0c36b11"
                },
                {
-                  "sha": "e0e8326693c68bb2a35e276aee66c216b0bf05f7",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1757673229,
-                  "message": "refactor: align-left policy for `camera` and `home` interfaces",
-                  "url": "https://github.com/canonical/prompting-client/commit/e0e8326693c68bb2a35e276aee66c216b0bf05f7"
+                  "sha": "0f941cec3c02437bea82026537aa1f720cae4fa0",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758111917,
+                  "message": "refactor: use match instead of early return",
+                  "url": "https://github.com/canonical/prompting-client/commit/0f941cec3c02437bea82026537aa1f720cae4fa0"
                }
             ],
             "ciActions": [],
