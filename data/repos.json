@@ -3435,25 +3435,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f9993bedda2bb633abc28da86c92e4278555989a",
-                  "author": "ashuntu",
-                  "timestamp": 1757445329,
-                  "message": "Merge pull request #156 from canonical/flutter-3.35\n\nchore(deps): Bump Flutter to 3.35 and Yaru to 8.3",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/f9993bedda2bb633abc28da86c92e4278555989a"
+                  "sha": "98584e69f7e776344e5c3291501a4740e31b38a2",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758211122,
+                  "message": "Merge pull request #157 from canonical/local-icons\n\nfeat: use local icons from snapd instead of fetching them from the network",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/98584e69f7e776344e5c3291501a4740e31b38a2"
                },
                {
-                  "sha": "2d8796cb64cddbca4e09fad83ef601a2478fbb97",
-                  "author": "ashuntu",
-                  "timestamp": 1757356921,
-                  "message": "Generate localizations",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/2d8796cb64cddbca4e09fad83ef601a2478fbb97"
+                  "sha": "912e806ff58890cb0e3e0711bf4338076a54b6bf",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758208753,
+                  "message": "chore: remove no longer needed icon url provider",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/912e806ff58890cb0e3e0711bf4338076a54b6bf"
                },
                {
-                  "sha": "15fe1a0eb42a1f55bb3ed42669c64fd56bd9e3f5",
-                  "author": "ashuntu",
-                  "timestamp": 1757356911,
-                  "message": "Bump Flutter to 3.35 and Yaru to 8.3",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/15fe1a0eb42a1f55bb3ed42669c64fd56bd9e3f5"
+                  "sha": "d2a7ad98ba34c10bbe77b6a970f4a1e37bd590d4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758191328,
+                  "message": "chore: remove xdg_cache_manager",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/d2a7ad98ba34c10bbe77b6a970f4a1e37bd590d4"
                }
             ],
             "ciActions": [],
@@ -4509,25 +4509,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fa6a8dff00901e22558b13ca7e77c23b3ff7981f",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758210069,
+                  "message": "fix: don't await AD join result (#1184)\n\nFixes a bug where the active directory page would remain in a loading\nstate indefinitely. Looks like this bug was accidentally introduced when\nstricter linting rules were introduced in\nhttps://github.com/canonical/ubuntu-desktop-provision/pull/266.\n\n[lp:2069437](https://bugs.launchpad.net/subiquity/+bug/2069437)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fa6a8dff00901e22558b13ca7e77c23b3ff7981f"
+               },
+               {
+                  "sha": "554627672078f4904e9af5499283c10a783ee38a",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758206111,
+                  "message": "fix: don't await AD join result\n\nCo-authored-by: Denison Barbosa <denison.barbosa@canonical.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/554627672078f4904e9af5499283c10a783ee38a"
+               },
+               {
                   "sha": "8d175f01d8580d7b4987f4ba2a42b5a7b49f0afb",
                   "author": "Matthew Hagemann",
                   "timestamp": 1757516661,
                   "message": "ci: Avoid installing locales and man pages (#1180)\n\nSpeed up CI jobs by avoiding installation of locales and man pages.\n\nThe major performance gain that can be expected is that it makes the\n\"Processing triggers for man-db\" step a no-op. That step can otherwise\ntake more than a minute, for example in [this recent\nrun](https://github.com/canonical/ubuntu-desktop-provision/actions/runs/17575083622/job/49918442057#step:5:672)\nit took 1m 40s:\n\n<img width=\"783\" height=\"38\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/10991fb2-2eab-4af3-901b-aa08fc3739b1\"\n/>\n\n\nUDENG-7865",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8d175f01d8580d7b4987f4ba2a42b5a7b49f0afb"
-               },
-               {
-                  "sha": "2e494f8c77339bdfeee58e3b61e08f8b4bc05230",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1757516636,
-                  "message": "Update golangci-lint to v2 and migrate its config (#1176)\n\nUpdate golangci-lint to v2, migrate its config and fix issues found by\nthe new linter version.\n\nUDENG-7800",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2e494f8c77339bdfeee58e3b61e08f8b4bc05230"
-               },
-               {
-                  "sha": "26d89d307f2056528ff4b78f08d5239f9fa1ad33",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757414787,
-                  "message": "ci: Avoid installing locales and man pages\n\nSpeed up CI jobs by avoiding installation of locales and man pages.\n\nUDENG-7865",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/26d89d307f2056528ff4b78f08d5239f9fa1ad33"
                }
             ],
             "ciActions": [
@@ -4894,6 +4894,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1a38d0d0aaaaa1b96e2ad8c921585ae9b8819554",
+                  "author": "Paolo Gentili",
+                  "timestamp": 1758210369,
+                  "message": "[Infra] replace 'tag' style actions version with the latest hash (#67)",
+                  "url": "https://github.com/canonical/yarf/commit/1a38d0d0aaaaa1b96e2ad8c921585ae9b8819554"
+               },
+               {
                   "sha": "a43a70fdda12dceca23acacb244cbe9a71d47f81",
                   "author": "Douglas Chiang",
                   "timestamp": 1758199179,
@@ -4906,13 +4913,6 @@
                   "timestamp": 1757683748,
                   "message": "[New] keyword: `Get Position Of $target` (#53)\n\nSigned-off-by: Douglas Chiang <douglas.chiang@canonical.com>",
                   "url": "https://github.com/canonical/yarf/commit/9f3b10fa9299dd8aa7a89fefc01a872c4412392c"
-               },
-               {
-                  "sha": "467146dd7851fc70c3c49324cc3a1a46f945a987",
-                  "author": "Gennadii Tuzov",
-                  "timestamp": 1757673358,
-                  "message": "[Infra] Introduce GitVersion for semantic versioning. (#24)",
-                  "url": "https://github.com/canonical/yarf/commit/467146dd7851fc70c3c49324cc3a1a46f945a987"
                }
             ],
             "ciActions": [],
@@ -4936,14 +4936,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 376,
-                     "timestamp": 1758199912
+                     "revision": 378,
+                     "timestamp": 1758211202
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 375,
-                     "timestamp": 1758199824
+                     "revision": 377,
+                     "timestamp": 1758211108
                   }
                ],
                "channels": [
@@ -5479,25 +5479,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f9993bedda2bb633abc28da86c92e4278555989a",
-                  "author": "ashuntu",
-                  "timestamp": 1757445329,
-                  "message": "Merge pull request #156 from canonical/flutter-3.35\n\nchore(deps): Bump Flutter to 3.35 and Yaru to 8.3",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/f9993bedda2bb633abc28da86c92e4278555989a"
+                  "sha": "98584e69f7e776344e5c3291501a4740e31b38a2",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758211122,
+                  "message": "Merge pull request #157 from canonical/local-icons\n\nfeat: use local icons from snapd instead of fetching them from the network",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/98584e69f7e776344e5c3291501a4740e31b38a2"
                },
                {
-                  "sha": "2d8796cb64cddbca4e09fad83ef601a2478fbb97",
-                  "author": "ashuntu",
-                  "timestamp": 1757356921,
-                  "message": "Generate localizations",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/2d8796cb64cddbca4e09fad83ef601a2478fbb97"
+                  "sha": "912e806ff58890cb0e3e0711bf4338076a54b6bf",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758208753,
+                  "message": "chore: remove no longer needed icon url provider",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/912e806ff58890cb0e3e0711bf4338076a54b6bf"
                },
                {
-                  "sha": "15fe1a0eb42a1f55bb3ed42669c64fd56bd9e3f5",
-                  "author": "ashuntu",
-                  "timestamp": 1757356911,
-                  "message": "Bump Flutter to 3.35 and Yaru to 8.3",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/15fe1a0eb42a1f55bb3ed42669c64fd56bd9e3f5"
+                  "sha": "d2a7ad98ba34c10bbe77b6a970f4a1e37bd590d4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758191328,
+                  "message": "chore: remove xdg_cache_manager",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/d2a7ad98ba34c10bbe77b6a970f4a1e37bd590d4"
                }
             ],
             "ciActions": [],
@@ -6586,25 +6586,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fa6a8dff00901e22558b13ca7e77c23b3ff7981f",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758210069,
+                  "message": "fix: don't await AD join result (#1184)\n\nFixes a bug where the active directory page would remain in a loading\nstate indefinitely. Looks like this bug was accidentally introduced when\nstricter linting rules were introduced in\nhttps://github.com/canonical/ubuntu-desktop-provision/pull/266.\n\n[lp:2069437](https://bugs.launchpad.net/subiquity/+bug/2069437)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fa6a8dff00901e22558b13ca7e77c23b3ff7981f"
+               },
+               {
+                  "sha": "554627672078f4904e9af5499283c10a783ee38a",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758206111,
+                  "message": "fix: don't await AD join result\n\nCo-authored-by: Denison Barbosa <denison.barbosa@canonical.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/554627672078f4904e9af5499283c10a783ee38a"
+               },
+               {
                   "sha": "8d175f01d8580d7b4987f4ba2a42b5a7b49f0afb",
                   "author": "Matthew Hagemann",
                   "timestamp": 1757516661,
                   "message": "ci: Avoid installing locales and man pages (#1180)\n\nSpeed up CI jobs by avoiding installation of locales and man pages.\n\nThe major performance gain that can be expected is that it makes the\n\"Processing triggers for man-db\" step a no-op. That step can otherwise\ntake more than a minute, for example in [this recent\nrun](https://github.com/canonical/ubuntu-desktop-provision/actions/runs/17575083622/job/49918442057#step:5:672)\nit took 1m 40s:\n\n<img width=\"783\" height=\"38\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/10991fb2-2eab-4af3-901b-aa08fc3739b1\"\n/>\n\n\nUDENG-7865",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8d175f01d8580d7b4987f4ba2a42b5a7b49f0afb"
-               },
-               {
-                  "sha": "2e494f8c77339bdfeee58e3b61e08f8b4bc05230",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1757516636,
-                  "message": "Update golangci-lint to v2 and migrate its config (#1176)\n\nUpdate golangci-lint to v2, migrate its config and fix issues found by\nthe new linter version.\n\nUDENG-7800",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2e494f8c77339bdfeee58e3b61e08f8b4bc05230"
-               },
-               {
-                  "sha": "26d89d307f2056528ff4b78f08d5239f9fa1ad33",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757414787,
-                  "message": "ci: Avoid installing locales and man pages\n\nSpeed up CI jobs by avoiding installation of locales and man pages.\n\nUDENG-7865",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/26d89d307f2056528ff4b78f08d5239f9fa1ad33"
                }
             ],
             "ciActions": [
@@ -7003,6 +7003,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1a38d0d0aaaaa1b96e2ad8c921585ae9b8819554",
+                  "author": "Paolo Gentili",
+                  "timestamp": 1758210369,
+                  "message": "[Infra] replace 'tag' style actions version with the latest hash (#67)",
+                  "url": "https://github.com/canonical/yarf/commit/1a38d0d0aaaaa1b96e2ad8c921585ae9b8819554"
+               },
+               {
                   "sha": "a43a70fdda12dceca23acacb244cbe9a71d47f81",
                   "author": "Douglas Chiang",
                   "timestamp": 1758199179,
@@ -7015,13 +7022,6 @@
                   "timestamp": 1757683748,
                   "message": "[New] keyword: `Get Position Of $target` (#53)\n\nSigned-off-by: Douglas Chiang <douglas.chiang@canonical.com>",
                   "url": "https://github.com/canonical/yarf/commit/9f3b10fa9299dd8aa7a89fefc01a872c4412392c"
-               },
-               {
-                  "sha": "467146dd7851fc70c3c49324cc3a1a46f945a987",
-                  "author": "Gennadii Tuzov",
-                  "timestamp": 1757673358,
-                  "message": "[Infra] Introduce GitVersion for semantic versioning. (#24)",
-                  "url": "https://github.com/canonical/yarf/commit/467146dd7851fc70c3c49324cc3a1a46f945a987"
                }
             ],
             "ciActions": [],
@@ -7045,14 +7045,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 376,
-                     "timestamp": 1758199912
+                     "revision": 378,
+                     "timestamp": 1758211202
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 375,
-                     "timestamp": 1758199824
+                     "revision": 377,
+                     "timestamp": 1758211108
                   }
                ],
                "channels": [
@@ -7753,25 +7753,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f9993bedda2bb633abc28da86c92e4278555989a",
-                  "author": "ashuntu",
-                  "timestamp": 1757445329,
-                  "message": "Merge pull request #156 from canonical/flutter-3.35\n\nchore(deps): Bump Flutter to 3.35 and Yaru to 8.3",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/f9993bedda2bb633abc28da86c92e4278555989a"
+                  "sha": "98584e69f7e776344e5c3291501a4740e31b38a2",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758211122,
+                  "message": "Merge pull request #157 from canonical/local-icons\n\nfeat: use local icons from snapd instead of fetching them from the network",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/98584e69f7e776344e5c3291501a4740e31b38a2"
                },
                {
-                  "sha": "2d8796cb64cddbca4e09fad83ef601a2478fbb97",
-                  "author": "ashuntu",
-                  "timestamp": 1757356921,
-                  "message": "Generate localizations",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/2d8796cb64cddbca4e09fad83ef601a2478fbb97"
+                  "sha": "912e806ff58890cb0e3e0711bf4338076a54b6bf",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758208753,
+                  "message": "chore: remove no longer needed icon url provider",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/912e806ff58890cb0e3e0711bf4338076a54b6bf"
                },
                {
-                  "sha": "15fe1a0eb42a1f55bb3ed42669c64fd56bd9e3f5",
-                  "author": "ashuntu",
-                  "timestamp": 1757356911,
-                  "message": "Bump Flutter to 3.35 and Yaru to 8.3",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/15fe1a0eb42a1f55bb3ed42669c64fd56bd9e3f5"
+                  "sha": "d2a7ad98ba34c10bbe77b6a970f4a1e37bd590d4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758191328,
+                  "message": "chore: remove xdg_cache_manager",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/d2a7ad98ba34c10bbe77b6a970f4a1e37bd590d4"
                }
             ],
             "ciActions": [],
@@ -8827,25 +8827,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fa6a8dff00901e22558b13ca7e77c23b3ff7981f",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758210069,
+                  "message": "fix: don't await AD join result (#1184)\n\nFixes a bug where the active directory page would remain in a loading\nstate indefinitely. Looks like this bug was accidentally introduced when\nstricter linting rules were introduced in\nhttps://github.com/canonical/ubuntu-desktop-provision/pull/266.\n\n[lp:2069437](https://bugs.launchpad.net/subiquity/+bug/2069437)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fa6a8dff00901e22558b13ca7e77c23b3ff7981f"
+               },
+               {
+                  "sha": "554627672078f4904e9af5499283c10a783ee38a",
+                  "author": "Dennis Loose",
+                  "timestamp": 1758206111,
+                  "message": "fix: don't await AD join result\n\nCo-authored-by: Denison Barbosa <denison.barbosa@canonical.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/554627672078f4904e9af5499283c10a783ee38a"
+               },
+               {
                   "sha": "8d175f01d8580d7b4987f4ba2a42b5a7b49f0afb",
                   "author": "Matthew Hagemann",
                   "timestamp": 1757516661,
                   "message": "ci: Avoid installing locales and man pages (#1180)\n\nSpeed up CI jobs by avoiding installation of locales and man pages.\n\nThe major performance gain that can be expected is that it makes the\n\"Processing triggers for man-db\" step a no-op. That step can otherwise\ntake more than a minute, for example in [this recent\nrun](https://github.com/canonical/ubuntu-desktop-provision/actions/runs/17575083622/job/49918442057#step:5:672)\nit took 1m 40s:\n\n<img width=\"783\" height=\"38\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/10991fb2-2eab-4af3-901b-aa08fc3739b1\"\n/>\n\n\nUDENG-7865",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8d175f01d8580d7b4987f4ba2a42b5a7b49f0afb"
-               },
-               {
-                  "sha": "2e494f8c77339bdfeee58e3b61e08f8b4bc05230",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1757516636,
-                  "message": "Update golangci-lint to v2 and migrate its config (#1176)\n\nUpdate golangci-lint to v2, migrate its config and fix issues found by\nthe new linter version.\n\nUDENG-7800",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2e494f8c77339bdfeee58e3b61e08f8b4bc05230"
-               },
-               {
-                  "sha": "26d89d307f2056528ff4b78f08d5239f9fa1ad33",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757414787,
-                  "message": "ci: Avoid installing locales and man pages\n\nSpeed up CI jobs by avoiding installation of locales and man pages.\n\nUDENG-7865",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/26d89d307f2056528ff4b78f08d5239f9fa1ad33"
                }
             ],
             "ciActions": [
@@ -9247,6 +9247,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1a38d0d0aaaaa1b96e2ad8c921585ae9b8819554",
+                  "author": "Paolo Gentili",
+                  "timestamp": 1758210369,
+                  "message": "[Infra] replace 'tag' style actions version with the latest hash (#67)",
+                  "url": "https://github.com/canonical/yarf/commit/1a38d0d0aaaaa1b96e2ad8c921585ae9b8819554"
+               },
+               {
                   "sha": "a43a70fdda12dceca23acacb244cbe9a71d47f81",
                   "author": "Douglas Chiang",
                   "timestamp": 1758199179,
@@ -9259,13 +9266,6 @@
                   "timestamp": 1757683748,
                   "message": "[New] keyword: `Get Position Of $target` (#53)\n\nSigned-off-by: Douglas Chiang <douglas.chiang@canonical.com>",
                   "url": "https://github.com/canonical/yarf/commit/9f3b10fa9299dd8aa7a89fefc01a872c4412392c"
-               },
-               {
-                  "sha": "467146dd7851fc70c3c49324cc3a1a46f945a987",
-                  "author": "Gennadii Tuzov",
-                  "timestamp": 1757673358,
-                  "message": "[Infra] Introduce GitVersion for semantic versioning. (#24)",
-                  "url": "https://github.com/canonical/yarf/commit/467146dd7851fc70c3c49324cc3a1a46f945a987"
                }
             ],
             "ciActions": [],
@@ -9289,14 +9289,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 376,
-                     "timestamp": 1758199912
+                     "revision": 378,
+                     "timestamp": 1758211202
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 375,
-                     "timestamp": 1758199824
+                     "revision": 377,
+                     "timestamp": 1758211108
                   }
                ],
                "channels": [
