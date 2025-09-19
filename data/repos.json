@@ -4161,25 +4161,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f3069c1c37e7fbad801a7fa14ec0e6e226b1cf35",
+                  "author": "Sergio Costas",
+                  "timestamp": 1758284682,
+                  "message": "Changed the notify_init application name (#150)\n\nThe notify_init call had an incorrect value, which showed an odd title\nin the notifications.\n\nThis patch fixes this.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/f3069c1c37e7fbad801a7fa14ec0e6e226b1cf35"
+               },
+               {
+                  "sha": "8a4a00eb5e3da36c4da1931d5e96a42919a68f9d",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1758281467,
+                  "message": "Changed the notify_init application name\n\nThe notify_init call had an incorrect value, which showed an odd\ntitle in the notifications.\n\nThis patch fixes this.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/8a4a00eb5e3da36c4da1931d5e96a42919a68f9d"
+               },
+               {
                   "sha": "1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b",
                   "author": "Sergio Costas",
                   "timestamp": 1749636522,
                   "message": "Add a workaround for Ubuntu Budgie (#141)\n\n* Add a workaround for Ubuntu Budgie\n\nUbuntu Budgie has a bug in its notifications system: when the\nuser clicks on an action (for example, \"Yes\" for installing\nnew themes from the Snap Store), it sends the button action\n(thus, \"yes\" action), but after that also sends the default\naction. Instead, both Gnome and KDE only sends the button\naction.\n\nThis results in odd behavior in this system: since the default\naction does the same than the \"yes\" action, if the user presses\n\"Yes\", two install processes will run concurrently, conflicting\nbetween them and resulting in an installation error shown (due\nto one of the processes being unable to install the themes),\nwhile, at the same time, the themes are correctly installed (by\nthe second process).\n\nAlso, if the user presses \"No\", the \"no\" action is just ignored\nand nothing is done; but the next \"default\" action is honored\nand the themes are installed; exactly the opposite of what the\nuser wanted.\n\nThis workaround ensures that only one action is honored for\neach notification, and any extra action is ignored until the\ninstall notification is closed and a new notification is\nshown.\n\nIt also adds extra tests to ensure that everything works as\nexpected.\n\nFix https://github.com/canonical/snapd-desktop-integration/issues/52\n\n* Fixes asked by Nathan\n\n* Fix for build",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b"
-               },
-               {
-                  "sha": "2e59f4593972164354fd6c97c8019a3973e2a7c8",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1744832058,
-                  "message": "Merge pull request #142 from sergio-costas/update-github-building\n\nUpdate ubuntu version in test",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/2e59f4593972164354fd6c97c8019a3973e2a7c8"
-               },
-               {
-                  "sha": "5db963a44e5620e5b28bc39e682b2284c5437f27",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1744815791,
-                  "message": "Update ubuntu version in test\n\nThe ubuntu 20.04 actions runner is being deprecated, so we must\nupdate it to a more recent one.\n\nhttps://github.com/actions/runner-images/issues/11101",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/5db963a44e5620e5b28bc39e682b2284c5437f27"
                }
             ],
             "ciActions": [],
@@ -6238,25 +6238,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f3069c1c37e7fbad801a7fa14ec0e6e226b1cf35",
+                  "author": "Sergio Costas",
+                  "timestamp": 1758284682,
+                  "message": "Changed the notify_init application name (#150)\n\nThe notify_init call had an incorrect value, which showed an odd title\nin the notifications.\n\nThis patch fixes this.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/f3069c1c37e7fbad801a7fa14ec0e6e226b1cf35"
+               },
+               {
+                  "sha": "8a4a00eb5e3da36c4da1931d5e96a42919a68f9d",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1758281467,
+                  "message": "Changed the notify_init application name\n\nThe notify_init call had an incorrect value, which showed an odd\ntitle in the notifications.\n\nThis patch fixes this.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/8a4a00eb5e3da36c4da1931d5e96a42919a68f9d"
+               },
+               {
                   "sha": "1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b",
                   "author": "Sergio Costas",
                   "timestamp": 1749636522,
                   "message": "Add a workaround for Ubuntu Budgie (#141)\n\n* Add a workaround for Ubuntu Budgie\n\nUbuntu Budgie has a bug in its notifications system: when the\nuser clicks on an action (for example, \"Yes\" for installing\nnew themes from the Snap Store), it sends the button action\n(thus, \"yes\" action), but after that also sends the default\naction. Instead, both Gnome and KDE only sends the button\naction.\n\nThis results in odd behavior in this system: since the default\naction does the same than the \"yes\" action, if the user presses\n\"Yes\", two install processes will run concurrently, conflicting\nbetween them and resulting in an installation error shown (due\nto one of the processes being unable to install the themes),\nwhile, at the same time, the themes are correctly installed (by\nthe second process).\n\nAlso, if the user presses \"No\", the \"no\" action is just ignored\nand nothing is done; but the next \"default\" action is honored\nand the themes are installed; exactly the opposite of what the\nuser wanted.\n\nThis workaround ensures that only one action is honored for\neach notification, and any extra action is ignored until the\ninstall notification is closed and a new notification is\nshown.\n\nIt also adds extra tests to ensure that everything works as\nexpected.\n\nFix https://github.com/canonical/snapd-desktop-integration/issues/52\n\n* Fixes asked by Nathan\n\n* Fix for build",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b"
-               },
-               {
-                  "sha": "2e59f4593972164354fd6c97c8019a3973e2a7c8",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1744832058,
-                  "message": "Merge pull request #142 from sergio-costas/update-github-building\n\nUpdate ubuntu version in test",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/2e59f4593972164354fd6c97c8019a3973e2a7c8"
-               },
-               {
-                  "sha": "5db963a44e5620e5b28bc39e682b2284c5437f27",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1744815791,
-                  "message": "Update ubuntu version in test\n\nThe ubuntu 20.04 actions runner is being deprecated, so we must\nupdate it to a more recent one.\n\nhttps://github.com/actions/runner-images/issues/11101",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/5db963a44e5620e5b28bc39e682b2284c5437f27"
                }
             ],
             "ciActions": [],
@@ -8479,25 +8479,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f3069c1c37e7fbad801a7fa14ec0e6e226b1cf35",
+                  "author": "Sergio Costas",
+                  "timestamp": 1758284682,
+                  "message": "Changed the notify_init application name (#150)\n\nThe notify_init call had an incorrect value, which showed an odd title\nin the notifications.\n\nThis patch fixes this.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/f3069c1c37e7fbad801a7fa14ec0e6e226b1cf35"
+               },
+               {
+                  "sha": "8a4a00eb5e3da36c4da1931d5e96a42919a68f9d",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1758281467,
+                  "message": "Changed the notify_init application name\n\nThe notify_init call had an incorrect value, which showed an odd\ntitle in the notifications.\n\nThis patch fixes this.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/8a4a00eb5e3da36c4da1931d5e96a42919a68f9d"
+               },
+               {
                   "sha": "1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b",
                   "author": "Sergio Costas",
                   "timestamp": 1749636522,
                   "message": "Add a workaround for Ubuntu Budgie (#141)\n\n* Add a workaround for Ubuntu Budgie\n\nUbuntu Budgie has a bug in its notifications system: when the\nuser clicks on an action (for example, \"Yes\" for installing\nnew themes from the Snap Store), it sends the button action\n(thus, \"yes\" action), but after that also sends the default\naction. Instead, both Gnome and KDE only sends the button\naction.\n\nThis results in odd behavior in this system: since the default\naction does the same than the \"yes\" action, if the user presses\n\"Yes\", two install processes will run concurrently, conflicting\nbetween them and resulting in an installation error shown (due\nto one of the processes being unable to install the themes),\nwhile, at the same time, the themes are correctly installed (by\nthe second process).\n\nAlso, if the user presses \"No\", the \"no\" action is just ignored\nand nothing is done; but the next \"default\" action is honored\nand the themes are installed; exactly the opposite of what the\nuser wanted.\n\nThis workaround ensures that only one action is honored for\neach notification, and any extra action is ignored until the\ninstall notification is closed and a new notification is\nshown.\n\nIt also adds extra tests to ensure that everything works as\nexpected.\n\nFix https://github.com/canonical/snapd-desktop-integration/issues/52\n\n* Fixes asked by Nathan\n\n* Fix for build",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/1e37b46ebe5ce7b8d959dc6d04cdc1cc45e8e18b"
-               },
-               {
-                  "sha": "2e59f4593972164354fd6c97c8019a3973e2a7c8",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1744832058,
-                  "message": "Merge pull request #142 from sergio-costas/update-github-building\n\nUpdate ubuntu version in test",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/2e59f4593972164354fd6c97c8019a3973e2a7c8"
-               },
-               {
-                  "sha": "5db963a44e5620e5b28bc39e682b2284c5437f27",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1744815791,
-                  "message": "Update ubuntu version in test\n\nThe ubuntu 20.04 actions runner is being deprecated, so we must\nupdate it to a more recent one.\n\nhttps://github.com/actions/runner-images/issues/11101",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/5db963a44e5620e5b28bc39e682b2284c5437f27"
                }
             ],
             "ciActions": [],
