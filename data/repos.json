@@ -3015,6 +3015,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bf2fea6e812ba0f709ffe00df59896df1171d2af",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1758783379,
+                  "message": "Fix branding: ESR->release.\n\nWe don't even need this option, as per the documentation:\n\n> When building with official branding[1], the appropriate branding directory\n> will be set automatically based on:\n>\n>   - If `--enable-update-channel` is set to \"release\" or \"beta\", branding\n>     is set to \"thunderbird\" or \"tb_beta\" respectively.\n>   - If `--enable-update-channel` is unset (MOZ_UPDATE_CHANNEL=\"default\"), branding\n>     is determined by the content of [version_display.txt](https://searchfox.org/comm-central/source/mail/config/version_display.txt).\n>     - If a \"beta\" version is found, based on the version ending in \"b*n*\", \"tb_beta\"\n>       branding is used.\n>     - If an \"alpha\" version is found, ending in \"a*1*\", \"nightly\" branding is used.\n>     - Otherwise \"thunderbird\" branding is used.\n>   - In the event the above does not work out, branding will default to \"nightly\".\n\nFixes https://forum.snapcraft.io/t/thunderbird-snap-showing-esr-channel-but-should-be-stable-channel/48681/.",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/bf2fea6e812ba0f709ffe00df59896df1171d2af"
+               },
+               {
                   "sha": "081976519a312d73a84920e15196255165d3b270",
                   "author": "Sebastien Bacher",
                   "timestamp": 1758661867,
@@ -3027,13 +3034,6 @@
                   "timestamp": 1758604233,
                   "message": "Update to 143.0.1-1",
                   "url": "https://github.com/ubuntu/thunderbird/commit/fdb57337b8e188a9aee1bbfecf09de351b7c89bd"
-               },
-               {
-                  "sha": "5422c43972f938fb634cc2e7a01f5adca928f99c",
-                  "author": "Sebastien Bacher",
-                  "timestamp": 1757748034,
-                  "message": "Update to 143.0-1 and bump rust required version",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/5422c43972f938fb634cc2e7a01f5adca928f99c"
                }
             ],
             "ciActions": null,
