@@ -4161,25 +4161,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b8f4e359009cfdeb827ef52632e1251abe587f28",
+                  "author": "Sergio Costas",
+                  "timestamp": 1759216533,
+                  "message": "Fix test build in 25.10 (#155)\n\nSome tests fail to build because some NULL parameters were being passed\nto functions without parameters. By default, GCC presumes that a\nfunction declared with `()` has an indeterminate number of parameters,\nwhile to specify that it has no parameters it has to be declared with\n`(void)`.\n\nThis has been fixed by removing the unneeded NULLs, and also \"void\" has\nbeen added to all the functions without parameters, to ensure that a\ncompile error is always triggered if a parameters is passed to these\nfunctions.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/b8f4e359009cfdeb827ef52632e1251abe587f28"
+               },
+               {
+                  "sha": "f11d8eb1b804f45c383825d01ada57a87821af71",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1759141421,
+                  "message": "Fix test\n\nThe test test_refresh_monitor failed to build because NULL was\nbeing passed to the constructor, which has no parameters. This\nhappened when building in 25.10, but not in older systems,\nbecause in them, GCC presumes that a function declared with ()\nhas an indeterminated number of parameters.\n\nThis has been fixed, and also \"void\" has been added to all the\nfunctions without parameters, to ensure that a compile error is\nalways triggered if a parameters is passed to these functions.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/f11d8eb1b804f45c383825d01ada57a87821af71"
+               },
+               {
                   "sha": "05e2667c929300e4c132b3b7247292d0d47b45cd",
                   "author": "Sergio Costas",
                   "timestamp": 1758625734,
                   "message": "Several fixes for TIOBE (#153)",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/05e2667c929300e4c132b3b7247292d0d47b45cd"
-               },
-               {
-                  "sha": "df9020e6929b87f958d86016a7a9c47b1d24268d",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1758618682,
-                  "message": "Several fixes for TIOBE",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/df9020e6929b87f958d86016a7a9c47b1d24268d"
-               },
-               {
-                  "sha": "74f88ccc3a5e35e8380c8172543fbde62b19d7b8",
-                  "author": "Sergio Costas",
-                  "timestamp": 1758623666,
-                  "message": "Don't run TIOBE tests in forks (#154)\n\nOnly the main repo has access to several secrets required to run the\nTIOBE tests, so we must avoid running them in the forks.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/74f88ccc3a5e35e8380c8172543fbde62b19d7b8"
                }
             ],
             "ciActions": [],
@@ -6238,25 +6238,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b8f4e359009cfdeb827ef52632e1251abe587f28",
+                  "author": "Sergio Costas",
+                  "timestamp": 1759216533,
+                  "message": "Fix test build in 25.10 (#155)\n\nSome tests fail to build because some NULL parameters were being passed\nto functions without parameters. By default, GCC presumes that a\nfunction declared with `()` has an indeterminate number of parameters,\nwhile to specify that it has no parameters it has to be declared with\n`(void)`.\n\nThis has been fixed by removing the unneeded NULLs, and also \"void\" has\nbeen added to all the functions without parameters, to ensure that a\ncompile error is always triggered if a parameters is passed to these\nfunctions.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/b8f4e359009cfdeb827ef52632e1251abe587f28"
+               },
+               {
+                  "sha": "f11d8eb1b804f45c383825d01ada57a87821af71",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1759141421,
+                  "message": "Fix test\n\nThe test test_refresh_monitor failed to build because NULL was\nbeing passed to the constructor, which has no parameters. This\nhappened when building in 25.10, but not in older systems,\nbecause in them, GCC presumes that a function declared with ()\nhas an indeterminated number of parameters.\n\nThis has been fixed, and also \"void\" has been added to all the\nfunctions without parameters, to ensure that a compile error is\nalways triggered if a parameters is passed to these functions.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/f11d8eb1b804f45c383825d01ada57a87821af71"
+               },
+               {
                   "sha": "05e2667c929300e4c132b3b7247292d0d47b45cd",
                   "author": "Sergio Costas",
                   "timestamp": 1758625734,
                   "message": "Several fixes for TIOBE (#153)",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/05e2667c929300e4c132b3b7247292d0d47b45cd"
-               },
-               {
-                  "sha": "df9020e6929b87f958d86016a7a9c47b1d24268d",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1758618682,
-                  "message": "Several fixes for TIOBE",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/df9020e6929b87f958d86016a7a9c47b1d24268d"
-               },
-               {
-                  "sha": "74f88ccc3a5e35e8380c8172543fbde62b19d7b8",
-                  "author": "Sergio Costas",
-                  "timestamp": 1758623666,
-                  "message": "Don't run TIOBE tests in forks (#154)\n\nOnly the main repo has access to several secrets required to run the\nTIOBE tests, so we must avoid running them in the forks.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/74f88ccc3a5e35e8380c8172543fbde62b19d7b8"
                }
             ],
             "ciActions": [],
@@ -8479,25 +8479,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "b8f4e359009cfdeb827ef52632e1251abe587f28",
+                  "author": "Sergio Costas",
+                  "timestamp": 1759216533,
+                  "message": "Fix test build in 25.10 (#155)\n\nSome tests fail to build because some NULL parameters were being passed\nto functions without parameters. By default, GCC presumes that a\nfunction declared with `()` has an indeterminate number of parameters,\nwhile to specify that it has no parameters it has to be declared with\n`(void)`.\n\nThis has been fixed by removing the unneeded NULLs, and also \"void\" has\nbeen added to all the functions without parameters, to ensure that a\ncompile error is always triggered if a parameters is passed to these\nfunctions.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/b8f4e359009cfdeb827ef52632e1251abe587f28"
+               },
+               {
+                  "sha": "f11d8eb1b804f45c383825d01ada57a87821af71",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1759141421,
+                  "message": "Fix test\n\nThe test test_refresh_monitor failed to build because NULL was\nbeing passed to the constructor, which has no parameters. This\nhappened when building in 25.10, but not in older systems,\nbecause in them, GCC presumes that a function declared with ()\nhas an indeterminated number of parameters.\n\nThis has been fixed, and also \"void\" has been added to all the\nfunctions without parameters, to ensure that a compile error is\nalways triggered if a parameters is passed to these functions.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/f11d8eb1b804f45c383825d01ada57a87821af71"
+               },
+               {
                   "sha": "05e2667c929300e4c132b3b7247292d0d47b45cd",
                   "author": "Sergio Costas",
                   "timestamp": 1758625734,
                   "message": "Several fixes for TIOBE (#153)",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/05e2667c929300e4c132b3b7247292d0d47b45cd"
-               },
-               {
-                  "sha": "df9020e6929b87f958d86016a7a9c47b1d24268d",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1758618682,
-                  "message": "Several fixes for TIOBE",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/df9020e6929b87f958d86016a7a9c47b1d24268d"
-               },
-               {
-                  "sha": "74f88ccc3a5e35e8380c8172543fbde62b19d7b8",
-                  "author": "Sergio Costas",
-                  "timestamp": 1758623666,
-                  "message": "Don't run TIOBE tests in forks (#154)\n\nOnly the main repo has access to several secrets required to run the\nTIOBE tests, so we must avoid running them in the forks.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/74f88ccc3a5e35e8380c8172543fbde62b19d7b8"
                }
             ],
             "ciActions": [],
