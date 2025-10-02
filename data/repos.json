@@ -5150,25 +5150,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f4267f82434b247fc5c29b47bb37a05e4c88d5d6",
+                  "sha": "f11e812fef5db8f6aead83aa3b1d42d9afc00065",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1740082882,
-                  "message": "fix: Distro name case insensitive everywhere (#133)\n\nwsl.exe and the WSL API treat distro names case-insensitively. So should\nGoWSL. There are still a few places where we don't consider that and\nassume raw string comparisons, which leads us to interpret\n`Ubuntu-24.04` as not registered because it's writen in the registry as\n`ubuntu-24.04`. That was mostly invisble until the new image format\nbecame the default. We declared the distro name as lowecase inside\n`/etc/wsl-distribution.conf` and that revealed some bugs in client code\nof GoWSL affected by raw string comparison of distro names.\n\nThis PR should address once and for all this issue with case\nsensitiveness (at least as long as upstream WSL does not flip the switch\nand start considering instance names case-sensitively, which is not a\nstandard behaviour on Windows anyway).\n\nThe last three commits address issues that I only found in the Azure VM\nCI. I couldn't reproduce them on my laptop and apparently they are not\nan issue on GH hosted runners, but they are conceptual issues that I\nbelieve are worth addressing, now that I figured out what seems to cause\nthem.\n\nThere was a last failure that I gave up on troubleshooting: failed to\nrun `wsl --shutdown`. That's probably a crash in `wslservice.exe` which\nwould require elevated permissions to restart, too complicated to solve\nfor a CI workflow. That's the main motivation for investing in #134 .\n\n--- \n\nUDENG-6002",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/f4267f82434b247fc5c29b47bb37a05e4c88d5d6"
+                  "timestamp": 1759441961,
+                  "message": "fix(CI): Use tar-based images and no longer rely on empty tarballs  (#141)\n\nThis project used to rely on registering empty tarballs as rootfses to\nspeed up some tests that didn't depend on the final state of a\nregistered distro, a nifty trick because registration was almost\ninstantaneous. But it's been a while since WSL no longer supports that,\nas it validates the tarball contents.\n\nSo from now on, unless we're leveraging gowslmock, we use the new\ntar-based images, sourced from daily builds and cached for fast\nsubsequent accesses (instead of using the appx's sourced form MS Store).\n\nThere seems to be some pessimisation in the test duration comparing to\nprevious successful runs:\nhttps://github.com/ubuntu/GoWSL/actions/workflows/qa.yaml?query=is%3Asuccess\nI'd say that's acceptable, though subject to further improvements in the\ntest code itself (or perhaps leveraging smaller images - thus quicker\nregistrations).",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/f11e812fef5db8f6aead83aa3b1d42d9afc00065"
                },
                {
-                  "sha": "07fdb5aed3c3f6362ddbaee21b5ba0112eb060e8",
+                  "sha": "851e69eab5a385de191645ee9c167615157288cc",
                   "author": "Carlos Nihelton",
-                  "timestamp": 1740079205,
-                  "message": "Fix the ToUpper stuttering",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/07fdb5aed3c3f6362ddbaee21b5ba0112eb060e8"
+                  "timestamp": 1759434182,
+                  "message": "Fix TestImport still relying on empty tarballs",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/851e69eab5a385de191645ee9c167615157288cc"
                },
                {
-                  "sha": "eb28e04660e759034b59ea9dbbdabff7a4cb9125",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1739974149,
-                  "message": "build(deps): bump canonical/has-signed-canonical-cla from 1 to 2 (#135)",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/eb28e04660e759034b59ea9dbbdabff7a4cb9125"
+                  "sha": "190dc1915f7520d2007d155a37b587295bd6d211",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1758427491,
+                  "message": "Prevents aliasing built-in len()",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/190dc1915f7520d2007d155a37b587295bd6d211"
                }
             ],
             "ciActions": [
