@@ -7210,25 +7210,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a006fcd1ce1694b5de1be38622c9050bf151b3e1",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1759854139,
+                  "message": "Make the broker service D-Bus activated (#697)\n\nThis has the effect that both after installation and during boot, the\nbroker service is not started automatically but only the first time a\nuser tries to authenticate via PAM.\n\nFor now there are a few small benefits:\n* Currently, the service always fails to start after installation,\nbecause the user didn't have a chance to replace the placeholders in the\nconfiguration file yet. That results in errors in the system log, which\nis a bit unclean.\n* In the case that the system is useful after boot without a user\nlogging in (so usually when it's a server), we avoid using up resources\nfor a service that's not needed - at least until the first user tries to\nlog in.\n* In case a broker was installed but authd was not configured to use it,\nthat broker is not started anymore.\n\nHaving the system D-Bus activated will become even more useful if we at\nsome point make it exit on idle, because then we can free up its\nresources (primarily the memory) after some time.\n\nCloses ubuntu/authd#1101",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/a006fcd1ce1694b5de1be38622c9050bf151b3e1"
+               },
+               {
+                  "sha": "f79f285a308af6c415616069a592daeb8ee24d34",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1759489676,
+                  "message": "Make the broker service D-Bus activated\n\nThis has the effect that both after installation and during boot, the\nbroker service is not started automatically but only the first time a\nuser tries to authenticate via PAM.\n\nFor now there are a few small benefits:\n* Currently, the service always fails to start after installation,\n  because the user didn't have a chance to replace the placeholders in\n  the configuration file yet. That results in errors in the system log,\n  which is a bit unclean.\n* In the case that the system is useful after boot without a user\n  logging in (so usually when it's a server), we avoid using up\n  resources for a service that's not needed - at least until the first\n  user tries to log in.\n* In case a broker was installed but authd was not configured to use it,\n  that broker is not started anymore.\n\nHaving the system D-Bus activated will become even more useful if we\nat some point make it exit on idle, because then we can free up its\nresources (primarily the memory) after some time.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f79f285a308af6c415616069a592daeb8ee24d34"
+               },
+               {
                   "sha": "0bf60565751a4b6e4243b503eb49c0bdc55091fa",
                   "author": "adombeck",
                   "timestamp": 1759150805,
                   "message": "Bump Go toolchain version to 1.24.6 (#691)",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/0bf60565751a4b6e4243b503eb49c0bdc55091fa"
-               },
-               {
-                  "sha": "ee94156c7ee25c39d47c8556f1f015c06e21d7db",
-                  "author": "adombeck",
-                  "timestamp": 1759146859,
-                  "message": "deps(go): bump github.com/microsoftgraph/msgraph-sdk-go from 1.85.0 to 1.86.0 in the minor-updates group (#686)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/ee94156c7ee25c39d47c8556f1f015c06e21d7db"
-               },
-               {
-                  "sha": "8bd144e3cbafb455acead642cc560ebc9a000584",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1759145187,
-                  "message": "Bump Go toolchain version to 1.24.6\n\ngovulncheck reports the following vulnerability in go1.24.4\n\nVulnerability #1: GO-2025-3956\n    Unexpected paths returned from LookPath in os/exec\n  More info: https://pkg.go.dev/vuln/GO-2025-3956\n  Standard library\n    Found in: os/exec@go1.24.4\n    Fixed in: os/exec@go1.24.6\n    Example traces found:\nError:       #1: internal/testutils/dbus.go:59:28: testutils.StartSystemBusMock calls exec.CommandContext, which eventually calls exec.LookPath",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/8bd144e3cbafb455acead642cc560ebc9a000584"
                }
             ],
             "ciActions": [
