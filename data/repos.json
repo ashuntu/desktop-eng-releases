@@ -7175,25 +7175,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5ed0b3830bf0720da355e34961fb0d4445d7a1ba",
+                  "author": "Shane Crowley",
+                  "timestamp": 1759912059,
+                  "message": "docs: add custom version banner (#1100)\n\nAs we are not using the standard stable/latest versions on Read the\nDocs, we need to use a custom version banner.\n\nThe banner only needs to warn users if they are reading the `edge-docs`\nversion. No banner is required on `stable-docs`, which is how it works\nwith the native RTD notification.\n\nThis template applies to all pages, so when a user is on the edge\nversion of a page and they click on the stable link in the banner, it\nwill take them to the stable version of that page.\n\nTo make this work:\n\n* Current version is grabbed from RTD during docs build\n* Link to stable version of page is concatenated together\n* Check for edge version before showing the banner\n* Banner uses one background color and foreground colors with accessible\ncontrast, which requires fixing hyperlink colors that normally shift\ndepending on whether background is black or white\n* Standard wording used for consistency with other docs sites\n\n> [!NOTE]\n> The PR preview of the docs doesn't build an `edge-docs` or\n`stable-docs` version.\n> So you won't see the functionality in the PR preview.\n\nThis is a screenshot using the PR version `1100` in place of `edge-docs`\n(commit reverted after test):\n\n<img width=\"1666\" height=\"988\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/14f5910f-ce96-41d2-b1a4-6e520326aa30\"\n/>\n\nHere's a video showing how it should work on a test site:\n\n\nhttps://github.com/user-attachments/assets/cf3574fb-fd80-4fbf-b82e-355722c55b7e\n\nIt shows:\n\n* Homepage on `edge` showing the banner\n* Switching homepage to `stable` using banner link (no banner)\n* Switching back to `edge` using RTD's flyout menu\n* Changing to a different page on `edge` with the banner still showing\n* Changing back to `stable` on the same page using the banner link (no\nbanner)\n\nUDENG-8091",
+                  "url": "https://github.com/ubuntu/authd/commit/5ed0b3830bf0720da355e34961fb0d4445d7a1ba"
+               },
+               {
+                  "sha": "fc58b2bfad82206444a71c5b63130b265b47c2fe",
+                  "author": "shanecrowley",
+                  "timestamp": 1759839402,
+                  "message": "add custom version banner\n\nAs we are not using the standard stable/latest versions on Read the\nDocs, we need to use a custom version banner.\n\nThe banner only needs to warn users if they are reading the edge-docs\nversion.\n\nThis template applies to all pages, so when a user is on the edge\nversion of a page and they click on the stable link in the banner, it\nwill take them to the stable version of that page.\n\nTo make this work:\n\n* Current version is grabbed from RTD during docs build\n* Link to stable version of page is concatenated together\n* Check for edge version before showing the banner\n* Banner uses one background color and foreground colors with accessible\ncontrast, which requires fixing hyperlink colors that normally shift\ndepending on whether background is black or white",
+                  "url": "https://github.com/ubuntu/authd/commit/fc58b2bfad82206444a71c5b63130b265b47c2fe"
+               },
+               {
                   "sha": "5e60254e6893a83617ad853e0a47793adbcdb2fa",
                   "author": "adombeck",
                   "timestamp": 1759330025,
                   "message": "Create /etc/authd/brokers.d during installation (#1096)",
                   "url": "https://github.com/ubuntu/authd/commit/5e60254e6893a83617ad853e0a47793adbcdb2fa"
-               },
-               {
-                  "sha": "08aaecb65a04fd96bd330a762eb6f77c10d46956",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1759323928,
-                  "message": "Create /etc/authd/brokers.d during installation\n\nSo users don't have to create it themselves. It's standard behavior for\nDebian packages to create their config directories during installation,\neven when they're empty.",
-                  "url": "https://github.com/ubuntu/authd/commit/08aaecb65a04fd96bd330a762eb6f77c10d46956"
-               },
-               {
-                  "sha": "c375ce21f283f12674ebaab2bb846d34041b286b",
-                  "author": "adombeck",
-                  "timestamp": 1759143665,
-                  "message": "Document how to add changes to the stable-docs branch (#1080)",
-                  "url": "https://github.com/ubuntu/authd/commit/c375ce21f283f12674ebaab2bb846d34041b286b"
                }
             ],
             "ciActions": [
