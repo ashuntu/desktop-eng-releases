@@ -5115,25 +5115,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "18ce2a689e409c2970dc94e670e46b3189b48d7c",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1739450698,
-                  "message": "Migrate to org GitHub to Jira application (#12)\n\nWe have a new GitHub to Jira global organization application. The\r\nprevious gh workflow action is now deprecated.\r\n\r\nUDENG-5940",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/18ce2a689e409c2970dc94e670e46b3189b48d7c"
+                  "sha": "5270782c17765088d2b98068eaf0fd065ebda38d",
+                  "author": "adombeck",
+                  "timestamp": 1759997787,
+                  "message": "Update golangci-lint to v2 and migrate its config (#15)\n\nUpdate golangci-lint to v2, migrate its config and fix issues found by\nthe new linter version.\n\nUDENG-7800",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/5270782c17765088d2b98068eaf0fd065ebda38d"
                },
                {
-                  "sha": "b41d97368bf42ad4207da314eb276125f17f41c8",
-                  "author": "Didier Roche",
-                  "timestamp": 1739430451,
-                  "message": "Migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5940",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/b41d97368bf42ad4207da314eb276125f17f41c8"
+                  "sha": "6eccd45ca6d410a34fcedfccd0f8b2cfc84bcac4",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757027078,
+                  "message": "Bump Go version to 1.23.10\n\ngovulncheck reports the following vulnerabilities in Go 1.21:\n\nVulnerability #1: GO-2025-3750\n    Inconsistent handling of O_CREATE|O_EXCL on Unix and Windows in os in\n    syscall\n  More info: https://pkg.go.dev/vuln/GO-2025-3750\n  Standard library\n    Found in: os@go1.21.13\n    Fixed in: os@go1.23.10\n    Platforms: windows\n    Example traces found:\nError:       #1: cmd/update-po/main.go:80:21: update.i18nToPot calls os.Create\n[...]\n\nVulnerability #2: GO-2025-3447\n    Timing sidechannel for P-256 on ppc64le in crypto/internal/nistec\n  More info: https://pkg.go.dev/vuln/GO-2025-3447\n  Standard library\n    Found in: crypto/internal/nistec@go1.21.13\n    Fixed in: crypto/internal/nistec@go1.22.12\n    Platforms: ppc64le\n    Example traces found:\nError:       #1: i18n_test.go:22:24: i18n_test.ExampleInitI18nDomain_embeddedFiles calls gotext.Get, which eventually calls nistec.P256Point.ScalarBaseMult\n[...]\n\nVulnerability #3: GO-2025-3373\n    Usage of IPv6 zone IDs can bypass URI name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-3373\n  Standard library\n    Found in: crypto/x509@go1.21.13\n    Fixed in: crypto/x509@go1.22.11\n    Example traces found:\n      #1: ../../../.cache/go-build/34/340b4d45e384e00336d5008b27304c958022a1b8497c2638f4dcc1991471a365-d:51:15: i18n.main calls testing.M.Run, which eventually calls x509.CertPool.AppendCertsFromPEM\nError:       #2: i18n_test.go:22:24: i18n_test.ExampleInitI18nDomain_embeddedFiles calls gotext.Get, which eventually calls x509.Certificate.Verify\n[...]\n\nVulnerability #4: GO-2024-3107\n    Stack exhaustion in Parse in go/build/constraint\n  More info: https://pkg.go.dev/vuln/GO-2024-3107\n  Standard library\n    Found in: go/build/constraint@go1.21.13\n    Fixed in: go/build/constraint@go1.22.7\n    Example traces found:\nError:       #1: cmd/update-po/main.go:67:31: update.i18nToPot calls pkg.ParsePkgTree, which eventually calls constraint.Parse\n\nVulnerability #5: GO-2024-3105\n    Stack exhaustion in all Parse functions in go/parser\n  More info: https://pkg.go.dev/vuln/GO-2024-3105\n  Standard library\n    Found in: go/parser@go1.21.13\n    Fixed in: go/parser@go1.22.7\n    Example traces found:\nError:       #1: cmd/update-po/main.go:67:31: update.i18nToPot calls pkg.ParsePkgTree, which eventually calls parser.ParseFile",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/6eccd45ca6d410a34fcedfccd0f8b2cfc84bcac4"
                },
                {
-                  "sha": "594c1754ca47fe4af8c8061c458579186ef0fe3b",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1699867767,
-                  "message": "ci(github-jira): component name has changed without S- prefix (#11)",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/594c1754ca47fe4af8c8061c458579186ef0fe3b"
+                  "sha": "734ffa6fe93e462f612ad53809ecec54d84e7691",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757026787,
+                  "message": "Bump Go version to 1.21\n\nGo 1.21 is the first version which supports the toolchain directive and\nthe '1.24.0' format, which are used by the Go 1.24 version in\ntools/go.mod.",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/734ffa6fe93e462f612ad53809ecec54d84e7691"
                }
             ],
             "ciActions": [
@@ -7313,25 +7313,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "18ce2a689e409c2970dc94e670e46b3189b48d7c",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1739450698,
-                  "message": "Migrate to org GitHub to Jira application (#12)\n\nWe have a new GitHub to Jira global organization application. The\r\nprevious gh workflow action is now deprecated.\r\n\r\nUDENG-5940",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/18ce2a689e409c2970dc94e670e46b3189b48d7c"
+                  "sha": "5270782c17765088d2b98068eaf0fd065ebda38d",
+                  "author": "adombeck",
+                  "timestamp": 1759997787,
+                  "message": "Update golangci-lint to v2 and migrate its config (#15)\n\nUpdate golangci-lint to v2, migrate its config and fix issues found by\nthe new linter version.\n\nUDENG-7800",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/5270782c17765088d2b98068eaf0fd065ebda38d"
                },
                {
-                  "sha": "b41d97368bf42ad4207da314eb276125f17f41c8",
-                  "author": "Didier Roche",
-                  "timestamp": 1739430451,
-                  "message": "Migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5940",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/b41d97368bf42ad4207da314eb276125f17f41c8"
+                  "sha": "6eccd45ca6d410a34fcedfccd0f8b2cfc84bcac4",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757027078,
+                  "message": "Bump Go version to 1.23.10\n\ngovulncheck reports the following vulnerabilities in Go 1.21:\n\nVulnerability #1: GO-2025-3750\n    Inconsistent handling of O_CREATE|O_EXCL on Unix and Windows in os in\n    syscall\n  More info: https://pkg.go.dev/vuln/GO-2025-3750\n  Standard library\n    Found in: os@go1.21.13\n    Fixed in: os@go1.23.10\n    Platforms: windows\n    Example traces found:\nError:       #1: cmd/update-po/main.go:80:21: update.i18nToPot calls os.Create\n[...]\n\nVulnerability #2: GO-2025-3447\n    Timing sidechannel for P-256 on ppc64le in crypto/internal/nistec\n  More info: https://pkg.go.dev/vuln/GO-2025-3447\n  Standard library\n    Found in: crypto/internal/nistec@go1.21.13\n    Fixed in: crypto/internal/nistec@go1.22.12\n    Platforms: ppc64le\n    Example traces found:\nError:       #1: i18n_test.go:22:24: i18n_test.ExampleInitI18nDomain_embeddedFiles calls gotext.Get, which eventually calls nistec.P256Point.ScalarBaseMult\n[...]\n\nVulnerability #3: GO-2025-3373\n    Usage of IPv6 zone IDs can bypass URI name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-3373\n  Standard library\n    Found in: crypto/x509@go1.21.13\n    Fixed in: crypto/x509@go1.22.11\n    Example traces found:\n      #1: ../../../.cache/go-build/34/340b4d45e384e00336d5008b27304c958022a1b8497c2638f4dcc1991471a365-d:51:15: i18n.main calls testing.M.Run, which eventually calls x509.CertPool.AppendCertsFromPEM\nError:       #2: i18n_test.go:22:24: i18n_test.ExampleInitI18nDomain_embeddedFiles calls gotext.Get, which eventually calls x509.Certificate.Verify\n[...]\n\nVulnerability #4: GO-2024-3107\n    Stack exhaustion in Parse in go/build/constraint\n  More info: https://pkg.go.dev/vuln/GO-2024-3107\n  Standard library\n    Found in: go/build/constraint@go1.21.13\n    Fixed in: go/build/constraint@go1.22.7\n    Example traces found:\nError:       #1: cmd/update-po/main.go:67:31: update.i18nToPot calls pkg.ParsePkgTree, which eventually calls constraint.Parse\n\nVulnerability #5: GO-2024-3105\n    Stack exhaustion in all Parse functions in go/parser\n  More info: https://pkg.go.dev/vuln/GO-2024-3105\n  Standard library\n    Found in: go/parser@go1.21.13\n    Fixed in: go/parser@go1.22.7\n    Example traces found:\nError:       #1: cmd/update-po/main.go:67:31: update.i18nToPot calls pkg.ParsePkgTree, which eventually calls parser.ParseFile",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/6eccd45ca6d410a34fcedfccd0f8b2cfc84bcac4"
                },
                {
-                  "sha": "594c1754ca47fe4af8c8061c458579186ef0fe3b",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1699867767,
-                  "message": "ci(github-jira): component name has changed without S- prefix (#11)",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/594c1754ca47fe4af8c8061c458579186ef0fe3b"
+                  "sha": "734ffa6fe93e462f612ad53809ecec54d84e7691",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757026787,
+                  "message": "Bump Go version to 1.21\n\nGo 1.21 is the first version which supports the toolchain directive and\nthe '1.24.0' format, which are used by the Go 1.24 version in\ntools/go.mod.",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/734ffa6fe93e462f612ad53809ecec54d84e7691"
                }
             ],
             "ciActions": [
