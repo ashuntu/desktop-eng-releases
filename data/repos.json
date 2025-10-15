@@ -3421,25 +3421,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9bec160546d6d53670720d3762a2fa8f54eee1a2",
+                  "author": "adombeck",
+                  "timestamp": 1760525986,
+                  "message": "feat: gh-actions/build-debian: Add extra-apt-repositories input (#86)\n\nUDENG-8333",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/9bec160546d6d53670720d3762a2fa8f54eee1a2"
+               },
+               {
+                  "sha": "d591a3942a918f2af88812d365f64e4407bd758f",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757959267,
+                  "message": "gh-actions/build-debian: Add extra-apt-repositories input\n\nWhen building authd, we need to add a PPA before the build dependencies\nare installed.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/d591a3942a918f2af88812d365f64e4407bd758f"
+               },
+               {
                   "sha": "6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f",
                   "author": "Kat",
                   "timestamp": 1760025747,
                   "message": "feat(go/generate): Incorporate go tool support  (#89)\n\nPresently, with a basic setup where the user is using go tool management\nintroduced in Go 1.24, the generate action will fail as it won't be able\nto parse any tools to install.\n\nHere, firstly, we now continue as normal if no tools can be found from a\n`.go` file. This handles the case where there is no `.go` file and the\ncase where there is one, but there are no tools to be installed.\n\nAdditionally, we also suppress errors from grep when it is trying to\nlook for tools in a `.go` file as otherwise we'd still get false\npositive GitHub annotations, even if the step now succeeds. Since we\nignore errors from grep, we avoid any false positive GitHub annotations.\n\nNote, for anything that needs to be in `PATH`, for example\n`protoc-gen-go`, you should continue to use the old method of `tools.go`\nas `go tool` management doesn't add the tool to PATH. Combining the two\nsuch that some items are represented in `tools.go` and others as a tool\nshould work. Since `protoc` uses `protoc-gen-go` from `PATH`, we don't\ntrigger the installation if a `protoc` dependency is only in `go.mod` as\na tool.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f"
-               },
-               {
-                  "sha": "db71ab04f68f21908b1ae30953d76915bd1cc4df",
-                  "author": "kkuo",
-                  "timestamp": 1759864482,
-                  "message": "Don't fail if nothing installable was found",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/db71ab04f68f21908b1ae30953d76915bd1cc4df"
-               },
-               {
-                  "sha": "3c9fbf22734dba02d35cb700cd6e2fee79c0d865",
-                  "author": "adombeck",
-                  "timestamp": 1758115891,
-                  "message": "fix: Fix go/code-sanity failing if no toolchain directive in tools/go.mod (#88)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/3c9fbf22734dba02d35cb700cd6e2fee79c0d865"
                }
             ],
             "ciActions": [],
@@ -5482,25 +5482,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9bec160546d6d53670720d3762a2fa8f54eee1a2",
+                  "author": "adombeck",
+                  "timestamp": 1760525986,
+                  "message": "feat: gh-actions/build-debian: Add extra-apt-repositories input (#86)\n\nUDENG-8333",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/9bec160546d6d53670720d3762a2fa8f54eee1a2"
+               },
+               {
+                  "sha": "d591a3942a918f2af88812d365f64e4407bd758f",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757959267,
+                  "message": "gh-actions/build-debian: Add extra-apt-repositories input\n\nWhen building authd, we need to add a PPA before the build dependencies\nare installed.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/d591a3942a918f2af88812d365f64e4407bd758f"
+               },
+               {
                   "sha": "6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f",
                   "author": "Kat",
                   "timestamp": 1760025747,
                   "message": "feat(go/generate): Incorporate go tool support  (#89)\n\nPresently, with a basic setup where the user is using go tool management\nintroduced in Go 1.24, the generate action will fail as it won't be able\nto parse any tools to install.\n\nHere, firstly, we now continue as normal if no tools can be found from a\n`.go` file. This handles the case where there is no `.go` file and the\ncase where there is one, but there are no tools to be installed.\n\nAdditionally, we also suppress errors from grep when it is trying to\nlook for tools in a `.go` file as otherwise we'd still get false\npositive GitHub annotations, even if the step now succeeds. Since we\nignore errors from grep, we avoid any false positive GitHub annotations.\n\nNote, for anything that needs to be in `PATH`, for example\n`protoc-gen-go`, you should continue to use the old method of `tools.go`\nas `go tool` management doesn't add the tool to PATH. Combining the two\nsuch that some items are represented in `tools.go` and others as a tool\nshould work. Since `protoc` uses `protoc-gen-go` from `PATH`, we don't\ntrigger the installation if a `protoc` dependency is only in `go.mod` as\na tool.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f"
-               },
-               {
-                  "sha": "db71ab04f68f21908b1ae30953d76915bd1cc4df",
-                  "author": "kkuo",
-                  "timestamp": 1759864482,
-                  "message": "Don't fail if nothing installable was found",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/db71ab04f68f21908b1ae30953d76915bd1cc4df"
-               },
-               {
-                  "sha": "3c9fbf22734dba02d35cb700cd6e2fee79c0d865",
-                  "author": "adombeck",
-                  "timestamp": 1758115891,
-                  "message": "fix: Fix go/code-sanity failing if no toolchain directive in tools/go.mod (#88)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/3c9fbf22734dba02d35cb700cd6e2fee79c0d865"
                }
             ],
             "ciActions": [],
@@ -7206,6 +7206,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "49ac33ab4e2b873b272d799d6ce6ec689a827a59",
+                  "author": "adombeck",
+                  "timestamp": 1760526331,
+                  "message": "Add comment about updating security overview doc (#699)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/49ac33ab4e2b873b272d799d6ce6ec689a827a59"
+               },
+               {
                   "sha": "fc2b72a65353ff5f393f6cdae7588bbeedd3ee5e",
                   "author": "adombeck",
                   "timestamp": 1760393889,
@@ -7218,13 +7225,6 @@
                   "timestamp": 1760368746,
                   "message": "deps(go-tools): bump golang.org/x/mod from 0.28.0 to 0.29.0 in /tools in the minor-updates group (#703)",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/1a00b0f8eef794bbe232c37427633c5210863048"
-               },
-               {
-                  "sha": "27823077e5bcecaec91cbc09dfcd7eb607de43a9",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1760343885,
-                  "message": "deps(go-tools): bump golang.org/x/mod\n\nBumps the minor-updates group in /tools with 1 update: [golang.org/x/mod](https://github.com/golang/mod).\n\n\nUpdates `golang.org/x/mod` from 0.28.0 to 0.29.0\n- [Commits](https://github.com/golang/mod/compare/v0.28.0...v0.29.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/mod\n  dependency-version: 0.29.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/27823077e5bcecaec91cbc09dfcd7eb607de43a9"
                }
             ],
             "ciActions": [
@@ -7773,25 +7773,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9bec160546d6d53670720d3762a2fa8f54eee1a2",
+                  "author": "adombeck",
+                  "timestamp": 1760525986,
+                  "message": "feat: gh-actions/build-debian: Add extra-apt-repositories input (#86)\n\nUDENG-8333",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/9bec160546d6d53670720d3762a2fa8f54eee1a2"
+               },
+               {
+                  "sha": "d591a3942a918f2af88812d365f64e4407bd758f",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1757959267,
+                  "message": "gh-actions/build-debian: Add extra-apt-repositories input\n\nWhen building authd, we need to add a PPA before the build dependencies\nare installed.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/d591a3942a918f2af88812d365f64e4407bd758f"
+               },
+               {
                   "sha": "6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f",
                   "author": "Kat",
                   "timestamp": 1760025747,
                   "message": "feat(go/generate): Incorporate go tool support  (#89)\n\nPresently, with a basic setup where the user is using go tool management\nintroduced in Go 1.24, the generate action will fail as it won't be able\nto parse any tools to install.\n\nHere, firstly, we now continue as normal if no tools can be found from a\n`.go` file. This handles the case where there is no `.go` file and the\ncase where there is one, but there are no tools to be installed.\n\nAdditionally, we also suppress errors from grep when it is trying to\nlook for tools in a `.go` file as otherwise we'd still get false\npositive GitHub annotations, even if the step now succeeds. Since we\nignore errors from grep, we avoid any false positive GitHub annotations.\n\nNote, for anything that needs to be in `PATH`, for example\n`protoc-gen-go`, you should continue to use the old method of `tools.go`\nas `go tool` management doesn't add the tool to PATH. Combining the two\nsuch that some items are represented in `tools.go` and others as a tool\nshould work. Since `protoc` uses `protoc-gen-go` from `PATH`, we don't\ntrigger the installation if a `protoc` dependency is only in `go.mod` as\na tool.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f"
-               },
-               {
-                  "sha": "db71ab04f68f21908b1ae30953d76915bd1cc4df",
-                  "author": "kkuo",
-                  "timestamp": 1759864482,
-                  "message": "Don't fail if nothing installable was found",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/db71ab04f68f21908b1ae30953d76915bd1cc4df"
-               },
-               {
-                  "sha": "3c9fbf22734dba02d35cb700cd6e2fee79c0d865",
-                  "author": "adombeck",
-                  "timestamp": 1758115891,
-                  "message": "fix: Fix go/code-sanity failing if no toolchain directive in tools/go.mod (#88)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/3c9fbf22734dba02d35cb700cd6e2fee79c0d865"
                }
             ],
             "ciActions": [],
