@@ -7206,25 +7206,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "84123a7bb88f56259bfc4555b97351f3524de209",
+                  "sha": "c8842fbfd1aed8c288e91c95d357f1e19e5d6eb2",
                   "author": "adombeck",
-                  "timestamp": 1761034312,
-                  "message": "deps(submodule): bump third_party/libhimmelblau from `de8939a` to `14b8434` (#709)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/84123a7bb88f56259bfc4555b97351f3524de209"
+                  "timestamp": 1761058280,
+                  "message": "Show a nice error message when user is disabled (#707)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/c8842fbfd1aed8c288e91c95d357f1e19e5d6eb2"
                },
                {
-                  "sha": "d4043a73caf72c96ff4ea69ddd6a85de417c12db",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1761032546,
-                  "message": "deps(submodule): bump third_party/libhimmelblau\n\nBumps [third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau) from `de8939a` to `14b8434`.\n- [Commits](https://gitlab.com/samba-team/libhimmelblau/compare/de8939ae8c2fec8f66ffc48d63807e10d703bd1d...14b8434a79f5e06adffa6997fd9d67000f2d46d1)\n\n---\nupdated-dependencies:\n- dependency-name: third_party/libhimmelblau\n  dependency-version: 14b8434a79f5e06adffa6997fd9d67000f2d46d1\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d4043a73caf72c96ff4ea69ddd6a85de417c12db"
+                  "sha": "7634ab02b02a4cbbcf055370ba231b38138b5d38",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1760961903,
+                  "message": "Pass oauth2.RetrieveError by reference\n\nThe oauth2 package returns RetrieveError by reference, so we should also\npass them by reference to avoid copying their values.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/7634ab02b02a4cbbcf055370ba231b38138b5d38"
                },
                {
-                  "sha": "6c4e68534041bc1a1874710a3854175310b4ef26",
-                  "author": "adombeck",
-                  "timestamp": 1761032502,
-                  "message": "msentraid: Support registering device upon login using libhimmelblau (#585)\n\nDevice registration enables Entra administrators to monitor which users\nhave logged in on which devices. It’s also a prerequisite for Single\nSign-On (SSO), which we plan to support in the future.\n\nThis change adds a `register_device` setting to the authd configuration,\nwhich controls automatic device registration upon user login.\n\nIf the device is disabled in Entra ID, user login is denied.\n\nCloses https://github.com/ubuntu/authd/issues/697\nUDENG-7385",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/6c4e68534041bc1a1874710a3854175310b4ef26"
+                  "sha": "638c1ab20e4873006e76cc15ce1f47ebceecdbe0",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1760961605,
+                  "message": "Show a nice error message when user is disabled\n\nThe message shown to the user used to be:\n\n    Failed to refresh token\n\nNow it's:\n\n    This user is disabled in Microsoft Entra ID, please contact your administrator.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/638c1ab20e4873006e76cc15ce1f47ebceecdbe0"
                }
             ],
             "ciActions": [
