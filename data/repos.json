@@ -7206,25 +7206,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "996daf640513c5701551ec94c7a4207223cce7b1",
+                  "sha": "f43bdc4a8b019e308379d6ef882b91f6d31273b4",
                   "author": "adombeck",
-                  "timestamp": 1761145211,
-                  "message": "msentraid: Use the value of the \"name\" claim from the ID token as gecos (#711)\n\nCloses ubuntu/authd#1107\nUDENG-8444",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/996daf640513c5701551ec94c7a4207223cce7b1"
+                  "timestamp": 1761218582,
+                  "message": "Fix \"Run tests (with coverage collection)\" ignoring test failures (#716)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f43bdc4a8b019e308379d6ef882b91f6d31273b4"
                },
                {
-                  "sha": "d03d9243349aa47b271c50dce0fff1756984a208",
+                  "sha": "04a7abf5c60ce49f7d96919c13330a206dc4e08c",
+                  "author": "adombeck",
+                  "timestamp": 1761218562,
+                  "message": "ci: Automatically cancel in-progress workflow runs on push (#717)\n\nUDENG-8268",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/04a7abf5c60ce49f7d96919c13330a206dc4e08c"
+               },
+               {
+                  "sha": "b9fb00b9e4ef46710274bd5356d3b6770e08fa3c",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1761139894,
-                  "message": "msentraid: Use the value of the \"name\" claim from the ID token as gecos\n\nThe \"name\" claim of the ID token returned by Entra contains the display\nname of the account. Using that for gecos has the effect e.g. on the\nlogin screen, the display name is shown to the user instead of the UPN.\n\nCloses #1107",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d03d9243349aa47b271c50dce0fff1756984a208"
-               },
-               {
-                  "sha": "868dd8a1a70a8e9323ceac3ed5449df9d5e614a6",
-                  "author": "adombeck",
-                  "timestamp": 1761062981,
-                  "message": "Deny login if session is offline and user or device is disabled (#708)\n\nAvoid that users whose account was disabled in Entra ID can still log in\nsimply by disabling the network.\n\nUDENG-7887",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/868dd8a1a70a8e9323ceac3ed5449df9d5e614a6"
+                  "timestamp": 1761166150,
+                  "message": "ci: Automatically cancel in-progress workflow runs on push\n\nOur CI jobs run for a long time and use a lot of resources.\n\nIt happens quite often to me that, after I push something to a PR, I\nfind something to small to fix (e.g. improve the commit message) and\npush that fix soon after. We can save some resources by automatically\ncancelling in-progress workflows on new pushes to the same branch (I do\nthat manually sometimes, but that's wasting my time).\n\nThe implementation is directly from the example of the concurrency keyword:\nhttps://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#example-using-concurrency-and-the-default-behavior",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/b9fb00b9e4ef46710274bd5356d3b6770e08fa3c"
                }
             ],
             "ciActions": [
