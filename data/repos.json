@@ -5284,25 +5284,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "794c494872153de70e35aae893cea56b663568b1",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1761676584,
+                  "message": "fix(ci): Detects the current daily image based on the architecture (#29)\n\nInstead of hard-coding the release in it, we now provide just the\narchitecture and let the script detect the image name and checksum.\n\n---\n\nUDENG-8466",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/794c494872153de70e35aae893cea56b663568b1"
+               },
+               {
+                  "sha": "eba77c469144c599ab327336a1eddb83fbd8601a",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1761662014,
+                  "message": "Detects the current daily image based on the architecture\n\nInstead of hardcoding the release in it, we now provide just the\narchitecture and let the script detect the image name and checksum.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/eba77c469144c599ab327336a1eddb83fbd8601a"
+               },
+               {
                   "sha": "12ab98c081d8e79b837d9f9f3d3a3d2dafe8de14",
                   "author": "Carlos Nihelton",
                   "timestamp": 1757379798,
                   "message": "feat: Adds an integration test workflow (#27)\n\nLooks like we can go quite far with GitHub hosted runners these days\n(since they made large runners generally available).\n\nI devised an integration test workflow for `wsl-setup` that:\n- Downloads and caches the daily-live/current image from\ncdimages.ubuntu.com\n- In parallel, it builds the wsl-setup debian package from git\n- When above are done:\n  * sets up a WSL instance,\n  * installs the deb built by CI, \n  * clean up cloud-init state, \n  * writes some cloud-init user data, \n* does some actions to prevent the test from being stuck in case\ncloud-init fails,\n* runs the initial setup via WSL itself (with just `wsl -d DISTRO`) and\n* runs some assertions based on the results of having wsl-setup\ninstalled.\n  \nTo support development time, part of the assertions are placed in a\nseparate shell script that we can run inside a VM, LXD container or WSL\ninstance at development time (though some can only pass on WSL),\nassertions which are really coupled to the contents of the package, thus\nwe should pay attention to them when changing the package. Unfortunately\nI'm not bold enough to put those assertions in an override_build step of\ndebian/rules because I that could result in unnecessary breakages.\n\nMy image caching system saves more bandwidth than time. I was pleased to\nsee that CI was taking less than 30s to download a WSL image (building\nthe deb takes much longer, there's probably some caching opportunity in\nthe callee side?). The cache key is the image checksum read from the\nSHA256SUMS file hosted aside from the image. I had to learn a few tricks\nto make the cache working cross OSes.\n\nThe WSL instance is created from the cached image with `wsl --install\n--from-file ... --no-launch ...` so we can further customise it with\nother `wsl -d DISTRO -- <COMMANDS>` without those counting as if the\nOOBE script was run, that is, WSL keeps track of that instance as still\nnon-initialized.\n\nThis whole scheme allows us to:\n- claim that the package builds both source and binary outputs\n- claim that the installed package behaves as expected on a target\n- smoke test the latest images, preventing late breakages if breaking\nchanges appear in them without us noticing.\n\n---\n\nUDENG-7866",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/12ab98c081d8e79b837d9f9f3d3a3d2dafe8de14"
-               },
-               {
-                  "sha": "979672f55bcbc69e0bc43f3a3785ce9a90a98d56",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1757379399,
-                  "message": "Clean up always()",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/979672f55bcbc69e0bc43f3a3785ce9a90a98d56"
-               },
-               {
-                  "sha": "cd6515c1ffa4eaf489d2541a39e5177632cbbcdd",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1757357985,
-                  "message": "Schedule integration-test weekly plus...\n\nSprinkling whitespaces after long steps or jobs.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/cd6515c1ffa4eaf489d2541a39e5177632cbbcdd"
                }
             ],
             "ciActions": [],
@@ -7412,25 +7412,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "794c494872153de70e35aae893cea56b663568b1",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1761676584,
+                  "message": "fix(ci): Detects the current daily image based on the architecture (#29)\n\nInstead of hard-coding the release in it, we now provide just the\narchitecture and let the script detect the image name and checksum.\n\n---\n\nUDENG-8466",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/794c494872153de70e35aae893cea56b663568b1"
+               },
+               {
+                  "sha": "eba77c469144c599ab327336a1eddb83fbd8601a",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1761662014,
+                  "message": "Detects the current daily image based on the architecture\n\nInstead of hardcoding the release in it, we now provide just the\narchitecture and let the script detect the image name and checksum.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/eba77c469144c599ab327336a1eddb83fbd8601a"
+               },
+               {
                   "sha": "12ab98c081d8e79b837d9f9f3d3a3d2dafe8de14",
                   "author": "Carlos Nihelton",
                   "timestamp": 1757379798,
                   "message": "feat: Adds an integration test workflow (#27)\n\nLooks like we can go quite far with GitHub hosted runners these days\n(since they made large runners generally available).\n\nI devised an integration test workflow for `wsl-setup` that:\n- Downloads and caches the daily-live/current image from\ncdimages.ubuntu.com\n- In parallel, it builds the wsl-setup debian package from git\n- When above are done:\n  * sets up a WSL instance,\n  * installs the deb built by CI, \n  * clean up cloud-init state, \n  * writes some cloud-init user data, \n* does some actions to prevent the test from being stuck in case\ncloud-init fails,\n* runs the initial setup via WSL itself (with just `wsl -d DISTRO`) and\n* runs some assertions based on the results of having wsl-setup\ninstalled.\n  \nTo support development time, part of the assertions are placed in a\nseparate shell script that we can run inside a VM, LXD container or WSL\ninstance at development time (though some can only pass on WSL),\nassertions which are really coupled to the contents of the package, thus\nwe should pay attention to them when changing the package. Unfortunately\nI'm not bold enough to put those assertions in an override_build step of\ndebian/rules because I that could result in unnecessary breakages.\n\nMy image caching system saves more bandwidth than time. I was pleased to\nsee that CI was taking less than 30s to download a WSL image (building\nthe deb takes much longer, there's probably some caching opportunity in\nthe callee side?). The cache key is the image checksum read from the\nSHA256SUMS file hosted aside from the image. I had to learn a few tricks\nto make the cache working cross OSes.\n\nThe WSL instance is created from the cached image with `wsl --install\n--from-file ... --no-launch ...` so we can further customise it with\nother `wsl -d DISTRO -- <COMMANDS>` without those counting as if the\nOOBE script was run, that is, WSL keeps track of that instance as still\nnon-initialized.\n\nThis whole scheme allows us to:\n- claim that the package builds both source and binary outputs\n- claim that the installed package behaves as expected on a target\n- smoke test the latest images, preventing late breakages if breaking\nchanges appear in them without us noticing.\n\n---\n\nUDENG-7866",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/12ab98c081d8e79b837d9f9f3d3a3d2dafe8de14"
-               },
-               {
-                  "sha": "979672f55bcbc69e0bc43f3a3785ce9a90a98d56",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1757379399,
-                  "message": "Clean up always()",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/979672f55bcbc69e0bc43f3a3785ce9a90a98d56"
-               },
-               {
-                  "sha": "cd6515c1ffa4eaf489d2541a39e5177632cbbcdd",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1757357985,
-                  "message": "Schedule integration-test weekly plus...\n\nSprinkling whitespaces after long steps or jobs.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/cd6515c1ffa4eaf489d2541a39e5177632cbbcdd"
                }
             ],
             "ciActions": [],
