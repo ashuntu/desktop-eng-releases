@@ -5183,25 +5183,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "feeedb9be950408b1df5c3207b38936f748dd5ea",
+                  "author": "Kat",
+                  "timestamp": 1761865205,
+                  "message": "deps(go): Update Go toolchain from 1.24.6 to 1.24.9 (#263)\n\nUpdates the Go toolchain from 1.24.6 to 1.24.9 to resolve a number of\nCVEs.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/feeedb9be950408b1df5c3207b38936f748dd5ea"
+               },
+               {
+                  "sha": "ed26b4333f2f8b3734618a6b73d785f964eb3185",
+                  "author": "kkuo",
+                  "timestamp": 1761842179,
+                  "message": "deps: Update Go toolchain from 1.24.6 to 1.24.9",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/ed26b4333f2f8b3734618a6b73d785f964eb3185"
+               },
+               {
                   "sha": "5883f2613c4e7b9371e317c15f470a6fd0e115b6",
                   "author": "Kat",
                   "timestamp": 1760113228,
                   "message": "ci: Add TiCS token existence check (#260)\n\nIn certain contexts, such as when the workflow-triggering actor is\nDependabot or if running from a fork, secrets are not available. While\nthe codecov action handles this without causing a job failure, TiCS does\nresult in a job failure. Thus, here we introduce a conditional check\nthat skips TiCS if the secret is not set and instead log a warning.\n\nBy handling this in the `tics-condition` step, we also skip some then\nunnecessary setup steps that have additional costs.\n\n---\n[UDENG-8089](https://warthogs.atlassian.net/browse/UDENG-8089)\n\n[UDENG-8089]:\nhttps://warthogs.atlassian.net/browse/UDENG-8089?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/5883f2613c4e7b9371e317c15f470a6fd0e115b6"
-               },
-               {
-                  "sha": "47a5042203b5f726519446b749771fd8d7b9ea02",
-                  "author": "Kat",
-                  "timestamp": 1760112273,
-                  "message": "ci(qa): Add concurrency group to prevent overlapping runs in process-coverage job (#259)\n\nWhen multiple PRs are merged in quick succession, it is not uncommon for\nTiCS in QServer mode to be triggered concurrently. However, this causes\na subsequent job failure, as only one QServer session can be active at a\ntime. Thus, here we implement concurrency groups for the\n`process-coverage` job that forces only one concurrent run per\ntriggering ref.\n\nThis does mean that we also limit the job in PRs, but this is less of an\nissue as we skip TiCS in those cases, allowing for the job to run\nrelatively quickly.\n\nWe don't enable job cancellation in case that results in bad behavior\nwith TiCS, and also because cancellations may cause unnecessary job\nfailures.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/47a5042203b5f726519446b749771fd8d7b9ea02"
-               },
-               {
-                  "sha": "dcd3ba88c9c22e032944dcd98c6fc5c132f975c1",
-                  "author": "kkuo",
-                  "timestamp": 1760107887,
-                  "message": "ci: Add TiCS token existence check",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/dcd3ba88c9c22e032944dcd98c6fc5c132f975c1"
                }
             ],
             "ciActions": [
