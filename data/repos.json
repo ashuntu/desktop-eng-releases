@@ -4972,14 +4972,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 422,
-                     "timestamp": 1761827522
+                     "revision": 423,
+                     "timestamp": 1761834886
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 421,
-                     "timestamp": 1761827270
+                     "revision": 424,
+                     "timestamp": 1761835339
                   }
                ],
                "channels": [
@@ -7098,14 +7098,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 422,
-                     "timestamp": 1761827522
+                     "revision": 423,
+                     "timestamp": 1761834886
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 421,
-                     "timestamp": 1761827270
+                     "revision": 424,
+                     "timestamp": 1761835339
                   }
                ],
                "channels": [
@@ -7171,25 +7171,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "35829c9f53cbd54e5a530eed05838a168fa7fe4d",
+                  "author": "adombeck",
+                  "timestamp": 1761835613,
+                  "message": "Bump Go toolchain version to 1.25.2 (#1111)",
+                  "url": "https://github.com/ubuntu/authd/commit/35829c9f53cbd54e5a530eed05838a168fa7fe4d"
+               },
+               {
+                  "sha": "9d1b4c8151de4f2012118668eb69acb2cd7caf7b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1761826737,
+                  "message": "Bump Go toolchain version to 1.25.3\n\ngovulncheck reports the following vulnerabilities in go1.25\n\nVulnerability #1: GO-2025-4013\n    Panic when validating certificates with DSA public keys in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-4013\n  Standard library\n    Found in: crypto/x509@go1.25\n    Fixed in: crypto/x509@go1.25.2\n    Example traces found:\nError:       #1: cmd/authd/daemon/daemon_test.go:248:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\n\nVulnerability #2: GO-2025-4011\n    Parsing DER payload can cause memory exhaustion in encoding/asn1\n  More info: https://pkg.go.dev/vuln/GO-2025-4011\n  Standard library\n    Found in: encoding/asn1@go1.25\n    Fixed in: encoding/asn1@go1.25.2\n    Example traces found:\nError:       #1: pam/internal/adapter/model.go:313:41: adapter.uiModel.Update calls x509.ParsePKIXPublicKey, which calls asn1.Unmarshal\n\nVulnerability #3: GO-2025-4010\n    Insufficient validation of bracketed IPv6 hostnames in net/url\n  More info: https://pkg.go.dev/vuln/GO-2025-4010\n  Standard library\n    Found in: net/url@go1.25\n    Fixed in: net/url@go1.25.2\n    Example traces found:\nError:       #1: internal/testutils/daemon.go:241:29: testutils.StartDaemonWithCancel calls grpc.NewClient, which eventually calls url.Parse\nError:       #2: pam/integration-tests/ssh_test.go:698:30: integration.startSSHd calls httptest.NewServer, which eventually calls url.ParseRequestURI\n\nVulnerability #4: GO-2025-4009\n    Quadratic complexity when parsing some invalid inputs in encoding/pem\n  More info: https://pkg.go.dev/vuln/GO-2025-4009\n  Standard library\n    Found in: encoding/pem@go1.25\n    Fixed in: encoding/pem@go1.25.2\n    Example traces found:\nError:       #1: pam/internal/adapter/utils.go:121:22: adapter.IsTerminalTTY calls sync.Once.Do, which eventually calls pem.Decode\n\nVulnerability #5: GO-2025-4008\n    ALPN negotiation error contains attacker controlled information in\n    crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2025-4008\n  Standard library\n    Found in: crypto/tls@go1.25\n    Fixed in: crypto/tls@go1.25.2\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:698:30: integration.startSSHd calls httptest.NewServer, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd/daemon/daemon_test.go:248:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: internal/services/pam/pam_test.go:877:14: pam_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write\n\nVulnerability #6: GO-2025-4007\n    Quadratic complexity when checking name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-4007\n  Standard library\n    Found in: crypto/x509@go1.25\n    Fixed in: crypto/x509@go1.25.3\n    Example traces found:\nError:       #1: pam/internal/adapter/utils.go:121:22: adapter.IsTerminalTTY calls sync.Once.Do, which eventually calls x509.CertPool.AppendCertsFromPEM\nError:       #2: cmd/authd/daemon/daemon_test.go:248:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\nError:       #3: examplebroker/broker.go:351:43: examplebroker.Broker.NewSession calls x509.MarshalPKIXPublicKey\nError:       #4: pam/internal/adapter/utils.go:121:22: adapter.IsTerminalTTY calls sync.Once.Do, which eventually calls x509.ParseCertificate\nError:       #5: pam/internal/adapter/model.go:313:41: adapter.uiModel.Update calls x509.ParsePKIXPublicKey",
+                  "url": "https://github.com/ubuntu/authd/commit/9d1b4c8151de4f2012118668eb69acb2cd7caf7b"
+               },
+               {
                   "sha": "f0fad964ac756ccc16c451e4ec343862c91d9938",
                   "author": "adombeck",
                   "timestamp": 1760605230,
                   "message": "pam: Wrap lines that are longer than the terminal width (#1070)\n\nUDENG-7902",
                   "url": "https://github.com/ubuntu/authd/commit/f0fad964ac756ccc16c451e4ec343862c91d9938"
-               },
-               {
-                  "sha": "94eda629524470c85e64a678d946400a053d39e2",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757585890,
-                  "message": "pam: Wrap lines that are longer than the terminal width\n\nBubbletea by default just cuts of lines that are longer than the\nterminal width. That means the user can't fully read some messages if\nthey are longer than their terminal. Let's avoid that by wrapping lines\nto the terminal width.",
-                  "url": "https://github.com/ubuntu/authd/commit/94eda629524470c85e64a678d946400a053d39e2"
-               },
-               {
-                  "sha": "55b4fce978833ca3ef2226f8a815ac7ed6f08703",
-                  "author": "adombeck",
-                  "timestamp": 1760604693,
-                  "message": "Use Go backports PPA in CI and bump go toolchain to 1.25.0 (#1074)\n\nUDENG-8125",
-                  "url": "https://github.com/ubuntu/authd/commit/55b4fce978833ca3ef2226f8a815ac7ed6f08703"
                }
             ],
             "ciActions": [
@@ -9359,14 +9359,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 422,
-                     "timestamp": 1761827522
+                     "revision": 423,
+                     "timestamp": 1761834886
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 421,
-                     "timestamp": 1761827270
+                     "revision": 424,
+                     "timestamp": 1761835339
                   }
                ],
                "channels": [
