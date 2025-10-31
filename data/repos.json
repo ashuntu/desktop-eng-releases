@@ -6741,7 +6741,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 202,
+            "newCommits": 204,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7125,7 +7125,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 126,
+            "newCommits": 129,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -7206,25 +7206,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "baa274567c9cc032784f9f4c79e9114fdeee6438",
+                  "author": "adombeck",
+                  "timestamp": 1761918699,
+                  "message": "Bump Go toolchain version to 1.24.9 (#731)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/baa274567c9cc032784f9f4c79e9114fdeee6438"
+               },
+               {
+                  "sha": "d994ae0d0b3bfb5f7d1437a0fd72e6c518c6865e",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1761838370,
+                  "message": "Bump Go toolchain version to 1.24.9\n\ngovulncheck reports the following vulnerabilities in go1.24.6\n\nVulnerability #1: GO-2025-4013\n    Panic when validating certificates with DSA public keys in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-4013\n  Standard library\n    Found in: crypto/x509@go1.24.6\n    Fixed in: crypto/x509@go1.24.8\n    Example traces found:\nError:       #1: cmd/authd-oidc/daemon/daemon_test.go:211:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\n\nVulnerability #2: GO-2025-4012\n    Lack of limit when parsing cookies can cause memory exhaustion in net/http\n  More info: https://pkg.go.dev/vuln/GO-2025-4012\n  Standard library\n    Found in: net/http@go1.24.6\n    Fixed in: net/http@go1.24.8\n    Example traces found:\nError:       #1: internal/broker/broker.go:471:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls http.Client.Do\n\nVulnerability #3: GO-2025-4011\n    Parsing DER payload can cause memory exhaustion in encoding/asn1\n  More info: https://pkg.go.dev/vuln/GO-2025-4011\n  Standard library\n    Found in: encoding/asn1@go1.24.6\n    Fixed in: encoding/asn1@go1.24.8\n    Example traces found:\nError:       #1: internal/testutils/provider.go:68:36: testutils.init#1 calls x509.ParseCertificate, which eventually calls asn1.Unmarshal\n\nVulnerability #4: GO-2025-4010\n    Insufficient validation of bracketed IPv6 hostnames in net/url\n  More info: https://pkg.go.dev/vuln/GO-2025-4010\n  Standard library\n    Found in: net/url@go1.24.6\n    Fixed in: net/url@go1.24.8\n    Example traces found:\nError:       #1: internal/providers/msentraid/himmelblau/himmelblau.go:68:33: himmelblau.ensureBrokerClientAppInitialized calls url.JoinPath\nError:       #2: internal/broker/broker.go:216:25: broker.Broker.connectToOIDCServer calls oidc.NewProvider, which eventually calls url.Parse\nError:       #3: internal/testutils/provider.go:104:14: testutils.StartMockProviderServer calls httptest.Server.Start, which eventually calls url.ParseRequestURI\nError:       #4: internal/broker/broker.go:471:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls url.URL.Parse\n\nVulnerability #5: GO-2025-4009\n    Quadratic complexity when parsing some invalid inputs in encoding/pem\n  More info: https://pkg.go.dev/vuln/GO-2025-4009\n  Standard library\n    Found in: encoding/pem@go1.24.6\n    Fixed in: encoding/pem@go1.24.8\n    Example traces found:\nError:       #1: internal/providers/msentraid/himmelblau/himmelblau.go:66:28: himmelblau.ensureBrokerClientAppInitialized calls sync.Once.Do, which eventually calls pem.Decode\n\nVulnerability #6: GO-2025-4008\n    ALPN negotiation error contains attacker controlled information in\n    crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2025-4008\n  Standard library\n    Found in: crypto/tls@go1.24.6\n    Fixed in: crypto/tls@go1.24.8\n    Example traces found:\nError:       #1: internal/testutils/provider.go:104:14: testutils.StartMockProviderServer calls httptest.Server.Start, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd-oidc/daemon/daemon_test.go:211:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: cmd/authd-oidc/daemon/daemon_test.go:399:14: daemon_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write\nError:       #4: internal/broker/broker.go:471:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls tls.Dialer.DialContext\n\nVulnerability #7: GO-2025-4007\n    Quadratic complexity when checking name constraints in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2025-4007\n  Standard library\n    Found in: crypto/x509@go1.24.6\n    Fixed in: crypto/x509@go1.24.9\n    Example traces found:\nError:       #1: internal/providers/msentraid/himmelblau/himmelblau.go:66:28: himmelblau.ensureBrokerClientAppInitialized calls sync.Once.Do, which eventually calls x509.CertPool.AppendCertsFromPEM\nError:       #2: cmd/authd-oidc/daemon/daemon_test.go:211:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls x509.Certificate.Verify\nError:       #3: internal/testutils/provider.go:63:34: testutils.init#1 calls x509.CreateCertificate\nError:       #4: internal/broker/broker.go:170:43: broker.Broker.NewSession calls x509.MarshalPKIXPublicKey\nError:       #5: internal/testutils/provider.go:68:36: testutils.init#1 calls x509.ParseCertificate\nError:       #6: internal/providers/msentraid/msmock_test.go:331:42: msentraid_test.mockMSServer.handleDeviceEnrollmentRequest calls x509.ParseCertificateRequest\nError:       #7: internal/broker/helper_test.go:159:40: broker_test.encryptSecret calls x509.ParsePKIXPublicKey",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d994ae0d0b3bfb5f7d1437a0fd72e6c518c6865e"
+               },
+               {
                   "sha": "bcebea03afbaea636ea987fdef6c05dd4e243284",
                   "author": "adombeck",
                   "timestamp": 1761565075,
                   "message": "Only build msentraid and himmelblau packages when building authd-msentraid (#715)\n\nUDENG-8445",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/bcebea03afbaea636ea987fdef6c05dd4e243284"
-               },
-               {
-                  "sha": "b6fc87f0fb24b183b2d147d15120ceb9e9e3040c",
-                  "author": "adombeck",
-                  "timestamp": 1761557579,
-                  "message": "deps(ci): bump actions/download-artifact from 5 to 6 (#722)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/b6fc87f0fb24b183b2d147d15120ceb9e9e3040c"
-               },
-               {
-                  "sha": "b2ef29012edbbb7942c60a1f1926490fe8920a0c",
-                  "author": "adombeck",
-                  "timestamp": 1761557574,
-                  "message": "deps(go): bump github.com/microsoftgraph/msgraph-sdk-go from 1.87.0 to 1.88.0 in the minor-updates group (#723)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/b2ef29012edbbb7942c60a1f1926490fe8920a0c"
                }
             ],
             "ciActions": [
