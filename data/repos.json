@@ -3034,25 +3034,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "2dcb4d2525b3724c8572878d200c664e621c2400",
+                  "author": "Sebastien Bacher",
+                  "timestamp": 1762859449,
+                  "message": "Merge pull request #49 from nteodosio/stable\n\nDefine NSS_DIR.",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/2dcb4d2525b3724c8572878d200c664e621c2400"
+               },
+               {
+                  "sha": "3eca6041a785a44d7eb202356598ab2b3d0ada8f",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1762850324,
+                  "message": "Define NSS_DIR.\n\nFixes:\n\n   Compiling nss_sys v0.1.0 (https://github.com/mozilla/application-services?rev=cd04a4d1a74294ab08434d7a5a8152d25d25e53c#cd04a4d1)\nerror: failed to run custom build command for `nss_sys v0.1.0 (https://github.com/mozilla/application-services?rev=cd04a4d1a74294ab08434d7a5a8152d25d25e53c#cd04a4d1)`\n\nCaused by:\n  process didn't exit successfully: `/root/parts/thunderbird/build/target/release/build/nss_sys-25a9c1d021cc0dd4/build-script-build` (exit status: 101)\n  --- stdout\n  cargo:rerun-if-env-changed=NSS_DIR\n  --- stderr\n  thread 'main' panicked at /root/.cargo/git/checkouts/application-services-99bb257f08384f94/cd04a4d/components/support/rc_crypto/nss/nss_sys/build.rs:6:34:\n  called `Result::unwrap()` on an `Err` value: NoNssDir\n  stack backtrace:\n     0: rust_begin_unwind\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/std/src/panicking.rs:662:5\n     1: core::panicking::panic_fmt\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/core/src/panicking.rs:74:14\n     2: core::result::unwrap_failed\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/core/src/result.rs:1677:5\n     3: core::result::Result<T,E>::unwrap\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/core/src/result.rs:1102:23\n     4: build_script_build::main\n               at ./build.rs:6:5\n     5: core::ops::function::FnOnce::call_once\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/core/src/ops/function.rs:250:5",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/3eca6041a785a44d7eb202356598ab2b3d0ada8f"
+               },
+               {
                   "sha": "417f2c6a3f5a4ef6b3170fc1529c20ff76aeb3d1",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1762847291,
                   "message": "Improve backtraces for build dependencies.\n\n> note: To improve backtraces for build dependencies, set the\n> CARGO_PROFILE_RELEASE_BUILD_OVERRIDE_DEBUG=true environment variable to\n> enable debug information generation.",
                   "url": "https://github.com/ubuntu/thunderbird/commit/417f2c6a3f5a4ef6b3170fc1529c20ff76aeb3d1"
-               },
-               {
-                  "sha": "3755b07d34e03a6d3e92ba1f63626d9cbaa67222",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1762846337,
-                  "message": "Dump Rust *full* backtrace.",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/3755b07d34e03a6d3e92ba1f63626d9cbaa67222"
-               },
-               {
-                  "sha": "054888114f51b16231f67bc9fca2268af1ba9320",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1762786896,
-                  "message": "Dump Rust backtrace in case of panic to facilitate debugging.",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/054888114f51b16231f67bc9fca2268af1ba9320"
                }
             ],
             "ciActions": null,
@@ -7171,6 +7171,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "18abfdc0c0b86db99a97595ad925d571300e5b59",
+                  "author": "adombeck",
+                  "timestamp": 1762859713,
+                  "message": "ci: Block merging PRs with fixup commits (#1117)",
+                  "url": "https://github.com/ubuntu/authd/commit/18abfdc0c0b86db99a97595ad925d571300e5b59"
+               },
+               {
                   "sha": "6ca469de27c645a7190330889b46428e841689d1",
                   "author": "adombeck",
                   "timestamp": 1762524036,
@@ -7183,13 +7190,6 @@
                   "timestamp": 1762353452,
                   "message": "deps(go-tools): bump github.com/golangci/golangci-lint/v2\n\nBumps the minor-updates group in /tools with 1 update: [github.com/golangci/golangci-lint/v2](https://github.com/golangci/golangci-lint).\n\n\nUpdates `github.com/golangci/golangci-lint/v2` from 2.5.0 to 2.6.0\n- [Release notes](https://github.com/golangci/golangci-lint/releases)\n- [Changelog](https://github.com/golangci/golangci-lint/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/golangci/golangci-lint/compare/v2.5.0...v2.6.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golangci/golangci-lint/v2\n  dependency-version: 2.6.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
                   "url": "https://github.com/ubuntu/authd/commit/2b82033d5fa546cf9d20ac8c96522225f5fe84d7"
-               },
-               {
-                  "sha": "35829c9f53cbd54e5a530eed05838a168fa7fe4d",
-                  "author": "adombeck",
-                  "timestamp": 1761835613,
-                  "message": "Bump Go toolchain version to 1.25.2 (#1111)",
-                  "url": "https://github.com/ubuntu/authd/commit/35829c9f53cbd54e5a530eed05838a168fa7fe4d"
                }
             ],
             "ciActions": [
