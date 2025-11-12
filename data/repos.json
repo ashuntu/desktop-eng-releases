@@ -7344,25 +7344,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e5e9a882e4ae94deee91eaba986eaf89a38b6b27",
+                  "author": "adombeck",
+                  "timestamp": 1762928856,
+                  "message": "ci: Automatically cancel in-progress workflow runs on push (#136)",
+                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/e5e9a882e4ae94deee91eaba986eaf89a38b6b27"
+               },
+               {
+                  "sha": "f43932a216fe7e941b72e5b6d28a46ef9e02bcce",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1762880084,
+                  "message": "ci: Automatically cancel in-progress workflow runs on push\n\nIf commits are pushed to the same PR in quick succession, the CI jobs\nrun multiple times in parallel, even though older runs are usually not\nneeded. This change saves some resources by automatically cancelling\nin-progress workflows on new pushes to the same branch.\n\nThe implementation is directly from the example of the concurrency keyword:\nhttps://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#example-using-concurrency-and-the-default-behavior",
+                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/f43932a216fe7e941b72e5b6d28a46ef9e02bcce"
+               },
+               {
                   "sha": "0cea85b28df6023e26a03beef6ba719e793014c9",
                   "author": "adombeck",
                   "timestamp": 1759143683,
                   "message": "Update golangci-lint to v2 and migrate its config (#128)\n\nUDENG-7800",
                   "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/0cea85b28df6023e26a03beef6ba719e793014c9"
-               },
-               {
-                  "sha": "12fd8994b540792508238ea4ed58c6e3651995ff",
-                  "author": "adombeck",
-                  "timestamp": 1757027608,
-                  "message": "deps(ci): bump actions/setup-go from 5 to 6 (#127)",
-                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/12fd8994b540792508238ea4ed58c6e3651995ff"
-               },
-               {
-                  "sha": "83d533a903e767127737ec3d3783e063ffd46ab1",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757026152,
-                  "message": "Update golangci-lint to v2 and migrate its config\n\nThis allows us to use golangci-lint with Go 1.25.\n\nConfig was migrated via `golangci-lint migrate` and manually adding back\nthe comments.",
-                  "url": "https://github.com/ubuntu/ubuntu-proxy-manager/commit/83d533a903e767127737ec3d3783e063ffd46ab1"
                }
             ],
             "ciActions": [
