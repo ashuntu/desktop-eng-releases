@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fee24c00cc7341dd0ce562fbb1a51cc6c4bac842",
+                  "author": "Sebastien Bacher",
+                  "timestamp": 1763062466,
+                  "message": "Update to 145.0-2",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/fee24c00cc7341dd0ce562fbb1a51cc6c4bac842"
+               },
+               {
                   "sha": "2dcb4d2525b3724c8572878d200c664e621c2400",
                   "author": "Sebastien Bacher",
                   "timestamp": 1762859449,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1762850324,
                   "message": "Define NSS_DIR.\n\nFixes:\n\n   Compiling nss_sys v0.1.0 (https://github.com/mozilla/application-services?rev=cd04a4d1a74294ab08434d7a5a8152d25d25e53c#cd04a4d1)\nerror: failed to run custom build command for `nss_sys v0.1.0 (https://github.com/mozilla/application-services?rev=cd04a4d1a74294ab08434d7a5a8152d25d25e53c#cd04a4d1)`\n\nCaused by:\n  process didn't exit successfully: `/root/parts/thunderbird/build/target/release/build/nss_sys-25a9c1d021cc0dd4/build-script-build` (exit status: 101)\n  --- stdout\n  cargo:rerun-if-env-changed=NSS_DIR\n  --- stderr\n  thread 'main' panicked at /root/.cargo/git/checkouts/application-services-99bb257f08384f94/cd04a4d/components/support/rc_crypto/nss/nss_sys/build.rs:6:34:\n  called `Result::unwrap()` on an `Err` value: NoNssDir\n  stack backtrace:\n     0: rust_begin_unwind\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/std/src/panicking.rs:662:5\n     1: core::panicking::panic_fmt\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/core/src/panicking.rs:74:14\n     2: core::result::unwrap_failed\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/core/src/result.rs:1677:5\n     3: core::result::Result<T,E>::unwrap\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/core/src/result.rs:1102:23\n     4: build_script_build::main\n               at ./build.rs:6:5\n     5: core::ops::function::FnOnce::call_once\n               at /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/core/src/ops/function.rs:250:5",
                   "url": "https://github.com/ubuntu/thunderbird/commit/3eca6041a785a44d7eb202356598ab2b3d0ada8f"
-               },
-               {
-                  "sha": "417f2c6a3f5a4ef6b3170fc1529c20ff76aeb3d1",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1762847291,
-                  "message": "Improve backtraces for build dependencies.\n\n> note: To improve backtraces for build dependencies, set the\n> CARGO_PROFILE_RELEASE_BUILD_OVERRIDE_DEBUG=true environment variable to\n> enable debug information generation.",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/417f2c6a3f5a4ef6b3170fc1529c20ff76aeb3d1"
                }
             ],
             "ciActions": null,
@@ -6741,7 +6741,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 228,
+            "newCommits": 251,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
