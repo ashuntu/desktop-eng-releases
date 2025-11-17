@@ -7180,25 +7180,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "35545e45651aac11de32052dec898f4eb3d01750",
+                  "sha": "73a529b8c61ec1c48ffda973d6f8b4c4e32dd1aa",
                   "author": "adombeck",
-                  "timestamp": 1763402865,
-                  "message": "ci/build-deb: Build debian package targeting questing (#1127)\n\nThe \"devel\" version targets resolute since questing was released.\n\nUDENG-8574",
-                  "url": "https://github.com/ubuntu/authd/commit/35545e45651aac11de32052dec898f4eb3d01750"
+                  "timestamp": 1763419522,
+                  "message": "Only convert user and group names to lowercase in API methods (#1125)",
+                  "url": "https://github.com/ubuntu/authd/commit/73a529b8c61ec1c48ffda973d6f8b4c4e32dd1aa"
                },
                {
-                  "sha": "fe873e7ec3f427cbb70e5220af9ee8b2d871395c",
+                  "sha": "8066a6985d8f227a17c8abbcc7d64e6f072afdae",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1763399978,
-                  "message": "ci/build-deb: Build debian package targeting questing\n\nThe \"devel\" version targets resolute since questing was released.",
-                  "url": "https://github.com/ubuntu/authd/commit/fe873e7ec3f427cbb70e5220af9ee8b2d871395c"
+                  "timestamp": 1763390826,
+                  "message": "Avoid unnecessary lowercase conversions\n\nWe now only convert user and group names to lowercase in public API\nmethods. In all other functions, we assume that the names are already in\nlowercase, to avoid repeatedly converting the same name to lowercase in\neach layer of our code.",
+                  "url": "https://github.com/ubuntu/authd/commit/8066a6985d8f227a17c8abbcc7d64e6f072afdae"
                },
                {
-                  "sha": "044f9c883198a87146f01569ea708d5ffcd36a8d",
+                  "sha": "c4e47f6fea3ac7dd0edb1a80a01b5ca11d1f2900",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1763399529,
-                  "message": "Fix build failure on resolute because Go backports PPA not found\n\nWe don't backport Go in our PPA because resolute already has Go 1.25 in\nmain. However, since we still add the Go backports PPA, the build fails\nbecause `apt update` can't find the PPA's package list for resolute.\n\nThis change only adds the PPA when testing a Ubuntu releases which\ndoesn't have the required Go version in main.",
-                  "url": "https://github.com/ubuntu/authd/commit/044f9c883198a87146f01569ea708d5ffcd36a8d"
+                  "timestamp": 1763395766,
+                  "message": "Store DB content as golden file in lock/unlock tests\n\nThe tests change DB content, so we should also check the result.",
+                  "url": "https://github.com/ubuntu/authd/commit/c4e47f6fea3ac7dd0edb1a80a01b5ca11d1f2900"
                }
             ],
             "ciActions": [
@@ -7215,25 +7215,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2bef41235032b520d57bc256a5cf06e5a93b0427",
+                  "sha": "06a8227940483504ec13806d639d6168623d3330",
                   "author": "adombeck",
-                  "timestamp": 1763134515,
-                  "message": "Fix invalid auth reply (#748)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2bef41235032b520d57bc256a5cf06e5a93b0427"
+                  "timestamp": 1763420629,
+                  "message": "deps(go-tools): bump the minor-updates group across 1 directory with 2 updates (#751)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/06a8227940483504ec13806d639d6168623d3330"
                },
                {
-                  "sha": "72b0302910c9f120297988917f6314a5f5536bb1",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1763129533,
-                  "message": "Fix invalid auth reply\n\nIt caused authd to log the error message:\n\n    invalid access authentication key:",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/72b0302910c9f120297988917f6314a5f5536bb1"
+                  "sha": "dec57a1de7c72220f084a4a441820c88158343a2",
+                  "author": "adombeck",
+                  "timestamp": 1763420608,
+                  "message": "deps(go): bump the minor-updates group with 3 updates (#744)",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/dec57a1de7c72220f084a4a441820c88158343a2"
                },
                {
-                  "sha": "8990f697ca3710eeaa5546d91040d2a36c0c3944",
-                  "author": "adombeck",
-                  "timestamp": 1763031996,
-                  "message": "Add E2E tests for the msentraid broker (#659)\n\nUDENG-7424",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/8990f697ca3710eeaa5546d91040d2a36c0c3944"
+                  "sha": "2f78deddb1b41a2797a3aacd1dedbf8c274dcc11",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1763366907,
+                  "message": "deps(go-tools): bump the minor-updates group across 1 directory with 2 updates\n\nBumps the minor-updates group with 2 updates in the /tools directory: [github.com/golangci/golangci-lint/v2](https://github.com/golangci/golangci-lint) and [golang.org/x/mod](https://github.com/golang/mod).\n\n\nUpdates `github.com/golangci/golangci-lint/v2` from 2.6.0 to 2.6.2\n- [Release notes](https://github.com/golangci/golangci-lint/releases)\n- [Changelog](https://github.com/golangci/golangci-lint/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/golangci/golangci-lint/compare/v2.6.0...v2.6.2)\n\nUpdates `golang.org/x/mod` from 0.29.0 to 0.30.0\n- [Commits](https://github.com/golang/mod/compare/v0.29.0...v0.30.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golangci/golangci-lint/v2\n  dependency-version: 2.6.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/mod\n  dependency-version: 0.30.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2f78deddb1b41a2797a3aacd1dedbf8c274dcc11"
                }
             ],
             "ciActions": [
