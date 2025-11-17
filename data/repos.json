@@ -7180,25 +7180,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0174a64153315b7f1f10f63372c55dc1a444f639",
+                  "sha": "35545e45651aac11de32052dec898f4eb3d01750",
                   "author": "adombeck",
-                  "timestamp": 1763134529,
-                  "message": "Improve error message (#1123)",
-                  "url": "https://github.com/ubuntu/authd/commit/0174a64153315b7f1f10f63372c55dc1a444f639"
+                  "timestamp": 1763402865,
+                  "message": "ci/build-deb: Build debian package targeting questing (#1127)\n\nThe \"devel\" version targets resolute since questing was released.\n\nUDENG-8574",
+                  "url": "https://github.com/ubuntu/authd/commit/35545e45651aac11de32052dec898f4eb3d01750"
                },
                {
-                  "sha": "c2135dc42d30be8682358023bb17cc34c2b9d97b",
+                  "sha": "fe873e7ec3f427cbb70e5220af9ee8b2d871395c",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1763129854,
-                  "message": "Improve error message\n\n\"invalid access authentication key\" sounds like a cryptographic key is\ninvalid.",
-                  "url": "https://github.com/ubuntu/authd/commit/c2135dc42d30be8682358023bb17cc34c2b9d97b"
+                  "timestamp": 1763399978,
+                  "message": "ci/build-deb: Build debian package targeting questing\n\nThe \"devel\" version targets resolute since questing was released.",
+                  "url": "https://github.com/ubuntu/authd/commit/fe873e7ec3f427cbb70e5220af9ee8b2d871395c"
                },
                {
-                  "sha": "18abfdc0c0b86db99a97595ad925d571300e5b59",
-                  "author": "adombeck",
-                  "timestamp": 1762859713,
-                  "message": "ci: Block merging PRs with fixup commits (#1117)",
-                  "url": "https://github.com/ubuntu/authd/commit/18abfdc0c0b86db99a97595ad925d571300e5b59"
+                  "sha": "044f9c883198a87146f01569ea708d5ffcd36a8d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1763399529,
+                  "message": "Fix build failure on resolute because Go backports PPA not found\n\nWe don't backport Go in our PPA because resolute already has Go 1.25 in\nmain. However, since we still add the Go backports PPA, the build fails\nbecause `apt update` can't find the PPA's package list for resolute.\n\nThis change only adds the PPA when testing a Ubuntu releases which\ndoesn't have the required Go version in main.",
+                  "url": "https://github.com/ubuntu/authd/commit/044f9c883198a87146f01569ea708d5ffcd36a8d"
                }
             ],
             "ciActions": [
