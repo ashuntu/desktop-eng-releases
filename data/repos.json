@@ -7215,6 +7215,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3e5414a888f66b2fefb7256f4ffeee06603cf8bc",
+                  "author": "adombeck",
+                  "timestamp": 1763480008,
+                  "message": "Improvements to e2e tests (#752)\n\n* Support specifying the Ubuntu release to test. Currently supported:\nquesting and noble.\n* Support `--rerunfailed` to only re-run the test cases which failed in\nthe previous test run. That's very useful when running the test cases\nlocally. This required two substantial changes:\n* Making the test cases not rely on other test cases. Robot framework\nexpects test cases to be self-contained and to use setup and teardown\nkeywords to ensure they can all run from the same clean state.\n`--rerunfailed` doesn't support running the full test suite which\nfailed, it only reruns those test cases which failed, so it causes\nfailures if those test cases depend on previous test cases.\n* Calling `robot` directly instead of `yarf`. YARF runs the tests via\n[`TestSuite.run`](https://robot-framework.readthedocs.io/en/latest/autodoc/robot.running.html#robot.running.model.TestSuite.run)\nwhich does support passing options to it, but:\n> Only options related to the actual test execution have an effect. For\nexample, options related to selecting or modifying test cases or suites\n(e.g. --include, --name, --prerunmodifier) or creating logs and reports\nare silently ignored.\nSo options like `--rerunfailed` don't have an effect. Fortunately, it's\nsimple to just use the keywords provided by YARF and execute tests\ndirectly via the robot framework executable `robot`, which allows us to\nuse all its options.\n* Stream the VM's systemd journal to the host and add it to the HTML log\n* Many robustness improvements",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/3e5414a888f66b2fefb7256f4ffeee06603cf8bc"
+               },
+               {
                   "sha": "06a8227940483504ec13806d639d6168623d3330",
                   "author": "adombeck",
                   "timestamp": 1763420629,
@@ -7227,13 +7234,6 @@
                   "timestamp": 1763420608,
                   "message": "deps(go): bump the minor-updates group with 3 updates (#744)",
                   "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/dec57a1de7c72220f084a4a441820c88158343a2"
-               },
-               {
-                  "sha": "2f78deddb1b41a2797a3aacd1dedbf8c274dcc11",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1763366907,
-                  "message": "deps(go-tools): bump the minor-updates group across 1 directory with 2 updates\n\nBumps the minor-updates group with 2 updates in the /tools directory: [github.com/golangci/golangci-lint/v2](https://github.com/golangci/golangci-lint) and [golang.org/x/mod](https://github.com/golang/mod).\n\n\nUpdates `github.com/golangci/golangci-lint/v2` from 2.6.0 to 2.6.2\n- [Release notes](https://github.com/golangci/golangci-lint/releases)\n- [Changelog](https://github.com/golangci/golangci-lint/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/golangci/golangci-lint/compare/v2.6.0...v2.6.2)\n\nUpdates `golang.org/x/mod` from 0.29.0 to 0.30.0\n- [Commits](https://github.com/golang/mod/compare/v0.29.0...v0.30.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golangci/golangci-lint/v2\n  dependency-version: 2.6.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/mod\n  dependency-version: 0.30.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/2f78deddb1b41a2797a3aacd1dedbf8c274dcc11"
                }
             ],
             "ciActions": [
