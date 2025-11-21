@@ -5284,25 +5284,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1f78f0765cee3b4dcd76d36507eac6b4f032876d",
+                  "author": "Kat",
+                  "timestamp": 1763734019,
+                  "message": "fix: Fix cloud-init failover profile script creation (#32)\n\nFixes #31 \n\nBefore, the integration test workflow wasn't properly installing the\nfailover script used to early exit in case cloud-init was not working\nproperly.\n\nThe following is a log snippet from a recent run of the workflow\nhttps://github.com/ubuntu/wsl-setup/actions/runs/19453420616/job/55662916687:\n```\nprintf: usage: printf [-v var] format [arguments]\nchmod: cannot access '/etc/profile.d/99-quit-wsl.sh': No such file or directory\n```\n\nThis went unnoticed because PowerShell has poor options for error\nhandling, and as we have another failover in the form of the step\ntimeouts.\n\nThis PR fixes this by fixing replacing `printf` with `echo -e`.\nSwitching to using bash for this step was explored, but it was instead\ntoo strict with error handling.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/1f78f0765cee3b4dcd76d36507eac6b4f032876d"
+               },
+               {
+                  "sha": "a650c8473cbe8de69a98b16a595bb06ad6aadcfa",
+                  "author": "kkuo",
+                  "timestamp": 1763674979,
+                  "message": "Fix cloud-init failover profile script creation",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a650c8473cbe8de69a98b16a595bb06ad6aadcfa"
+               },
+               {
                   "sha": "5db54d439416f5c9e1a226e2351cd21985a69454",
                   "author": "Carlos Nihelton",
                   "timestamp": 1762967360,
                   "message": "Fix the use of the `image_name` env var (#30)\n\nAlso prefers using the env context for ease reading logs.\n\nThat was the reason for the permission denied error: I should have\nwritten `${env: image_name}` instead of `${image_name}`, which results\nin `$null` and makes WSL attempt to read a folder as an image file,\nresulting in the permission denied error. The error message could be\nclearer, but in the end there is nothing wrong with GitHub runners.",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/5db54d439416f5c9e1a226e2351cd21985a69454"
-               },
-               {
-                  "sha": "087124c6255c34cc0bf7ceaf680dff4ea2d69807",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1761918161,
-                  "message": "Fixes the use of the image_name env var\n\nAlso prefers using the env context for ease reading logs.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/087124c6255c34cc0bf7ceaf680dff4ea2d69807"
-               },
-               {
-                  "sha": "794c494872153de70e35aae893cea56b663568b1",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1761676584,
-                  "message": "fix(ci): Detects the current daily image based on the architecture (#29)\n\nInstead of hard-coding the release in it, we now provide just the\narchitecture and let the script detect the image name and checksum.\n\n---\n\nUDENG-8466",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/794c494872153de70e35aae893cea56b663568b1"
                }
             ],
             "ciActions": [],
@@ -6741,7 +6741,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 8,
+            "newCommits": 27,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7421,25 +7421,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1f78f0765cee3b4dcd76d36507eac6b4f032876d",
+                  "author": "Kat",
+                  "timestamp": 1763734019,
+                  "message": "fix: Fix cloud-init failover profile script creation (#32)\n\nFixes #31 \n\nBefore, the integration test workflow wasn't properly installing the\nfailover script used to early exit in case cloud-init was not working\nproperly.\n\nThe following is a log snippet from a recent run of the workflow\nhttps://github.com/ubuntu/wsl-setup/actions/runs/19453420616/job/55662916687:\n```\nprintf: usage: printf [-v var] format [arguments]\nchmod: cannot access '/etc/profile.d/99-quit-wsl.sh': No such file or directory\n```\n\nThis went unnoticed because PowerShell has poor options for error\nhandling, and as we have another failover in the form of the step\ntimeouts.\n\nThis PR fixes this by fixing replacing `printf` with `echo -e`.\nSwitching to using bash for this step was explored, but it was instead\ntoo strict with error handling.",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/1f78f0765cee3b4dcd76d36507eac6b4f032876d"
+               },
+               {
+                  "sha": "a650c8473cbe8de69a98b16a595bb06ad6aadcfa",
+                  "author": "kkuo",
+                  "timestamp": 1763674979,
+                  "message": "Fix cloud-init failover profile script creation",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/a650c8473cbe8de69a98b16a595bb06ad6aadcfa"
+               },
+               {
                   "sha": "5db54d439416f5c9e1a226e2351cd21985a69454",
                   "author": "Carlos Nihelton",
                   "timestamp": 1762967360,
                   "message": "Fix the use of the `image_name` env var (#30)\n\nAlso prefers using the env context for ease reading logs.\n\nThat was the reason for the permission denied error: I should have\nwritten `${env: image_name}` instead of `${image_name}`, which results\nin `$null` and makes WSL attempt to read a folder as an image file,\nresulting in the permission denied error. The error message could be\nclearer, but in the end there is nothing wrong with GitHub runners.",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/5db54d439416f5c9e1a226e2351cd21985a69454"
-               },
-               {
-                  "sha": "087124c6255c34cc0bf7ceaf680dff4ea2d69807",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1761918161,
-                  "message": "Fixes the use of the image_name env var\n\nAlso prefers using the env context for ease reading logs.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/087124c6255c34cc0bf7ceaf680dff4ea2d69807"
-               },
-               {
-                  "sha": "794c494872153de70e35aae893cea56b663568b1",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1761676584,
-                  "message": "fix(ci): Detects the current daily image based on the architecture (#29)\n\nInstead of hard-coding the release in it, we now provide just the\narchitecture and let the script detect the image name and checksum.\n\n---\n\nUDENG-8466",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/794c494872153de70e35aae893cea56b663568b1"
                }
             ],
             "ciActions": [],
