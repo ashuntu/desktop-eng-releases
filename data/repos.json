@@ -4079,6 +4079,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4ded57092be85d9ed30c00ca24ebae2827050007",
+                  "author": "Dennis Loose",
+                  "timestamp": 1763731444,
+                  "message": "fix: reduce restart-delay to prevent restart loop (#280)\n\nWhile looking at #278 with @didrocks, we discovered that by default\nsystemd stops restarting a failed service if it restarts more than 5\ntimes in 10 seconds. Since the `restart-delay` in the `snapcraft.yaml`\nis set to `2s`, the `prompting-client` just barely evades that check and\nkeeps restarting in a loop indefinitely. Reducing the delay to just 1\nsecond should at least fix this behavior.\n\nIn the context of #278 this would mean that if there's no graphical\nsession, the prompting-client service will eventually stop, leaving the\nsystem in a state where prompting is enabled, but no client is handling\nprompt requests.",
+                  "url": "https://github.com/canonical/prompting-client/commit/4ded57092be85d9ed30c00ca24ebae2827050007"
+               },
+               {
                   "sha": "e2bfea38ef8a196df6ce68b5ccd4df1dd5757097",
                   "author": "Gabriele Belluardo",
                   "timestamp": 1763673289,
@@ -4091,13 +4098,6 @@
                   "timestamp": 1763672826,
                   "message": "test: add makefile targets to enable/disable SNAPD_DEBUG in vm (#284)",
                   "url": "https://github.com/canonical/prompting-client/commit/6f40c2cf5f538e2cc454f56759ce87f9bc9cd665"
-               },
-               {
-                  "sha": "8431247e9d2429a9345efbfa4b69c8e1d9d4ac3f",
-                  "author": "ashuntu",
-                  "timestamp": 1763655782,
-                  "message": "chore(deps): Bump Flutter to 3.38 (#282)\n\nBumps Flutter to 3.38\n\n---\n\nUDENG-8584",
-                  "url": "https://github.com/canonical/prompting-client/commit/8431247e9d2429a9345efbfa4b69c8e1d9d4ac3f"
                }
             ],
             "ciActions": [],
@@ -6173,6 +6173,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4ded57092be85d9ed30c00ca24ebae2827050007",
+                  "author": "Dennis Loose",
+                  "timestamp": 1763731444,
+                  "message": "fix: reduce restart-delay to prevent restart loop (#280)\n\nWhile looking at #278 with @didrocks, we discovered that by default\nsystemd stops restarting a failed service if it restarts more than 5\ntimes in 10 seconds. Since the `restart-delay` in the `snapcraft.yaml`\nis set to `2s`, the `prompting-client` just barely evades that check and\nkeeps restarting in a loop indefinitely. Reducing the delay to just 1\nsecond should at least fix this behavior.\n\nIn the context of #278 this would mean that if there's no graphical\nsession, the prompting-client service will eventually stop, leaving the\nsystem in a state where prompting is enabled, but no client is handling\nprompt requests.",
+                  "url": "https://github.com/canonical/prompting-client/commit/4ded57092be85d9ed30c00ca24ebae2827050007"
+               },
+               {
                   "sha": "e2bfea38ef8a196df6ce68b5ccd4df1dd5757097",
                   "author": "Gabriele Belluardo",
                   "timestamp": 1763673289,
@@ -6185,13 +6192,6 @@
                   "timestamp": 1763672826,
                   "message": "test: add makefile targets to enable/disable SNAPD_DEBUG in vm (#284)",
                   "url": "https://github.com/canonical/prompting-client/commit/6f40c2cf5f538e2cc454f56759ce87f9bc9cd665"
-               },
-               {
-                  "sha": "8431247e9d2429a9345efbfa4b69c8e1d9d4ac3f",
-                  "author": "ashuntu",
-                  "timestamp": 1763655782,
-                  "message": "chore(deps): Bump Flutter to 3.38 (#282)\n\nBumps Flutter to 3.38\n\n---\n\nUDENG-8584",
-                  "url": "https://github.com/canonical/prompting-client/commit/8431247e9d2429a9345efbfa4b69c8e1d9d4ac3f"
                }
             ],
             "ciActions": [],
@@ -8440,6 +8440,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4ded57092be85d9ed30c00ca24ebae2827050007",
+                  "author": "Dennis Loose",
+                  "timestamp": 1763731444,
+                  "message": "fix: reduce restart-delay to prevent restart loop (#280)\n\nWhile looking at #278 with @didrocks, we discovered that by default\nsystemd stops restarting a failed service if it restarts more than 5\ntimes in 10 seconds. Since the `restart-delay` in the `snapcraft.yaml`\nis set to `2s`, the `prompting-client` just barely evades that check and\nkeeps restarting in a loop indefinitely. Reducing the delay to just 1\nsecond should at least fix this behavior.\n\nIn the context of #278 this would mean that if there's no graphical\nsession, the prompting-client service will eventually stop, leaving the\nsystem in a state where prompting is enabled, but no client is handling\nprompt requests.",
+                  "url": "https://github.com/canonical/prompting-client/commit/4ded57092be85d9ed30c00ca24ebae2827050007"
+               },
+               {
                   "sha": "e2bfea38ef8a196df6ce68b5ccd4df1dd5757097",
                   "author": "Gabriele Belluardo",
                   "timestamp": 1763673289,
@@ -8452,13 +8459,6 @@
                   "timestamp": 1763672826,
                   "message": "test: add makefile targets to enable/disable SNAPD_DEBUG in vm (#284)",
                   "url": "https://github.com/canonical/prompting-client/commit/6f40c2cf5f538e2cc454f56759ce87f9bc9cd665"
-               },
-               {
-                  "sha": "8431247e9d2429a9345efbfa4b69c8e1d9d4ac3f",
-                  "author": "ashuntu",
-                  "timestamp": 1763655782,
-                  "message": "chore(deps): Bump Flutter to 3.38 (#282)\n\nBumps Flutter to 3.38\n\n---\n\nUDENG-8584",
-                  "url": "https://github.com/canonical/prompting-client/commit/8431247e9d2429a9345efbfa4b69c8e1d9d4ac3f"
                }
             ],
             "ciActions": [],
