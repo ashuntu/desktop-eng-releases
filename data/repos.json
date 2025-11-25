@@ -6741,7 +6741,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 48,
+            "newCommits": 50,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7180,25 +7180,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e0c440a9a9cb0befd6c6b141ab4d608f4c743a02",
+                  "author": "adombeck",
+                  "timestamp": 1764081781,
+                  "message": "Fix misaligned pointer conversion (#1130)",
+                  "url": "https://github.com/ubuntu/authd/commit/e0c440a9a9cb0befd6c6b141ab4d608f4c743a02"
+               },
+               {
+                  "sha": "9ac572b5423298cf017f136dd20fd4537785f0a8",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1763562593,
+                  "message": "Fix misaligned pointer conversion\n\nI've seen tests fail with:\n\n    fatal error: checkptr: misaligned pointer conversion\n\n    goroutine 70 gp=0xc0005a4700 m=5 mp=0xc00007f808 [running]:\n    runtime.throw({0x103c1e7?, 0xc00059ba01?})\n    \t/home/adrian.dombeck@gmail.com/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.3.linux-amd64/src/runtime/panic.go:1094 +0x48 fp=0xc00059ba48 sp=0xc00059ba18 pc=0x488608\n    runtime.checkptrAlignment(0xc00013901a?, 0x1?, 0x0?)\n    \t/home/adrian.dombeck@gmail.com/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.3.linux-amd64/src/runtime/checkptr.go:20 +0x6c fp=0xc00059ba68 sp=0xc00059ba48 pc=0x41a8ac\n    github.com/ubuntu/authd/internal/users/localentries.strvToSlice(0xc00013901a)\n    \t/home/adrian.dombeck@gmail.com/projects/authd/internal/users/localentries/getgrent_c.go:92 +0xd5 fp=0xc00059bad8 sp=0xc00059ba68 pc=0x97a795\n\nUsing unsafe.Slice seems to fix the issue.",
+                  "url": "https://github.com/ubuntu/authd/commit/9ac572b5423298cf017f136dd20fd4537785f0a8"
+               },
+               {
                   "sha": "219d8d027520646dd39885c845ce623352dd470d",
                   "author": "adombeck",
                   "timestamp": 1763481583,
                   "message": "Fix bubblewrap tests on Questing (#1128)",
                   "url": "https://github.com/ubuntu/authd/commit/219d8d027520646dd39885c845ce623352dd470d"
-               },
-               {
-                  "sha": "57cbacabac78408f384f35b7de27c940210e53c3",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1760996404,
-                  "message": "Fix bubblewrap tests on Questing\n\nThey failed with\n\n    bwrap: Can't find source path /etc/timezone: No such file or directory",
-                  "url": "https://github.com/ubuntu/authd/commit/57cbacabac78408f384f35b7de27c940210e53c3"
-               },
-               {
-                  "sha": "0fbd95dc3edae64d74bac5d33658561d42bd6fcc",
-                  "author": "adombeck",
-                  "timestamp": 1763460253,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 6 updates (#1118)",
-                  "url": "https://github.com/ubuntu/authd/commit/0fbd95dc3edae64d74bac5d33658561d42bd6fcc"
                }
             ],
             "ciActions": [
