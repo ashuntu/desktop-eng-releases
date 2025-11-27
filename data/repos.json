@@ -7180,25 +7180,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e0c440a9a9cb0befd6c6b141ab4d608f4c743a02",
+                  "sha": "c5c1afd24835893c8a7c6794423baa5285e5d1a9",
                   "author": "adombeck",
-                  "timestamp": 1764081781,
-                  "message": "Fix misaligned pointer conversion (#1130)",
-                  "url": "https://github.com/ubuntu/authd/commit/e0c440a9a9cb0befd6c6b141ab4d608f4c743a02"
+                  "timestamp": 1764239111,
+                  "message": "ci: Retry failed coverage tests (#1139)",
+                  "url": "https://github.com/ubuntu/authd/commit/c5c1afd24835893c8a7c6794423baa5285e5d1a9"
                },
                {
-                  "sha": "9ac572b5423298cf017f136dd20fd4537785f0a8",
+                  "sha": "ff34a9bac808428c5f79a97f97546e78f7099b43",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1763562593,
-                  "message": "Fix misaligned pointer conversion\n\nI've seen tests fail with:\n\n    fatal error: checkptr: misaligned pointer conversion\n\n    goroutine 70 gp=0xc0005a4700 m=5 mp=0xc00007f808 [running]:\n    runtime.throw({0x103c1e7?, 0xc00059ba01?})\n    \t/home/adrian.dombeck@gmail.com/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.3.linux-amd64/src/runtime/panic.go:1094 +0x48 fp=0xc00059ba48 sp=0xc00059ba18 pc=0x488608\n    runtime.checkptrAlignment(0xc00013901a?, 0x1?, 0x0?)\n    \t/home/adrian.dombeck@gmail.com/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.3.linux-amd64/src/runtime/checkptr.go:20 +0x6c fp=0xc00059ba68 sp=0xc00059ba48 pc=0x41a8ac\n    github.com/ubuntu/authd/internal/users/localentries.strvToSlice(0xc00013901a)\n    \t/home/adrian.dombeck@gmail.com/projects/authd/internal/users/localentries/getgrent_c.go:92 +0xd5 fp=0xc00059bad8 sp=0xc00059ba68 pc=0x97a795\n\nUsing unsafe.Slice seems to fix the issue.",
-                  "url": "https://github.com/ubuntu/authd/commit/9ac572b5423298cf017f136dd20fd4537785f0a8"
+                  "timestamp": 1764201346,
+                  "message": "ci: Don't install debug symbols\n\nIt takes twice as long as the other setup setups (about two minutes) and\nit currently fails with:\n\n   The following packages have unmet dependencies:\n    libglib2.0-0t64-dbgsym : Depends: libglib2.0-0t64 (= 2.80.0-6ubuntu3.5) but 2.80.0-6ubuntu3.4 is to be installed\n\nLet's enable them on demand, i.e. when we try to debug a failure that\ndebug symbols would help with.",
+                  "url": "https://github.com/ubuntu/authd/commit/ff34a9bac808428c5f79a97f97546e78f7099b43"
                },
                {
-                  "sha": "219d8d027520646dd39885c845ce623352dd470d",
-                  "author": "adombeck",
-                  "timestamp": 1763481583,
-                  "message": "Fix bubblewrap tests on Questing (#1128)",
-                  "url": "https://github.com/ubuntu/authd/commit/219d8d027520646dd39885c845ce623352dd470d"
+                  "sha": "dcf40e16765043d8fcad20be6fe3b8a03502961c",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1764200253,
+                  "message": "ci: Extract install-debug-symbols composite action\n\nMakes it easier to see in the job overview how long the step took and if\nit failed.",
+                  "url": "https://github.com/ubuntu/authd/commit/dcf40e16765043d8fcad20be6fe3b8a03502961c"
                }
             ],
             "ciActions": [
