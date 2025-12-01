@@ -7171,25 +7171,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c5c1afd24835893c8a7c6794423baa5285e5d1a9",
+                  "sha": "1c7cdb167f6cfbff58e74ebddd62bcb3f84ef6ab",
                   "author": "adombeck",
-                  "timestamp": 1764239111,
-                  "message": "ci: Retry failed coverage tests (#1139)",
-                  "url": "https://github.com/ubuntu/authd/commit/c5c1afd24835893c8a7c6794423baa5285e5d1a9"
+                  "timestamp": 1764591470,
+                  "message": "Switch UGID from type INT to TEXT (#1144)\n\nugid are ids provided by the broker that we do not control. They are\nrightfully treated as strings in the brokers and authd, but declared as\nINT in the database schema.\n\nThis PR uses the right type for UGID and adds 2 tests for the migration\nfrom v1 and old v2.\n\nSTRICT is not enforced at the moment, because it would require to change\nBOOLEAN of the locked column as well.\n\nThe casing of the table name has been fixed as well.\n\nUDENG-7762",
+                  "url": "https://github.com/ubuntu/authd/commit/1c7cdb167f6cfbff58e74ebddd62bcb3f84ef6ab"
                },
                {
-                  "sha": "ff34a9bac808428c5f79a97f97546e78f7099b43",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1764201346,
-                  "message": "ci: Don't install debug symbols\n\nIt takes twice as long as the other setup setups (about two minutes) and\nit currently fails with:\n\n   The following packages have unmet dependencies:\n    libglib2.0-0t64-dbgsym : Depends: libglib2.0-0t64 (= 2.80.0-6ubuntu3.5) but 2.80.0-6ubuntu3.4 is to be installed\n\nLet's enable them on demand, i.e. when we try to debug a failure that\ndebug symbols would help with.",
-                  "url": "https://github.com/ubuntu/authd/commit/ff34a9bac808428c5f79a97f97546e78f7099b43"
+                  "sha": "b1c027b42764a45195e67094566866b94896ca7c",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1764325946,
+                  "message": "test: use table testing for schema migration tests",
+                  "url": "https://github.com/ubuntu/authd/commit/b1c027b42764a45195e67094566866b94896ca7c"
                },
                {
-                  "sha": "dcf40e16765043d8fcad20be6fe3b8a03502961c",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1764200253,
-                  "message": "ci: Extract install-debug-symbols composite action\n\nMakes it easier to see in the job overview how long the step took and if\nit failed.",
-                  "url": "https://github.com/ubuntu/authd/commit/dcf40e16765043d8fcad20be6fe3b8a03502961c"
+                  "sha": "9310833be3737402ec855563dbe275171291d050",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1764253286,
+                  "message": "Test: migration from schema v1 supports new UGID type\n\nTestMigrateOldSchemaV1 ensures databases created with schema v1 (no\n'locked' column) are transparently migrated on open and readable via\ncurrent code.",
+                  "url": "https://github.com/ubuntu/authd/commit/9310833be3737402ec855563dbe275171291d050"
                }
             ],
             "ciActions": [
