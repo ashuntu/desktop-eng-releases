@@ -4079,25 +4079,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4ded57092be85d9ed30c00ca24ebae2827050007",
+                  "sha": "170ff64cae42aadab1df6c46f45ed1ee2f7cfc36",
                   "author": "Dennis Loose",
-                  "timestamp": 1763731444,
-                  "message": "fix: reduce restart-delay to prevent restart loop (#280)\n\nWhile looking at #278 with @didrocks, we discovered that by default\nsystemd stops restarting a failed service if it restarts more than 5\ntimes in 10 seconds. Since the `restart-delay` in the `snapcraft.yaml`\nis set to `2s`, the `prompting-client` just barely evades that check and\nkeeps restarting in a loop indefinitely. Reducing the delay to just 1\nsecond should at least fix this behavior.\n\nIn the context of #278 this would mean that if there's no graphical\nsession, the prompting-client service will eventually stop, leaving the\nsystem in a state where prompting is enabled, but no client is handling\nprompt requests.",
-                  "url": "https://github.com/canonical/prompting-client/commit/4ded57092be85d9ed30c00ca24ebae2827050007"
+                  "timestamp": 1764776615,
+                  "message": "ci: gracefully shutdown prompting daemon (#288)\n\nThe `prompting-client` snap needs to be installed in the CI for two\nreasons:\n- to be able to enable prompting (snapd requires the presence of a\ndaemon to turn on the feature)\n- to run the test involving the scripted client\n\nHowever, the `prompting-client.daemon` will exit with a non-zero status\n(causing the job to fail) because it doesn't have access to a display.\nThis behavior is intended and causes the daemon to restart up to 5 times\nwithin 10 seconds to account for the fact that the daemon might have\nbeen started before a display was available (ideally the daemon should\ndepend on `graphical-session.target`, but snapd user daemons don't\nsupport that yet).\nThis PR adds an environment variable that can be used in the CI to\ncleanly shutdown the daemon before checking for a display.",
+                  "url": "https://github.com/canonical/prompting-client/commit/170ff64cae42aadab1df6c46f45ed1ee2f7cfc36"
                },
                {
-                  "sha": "e2bfea38ef8a196df6ce68b5ccd4df1dd5757097",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1763673289,
-                  "message": "fix: repack snapd snap to ensure latest/edge is always used (#283)\n\nWhen the snapd .deb package has the same version number as the snapd\nsnap in latest/edge, then the .deb package will be used, even if\nSNAPD_REEXEC=1 is set.\n\nTo fix this, download the snapd snap from latest/edge, unpack it, set\nits major version to 1337, and repack it, then reinstall. This ensures\nthat the snap tooling will see that the snapd snap is newer than the\nsystem .deb package and re-exec into the snap.",
-                  "url": "https://github.com/canonical/prompting-client/commit/e2bfea38ef8a196df6ce68b5ccd4df1dd5757097"
+                  "sha": "043ff7b6e63aa5b756f53267de2fb4f2e1d191b4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1764766282,
+                  "message": "ci: set PROMPTING_CI in rust.yaml",
+                  "url": "https://github.com/canonical/prompting-client/commit/043ff7b6e63aa5b756f53267de2fb4f2e1d191b4"
                },
                {
-                  "sha": "6f40c2cf5f538e2cc454f56759ce87f9bc9cd665",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1763672826,
-                  "message": "test: add makefile targets to enable/disable SNAPD_DEBUG in vm (#284)",
-                  "url": "https://github.com/canonical/prompting-client/commit/6f40c2cf5f538e2cc454f56759ce87f9bc9cd665"
+                  "sha": "8268cf2ebacdba18ab94a7f93ced9c1864cb57c6",
+                  "author": "Dennis Loose",
+                  "timestamp": 1764766246,
+                  "message": "feat: cleanly shutdown the daemon if PROMPTING_CI env var is set",
+                  "url": "https://github.com/canonical/prompting-client/commit/8268cf2ebacdba18ab94a7f93ced9c1864cb57c6"
                }
             ],
             "ciActions": [],
@@ -6173,25 +6173,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4ded57092be85d9ed30c00ca24ebae2827050007",
+                  "sha": "170ff64cae42aadab1df6c46f45ed1ee2f7cfc36",
                   "author": "Dennis Loose",
-                  "timestamp": 1763731444,
-                  "message": "fix: reduce restart-delay to prevent restart loop (#280)\n\nWhile looking at #278 with @didrocks, we discovered that by default\nsystemd stops restarting a failed service if it restarts more than 5\ntimes in 10 seconds. Since the `restart-delay` in the `snapcraft.yaml`\nis set to `2s`, the `prompting-client` just barely evades that check and\nkeeps restarting in a loop indefinitely. Reducing the delay to just 1\nsecond should at least fix this behavior.\n\nIn the context of #278 this would mean that if there's no graphical\nsession, the prompting-client service will eventually stop, leaving the\nsystem in a state where prompting is enabled, but no client is handling\nprompt requests.",
-                  "url": "https://github.com/canonical/prompting-client/commit/4ded57092be85d9ed30c00ca24ebae2827050007"
+                  "timestamp": 1764776615,
+                  "message": "ci: gracefully shutdown prompting daemon (#288)\n\nThe `prompting-client` snap needs to be installed in the CI for two\nreasons:\n- to be able to enable prompting (snapd requires the presence of a\ndaemon to turn on the feature)\n- to run the test involving the scripted client\n\nHowever, the `prompting-client.daemon` will exit with a non-zero status\n(causing the job to fail) because it doesn't have access to a display.\nThis behavior is intended and causes the daemon to restart up to 5 times\nwithin 10 seconds to account for the fact that the daemon might have\nbeen started before a display was available (ideally the daemon should\ndepend on `graphical-session.target`, but snapd user daemons don't\nsupport that yet).\nThis PR adds an environment variable that can be used in the CI to\ncleanly shutdown the daemon before checking for a display.",
+                  "url": "https://github.com/canonical/prompting-client/commit/170ff64cae42aadab1df6c46f45ed1ee2f7cfc36"
                },
                {
-                  "sha": "e2bfea38ef8a196df6ce68b5ccd4df1dd5757097",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1763673289,
-                  "message": "fix: repack snapd snap to ensure latest/edge is always used (#283)\n\nWhen the snapd .deb package has the same version number as the snapd\nsnap in latest/edge, then the .deb package will be used, even if\nSNAPD_REEXEC=1 is set.\n\nTo fix this, download the snapd snap from latest/edge, unpack it, set\nits major version to 1337, and repack it, then reinstall. This ensures\nthat the snap tooling will see that the snapd snap is newer than the\nsystem .deb package and re-exec into the snap.",
-                  "url": "https://github.com/canonical/prompting-client/commit/e2bfea38ef8a196df6ce68b5ccd4df1dd5757097"
+                  "sha": "043ff7b6e63aa5b756f53267de2fb4f2e1d191b4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1764766282,
+                  "message": "ci: set PROMPTING_CI in rust.yaml",
+                  "url": "https://github.com/canonical/prompting-client/commit/043ff7b6e63aa5b756f53267de2fb4f2e1d191b4"
                },
                {
-                  "sha": "6f40c2cf5f538e2cc454f56759ce87f9bc9cd665",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1763672826,
-                  "message": "test: add makefile targets to enable/disable SNAPD_DEBUG in vm (#284)",
-                  "url": "https://github.com/canonical/prompting-client/commit/6f40c2cf5f538e2cc454f56759ce87f9bc9cd665"
+                  "sha": "8268cf2ebacdba18ab94a7f93ced9c1864cb57c6",
+                  "author": "Dennis Loose",
+                  "timestamp": 1764766246,
+                  "message": "feat: cleanly shutdown the daemon if PROMPTING_CI env var is set",
+                  "url": "https://github.com/canonical/prompting-client/commit/8268cf2ebacdba18ab94a7f93ced9c1864cb57c6"
                }
             ],
             "ciActions": [],
@@ -8431,25 +8431,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4ded57092be85d9ed30c00ca24ebae2827050007",
+                  "sha": "170ff64cae42aadab1df6c46f45ed1ee2f7cfc36",
                   "author": "Dennis Loose",
-                  "timestamp": 1763731444,
-                  "message": "fix: reduce restart-delay to prevent restart loop (#280)\n\nWhile looking at #278 with @didrocks, we discovered that by default\nsystemd stops restarting a failed service if it restarts more than 5\ntimes in 10 seconds. Since the `restart-delay` in the `snapcraft.yaml`\nis set to `2s`, the `prompting-client` just barely evades that check and\nkeeps restarting in a loop indefinitely. Reducing the delay to just 1\nsecond should at least fix this behavior.\n\nIn the context of #278 this would mean that if there's no graphical\nsession, the prompting-client service will eventually stop, leaving the\nsystem in a state where prompting is enabled, but no client is handling\nprompt requests.",
-                  "url": "https://github.com/canonical/prompting-client/commit/4ded57092be85d9ed30c00ca24ebae2827050007"
+                  "timestamp": 1764776615,
+                  "message": "ci: gracefully shutdown prompting daemon (#288)\n\nThe `prompting-client` snap needs to be installed in the CI for two\nreasons:\n- to be able to enable prompting (snapd requires the presence of a\ndaemon to turn on the feature)\n- to run the test involving the scripted client\n\nHowever, the `prompting-client.daemon` will exit with a non-zero status\n(causing the job to fail) because it doesn't have access to a display.\nThis behavior is intended and causes the daemon to restart up to 5 times\nwithin 10 seconds to account for the fact that the daemon might have\nbeen started before a display was available (ideally the daemon should\ndepend on `graphical-session.target`, but snapd user daemons don't\nsupport that yet).\nThis PR adds an environment variable that can be used in the CI to\ncleanly shutdown the daemon before checking for a display.",
+                  "url": "https://github.com/canonical/prompting-client/commit/170ff64cae42aadab1df6c46f45ed1ee2f7cfc36"
                },
                {
-                  "sha": "e2bfea38ef8a196df6ce68b5ccd4df1dd5757097",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1763673289,
-                  "message": "fix: repack snapd snap to ensure latest/edge is always used (#283)\n\nWhen the snapd .deb package has the same version number as the snapd\nsnap in latest/edge, then the .deb package will be used, even if\nSNAPD_REEXEC=1 is set.\n\nTo fix this, download the snapd snap from latest/edge, unpack it, set\nits major version to 1337, and repack it, then reinstall. This ensures\nthat the snap tooling will see that the snapd snap is newer than the\nsystem .deb package and re-exec into the snap.",
-                  "url": "https://github.com/canonical/prompting-client/commit/e2bfea38ef8a196df6ce68b5ccd4df1dd5757097"
+                  "sha": "043ff7b6e63aa5b756f53267de2fb4f2e1d191b4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1764766282,
+                  "message": "ci: set PROMPTING_CI in rust.yaml",
+                  "url": "https://github.com/canonical/prompting-client/commit/043ff7b6e63aa5b756f53267de2fb4f2e1d191b4"
                },
                {
-                  "sha": "6f40c2cf5f538e2cc454f56759ce87f9bc9cd665",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1763672826,
-                  "message": "test: add makefile targets to enable/disable SNAPD_DEBUG in vm (#284)",
-                  "url": "https://github.com/canonical/prompting-client/commit/6f40c2cf5f538e2cc454f56759ce87f9bc9cd665"
+                  "sha": "8268cf2ebacdba18ab94a7f93ced9c1864cb57c6",
+                  "author": "Dennis Loose",
+                  "timestamp": 1764766246,
+                  "message": "feat: cleanly shutdown the daemon if PROMPTING_CI env var is set",
+                  "url": "https://github.com/canonical/prompting-client/commit/8268cf2ebacdba18ab94a7f93ced9c1864cb57c6"
                }
             ],
             "ciActions": [],
