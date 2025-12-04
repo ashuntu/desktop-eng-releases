@@ -4079,25 +4079,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "170ff64cae42aadab1df6c46f45ed1ee2f7cfc36",
+                  "sha": "79371e1266e5953342d8404af83923e8f49e099f",
                   "author": "Dennis Loose",
-                  "timestamp": 1764776615,
-                  "message": "ci: gracefully shutdown prompting daemon (#288)\n\nThe `prompting-client` snap needs to be installed in the CI for two\nreasons:\n- to be able to enable prompting (snapd requires the presence of a\ndaemon to turn on the feature)\n- to run the test involving the scripted client\n\nHowever, the `prompting-client.daemon` will exit with a non-zero status\n(causing the job to fail) because it doesn't have access to a display.\nThis behavior is intended and causes the daemon to restart up to 5 times\nwithin 10 seconds to account for the fact that the daemon might have\nbeen started before a display was available (ideally the daemon should\ndepend on `graphical-session.target`, but snapd user daemons don't\nsupport that yet).\nThis PR adds an environment variable that can be used in the CI to\ncleanly shutdown the daemon before checking for a display.",
-                  "url": "https://github.com/canonical/prompting-client/commit/170ff64cae42aadab1df6c46f45ed1ee2f7cfc36"
+                  "timestamp": 1764843800,
+                  "message": "test: add timeouts to integration tests (#281)\n\nIntegration test failures are currently hard to debug, since many tests\nblock indefinitely on `pending_prompt_notices()`. This PR adds a\ntimeout, forcing those tests to fail if the expected prompt notice is\nnot received within 5 seconds.\n\nEdit:\nI've also added timeouts for the `recv()` calls that wait for the output\nof the test snaps.",
+                  "url": "https://github.com/canonical/prompting-client/commit/79371e1266e5953342d8404af83923e8f49e099f"
                },
                {
-                  "sha": "043ff7b6e63aa5b756f53267de2fb4f2e1d191b4",
+                  "sha": "dbbe98f66e037281870f349a37c7b9611595b4e5",
                   "author": "Dennis Loose",
-                  "timestamp": 1764766282,
-                  "message": "ci: set PROMPTING_CI in rust.yaml",
-                  "url": "https://github.com/canonical/prompting-client/commit/043ff7b6e63aa5b756f53267de2fb4f2e1d191b4"
+                  "timestamp": 1764779549,
+                  "message": "test: increase timeout in integration test to 65s",
+                  "url": "https://github.com/canonical/prompting-client/commit/dbbe98f66e037281870f349a37c7b9611595b4e5"
                },
                {
-                  "sha": "8268cf2ebacdba18ab94a7f93ced9c1864cb57c6",
+                  "sha": "fc5dcb479e86317a5f3012bd1908045344c652b1",
                   "author": "Dennis Loose",
-                  "timestamp": 1764766246,
-                  "message": "feat: cleanly shutdown the daemon if PROMPTING_CI env var is set",
-                  "url": "https://github.com/canonical/prompting-client/commit/8268cf2ebacdba18ab94a7f93ced9c1864cb57c6"
+                  "timestamp": 1764777578,
+                  "message": "ci: set SNAPD_DEBUG=1 in /etc/environment",
+                  "url": "https://github.com/canonical/prompting-client/commit/fc5dcb479e86317a5f3012bd1908045344c652b1"
                }
             ],
             "ciActions": [],
@@ -6173,25 +6173,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "170ff64cae42aadab1df6c46f45ed1ee2f7cfc36",
+                  "sha": "79371e1266e5953342d8404af83923e8f49e099f",
                   "author": "Dennis Loose",
-                  "timestamp": 1764776615,
-                  "message": "ci: gracefully shutdown prompting daemon (#288)\n\nThe `prompting-client` snap needs to be installed in the CI for two\nreasons:\n- to be able to enable prompting (snapd requires the presence of a\ndaemon to turn on the feature)\n- to run the test involving the scripted client\n\nHowever, the `prompting-client.daemon` will exit with a non-zero status\n(causing the job to fail) because it doesn't have access to a display.\nThis behavior is intended and causes the daemon to restart up to 5 times\nwithin 10 seconds to account for the fact that the daemon might have\nbeen started before a display was available (ideally the daemon should\ndepend on `graphical-session.target`, but snapd user daemons don't\nsupport that yet).\nThis PR adds an environment variable that can be used in the CI to\ncleanly shutdown the daemon before checking for a display.",
-                  "url": "https://github.com/canonical/prompting-client/commit/170ff64cae42aadab1df6c46f45ed1ee2f7cfc36"
+                  "timestamp": 1764843800,
+                  "message": "test: add timeouts to integration tests (#281)\n\nIntegration test failures are currently hard to debug, since many tests\nblock indefinitely on `pending_prompt_notices()`. This PR adds a\ntimeout, forcing those tests to fail if the expected prompt notice is\nnot received within 5 seconds.\n\nEdit:\nI've also added timeouts for the `recv()` calls that wait for the output\nof the test snaps.",
+                  "url": "https://github.com/canonical/prompting-client/commit/79371e1266e5953342d8404af83923e8f49e099f"
                },
                {
-                  "sha": "043ff7b6e63aa5b756f53267de2fb4f2e1d191b4",
+                  "sha": "dbbe98f66e037281870f349a37c7b9611595b4e5",
                   "author": "Dennis Loose",
-                  "timestamp": 1764766282,
-                  "message": "ci: set PROMPTING_CI in rust.yaml",
-                  "url": "https://github.com/canonical/prompting-client/commit/043ff7b6e63aa5b756f53267de2fb4f2e1d191b4"
+                  "timestamp": 1764779549,
+                  "message": "test: increase timeout in integration test to 65s",
+                  "url": "https://github.com/canonical/prompting-client/commit/dbbe98f66e037281870f349a37c7b9611595b4e5"
                },
                {
-                  "sha": "8268cf2ebacdba18ab94a7f93ced9c1864cb57c6",
+                  "sha": "fc5dcb479e86317a5f3012bd1908045344c652b1",
                   "author": "Dennis Loose",
-                  "timestamp": 1764766246,
-                  "message": "feat: cleanly shutdown the daemon if PROMPTING_CI env var is set",
-                  "url": "https://github.com/canonical/prompting-client/commit/8268cf2ebacdba18ab94a7f93ced9c1864cb57c6"
+                  "timestamp": 1764777578,
+                  "message": "ci: set SNAPD_DEBUG=1 in /etc/environment",
+                  "url": "https://github.com/canonical/prompting-client/commit/fc5dcb479e86317a5f3012bd1908045344c652b1"
                }
             ],
             "ciActions": [],
@@ -8431,25 +8431,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "170ff64cae42aadab1df6c46f45ed1ee2f7cfc36",
+                  "sha": "79371e1266e5953342d8404af83923e8f49e099f",
                   "author": "Dennis Loose",
-                  "timestamp": 1764776615,
-                  "message": "ci: gracefully shutdown prompting daemon (#288)\n\nThe `prompting-client` snap needs to be installed in the CI for two\nreasons:\n- to be able to enable prompting (snapd requires the presence of a\ndaemon to turn on the feature)\n- to run the test involving the scripted client\n\nHowever, the `prompting-client.daemon` will exit with a non-zero status\n(causing the job to fail) because it doesn't have access to a display.\nThis behavior is intended and causes the daemon to restart up to 5 times\nwithin 10 seconds to account for the fact that the daemon might have\nbeen started before a display was available (ideally the daemon should\ndepend on `graphical-session.target`, but snapd user daemons don't\nsupport that yet).\nThis PR adds an environment variable that can be used in the CI to\ncleanly shutdown the daemon before checking for a display.",
-                  "url": "https://github.com/canonical/prompting-client/commit/170ff64cae42aadab1df6c46f45ed1ee2f7cfc36"
+                  "timestamp": 1764843800,
+                  "message": "test: add timeouts to integration tests (#281)\n\nIntegration test failures are currently hard to debug, since many tests\nblock indefinitely on `pending_prompt_notices()`. This PR adds a\ntimeout, forcing those tests to fail if the expected prompt notice is\nnot received within 5 seconds.\n\nEdit:\nI've also added timeouts for the `recv()` calls that wait for the output\nof the test snaps.",
+                  "url": "https://github.com/canonical/prompting-client/commit/79371e1266e5953342d8404af83923e8f49e099f"
                },
                {
-                  "sha": "043ff7b6e63aa5b756f53267de2fb4f2e1d191b4",
+                  "sha": "dbbe98f66e037281870f349a37c7b9611595b4e5",
                   "author": "Dennis Loose",
-                  "timestamp": 1764766282,
-                  "message": "ci: set PROMPTING_CI in rust.yaml",
-                  "url": "https://github.com/canonical/prompting-client/commit/043ff7b6e63aa5b756f53267de2fb4f2e1d191b4"
+                  "timestamp": 1764779549,
+                  "message": "test: increase timeout in integration test to 65s",
+                  "url": "https://github.com/canonical/prompting-client/commit/dbbe98f66e037281870f349a37c7b9611595b4e5"
                },
                {
-                  "sha": "8268cf2ebacdba18ab94a7f93ced9c1864cb57c6",
+                  "sha": "fc5dcb479e86317a5f3012bd1908045344c652b1",
                   "author": "Dennis Loose",
-                  "timestamp": 1764766246,
-                  "message": "feat: cleanly shutdown the daemon if PROMPTING_CI env var is set",
-                  "url": "https://github.com/canonical/prompting-client/commit/8268cf2ebacdba18ab94a7f93ced9c1864cb57c6"
+                  "timestamp": 1764777578,
+                  "message": "ci: set SNAPD_DEBUG=1 in /etc/environment",
+                  "url": "https://github.com/canonical/prompting-client/commit/fc5dcb479e86317a5f3012bd1908045344c652b1"
                }
             ],
             "ciActions": [],
