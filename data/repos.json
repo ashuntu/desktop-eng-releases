@@ -7206,29 +7206,29 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d84a079781f7018bc3589e2183d88acb57a19f1a",
-                  "author": "adombeck",
-                  "timestamp": 1763981006,
-                  "message": "deps(go): bump the minor-updates group with 4 updates (#759)",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/d84a079781f7018bc3589e2183d88acb57a19f1a"
+                  "sha": "741aa886926f4d902ceeee2d4be3fe6432de8fb3",
+                  "author": "Shane Crowley",
+                  "timestamp": 1764952821,
+                  "message": "docs: fix readme (#765)\n\nFixes broken badges in the README.\n\nReplaces links to obsolete authd wiki with official docs.",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/741aa886926f4d902ceeee2d4be3fe6432de8fb3"
                },
                {
-                  "sha": "4ebf74013352dc1cf6de82d76ab3505f419334f0",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1763971993,
-                  "message": "deps(go): bump the minor-updates group with 4 updates\n\nBumps the minor-updates group with 4 updates: [github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc), [github.com/godbus/dbus/v5](https://github.com/godbus/dbus), [github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go) and [golang.org/x/crypto](https://github.com/golang/crypto).\n\n\nUpdates `github.com/coreos/go-oidc/v3` from 3.16.0 to 3.17.0\n- [Release notes](https://github.com/coreos/go-oidc/releases)\n- [Commits](https://github.com/coreos/go-oidc/compare/v3.16.0...v3.17.0)\n\nUpdates `github.com/godbus/dbus/v5` from 5.1.0 to 5.2.0\n- [Release notes](https://github.com/godbus/dbus/releases)\n- [Commits](https://github.com/godbus/dbus/compare/v5.1.0...v5.2.0)\n\nUpdates `github.com/microsoftgraph/msgraph-sdk-go` from 1.89.0 to 1.90.0\n- [Release notes](https://github.com/microsoftgraph/msgraph-sdk-go/releases)\n- [Changelog](https://github.com/microsoftgraph/msgraph-sdk-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.89.0...v1.90.0)\n\nUpdates `golang.org/x/crypto` from 0.43.0 to 0.45.0\n- [Commits](https://github.com/golang/crypto/compare/v0.43.0...v0.45.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/coreos/go-oidc/v3\n  dependency-version: 3.17.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: github.com/godbus/dbus/v5\n  dependency-version: 5.2.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: github.com/microsoftgraph/msgraph-sdk-go\n  dependency-version: 1.90.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/crypto\n  dependency-version: 0.45.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/4ebf74013352dc1cf6de82d76ab3505f419334f0"
+                  "sha": "f738aae49053c26f61a725d1af8da97f846d18d0",
+                  "author": "shanecrowley",
+                  "timestamp": 1764944944,
+                  "message": "update documentation references\n\nthe authd wiki is obsolete",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/f738aae49053c26f61a725d1af8da97f846d18d0"
                },
                {
-                  "sha": "3e5414a888f66b2fefb7256f4ffeee06603cf8bc",
-                  "author": "adombeck",
-                  "timestamp": 1763480008,
-                  "message": "Improvements to e2e tests (#752)\n\n* Support specifying the Ubuntu release to test. Currently supported:\nquesting and noble.\n* Support `--rerunfailed` to only re-run the test cases which failed in\nthe previous test run. That's very useful when running the test cases\nlocally. This required two substantial changes:\n* Making the test cases not rely on other test cases. Robot framework\nexpects test cases to be self-contained and to use setup and teardown\nkeywords to ensure they can all run from the same clean state.\n`--rerunfailed` doesn't support running the full test suite which\nfailed, it only reruns those test cases which failed, so it causes\nfailures if those test cases depend on previous test cases.\n* Calling `robot` directly instead of `yarf`. YARF runs the tests via\n[`TestSuite.run`](https://robot-framework.readthedocs.io/en/latest/autodoc/robot.running.html#robot.running.model.TestSuite.run)\nwhich does support passing options to it, but:\n> Only options related to the actual test execution have an effect. For\nexample, options related to selecting or modifying test cases or suites\n(e.g. --include, --name, --prerunmodifier) or creating logs and reports\nare silently ignored.\nSo options like `--rerunfailed` don't have an effect. Fortunately, it's\nsimple to just use the keywords provided by YARF and execute tests\ndirectly via the robot framework executable `robot`, which allows us to\nuse all its options.\n* Stream the VM's systemd journal to the host and add it to the HTML log\n* Many robustness improvements",
-                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/3e5414a888f66b2fefb7256f4ffeee06603cf8bc"
+                  "sha": "99310aa4d0becb34a8a4a7d432320e4eb20fe820",
+                  "author": "shanecrowley",
+                  "timestamp": 1764944915,
+                  "message": "don't capitalise authd",
+                  "url": "https://github.com/ubuntu/authd-oidc-brokers/commit/99310aa4d0becb34a8a4a7d432320e4eb20fe820"
                }
             ],
             "ciActions": [
-               "https://github.com/ubuntu/authd-oidc-brokers/actions/workflows/ci.yaml"
+               "https://github.com/ubuntu/authd-oidc-brokers/actions/workflows/ci.yml"
             ],
             "charm": null,
             "snap": null
