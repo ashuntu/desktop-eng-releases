@@ -3049,25 +3049,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9bec160546d6d53670720d3762a2fa8f54eee1a2",
-                  "author": "adombeck",
-                  "timestamp": 1760525986,
-                  "message": "feat: gh-actions/build-debian: Add extra-apt-repositories input (#86)\n\nUDENG-8333",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9bec160546d6d53670720d3762a2fa8f54eee1a2"
+                  "sha": "986b5b7100fcb82d358d295f2ec37e6498493a9e",
+                  "author": "ashuntu",
+                  "timestamp": 1765231438,
+                  "message": "feat: Add Flutter GitHub actions (#90)\n\nAdds some Flutter GitHub actions for easier reuse.\n\n## Composite actions\n\n- `detect-local-flutter`\n- Detects and outputs the locally defined Flutter versions whether they\nare in the `pubspec.yaml`, `melos.yaml`, `.fvmrc`, or `.tool-versions`\n(for the Installer)\n  - Useful for matrix testing\n- `detect-remote-flutter`\n- Detects and outputs the available remote Flutter versions by latest\nminor version\n  - Ex. `[\"3.27.4\", \"3.29.3\", \"3.32.8\", \"3.35.7\"]`\n- `setup`\n  - Sets up FVM, Flutter, and Melos\n- FVM gets setup regardless of if the repo has FVM, so you can still use\n`fvm` commands and it will work as if the repo had it originally\n- Replaces `Atsumi3/actions-setup-fvm`,\n`kuhnroyal/flutter-fvm-config-action`, `subosito/flutter-action`, and\n`bluefireteam/melos-action`\n\n## Workflow Call jobs\n- `flutter.yaml`\n  - For non-melos repos\n- `flutter-matrix.yaml`\n- Runs a matrix test using `flutter.yaml` for all locally defined\nversions, and all versions between the local version and newest remote\nversion\n  - For non-melos repos\n- `melos.yaml`\n- `melos-matrix.yaml`\n- Runs a matrix test using `melos.yaml` for all locally defined\nversions, and all versions between the local version and newest remote\nversion\n\n---\n\nYou can find an example of this in action here:\nhttps://github.com/ashuntu/flutter-action-test/actions/runs/18766377196\n\n---\n\nUDENG-8310",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/986b5b7100fcb82d358d295f2ec37e6498493a9e"
                },
                {
-                  "sha": "d591a3942a918f2af88812d365f64e4407bd758f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757959267,
-                  "message": "gh-actions/build-debian: Add extra-apt-repositories input\n\nWhen building authd, we need to add a PPA before the build dependencies\nare installed.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/d591a3942a918f2af88812d365f64e4407bd758f"
+                  "sha": "7df4aba55dc5264bf3fcf99db34cae45905d6808",
+                  "author": "ashuntu",
+                  "timestamp": 1764021722,
+                  "message": "Add packages-dir for flutter actions\n\nThis allows the user to set a packages-dir to run the regular Flutter actions in non-melos monorepos",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7df4aba55dc5264bf3fcf99db34cae45905d6808"
                },
                {
-                  "sha": "6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f",
-                  "author": "Kat",
-                  "timestamp": 1760025747,
-                  "message": "feat(go/generate): Incorporate go tool support  (#89)\n\nPresently, with a basic setup where the user is using go tool management\nintroduced in Go 1.24, the generate action will fail as it won't be able\nto parse any tools to install.\n\nHere, firstly, we now continue as normal if no tools can be found from a\n`.go` file. This handles the case where there is no `.go` file and the\ncase where there is one, but there are no tools to be installed.\n\nAdditionally, we also suppress errors from grep when it is trying to\nlook for tools in a `.go` file as otherwise we'd still get false\npositive GitHub annotations, even if the step now succeeds. Since we\nignore errors from grep, we avoid any false positive GitHub annotations.\n\nNote, for anything that needs to be in `PATH`, for example\n`protoc-gen-go`, you should continue to use the old method of `tools.go`\nas `go tool` management doesn't add the tool to PATH. Combining the two\nsuch that some items are represented in `tools.go` and others as a tool\nshould work. Since `protoc` uses `protoc-gen-go` from `PATH`, we don't\ntrigger the installation if a `protoc` dependency is only in `go.mod` as\na tool.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f"
+                  "sha": "4042162c2107b4034d9878037e09285b65769587",
+                  "author": "ashuntu",
+                  "timestamp": 1761344681,
+                  "message": "Correct local paths",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/4042162c2107b4034d9878037e09285b65769587"
                }
             ],
             "ciActions": [],
@@ -5482,25 +5482,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9bec160546d6d53670720d3762a2fa8f54eee1a2",
-                  "author": "adombeck",
-                  "timestamp": 1760525986,
-                  "message": "feat: gh-actions/build-debian: Add extra-apt-repositories input (#86)\n\nUDENG-8333",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9bec160546d6d53670720d3762a2fa8f54eee1a2"
+                  "sha": "986b5b7100fcb82d358d295f2ec37e6498493a9e",
+                  "author": "ashuntu",
+                  "timestamp": 1765231438,
+                  "message": "feat: Add Flutter GitHub actions (#90)\n\nAdds some Flutter GitHub actions for easier reuse.\n\n## Composite actions\n\n- `detect-local-flutter`\n- Detects and outputs the locally defined Flutter versions whether they\nare in the `pubspec.yaml`, `melos.yaml`, `.fvmrc`, or `.tool-versions`\n(for the Installer)\n  - Useful for matrix testing\n- `detect-remote-flutter`\n- Detects and outputs the available remote Flutter versions by latest\nminor version\n  - Ex. `[\"3.27.4\", \"3.29.3\", \"3.32.8\", \"3.35.7\"]`\n- `setup`\n  - Sets up FVM, Flutter, and Melos\n- FVM gets setup regardless of if the repo has FVM, so you can still use\n`fvm` commands and it will work as if the repo had it originally\n- Replaces `Atsumi3/actions-setup-fvm`,\n`kuhnroyal/flutter-fvm-config-action`, `subosito/flutter-action`, and\n`bluefireteam/melos-action`\n\n## Workflow Call jobs\n- `flutter.yaml`\n  - For non-melos repos\n- `flutter-matrix.yaml`\n- Runs a matrix test using `flutter.yaml` for all locally defined\nversions, and all versions between the local version and newest remote\nversion\n  - For non-melos repos\n- `melos.yaml`\n- `melos-matrix.yaml`\n- Runs a matrix test using `melos.yaml` for all locally defined\nversions, and all versions between the local version and newest remote\nversion\n\n---\n\nYou can find an example of this in action here:\nhttps://github.com/ashuntu/flutter-action-test/actions/runs/18766377196\n\n---\n\nUDENG-8310",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/986b5b7100fcb82d358d295f2ec37e6498493a9e"
                },
                {
-                  "sha": "d591a3942a918f2af88812d365f64e4407bd758f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757959267,
-                  "message": "gh-actions/build-debian: Add extra-apt-repositories input\n\nWhen building authd, we need to add a PPA before the build dependencies\nare installed.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/d591a3942a918f2af88812d365f64e4407bd758f"
+                  "sha": "7df4aba55dc5264bf3fcf99db34cae45905d6808",
+                  "author": "ashuntu",
+                  "timestamp": 1764021722,
+                  "message": "Add packages-dir for flutter actions\n\nThis allows the user to set a packages-dir to run the regular Flutter actions in non-melos monorepos",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7df4aba55dc5264bf3fcf99db34cae45905d6808"
                },
                {
-                  "sha": "6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f",
-                  "author": "Kat",
-                  "timestamp": 1760025747,
-                  "message": "feat(go/generate): Incorporate go tool support  (#89)\n\nPresently, with a basic setup where the user is using go tool management\nintroduced in Go 1.24, the generate action will fail as it won't be able\nto parse any tools to install.\n\nHere, firstly, we now continue as normal if no tools can be found from a\n`.go` file. This handles the case where there is no `.go` file and the\ncase where there is one, but there are no tools to be installed.\n\nAdditionally, we also suppress errors from grep when it is trying to\nlook for tools in a `.go` file as otherwise we'd still get false\npositive GitHub annotations, even if the step now succeeds. Since we\nignore errors from grep, we avoid any false positive GitHub annotations.\n\nNote, for anything that needs to be in `PATH`, for example\n`protoc-gen-go`, you should continue to use the old method of `tools.go`\nas `go tool` management doesn't add the tool to PATH. Combining the two\nsuch that some items are represented in `tools.go` and others as a tool\nshould work. Since `protoc` uses `protoc-gen-go` from `PATH`, we don't\ntrigger the installation if a `protoc` dependency is only in `go.mod` as\na tool.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f"
+                  "sha": "4042162c2107b4034d9878037e09285b65769587",
+                  "author": "ashuntu",
+                  "timestamp": 1761344681,
+                  "message": "Correct local paths",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/4042162c2107b4034d9878037e09285b65769587"
                }
             ],
             "ciActions": [],
@@ -7773,25 +7773,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9bec160546d6d53670720d3762a2fa8f54eee1a2",
-                  "author": "adombeck",
-                  "timestamp": 1760525986,
-                  "message": "feat: gh-actions/build-debian: Add extra-apt-repositories input (#86)\n\nUDENG-8333",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9bec160546d6d53670720d3762a2fa8f54eee1a2"
+                  "sha": "986b5b7100fcb82d358d295f2ec37e6498493a9e",
+                  "author": "ashuntu",
+                  "timestamp": 1765231438,
+                  "message": "feat: Add Flutter GitHub actions (#90)\n\nAdds some Flutter GitHub actions for easier reuse.\n\n## Composite actions\n\n- `detect-local-flutter`\n- Detects and outputs the locally defined Flutter versions whether they\nare in the `pubspec.yaml`, `melos.yaml`, `.fvmrc`, or `.tool-versions`\n(for the Installer)\n  - Useful for matrix testing\n- `detect-remote-flutter`\n- Detects and outputs the available remote Flutter versions by latest\nminor version\n  - Ex. `[\"3.27.4\", \"3.29.3\", \"3.32.8\", \"3.35.7\"]`\n- `setup`\n  - Sets up FVM, Flutter, and Melos\n- FVM gets setup regardless of if the repo has FVM, so you can still use\n`fvm` commands and it will work as if the repo had it originally\n- Replaces `Atsumi3/actions-setup-fvm`,\n`kuhnroyal/flutter-fvm-config-action`, `subosito/flutter-action`, and\n`bluefireteam/melos-action`\n\n## Workflow Call jobs\n- `flutter.yaml`\n  - For non-melos repos\n- `flutter-matrix.yaml`\n- Runs a matrix test using `flutter.yaml` for all locally defined\nversions, and all versions between the local version and newest remote\nversion\n  - For non-melos repos\n- `melos.yaml`\n- `melos-matrix.yaml`\n- Runs a matrix test using `melos.yaml` for all locally defined\nversions, and all versions between the local version and newest remote\nversion\n\n---\n\nYou can find an example of this in action here:\nhttps://github.com/ashuntu/flutter-action-test/actions/runs/18766377196\n\n---\n\nUDENG-8310",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/986b5b7100fcb82d358d295f2ec37e6498493a9e"
                },
                {
-                  "sha": "d591a3942a918f2af88812d365f64e4407bd758f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1757959267,
-                  "message": "gh-actions/build-debian: Add extra-apt-repositories input\n\nWhen building authd, we need to add a PPA before the build dependencies\nare installed.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/d591a3942a918f2af88812d365f64e4407bd758f"
+                  "sha": "7df4aba55dc5264bf3fcf99db34cae45905d6808",
+                  "author": "ashuntu",
+                  "timestamp": 1764021722,
+                  "message": "Add packages-dir for flutter actions\n\nThis allows the user to set a packages-dir to run the regular Flutter actions in non-melos monorepos",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7df4aba55dc5264bf3fcf99db34cae45905d6808"
                },
                {
-                  "sha": "6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f",
-                  "author": "Kat",
-                  "timestamp": 1760025747,
-                  "message": "feat(go/generate): Incorporate go tool support  (#89)\n\nPresently, with a basic setup where the user is using go tool management\nintroduced in Go 1.24, the generate action will fail as it won't be able\nto parse any tools to install.\n\nHere, firstly, we now continue as normal if no tools can be found from a\n`.go` file. This handles the case where there is no `.go` file and the\ncase where there is one, but there are no tools to be installed.\n\nAdditionally, we also suppress errors from grep when it is trying to\nlook for tools in a `.go` file as otherwise we'd still get false\npositive GitHub annotations, even if the step now succeeds. Since we\nignore errors from grep, we avoid any false positive GitHub annotations.\n\nNote, for anything that needs to be in `PATH`, for example\n`protoc-gen-go`, you should continue to use the old method of `tools.go`\nas `go tool` management doesn't add the tool to PATH. Combining the two\nsuch that some items are represented in `tools.go` and others as a tool\nshould work. Since `protoc` uses `protoc-gen-go` from `PATH`, we don't\ntrigger the installation if a `protoc` dependency is only in `go.mod` as\na tool.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/6b9a60a6c61f85676bfb6c2a3d0ed7e46e0f3a6f"
+                  "sha": "4042162c2107b4034d9878037e09285b65769587",
+                  "author": "ashuntu",
+                  "timestamp": 1761344681,
+                  "message": "Correct local paths",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/4042162c2107b4034d9878037e09285b65769587"
                }
             ],
             "ciActions": [],
