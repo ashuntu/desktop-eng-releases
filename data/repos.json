@@ -5284,25 +5284,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d68abae18c9cbbbfcd04e0ab48b7601f4fdd4e79",
+                  "sha": "cdf9e97246d2a0deebea727d68f3700cd17d816b",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1765981945,
+                  "message": "fix: Lintian fixes (#37)\n\nBefore:\n\n```text\n$ lintian --pedantic ../wsl-setup_0.6.0_amd64.changes \nE: wsl-setup: aliased-location [lib/]\nE: wsl-setup: aliased-location [lib/systemd/]\nE: wsl-setup: aliased-location [lib/systemd/system/]\nE: wsl-setup: aliased-location ... use \"--tag-display-limit 0\" to see all (or pipe to a file/program)\nP: wsl-setup source: trailing-whitespace [debian/rules:6]\n```\n\nAfter:\n\n```text        \n$ lintian --pedantic ../wsl-setup_0.6.0_amd64.changes \n```\n\n---\n\nUDENG-8636",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/cdf9e97246d2a0deebea727d68f3700cd17d816b"
+               },
+               {
+                  "sha": "9bb3f6f24e9ae61babcea1120a02966db1596a71",
                   "author": "Kat",
-                  "timestamp": 1764706524,
-                  "message": "feat: Ubuntu Insights integration (#33)\n\nThis PR implements Ubuntu Insights integration with `wsl-setup` and\nintroduces a number of workflow tests along with it.\n\n## Implementation\nAll steps are done at the end of the `wsl-setup` script, meaning that\ncloud-init and users creation would have already been completed.\n\n`ubuntu-insights` is added as a recommended dependency. If the CLI tool\ncan't be found, then we skip all following integration sections.\n\n### Consent\nNext, we check if at least one non-root user already has the *wsl_setup*\nconsent configuration set to a valid value. This could be done via\ncloud-init or any other method of creating files and running commands.\nIf there is one, then we also skip all further consent steps.\n\nNext, we utilize interop to check the registry key\n`HKCU:\\Software\\Canonical\\Ubuntu` value `UbuntuInsightsConsent`. If it\nexists and is valid, either 0 or 1, then we use that as our consent. For\nall regular users currently existing, we set the Ubuntu Insights consent\naccording to this registry key, `0` being false, `1` being true. The\nsources `linux`, and `wsl_setup` are set. Further consent steps are\nskipped.\n\nFinally, we fall back to asking the user interactively what they would\nlike to do. A short explanation as to what we are asking for is provided\nand the user is provided an opportunity to view a sample report. The\nanswer `y` is prefilled. Once a choice is made, consent is set in the\nsame manner as with the registry key, and we also attempt to write the\nregistry key to save the answer to Windows.\n\n### Initial report\n\nAfter consent steps have been completed, and initial report via the\n`wsl_setup` source is created. Since systemd is not guaranteed to be\navailable, we immediately attempt to upload the report. The allowed\nsource is narrowed down to `wsl_setup`, and the upload is done with\nretry enabled. This is done in the background via a hidden subprocess,\nallowing `wsl-setup` to exit even if an upload couldn't be achieved.\n\n## Tests\n\nThe cloud-init based integration tests have been expanded, and a set of\ninteractive tests using `expect` have also been implemented within a\nshared workflow.\n\nTo facilitate this, much of the validation logic has been refactored out\nso that it can be easily reused. The implementation was done in such a\nway such that certain parts can be disabled in case WSL 1 tests are ever\nimplemented.\n\nFor all tests, we kept all the existing assertions along with the\nfollowing:\n- The internal `ubuntu-insights` `wsl_setup` consent state at the end is\nwhat we expect for the default user\n- The external Windows registry key value is what we expect\n- One report has been created by `ubuntu-insights` for the source\n`wsl_setup` for default user\n\n## Notes\n\nThe `ubuntu-insights` script is executed instead of sourced as sourcing\nit results in strange behaviors with `read` on GitHub runners, breaking\nintegration tests. The prompt doesn't get printed so `expect` can't\n`expect` it directly, and sending any control characters such as Ctrl+U\nand backspace causes the script to break. Sourcing works fine if expect\nis ran locally, so it might be an issue with the runners using a dumb\nterminal.\n\nThe implementation might be considered a breaking behavior for certain\nautomation workflows, as we are potentially introducing a new step in\nthe interactive process. Thus, the changelog is being incremented by a\nminor version.\n\n---\n[UDENG-8570](https://warthogs.atlassian.net/browse/UDENG-8570)\n\n[UDENG-8570]:\nhttps://warthogs.atlassian.net/browse/UDENG-8570?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/d68abae18c9cbbbfcd04e0ab48b7601f4fdd4e79"
+                  "timestamp": 1765981400,
+                  "message": "ci: Add Dependabot configuration for GitHub Actions updates (#34)\n\nThis PR adds a weekly Dependabot trigger for GitHub Actions updates.\n\n---\n[UDENG-8637](https://warthogs.atlassian.net/browse/UDENG-8637)\n\n[UDENG-8637]:\nhttps://warthogs.atlassian.net/browse/UDENG-8637?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/9bb3f6f24e9ae61babcea1120a02966db1596a71"
                },
                {
-                  "sha": "0ff6c41029b34e753b6a903bd6d69452bcf5ced7",
-                  "author": "kkuo",
-                  "timestamp": 1764701320,
-                  "message": "Remove Ubuntu Insights default consent interaction",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/0ff6c41029b34e753b6a903bd6d69452bcf5ced7"
-               },
-               {
-                  "sha": "50fa7b623478f6c59719ec450b70bacdc60a1013",
-                  "author": "kkuo",
-                  "timestamp": 1764700374,
-                  "message": "Apply code review suggestions and feedback",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/50fa7b623478f6c59719ec450b70bacdc60a1013"
+                  "sha": "74e40af53bcde05ddee0209d0f7addda236f5031",
+                  "author": "Kat",
+                  "timestamp": 1765981386,
+                  "message": "docs(SECURITY.md): Add security policy file (#35)\n\nThis PR adds a security policy file for `wsl-setup.\n\n---\n[UDENG-8637](https://warthogs.atlassian.net/browse/UDENG-8637)\n\n[UDENG-8637]:\nhttps://warthogs.atlassian.net/browse/UDENG-8637?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/74e40af53bcde05ddee0209d0f7addda236f5031"
                }
             ],
             "ciActions": [],
@@ -6741,7 +6741,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 45,
+            "newCommits": 57,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7421,25 +7421,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d68abae18c9cbbbfcd04e0ab48b7601f4fdd4e79",
+                  "sha": "cdf9e97246d2a0deebea727d68f3700cd17d816b",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1765981945,
+                  "message": "fix: Lintian fixes (#37)\n\nBefore:\n\n```text\n$ lintian --pedantic ../wsl-setup_0.6.0_amd64.changes \nE: wsl-setup: aliased-location [lib/]\nE: wsl-setup: aliased-location [lib/systemd/]\nE: wsl-setup: aliased-location [lib/systemd/system/]\nE: wsl-setup: aliased-location ... use \"--tag-display-limit 0\" to see all (or pipe to a file/program)\nP: wsl-setup source: trailing-whitespace [debian/rules:6]\n```\n\nAfter:\n\n```text        \n$ lintian --pedantic ../wsl-setup_0.6.0_amd64.changes \n```\n\n---\n\nUDENG-8636",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/cdf9e97246d2a0deebea727d68f3700cd17d816b"
+               },
+               {
+                  "sha": "9bb3f6f24e9ae61babcea1120a02966db1596a71",
                   "author": "Kat",
-                  "timestamp": 1764706524,
-                  "message": "feat: Ubuntu Insights integration (#33)\n\nThis PR implements Ubuntu Insights integration with `wsl-setup` and\nintroduces a number of workflow tests along with it.\n\n## Implementation\nAll steps are done at the end of the `wsl-setup` script, meaning that\ncloud-init and users creation would have already been completed.\n\n`ubuntu-insights` is added as a recommended dependency. If the CLI tool\ncan't be found, then we skip all following integration sections.\n\n### Consent\nNext, we check if at least one non-root user already has the *wsl_setup*\nconsent configuration set to a valid value. This could be done via\ncloud-init or any other method of creating files and running commands.\nIf there is one, then we also skip all further consent steps.\n\nNext, we utilize interop to check the registry key\n`HKCU:\\Software\\Canonical\\Ubuntu` value `UbuntuInsightsConsent`. If it\nexists and is valid, either 0 or 1, then we use that as our consent. For\nall regular users currently existing, we set the Ubuntu Insights consent\naccording to this registry key, `0` being false, `1` being true. The\nsources `linux`, and `wsl_setup` are set. Further consent steps are\nskipped.\n\nFinally, we fall back to asking the user interactively what they would\nlike to do. A short explanation as to what we are asking for is provided\nand the user is provided an opportunity to view a sample report. The\nanswer `y` is prefilled. Once a choice is made, consent is set in the\nsame manner as with the registry key, and we also attempt to write the\nregistry key to save the answer to Windows.\n\n### Initial report\n\nAfter consent steps have been completed, and initial report via the\n`wsl_setup` source is created. Since systemd is not guaranteed to be\navailable, we immediately attempt to upload the report. The allowed\nsource is narrowed down to `wsl_setup`, and the upload is done with\nretry enabled. This is done in the background via a hidden subprocess,\nallowing `wsl-setup` to exit even if an upload couldn't be achieved.\n\n## Tests\n\nThe cloud-init based integration tests have been expanded, and a set of\ninteractive tests using `expect` have also been implemented within a\nshared workflow.\n\nTo facilitate this, much of the validation logic has been refactored out\nso that it can be easily reused. The implementation was done in such a\nway such that certain parts can be disabled in case WSL 1 tests are ever\nimplemented.\n\nFor all tests, we kept all the existing assertions along with the\nfollowing:\n- The internal `ubuntu-insights` `wsl_setup` consent state at the end is\nwhat we expect for the default user\n- The external Windows registry key value is what we expect\n- One report has been created by `ubuntu-insights` for the source\n`wsl_setup` for default user\n\n## Notes\n\nThe `ubuntu-insights` script is executed instead of sourced as sourcing\nit results in strange behaviors with `read` on GitHub runners, breaking\nintegration tests. The prompt doesn't get printed so `expect` can't\n`expect` it directly, and sending any control characters such as Ctrl+U\nand backspace causes the script to break. Sourcing works fine if expect\nis ran locally, so it might be an issue with the runners using a dumb\nterminal.\n\nThe implementation might be considered a breaking behavior for certain\nautomation workflows, as we are potentially introducing a new step in\nthe interactive process. Thus, the changelog is being incremented by a\nminor version.\n\n---\n[UDENG-8570](https://warthogs.atlassian.net/browse/UDENG-8570)\n\n[UDENG-8570]:\nhttps://warthogs.atlassian.net/browse/UDENG-8570?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/d68abae18c9cbbbfcd04e0ab48b7601f4fdd4e79"
+                  "timestamp": 1765981400,
+                  "message": "ci: Add Dependabot configuration for GitHub Actions updates (#34)\n\nThis PR adds a weekly Dependabot trigger for GitHub Actions updates.\n\n---\n[UDENG-8637](https://warthogs.atlassian.net/browse/UDENG-8637)\n\n[UDENG-8637]:\nhttps://warthogs.atlassian.net/browse/UDENG-8637?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/9bb3f6f24e9ae61babcea1120a02966db1596a71"
                },
                {
-                  "sha": "0ff6c41029b34e753b6a903bd6d69452bcf5ced7",
-                  "author": "kkuo",
-                  "timestamp": 1764701320,
-                  "message": "Remove Ubuntu Insights default consent interaction",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/0ff6c41029b34e753b6a903bd6d69452bcf5ced7"
-               },
-               {
-                  "sha": "50fa7b623478f6c59719ec450b70bacdc60a1013",
-                  "author": "kkuo",
-                  "timestamp": 1764700374,
-                  "message": "Apply code review suggestions and feedback",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/50fa7b623478f6c59719ec450b70bacdc60a1013"
+                  "sha": "74e40af53bcde05ddee0209d0f7addda236f5031",
+                  "author": "Kat",
+                  "timestamp": 1765981386,
+                  "message": "docs(SECURITY.md): Add security policy file (#35)\n\nThis PR adds a security policy file for `wsl-setup.\n\n---\n[UDENG-8637](https://warthogs.atlassian.net/browse/UDENG-8637)\n\n[UDENG-8637]:\nhttps://warthogs.atlassian.net/browse/UDENG-8637?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/74e40af53bcde05ddee0209d0f7addda236f5031"
                }
             ],
             "ciActions": [],
