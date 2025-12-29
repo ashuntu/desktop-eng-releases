@@ -7676,6 +7676,39 @@
             "snap": null
          },
          {
+            "name": "bluez.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/bluez.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "579c153de7692e7940b158cb2d3ecfe3bb4a3975",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756091559,
+                  "message": "Merge pull request #107 from robert-ancell/removed-lint\n\nRemove obsolete lint option",
+                  "url": "https://github.com/canonical/bluez.dart/commit/579c153de7692e7940b158cb2d3ecfe3bb4a3975"
+               },
+               {
+                  "sha": "aa28fb2b1080773cd0b2ac62fca75839bda79fdf",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756091334,
+                  "message": "Remove obsolete lint option",
+                  "url": "https://github.com/canonical/bluez.dart/commit/aa28fb2b1080773cd0b2ac62fca75839bda79fdf"
+               },
+               {
+                  "sha": "44e519837fda07b63f17518a30891334afc47651",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756090985,
+                  "message": "Merge pull request #106 from robert-ancell/ci-ubuntu-version\n\nUpdate Ubuntu CI version and remove obsolete CLA check",
+                  "url": "https://github.com/canonical/bluez.dart/commit/44e519837fda07b63f17518a30891334afc47651"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "core-base-desktop",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -7735,6 +7768,39 @@
                   "timestamp": 1752446960,
                   "message": "chore: throw an explicit Dart error when running on non-Linux systems",
                   "url": "https://github.com/canonical/dbus.dart/commit/5a17cb3f13a5ea4ac2212c54ea7bab3a468b0cb9"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "desktop-engineering",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/desktop-engineering",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "986b5b7100fcb82d358d295f2ec37e6498493a9e",
+                  "author": "ashuntu",
+                  "timestamp": 1765231438,
+                  "message": "feat: Add Flutter GitHub actions (#90)\n\nAdds some Flutter GitHub actions for easier reuse.\n\n## Composite actions\n\n- `detect-local-flutter`\n- Detects and outputs the locally defined Flutter versions whether they\nare in the `pubspec.yaml`, `melos.yaml`, `.fvmrc`, or `.tool-versions`\n(for the Installer)\n  - Useful for matrix testing\n- `detect-remote-flutter`\n- Detects and outputs the available remote Flutter versions by latest\nminor version\n  - Ex. `[\"3.27.4\", \"3.29.3\", \"3.32.8\", \"3.35.7\"]`\n- `setup`\n  - Sets up FVM, Flutter, and Melos\n- FVM gets setup regardless of if the repo has FVM, so you can still use\n`fvm` commands and it will work as if the repo had it originally\n- Replaces `Atsumi3/actions-setup-fvm`,\n`kuhnroyal/flutter-fvm-config-action`, `subosito/flutter-action`, and\n`bluefireteam/melos-action`\n\n## Workflow Call jobs\n- `flutter.yaml`\n  - For non-melos repos\n- `flutter-matrix.yaml`\n- Runs a matrix test using `flutter.yaml` for all locally defined\nversions, and all versions between the local version and newest remote\nversion\n  - For non-melos repos\n- `melos.yaml`\n- `melos-matrix.yaml`\n- Runs a matrix test using `melos.yaml` for all locally defined\nversions, and all versions between the local version and newest remote\nversion\n\n---\n\nYou can find an example of this in action here:\nhttps://github.com/ashuntu/flutter-action-test/actions/runs/18766377196\n\n---\n\nUDENG-8310",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/986b5b7100fcb82d358d295f2ec37e6498493a9e"
+               },
+               {
+                  "sha": "7df4aba55dc5264bf3fcf99db34cae45905d6808",
+                  "author": "ashuntu",
+                  "timestamp": 1764021722,
+                  "message": "Add packages-dir for flutter actions\n\nThis allows the user to set a packages-dir to run the regular Flutter actions in non-melos monorepos",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7df4aba55dc5264bf3fcf99db34cae45905d6808"
+               },
+               {
+                  "sha": "4042162c2107b4034d9878037e09285b65769587",
+                  "author": "ashuntu",
+                  "timestamp": 1761344681,
+                  "message": "Correct local paths",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/4042162c2107b4034d9878037e09285b65769587"
                }
             ],
             "ciActions": [],
