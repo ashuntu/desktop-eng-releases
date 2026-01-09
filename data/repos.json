@@ -5183,25 +5183,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b03b991a92a06f25f4aede4930bec9a91b40cadd",
+                  "sha": "b40dec9fc93f10f3cb1b3fb18f8a6a3bdb58b438",
                   "author": "Kat",
-                  "timestamp": 1767884077,
-                  "message": "feat(insights): Add quiet flag to the ubuntu-insights cli tool (#288)\n\nThis PR adds a quiet flag to the ubuntu-insights CLI tool, suppressing\nall non-error outputs as described by the CLI design guidelines `DE013`.\n\nThere is a manual implementation of a mutuality check instead of only\nusing `MarkFlagsMutuallyExclusive` to allow for a custom message, and as\nthe check from `MarkFlagsMutuallyExclusive` comes very late, making it\ndifficult to set `show-usage` on the error.\n\nThe CGo shared libs are not modified, as at some point we need to\nrevisit how logs are handled for that use case anyway, probably by\nimplementing callbacks to solve the issue of the boundary layer.\n\n---\n[UDENG-8638](https://warthogs.atlassian.net/browse/UDENG-8638)\n\n[UDENG-8638]:\nhttps://warthogs.atlassian.net/browse/UDENG-8638?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b03b991a92a06f25f4aede4930bec9a91b40cadd"
+                  "timestamp": 1768000441,
+                  "message": "ci(TiCS): Fix QServer \"project database already connected\" issues (#293)\n\nIf a previous TiCS QServer job is cancelled mid-run, for example due to\nconcurrency group rules, subsequent runs will always fail with the\nerror: `Project database 'ubuntu-insights' already is connected to a\nstarted TICSQServer process that has not registered a stop time. To\navoid data corruption, analysis is aborted. Details of the other\nTICSQServer process: started at 2026-01-08 14:30:05.000 by user runner.`\n\nIntervention is required to fix this. Here we add a dispatchable\nworkflow to achieve a manual detach and also attempt to force a detach\nautomatically on the main QA workflow should a cancellation occur. This\nallows us to still cancel runs when desired.\n\n---\n[UDENG-8786](https://warthogs.atlassian.net/browse/UDENG-8786)\n\n[UDENG-8786]:\nhttps://warthogs.atlassian.net/browse/UDENG-8786?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b40dec9fc93f10f3cb1b3fb18f8a6a3bdb58b438"
                },
                {
-                  "sha": "67766327128253353ac470655a0db9da2e548dff",
+                  "sha": "531f2248a1fce5e6e0fa20c163d5544d7c42b38c",
                   "author": "kkuo",
-                  "timestamp": 1766004847,
-                  "message": "Add quiet flag to insights cli tool",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/67766327128253353ac470655a0db9da2e548dff"
+                  "timestamp": 1767907565,
+                  "message": "Add workflow for manual TiCS detach",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/531f2248a1fce5e6e0fa20c163d5544d7c42b38c"
                },
                {
-                  "sha": "81098dc6f0874b83834a89b28d9c63416699a633",
-                  "author": "Kat",
-                  "timestamp": 1767882546,
-                  "message": "feat(common): Add support for a quiet logging level (#287)\n\nThis PR adds support for a quiet logging level to the common module.\n\nThe changes are a little awkward since the slog level is inverted due to\nhow the functions were initially made to be solely based on the\nverbosity flag count.\n\nIdentification of whenever or not to use a negative level is to be\ndetermined by the caller instead of allowing a boolean to be passed to\navoid complicating the methods too much.\n\nThis PR should be merged after #285 since this is a feat we don't want\nto include with 0.8.1.\n\n---\n[UDENG-8638](https://warthogs.atlassian.net/browse/UDENG-8638)\n\n[UDENG-8638]:\nhttps://warthogs.atlassian.net/browse/UDENG-8638?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/81098dc6f0874b83834a89b28d9c63416699a633"
+                  "sha": "d3401c99876c5cb5486afb75aeb22bf387ba5c3a",
+                  "author": "kkuo",
+                  "timestamp": 1767904537,
+                  "message": "Detach TiCS QServer if the job is canceled",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/d3401c99876c5cb5486afb75aeb22bf387ba5c3a"
                }
             ],
             "ciActions": [
