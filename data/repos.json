@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "70468a76ce2b3f9e077ba6c5cef4a3494be1d383",
+                  "sha": "738b3383e08f564cace64ebc3658bdcd20e14e8f",
                   "author": "Kat",
-                  "timestamp": 1769436349,
-                  "message": "deps(go): Bump go version to 1.25.0, toolchain 1.25.6 (#296)\n\nHere, we bump the Go version to `1.25` and the toolchain version to\n`1.25.6`.\n\nGo `1.25` is the main Go version being packaged for the Resolute LTS\nrelease, which is what we're now targeting.\n\nThis PR also includes a small refactor to take advantage of the new wait\ngroup Go method.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/70468a76ce2b3f9e077ba6c5cef4a3494be1d383"
+                  "timestamp": 1769452264,
+                  "message": "feat(insights): Improve robustness of source package Go vendoring (#299)\n\nIn the past, there have been some issues with how we do vendoring of Go\npackages when building source packages that have led to silent failure,\nloud failures, and broken source packages.\n\nThis PR aims to improve the robustness of this step in two ways.\n\nFirstly, we do an explicit check to ensure that at the end of this step,\nthe `vendor` folder exists and is not entirely empty.\n\nSecondly, instead of using `GOTOOLCHAIN=local` for `go mod vendor`, we\nuse `GOTOOLCHAIN=auto`. Using `auto` has issues in that even if the\nbuilding host has the required build requisites, depending on the\nsituation, the vendor step will still fail. For instance, on a machine\nwhere the `golang-go` deb package version does not meet requirements but\na valid `golang-1.x-go` package does exist and it does meet\nrequirements, the vendoring step will still fail as the user would have\nneeded to not only add the `golang-1.x` package to their path but also\ngive it the highest priority.\n\nInstead of implementing this behavior in the script, a potentially\nhighly fragile solution, we instead use `GOTOOLCHAIN=auto` for just the\nvendor step. This should be okay as the `vendor` step requires an\ninternet connection either way, and vendoring should be version agnostic\nas it is deterministic via the `go.sum` files present in the repository.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/738b3383e08f564cace64ebc3658bdcd20e14e8f"
                },
                {
-                  "sha": "5c374ea52cf76bf014e1cad00f8d4273682c2e47",
+                  "sha": "9e04d3a107a2348553c75b490a7c1feef6ea6dfe",
                   "author": "Kat",
-                  "timestamp": 1769436300,
-                  "message": "refactor: Normalize all return carriages from golden files (#298)\n\nGiven that Ubuntu Insights supports Windows along with Linux and macOS,\nat times we need to deal with return carriages. A particular common pain\npoint has been with regards to golden files shared between OSes, as the\nreturn carriages of new lines differ between Windows and Unix.\n\nThis PR makes it so that by default, `LoadWithUpdateFromGolden`, the\nmethod we use to handle string golden files, will always return a want\nstring void of CRLF, converting it to LF.\n\nThis is at the disadvantage where there might be some situation in the\nfuture where we genuinely care to keep `\\r\\n` in our want string, but\nthat seems very unlikely.\n\nAs a change is made to the common module, before tagging a release, the\ncommon module dependency version should be updated in a subsequent PR.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/5c374ea52cf76bf014e1cad00f8d4273682c2e47"
+                  "timestamp": 1769451723,
+                  "message": "fix(insights): Add missing insights_compile debug symbol (#300)\n\nThough `insights_compile` was introduced with `0.6.0`, it was mistakenly\nnot added to `insights/debian/libinsights0.symbols`.\n\nHere, we add `insights_compile` and mark it as being present since\n`0.6.0`, and we also enable strict symbol checking for package builds to\ntry and avoid this in the future.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9e04d3a107a2348553c75b490a7c1feef6ea6dfe"
                },
                {
-                  "sha": "8c4b8388f3c5177853e6c06106d84eb71411f9db",
-                  "author": "kkuo",
-                  "timestamp": 1769224093,
-                  "message": "Normalize all return carriages from LoadWithUpdateFromGolden",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8c4b8388f3c5177853e6c06106d84eb71411f9db"
+                  "sha": "a5d645ad3d938973661f3cfc7a982bb3b2c1d9e5",
+                  "author": "Kat",
+                  "timestamp": 1769451620,
+                  "message": "deps: Update target common module version to v0.9.1 (#301)\n\nUpdates the target common module version for `insights` and `server` to\n`v0.9.1`.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a5d645ad3d938973661f3cfc7a982bb3b2c1d9e5"
                }
             ],
             "ciActions": [
