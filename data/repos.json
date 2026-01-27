@@ -4563,6 +4563,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "515937dc4e904ac4bd64cf5d7ab4a0c32d570bae",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769503552,
+                  "message": "feat: handle subiquity's recoverable errors (#1277)\n\nThis introduces a `SubiquityRecoverableException` that is thrown by\n`subquity_client` in case a call to subiquity returns with 422, see\nhttps://github.com/canonical/subiquity/pull/2070.\nFor recoverable errors encountered during manual partitioning, where\nerrors could potentially be caused by the user (although the UI should\nmake that impossible), we've added an error message, allowing the user\nto continue the installation and report the error:\n\n[Screencast From 2026-01-23\n16-03-26.webm](https://github.com/user-attachments/assets/90fb0fca-437d-4ba6-a9e0-adac75d909b1)\n\nUDENG-7554",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/515937dc4e904ac4bd64cf5d7ab4a0c32d570bae"
+               },
+               {
                   "sha": "5d02060547126e860730e1abe1cf79afefc0a39b",
                   "author": "Dennis Loose",
                   "timestamp": 1769444792,
@@ -4575,13 +4582,6 @@
                   "timestamp": 1769429439,
                   "message": "chore(deps): update packages/subiquity_client/subiquity digest to afa0830",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/171b4f8813931ca046682f3eea3694146dee983d"
-               },
-               {
-                  "sha": "bd3713c9f9d0ecf9f06e1cd892afeb321ce42157",
-                  "author": "Dennis Loose",
-                  "timestamp": 1769081534,
-                  "message": "feat: skip tpm action page when there's no error (#1275)\n\nAutomatically skip to the next page when there are no errors after\nperforming a TPM fix action that doesn't result in a reboot. Also, call\n`back()` when returning to the page to skip over it in case the user\nnavigates back.\n\n[Screencast From 2026-01-22\n12-08-25.webm](https://github.com/user-attachments/assets/7fe007f1-fabd-4b99-9a1a-2487a96280e2)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bd3713c9f9d0ecf9f06e1cd892afeb321ce42157"
                }
             ],
             "ciActions": [
@@ -5007,14 +5007,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 485,
-                     "timestamp": 1769444029
+                     "revision": 486,
+                     "timestamp": 1769503564
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 484,
-                     "timestamp": 1769443607
+                     "revision": 487,
+                     "timestamp": 1769503660
                   }
                ],
                "channels": [
@@ -7183,8 +7183,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 484,
-                     "timestamp": 1769443607
+                     "revision": 487,
+                     "timestamp": 1769503660
                   }
                ],
                "channels": [
@@ -9409,8 +9409,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 484,
-                     "timestamp": 1769443607
+                     "revision": 487,
+                     "timestamp": 1769503660
                   }
                ],
                "channels": [
