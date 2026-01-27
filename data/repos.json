@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cf38fcda94ce3904d72f4d544d43a880fa1e5276",
+                  "author": "adombeck",
+                  "timestamp": 1769534402,
+                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes (#1216)",
+                  "url": "https://github.com/canonical/authd/commit/cf38fcda94ce3904d72f4d544d43a880fa1e5276"
+               },
+               {
+                  "sha": "115d3c86b704f1c22536e51787d5e221b0d0145a",
+                  "author": "Shiv Tyagi",
+                  "timestamp": 1769533009,
+                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes\n\nReplace hardcoded \"openid\" and \"offline_access\" strings with oidc.ScopeOpenID\nand oidc.ScopeOfflineAccess constants from the coreos/go-oidc library.\n\nUsing library-provided constants ensures consistency with the OIDC\nspecification, reduces the risk of typos, and improves code maintainability.",
+                  "url": "https://github.com/canonical/authd/commit/115d3c86b704f1c22536e51787d5e221b0d0145a"
+               },
+               {
                   "sha": "2374f900e2b9df6f9de423b1394bcc547756a33c",
                   "author": "adombeck",
                   "timestamp": 1769510643,
                   "message": "e2e-tests: Create artifacts in $XDG_DATA_HOME/authd-e2e-tests (#1220)\n\nUDENG-8886",
                   "url": "https://github.com/canonical/authd/commit/2374f900e2b9df6f9de423b1394bcc547756a33c"
-               },
-               {
-                  "sha": "5ad7b50a23af5ae5d672cfb2e2586c28d8af3374",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769507097,
-                  "message": "e2e-tests: Create artifacts in $XDG_DATA_HOME/authd-e2e-tests\n\nStoring the disk image inside the project directory causes issues when\ntrying to build a snap from the project directory: The \"version\" part of\nthe snap uses the entire project directory as its source, because it\nneeds to be able to access the git history. That means all files in the\nproject directory are copied to the snap builder, including the huge\ndisk image and other libvirt artifacts. Not only is that inefficient, it\nalso causes a build error because the memory snapshot files are owned by\nroot, so the current user is not be allowed to access it.\n\nLet's avoid that and store the libvirt artifacts in\n$XDG_DATA_HOME/authd-e2e-tests instead.",
-                  "url": "https://github.com/canonical/authd/commit/5ad7b50a23af5ae5d672cfb2e2586c28d8af3374"
-               },
-               {
-                  "sha": "bbd1cb6019f289c9b746e16410996ecd9e897bc2",
-                  "author": "adombeck",
-                  "timestamp": 1769219254,
-                  "message": "ci: Skip build-deb workflow if only authd-oidc-brokers changed (#1214)",
-                  "url": "https://github.com/canonical/authd/commit/bbd1cb6019f289c9b746e16410996ecd9e897bc2"
                }
             ],
             "ciActions": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cf38fcda94ce3904d72f4d544d43a880fa1e5276",
+                  "author": "adombeck",
+                  "timestamp": 1769534402,
+                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes (#1216)",
+                  "url": "https://github.com/canonical/authd/commit/cf38fcda94ce3904d72f4d544d43a880fa1e5276"
+               },
+               {
+                  "sha": "115d3c86b704f1c22536e51787d5e221b0d0145a",
+                  "author": "Shiv Tyagi",
+                  "timestamp": 1769533009,
+                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes\n\nReplace hardcoded \"openid\" and \"offline_access\" strings with oidc.ScopeOpenID\nand oidc.ScopeOfflineAccess constants from the coreos/go-oidc library.\n\nUsing library-provided constants ensures consistency with the OIDC\nspecification, reduces the risk of typos, and improves code maintainability.",
+                  "url": "https://github.com/canonical/authd/commit/115d3c86b704f1c22536e51787d5e221b0d0145a"
+               },
+               {
                   "sha": "2374f900e2b9df6f9de423b1394bcc547756a33c",
                   "author": "adombeck",
                   "timestamp": 1769510643,
                   "message": "e2e-tests: Create artifacts in $XDG_DATA_HOME/authd-e2e-tests (#1220)\n\nUDENG-8886",
                   "url": "https://github.com/canonical/authd/commit/2374f900e2b9df6f9de423b1394bcc547756a33c"
-               },
-               {
-                  "sha": "5ad7b50a23af5ae5d672cfb2e2586c28d8af3374",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769507097,
-                  "message": "e2e-tests: Create artifacts in $XDG_DATA_HOME/authd-e2e-tests\n\nStoring the disk image inside the project directory causes issues when\ntrying to build a snap from the project directory: The \"version\" part of\nthe snap uses the entire project directory as its source, because it\nneeds to be able to access the git history. That means all files in the\nproject directory are copied to the snap builder, including the huge\ndisk image and other libvirt artifacts. Not only is that inefficient, it\nalso causes a build error because the memory snapshot files are owned by\nroot, so the current user is not be allowed to access it.\n\nLet's avoid that and store the libvirt artifacts in\n$XDG_DATA_HOME/authd-e2e-tests instead.",
-                  "url": "https://github.com/canonical/authd/commit/5ad7b50a23af5ae5d672cfb2e2586c28d8af3374"
-               },
-               {
-                  "sha": "bbd1cb6019f289c9b746e16410996ecd9e897bc2",
-                  "author": "adombeck",
-                  "timestamp": 1769219254,
-                  "message": "ci: Skip build-deb workflow if only authd-oidc-brokers changed (#1214)",
-                  "url": "https://github.com/canonical/authd/commit/bbd1cb6019f289c9b746e16410996ecd9e897bc2"
                }
             ],
             "ciActions": [
@@ -6811,7 +6811,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 99,
+            "newCommits": 103,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cf38fcda94ce3904d72f4d544d43a880fa1e5276",
+                  "author": "adombeck",
+                  "timestamp": 1769534402,
+                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes (#1216)",
+                  "url": "https://github.com/canonical/authd/commit/cf38fcda94ce3904d72f4d544d43a880fa1e5276"
+               },
+               {
+                  "sha": "115d3c86b704f1c22536e51787d5e221b0d0145a",
+                  "author": "Shiv Tyagi",
+                  "timestamp": 1769533009,
+                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes\n\nReplace hardcoded \"openid\" and \"offline_access\" strings with oidc.ScopeOpenID\nand oidc.ScopeOfflineAccess constants from the coreos/go-oidc library.\n\nUsing library-provided constants ensures consistency with the OIDC\nspecification, reduces the risk of typos, and improves code maintainability.",
+                  "url": "https://github.com/canonical/authd/commit/115d3c86b704f1c22536e51787d5e221b0d0145a"
+               },
+               {
                   "sha": "2374f900e2b9df6f9de423b1394bcc547756a33c",
                   "author": "adombeck",
                   "timestamp": 1769510643,
                   "message": "e2e-tests: Create artifacts in $XDG_DATA_HOME/authd-e2e-tests (#1220)\n\nUDENG-8886",
                   "url": "https://github.com/canonical/authd/commit/2374f900e2b9df6f9de423b1394bcc547756a33c"
-               },
-               {
-                  "sha": "5ad7b50a23af5ae5d672cfb2e2586c28d8af3374",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769507097,
-                  "message": "e2e-tests: Create artifacts in $XDG_DATA_HOME/authd-e2e-tests\n\nStoring the disk image inside the project directory causes issues when\ntrying to build a snap from the project directory: The \"version\" part of\nthe snap uses the entire project directory as its source, because it\nneeds to be able to access the git history. That means all files in the\nproject directory are copied to the snap builder, including the huge\ndisk image and other libvirt artifacts. Not only is that inefficient, it\nalso causes a build error because the memory snapshot files are owned by\nroot, so the current user is not be allowed to access it.\n\nLet's avoid that and store the libvirt artifacts in\n$XDG_DATA_HOME/authd-e2e-tests instead.",
-                  "url": "https://github.com/canonical/authd/commit/5ad7b50a23af5ae5d672cfb2e2586c28d8af3374"
-               },
-               {
-                  "sha": "bbd1cb6019f289c9b746e16410996ecd9e897bc2",
-                  "author": "adombeck",
-                  "timestamp": 1769219254,
-                  "message": "ci: Skip build-deb workflow if only authd-oidc-brokers changed (#1214)",
-                  "url": "https://github.com/canonical/authd/commit/bbd1cb6019f289c9b746e16410996ecd9e897bc2"
                }
             ],
             "ciActions": [
