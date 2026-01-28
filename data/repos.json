@@ -3289,6 +3289,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a401c16df091debc4461931e9eb4040b0e4246d2",
+                  "author": "adombeck",
+                  "timestamp": 1769606998,
+                  "message": "Add extra_scopes setting in broker.conf (#1215)\n\nThis adds the `extra_scopes` setting in the broker.conf which allows a\nuser to add extra scopes required by a provider for the broker to\nfunction properly.\n\nFor example, the Okta provider requires an `offline_access` scope to be\npresent in the request to return the refresh_token in response (see\ndiscussion in #1116). Hence, a user should have a way to add such scopes\nfor the broker though broker.conf.",
+                  "url": "https://github.com/canonical/authd/commit/a401c16df091debc4461931e9eb4040b0e4246d2"
+               },
+               {
                   "sha": "9d428a2c778c5195741fdec7b5001ab6cf276246",
                   "author": "adombeck",
                   "timestamp": 1769599857,
@@ -3296,18 +3303,11 @@
                   "url": "https://github.com/canonical/authd/commit/9d428a2c778c5195741fdec7b5001ab6cf276246"
                },
                {
-                  "sha": "cf38fcda94ce3904d72f4d544d43a880fa1e5276",
-                  "author": "adombeck",
-                  "timestamp": 1769534402,
-                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes (#1216)",
-                  "url": "https://github.com/canonical/authd/commit/cf38fcda94ce3904d72f4d544d43a880fa1e5276"
-               },
-               {
-                  "sha": "115d3c86b704f1c22536e51787d5e221b0d0145a",
+                  "sha": "c1d1859d3d6933d78213e465712a882461bffbbe",
                   "author": "Shiv Tyagi",
-                  "timestamp": 1769533009,
-                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes\n\nReplace hardcoded \"openid\" and \"offline_access\" strings with oidc.ScopeOpenID\nand oidc.ScopeOfflineAccess constants from the coreos/go-oidc library.\n\nUsing library-provided constants ensures consistency with the OIDC\nspecification, reduces the risk of typos, and improves code maintainability.",
-                  "url": "https://github.com/canonical/authd/commit/115d3c86b704f1c22536e51787d5e221b0d0145a"
+                  "timestamp": 1769270964,
+                  "message": "tests: update TestParseConfig to test extra_scopes parsing",
+                  "url": "https://github.com/canonical/authd/commit/c1d1859d3d6933d78213e465712a882461bffbbe"
                }
             ],
             "ciActions": [
@@ -3489,25 +3489,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9c191b4efc07ae83777fe139305af3c33c816eaa",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1769605899,
+                  "message": "Merge pull request #179 from matthew-hagemann/fix-pin-entropy-check\n\nfix: drop state mutations for authMode in changeAuthDialog's",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9c191b4efc07ae83777fe139305af3c33c816eaa"
+               },
+               {
+                  "sha": "1cbf0b3e75728c43cabf6d493e33723b1f2002fb",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1769586786,
+                  "message": "fix: drop state mutations for authMode in changeAuthDialog's",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/1cbf0b3e75728c43cabf6d493e33723b1f2002fb"
+               },
+               {
                   "sha": "95554129a48c10fdc86ab25b2bd12d4cf07b71d2",
                   "author": "Dennis Loose",
                   "timestamp": 1769435444,
                   "message": "Merge pull request #177 from matthew-hagemann/indeterminate-status\n\nfeat: support indeterminate tpm/fde status",
                   "url": "https://github.com/canonical/desktop-security-center/commit/95554129a48c10fdc86ab25b2bd12d4cf07b71d2"
-               },
-               {
-                  "sha": "7dab3f070a2dac4931ef45f284d9506c37a86ffb",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769433244,
-                  "message": "feat: support indeterminate tpm/fde status",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/7dab3f070a2dac4931ef45f284d9506c37a86ffb"
-               },
-               {
-                  "sha": "4ffe412baa838978adc2c04a2e69bec24cd9e6d8",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768817719,
-                  "message": "Merge pull request #176 from matthew-hagemann/enable-pin\n\nfeat: enable pin support",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/4ffe412baa838978adc2c04a2e69bec24cd9e6d8"
                }
             ],
             "ciActions": [],
@@ -5385,6 +5385,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a401c16df091debc4461931e9eb4040b0e4246d2",
+                  "author": "adombeck",
+                  "timestamp": 1769606998,
+                  "message": "Add extra_scopes setting in broker.conf (#1215)\n\nThis adds the `extra_scopes` setting in the broker.conf which allows a\nuser to add extra scopes required by a provider for the broker to\nfunction properly.\n\nFor example, the Okta provider requires an `offline_access` scope to be\npresent in the request to return the refresh_token in response (see\ndiscussion in #1116). Hence, a user should have a way to add such scopes\nfor the broker though broker.conf.",
+                  "url": "https://github.com/canonical/authd/commit/a401c16df091debc4461931e9eb4040b0e4246d2"
+               },
+               {
                   "sha": "9d428a2c778c5195741fdec7b5001ab6cf276246",
                   "author": "adombeck",
                   "timestamp": 1769599857,
@@ -5392,18 +5399,11 @@
                   "url": "https://github.com/canonical/authd/commit/9d428a2c778c5195741fdec7b5001ab6cf276246"
                },
                {
-                  "sha": "cf38fcda94ce3904d72f4d544d43a880fa1e5276",
-                  "author": "adombeck",
-                  "timestamp": 1769534402,
-                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes (#1216)",
-                  "url": "https://github.com/canonical/authd/commit/cf38fcda94ce3904d72f4d544d43a880fa1e5276"
-               },
-               {
-                  "sha": "115d3c86b704f1c22536e51787d5e221b0d0145a",
+                  "sha": "c1d1859d3d6933d78213e465712a882461bffbbe",
                   "author": "Shiv Tyagi",
-                  "timestamp": 1769533009,
-                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes\n\nReplace hardcoded \"openid\" and \"offline_access\" strings with oidc.ScopeOpenID\nand oidc.ScopeOfflineAccess constants from the coreos/go-oidc library.\n\nUsing library-provided constants ensures consistency with the OIDC\nspecification, reduces the risk of typos, and improves code maintainability.",
-                  "url": "https://github.com/canonical/authd/commit/115d3c86b704f1c22536e51787d5e221b0d0145a"
+                  "timestamp": 1769270964,
+                  "message": "tests: update TestParseConfig to test extra_scopes parsing",
+                  "url": "https://github.com/canonical/authd/commit/c1d1859d3d6933d78213e465712a882461bffbbe"
                }
             ],
             "ciActions": [
@@ -5585,25 +5585,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9c191b4efc07ae83777fe139305af3c33c816eaa",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1769605899,
+                  "message": "Merge pull request #179 from matthew-hagemann/fix-pin-entropy-check\n\nfix: drop state mutations for authMode in changeAuthDialog's",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9c191b4efc07ae83777fe139305af3c33c816eaa"
+               },
+               {
+                  "sha": "1cbf0b3e75728c43cabf6d493e33723b1f2002fb",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1769586786,
+                  "message": "fix: drop state mutations for authMode in changeAuthDialog's",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/1cbf0b3e75728c43cabf6d493e33723b1f2002fb"
+               },
+               {
                   "sha": "95554129a48c10fdc86ab25b2bd12d4cf07b71d2",
                   "author": "Dennis Loose",
                   "timestamp": 1769435444,
                   "message": "Merge pull request #177 from matthew-hagemann/indeterminate-status\n\nfeat: support indeterminate tpm/fde status",
                   "url": "https://github.com/canonical/desktop-security-center/commit/95554129a48c10fdc86ab25b2bd12d4cf07b71d2"
-               },
-               {
-                  "sha": "7dab3f070a2dac4931ef45f284d9506c37a86ffb",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769433244,
-                  "message": "feat: support indeterminate tpm/fde status",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/7dab3f070a2dac4931ef45f284d9506c37a86ffb"
-               },
-               {
-                  "sha": "4ffe412baa838978adc2c04a2e69bec24cd9e6d8",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768817719,
-                  "message": "Merge pull request #176 from matthew-hagemann/enable-pin\n\nfeat: enable pin support",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/4ffe412baa838978adc2c04a2e69bec24cd9e6d8"
                }
             ],
             "ciActions": [],
@@ -7650,6 +7650,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a401c16df091debc4461931e9eb4040b0e4246d2",
+                  "author": "adombeck",
+                  "timestamp": 1769606998,
+                  "message": "Add extra_scopes setting in broker.conf (#1215)\n\nThis adds the `extra_scopes` setting in the broker.conf which allows a\nuser to add extra scopes required by a provider for the broker to\nfunction properly.\n\nFor example, the Okta provider requires an `offline_access` scope to be\npresent in the request to return the refresh_token in response (see\ndiscussion in #1116). Hence, a user should have a way to add such scopes\nfor the broker though broker.conf.",
+                  "url": "https://github.com/canonical/authd/commit/a401c16df091debc4461931e9eb4040b0e4246d2"
+               },
+               {
                   "sha": "9d428a2c778c5195741fdec7b5001ab6cf276246",
                   "author": "adombeck",
                   "timestamp": 1769599857,
@@ -7657,18 +7664,11 @@
                   "url": "https://github.com/canonical/authd/commit/9d428a2c778c5195741fdec7b5001ab6cf276246"
                },
                {
-                  "sha": "cf38fcda94ce3904d72f4d544d43a880fa1e5276",
-                  "author": "adombeck",
-                  "timestamp": 1769534402,
-                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes (#1216)",
-                  "url": "https://github.com/canonical/authd/commit/cf38fcda94ce3904d72f4d544d43a880fa1e5276"
-               },
-               {
-                  "sha": "115d3c86b704f1c22536e51787d5e221b0d0145a",
+                  "sha": "c1d1859d3d6933d78213e465712a882461bffbbe",
                   "author": "Shiv Tyagi",
-                  "timestamp": 1769533009,
-                  "message": "Use go-oidc constants for standard OIDC scopes in MicrosoftBrokerAppScopes\n\nReplace hardcoded \"openid\" and \"offline_access\" strings with oidc.ScopeOpenID\nand oidc.ScopeOfflineAccess constants from the coreos/go-oidc library.\n\nUsing library-provided constants ensures consistency with the OIDC\nspecification, reduces the risk of typos, and improves code maintainability.",
-                  "url": "https://github.com/canonical/authd/commit/115d3c86b704f1c22536e51787d5e221b0d0145a"
+                  "timestamp": 1769270964,
+                  "message": "tests: update TestParseConfig to test extra_scopes parsing",
+                  "url": "https://github.com/canonical/authd/commit/c1d1859d3d6933d78213e465712a882461bffbbe"
                }
             ],
             "ciActions": [
@@ -7850,25 +7850,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9c191b4efc07ae83777fe139305af3c33c816eaa",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1769605899,
+                  "message": "Merge pull request #179 from matthew-hagemann/fix-pin-entropy-check\n\nfix: drop state mutations for authMode in changeAuthDialog's",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9c191b4efc07ae83777fe139305af3c33c816eaa"
+               },
+               {
+                  "sha": "1cbf0b3e75728c43cabf6d493e33723b1f2002fb",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1769586786,
+                  "message": "fix: drop state mutations for authMode in changeAuthDialog's",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/1cbf0b3e75728c43cabf6d493e33723b1f2002fb"
+               },
+               {
                   "sha": "95554129a48c10fdc86ab25b2bd12d4cf07b71d2",
                   "author": "Dennis Loose",
                   "timestamp": 1769435444,
                   "message": "Merge pull request #177 from matthew-hagemann/indeterminate-status\n\nfeat: support indeterminate tpm/fde status",
                   "url": "https://github.com/canonical/desktop-security-center/commit/95554129a48c10fdc86ab25b2bd12d4cf07b71d2"
-               },
-               {
-                  "sha": "7dab3f070a2dac4931ef45f284d9506c37a86ffb",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769433244,
-                  "message": "feat: support indeterminate tpm/fde status",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/7dab3f070a2dac4931ef45f284d9506c37a86ffb"
-               },
-               {
-                  "sha": "4ffe412baa838978adc2c04a2e69bec24cd9e6d8",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768817719,
-                  "message": "Merge pull request #176 from matthew-hagemann/enable-pin\n\nfeat: enable pin support",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/4ffe412baa838978adc2c04a2e69bec24cd9e6d8"
                }
             ],
             "ciActions": [],
