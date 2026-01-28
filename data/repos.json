@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a401c16df091debc4461931e9eb4040b0e4246d2",
+                  "sha": "ce8ee725556fdaf945de22b1f3d1a400be0ac41f",
                   "author": "adombeck",
-                  "timestamp": 1769606998,
-                  "message": "Add extra_scopes setting in broker.conf (#1215)\n\nThis adds the `extra_scopes` setting in the broker.conf which allows a\nuser to add extra scopes required by a provider for the broker to\nfunction properly.\n\nFor example, the Okta provider requires an `offline_access` scope to be\npresent in the request to return the refresh_token in response (see\ndiscussion in #1116). Hence, a user should have a way to add such scopes\nfor the broker though broker.conf.",
-                  "url": "https://github.com/canonical/authd/commit/a401c16df091debc4461931e9eb4040b0e4246d2"
+                  "timestamp": 1769639775,
+                  "message": "ci: Fix auto-updates workflow (#1225)",
+                  "url": "https://github.com/canonical/authd/commit/ce8ee725556fdaf945de22b1f3d1a400be0ac41f"
                },
                {
-                  "sha": "9d428a2c778c5195741fdec7b5001ab6cf276246",
-                  "author": "adombeck",
-                  "timestamp": 1769599857,
-                  "message": "docs: Use guilabel semantic markup (#1219)\n\nUDENG-8882",
-                  "url": "https://github.com/canonical/authd/commit/9d428a2c778c5195741fdec7b5001ab6cf276246"
+                  "sha": "54ccac6e741bb602d54cbac5f1c4b7561c0b037d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1769622207,
+                  "message": "ci/auto-updates: Fix include/exclude paths\n\nI think 'debian/control' was meant to be included, not excluded, because\nwhat the job does is to compare the XS-Vendored-Sources-Rust list from\ndebian/control with the list generated via dh-cargo-vendored-sources.\n\nThe latter generates the list from Cargo.lock, so if I understand\ncorrectly, we only have to run this job if either Cargo.lock or\ndebian/control changed.",
+                  "url": "https://github.com/canonical/authd/commit/54ccac6e741bb602d54cbac5f1c4b7561c0b037d"
                },
                {
-                  "sha": "c1d1859d3d6933d78213e465712a882461bffbbe",
-                  "author": "Shiv Tyagi",
-                  "timestamp": 1769270964,
-                  "message": "tests: update TestParseConfig to test extra_scopes parsing",
-                  "url": "https://github.com/canonical/authd/commit/c1d1859d3d6933d78213e465712a882461bffbbe"
+                  "sha": "93b71ee77eefcab57ffe1ffbfc481de5e2721c48",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1769621884,
+                  "message": "ci/auto-updates: Log output of dh-cargo-vendored-sources\n\nIt's strange that the workflow didn't create a pull request since\nMay 2025. Let's log the output of dh-cargo-vendored-sources so we can\ncheck that it behaves as expected.",
+                  "url": "https://github.com/canonical/authd/commit/93b71ee77eefcab57ffe1ffbfc481de5e2721c48"
                }
             ],
             "ciActions": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a401c16df091debc4461931e9eb4040b0e4246d2",
+                  "sha": "ce8ee725556fdaf945de22b1f3d1a400be0ac41f",
                   "author": "adombeck",
-                  "timestamp": 1769606998,
-                  "message": "Add extra_scopes setting in broker.conf (#1215)\n\nThis adds the `extra_scopes` setting in the broker.conf which allows a\nuser to add extra scopes required by a provider for the broker to\nfunction properly.\n\nFor example, the Okta provider requires an `offline_access` scope to be\npresent in the request to return the refresh_token in response (see\ndiscussion in #1116). Hence, a user should have a way to add such scopes\nfor the broker though broker.conf.",
-                  "url": "https://github.com/canonical/authd/commit/a401c16df091debc4461931e9eb4040b0e4246d2"
+                  "timestamp": 1769639775,
+                  "message": "ci: Fix auto-updates workflow (#1225)",
+                  "url": "https://github.com/canonical/authd/commit/ce8ee725556fdaf945de22b1f3d1a400be0ac41f"
                },
                {
-                  "sha": "9d428a2c778c5195741fdec7b5001ab6cf276246",
-                  "author": "adombeck",
-                  "timestamp": 1769599857,
-                  "message": "docs: Use guilabel semantic markup (#1219)\n\nUDENG-8882",
-                  "url": "https://github.com/canonical/authd/commit/9d428a2c778c5195741fdec7b5001ab6cf276246"
+                  "sha": "54ccac6e741bb602d54cbac5f1c4b7561c0b037d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1769622207,
+                  "message": "ci/auto-updates: Fix include/exclude paths\n\nI think 'debian/control' was meant to be included, not excluded, because\nwhat the job does is to compare the XS-Vendored-Sources-Rust list from\ndebian/control with the list generated via dh-cargo-vendored-sources.\n\nThe latter generates the list from Cargo.lock, so if I understand\ncorrectly, we only have to run this job if either Cargo.lock or\ndebian/control changed.",
+                  "url": "https://github.com/canonical/authd/commit/54ccac6e741bb602d54cbac5f1c4b7561c0b037d"
                },
                {
-                  "sha": "c1d1859d3d6933d78213e465712a882461bffbbe",
-                  "author": "Shiv Tyagi",
-                  "timestamp": 1769270964,
-                  "message": "tests: update TestParseConfig to test extra_scopes parsing",
-                  "url": "https://github.com/canonical/authd/commit/c1d1859d3d6933d78213e465712a882461bffbbe"
+                  "sha": "93b71ee77eefcab57ffe1ffbfc481de5e2721c48",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1769621884,
+                  "message": "ci/auto-updates: Log output of dh-cargo-vendored-sources\n\nIt's strange that the workflow didn't create a pull request since\nMay 2025. Let's log the output of dh-cargo-vendored-sources so we can\ncheck that it behaves as expected.",
+                  "url": "https://github.com/canonical/authd/commit/93b71ee77eefcab57ffe1ffbfc481de5e2721c48"
                }
             ],
             "ciActions": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a401c16df091debc4461931e9eb4040b0e4246d2",
+                  "sha": "ce8ee725556fdaf945de22b1f3d1a400be0ac41f",
                   "author": "adombeck",
-                  "timestamp": 1769606998,
-                  "message": "Add extra_scopes setting in broker.conf (#1215)\n\nThis adds the `extra_scopes` setting in the broker.conf which allows a\nuser to add extra scopes required by a provider for the broker to\nfunction properly.\n\nFor example, the Okta provider requires an `offline_access` scope to be\npresent in the request to return the refresh_token in response (see\ndiscussion in #1116). Hence, a user should have a way to add such scopes\nfor the broker though broker.conf.",
-                  "url": "https://github.com/canonical/authd/commit/a401c16df091debc4461931e9eb4040b0e4246d2"
+                  "timestamp": 1769639775,
+                  "message": "ci: Fix auto-updates workflow (#1225)",
+                  "url": "https://github.com/canonical/authd/commit/ce8ee725556fdaf945de22b1f3d1a400be0ac41f"
                },
                {
-                  "sha": "9d428a2c778c5195741fdec7b5001ab6cf276246",
-                  "author": "adombeck",
-                  "timestamp": 1769599857,
-                  "message": "docs: Use guilabel semantic markup (#1219)\n\nUDENG-8882",
-                  "url": "https://github.com/canonical/authd/commit/9d428a2c778c5195741fdec7b5001ab6cf276246"
+                  "sha": "54ccac6e741bb602d54cbac5f1c4b7561c0b037d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1769622207,
+                  "message": "ci/auto-updates: Fix include/exclude paths\n\nI think 'debian/control' was meant to be included, not excluded, because\nwhat the job does is to compare the XS-Vendored-Sources-Rust list from\ndebian/control with the list generated via dh-cargo-vendored-sources.\n\nThe latter generates the list from Cargo.lock, so if I understand\ncorrectly, we only have to run this job if either Cargo.lock or\ndebian/control changed.",
+                  "url": "https://github.com/canonical/authd/commit/54ccac6e741bb602d54cbac5f1c4b7561c0b037d"
                },
                {
-                  "sha": "c1d1859d3d6933d78213e465712a882461bffbbe",
-                  "author": "Shiv Tyagi",
-                  "timestamp": 1769270964,
-                  "message": "tests: update TestParseConfig to test extra_scopes parsing",
-                  "url": "https://github.com/canonical/authd/commit/c1d1859d3d6933d78213e465712a882461bffbbe"
+                  "sha": "93b71ee77eefcab57ffe1ffbfc481de5e2721c48",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1769621884,
+                  "message": "ci/auto-updates: Log output of dh-cargo-vendored-sources\n\nIt's strange that the workflow didn't create a pull request since\nMay 2025. Let's log the output of dh-cargo-vendored-sources so we can\ncheck that it behaves as expected.",
+                  "url": "https://github.com/canonical/authd/commit/93b71ee77eefcab57ffe1ffbfc481de5e2721c48"
                }
             ],
             "ciActions": [
