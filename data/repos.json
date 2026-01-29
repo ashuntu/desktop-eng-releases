@@ -5218,6 +5218,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "39dada59a2ff6109c53357578494e685f761834b",
+                  "author": "Kat",
+                  "timestamp": 1769703399,
+                  "message": "fix(i/C/libinsights_test.go): Fix linter false positive (#304)\n\nThis should fix the annoying linter errors that show up here that\ncomplain about the functions not being implemented for other OSes even\nwhen they are.\n\nTo ensure that we still are properly testing libinsights and we aren't\nsimply skipping over it, a new test file that runs and fatals when `CGo`\nis not available was added.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/39dada59a2ff6109c53357578494e685f761834b"
+               },
+               {
                   "sha": "6d182111c2b5ea943ed9c4af36c67c3d90cc5dd7",
                   "author": "Kat",
                   "timestamp": 1769700850,
@@ -5230,13 +5237,6 @@
                   "timestamp": 1769199916,
                   "message": "Implement logging callback handling for C bindings",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/3aa64c74f419fef86aef6338b09cab8c7163ce10"
-               },
-               {
-                  "sha": "d2a2ba2c4dc869579539e5a46efda731ca235663",
-                  "author": "Kat",
-                  "timestamp": 1769699324,
-                  "message": "feat(i/d/rules): Add backported Go version to PATH for build consistency (#303)\n\nThough we don't intend to backport Ubuntu Insights, it is still a good\nidea to ensure that any builder that meets the build dependencies can\nbuild the package.\n\nWe still have the backported Go version included as an alternative to\nthe versioned Go metapackage, but to actually use it, we need to add it\nto the path. Here, we do it automatically, but we make sure to do it in\na way so that it has lower priority than whatever is already in the\nPATH.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/d2a2ba2c4dc869579539e5a46efda731ca235663"
                }
             ],
             "ciActions": [
