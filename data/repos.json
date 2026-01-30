@@ -4287,25 +4287,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "54dc4f5eb7566089fe9442fc13da327a584c9c66",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769432685,
-                  "message": "feat: add indeterminate status to tpm/fde status api (#136)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/54dc4f5eb7566089fe9442fc13da327a584c9c66"
+                  "sha": "5f123b92c230bd3a94e2c92d3b332589bf2ca647",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769764461,
+                  "message": "feat: add SnapLocalRevision class and snap revert functionality (#132)\n\n## Summary\n\nThis PR adds support for retrieving local snap revisions and reverting\nsnaps to previous versions, addressing the need for snap revert\nfunctionality in App Center. You can find that in the Pull Request on\nApp Center : https://github.com/ubuntu/app-center/pull/1972\n\n## Issue/Card\nFixes #1164 on https://github.com/ubuntu/app-center/issues/1164\n\n## Changes\n\n### New Classes\n- **`SnapLocalRevision`**: Represents a local revision of an installed\nsnap with `revision`, `version`, and `active` fields\n- Handles revision typing robustly (int/num/string) using\n`_parseRevision` method\n  - Supports parsing negative revisions (e.g., \"x123\" → -123)\n  - Includes proper JSON serialization via freezed\n\n### New Methods\n- **`SnapdClient.getLocalRevisions(name)`**: Retrieves all locally\ninstalled revisions for a snap\n  - Uses `GET /v2/snaps?select=all&snaps={name}` endpoint\n  - Returns `List<SnapLocalRevision>` with revision details\n  - Handles errors gracefully by returning empty list\n  \n- **`SnapdClient.revertSnap(name)`**: Reverts a snap to its previous\nrevision\n  - Uses `POST /v2/snaps/{name}` with `{\"action\":\"revert\"}` payload\n  - Returns change ID for monitoring operation status\n  - Throws `SnapdException` on error responses\n\n### Testing\n- Extended `MockSnapdServer` to support new endpoints and actions\n- Added comprehensive unit tests covering:\n  - Basic functionality for both methods\n  - Revision type handling (int/num/string)\n  - Error cases and edge conditions\n  - Proper request/response formatting\n\n### Documentation\n- Added detailed dartdoc comments with usage examples\n- Documented parameters, return values, and exceptions\n\n## Usage Example\n\n```dart\n// Get local revisions\nfinal revisions = await client.getLocalRevisions('firefox');\nfor (final revision in revisions) {\n  print('Revision ${revision.revision}: ${revision.version} ${revision.active ? '(active)' : ''}');\n}\n\n// Revert snap\ntry {\n  final changeId = await client.revertSnap('firefox');\n  final change = await client.getChange(changeId);\n  print('Revert status: ${change.status}');\n} catch (e) {\n  print('Revert failed: $e');\n}\n```\n## Testing\nAll existing tests continue to pass, and new tests for the feature\nadded.\n\n## Files Changed\n\n1.  `lib/src/snapd_client.dart` - Core implementation\n2.  `lib/src/snapd_client.freezed.dart` - Generated freezed code\n3.  `lib/src/snapd_client.g.dart` - Generated JSON serialization\n4.  `test/snapd_test.dart` - mock server updates",
+                  "url": "https://github.com/canonical/snapd.dart/commit/5f123b92c230bd3a94e2c92d3b332589bf2ca647"
                },
                {
-                  "sha": "1d923007ea5ca3032e17eb5061057bbce44a06d4",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769430285,
-                  "message": "feat: add indeterminate status to tpm/fde status api",
-                  "url": "https://github.com/canonical/snapd.dart/commit/1d923007ea5ca3032e17eb5061057bbce44a06d4"
+                  "sha": "7e1200e83a4f437a9117beb8a05470ac2f7a48e4",
+                  "author": "Gajesh Bhat",
+                  "timestamp": 1764717239,
+                  "message": "fixed formatting",
+                  "url": "https://github.com/canonical/snapd.dart/commit/7e1200e83a4f437a9117beb8a05470ac2f7a48e4"
                },
                {
-                  "sha": "a51cb4035a5dfe166de67c806d749259bf6226a5",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768311212,
-                  "message": "feat: add support for tpm/fde status api (#135)\n\nAdds support for the tpm/fde status api at\n`/v2/system-info/storage-encrypted`",
-                  "url": "https://github.com/canonical/snapd.dart/commit/a51cb4035a5dfe166de67c806d749259bf6226a5"
+                  "sha": "dc7ea08b8a56417ec33912414adcaaa9c6e085e8",
+                  "author": "Gajesh Bhat",
+                  "timestamp": 1764714328,
+                  "message": "fixed unwanted refactor and remove _parse_version method and moved to integer",
+                  "url": "https://github.com/canonical/snapd.dart/commit/dc7ea08b8a56417ec33912414adcaaa9c6e085e8"
                }
             ],
             "ciActions": [],
@@ -4563,25 +4563,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9776aed93336e5b36c28e137658ba2c960b92520",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769764798,
+                  "message": "feat: update l10n strings for TPM action page (#1282)\n\nThis includes the labels, descriptions and help texts from [this\ninternal\nspreadsheet](https://docs.google.com/spreadsheets/d/1WPYAODnWAutvS7BYuXDYaNc43-L-p1D18UXSymxPBeM).\n\nUDENG-8915",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9776aed93336e5b36c28e137658ba2c960b92520"
+               },
+               {
+                  "sha": "2104f32f044c54d045e7bdaa1e29fc6ffb8f2ef2",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769693164,
+                  "message": "feat: update l10n strings",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2104f32f044c54d045e7bdaa1e29fc6ffb8f2ef2"
+               },
+               {
                   "sha": "948a3e1c4630160daf35f2c6616adcd3acbf2ed5",
                   "author": "Dennis Loose",
                   "timestamp": 1769700688,
                   "message": "feat: trigger `ubuntu-bug` from the UI (#1281)\n\nThis is a simplified version of #770, allowing us to trigger apport from\nthe UI instead of asking the user to do that manually.\n\nUDENG-8662",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/948a3e1c4630160daf35f2c6616adcd3acbf2ed5"
-               },
-               {
-                  "sha": "5bc596e01e899fc1402e69b012ef7227e33c73cc",
-                  "author": "Dennis Loose",
-                  "timestamp": 1769700668,
-                  "message": "chore: update go (#1283)\n\nBump the go version to appease\n[govulncheck](https://pkg.go.dev/vuln/GO-2026-4340)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/5bc596e01e899fc1402e69b012ef7227e33c73cc"
-               },
-               {
-                  "sha": "c0b1fbc37903e5d902c82875ba65d2cd6a804dc4",
-                  "author": "Dennis Loose",
-                  "timestamp": 1769694039,
-                  "message": "chore: update go",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c0b1fbc37903e5d902c82875ba65d2cd6a804dc4"
                }
             ],
             "ciActions": [
@@ -6416,25 +6416,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "54dc4f5eb7566089fe9442fc13da327a584c9c66",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769432685,
-                  "message": "feat: add indeterminate status to tpm/fde status api (#136)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/54dc4f5eb7566089fe9442fc13da327a584c9c66"
+                  "sha": "5f123b92c230bd3a94e2c92d3b332589bf2ca647",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769764461,
+                  "message": "feat: add SnapLocalRevision class and snap revert functionality (#132)\n\n## Summary\n\nThis PR adds support for retrieving local snap revisions and reverting\nsnaps to previous versions, addressing the need for snap revert\nfunctionality in App Center. You can find that in the Pull Request on\nApp Center : https://github.com/ubuntu/app-center/pull/1972\n\n## Issue/Card\nFixes #1164 on https://github.com/ubuntu/app-center/issues/1164\n\n## Changes\n\n### New Classes\n- **`SnapLocalRevision`**: Represents a local revision of an installed\nsnap with `revision`, `version`, and `active` fields\n- Handles revision typing robustly (int/num/string) using\n`_parseRevision` method\n  - Supports parsing negative revisions (e.g., \"x123\" → -123)\n  - Includes proper JSON serialization via freezed\n\n### New Methods\n- **`SnapdClient.getLocalRevisions(name)`**: Retrieves all locally\ninstalled revisions for a snap\n  - Uses `GET /v2/snaps?select=all&snaps={name}` endpoint\n  - Returns `List<SnapLocalRevision>` with revision details\n  - Handles errors gracefully by returning empty list\n  \n- **`SnapdClient.revertSnap(name)`**: Reverts a snap to its previous\nrevision\n  - Uses `POST /v2/snaps/{name}` with `{\"action\":\"revert\"}` payload\n  - Returns change ID for monitoring operation status\n  - Throws `SnapdException` on error responses\n\n### Testing\n- Extended `MockSnapdServer` to support new endpoints and actions\n- Added comprehensive unit tests covering:\n  - Basic functionality for both methods\n  - Revision type handling (int/num/string)\n  - Error cases and edge conditions\n  - Proper request/response formatting\n\n### Documentation\n- Added detailed dartdoc comments with usage examples\n- Documented parameters, return values, and exceptions\n\n## Usage Example\n\n```dart\n// Get local revisions\nfinal revisions = await client.getLocalRevisions('firefox');\nfor (final revision in revisions) {\n  print('Revision ${revision.revision}: ${revision.version} ${revision.active ? '(active)' : ''}');\n}\n\n// Revert snap\ntry {\n  final changeId = await client.revertSnap('firefox');\n  final change = await client.getChange(changeId);\n  print('Revert status: ${change.status}');\n} catch (e) {\n  print('Revert failed: $e');\n}\n```\n## Testing\nAll existing tests continue to pass, and new tests for the feature\nadded.\n\n## Files Changed\n\n1.  `lib/src/snapd_client.dart` - Core implementation\n2.  `lib/src/snapd_client.freezed.dart` - Generated freezed code\n3.  `lib/src/snapd_client.g.dart` - Generated JSON serialization\n4.  `test/snapd_test.dart` - mock server updates",
+                  "url": "https://github.com/canonical/snapd.dart/commit/5f123b92c230bd3a94e2c92d3b332589bf2ca647"
                },
                {
-                  "sha": "1d923007ea5ca3032e17eb5061057bbce44a06d4",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769430285,
-                  "message": "feat: add indeterminate status to tpm/fde status api",
-                  "url": "https://github.com/canonical/snapd.dart/commit/1d923007ea5ca3032e17eb5061057bbce44a06d4"
+                  "sha": "7e1200e83a4f437a9117beb8a05470ac2f7a48e4",
+                  "author": "Gajesh Bhat",
+                  "timestamp": 1764717239,
+                  "message": "fixed formatting",
+                  "url": "https://github.com/canonical/snapd.dart/commit/7e1200e83a4f437a9117beb8a05470ac2f7a48e4"
                },
                {
-                  "sha": "a51cb4035a5dfe166de67c806d749259bf6226a5",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768311212,
-                  "message": "feat: add support for tpm/fde status api (#135)\n\nAdds support for the tpm/fde status api at\n`/v2/system-info/storage-encrypted`",
-                  "url": "https://github.com/canonical/snapd.dart/commit/a51cb4035a5dfe166de67c806d749259bf6226a5"
+                  "sha": "dc7ea08b8a56417ec33912414adcaaa9c6e085e8",
+                  "author": "Gajesh Bhat",
+                  "timestamp": 1764714328,
+                  "message": "fixed unwanted refactor and remove _parse_version method and moved to integer",
+                  "url": "https://github.com/canonical/snapd.dart/commit/dc7ea08b8a56417ec33912414adcaaa9c6e085e8"
                }
             ],
             "ciActions": [],
@@ -6692,25 +6692,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9776aed93336e5b36c28e137658ba2c960b92520",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769764798,
+                  "message": "feat: update l10n strings for TPM action page (#1282)\n\nThis includes the labels, descriptions and help texts from [this\ninternal\nspreadsheet](https://docs.google.com/spreadsheets/d/1WPYAODnWAutvS7BYuXDYaNc43-L-p1D18UXSymxPBeM).\n\nUDENG-8915",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9776aed93336e5b36c28e137658ba2c960b92520"
+               },
+               {
+                  "sha": "2104f32f044c54d045e7bdaa1e29fc6ffb8f2ef2",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769693164,
+                  "message": "feat: update l10n strings",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2104f32f044c54d045e7bdaa1e29fc6ffb8f2ef2"
+               },
+               {
                   "sha": "948a3e1c4630160daf35f2c6616adcd3acbf2ed5",
                   "author": "Dennis Loose",
                   "timestamp": 1769700688,
                   "message": "feat: trigger `ubuntu-bug` from the UI (#1281)\n\nThis is a simplified version of #770, allowing us to trigger apport from\nthe UI instead of asking the user to do that manually.\n\nUDENG-8662",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/948a3e1c4630160daf35f2c6616adcd3acbf2ed5"
-               },
-               {
-                  "sha": "5bc596e01e899fc1402e69b012ef7227e33c73cc",
-                  "author": "Dennis Loose",
-                  "timestamp": 1769700668,
-                  "message": "chore: update go (#1283)\n\nBump the go version to appease\n[govulncheck](https://pkg.go.dev/vuln/GO-2026-4340)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/5bc596e01e899fc1402e69b012ef7227e33c73cc"
-               },
-               {
-                  "sha": "c0b1fbc37903e5d902c82875ba65d2cd6a804dc4",
-                  "author": "Dennis Loose",
-                  "timestamp": 1769694039,
-                  "message": "chore: update go",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c0b1fbc37903e5d902c82875ba65d2cd6a804dc4"
                }
             ],
             "ciActions": [
@@ -8648,25 +8648,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "54dc4f5eb7566089fe9442fc13da327a584c9c66",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769432685,
-                  "message": "feat: add indeterminate status to tpm/fde status api (#136)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/54dc4f5eb7566089fe9442fc13da327a584c9c66"
+                  "sha": "5f123b92c230bd3a94e2c92d3b332589bf2ca647",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769764461,
+                  "message": "feat: add SnapLocalRevision class and snap revert functionality (#132)\n\n## Summary\n\nThis PR adds support for retrieving local snap revisions and reverting\nsnaps to previous versions, addressing the need for snap revert\nfunctionality in App Center. You can find that in the Pull Request on\nApp Center : https://github.com/ubuntu/app-center/pull/1972\n\n## Issue/Card\nFixes #1164 on https://github.com/ubuntu/app-center/issues/1164\n\n## Changes\n\n### New Classes\n- **`SnapLocalRevision`**: Represents a local revision of an installed\nsnap with `revision`, `version`, and `active` fields\n- Handles revision typing robustly (int/num/string) using\n`_parseRevision` method\n  - Supports parsing negative revisions (e.g., \"x123\" → -123)\n  - Includes proper JSON serialization via freezed\n\n### New Methods\n- **`SnapdClient.getLocalRevisions(name)`**: Retrieves all locally\ninstalled revisions for a snap\n  - Uses `GET /v2/snaps?select=all&snaps={name}` endpoint\n  - Returns `List<SnapLocalRevision>` with revision details\n  - Handles errors gracefully by returning empty list\n  \n- **`SnapdClient.revertSnap(name)`**: Reverts a snap to its previous\nrevision\n  - Uses `POST /v2/snaps/{name}` with `{\"action\":\"revert\"}` payload\n  - Returns change ID for monitoring operation status\n  - Throws `SnapdException` on error responses\n\n### Testing\n- Extended `MockSnapdServer` to support new endpoints and actions\n- Added comprehensive unit tests covering:\n  - Basic functionality for both methods\n  - Revision type handling (int/num/string)\n  - Error cases and edge conditions\n  - Proper request/response formatting\n\n### Documentation\n- Added detailed dartdoc comments with usage examples\n- Documented parameters, return values, and exceptions\n\n## Usage Example\n\n```dart\n// Get local revisions\nfinal revisions = await client.getLocalRevisions('firefox');\nfor (final revision in revisions) {\n  print('Revision ${revision.revision}: ${revision.version} ${revision.active ? '(active)' : ''}');\n}\n\n// Revert snap\ntry {\n  final changeId = await client.revertSnap('firefox');\n  final change = await client.getChange(changeId);\n  print('Revert status: ${change.status}');\n} catch (e) {\n  print('Revert failed: $e');\n}\n```\n## Testing\nAll existing tests continue to pass, and new tests for the feature\nadded.\n\n## Files Changed\n\n1.  `lib/src/snapd_client.dart` - Core implementation\n2.  `lib/src/snapd_client.freezed.dart` - Generated freezed code\n3.  `lib/src/snapd_client.g.dart` - Generated JSON serialization\n4.  `test/snapd_test.dart` - mock server updates",
+                  "url": "https://github.com/canonical/snapd.dart/commit/5f123b92c230bd3a94e2c92d3b332589bf2ca647"
                },
                {
-                  "sha": "1d923007ea5ca3032e17eb5061057bbce44a06d4",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769430285,
-                  "message": "feat: add indeterminate status to tpm/fde status api",
-                  "url": "https://github.com/canonical/snapd.dart/commit/1d923007ea5ca3032e17eb5061057bbce44a06d4"
+                  "sha": "7e1200e83a4f437a9117beb8a05470ac2f7a48e4",
+                  "author": "Gajesh Bhat",
+                  "timestamp": 1764717239,
+                  "message": "fixed formatting",
+                  "url": "https://github.com/canonical/snapd.dart/commit/7e1200e83a4f437a9117beb8a05470ac2f7a48e4"
                },
                {
-                  "sha": "a51cb4035a5dfe166de67c806d749259bf6226a5",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768311212,
-                  "message": "feat: add support for tpm/fde status api (#135)\n\nAdds support for the tpm/fde status api at\n`/v2/system-info/storage-encrypted`",
-                  "url": "https://github.com/canonical/snapd.dart/commit/a51cb4035a5dfe166de67c806d749259bf6226a5"
+                  "sha": "dc7ea08b8a56417ec33912414adcaaa9c6e085e8",
+                  "author": "Gajesh Bhat",
+                  "timestamp": 1764714328,
+                  "message": "fixed unwanted refactor and remove _parse_version method and moved to integer",
+                  "url": "https://github.com/canonical/snapd.dart/commit/dc7ea08b8a56417ec33912414adcaaa9c6e085e8"
                }
             ],
             "ciActions": [],
@@ -8924,25 +8924,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9776aed93336e5b36c28e137658ba2c960b92520",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769764798,
+                  "message": "feat: update l10n strings for TPM action page (#1282)\n\nThis includes the labels, descriptions and help texts from [this\ninternal\nspreadsheet](https://docs.google.com/spreadsheets/d/1WPYAODnWAutvS7BYuXDYaNc43-L-p1D18UXSymxPBeM).\n\nUDENG-8915",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9776aed93336e5b36c28e137658ba2c960b92520"
+               },
+               {
+                  "sha": "2104f32f044c54d045e7bdaa1e29fc6ffb8f2ef2",
+                  "author": "Dennis Loose",
+                  "timestamp": 1769693164,
+                  "message": "feat: update l10n strings",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2104f32f044c54d045e7bdaa1e29fc6ffb8f2ef2"
+               },
+               {
                   "sha": "948a3e1c4630160daf35f2c6616adcd3acbf2ed5",
                   "author": "Dennis Loose",
                   "timestamp": 1769700688,
                   "message": "feat: trigger `ubuntu-bug` from the UI (#1281)\n\nThis is a simplified version of #770, allowing us to trigger apport from\nthe UI instead of asking the user to do that manually.\n\nUDENG-8662",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/948a3e1c4630160daf35f2c6616adcd3acbf2ed5"
-               },
-               {
-                  "sha": "5bc596e01e899fc1402e69b012ef7227e33c73cc",
-                  "author": "Dennis Loose",
-                  "timestamp": 1769700668,
-                  "message": "chore: update go (#1283)\n\nBump the go version to appease\n[govulncheck](https://pkg.go.dev/vuln/GO-2026-4340)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/5bc596e01e899fc1402e69b012ef7227e33c73cc"
-               },
-               {
-                  "sha": "c0b1fbc37903e5d902c82875ba65d2cd6a804dc4",
-                  "author": "Dennis Loose",
-                  "timestamp": 1769694039,
-                  "message": "chore: update go",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c0b1fbc37903e5d902c82875ba65d2cd6a804dc4"
                }
             ],
             "ciActions": [
