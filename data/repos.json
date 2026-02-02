@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c86d7e2232f6f20e5a69aac69cbfa48e028778c1",
+                  "author": "adombeck",
+                  "timestamp": 1770046141,
+                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1232)",
+                  "url": "https://github.com/canonical/authd/commit/c86d7e2232f6f20e5a69aac69cbfa48e028778c1"
+               },
+               {
+                  "sha": "cbd6499d9b013a53d7605dc3a4010a679c405095",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1770036705,
+                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers directory: [github.com/golang-jwt/jwt/v5](https://github.com/golang-jwt/jwt), [github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go) and [github.com/ubuntu/authd](https://github.com/ubuntu/authd).\n\nUpdates `github.com/golang-jwt/jwt/v5` from 5.3.0 to 5.3.1\n- [Release notes](https://github.com/golang-jwt/jwt/releases)\n- [Commits](https://github.com/golang-jwt/jwt/compare/v5.3.0...v5.3.1)\n\nUpdates `github.com/microsoftgraph/msgraph-sdk-go` from 1.93.0 to 1.94.0\n- [Release notes](https://github.com/microsoftgraph/msgraph-sdk-go/releases)\n- [Changelog](https://github.com/microsoftgraph/msgraph-sdk-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.93.0...v1.94.0)\n\nUpdates `github.com/ubuntu/authd` from 0.5.6 to 0.5.7\n- [Commits](https://github.com/ubuntu/authd/compare/v0.5.6...v0.5.7)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golang-jwt/jwt/v5\n  dependency-version: 5.3.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: github.com/microsoftgraph/msgraph-sdk-go\n  dependency-version: 1.94.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: github.com/ubuntu/authd\n  dependency-version: 0.5.7\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/authd/commit/cbd6499d9b013a53d7605dc3a4010a679c405095"
+               },
+               {
                   "sha": "4122d7abb5fe341db70ee1ab91d214f54ffb7b9e",
                   "author": "adombeck",
                   "timestamp": 1770034140,
                   "message": "brokers: Bump Go toolchain version to 1.24.12 (#1233)",
                   "url": "https://github.com/canonical/authd/commit/4122d7abb5fe341db70ee1ab91d214f54ffb7b9e"
-               },
-               {
-                  "sha": "8304517b2ac1bc2845d4b03518b3ac1c24ff78c9",
-                  "author": "adombeck",
-                  "timestamp": 1769819473,
-                  "message": "deps(go): bump github.com/coreos/go-systemd/v22 from 22.6.0 to 22.7.0 in the minor-updates group (#1227)",
-                  "url": "https://github.com/canonical/authd/commit/8304517b2ac1bc2845d4b03518b3ac1c24ff78c9"
-               },
-               {
-                  "sha": "e2a63297f3cfa22e9a2a56b31fb644e2c255c9e0",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769819265,
-                  "message": "brokers: Bump Go toolchain version to 1.24.12\n\ngovulncheck reports the following vulnerabilities in go1.24.11\n\nVulnerability #1: GO-2026-4341\n    Memory exhaustion in query parameter parsing in net/url\n  More info: https://pkg.go.dev/vuln/GO-2026-4341\n  Standard library\n    Found in: net/url@go1.24.11\n    Fixed in: net/url@go1.24.12\n    Example traces found:\nError:       #1: internal/broker/broker.go:482:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls url.ParseQuery\nError:       #2: internal/providers/msentraid/msmock_test.go:175:18: msentraid_test.mockMSServer.handleAuthorizeRequest calls url.URL.Query\n\nVulnerability #2: GO-2026-4340\n    Handshake messages may be processed at the incorrect encryption level in\n    crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4340\n  Standard library\n    Found in: crypto/tls@go1.24.11\n    Fixed in: crypto/tls@go1.24.12\n    Example traces found:\nError:       #1: internal/testutils/provider.go:104:14: testutils.StartMockProviderServer calls httptest.Server.Start, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd-oidc/daemon/daemon_test.go:211:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: cmd/authd-oidc/daemon/daemon_test.go:399:14: daemon_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write\nError:       #4: internal/broker/broker.go:482:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls tls.Dialer.DialContext",
-                  "url": "https://github.com/canonical/authd/commit/e2a63297f3cfa22e9a2a56b31fb644e2c255c9e0"
                }
             ],
             "ciActions": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c86d7e2232f6f20e5a69aac69cbfa48e028778c1",
+                  "author": "adombeck",
+                  "timestamp": 1770046141,
+                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1232)",
+                  "url": "https://github.com/canonical/authd/commit/c86d7e2232f6f20e5a69aac69cbfa48e028778c1"
+               },
+               {
+                  "sha": "cbd6499d9b013a53d7605dc3a4010a679c405095",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1770036705,
+                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers directory: [github.com/golang-jwt/jwt/v5](https://github.com/golang-jwt/jwt), [github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go) and [github.com/ubuntu/authd](https://github.com/ubuntu/authd).\n\nUpdates `github.com/golang-jwt/jwt/v5` from 5.3.0 to 5.3.1\n- [Release notes](https://github.com/golang-jwt/jwt/releases)\n- [Commits](https://github.com/golang-jwt/jwt/compare/v5.3.0...v5.3.1)\n\nUpdates `github.com/microsoftgraph/msgraph-sdk-go` from 1.93.0 to 1.94.0\n- [Release notes](https://github.com/microsoftgraph/msgraph-sdk-go/releases)\n- [Changelog](https://github.com/microsoftgraph/msgraph-sdk-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.93.0...v1.94.0)\n\nUpdates `github.com/ubuntu/authd` from 0.5.6 to 0.5.7\n- [Commits](https://github.com/ubuntu/authd/compare/v0.5.6...v0.5.7)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golang-jwt/jwt/v5\n  dependency-version: 5.3.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: github.com/microsoftgraph/msgraph-sdk-go\n  dependency-version: 1.94.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: github.com/ubuntu/authd\n  dependency-version: 0.5.7\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/authd/commit/cbd6499d9b013a53d7605dc3a4010a679c405095"
+               },
+               {
                   "sha": "4122d7abb5fe341db70ee1ab91d214f54ffb7b9e",
                   "author": "adombeck",
                   "timestamp": 1770034140,
                   "message": "brokers: Bump Go toolchain version to 1.24.12 (#1233)",
                   "url": "https://github.com/canonical/authd/commit/4122d7abb5fe341db70ee1ab91d214f54ffb7b9e"
-               },
-               {
-                  "sha": "8304517b2ac1bc2845d4b03518b3ac1c24ff78c9",
-                  "author": "adombeck",
-                  "timestamp": 1769819473,
-                  "message": "deps(go): bump github.com/coreos/go-systemd/v22 from 22.6.0 to 22.7.0 in the minor-updates group (#1227)",
-                  "url": "https://github.com/canonical/authd/commit/8304517b2ac1bc2845d4b03518b3ac1c24ff78c9"
-               },
-               {
-                  "sha": "e2a63297f3cfa22e9a2a56b31fb644e2c255c9e0",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769819265,
-                  "message": "brokers: Bump Go toolchain version to 1.24.12\n\ngovulncheck reports the following vulnerabilities in go1.24.11\n\nVulnerability #1: GO-2026-4341\n    Memory exhaustion in query parameter parsing in net/url\n  More info: https://pkg.go.dev/vuln/GO-2026-4341\n  Standard library\n    Found in: net/url@go1.24.11\n    Fixed in: net/url@go1.24.12\n    Example traces found:\nError:       #1: internal/broker/broker.go:482:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls url.ParseQuery\nError:       #2: internal/providers/msentraid/msmock_test.go:175:18: msentraid_test.mockMSServer.handleAuthorizeRequest calls url.URL.Query\n\nVulnerability #2: GO-2026-4340\n    Handshake messages may be processed at the incorrect encryption level in\n    crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4340\n  Standard library\n    Found in: crypto/tls@go1.24.11\n    Fixed in: crypto/tls@go1.24.12\n    Example traces found:\nError:       #1: internal/testutils/provider.go:104:14: testutils.StartMockProviderServer calls httptest.Server.Start, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd-oidc/daemon/daemon_test.go:211:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: cmd/authd-oidc/daemon/daemon_test.go:399:14: daemon_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write\nError:       #4: internal/broker/broker.go:482:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls tls.Dialer.DialContext",
-                  "url": "https://github.com/canonical/authd/commit/e2a63297f3cfa22e9a2a56b31fb644e2c255c9e0"
                }
             ],
             "ciActions": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c86d7e2232f6f20e5a69aac69cbfa48e028778c1",
+                  "author": "adombeck",
+                  "timestamp": 1770046141,
+                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1232)",
+                  "url": "https://github.com/canonical/authd/commit/c86d7e2232f6f20e5a69aac69cbfa48e028778c1"
+               },
+               {
+                  "sha": "cbd6499d9b013a53d7605dc3a4010a679c405095",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1770036705,
+                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers directory: [github.com/golang-jwt/jwt/v5](https://github.com/golang-jwt/jwt), [github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go) and [github.com/ubuntu/authd](https://github.com/ubuntu/authd).\n\nUpdates `github.com/golang-jwt/jwt/v5` from 5.3.0 to 5.3.1\n- [Release notes](https://github.com/golang-jwt/jwt/releases)\n- [Commits](https://github.com/golang-jwt/jwt/compare/v5.3.0...v5.3.1)\n\nUpdates `github.com/microsoftgraph/msgraph-sdk-go` from 1.93.0 to 1.94.0\n- [Release notes](https://github.com/microsoftgraph/msgraph-sdk-go/releases)\n- [Changelog](https://github.com/microsoftgraph/msgraph-sdk-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.93.0...v1.94.0)\n\nUpdates `github.com/ubuntu/authd` from 0.5.6 to 0.5.7\n- [Commits](https://github.com/ubuntu/authd/compare/v0.5.6...v0.5.7)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/golang-jwt/jwt/v5\n  dependency-version: 5.3.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: github.com/microsoftgraph/msgraph-sdk-go\n  dependency-version: 1.94.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: github.com/ubuntu/authd\n  dependency-version: 0.5.7\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/authd/commit/cbd6499d9b013a53d7605dc3a4010a679c405095"
+               },
+               {
                   "sha": "4122d7abb5fe341db70ee1ab91d214f54ffb7b9e",
                   "author": "adombeck",
                   "timestamp": 1770034140,
                   "message": "brokers: Bump Go toolchain version to 1.24.12 (#1233)",
                   "url": "https://github.com/canonical/authd/commit/4122d7abb5fe341db70ee1ab91d214f54ffb7b9e"
-               },
-               {
-                  "sha": "8304517b2ac1bc2845d4b03518b3ac1c24ff78c9",
-                  "author": "adombeck",
-                  "timestamp": 1769819473,
-                  "message": "deps(go): bump github.com/coreos/go-systemd/v22 from 22.6.0 to 22.7.0 in the minor-updates group (#1227)",
-                  "url": "https://github.com/canonical/authd/commit/8304517b2ac1bc2845d4b03518b3ac1c24ff78c9"
-               },
-               {
-                  "sha": "e2a63297f3cfa22e9a2a56b31fb644e2c255c9e0",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769819265,
-                  "message": "brokers: Bump Go toolchain version to 1.24.12\n\ngovulncheck reports the following vulnerabilities in go1.24.11\n\nVulnerability #1: GO-2026-4341\n    Memory exhaustion in query parameter parsing in net/url\n  More info: https://pkg.go.dev/vuln/GO-2026-4341\n  Standard library\n    Found in: net/url@go1.24.11\n    Fixed in: net/url@go1.24.12\n    Example traces found:\nError:       #1: internal/broker/broker.go:482:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls url.ParseQuery\nError:       #2: internal/providers/msentraid/msmock_test.go:175:18: msentraid_test.mockMSServer.handleAuthorizeRequest calls url.URL.Query\n\nVulnerability #2: GO-2026-4340\n    Handshake messages may be processed at the incorrect encryption level in\n    crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4340\n  Standard library\n    Found in: crypto/tls@go1.24.11\n    Fixed in: crypto/tls@go1.24.12\n    Example traces found:\nError:       #1: internal/testutils/provider.go:104:14: testutils.StartMockProviderServer calls httptest.Server.Start, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd-oidc/daemon/daemon_test.go:211:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: cmd/authd-oidc/daemon/daemon_test.go:399:14: daemon_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write\nError:       #4: internal/broker/broker.go:482:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls tls.Dialer.DialContext",
-                  "url": "https://github.com/canonical/authd/commit/e2a63297f3cfa22e9a2a56b31fb644e2c255c9e0"
                }
             ],
             "ciActions": [
