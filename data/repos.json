@@ -4215,6 +4215,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3bbb6f008ea4a8015f1c33876ffed2bcb45b871d",
+                  "author": "Sergio Costas",
+                  "timestamp": 1770021601,
+                  "message": "Update actions (#158)\n\nSome actions are using an old version.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/3bbb6f008ea4a8015f1c33876ffed2bcb45b871d"
+               },
+               {
                   "sha": "2ce0600f9b0cd886fd7754331ac9414df332cdeb",
                   "author": "Sergio Costas",
                   "timestamp": 1769686933,
@@ -4227,13 +4234,6 @@
                   "timestamp": 1769621943,
                   "message": "Update fi.po\n\nSigned-off-by: mika3232 <mika.haaja@gmail.com>",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/b6a5821dac911f38c96f62f196b73891c5a364ae"
-               },
-               {
-                  "sha": "3e46413934a997c7a5831c2bc02f2ac4ae04bcd8",
-                  "author": "Sergio Costas",
-                  "timestamp": 1769159862,
-                  "message": "Revert to Core22 (#157)\n\nRevert to Core22 to allow to launch a version with the right\nnotification title.\n\nTested by reverting Telegram Desktop.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/3e46413934a997c7a5831c2bc02f2ac4ae04bcd8"
                }
             ],
             "ciActions": [],
@@ -6344,6 +6344,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3bbb6f008ea4a8015f1c33876ffed2bcb45b871d",
+                  "author": "Sergio Costas",
+                  "timestamp": 1770021601,
+                  "message": "Update actions (#158)\n\nSome actions are using an old version.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/3bbb6f008ea4a8015f1c33876ffed2bcb45b871d"
+               },
+               {
                   "sha": "2ce0600f9b0cd886fd7754331ac9414df332cdeb",
                   "author": "Sergio Costas",
                   "timestamp": 1769686933,
@@ -6356,13 +6363,6 @@
                   "timestamp": 1769621943,
                   "message": "Update fi.po\n\nSigned-off-by: mika3232 <mika.haaja@gmail.com>",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/b6a5821dac911f38c96f62f196b73891c5a364ae"
-               },
-               {
-                  "sha": "3e46413934a997c7a5831c2bc02f2ac4ae04bcd8",
-                  "author": "Sergio Costas",
-                  "timestamp": 1769159862,
-                  "message": "Revert to Core22 (#157)\n\nRevert to Core22 to allow to launch a version with the right\nnotification title.\n\nTested by reverting Telegram Desktop.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/3e46413934a997c7a5831c2bc02f2ac4ae04bcd8"
                }
             ],
             "ciActions": [],
@@ -6416,25 +6416,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3fb8ee976f72a1f1b45d51f39f840dcf858d3926",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1770022730,
+                  "message": "feat: adding deleteKeyslots api (#137)\n\nAdding wrappers for the new `delete-keyslots` action. See [internal\ndoc](https://docs.google.com/document/d/1Mbj7Ut0tgW0PCz8VWdhvBN52kHTxYqkZZKQODB1NlLk/edit?tab=t.0#heading=h.2tpvwdpeoyj)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/3fb8ee976f72a1f1b45d51f39f840dcf858d3926"
+               },
+               {
+                  "sha": "e68bcdfaf3e5667a783e215daad933039c6735eb",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1770017918,
+                  "message": "feat: adding deleteKeyslots api",
+                  "url": "https://github.com/canonical/snapd.dart/commit/e68bcdfaf3e5667a783e215daad933039c6735eb"
+               },
+               {
                   "sha": "5f123b92c230bd3a94e2c92d3b332589bf2ca647",
                   "author": "Dennis Loose",
                   "timestamp": 1769764461,
                   "message": "feat: add SnapLocalRevision class and snap revert functionality (#132)\n\n## Summary\n\nThis PR adds support for retrieving local snap revisions and reverting\nsnaps to previous versions, addressing the need for snap revert\nfunctionality in App Center. You can find that in the Pull Request on\nApp Center : https://github.com/ubuntu/app-center/pull/1972\n\n## Issue/Card\nFixes #1164 on https://github.com/ubuntu/app-center/issues/1164\n\n## Changes\n\n### New Classes\n- **`SnapLocalRevision`**: Represents a local revision of an installed\nsnap with `revision`, `version`, and `active` fields\n- Handles revision typing robustly (int/num/string) using\n`_parseRevision` method\n  - Supports parsing negative revisions (e.g., \"x123\" → -123)\n  - Includes proper JSON serialization via freezed\n\n### New Methods\n- **`SnapdClient.getLocalRevisions(name)`**: Retrieves all locally\ninstalled revisions for a snap\n  - Uses `GET /v2/snaps?select=all&snaps={name}` endpoint\n  - Returns `List<SnapLocalRevision>` with revision details\n  - Handles errors gracefully by returning empty list\n  \n- **`SnapdClient.revertSnap(name)`**: Reverts a snap to its previous\nrevision\n  - Uses `POST /v2/snaps/{name}` with `{\"action\":\"revert\"}` payload\n  - Returns change ID for monitoring operation status\n  - Throws `SnapdException` on error responses\n\n### Testing\n- Extended `MockSnapdServer` to support new endpoints and actions\n- Added comprehensive unit tests covering:\n  - Basic functionality for both methods\n  - Revision type handling (int/num/string)\n  - Error cases and edge conditions\n  - Proper request/response formatting\n\n### Documentation\n- Added detailed dartdoc comments with usage examples\n- Documented parameters, return values, and exceptions\n\n## Usage Example\n\n```dart\n// Get local revisions\nfinal revisions = await client.getLocalRevisions('firefox');\nfor (final revision in revisions) {\n  print('Revision ${revision.revision}: ${revision.version} ${revision.active ? '(active)' : ''}');\n}\n\n// Revert snap\ntry {\n  final changeId = await client.revertSnap('firefox');\n  final change = await client.getChange(changeId);\n  print('Revert status: ${change.status}');\n} catch (e) {\n  print('Revert failed: $e');\n}\n```\n## Testing\nAll existing tests continue to pass, and new tests for the feature\nadded.\n\n## Files Changed\n\n1.  `lib/src/snapd_client.dart` - Core implementation\n2.  `lib/src/snapd_client.freezed.dart` - Generated freezed code\n3.  `lib/src/snapd_client.g.dart` - Generated JSON serialization\n4.  `test/snapd_test.dart` - mock server updates",
                   "url": "https://github.com/canonical/snapd.dart/commit/5f123b92c230bd3a94e2c92d3b332589bf2ca647"
-               },
-               {
-                  "sha": "7e1200e83a4f437a9117beb8a05470ac2f7a48e4",
-                  "author": "Gajesh Bhat",
-                  "timestamp": 1764717239,
-                  "message": "fixed formatting",
-                  "url": "https://github.com/canonical/snapd.dart/commit/7e1200e83a4f437a9117beb8a05470ac2f7a48e4"
-               },
-               {
-                  "sha": "dc7ea08b8a56417ec33912414adcaaa9c6e085e8",
-                  "author": "Gajesh Bhat",
-                  "timestamp": 1764714328,
-                  "message": "fixed unwanted refactor and remove _parse_version method and moved to integer",
-                  "url": "https://github.com/canonical/snapd.dart/commit/dc7ea08b8a56417ec33912414adcaaa9c6e085e8"
                }
             ],
             "ciActions": [],
@@ -8576,6 +8576,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3bbb6f008ea4a8015f1c33876ffed2bcb45b871d",
+                  "author": "Sergio Costas",
+                  "timestamp": 1770021601,
+                  "message": "Update actions (#158)\n\nSome actions are using an old version.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/3bbb6f008ea4a8015f1c33876ffed2bcb45b871d"
+               },
+               {
                   "sha": "2ce0600f9b0cd886fd7754331ac9414df332cdeb",
                   "author": "Sergio Costas",
                   "timestamp": 1769686933,
@@ -8588,13 +8595,6 @@
                   "timestamp": 1769621943,
                   "message": "Update fi.po\n\nSigned-off-by: mika3232 <mika.haaja@gmail.com>",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/b6a5821dac911f38c96f62f196b73891c5a364ae"
-               },
-               {
-                  "sha": "3e46413934a997c7a5831c2bc02f2ac4ae04bcd8",
-                  "author": "Sergio Costas",
-                  "timestamp": 1769159862,
-                  "message": "Revert to Core22 (#157)\n\nRevert to Core22 to allow to launch a version with the right\nnotification title.\n\nTested by reverting Telegram Desktop.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/3e46413934a997c7a5831c2bc02f2ac4ae04bcd8"
                }
             ],
             "ciActions": [],
@@ -8648,25 +8648,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3fb8ee976f72a1f1b45d51f39f840dcf858d3926",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1770022730,
+                  "message": "feat: adding deleteKeyslots api (#137)\n\nAdding wrappers for the new `delete-keyslots` action. See [internal\ndoc](https://docs.google.com/document/d/1Mbj7Ut0tgW0PCz8VWdhvBN52kHTxYqkZZKQODB1NlLk/edit?tab=t.0#heading=h.2tpvwdpeoyj)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/3fb8ee976f72a1f1b45d51f39f840dcf858d3926"
+               },
+               {
+                  "sha": "e68bcdfaf3e5667a783e215daad933039c6735eb",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1770017918,
+                  "message": "feat: adding deleteKeyslots api",
+                  "url": "https://github.com/canonical/snapd.dart/commit/e68bcdfaf3e5667a783e215daad933039c6735eb"
+               },
+               {
                   "sha": "5f123b92c230bd3a94e2c92d3b332589bf2ca647",
                   "author": "Dennis Loose",
                   "timestamp": 1769764461,
                   "message": "feat: add SnapLocalRevision class and snap revert functionality (#132)\n\n## Summary\n\nThis PR adds support for retrieving local snap revisions and reverting\nsnaps to previous versions, addressing the need for snap revert\nfunctionality in App Center. You can find that in the Pull Request on\nApp Center : https://github.com/ubuntu/app-center/pull/1972\n\n## Issue/Card\nFixes #1164 on https://github.com/ubuntu/app-center/issues/1164\n\n## Changes\n\n### New Classes\n- **`SnapLocalRevision`**: Represents a local revision of an installed\nsnap with `revision`, `version`, and `active` fields\n- Handles revision typing robustly (int/num/string) using\n`_parseRevision` method\n  - Supports parsing negative revisions (e.g., \"x123\" → -123)\n  - Includes proper JSON serialization via freezed\n\n### New Methods\n- **`SnapdClient.getLocalRevisions(name)`**: Retrieves all locally\ninstalled revisions for a snap\n  - Uses `GET /v2/snaps?select=all&snaps={name}` endpoint\n  - Returns `List<SnapLocalRevision>` with revision details\n  - Handles errors gracefully by returning empty list\n  \n- **`SnapdClient.revertSnap(name)`**: Reverts a snap to its previous\nrevision\n  - Uses `POST /v2/snaps/{name}` with `{\"action\":\"revert\"}` payload\n  - Returns change ID for monitoring operation status\n  - Throws `SnapdException` on error responses\n\n### Testing\n- Extended `MockSnapdServer` to support new endpoints and actions\n- Added comprehensive unit tests covering:\n  - Basic functionality for both methods\n  - Revision type handling (int/num/string)\n  - Error cases and edge conditions\n  - Proper request/response formatting\n\n### Documentation\n- Added detailed dartdoc comments with usage examples\n- Documented parameters, return values, and exceptions\n\n## Usage Example\n\n```dart\n// Get local revisions\nfinal revisions = await client.getLocalRevisions('firefox');\nfor (final revision in revisions) {\n  print('Revision ${revision.revision}: ${revision.version} ${revision.active ? '(active)' : ''}');\n}\n\n// Revert snap\ntry {\n  final changeId = await client.revertSnap('firefox');\n  final change = await client.getChange(changeId);\n  print('Revert status: ${change.status}');\n} catch (e) {\n  print('Revert failed: $e');\n}\n```\n## Testing\nAll existing tests continue to pass, and new tests for the feature\nadded.\n\n## Files Changed\n\n1.  `lib/src/snapd_client.dart` - Core implementation\n2.  `lib/src/snapd_client.freezed.dart` - Generated freezed code\n3.  `lib/src/snapd_client.g.dart` - Generated JSON serialization\n4.  `test/snapd_test.dart` - mock server updates",
                   "url": "https://github.com/canonical/snapd.dart/commit/5f123b92c230bd3a94e2c92d3b332589bf2ca647"
-               },
-               {
-                  "sha": "7e1200e83a4f437a9117beb8a05470ac2f7a48e4",
-                  "author": "Gajesh Bhat",
-                  "timestamp": 1764717239,
-                  "message": "fixed formatting",
-                  "url": "https://github.com/canonical/snapd.dart/commit/7e1200e83a4f437a9117beb8a05470ac2f7a48e4"
-               },
-               {
-                  "sha": "dc7ea08b8a56417ec33912414adcaaa9c6e085e8",
-                  "author": "Gajesh Bhat",
-                  "timestamp": 1764714328,
-                  "message": "fixed unwanted refactor and remove _parse_version method and moved to integer",
-                  "url": "https://github.com/canonical/snapd.dart/commit/dc7ea08b8a56417ec33912414adcaaa9c6e085e8"
                }
             ],
             "ciActions": [],
