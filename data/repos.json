@@ -3256,25 +3256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6d50580b206e6f88334f0e65faf81ba583a37131",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756095163,
-                  "message": "Merge pull request #33 from robert-ancell/ci-ubuntu-version\n\nUpdate CI Ubuntu version and remove obsolete CLA check",
-                  "url": "https://github.com/canonical/appstream.dart/commit/6d50580b206e6f88334f0e65faf81ba583a37131"
+                  "sha": "dd9db4d68e3677912fba6e268ad99b00008fab78",
+                  "author": "ashuntu",
+                  "timestamp": 1770154175,
+                  "message": "fix(collection): allow null component type (#38)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the `type`\nfield, the `fromXML` and `fromYAML` factories throw an exception if it\nis `null`\n\n## what does this change introduce?\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if null",
+                  "url": "https://github.com/canonical/appstream.dart/commit/dd9db4d68e3677912fba6e268ad99b00008fab78"
                },
                {
-                  "sha": "7bd97f3b06ae7442ac8d71e03fd93f7e32117ea8",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756095105,
-                  "message": "Remove old CLA checker",
-                  "url": "https://github.com/canonical/appstream.dart/commit/7bd97f3b06ae7442ac8d71e03fd93f7e32117ea8"
+                  "sha": "5dea9e2d165adea6365607123a13e2852342f1c2",
+                  "author": "ashuntu",
+                  "timestamp": 1770152024,
+                  "message": "feat: add AppstreamDBusType.session (#36)\n\n## what is the issue this PR is attempting to solve?\n\ndespite the [freedesktop\nspec](https://freedesktop.org/software/appstream/docs/chap-Metadata.html)\nfor appstream dbus types only showing `system` and `user` as valid\ntypes, some appstream files include a dbus type of `session`\n\nfor example:\n```\n<dbus type=\"session\">org.gnome.GTG</dbus>\n```\n\n## what does this change introduce?\n\nadd session to AppstreamDBusType enums to support an additional DBus\ntype used by some appstream files",
+                  "url": "https://github.com/canonical/appstream.dart/commit/5dea9e2d165adea6365607123a13e2852342f1c2"
                },
                {
-                  "sha": "1a8bf3369aed12be74cc5b5c498301621afa86fa",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756095100,
-                  "message": "Update CI Ubuntu version",
-                  "url": "https://github.com/canonical/appstream.dart/commit/1a8bf3369aed12be74cc5b5c498301621afa86fa"
+                  "sha": "ef53865a71d72e598aed1638c9cc99cde2fcaef5",
+                  "author": "Jarred Wilson",
+                  "timestamp": 1767831576,
+                  "message": "fix(collection): allow null component type\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if\nnull",
+                  "url": "https://github.com/canonical/appstream.dart/commit/ef53865a71d72e598aed1638c9cc99cde2fcaef5"
                }
             ],
             "ciActions": [],
@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6f9b34c032942f53564b9640e8b70c75058a6bfa",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1770124561,
-                  "message": "Update TICS workflow  (#1212)\n\nNow that we are under the canonical organization, we can leverage some\nfeatures and actions that were not available to us when under the Ubuntu\norganization.\n\nAn example run can be seen\n[here](https://github.com/canonical/authd/actions/runs/21630484006).",
-                  "url": "https://github.com/canonical/authd/commit/6f9b34c032942f53564b9640e8b70c75058a6bfa"
-               },
-               {
-                  "sha": "755f953c4b6fcc8d8069f7589c7e81236929dfdd",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1770041773,
-                  "message": "Merge authd and brokers coverage reports\n\nNow that we are running the analysis as a single project, we need to\nmerge the coverage reports and provide the coverage as expected.",
-                  "url": "https://github.com/canonical/authd/commit/755f953c4b6fcc8d8069f7589c7e81236929dfdd"
-               },
-               {
-                  "sha": "c86d7e2232f6f20e5a69aac69cbfa48e028778c1",
+                  "sha": "c17b4f5fc6b86dab5b174df18d96624283344a27",
                   "author": "adombeck",
-                  "timestamp": 1770046141,
-                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1232)",
-                  "url": "https://github.com/canonical/authd/commit/c86d7e2232f6f20e5a69aac69cbfa48e028778c1"
+                  "timestamp": 1770154444,
+                  "message": "deps(rust): bump bytes from 1.10.1 to 1.11.1 (#1237)",
+                  "url": "https://github.com/canonical/authd/commit/c17b4f5fc6b86dab5b174df18d96624283344a27"
+               },
+               {
+                  "sha": "59d5ce3a1aa3108455a93f10ae721d6ca3cb6ae1",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770151968,
+                  "message": "debian/control: Update XS-Vendored-Sources-Rust",
+                  "url": "https://github.com/canonical/authd/commit/59d5ce3a1aa3108455a93f10ae721d6ca3cb6ae1"
+               },
+               {
+                  "sha": "8ed229b29e7ea98693e224fd5f848b1e12b23184",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770148316,
+                  "message": "Cargo.lock: Use version 3 of the lock\n\nThe cargo version in the Noble archive doesn't support version 4 yet.",
+                  "url": "https://github.com/canonical/authd/commit/8ed229b29e7ea98693e224fd5f848b1e12b23184"
                }
             ],
             "ciActions": [
@@ -5352,25 +5352,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6d50580b206e6f88334f0e65faf81ba583a37131",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756095163,
-                  "message": "Merge pull request #33 from robert-ancell/ci-ubuntu-version\n\nUpdate CI Ubuntu version and remove obsolete CLA check",
-                  "url": "https://github.com/canonical/appstream.dart/commit/6d50580b206e6f88334f0e65faf81ba583a37131"
+                  "sha": "dd9db4d68e3677912fba6e268ad99b00008fab78",
+                  "author": "ashuntu",
+                  "timestamp": 1770154175,
+                  "message": "fix(collection): allow null component type (#38)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the `type`\nfield, the `fromXML` and `fromYAML` factories throw an exception if it\nis `null`\n\n## what does this change introduce?\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if null",
+                  "url": "https://github.com/canonical/appstream.dart/commit/dd9db4d68e3677912fba6e268ad99b00008fab78"
                },
                {
-                  "sha": "7bd97f3b06ae7442ac8d71e03fd93f7e32117ea8",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756095105,
-                  "message": "Remove old CLA checker",
-                  "url": "https://github.com/canonical/appstream.dart/commit/7bd97f3b06ae7442ac8d71e03fd93f7e32117ea8"
+                  "sha": "5dea9e2d165adea6365607123a13e2852342f1c2",
+                  "author": "ashuntu",
+                  "timestamp": 1770152024,
+                  "message": "feat: add AppstreamDBusType.session (#36)\n\n## what is the issue this PR is attempting to solve?\n\ndespite the [freedesktop\nspec](https://freedesktop.org/software/appstream/docs/chap-Metadata.html)\nfor appstream dbus types only showing `system` and `user` as valid\ntypes, some appstream files include a dbus type of `session`\n\nfor example:\n```\n<dbus type=\"session\">org.gnome.GTG</dbus>\n```\n\n## what does this change introduce?\n\nadd session to AppstreamDBusType enums to support an additional DBus\ntype used by some appstream files",
+                  "url": "https://github.com/canonical/appstream.dart/commit/5dea9e2d165adea6365607123a13e2852342f1c2"
                },
                {
-                  "sha": "1a8bf3369aed12be74cc5b5c498301621afa86fa",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756095100,
-                  "message": "Update CI Ubuntu version",
-                  "url": "https://github.com/canonical/appstream.dart/commit/1a8bf3369aed12be74cc5b5c498301621afa86fa"
+                  "sha": "ef53865a71d72e598aed1638c9cc99cde2fcaef5",
+                  "author": "Jarred Wilson",
+                  "timestamp": 1767831576,
+                  "message": "fix(collection): allow null component type\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if\nnull",
+                  "url": "https://github.com/canonical/appstream.dart/commit/ef53865a71d72e598aed1638c9cc99cde2fcaef5"
                }
             ],
             "ciActions": [],
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6f9b34c032942f53564b9640e8b70c75058a6bfa",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1770124561,
-                  "message": "Update TICS workflow  (#1212)\n\nNow that we are under the canonical organization, we can leverage some\nfeatures and actions that were not available to us when under the Ubuntu\norganization.\n\nAn example run can be seen\n[here](https://github.com/canonical/authd/actions/runs/21630484006).",
-                  "url": "https://github.com/canonical/authd/commit/6f9b34c032942f53564b9640e8b70c75058a6bfa"
-               },
-               {
-                  "sha": "755f953c4b6fcc8d8069f7589c7e81236929dfdd",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1770041773,
-                  "message": "Merge authd and brokers coverage reports\n\nNow that we are running the analysis as a single project, we need to\nmerge the coverage reports and provide the coverage as expected.",
-                  "url": "https://github.com/canonical/authd/commit/755f953c4b6fcc8d8069f7589c7e81236929dfdd"
-               },
-               {
-                  "sha": "c86d7e2232f6f20e5a69aac69cbfa48e028778c1",
+                  "sha": "c17b4f5fc6b86dab5b174df18d96624283344a27",
                   "author": "adombeck",
-                  "timestamp": 1770046141,
-                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1232)",
-                  "url": "https://github.com/canonical/authd/commit/c86d7e2232f6f20e5a69aac69cbfa48e028778c1"
+                  "timestamp": 1770154444,
+                  "message": "deps(rust): bump bytes from 1.10.1 to 1.11.1 (#1237)",
+                  "url": "https://github.com/canonical/authd/commit/c17b4f5fc6b86dab5b174df18d96624283344a27"
+               },
+               {
+                  "sha": "59d5ce3a1aa3108455a93f10ae721d6ca3cb6ae1",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770151968,
+                  "message": "debian/control: Update XS-Vendored-Sources-Rust",
+                  "url": "https://github.com/canonical/authd/commit/59d5ce3a1aa3108455a93f10ae721d6ca3cb6ae1"
+               },
+               {
+                  "sha": "8ed229b29e7ea98693e224fd5f848b1e12b23184",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770148316,
+                  "message": "Cargo.lock: Use version 3 of the lock\n\nThe cargo version in the Noble archive doesn't support version 4 yet.",
+                  "url": "https://github.com/canonical/authd/commit/8ed229b29e7ea98693e224fd5f848b1e12b23184"
                }
             ],
             "ciActions": [
@@ -7617,25 +7617,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6d50580b206e6f88334f0e65faf81ba583a37131",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756095163,
-                  "message": "Merge pull request #33 from robert-ancell/ci-ubuntu-version\n\nUpdate CI Ubuntu version and remove obsolete CLA check",
-                  "url": "https://github.com/canonical/appstream.dart/commit/6d50580b206e6f88334f0e65faf81ba583a37131"
+                  "sha": "dd9db4d68e3677912fba6e268ad99b00008fab78",
+                  "author": "ashuntu",
+                  "timestamp": 1770154175,
+                  "message": "fix(collection): allow null component type (#38)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the `type`\nfield, the `fromXML` and `fromYAML` factories throw an exception if it\nis `null`\n\n## what does this change introduce?\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if null",
+                  "url": "https://github.com/canonical/appstream.dart/commit/dd9db4d68e3677912fba6e268ad99b00008fab78"
                },
                {
-                  "sha": "7bd97f3b06ae7442ac8d71e03fd93f7e32117ea8",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756095105,
-                  "message": "Remove old CLA checker",
-                  "url": "https://github.com/canonical/appstream.dart/commit/7bd97f3b06ae7442ac8d71e03fd93f7e32117ea8"
+                  "sha": "5dea9e2d165adea6365607123a13e2852342f1c2",
+                  "author": "ashuntu",
+                  "timestamp": 1770152024,
+                  "message": "feat: add AppstreamDBusType.session (#36)\n\n## what is the issue this PR is attempting to solve?\n\ndespite the [freedesktop\nspec](https://freedesktop.org/software/appstream/docs/chap-Metadata.html)\nfor appstream dbus types only showing `system` and `user` as valid\ntypes, some appstream files include a dbus type of `session`\n\nfor example:\n```\n<dbus type=\"session\">org.gnome.GTG</dbus>\n```\n\n## what does this change introduce?\n\nadd session to AppstreamDBusType enums to support an additional DBus\ntype used by some appstream files",
+                  "url": "https://github.com/canonical/appstream.dart/commit/5dea9e2d165adea6365607123a13e2852342f1c2"
                },
                {
-                  "sha": "1a8bf3369aed12be74cc5b5c498301621afa86fa",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756095100,
-                  "message": "Update CI Ubuntu version",
-                  "url": "https://github.com/canonical/appstream.dart/commit/1a8bf3369aed12be74cc5b5c498301621afa86fa"
+                  "sha": "ef53865a71d72e598aed1638c9cc99cde2fcaef5",
+                  "author": "Jarred Wilson",
+                  "timestamp": 1767831576,
+                  "message": "fix(collection): allow null component type\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if\nnull",
+                  "url": "https://github.com/canonical/appstream.dart/commit/ef53865a71d72e598aed1638c9cc99cde2fcaef5"
                }
             ],
             "ciActions": [],
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6f9b34c032942f53564b9640e8b70c75058a6bfa",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1770124561,
-                  "message": "Update TICS workflow  (#1212)\n\nNow that we are under the canonical organization, we can leverage some\nfeatures and actions that were not available to us when under the Ubuntu\norganization.\n\nAn example run can be seen\n[here](https://github.com/canonical/authd/actions/runs/21630484006).",
-                  "url": "https://github.com/canonical/authd/commit/6f9b34c032942f53564b9640e8b70c75058a6bfa"
-               },
-               {
-                  "sha": "755f953c4b6fcc8d8069f7589c7e81236929dfdd",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1770041773,
-                  "message": "Merge authd and brokers coverage reports\n\nNow that we are running the analysis as a single project, we need to\nmerge the coverage reports and provide the coverage as expected.",
-                  "url": "https://github.com/canonical/authd/commit/755f953c4b6fcc8d8069f7589c7e81236929dfdd"
-               },
-               {
-                  "sha": "c86d7e2232f6f20e5a69aac69cbfa48e028778c1",
+                  "sha": "c17b4f5fc6b86dab5b174df18d96624283344a27",
                   "author": "adombeck",
-                  "timestamp": 1770046141,
-                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1232)",
-                  "url": "https://github.com/canonical/authd/commit/c86d7e2232f6f20e5a69aac69cbfa48e028778c1"
+                  "timestamp": 1770154444,
+                  "message": "deps(rust): bump bytes from 1.10.1 to 1.11.1 (#1237)",
+                  "url": "https://github.com/canonical/authd/commit/c17b4f5fc6b86dab5b174df18d96624283344a27"
+               },
+               {
+                  "sha": "59d5ce3a1aa3108455a93f10ae721d6ca3cb6ae1",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770151968,
+                  "message": "debian/control: Update XS-Vendored-Sources-Rust",
+                  "url": "https://github.com/canonical/authd/commit/59d5ce3a1aa3108455a93f10ae721d6ca3cb6ae1"
+               },
+               {
+                  "sha": "8ed229b29e7ea98693e224fd5f848b1e12b23184",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770148316,
+                  "message": "Cargo.lock: Use version 3 of the lock\n\nThe cargo version in the Noble archive doesn't support version 4 yet.",
+                  "url": "https://github.com/canonical/authd/commit/8ed229b29e7ea98693e224fd5f848b1e12b23184"
                }
             ],
             "ciActions": [
