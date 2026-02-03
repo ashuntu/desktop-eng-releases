@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "39dada59a2ff6109c53357578494e685f761834b",
+                  "sha": "f163a24e15816d683c7a0c9de3921cce0f5eaa6f",
                   "author": "Kat",
-                  "timestamp": 1769703399,
-                  "message": "fix(i/C/libinsights_test.go): Fix linter false positive (#304)\n\nThis should fix the annoying linter errors that show up here that\ncomplain about the functions not being implemented for other OSes even\nwhen they are.\n\nTo ensure that we still are properly testing libinsights and we aren't\nsimply skipping over it, a new test file that runs and fatals when `CGo`\nis not available was added.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/39dada59a2ff6109c53357578494e685f761834b"
+                  "timestamp": 1770147853,
+                  "message": "refactor(insights): Add .clang-format for insights (#306)\n\nFor the sake of standardization, this PR adds a `.clang-format` for\n`insights` and also runs the formatter through all C code, including\n\"inline\" CGo code.\n\nBy adding `.clang-format` to `insights` instead of the root of the\nrepository, we include it with the source deb packages. Additionally, C\nis only used in `insights` so placing it there should not cause any\nissues.\n\n---\n[UDENG-8895](https://warthogs.atlassian.net/browse/UDENG-8895)\n\n[UDENG-8895]:\nhttps://warthogs.atlassian.net/browse/UDENG-8895?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f163a24e15816d683c7a0c9de3921cce0f5eaa6f"
                },
                {
-                  "sha": "6d182111c2b5ea943ed9c4af36c67c3d90cc5dd7",
+                  "sha": "9cd63b665cc469dbfc7df8afc0ca47102426e571",
                   "author": "Kat",
-                  "timestamp": 1769700850,
-                  "message": "feat(insights): Implement logging callback handling for C bindings (#297)\n\nPresently, C bindings with Ubuntu Insights have a very visible\nlimitation where logging is almost completely independent of the\nimplementing application. This results in jarring log outputs as native\nlogs and Ubuntu Insight's slog logs are mixed.\n\nThis PR addresses this by implementing a new function allowing for a\nuser to set a thread-safe logging callback. Every time an internal\nUbuntu Insights slog method is called, a custom `slog` handler is\ncalled, which first formats the message into a single, simple, and\nflattened message. It then calls the previously set callback, relaying\nnot only the message but also the intended level. Based on the passed\nlevel, it is up to the implementing application to decide what to do\nwith the message.\n\nTo maintain compatibility, if the callback is not set, then we default\nto the prior existing behavior when it comes to logging.\n\n---\n[UDENG-8727](https://warthogs.atlassian.net/browse/UDENG-8727)\n\n[UDENG-8727]:\nhttps://warthogs.atlassian.net/browse/UDENG-8727?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6d182111c2b5ea943ed9c4af36c67c3d90cc5dd7"
+                  "timestamp": 1770147057,
+                  "message": "fix(insights): Remove CGo generated C header from VSC (#305)\n\nThe CGo-generated C header files were accidentally added in an earlier\nPR and should be removed.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9cd63b665cc469dbfc7df8afc0ca47102426e571"
                },
                {
-                  "sha": "3aa64c74f419fef86aef6338b09cab8c7163ce10",
+                  "sha": "0e83d6ec130380b45a962cf87cc5a0fb92d7be92",
                   "author": "kkuo",
-                  "timestamp": 1769199916,
-                  "message": "Implement logging callback handling for C bindings",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/3aa64c74f419fef86aef6338b09cab8c7163ce10"
+                  "timestamp": 1770145090,
+                  "message": "Add .clang-format for insights",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0e83d6ec130380b45a962cf87cc5a0fb92d7be92"
                }
             ],
             "ciActions": [
