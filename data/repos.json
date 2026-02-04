@@ -4965,6 +4965,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e70acc33387e6753c3a5bdd13b170d569c84e7ae",
+                  "author": "Fernando Bravo",
+                  "timestamp": 1770233061,
+                  "message": "[BugFix] Fix match image logging (#171)",
+                  "url": "https://github.com/canonical/yarf/commit/e70acc33387e6753c3a5bdd13b170d569c84e7ae"
+               },
+               {
                   "sha": "be25c68af460e6d2ea95ec5749c607b74db9e6a1",
                   "author": "Douglas Chiang",
                   "timestamp": 1770116022,
@@ -4977,13 +4984,6 @@
                   "timestamp": 1770106022,
                   "message": "[Infra] Bump protobuf from 6.33.2 to 6.33.5 (#170)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
                   "url": "https://github.com/canonical/yarf/commit/f4b8166133e5c90b29dfaa410380aa2c55319233"
-               },
-               {
-                  "sha": "c3d53c94d8681ba479e7aae56d0f568924bbcef8",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1770103247,
-                  "message": "[Infra] Bump astral-sh/setup-uv from 7.2.0 to 7.2.1 (#169)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/c3d53c94d8681ba479e7aae56d0f568924bbcef8"
                }
             ],
             "ciActions": [],
@@ -5007,14 +5007,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 498,
-                     "timestamp": 1770129564
+                     "revision": 500,
+                     "timestamp": 1770234104
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 497,
-                     "timestamp": 1770128402
+                     "revision": 499,
+                     "timestamp": 1770233865
                   }
                ],
                "channels": [
@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f163a24e15816d683c7a0c9de3921cce0f5eaa6f",
+                  "sha": "03fb2f001d23d305f6374f41c5cdad6fc3c74dc5",
                   "author": "Kat",
-                  "timestamp": 1770147853,
-                  "message": "refactor(insights): Add .clang-format for insights (#306)\n\nFor the sake of standardization, this PR adds a `.clang-format` for\n`insights` and also runs the formatter through all C code, including\n\"inline\" CGo code.\n\nBy adding `.clang-format` to `insights` instead of the root of the\nrepository, we include it with the source deb packages. Additionally, C\nis only used in `insights` so placing it there should not cause any\nissues.\n\n---\n[UDENG-8895](https://warthogs.atlassian.net/browse/UDENG-8895)\n\n[UDENG-8895]:\nhttps://warthogs.atlassian.net/browse/UDENG-8895?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f163a24e15816d683c7a0c9de3921cce0f5eaa6f"
+                  "timestamp": 1770233242,
+                  "message": "ci(insights): Improved C linting and compile time analysis (#307)\n\nPreviously, we had few if any automated checks for the C code in this\nrepository. While not a significant issue due to the vast majority of\nthe code being in Go, there are critical portions in C.\n\nThis PR improves upon this in two main ways.\n\nFirstly, we now pass additional flags to the C compiler during shared\nlibrary generation to catch various warnings and errors. We don't\ninclude `-Wall` as it tends to cause false positives with CGo. This\nimplementation is done in a way such that we are only adding to\n`CGO_CFLAGS`, meaning that any flags other flags such as optimization\nflags passed in at package build time are not omitted.\n\nTo allow for easier parsing of any errors, the generate script now\nprints the error with `fmt.Fprintf` instead of `slog` which does not\nrender characters such as `\\n`.\n\nSecondly, the `QA` workflow was expanded to now run `clang-format`. For\nPRs, we only run `clang-format` against the diff. For everything else,\nwe run `clang-format` against everything.\n\n`clang-tidy` was explored, but it brings more headaches than it is\nworth. Since it is primarily meant for C++ code, most checks would need\nto be disabled. A lot of the other checks are opinionated and would\ncause more trouble than its worth, especially with the code related to\nWayland. Plus, `clang-tidy` typically expects a compilation database.\n\nIn addition to these changes, this PR fixes some formatting in the\nwayland files that were missed in #306\n\n---\n[UDENG-7774](https://warthogs.atlassian.net/browse/UDENG-7774) \n\n[UDENG-7774]:\nhttps://warthogs.atlassian.net/browse/UDENG-7774?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/03fb2f001d23d305f6374f41c5cdad6fc3c74dc5"
                },
                {
-                  "sha": "9cd63b665cc469dbfc7df8afc0ca47102426e571",
-                  "author": "Kat",
-                  "timestamp": 1770147057,
-                  "message": "fix(insights): Remove CGo generated C header from VSC (#305)\n\nThe CGo-generated C header files were accidentally added in an earlier\nPR and should be removed.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9cd63b665cc469dbfc7df8afc0ca47102426e571"
-               },
-               {
-                  "sha": "0e83d6ec130380b45a962cf87cc5a0fb92d7be92",
+                  "sha": "a795bd9ec20c65235738aac4611d125fd371b590",
                   "author": "kkuo",
-                  "timestamp": 1770145090,
-                  "message": "Add .clang-format for insights",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0e83d6ec130380b45a962cf87cc5a0fb92d7be92"
+                  "timestamp": 1770160514,
+                  "message": "Fix.clang-format",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a795bd9ec20c65235738aac4611d125fd371b590"
+               },
+               {
+                  "sha": "eb2872e2cb68c432c4f891ee11bf8bba3d8fd65c",
+                  "author": "kkuo",
+                  "timestamp": 1770159306,
+                  "message": "Fix formatting in Wayland display files",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/eb2872e2cb68c432c4f891ee11bf8bba3d8fd65c"
                }
             ],
             "ciActions": [
@@ -7135,6 +7135,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e70acc33387e6753c3a5bdd13b170d569c84e7ae",
+                  "author": "Fernando Bravo",
+                  "timestamp": 1770233061,
+                  "message": "[BugFix] Fix match image logging (#171)",
+                  "url": "https://github.com/canonical/yarf/commit/e70acc33387e6753c3a5bdd13b170d569c84e7ae"
+               },
+               {
                   "sha": "be25c68af460e6d2ea95ec5749c607b74db9e6a1",
                   "author": "Douglas Chiang",
                   "timestamp": 1770116022,
@@ -7147,13 +7154,6 @@
                   "timestamp": 1770106022,
                   "message": "[Infra] Bump protobuf from 6.33.2 to 6.33.5 (#170)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
                   "url": "https://github.com/canonical/yarf/commit/f4b8166133e5c90b29dfaa410380aa2c55319233"
-               },
-               {
-                  "sha": "c3d53c94d8681ba479e7aae56d0f568924bbcef8",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1770103247,
-                  "message": "[Infra] Bump astral-sh/setup-uv from 7.2.0 to 7.2.1 (#169)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/c3d53c94d8681ba479e7aae56d0f568924bbcef8"
                }
             ],
             "ciActions": [],
@@ -7177,14 +7177,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 498,
-                     "timestamp": 1770129564
+                     "revision": 500,
+                     "timestamp": 1770234104
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 497,
-                     "timestamp": 1770128402
+                     "revision": 499,
+                     "timestamp": 1770233865
                   }
                ],
                "channels": [
@@ -9361,6 +9361,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e70acc33387e6753c3a5bdd13b170d569c84e7ae",
+                  "author": "Fernando Bravo",
+                  "timestamp": 1770233061,
+                  "message": "[BugFix] Fix match image logging (#171)",
+                  "url": "https://github.com/canonical/yarf/commit/e70acc33387e6753c3a5bdd13b170d569c84e7ae"
+               },
+               {
                   "sha": "be25c68af460e6d2ea95ec5749c607b74db9e6a1",
                   "author": "Douglas Chiang",
                   "timestamp": 1770116022,
@@ -9373,13 +9380,6 @@
                   "timestamp": 1770106022,
                   "message": "[Infra] Bump protobuf from 6.33.2 to 6.33.5 (#170)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
                   "url": "https://github.com/canonical/yarf/commit/f4b8166133e5c90b29dfaa410380aa2c55319233"
-               },
-               {
-                  "sha": "c3d53c94d8681ba479e7aae56d0f568924bbcef8",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1770103247,
-                  "message": "[Infra] Bump astral-sh/setup-uv from 7.2.0 to 7.2.1 (#169)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/c3d53c94d8681ba479e7aae56d0f568924bbcef8"
                }
             ],
             "ciActions": [],
@@ -9403,14 +9403,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 498,
-                     "timestamp": 1770129564
+                     "revision": 500,
+                     "timestamp": 1770234104
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 497,
-                     "timestamp": 1770128402
+                     "revision": 499,
+                     "timestamp": 1770233865
                   }
                ],
                "channels": [
