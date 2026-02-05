@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "03fb2f001d23d305f6374f41c5cdad6fc3c74dc5",
+                  "sha": "635ac397928e07c83f97469ddda5be69e5c3a4ba",
                   "author": "Kat",
-                  "timestamp": 1770233242,
-                  "message": "ci(insights): Improved C linting and compile time analysis (#307)\n\nPreviously, we had few if any automated checks for the C code in this\nrepository. While not a significant issue due to the vast majority of\nthe code being in Go, there are critical portions in C.\n\nThis PR improves upon this in two main ways.\n\nFirstly, we now pass additional flags to the C compiler during shared\nlibrary generation to catch various warnings and errors. We don't\ninclude `-Wall` as it tends to cause false positives with CGo. This\nimplementation is done in a way such that we are only adding to\n`CGO_CFLAGS`, meaning that any flags other flags such as optimization\nflags passed in at package build time are not omitted.\n\nTo allow for easier parsing of any errors, the generate script now\nprints the error with `fmt.Fprintf` instead of `slog` which does not\nrender characters such as `\\n`.\n\nSecondly, the `QA` workflow was expanded to now run `clang-format`. For\nPRs, we only run `clang-format` against the diff. For everything else,\nwe run `clang-format` against everything.\n\n`clang-tidy` was explored, but it brings more headaches than it is\nworth. Since it is primarily meant for C++ code, most checks would need\nto be disabled. A lot of the other checks are opinionated and would\ncause more trouble than its worth, especially with the code related to\nWayland. Plus, `clang-tidy` typically expects a compilation database.\n\nIn addition to these changes, this PR fixes some formatting in the\nwayland files that were missed in #306\n\n---\n[UDENG-7774](https://warthogs.atlassian.net/browse/UDENG-7774) \n\n[UDENG-7774]:\nhttps://warthogs.atlassian.net/browse/UDENG-7774?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/03fb2f001d23d305f6374f41c5cdad6fc3c74dc5"
+                  "timestamp": 1770317677,
+                  "message": "docs(CONTRIBUTING.md): Update code style guidelines for C code (#308)\n\nUpdate CONTRIBUTING.md to reference the newly introduced `.clang-format`\nfile from #306.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/635ac397928e07c83f97469ddda5be69e5c3a4ba"
                },
                {
-                  "sha": "a795bd9ec20c65235738aac4611d125fd371b590",
-                  "author": "kkuo",
-                  "timestamp": 1770160514,
-                  "message": "Fix.clang-format",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a795bd9ec20c65235738aac4611d125fd371b590"
+                  "sha": "79b3eca7ace666a09bbf7108ade6b4f794f10581",
+                  "author": "Kat",
+                  "timestamp": 1770317664,
+                  "message": "maint: Re-run clang-format (#311)\n\nWe missed a few files before, and CI is unhappy as a result.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/79b3eca7ace666a09bbf7108ade6b4f794f10581"
                },
                {
-                  "sha": "eb2872e2cb68c432c4f891ee11bf8bba3d8fd65c",
+                  "sha": "1934de25954706acfac09338bf7c35c605dcfa1c",
                   "author": "kkuo",
-                  "timestamp": 1770159306,
-                  "message": "Fix formatting in Wayland display files",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/eb2872e2cb68c432c4f891ee11bf8bba3d8fd65c"
+                  "timestamp": 1770271997,
+                  "message": "Re-run clang-format",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/1934de25954706acfac09338bf7c35c605dcfa1c"
                }
             ],
             "ciActions": [
