@@ -3256,25 +3256,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "27d85c69bfa39cf9cad30d63882c88f400713f4d",
+                  "author": "ashuntu",
+                  "timestamp": 1770330907,
+                  "message": "fix(collection): read screenshots nested under parent (#39)\n\non older versions of the appstream format, screenshots can be nested\nunder a parent `<screenshots>` element. this PR addresses that\npossibility by adding a check for a parent before looking for multiple\ntop level `<screenshot>` elements\n\nspecifically:\n- check for a parent <screenshots> element\n- cast XmlElement as XmlNode to get innertext",
+                  "url": "https://github.com/canonical/appstream.dart/commit/27d85c69bfa39cf9cad30d63882c88f400713f4d"
+               },
+               {
+                  "sha": "7383931955c09b287ae06de271d5f205a47267c8",
+                  "author": "Jarred Wilson",
+                  "timestamp": 1769463856,
+                  "message": "fix(collection): read screenshots nested under parent\n\n- check for a parent <screenshots> element\n- cast XmlElement as XmlNode to get innertext",
+                  "url": "https://github.com/canonical/appstream.dart/commit/7383931955c09b287ae06de271d5f205a47267c8"
+               },
+               {
                   "sha": "331e770d4abe377d7a925f5ec081c4f0e7948c05",
                   "author": "ashuntu",
                   "timestamp": 1770324109,
                   "message": "feat: implement component bundles (#40)\n\n- add Bundle class and type enums\n- add _parseBundleType collection func\n- read bundles info in yaml and xml parsing\n- add bundles to AppstreamComponent\n\nas outlined in the freedesktop spec for\n[yaml](https://www.freedesktop.org/software/appstream/docs/sect-AppStream-YAML.html#field-dep11-bundles)\nand\n[xml](https://www.freedesktop.org/software/appstream/docs/chap-CatalogData.html#tag-ct-bundle)\nthe bundle metadata should be included in the parsing of component data",
                   "url": "https://github.com/canonical/appstream.dart/commit/331e770d4abe377d7a925f5ec081c4f0e7948c05"
-               },
-               {
-                  "sha": "b08da1a3731475bfb74b341156f4ac5f87dd7862",
-                  "author": "ashuntu",
-                  "timestamp": 1770322512,
-                  "message": "fix(collection): read xml:lang attribute from strings (#42)\n\nthe appstream data can use the `xml:lang` xml element attribute. in that\ncase, the default `C` gets overwritten for every language since the xml\ntranslate function only looks for `lang`.\n\nreference:\nhttps://www.freedesktop.org/software/appstream/docs/chap-Metadata.html",
-                  "url": "https://github.com/canonical/appstream.dart/commit/b08da1a3731475bfb74b341156f4ac5f87dd7862"
-               },
-               {
-                  "sha": "07418c214a5fb240d8bd20733a07de9e1c6157aa",
-                  "author": "ashuntu",
-                  "timestamp": 1770321793,
-                  "message": "fix(collection):[#35] allow component w null pkg (#37)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the\n`package` field, the `fromXML` factory throws an exception if it is\n`null`\n\n## what does this change introduce?\n\nthis PR modifies the `fromXML` factory by removing the exception during\nthe `null` check on the `package` field and instead sets the value to\nthe `pkg.innerText` similarly to other fields in the constructor\n\ncloses #35",
-                  "url": "https://github.com/canonical/appstream.dart/commit/07418c214a5fb240d8bd20733a07de9e1c6157aa"
                }
             ],
             "ciActions": [],
@@ -3456,25 +3456,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7996acc8ee7243a09382c6785e6db05275c311d2",
+                  "author": "Kat",
+                  "timestamp": 1770329105,
+                  "message": "feat(p/t/c): Add suggested .clang-format to template (#99)\n\nFor the sake of standardization, this PR adds a suggested\n`.clang-format` to the basic common template.\n\nThis configuration is sourced from the [Ubuntu Pro for WSL\nrepository](https://github.com/canonical/ubuntu-pro-for-wsl/blob/main/.clang-format).\n\nFor projects that don't use C or C++, it should be fine to omit this\nfile.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7996acc8ee7243a09382c6785e6db05275c311d2"
+               },
+               {
+                  "sha": "5c0f4b886f8b6e898244c9685dacd286dc5d61ca",
+                  "author": "kkuo",
+                  "timestamp": 1770145769,
+                  "message": "Add suggested .clang-format to template\n\nOriginally sourced from: https://github.com/canonical/ubuntu-pro-for-wsl/blob/main/.clang-format",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/5c0f4b886f8b6e898244c9685dacd286dc5d61ca"
+               },
+               {
                   "sha": "8f2e2f853bd8f8377435c63cea1333333b5d5f38",
                   "author": "Marco Trevisan",
                   "timestamp": 1770128599,
                   "message": "feat(gh-actions/build-debian): Support running tests with bubblewrap (#93)\n\nIn authd we run some go tests with bubblewrap. We had to skip those when\nthey were executed as part of the Debian package build in the past, but\nwith this PR we won't have to skip them anymore.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/8f2e2f853bd8f8377435c63cea1333333b5d5f38"
-               },
-               {
-                  "sha": "9853d7e84d726c61fcc33e144fa37b902528fe01",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769524293,
-                  "message": "gh-actions: Fix invalid syntax in GitHub Actions metadata\n\nThe `inputs` keyword in GitHub Actions metadata files does not support\nspecifying a type.\n\nSee https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputs",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9853d7e84d726c61fcc33e144fa37b902528fe01"
-               },
-               {
-                  "sha": "ae65827b8c4fc850c089ecd97073184978610057",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1765393256,
-                  "message": "build-debian: Allow the build user to run sudo\n\nEnables us to run tests which require root privileges as part of the\npackage build.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/ae65827b8c4fc850c089ecd97073184978610057"
                }
             ],
             "ciActions": [],
@@ -5352,25 +5352,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "27d85c69bfa39cf9cad30d63882c88f400713f4d",
+                  "author": "ashuntu",
+                  "timestamp": 1770330907,
+                  "message": "fix(collection): read screenshots nested under parent (#39)\n\non older versions of the appstream format, screenshots can be nested\nunder a parent `<screenshots>` element. this PR addresses that\npossibility by adding a check for a parent before looking for multiple\ntop level `<screenshot>` elements\n\nspecifically:\n- check for a parent <screenshots> element\n- cast XmlElement as XmlNode to get innertext",
+                  "url": "https://github.com/canonical/appstream.dart/commit/27d85c69bfa39cf9cad30d63882c88f400713f4d"
+               },
+               {
+                  "sha": "7383931955c09b287ae06de271d5f205a47267c8",
+                  "author": "Jarred Wilson",
+                  "timestamp": 1769463856,
+                  "message": "fix(collection): read screenshots nested under parent\n\n- check for a parent <screenshots> element\n- cast XmlElement as XmlNode to get innertext",
+                  "url": "https://github.com/canonical/appstream.dart/commit/7383931955c09b287ae06de271d5f205a47267c8"
+               },
+               {
                   "sha": "331e770d4abe377d7a925f5ec081c4f0e7948c05",
                   "author": "ashuntu",
                   "timestamp": 1770324109,
                   "message": "feat: implement component bundles (#40)\n\n- add Bundle class and type enums\n- add _parseBundleType collection func\n- read bundles info in yaml and xml parsing\n- add bundles to AppstreamComponent\n\nas outlined in the freedesktop spec for\n[yaml](https://www.freedesktop.org/software/appstream/docs/sect-AppStream-YAML.html#field-dep11-bundles)\nand\n[xml](https://www.freedesktop.org/software/appstream/docs/chap-CatalogData.html#tag-ct-bundle)\nthe bundle metadata should be included in the parsing of component data",
                   "url": "https://github.com/canonical/appstream.dart/commit/331e770d4abe377d7a925f5ec081c4f0e7948c05"
-               },
-               {
-                  "sha": "b08da1a3731475bfb74b341156f4ac5f87dd7862",
-                  "author": "ashuntu",
-                  "timestamp": 1770322512,
-                  "message": "fix(collection): read xml:lang attribute from strings (#42)\n\nthe appstream data can use the `xml:lang` xml element attribute. in that\ncase, the default `C` gets overwritten for every language since the xml\ntranslate function only looks for `lang`.\n\nreference:\nhttps://www.freedesktop.org/software/appstream/docs/chap-Metadata.html",
-                  "url": "https://github.com/canonical/appstream.dart/commit/b08da1a3731475bfb74b341156f4ac5f87dd7862"
-               },
-               {
-                  "sha": "07418c214a5fb240d8bd20733a07de9e1c6157aa",
-                  "author": "ashuntu",
-                  "timestamp": 1770321793,
-                  "message": "fix(collection):[#35] allow component w null pkg (#37)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the\n`package` field, the `fromXML` factory throws an exception if it is\n`null`\n\n## what does this change introduce?\n\nthis PR modifies the `fromXML` factory by removing the exception during\nthe `null` check on the `package` field and instead sets the value to\nthe `pkg.innerText` similarly to other fields in the constructor\n\ncloses #35",
-                  "url": "https://github.com/canonical/appstream.dart/commit/07418c214a5fb240d8bd20733a07de9e1c6157aa"
                }
             ],
             "ciActions": [],
@@ -5552,25 +5552,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7996acc8ee7243a09382c6785e6db05275c311d2",
+                  "author": "Kat",
+                  "timestamp": 1770329105,
+                  "message": "feat(p/t/c): Add suggested .clang-format to template (#99)\n\nFor the sake of standardization, this PR adds a suggested\n`.clang-format` to the basic common template.\n\nThis configuration is sourced from the [Ubuntu Pro for WSL\nrepository](https://github.com/canonical/ubuntu-pro-for-wsl/blob/main/.clang-format).\n\nFor projects that don't use C or C++, it should be fine to omit this\nfile.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7996acc8ee7243a09382c6785e6db05275c311d2"
+               },
+               {
+                  "sha": "5c0f4b886f8b6e898244c9685dacd286dc5d61ca",
+                  "author": "kkuo",
+                  "timestamp": 1770145769,
+                  "message": "Add suggested .clang-format to template\n\nOriginally sourced from: https://github.com/canonical/ubuntu-pro-for-wsl/blob/main/.clang-format",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/5c0f4b886f8b6e898244c9685dacd286dc5d61ca"
+               },
+               {
                   "sha": "8f2e2f853bd8f8377435c63cea1333333b5d5f38",
                   "author": "Marco Trevisan",
                   "timestamp": 1770128599,
                   "message": "feat(gh-actions/build-debian): Support running tests with bubblewrap (#93)\n\nIn authd we run some go tests with bubblewrap. We had to skip those when\nthey were executed as part of the Debian package build in the past, but\nwith this PR we won't have to skip them anymore.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/8f2e2f853bd8f8377435c63cea1333333b5d5f38"
-               },
-               {
-                  "sha": "9853d7e84d726c61fcc33e144fa37b902528fe01",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769524293,
-                  "message": "gh-actions: Fix invalid syntax in GitHub Actions metadata\n\nThe `inputs` keyword in GitHub Actions metadata files does not support\nspecifying a type.\n\nSee https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputs",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9853d7e84d726c61fcc33e144fa37b902528fe01"
-               },
-               {
-                  "sha": "ae65827b8c4fc850c089ecd97073184978610057",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1765393256,
-                  "message": "build-debian: Allow the build user to run sudo\n\nEnables us to run tests which require root privileges as part of the\npackage build.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/ae65827b8c4fc850c089ecd97073184978610057"
                }
             ],
             "ciActions": [],
@@ -7617,25 +7617,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "27d85c69bfa39cf9cad30d63882c88f400713f4d",
+                  "author": "ashuntu",
+                  "timestamp": 1770330907,
+                  "message": "fix(collection): read screenshots nested under parent (#39)\n\non older versions of the appstream format, screenshots can be nested\nunder a parent `<screenshots>` element. this PR addresses that\npossibility by adding a check for a parent before looking for multiple\ntop level `<screenshot>` elements\n\nspecifically:\n- check for a parent <screenshots> element\n- cast XmlElement as XmlNode to get innertext",
+                  "url": "https://github.com/canonical/appstream.dart/commit/27d85c69bfa39cf9cad30d63882c88f400713f4d"
+               },
+               {
+                  "sha": "7383931955c09b287ae06de271d5f205a47267c8",
+                  "author": "Jarred Wilson",
+                  "timestamp": 1769463856,
+                  "message": "fix(collection): read screenshots nested under parent\n\n- check for a parent <screenshots> element\n- cast XmlElement as XmlNode to get innertext",
+                  "url": "https://github.com/canonical/appstream.dart/commit/7383931955c09b287ae06de271d5f205a47267c8"
+               },
+               {
                   "sha": "331e770d4abe377d7a925f5ec081c4f0e7948c05",
                   "author": "ashuntu",
                   "timestamp": 1770324109,
                   "message": "feat: implement component bundles (#40)\n\n- add Bundle class and type enums\n- add _parseBundleType collection func\n- read bundles info in yaml and xml parsing\n- add bundles to AppstreamComponent\n\nas outlined in the freedesktop spec for\n[yaml](https://www.freedesktop.org/software/appstream/docs/sect-AppStream-YAML.html#field-dep11-bundles)\nand\n[xml](https://www.freedesktop.org/software/appstream/docs/chap-CatalogData.html#tag-ct-bundle)\nthe bundle metadata should be included in the parsing of component data",
                   "url": "https://github.com/canonical/appstream.dart/commit/331e770d4abe377d7a925f5ec081c4f0e7948c05"
-               },
-               {
-                  "sha": "b08da1a3731475bfb74b341156f4ac5f87dd7862",
-                  "author": "ashuntu",
-                  "timestamp": 1770322512,
-                  "message": "fix(collection): read xml:lang attribute from strings (#42)\n\nthe appstream data can use the `xml:lang` xml element attribute. in that\ncase, the default `C` gets overwritten for every language since the xml\ntranslate function only looks for `lang`.\n\nreference:\nhttps://www.freedesktop.org/software/appstream/docs/chap-Metadata.html",
-                  "url": "https://github.com/canonical/appstream.dart/commit/b08da1a3731475bfb74b341156f4ac5f87dd7862"
-               },
-               {
-                  "sha": "07418c214a5fb240d8bd20733a07de9e1c6157aa",
-                  "author": "ashuntu",
-                  "timestamp": 1770321793,
-                  "message": "fix(collection):[#35] allow component w null pkg (#37)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the\n`package` field, the `fromXML` factory throws an exception if it is\n`null`\n\n## what does this change introduce?\n\nthis PR modifies the `fromXML` factory by removing the exception during\nthe `null` check on the `package` field and instead sets the value to\nthe `pkg.innerText` similarly to other fields in the constructor\n\ncloses #35",
-                  "url": "https://github.com/canonical/appstream.dart/commit/07418c214a5fb240d8bd20733a07de9e1c6157aa"
                }
             ],
             "ciActions": [],
@@ -7817,25 +7817,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7996acc8ee7243a09382c6785e6db05275c311d2",
+                  "author": "Kat",
+                  "timestamp": 1770329105,
+                  "message": "feat(p/t/c): Add suggested .clang-format to template (#99)\n\nFor the sake of standardization, this PR adds a suggested\n`.clang-format` to the basic common template.\n\nThis configuration is sourced from the [Ubuntu Pro for WSL\nrepository](https://github.com/canonical/ubuntu-pro-for-wsl/blob/main/.clang-format).\n\nFor projects that don't use C or C++, it should be fine to omit this\nfile.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/7996acc8ee7243a09382c6785e6db05275c311d2"
+               },
+               {
+                  "sha": "5c0f4b886f8b6e898244c9685dacd286dc5d61ca",
+                  "author": "kkuo",
+                  "timestamp": 1770145769,
+                  "message": "Add suggested .clang-format to template\n\nOriginally sourced from: https://github.com/canonical/ubuntu-pro-for-wsl/blob/main/.clang-format",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/5c0f4b886f8b6e898244c9685dacd286dc5d61ca"
+               },
+               {
                   "sha": "8f2e2f853bd8f8377435c63cea1333333b5d5f38",
                   "author": "Marco Trevisan",
                   "timestamp": 1770128599,
                   "message": "feat(gh-actions/build-debian): Support running tests with bubblewrap (#93)\n\nIn authd we run some go tests with bubblewrap. We had to skip those when\nthey were executed as part of the Debian package build in the past, but\nwith this PR we won't have to skip them anymore.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/8f2e2f853bd8f8377435c63cea1333333b5d5f38"
-               },
-               {
-                  "sha": "9853d7e84d726c61fcc33e144fa37b902528fe01",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769524293,
-                  "message": "gh-actions: Fix invalid syntax in GitHub Actions metadata\n\nThe `inputs` keyword in GitHub Actions metadata files does not support\nspecifying a type.\n\nSee https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputs",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9853d7e84d726c61fcc33e144fa37b902528fe01"
-               },
-               {
-                  "sha": "ae65827b8c4fc850c089ecd97073184978610057",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1765393256,
-                  "message": "build-debian: Allow the build user to run sudo\n\nEnables us to run tests which require root privileges as part of the\npackage build.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/ae65827b8c4fc850c089ecd97073184978610057"
                }
             ],
             "ciActions": [],
