@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0297aa88f28e5c10b3b9f2db4d0287df907ec932",
+                  "author": "adombeck",
+                  "timestamp": 1770308732,
+                  "message": "move AADSTS70043 error code to IsTokenExpiredError (#1242)\n\nThis commit fixes a mix up from this PR:\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/821/changes\n\nDuring the shuffle of opening a new PR, the new error code condition was\nmoved to the wrong error function (IsUserDisabledError instead of\nIsTokenExpiredError). You can see in the linked PR that it was actually\nintended to be alongside IsTokenExpiredError / AADSTS50173.\n\nThe customer who requested this change noticed the incorrect error\nmessage, but otherwise reports that it correctly captured the\nAADSTS70043 error code.",
+                  "url": "https://github.com/canonical/authd/commit/0297aa88f28e5c10b3b9f2db4d0287df907ec932"
+               },
+               {
+                  "sha": "f93924735a76758466e52aa3fa16083687c95fef",
+                  "author": "Jake Nabasny",
+                  "timestamp": 1770307525,
+                  "message": "move AADSTS70043 error code to IsTokenExpiredError",
+                  "url": "https://github.com/canonical/authd/commit/f93924735a76758466e52aa3fa16083687c95fef"
+               },
+               {
                   "sha": "41d3e4d3fcc32798cadbc094540298341692b15a",
                   "author": "adombeck",
                   "timestamp": 1770204660,
                   "message": "docs: replace isometric architecture diagram (#1238)\n\nReplaces isometric version of arch diagram with flat 2D diagram.\n\nThe new version is being used in other Canonical communications about\nauthd and is more consistent with brand style.",
                   "url": "https://github.com/canonical/authd/commit/41d3e4d3fcc32798cadbc094540298341692b15a"
-               },
-               {
-                  "sha": "b6cb564c560937fbc6aa8ed501ca548d6712c523",
-                  "author": "adombeck",
-                  "timestamp": 1770204551,
-                  "message": "Run e2e-tests in CI (#1210)\n\nRun our new e2e-tests in the GitHub CI.\n\nUDENG-7426",
-                  "url": "https://github.com/canonical/authd/commit/b6cb564c560937fbc6aa8ed501ca548d6712c523"
-               },
-               {
-                  "sha": "b4bf91b098c00e7ea7c2517a0248218a94b0d27d",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769786172,
-                  "message": "ci/e2e-tests: Only block run-tests job on required provision-vm job",
-                  "url": "https://github.com/canonical/authd/commit/b4bf91b098c00e7ea7c2517a0248218a94b0d27d"
                }
             ],
             "ciActions": [
@@ -4455,39 +4455,6 @@
             "snap": null
          },
          {
-            "name": "ubuntu-core-desktop",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/ubuntu-core-desktop",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "4bbf6ec1c29117d0978524b6261c55d5f604f3c3",
-                  "author": "James Henstridge",
-                  "timestamp": 1738639898,
-                  "message": "Merge pull request #82 from sergio-costas/fix-ci-cd\n\nFix CI/CD pipeline",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/commit/4bbf6ec1c29117d0978524b6261c55d5f604f3c3"
-               },
-               {
-                  "sha": "ff8218b9361ddc05e9d240ef9f3c8a0ca2627452",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1738573379,
-                  "message": "Fix CI/CD pipeline\n\nThis patch fixed the CI/CD pipeline, and also removes a\nwarning and adds extra verbose.",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/commit/ff8218b9361ddc05e9d240ef9f3c8a0ca2627452"
-               },
-               {
-                  "sha": "3e478d6600260c3fc36891eae35329dbc1783a5c",
-                  "author": "James Henstridge",
-                  "timestamp": 1720594692,
-                  "message": "Merge pull request #74 from jhenstridge/ucd-24\n\nmodel: add an Ubuntu Core Desktop 24 model",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/commit/3e478d6600260c3fc36891eae35329dbc1783a5c"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "ubuntu-core-desktop-snapd",
             "defaultBranch": "master",
             "newCommits": 0,
@@ -5066,6 +5033,39 @@
             "snap": null
          },
          {
+            "name": "ubuntu-core-desktop",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/ubuntu-core-desktop",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "4bbf6ec1c29117d0978524b6261c55d5f604f3c3",
+                  "author": "James Henstridge",
+                  "timestamp": 1738639898,
+                  "message": "Merge pull request #82 from sergio-costas/fix-ci-cd\n\nFix CI/CD pipeline",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/commit/4bbf6ec1c29117d0978524b6261c55d5f604f3c3"
+               },
+               {
+                  "sha": "ff8218b9361ddc05e9d240ef9f3c8a0ca2627452",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1738573379,
+                  "message": "Fix CI/CD pipeline\n\nThis patch fixed the CI/CD pipeline, and also removes a\nwarning and adds extra verbose.",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/commit/ff8218b9361ddc05e9d240ef9f3c8a0ca2627452"
+               },
+               {
+                  "sha": "3e478d6600260c3fc36891eae35329dbc1783a5c",
+                  "author": "James Henstridge",
+                  "timestamp": 1720594692,
+                  "message": "Merge pull request #74 from jhenstridge/ucd-24\n\nmodel: add an Ubuntu Core Desktop 24 model",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/commit/3e478d6600260c3fc36891eae35329dbc1783a5c"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "ubuntu-desktop-provision-screenshots",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0297aa88f28e5c10b3b9f2db4d0287df907ec932",
+                  "author": "adombeck",
+                  "timestamp": 1770308732,
+                  "message": "move AADSTS70043 error code to IsTokenExpiredError (#1242)\n\nThis commit fixes a mix up from this PR:\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/821/changes\n\nDuring the shuffle of opening a new PR, the new error code condition was\nmoved to the wrong error function (IsUserDisabledError instead of\nIsTokenExpiredError). You can see in the linked PR that it was actually\nintended to be alongside IsTokenExpiredError / AADSTS50173.\n\nThe customer who requested this change noticed the incorrect error\nmessage, but otherwise reports that it correctly captured the\nAADSTS70043 error code.",
+                  "url": "https://github.com/canonical/authd/commit/0297aa88f28e5c10b3b9f2db4d0287df907ec932"
+               },
+               {
+                  "sha": "f93924735a76758466e52aa3fa16083687c95fef",
+                  "author": "Jake Nabasny",
+                  "timestamp": 1770307525,
+                  "message": "move AADSTS70043 error code to IsTokenExpiredError",
+                  "url": "https://github.com/canonical/authd/commit/f93924735a76758466e52aa3fa16083687c95fef"
+               },
+               {
                   "sha": "41d3e4d3fcc32798cadbc094540298341692b15a",
                   "author": "adombeck",
                   "timestamp": 1770204660,
                   "message": "docs: replace isometric architecture diagram (#1238)\n\nReplaces isometric version of arch diagram with flat 2D diagram.\n\nThe new version is being used in other Canonical communications about\nauthd and is more consistent with brand style.",
                   "url": "https://github.com/canonical/authd/commit/41d3e4d3fcc32798cadbc094540298341692b15a"
-               },
-               {
-                  "sha": "b6cb564c560937fbc6aa8ed501ca548d6712c523",
-                  "author": "adombeck",
-                  "timestamp": 1770204551,
-                  "message": "Run e2e-tests in CI (#1210)\n\nRun our new e2e-tests in the GitHub CI.\n\nUDENG-7426",
-                  "url": "https://github.com/canonical/authd/commit/b6cb564c560937fbc6aa8ed501ca548d6712c523"
-               },
-               {
-                  "sha": "b4bf91b098c00e7ea7c2517a0248218a94b0d27d",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769786172,
-                  "message": "ci/e2e-tests: Only block run-tests job on required provision-vm job",
-                  "url": "https://github.com/canonical/authd/commit/b4bf91b098c00e7ea7c2517a0248218a94b0d27d"
                }
             ],
             "ciActions": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0297aa88f28e5c10b3b9f2db4d0287df907ec932",
+                  "author": "adombeck",
+                  "timestamp": 1770308732,
+                  "message": "move AADSTS70043 error code to IsTokenExpiredError (#1242)\n\nThis commit fixes a mix up from this PR:\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/821/changes\n\nDuring the shuffle of opening a new PR, the new error code condition was\nmoved to the wrong error function (IsUserDisabledError instead of\nIsTokenExpiredError). You can see in the linked PR that it was actually\nintended to be alongside IsTokenExpiredError / AADSTS50173.\n\nThe customer who requested this change noticed the incorrect error\nmessage, but otherwise reports that it correctly captured the\nAADSTS70043 error code.",
+                  "url": "https://github.com/canonical/authd/commit/0297aa88f28e5c10b3b9f2db4d0287df907ec932"
+               },
+               {
+                  "sha": "f93924735a76758466e52aa3fa16083687c95fef",
+                  "author": "Jake Nabasny",
+                  "timestamp": 1770307525,
+                  "message": "move AADSTS70043 error code to IsTokenExpiredError",
+                  "url": "https://github.com/canonical/authd/commit/f93924735a76758466e52aa3fa16083687c95fef"
+               },
+               {
                   "sha": "41d3e4d3fcc32798cadbc094540298341692b15a",
                   "author": "adombeck",
                   "timestamp": 1770204660,
                   "message": "docs: replace isometric architecture diagram (#1238)\n\nReplaces isometric version of arch diagram with flat 2D diagram.\n\nThe new version is being used in other Canonical communications about\nauthd and is more consistent with brand style.",
                   "url": "https://github.com/canonical/authd/commit/41d3e4d3fcc32798cadbc094540298341692b15a"
-               },
-               {
-                  "sha": "b6cb564c560937fbc6aa8ed501ca548d6712c523",
-                  "author": "adombeck",
-                  "timestamp": 1770204551,
-                  "message": "Run e2e-tests in CI (#1210)\n\nRun our new e2e-tests in the GitHub CI.\n\nUDENG-7426",
-                  "url": "https://github.com/canonical/authd/commit/b6cb564c560937fbc6aa8ed501ca548d6712c523"
-               },
-               {
-                  "sha": "b4bf91b098c00e7ea7c2517a0248218a94b0d27d",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1769786172,
-                  "message": "ci/e2e-tests: Only block run-tests job on required provision-vm job",
-                  "url": "https://github.com/canonical/authd/commit/b4bf91b098c00e7ea7c2517a0248218a94b0d27d"
                }
             ],
             "ciActions": [
