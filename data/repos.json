@@ -3256,25 +3256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd9db4d68e3677912fba6e268ad99b00008fab78",
+                  "sha": "331e770d4abe377d7a925f5ec081c4f0e7948c05",
                   "author": "ashuntu",
-                  "timestamp": 1770154175,
-                  "message": "fix(collection): allow null component type (#38)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the `type`\nfield, the `fromXML` and `fromYAML` factories throw an exception if it\nis `null`\n\n## what does this change introduce?\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if null",
-                  "url": "https://github.com/canonical/appstream.dart/commit/dd9db4d68e3677912fba6e268ad99b00008fab78"
+                  "timestamp": 1770324109,
+                  "message": "feat: implement component bundles (#40)\n\n- add Bundle class and type enums\n- add _parseBundleType collection func\n- read bundles info in yaml and xml parsing\n- add bundles to AppstreamComponent\n\nas outlined in the freedesktop spec for\n[yaml](https://www.freedesktop.org/software/appstream/docs/sect-AppStream-YAML.html#field-dep11-bundles)\nand\n[xml](https://www.freedesktop.org/software/appstream/docs/chap-CatalogData.html#tag-ct-bundle)\nthe bundle metadata should be included in the parsing of component data",
+                  "url": "https://github.com/canonical/appstream.dart/commit/331e770d4abe377d7a925f5ec081c4f0e7948c05"
                },
                {
-                  "sha": "5dea9e2d165adea6365607123a13e2852342f1c2",
+                  "sha": "b08da1a3731475bfb74b341156f4ac5f87dd7862",
                   "author": "ashuntu",
-                  "timestamp": 1770152024,
-                  "message": "feat: add AppstreamDBusType.session (#36)\n\n## what is the issue this PR is attempting to solve?\n\ndespite the [freedesktop\nspec](https://freedesktop.org/software/appstream/docs/chap-Metadata.html)\nfor appstream dbus types only showing `system` and `user` as valid\ntypes, some appstream files include a dbus type of `session`\n\nfor example:\n```\n<dbus type=\"session\">org.gnome.GTG</dbus>\n```\n\n## what does this change introduce?\n\nadd session to AppstreamDBusType enums to support an additional DBus\ntype used by some appstream files",
-                  "url": "https://github.com/canonical/appstream.dart/commit/5dea9e2d165adea6365607123a13e2852342f1c2"
+                  "timestamp": 1770322512,
+                  "message": "fix(collection): read xml:lang attribute from strings (#42)\n\nthe appstream data can use the `xml:lang` xml element attribute. in that\ncase, the default `C` gets overwritten for every language since the xml\ntranslate function only looks for `lang`.\n\nreference:\nhttps://www.freedesktop.org/software/appstream/docs/chap-Metadata.html",
+                  "url": "https://github.com/canonical/appstream.dart/commit/b08da1a3731475bfb74b341156f4ac5f87dd7862"
                },
                {
-                  "sha": "ef53865a71d72e598aed1638c9cc99cde2fcaef5",
-                  "author": "Jarred Wilson",
-                  "timestamp": 1767831576,
-                  "message": "fix(collection): allow null component type\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if\nnull",
-                  "url": "https://github.com/canonical/appstream.dart/commit/ef53865a71d72e598aed1638c9cc99cde2fcaef5"
+                  "sha": "07418c214a5fb240d8bd20733a07de9e1c6157aa",
+                  "author": "ashuntu",
+                  "timestamp": 1770321793,
+                  "message": "fix(collection):[#35] allow component w null pkg (#37)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the\n`package` field, the `fromXML` factory throws an exception if it is\n`null`\n\n## what does this change introduce?\n\nthis PR modifies the `fromXML` factory by removing the exception during\nthe `null` check on the `package` field and instead sets the value to\nthe `pkg.innerText` similarly to other fields in the constructor\n\ncloses #35",
+                  "url": "https://github.com/canonical/appstream.dart/commit/07418c214a5fb240d8bd20733a07de9e1c6157aa"
                }
             ],
             "ciActions": [],
@@ -5352,25 +5352,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd9db4d68e3677912fba6e268ad99b00008fab78",
+                  "sha": "331e770d4abe377d7a925f5ec081c4f0e7948c05",
                   "author": "ashuntu",
-                  "timestamp": 1770154175,
-                  "message": "fix(collection): allow null component type (#38)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the `type`\nfield, the `fromXML` and `fromYAML` factories throw an exception if it\nis `null`\n\n## what does this change introduce?\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if null",
-                  "url": "https://github.com/canonical/appstream.dart/commit/dd9db4d68e3677912fba6e268ad99b00008fab78"
+                  "timestamp": 1770324109,
+                  "message": "feat: implement component bundles (#40)\n\n- add Bundle class and type enums\n- add _parseBundleType collection func\n- read bundles info in yaml and xml parsing\n- add bundles to AppstreamComponent\n\nas outlined in the freedesktop spec for\n[yaml](https://www.freedesktop.org/software/appstream/docs/sect-AppStream-YAML.html#field-dep11-bundles)\nand\n[xml](https://www.freedesktop.org/software/appstream/docs/chap-CatalogData.html#tag-ct-bundle)\nthe bundle metadata should be included in the parsing of component data",
+                  "url": "https://github.com/canonical/appstream.dart/commit/331e770d4abe377d7a925f5ec081c4f0e7948c05"
                },
                {
-                  "sha": "5dea9e2d165adea6365607123a13e2852342f1c2",
+                  "sha": "b08da1a3731475bfb74b341156f4ac5f87dd7862",
                   "author": "ashuntu",
-                  "timestamp": 1770152024,
-                  "message": "feat: add AppstreamDBusType.session (#36)\n\n## what is the issue this PR is attempting to solve?\n\ndespite the [freedesktop\nspec](https://freedesktop.org/software/appstream/docs/chap-Metadata.html)\nfor appstream dbus types only showing `system` and `user` as valid\ntypes, some appstream files include a dbus type of `session`\n\nfor example:\n```\n<dbus type=\"session\">org.gnome.GTG</dbus>\n```\n\n## what does this change introduce?\n\nadd session to AppstreamDBusType enums to support an additional DBus\ntype used by some appstream files",
-                  "url": "https://github.com/canonical/appstream.dart/commit/5dea9e2d165adea6365607123a13e2852342f1c2"
+                  "timestamp": 1770322512,
+                  "message": "fix(collection): read xml:lang attribute from strings (#42)\n\nthe appstream data can use the `xml:lang` xml element attribute. in that\ncase, the default `C` gets overwritten for every language since the xml\ntranslate function only looks for `lang`.\n\nreference:\nhttps://www.freedesktop.org/software/appstream/docs/chap-Metadata.html",
+                  "url": "https://github.com/canonical/appstream.dart/commit/b08da1a3731475bfb74b341156f4ac5f87dd7862"
                },
                {
-                  "sha": "ef53865a71d72e598aed1638c9cc99cde2fcaef5",
-                  "author": "Jarred Wilson",
-                  "timestamp": 1767831576,
-                  "message": "fix(collection): allow null component type\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if\nnull",
-                  "url": "https://github.com/canonical/appstream.dart/commit/ef53865a71d72e598aed1638c9cc99cde2fcaef5"
+                  "sha": "07418c214a5fb240d8bd20733a07de9e1c6157aa",
+                  "author": "ashuntu",
+                  "timestamp": 1770321793,
+                  "message": "fix(collection):[#35] allow component w null pkg (#37)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the\n`package` field, the `fromXML` factory throws an exception if it is\n`null`\n\n## what does this change introduce?\n\nthis PR modifies the `fromXML` factory by removing the exception during\nthe `null` check on the `package` field and instead sets the value to\nthe `pkg.innerText` similarly to other fields in the constructor\n\ncloses #35",
+                  "url": "https://github.com/canonical/appstream.dart/commit/07418c214a5fb240d8bd20733a07de9e1c6157aa"
                }
             ],
             "ciActions": [],
@@ -7617,25 +7617,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd9db4d68e3677912fba6e268ad99b00008fab78",
+                  "sha": "331e770d4abe377d7a925f5ec081c4f0e7948c05",
                   "author": "ashuntu",
-                  "timestamp": 1770154175,
-                  "message": "fix(collection): allow null component type (#38)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the `type`\nfield, the `fromXML` and `fromYAML` factories throw an exception if it\nis `null`\n\n## what does this change introduce?\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if null",
-                  "url": "https://github.com/canonical/appstream.dart/commit/dd9db4d68e3677912fba6e268ad99b00008fab78"
+                  "timestamp": 1770324109,
+                  "message": "feat: implement component bundles (#40)\n\n- add Bundle class and type enums\n- add _parseBundleType collection func\n- read bundles info in yaml and xml parsing\n- add bundles to AppstreamComponent\n\nas outlined in the freedesktop spec for\n[yaml](https://www.freedesktop.org/software/appstream/docs/sect-AppStream-YAML.html#field-dep11-bundles)\nand\n[xml](https://www.freedesktop.org/software/appstream/docs/chap-CatalogData.html#tag-ct-bundle)\nthe bundle metadata should be included in the parsing of component data",
+                  "url": "https://github.com/canonical/appstream.dart/commit/331e770d4abe377d7a925f5ec081c4f0e7948c05"
                },
                {
-                  "sha": "5dea9e2d165adea6365607123a13e2852342f1c2",
+                  "sha": "b08da1a3731475bfb74b341156f4ac5f87dd7862",
                   "author": "ashuntu",
-                  "timestamp": 1770152024,
-                  "message": "feat: add AppstreamDBusType.session (#36)\n\n## what is the issue this PR is attempting to solve?\n\ndespite the [freedesktop\nspec](https://freedesktop.org/software/appstream/docs/chap-Metadata.html)\nfor appstream dbus types only showing `system` and `user` as valid\ntypes, some appstream files include a dbus type of `session`\n\nfor example:\n```\n<dbus type=\"session\">org.gnome.GTG</dbus>\n```\n\n## what does this change introduce?\n\nadd session to AppstreamDBusType enums to support an additional DBus\ntype used by some appstream files",
-                  "url": "https://github.com/canonical/appstream.dart/commit/5dea9e2d165adea6365607123a13e2852342f1c2"
+                  "timestamp": 1770322512,
+                  "message": "fix(collection): read xml:lang attribute from strings (#42)\n\nthe appstream data can use the `xml:lang` xml element attribute. in that\ncase, the default `C` gets overwritten for every language since the xml\ntranslate function only looks for `lang`.\n\nreference:\nhttps://www.freedesktop.org/software/appstream/docs/chap-Metadata.html",
+                  "url": "https://github.com/canonical/appstream.dart/commit/b08da1a3731475bfb74b341156f4ac5f87dd7862"
                },
                {
-                  "sha": "ef53865a71d72e598aed1638c9cc99cde2fcaef5",
-                  "author": "Jarred Wilson",
-                  "timestamp": 1767831576,
-                  "message": "fix(collection): allow null component type\n\ncheck the typeName for a null value and if not null, parse the string\ninto an enum while defaulting to AppstreamCollectiontype.unknown if\nnull",
-                  "url": "https://github.com/canonical/appstream.dart/commit/ef53865a71d72e598aed1638c9cc99cde2fcaef5"
+                  "sha": "07418c214a5fb240d8bd20733a07de9e1c6157aa",
+                  "author": "ashuntu",
+                  "timestamp": 1770321793,
+                  "message": "fix(collection):[#35] allow component w null pkg (#37)\n\n## what is the issue this PR is attempting to solve?\n\nwhile the `AppstreamComponent` struct allows for `null` for the\n`package` field, the `fromXML` factory throws an exception if it is\n`null`\n\n## what does this change introduce?\n\nthis PR modifies the `fromXML` factory by removing the exception during\nthe `null` check on the `package` field and instead sets the value to\nthe `pkg.innerText` similarly to other fields in the constructor\n\ncloses #35",
+                  "url": "https://github.com/canonical/appstream.dart/commit/07418c214a5fb240d8bd20733a07de9e1c6157aa"
                }
             ],
             "ciActions": [],
