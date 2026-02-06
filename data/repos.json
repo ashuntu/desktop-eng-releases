@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4ed39b079b191ed55732bdd9d10c5d9892dd83bc",
+                  "author": "adombeck",
+                  "timestamp": 1770345525,
+                  "message": "Bump Go toolchain version to 1.25.7 (#1246)",
+                  "url": "https://github.com/canonical/authd/commit/4ed39b079b191ed55732bdd9d10c5d9892dd83bc"
+               },
+               {
+                  "sha": "27759b4eee975128d09c95494a2552016189581d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770321650,
+                  "message": "Bump Go toolchain version to 1.25.7\n\ngovulncheck reports the following vulnerabilities in go1.25.6\n\nVulnerability #1: GO-2026-4337\n    Unexpected session resumption in crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4337\n  Standard library\n    Found in: crypto/tls@go1.25.6\n    Fixed in: crypto/tls@go1.25.7\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd/daemon/daemon_test.go:248:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: internal/services/pam/pam_test.go:895:14: pam_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write",
+                  "url": "https://github.com/canonical/authd/commit/27759b4eee975128d09c95494a2552016189581d"
+               },
+               {
                   "sha": "0297aa88f28e5c10b3b9f2db4d0287df907ec932",
                   "author": "adombeck",
                   "timestamp": 1770308732,
                   "message": "move AADSTS70043 error code to IsTokenExpiredError (#1242)\n\nThis commit fixes a mix up from this PR:\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/821/changes\n\nDuring the shuffle of opening a new PR, the new error code condition was\nmoved to the wrong error function (IsUserDisabledError instead of\nIsTokenExpiredError). You can see in the linked PR that it was actually\nintended to be alongside IsTokenExpiredError / AADSTS50173.\n\nThe customer who requested this change noticed the incorrect error\nmessage, but otherwise reports that it correctly captured the\nAADSTS70043 error code.",
                   "url": "https://github.com/canonical/authd/commit/0297aa88f28e5c10b3b9f2db4d0287df907ec932"
-               },
-               {
-                  "sha": "f93924735a76758466e52aa3fa16083687c95fef",
-                  "author": "Jake Nabasny",
-                  "timestamp": 1770307525,
-                  "message": "move AADSTS70043 error code to IsTokenExpiredError",
-                  "url": "https://github.com/canonical/authd/commit/f93924735a76758466e52aa3fa16083687c95fef"
-               },
-               {
-                  "sha": "41d3e4d3fcc32798cadbc094540298341692b15a",
-                  "author": "adombeck",
-                  "timestamp": 1770204660,
-                  "message": "docs: replace isometric architecture diagram (#1238)\n\nReplaces isometric version of arch diagram with flat 2D diagram.\n\nThe new version is being used in other Canonical communications about\nauthd and is more consistent with brand style.",
-                  "url": "https://github.com/canonical/authd/commit/41d3e4d3fcc32798cadbc094540298341692b15a"
                }
             ],
             "ciActions": [
@@ -5073,25 +5073,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "76bd0d1b2fc43bcd0abf0aa073775af3da6edc5e",
+                  "sha": "24de70a42a3ac56ae1161847dbd11c772553ccab",
                   "author": "github-actions[bot]",
-                  "timestamp": 1770250661,
-                  "message": "Update bootstrap/dark screenshots on `main` (#1733)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/76bd0d1b2fc43bcd0abf0aa073775af3da6edc5e"
+                  "timestamp": 1770336915,
+                  "message": "Update bootstrap/light screenshots on `main` (#1737)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/24de70a42a3ac56ae1161847dbd11c772553ccab"
                },
                {
-                  "sha": "51ca49c4997e175f1f1800198f6663acdf91849b",
+                  "sha": "63dcc4f1ab9b2abdaca8b6e2706e7ef582c9cc63",
                   "author": "github-actions[bot]",
-                  "timestamp": 1770250541,
-                  "message": "Update init/light screenshots on `main` (#1732)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/51ca49c4997e175f1f1800198f6663acdf91849b"
+                  "timestamp": 1770336881,
+                  "message": "Update bootstrap/dark screenshots on `main` (#1736)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/63dcc4f1ab9b2abdaca8b6e2706e7ef582c9cc63"
                },
                {
-                  "sha": "3fb32f3ef62a32b53a8706ea51ba88808c5e1316",
+                  "sha": "7f695474f79764c86d9cb08957abe3909bf7195e",
                   "author": "github-actions[bot]",
-                  "timestamp": 1770164156,
-                  "message": "Update bootstrap/high-contrast-dark screenshots on `main` (#1731)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/3fb32f3ef62a32b53a8706ea51ba88808c5e1316"
+                  "timestamp": 1770336768,
+                  "message": "Update init/light screenshots on `main` (#1735)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/7f695474f79764c86d9cb08957abe3909bf7195e"
                }
             ],
             "ciActions": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4ed39b079b191ed55732bdd9d10c5d9892dd83bc",
+                  "author": "adombeck",
+                  "timestamp": 1770345525,
+                  "message": "Bump Go toolchain version to 1.25.7 (#1246)",
+                  "url": "https://github.com/canonical/authd/commit/4ed39b079b191ed55732bdd9d10c5d9892dd83bc"
+               },
+               {
+                  "sha": "27759b4eee975128d09c95494a2552016189581d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770321650,
+                  "message": "Bump Go toolchain version to 1.25.7\n\ngovulncheck reports the following vulnerabilities in go1.25.6\n\nVulnerability #1: GO-2026-4337\n    Unexpected session resumption in crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4337\n  Standard library\n    Found in: crypto/tls@go1.25.6\n    Fixed in: crypto/tls@go1.25.7\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd/daemon/daemon_test.go:248:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: internal/services/pam/pam_test.go:895:14: pam_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write",
+                  "url": "https://github.com/canonical/authd/commit/27759b4eee975128d09c95494a2552016189581d"
+               },
+               {
                   "sha": "0297aa88f28e5c10b3b9f2db4d0287df907ec932",
                   "author": "adombeck",
                   "timestamp": 1770308732,
                   "message": "move AADSTS70043 error code to IsTokenExpiredError (#1242)\n\nThis commit fixes a mix up from this PR:\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/821/changes\n\nDuring the shuffle of opening a new PR, the new error code condition was\nmoved to the wrong error function (IsUserDisabledError instead of\nIsTokenExpiredError). You can see in the linked PR that it was actually\nintended to be alongside IsTokenExpiredError / AADSTS50173.\n\nThe customer who requested this change noticed the incorrect error\nmessage, but otherwise reports that it correctly captured the\nAADSTS70043 error code.",
                   "url": "https://github.com/canonical/authd/commit/0297aa88f28e5c10b3b9f2db4d0287df907ec932"
-               },
-               {
-                  "sha": "f93924735a76758466e52aa3fa16083687c95fef",
-                  "author": "Jake Nabasny",
-                  "timestamp": 1770307525,
-                  "message": "move AADSTS70043 error code to IsTokenExpiredError",
-                  "url": "https://github.com/canonical/authd/commit/f93924735a76758466e52aa3fa16083687c95fef"
-               },
-               {
-                  "sha": "41d3e4d3fcc32798cadbc094540298341692b15a",
-                  "author": "adombeck",
-                  "timestamp": 1770204660,
-                  "message": "docs: replace isometric architecture diagram (#1238)\n\nReplaces isometric version of arch diagram with flat 2D diagram.\n\nThe new version is being used in other Canonical communications about\nauthd and is more consistent with brand style.",
-                  "url": "https://github.com/canonical/authd/commit/41d3e4d3fcc32798cadbc094540298341692b15a"
                }
             ],
             "ciActions": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4ed39b079b191ed55732bdd9d10c5d9892dd83bc",
+                  "author": "adombeck",
+                  "timestamp": 1770345525,
+                  "message": "Bump Go toolchain version to 1.25.7 (#1246)",
+                  "url": "https://github.com/canonical/authd/commit/4ed39b079b191ed55732bdd9d10c5d9892dd83bc"
+               },
+               {
+                  "sha": "27759b4eee975128d09c95494a2552016189581d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770321650,
+                  "message": "Bump Go toolchain version to 1.25.7\n\ngovulncheck reports the following vulnerabilities in go1.25.6\n\nVulnerability #1: GO-2026-4337\n    Unexpected session resumption in crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4337\n  Standard library\n    Found in: crypto/tls@go1.25.6\n    Fixed in: crypto/tls@go1.25.7\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd/daemon/daemon_test.go:248:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: internal/services/pam/pam_test.go:895:14: pam_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write",
+                  "url": "https://github.com/canonical/authd/commit/27759b4eee975128d09c95494a2552016189581d"
+               },
+               {
                   "sha": "0297aa88f28e5c10b3b9f2db4d0287df907ec932",
                   "author": "adombeck",
                   "timestamp": 1770308732,
                   "message": "move AADSTS70043 error code to IsTokenExpiredError (#1242)\n\nThis commit fixes a mix up from this PR:\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/821/changes\n\nDuring the shuffle of opening a new PR, the new error code condition was\nmoved to the wrong error function (IsUserDisabledError instead of\nIsTokenExpiredError). You can see in the linked PR that it was actually\nintended to be alongside IsTokenExpiredError / AADSTS50173.\n\nThe customer who requested this change noticed the incorrect error\nmessage, but otherwise reports that it correctly captured the\nAADSTS70043 error code.",
                   "url": "https://github.com/canonical/authd/commit/0297aa88f28e5c10b3b9f2db4d0287df907ec932"
-               },
-               {
-                  "sha": "f93924735a76758466e52aa3fa16083687c95fef",
-                  "author": "Jake Nabasny",
-                  "timestamp": 1770307525,
-                  "message": "move AADSTS70043 error code to IsTokenExpiredError",
-                  "url": "https://github.com/canonical/authd/commit/f93924735a76758466e52aa3fa16083687c95fef"
-               },
-               {
-                  "sha": "41d3e4d3fcc32798cadbc094540298341692b15a",
-                  "author": "adombeck",
-                  "timestamp": 1770204660,
-                  "message": "docs: replace isometric architecture diagram (#1238)\n\nReplaces isometric version of arch diagram with flat 2D diagram.\n\nThe new version is being used in other Canonical communications about\nauthd and is more consistent with brand style.",
-                  "url": "https://github.com/canonical/authd/commit/41d3e4d3fcc32798cadbc094540298341692b15a"
                }
             ],
             "ciActions": [
@@ -8959,25 +8959,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "76bd0d1b2fc43bcd0abf0aa073775af3da6edc5e",
+                  "sha": "24de70a42a3ac56ae1161847dbd11c772553ccab",
                   "author": "github-actions[bot]",
-                  "timestamp": 1770250661,
-                  "message": "Update bootstrap/dark screenshots on `main` (#1733)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/76bd0d1b2fc43bcd0abf0aa073775af3da6edc5e"
+                  "timestamp": 1770336915,
+                  "message": "Update bootstrap/light screenshots on `main` (#1737)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/24de70a42a3ac56ae1161847dbd11c772553ccab"
                },
                {
-                  "sha": "51ca49c4997e175f1f1800198f6663acdf91849b",
+                  "sha": "63dcc4f1ab9b2abdaca8b6e2706e7ef582c9cc63",
                   "author": "github-actions[bot]",
-                  "timestamp": 1770250541,
-                  "message": "Update init/light screenshots on `main` (#1732)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/51ca49c4997e175f1f1800198f6663acdf91849b"
+                  "timestamp": 1770336881,
+                  "message": "Update bootstrap/dark screenshots on `main` (#1736)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/63dcc4f1ab9b2abdaca8b6e2706e7ef582c9cc63"
                },
                {
-                  "sha": "3fb32f3ef62a32b53a8706ea51ba88808c5e1316",
+                  "sha": "7f695474f79764c86d9cb08957abe3909bf7195e",
                   "author": "github-actions[bot]",
-                  "timestamp": 1770164156,
-                  "message": "Update bootstrap/high-contrast-dark screenshots on `main` (#1731)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/3fb32f3ef62a32b53a8706ea51ba88808c5e1316"
+                  "timestamp": 1770336768,
+                  "message": "Update init/light screenshots on `main` (#1735)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/7f695474f79764c86d9cb08957abe3909bf7195e"
                }
             ],
             "ciActions": [
