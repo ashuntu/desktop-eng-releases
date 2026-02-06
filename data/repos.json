@@ -3289,6 +3289,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8c1d2ee1397c37a171e7f846f2d23025502fd130",
+                  "author": "adombeck",
+                  "timestamp": 1770381808,
+                  "message": "deps(go-tools): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc from 1.6.0 to 1.6.1 in /tools in the minor-updates group (#1239)",
+                  "url": "https://github.com/canonical/authd/commit/8c1d2ee1397c37a171e7f846f2d23025502fd130"
+               },
+               {
                   "sha": "4ed39b079b191ed55732bdd9d10c5d9892dd83bc",
                   "author": "adombeck",
                   "timestamp": 1770345525,
@@ -3301,13 +3308,6 @@
                   "timestamp": 1770321650,
                   "message": "Bump Go toolchain version to 1.25.7\n\ngovulncheck reports the following vulnerabilities in go1.25.6\n\nVulnerability #1: GO-2026-4337\n    Unexpected session resumption in crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4337\n  Standard library\n    Found in: crypto/tls@go1.25.6\n    Fixed in: crypto/tls@go1.25.7\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd/daemon/daemon_test.go:248:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: internal/services/pam/pam_test.go:895:14: pam_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write",
                   "url": "https://github.com/canonical/authd/commit/27759b4eee975128d09c95494a2552016189581d"
-               },
-               {
-                  "sha": "0297aa88f28e5c10b3b9f2db4d0287df907ec932",
-                  "author": "adombeck",
-                  "timestamp": 1770308732,
-                  "message": "move AADSTS70043 error code to IsTokenExpiredError (#1242)\n\nThis commit fixes a mix up from this PR:\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/821/changes\n\nDuring the shuffle of opening a new PR, the new error code condition was\nmoved to the wrong error function (IsUserDisabledError instead of\nIsTokenExpiredError). You can see in the linked PR that it was actually\nintended to be alongside IsTokenExpiredError / AADSTS50173.\n\nThe customer who requested this change noticed the incorrect error\nmessage, but otherwise reports that it correctly captured the\nAADSTS70043 error code.",
-                  "url": "https://github.com/canonical/authd/commit/0297aa88f28e5c10b3b9f2db4d0287df907ec932"
                }
             ],
             "ciActions": [
@@ -5385,6 +5385,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8c1d2ee1397c37a171e7f846f2d23025502fd130",
+                  "author": "adombeck",
+                  "timestamp": 1770381808,
+                  "message": "deps(go-tools): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc from 1.6.0 to 1.6.1 in /tools in the minor-updates group (#1239)",
+                  "url": "https://github.com/canonical/authd/commit/8c1d2ee1397c37a171e7f846f2d23025502fd130"
+               },
+               {
                   "sha": "4ed39b079b191ed55732bdd9d10c5d9892dd83bc",
                   "author": "adombeck",
                   "timestamp": 1770345525,
@@ -5397,13 +5404,6 @@
                   "timestamp": 1770321650,
                   "message": "Bump Go toolchain version to 1.25.7\n\ngovulncheck reports the following vulnerabilities in go1.25.6\n\nVulnerability #1: GO-2026-4337\n    Unexpected session resumption in crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4337\n  Standard library\n    Found in: crypto/tls@go1.25.6\n    Fixed in: crypto/tls@go1.25.7\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd/daemon/daemon_test.go:248:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: internal/services/pam/pam_test.go:895:14: pam_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write",
                   "url": "https://github.com/canonical/authd/commit/27759b4eee975128d09c95494a2552016189581d"
-               },
-               {
-                  "sha": "0297aa88f28e5c10b3b9f2db4d0287df907ec932",
-                  "author": "adombeck",
-                  "timestamp": 1770308732,
-                  "message": "move AADSTS70043 error code to IsTokenExpiredError (#1242)\n\nThis commit fixes a mix up from this PR:\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/821/changes\n\nDuring the shuffle of opening a new PR, the new error code condition was\nmoved to the wrong error function (IsUserDisabledError instead of\nIsTokenExpiredError). You can see in the linked PR that it was actually\nintended to be alongside IsTokenExpiredError / AADSTS50173.\n\nThe customer who requested this change noticed the incorrect error\nmessage, but otherwise reports that it correctly captured the\nAADSTS70043 error code.",
-                  "url": "https://github.com/canonical/authd/commit/0297aa88f28e5c10b3b9f2db4d0287df907ec932"
                }
             ],
             "ciActions": [
@@ -7204,7 +7204,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 22,
+            "newCommits": 28,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -7650,6 +7650,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8c1d2ee1397c37a171e7f846f2d23025502fd130",
+                  "author": "adombeck",
+                  "timestamp": 1770381808,
+                  "message": "deps(go-tools): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc from 1.6.0 to 1.6.1 in /tools in the minor-updates group (#1239)",
+                  "url": "https://github.com/canonical/authd/commit/8c1d2ee1397c37a171e7f846f2d23025502fd130"
+               },
+               {
                   "sha": "4ed39b079b191ed55732bdd9d10c5d9892dd83bc",
                   "author": "adombeck",
                   "timestamp": 1770345525,
@@ -7662,13 +7669,6 @@
                   "timestamp": 1770321650,
                   "message": "Bump Go toolchain version to 1.25.7\n\ngovulncheck reports the following vulnerabilities in go1.25.6\n\nVulnerability #1: GO-2026-4337\n    Unexpected session resumption in crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4337\n  Standard library\n    Found in: crypto/tls@go1.25.6\n    Fixed in: crypto/tls@go1.25.7\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd/daemon/daemon_test.go:248:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: internal/services/pam/pam_test.go:895:14: pam_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write",
                   "url": "https://github.com/canonical/authd/commit/27759b4eee975128d09c95494a2552016189581d"
-               },
-               {
-                  "sha": "0297aa88f28e5c10b3b9f2db4d0287df907ec932",
-                  "author": "adombeck",
-                  "timestamp": 1770308732,
-                  "message": "move AADSTS70043 error code to IsTokenExpiredError (#1242)\n\nThis commit fixes a mix up from this PR:\nhttps://github.com/ubuntu/authd-oidc-brokers/pull/821/changes\n\nDuring the shuffle of opening a new PR, the new error code condition was\nmoved to the wrong error function (IsUserDisabledError instead of\nIsTokenExpiredError). You can see in the linked PR that it was actually\nintended to be alongside IsTokenExpiredError / AADSTS50173.\n\nThe customer who requested this change noticed the incorrect error\nmessage, but otherwise reports that it correctly captured the\nAADSTS70043 error code.",
-                  "url": "https://github.com/canonical/authd/commit/0297aa88f28e5c10b3b9f2db4d0287df907ec932"
                }
             ],
             "ciActions": [
