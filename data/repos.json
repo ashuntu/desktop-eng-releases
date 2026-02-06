@@ -5218,6 +5218,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f7778b4d29c57cf30e6f8556c07a50ed951b648b",
+                  "author": "Kat",
+                  "timestamp": 1770390700,
+                  "message": "ci(qa-debian): Fix ARM64 deb autopkgtest (#313)\n\nPreviously, the Debian package tests workflow never actually built the\ndebs on an ARM64 runner. Autopkgtest was run on ARM64, but using the\nAMD64 outputs.\n\nThis was for the most part okay since our autopkgtests were simply\nrunning `go test -v ./...`. However, as we expand them to now link\nagainst the built artifacts, we need to also build on ARM64 and properly\npass its artifacts to the autopkgtest runner.\n\nWe do this by simply removing the build step's `.deb` outputs when the\nautopkgtest host is not `ubuntu-24.04`, forcing autopkgtest itself to\nbuild from the source package.\n\nThis does mean that the overall CI run time will be extended since we\nare effectively waiting for the amd64 build to finish before being\nallowed to move onto building arm64, even if the source is already\nready. But we currently have a job that runs a number of basic smoke\ntests against the amd64 deb build. We can just move those to also be run\nby autopkgtest and then we restrict the build job to only build the\nsource package, but I'm considering that out of scope for this PR.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f7778b4d29c57cf30e6f8556c07a50ed951b648b"
+               },
+               {
                   "sha": "ce0ef5634f6f220bac1fd1f87e3177688a8d328e",
                   "author": "Kat",
                   "timestamp": 1770389149,
@@ -5225,18 +5232,11 @@
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/ce0ef5634f6f220bac1fd1f87e3177688a8d328e"
                },
                {
-                  "sha": "7a49591be4265b6c9426ac8edf6e4486c4687bbe",
+                  "sha": "250b35af164e76b72c20f458e43f31fbdaa21153",
                   "author": "kkuo",
-                  "timestamp": 1770351678,
-                  "message": "Remove unused sourcegraph/conc entry from debian/copyright",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7a49591be4265b6c9426ac8edf6e4486c4687bbe"
-               },
-               {
-                  "sha": "13fdac1a40140887d726a0e88921d54b7126e28c",
-                  "author": "kkuo",
-                  "timestamp": 1770321379,
-                  "message": "Bump common module version and refresh dependencies",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/13fdac1a40140887d726a0e88921d54b7126e28c"
+                  "timestamp": 1770340310,
+                  "message": "ci(qa-debian): Fix arm64 deb autopkgtest",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/250b35af164e76b72c20f458e43f31fbdaa21153"
                }
             ],
             "ciActions": [
