@@ -4563,25 +4563,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d1c711e0779658fce4e784acb31e3ca7ec8e1b11",
+                  "sha": "2c945c3ff0caa62fab6206617ed6b5a2eeec911e",
                   "author": "Dennis Loose",
-                  "timestamp": 1770375514,
-                  "message": "chore: update go (#1304)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d1c711e0779658fce4e784acb31e3ca7ec8e1b11"
+                  "timestamp": 1770645793,
+                  "message": "feat: adapt guided capabilities page to new designs (#1303)\n\nImplements the latest Figma designs for the guided capabilities page:\n\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-02-06\n10-47-35\"\nsrc=\"https://github.com/user-attachments/assets/214df989-22e7-40c8-964c-c198bfe41d6e\"\n/>\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-02-06\n10-48-05\"\nsrc=\"https://github.com/user-attachments/assets/7c382260-3e23-4fa9-9b76-5cb28cb69ad2\"\n/>\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-02-06\n10-48-13\"\nsrc=\"https://github.com/user-attachments/assets/cec04c2c-e3bb-47ca-b70f-4ace76ae57b0\"\n/>\n\n\nUDENG-8924",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2c945c3ff0caa62fab6206617ed6b5a2eeec911e"
                },
                {
-                  "sha": "95af2e679a928c37d98837a4e4e9d35af28e70db",
+                  "sha": "e60228eb61d00fbc31ac11d7f3100adbf5a3ea52",
                   "author": "Dennis Loose",
-                  "timestamp": 1770371833,
-                  "message": "fix(a11y): Add toggle state to the install logs toggle button (#1302)\n\nThe toggle button for install logs now will convey its pressed state to\nscreen readers.\n\n---\n\nUDENG-8925",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/95af2e679a928c37d98837a4e4e9d35af28e70db"
+                  "timestamp": 1770387397,
+                  "message": "fix: don't disable tpm option on action api errors",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e60228eb61d00fbc31ac11d7f3100adbf5a3ea52"
                },
                {
-                  "sha": "fd9f9f56630e50315100d0660bf5883af25cbaac",
+                  "sha": "76cd54aede771b1ba8eb0f33e7bc904c84f9195f",
                   "author": "Dennis Loose",
-                  "timestamp": 1770371728,
-                  "message": "chore: update go",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fd9f9f56630e50315100d0660bf5883af25cbaac"
+                  "timestamp": 1770386694,
+                  "message": "fix: review feedback on design",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/76cd54aede771b1ba8eb0f33e7bc904c84f9195f"
                }
             ],
             "ciActions": [
@@ -4965,6 +4965,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d5778e909db05dfb31f035b1f07b78a8bdd73aec",
+                  "author": "Douglas Chiang",
+                  "timestamp": 1770645428,
+                  "message": "[BugFix] Add setup steps back to canary test (#177)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
+                  "url": "https://github.com/canonical/yarf/commit/d5778e909db05dfb31f035b1f07b78a8bdd73aec"
+               },
+               {
                   "sha": "60d7b0772caa647f860e877f6230a06e6de8057f",
                   "author": "Paolo Gentili",
                   "timestamp": 1770368684,
@@ -4977,13 +4984,6 @@
                   "timestamp": 1770366609,
                   "message": "[Infra] Update dependency onnxruntime to ~=1.24.1 (#174)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
                   "url": "https://github.com/canonical/yarf/commit/e36c08be8cddbce96ae17934a8e1f03ebdc005ff"
-               },
-               {
-                  "sha": "5e2d260d923c499d07c58f2a914e56d2225307cc",
-                  "author": "Douglas Chiang",
-                  "timestamp": 1770290996,
-                  "message": "[Infra] Optimize canary tests (#173)",
-                  "url": "https://github.com/canonical/yarf/commit/5e2d260d923c499d07c58f2a914e56d2225307cc"
                }
             ],
             "ciActions": [],
@@ -5007,14 +5007,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 506,
-                     "timestamp": 1770388836
+                     "revision": 509,
+                     "timestamp": 1770646965
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 507,
-                     "timestamp": 1770388950
+                     "revision": 508,
+                     "timestamp": 1770646102
                   }
                ],
                "channels": [
@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f7778b4d29c57cf30e6f8556c07a50ed951b648b",
+                  "sha": "c1633089b51565fb3f1565ff0a5fcbe35796e87d",
                   "author": "Kat",
-                  "timestamp": 1770390700,
-                  "message": "ci(qa-debian): Fix ARM64 deb autopkgtest (#313)\n\nPreviously, the Debian package tests workflow never actually built the\ndebs on an ARM64 runner. Autopkgtest was run on ARM64, but using the\nAMD64 outputs.\n\nThis was for the most part okay since our autopkgtests were simply\nrunning `go test -v ./...`. However, as we expand them to now link\nagainst the built artifacts, we need to also build on ARM64 and properly\npass its artifacts to the autopkgtest runner.\n\nWe do this by simply removing the build step's `.deb` outputs when the\nautopkgtest host is not `ubuntu-24.04`, forcing autopkgtest itself to\nbuild from the source package.\n\nThis does mean that the overall CI run time will be extended since we\nare effectively waiting for the amd64 build to finish before being\nallowed to move onto building arm64, even if the source is already\nready. But we currently have a job that runs a number of basic smoke\ntests against the amd64 deb build. We can just move those to also be run\nby autopkgtest and then we restrict the build job to only build the\nsource package, but I'm considering that out of scope for this PR.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f7778b4d29c57cf30e6f8556c07a50ed951b648b"
+                  "timestamp": 1770647396,
+                  "message": "tests(insights): Add smoke tests to autopkgtest (#316)\n\nHere we add smoke tests based on what was present in the `qa-debian`\nworkflow to the `autopkgtest` test suite. These are marked as\nsuperficial since they are not very robust tests, but they do indicate\nsome obvious issues about the package.\n\nSince we run `autopkgtest` in our workflows, we can now also retire this\nnow duplicate section from `qa-debian`. It also acts as an opportunity\nto greatly simplify that workflow, only building the source package\ninitially and then relying on `autopkgtest` to build from our source\npackages based on the test arch.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c1633089b51565fb3f1565ff0a5fcbe35796e87d"
                },
                {
-                  "sha": "ce0ef5634f6f220bac1fd1f87e3177688a8d328e",
-                  "author": "Kat",
-                  "timestamp": 1770389149,
-                  "message": "deps(go): Update go toolchain to 1.25.7 and update dependencies (#312)\n\nCI is failing due to\n[GO-2026-4337](https://pkg.go.dev/vuln/GO-2026-4337). Thus, here we\nupdate the target toolchain to 1.25.7 and also update dependencies as\nneeded.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/ce0ef5634f6f220bac1fd1f87e3177688a8d328e"
-               },
-               {
-                  "sha": "250b35af164e76b72c20f458e43f31fbdaa21153",
+                  "sha": "6f059751020adac2e469ec8761b03e8249dab4ea",
                   "author": "kkuo",
-                  "timestamp": 1770340310,
-                  "message": "ci(qa-debian): Fix arm64 deb autopkgtest",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/250b35af164e76b72c20f458e43f31fbdaa21153"
+                  "timestamp": 1770420771,
+                  "message": "Add changelog entry for autopkgtest smoke tests",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6f059751020adac2e469ec8761b03e8249dab4ea"
+               },
+               {
+                  "sha": "e50532f72a0c3984944aa8d58977d789143b2168",
+                  "author": "kkuo",
+                  "timestamp": 1770414474,
+                  "message": "Rely on autopkgtest only to build the debs",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e50532f72a0c3984944aa8d58977d789143b2168"
                }
             ],
             "ciActions": [
@@ -6692,25 +6692,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d1c711e0779658fce4e784acb31e3ca7ec8e1b11",
+                  "sha": "2c945c3ff0caa62fab6206617ed6b5a2eeec911e",
                   "author": "Dennis Loose",
-                  "timestamp": 1770375514,
-                  "message": "chore: update go (#1304)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d1c711e0779658fce4e784acb31e3ca7ec8e1b11"
+                  "timestamp": 1770645793,
+                  "message": "feat: adapt guided capabilities page to new designs (#1303)\n\nImplements the latest Figma designs for the guided capabilities page:\n\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-02-06\n10-47-35\"\nsrc=\"https://github.com/user-attachments/assets/214df989-22e7-40c8-964c-c198bfe41d6e\"\n/>\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-02-06\n10-48-05\"\nsrc=\"https://github.com/user-attachments/assets/7c382260-3e23-4fa9-9b76-5cb28cb69ad2\"\n/>\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-02-06\n10-48-13\"\nsrc=\"https://github.com/user-attachments/assets/cec04c2c-e3bb-47ca-b70f-4ace76ae57b0\"\n/>\n\n\nUDENG-8924",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2c945c3ff0caa62fab6206617ed6b5a2eeec911e"
                },
                {
-                  "sha": "95af2e679a928c37d98837a4e4e9d35af28e70db",
+                  "sha": "e60228eb61d00fbc31ac11d7f3100adbf5a3ea52",
                   "author": "Dennis Loose",
-                  "timestamp": 1770371833,
-                  "message": "fix(a11y): Add toggle state to the install logs toggle button (#1302)\n\nThe toggle button for install logs now will convey its pressed state to\nscreen readers.\n\n---\n\nUDENG-8925",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/95af2e679a928c37d98837a4e4e9d35af28e70db"
+                  "timestamp": 1770387397,
+                  "message": "fix: don't disable tpm option on action api errors",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e60228eb61d00fbc31ac11d7f3100adbf5a3ea52"
                },
                {
-                  "sha": "fd9f9f56630e50315100d0660bf5883af25cbaac",
+                  "sha": "76cd54aede771b1ba8eb0f33e7bc904c84f9195f",
                   "author": "Dennis Loose",
-                  "timestamp": 1770371728,
-                  "message": "chore: update go",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fd9f9f56630e50315100d0660bf5883af25cbaac"
+                  "timestamp": 1770386694,
+                  "message": "fix: review feedback on design",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/76cd54aede771b1ba8eb0f33e7bc904c84f9195f"
                }
             ],
             "ciActions": [
@@ -7135,6 +7135,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d5778e909db05dfb31f035b1f07b78a8bdd73aec",
+                  "author": "Douglas Chiang",
+                  "timestamp": 1770645428,
+                  "message": "[BugFix] Add setup steps back to canary test (#177)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
+                  "url": "https://github.com/canonical/yarf/commit/d5778e909db05dfb31f035b1f07b78a8bdd73aec"
+               },
+               {
                   "sha": "60d7b0772caa647f860e877f6230a06e6de8057f",
                   "author": "Paolo Gentili",
                   "timestamp": 1770368684,
@@ -7147,13 +7154,6 @@
                   "timestamp": 1770366609,
                   "message": "[Infra] Update dependency onnxruntime to ~=1.24.1 (#174)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
                   "url": "https://github.com/canonical/yarf/commit/e36c08be8cddbce96ae17934a8e1f03ebdc005ff"
-               },
-               {
-                  "sha": "5e2d260d923c499d07c58f2a914e56d2225307cc",
-                  "author": "Douglas Chiang",
-                  "timestamp": 1770290996,
-                  "message": "[Infra] Optimize canary tests (#173)",
-                  "url": "https://github.com/canonical/yarf/commit/5e2d260d923c499d07c58f2a914e56d2225307cc"
                }
             ],
             "ciActions": [],
@@ -7177,14 +7177,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 506,
-                     "timestamp": 1770388836
+                     "revision": 509,
+                     "timestamp": 1770646965
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 507,
-                     "timestamp": 1770388950
+                     "revision": 508,
+                     "timestamp": 1770646102
                   }
                ],
                "channels": [
@@ -8924,25 +8924,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d1c711e0779658fce4e784acb31e3ca7ec8e1b11",
+                  "sha": "2c945c3ff0caa62fab6206617ed6b5a2eeec911e",
                   "author": "Dennis Loose",
-                  "timestamp": 1770375514,
-                  "message": "chore: update go (#1304)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d1c711e0779658fce4e784acb31e3ca7ec8e1b11"
+                  "timestamp": 1770645793,
+                  "message": "feat: adapt guided capabilities page to new designs (#1303)\n\nImplements the latest Figma designs for the guided capabilities page:\n\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-02-06\n10-47-35\"\nsrc=\"https://github.com/user-attachments/assets/214df989-22e7-40c8-964c-c198bfe41d6e\"\n/>\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-02-06\n10-48-05\"\nsrc=\"https://github.com/user-attachments/assets/7c382260-3e23-4fa9-9b76-5cb28cb69ad2\"\n/>\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-02-06\n10-48-13\"\nsrc=\"https://github.com/user-attachments/assets/cec04c2c-e3bb-47ca-b70f-4ace76ae57b0\"\n/>\n\n\nUDENG-8924",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2c945c3ff0caa62fab6206617ed6b5a2eeec911e"
                },
                {
-                  "sha": "95af2e679a928c37d98837a4e4e9d35af28e70db",
+                  "sha": "e60228eb61d00fbc31ac11d7f3100adbf5a3ea52",
                   "author": "Dennis Loose",
-                  "timestamp": 1770371833,
-                  "message": "fix(a11y): Add toggle state to the install logs toggle button (#1302)\n\nThe toggle button for install logs now will convey its pressed state to\nscreen readers.\n\n---\n\nUDENG-8925",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/95af2e679a928c37d98837a4e4e9d35af28e70db"
+                  "timestamp": 1770387397,
+                  "message": "fix: don't disable tpm option on action api errors",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e60228eb61d00fbc31ac11d7f3100adbf5a3ea52"
                },
                {
-                  "sha": "fd9f9f56630e50315100d0660bf5883af25cbaac",
+                  "sha": "76cd54aede771b1ba8eb0f33e7bc904c84f9195f",
                   "author": "Dennis Loose",
-                  "timestamp": 1770371728,
-                  "message": "chore: update go",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fd9f9f56630e50315100d0660bf5883af25cbaac"
+                  "timestamp": 1770386694,
+                  "message": "fix: review feedback on design",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/76cd54aede771b1ba8eb0f33e7bc904c84f9195f"
                }
             ],
             "ciActions": [
@@ -9361,6 +9361,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d5778e909db05dfb31f035b1f07b78a8bdd73aec",
+                  "author": "Douglas Chiang",
+                  "timestamp": 1770645428,
+                  "message": "[BugFix] Add setup steps back to canary test (#177)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
+                  "url": "https://github.com/canonical/yarf/commit/d5778e909db05dfb31f035b1f07b78a8bdd73aec"
+               },
+               {
                   "sha": "60d7b0772caa647f860e877f6230a06e6de8057f",
                   "author": "Paolo Gentili",
                   "timestamp": 1770368684,
@@ -9373,13 +9380,6 @@
                   "timestamp": 1770366609,
                   "message": "[Infra] Update dependency onnxruntime to ~=1.24.1 (#174)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
                   "url": "https://github.com/canonical/yarf/commit/e36c08be8cddbce96ae17934a8e1f03ebdc005ff"
-               },
-               {
-                  "sha": "5e2d260d923c499d07c58f2a914e56d2225307cc",
-                  "author": "Douglas Chiang",
-                  "timestamp": 1770290996,
-                  "message": "[Infra] Optimize canary tests (#173)",
-                  "url": "https://github.com/canonical/yarf/commit/5e2d260d923c499d07c58f2a914e56d2225307cc"
                }
             ],
             "ciActions": [],
@@ -9403,14 +9403,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 506,
-                     "timestamp": 1770388836
+                     "revision": 509,
+                     "timestamp": 1770646965
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 507,
-                     "timestamp": 1770388950
+                     "revision": 508,
+                     "timestamp": 1770646102
                   }
                ],
                "channels": [
@@ -9474,6 +9474,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7f99365feed32224299a7edb31743e09128c26f4",
+                  "author": "Benjamin Drung",
+                  "timestamp": 1764328711,
+                  "message": "gtksourceview: add 'version' attribute\n\ngedit and other tools complain:\n\n```\n$ gedit\n\n(gedit): libgedit-gtksourceview-WARNING **: could not load style scheme file '/usr/share/libgedit-gtksourceview-300/styles/Yaru-dark.xml': missing 'version' attribute\n\n(gedit): libgedit-gtksourceview-WARNING **:  could not load style scheme file '/usr/share/libgedit-gtksourceview-300/styles/Yaru.xml': missing 'version' attribute\n```\n\nSo restore the `version` attribute.\n\nBug: https://github.com/ubuntu/yaru/issues/4140\nLP: #2084420\nFixes: fc21541f6113 (\"gtksourceview: Add support for new libgedit-gtksourceview xml scheme (#4088)\")",
+                  "url": "https://github.com/ubuntu/yaru/commit/7f99365feed32224299a7edb31743e09128c26f4"
+               },
+               {
                   "sha": "2e434da894635ce7f4e24536d74705f906bbf6ed",
                   "author": "dependabot[bot]",
                   "timestamp": 1763925917,
@@ -9486,13 +9493,6 @@
                   "timestamp": 1762877898,
                   "message": "build(deps): bump actions/setup-python from 5.6.0 to 6.0.0 (#4319)\n\nBumps [actions/setup-python](https://github.com/actions/setup-python) from 5.6.0 to 6.0.0.\n- [Release notes](https://github.com/actions/setup-python/releases)\n- [Commits](https://github.com/actions/setup-python/compare/v5.6.0...v6.0.0)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-python\n  dependency-version: 6.0.0\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
                   "url": "https://github.com/ubuntu/yaru/commit/5ba0b46188c218852c4378a8232f865f62485752"
-               },
-               {
-                  "sha": "abe04fef58cb56663aa9bedd8899af9a84b52c9c",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1762877859,
-                  "message": "build(deps): bump actions/upload-artifact from 4 to 5 (#4333)\n\nBumps [actions/upload-artifact](https://github.com/actions/upload-artifact) from 4 to 5.\n- [Release notes](https://github.com/actions/upload-artifact/releases)\n- [Commits](https://github.com/actions/upload-artifact/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/upload-artifact\n  dependency-version: '5'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/ubuntu/yaru/commit/abe04fef58cb56663aa9bedd8899af9a84b52c9c"
                }
             ],
             "ciActions": [],
