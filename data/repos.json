@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "55e6ba55160db96b9b61b945c9b184b92a10223f",
+                  "sha": "7dd4884e3c942bf47461e2591ac53074e288dc9c",
                   "author": "adombeck",
-                  "timestamp": 1770673143,
-                  "message": "brokers: Bump Go version to 1.25 (#1252)",
-                  "url": "https://github.com/canonical/authd/commit/55e6ba55160db96b9b61b945c9b184b92a10223f"
+                  "timestamp": 1770731960,
+                  "message": "Add `authctl user set-uid` command (#1087)\n\nSupport setting the UID of a user via `authctl user set-uid <user> <uid>`.\n\nAlso changes the owner and group of the user's home directory and all\nfiles in the home directory from the old UID and GID to the new UID and\nGID (if it is owned by the current user), same as `usermod` does when\nchanging the UID of a user.\n\nCloses #630 \nUDENG-7717\nUDENG-8720",
+                  "url": "https://github.com/canonical/authd/commit/7dd4884e3c942bf47461e2591ac53074e288dc9c"
                },
                {
-                  "sha": "45a6cd2a104c31e5f7ae63dd5361dff1be5a04c4",
+                  "sha": "2ed235967321b2d73448d8b8f93f83f1578d7f11",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770642783,
-                  "message": "brokers: Bump Go version to 1.25\n\ngovulncheck reports the following vulnerabilities in go1.24.12\n\nVulnerability #1: GO-2026-4337\n    Unexpected session resumption in crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4337\n  Standard library\n    Found in: crypto/tls@go1.24.12\n    Fixed in: crypto/tls@go1.24.13\n    Example traces found:\nError:       #1: internal/testutils/provider.go:104:14: testutils.StartMockProviderServer calls httptest.Server.Start, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd-oidc/daemon/daemon_test.go:211:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: cmd/authd-oidc/daemon/daemon_test.go:399:14: daemon_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write\nError:       #4: internal/broker/broker.go:482:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls tls.Dialer.DialContext\n\nWe bump the Go version of the brokers to 1.25 and the Go toolchain\nversion to 1.25.7 instead of 1.24.13 to reduce maintenance effort. It\nmatches the version used by authd, so we can now bump the version used\nby authd and the version used by the brokers in a single PR.",
-                  "url": "https://github.com/canonical/authd/commit/45a6cd2a104c31e5f7ae63dd5361dff1be5a04c4"
+                  "timestamp": 1770722270,
+                  "message": "fileutils: Return error in ChownRecursiveFrom if all args are nil\n\nSo we don't hide a programmer error.",
+                  "url": "https://github.com/canonical/authd/commit/2ed235967321b2d73448d8b8f93f83f1578d7f11"
                },
                {
-                  "sha": "b3b84253f97b17d6c4498c173838ca63c038fbe0",
-                  "author": "adombeck",
-                  "timestamp": 1770405310,
-                  "message": "ci: Fix shellcheck job (#1243)\n\nFixes the existing shellcheck job in the brokers/qa workflow and adds a\nshellcheck job to authd's qa workflow.",
-                  "url": "https://github.com/canonical/authd/commit/b3b84253f97b17d6c4498c173838ca63c038fbe0"
+                  "sha": "1464dbd5591b02eb2e4a99e65a3c89c240c5e1da",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770213974,
+                  "message": "authctl: Print message about manually updating ownership\n\nAs requested by reviewer, to make it more visible to the user that they\nhave to manually update the ownership of files outside the user's home\ndirectory.",
+                  "url": "https://github.com/canonical/authd/commit/1464dbd5591b02eb2e4a99e65a3c89c240c5e1da"
                }
             ],
             "ciActions": [
@@ -4965,6 +4965,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3e33d7244e53f7490e866a5b41f7f8811a327824",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1770735574,
+                  "message": "[Infra] Bump astral-sh/setup-uv from 7.2.1 to 7.3.0 (#180)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/yarf/commit/3e33d7244e53f7490e866a5b41f7f8811a327824"
+               },
+               {
                   "sha": "564cb48d690471fa51be54ac46bec51d063120b9",
                   "author": "Douglas Chiang",
                   "timestamp": 1770726977,
@@ -4977,13 +4984,6 @@
                   "timestamp": 1770711674,
                   "message": "[BugFix] Add onnxruntime support for py3.10 (#179)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
                   "url": "https://github.com/canonical/yarf/commit/3f241d92da19451f8a7889c8bb69486f8ba23822"
-               },
-               {
-                  "sha": "d5778e909db05dfb31f035b1f07b78a8bdd73aec",
-                  "author": "Douglas Chiang",
-                  "timestamp": 1770645428,
-                  "message": "[BugFix] Add setup steps back to canary test (#177)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
-                  "url": "https://github.com/canonical/yarf/commit/d5778e909db05dfb31f035b1f07b78a8bdd73aec"
                }
             ],
             "ciActions": [],
@@ -4995,26 +4995,26 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 500,
-                     "timestamp": 1770250589
+                     "revision": 512,
+                     "timestamp": 1770735448
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 499,
-                     "timestamp": 1770250590
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 512,
-                     "timestamp": 1770727799
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
                      "revision": 511,
-                     "timestamp": 1770727694
+                     "timestamp": 1770735449
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 513,
+                     "timestamp": 1770736186
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 514,
+                     "timestamp": 1770736370
                   }
                ],
                "channels": [
@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d8d1d9b2b7036cc32296424374e38b6d1a378611",
+                  "sha": "7ed239770a9bec20b7f40a531eaa8666991ff544",
                   "author": "Kat",
-                  "timestamp": 1770666071,
-                  "message": "feat(insights/C): Rework shared lib generation scripts (#309)\n\nTo facilitate shared library integration tests as well as simply\nimproving ease of use, we need to rework the shared library generation\nscripts. Here, we simplify to a single primary script across all\nplatforms. We also add some additional restricted logic to inject\nadditional behavior into a set of shared libraries for integration\ntests.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/d8d1d9b2b7036cc32296424374e38b6d1a378611"
+                  "timestamp": 1770735870,
+                  "message": "tests(insights): Implement integration tests for shared libraries (#314)\n\nThis PR implements a set of integration tests that link directly against\nthe generated shared libraries.\n\nTo achieve this, we implement a driver application that acts as a basic\nCLI wrapper around the shared library. Depending on how we build the\napplication, we can make it link against a \"local\" set of shared\nlibraries or use system-level shared libraries. The latter mode is used\nfor `autopkgtest` where we have `libinsights-dev` installed. We detect\nwhether or not we are running tests via `autopkgtest` via a build tag.\n\nOutside `autopkgtest`, we link against a version of the shared libraries\nthat allow us to override the upload URL, allowing us to better test the\nupload command.\n\nNote that at test time when building a deb, Makefiles appear to be\nomitted. Thus, instead of using a Makefile to build the driver\napplication, we simply construct the build command ourselves in Go.\n\nThe test setup itself will generate the shared libraries and build the\ndriver application, so no additional action from the user or a driving\nCI workflow is required.\n\nPresently, these integration tests cover all major operations exposed by\nthe shared library\n - Setting the log callback function\n - Get consent state\n - Set consent state\n - Collect\n - Compile\n - Write\n - Upload (We only test dry-run in `autopkgtest`)\n \n ---\n [UDENG-7605](https://warthogs.atlassian.net/browse/UDENG-7605)\n\n[UDENG-7605]:\nhttps://warthogs.atlassian.net/browse/UDENG-7605?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7ed239770a9bec20b7f40a531eaa8666991ff544"
                },
                {
-                  "sha": "c1633089b51565fb3f1565ff0a5fcbe35796e87d",
-                  "author": "Kat",
-                  "timestamp": 1770647396,
-                  "message": "tests(insights): Add smoke tests to autopkgtest (#316)\n\nHere we add smoke tests based on what was present in the `qa-debian`\nworkflow to the `autopkgtest` test suite. These are marked as\nsuperficial since they are not very robust tests, but they do indicate\nsome obvious issues about the package.\n\nSince we run `autopkgtest` in our workflows, we can now also retire this\nnow duplicate section from `qa-debian`. It also acts as an opportunity\nto greatly simplify that workflow, only building the source package\ninitially and then relying on `autopkgtest` to build from our source\npackages based on the test arch.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c1633089b51565fb3f1565ff0a5fcbe35796e87d"
-               },
-               {
-                  "sha": "6f059751020adac2e469ec8761b03e8249dab4ea",
+                  "sha": "ece15220282d405b7bebf249ce8f903e66c62087",
                   "author": "kkuo",
-                  "timestamp": 1770420771,
-                  "message": "Add changelog entry for autopkgtest smoke tests",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6f059751020adac2e469ec8761b03e8249dab4ea"
+                  "timestamp": 1770432649,
+                  "message": "Update version to 0.9.2ubuntu~dev1 and add integration tests for shared library",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/ece15220282d405b7bebf249ce8f903e66c62087"
+               },
+               {
+                  "sha": "b602d28cb93ac6b0dcf64e7f8b12a0011b145dbd",
+                  "author": "kkuo",
+                  "timestamp": 1770431577,
+                  "message": "Ensure files generated for integration tests are cleaned from source package",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b602d28cb93ac6b0dcf64e7f8b12a0011b145dbd"
                }
             ],
             "ciActions": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "55e6ba55160db96b9b61b945c9b184b92a10223f",
+                  "sha": "7dd4884e3c942bf47461e2591ac53074e288dc9c",
                   "author": "adombeck",
-                  "timestamp": 1770673143,
-                  "message": "brokers: Bump Go version to 1.25 (#1252)",
-                  "url": "https://github.com/canonical/authd/commit/55e6ba55160db96b9b61b945c9b184b92a10223f"
+                  "timestamp": 1770731960,
+                  "message": "Add `authctl user set-uid` command (#1087)\n\nSupport setting the UID of a user via `authctl user set-uid <user> <uid>`.\n\nAlso changes the owner and group of the user's home directory and all\nfiles in the home directory from the old UID and GID to the new UID and\nGID (if it is owned by the current user), same as `usermod` does when\nchanging the UID of a user.\n\nCloses #630 \nUDENG-7717\nUDENG-8720",
+                  "url": "https://github.com/canonical/authd/commit/7dd4884e3c942bf47461e2591ac53074e288dc9c"
                },
                {
-                  "sha": "45a6cd2a104c31e5f7ae63dd5361dff1be5a04c4",
+                  "sha": "2ed235967321b2d73448d8b8f93f83f1578d7f11",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770642783,
-                  "message": "brokers: Bump Go version to 1.25\n\ngovulncheck reports the following vulnerabilities in go1.24.12\n\nVulnerability #1: GO-2026-4337\n    Unexpected session resumption in crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4337\n  Standard library\n    Found in: crypto/tls@go1.24.12\n    Fixed in: crypto/tls@go1.24.13\n    Example traces found:\nError:       #1: internal/testutils/provider.go:104:14: testutils.StartMockProviderServer calls httptest.Server.Start, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd-oidc/daemon/daemon_test.go:211:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: cmd/authd-oidc/daemon/daemon_test.go:399:14: daemon_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write\nError:       #4: internal/broker/broker.go:482:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls tls.Dialer.DialContext\n\nWe bump the Go version of the brokers to 1.25 and the Go toolchain\nversion to 1.25.7 instead of 1.24.13 to reduce maintenance effort. It\nmatches the version used by authd, so we can now bump the version used\nby authd and the version used by the brokers in a single PR.",
-                  "url": "https://github.com/canonical/authd/commit/45a6cd2a104c31e5f7ae63dd5361dff1be5a04c4"
+                  "timestamp": 1770722270,
+                  "message": "fileutils: Return error in ChownRecursiveFrom if all args are nil\n\nSo we don't hide a programmer error.",
+                  "url": "https://github.com/canonical/authd/commit/2ed235967321b2d73448d8b8f93f83f1578d7f11"
                },
                {
-                  "sha": "b3b84253f97b17d6c4498c173838ca63c038fbe0",
-                  "author": "adombeck",
-                  "timestamp": 1770405310,
-                  "message": "ci: Fix shellcheck job (#1243)\n\nFixes the existing shellcheck job in the brokers/qa workflow and adds a\nshellcheck job to authd's qa workflow.",
-                  "url": "https://github.com/canonical/authd/commit/b3b84253f97b17d6c4498c173838ca63c038fbe0"
+                  "sha": "1464dbd5591b02eb2e4a99e65a3c89c240c5e1da",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770213974,
+                  "message": "authctl: Print message about manually updating ownership\n\nAs requested by reviewer, to make it more visible to the user that they\nhave to manually update the ownership of files outside the user's home\ndirectory.",
+                  "url": "https://github.com/canonical/authd/commit/1464dbd5591b02eb2e4a99e65a3c89c240c5e1da"
                }
             ],
             "ciActions": [
@@ -7135,6 +7135,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3e33d7244e53f7490e866a5b41f7f8811a327824",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1770735574,
+                  "message": "[Infra] Bump astral-sh/setup-uv from 7.2.1 to 7.3.0 (#180)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/yarf/commit/3e33d7244e53f7490e866a5b41f7f8811a327824"
+               },
+               {
                   "sha": "564cb48d690471fa51be54ac46bec51d063120b9",
                   "author": "Douglas Chiang",
                   "timestamp": 1770726977,
@@ -7147,13 +7154,6 @@
                   "timestamp": 1770711674,
                   "message": "[BugFix] Add onnxruntime support for py3.10 (#179)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
                   "url": "https://github.com/canonical/yarf/commit/3f241d92da19451f8a7889c8bb69486f8ba23822"
-               },
-               {
-                  "sha": "d5778e909db05dfb31f035b1f07b78a8bdd73aec",
-                  "author": "Douglas Chiang",
-                  "timestamp": 1770645428,
-                  "message": "[BugFix] Add setup steps back to canary test (#177)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
-                  "url": "https://github.com/canonical/yarf/commit/d5778e909db05dfb31f035b1f07b78a8bdd73aec"
                }
             ],
             "ciActions": [],
@@ -7165,26 +7165,26 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 500,
-                     "timestamp": 1770250589
+                     "revision": 512,
+                     "timestamp": 1770735448
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 499,
-                     "timestamp": 1770250590
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 512,
-                     "timestamp": 1770727799
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
                      "revision": 511,
-                     "timestamp": 1770727694
+                     "timestamp": 1770735449
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 513,
+                     "timestamp": 1770736186
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 514,
+                     "timestamp": 1770736370
                   }
                ],
                "channels": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "55e6ba55160db96b9b61b945c9b184b92a10223f",
+                  "sha": "7dd4884e3c942bf47461e2591ac53074e288dc9c",
                   "author": "adombeck",
-                  "timestamp": 1770673143,
-                  "message": "brokers: Bump Go version to 1.25 (#1252)",
-                  "url": "https://github.com/canonical/authd/commit/55e6ba55160db96b9b61b945c9b184b92a10223f"
+                  "timestamp": 1770731960,
+                  "message": "Add `authctl user set-uid` command (#1087)\n\nSupport setting the UID of a user via `authctl user set-uid <user> <uid>`.\n\nAlso changes the owner and group of the user's home directory and all\nfiles in the home directory from the old UID and GID to the new UID and\nGID (if it is owned by the current user), same as `usermod` does when\nchanging the UID of a user.\n\nCloses #630 \nUDENG-7717\nUDENG-8720",
+                  "url": "https://github.com/canonical/authd/commit/7dd4884e3c942bf47461e2591ac53074e288dc9c"
                },
                {
-                  "sha": "45a6cd2a104c31e5f7ae63dd5361dff1be5a04c4",
+                  "sha": "2ed235967321b2d73448d8b8f93f83f1578d7f11",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770642783,
-                  "message": "brokers: Bump Go version to 1.25\n\ngovulncheck reports the following vulnerabilities in go1.24.12\n\nVulnerability #1: GO-2026-4337\n    Unexpected session resumption in crypto/tls\n  More info: https://pkg.go.dev/vuln/GO-2026-4337\n  Standard library\n    Found in: crypto/tls@go1.24.12\n    Fixed in: crypto/tls@go1.24.13\n    Example traces found:\nError:       #1: internal/testutils/provider.go:104:14: testutils.StartMockProviderServer calls httptest.Server.Start, which eventually calls tls.Conn.HandshakeContext\nError:       #2: cmd/authd-oidc/daemon/daemon_test.go:211:18: daemon_test.TestAppCanSigHupWithoutExecute calls io.Copy, which eventually calls tls.Conn.Read\nError:       #3: cmd/authd-oidc/daemon/daemon_test.go:399:14: daemon_test.TestMain calls fmt.Fprintf, which calls tls.Conn.Write\nError:       #4: internal/broker/broker.go:482:51: broker.Broker.generateUILayout calls oauth2.Config.DeviceAuth, which eventually calls tls.Dialer.DialContext\n\nWe bump the Go version of the brokers to 1.25 and the Go toolchain\nversion to 1.25.7 instead of 1.24.13 to reduce maintenance effort. It\nmatches the version used by authd, so we can now bump the version used\nby authd and the version used by the brokers in a single PR.",
-                  "url": "https://github.com/canonical/authd/commit/45a6cd2a104c31e5f7ae63dd5361dff1be5a04c4"
+                  "timestamp": 1770722270,
+                  "message": "fileutils: Return error in ChownRecursiveFrom if all args are nil\n\nSo we don't hide a programmer error.",
+                  "url": "https://github.com/canonical/authd/commit/2ed235967321b2d73448d8b8f93f83f1578d7f11"
                },
                {
-                  "sha": "b3b84253f97b17d6c4498c173838ca63c038fbe0",
-                  "author": "adombeck",
-                  "timestamp": 1770405310,
-                  "message": "ci: Fix shellcheck job (#1243)\n\nFixes the existing shellcheck job in the brokers/qa workflow and adds a\nshellcheck job to authd's qa workflow.",
-                  "url": "https://github.com/canonical/authd/commit/b3b84253f97b17d6c4498c173838ca63c038fbe0"
+                  "sha": "1464dbd5591b02eb2e4a99e65a3c89c240c5e1da",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1770213974,
+                  "message": "authctl: Print message about manually updating ownership\n\nAs requested by reviewer, to make it more visible to the user that they\nhave to manually update the ownership of files outside the user's home\ndirectory.",
+                  "url": "https://github.com/canonical/authd/commit/1464dbd5591b02eb2e4a99e65a3c89c240c5e1da"
                }
             ],
             "ciActions": [
@@ -9361,6 +9361,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3e33d7244e53f7490e866a5b41f7f8811a327824",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1770735574,
+                  "message": "[Infra] Bump astral-sh/setup-uv from 7.2.1 to 7.3.0 (#180)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/yarf/commit/3e33d7244e53f7490e866a5b41f7f8811a327824"
+               },
+               {
                   "sha": "564cb48d690471fa51be54ac46bec51d063120b9",
                   "author": "Douglas Chiang",
                   "timestamp": 1770726977,
@@ -9373,13 +9380,6 @@
                   "timestamp": 1770711674,
                   "message": "[BugFix] Add onnxruntime support for py3.10 (#179)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
                   "url": "https://github.com/canonical/yarf/commit/3f241d92da19451f8a7889c8bb69486f8ba23822"
-               },
-               {
-                  "sha": "d5778e909db05dfb31f035b1f07b78a8bdd73aec",
-                  "author": "Douglas Chiang",
-                  "timestamp": 1770645428,
-                  "message": "[BugFix] Add setup steps back to canary test (#177)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
-                  "url": "https://github.com/canonical/yarf/commit/d5778e909db05dfb31f035b1f07b78a8bdd73aec"
                }
             ],
             "ciActions": [],
@@ -9391,26 +9391,26 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 500,
-                     "timestamp": 1770250589
+                     "revision": 512,
+                     "timestamp": 1770735448
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 499,
-                     "timestamp": 1770250590
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 512,
-                     "timestamp": 1770727799
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
                      "revision": 511,
-                     "timestamp": 1770727694
+                     "timestamp": 1770735449
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 513,
+                     "timestamp": 1770736186
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 514,
+                     "timestamp": 1770736370
                   }
                ],
                "channels": [
