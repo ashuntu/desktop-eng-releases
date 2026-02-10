@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7dd4884e3c942bf47461e2591ac53074e288dc9c",
+                  "sha": "275a3a77e86bf25294df3647ae1eaba27d3c565f",
                   "author": "adombeck",
-                  "timestamp": 1770731960,
-                  "message": "Add `authctl user set-uid` command (#1087)\n\nSupport setting the UID of a user via `authctl user set-uid <user> <uid>`.\n\nAlso changes the owner and group of the user's home directory and all\nfiles in the home directory from the old UID and GID to the new UID and\nGID (if it is owned by the current user), same as `usermod` does when\nchanging the UID of a user.\n\nCloses #630 \nUDENG-7717\nUDENG-8720",
-                  "url": "https://github.com/canonical/authd/commit/7dd4884e3c942bf47461e2591ac53074e288dc9c"
+                  "timestamp": 1770764784,
+                  "message": "Add authctl docs (#1179)\n\nGenerate authctl docs via cobra.\n\nUDENG-8760",
+                  "url": "https://github.com/canonical/authd/commit/275a3a77e86bf25294df3647ae1eaba27d3c565f"
                },
                {
-                  "sha": "2ed235967321b2d73448d8b8f93f83f1578d7f11",
+                  "sha": "0f1e87b3e6e7a2578c5b654e71cb42fb45409c25",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770722270,
-                  "message": "fileutils: Return error in ChownRecursiveFrom if all args are nil\n\nSo we don't hide a programmer error.",
-                  "url": "https://github.com/canonical/authd/commit/2ed235967321b2d73448d8b8f93f83f1578d7f11"
+                  "timestamp": 1770763767,
+                  "message": "debian/rules: Exclude docgen from package build\n\nThe cmd/authctl/internal/docgen tool is an internal build-time tool used\nto generate the authctl documentation and man page.\n\nThis change adds it to DH_GOLANG_EXCLUDES to prevent it from being built\nduring package builds, which was causing a dh_missing error since the\nbinary was being built but not installed.",
+                  "url": "https://github.com/canonical/authd/commit/0f1e87b3e6e7a2578c5b654e71cb42fb45409c25"
                },
                {
-                  "sha": "1464dbd5591b02eb2e4a99e65a3c89c240c5e1da",
+                  "sha": "3409bc316edf23e016eb31f29a313f0e674844da",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770213974,
-                  "message": "authctl: Print message about manually updating ownership\n\nAs requested by reviewer, to make it more visible to the user that they\nhave to manually update the ownership of files outside the user's home\ndirectory.",
-                  "url": "https://github.com/canonical/authd/commit/1464dbd5591b02eb2e4a99e65a3c89c240c5e1da"
+                  "timestamp": 1770753950,
+                  "message": "authctl: Fix tests testing negative UID/GID",
+                  "url": "https://github.com/canonical/authd/commit/3409bc316edf23e016eb31f29a313f0e674844da"
                }
             ],
             "ciActions": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7dd4884e3c942bf47461e2591ac53074e288dc9c",
+                  "sha": "275a3a77e86bf25294df3647ae1eaba27d3c565f",
                   "author": "adombeck",
-                  "timestamp": 1770731960,
-                  "message": "Add `authctl user set-uid` command (#1087)\n\nSupport setting the UID of a user via `authctl user set-uid <user> <uid>`.\n\nAlso changes the owner and group of the user's home directory and all\nfiles in the home directory from the old UID and GID to the new UID and\nGID (if it is owned by the current user), same as `usermod` does when\nchanging the UID of a user.\n\nCloses #630 \nUDENG-7717\nUDENG-8720",
-                  "url": "https://github.com/canonical/authd/commit/7dd4884e3c942bf47461e2591ac53074e288dc9c"
+                  "timestamp": 1770764784,
+                  "message": "Add authctl docs (#1179)\n\nGenerate authctl docs via cobra.\n\nUDENG-8760",
+                  "url": "https://github.com/canonical/authd/commit/275a3a77e86bf25294df3647ae1eaba27d3c565f"
                },
                {
-                  "sha": "2ed235967321b2d73448d8b8f93f83f1578d7f11",
+                  "sha": "0f1e87b3e6e7a2578c5b654e71cb42fb45409c25",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770722270,
-                  "message": "fileutils: Return error in ChownRecursiveFrom if all args are nil\n\nSo we don't hide a programmer error.",
-                  "url": "https://github.com/canonical/authd/commit/2ed235967321b2d73448d8b8f93f83f1578d7f11"
+                  "timestamp": 1770763767,
+                  "message": "debian/rules: Exclude docgen from package build\n\nThe cmd/authctl/internal/docgen tool is an internal build-time tool used\nto generate the authctl documentation and man page.\n\nThis change adds it to DH_GOLANG_EXCLUDES to prevent it from being built\nduring package builds, which was causing a dh_missing error since the\nbinary was being built but not installed.",
+                  "url": "https://github.com/canonical/authd/commit/0f1e87b3e6e7a2578c5b654e71cb42fb45409c25"
                },
                {
-                  "sha": "1464dbd5591b02eb2e4a99e65a3c89c240c5e1da",
+                  "sha": "3409bc316edf23e016eb31f29a313f0e674844da",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770213974,
-                  "message": "authctl: Print message about manually updating ownership\n\nAs requested by reviewer, to make it more visible to the user that they\nhave to manually update the ownership of files outside the user's home\ndirectory.",
-                  "url": "https://github.com/canonical/authd/commit/1464dbd5591b02eb2e4a99e65a3c89c240c5e1da"
+                  "timestamp": 1770753950,
+                  "message": "authctl: Fix tests testing negative UID/GID",
+                  "url": "https://github.com/canonical/authd/commit/3409bc316edf23e016eb31f29a313f0e674844da"
                }
             ],
             "ciActions": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7dd4884e3c942bf47461e2591ac53074e288dc9c",
+                  "sha": "275a3a77e86bf25294df3647ae1eaba27d3c565f",
                   "author": "adombeck",
-                  "timestamp": 1770731960,
-                  "message": "Add `authctl user set-uid` command (#1087)\n\nSupport setting the UID of a user via `authctl user set-uid <user> <uid>`.\n\nAlso changes the owner and group of the user's home directory and all\nfiles in the home directory from the old UID and GID to the new UID and\nGID (if it is owned by the current user), same as `usermod` does when\nchanging the UID of a user.\n\nCloses #630 \nUDENG-7717\nUDENG-8720",
-                  "url": "https://github.com/canonical/authd/commit/7dd4884e3c942bf47461e2591ac53074e288dc9c"
+                  "timestamp": 1770764784,
+                  "message": "Add authctl docs (#1179)\n\nGenerate authctl docs via cobra.\n\nUDENG-8760",
+                  "url": "https://github.com/canonical/authd/commit/275a3a77e86bf25294df3647ae1eaba27d3c565f"
                },
                {
-                  "sha": "2ed235967321b2d73448d8b8f93f83f1578d7f11",
+                  "sha": "0f1e87b3e6e7a2578c5b654e71cb42fb45409c25",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770722270,
-                  "message": "fileutils: Return error in ChownRecursiveFrom if all args are nil\n\nSo we don't hide a programmer error.",
-                  "url": "https://github.com/canonical/authd/commit/2ed235967321b2d73448d8b8f93f83f1578d7f11"
+                  "timestamp": 1770763767,
+                  "message": "debian/rules: Exclude docgen from package build\n\nThe cmd/authctl/internal/docgen tool is an internal build-time tool used\nto generate the authctl documentation and man page.\n\nThis change adds it to DH_GOLANG_EXCLUDES to prevent it from being built\nduring package builds, which was causing a dh_missing error since the\nbinary was being built but not installed.",
+                  "url": "https://github.com/canonical/authd/commit/0f1e87b3e6e7a2578c5b654e71cb42fb45409c25"
                },
                {
-                  "sha": "1464dbd5591b02eb2e4a99e65a3c89c240c5e1da",
+                  "sha": "3409bc316edf23e016eb31f29a313f0e674844da",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770213974,
-                  "message": "authctl: Print message about manually updating ownership\n\nAs requested by reviewer, to make it more visible to the user that they\nhave to manually update the ownership of files outside the user's home\ndirectory.",
-                  "url": "https://github.com/canonical/authd/commit/1464dbd5591b02eb2e4a99e65a3c89c240c5e1da"
+                  "timestamp": 1770753950,
+                  "message": "authctl: Fix tests testing negative UID/GID",
+                  "url": "https://github.com/canonical/authd/commit/3409bc316edf23e016eb31f29a313f0e674844da"
                }
             ],
             "ciActions": [
