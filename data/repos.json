@@ -2946,87 +2946,6 @@
             }
          },
          {
-            "name": "Template-snap-repository",
-            "defaultBranch": "stable",
-            "newCommits": 0,
-            "url": "https://github.com/ubuntu/Template-snap-repository",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "e5ed58c3f456f55755bc7009e20c91a403062312",
-                  "author": "Heather Ellsworth",
-                  "timestamp": 1632333862,
-                  "message": "Add General Maintenance checkbox",
-                  "url": "https://github.com/ubuntu/Template-snap-repository/commit/e5ed58c3f456f55755bc7009e20c91a403062312"
-               },
-               {
-                  "sha": "433c8bb73aa3e9e53a3f086e181710758e310ea7",
-                  "author": "Heather Ellsworth",
-                  "timestamp": 1626464034,
-                  "message": "Offer more guidance on which upstream branches should be the base of a feature branch",
-                  "url": "https://github.com/ubuntu/Template-snap-repository/commit/433c8bb73aa3e9e53a3f086e181710758e310ea7"
-               },
-               {
-                  "sha": "d3026a9e0f1ef058b3f2de076d36b1f771e42e49",
-                  "author": "Heather Ellsworth",
-                  "timestamp": 1623255489,
-                  "message": "Update workflow to include manual triggers",
-                  "url": "https://github.com/ubuntu/Template-snap-repository/commit/d3026a9e0f1ef058b3f2de076d36b1f771e42e49"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": {
-               "name": "gnome-calculator",
-               "url": "https://snapcraft.io/gnome-calculator",
-               "releases": [
-                  {
-                     "track": "latest",
-                     "channel": "stable",
-                     "revision": 972,
-                     "timestamp": 1746185683
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "stable",
-                     "revision": 973,
-                     "timestamp": 1746185684
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "stable",
-                     "revision": 974,
-                     "timestamp": 1746185684
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "candidate",
-                     "revision": 975,
-                     "timestamp": 1749637509
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "candidate",
-                     "revision": 976,
-                     "timestamp": 1749637701
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "candidate",
-                     "revision": 974,
-                     "timestamp": 1746009380
-                  }
-               ],
-               "channels": [
-                  "stable",
-                  "candidate"
-               ],
-               "tracks": [
-                  "latest"
-               ]
-            }
-         },
-         {
             "name": "thunderbird",
             "defaultBranch": "stable",
             "newCommits": 0,
@@ -3289,6 +3208,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d1df1ea33f30ec49c42d33e24fabd797f64b3522",
+                  "author": "adombeck",
+                  "timestamp": 1770824313,
+                  "message": "provider: Only use verified email as username (#1249)\n\nUDENG-8970",
+                  "url": "https://github.com/canonical/authd/commit/d1df1ea33f30ec49c42d33e24fabd797f64b3522"
+               },
+               {
                   "sha": "275a3a77e86bf25294df3647ae1eaba27d3c565f",
                   "author": "adombeck",
                   "timestamp": 1770764784,
@@ -3301,13 +3227,6 @@
                   "timestamp": 1770763767,
                   "message": "debian/rules: Exclude docgen from package build\n\nThe cmd/authctl/internal/docgen tool is an internal build-time tool used\nto generate the authctl documentation and man page.\n\nThis change adds it to DH_GOLANG_EXCLUDES to prevent it from being built\nduring package builds, which was causing a dh_missing error since the\nbinary was being built but not installed.",
                   "url": "https://github.com/canonical/authd/commit/0f1e87b3e6e7a2578c5b654e71cb42fb45409c25"
-               },
-               {
-                  "sha": "3409bc316edf23e016eb31f29a313f0e674844da",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1770753950,
-                  "message": "authctl: Fix tests testing negative UID/GID",
-                  "url": "https://github.com/canonical/authd/commit/3409bc316edf23e016eb31f29a313f0e674844da"
                }
             ],
             "ciActions": [
@@ -5373,7 +5292,7 @@
                   "url": "https://github.com/canonical/appstream.dart/commit/27d85c69bfa39cf9cad30d63882c88f400713f4d"
                }
             ],
-            "ciActions": null,
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -5384,6 +5303,13 @@
             "url": "https://github.com/canonical/authd",
             "releases": null,
             "commits": [
+               {
+                  "sha": "d1df1ea33f30ec49c42d33e24fabd797f64b3522",
+                  "author": "adombeck",
+                  "timestamp": 1770824313,
+                  "message": "provider: Only use verified email as username (#1249)\n\nUDENG-8970",
+                  "url": "https://github.com/canonical/authd/commit/d1df1ea33f30ec49c42d33e24fabd797f64b3522"
+               },
                {
                   "sha": "275a3a77e86bf25294df3647ae1eaba27d3c565f",
                   "author": "adombeck",
@@ -5397,13 +5323,6 @@
                   "timestamp": 1770763767,
                   "message": "debian/rules: Exclude docgen from package build\n\nThe cmd/authctl/internal/docgen tool is an internal build-time tool used\nto generate the authctl documentation and man page.\n\nThis change adds it to DH_GOLANG_EXCLUDES to prevent it from being built\nduring package builds, which was causing a dh_missing error since the\nbinary was being built but not installed.",
                   "url": "https://github.com/canonical/authd/commit/0f1e87b3e6e7a2578c5b654e71cb42fb45409c25"
-               },
-               {
-                  "sha": "3409bc316edf23e016eb31f29a313f0e674844da",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1770753950,
-                  "message": "authctl: Fix tests testing negative UID/GID",
-                  "url": "https://github.com/canonical/authd/commit/3409bc316edf23e016eb31f29a313f0e674844da"
                }
             ],
             "ciActions": [
@@ -7650,6 +7569,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d1df1ea33f30ec49c42d33e24fabd797f64b3522",
+                  "author": "adombeck",
+                  "timestamp": 1770824313,
+                  "message": "provider: Only use verified email as username (#1249)\n\nUDENG-8970",
+                  "url": "https://github.com/canonical/authd/commit/d1df1ea33f30ec49c42d33e24fabd797f64b3522"
+               },
+               {
                   "sha": "275a3a77e86bf25294df3647ae1eaba27d3c565f",
                   "author": "adombeck",
                   "timestamp": 1770764784,
@@ -7662,13 +7588,6 @@
                   "timestamp": 1770763767,
                   "message": "debian/rules: Exclude docgen from package build\n\nThe cmd/authctl/internal/docgen tool is an internal build-time tool used\nto generate the authctl documentation and man page.\n\nThis change adds it to DH_GOLANG_EXCLUDES to prevent it from being built\nduring package builds, which was causing a dh_missing error since the\nbinary was being built but not installed.",
                   "url": "https://github.com/canonical/authd/commit/0f1e87b3e6e7a2578c5b654e71cb42fb45409c25"
-               },
-               {
-                  "sha": "3409bc316edf23e016eb31f29a313f0e674844da",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1770753950,
-                  "message": "authctl: Fix tests testing negative UID/GID",
-                  "url": "https://github.com/canonical/authd/commit/3409bc316edf23e016eb31f29a313f0e674844da"
                }
             ],
             "ciActions": [
