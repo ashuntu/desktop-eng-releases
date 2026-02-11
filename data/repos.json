@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7ed239770a9bec20b7f40a531eaa8666991ff544",
+                  "sha": "a644ac7f790991db00fb59e1aeff232a8bdb39e4",
                   "author": "Kat",
-                  "timestamp": 1770735870,
-                  "message": "tests(insights): Implement integration tests for shared libraries (#314)\n\nThis PR implements a set of integration tests that link directly against\nthe generated shared libraries.\n\nTo achieve this, we implement a driver application that acts as a basic\nCLI wrapper around the shared library. Depending on how we build the\napplication, we can make it link against a \"local\" set of shared\nlibraries or use system-level shared libraries. The latter mode is used\nfor `autopkgtest` where we have `libinsights-dev` installed. We detect\nwhether or not we are running tests via `autopkgtest` via a build tag.\n\nOutside `autopkgtest`, we link against a version of the shared libraries\nthat allow us to override the upload URL, allowing us to better test the\nupload command.\n\nNote that at test time when building a deb, Makefiles appear to be\nomitted. Thus, instead of using a Makefile to build the driver\napplication, we simply construct the build command ourselves in Go.\n\nThe test setup itself will generate the shared libraries and build the\ndriver application, so no additional action from the user or a driving\nCI workflow is required.\n\nPresently, these integration tests cover all major operations exposed by\nthe shared library\n - Setting the log callback function\n - Get consent state\n - Set consent state\n - Collect\n - Compile\n - Write\n - Upload (We only test dry-run in `autopkgtest`)\n \n ---\n [UDENG-7605](https://warthogs.atlassian.net/browse/UDENG-7605)\n\n[UDENG-7605]:\nhttps://warthogs.atlassian.net/browse/UDENG-7605?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7ed239770a9bec20b7f40a531eaa8666991ff544"
+                  "timestamp": 1770822175,
+                  "message": "fix(c-sanity.yaml): Ignore non-C files in PR case (#318)\n\nIn the PR case, `clang-format` is being ran against non-C files and is\ntriggering against things like `.json` files. We don't want that, so we\ncopy the behavior of the non-PR case and filter out non-C files here.\n\nAdditionally, for the sake of conformity, we set a job name for the\n`c-sanity` job name in the QA workflow to be `C: Code sanity`.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a644ac7f790991db00fb59e1aeff232a8bdb39e4"
                },
                {
-                  "sha": "ece15220282d405b7bebf249ce8f903e66c62087",
+                  "sha": "f1d8ee18196f1c309a9ef3e60705bd799b607674",
                   "author": "kkuo",
-                  "timestamp": 1770432649,
-                  "message": "Update version to 0.9.2ubuntu~dev1 and add integration tests for shared library",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/ece15220282d405b7bebf249ce8f903e66c62087"
+                  "timestamp": 1770756326,
+                  "message": "Update job name for C code sanity check in QA workflow for conformity",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f1d8ee18196f1c309a9ef3e60705bd799b607674"
                },
                {
-                  "sha": "b602d28cb93ac6b0dcf64e7f8b12a0011b145dbd",
+                  "sha": "c8589eac69f8de75371184761116d255bac6561c",
                   "author": "kkuo",
-                  "timestamp": 1770431577,
-                  "message": "Ensure files generated for integration tests are cleaned from source package",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b602d28cb93ac6b0dcf64e7f8b12a0011b145dbd"
+                  "timestamp": 1770756172,
+                  "message": "Ignore non-C files for PR case",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c8589eac69f8de75371184761116d255bac6561c"
                }
             ],
             "ciActions": [
@@ -5373,7 +5373,7 @@
                   "url": "https://github.com/canonical/appstream.dart/commit/27d85c69bfa39cf9cad30d63882c88f400713f4d"
                }
             ],
-            "ciActions": [],
+            "ciActions": null,
             "charm": null,
             "snap": null
          },
