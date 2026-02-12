@@ -5218,6 +5218,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5317cdd448e01dfeb1c3edf2e6f46fba6f2985b8",
+                  "author": "Kat",
+                  "timestamp": 1770909128,
+                  "message": "feat(insights): Remove default consent behavior and always use the platform source as the default (#317)\n\nThe decision was made a little while ago that the concept of a \"default\nconsent\" brought more risks than it was worth, especially once we start\nmixing system and application sources together. To prevent the\npossibility of accidentally affecting consent of different scopes, here\nwe remove the \"default consent\" functionality entirely. Additionally, to\navoid breaking prior behavior too much, when we utilize consent\nfunctions with Ubuntu Insights without passing in a source, we default\nto using the platform source, much like what we were doing for the\ncollection actions.\n\nTo facilitate this, numerous tests had to be cleaned up, which is the\nbulk of the diff here.\n\nThe test code can be improved quite a bit, but I'm considering that work\nto be out of scope for this PR since it was like this since before this\nPR.\n\n---\n[UDENG-8653](https://warthogs.atlassian.net/browse/UDENG-8653)\n\n[UDENG-8653]:\nhttps://warthogs.atlassian.net/browse/UDENG-8653?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/5317cdd448e01dfeb1c3edf2e6f46fba6f2985b8"
+               },
+               {
                   "sha": "a644ac7f790991db00fb59e1aeff232a8bdb39e4",
                   "author": "Kat",
                   "timestamp": 1770822175,
@@ -5225,18 +5232,11 @@
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/a644ac7f790991db00fb59e1aeff232a8bdb39e4"
                },
                {
-                  "sha": "f1d8ee18196f1c309a9ef3e60705bd799b607674",
+                  "sha": "5aecaf5759aa56cabe080b215d04fc6e12e19429",
                   "author": "kkuo",
-                  "timestamp": 1770756326,
-                  "message": "Update job name for C code sanity check in QA workflow for conformity",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f1d8ee18196f1c309a9ef3e60705bd799b607674"
-               },
-               {
-                  "sha": "c8589eac69f8de75371184761116d255bac6561c",
-                  "author": "kkuo",
-                  "timestamp": 1770756172,
-                  "message": "Ignore non-C files for PR case",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c8589eac69f8de75371184761116d255bac6561c"
+                  "timestamp": 1770763639,
+                  "message": "Split cmd consent tests in two\n\nThis allows for the removal of the golden files for the get case, where we expect no changes be made to the disk.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/5aecaf5759aa56cabe080b215d04fc6e12e19429"
                }
             ],
             "ciActions": [
