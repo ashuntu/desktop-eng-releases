@@ -3456,25 +3456,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "42ec85a2a9a9320b6f62343543c17de5ebe3f656",
+                  "sha": "e1d62338d4f27d76a2fd69916f4084cdb5cfffab",
                   "author": "adombeck",
-                  "timestamp": 1770673916,
-                  "message": "fix(gh-actions/build-debian): Set -euo pipefail in all steps (#100)\n\nUDENG-8986",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/42ec85a2a9a9320b6f62343543c17de5ebe3f656"
+                  "timestamp": 1770918990,
+                  "message": "fix(gh-actions/build-debian): Run lrc on extracted source package (#102)\n\nUDENG-8981",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/e1d62338d4f27d76a2fd69916f4084cdb5cfffab"
                },
                {
-                  "sha": "aa088daaa2e911deb2ae6e93f5ecf20e14cfca5d",
+                  "sha": "44c73e2239b92dd1c6b8180dff57464d06977c87",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770655488,
-                  "message": "gh-actions/build-debian: Fix missing word in log message",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/aa088daaa2e911deb2ae6e93f5ecf20e14cfca5d"
+                  "timestamp": 1770897118,
+                  "message": "gh-actions/build-debian: Also run lrc if sources-only is true\n\nWe only need the source package to run lrc, so let's also run it if\nbuilding the binary package is skipped.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/44c73e2239b92dd1c6b8180dff57464d06977c87"
                },
                {
-                  "sha": "862fbae7f75f0c42982fbaebded818e65d6d5991",
+                  "sha": "414de0d08cfe5a8fc001b22668dce1996896cfbb",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770655287,
-                  "message": "gh-actions/build-debian: Set -euo pipefail in all steps\n\nThe \"Run lintian on sources\" and \"Run lintian on binaries\" steps\nsucceeded even if lintian exits with a non-zero exit code.\n\nUsing `set -euo pipefail` fixes that. Let's use it consistently in all\nsteps to avoid similar issues in the future.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/862fbae7f75f0c42982fbaebded818e65d6d5991"
+                  "timestamp": 1770773818,
+                  "message": "gh-actions/build-debian: Don't run lrc by default\n\nIn some repos (e.g. authd) lrc reports hundreds of issues which would require\nsubstantial manual effort to fix and maintain. To avoid breaking the CI\nof existing packages, we decided not to run lrc by default. It can be\nenabled by setting the run-lrc input to true.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/414de0d08cfe5a8fc001b22668dce1996896cfbb"
                }
             ],
             "ciActions": [],
@@ -4182,25 +4182,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1cfb8850c4c1764664f4e67741eebb96cbe0fc69",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1770917229,
+                  "message": "README: Correct Mattermost channel.",
+                  "url": "https://github.com/canonical/snap-expire/commit/1cfb8850c4c1764664f4e67741eebb96cbe0fc69"
+               },
+               {
+                  "sha": "76aa2aafb081683a6aaeb58dd246ea7bf90ea94c",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1770916944,
+                  "message": "Refresh auth file Firefox, Chromium and LLVM-Chromium.",
+                  "url": "https://github.com/canonical/snap-expire/commit/76aa2aafb081683a6aaeb58dd246ea7bf90ea94c"
+               },
+               {
                   "sha": "d242bf806bec19b5e4638c3bf01c223224c08366",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1770889102,
                   "message": "Detect expired SURL secret and warn about it.",
                   "url": "https://github.com/canonical/snap-expire/commit/d242bf806bec19b5e4638c3bf01c223224c08366"
-               },
-               {
-                  "sha": "b3ced85ce45fb9d30862181a593806613ae2f5a5",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1769101998,
-                  "message": "Add snapd-desktop-integration",
-                  "url": "https://github.com/canonical/snap-expire/commit/b3ced85ce45fb9d30862181a593806613ae2f5a5"
-               },
-               {
-                  "sha": "a3721971043ad032086989230741fff84b1accd5",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1769101485,
-                  "message": "Revert \"REVERTME: Stop warning until Jan 12th.\"\n\nThis reverts commit 73dea27d323b5c57f6be33fdeeab1dd6eede2d75.",
-                  "url": "https://github.com/canonical/snap-expire/commit/a3721971043ad032086989230741fff84b1accd5"
                }
             ],
             "ciActions": [],
@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5317cdd448e01dfeb1c3edf2e6f46fba6f2985b8",
+                  "sha": "d54bf9157e71632e3253969d5b173f8874500d59",
                   "author": "Kat",
-                  "timestamp": 1770909128,
-                  "message": "feat(insights): Remove default consent behavior and always use the platform source as the default (#317)\n\nThe decision was made a little while ago that the concept of a \"default\nconsent\" brought more risks than it was worth, especially once we start\nmixing system and application sources together. To prevent the\npossibility of accidentally affecting consent of different scopes, here\nwe remove the \"default consent\" functionality entirely. Additionally, to\navoid breaking prior behavior too much, when we utilize consent\nfunctions with Ubuntu Insights without passing in a source, we default\nto using the platform source, much like what we were doing for the\ncollection actions.\n\nTo facilitate this, numerous tests had to be cleaned up, which is the\nbulk of the diff here.\n\nThe test code can be improved quite a bit, but I'm considering that work\nto be out of scope for this PR since it was like this since before this\nPR.\n\n---\n[UDENG-8653](https://warthogs.atlassian.net/browse/UDENG-8653)\n\n[UDENG-8653]:\nhttps://warthogs.atlassian.net/browse/UDENG-8653?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/5317cdd448e01dfeb1c3edf2e6f46fba6f2985b8"
+                  "timestamp": 1770919021,
+                  "message": "deps(go-insights): bump golang.org/x/text from 0.33.0 to 0.34.0 in /insights in the minor-updates group (#320)\n\nThis is just a manual duplicate of #319 as Dependabot is interacting\nweirdly with one of our workflows.\n\nSuperseeds and closes #319",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/d54bf9157e71632e3253969d5b173f8874500d59"
                },
                {
-                  "sha": "a644ac7f790991db00fb59e1aeff232a8bdb39e4",
+                  "sha": "20d4e2d63ea1e4d417877dafc7690e3de0dc2fc3",
                   "author": "Kat",
-                  "timestamp": 1770822175,
-                  "message": "fix(c-sanity.yaml): Ignore non-C files in PR case (#318)\n\nIn the PR case, `clang-format` is being ran against non-C files and is\ntriggering against things like `.json` files. We don't want that, so we\ncopy the behavior of the non-PR case and filter out non-C files here.\n\nAdditionally, for the sake of conformity, we set a job name for the\n`c-sanity` job name in the QA workflow to be `C: Code sanity`.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a644ac7f790991db00fb59e1aeff232a8bdb39e4"
+                  "timestamp": 1770919005,
+                  "message": "fix(insights): Normalize platform source for system lib autopkgtests (#321)\n\nWe forgot to consider the case of autopkgtests where the prod system\nshared lib is used such that we don't normalize the platform source. As\nsuch, we need to add extra logic to the integration tests to do it after\nthe fact.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/20d4e2d63ea1e4d417877dafc7690e3de0dc2fc3"
                },
                {
-                  "sha": "5aecaf5759aa56cabe080b215d04fc6e12e19429",
+                  "sha": "e24fa1a7b9d3fad2854bb57a8bbf52cc050feb83",
                   "author": "kkuo",
-                  "timestamp": 1770763639,
-                  "message": "Split cmd consent tests in two\n\nThis allows for the removal of the golden files for the get case, where we expect no changes be made to the disk.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/5aecaf5759aa56cabe080b215d04fc6e12e19429"
+                  "timestamp": 1770917756,
+                  "message": "Normalize platform source for system lib autopkgtests",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e24fa1a7b9d3fad2854bb57a8bbf52cc050feb83"
                }
             ],
             "ciActions": [
@@ -5552,25 +5552,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "42ec85a2a9a9320b6f62343543c17de5ebe3f656",
+                  "sha": "e1d62338d4f27d76a2fd69916f4084cdb5cfffab",
                   "author": "adombeck",
-                  "timestamp": 1770673916,
-                  "message": "fix(gh-actions/build-debian): Set -euo pipefail in all steps (#100)\n\nUDENG-8986",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/42ec85a2a9a9320b6f62343543c17de5ebe3f656"
+                  "timestamp": 1770918990,
+                  "message": "fix(gh-actions/build-debian): Run lrc on extracted source package (#102)\n\nUDENG-8981",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/e1d62338d4f27d76a2fd69916f4084cdb5cfffab"
                },
                {
-                  "sha": "aa088daaa2e911deb2ae6e93f5ecf20e14cfca5d",
+                  "sha": "44c73e2239b92dd1c6b8180dff57464d06977c87",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770655488,
-                  "message": "gh-actions/build-debian: Fix missing word in log message",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/aa088daaa2e911deb2ae6e93f5ecf20e14cfca5d"
+                  "timestamp": 1770897118,
+                  "message": "gh-actions/build-debian: Also run lrc if sources-only is true\n\nWe only need the source package to run lrc, so let's also run it if\nbuilding the binary package is skipped.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/44c73e2239b92dd1c6b8180dff57464d06977c87"
                },
                {
-                  "sha": "862fbae7f75f0c42982fbaebded818e65d6d5991",
+                  "sha": "414de0d08cfe5a8fc001b22668dce1996896cfbb",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770655287,
-                  "message": "gh-actions/build-debian: Set -euo pipefail in all steps\n\nThe \"Run lintian on sources\" and \"Run lintian on binaries\" steps\nsucceeded even if lintian exits with a non-zero exit code.\n\nUsing `set -euo pipefail` fixes that. Let's use it consistently in all\nsteps to avoid similar issues in the future.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/862fbae7f75f0c42982fbaebded818e65d6d5991"
+                  "timestamp": 1770773818,
+                  "message": "gh-actions/build-debian: Don't run lrc by default\n\nIn some repos (e.g. authd) lrc reports hundreds of issues which would require\nsubstantial manual effort to fix and maintain. To avoid breaking the CI\nof existing packages, we decided not to run lrc by default. It can be\nenabled by setting the run-lrc input to true.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/414de0d08cfe5a8fc001b22668dce1996896cfbb"
                }
             ],
             "ciActions": [],
@@ -6311,25 +6311,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1cfb8850c4c1764664f4e67741eebb96cbe0fc69",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1770917229,
+                  "message": "README: Correct Mattermost channel.",
+                  "url": "https://github.com/canonical/snap-expire/commit/1cfb8850c4c1764664f4e67741eebb96cbe0fc69"
+               },
+               {
+                  "sha": "76aa2aafb081683a6aaeb58dd246ea7bf90ea94c",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1770916944,
+                  "message": "Refresh auth file Firefox, Chromium and LLVM-Chromium.",
+                  "url": "https://github.com/canonical/snap-expire/commit/76aa2aafb081683a6aaeb58dd246ea7bf90ea94c"
+               },
+               {
                   "sha": "d242bf806bec19b5e4638c3bf01c223224c08366",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1770889102,
                   "message": "Detect expired SURL secret and warn about it.",
                   "url": "https://github.com/canonical/snap-expire/commit/d242bf806bec19b5e4638c3bf01c223224c08366"
-               },
-               {
-                  "sha": "b3ced85ce45fb9d30862181a593806613ae2f5a5",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1769101998,
-                  "message": "Add snapd-desktop-integration",
-                  "url": "https://github.com/canonical/snap-expire/commit/b3ced85ce45fb9d30862181a593806613ae2f5a5"
-               },
-               {
-                  "sha": "a3721971043ad032086989230741fff84b1accd5",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1769101485,
-                  "message": "Revert \"REVERTME: Stop warning until Jan 12th.\"\n\nThis reverts commit 73dea27d323b5c57f6be33fdeeab1dd6eede2d75.",
-                  "url": "https://github.com/canonical/snap-expire/commit/a3721971043ad032086989230741fff84b1accd5"
                }
             ],
             "ciActions": [],
@@ -7817,25 +7817,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "42ec85a2a9a9320b6f62343543c17de5ebe3f656",
+                  "sha": "e1d62338d4f27d76a2fd69916f4084cdb5cfffab",
                   "author": "adombeck",
-                  "timestamp": 1770673916,
-                  "message": "fix(gh-actions/build-debian): Set -euo pipefail in all steps (#100)\n\nUDENG-8986",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/42ec85a2a9a9320b6f62343543c17de5ebe3f656"
+                  "timestamp": 1770918990,
+                  "message": "fix(gh-actions/build-debian): Run lrc on extracted source package (#102)\n\nUDENG-8981",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/e1d62338d4f27d76a2fd69916f4084cdb5cfffab"
                },
                {
-                  "sha": "aa088daaa2e911deb2ae6e93f5ecf20e14cfca5d",
+                  "sha": "44c73e2239b92dd1c6b8180dff57464d06977c87",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770655488,
-                  "message": "gh-actions/build-debian: Fix missing word in log message",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/aa088daaa2e911deb2ae6e93f5ecf20e14cfca5d"
+                  "timestamp": 1770897118,
+                  "message": "gh-actions/build-debian: Also run lrc if sources-only is true\n\nWe only need the source package to run lrc, so let's also run it if\nbuilding the binary package is skipped.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/44c73e2239b92dd1c6b8180dff57464d06977c87"
                },
                {
-                  "sha": "862fbae7f75f0c42982fbaebded818e65d6d5991",
+                  "sha": "414de0d08cfe5a8fc001b22668dce1996896cfbb",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1770655287,
-                  "message": "gh-actions/build-debian: Set -euo pipefail in all steps\n\nThe \"Run lintian on sources\" and \"Run lintian on binaries\" steps\nsucceeded even if lintian exits with a non-zero exit code.\n\nUsing `set -euo pipefail` fixes that. Let's use it consistently in all\nsteps to avoid similar issues in the future.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/862fbae7f75f0c42982fbaebded818e65d6d5991"
+                  "timestamp": 1770773818,
+                  "message": "gh-actions/build-debian: Don't run lrc by default\n\nIn some repos (e.g. authd) lrc reports hundreds of issues which would require\nsubstantial manual effort to fix and maintain. To avoid breaking the CI\nof existing packages, we decided not to run lrc by default. It can be\nenabled by setting the run-lrc input to true.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/414de0d08cfe5a8fc001b22668dce1996896cfbb"
                }
             ],
             "ciActions": [],
@@ -8543,25 +8543,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1cfb8850c4c1764664f4e67741eebb96cbe0fc69",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1770917229,
+                  "message": "README: Correct Mattermost channel.",
+                  "url": "https://github.com/canonical/snap-expire/commit/1cfb8850c4c1764664f4e67741eebb96cbe0fc69"
+               },
+               {
+                  "sha": "76aa2aafb081683a6aaeb58dd246ea7bf90ea94c",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1770916944,
+                  "message": "Refresh auth file Firefox, Chromium and LLVM-Chromium.",
+                  "url": "https://github.com/canonical/snap-expire/commit/76aa2aafb081683a6aaeb58dd246ea7bf90ea94c"
+               },
+               {
                   "sha": "d242bf806bec19b5e4638c3bf01c223224c08366",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1770889102,
                   "message": "Detect expired SURL secret and warn about it.",
                   "url": "https://github.com/canonical/snap-expire/commit/d242bf806bec19b5e4638c3bf01c223224c08366"
-               },
-               {
-                  "sha": "b3ced85ce45fb9d30862181a593806613ae2f5a5",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1769101998,
-                  "message": "Add snapd-desktop-integration",
-                  "url": "https://github.com/canonical/snap-expire/commit/b3ced85ce45fb9d30862181a593806613ae2f5a5"
-               },
-               {
-                  "sha": "a3721971043ad032086989230741fff84b1accd5",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1769101485,
-                  "message": "Revert \"REVERTME: Stop warning until Jan 12th.\"\n\nThis reverts commit 73dea27d323b5c57f6be33fdeeab1dd6eede2d75.",
-                  "url": "https://github.com/canonical/snap-expire/commit/a3721971043ad032086989230741fff84b1accd5"
                }
             ],
             "ciActions": [],
