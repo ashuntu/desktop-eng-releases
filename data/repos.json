@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0704bc16d1178fe350f4175197708065b5a7a874",
-                  "author": "Kat",
-                  "timestamp": 1771012467,
-                  "message": "ci(lrc-qa): Remove redundant licenserecon workflow (#315)\n\nLicenserecon is ran in the source package build step of qa-debian now,\nso we can get rid of our dedicated workflow. It's slower to fail when\nthere are issues, but this workflow also directly uses the vendoring\nbehavior of the source package build.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/0704bc16d1178fe350f4175197708065b5a7a874"
+                  "sha": "156e1fb84aa3a18492ab700602ea098dd39ba8ff",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1771402532,
+                  "message": "fix(insights): Fix systemd tests in autopkgtest smoke test suite (#323)\n\nTurns out, though I did trigger a PPA test with the Launchpad\nautopkgtest runners for the shared library integration test, I forgot to\ndo so for the smoke tests, and the Launchpad autopkgtest runners dislike\nhaving anything to do with systemd user units, even though they work\nfine in my local autopkgtest runs and in the GitHub workflow autopkgtest\nruns.\n\n\nhttps://autopkgtest.ubuntu.com/results/autopkgtest-resolute/resolute/amd64/u/ubuntu-insights/20260214_202613_6e984@/log.gz\n\nHere, we apply a workaround to try and start a systemd user session when\none is not guaranteed to have been started already.\n\n---\n\n[UDENG-9124](https://warthogs.atlassian.net/browse/UDENG-9124)\n\n[UDENG-9124]:\nhttps://warthogs.atlassian.net/browse/UDENG-9124?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/156e1fb84aa3a18492ab700602ea098dd39ba8ff"
                },
                {
-                  "sha": "b517e69d09945b939e54c7b4da74a4d060d2c305",
-                  "author": "Kat",
-                  "timestamp": 1771012455,
-                  "message": "maint(insights): Finalize changelog for 0.9.2 (#322)\n\nUbuntu Insights 0.9.2 is an archive release of Ubuntu Insights targeting\nResolute.\n\nhttps://bugs.launchpad.net/ubuntu/+source/ubuntu-insights/+bug/2141704\nPPA:\nhttps://launchpad.net/~kkuo/+archive/ubuntu/ubuntu-insights/+packages",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b517e69d09945b939e54c7b4da74a4d060d2c305"
-               },
-               {
-                  "sha": "29e618ba18bf7ce8b34d1cf8211e17aca4596abe",
+                  "sha": "bd1a7082c7418038c05bdab836ad02deb961ee6f",
                   "author": "kkuo",
-                  "timestamp": 1770918042,
-                  "message": "Finalize changelog for 0.9.2",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/29e618ba18bf7ce8b34d1cf8211e17aca4596abe"
+                  "timestamp": 1771024311,
+                  "message": "Add changelog entry for 0.9.3",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/bd1a7082c7418038c05bdab836ad02deb961ee6f"
+               },
+               {
+                  "sha": "e2bfd2fa75c6693efc5cdb0b0c51c803a14e3456",
+                  "author": "kkuo",
+                  "timestamp": 1771024109,
+                  "message": "Fix systemd tests in autopkgtest smoke test suite",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e2bfd2fa75c6693efc5cdb0b0c51c803a14e3456"
                }
             ],
             "ciActions": [
