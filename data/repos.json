@@ -4630,6 +4630,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 288262886,
+                  "version": "rev41",
+                  "timestamp": 1771513969,
+                  "title": "Revision 41",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 41</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 15:14 UTC on 19 Feb 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/61\">#61</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev40...rev41\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev40&hellip;rev41</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev41",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev41...main"
+               },
+               {
                   "id": 287845336,
                   "version": "rev40",
                   "timestamp": 1771444532,
@@ -4646,15 +4655,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 39</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 17:59 UTC on 17 Feb 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: update version and source tags to v0.9.2 and Go 1.25 by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/60\">#60</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev38...rev39\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev38&hellip;rev39</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev39",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev39...main"
-               },
-               {
-                  "id": 274309128,
-                  "version": "rev38",
-                  "timestamp": 1767636058,
-                  "title": "Revision 38",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 38</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:02 UTC on 5 Jan 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update github artifact actions (major) by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/52\">#52</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev37...rev38\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev37&hellip;rev38</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev38",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev38...main"
                }
             ],
             "commits": null,
@@ -4666,8 +4666,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 40,
-                     "timestamp": 1771444646
+                     "revision": 41,
+                     "timestamp": 1771514085
                   }
                ],
                "channels": [
@@ -5218,6 +5218,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "630a23fe8b9e411900f6f7f8b4eb61080e734234",
+                  "author": "Kat",
+                  "timestamp": 1771510552,
+                  "message": "ci: Ignore concurrency groups for main (#324)\n\nThe \"cancel-in-progress\" concurrency option has proved to be problematic\nat times. Besides the bad interactions with TiCS, sometimes workflows\nget cancelled, but they never actually get replaced with a fresh one.\n\nThough the TiCS interaction has been roughly resolved previously with a\nworkaround, it appears to be better to just not cancel in-progress runs\non main. Since this is an open repository, and we're not using any\nspecial GitHub runners, we shouldn't get charged by GitHub for runner\nusage.\n\nHowever, simply disabling cancel in progress with the existing setup\nwould mean it could potentially take a very long time to get relevant\nresults. Thus, instead, here we define the concurrency groups such that\nthey should be irrelevant when the ref is main. To ensure that TiCS\ndoesn't break, we add a strict, non-cancelling job-level concurrency\ngroup to the \"Process coverage reports\" job in `QA`.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/630a23fe8b9e411900f6f7f8b4eb61080e734234"
+               },
+               {
                   "sha": "156e1fb84aa3a18492ab700602ea098dd39ba8ff",
                   "author": "Didier Roche-Tolomelli",
                   "timestamp": 1771402532,
@@ -5230,13 +5237,6 @@
                   "timestamp": 1771024311,
                   "message": "Add changelog entry for 0.9.3",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/bd1a7082c7418038c05bdab836ad02deb961ee6f"
-               },
-               {
-                  "sha": "e2bfd2fa75c6693efc5cdb0b0c51c803a14e3456",
-                  "author": "kkuo",
-                  "timestamp": 1771024109,
-                  "message": "Fix systemd tests in autopkgtest smoke test suite",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e2bfd2fa75c6693efc5cdb0b0c51c803a14e3456"
                }
             ],
             "ciActions": [
@@ -6759,6 +6759,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 288262886,
+                  "version": "rev41",
+                  "timestamp": 1771513969,
+                  "title": "Revision 41",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 41</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 15:14 UTC on 19 Feb 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/61\">#61</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev40...rev41\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev40&hellip;rev41</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev41",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev41...main"
+               },
+               {
                   "id": 287845336,
                   "version": "rev40",
                   "timestamp": 1771444532,
@@ -6775,15 +6784,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 39</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 17:59 UTC on 17 Feb 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: update version and source tags to v0.9.2 and Go 1.25 by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/60\">#60</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev38...rev39\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev38&hellip;rev39</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev39",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev39...main"
-               },
-               {
-                  "id": 274309128,
-                  "version": "rev38",
-                  "timestamp": 1767636058,
-                  "title": "Revision 38",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 38</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:02 UTC on 5 Jan 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update github artifact actions (major) by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/52\">#52</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev37...rev38\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev37&hellip;rev38</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev38",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev38...main"
                }
             ],
             "commits": null,
@@ -6795,8 +6795,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 40,
-                     "timestamp": 1771444646
+                     "revision": 41,
+                     "timestamp": 1771514085
                   }
                ],
                "channels": [
@@ -6811,7 +6811,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 71,
+            "newCommits": 73,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -9026,6 +9026,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 288262886,
+                  "version": "rev41",
+                  "timestamp": 1771513969,
+                  "title": "Revision 41",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 41</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 15:14 UTC on 19 Feb 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/61\">#61</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev40...rev41\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev40&hellip;rev41</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev41",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev41...main"
+               },
+               {
                   "id": 287845336,
                   "version": "rev40",
                   "timestamp": 1771444532,
@@ -9042,15 +9051,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 39</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 17:59 UTC on 17 Feb 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: update version and source tags to v0.9.2 and Go 1.25 by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/60\">#60</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev38...rev39\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev38&hellip;rev39</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev39",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev39...main"
-               },
-               {
-                  "id": 274309128,
-                  "version": "rev38",
-                  "timestamp": 1767636058,
-                  "title": "Revision 38",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 38</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:02 UTC on 5 Jan 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update github artifact actions (major) by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/52\">#52</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev37...rev38\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev37&hellip;rev38</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev38",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev38...main"
                }
             ],
             "commits": null,
@@ -9062,8 +9062,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 40,
-                     "timestamp": 1771444646
+                     "revision": 41,
+                     "timestamp": 1771514085
                   }
                ],
                "channels": [
