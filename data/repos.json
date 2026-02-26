@@ -3256,25 +3256,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9e4641d0d6b98855e2f2657091a360af91b9251a",
+                  "sha": "9f13b368dd31333d37ee7bf9a10280fc39507627",
                   "author": "ashuntu",
-                  "timestamp": 1770412044,
-                  "message": "feat(component): implement custom field (#41)\n\n- add custom field to component\n- add custom field parsing to xml and yaml factories\n- add test cases for xml and yaml parsers\n\nthis change attempts to implement the custom component field as\ndescribed\n[here](https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-custom)\n\nthere does not appear to be any example for the [yaml\nvariant](https://www.freedesktop.org/software/appstream/docs/sect-AppStream-YAML.html#field-dep11-custom)\nso guessed based on the yaml description of `value-type:list(dict)`",
-                  "url": "https://github.com/canonical/appstream.dart/commit/9e4641d0d6b98855e2f2657091a360af91b9251a"
+                  "timestamp": 1772066444,
+                  "message": "fix: Add ubuntu_lints (#43)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible (this results in a fair amount of casting\ndue to the nature of the library, please double check these)\n- Trailing commas\n\nAlso done for packagekit.dart:\nhttps://github.com/canonical/packagekit.dart/pull/34",
+                  "url": "https://github.com/canonical/appstream.dart/commit/9f13b368dd31333d37ee7bf9a10280fc39507627"
                },
                {
-                  "sha": "0beaca45f4f2d5d89896aaf5f6aac7141f171b66",
-                  "author": "Jarred Wilson",
-                  "timestamp": 1769542882,
-                  "message": "feat(component): implement custom field\n\n- add custom field to component\n- add custom field parsing to xml and yaml factories\n- add test cases for xml and yaml parsers",
-                  "url": "https://github.com/canonical/appstream.dart/commit/0beaca45f4f2d5d89896aaf5f6aac7141f171b66"
+                  "sha": "23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951",
+                  "author": "ashuntu",
+                  "timestamp": 1771376410,
+                  "message": "fix: add .vscode/ to .gitignore",
+                  "url": "https://github.com/canonical/appstream.dart/commit/23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951"
                },
                {
-                  "sha": "27d85c69bfa39cf9cad30d63882c88f400713f4d",
+                  "sha": "1e869069e784c0f408e51baa29fa06eff462a0a1",
                   "author": "ashuntu",
-                  "timestamp": 1770330907,
-                  "message": "fix(collection): read screenshots nested under parent (#39)\n\non older versions of the appstream format, screenshots can be nested\nunder a parent `<screenshots>` element. this PR addresses that\npossibility by adding a check for a parent before looking for multiple\ntop level `<screenshot>` elements\n\nspecifically:\n- check for a parent <screenshots> element\n- cast XmlElement as XmlNode to get innertext",
-                  "url": "https://github.com/canonical/appstream.dart/commit/27d85c69bfa39cf9cad30d63882c88f400713f4d"
+                  "timestamp": 1771376399,
+                  "message": "fix: add ubuntu_lints",
+                  "url": "https://github.com/canonical/appstream.dart/commit/1e869069e784c0f408e51baa29fa06eff462a0a1"
                }
             ],
             "ciActions": [],
@@ -4048,25 +4048,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "331c4327d5ded77cd7cfc7060aa2d48905c2b97c",
+                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
                   "author": "ashuntu",
-                  "timestamp": 1759858429,
-                  "message": "chore(release): Release 0.2.7 (#33)\n\n---\n\nUDENG-8234",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/331c4327d5ded77cd7cfc7060aa2d48905c2b97c"
+                  "timestamp": 1772066466,
+                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
                },
                {
-                  "sha": "d690a9308ff1f42e5fd2d4760f06409aedadac5b",
+                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
                   "author": "ashuntu",
-                  "timestamp": 1759852168,
-                  "message": "Release 0.2.7",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/d690a9308ff1f42e5fd2d4760f06409aedadac5b"
+                  "timestamp": 1771891119,
+                  "message": "fix: Add .vscode/ to .gitignore",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
                },
                {
-                  "sha": "83d43d7f612f6694211b8777fba609a875c4d160",
+                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
                   "author": "ashuntu",
-                  "timestamp": 1759846201,
-                  "message": "feat: Add WhatProvides implementation (#32)\n\nAdds the implementation for\n[`WhatProvides`](https://www.freedesktop.org/software/PackageKit/gtk-doc/Transaction.html#Transaction.WhatProvides).\n\nNeeded for https://github.com/ubuntu/app-center/pull/1943\n\n---\n\nUDENG-8234",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/83d43d7f612f6694211b8777fba609a875c4d160"
+                  "timestamp": 1771891112,
+                  "message": "fix: Resolve ubuntu_lints errors",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
                }
             ],
             "ciActions": [],
@@ -4995,14 +4995,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 532,
-                     "timestamp": 1771978806
+                     "revision": 535,
+                     "timestamp": 1772065057
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 533,
-                     "timestamp": 1771978805
+                     "revision": 534,
+                     "timestamp": 1772065057
                   },
                   {
                      "track": "latest",
@@ -5073,25 +5073,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "515a777961eafc5cdeb7460770f5a84297ac5591",
+                  "sha": "f1076d1c2c268be0eeea1730b3a6b931ac2c57df",
                   "author": "github-actions[bot]",
-                  "timestamp": 1771978945,
-                  "message": "Update bootstrap/dark screenshots on `main` (#1803)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/515a777961eafc5cdeb7460770f5a84297ac5591"
+                  "timestamp": 1772065072,
+                  "message": "Update bootstrap/light screenshots on `main` (#1811)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/f1076d1c2c268be0eeea1730b3a6b931ac2c57df"
                },
                {
-                  "sha": "14e315592cef9b523fda1dbe07b0f95b2ebf93c5",
+                  "sha": "923eee842993ececb1a3c579ca2d4e2817e8030f",
                   "author": "github-actions[bot]",
-                  "timestamp": 1771978789,
-                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#1802)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/14e315592cef9b523fda1dbe07b0f95b2ebf93c5"
+                  "timestamp": 1772065044,
+                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#1810)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/923eee842993ececb1a3c579ca2d4e2817e8030f"
                },
                {
-                  "sha": "2cd24ff55eb98afb0fe4ea265947eb87aeb28703",
+                  "sha": "f649d88a2a990eddaac2e02bec246c095ba8d577",
                   "author": "github-actions[bot]",
-                  "timestamp": 1771978740,
-                  "message": "Update bootstrap/high-contrast-dark screenshots on `main` (#1801)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/2cd24ff55eb98afb0fe4ea265947eb87aeb28703"
+                  "timestamp": 1772065028,
+                  "message": "Update bootstrap/high-contrast-dark screenshots on `main` (#1809)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/f649d88a2a990eddaac2e02bec246c095ba8d577"
                }
             ],
             "ciActions": [
@@ -5352,25 +5352,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9e4641d0d6b98855e2f2657091a360af91b9251a",
+                  "sha": "9f13b368dd31333d37ee7bf9a10280fc39507627",
                   "author": "ashuntu",
-                  "timestamp": 1770412044,
-                  "message": "feat(component): implement custom field (#41)\n\n- add custom field to component\n- add custom field parsing to xml and yaml factories\n- add test cases for xml and yaml parsers\n\nthis change attempts to implement the custom component field as\ndescribed\n[here](https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-custom)\n\nthere does not appear to be any example for the [yaml\nvariant](https://www.freedesktop.org/software/appstream/docs/sect-AppStream-YAML.html#field-dep11-custom)\nso guessed based on the yaml description of `value-type:list(dict)`",
-                  "url": "https://github.com/canonical/appstream.dart/commit/9e4641d0d6b98855e2f2657091a360af91b9251a"
+                  "timestamp": 1772066444,
+                  "message": "fix: Add ubuntu_lints (#43)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible (this results in a fair amount of casting\ndue to the nature of the library, please double check these)\n- Trailing commas\n\nAlso done for packagekit.dart:\nhttps://github.com/canonical/packagekit.dart/pull/34",
+                  "url": "https://github.com/canonical/appstream.dart/commit/9f13b368dd31333d37ee7bf9a10280fc39507627"
                },
                {
-                  "sha": "0beaca45f4f2d5d89896aaf5f6aac7141f171b66",
-                  "author": "Jarred Wilson",
-                  "timestamp": 1769542882,
-                  "message": "feat(component): implement custom field\n\n- add custom field to component\n- add custom field parsing to xml and yaml factories\n- add test cases for xml and yaml parsers",
-                  "url": "https://github.com/canonical/appstream.dart/commit/0beaca45f4f2d5d89896aaf5f6aac7141f171b66"
+                  "sha": "23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951",
+                  "author": "ashuntu",
+                  "timestamp": 1771376410,
+                  "message": "fix: add .vscode/ to .gitignore",
+                  "url": "https://github.com/canonical/appstream.dart/commit/23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951"
                },
                {
-                  "sha": "27d85c69bfa39cf9cad30d63882c88f400713f4d",
+                  "sha": "1e869069e784c0f408e51baa29fa06eff462a0a1",
                   "author": "ashuntu",
-                  "timestamp": 1770330907,
-                  "message": "fix(collection): read screenshots nested under parent (#39)\n\non older versions of the appstream format, screenshots can be nested\nunder a parent `<screenshots>` element. this PR addresses that\npossibility by adding a check for a parent before looking for multiple\ntop level `<screenshot>` elements\n\nspecifically:\n- check for a parent <screenshots> element\n- cast XmlElement as XmlNode to get innertext",
-                  "url": "https://github.com/canonical/appstream.dart/commit/27d85c69bfa39cf9cad30d63882c88f400713f4d"
+                  "timestamp": 1771376399,
+                  "message": "fix: add ubuntu_lints",
+                  "url": "https://github.com/canonical/appstream.dart/commit/1e869069e784c0f408e51baa29fa06eff462a0a1"
                }
             ],
             "ciActions": [],
@@ -6177,25 +6177,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "331c4327d5ded77cd7cfc7060aa2d48905c2b97c",
+                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
                   "author": "ashuntu",
-                  "timestamp": 1759858429,
-                  "message": "chore(release): Release 0.2.7 (#33)\n\n---\n\nUDENG-8234",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/331c4327d5ded77cd7cfc7060aa2d48905c2b97c"
+                  "timestamp": 1772066466,
+                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
                },
                {
-                  "sha": "d690a9308ff1f42e5fd2d4760f06409aedadac5b",
+                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
                   "author": "ashuntu",
-                  "timestamp": 1759852168,
-                  "message": "Release 0.2.7",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/d690a9308ff1f42e5fd2d4760f06409aedadac5b"
+                  "timestamp": 1771891119,
+                  "message": "fix: Add .vscode/ to .gitignore",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
                },
                {
-                  "sha": "83d43d7f612f6694211b8777fba609a875c4d160",
+                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
                   "author": "ashuntu",
-                  "timestamp": 1759846201,
-                  "message": "feat: Add WhatProvides implementation (#32)\n\nAdds the implementation for\n[`WhatProvides`](https://www.freedesktop.org/software/PackageKit/gtk-doc/Transaction.html#Transaction.WhatProvides).\n\nNeeded for https://github.com/ubuntu/app-center/pull/1943\n\n---\n\nUDENG-8234",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/83d43d7f612f6694211b8777fba609a875c4d160"
+                  "timestamp": 1771891112,
+                  "message": "fix: Resolve ubuntu_lints errors",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
                }
             ],
             "ciActions": [],
@@ -7165,14 +7165,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 532,
-                     "timestamp": 1771978806
+                     "revision": 535,
+                     "timestamp": 1772065057
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 533,
-                     "timestamp": 1771978805
+                     "revision": 534,
+                     "timestamp": 1772065057
                   },
                   {
                      "track": "latest",
@@ -7617,25 +7617,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9e4641d0d6b98855e2f2657091a360af91b9251a",
+                  "sha": "9f13b368dd31333d37ee7bf9a10280fc39507627",
                   "author": "ashuntu",
-                  "timestamp": 1770412044,
-                  "message": "feat(component): implement custom field (#41)\n\n- add custom field to component\n- add custom field parsing to xml and yaml factories\n- add test cases for xml and yaml parsers\n\nthis change attempts to implement the custom component field as\ndescribed\n[here](https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-custom)\n\nthere does not appear to be any example for the [yaml\nvariant](https://www.freedesktop.org/software/appstream/docs/sect-AppStream-YAML.html#field-dep11-custom)\nso guessed based on the yaml description of `value-type:list(dict)`",
-                  "url": "https://github.com/canonical/appstream.dart/commit/9e4641d0d6b98855e2f2657091a360af91b9251a"
+                  "timestamp": 1772066444,
+                  "message": "fix: Add ubuntu_lints (#43)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible (this results in a fair amount of casting\ndue to the nature of the library, please double check these)\n- Trailing commas\n\nAlso done for packagekit.dart:\nhttps://github.com/canonical/packagekit.dart/pull/34",
+                  "url": "https://github.com/canonical/appstream.dart/commit/9f13b368dd31333d37ee7bf9a10280fc39507627"
                },
                {
-                  "sha": "0beaca45f4f2d5d89896aaf5f6aac7141f171b66",
-                  "author": "Jarred Wilson",
-                  "timestamp": 1769542882,
-                  "message": "feat(component): implement custom field\n\n- add custom field to component\n- add custom field parsing to xml and yaml factories\n- add test cases for xml and yaml parsers",
-                  "url": "https://github.com/canonical/appstream.dart/commit/0beaca45f4f2d5d89896aaf5f6aac7141f171b66"
+                  "sha": "23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951",
+                  "author": "ashuntu",
+                  "timestamp": 1771376410,
+                  "message": "fix: add .vscode/ to .gitignore",
+                  "url": "https://github.com/canonical/appstream.dart/commit/23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951"
                },
                {
-                  "sha": "27d85c69bfa39cf9cad30d63882c88f400713f4d",
+                  "sha": "1e869069e784c0f408e51baa29fa06eff462a0a1",
                   "author": "ashuntu",
-                  "timestamp": 1770330907,
-                  "message": "fix(collection): read screenshots nested under parent (#39)\n\non older versions of the appstream format, screenshots can be nested\nunder a parent `<screenshots>` element. this PR addresses that\npossibility by adding a check for a parent before looking for multiple\ntop level `<screenshot>` elements\n\nspecifically:\n- check for a parent <screenshots> element\n- cast XmlElement as XmlNode to get innertext",
-                  "url": "https://github.com/canonical/appstream.dart/commit/27d85c69bfa39cf9cad30d63882c88f400713f4d"
+                  "timestamp": 1771376399,
+                  "message": "fix: add ubuntu_lints",
+                  "url": "https://github.com/canonical/appstream.dart/commit/1e869069e784c0f408e51baa29fa06eff462a0a1"
                }
             ],
             "ciActions": [],
@@ -8409,25 +8409,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "331c4327d5ded77cd7cfc7060aa2d48905c2b97c",
+                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
                   "author": "ashuntu",
-                  "timestamp": 1759858429,
-                  "message": "chore(release): Release 0.2.7 (#33)\n\n---\n\nUDENG-8234",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/331c4327d5ded77cd7cfc7060aa2d48905c2b97c"
+                  "timestamp": 1772066466,
+                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
                },
                {
-                  "sha": "d690a9308ff1f42e5fd2d4760f06409aedadac5b",
+                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
                   "author": "ashuntu",
-                  "timestamp": 1759852168,
-                  "message": "Release 0.2.7",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/d690a9308ff1f42e5fd2d4760f06409aedadac5b"
+                  "timestamp": 1771891119,
+                  "message": "fix: Add .vscode/ to .gitignore",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
                },
                {
-                  "sha": "83d43d7f612f6694211b8777fba609a875c4d160",
+                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
                   "author": "ashuntu",
-                  "timestamp": 1759846201,
-                  "message": "feat: Add WhatProvides implementation (#32)\n\nAdds the implementation for\n[`WhatProvides`](https://www.freedesktop.org/software/PackageKit/gtk-doc/Transaction.html#Transaction.WhatProvides).\n\nNeeded for https://github.com/ubuntu/app-center/pull/1943\n\n---\n\nUDENG-8234",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/83d43d7f612f6694211b8777fba609a875c4d160"
+                  "timestamp": 1771891112,
+                  "message": "fix: Resolve ubuntu_lints errors",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
                }
             ],
             "ciActions": [],
@@ -8959,25 +8959,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "515a777961eafc5cdeb7460770f5a84297ac5591",
+                  "sha": "f1076d1c2c268be0eeea1730b3a6b931ac2c57df",
                   "author": "github-actions[bot]",
-                  "timestamp": 1771978945,
-                  "message": "Update bootstrap/dark screenshots on `main` (#1803)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/515a777961eafc5cdeb7460770f5a84297ac5591"
+                  "timestamp": 1772065072,
+                  "message": "Update bootstrap/light screenshots on `main` (#1811)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/f1076d1c2c268be0eeea1730b3a6b931ac2c57df"
                },
                {
-                  "sha": "14e315592cef9b523fda1dbe07b0f95b2ebf93c5",
+                  "sha": "923eee842993ececb1a3c579ca2d4e2817e8030f",
                   "author": "github-actions[bot]",
-                  "timestamp": 1771978789,
-                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#1802)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/14e315592cef9b523fda1dbe07b0f95b2ebf93c5"
+                  "timestamp": 1772065044,
+                  "message": "Update bootstrap/high-contrast-light screenshots on `main` (#1810)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/923eee842993ececb1a3c579ca2d4e2817e8030f"
                },
                {
-                  "sha": "2cd24ff55eb98afb0fe4ea265947eb87aeb28703",
+                  "sha": "f649d88a2a990eddaac2e02bec246c095ba8d577",
                   "author": "github-actions[bot]",
-                  "timestamp": 1771978740,
-                  "message": "Update bootstrap/high-contrast-dark screenshots on `main` (#1801)\n\nCo-authored-by: GitHub <noreply@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/2cd24ff55eb98afb0fe4ea265947eb87aeb28703"
+                  "timestamp": 1772065028,
+                  "message": "Update bootstrap/high-contrast-dark screenshots on `main` (#1809)\n\nCo-authored-by: GitHub <noreply@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision-screenshots/commit/f649d88a2a990eddaac2e02bec246c095ba8d577"
                }
             ],
             "ciActions": [
@@ -9391,14 +9391,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 532,
-                     "timestamp": 1771978806
+                     "revision": 535,
+                     "timestamp": 1772065057
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 533,
-                     "timestamp": 1771978805
+                     "revision": 534,
+                     "timestamp": 1772065057
                   },
                   {
                      "track": "latest",
