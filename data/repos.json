@@ -612,6 +612,56 @@
             }
          },
          {
+            "name": "gnome-2048",
+            "defaultBranch": "stable",
+            "newCommits": 19,
+            "url": "https://github.com/ubuntu/gnome-2048",
+            "releases": [
+               {
+                  "id": 58045542,
+                  "version": "3.38.2-20220126",
+                  "timestamp": 1625737984,
+                  "title": "",
+                  "body": "",
+                  "url": "https://github.com/ubuntu/gnome-2048/releases/tag/3.38.2-20220126",
+                  "compareUrl": "https://github.com/ubuntu/gnome-2048/compare/3.38.2-20220126...stable"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
+            "charm": null,
+            "snap": {
+               "name": "gnome-2048",
+               "url": "https://snapcraft.io/gnome-2048",
+               "releases": [
+                  {
+                     "track": "latest",
+                     "channel": "stable",
+                     "revision": 68,
+                     "timestamp": 1745782011
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "stable",
+                     "revision": 69,
+                     "timestamp": 1745782012
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "stable",
+                     "revision": 70,
+                     "timestamp": 1746012891
+                  }
+               ],
+               "channels": [
+                  "stable"
+               ],
+               "tracks": [
+                  "latest"
+               ]
+            }
+         },
+         {
             "name": "gnome-boxes",
             "defaultBranch": "stable",
             "newCommits": 0,
@@ -3239,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e",
+                  "sha": "55473c889222a731dff38f0bc729b8d7d5d0f72d",
                   "author": "adombeck",
-                  "timestamp": 1772626993,
-                  "message": "ci/e2e-tests: Publish HTML log and report on GitHub Pages (#1236)\n\nUDENG-8835",
-                  "url": "https://github.com/canonical/authd/commit/ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e"
+                  "timestamp": 1772632017,
+                  "message": "Improvements to build-deb workflow (#1304)\n\nSome details that we missed in #1256",
+                  "url": "https://github.com/canonical/authd/commit/55473c889222a731dff38f0bc729b8d7d5d0f72d"
                },
                {
-                  "sha": "47597e8c8a6bca030775f137e4ca3ad97943de7e",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1772626927,
-                  "message": "Fix \"Build debian packages\" workflow  (#1256)\n\nThe action was failing when trying to push changes to the release\nbranch, as can be seen\n[here](https://github.com/canonical/authd/actions/runs/21762796624/job/62792276228).\nThe issue seems like an authentication issue with GitHub, which is fixed\nin this PR.\n\nFixed run:\nhttps://github.com/canonical/authd/actions/runs/22622136237/job/65549437796\n\n\nUDENG-8983",
-                  "url": "https://github.com/canonical/authd/commit/47597e8c8a6bca030775f137e4ca3ad97943de7e"
-               },
-               {
-                  "sha": "2afc2037eca0e8d29693cf1662d8919670e2a280",
+                  "sha": "e087b4dac62d60e14a4d6bf7ccc1e496c95fd352",
                   "author": "denisonbarbosa",
-                  "timestamp": 1772543446,
-                  "message": "Fix \"Update packaging branch\" step\n\nIt was failing with authentication errors, possibly caused by the act of\nmoving the git configuration to a different directory. Instead, we are\nnow pulling the source code from the source package into the packaging\nbranch and then updating it.",
-                  "url": "https://github.com/canonical/authd/commit/2afc2037eca0e8d29693cf1662d8919670e2a280"
+                  "timestamp": 1772631111,
+                  "message": "Use default fetch-depth\n\nUsing 0 means the action would fetch all information from the repo and\nwe don't need that for the directory that will be used for building the\npackage. Since the action's default is 1, we can remove this input\nentirely.",
+                  "url": "https://github.com/canonical/authd/commit/e087b4dac62d60e14a4d6bf7ccc1e496c95fd352"
+               },
+               {
+                  "sha": "e857a7e000c72b4d4022656693f09313fc263edd",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1772631058,
+                  "message": "Remove unnecessary inputs to actions/checkout\n\npersist-credentials is already true by default, so we don't need to set\nthose.",
+                  "url": "https://github.com/canonical/authd/commit/e857a7e000c72b4d4022656693f09313fc263edd"
                }
             ],
             "ciActions": [
@@ -4438,6 +4488,41 @@
             "snap": null
          },
          {
+            "name": "ubuntu-core-desktop-snapd",
+            "defaultBranch": "master",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/ubuntu-core-desktop-snapd",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "fe1239f757bd4f6adc4cd815d99240af39e4b45e",
+                  "author": "GitHub Actions Bot",
+                  "timestamp": 1772151693,
+                  "message": "No change commit to trigger snap rebuild",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop-snapd/commit/fe1239f757bd4f6adc4cd815d99240af39e4b45e"
+               },
+               {
+                  "sha": "a5132c5054ae1837ac4f715b98bc8070a048f1b5",
+                  "author": "GitHub Actions Bot",
+                  "timestamp": 1770423580,
+                  "message": "No change commit to trigger snap rebuild",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop-snapd/commit/a5132c5054ae1837ac4f715b98bc8070a048f1b5"
+               },
+               {
+                  "sha": "8d070895d04c7f0b6fc5d349181100eb8740c2ec",
+                  "author": "GitHub Actions Bot",
+                  "timestamp": 1768695476,
+                  "message": "No change commit to trigger snap rebuild",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop-snapd/commit/8d070895d04c7f0b6fc5d349181100eb8740c2ec"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/snapcore/snapd/actions/workflows/test.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "ubuntu-desktop-hyper-v",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -5300,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e",
+                  "sha": "55473c889222a731dff38f0bc729b8d7d5d0f72d",
                   "author": "adombeck",
-                  "timestamp": 1772626993,
-                  "message": "ci/e2e-tests: Publish HTML log and report on GitHub Pages (#1236)\n\nUDENG-8835",
-                  "url": "https://github.com/canonical/authd/commit/ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e"
+                  "timestamp": 1772632017,
+                  "message": "Improvements to build-deb workflow (#1304)\n\nSome details that we missed in #1256",
+                  "url": "https://github.com/canonical/authd/commit/55473c889222a731dff38f0bc729b8d7d5d0f72d"
                },
                {
-                  "sha": "47597e8c8a6bca030775f137e4ca3ad97943de7e",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1772626927,
-                  "message": "Fix \"Build debian packages\" workflow  (#1256)\n\nThe action was failing when trying to push changes to the release\nbranch, as can be seen\n[here](https://github.com/canonical/authd/actions/runs/21762796624/job/62792276228).\nThe issue seems like an authentication issue with GitHub, which is fixed\nin this PR.\n\nFixed run:\nhttps://github.com/canonical/authd/actions/runs/22622136237/job/65549437796\n\n\nUDENG-8983",
-                  "url": "https://github.com/canonical/authd/commit/47597e8c8a6bca030775f137e4ca3ad97943de7e"
-               },
-               {
-                  "sha": "2afc2037eca0e8d29693cf1662d8919670e2a280",
+                  "sha": "e087b4dac62d60e14a4d6bf7ccc1e496c95fd352",
                   "author": "denisonbarbosa",
-                  "timestamp": 1772543446,
-                  "message": "Fix \"Update packaging branch\" step\n\nIt was failing with authentication errors, possibly caused by the act of\nmoving the git configuration to a different directory. Instead, we are\nnow pulling the source code from the source package into the packaging\nbranch and then updating it.",
-                  "url": "https://github.com/canonical/authd/commit/2afc2037eca0e8d29693cf1662d8919670e2a280"
+                  "timestamp": 1772631111,
+                  "message": "Use default fetch-depth\n\nUsing 0 means the action would fetch all information from the repo and\nwe don't need that for the directory that will be used for building the\npackage. Since the action's default is 1, we can remove this input\nentirely.",
+                  "url": "https://github.com/canonical/authd/commit/e087b4dac62d60e14a4d6bf7ccc1e496c95fd352"
+               },
+               {
+                  "sha": "e857a7e000c72b4d4022656693f09313fc263edd",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1772631058,
+                  "message": "Remove unnecessary inputs to actions/checkout\n\npersist-credentials is already true by default, so we don't need to set\nthose.",
+                  "url": "https://github.com/canonical/authd/commit/e857a7e000c72b4d4022656693f09313fc263edd"
                }
             ],
             "ciActions": [
@@ -6668,6 +6753,47 @@
             "snap": null
          },
          {
+            "name": "ubuntu-pro-for-wsl",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
+            "releases": [
+               {
+                  "id": 292986712,
+                  "version": "1.0.6",
+                  "timestamp": 1772630865,
+                  "title": "1.0.6.0",
+                  "body": "",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/untagged-1b87adac5b613dd5c4e5",
+                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.6...main"
+               },
+               {
+                  "id": 279985669,
+                  "version": "1.0.5",
+                  "timestamp": 1769443990,
+                  "title": "1.0.5.0",
+                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: update Pro notice and MS store guidance by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1473\">#1473</a></li>\n<li>docs: replace msstore download links for app by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1474\">#1474</a></li>\n<li>fix(windows-agent): Registry access is still virtualized by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1478\">#1478</a></li>\n<li>feat(ci): Integrates with OSV Scanner by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1475\">#1475</a></li>\n<li>docs: update starter pack to 1.3.1 by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1491\">#1491</a></li>\n<li>docs: update install instructions by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1497\">#1497</a></li>\n<li>fix: Remove Pro for WSL unreleased notice from SECURITY.md by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1503\">#1503</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1492\">#1492</a></li>\n<li>docs: add release notes for v1 of Pro app by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1500\">#1500</a></li>\n<li>docs: disable faulty edit button by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1498\">#1498</a></li>\n<li>docs: improve consistency of content blocks by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1499\">#1499</a></li>\n<li>docs: update deployment tutorial by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1501\">#1501</a></li>\n<li>fix(wsl-pro-service): Lintian fixes by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1504\">#1504</a></li>\n<li>maint: Defines the scope of a security issue by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1512\">#1512</a></li>\n<li>docs: apply new homepage structure by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1524\">#1524</a></li>\n<li>fix(msix): Better app icon with no text by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1525\">#1525</a></li>\n<li>feat(windows-agent): Ensure telemetry consent registry is set and valid by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1536\">#1536</a></li>\n<li>feat(msix): Packaging for chocolatey by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1527\">#1527</a></li>\n<li>fix(docs): Reword the binfmt explanation page by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1543\">#1543</a></li>\n<li>Updated translations and multiple dependencies.</li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.1...1.0.5\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.1&hellip;1.0.5</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/1.0.5",
+                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.5...main"
+               },
+               {
+                  "id": 266474315,
+                  "version": "1.0.1",
+                  "timestamp": 1764609835,
+                  "title": "1.0.1.0",
+                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(windows-agent): Reset backoff counters and other fixes by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1457\">#1457</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1467\">#1467</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1469\">#1469</a></li>\n<li>maint(CI): Always push to the package Flight by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1470\">#1470</a></li>\n<li>Plus Go and Dart dependency updates by dependabot.</li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/0.9999b8...1.0.1\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/0.9999b8&hellip;1.0.1</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/1.0.1",
+                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.1...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [
+               "https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/qa.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -6721,47 +6847,6 @@
                   "latest"
                ]
             },
-            "snap": null
-         },
-         {
-            "name": "ubuntu-pro-for-wsl",
-            "defaultBranch": "main",
-            "newCommits": 95,
-            "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
-            "releases": [
-               {
-                  "id": 279985669,
-                  "version": "1.0.5",
-                  "timestamp": 1769443990,
-                  "title": "1.0.5.0",
-                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: update Pro notice and MS store guidance by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1473\">#1473</a></li>\n<li>docs: replace msstore download links for app by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1474\">#1474</a></li>\n<li>fix(windows-agent): Registry access is still virtualized by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1478\">#1478</a></li>\n<li>feat(ci): Integrates with OSV Scanner by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1475\">#1475</a></li>\n<li>docs: update starter pack to 1.3.1 by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1491\">#1491</a></li>\n<li>docs: update install instructions by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1497\">#1497</a></li>\n<li>fix: Remove Pro for WSL unreleased notice from SECURITY.md by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1503\">#1503</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1492\">#1492</a></li>\n<li>docs: add release notes for v1 of Pro app by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1500\">#1500</a></li>\n<li>docs: disable faulty edit button by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1498\">#1498</a></li>\n<li>docs: improve consistency of content blocks by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1499\">#1499</a></li>\n<li>docs: update deployment tutorial by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1501\">#1501</a></li>\n<li>fix(wsl-pro-service): Lintian fixes by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1504\">#1504</a></li>\n<li>maint: Defines the scope of a security issue by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1512\">#1512</a></li>\n<li>docs: apply new homepage structure by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1524\">#1524</a></li>\n<li>fix(msix): Better app icon with no text by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1525\">#1525</a></li>\n<li>feat(windows-agent): Ensure telemetry consent registry is set and valid by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1536\">#1536</a></li>\n<li>feat(msix): Packaging for chocolatey by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1527\">#1527</a></li>\n<li>fix(docs): Reword the binfmt explanation page by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1543\">#1543</a></li>\n<li>Updated translations and multiple dependencies.</li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.1...1.0.5\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.1&hellip;1.0.5</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/1.0.5",
-                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.5...main"
-               },
-               {
-                  "id": 266474315,
-                  "version": "1.0.1",
-                  "timestamp": 1764609835,
-                  "title": "1.0.1.0",
-                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(windows-agent): Reset backoff counters and other fixes by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1457\">#1457</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1467\">#1467</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1469\">#1469</a></li>\n<li>maint(CI): Always push to the package Flight by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1470\">#1470</a></li>\n<li>Plus Go and Dart dependency updates by dependabot.</li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/0.9999b8...1.0.1\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/0.9999b8&hellip;1.0.1</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/1.0.1",
-                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.1...main"
-               },
-               {
-                  "id": 265186050,
-                  "version": "0.9999b8",
-                  "timestamp": 1764086004,
-                  "title": "0.9999.8.0",
-                  "body": "<p>Pre-release Ubuntu Pro for WSL version 0.9999b8</p>\n\n<p>With a workaround for the ALPN enforcement and\ntemporary sync with cloud-init for newer Ubuntu releases.</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(tools): Allows generate locales to succeed without tools in the workspace by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1438\">#1438</a></li>\n<li>fix(windows-agent): Disable ALPN enforcement via the agent launcher by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1440\">#1440</a></li>\n<li>fix: Check for the correct cloud-init systemd unit by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1442\">#1442</a></li>\n<li>fix(custom-ubuntu-distro): Fix spellcheck error against chroot by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1453\">#1453</a></li>\n<li>docs(reference/actions): Update reference for the checkout action by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1452\">#1452</a></li>\n<li>feat(docs): Outlines the use of cryptography in Pro for WSL by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1454\">#1454</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1439\">#1439</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1456\">#1456</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/0.9999b7...0.9999b8\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/0.9999b7&hellip;0.9999b8</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/0.9999b8",
-                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/0.9999b8...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [
-               "https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/qa.yaml"
-            ],
-            "charm": null,
             "snap": null
          },
          {
@@ -7565,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e",
+                  "sha": "55473c889222a731dff38f0bc729b8d7d5d0f72d",
                   "author": "adombeck",
-                  "timestamp": 1772626993,
-                  "message": "ci/e2e-tests: Publish HTML log and report on GitHub Pages (#1236)\n\nUDENG-8835",
-                  "url": "https://github.com/canonical/authd/commit/ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e"
+                  "timestamp": 1772632017,
+                  "message": "Improvements to build-deb workflow (#1304)\n\nSome details that we missed in #1256",
+                  "url": "https://github.com/canonical/authd/commit/55473c889222a731dff38f0bc729b8d7d5d0f72d"
                },
                {
-                  "sha": "47597e8c8a6bca030775f137e4ca3ad97943de7e",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1772626927,
-                  "message": "Fix \"Build debian packages\" workflow  (#1256)\n\nThe action was failing when trying to push changes to the release\nbranch, as can be seen\n[here](https://github.com/canonical/authd/actions/runs/21762796624/job/62792276228).\nThe issue seems like an authentication issue with GitHub, which is fixed\nin this PR.\n\nFixed run:\nhttps://github.com/canonical/authd/actions/runs/22622136237/job/65549437796\n\n\nUDENG-8983",
-                  "url": "https://github.com/canonical/authd/commit/47597e8c8a6bca030775f137e4ca3ad97943de7e"
-               },
-               {
-                  "sha": "2afc2037eca0e8d29693cf1662d8919670e2a280",
+                  "sha": "e087b4dac62d60e14a4d6bf7ccc1e496c95fd352",
                   "author": "denisonbarbosa",
-                  "timestamp": 1772543446,
-                  "message": "Fix \"Update packaging branch\" step\n\nIt was failing with authentication errors, possibly caused by the act of\nmoving the git configuration to a different directory. Instead, we are\nnow pulling the source code from the source package into the packaging\nbranch and then updating it.",
-                  "url": "https://github.com/canonical/authd/commit/2afc2037eca0e8d29693cf1662d8919670e2a280"
+                  "timestamp": 1772631111,
+                  "message": "Use default fetch-depth\n\nUsing 0 means the action would fetch all information from the repo and\nwe don't need that for the directory that will be used for building the\npackage. Since the action's default is 1, we can remove this input\nentirely.",
+                  "url": "https://github.com/canonical/authd/commit/e087b4dac62d60e14a4d6bf7ccc1e496c95fd352"
+               },
+               {
+                  "sha": "e857a7e000c72b4d4022656693f09313fc263edd",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1772631058,
+                  "message": "Remove unnecessary inputs to actions/checkout\n\npersist-credentials is already true by default, so we don't need to set\nthose.",
+                  "url": "https://github.com/canonical/authd/commit/e857a7e000c72b4d4022656693f09313fc263edd"
                }
             ],
             "ciActions": [
