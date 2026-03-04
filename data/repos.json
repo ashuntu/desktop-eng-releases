@@ -5218,25 +5218,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d3d014e97d7674f3c165a48c68e2e7dc86bb22e1",
+                  "author": "Kat",
+                  "timestamp": 1772654658,
+                  "message": "maint(server): Change happy path logging for reports to debug (#326)\n\nPreviously, we were emitting multiple log events at the `info` level for\nreports that were fine and accepted as normal. In a production\nenvironment, this has proven to be rather excessive given that we don't\nreally need this information unless debugging something.\n\nThus, this PR moves these log events to the `debug` level, giving the\noption to still show them, but by default, significantly reducing our\nlogging volume.\n\nI also explored whether it would be useful to instead batch log,\nemitting an `info` level log per batch that we process, but further\nexamination of our current volumes seem to indicate that we don't really\nhave high enough volume to justify such a process (we'd just end up with\nthe same number of logs).\n\n---\n[UDENG-9279](https://warthogs.atlassian.net/browse/UDENG-9279)\n\n[UDENG-9279]:\nhttps://warthogs.atlassian.net/browse/UDENG-9279?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/d3d014e97d7674f3c165a48c68e2e7dc86bb22e1"
+               },
+               {
+                  "sha": "2f4ead5520c15c666bebadb130745b42e1608562",
+                  "author": "kkuo",
+                  "timestamp": 1772472426,
+                  "message": "Change happy path logging for reports to debug to reduce default log volume",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/2f4ead5520c15c666bebadb130745b42e1608562"
+               },
+               {
                   "sha": "0fb15f0779fdea896d869dd85bb3f23614b70e5b",
                   "author": "Kat",
                   "timestamp": 1772462030,
                   "message": "feat(webservice): Instrument metrics for request rejection reasons and add debug logging for unknown endpoints (#325)\n\nPresently, we're only tracking return codes. However, sometimes these\nreturn codes may have multiple meanings. To help with debugging further\nand keeping track of these reasons, this PR expands the metrics being\ncollected by the web service to include more fine-grained reasoning as\nto why a request was rejected.\n\nSince we only have a single status code currently with multiple\nrejection meanings, two, cardinality is not expanded too much.\n\nAdditionally, we now add debug logs for \"unknown\" metrics to also help\nwith debugging. Though detailed, to prevent logs from getting too\nexcessive, these are debug logs and would require execution of the web\nservice in debug mode, ideally only temporarily to get a general\nsnapshot.",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/0fb15f0779fdea896d869dd85bb3f23614b70e5b"
-               },
-               {
-                  "sha": "e01d16825447e61c36203db815661848a56e8fa8",
-                  "author": "kkuo",
-                  "timestamp": 1772231963,
-                  "message": "Add new test cases for reject reason labels",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e01d16825447e61c36203db815661848a56e8fa8"
-               },
-               {
-                  "sha": "b1ec5474a907f5485c3a3ec9e2a9035752f44f66",
-                  "author": "kkuo",
-                  "timestamp": 1772231336,
-                  "message": "Instrument metrics for request rejection reasons and add debug logging for unknown endpoints",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b1ec5474a907f5485c3a3ec9e2a9035752f44f66"
                }
             ],
             "ciActions": [
