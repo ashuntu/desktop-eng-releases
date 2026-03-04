@@ -612,56 +612,6 @@
             }
          },
          {
-            "name": "gnome-2048",
-            "defaultBranch": "stable",
-            "newCommits": 19,
-            "url": "https://github.com/ubuntu/gnome-2048",
-            "releases": [
-               {
-                  "id": 58045542,
-                  "version": "3.38.2-20220126",
-                  "timestamp": 1625737984,
-                  "title": "",
-                  "body": "",
-                  "url": "https://github.com/ubuntu/gnome-2048/releases/tag/3.38.2-20220126",
-                  "compareUrl": "https://github.com/ubuntu/gnome-2048/compare/3.38.2-20220126...stable"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": null,
-            "snap": {
-               "name": "gnome-2048",
-               "url": "https://snapcraft.io/gnome-2048",
-               "releases": [
-                  {
-                     "track": "latest",
-                     "channel": "stable",
-                     "revision": 68,
-                     "timestamp": 1745782011
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "stable",
-                     "revision": 69,
-                     "timestamp": 1745782012
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "stable",
-                     "revision": 70,
-                     "timestamp": 1746012891
-                  }
-               ],
-               "channels": [
-                  "stable"
-               ],
-               "tracks": [
-                  "latest"
-               ]
-            }
-         },
-         {
             "name": "gnome-boxes",
             "defaultBranch": "stable",
             "newCommits": 0,
@@ -3170,7 +3120,9 @@
                }
             ],
             "commits": null,
-            "ciActions": null,
+            "ciActions": [
+               "https://github.com/ubuntu/yaru_test.dart/actions/workflows/ci.yaml"
+            ],
             "charm": null,
             "snap": null
          },
@@ -3210,6 +3162,39 @@
             ],
             "commits": null,
             "ciActions": null,
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "gnome-shell-extension-yaru-dark-theme-toggle",
+            "defaultBranch": "master",
+            "newCommits": 0,
+            "url": "https://github.com/ubuntu/gnome-shell-extension-yaru-dark-theme-toggle",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "10f59399902f64a24904f5d721e7b4d1cb4967a3",
+                  "author": "Carlo Lobrano",
+                  "timestamp": 1574507309,
+                  "message": "Add support for communitheme (#4)\n\nIn 18.04, Yaru theme is still called Communitheme, then the special code\r\nfor toggling among the its three variants does not work.\r\n\r\nThis change takes into account the two possible names for Yaru theme and\r\nclean the code up.",
+                  "url": "https://github.com/ubuntu/gnome-shell-extension-yaru-dark-theme-toggle/commit/10f59399902f64a24904f5d721e7b4d1cb4967a3"
+               },
+               {
+                  "sha": "38e330a78fcdf901770f72bc98dcbeffff150e22",
+                  "author": "Carlo Lobrano",
+                  "timestamp": 1574506439,
+                  "message": "Update README.md",
+                  "url": "https://github.com/ubuntu/gnome-shell-extension-yaru-dark-theme-toggle/commit/38e330a78fcdf901770f72bc98dcbeffff150e22"
+               },
+               {
+                  "sha": "204540f33a8e1a5899ee7c0a8b43847bbd4f86dc",
+                  "author": "Feichtmeier",
+                  "timestamp": 1570348698,
+                  "message": "Update README.md",
+                  "url": "https://github.com/ubuntu/gnome-shell-extension-yaru-dark-theme-toggle/commit/204540f33a8e1a5899ee7c0a8b43847bbd4f86dc"
+               }
+            ],
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -3254,25 +3239,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a3923148d1b5aee44499af7bd85b954c3765ecb9",
+                  "sha": "ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e",
                   "author": "adombeck",
-                  "timestamp": 1772566937,
-                  "message": "authctl: Avoid regenerating man page if only date changed (#1301)",
-                  "url": "https://github.com/canonical/authd/commit/a3923148d1b5aee44499af7bd85b954c3765ecb9"
+                  "timestamp": 1772626993,
+                  "message": "ci/e2e-tests: Publish HTML log and report on GitHub Pages (#1236)\n\nUDENG-8835",
+                  "url": "https://github.com/canonical/authd/commit/ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e"
                },
                {
-                  "sha": "b42620fdc7f9baf8d9e0d3a15c86eb8e0aa6436f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1772566529,
-                  "message": "authctl: Improve log messages when generating documentation",
-                  "url": "https://github.com/canonical/authd/commit/b42620fdc7f9baf8d9e0d3a15c86eb8e0aa6436f"
+                  "sha": "47597e8c8a6bca030775f137e4ca3ad97943de7e",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1772626927,
+                  "message": "Fix \"Build debian packages\" workflow  (#1256)\n\nThe action was failing when trying to push changes to the release\nbranch, as can be seen\n[here](https://github.com/canonical/authd/actions/runs/21762796624/job/62792276228).\nThe issue seems like an authentication issue with GitHub, which is fixed\nin this PR.\n\nFixed run:\nhttps://github.com/canonical/authd/actions/runs/22622136237/job/65549437796\n\n\nUDENG-8983",
+                  "url": "https://github.com/canonical/authd/commit/47597e8c8a6bca030775f137e4ca3ad97943de7e"
                },
                {
-                  "sha": "888f3f6dbe3dd81788c55c58f15cdf728b2b628a",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1772566446,
-                  "message": "authctl: Avoid regenerating man page if only date changed\n\nAvoid regenerating the man page if only the date has changed. This has\ncaused our CI to fail because we check that all generated files are\nup-to-date.",
-                  "url": "https://github.com/canonical/authd/commit/888f3f6dbe3dd81788c55c58f15cdf728b2b628a"
+                  "sha": "2afc2037eca0e8d29693cf1662d8919670e2a280",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1772543446,
+                  "message": "Fix \"Update packaging branch\" step\n\nIt was failing with authentication errors, possibly caused by the act of\nmoving the git configuration to a different directory. Instead, we are\nnow pulling the source code from the source package into the packaging\nbranch and then updating it.",
+                  "url": "https://github.com/canonical/authd/commit/2afc2037eca0e8d29693cf1662d8919670e2a280"
                }
             ],
             "ciActions": [
@@ -4453,41 +4438,6 @@
             "snap": null
          },
          {
-            "name": "ubuntu-core-desktop-snapd",
-            "defaultBranch": "master",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/ubuntu-core-desktop-snapd",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "fe1239f757bd4f6adc4cd815d99240af39e4b45e",
-                  "author": "GitHub Actions Bot",
-                  "timestamp": 1772151693,
-                  "message": "No change commit to trigger snap rebuild",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop-snapd/commit/fe1239f757bd4f6adc4cd815d99240af39e4b45e"
-               },
-               {
-                  "sha": "a5132c5054ae1837ac4f715b98bc8070a048f1b5",
-                  "author": "GitHub Actions Bot",
-                  "timestamp": 1770423580,
-                  "message": "No change commit to trigger snap rebuild",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop-snapd/commit/a5132c5054ae1837ac4f715b98bc8070a048f1b5"
-               },
-               {
-                  "sha": "8d070895d04c7f0b6fc5d349181100eb8740c2ec",
-                  "author": "GitHub Actions Bot",
-                  "timestamp": 1768695476,
-                  "message": "No change commit to trigger snap rebuild",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop-snapd/commit/8d070895d04c7f0b6fc5d349181100eb8740c2ec"
-               }
-            ],
-            "ciActions": [
-               "https://github.com/snapcore/snapd/actions/workflows/test.yaml"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "ubuntu-desktop-hyper-v",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -5350,25 +5300,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a3923148d1b5aee44499af7bd85b954c3765ecb9",
+                  "sha": "ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e",
                   "author": "adombeck",
-                  "timestamp": 1772566937,
-                  "message": "authctl: Avoid regenerating man page if only date changed (#1301)",
-                  "url": "https://github.com/canonical/authd/commit/a3923148d1b5aee44499af7bd85b954c3765ecb9"
+                  "timestamp": 1772626993,
+                  "message": "ci/e2e-tests: Publish HTML log and report on GitHub Pages (#1236)\n\nUDENG-8835",
+                  "url": "https://github.com/canonical/authd/commit/ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e"
                },
                {
-                  "sha": "b42620fdc7f9baf8d9e0d3a15c86eb8e0aa6436f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1772566529,
-                  "message": "authctl: Improve log messages when generating documentation",
-                  "url": "https://github.com/canonical/authd/commit/b42620fdc7f9baf8d9e0d3a15c86eb8e0aa6436f"
+                  "sha": "47597e8c8a6bca030775f137e4ca3ad97943de7e",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1772626927,
+                  "message": "Fix \"Build debian packages\" workflow  (#1256)\n\nThe action was failing when trying to push changes to the release\nbranch, as can be seen\n[here](https://github.com/canonical/authd/actions/runs/21762796624/job/62792276228).\nThe issue seems like an authentication issue with GitHub, which is fixed\nin this PR.\n\nFixed run:\nhttps://github.com/canonical/authd/actions/runs/22622136237/job/65549437796\n\n\nUDENG-8983",
+                  "url": "https://github.com/canonical/authd/commit/47597e8c8a6bca030775f137e4ca3ad97943de7e"
                },
                {
-                  "sha": "888f3f6dbe3dd81788c55c58f15cdf728b2b628a",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1772566446,
-                  "message": "authctl: Avoid regenerating man page if only date changed\n\nAvoid regenerating the man page if only the date has changed. This has\ncaused our CI to fail because we check that all generated files are\nup-to-date.",
-                  "url": "https://github.com/canonical/authd/commit/888f3f6dbe3dd81788c55c58f15cdf728b2b628a"
+                  "sha": "2afc2037eca0e8d29693cf1662d8919670e2a280",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1772543446,
+                  "message": "Fix \"Update packaging branch\" step\n\nIt was failing with authentication errors, possibly caused by the act of\nmoving the git configuration to a different directory. Instead, we are\nnow pulling the source code from the source package into the packaging\nbranch and then updating it.",
+                  "url": "https://github.com/canonical/authd/commit/2afc2037eca0e8d29693cf1662d8919670e2a280"
                }
             ],
             "ciActions": [
@@ -7615,25 +7565,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a3923148d1b5aee44499af7bd85b954c3765ecb9",
+                  "sha": "ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e",
                   "author": "adombeck",
-                  "timestamp": 1772566937,
-                  "message": "authctl: Avoid regenerating man page if only date changed (#1301)",
-                  "url": "https://github.com/canonical/authd/commit/a3923148d1b5aee44499af7bd85b954c3765ecb9"
+                  "timestamp": 1772626993,
+                  "message": "ci/e2e-tests: Publish HTML log and report on GitHub Pages (#1236)\n\nUDENG-8835",
+                  "url": "https://github.com/canonical/authd/commit/ace4f8e7e0eb0a6170c68bdde9a657dddef6cc4e"
                },
                {
-                  "sha": "b42620fdc7f9baf8d9e0d3a15c86eb8e0aa6436f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1772566529,
-                  "message": "authctl: Improve log messages when generating documentation",
-                  "url": "https://github.com/canonical/authd/commit/b42620fdc7f9baf8d9e0d3a15c86eb8e0aa6436f"
+                  "sha": "47597e8c8a6bca030775f137e4ca3ad97943de7e",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1772626927,
+                  "message": "Fix \"Build debian packages\" workflow  (#1256)\n\nThe action was failing when trying to push changes to the release\nbranch, as can be seen\n[here](https://github.com/canonical/authd/actions/runs/21762796624/job/62792276228).\nThe issue seems like an authentication issue with GitHub, which is fixed\nin this PR.\n\nFixed run:\nhttps://github.com/canonical/authd/actions/runs/22622136237/job/65549437796\n\n\nUDENG-8983",
+                  "url": "https://github.com/canonical/authd/commit/47597e8c8a6bca030775f137e4ca3ad97943de7e"
                },
                {
-                  "sha": "888f3f6dbe3dd81788c55c58f15cdf728b2b628a",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1772566446,
-                  "message": "authctl: Avoid regenerating man page if only date changed\n\nAvoid regenerating the man page if only the date has changed. This has\ncaused our CI to fail because we check that all generated files are\nup-to-date.",
-                  "url": "https://github.com/canonical/authd/commit/888f3f6dbe3dd81788c55c58f15cdf728b2b628a"
+                  "sha": "2afc2037eca0e8d29693cf1662d8919670e2a280",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1772543446,
+                  "message": "Fix \"Update packaging branch\" step\n\nIt was failing with authentication errors, possibly caused by the act of\nmoving the git configuration to a different directory. Instead, we are\nnow pulling the source code from the source package into the packaging\nbranch and then updating it.",
+                  "url": "https://github.com/canonical/authd/commit/2afc2037eca0e8d29693cf1662d8919670e2a280"
                }
             ],
             "ciActions": [
