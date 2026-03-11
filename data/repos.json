@@ -2715,7 +2715,7 @@
          {
             "name": "simple-scan",
             "defaultBranch": "stable",
-            "newCommits": 32,
+            "newCommits": 34,
             "url": "https://github.com/ubuntu/simple-scan",
             "releases": [
                {
@@ -2756,14 +2756,14 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 806,
-                     "timestamp": 1773222637
+                     "revision": 810,
+                     "timestamp": 1773227940
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 807,
-                     "timestamp": 1773223095
+                     "revision": 811,
+                     "timestamp": 1773228335
                   },
                   {
                      "track": "latest",
@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17",
+                  "author": "adombeck",
+                  "timestamp": 1773226713,
+                  "message": "Bump Go toolchain version to 1.25.8 (#1309)",
+                  "url": "https://github.com/canonical/authd/commit/5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17"
+               },
+               {
+                  "sha": "8a649d269c3cad51fa863e3679b544f719506cdf",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1773156832,
+                  "message": "Bump Go toolchain version to 1.25.8\n\ngovulncheck reports the following vulnerabilities in go1.25.7:\n\nVulnerability #1: GO-2026-4603\n    URLs in meta content attribute actions are not escaped in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4603\n  Standard library\n    Found in: html/template@go1.25.7\n    Fixed in: html/template@go1.25.8\n    Example traces found:\nError:       #1: examplebroker/broker.go:1000:14: examplebroker.userInfoFromName calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #2: GO-2026-4602\n    FileInfo can escape from a Root in os\n  More info: https://pkg.go.dev/vuln/GO-2026-4602\n  Standard library\n    Found in: os@go1.25.7\n    Fixed in: os@go1.25.8\n    Example traces found:\nError:       #1: internal/users/proc/proc.go:42:33: proc.CheckUserBusy calls os.File.Readdir\nError:       #2: internal/brokers/manager.go:65:29: brokers.NewManager calls os.ReadDir\n\nVulnerability #3: GO-2026-4601\n    Incorrect parsing of IPv6 host literals in net/url\n  More info: https://pkg.go.dev/vuln/GO-2026-4601\n  Standard library\n    Found in: net/url@go1.25.7\n    Fixed in: net/url@go1.25.8\n    Example traces found:\nError:       #1: internal/testutils/daemon.go:249:29: testutils.StartAuthdWithCancel calls grpc.NewClient, which eventually calls url.Parse\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls url.ParseRequestURI",
+                  "url": "https://github.com/canonical/authd/commit/8a649d269c3cad51fa863e3679b544f719506cdf"
+               },
+               {
                   "sha": "5576f3f44c1de79c35499b6b8e3bc53cebf13b57",
                   "author": "adombeck",
                   "timestamp": 1773091062,
                   "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau from `dc91a8c` to `11bd85b` (#1307)",
                   "url": "https://github.com/canonical/authd/commit/5576f3f44c1de79c35499b6b8e3bc53cebf13b57"
-               },
-               {
-                  "sha": "553cbd9b21b458ab1cc48755d7af677d737fc47e",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1773053771,
-                  "message": "brokers: Bump Rust toolchain version to 1.94.0\n\nlibhimmelblau fails to build with rustc 1.91.0:\n\n    rustc 1.91.0 is not supported by the following packages:\n      cargo-credential-libsecret@0.5.5 requires rustc 1.92\n      cargo-util@0.2.27 requires rustc 1.92\n      crates-io@0.40.17 requires rustc 1.92\n\nBumping the Rust toolchain version to 1.94.0 fixes it.",
-                  "url": "https://github.com/canonical/authd/commit/553cbd9b21b458ab1cc48755d7af677d737fc47e"
-               },
-               {
-                  "sha": "1a000ce526a30745f38b69dac85408e616bb2e62",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1772837094,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau\n\nBumps [authd-oidc-brokers/third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau) from `dc91a8c` to `11bd85b`.\n- [Commits](https://gitlab.com/samba-team/libhimmelblau/compare/dc91a8c4c45e368908417c1d42a7532e4eadec13...11bd85bd8bf2de0d645cbeead1292bcbc72b6f66)\n\n---\nupdated-dependencies:\n- dependency-name: authd-oidc-brokers/third_party/libhimmelblau\n  dependency-version: 11bd85bd8bf2de0d645cbeead1292bcbc72b6f66\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/1a000ce526a30745f38b69dac85408e616bb2e62"
                }
             ],
             "ciActions": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17",
+                  "author": "adombeck",
+                  "timestamp": 1773226713,
+                  "message": "Bump Go toolchain version to 1.25.8 (#1309)",
+                  "url": "https://github.com/canonical/authd/commit/5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17"
+               },
+               {
+                  "sha": "8a649d269c3cad51fa863e3679b544f719506cdf",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1773156832,
+                  "message": "Bump Go toolchain version to 1.25.8\n\ngovulncheck reports the following vulnerabilities in go1.25.7:\n\nVulnerability #1: GO-2026-4603\n    URLs in meta content attribute actions are not escaped in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4603\n  Standard library\n    Found in: html/template@go1.25.7\n    Fixed in: html/template@go1.25.8\n    Example traces found:\nError:       #1: examplebroker/broker.go:1000:14: examplebroker.userInfoFromName calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #2: GO-2026-4602\n    FileInfo can escape from a Root in os\n  More info: https://pkg.go.dev/vuln/GO-2026-4602\n  Standard library\n    Found in: os@go1.25.7\n    Fixed in: os@go1.25.8\n    Example traces found:\nError:       #1: internal/users/proc/proc.go:42:33: proc.CheckUserBusy calls os.File.Readdir\nError:       #2: internal/brokers/manager.go:65:29: brokers.NewManager calls os.ReadDir\n\nVulnerability #3: GO-2026-4601\n    Incorrect parsing of IPv6 host literals in net/url\n  More info: https://pkg.go.dev/vuln/GO-2026-4601\n  Standard library\n    Found in: net/url@go1.25.7\n    Fixed in: net/url@go1.25.8\n    Example traces found:\nError:       #1: internal/testutils/daemon.go:249:29: testutils.StartAuthdWithCancel calls grpc.NewClient, which eventually calls url.Parse\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls url.ParseRequestURI",
+                  "url": "https://github.com/canonical/authd/commit/8a649d269c3cad51fa863e3679b544f719506cdf"
+               },
+               {
                   "sha": "5576f3f44c1de79c35499b6b8e3bc53cebf13b57",
                   "author": "adombeck",
                   "timestamp": 1773091062,
                   "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau from `dc91a8c` to `11bd85b` (#1307)",
                   "url": "https://github.com/canonical/authd/commit/5576f3f44c1de79c35499b6b8e3bc53cebf13b57"
-               },
-               {
-                  "sha": "553cbd9b21b458ab1cc48755d7af677d737fc47e",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1773053771,
-                  "message": "brokers: Bump Rust toolchain version to 1.94.0\n\nlibhimmelblau fails to build with rustc 1.91.0:\n\n    rustc 1.91.0 is not supported by the following packages:\n      cargo-credential-libsecret@0.5.5 requires rustc 1.92\n      cargo-util@0.2.27 requires rustc 1.92\n      crates-io@0.40.17 requires rustc 1.92\n\nBumping the Rust toolchain version to 1.94.0 fixes it.",
-                  "url": "https://github.com/canonical/authd/commit/553cbd9b21b458ab1cc48755d7af677d737fc47e"
-               },
-               {
-                  "sha": "1a000ce526a30745f38b69dac85408e616bb2e62",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1772837094,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau\n\nBumps [authd-oidc-brokers/third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau) from `dc91a8c` to `11bd85b`.\n- [Commits](https://gitlab.com/samba-team/libhimmelblau/compare/dc91a8c4c45e368908417c1d42a7532e4eadec13...11bd85bd8bf2de0d645cbeead1292bcbc72b6f66)\n\n---\nupdated-dependencies:\n- dependency-name: authd-oidc-brokers/third_party/libhimmelblau\n  dependency-version: 11bd85bd8bf2de0d645cbeead1292bcbc72b6f66\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/1a000ce526a30745f38b69dac85408e616bb2e62"
                }
             ],
             "ciActions": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17",
+                  "author": "adombeck",
+                  "timestamp": 1773226713,
+                  "message": "Bump Go toolchain version to 1.25.8 (#1309)",
+                  "url": "https://github.com/canonical/authd/commit/5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17"
+               },
+               {
+                  "sha": "8a649d269c3cad51fa863e3679b544f719506cdf",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1773156832,
+                  "message": "Bump Go toolchain version to 1.25.8\n\ngovulncheck reports the following vulnerabilities in go1.25.7:\n\nVulnerability #1: GO-2026-4603\n    URLs in meta content attribute actions are not escaped in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4603\n  Standard library\n    Found in: html/template@go1.25.7\n    Fixed in: html/template@go1.25.8\n    Example traces found:\nError:       #1: examplebroker/broker.go:1000:14: examplebroker.userInfoFromName calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #2: GO-2026-4602\n    FileInfo can escape from a Root in os\n  More info: https://pkg.go.dev/vuln/GO-2026-4602\n  Standard library\n    Found in: os@go1.25.7\n    Fixed in: os@go1.25.8\n    Example traces found:\nError:       #1: internal/users/proc/proc.go:42:33: proc.CheckUserBusy calls os.File.Readdir\nError:       #2: internal/brokers/manager.go:65:29: brokers.NewManager calls os.ReadDir\n\nVulnerability #3: GO-2026-4601\n    Incorrect parsing of IPv6 host literals in net/url\n  More info: https://pkg.go.dev/vuln/GO-2026-4601\n  Standard library\n    Found in: net/url@go1.25.7\n    Fixed in: net/url@go1.25.8\n    Example traces found:\nError:       #1: internal/testutils/daemon.go:249:29: testutils.StartAuthdWithCancel calls grpc.NewClient, which eventually calls url.Parse\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls url.ParseRequestURI",
+                  "url": "https://github.com/canonical/authd/commit/8a649d269c3cad51fa863e3679b544f719506cdf"
+               },
+               {
                   "sha": "5576f3f44c1de79c35499b6b8e3bc53cebf13b57",
                   "author": "adombeck",
                   "timestamp": 1773091062,
                   "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau from `dc91a8c` to `11bd85b` (#1307)",
                   "url": "https://github.com/canonical/authd/commit/5576f3f44c1de79c35499b6b8e3bc53cebf13b57"
-               },
-               {
-                  "sha": "553cbd9b21b458ab1cc48755d7af677d737fc47e",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1773053771,
-                  "message": "brokers: Bump Rust toolchain version to 1.94.0\n\nlibhimmelblau fails to build with rustc 1.91.0:\n\n    rustc 1.91.0 is not supported by the following packages:\n      cargo-credential-libsecret@0.5.5 requires rustc 1.92\n      cargo-util@0.2.27 requires rustc 1.92\n      crates-io@0.40.17 requires rustc 1.92\n\nBumping the Rust toolchain version to 1.94.0 fixes it.",
-                  "url": "https://github.com/canonical/authd/commit/553cbd9b21b458ab1cc48755d7af677d737fc47e"
-               },
-               {
-                  "sha": "1a000ce526a30745f38b69dac85408e616bb2e62",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1772837094,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau\n\nBumps [authd-oidc-brokers/third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau) from `dc91a8c` to `11bd85b`.\n- [Commits](https://gitlab.com/samba-team/libhimmelblau/compare/dc91a8c4c45e368908417c1d42a7532e4eadec13...11bd85bd8bf2de0d645cbeead1292bcbc72b6f66)\n\n---\nupdated-dependencies:\n- dependency-name: authd-oidc-brokers/third_party/libhimmelblau\n  dependency-version: 11bd85bd8bf2de0d645cbeead1292bcbc72b6f66\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/1a000ce526a30745f38b69dac85408e616bb2e62"
                }
             ],
             "ciActions": [
