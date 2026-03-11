@@ -10,25 +10,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4674a02672e76ecc4deb0be9702fefde3dc35da4",
-                  "author": "Sergio Costas",
-                  "timestamp": 1773140407,
-                  "message": "Update URI (#11)\n\nCheese has been moved to Archived",
-                  "url": "https://github.com/ubuntu/cheese/commit/4674a02672e76ecc4deb0be9702fefde3dc35da4"
+                  "sha": "926d32186b3dca1b45ae1d606f8e269ba0d455e5",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1773230006,
+                  "message": "Automated versions update",
+                  "url": "https://github.com/ubuntu/cheese/commit/926d32186b3dca1b45ae1d606f8e269ba0d455e5"
                },
                {
-                  "sha": "4f8a279576b87062023663b6b17ccaa2bd4cc37d",
-                  "author": "jssotomdz",
-                  "timestamp": 1726239774,
-                  "message": "ci: update upload artifact action",
-                  "url": "https://github.com/ubuntu/cheese/commit/4f8a279576b87062023663b6b17ccaa2bd4cc37d"
+                  "sha": "cd4cd9b61585065792087006f9a5a7a4f91a3db5",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1773229946,
+                  "message": "Automated versions update",
+                  "url": "https://github.com/ubuntu/cheese/commit/cd4cd9b61585065792087006f9a5a7a4f91a3db5"
                },
                {
-                  "sha": "7e76d24a034b90f3425dfa9910d140f2ba3baa01",
-                  "author": "Jesús Soto",
-                  "timestamp": 1720126331,
-                  "message": "build: Updated to core24 and gnome-46-2404",
-                  "url": "https://github.com/ubuntu/cheese/commit/7e76d24a034b90f3425dfa9910d140f2ba3baa01"
+                  "sha": "017ad5b7cf0f3877d6b1bbc06feaa5f9ba68f250",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1773229888,
+                  "message": "Automated versions update",
+                  "url": "https://github.com/ubuntu/cheese/commit/017ad5b7cf0f3877d6b1bbc06feaa5f9ba68f250"
                }
             ],
             "ciActions": [],
@@ -843,8 +843,8 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 807,
-                     "timestamp": 1746009048
+                     "revision": 812,
+                     "timestamp": 1773234150
                   }
                ],
                "channels": [
@@ -2715,7 +2715,7 @@
          {
             "name": "simple-scan",
             "defaultBranch": "stable",
-            "newCommits": 34,
+            "newCommits": 36,
             "url": "https://github.com/ubuntu/simple-scan",
             "releases": [
                {
@@ -2756,14 +2756,14 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 810,
-                     "timestamp": 1773227940
+                     "revision": 814,
+                     "timestamp": 1773230386
                   },
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 811,
-                     "timestamp": 1773228335
+                     "revision": 815,
+                     "timestamp": 1773230839
                   },
                   {
                      "track": "latest",
@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17",
+                  "sha": "ad2f9cbc39d42651935de716b4fd64672c1ae5b2",
                   "author": "adombeck",
-                  "timestamp": 1773226713,
-                  "message": "Bump Go toolchain version to 1.25.8 (#1309)",
-                  "url": "https://github.com/canonical/authd/commit/5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17"
+                  "timestamp": 1773230042,
+                  "message": "Fix e2e test cases (#1303)\n\nFix many issues causing e2e-tests to fail. See commit messages for\ndetails.\n\nUDENG-9381\nUDENG-9382",
+                  "url": "https://github.com/canonical/authd/commit/ad2f9cbc39d42651935de716b4fd64672c1ae5b2"
                },
                {
-                  "sha": "8a649d269c3cad51fa863e3679b544f719506cdf",
+                  "sha": "bdc8eedb26fe2ba39545c793253ca0e45821a6e7",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1773156832,
-                  "message": "Bump Go toolchain version to 1.25.8\n\ngovulncheck reports the following vulnerabilities in go1.25.7:\n\nVulnerability #1: GO-2026-4603\n    URLs in meta content attribute actions are not escaped in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4603\n  Standard library\n    Found in: html/template@go1.25.7\n    Fixed in: html/template@go1.25.8\n    Example traces found:\nError:       #1: examplebroker/broker.go:1000:14: examplebroker.userInfoFromName calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #2: GO-2026-4602\n    FileInfo can escape from a Root in os\n  More info: https://pkg.go.dev/vuln/GO-2026-4602\n  Standard library\n    Found in: os@go1.25.7\n    Fixed in: os@go1.25.8\n    Example traces found:\nError:       #1: internal/users/proc/proc.go:42:33: proc.CheckUserBusy calls os.File.Readdir\nError:       #2: internal/brokers/manager.go:65:29: brokers.NewManager calls os.ReadDir\n\nVulnerability #3: GO-2026-4601\n    Incorrect parsing of IPv6 host literals in net/url\n  More info: https://pkg.go.dev/vuln/GO-2026-4601\n  Standard library\n    Found in: net/url@go1.25.7\n    Fixed in: net/url@go1.25.8\n    Example traces found:\nError:       #1: internal/testutils/daemon.go:249:29: testutils.StartAuthdWithCancel calls grpc.NewClient, which eventually calls url.Parse\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls url.ParseRequestURI",
-                  "url": "https://github.com/canonical/authd/commit/8a649d269c3cad51fa863e3679b544f719506cdf"
+                  "timestamp": 1773229379,
+                  "message": "e2e-tests: Print videos in deterministic order",
+                  "url": "https://github.com/canonical/authd/commit/bdc8eedb26fe2ba39545c793253ca0e45821a6e7"
                },
                {
-                  "sha": "5576f3f44c1de79c35499b6b8e3bc53cebf13b57",
-                  "author": "adombeck",
-                  "timestamp": 1773091062,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau from `dc91a8c` to `11bd85b` (#1307)",
-                  "url": "https://github.com/canonical/authd/commit/5576f3f44c1de79c35499b6b8e3bc53cebf13b57"
+                  "sha": "20f903b225487d2b7cbca6aa195c3ee31df3574d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1773173748,
+                  "message": "e2e-tests: Avoid raising confusing second exception\n\nAvoid errors during browser_login.py ending with:\n\n   During handling of the above exception, another exception occurred:\n   [...]\n   TimeoutError: Timed out waiting for text: \"Unacceptable TLS certificate\"",
+                  "url": "https://github.com/canonical/authd/commit/20f903b225487d2b7cbca6aa195c3ee31df3574d"
                }
             ],
             "ciActions": [
@@ -4965,6 +4965,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "09a427a2956c8347448752ba6e7d1371cd3b8526",
+                  "author": "renovate[bot]",
+                  "timestamp": 1773233260,
+                  "message": "[Infra] Update dependency rapidocr to ~=3.7.0 (#203)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/yarf/commit/09a427a2956c8347448752ba6e7d1371cd3b8526"
+               },
+               {
                   "sha": "21dcc004324482ac720f7e0400c22b8956236f2f",
                   "author": "Douglas Chiang",
                   "timestamp": 1773150545,
@@ -4977,13 +4984,6 @@
                   "timestamp": 1773125155,
                   "message": "[Infra] Add generated files for history (#199)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
                   "url": "https://github.com/canonical/yarf/commit/fe28790a01565976e55a2c925512200494db300e"
-               },
-               {
-                  "sha": "fdd7833ce409b6c13927d8d9c1b2527d88df8309",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1772526906,
-                  "message": "[Infra] Bump actions/download-artifact from 7.0.0 to 8.0.0 (#201)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/fdd7833ce409b6c13927d8d9c1b2527d88df8309"
                }
             ],
             "ciActions": [],
@@ -5007,14 +5007,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 541,
-                     "timestamp": 1773151242
+                     "revision": 543,
+                     "timestamp": 1773233988
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 542,
-                     "timestamp": 1773151405
+                     "revision": 544,
+                     "timestamp": 1773234217
                   }
                ],
                "channels": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17",
+                  "sha": "ad2f9cbc39d42651935de716b4fd64672c1ae5b2",
                   "author": "adombeck",
-                  "timestamp": 1773226713,
-                  "message": "Bump Go toolchain version to 1.25.8 (#1309)",
-                  "url": "https://github.com/canonical/authd/commit/5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17"
+                  "timestamp": 1773230042,
+                  "message": "Fix e2e test cases (#1303)\n\nFix many issues causing e2e-tests to fail. See commit messages for\ndetails.\n\nUDENG-9381\nUDENG-9382",
+                  "url": "https://github.com/canonical/authd/commit/ad2f9cbc39d42651935de716b4fd64672c1ae5b2"
                },
                {
-                  "sha": "8a649d269c3cad51fa863e3679b544f719506cdf",
+                  "sha": "bdc8eedb26fe2ba39545c793253ca0e45821a6e7",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1773156832,
-                  "message": "Bump Go toolchain version to 1.25.8\n\ngovulncheck reports the following vulnerabilities in go1.25.7:\n\nVulnerability #1: GO-2026-4603\n    URLs in meta content attribute actions are not escaped in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4603\n  Standard library\n    Found in: html/template@go1.25.7\n    Fixed in: html/template@go1.25.8\n    Example traces found:\nError:       #1: examplebroker/broker.go:1000:14: examplebroker.userInfoFromName calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #2: GO-2026-4602\n    FileInfo can escape from a Root in os\n  More info: https://pkg.go.dev/vuln/GO-2026-4602\n  Standard library\n    Found in: os@go1.25.7\n    Fixed in: os@go1.25.8\n    Example traces found:\nError:       #1: internal/users/proc/proc.go:42:33: proc.CheckUserBusy calls os.File.Readdir\nError:       #2: internal/brokers/manager.go:65:29: brokers.NewManager calls os.ReadDir\n\nVulnerability #3: GO-2026-4601\n    Incorrect parsing of IPv6 host literals in net/url\n  More info: https://pkg.go.dev/vuln/GO-2026-4601\n  Standard library\n    Found in: net/url@go1.25.7\n    Fixed in: net/url@go1.25.8\n    Example traces found:\nError:       #1: internal/testutils/daemon.go:249:29: testutils.StartAuthdWithCancel calls grpc.NewClient, which eventually calls url.Parse\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls url.ParseRequestURI",
-                  "url": "https://github.com/canonical/authd/commit/8a649d269c3cad51fa863e3679b544f719506cdf"
+                  "timestamp": 1773229379,
+                  "message": "e2e-tests: Print videos in deterministic order",
+                  "url": "https://github.com/canonical/authd/commit/bdc8eedb26fe2ba39545c793253ca0e45821a6e7"
                },
                {
-                  "sha": "5576f3f44c1de79c35499b6b8e3bc53cebf13b57",
-                  "author": "adombeck",
-                  "timestamp": 1773091062,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau from `dc91a8c` to `11bd85b` (#1307)",
-                  "url": "https://github.com/canonical/authd/commit/5576f3f44c1de79c35499b6b8e3bc53cebf13b57"
+                  "sha": "20f903b225487d2b7cbca6aa195c3ee31df3574d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1773173748,
+                  "message": "e2e-tests: Avoid raising confusing second exception\n\nAvoid errors during browser_login.py ending with:\n\n   During handling of the above exception, another exception occurred:\n   [...]\n   TimeoutError: Timed out waiting for text: \"Unacceptable TLS certificate\"",
+                  "url": "https://github.com/canonical/authd/commit/20f903b225487d2b7cbca6aa195c3ee31df3574d"
                }
             ],
             "ciActions": [
@@ -7135,6 +7135,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "09a427a2956c8347448752ba6e7d1371cd3b8526",
+                  "author": "renovate[bot]",
+                  "timestamp": 1773233260,
+                  "message": "[Infra] Update dependency rapidocr to ~=3.7.0 (#203)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/yarf/commit/09a427a2956c8347448752ba6e7d1371cd3b8526"
+               },
+               {
                   "sha": "21dcc004324482ac720f7e0400c22b8956236f2f",
                   "author": "Douglas Chiang",
                   "timestamp": 1773150545,
@@ -7147,13 +7154,6 @@
                   "timestamp": 1773125155,
                   "message": "[Infra] Add generated files for history (#199)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
                   "url": "https://github.com/canonical/yarf/commit/fe28790a01565976e55a2c925512200494db300e"
-               },
-               {
-                  "sha": "fdd7833ce409b6c13927d8d9c1b2527d88df8309",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1772526906,
-                  "message": "[Infra] Bump actions/download-artifact from 7.0.0 to 8.0.0 (#201)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/fdd7833ce409b6c13927d8d9c1b2527d88df8309"
                }
             ],
             "ciActions": [],
@@ -7177,14 +7177,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 541,
-                     "timestamp": 1773151242
+                     "revision": 543,
+                     "timestamp": 1773233988
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 542,
-                     "timestamp": 1773151405
+                     "revision": 544,
+                     "timestamp": 1773234217
                   }
                ],
                "channels": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17",
+                  "sha": "ad2f9cbc39d42651935de716b4fd64672c1ae5b2",
                   "author": "adombeck",
-                  "timestamp": 1773226713,
-                  "message": "Bump Go toolchain version to 1.25.8 (#1309)",
-                  "url": "https://github.com/canonical/authd/commit/5694ba8dcaf26ffd8e8a7ea2a151107b97da0d17"
+                  "timestamp": 1773230042,
+                  "message": "Fix e2e test cases (#1303)\n\nFix many issues causing e2e-tests to fail. See commit messages for\ndetails.\n\nUDENG-9381\nUDENG-9382",
+                  "url": "https://github.com/canonical/authd/commit/ad2f9cbc39d42651935de716b4fd64672c1ae5b2"
                },
                {
-                  "sha": "8a649d269c3cad51fa863e3679b544f719506cdf",
+                  "sha": "bdc8eedb26fe2ba39545c793253ca0e45821a6e7",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1773156832,
-                  "message": "Bump Go toolchain version to 1.25.8\n\ngovulncheck reports the following vulnerabilities in go1.25.7:\n\nVulnerability #1: GO-2026-4603\n    URLs in meta content attribute actions are not escaped in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4603\n  Standard library\n    Found in: html/template@go1.25.7\n    Fixed in: html/template@go1.25.8\n    Example traces found:\nError:       #1: examplebroker/broker.go:1000:14: examplebroker.userInfoFromName calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #2: GO-2026-4602\n    FileInfo can escape from a Root in os\n  More info: https://pkg.go.dev/vuln/GO-2026-4602\n  Standard library\n    Found in: os@go1.25.7\n    Fixed in: os@go1.25.8\n    Example traces found:\nError:       #1: internal/users/proc/proc.go:42:33: proc.CheckUserBusy calls os.File.Readdir\nError:       #2: internal/brokers/manager.go:65:29: brokers.NewManager calls os.ReadDir\n\nVulnerability #3: GO-2026-4601\n    Incorrect parsing of IPv6 host literals in net/url\n  More info: https://pkg.go.dev/vuln/GO-2026-4601\n  Standard library\n    Found in: net/url@go1.25.7\n    Fixed in: net/url@go1.25.8\n    Example traces found:\nError:       #1: internal/testutils/daemon.go:249:29: testutils.StartAuthdWithCancel calls grpc.NewClient, which eventually calls url.Parse\nError:       #2: pam/integration-tests/ssh_test.go:720:30: integration.startSSHD calls httptest.NewServer, which eventually calls url.ParseRequestURI",
-                  "url": "https://github.com/canonical/authd/commit/8a649d269c3cad51fa863e3679b544f719506cdf"
+                  "timestamp": 1773229379,
+                  "message": "e2e-tests: Print videos in deterministic order",
+                  "url": "https://github.com/canonical/authd/commit/bdc8eedb26fe2ba39545c793253ca0e45821a6e7"
                },
                {
-                  "sha": "5576f3f44c1de79c35499b6b8e3bc53cebf13b57",
-                  "author": "adombeck",
-                  "timestamp": 1773091062,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau from `dc91a8c` to `11bd85b` (#1307)",
-                  "url": "https://github.com/canonical/authd/commit/5576f3f44c1de79c35499b6b8e3bc53cebf13b57"
+                  "sha": "20f903b225487d2b7cbca6aa195c3ee31df3574d",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1773173748,
+                  "message": "e2e-tests: Avoid raising confusing second exception\n\nAvoid errors during browser_login.py ending with:\n\n   During handling of the above exception, another exception occurred:\n   [...]\n   TimeoutError: Timed out waiting for text: \"Unacceptable TLS certificate\"",
+                  "url": "https://github.com/canonical/authd/commit/20f903b225487d2b7cbca6aa195c3ee31df3574d"
                }
             ],
             "ciActions": [
@@ -9361,6 +9361,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "09a427a2956c8347448752ba6e7d1371cd3b8526",
+                  "author": "renovate[bot]",
+                  "timestamp": 1773233260,
+                  "message": "[Infra] Update dependency rapidocr to ~=3.7.0 (#203)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/yarf/commit/09a427a2956c8347448752ba6e7d1371cd3b8526"
+               },
+               {
                   "sha": "21dcc004324482ac720f7e0400c22b8956236f2f",
                   "author": "Douglas Chiang",
                   "timestamp": 1773150545,
@@ -9373,13 +9380,6 @@
                   "timestamp": 1773125155,
                   "message": "[Infra] Add generated files for history (#199)\n\nSigned-off-by: Douglas Chiang <douglasdothnc@gmail.com>",
                   "url": "https://github.com/canonical/yarf/commit/fe28790a01565976e55a2c925512200494db300e"
-               },
-               {
-                  "sha": "fdd7833ce409b6c13927d8d9c1b2527d88df8309",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1772526906,
-                  "message": "[Infra] Bump actions/download-artifact from 7.0.0 to 8.0.0 (#201)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/fdd7833ce409b6c13927d8d9c1b2527d88df8309"
                }
             ],
             "ciActions": [],
@@ -9403,14 +9403,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 541,
-                     "timestamp": 1773151242
+                     "revision": 543,
+                     "timestamp": 1773233988
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 542,
-                     "timestamp": 1773151405
+                     "revision": 544,
+                     "timestamp": 1773234217
                   }
                ],
                "channels": [
