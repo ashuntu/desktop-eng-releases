@@ -10,25 +10,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "adffb3f4472aea15d73854028868132cb51ef74b",
+                  "sha": "fe211046522eff264cae3ac511c3dcc1c4cb3c84",
+                  "author": "adombeck",
+                  "timestamp": 1773685598,
+                  "message": "Fix Lintian issues on Resolute (#1326)\n\nUDENG-9434",
+                  "url": "https://github.com/canonical/authd/commit/fe211046522eff264cae3ac511c3dcc1c4cb3c84"
+               },
+               {
+                  "sha": "4890df23d59e162316a142881b1813dff61aa641",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1773271853,
-                  "message": "ci: Fix setup-oras action used before checkout\n\nThat caused jobs to fail with:\n\n    Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/authd/authd/.github/actions/setup-oras'. Did you forget to run actions/checkout before running your local action?",
-                  "url": "https://github.com/canonical/authd/commit/adffb3f4472aea15d73854028868132cb51ef74b"
+                  "timestamp": 1773676015,
+                  "message": "ci/debian-build: Drop now unneeded workaround\n\nNow that we treat pedantic Lintian complaints as non-fatal, we don't\nhave to override the pedantic 'silent-on-rules-requiring-root' tag on\nNoble anymore.",
+                  "url": "https://github.com/canonical/authd/commit/4890df23d59e162316a142881b1813dff61aa641"
                },
                {
-                  "sha": "a038b419ca567859a983c877c8d01201c54d2ee5",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1773664777,
-                  "message": "Use FQDN usernames in the tests (#1296)\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly those that rely\non the example broker or would benefit from a more comprehensive\nusername list) to use the default (fully qualified) username format.\n\n\nUDENG-9310",
-                  "url": "https://github.com/canonical/authd/commit/a038b419ca567859a983c877c8d01201c54d2ee5"
-               },
-               {
-                  "sha": "2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1773321843,
-                  "message": "Update tests to use FQDN usernames\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly the ones that\nrely on the example broker and/or would benefit from a more\ncomprehensive username list) to use the default (fully qualified)\nusername format.\n\nAfter updating the tests, we got a substantial increase in characters\non screen, so this commit also increases the width of the vhs \"screen\"\nin order to avoid a lot more linebreaks and increase the diff even more.",
-                  "url": "https://github.com/canonical/authd/commit/2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35"
+                  "sha": "57aedf9a3133623db1b10bc4e55fee85b31103ce",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1773673626,
+                  "message": "ci/debian-build: Ignore Lintian pedantic complaints\n\nThe latest lintian version in Resolute complains if the Priority field\nis set to optional, because that's the default since dpkg 1.22.13:\n\n    P: authd source: redundant-priority-optional-field [debian/control:3]\n\nHowever, Noble only has dpkg 1.22.6, so we must still set it explicitly.\n\nWe tried to silence this tag by adding it to\ndebian/source/lintian-overrides, but that caused Lintian to fail on\nNoble and Questing which don't know the\n'redundant-priority-optional-field' tag yet:\n\n    E: authd source: alien-tag redundant-priority-optional-field [debian/source/lintian-overrides:12]\n\nWe could solve this by adding the tag to debian/source/lintian-overrides\nin the debian-build.yaml workflow if we're building for Resolute -\nsimilar to how we override 'silent-on-rules-requiring-root' only when\nbuilding for Noble. However, that would still cause the Lintian issue\nwhen building the Debian package locally. That would be solved if we\nwould use a script to build the Debian package which we could use both\nin the CI and locally. We don't have that yet, so let's fix the issue\nfor now by making pedantic complains non-fatal.",
+                  "url": "https://github.com/canonical/authd/commit/57aedf9a3133623db1b10bc4e55fee85b31103ce"
                }
             ],
             "ciActions": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "adffb3f4472aea15d73854028868132cb51ef74b",
+                  "sha": "fe211046522eff264cae3ac511c3dcc1c4cb3c84",
+                  "author": "adombeck",
+                  "timestamp": 1773685598,
+                  "message": "Fix Lintian issues on Resolute (#1326)\n\nUDENG-9434",
+                  "url": "https://github.com/canonical/authd/commit/fe211046522eff264cae3ac511c3dcc1c4cb3c84"
+               },
+               {
+                  "sha": "4890df23d59e162316a142881b1813dff61aa641",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1773271853,
-                  "message": "ci: Fix setup-oras action used before checkout\n\nThat caused jobs to fail with:\n\n    Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/authd/authd/.github/actions/setup-oras'. Did you forget to run actions/checkout before running your local action?",
-                  "url": "https://github.com/canonical/authd/commit/adffb3f4472aea15d73854028868132cb51ef74b"
+                  "timestamp": 1773676015,
+                  "message": "ci/debian-build: Drop now unneeded workaround\n\nNow that we treat pedantic Lintian complaints as non-fatal, we don't\nhave to override the pedantic 'silent-on-rules-requiring-root' tag on\nNoble anymore.",
+                  "url": "https://github.com/canonical/authd/commit/4890df23d59e162316a142881b1813dff61aa641"
                },
                {
-                  "sha": "a038b419ca567859a983c877c8d01201c54d2ee5",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1773664777,
-                  "message": "Use FQDN usernames in the tests (#1296)\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly those that rely\non the example broker or would benefit from a more comprehensive\nusername list) to use the default (fully qualified) username format.\n\n\nUDENG-9310",
-                  "url": "https://github.com/canonical/authd/commit/a038b419ca567859a983c877c8d01201c54d2ee5"
-               },
-               {
-                  "sha": "2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1773321843,
-                  "message": "Update tests to use FQDN usernames\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly the ones that\nrely on the example broker and/or would benefit from a more\ncomprehensive username list) to use the default (fully qualified)\nusername format.\n\nAfter updating the tests, we got a substantial increase in characters\non screen, so this commit also increases the width of the vhs \"screen\"\nin order to avoid a lot more linebreaks and increase the diff even more.",
-                  "url": "https://github.com/canonical/authd/commit/2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35"
+                  "sha": "57aedf9a3133623db1b10bc4e55fee85b31103ce",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1773673626,
+                  "message": "ci/debian-build: Ignore Lintian pedantic complaints\n\nThe latest lintian version in Resolute complains if the Priority field\nis set to optional, because that's the default since dpkg 1.22.13:\n\n    P: authd source: redundant-priority-optional-field [debian/control:3]\n\nHowever, Noble only has dpkg 1.22.6, so we must still set it explicitly.\n\nWe tried to silence this tag by adding it to\ndebian/source/lintian-overrides, but that caused Lintian to fail on\nNoble and Questing which don't know the\n'redundant-priority-optional-field' tag yet:\n\n    E: authd source: alien-tag redundant-priority-optional-field [debian/source/lintian-overrides:12]\n\nWe could solve this by adding the tag to debian/source/lintian-overrides\nin the debian-build.yaml workflow if we're building for Resolute -\nsimilar to how we override 'silent-on-rules-requiring-root' only when\nbuilding for Noble. However, that would still cause the Lintian issue\nwhen building the Debian package locally. That would be solved if we\nwould use a script to build the Debian package which we could use both\nin the CI and locally. We don't have that yet, so let's fix the issue\nfor now by making pedantic complains non-fatal.",
+                  "url": "https://github.com/canonical/authd/commit/57aedf9a3133623db1b10bc4e55fee85b31103ce"
                }
             ],
             "ciActions": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "adffb3f4472aea15d73854028868132cb51ef74b",
+                  "sha": "fe211046522eff264cae3ac511c3dcc1c4cb3c84",
+                  "author": "adombeck",
+                  "timestamp": 1773685598,
+                  "message": "Fix Lintian issues on Resolute (#1326)\n\nUDENG-9434",
+                  "url": "https://github.com/canonical/authd/commit/fe211046522eff264cae3ac511c3dcc1c4cb3c84"
+               },
+               {
+                  "sha": "4890df23d59e162316a142881b1813dff61aa641",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1773271853,
-                  "message": "ci: Fix setup-oras action used before checkout\n\nThat caused jobs to fail with:\n\n    Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/authd/authd/.github/actions/setup-oras'. Did you forget to run actions/checkout before running your local action?",
-                  "url": "https://github.com/canonical/authd/commit/adffb3f4472aea15d73854028868132cb51ef74b"
+                  "timestamp": 1773676015,
+                  "message": "ci/debian-build: Drop now unneeded workaround\n\nNow that we treat pedantic Lintian complaints as non-fatal, we don't\nhave to override the pedantic 'silent-on-rules-requiring-root' tag on\nNoble anymore.",
+                  "url": "https://github.com/canonical/authd/commit/4890df23d59e162316a142881b1813dff61aa641"
                },
                {
-                  "sha": "a038b419ca567859a983c877c8d01201c54d2ee5",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1773664777,
-                  "message": "Use FQDN usernames in the tests (#1296)\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly those that rely\non the example broker or would benefit from a more comprehensive\nusername list) to use the default (fully qualified) username format.\n\n\nUDENG-9310",
-                  "url": "https://github.com/canonical/authd/commit/a038b419ca567859a983c877c8d01201c54d2ee5"
-               },
-               {
-                  "sha": "2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1773321843,
-                  "message": "Update tests to use FQDN usernames\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly the ones that\nrely on the example broker and/or would benefit from a more\ncomprehensive username list) to use the default (fully qualified)\nusername format.\n\nAfter updating the tests, we got a substantial increase in characters\non screen, so this commit also increases the width of the vhs \"screen\"\nin order to avoid a lot more linebreaks and increase the diff even more.",
-                  "url": "https://github.com/canonical/authd/commit/2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35"
+                  "sha": "57aedf9a3133623db1b10bc4e55fee85b31103ce",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1773673626,
+                  "message": "ci/debian-build: Ignore Lintian pedantic complaints\n\nThe latest lintian version in Resolute complains if the Priority field\nis set to optional, because that's the default since dpkg 1.22.13:\n\n    P: authd source: redundant-priority-optional-field [debian/control:3]\n\nHowever, Noble only has dpkg 1.22.6, so we must still set it explicitly.\n\nWe tried to silence this tag by adding it to\ndebian/source/lintian-overrides, but that caused Lintian to fail on\nNoble and Questing which don't know the\n'redundant-priority-optional-field' tag yet:\n\n    E: authd source: alien-tag redundant-priority-optional-field [debian/source/lintian-overrides:12]\n\nWe could solve this by adding the tag to debian/source/lintian-overrides\nin the debian-build.yaml workflow if we're building for Resolute -\nsimilar to how we override 'silent-on-rules-requiring-root' only when\nbuilding for Noble. However, that would still cause the Lintian issue\nwhen building the Debian package locally. That would be solved if we\nwould use a script to build the Debian package which we could use both\nin the CI and locally. We don't have that yet, so let's fix the issue\nfor now by making pedantic complains non-fatal.",
+                  "url": "https://github.com/canonical/authd/commit/57aedf9a3133623db1b10bc4e55fee85b31103ce"
                }
             ],
             "ciActions": [
