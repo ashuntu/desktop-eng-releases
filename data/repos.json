@@ -10,25 +10,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5c490e20aeee277af8f582d6fa8ca71cf4dcdb1f",
-                  "author": "adombeck",
-                  "timestamp": 1773309913,
-                  "message": "ci: Avoid build-deb workflows being cancelled (#1315)\n\nUDENG-9389",
-                  "url": "https://github.com/canonical/authd/commit/5c490e20aeee277af8f582d6fa8ca71cf4dcdb1f"
+                  "sha": "a038b419ca567859a983c877c8d01201c54d2ee5",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1773664777,
+                  "message": "Use FQDN usernames in the tests (#1296)\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly those that rely\non the example broker or would benefit from a more comprehensive\nusername list) to use the default (fully qualified) username format.\n\n\nUDENG-9310",
+                  "url": "https://github.com/canonical/authd/commit/a038b419ca567859a983c877c8d01201c54d2ee5"
                },
                {
-                  "sha": "9cf5987cda781585769e080164f9260520ce8fd6",
-                  "author": "adombeck",
-                  "timestamp": 1773309692,
-                  "message": "ci: Complete the drop of Plucky (#1314)\n\nUDENG-9332",
-                  "url": "https://github.com/canonical/authd/commit/9cf5987cda781585769e080164f9260520ce8fd6"
+                  "sha": "2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1773321843,
+                  "message": "Update tests to use FQDN usernames\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly the ones that\nrely on the example broker and/or would benefit from a more\ncomprehensive username list) to use the default (fully qualified)\nusername format.\n\nAfter updating the tests, we got a substantial increase in characters\non screen, so this commit also increases the width of the vhs \"screen\"\nin order to avoid a lot more linebreaks and increase the diff even more.",
+                  "url": "https://github.com/canonical/authd/commit/2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35"
                },
                {
-                  "sha": "cfe66ff1d80db1a2e6089cfc68ecc27ed5c5d8d1",
-                  "author": "adombeck",
-                  "timestamp": 1773309433,
-                  "message": "ci: Fix OCI artifact cleanup (#1318)",
-                  "url": "https://github.com/canonical/authd/commit/cfe66ff1d80db1a2e6089cfc68ecc27ed5c5d8d1"
+                  "sha": "1e97b8efdb07d7e0f1ce5430dce9f6ee00632182",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1773320957,
+                  "message": "Update username logic in TestNativeAuthenticate\n\nWe used to append \"-native\" to users that didn't have that previously in\nthe name and this is not a good approach, as it can result in confusing\nbehavior when adding new tests or updating the current ones. Instead,\nlet's drop that and actively control which usernames we want having\n-native appended.",
+                  "url": "https://github.com/canonical/authd/commit/1e97b8efdb07d7e0f1ce5430dce9f6ee00632182"
                }
             ],
             "ciActions": [
@@ -2454,6 +2454,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 297459317,
+                  "version": "rev56",
+                  "timestamp": 1773665677,
+                  "title": "Revision 56",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 55</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 12:56 UTC on 16 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/75\">#75</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55...rev56\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55&hellip;rev56</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev56",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev56...main"
+               },
+               {
                   "id": 295198939,
                   "version": "rev55",
                   "timestamp": 1773152795,
@@ -2470,15 +2479,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 53</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:35 UTC on 9 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.6.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/73\">#73</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev53...rev54\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev53&hellip;rev54</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev54",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev54...main"
-               },
-               {
-                  "id": 294918605,
-                  "version": "rev53",
-                  "timestamp": 1773094144,
-                  "title": "Revision 53",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 52</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:11 UTC on 9 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/72\">#72</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev52...rev53\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev52&hellip;rev53</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev53",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev53...main"
                }
             ],
             "commits": null,
@@ -2490,8 +2490,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 55,
-                     "timestamp": 1773152903
+                     "revision": 56,
+                     "timestamp": 1773665776
                   }
                ],
                "channels": [
@@ -5385,25 +5385,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5c490e20aeee277af8f582d6fa8ca71cf4dcdb1f",
-                  "author": "adombeck",
-                  "timestamp": 1773309913,
-                  "message": "ci: Avoid build-deb workflows being cancelled (#1315)\n\nUDENG-9389",
-                  "url": "https://github.com/canonical/authd/commit/5c490e20aeee277af8f582d6fa8ca71cf4dcdb1f"
+                  "sha": "a038b419ca567859a983c877c8d01201c54d2ee5",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1773664777,
+                  "message": "Use FQDN usernames in the tests (#1296)\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly those that rely\non the example broker or would benefit from a more comprehensive\nusername list) to use the default (fully qualified) username format.\n\n\nUDENG-9310",
+                  "url": "https://github.com/canonical/authd/commit/a038b419ca567859a983c877c8d01201c54d2ee5"
                },
                {
-                  "sha": "9cf5987cda781585769e080164f9260520ce8fd6",
-                  "author": "adombeck",
-                  "timestamp": 1773309692,
-                  "message": "ci: Complete the drop of Plucky (#1314)\n\nUDENG-9332",
-                  "url": "https://github.com/canonical/authd/commit/9cf5987cda781585769e080164f9260520ce8fd6"
+                  "sha": "2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1773321843,
+                  "message": "Update tests to use FQDN usernames\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly the ones that\nrely on the example broker and/or would benefit from a more\ncomprehensive username list) to use the default (fully qualified)\nusername format.\n\nAfter updating the tests, we got a substantial increase in characters\non screen, so this commit also increases the width of the vhs \"screen\"\nin order to avoid a lot more linebreaks and increase the diff even more.",
+                  "url": "https://github.com/canonical/authd/commit/2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35"
                },
                {
-                  "sha": "cfe66ff1d80db1a2e6089cfc68ecc27ed5c5d8d1",
-                  "author": "adombeck",
-                  "timestamp": 1773309433,
-                  "message": "ci: Fix OCI artifact cleanup (#1318)",
-                  "url": "https://github.com/canonical/authd/commit/cfe66ff1d80db1a2e6089cfc68ecc27ed5c5d8d1"
+                  "sha": "1e97b8efdb07d7e0f1ce5430dce9f6ee00632182",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1773320957,
+                  "message": "Update username logic in TestNativeAuthenticate\n\nWe used to append \"-native\" to users that didn't have that previously in\nthe name and this is not a good approach, as it can result in confusing\nbehavior when adding new tests or updating the current ones. Instead,\nlet's drop that and actively control which usernames we want having\n-native appended.",
+                  "url": "https://github.com/canonical/authd/commit/1e97b8efdb07d7e0f1ce5430dce9f6ee00632182"
                }
             ],
             "ciActions": [
@@ -6759,6 +6759,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 297459317,
+                  "version": "rev56",
+                  "timestamp": 1773665677,
+                  "title": "Revision 56",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 55</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 12:56 UTC on 16 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/75\">#75</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55...rev56\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55&hellip;rev56</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev56",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev56...main"
+               },
+               {
                   "id": 295198939,
                   "version": "rev55",
                   "timestamp": 1773152795,
@@ -6775,15 +6784,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 53</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:35 UTC on 9 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.6.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/73\">#73</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev53...rev54\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev53&hellip;rev54</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev54",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev54...main"
-               },
-               {
-                  "id": 294918605,
-                  "version": "rev53",
-                  "timestamp": 1773094144,
-                  "title": "Revision 53",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 52</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:11 UTC on 9 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/72\">#72</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev52...rev53\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev52&hellip;rev53</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev53",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev53...main"
                }
             ],
             "commits": null,
@@ -6795,8 +6795,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 55,
-                     "timestamp": 1773152903
+                     "revision": 56,
+                     "timestamp": 1773665776
                   }
                ],
                "channels": [
@@ -7650,25 +7650,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9f7523deeeb93be7687863a80e631942a70f6611",
-                  "author": "adombeck",
-                  "timestamp": 1773659163,
-                  "message": "ci: Fix OCI artifact cleanup (second try) (#1322)",
-                  "url": "https://github.com/canonical/authd/commit/9f7523deeeb93be7687863a80e631942a70f6611"
+                  "sha": "a038b419ca567859a983c877c8d01201c54d2ee5",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1773664777,
+                  "message": "Use FQDN usernames in the tests (#1296)\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly those that rely\non the example broker or would benefit from a more comprehensive\nusername list) to use the default (fully qualified) username format.\n\n\nUDENG-9310",
+                  "url": "https://github.com/canonical/authd/commit/a038b419ca567859a983c877c8d01201c54d2ee5"
                },
                {
-                  "sha": "024edaf82c763965c251663ab937f96320124299",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1773397150,
-                  "message": "ci: Fix OCI artifact cleanup (second try)\n\nCommit fd44cc3e07c0502e87b86bf45ad2e308657cecda removed the\n\"ghcr.io/${{ github.repository }}\" prefix from the package name.\nHowever, the name of the repository itself is actually part of the\npackage name. We don't use ${{ github.repository }} because that also\nincludes the owner (i.e. it expands to 'canonical/authd', but we only\nneed 'authd').",
-                  "url": "https://github.com/canonical/authd/commit/024edaf82c763965c251663ab937f96320124299"
+                  "sha": "2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1773321843,
+                  "message": "Update tests to use FQDN usernames\n\nSince we are planning to add support for shortened usernames as a\nconfigurable option, we need to update our tests (mainly the ones that\nrely on the example broker and/or would benefit from a more\ncomprehensive username list) to use the default (fully qualified)\nusername format.\n\nAfter updating the tests, we got a substantial increase in characters\non screen, so this commit also increases the width of the vhs \"screen\"\nin order to avoid a lot more linebreaks and increase the diff even more.",
+                  "url": "https://github.com/canonical/authd/commit/2e1b0ec2e60c65b9feebf7f1aa4a7e424d88fe35"
                },
                {
-                  "sha": "5c490e20aeee277af8f582d6fa8ca71cf4dcdb1f",
-                  "author": "adombeck",
-                  "timestamp": 1773309913,
-                  "message": "ci: Avoid build-deb workflows being cancelled (#1315)\n\nUDENG-9389",
-                  "url": "https://github.com/canonical/authd/commit/5c490e20aeee277af8f582d6fa8ca71cf4dcdb1f"
+                  "sha": "1e97b8efdb07d7e0f1ce5430dce9f6ee00632182",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1773320957,
+                  "message": "Update username logic in TestNativeAuthenticate\n\nWe used to append \"-native\" to users that didn't have that previously in\nthe name and this is not a good approach, as it can result in confusing\nbehavior when adding new tests or updating the current ones. Instead,\nlet's drop that and actively control which usernames we want having\n-native appended.",
+                  "url": "https://github.com/canonical/authd/commit/1e97b8efdb07d7e0f1ce5430dce9f6ee00632182"
                }
             ],
             "ciActions": [
@@ -9026,6 +9026,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 297459317,
+                  "version": "rev56",
+                  "timestamp": 1773665677,
+                  "title": "Revision 56",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 55</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 12:56 UTC on 16 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/75\">#75</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55...rev56\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55&hellip;rev56</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev56",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev56...main"
+               },
+               {
                   "id": 295198939,
                   "version": "rev55",
                   "timestamp": 1773152795,
@@ -9042,15 +9051,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 53</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:35 UTC on 9 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.6.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/73\">#73</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev53...rev54\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev53&hellip;rev54</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev54",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev54...main"
-               },
-               {
-                  "id": 294918605,
-                  "version": "rev53",
-                  "timestamp": 1773094144,
-                  "title": "Revision 53",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 52</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:11 UTC on 9 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/72\">#72</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev52...rev53\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev52&hellip;rev53</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev53",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev53...main"
                }
             ],
             "commits": null,
@@ -9062,8 +9062,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 55,
-                     "timestamp": 1773152903
+                     "revision": 56,
+                     "timestamp": 1773665776
                   }
                ],
                "channels": [
