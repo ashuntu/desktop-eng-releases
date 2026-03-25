@@ -3193,25 +3193,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8032a6e514653da2cd952b90097902b90c997069",
+                  "sha": "f9dc7292c6107178e79e64f1b336883036ee6ba8",
                   "author": "ashuntu",
-                  "timestamp": 1773677431,
-                  "message": "Merge pull request #194 from canonical/fake-pro-service\n\nfeat: Add fake Ubuntu Pro services",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/8032a6e514653da2cd952b90097902b90c997069"
+                  "timestamp": 1774450534,
+                  "message": "Merge pull request #196 from canonical/pro-snapd-version\n\nfix: Increase snapd requirement for Pro support",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f9dc7292c6107178e79e64f1b336883036ee6ba8"
                },
                {
-                  "sha": "c168b2ced4bcc348a54e50cb90bb4122ec72a28b",
+                  "sha": "879dafb8a66fb9a2d83813571be114ed69cdfc1c",
                   "author": "ashuntu",
-                  "timestamp": 1773439143,
-                  "message": "feat: Add fake Ubuntu Pro services\n\nThese are effective when ran in dry run mode",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/c168b2ced4bcc348a54e50cb90bb4122ec72a28b"
+                  "timestamp": 1774450522,
+                  "message": "Merge pull request #197 from canonical/pro-keyword\n\nfix: Add 'pro' to .desktop keywords",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/879dafb8a66fb9a2d83813571be114ed69cdfc1c"
                },
                {
-                  "sha": "080667babfa1d9fb0abcc5c51148ccb52183fd87",
+                  "sha": "039edbe9c995867cc7de626eaf61cf7572710036",
                   "author": "ashuntu",
-                  "timestamp": 1773439110,
-                  "message": "fix: Move dbus object out of feature data\n\nThis allows us to not have to provide it unnecessarily to consumers",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/080667babfa1d9fb0abcc5c51148ccb52183fd87"
+                  "timestamp": 1774390398,
+                  "message": "fix: Add 'pro' to .desktop keywords",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/039edbe9c995867cc7de626eaf61cf7572710036"
                }
             ],
             "ciActions": [],
@@ -3919,25 +3919,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "32b14820671a233587408b6ccf51fd0d9cebd99c",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1774439854,
-                  "message": "fix(test): remove unused variable in TestListVolumeInfo",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/32b14820671a233587408b6ccf51fd0d9cebd99c"
+                  "sha": "d7f2584f5e2446de0ea8281dd8bb3d656269c3c4",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1774448349,
+                  "message": "feat(testutils): CheckError helper function and rollout (#52)\n\nThis pr adds the CheckError helper function to assist in cleaning up\nthis common pattern:\n```diff\n-        if tc.wantErr {\n-            is.True(err != nil)\n+       if testutils.CheckError(is, err, tc.wantErr) {\n             return\n         }\n-        is.NoErr(err)\n```",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/d7f2584f5e2446de0ea8281dd8bb3d656269c3c4"
                },
                {
-                  "sha": "79f9964fd3c1de571320605bc1873047246e0f36",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1774439503,
-                  "message": "feat(tpm): add `ListVolumeInfo` method (#51)",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/79f9964fd3c1de571320605bc1873047246e0f36"
+                  "sha": "999baf8d5cfabd13cf990d12c5dbe798e21909b3",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1774448066,
+                  "message": "test: rolling out CheckError to ListVolumeInfo",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/999baf8d5cfabd13cf990d12c5dbe798e21909b3"
                },
                {
-                  "sha": "a20eb25d4479dfe605433caa3efa9ffe0037f326",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1774439293,
-                  "message": "test(tpm): add test and data for ListVolumeInfo",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/a20eb25d4479dfe605433caa3efa9ffe0037f326"
+                  "sha": "bfdd7bbd0d4b9746059163f63696d591303c6381",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1774446619,
+                  "message": "test: rolling out CheckError testutil pattern",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/bfdd7bbd0d4b9746059163f63696d591303c6381"
                }
             ],
             "ciActions": null,
@@ -4300,25 +4300,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f40c2020d16a81c7e3f23d915aaf874d98402a6d",
+                  "author": "Dennis Loose",
+                  "timestamp": 1774449031,
+                  "message": "fix: ensure only allowed GuidedCapabilities are set (#1368)\n\nCurrently it's possible to select a `GuidedCapability`, return to the\nprevious page, and then select a different installation type, that\ndoesn't support this capability (e.g. select TPM/FDE, go back, select\n'Install alongside .. ').\nThis PR adds a check that reverts back to the first allowed capability\nin that case.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f40c2020d16a81c7e3f23d915aaf874d98402a6d"
+               },
+               {
+                  "sha": "4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f",
+                  "author": "Dennis Loose",
+                  "timestamp": 1774370170,
+                  "message": "fix: ensure only allowed GuidedCapabilities are set",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f"
+               },
+               {
                   "sha": "eced89606000544e9a09f4ca7160777dacc286f9",
                   "author": "Dennis Loose",
                   "timestamp": 1774433176,
                   "message": "fix: hide TPM/FDE option when not offered by subiquity (#1367)\n\nSubiquity currently only offers the `CORE_BOOT_ENCRYPTED` capability\n(aka TPM/FDE) when using the entire disk\n(`GuidedStorageTargetReformat`). If TPM/FDE is not available, it will\nprovide error messages and actions via the new actions API - we keep the\noption enabled in that case and let the user proceed to the TPM action\npage.\nWhen choosing to install alongside an existing partition, TPM/FDE is not\noffered, but we currently still display a greyed out button with a\nmisleading subtitle. This PR removes hides the button entirely for this\nscenario.\n\nP.S. I've also removed the obsolete `TpmOption` which is no longer used.",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eced89606000544e9a09f4ca7160777dacc286f9"
-               },
-               {
-                  "sha": "8acd1588e4940ad24ee504999bda6ee3f919a766",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774430013,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 947d4d0 (#1370)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity.git)\n([changelog](https://redirect.github.com/canonical/subiquity.git/compare/f49f7692b104f28af6d82264072285c1e9cb6ade..947d4d0cff256a60fdeebbd87e061297bf4e7601))\n| digest | `f49f769` → `947d4d0` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My42Ni40IiwidXBkYXRlZEluVmVyIjoiNDMuNjYuNCIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8acd1588e4940ad24ee504999bda6ee3f919a766"
-               },
-               {
-                  "sha": "218db5ecc4a111ae51e53d1efe7b5113ff864b1c",
-                  "author": "renovate[bot]",
-                  "timestamp": 1774428195,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 947d4d0",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/218db5ecc4a111ae51e53d1efe7b5113ff864b1c"
                }
             ],
             "ciActions": [
@@ -5618,25 +5618,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8032a6e514653da2cd952b90097902b90c997069",
+                  "sha": "f9dc7292c6107178e79e64f1b336883036ee6ba8",
                   "author": "ashuntu",
-                  "timestamp": 1773677431,
-                  "message": "Merge pull request #194 from canonical/fake-pro-service\n\nfeat: Add fake Ubuntu Pro services",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/8032a6e514653da2cd952b90097902b90c997069"
+                  "timestamp": 1774450534,
+                  "message": "Merge pull request #196 from canonical/pro-snapd-version\n\nfix: Increase snapd requirement for Pro support",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f9dc7292c6107178e79e64f1b336883036ee6ba8"
                },
                {
-                  "sha": "c168b2ced4bcc348a54e50cb90bb4122ec72a28b",
+                  "sha": "879dafb8a66fb9a2d83813571be114ed69cdfc1c",
                   "author": "ashuntu",
-                  "timestamp": 1773439143,
-                  "message": "feat: Add fake Ubuntu Pro services\n\nThese are effective when ran in dry run mode",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/c168b2ced4bcc348a54e50cb90bb4122ec72a28b"
+                  "timestamp": 1774450522,
+                  "message": "Merge pull request #197 from canonical/pro-keyword\n\nfix: Add 'pro' to .desktop keywords",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/879dafb8a66fb9a2d83813571be114ed69cdfc1c"
                },
                {
-                  "sha": "080667babfa1d9fb0abcc5c51148ccb52183fd87",
+                  "sha": "039edbe9c995867cc7de626eaf61cf7572710036",
                   "author": "ashuntu",
-                  "timestamp": 1773439110,
-                  "message": "fix: Move dbus object out of feature data\n\nThis allows us to not have to provide it unnecessarily to consumers",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/080667babfa1d9fb0abcc5c51148ccb52183fd87"
+                  "timestamp": 1774390398,
+                  "message": "fix: Add 'pro' to .desktop keywords",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/039edbe9c995867cc7de626eaf61cf7572710036"
                }
             ],
             "ciActions": [],
@@ -6377,25 +6377,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "32b14820671a233587408b6ccf51fd0d9cebd99c",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1774439854,
-                  "message": "fix(test): remove unused variable in TestListVolumeInfo",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/32b14820671a233587408b6ccf51fd0d9cebd99c"
+                  "sha": "d7f2584f5e2446de0ea8281dd8bb3d656269c3c4",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1774448349,
+                  "message": "feat(testutils): CheckError helper function and rollout (#52)\n\nThis pr adds the CheckError helper function to assist in cleaning up\nthis common pattern:\n```diff\n-        if tc.wantErr {\n-            is.True(err != nil)\n+       if testutils.CheckError(is, err, tc.wantErr) {\n             return\n         }\n-        is.NoErr(err)\n```",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/d7f2584f5e2446de0ea8281dd8bb3d656269c3c4"
                },
                {
-                  "sha": "79f9964fd3c1de571320605bc1873047246e0f36",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1774439503,
-                  "message": "feat(tpm): add `ListVolumeInfo` method (#51)",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/79f9964fd3c1de571320605bc1873047246e0f36"
+                  "sha": "999baf8d5cfabd13cf990d12c5dbe798e21909b3",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1774448066,
+                  "message": "test: rolling out CheckError to ListVolumeInfo",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/999baf8d5cfabd13cf990d12c5dbe798e21909b3"
                },
                {
-                  "sha": "a20eb25d4479dfe605433caa3efa9ffe0037f326",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1774439293,
-                  "message": "test(tpm): add test and data for ListVolumeInfo",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/a20eb25d4479dfe605433caa3efa9ffe0037f326"
+                  "sha": "bfdd7bbd0d4b9746059163f63696d591303c6381",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1774446619,
+                  "message": "test: rolling out CheckError testutil pattern",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/bfdd7bbd0d4b9746059163f63696d591303c6381"
                }
             ],
             "ciActions": null,
@@ -6758,25 +6758,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f40c2020d16a81c7e3f23d915aaf874d98402a6d",
+                  "author": "Dennis Loose",
+                  "timestamp": 1774449031,
+                  "message": "fix: ensure only allowed GuidedCapabilities are set (#1368)\n\nCurrently it's possible to select a `GuidedCapability`, return to the\nprevious page, and then select a different installation type, that\ndoesn't support this capability (e.g. select TPM/FDE, go back, select\n'Install alongside .. ').\nThis PR adds a check that reverts back to the first allowed capability\nin that case.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f40c2020d16a81c7e3f23d915aaf874d98402a6d"
+               },
+               {
+                  "sha": "4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f",
+                  "author": "Dennis Loose",
+                  "timestamp": 1774370170,
+                  "message": "fix: ensure only allowed GuidedCapabilities are set",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f"
+               },
+               {
                   "sha": "eced89606000544e9a09f4ca7160777dacc286f9",
                   "author": "Dennis Loose",
                   "timestamp": 1774433176,
                   "message": "fix: hide TPM/FDE option when not offered by subiquity (#1367)\n\nSubiquity currently only offers the `CORE_BOOT_ENCRYPTED` capability\n(aka TPM/FDE) when using the entire disk\n(`GuidedStorageTargetReformat`). If TPM/FDE is not available, it will\nprovide error messages and actions via the new actions API - we keep the\noption enabled in that case and let the user proceed to the TPM action\npage.\nWhen choosing to install alongside an existing partition, TPM/FDE is not\noffered, but we currently still display a greyed out button with a\nmisleading subtitle. This PR removes hides the button entirely for this\nscenario.\n\nP.S. I've also removed the obsolete `TpmOption` which is no longer used.",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eced89606000544e9a09f4ca7160777dacc286f9"
-               },
-               {
-                  "sha": "8acd1588e4940ad24ee504999bda6ee3f919a766",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774430013,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 947d4d0 (#1370)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity.git)\n([changelog](https://redirect.github.com/canonical/subiquity.git/compare/f49f7692b104f28af6d82264072285c1e9cb6ade..947d4d0cff256a60fdeebbd87e061297bf4e7601))\n| digest | `f49f769` → `947d4d0` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My42Ni40IiwidXBkYXRlZEluVmVyIjoiNDMuNjYuNCIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8acd1588e4940ad24ee504999bda6ee3f919a766"
-               },
-               {
-                  "sha": "218db5ecc4a111ae51e53d1efe7b5113ff864b1c",
-                  "author": "renovate[bot]",
-                  "timestamp": 1774428195,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 947d4d0",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/218db5ecc4a111ae51e53d1efe7b5113ff864b1c"
                }
             ],
             "ciActions": [
@@ -7916,25 +7916,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8032a6e514653da2cd952b90097902b90c997069",
+                  "sha": "f9dc7292c6107178e79e64f1b336883036ee6ba8",
                   "author": "ashuntu",
-                  "timestamp": 1773677431,
-                  "message": "Merge pull request #194 from canonical/fake-pro-service\n\nfeat: Add fake Ubuntu Pro services",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/8032a6e514653da2cd952b90097902b90c997069"
+                  "timestamp": 1774450534,
+                  "message": "Merge pull request #196 from canonical/pro-snapd-version\n\nfix: Increase snapd requirement for Pro support",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f9dc7292c6107178e79e64f1b336883036ee6ba8"
                },
                {
-                  "sha": "c168b2ced4bcc348a54e50cb90bb4122ec72a28b",
+                  "sha": "879dafb8a66fb9a2d83813571be114ed69cdfc1c",
                   "author": "ashuntu",
-                  "timestamp": 1773439143,
-                  "message": "feat: Add fake Ubuntu Pro services\n\nThese are effective when ran in dry run mode",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/c168b2ced4bcc348a54e50cb90bb4122ec72a28b"
+                  "timestamp": 1774450522,
+                  "message": "Merge pull request #197 from canonical/pro-keyword\n\nfix: Add 'pro' to .desktop keywords",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/879dafb8a66fb9a2d83813571be114ed69cdfc1c"
                },
                {
-                  "sha": "080667babfa1d9fb0abcc5c51148ccb52183fd87",
+                  "sha": "039edbe9c995867cc7de626eaf61cf7572710036",
                   "author": "ashuntu",
-                  "timestamp": 1773439110,
-                  "message": "fix: Move dbus object out of feature data\n\nThis allows us to not have to provide it unnecessarily to consumers",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/080667babfa1d9fb0abcc5c51148ccb52183fd87"
+                  "timestamp": 1774390398,
+                  "message": "fix: Add 'pro' to .desktop keywords",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/039edbe9c995867cc7de626eaf61cf7572710036"
                }
             ],
             "ciActions": [],
@@ -8642,25 +8642,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "32b14820671a233587408b6ccf51fd0d9cebd99c",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1774439854,
-                  "message": "fix(test): remove unused variable in TestListVolumeInfo",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/32b14820671a233587408b6ccf51fd0d9cebd99c"
+                  "sha": "d7f2584f5e2446de0ea8281dd8bb3d656269c3c4",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1774448349,
+                  "message": "feat(testutils): CheckError helper function and rollout (#52)\n\nThis pr adds the CheckError helper function to assist in cleaning up\nthis common pattern:\n```diff\n-        if tc.wantErr {\n-            is.True(err != nil)\n+       if testutils.CheckError(is, err, tc.wantErr) {\n             return\n         }\n-        is.NoErr(err)\n```",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/d7f2584f5e2446de0ea8281dd8bb3d656269c3c4"
                },
                {
-                  "sha": "79f9964fd3c1de571320605bc1873047246e0f36",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1774439503,
-                  "message": "feat(tpm): add `ListVolumeInfo` method (#51)",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/79f9964fd3c1de571320605bc1873047246e0f36"
+                  "sha": "999baf8d5cfabd13cf990d12c5dbe798e21909b3",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1774448066,
+                  "message": "test: rolling out CheckError to ListVolumeInfo",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/999baf8d5cfabd13cf990d12c5dbe798e21909b3"
                },
                {
-                  "sha": "a20eb25d4479dfe605433caa3efa9ffe0037f326",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1774439293,
-                  "message": "test(tpm): add test and data for ListVolumeInfo",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/a20eb25d4479dfe605433caa3efa9ffe0037f326"
+                  "sha": "bfdd7bbd0d4b9746059163f63696d591303c6381",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1774446619,
+                  "message": "test: rolling out CheckError testutil pattern",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/bfdd7bbd0d4b9746059163f63696d591303c6381"
                }
             ],
             "ciActions": null,
@@ -9023,25 +9023,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f40c2020d16a81c7e3f23d915aaf874d98402a6d",
+                  "author": "Dennis Loose",
+                  "timestamp": 1774449031,
+                  "message": "fix: ensure only allowed GuidedCapabilities are set (#1368)\n\nCurrently it's possible to select a `GuidedCapability`, return to the\nprevious page, and then select a different installation type, that\ndoesn't support this capability (e.g. select TPM/FDE, go back, select\n'Install alongside .. ').\nThis PR adds a check that reverts back to the first allowed capability\nin that case.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f40c2020d16a81c7e3f23d915aaf874d98402a6d"
+               },
+               {
+                  "sha": "4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f",
+                  "author": "Dennis Loose",
+                  "timestamp": 1774370170,
+                  "message": "fix: ensure only allowed GuidedCapabilities are set",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f"
+               },
+               {
                   "sha": "eced89606000544e9a09f4ca7160777dacc286f9",
                   "author": "Dennis Loose",
                   "timestamp": 1774433176,
                   "message": "fix: hide TPM/FDE option when not offered by subiquity (#1367)\n\nSubiquity currently only offers the `CORE_BOOT_ENCRYPTED` capability\n(aka TPM/FDE) when using the entire disk\n(`GuidedStorageTargetReformat`). If TPM/FDE is not available, it will\nprovide error messages and actions via the new actions API - we keep the\noption enabled in that case and let the user proceed to the TPM action\npage.\nWhen choosing to install alongside an existing partition, TPM/FDE is not\noffered, but we currently still display a greyed out button with a\nmisleading subtitle. This PR removes hides the button entirely for this\nscenario.\n\nP.S. I've also removed the obsolete `TpmOption` which is no longer used.",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eced89606000544e9a09f4ca7160777dacc286f9"
-               },
-               {
-                  "sha": "8acd1588e4940ad24ee504999bda6ee3f919a766",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774430013,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 947d4d0 (#1370)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity.git)\n([changelog](https://redirect.github.com/canonical/subiquity.git/compare/f49f7692b104f28af6d82264072285c1e9cb6ade..947d4d0cff256a60fdeebbd87e061297bf4e7601))\n| digest | `f49f769` → `947d4d0` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My42Ni40IiwidXBkYXRlZEluVmVyIjoiNDMuNjYuNCIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8acd1588e4940ad24ee504999bda6ee3f919a766"
-               },
-               {
-                  "sha": "218db5ecc4a111ae51e53d1efe7b5113ff864b1c",
-                  "author": "renovate[bot]",
-                  "timestamp": 1774428195,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 947d4d0",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/218db5ecc4a111ae51e53d1efe7b5113ff864b1c"
                }
             ],
             "ciActions": [
