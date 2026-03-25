@@ -10,25 +10,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "116616563cc9a9c687d0b24a4f5dbe332b59a756",
+                  "sha": "6f0c33d0df9e0ab5c7578f111d5485e297951a1d",
                   "author": "adombeck",
-                  "timestamp": 1774438299,
-                  "message": "brokers: Remove transition to allowed users (#1363)\n\nUDENG-9495",
-                  "url": "https://github.com/canonical/authd/commit/116616563cc9a9c687d0b24a4f5dbe332b59a756"
+                  "timestamp": 1774454081,
+                  "message": "Fix e2e-test log videos not playing on Firefox (#1360)\n\nUDENG-9500",
+                  "url": "https://github.com/canonical/authd/commit/6f0c33d0df9e0ab5c7578f111d5485e297951a1d"
                },
                {
-                  "sha": "ec5148c7373819b45260e4c1133dc178edcefd82",
+                  "sha": "6f2570c69923efd4d0ce599141c60a9520905c68",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1774366919,
-                  "message": "brokers: Remove transition to allowed users\n\nThe v0.2.0 brokers release was published over a year ago, on 2025-01-28.\nThat was more than enough time for users to update to it (or a later\nrelease), so we can drop the transitioning functionality now.",
-                  "url": "https://github.com/canonical/authd/commit/ec5148c7373819b45260e4c1133dc178edcefd82"
+                  "timestamp": 1774433038,
+                  "message": "ci: Fix setup-oras\n\nFor some reason, the action suddenly started to fail with:\n\n    Error: /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n    Error: GitHub.DistributedTask.ObjectTemplating.TemplateValidationException: The template is not valid. /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n       at GitHub.DistributedTask.ObjectTemplating.TemplateValidationErrors.Check()\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.ConvertRuns(IExecutionContext executionContext, TemplateContext templateContext, TemplateToken inputsToken, String fileRelativePath, MappingToken outputs)\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.Load(IExecutionContext executionContext, String manifestFile)\n    Error: Failed to load /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml\n\nNo idea why it was working before.",
+                  "url": "https://github.com/canonical/authd/commit/6f2570c69923efd4d0ce599141c60a9520905c68"
                },
                {
-                  "sha": "e6e590622bd0a3f0a107dee5040b1c489368e84c",
-                  "author": "adombeck",
-                  "timestamp": 1774348125,
-                  "message": "generate-vendored-copyright: Fix licensecheck error message (#1361)",
-                  "url": "https://github.com/canonical/authd/commit/e6e590622bd0a3f0a107dee5040b1c489368e84c"
+                  "sha": "523bdf6a13d342906f66ba189447cbcce40172b7",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1774430055,
+                  "message": "e2e-tests/r2-worker: List output directories\n\nNow that we also upload the videos, it can be useful for debugging to\nexplore the directories containing the video files. So this removes the\nfunctionality to directly open the log.html file when its parent\ndirectory is opened.",
+                  "url": "https://github.com/canonical/authd/commit/523bdf6a13d342906f66ba189447cbcce40172b7"
                }
             ],
             "ciActions": [
@@ -3952,25 +3952,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0431d935c5e66ae3f12401ac8d95b9b2e3113061",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1773775777,
-                  "message": "Notification cleanups (#152)\n\nSee commits for details, but some cleanups to improve the notification\nhandling.\n\nSadly, [LP:\n#2125243](https://bugs.launchpad.net/ubuntu/+source/snapd/+bug/2125243)\ndid not allowed me to do my initial main proposal for this branch, but I\nstill have handled few other cases :)\n\nUDENG-8142",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/0431d935c5e66ae3f12401ac8d95b9b2e3113061"
+                  "sha": "47d0a8d183e79955cc3a22c2130def8aa4326682",
+                  "author": "Sergio Costas",
+                  "timestamp": 1774458702,
+                  "message": "Add tag for libnotify in tests (#165)",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/47d0a8d183e79955cc3a22c2130def8aa4326682"
                },
                {
-                  "sha": "6d7994e7c4a1bf170c5023c0a450f7dd6f875f21",
-                  "author": "Alessandro Astone",
-                  "timestamp": 1772733491,
-                  "message": "data: Translate the desktop file",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/6d7994e7c4a1bf170c5023c0a450f7dd6f875f21"
+                  "sha": "9960ac20e12cf3f1bc3be1b30b722a4489e25c54",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1774458388,
+                  "message": "Use verbose tests",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/9960ac20e12cf3f1bc3be1b30b722a4489e25c54"
                },
                {
-                  "sha": "7460396d74de512bba1fec2b783c76ae7f3e8b6a",
-                  "author": "Alessandro Astone",
-                  "timestamp": 1772732914,
-                  "message": "sdi-notify: Get fallback app name and icon from our own desktop file\n\nThis code-path should be considered a fallback in case that the notification\nserver is unable to identify our desktop file. In that case, to replicate\nexactly what happens in notification servers that can, we should use our own\napp name and icon. We can get this information from our desktop file itself.\n\nThis also handles the case where the App Center is not installed.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7460396d74de512bba1fec2b783c76ae7f3e8b6a"
+                  "sha": "7c1aab119673bec2da783bab1036eef8ccfcc3bc",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1774456230,
+                  "message": "Add tag for libnotify in tests",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7c1aab119673bec2da783bab1036eef8ccfcc3bc"
                }
             ],
             "ciActions": [],
@@ -4300,25 +4300,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f33494e1163d0987e5a2fa5fb0e0e79b97a53089",
+                  "author": "Dennis Loose",
+                  "timestamp": 1774454612,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to e422d42 (#1374)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity.git)\n([changelog](https://redirect.github.com/canonical/subiquity.git/compare/947d4d0cff256a60fdeebbd87e061297bf4e7601..e422d4239fdc2491b3808e63bf77f165276c53a1))\n| digest | `947d4d0` → `e422d42` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My42Ni40IiwidXBkYXRlZEluVmVyIjoiNDMuNjYuNCIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f33494e1163d0987e5a2fa5fb0e0e79b97a53089"
+               },
+               {
+                  "sha": "7a6c35885df3a5c7eec6d8292c5fce5fa9d32195",
+                  "author": "renovate[bot]",
+                  "timestamp": 1774449386,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to e422d42",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7a6c35885df3a5c7eec6d8292c5fce5fa9d32195"
+               },
+               {
                   "sha": "f40c2020d16a81c7e3f23d915aaf874d98402a6d",
                   "author": "Dennis Loose",
                   "timestamp": 1774449031,
                   "message": "fix: ensure only allowed GuidedCapabilities are set (#1368)\n\nCurrently it's possible to select a `GuidedCapability`, return to the\nprevious page, and then select a different installation type, that\ndoesn't support this capability (e.g. select TPM/FDE, go back, select\n'Install alongside .. ').\nThis PR adds a check that reverts back to the first allowed capability\nin that case.",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f40c2020d16a81c7e3f23d915aaf874d98402a6d"
-               },
-               {
-                  "sha": "4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774370170,
-                  "message": "fix: ensure only allowed GuidedCapabilities are set",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f"
-               },
-               {
-                  "sha": "eced89606000544e9a09f4ca7160777dacc286f9",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774433176,
-                  "message": "fix: hide TPM/FDE option when not offered by subiquity (#1367)\n\nSubiquity currently only offers the `CORE_BOOT_ENCRYPTED` capability\n(aka TPM/FDE) when using the entire disk\n(`GuidedStorageTargetReformat`). If TPM/FDE is not available, it will\nprovide error messages and actions via the new actions API - we keep the\noption enabled in that case and let the user proceed to the TPM action\npage.\nWhen choosing to install alongside an existing partition, TPM/FDE is not\noffered, but we currently still display a greyed out button with a\nmisleading subtitle. This PR removes hides the button entirely for this\nscenario.\n\nP.S. I've also removed the obsolete `TpmOption` which is no longer used.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eced89606000544e9a09f4ca7160777dacc286f9"
                }
             ],
             "ciActions": [
@@ -4367,6 +4367,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 301302430,
+                  "version": "rev58",
+                  "timestamp": 1774454761,
+                  "title": "Revision 58",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 57</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:08 UTC on 25 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.7.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/77\">#77</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev57...rev58\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev57&hellip;rev58</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev58",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev58...main"
+               },
+               {
                   "id": 300294810,
                   "version": "rev57",
                   "timestamp": 1774282610,
@@ -4383,15 +4392,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 55</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 12:56 UTC on 16 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/75\">#75</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55...rev56\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55&hellip;rev56</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev56",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev56...main"
-               },
-               {
-                  "id": 295198939,
-                  "version": "rev55",
-                  "timestamp": 1773152795,
-                  "title": "Revision 55",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 54</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:28 UTC on 10 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(regex): update dependency ubuntu/ubuntu-insights to server/v0.9.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/74\">#74</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev54...rev55\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev54&hellip;rev55</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev55",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55...main"
                }
             ],
             "commits": null,
@@ -4403,8 +4403,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 57,
-                     "timestamp": 1774282716
+                     "revision": 58,
+                     "timestamp": 1774454894
                   }
                ],
                "channels": [
@@ -5418,25 +5418,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "116616563cc9a9c687d0b24a4f5dbe332b59a756",
+                  "sha": "6f0c33d0df9e0ab5c7578f111d5485e297951a1d",
                   "author": "adombeck",
-                  "timestamp": 1774438299,
-                  "message": "brokers: Remove transition to allowed users (#1363)\n\nUDENG-9495",
-                  "url": "https://github.com/canonical/authd/commit/116616563cc9a9c687d0b24a4f5dbe332b59a756"
+                  "timestamp": 1774454081,
+                  "message": "Fix e2e-test log videos not playing on Firefox (#1360)\n\nUDENG-9500",
+                  "url": "https://github.com/canonical/authd/commit/6f0c33d0df9e0ab5c7578f111d5485e297951a1d"
                },
                {
-                  "sha": "ec5148c7373819b45260e4c1133dc178edcefd82",
+                  "sha": "6f2570c69923efd4d0ce599141c60a9520905c68",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1774366919,
-                  "message": "brokers: Remove transition to allowed users\n\nThe v0.2.0 brokers release was published over a year ago, on 2025-01-28.\nThat was more than enough time for users to update to it (or a later\nrelease), so we can drop the transitioning functionality now.",
-                  "url": "https://github.com/canonical/authd/commit/ec5148c7373819b45260e4c1133dc178edcefd82"
+                  "timestamp": 1774433038,
+                  "message": "ci: Fix setup-oras\n\nFor some reason, the action suddenly started to fail with:\n\n    Error: /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n    Error: GitHub.DistributedTask.ObjectTemplating.TemplateValidationException: The template is not valid. /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n       at GitHub.DistributedTask.ObjectTemplating.TemplateValidationErrors.Check()\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.ConvertRuns(IExecutionContext executionContext, TemplateContext templateContext, TemplateToken inputsToken, String fileRelativePath, MappingToken outputs)\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.Load(IExecutionContext executionContext, String manifestFile)\n    Error: Failed to load /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml\n\nNo idea why it was working before.",
+                  "url": "https://github.com/canonical/authd/commit/6f2570c69923efd4d0ce599141c60a9520905c68"
                },
                {
-                  "sha": "e6e590622bd0a3f0a107dee5040b1c489368e84c",
-                  "author": "adombeck",
-                  "timestamp": 1774348125,
-                  "message": "generate-vendored-copyright: Fix licensecheck error message (#1361)",
-                  "url": "https://github.com/canonical/authd/commit/e6e590622bd0a3f0a107dee5040b1c489368e84c"
+                  "sha": "523bdf6a13d342906f66ba189447cbcce40172b7",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1774430055,
+                  "message": "e2e-tests/r2-worker: List output directories\n\nNow that we also upload the videos, it can be useful for debugging to\nexplore the directories containing the video files. So this removes the\nfunctionality to directly open the log.html file when its parent\ndirectory is opened.",
+                  "url": "https://github.com/canonical/authd/commit/523bdf6a13d342906f66ba189447cbcce40172b7"
                }
             ],
             "ciActions": [
@@ -6410,25 +6410,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0431d935c5e66ae3f12401ac8d95b9b2e3113061",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1773775777,
-                  "message": "Notification cleanups (#152)\n\nSee commits for details, but some cleanups to improve the notification\nhandling.\n\nSadly, [LP:\n#2125243](https://bugs.launchpad.net/ubuntu/+source/snapd/+bug/2125243)\ndid not allowed me to do my initial main proposal for this branch, but I\nstill have handled few other cases :)\n\nUDENG-8142",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/0431d935c5e66ae3f12401ac8d95b9b2e3113061"
+                  "sha": "5b516cc2ac308599d915a381b35dedc15495dc28",
+                  "author": "Sergio Costas",
+                  "timestamp": 1774458939,
+                  "message": "Fix TICS tests (#166)\n\nIt lacks the libnotify, so the build fails.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/5b516cc2ac308599d915a381b35dedc15495dc28"
                },
                {
-                  "sha": "6d7994e7c4a1bf170c5023c0a450f7dd6f875f21",
-                  "author": "Alessandro Astone",
-                  "timestamp": 1772733491,
-                  "message": "data: Translate the desktop file",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/6d7994e7c4a1bf170c5023c0a450f7dd6f875f21"
+                  "sha": "21a2419c0549fb35b5f1c5a32ec1e9b4cc6021b6",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1774458878,
+                  "message": "Fix TICS tests\n\nIt lacks the libnotify, so the build fails.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/21a2419c0549fb35b5f1c5a32ec1e9b4cc6021b6"
                },
                {
-                  "sha": "7460396d74de512bba1fec2b783c76ae7f3e8b6a",
-                  "author": "Alessandro Astone",
-                  "timestamp": 1772732914,
-                  "message": "sdi-notify: Get fallback app name and icon from our own desktop file\n\nThis code-path should be considered a fallback in case that the notification\nserver is unable to identify our desktop file. In that case, to replicate\nexactly what happens in notification servers that can, we should use our own\napp name and icon. We can get this information from our desktop file itself.\n\nThis also handles the case where the App Center is not installed.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7460396d74de512bba1fec2b783c76ae7f3e8b6a"
+                  "sha": "47d0a8d183e79955cc3a22c2130def8aa4326682",
+                  "author": "Sergio Costas",
+                  "timestamp": 1774458702,
+                  "message": "Add tag for libnotify in tests (#165)",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/47d0a8d183e79955cc3a22c2130def8aa4326682"
                }
             ],
             "ciActions": [],
@@ -6758,25 +6758,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f33494e1163d0987e5a2fa5fb0e0e79b97a53089",
+                  "author": "Dennis Loose",
+                  "timestamp": 1774454612,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to e422d42 (#1374)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity.git)\n([changelog](https://redirect.github.com/canonical/subiquity.git/compare/947d4d0cff256a60fdeebbd87e061297bf4e7601..e422d4239fdc2491b3808e63bf77f165276c53a1))\n| digest | `947d4d0` → `e422d42` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My42Ni40IiwidXBkYXRlZEluVmVyIjoiNDMuNjYuNCIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f33494e1163d0987e5a2fa5fb0e0e79b97a53089"
+               },
+               {
+                  "sha": "7a6c35885df3a5c7eec6d8292c5fce5fa9d32195",
+                  "author": "renovate[bot]",
+                  "timestamp": 1774449386,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to e422d42",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7a6c35885df3a5c7eec6d8292c5fce5fa9d32195"
+               },
+               {
                   "sha": "f40c2020d16a81c7e3f23d915aaf874d98402a6d",
                   "author": "Dennis Loose",
                   "timestamp": 1774449031,
                   "message": "fix: ensure only allowed GuidedCapabilities are set (#1368)\n\nCurrently it's possible to select a `GuidedCapability`, return to the\nprevious page, and then select a different installation type, that\ndoesn't support this capability (e.g. select TPM/FDE, go back, select\n'Install alongside .. ').\nThis PR adds a check that reverts back to the first allowed capability\nin that case.",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f40c2020d16a81c7e3f23d915aaf874d98402a6d"
-               },
-               {
-                  "sha": "4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774370170,
-                  "message": "fix: ensure only allowed GuidedCapabilities are set",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f"
-               },
-               {
-                  "sha": "eced89606000544e9a09f4ca7160777dacc286f9",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774433176,
-                  "message": "fix: hide TPM/FDE option when not offered by subiquity (#1367)\n\nSubiquity currently only offers the `CORE_BOOT_ENCRYPTED` capability\n(aka TPM/FDE) when using the entire disk\n(`GuidedStorageTargetReformat`). If TPM/FDE is not available, it will\nprovide error messages and actions via the new actions API - we keep the\noption enabled in that case and let the user proceed to the TPM action\npage.\nWhen choosing to install alongside an existing partition, TPM/FDE is not\noffered, but we currently still display a greyed out button with a\nmisleading subtitle. This PR removes hides the button entirely for this\nscenario.\n\nP.S. I've also removed the obsolete `TpmOption` which is no longer used.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eced89606000544e9a09f4ca7160777dacc286f9"
                }
             ],
             "ciActions": [
@@ -6825,6 +6825,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 301302430,
+                  "version": "rev58",
+                  "timestamp": 1774454761,
+                  "title": "Revision 58",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 57</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:08 UTC on 25 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.7.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/77\">#77</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev57...rev58\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev57&hellip;rev58</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev58",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev58...main"
+               },
+               {
                   "id": 300294810,
                   "version": "rev57",
                   "timestamp": 1774282610,
@@ -6841,15 +6850,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 55</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 12:56 UTC on 16 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/75\">#75</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55...rev56\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55&hellip;rev56</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev56",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev56...main"
-               },
-               {
-                  "id": 295198939,
-                  "version": "rev55",
-                  "timestamp": 1773152795,
-                  "title": "Revision 55",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 54</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:28 UTC on 10 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(regex): update dependency ubuntu/ubuntu-insights to server/v0.9.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/74\">#74</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev54...rev55\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev54&hellip;rev55</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev55",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55...main"
                }
             ],
             "commits": null,
@@ -6861,8 +6861,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 57,
-                     "timestamp": 1774282716
+                     "revision": 58,
+                     "timestamp": 1774454894
                   }
                ],
                "channels": [
@@ -7716,25 +7716,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "116616563cc9a9c687d0b24a4f5dbe332b59a756",
+                  "sha": "6f0c33d0df9e0ab5c7578f111d5485e297951a1d",
                   "author": "adombeck",
-                  "timestamp": 1774438299,
-                  "message": "brokers: Remove transition to allowed users (#1363)\n\nUDENG-9495",
-                  "url": "https://github.com/canonical/authd/commit/116616563cc9a9c687d0b24a4f5dbe332b59a756"
+                  "timestamp": 1774454081,
+                  "message": "Fix e2e-test log videos not playing on Firefox (#1360)\n\nUDENG-9500",
+                  "url": "https://github.com/canonical/authd/commit/6f0c33d0df9e0ab5c7578f111d5485e297951a1d"
                },
                {
-                  "sha": "ec5148c7373819b45260e4c1133dc178edcefd82",
+                  "sha": "6f2570c69923efd4d0ce599141c60a9520905c68",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1774366919,
-                  "message": "brokers: Remove transition to allowed users\n\nThe v0.2.0 brokers release was published over a year ago, on 2025-01-28.\nThat was more than enough time for users to update to it (or a later\nrelease), so we can drop the transitioning functionality now.",
-                  "url": "https://github.com/canonical/authd/commit/ec5148c7373819b45260e4c1133dc178edcefd82"
+                  "timestamp": 1774433038,
+                  "message": "ci: Fix setup-oras\n\nFor some reason, the action suddenly started to fail with:\n\n    Error: /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n    Error: GitHub.DistributedTask.ObjectTemplating.TemplateValidationException: The template is not valid. /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n       at GitHub.DistributedTask.ObjectTemplating.TemplateValidationErrors.Check()\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.ConvertRuns(IExecutionContext executionContext, TemplateContext templateContext, TemplateToken inputsToken, String fileRelativePath, MappingToken outputs)\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.Load(IExecutionContext executionContext, String manifestFile)\n    Error: Failed to load /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml\n\nNo idea why it was working before.",
+                  "url": "https://github.com/canonical/authd/commit/6f2570c69923efd4d0ce599141c60a9520905c68"
                },
                {
-                  "sha": "e6e590622bd0a3f0a107dee5040b1c489368e84c",
-                  "author": "adombeck",
-                  "timestamp": 1774348125,
-                  "message": "generate-vendored-copyright: Fix licensecheck error message (#1361)",
-                  "url": "https://github.com/canonical/authd/commit/e6e590622bd0a3f0a107dee5040b1c489368e84c"
+                  "sha": "523bdf6a13d342906f66ba189447cbcce40172b7",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1774430055,
+                  "message": "e2e-tests/r2-worker: List output directories\n\nNow that we also upload the videos, it can be useful for debugging to\nexplore the directories containing the video files. So this removes the\nfunctionality to directly open the log.html file when its parent\ndirectory is opened.",
+                  "url": "https://github.com/canonical/authd/commit/523bdf6a13d342906f66ba189447cbcce40172b7"
                }
             ],
             "ciActions": [
@@ -8675,25 +8675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0431d935c5e66ae3f12401ac8d95b9b2e3113061",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1773775777,
-                  "message": "Notification cleanups (#152)\n\nSee commits for details, but some cleanups to improve the notification\nhandling.\n\nSadly, [LP:\n#2125243](https://bugs.launchpad.net/ubuntu/+source/snapd/+bug/2125243)\ndid not allowed me to do my initial main proposal for this branch, but I\nstill have handled few other cases :)\n\nUDENG-8142",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/0431d935c5e66ae3f12401ac8d95b9b2e3113061"
+                  "sha": "5b516cc2ac308599d915a381b35dedc15495dc28",
+                  "author": "Sergio Costas",
+                  "timestamp": 1774458939,
+                  "message": "Fix TICS tests (#166)\n\nIt lacks the libnotify, so the build fails.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/5b516cc2ac308599d915a381b35dedc15495dc28"
                },
                {
-                  "sha": "6d7994e7c4a1bf170c5023c0a450f7dd6f875f21",
-                  "author": "Alessandro Astone",
-                  "timestamp": 1772733491,
-                  "message": "data: Translate the desktop file",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/6d7994e7c4a1bf170c5023c0a450f7dd6f875f21"
+                  "sha": "21a2419c0549fb35b5f1c5a32ec1e9b4cc6021b6",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1774458878,
+                  "message": "Fix TICS tests\n\nIt lacks the libnotify, so the build fails.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/21a2419c0549fb35b5f1c5a32ec1e9b4cc6021b6"
                },
                {
-                  "sha": "7460396d74de512bba1fec2b783c76ae7f3e8b6a",
-                  "author": "Alessandro Astone",
-                  "timestamp": 1772732914,
-                  "message": "sdi-notify: Get fallback app name and icon from our own desktop file\n\nThis code-path should be considered a fallback in case that the notification\nserver is unable to identify our desktop file. In that case, to replicate\nexactly what happens in notification servers that can, we should use our own\napp name and icon. We can get this information from our desktop file itself.\n\nThis also handles the case where the App Center is not installed.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7460396d74de512bba1fec2b783c76ae7f3e8b6a"
+                  "sha": "47d0a8d183e79955cc3a22c2130def8aa4326682",
+                  "author": "Sergio Costas",
+                  "timestamp": 1774458702,
+                  "message": "Add tag for libnotify in tests (#165)",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/47d0a8d183e79955cc3a22c2130def8aa4326682"
                }
             ],
             "ciActions": [],
@@ -9023,25 +9023,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f33494e1163d0987e5a2fa5fb0e0e79b97a53089",
+                  "author": "Dennis Loose",
+                  "timestamp": 1774454612,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to e422d42 (#1374)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity.git)\n([changelog](https://redirect.github.com/canonical/subiquity.git/compare/947d4d0cff256a60fdeebbd87e061297bf4e7601..e422d4239fdc2491b3808e63bf77f165276c53a1))\n| digest | `947d4d0` → `e422d42` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My42Ni40IiwidXBkYXRlZEluVmVyIjoiNDMuNjYuNCIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f33494e1163d0987e5a2fa5fb0e0e79b97a53089"
+               },
+               {
+                  "sha": "7a6c35885df3a5c7eec6d8292c5fce5fa9d32195",
+                  "author": "renovate[bot]",
+                  "timestamp": 1774449386,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to e422d42",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7a6c35885df3a5c7eec6d8292c5fce5fa9d32195"
+               },
+               {
                   "sha": "f40c2020d16a81c7e3f23d915aaf874d98402a6d",
                   "author": "Dennis Loose",
                   "timestamp": 1774449031,
                   "message": "fix: ensure only allowed GuidedCapabilities are set (#1368)\n\nCurrently it's possible to select a `GuidedCapability`, return to the\nprevious page, and then select a different installation type, that\ndoesn't support this capability (e.g. select TPM/FDE, go back, select\n'Install alongside .. ').\nThis PR adds a check that reverts back to the first allowed capability\nin that case.",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f40c2020d16a81c7e3f23d915aaf874d98402a6d"
-               },
-               {
-                  "sha": "4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774370170,
-                  "message": "fix: ensure only allowed GuidedCapabilities are set",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4f7e97ee4e191e5ca4dcb9e747ed3ef9929da35f"
-               },
-               {
-                  "sha": "eced89606000544e9a09f4ca7160777dacc286f9",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774433176,
-                  "message": "fix: hide TPM/FDE option when not offered by subiquity (#1367)\n\nSubiquity currently only offers the `CORE_BOOT_ENCRYPTED` capability\n(aka TPM/FDE) when using the entire disk\n(`GuidedStorageTargetReformat`). If TPM/FDE is not available, it will\nprovide error messages and actions via the new actions API - we keep the\noption enabled in that case and let the user proceed to the TPM action\npage.\nWhen choosing to install alongside an existing partition, TPM/FDE is not\noffered, but we currently still display a greyed out button with a\nmisleading subtitle. This PR removes hides the button entirely for this\nscenario.\n\nP.S. I've also removed the obsolete `TpmOption` which is no longer used.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eced89606000544e9a09f4ca7160777dacc286f9"
                }
             ],
             "ciActions": [
@@ -9125,6 +9125,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 301302430,
+                  "version": "rev58",
+                  "timestamp": 1774454761,
+                  "title": "Revision 58",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 57</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:08 UTC on 25 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.7.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/77\">#77</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev57...rev58\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev57&hellip;rev58</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev58",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev58...main"
+               },
+               {
                   "id": 300294810,
                   "version": "rev57",
                   "timestamp": 1774282610,
@@ -9141,15 +9150,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 55</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 12:56 UTC on 16 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/75\">#75</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55...rev56\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55&hellip;rev56</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev56",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev56...main"
-               },
-               {
-                  "id": 295198939,
-                  "version": "rev55",
-                  "timestamp": 1773152795,
-                  "title": "Revision 55",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 54</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:28 UTC on 10 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(regex): update dependency ubuntu/ubuntu-insights to server/v0.9.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/74\">#74</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev54...rev55\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev54&hellip;rev55</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev55",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev55...main"
                }
             ],
             "commits": null,
@@ -9161,8 +9161,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 57,
-                     "timestamp": 1774282716
+                     "revision": 58,
+                     "timestamp": 1774454894
                   }
                ],
                "channels": [
