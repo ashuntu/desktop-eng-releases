@@ -10,6 +10,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "de7443c801b91738cb3b82466a243f6ef8f1c782",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1774619972,
+                  "message": "docs: add `home_base_dir` configuration option (#1353)\n\nDocument the `home_base_dir` option for brokers' configuration\n\nCloses #1354\n\nUDENG-9479",
+                  "url": "https://github.com/canonical/authd/commit/de7443c801b91738cb3b82466a243f6ef8f1c782"
+               },
+               {
                   "sha": "6f0c33d0df9e0ab5c7578f111d5485e297951a1d",
                   "author": "adombeck",
                   "timestamp": 1774454081,
@@ -17,18 +24,11 @@
                   "url": "https://github.com/canonical/authd/commit/6f0c33d0df9e0ab5c7578f111d5485e297951a1d"
                },
                {
-                  "sha": "6f2570c69923efd4d0ce599141c60a9520905c68",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1774433038,
-                  "message": "ci: Fix setup-oras\n\nFor some reason, the action suddenly started to fail with:\n\n    Error: /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n    Error: GitHub.DistributedTask.ObjectTemplating.TemplateValidationException: The template is not valid. /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n       at GitHub.DistributedTask.ObjectTemplating.TemplateValidationErrors.Check()\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.ConvertRuns(IExecutionContext executionContext, TemplateContext templateContext, TemplateToken inputsToken, String fileRelativePath, MappingToken outputs)\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.Load(IExecutionContext executionContext, String manifestFile)\n    Error: Failed to load /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml\n\nNo idea why it was working before.",
-                  "url": "https://github.com/canonical/authd/commit/6f2570c69923efd4d0ce599141c60a9520905c68"
-               },
-               {
-                  "sha": "523bdf6a13d342906f66ba189447cbcce40172b7",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1774430055,
-                  "message": "e2e-tests/r2-worker: List output directories\n\nNow that we also upload the videos, it can be useful for debugging to\nexplore the directories containing the video files. So this removes the\nfunctionality to directly open the log.html file when its parent\ndirectory is opened.",
-                  "url": "https://github.com/canonical/authd/commit/523bdf6a13d342906f66ba189447cbcce40172b7"
+                  "sha": "69e8812cb5d91e965a6a61a4ab78d9db5c6eb584",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1774260970,
+                  "message": "docs: add `home_base_dir` configuration option",
+                  "url": "https://github.com/canonical/authd/commit/69e8812cb5d91e965a6a61a4ab78d9db5c6eb584"
                }
             ],
             "ciActions": [
@@ -3818,25 +3818,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3fac00a35f32b2d723c7e419e9c6102cde0d14bf",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1774620960,
+                  "message": "fix(ci): update dependencies to include v4l2loopback-dkms (#300)\n\nThis fixes\nhttps://github.com/canonical/prompting-client/actions/runs/23644359245/job/68872678486?pr=297",
+                  "url": "https://github.com/canonical/prompting-client/commit/3fac00a35f32b2d723c7e419e9c6102cde0d14bf"
+               },
+               {
+                  "sha": "c7de1e16e3da91e13d2916eeaaad4a643a4a21d6",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1774611883,
+                  "message": "fix: update dependencies to include v4l2loopback-dkms",
+                  "url": "https://github.com/canonical/prompting-client/commit/c7de1e16e3da91e13d2916eeaaad4a643a4a21d6"
+               },
+               {
                   "sha": "a3cc7b419f6e852d80ea574e77429dd6d1f71ebc",
                   "author": "Gabriele Belluardo",
                   "timestamp": 1774003038,
                   "message": "fix: `PromptFilter` deserialization (#298)\n\nFix the `scripted-client` parsing correctly json prompts.\n\nDue to the `untagged` property serde deserializes json with the\ndefinition order:\n\n1. `Camera`\n2. `Home`\n3. `Microphone` \n\nthis is a breaking change for `scripted-client` related tests, and it's\ncausing snapd test integrations\n[to](https://github.com/canonical/snapd/actions/runs/23328161131/job/67864644465#step:24:487)\n[fail](https://github.com/canonical/snapd/actions/runs/23328161131/job/67864644465#step:24:397)\nbecause of the promotion to `latest/stable`",
                   "url": "https://github.com/canonical/prompting-client/commit/a3cc7b419f6e852d80ea574e77429dd6d1f71ebc"
-               },
-               {
-                  "sha": "2d18c3802757d9551643ffb3aca3a8bf00ce761e",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1773999228,
-                  "message": "fix: `PromptFilter` deserialization issue",
-                  "url": "https://github.com/canonical/prompting-client/commit/2d18c3802757d9551643ffb3aca3a8bf00ce761e"
-               },
-               {
-                  "sha": "2e14a7245d8d7cd43dd99b337cb325dd29507afe",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1772806176,
-                  "message": "feat: updated promting UI (#295)\n\nThis PR refactors the prompting client UI to align with the updates to\nour\n[Figma](https://www.figma.com/design/10xVr0m8efJh043Ff6SY4G/25.04-Permission-prompting--AppArmor----Ubuntu-Desktop?node-id=3571-1660&p=f&t=0SPX34yT4cNrs0ea-0)\ndesigns for the LTS:\n\n## Videos:\nSee last comments at bottom of thread for latest \n\nUDENG-9103",
-                  "url": "https://github.com/canonical/prompting-client/commit/2e14a7245d8d7cd43dd99b337cb325dd29507afe"
                }
             ],
             "ciActions": [],
@@ -5418,6 +5418,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "de7443c801b91738cb3b82466a243f6ef8f1c782",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1774619972,
+                  "message": "docs: add `home_base_dir` configuration option (#1353)\n\nDocument the `home_base_dir` option for brokers' configuration\n\nCloses #1354\n\nUDENG-9479",
+                  "url": "https://github.com/canonical/authd/commit/de7443c801b91738cb3b82466a243f6ef8f1c782"
+               },
+               {
                   "sha": "6f0c33d0df9e0ab5c7578f111d5485e297951a1d",
                   "author": "adombeck",
                   "timestamp": 1774454081,
@@ -5425,18 +5432,11 @@
                   "url": "https://github.com/canonical/authd/commit/6f0c33d0df9e0ab5c7578f111d5485e297951a1d"
                },
                {
-                  "sha": "6f2570c69923efd4d0ce599141c60a9520905c68",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1774433038,
-                  "message": "ci: Fix setup-oras\n\nFor some reason, the action suddenly started to fail with:\n\n    Error: /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n    Error: GitHub.DistributedTask.ObjectTemplating.TemplateValidationException: The template is not valid. /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n       at GitHub.DistributedTask.ObjectTemplating.TemplateValidationErrors.Check()\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.ConvertRuns(IExecutionContext executionContext, TemplateContext templateContext, TemplateToken inputsToken, String fileRelativePath, MappingToken outputs)\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.Load(IExecutionContext executionContext, String manifestFile)\n    Error: Failed to load /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml\n\nNo idea why it was working before.",
-                  "url": "https://github.com/canonical/authd/commit/6f2570c69923efd4d0ce599141c60a9520905c68"
-               },
-               {
-                  "sha": "523bdf6a13d342906f66ba189447cbcce40172b7",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1774430055,
-                  "message": "e2e-tests/r2-worker: List output directories\n\nNow that we also upload the videos, it can be useful for debugging to\nexplore the directories containing the video files. So this removes the\nfunctionality to directly open the log.html file when its parent\ndirectory is opened.",
-                  "url": "https://github.com/canonical/authd/commit/523bdf6a13d342906f66ba189447cbcce40172b7"
+                  "sha": "69e8812cb5d91e965a6a61a4ab78d9db5c6eb584",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1774260970,
+                  "message": "docs: add `home_base_dir` configuration option",
+                  "url": "https://github.com/canonical/authd/commit/69e8812cb5d91e965a6a61a4ab78d9db5c6eb584"
                }
             ],
             "ciActions": [
@@ -6276,25 +6276,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3fac00a35f32b2d723c7e419e9c6102cde0d14bf",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1774620960,
+                  "message": "fix(ci): update dependencies to include v4l2loopback-dkms (#300)\n\nThis fixes\nhttps://github.com/canonical/prompting-client/actions/runs/23644359245/job/68872678486?pr=297",
+                  "url": "https://github.com/canonical/prompting-client/commit/3fac00a35f32b2d723c7e419e9c6102cde0d14bf"
+               },
+               {
+                  "sha": "c7de1e16e3da91e13d2916eeaaad4a643a4a21d6",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1774611883,
+                  "message": "fix: update dependencies to include v4l2loopback-dkms",
+                  "url": "https://github.com/canonical/prompting-client/commit/c7de1e16e3da91e13d2916eeaaad4a643a4a21d6"
+               },
+               {
                   "sha": "a3cc7b419f6e852d80ea574e77429dd6d1f71ebc",
                   "author": "Gabriele Belluardo",
                   "timestamp": 1774003038,
                   "message": "fix: `PromptFilter` deserialization (#298)\n\nFix the `scripted-client` parsing correctly json prompts.\n\nDue to the `untagged` property serde deserializes json with the\ndefinition order:\n\n1. `Camera`\n2. `Home`\n3. `Microphone` \n\nthis is a breaking change for `scripted-client` related tests, and it's\ncausing snapd test integrations\n[to](https://github.com/canonical/snapd/actions/runs/23328161131/job/67864644465#step:24:487)\n[fail](https://github.com/canonical/snapd/actions/runs/23328161131/job/67864644465#step:24:397)\nbecause of the promotion to `latest/stable`",
                   "url": "https://github.com/canonical/prompting-client/commit/a3cc7b419f6e852d80ea574e77429dd6d1f71ebc"
-               },
-               {
-                  "sha": "2d18c3802757d9551643ffb3aca3a8bf00ce761e",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1773999228,
-                  "message": "fix: `PromptFilter` deserialization issue",
-                  "url": "https://github.com/canonical/prompting-client/commit/2d18c3802757d9551643ffb3aca3a8bf00ce761e"
-               },
-               {
-                  "sha": "2e14a7245d8d7cd43dd99b337cb325dd29507afe",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1772806176,
-                  "message": "feat: updated promting UI (#295)\n\nThis PR refactors the prompting client UI to align with the updates to\nour\n[Figma](https://www.figma.com/design/10xVr0m8efJh043Ff6SY4G/25.04-Permission-prompting--AppArmor----Ubuntu-Desktop?node-id=3571-1660&p=f&t=0SPX34yT4cNrs0ea-0)\ndesigns for the LTS:\n\n## Videos:\nSee last comments at bottom of thread for latest \n\nUDENG-9103",
-                  "url": "https://github.com/canonical/prompting-client/commit/2e14a7245d8d7cd43dd99b337cb325dd29507afe"
                }
             ],
             "ciActions": [],
@@ -7716,6 +7716,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "de7443c801b91738cb3b82466a243f6ef8f1c782",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1774619972,
+                  "message": "docs: add `home_base_dir` configuration option (#1353)\n\nDocument the `home_base_dir` option for brokers' configuration\n\nCloses #1354\n\nUDENG-9479",
+                  "url": "https://github.com/canonical/authd/commit/de7443c801b91738cb3b82466a243f6ef8f1c782"
+               },
+               {
                   "sha": "6f0c33d0df9e0ab5c7578f111d5485e297951a1d",
                   "author": "adombeck",
                   "timestamp": 1774454081,
@@ -7723,18 +7730,11 @@
                   "url": "https://github.com/canonical/authd/commit/6f0c33d0df9e0ab5c7578f111d5485e297951a1d"
                },
                {
-                  "sha": "6f2570c69923efd4d0ce599141c60a9520905c68",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1774433038,
-                  "message": "ci: Fix setup-oras\n\nFor some reason, the action suddenly started to fail with:\n\n    Error: /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n    Error: GitHub.DistributedTask.ObjectTemplating.TemplateValidationException: The template is not valid. /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml (Line: 13, Col: 12): Unrecognized named-value: 'secrets'. Located at position 1 within expression: secrets.GITHUB_TOKEN\n       at GitHub.DistributedTask.ObjectTemplating.TemplateValidationErrors.Check()\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.ConvertRuns(IExecutionContext executionContext, TemplateContext templateContext, TemplateToken inputsToken, String fileRelativePath, MappingToken outputs)\n       at GitHub.Runner.Worker.ActionManifestManagerLegacy.Load(IExecutionContext executionContext, String manifestFile)\n    Error: Failed to load /home/runner/work/authd/authd/./.github/actions/setup-oras/action.yaml\n\nNo idea why it was working before.",
-                  "url": "https://github.com/canonical/authd/commit/6f2570c69923efd4d0ce599141c60a9520905c68"
-               },
-               {
-                  "sha": "523bdf6a13d342906f66ba189447cbcce40172b7",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1774430055,
-                  "message": "e2e-tests/r2-worker: List output directories\n\nNow that we also upload the videos, it can be useful for debugging to\nexplore the directories containing the video files. So this removes the\nfunctionality to directly open the log.html file when its parent\ndirectory is opened.",
-                  "url": "https://github.com/canonical/authd/commit/523bdf6a13d342906f66ba189447cbcce40172b7"
+                  "sha": "69e8812cb5d91e965a6a61a4ab78d9db5c6eb584",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1774260970,
+                  "message": "docs: add `home_base_dir` configuration option",
+                  "url": "https://github.com/canonical/authd/commit/69e8812cb5d91e965a6a61a4ab78d9db5c6eb584"
                }
             ],
             "ciActions": [
@@ -8541,25 +8541,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3fac00a35f32b2d723c7e419e9c6102cde0d14bf",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1774620960,
+                  "message": "fix(ci): update dependencies to include v4l2loopback-dkms (#300)\n\nThis fixes\nhttps://github.com/canonical/prompting-client/actions/runs/23644359245/job/68872678486?pr=297",
+                  "url": "https://github.com/canonical/prompting-client/commit/3fac00a35f32b2d723c7e419e9c6102cde0d14bf"
+               },
+               {
+                  "sha": "c7de1e16e3da91e13d2916eeaaad4a643a4a21d6",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1774611883,
+                  "message": "fix: update dependencies to include v4l2loopback-dkms",
+                  "url": "https://github.com/canonical/prompting-client/commit/c7de1e16e3da91e13d2916eeaaad4a643a4a21d6"
+               },
+               {
                   "sha": "a3cc7b419f6e852d80ea574e77429dd6d1f71ebc",
                   "author": "Gabriele Belluardo",
                   "timestamp": 1774003038,
                   "message": "fix: `PromptFilter` deserialization (#298)\n\nFix the `scripted-client` parsing correctly json prompts.\n\nDue to the `untagged` property serde deserializes json with the\ndefinition order:\n\n1. `Camera`\n2. `Home`\n3. `Microphone` \n\nthis is a breaking change for `scripted-client` related tests, and it's\ncausing snapd test integrations\n[to](https://github.com/canonical/snapd/actions/runs/23328161131/job/67864644465#step:24:487)\n[fail](https://github.com/canonical/snapd/actions/runs/23328161131/job/67864644465#step:24:397)\nbecause of the promotion to `latest/stable`",
                   "url": "https://github.com/canonical/prompting-client/commit/a3cc7b419f6e852d80ea574e77429dd6d1f71ebc"
-               },
-               {
-                  "sha": "2d18c3802757d9551643ffb3aca3a8bf00ce761e",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1773999228,
-                  "message": "fix: `PromptFilter` deserialization issue",
-                  "url": "https://github.com/canonical/prompting-client/commit/2d18c3802757d9551643ffb3aca3a8bf00ce761e"
-               },
-               {
-                  "sha": "2e14a7245d8d7cd43dd99b337cb325dd29507afe",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1772806176,
-                  "message": "feat: updated promting UI (#295)\n\nThis PR refactors the prompting client UI to align with the updates to\nour\n[Figma](https://www.figma.com/design/10xVr0m8efJh043Ff6SY4G/25.04-Permission-prompting--AppArmor----Ubuntu-Desktop?node-id=3571-1660&p=f&t=0SPX34yT4cNrs0ea-0)\ndesigns for the LTS:\n\n## Videos:\nSee last comments at bottom of thread for latest \n\nUDENG-9103",
-                  "url": "https://github.com/canonical/prompting-client/commit/2e14a7245d8d7cd43dd99b337cb325dd29507afe"
                }
             ],
             "ciActions": [],
