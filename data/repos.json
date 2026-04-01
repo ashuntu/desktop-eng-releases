@@ -3919,25 +3919,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bbb5c5a6c0ec2b4bf2952744343652c154ad0acc",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1775052495,
+                  "message": "refactor: raname `Syscall` inteface to `syscaller` and make it private\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/bbb5c5a6c0ec2b4bf2952744343652c154ad0acc"
+               },
+               {
+                  "sha": "0cd529eebd8c7049aae066ccfb4b83437844637c",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1775052478,
+                  "message": "refactor: raname `HasBodyContent` function to `OneRequestBodyContains`\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/0cd529eebd8c7049aae066ccfb4b83437844637c"
+               },
+               {
                   "sha": "9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4",
                   "author": "Matthew Hagemann",
                   "timestamp": 1775039447,
                   "message": "refactor(golden): unify CheckOrUpdate for all types (#56)\n\n## Summary\n\nThis PR unifies the two golden file helper functions into a single\ngeneric `CheckOrUpdate`.\n\n### Changes\n\n- **`internal/testutils/golden/golden.go`**: Renamed `CheckOrUpdateYAML`\n→ `CheckOrUpdate` and merged the former string-only `CheckOrUpdate` into\nit. The new generic function auto-detects the type:\n  - `[]byte` and `string` values are stored/read as-is\n  - All other types fall back to YAML marshalling/unmarshalling\n- Two private helpers `encodeGolden` and `decodeGolden` handle the type\ndispatch\n\n- **`internal/snapd/recovery_test.go`**,\n**`internal/snapd/systemvolumes_test.go`**,\n**`internal/tpm/tpm_test.go`**: Updated call sites from\n`CheckOrUpdateYAML` → `CheckOrUpdate`\n\n### Motivation\n\nHaving two separate functions (`CheckOrUpdate` for strings,\n`CheckOrUpdateYAML` for structs) was redundant. The unified function\nsimplifies the API — callers no longer need to pick the right variant.",
                   "url": "https://github.com/canonical/snap-tpmctl/commit/9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4"
-               },
-               {
-                  "sha": "f5229f558e37b98ffb795e019f19de12693e6aa0",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775039295,
-                  "message": "Update internal/testutils/golden/golden.go\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Matthew Hagemann <93575731+matthew-hagemann@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/f5229f558e37b98ffb795e019f19de12693e6aa0"
-               },
-               {
-                  "sha": "77b040e8f7ff753a1d690dcdd406a9f48008fcec",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775039119,
-                  "message": "fix(golden): suppress forcetypeassert lint in decodeGolden\n\nThe type assertions in the []byte and string cases are guaranteed safe\nby the enclosing type switch, so they cannot panic. Suppress the\nforcetypeassert lint warnings with explanatory nolint directives, and\nclean up the trailing whitespace and blank line flagged by the gci/\nwhitespace linters.\n\nCo-authored-by: Didier Roche-Tolomelli <didier.roche@canonical.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/77b040e8f7ff753a1d690dcdd406a9f48008fcec"
                }
             ],
             "ciActions": [],
@@ -4300,25 +4300,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "6d262e6fd18d9ac711fbe89316832a6e656213a5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775052164,
+                  "message": "feat(telemetry): add dedicated 'PartitionMethod' for tpm/fde (#1384)\n\nAdd a dedicated `PartitionMethod` value for TPM/FDE to the telemetry\noutput.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6d262e6fd18d9ac711fbe89316832a6e656213a5"
+               },
+               {
+                  "sha": "b86ae0a937b646d36a2ca5527deca56591cf9e3b",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775047077,
+                  "message": "feat(telemetry): add dedicated 'PartitionMethod' for tpm/fde",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b86ae0a937b646d36a2ca5527deca56591cf9e3b"
+               },
+               {
                   "sha": "2958a044e42ec0747fc3e8fe9d3c92dcf584773e",
                   "author": "Dennis Loose",
                   "timestamp": 1774867363,
                   "message": "chore(deps): update actions/upload-artifact action to v7 (#1381)\n\nThis PR contains the following updates:\n\n| Package | Type | Update | Change |\n|---|---|---|---|\n|\n[actions/upload-artifact](https://redirect.github.com/actions/upload-artifact)\n| action | major | `v4` → `v7` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Release Notes\n\n<details>\n<summary>actions/upload-artifact (actions/upload-artifact)</summary>\n\n###\n[`v7`](https://redirect.github.com/actions/upload-artifact/compare/v6...v7)\n\n[Compare\nSource](https://redirect.github.com/actions/upload-artifact/compare/v6...v7)\n\n###\n[`v6`](https://redirect.github.com/actions/upload-artifact/compare/v5...v6)\n\n[Compare\nSource](https://redirect.github.com/actions/upload-artifact/compare/v5...v6)\n\n###\n[`v5`](https://redirect.github.com/actions/upload-artifact/compare/v4...v5)\n\n[Compare\nSource](https://redirect.github.com/actions/upload-artifact/compare/v4...v5)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My45NC4xIiwidXBkYXRlZEluVmVyIjoiNDMuOTQuMSIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2958a044e42ec0747fc3e8fe9d3c92dcf584773e"
-               },
-               {
-                  "sha": "ee61241753d8422d49b0526b780552ea90683298",
-                  "author": "renovate[bot]",
-                  "timestamp": 1774866440,
-                  "message": "chore(deps): update actions/upload-artifact action to v7",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ee61241753d8422d49b0526b780552ea90683298"
-               },
-               {
-                  "sha": "552a3da771e3df253ed394e765a68a102ab0a4a1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774866409,
-                  "message": "chore(deps): update actions/setup-go action to v6 (#1380)\n\nThis PR contains the following updates:\n\n| Package | Type | Update | Change |\n|---|---|---|---|\n| [actions/setup-go](https://redirect.github.com/actions/setup-go) |\naction | major | `v5` → `v6` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Release Notes\n\n<details>\n<summary>actions/setup-go (actions/setup-go)</summary>\n\n### [`v6`](https://redirect.github.com/actions/setup-go/compare/v5...v6)\n\n[Compare\nSource](https://redirect.github.com/actions/setup-go/compare/v5...v6)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My45NC4xIiwidXBkYXRlZEluVmVyIjoiNDMuOTQuMSIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/552a3da771e3df253ed394e765a68a102ab0a4a1"
                }
             ],
             "ciActions": [
@@ -6377,25 +6377,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bbb5c5a6c0ec2b4bf2952744343652c154ad0acc",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1775052495,
+                  "message": "refactor: raname `Syscall` inteface to `syscaller` and make it private\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/bbb5c5a6c0ec2b4bf2952744343652c154ad0acc"
+               },
+               {
+                  "sha": "0cd529eebd8c7049aae066ccfb4b83437844637c",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1775052478,
+                  "message": "refactor: raname `HasBodyContent` function to `OneRequestBodyContains`\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/0cd529eebd8c7049aae066ccfb4b83437844637c"
+               },
+               {
                   "sha": "9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4",
                   "author": "Matthew Hagemann",
                   "timestamp": 1775039447,
                   "message": "refactor(golden): unify CheckOrUpdate for all types (#56)\n\n## Summary\n\nThis PR unifies the two golden file helper functions into a single\ngeneric `CheckOrUpdate`.\n\n### Changes\n\n- **`internal/testutils/golden/golden.go`**: Renamed `CheckOrUpdateYAML`\n→ `CheckOrUpdate` and merged the former string-only `CheckOrUpdate` into\nit. The new generic function auto-detects the type:\n  - `[]byte` and `string` values are stored/read as-is\n  - All other types fall back to YAML marshalling/unmarshalling\n- Two private helpers `encodeGolden` and `decodeGolden` handle the type\ndispatch\n\n- **`internal/snapd/recovery_test.go`**,\n**`internal/snapd/systemvolumes_test.go`**,\n**`internal/tpm/tpm_test.go`**: Updated call sites from\n`CheckOrUpdateYAML` → `CheckOrUpdate`\n\n### Motivation\n\nHaving two separate functions (`CheckOrUpdate` for strings,\n`CheckOrUpdateYAML` for structs) was redundant. The unified function\nsimplifies the API — callers no longer need to pick the right variant.",
                   "url": "https://github.com/canonical/snap-tpmctl/commit/9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4"
-               },
-               {
-                  "sha": "f5229f558e37b98ffb795e019f19de12693e6aa0",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775039295,
-                  "message": "Update internal/testutils/golden/golden.go\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Matthew Hagemann <93575731+matthew-hagemann@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/f5229f558e37b98ffb795e019f19de12693e6aa0"
-               },
-               {
-                  "sha": "77b040e8f7ff753a1d690dcdd406a9f48008fcec",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775039119,
-                  "message": "fix(golden): suppress forcetypeassert lint in decodeGolden\n\nThe type assertions in the []byte and string cases are guaranteed safe\nby the enclosing type switch, so they cannot panic. Suppress the\nforcetypeassert lint warnings with explanatory nolint directives, and\nclean up the trailing whitespace and blank line flagged by the gci/\nwhitespace linters.\n\nCo-authored-by: Didier Roche-Tolomelli <didier.roche@canonical.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/77b040e8f7ff753a1d690dcdd406a9f48008fcec"
                }
             ],
             "ciActions": [],
@@ -6758,25 +6758,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "6d262e6fd18d9ac711fbe89316832a6e656213a5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775052164,
+                  "message": "feat(telemetry): add dedicated 'PartitionMethod' for tpm/fde (#1384)\n\nAdd a dedicated `PartitionMethod` value for TPM/FDE to the telemetry\noutput.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6d262e6fd18d9ac711fbe89316832a6e656213a5"
+               },
+               {
+                  "sha": "b86ae0a937b646d36a2ca5527deca56591cf9e3b",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775047077,
+                  "message": "feat(telemetry): add dedicated 'PartitionMethod' for tpm/fde",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b86ae0a937b646d36a2ca5527deca56591cf9e3b"
+               },
+               {
                   "sha": "2958a044e42ec0747fc3e8fe9d3c92dcf584773e",
                   "author": "Dennis Loose",
                   "timestamp": 1774867363,
                   "message": "chore(deps): update actions/upload-artifact action to v7 (#1381)\n\nThis PR contains the following updates:\n\n| Package | Type | Update | Change |\n|---|---|---|---|\n|\n[actions/upload-artifact](https://redirect.github.com/actions/upload-artifact)\n| action | major | `v4` → `v7` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Release Notes\n\n<details>\n<summary>actions/upload-artifact (actions/upload-artifact)</summary>\n\n###\n[`v7`](https://redirect.github.com/actions/upload-artifact/compare/v6...v7)\n\n[Compare\nSource](https://redirect.github.com/actions/upload-artifact/compare/v6...v7)\n\n###\n[`v6`](https://redirect.github.com/actions/upload-artifact/compare/v5...v6)\n\n[Compare\nSource](https://redirect.github.com/actions/upload-artifact/compare/v5...v6)\n\n###\n[`v5`](https://redirect.github.com/actions/upload-artifact/compare/v4...v5)\n\n[Compare\nSource](https://redirect.github.com/actions/upload-artifact/compare/v4...v5)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My45NC4xIiwidXBkYXRlZEluVmVyIjoiNDMuOTQuMSIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2958a044e42ec0747fc3e8fe9d3c92dcf584773e"
-               },
-               {
-                  "sha": "ee61241753d8422d49b0526b780552ea90683298",
-                  "author": "renovate[bot]",
-                  "timestamp": 1774866440,
-                  "message": "chore(deps): update actions/upload-artifact action to v7",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ee61241753d8422d49b0526b780552ea90683298"
-               },
-               {
-                  "sha": "552a3da771e3df253ed394e765a68a102ab0a4a1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774866409,
-                  "message": "chore(deps): update actions/setup-go action to v6 (#1380)\n\nThis PR contains the following updates:\n\n| Package | Type | Update | Change |\n|---|---|---|---|\n| [actions/setup-go](https://redirect.github.com/actions/setup-go) |\naction | major | `v5` → `v6` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Release Notes\n\n<details>\n<summary>actions/setup-go (actions/setup-go)</summary>\n\n### [`v6`](https://redirect.github.com/actions/setup-go/compare/v5...v6)\n\n[Compare\nSource](https://redirect.github.com/actions/setup-go/compare/v5...v6)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My45NC4xIiwidXBkYXRlZEluVmVyIjoiNDMuOTQuMSIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/552a3da771e3df253ed394e765a68a102ab0a4a1"
                }
             ],
             "ciActions": [
@@ -8642,25 +8642,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bbb5c5a6c0ec2b4bf2952744343652c154ad0acc",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1775052495,
+                  "message": "refactor: raname `Syscall` inteface to `syscaller` and make it private\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/bbb5c5a6c0ec2b4bf2952744343652c154ad0acc"
+               },
+               {
+                  "sha": "0cd529eebd8c7049aae066ccfb4b83437844637c",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1775052478,
+                  "message": "refactor: raname `HasBodyContent` function to `OneRequestBodyContains`\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/0cd529eebd8c7049aae066ccfb4b83437844637c"
+               },
+               {
                   "sha": "9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4",
                   "author": "Matthew Hagemann",
                   "timestamp": 1775039447,
                   "message": "refactor(golden): unify CheckOrUpdate for all types (#56)\n\n## Summary\n\nThis PR unifies the two golden file helper functions into a single\ngeneric `CheckOrUpdate`.\n\n### Changes\n\n- **`internal/testutils/golden/golden.go`**: Renamed `CheckOrUpdateYAML`\n→ `CheckOrUpdate` and merged the former string-only `CheckOrUpdate` into\nit. The new generic function auto-detects the type:\n  - `[]byte` and `string` values are stored/read as-is\n  - All other types fall back to YAML marshalling/unmarshalling\n- Two private helpers `encodeGolden` and `decodeGolden` handle the type\ndispatch\n\n- **`internal/snapd/recovery_test.go`**,\n**`internal/snapd/systemvolumes_test.go`**,\n**`internal/tpm/tpm_test.go`**: Updated call sites from\n`CheckOrUpdateYAML` → `CheckOrUpdate`\n\n### Motivation\n\nHaving two separate functions (`CheckOrUpdate` for strings,\n`CheckOrUpdateYAML` for structs) was redundant. The unified function\nsimplifies the API — callers no longer need to pick the right variant.",
                   "url": "https://github.com/canonical/snap-tpmctl/commit/9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4"
-               },
-               {
-                  "sha": "f5229f558e37b98ffb795e019f19de12693e6aa0",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775039295,
-                  "message": "Update internal/testutils/golden/golden.go\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Matthew Hagemann <93575731+matthew-hagemann@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/f5229f558e37b98ffb795e019f19de12693e6aa0"
-               },
-               {
-                  "sha": "77b040e8f7ff753a1d690dcdd406a9f48008fcec",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775039119,
-                  "message": "fix(golden): suppress forcetypeassert lint in decodeGolden\n\nThe type assertions in the []byte and string cases are guaranteed safe\nby the enclosing type switch, so they cannot panic. Suppress the\nforcetypeassert lint warnings with explanatory nolint directives, and\nclean up the trailing whitespace and blank line flagged by the gci/\nwhitespace linters.\n\nCo-authored-by: Didier Roche-Tolomelli <didier.roche@canonical.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/77b040e8f7ff753a1d690dcdd406a9f48008fcec"
                }
             ],
             "ciActions": [],
@@ -9023,25 +9023,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "6d262e6fd18d9ac711fbe89316832a6e656213a5",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775052164,
+                  "message": "feat(telemetry): add dedicated 'PartitionMethod' for tpm/fde (#1384)\n\nAdd a dedicated `PartitionMethod` value for TPM/FDE to the telemetry\noutput.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6d262e6fd18d9ac711fbe89316832a6e656213a5"
+               },
+               {
+                  "sha": "b86ae0a937b646d36a2ca5527deca56591cf9e3b",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775047077,
+                  "message": "feat(telemetry): add dedicated 'PartitionMethod' for tpm/fde",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b86ae0a937b646d36a2ca5527deca56591cf9e3b"
+               },
+               {
                   "sha": "2958a044e42ec0747fc3e8fe9d3c92dcf584773e",
                   "author": "Dennis Loose",
                   "timestamp": 1774867363,
                   "message": "chore(deps): update actions/upload-artifact action to v7 (#1381)\n\nThis PR contains the following updates:\n\n| Package | Type | Update | Change |\n|---|---|---|---|\n|\n[actions/upload-artifact](https://redirect.github.com/actions/upload-artifact)\n| action | major | `v4` → `v7` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Release Notes\n\n<details>\n<summary>actions/upload-artifact (actions/upload-artifact)</summary>\n\n###\n[`v7`](https://redirect.github.com/actions/upload-artifact/compare/v6...v7)\n\n[Compare\nSource](https://redirect.github.com/actions/upload-artifact/compare/v6...v7)\n\n###\n[`v6`](https://redirect.github.com/actions/upload-artifact/compare/v5...v6)\n\n[Compare\nSource](https://redirect.github.com/actions/upload-artifact/compare/v5...v6)\n\n###\n[`v5`](https://redirect.github.com/actions/upload-artifact/compare/v4...v5)\n\n[Compare\nSource](https://redirect.github.com/actions/upload-artifact/compare/v4...v5)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My45NC4xIiwidXBkYXRlZEluVmVyIjoiNDMuOTQuMSIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/2958a044e42ec0747fc3e8fe9d3c92dcf584773e"
-               },
-               {
-                  "sha": "ee61241753d8422d49b0526b780552ea90683298",
-                  "author": "renovate[bot]",
-                  "timestamp": 1774866440,
-                  "message": "chore(deps): update actions/upload-artifact action to v7",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ee61241753d8422d49b0526b780552ea90683298"
-               },
-               {
-                  "sha": "552a3da771e3df253ed394e765a68a102ab0a4a1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1774866409,
-                  "message": "chore(deps): update actions/setup-go action to v6 (#1380)\n\nThis PR contains the following updates:\n\n| Package | Type | Update | Change |\n|---|---|---|---|\n| [actions/setup-go](https://redirect.github.com/actions/setup-go) |\naction | major | `v5` → `v6` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Release Notes\n\n<details>\n<summary>actions/setup-go (actions/setup-go)</summary>\n\n### [`v6`](https://redirect.github.com/actions/setup-go/compare/v5...v6)\n\n[Compare\nSource](https://redirect.github.com/actions/setup-go/compare/v5...v6)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"after 9am and before 2pm on monday\"\n(UTC), Automerge - At any time (no schedule defined).\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My45NC4xIiwidXBkYXRlZEluVmVyIjoiNDMuOTQuMSIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/552a3da771e3df253ed394e765a68a102ab0a4a1"
                }
             ],
             "ciActions": [
