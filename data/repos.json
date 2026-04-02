@@ -6377,25 +6377,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "bbb5c5a6c0ec2b4bf2952744343652c154ad0acc",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1775052495,
-                  "message": "refactor: raname `Syscall` inteface to `syscaller` and make it private\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/bbb5c5a6c0ec2b4bf2952744343652c154ad0acc"
-               },
-               {
-                  "sha": "0cd529eebd8c7049aae066ccfb4b83437844637c",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1775052478,
-                  "message": "refactor: raname `HasBodyContent` function to `OneRequestBodyContains`\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/0cd529eebd8c7049aae066ccfb4b83437844637c"
-               },
-               {
-                  "sha": "9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4",
+                  "sha": "dfa3019c2dea24da4b63cf14772dcebe8d579807",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1775039447,
-                  "message": "refactor(golden): unify CheckOrUpdate for all types (#56)\n\n## Summary\n\nThis PR unifies the two golden file helper functions into a single\ngeneric `CheckOrUpdate`.\n\n### Changes\n\n- **`internal/testutils/golden/golden.go`**: Renamed `CheckOrUpdateYAML`\n→ `CheckOrUpdate` and merged the former string-only `CheckOrUpdate` into\nit. The new generic function auto-detects the type:\n  - `[]byte` and `string` values are stored/read as-is\n  - All other types fall back to YAML marshalling/unmarshalling\n- Two private helpers `encodeGolden` and `decodeGolden` handle the type\ndispatch\n\n- **`internal/snapd/recovery_test.go`**,\n**`internal/snapd/systemvolumes_test.go`**,\n**`internal/tpm/tpm_test.go`**: Updated call sites from\n`CheckOrUpdateYAML` → `CheckOrUpdate`\n\n### Motivation\n\nHaving two separate functions (`CheckOrUpdate` for strings,\n`CheckOrUpdateYAML` for structs) was redundant. The unified function\nsimplifies the API — callers no longer need to pick the right variant.",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4"
+                  "timestamp": 1775137671,
+                  "message": "chore: add contribute-to-repo Copilot skill (#57)\n\n## Summary\n\nAdds a Copilot CLI skill at `.github/skills/contribute-to-repo/SKILL.md`\nthat documents the standard workflow for contributing to this repo.\n\n### What the skill covers\n\n- **Remote discovery** — dynamically identifies fork vs upstream remotes\nvia `git remote -v`\n- **Co-author lookup** — prompts for any pair-programming partners and\nresolves their email from git history\n- **Conventional Commits** format with correct `Co-authored-by` trailers\n- **PR creation** — correct `owner`, `head` (`fork:branch`), and `base`\nparams for opening PRs against the upstream repo\n- **CI triage** — how to fetch job logs and fix common golangci-lint\nissues in this repo (`forcetypeassert`, `gci`, `whitespace`, `godot`)\n\nCopilot will load this skill automatically when asked to commit or open\na PR, or it can be invoked explicitly with `/contribute-to-repo`.",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/dfa3019c2dea24da4b63cf14772dcebe8d579807"
+               },
+               {
+                  "sha": "2101b21a09058c6b94c9989cc913cd3f1f1d5a11",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1775136978,
+                  "message": "feat(skill): add lint, format, and test step before commit\n\nAdd a new step 2 to the contribute-to-repo skill that runs\ngolangci-lint-v2 and go test ./... before staging and committing,\nas requested by @gabelluardo in PR #57.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/2101b21a09058c6b94c9989cc913cd3f1f1d5a11"
+               },
+               {
+                  "sha": "05dfcb28a0897fb00df165246a28d94177ebb23d",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1775048633,
+                  "message": "fix: drop part 5 to watch the CI, it seems to be token expensive, and prehaps out of scope for a PR skill",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/05dfcb28a0897fb00df165246a28d94177ebb23d"
                }
             ],
             "ciActions": [],
@@ -8642,25 +8642,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "bbb5c5a6c0ec2b4bf2952744343652c154ad0acc",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1775052495,
-                  "message": "refactor: raname `Syscall` inteface to `syscaller` and make it private\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/bbb5c5a6c0ec2b4bf2952744343652c154ad0acc"
-               },
-               {
-                  "sha": "0cd529eebd8c7049aae066ccfb4b83437844637c",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1775052478,
-                  "message": "refactor: raname `HasBodyContent` function to `OneRequestBodyContains`\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/0cd529eebd8c7049aae066ccfb4b83437844637c"
-               },
-               {
-                  "sha": "9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4",
+                  "sha": "dfa3019c2dea24da4b63cf14772dcebe8d579807",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1775039447,
-                  "message": "refactor(golden): unify CheckOrUpdate for all types (#56)\n\n## Summary\n\nThis PR unifies the two golden file helper functions into a single\ngeneric `CheckOrUpdate`.\n\n### Changes\n\n- **`internal/testutils/golden/golden.go`**: Renamed `CheckOrUpdateYAML`\n→ `CheckOrUpdate` and merged the former string-only `CheckOrUpdate` into\nit. The new generic function auto-detects the type:\n  - `[]byte` and `string` values are stored/read as-is\n  - All other types fall back to YAML marshalling/unmarshalling\n- Two private helpers `encodeGolden` and `decodeGolden` handle the type\ndispatch\n\n- **`internal/snapd/recovery_test.go`**,\n**`internal/snapd/systemvolumes_test.go`**,\n**`internal/tpm/tpm_test.go`**: Updated call sites from\n`CheckOrUpdateYAML` → `CheckOrUpdate`\n\n### Motivation\n\nHaving two separate functions (`CheckOrUpdate` for strings,\n`CheckOrUpdateYAML` for structs) was redundant. The unified function\nsimplifies the API — callers no longer need to pick the right variant.",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4"
+                  "timestamp": 1775137671,
+                  "message": "chore: add contribute-to-repo Copilot skill (#57)\n\n## Summary\n\nAdds a Copilot CLI skill at `.github/skills/contribute-to-repo/SKILL.md`\nthat documents the standard workflow for contributing to this repo.\n\n### What the skill covers\n\n- **Remote discovery** — dynamically identifies fork vs upstream remotes\nvia `git remote -v`\n- **Co-author lookup** — prompts for any pair-programming partners and\nresolves their email from git history\n- **Conventional Commits** format with correct `Co-authored-by` trailers\n- **PR creation** — correct `owner`, `head` (`fork:branch`), and `base`\nparams for opening PRs against the upstream repo\n- **CI triage** — how to fetch job logs and fix common golangci-lint\nissues in this repo (`forcetypeassert`, `gci`, `whitespace`, `godot`)\n\nCopilot will load this skill automatically when asked to commit or open\na PR, or it can be invoked explicitly with `/contribute-to-repo`.",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/dfa3019c2dea24da4b63cf14772dcebe8d579807"
+               },
+               {
+                  "sha": "2101b21a09058c6b94c9989cc913cd3f1f1d5a11",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1775136978,
+                  "message": "feat(skill): add lint, format, and test step before commit\n\nAdd a new step 2 to the contribute-to-repo skill that runs\ngolangci-lint-v2 and go test ./... before staging and committing,\nas requested by @gabelluardo in PR #57.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/2101b21a09058c6b94c9989cc913cd3f1f1d5a11"
+               },
+               {
+                  "sha": "05dfcb28a0897fb00df165246a28d94177ebb23d",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1775048633,
+                  "message": "fix: drop part 5 to watch the CI, it seems to be token expensive, and prehaps out of scope for a PR skill",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/05dfcb28a0897fb00df165246a28d94177ebb23d"
                }
             ],
             "ciActions": [],
