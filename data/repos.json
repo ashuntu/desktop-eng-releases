@@ -4300,25 +4300,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f512dc0aadeb489132e0da6664ffc3fd8294817f",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1775145632,
+                  "message": "fix(a11y): make confirm page summary readable by Orca (#1377)\n\nFixes an issue where the Orca screen reader skips all information when\nnavigating the installation summary and partition tables on the Confirm\npage.\n\n### Technical Changes\n* **Semantic Wrapper:** Added an `AccessibleSummaryRow` that wraps items\nin `Semantics(textField: true, readOnly: true)`. This ensures the AT-SPI\nbridge properly focuses the row and reads the nested visual `Text`\nwidgets as a single unit.\n* **Layout Refactor:** Replaced `Table` and `TableRow` with standard\n`Column`, `Row`, and `Expanded` widgets. Flex layouts traverse much more\nreliably in Orca than tables.\n* **Removed `flutter_html`:** Replaced `Html` widgets with standard\n`Text` to prevent screen reader fragmentation.\n\n### Visual Changes\n* **Layout:** Key/value pairs now use a static 40/60 width split (`flex:\n2` / `flex: 3`) instead of an auto-sizing `Table`.\n* **Text Styling:** The `.bold()` extension was overridden to return\nplain strings, removing bolding from partition sizes and mount points.\n(Happy to restore this using `Text.rich` if design requires it).\n\nFixes #1376",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f512dc0aadeb489132e0da6664ffc3fd8294817f"
+               },
+               {
+                  "sha": "cf5a88af53ba64b6467d83a80330bc622e7247c7",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1775142085,
+                  "message": "style: address reviewer feedback on layout and remove unused code",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cf5a88af53ba64b6467d83a80330bc622e7247c7"
+               },
+               {
                   "sha": "d244928a4620d64885c37b775bf94eaa21320d74",
                   "author": "Dennis Loose",
                   "timestamp": 1775058409,
                   "message": "feat: add secondary English keyboard layout when selecting non-latin layout (#1383)\n\nFix #408, #1103\n\nUDENG-9589",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d244928a4620d64885c37b775bf94eaa21320d74"
-               },
-               {
-                  "sha": "3a6aa2f480b3cca6e4ec727dc5999938698be1d4",
-                  "author": "Dennis Loose",
-                  "timestamp": 1775058370,
-                  "message": "fix: clear `LD_LIBRARY_PATH` when running `canberra-gtk-play` (#1382)\n\nOn the current daily, the startup sound isn’t played:\n```\ncanberra-gtk-play: /snap/core24/current/lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.43' not found (required by /usr/lib/x86_64-linux-gnu/libmvec.so.1)\n```\n\nThat’s because glibc in the live session is newer than what’s in core24\nand gtk-canberra-play mixes libraries from both sources:\n```\nldd /usr/bin/canberra-gtk-play | grep libm\n/usr/bin/canberra-gtk-play: /snap/core24/current/lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.43' not found (required by /usr/lib/x86_64-linux-gnu/libmvec.so.1)\n\tlibm.so.6 => /snap/core24/current/lib/x86_64-linux-gnu/libm.so.6 (0x000077fd960d4000)\n\tlibmount.so.1 => /snap/core24/current/lib/x86_64-linux-gnu/libmount.so.1 (0x000077fd95d33000)\n\tlibmvec.so.1 => /usr/lib/x86_64-linux-gnu/libmvec.so.1 (0x000077fd956e8000)\n\tlibmd.so.0 => /snap/core24/current/lib/x86_64-linux-gnu/libmd.so.0 (0x000077fd9543b000)\n```\n\nSince the installer relies on `canberra-gtk-play` from the live system,\nI suggest simply clearing `LD_LIBRARY_PATH`, which is set by the classic\nsnap environment to include the libraries shipped with the snap.\n\nUDENG-9584",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3a6aa2f480b3cca6e4ec727dc5999938698be1d4"
-               },
-               {
-                  "sha": "6d262e6fd18d9ac711fbe89316832a6e656213a5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1775052164,
-                  "message": "feat(telemetry): add dedicated 'PartitionMethod' for tpm/fde (#1384)\n\nAdd a dedicated `PartitionMethod` value for TPM/FDE to the telemetry\noutput.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6d262e6fd18d9ac711fbe89316832a6e656213a5"
                }
             ],
             "ciActions": [
@@ -4363,9 +4363,18 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 304743870,
+                  "version": "rev66",
+                  "timestamp": 1774984826,
+                  "title": "Revision 66",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 62</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:00 UTC on 2 Apr 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.9.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/85\">#85</a></li>\n<li>deps(regex): update dependency ubuntu/ubuntu-insights to server/v0.9.5 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/87\">#87</a></li>\n<li>deps(pep621): update dependency cosl to v1.9.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/86\">#86</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev65...rev66\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev65&hellip;rev66</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev66",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev66...main"
+               },
                {
                   "id": 303388446,
                   "version": "rev65",
@@ -4383,15 +4392,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 61</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:26 UTC on 30 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency requests to v2.33.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/84\">#84</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev63...rev64\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev63&hellip;rev64</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev64",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev64...main"
-               },
-               {
-                  "id": 303277657,
-                  "version": "rev63",
-                  "timestamp": 1774887562,
-                  "title": "Revision 63",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 60</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:20 UTC on 30 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.8.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/80\">#80</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev62...rev63\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev62&hellip;rev63</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev63",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev63...main"
                }
             ],
             "commits": null,
@@ -4403,8 +4403,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 65,
-                     "timestamp": 1774901383
+                     "revision": 66,
+                     "timestamp": 1775145610
                   }
                ],
                "channels": [
@@ -6758,25 +6758,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f512dc0aadeb489132e0da6664ffc3fd8294817f",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1775145632,
+                  "message": "fix(a11y): make confirm page summary readable by Orca (#1377)\n\nFixes an issue where the Orca screen reader skips all information when\nnavigating the installation summary and partition tables on the Confirm\npage.\n\n### Technical Changes\n* **Semantic Wrapper:** Added an `AccessibleSummaryRow` that wraps items\nin `Semantics(textField: true, readOnly: true)`. This ensures the AT-SPI\nbridge properly focuses the row and reads the nested visual `Text`\nwidgets as a single unit.\n* **Layout Refactor:** Replaced `Table` and `TableRow` with standard\n`Column`, `Row`, and `Expanded` widgets. Flex layouts traverse much more\nreliably in Orca than tables.\n* **Removed `flutter_html`:** Replaced `Html` widgets with standard\n`Text` to prevent screen reader fragmentation.\n\n### Visual Changes\n* **Layout:** Key/value pairs now use a static 40/60 width split (`flex:\n2` / `flex: 3`) instead of an auto-sizing `Table`.\n* **Text Styling:** The `.bold()` extension was overridden to return\nplain strings, removing bolding from partition sizes and mount points.\n(Happy to restore this using `Text.rich` if design requires it).\n\nFixes #1376",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f512dc0aadeb489132e0da6664ffc3fd8294817f"
+               },
+               {
+                  "sha": "cf5a88af53ba64b6467d83a80330bc622e7247c7",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1775142085,
+                  "message": "style: address reviewer feedback on layout and remove unused code",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cf5a88af53ba64b6467d83a80330bc622e7247c7"
+               },
+               {
                   "sha": "d244928a4620d64885c37b775bf94eaa21320d74",
                   "author": "Dennis Loose",
                   "timestamp": 1775058409,
                   "message": "feat: add secondary English keyboard layout when selecting non-latin layout (#1383)\n\nFix #408, #1103\n\nUDENG-9589",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d244928a4620d64885c37b775bf94eaa21320d74"
-               },
-               {
-                  "sha": "3a6aa2f480b3cca6e4ec727dc5999938698be1d4",
-                  "author": "Dennis Loose",
-                  "timestamp": 1775058370,
-                  "message": "fix: clear `LD_LIBRARY_PATH` when running `canberra-gtk-play` (#1382)\n\nOn the current daily, the startup sound isn’t played:\n```\ncanberra-gtk-play: /snap/core24/current/lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.43' not found (required by /usr/lib/x86_64-linux-gnu/libmvec.so.1)\n```\n\nThat’s because glibc in the live session is newer than what’s in core24\nand gtk-canberra-play mixes libraries from both sources:\n```\nldd /usr/bin/canberra-gtk-play | grep libm\n/usr/bin/canberra-gtk-play: /snap/core24/current/lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.43' not found (required by /usr/lib/x86_64-linux-gnu/libmvec.so.1)\n\tlibm.so.6 => /snap/core24/current/lib/x86_64-linux-gnu/libm.so.6 (0x000077fd960d4000)\n\tlibmount.so.1 => /snap/core24/current/lib/x86_64-linux-gnu/libmount.so.1 (0x000077fd95d33000)\n\tlibmvec.so.1 => /usr/lib/x86_64-linux-gnu/libmvec.so.1 (0x000077fd956e8000)\n\tlibmd.so.0 => /snap/core24/current/lib/x86_64-linux-gnu/libmd.so.0 (0x000077fd9543b000)\n```\n\nSince the installer relies on `canberra-gtk-play` from the live system,\nI suggest simply clearing `LD_LIBRARY_PATH`, which is set by the classic\nsnap environment to include the libraries shipped with the snap.\n\nUDENG-9584",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3a6aa2f480b3cca6e4ec727dc5999938698be1d4"
-               },
-               {
-                  "sha": "6d262e6fd18d9ac711fbe89316832a6e656213a5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1775052164,
-                  "message": "feat(telemetry): add dedicated 'PartitionMethod' for tpm/fde (#1384)\n\nAdd a dedicated `PartitionMethod` value for TPM/FDE to the telemetry\noutput.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6d262e6fd18d9ac711fbe89316832a6e656213a5"
                }
             ],
             "ciActions": [
@@ -6821,9 +6821,18 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 304743870,
+                  "version": "rev66",
+                  "timestamp": 1774984826,
+                  "title": "Revision 66",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 62</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:00 UTC on 2 Apr 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.9.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/85\">#85</a></li>\n<li>deps(regex): update dependency ubuntu/ubuntu-insights to server/v0.9.5 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/87\">#87</a></li>\n<li>deps(pep621): update dependency cosl to v1.9.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/86\">#86</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev65...rev66\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev65&hellip;rev66</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev66",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev66...main"
+               },
                {
                   "id": 303388446,
                   "version": "rev65",
@@ -6841,15 +6850,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 61</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:26 UTC on 30 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency requests to v2.33.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/84\">#84</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev63...rev64\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev63&hellip;rev64</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev64",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev64...main"
-               },
-               {
-                  "id": 303277657,
-                  "version": "rev63",
-                  "timestamp": 1774887562,
-                  "title": "Revision 63",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 60</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:20 UTC on 30 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.8.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/80\">#80</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev62...rev63\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev62&hellip;rev63</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev63",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev63...main"
                }
             ],
             "commits": null,
@@ -6861,8 +6861,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 65,
-                     "timestamp": 1774901383
+                     "revision": 66,
+                     "timestamp": 1775145610
                   }
                ],
                "channels": [
@@ -9023,25 +9023,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f512dc0aadeb489132e0da6664ffc3fd8294817f",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1775145632,
+                  "message": "fix(a11y): make confirm page summary readable by Orca (#1377)\n\nFixes an issue where the Orca screen reader skips all information when\nnavigating the installation summary and partition tables on the Confirm\npage.\n\n### Technical Changes\n* **Semantic Wrapper:** Added an `AccessibleSummaryRow` that wraps items\nin `Semantics(textField: true, readOnly: true)`. This ensures the AT-SPI\nbridge properly focuses the row and reads the nested visual `Text`\nwidgets as a single unit.\n* **Layout Refactor:** Replaced `Table` and `TableRow` with standard\n`Column`, `Row`, and `Expanded` widgets. Flex layouts traverse much more\nreliably in Orca than tables.\n* **Removed `flutter_html`:** Replaced `Html` widgets with standard\n`Text` to prevent screen reader fragmentation.\n\n### Visual Changes\n* **Layout:** Key/value pairs now use a static 40/60 width split (`flex:\n2` / `flex: 3`) instead of an auto-sizing `Table`.\n* **Text Styling:** The `.bold()` extension was overridden to return\nplain strings, removing bolding from partition sizes and mount points.\n(Happy to restore this using `Text.rich` if design requires it).\n\nFixes #1376",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f512dc0aadeb489132e0da6664ffc3fd8294817f"
+               },
+               {
+                  "sha": "cf5a88af53ba64b6467d83a80330bc622e7247c7",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1775142085,
+                  "message": "style: address reviewer feedback on layout and remove unused code",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/cf5a88af53ba64b6467d83a80330bc622e7247c7"
+               },
+               {
                   "sha": "d244928a4620d64885c37b775bf94eaa21320d74",
                   "author": "Dennis Loose",
                   "timestamp": 1775058409,
                   "message": "feat: add secondary English keyboard layout when selecting non-latin layout (#1383)\n\nFix #408, #1103\n\nUDENG-9589",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d244928a4620d64885c37b775bf94eaa21320d74"
-               },
-               {
-                  "sha": "3a6aa2f480b3cca6e4ec727dc5999938698be1d4",
-                  "author": "Dennis Loose",
-                  "timestamp": 1775058370,
-                  "message": "fix: clear `LD_LIBRARY_PATH` when running `canberra-gtk-play` (#1382)\n\nOn the current daily, the startup sound isn’t played:\n```\ncanberra-gtk-play: /snap/core24/current/lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.43' not found (required by /usr/lib/x86_64-linux-gnu/libmvec.so.1)\n```\n\nThat’s because glibc in the live session is newer than what’s in core24\nand gtk-canberra-play mixes libraries from both sources:\n```\nldd /usr/bin/canberra-gtk-play | grep libm\n/usr/bin/canberra-gtk-play: /snap/core24/current/lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.43' not found (required by /usr/lib/x86_64-linux-gnu/libmvec.so.1)\n\tlibm.so.6 => /snap/core24/current/lib/x86_64-linux-gnu/libm.so.6 (0x000077fd960d4000)\n\tlibmount.so.1 => /snap/core24/current/lib/x86_64-linux-gnu/libmount.so.1 (0x000077fd95d33000)\n\tlibmvec.so.1 => /usr/lib/x86_64-linux-gnu/libmvec.so.1 (0x000077fd956e8000)\n\tlibmd.so.0 => /snap/core24/current/lib/x86_64-linux-gnu/libmd.so.0 (0x000077fd9543b000)\n```\n\nSince the installer relies on `canberra-gtk-play` from the live system,\nI suggest simply clearing `LD_LIBRARY_PATH`, which is set by the classic\nsnap environment to include the libraries shipped with the snap.\n\nUDENG-9584",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3a6aa2f480b3cca6e4ec727dc5999938698be1d4"
-               },
-               {
-                  "sha": "6d262e6fd18d9ac711fbe89316832a6e656213a5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1775052164,
-                  "message": "feat(telemetry): add dedicated 'PartitionMethod' for tpm/fde (#1384)\n\nAdd a dedicated `PartitionMethod` value for TPM/FDE to the telemetry\noutput.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/6d262e6fd18d9ac711fbe89316832a6e656213a5"
                }
             ],
             "ciActions": [
@@ -9121,9 +9121,18 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 304743870,
+                  "version": "rev66",
+                  "timestamp": 1774984826,
+                  "title": "Revision 66",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 62</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:00 UTC on 2 Apr 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.9.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/85\">#85</a></li>\n<li>deps(regex): update dependency ubuntu/ubuntu-insights to server/v0.9.5 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/87\">#87</a></li>\n<li>deps(pep621): update dependency cosl to v1.9.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/86\">#86</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev65...rev66\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev65&hellip;rev66</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev66",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev66...main"
+               },
                {
                   "id": 303388446,
                   "version": "rev65",
@@ -9141,15 +9150,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 61</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:26 UTC on 30 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency requests to v2.33.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/84\">#84</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev63...rev64\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev63&hellip;rev64</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev64",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev64...main"
-               },
-               {
-                  "id": 303277657,
-                  "version": "rev63",
-                  "timestamp": 1774887562,
-                  "title": "Revision 63",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 60</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:20 UTC on 30 Mar 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.8.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/80\">#80</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev62...rev63\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev62&hellip;rev63</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev63",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev63...main"
                }
             ],
             "commits": null,
@@ -9161,8 +9161,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 65,
-                     "timestamp": 1774901383
+                     "revision": 66,
+                     "timestamp": 1775145610
                   }
                ],
                "channels": [
