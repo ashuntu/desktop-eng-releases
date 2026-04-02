@@ -10,25 +10,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7624c0188d40a0e592dcffff551f16e19c2c3e60",
+                  "author": "adombeck",
+                  "timestamp": 1775142414,
+                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#1379)",
+                  "url": "https://github.com/canonical/authd/commit/7624c0188d40a0e592dcffff551f16e19c2c3e60"
+               },
+               {
+                  "sha": "9f5394c280df956cd3ee20fcbcb17387692dc828",
+                  "author": "adombeck",
+                  "timestamp": 1775142369,
+                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#1380)",
+                  "url": "https://github.com/canonical/authd/commit/9f5394c280df956cd3ee20fcbcb17387692dc828"
+               },
+               {
                   "sha": "a86655a66b2afad8f5366685ace60945070287a9",
                   "author": "adombeck",
                   "timestamp": 1775129768,
                   "message": "Fix version of broker snaps for stable releases (#1382)\n\nUDENG-9604",
                   "url": "https://github.com/canonical/authd/commit/a86655a66b2afad8f5366685ace60945070287a9"
-               },
-               {
-                  "sha": "770609f4ac1d11bd05161347ef81e5e658f5eac2",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775129220,
-                  "message": "Fix version of broker snaps for stable releases\n\nWe only considered tags which start with \"broker-\", but the packaging\nbranches (msentraid, google, oidc) add a \"Copy msentraid variant files\"\ncommit on top, which means that broker releases still had a version like\n0.4.0+a254a2c.81db5c3 instead of just 0.4.0.\n\nThe fix is to tag these commits with \"msentraid-0.4.0\" etc. and to use\nthose tags for the version (after stripping the prefix).",
-                  "url": "https://github.com/canonical/authd/commit/770609f4ac1d11bd05161347ef81e5e658f5eac2"
-               },
-               {
-                  "sha": "2bfc261a4d36e9337548b02d10647d45d9cfc7da",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775128141,
-                  "message": "Merge branch 'stable'",
-                  "url": "https://github.com/canonical/authd/commit/2bfc261a4d36e9337548b02d10647d45d9cfc7da"
                }
             ],
             "ciActions": [
@@ -3295,25 +3295,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7d2272107d500a650b695630fb4397679290228a",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769003812,
-                  "message": "feat: detect tpmfde using new snapd status api (#386)\n\nThis change swaps the method for determining if the system is using\nsnapd managed TPM/FDE from looking for the existence of\n`/dev/disk/by-label/ubuntu-data-enc` to the new TPM/FDE status API\nexposed by snapd.",
-                  "url": "https://github.com/canonical/firmware-updater/commit/7d2272107d500a650b695630fb4397679290228a"
+                  "sha": "9e387e49aa39d9f7013554b61b7a96444b817a33",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775142327,
+                  "message": "fix: use `snapctl system-mode` to check for TPM/FDE (#391)\n\nThe mechanism to check the TPM/FDE status via snapd's status API\nintroduced in #386 doesn't work because the `openAccess` policy used by\nthe\n[`/v2/system-info/storage-encrypt`](https://github.com/canonical/snapd/blob/5a0646e2c2779ccc488e7958ac6309f576f948ff/daemon/api_general.go#L67-L75)\nendpoint, [doesn't\nallow](https://github.com/canonical/snapd/blob/5a0646e2c2779ccc488e7958ac6309f576f948ff/daemon/access.go#L178-L180)\naccess via the `snap-snapd.socket`.\nInstead of relying on that endpoint, this PR changes the detection\nmechanism to check the output of `snapctl system-mode` for\n`storage-encrypted: managed`, consistent with what the security center\nis doing, see\nhttps://github.com/canonical/desktop-security-center/pull/164.\n\nUDENG-9593",
+                  "url": "https://github.com/canonical/firmware-updater/commit/9e387e49aa39d9f7013554b61b7a96444b817a33"
                },
                {
-                  "sha": "ecd87de7a3c92d3ce3109c0310ed333fad603f47",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768916776,
-                  "message": "fix: formatter and mocks",
-                  "url": "https://github.com/canonical/firmware-updater/commit/ecd87de7a3c92d3ce3109c0310ed333fad603f47"
+                  "sha": "58ec596b3ce588208b7a0171d577a06ed55cef9d",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775127862,
+                  "message": "test: update recovery_key_service_test",
+                  "url": "https://github.com/canonical/firmware-updater/commit/58ec596b3ce588208b7a0171d577a06ed55cef9d"
                },
                {
-                  "sha": "1869ac36d9a622a57ea079d3322b02e8c32c68bf",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768914762,
-                  "message": "test: add tests for covering snapd status api changes",
-                  "url": "https://github.com/canonical/firmware-updater/commit/1869ac36d9a622a57ea079d3322b02e8c32c68bf"
+                  "sha": "fcaa1071197bc833c1facd907f79bab9e2a4fcac",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775126667,
+                  "message": "fix: remove executable flag from test file",
+                  "url": "https://github.com/canonical/firmware-updater/commit/fcaa1071197bc833c1facd907f79bab9e2a4fcac"
                }
             ],
             "ciActions": [
@@ -3919,25 +3919,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "bbb5c5a6c0ec2b4bf2952744343652c154ad0acc",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1775052495,
-                  "message": "refactor: raname `Syscall` inteface to `syscaller` and make it private\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/bbb5c5a6c0ec2b4bf2952744343652c154ad0acc"
-               },
-               {
-                  "sha": "0cd529eebd8c7049aae066ccfb4b83437844637c",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1775052478,
-                  "message": "refactor: raname `HasBodyContent` function to `OneRequestBodyContains`\n\nCo-authored-by: Didier Roche-Tolomelli <didrocks@ubuntu.com>\nCo-authored-by: Dennis Loose <d-loose@users.noreply.github.com>\nCo-authored-by: Matthew Hagemann <matthew-hagemann@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/0cd529eebd8c7049aae066ccfb4b83437844637c"
-               },
-               {
-                  "sha": "9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4",
+                  "sha": "dfa3019c2dea24da4b63cf14772dcebe8d579807",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1775039447,
-                  "message": "refactor(golden): unify CheckOrUpdate for all types (#56)\n\n## Summary\n\nThis PR unifies the two golden file helper functions into a single\ngeneric `CheckOrUpdate`.\n\n### Changes\n\n- **`internal/testutils/golden/golden.go`**: Renamed `CheckOrUpdateYAML`\n→ `CheckOrUpdate` and merged the former string-only `CheckOrUpdate` into\nit. The new generic function auto-detects the type:\n  - `[]byte` and `string` values are stored/read as-is\n  - All other types fall back to YAML marshalling/unmarshalling\n- Two private helpers `encodeGolden` and `decodeGolden` handle the type\ndispatch\n\n- **`internal/snapd/recovery_test.go`**,\n**`internal/snapd/systemvolumes_test.go`**,\n**`internal/tpm/tpm_test.go`**: Updated call sites from\n`CheckOrUpdateYAML` → `CheckOrUpdate`\n\n### Motivation\n\nHaving two separate functions (`CheckOrUpdate` for strings,\n`CheckOrUpdateYAML` for structs) was redundant. The unified function\nsimplifies the API — callers no longer need to pick the right variant.",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/9303bf020c61ded8ba1c3b6301f5a0e29cdc71e4"
+                  "timestamp": 1775137671,
+                  "message": "chore: add contribute-to-repo Copilot skill (#57)\n\n## Summary\n\nAdds a Copilot CLI skill at `.github/skills/contribute-to-repo/SKILL.md`\nthat documents the standard workflow for contributing to this repo.\n\n### What the skill covers\n\n- **Remote discovery** — dynamically identifies fork vs upstream remotes\nvia `git remote -v`\n- **Co-author lookup** — prompts for any pair-programming partners and\nresolves their email from git history\n- **Conventional Commits** format with correct `Co-authored-by` trailers\n- **PR creation** — correct `owner`, `head` (`fork:branch`), and `base`\nparams for opening PRs against the upstream repo\n- **CI triage** — how to fetch job logs and fix common golangci-lint\nissues in this repo (`forcetypeassert`, `gci`, `whitespace`, `godot`)\n\nCopilot will load this skill automatically when asked to commit or open\na PR, or it can be invoked explicitly with `/contribute-to-repo`.",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/dfa3019c2dea24da4b63cf14772dcebe8d579807"
+               },
+               {
+                  "sha": "2101b21a09058c6b94c9989cc913cd3f1f1d5a11",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1775136978,
+                  "message": "feat(skill): add lint, format, and test step before commit\n\nAdd a new step 2 to the contribute-to-repo skill that runs\ngolangci-lint-v2 and go test ./... before staging and committing,\nas requested by @gabelluardo in PR #57.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/2101b21a09058c6b94c9989cc913cd3f1f1d5a11"
+               },
+               {
+                  "sha": "05dfcb28a0897fb00df165246a28d94177ebb23d",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1775048633,
+                  "message": "fix: drop part 5 to watch the CI, it seems to be token expensive, and prehaps out of scope for a PR skill",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/05dfcb28a0897fb00df165246a28d94177ebb23d"
                }
             ],
             "ciActions": [],
@@ -5418,25 +5418,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7624c0188d40a0e592dcffff551f16e19c2c3e60",
+                  "author": "adombeck",
+                  "timestamp": 1775142414,
+                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#1379)",
+                  "url": "https://github.com/canonical/authd/commit/7624c0188d40a0e592dcffff551f16e19c2c3e60"
+               },
+               {
+                  "sha": "9f5394c280df956cd3ee20fcbcb17387692dc828",
+                  "author": "adombeck",
+                  "timestamp": 1775142369,
+                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#1380)",
+                  "url": "https://github.com/canonical/authd/commit/9f5394c280df956cd3ee20fcbcb17387692dc828"
+               },
+               {
                   "sha": "a86655a66b2afad8f5366685ace60945070287a9",
                   "author": "adombeck",
                   "timestamp": 1775129768,
                   "message": "Fix version of broker snaps for stable releases (#1382)\n\nUDENG-9604",
                   "url": "https://github.com/canonical/authd/commit/a86655a66b2afad8f5366685ace60945070287a9"
-               },
-               {
-                  "sha": "770609f4ac1d11bd05161347ef81e5e658f5eac2",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775129220,
-                  "message": "Fix version of broker snaps for stable releases\n\nWe only considered tags which start with \"broker-\", but the packaging\nbranches (msentraid, google, oidc) add a \"Copy msentraid variant files\"\ncommit on top, which means that broker releases still had a version like\n0.4.0+a254a2c.81db5c3 instead of just 0.4.0.\n\nThe fix is to tag these commits with \"msentraid-0.4.0\" etc. and to use\nthose tags for the version (after stripping the prefix).",
-                  "url": "https://github.com/canonical/authd/commit/770609f4ac1d11bd05161347ef81e5e658f5eac2"
-               },
-               {
-                  "sha": "2bfc261a4d36e9337548b02d10647d45d9cfc7da",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775128141,
-                  "message": "Merge branch 'stable'",
-                  "url": "https://github.com/canonical/authd/commit/2bfc261a4d36e9337548b02d10647d45d9cfc7da"
                }
             ],
             "ciActions": [
@@ -5720,25 +5720,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7d2272107d500a650b695630fb4397679290228a",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769003812,
-                  "message": "feat: detect tpmfde using new snapd status api (#386)\n\nThis change swaps the method for determining if the system is using\nsnapd managed TPM/FDE from looking for the existence of\n`/dev/disk/by-label/ubuntu-data-enc` to the new TPM/FDE status API\nexposed by snapd.",
-                  "url": "https://github.com/canonical/firmware-updater/commit/7d2272107d500a650b695630fb4397679290228a"
+                  "sha": "9e387e49aa39d9f7013554b61b7a96444b817a33",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775142327,
+                  "message": "fix: use `snapctl system-mode` to check for TPM/FDE (#391)\n\nThe mechanism to check the TPM/FDE status via snapd's status API\nintroduced in #386 doesn't work because the `openAccess` policy used by\nthe\n[`/v2/system-info/storage-encrypt`](https://github.com/canonical/snapd/blob/5a0646e2c2779ccc488e7958ac6309f576f948ff/daemon/api_general.go#L67-L75)\nendpoint, [doesn't\nallow](https://github.com/canonical/snapd/blob/5a0646e2c2779ccc488e7958ac6309f576f948ff/daemon/access.go#L178-L180)\naccess via the `snap-snapd.socket`.\nInstead of relying on that endpoint, this PR changes the detection\nmechanism to check the output of `snapctl system-mode` for\n`storage-encrypted: managed`, consistent with what the security center\nis doing, see\nhttps://github.com/canonical/desktop-security-center/pull/164.\n\nUDENG-9593",
+                  "url": "https://github.com/canonical/firmware-updater/commit/9e387e49aa39d9f7013554b61b7a96444b817a33"
                },
                {
-                  "sha": "ecd87de7a3c92d3ce3109c0310ed333fad603f47",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768916776,
-                  "message": "fix: formatter and mocks",
-                  "url": "https://github.com/canonical/firmware-updater/commit/ecd87de7a3c92d3ce3109c0310ed333fad603f47"
+                  "sha": "58ec596b3ce588208b7a0171d577a06ed55cef9d",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775127862,
+                  "message": "test: update recovery_key_service_test",
+                  "url": "https://github.com/canonical/firmware-updater/commit/58ec596b3ce588208b7a0171d577a06ed55cef9d"
                },
                {
-                  "sha": "1869ac36d9a622a57ea079d3322b02e8c32c68bf",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768914762,
-                  "message": "test: add tests for covering snapd status api changes",
-                  "url": "https://github.com/canonical/firmware-updater/commit/1869ac36d9a622a57ea079d3322b02e8c32c68bf"
+                  "sha": "fcaa1071197bc833c1facd907f79bab9e2a4fcac",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775126667,
+                  "message": "fix: remove executable flag from test file",
+                  "url": "https://github.com/canonical/firmware-updater/commit/fcaa1071197bc833c1facd907f79bab9e2a4fcac"
                }
             ],
             "ciActions": [
@@ -7716,25 +7716,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7624c0188d40a0e592dcffff551f16e19c2c3e60",
+                  "author": "adombeck",
+                  "timestamp": 1775142414,
+                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#1379)",
+                  "url": "https://github.com/canonical/authd/commit/7624c0188d40a0e592dcffff551f16e19c2c3e60"
+               },
+               {
+                  "sha": "9f5394c280df956cd3ee20fcbcb17387692dc828",
+                  "author": "adombeck",
+                  "timestamp": 1775142369,
+                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#1380)",
+                  "url": "https://github.com/canonical/authd/commit/9f5394c280df956cd3ee20fcbcb17387692dc828"
+               },
+               {
                   "sha": "a86655a66b2afad8f5366685ace60945070287a9",
                   "author": "adombeck",
                   "timestamp": 1775129768,
                   "message": "Fix version of broker snaps for stable releases (#1382)\n\nUDENG-9604",
                   "url": "https://github.com/canonical/authd/commit/a86655a66b2afad8f5366685ace60945070287a9"
-               },
-               {
-                  "sha": "770609f4ac1d11bd05161347ef81e5e658f5eac2",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775129220,
-                  "message": "Fix version of broker snaps for stable releases\n\nWe only considered tags which start with \"broker-\", but the packaging\nbranches (msentraid, google, oidc) add a \"Copy msentraid variant files\"\ncommit on top, which means that broker releases still had a version like\n0.4.0+a254a2c.81db5c3 instead of just 0.4.0.\n\nThe fix is to tag these commits with \"msentraid-0.4.0\" etc. and to use\nthose tags for the version (after stripping the prefix).",
-                  "url": "https://github.com/canonical/authd/commit/770609f4ac1d11bd05161347ef81e5e658f5eac2"
-               },
-               {
-                  "sha": "2bfc261a4d36e9337548b02d10647d45d9cfc7da",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775128141,
-                  "message": "Merge branch 'stable'",
-                  "url": "https://github.com/canonical/authd/commit/2bfc261a4d36e9337548b02d10647d45d9cfc7da"
                }
             ],
             "ciActions": [
@@ -8018,25 +8018,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7d2272107d500a650b695630fb4397679290228a",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1769003812,
-                  "message": "feat: detect tpmfde using new snapd status api (#386)\n\nThis change swaps the method for determining if the system is using\nsnapd managed TPM/FDE from looking for the existence of\n`/dev/disk/by-label/ubuntu-data-enc` to the new TPM/FDE status API\nexposed by snapd.",
-                  "url": "https://github.com/canonical/firmware-updater/commit/7d2272107d500a650b695630fb4397679290228a"
+                  "sha": "9e387e49aa39d9f7013554b61b7a96444b817a33",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775142327,
+                  "message": "fix: use `snapctl system-mode` to check for TPM/FDE (#391)\n\nThe mechanism to check the TPM/FDE status via snapd's status API\nintroduced in #386 doesn't work because the `openAccess` policy used by\nthe\n[`/v2/system-info/storage-encrypt`](https://github.com/canonical/snapd/blob/5a0646e2c2779ccc488e7958ac6309f576f948ff/daemon/api_general.go#L67-L75)\nendpoint, [doesn't\nallow](https://github.com/canonical/snapd/blob/5a0646e2c2779ccc488e7958ac6309f576f948ff/daemon/access.go#L178-L180)\naccess via the `snap-snapd.socket`.\nInstead of relying on that endpoint, this PR changes the detection\nmechanism to check the output of `snapctl system-mode` for\n`storage-encrypted: managed`, consistent with what the security center\nis doing, see\nhttps://github.com/canonical/desktop-security-center/pull/164.\n\nUDENG-9593",
+                  "url": "https://github.com/canonical/firmware-updater/commit/9e387e49aa39d9f7013554b61b7a96444b817a33"
                },
                {
-                  "sha": "ecd87de7a3c92d3ce3109c0310ed333fad603f47",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768916776,
-                  "message": "fix: formatter and mocks",
-                  "url": "https://github.com/canonical/firmware-updater/commit/ecd87de7a3c92d3ce3109c0310ed333fad603f47"
+                  "sha": "58ec596b3ce588208b7a0171d577a06ed55cef9d",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775127862,
+                  "message": "test: update recovery_key_service_test",
+                  "url": "https://github.com/canonical/firmware-updater/commit/58ec596b3ce588208b7a0171d577a06ed55cef9d"
                },
                {
-                  "sha": "1869ac36d9a622a57ea079d3322b02e8c32c68bf",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1768914762,
-                  "message": "test: add tests for covering snapd status api changes",
-                  "url": "https://github.com/canonical/firmware-updater/commit/1869ac36d9a622a57ea079d3322b02e8c32c68bf"
+                  "sha": "fcaa1071197bc833c1facd907f79bab9e2a4fcac",
+                  "author": "Dennis Loose",
+                  "timestamp": 1775126667,
+                  "message": "fix: remove executable flag from test file",
+                  "url": "https://github.com/canonical/firmware-updater/commit/fcaa1071197bc833c1facd907f79bab9e2a4fcac"
                }
             ],
             "ciActions": [
