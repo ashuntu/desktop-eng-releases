@@ -10,25 +10,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "976d9aec3c524bee6ae37f3f435fff827851c2a5",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1775478974,
-                  "message": "Tests to ensure local user login with authd/broker disabled (#1381)\n\nWe had these tests before, but we only used them to check if the local\nuser still had access to sudo. Now that we disable authd and the brokers\nthrough SSH commands, we can reorder the commands a bit to also make\nsure the local user can authenticate through GDM.\n\n\nUDENG-9557",
-                  "url": "https://github.com/canonical/authd/commit/976d9aec3c524bee6ae37f3f435fff827851c2a5"
+                  "sha": "bc9ac4afd5a2f0da389316f0ec02ba67406917ee",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1775507217,
+                  "message": "e2e-tests: End test case without closing terminal\n\nThere's no point in cancelling the login operation and closing the\nterminal.  All our test cases start by restoring a snapshot, so we don't\nhave to leave a clean state - which we don't do in the other test cases\nanyway.",
+                  "url": "https://github.com/canonical/authd/commit/bc9ac4afd5a2f0da389316f0ec02ba67406917ee"
                },
                {
-                  "sha": "6df03f5404b407916dd7f70b46d50574eaed6d77",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1775125988,
-                  "message": "Tests to ensure local user login with authd/broker disabled\n\nWe had these tests before, but we only used to check if the local user\nstill had access to sudo. Now that we disable authd and the brokers\nthrough SSH commands, we can reorder the commands a bit to also make\nsure the local user can authenticate through GDM also.",
-                  "url": "https://github.com/canonical/authd/commit/6df03f5404b407916dd7f70b46d50574eaed6d77"
+                  "sha": "7c2a9a804849562b2eb6fc222a60502397a316b9",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1775498949,
+                  "message": "e2e-tests: Fix incomplete journal in CI\n\nThe journal was streamed with socat in bidirectional mode using STDIO\n(both stdin and stdout). That had the effect that when socat closes the\nconnection when it reads EOF from stdin - which happens immediately in\nCI, because there's no stdin.\n\nThe fix is to use socat in unidirectional mode, using -u. We also\nexplicitly only open stdout and not stdin.",
+                  "url": "https://github.com/canonical/authd/commit/7c2a9a804849562b2eb6fc222a60502397a316b9"
                },
                {
-                  "sha": "f064c5799209b6a69e8d99c2b48dcba5cb5f8503",
-                  "author": "adombeck",
-                  "timestamp": 1775476442,
-                  "message": "Add DisplayName() to Provider interface (#1396)",
-                  "url": "https://github.com/canonical/authd/commit/f064c5799209b6a69e8d99c2b48dcba5cb5f8503"
+                  "sha": "9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1775486244,
+                  "message": "e2e-tests: Terminate socat\n\nTerminating systemd-journal-remote might result in loss of journal\nentries. Let's terminate socat first, which should cause it to signal\nEOF to systemd-journal-remote, which should then flush and exit on its\nown.",
+                  "url": "https://github.com/canonical/authd/commit/9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61"
                }
             ],
             "ciActions": [
@@ -5418,25 +5418,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "976d9aec3c524bee6ae37f3f435fff827851c2a5",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1775478974,
-                  "message": "Tests to ensure local user login with authd/broker disabled (#1381)\n\nWe had these tests before, but we only used them to check if the local\nuser still had access to sudo. Now that we disable authd and the brokers\nthrough SSH commands, we can reorder the commands a bit to also make\nsure the local user can authenticate through GDM.\n\n\nUDENG-9557",
-                  "url": "https://github.com/canonical/authd/commit/976d9aec3c524bee6ae37f3f435fff827851c2a5"
+                  "sha": "bc9ac4afd5a2f0da389316f0ec02ba67406917ee",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1775507217,
+                  "message": "e2e-tests: End test case without closing terminal\n\nThere's no point in cancelling the login operation and closing the\nterminal.  All our test cases start by restoring a snapshot, so we don't\nhave to leave a clean state - which we don't do in the other test cases\nanyway.",
+                  "url": "https://github.com/canonical/authd/commit/bc9ac4afd5a2f0da389316f0ec02ba67406917ee"
                },
                {
-                  "sha": "6df03f5404b407916dd7f70b46d50574eaed6d77",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1775125988,
-                  "message": "Tests to ensure local user login with authd/broker disabled\n\nWe had these tests before, but we only used to check if the local user\nstill had access to sudo. Now that we disable authd and the brokers\nthrough SSH commands, we can reorder the commands a bit to also make\nsure the local user can authenticate through GDM also.",
-                  "url": "https://github.com/canonical/authd/commit/6df03f5404b407916dd7f70b46d50574eaed6d77"
+                  "sha": "7c2a9a804849562b2eb6fc222a60502397a316b9",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1775498949,
+                  "message": "e2e-tests: Fix incomplete journal in CI\n\nThe journal was streamed with socat in bidirectional mode using STDIO\n(both stdin and stdout). That had the effect that when socat closes the\nconnection when it reads EOF from stdin - which happens immediately in\nCI, because there's no stdin.\n\nThe fix is to use socat in unidirectional mode, using -u. We also\nexplicitly only open stdout and not stdin.",
+                  "url": "https://github.com/canonical/authd/commit/7c2a9a804849562b2eb6fc222a60502397a316b9"
                },
                {
-                  "sha": "f064c5799209b6a69e8d99c2b48dcba5cb5f8503",
-                  "author": "adombeck",
-                  "timestamp": 1775476442,
-                  "message": "Add DisplayName() to Provider interface (#1396)",
-                  "url": "https://github.com/canonical/authd/commit/f064c5799209b6a69e8d99c2b48dcba5cb5f8503"
+                  "sha": "9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1775486244,
+                  "message": "e2e-tests: Terminate socat\n\nTerminating systemd-journal-remote might result in loss of journal\nentries. Let's terminate socat first, which should cause it to signal\nEOF to systemd-journal-remote, which should then flush and exit on its\nown.",
+                  "url": "https://github.com/canonical/authd/commit/9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61"
                }
             ],
             "ciActions": [
@@ -7716,25 +7716,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "976d9aec3c524bee6ae37f3f435fff827851c2a5",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1775478974,
-                  "message": "Tests to ensure local user login with authd/broker disabled (#1381)\n\nWe had these tests before, but we only used them to check if the local\nuser still had access to sudo. Now that we disable authd and the brokers\nthrough SSH commands, we can reorder the commands a bit to also make\nsure the local user can authenticate through GDM.\n\n\nUDENG-9557",
-                  "url": "https://github.com/canonical/authd/commit/976d9aec3c524bee6ae37f3f435fff827851c2a5"
+                  "sha": "bc9ac4afd5a2f0da389316f0ec02ba67406917ee",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1775507217,
+                  "message": "e2e-tests: End test case without closing terminal\n\nThere's no point in cancelling the login operation and closing the\nterminal.  All our test cases start by restoring a snapshot, so we don't\nhave to leave a clean state - which we don't do in the other test cases\nanyway.",
+                  "url": "https://github.com/canonical/authd/commit/bc9ac4afd5a2f0da389316f0ec02ba67406917ee"
                },
                {
-                  "sha": "6df03f5404b407916dd7f70b46d50574eaed6d77",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1775125988,
-                  "message": "Tests to ensure local user login with authd/broker disabled\n\nWe had these tests before, but we only used to check if the local user\nstill had access to sudo. Now that we disable authd and the brokers\nthrough SSH commands, we can reorder the commands a bit to also make\nsure the local user can authenticate through GDM also.",
-                  "url": "https://github.com/canonical/authd/commit/6df03f5404b407916dd7f70b46d50574eaed6d77"
+                  "sha": "7c2a9a804849562b2eb6fc222a60502397a316b9",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1775498949,
+                  "message": "e2e-tests: Fix incomplete journal in CI\n\nThe journal was streamed with socat in bidirectional mode using STDIO\n(both stdin and stdout). That had the effect that when socat closes the\nconnection when it reads EOF from stdin - which happens immediately in\nCI, because there's no stdin.\n\nThe fix is to use socat in unidirectional mode, using -u. We also\nexplicitly only open stdout and not stdin.",
+                  "url": "https://github.com/canonical/authd/commit/7c2a9a804849562b2eb6fc222a60502397a316b9"
                },
                {
-                  "sha": "f064c5799209b6a69e8d99c2b48dcba5cb5f8503",
-                  "author": "adombeck",
-                  "timestamp": 1775476442,
-                  "message": "Add DisplayName() to Provider interface (#1396)",
-                  "url": "https://github.com/canonical/authd/commit/f064c5799209b6a69e8d99c2b48dcba5cb5f8503"
+                  "sha": "9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1775486244,
+                  "message": "e2e-tests: Terminate socat\n\nTerminating systemd-journal-remote might result in loss of journal\nentries. Let's terminate socat first, which should cause it to signal\nEOF to systemd-journal-remote, which should then flush and exit on its\nown.",
+                  "url": "https://github.com/canonical/authd/commit/9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61"
                }
             ],
             "ciActions": [
