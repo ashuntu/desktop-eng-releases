@@ -10,25 +10,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8c063fe2d0e4c1ab3ae61c994cc09873662b9563",
+                  "author": "Shane Crowley",
+                  "timestamp": 1775559802,
+                  "message": "docs: improve group management content (#1401)\n\nUsers with a particular interest in common privilege management\nscenarios, such as those related to sudo and docker, may have difficulty\nfinding the relevant information by internal or external search.\n\nHere, the following changes are proposed to better surface this aspect\nof group management:\n\n* Retitle main reference page to \"Group and privilege management\"\n* Include entry for Group and privilege management on the homepage docs\nmap\n* Update reference page content and metadescription to include explicit\nmention of common use-cases (sudo, docker)\n* Update section in config guide related to groups to mention common\nuse-cases\n\nIn addition, several minor copy improvements were made to the reference\npage for consistency and clarity.\n\nUDENG-9497",
+                  "url": "https://github.com/canonical/authd/commit/8c063fe2d0e4c1ab3ae61c994cc09873662b9563"
+               },
+               {
+                  "sha": "7acb3daafeaa019c34bad3ea32dd0cdc826180f9",
+                  "author": "shanecrowley",
+                  "timestamp": 1775473732,
+                  "message": "add emphasis to privileges in group management docs\n\n* explicitly mention sudo and docker where possible\n* update meta descriptions to highlight privileges\n* retitle group management page\n* favour \"identity provider\" over \"remote provider\" for consistency\n* update reference index\n* link to group management docs from homepage\n* various grammar and formatting fixes",
+                  "url": "https://github.com/canonical/authd/commit/7acb3daafeaa019c34bad3ea32dd0cdc826180f9"
+               },
+               {
                   "sha": "bc9ac4afd5a2f0da389316f0ec02ba67406917ee",
                   "author": "Adrian Dombeck",
                   "timestamp": 1775507217,
                   "message": "e2e-tests: End test case without closing terminal\n\nThere's no point in cancelling the login operation and closing the\nterminal.  All our test cases start by restoring a snapshot, so we don't\nhave to leave a clean state - which we don't do in the other test cases\nanyway.",
                   "url": "https://github.com/canonical/authd/commit/bc9ac4afd5a2f0da389316f0ec02ba67406917ee"
-               },
-               {
-                  "sha": "7c2a9a804849562b2eb6fc222a60502397a316b9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775498949,
-                  "message": "e2e-tests: Fix incomplete journal in CI\n\nThe journal was streamed with socat in bidirectional mode using STDIO\n(both stdin and stdout). That had the effect that when socat closes the\nconnection when it reads EOF from stdin - which happens immediately in\nCI, because there's no stdin.\n\nThe fix is to use socat in unidirectional mode, using -u. We also\nexplicitly only open stdout and not stdin.",
-                  "url": "https://github.com/canonical/authd/commit/7c2a9a804849562b2eb6fc222a60502397a316b9"
-               },
-               {
-                  "sha": "9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775486244,
-                  "message": "e2e-tests: Terminate socat\n\nTerminating systemd-journal-remote might result in loss of journal\nentries. Let's terminate socat first, which should cause it to signal\nEOF to systemd-journal-remote, which should then flush and exit on its\nown.",
-                  "url": "https://github.com/canonical/authd/commit/9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61"
                }
             ],
             "ciActions": [
@@ -5418,25 +5418,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8c063fe2d0e4c1ab3ae61c994cc09873662b9563",
+                  "author": "Shane Crowley",
+                  "timestamp": 1775559802,
+                  "message": "docs: improve group management content (#1401)\n\nUsers with a particular interest in common privilege management\nscenarios, such as those related to sudo and docker, may have difficulty\nfinding the relevant information by internal or external search.\n\nHere, the following changes are proposed to better surface this aspect\nof group management:\n\n* Retitle main reference page to \"Group and privilege management\"\n* Include entry for Group and privilege management on the homepage docs\nmap\n* Update reference page content and metadescription to include explicit\nmention of common use-cases (sudo, docker)\n* Update section in config guide related to groups to mention common\nuse-cases\n\nIn addition, several minor copy improvements were made to the reference\npage for consistency and clarity.\n\nUDENG-9497",
+                  "url": "https://github.com/canonical/authd/commit/8c063fe2d0e4c1ab3ae61c994cc09873662b9563"
+               },
+               {
+                  "sha": "7acb3daafeaa019c34bad3ea32dd0cdc826180f9",
+                  "author": "shanecrowley",
+                  "timestamp": 1775473732,
+                  "message": "add emphasis to privileges in group management docs\n\n* explicitly mention sudo and docker where possible\n* update meta descriptions to highlight privileges\n* retitle group management page\n* favour \"identity provider\" over \"remote provider\" for consistency\n* update reference index\n* link to group management docs from homepage\n* various grammar and formatting fixes",
+                  "url": "https://github.com/canonical/authd/commit/7acb3daafeaa019c34bad3ea32dd0cdc826180f9"
+               },
+               {
                   "sha": "bc9ac4afd5a2f0da389316f0ec02ba67406917ee",
                   "author": "Adrian Dombeck",
                   "timestamp": 1775507217,
                   "message": "e2e-tests: End test case without closing terminal\n\nThere's no point in cancelling the login operation and closing the\nterminal.  All our test cases start by restoring a snapshot, so we don't\nhave to leave a clean state - which we don't do in the other test cases\nanyway.",
                   "url": "https://github.com/canonical/authd/commit/bc9ac4afd5a2f0da389316f0ec02ba67406917ee"
-               },
-               {
-                  "sha": "7c2a9a804849562b2eb6fc222a60502397a316b9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775498949,
-                  "message": "e2e-tests: Fix incomplete journal in CI\n\nThe journal was streamed with socat in bidirectional mode using STDIO\n(both stdin and stdout). That had the effect that when socat closes the\nconnection when it reads EOF from stdin - which happens immediately in\nCI, because there's no stdin.\n\nThe fix is to use socat in unidirectional mode, using -u. We also\nexplicitly only open stdout and not stdin.",
-                  "url": "https://github.com/canonical/authd/commit/7c2a9a804849562b2eb6fc222a60502397a316b9"
-               },
-               {
-                  "sha": "9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775486244,
-                  "message": "e2e-tests: Terminate socat\n\nTerminating systemd-journal-remote might result in loss of journal\nentries. Let's terminate socat first, which should cause it to signal\nEOF to systemd-journal-remote, which should then flush and exit on its\nown.",
-                  "url": "https://github.com/canonical/authd/commit/9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61"
                }
             ],
             "ciActions": [
@@ -7716,25 +7716,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8c063fe2d0e4c1ab3ae61c994cc09873662b9563",
+                  "author": "Shane Crowley",
+                  "timestamp": 1775559802,
+                  "message": "docs: improve group management content (#1401)\n\nUsers with a particular interest in common privilege management\nscenarios, such as those related to sudo and docker, may have difficulty\nfinding the relevant information by internal or external search.\n\nHere, the following changes are proposed to better surface this aspect\nof group management:\n\n* Retitle main reference page to \"Group and privilege management\"\n* Include entry for Group and privilege management on the homepage docs\nmap\n* Update reference page content and metadescription to include explicit\nmention of common use-cases (sudo, docker)\n* Update section in config guide related to groups to mention common\nuse-cases\n\nIn addition, several minor copy improvements were made to the reference\npage for consistency and clarity.\n\nUDENG-9497",
+                  "url": "https://github.com/canonical/authd/commit/8c063fe2d0e4c1ab3ae61c994cc09873662b9563"
+               },
+               {
+                  "sha": "7acb3daafeaa019c34bad3ea32dd0cdc826180f9",
+                  "author": "shanecrowley",
+                  "timestamp": 1775473732,
+                  "message": "add emphasis to privileges in group management docs\n\n* explicitly mention sudo and docker where possible\n* update meta descriptions to highlight privileges\n* retitle group management page\n* favour \"identity provider\" over \"remote provider\" for consistency\n* update reference index\n* link to group management docs from homepage\n* various grammar and formatting fixes",
+                  "url": "https://github.com/canonical/authd/commit/7acb3daafeaa019c34bad3ea32dd0cdc826180f9"
+               },
+               {
                   "sha": "bc9ac4afd5a2f0da389316f0ec02ba67406917ee",
                   "author": "Adrian Dombeck",
                   "timestamp": 1775507217,
                   "message": "e2e-tests: End test case without closing terminal\n\nThere's no point in cancelling the login operation and closing the\nterminal.  All our test cases start by restoring a snapshot, so we don't\nhave to leave a clean state - which we don't do in the other test cases\nanyway.",
                   "url": "https://github.com/canonical/authd/commit/bc9ac4afd5a2f0da389316f0ec02ba67406917ee"
-               },
-               {
-                  "sha": "7c2a9a804849562b2eb6fc222a60502397a316b9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775498949,
-                  "message": "e2e-tests: Fix incomplete journal in CI\n\nThe journal was streamed with socat in bidirectional mode using STDIO\n(both stdin and stdout). That had the effect that when socat closes the\nconnection when it reads EOF from stdin - which happens immediately in\nCI, because there's no stdin.\n\nThe fix is to use socat in unidirectional mode, using -u. We also\nexplicitly only open stdout and not stdin.",
-                  "url": "https://github.com/canonical/authd/commit/7c2a9a804849562b2eb6fc222a60502397a316b9"
-               },
-               {
-                  "sha": "9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1775486244,
-                  "message": "e2e-tests: Terminate socat\n\nTerminating systemd-journal-remote might result in loss of journal\nentries. Let's terminate socat first, which should cause it to signal\nEOF to systemd-journal-remote, which should then flush and exit on its\nown.",
-                  "url": "https://github.com/canonical/authd/commit/9908cc6a1eb2c819c2abb7c2dac7ef1d70111a61"
                }
             ],
             "ciActions": [
