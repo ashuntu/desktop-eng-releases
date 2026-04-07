@@ -3769,6 +3769,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1590501b68772e31aa59f06d93360c9d06771f71",
+                  "author": "adombeck",
+                  "timestamp": 1775602150,
+                  "message": "deps(go): bump github.com/mattn/go-sqlite3 from 1.14.38 to 1.14.41 in the minor-updates group (#1410)",
+                  "url": "https://github.com/canonical/authd/commit/1590501b68772e31aa59f06d93360c9d06771f71"
+               },
+               {
                   "sha": "f1f28329f174aa15d6b96cf79f9d612d16c21710",
                   "author": "adombeck",
                   "timestamp": 1775572316,
@@ -3776,18 +3783,11 @@
                   "url": "https://github.com/canonical/authd/commit/f1f28329f174aa15d6b96cf79f9d612d16c21710"
                },
                {
-                  "sha": "cf9b536d1ac997582b7a6a62171aebe4ee32d377",
-                  "author": "Shane Crowley",
-                  "timestamp": 1775561494,
-                  "message": "docs: cross-ref relevant SSH content (#1404)\n\nContent on SSH in the security overview is relevant to the reader of the\nSSH how-to guide.\n\nThis adds brief note and a link in the how-to guide.\n\nUDENG-8258",
-                  "url": "https://github.com/canonical/authd/commit/cf9b536d1ac997582b7a6a62171aebe4ee32d377"
-               },
-               {
-                  "sha": "93180b72a985ca1f3151d62f40f09916e81a6d38",
-                  "author": "shanecrowley",
-                  "timestamp": 1775485173,
-                  "message": "cross-ref relevant SSH content\n\nContent on SSH in the security overview is relevant to the reader of the\nSSH how-to guide.",
-                  "url": "https://github.com/canonical/authd/commit/93180b72a985ca1f3151d62f40f09916e81a6d38"
+                  "sha": "81313f1bd6c583a4cdc33f2cfc4d27346968ae0e",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1775569643,
+                  "message": "deps(go): bump github.com/mattn/go-sqlite3 in the minor-updates group\n\nBumps the minor-updates group with 1 update: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3).\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.38 to 1.14.41\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.38...v1.14.41)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.41\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/authd/commit/81313f1bd6c583a4cdc33f2cfc4d27346968ae0e"
                }
             ],
             "ciActions": [
@@ -3935,25 +3935,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "163543e19389597e932137eaf2b8c17b60d41a8d",
+                  "author": "renovate[bot]",
+                  "timestamp": 1775601379,
+                  "message": "chore(deps): update dependency requests to v2.33.0 [security] (#47)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [requests](https://redirect.github.com/psf/requests)\n([changelog](https://redirect.github.com/psf/requests/blob/master/HISTORY.md))\n| `2.32.5` → `2.33.0` |\n![age](https://developer.mend.io/api/mc/badges/age/pypi/requests/2.33.0?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/pypi/requests/2.32.5/2.33.0?slim=true)\n|\n\n### GitHub Vulnerability Alerts\n\n####\n[CVE-2026-25645](https://redirect.github.com/psf/requests/security/advisories/GHSA-gc5v-m9x4-r6x2)\n\n### Impact\nThe `requests.utils.extract_zipped_paths()` utility function uses a\npredictable filename when extracting files from zip archives into the\nsystem temporary directory. If the target file already exists, it is\nreused without validation. A local attacker with write access to the\ntemp directory could pre-create a malicious file that would be loaded in\nplace of the legitimate one.\n\n### Affected usages\n**Standard usage of the Requests library is not affected by this\nvulnerability.** Only applications that call `extract_zipped_paths()`\ndirectly are impacted.\n\n### Remediation\nUpgrade to at least Requests 2.33.0, where the library now extracts\nfiles to a non-deterministic location.\n\nIf developers are unable to upgrade, they can set `TMPDIR` in their\nenvironment to a directory with restricted write access.\n\n---\n\n### Release Notes\n\n<details>\n<summary>psf/requests (requests)</summary>\n\n###\n[`v2.33.0`](https://redirect.github.com/psf/requests/blob/HEAD/HISTORY.md#2330-2026-03-25)\n\n[Compare\nSource](https://redirect.github.com/psf/requests/compare/v2.32.5...v2.33.0)\n\n**Announcements**\n\n- 📣 Requests is adding inline types. If you have a typed code base that\nuses Requests, please take a look at\n[#&#8203;7271](https://redirect.github.com/psf/requests/issues/7271).\nGive it a try, and report\n  any gaps or feedback you may have in the issue. 📣\n\n**Security**\n\n- CVE-2026-25645 `requests.utils.extract_zipped_paths` now extracts\n  contents to a non-deterministic location to prevent malicious file\n  replacement. This does not affect default usage of Requests, only\n  applications calling the utility function directly.\n\n**Improvements**\n\n- Migrated to a PEP 517 build system using setuptools.\n([#&#8203;7012](https://redirect.github.com/psf/requests/issues/7012))\n\n**Bugfixes**\n\n- Fixed an issue where an empty netrc entry could cause\n  malformed authentication to be applied to Requests on\nPython 3.11+.\n([#&#8203;7205](https://redirect.github.com/psf/requests/issues/7205))\n\n**Deprecations**\n\n- Dropped support for Python 3.9 following its end of support.\n([#&#8203;7196](https://redirect.github.com/psf/requests/issues/7196))\n\n**Documentation**\n\n- Various typo fixes and doc improvements.\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"\" (UTC), Automerge - At any time (no\nschedule defined).\n\n🚦 **Automerge**: Enabled.\n\n♻ **Rebasing**: Whenever PR is behind base branch, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/mediawiki-k8s-operator).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4xMDIuMTEiLCJ1cGRhdGVkSW5WZXIiOiI0My4xMDIuMTEiLCJ0YXJnZXRCcmFuY2giOiJtYWluIiwibGFiZWxzIjpbXX0=-->",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/163543e19389597e932137eaf2b8c17b60d41a8d"
+               },
+               {
+                  "sha": "dd9598b3b9da4a34f9a5e0606981ac456273cedc",
+                  "author": "renovate[bot]",
+                  "timestamp": 1775590198,
+                  "message": "chore(deps): update dependency requests to v2.33.0 [security]",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/dd9598b3b9da4a34f9a5e0606981ac456273cedc"
+               },
+               {
                   "sha": "4b01c5eae023119f257e7d8c620575d228916929",
                   "author": "Kat",
                   "timestamp": 1775574170,
                   "message": "fix(README.md) Minor README fixes (#40)\n\nUpdate the license badge and fix some broken comments in the README.",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/4b01c5eae023119f257e7d8c620575d228916929"
-               },
-               {
-                  "sha": "92031efd33131e76058a6dfb08e5c4e9c8efeed0",
-                  "author": "Kat",
-                  "timestamp": 1775147755,
-                  "message": "docs(security): Add page detailing security considerations for MediaWiki (#42)\n\nAn initial page detailing security considerations for MediaWiki.\n\nHere, we detail secrets generation, sensitive configuration handling, as\nwell as potential risks such as CVEs, extensions, and HTTP.\n\n<img width=\"2290\" height=\"2552\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/1865f3d9-8125-4019-962d-00b3242ffa93\"\n/>\n\n\nRequires #41 to be merged first.\n\n---\n[UDENG-9261](https://warthogs.atlassian.net/browse/UDENG-9261)\n\n[UDENG-9261]:\nhttps://warthogs.atlassian.net/browse/UDENG-9261?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/92031efd33131e76058a6dfb08e5c4e9c8efeed0"
-               },
-               {
-                  "sha": "7a8460ed0426a6ccc5842d2ea2ff694a07e7c699",
-                  "author": "Kat",
-                  "timestamp": 1775146986,
-                  "message": "feat: Add Redis support (#25)\n\nThis PR implements support for using Redis as our main cache. As part of\nthis, we added a job runner service for Redis to allow for consumption\nof the job queue in an asynchronous manner (by default, one job gets\nprocessed per HTTP request received). The files involved with the job\nrunner are included in the rock. Much of the setup is based on the\n[Redis MediaWiki docs page](https://www.mediawiki.org/wiki/Redis).\n\nThough we probably could include the composer lock file related to the\nservice, given that we don't use composer to update these files during\nthe charm's lifecycle, it would be difficult to maintain the lock file\nwithout also having the composer.json file in the repository as well.\n\nThe job runner configuration is rather opinionated and is partially\nbased on the sample found in the job runner service source. However, it\nshouldn't cause functionality issues. In theory, worst case, an\nadministrator could run the job queue manually by sshing into the\ncontainer (maybe this should be an action in the future), or they could\njust scale the deployment further should the job queue get excessive.\n\nWhile MediaWiki does support handling multiple Redis endpoints with\nautomatic fallback, it doesn't appear to be the case that the Redis\ncharm will provide endpoints for units other than the leader.\n\nNote, eventually we'll want to move to\n[Valkey](github.com/canonical/valkey-operator), but currently, it\ndoesn't appear to be ready. At least the transition hopefully shouldn't\nbe too difficult, as the fundamentals should still be the same.\n\n---\n[UDENG-9254](https://warthogs.atlassian.net/browse/UDENG-9254)\n\n[UDENG-9254]:\nhttps://warthogs.atlassian.net/browse/UDENG-9254?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/7a8460ed0426a6ccc5842d2ea2ff694a07e7c699"
                }
             ],
             "ciActions": [],
@@ -5451,6 +5451,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1590501b68772e31aa59f06d93360c9d06771f71",
+                  "author": "adombeck",
+                  "timestamp": 1775602150,
+                  "message": "deps(go): bump github.com/mattn/go-sqlite3 from 1.14.38 to 1.14.41 in the minor-updates group (#1410)",
+                  "url": "https://github.com/canonical/authd/commit/1590501b68772e31aa59f06d93360c9d06771f71"
+               },
+               {
                   "sha": "f1f28329f174aa15d6b96cf79f9d612d16c21710",
                   "author": "adombeck",
                   "timestamp": 1775572316,
@@ -5458,18 +5465,11 @@
                   "url": "https://github.com/canonical/authd/commit/f1f28329f174aa15d6b96cf79f9d612d16c21710"
                },
                {
-                  "sha": "cf9b536d1ac997582b7a6a62171aebe4ee32d377",
-                  "author": "Shane Crowley",
-                  "timestamp": 1775561494,
-                  "message": "docs: cross-ref relevant SSH content (#1404)\n\nContent on SSH in the security overview is relevant to the reader of the\nSSH how-to guide.\n\nThis adds brief note and a link in the how-to guide.\n\nUDENG-8258",
-                  "url": "https://github.com/canonical/authd/commit/cf9b536d1ac997582b7a6a62171aebe4ee32d377"
-               },
-               {
-                  "sha": "93180b72a985ca1f3151d62f40f09916e81a6d38",
-                  "author": "shanecrowley",
-                  "timestamp": 1775485173,
-                  "message": "cross-ref relevant SSH content\n\nContent on SSH in the security overview is relevant to the reader of the\nSSH how-to guide.",
-                  "url": "https://github.com/canonical/authd/commit/93180b72a985ca1f3151d62f40f09916e81a6d38"
+                  "sha": "81313f1bd6c583a4cdc33f2cfc4d27346968ae0e",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1775569643,
+                  "message": "deps(go): bump github.com/mattn/go-sqlite3 in the minor-updates group\n\nBumps the minor-updates group with 1 update: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3).\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.38 to 1.14.41\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.38...v1.14.41)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.41\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/authd/commit/81313f1bd6c583a4cdc33f2cfc4d27346968ae0e"
                }
             ],
             "ciActions": [
@@ -6175,25 +6175,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "163543e19389597e932137eaf2b8c17b60d41a8d",
+                  "author": "renovate[bot]",
+                  "timestamp": 1775601379,
+                  "message": "chore(deps): update dependency requests to v2.33.0 [security] (#47)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [requests](https://redirect.github.com/psf/requests)\n([changelog](https://redirect.github.com/psf/requests/blob/master/HISTORY.md))\n| `2.32.5` → `2.33.0` |\n![age](https://developer.mend.io/api/mc/badges/age/pypi/requests/2.33.0?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/pypi/requests/2.32.5/2.33.0?slim=true)\n|\n\n### GitHub Vulnerability Alerts\n\n####\n[CVE-2026-25645](https://redirect.github.com/psf/requests/security/advisories/GHSA-gc5v-m9x4-r6x2)\n\n### Impact\nThe `requests.utils.extract_zipped_paths()` utility function uses a\npredictable filename when extracting files from zip archives into the\nsystem temporary directory. If the target file already exists, it is\nreused without validation. A local attacker with write access to the\ntemp directory could pre-create a malicious file that would be loaded in\nplace of the legitimate one.\n\n### Affected usages\n**Standard usage of the Requests library is not affected by this\nvulnerability.** Only applications that call `extract_zipped_paths()`\ndirectly are impacted.\n\n### Remediation\nUpgrade to at least Requests 2.33.0, where the library now extracts\nfiles to a non-deterministic location.\n\nIf developers are unable to upgrade, they can set `TMPDIR` in their\nenvironment to a directory with restricted write access.\n\n---\n\n### Release Notes\n\n<details>\n<summary>psf/requests (requests)</summary>\n\n###\n[`v2.33.0`](https://redirect.github.com/psf/requests/blob/HEAD/HISTORY.md#2330-2026-03-25)\n\n[Compare\nSource](https://redirect.github.com/psf/requests/compare/v2.32.5...v2.33.0)\n\n**Announcements**\n\n- 📣 Requests is adding inline types. If you have a typed code base that\nuses Requests, please take a look at\n[#&#8203;7271](https://redirect.github.com/psf/requests/issues/7271).\nGive it a try, and report\n  any gaps or feedback you may have in the issue. 📣\n\n**Security**\n\n- CVE-2026-25645 `requests.utils.extract_zipped_paths` now extracts\n  contents to a non-deterministic location to prevent malicious file\n  replacement. This does not affect default usage of Requests, only\n  applications calling the utility function directly.\n\n**Improvements**\n\n- Migrated to a PEP 517 build system using setuptools.\n([#&#8203;7012](https://redirect.github.com/psf/requests/issues/7012))\n\n**Bugfixes**\n\n- Fixed an issue where an empty netrc entry could cause\n  malformed authentication to be applied to Requests on\nPython 3.11+.\n([#&#8203;7205](https://redirect.github.com/psf/requests/issues/7205))\n\n**Deprecations**\n\n- Dropped support for Python 3.9 following its end of support.\n([#&#8203;7196](https://redirect.github.com/psf/requests/issues/7196))\n\n**Documentation**\n\n- Various typo fixes and doc improvements.\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"\" (UTC), Automerge - At any time (no\nschedule defined).\n\n🚦 **Automerge**: Enabled.\n\n♻ **Rebasing**: Whenever PR is behind base branch, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/mediawiki-k8s-operator).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4xMDIuMTEiLCJ1cGRhdGVkSW5WZXIiOiI0My4xMDIuMTEiLCJ0YXJnZXRCcmFuY2giOiJtYWluIiwibGFiZWxzIjpbXX0=-->",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/163543e19389597e932137eaf2b8c17b60d41a8d"
+               },
+               {
+                  "sha": "dd9598b3b9da4a34f9a5e0606981ac456273cedc",
+                  "author": "renovate[bot]",
+                  "timestamp": 1775590198,
+                  "message": "chore(deps): update dependency requests to v2.33.0 [security]",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/dd9598b3b9da4a34f9a5e0606981ac456273cedc"
+               },
+               {
                   "sha": "4b01c5eae023119f257e7d8c620575d228916929",
                   "author": "Kat",
                   "timestamp": 1775574170,
                   "message": "fix(README.md) Minor README fixes (#40)\n\nUpdate the license badge and fix some broken comments in the README.",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/4b01c5eae023119f257e7d8c620575d228916929"
-               },
-               {
-                  "sha": "92031efd33131e76058a6dfb08e5c4e9c8efeed0",
-                  "author": "Kat",
-                  "timestamp": 1775147755,
-                  "message": "docs(security): Add page detailing security considerations for MediaWiki (#42)\n\nAn initial page detailing security considerations for MediaWiki.\n\nHere, we detail secrets generation, sensitive configuration handling, as\nwell as potential risks such as CVEs, extensions, and HTTP.\n\n<img width=\"2290\" height=\"2552\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/1865f3d9-8125-4019-962d-00b3242ffa93\"\n/>\n\n\nRequires #41 to be merged first.\n\n---\n[UDENG-9261](https://warthogs.atlassian.net/browse/UDENG-9261)\n\n[UDENG-9261]:\nhttps://warthogs.atlassian.net/browse/UDENG-9261?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/92031efd33131e76058a6dfb08e5c4e9c8efeed0"
-               },
-               {
-                  "sha": "7a8460ed0426a6ccc5842d2ea2ff694a07e7c699",
-                  "author": "Kat",
-                  "timestamp": 1775146986,
-                  "message": "feat: Add Redis support (#25)\n\nThis PR implements support for using Redis as our main cache. As part of\nthis, we added a job runner service for Redis to allow for consumption\nof the job queue in an asynchronous manner (by default, one job gets\nprocessed per HTTP request received). The files involved with the job\nrunner are included in the rock. Much of the setup is based on the\n[Redis MediaWiki docs page](https://www.mediawiki.org/wiki/Redis).\n\nThough we probably could include the composer lock file related to the\nservice, given that we don't use composer to update these files during\nthe charm's lifecycle, it would be difficult to maintain the lock file\nwithout also having the composer.json file in the repository as well.\n\nThe job runner configuration is rather opinionated and is partially\nbased on the sample found in the job runner service source. However, it\nshouldn't cause functionality issues. In theory, worst case, an\nadministrator could run the job queue manually by sshing into the\ncontainer (maybe this should be an action in the future), or they could\njust scale the deployment further should the job queue get excessive.\n\nWhile MediaWiki does support handling multiple Redis endpoints with\nautomatic fallback, it doesn't appear to be the case that the Redis\ncharm will provide endpoints for units other than the leader.\n\nNote, eventually we'll want to move to\n[Valkey](github.com/canonical/valkey-operator), but currently, it\ndoesn't appear to be ready. At least the transition hopefully shouldn't\nbe too difficult, as the fundamentals should still be the same.\n\n---\n[UDENG-9254](https://warthogs.atlassian.net/browse/UDENG-9254)\n\n[UDENG-9254]:\nhttps://warthogs.atlassian.net/browse/UDENG-9254?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/7a8460ed0426a6ccc5842d2ea2ff694a07e7c699"
                }
             ],
             "ciActions": [],
@@ -7782,6 +7782,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1590501b68772e31aa59f06d93360c9d06771f71",
+                  "author": "adombeck",
+                  "timestamp": 1775602150,
+                  "message": "deps(go): bump github.com/mattn/go-sqlite3 from 1.14.38 to 1.14.41 in the minor-updates group (#1410)",
+                  "url": "https://github.com/canonical/authd/commit/1590501b68772e31aa59f06d93360c9d06771f71"
+               },
+               {
                   "sha": "f1f28329f174aa15d6b96cf79f9d612d16c21710",
                   "author": "adombeck",
                   "timestamp": 1775572316,
@@ -7789,18 +7796,11 @@
                   "url": "https://github.com/canonical/authd/commit/f1f28329f174aa15d6b96cf79f9d612d16c21710"
                },
                {
-                  "sha": "cf9b536d1ac997582b7a6a62171aebe4ee32d377",
-                  "author": "Shane Crowley",
-                  "timestamp": 1775561494,
-                  "message": "docs: cross-ref relevant SSH content (#1404)\n\nContent on SSH in the security overview is relevant to the reader of the\nSSH how-to guide.\n\nThis adds brief note and a link in the how-to guide.\n\nUDENG-8258",
-                  "url": "https://github.com/canonical/authd/commit/cf9b536d1ac997582b7a6a62171aebe4ee32d377"
-               },
-               {
-                  "sha": "93180b72a985ca1f3151d62f40f09916e81a6d38",
-                  "author": "shanecrowley",
-                  "timestamp": 1775485173,
-                  "message": "cross-ref relevant SSH content\n\nContent on SSH in the security overview is relevant to the reader of the\nSSH how-to guide.",
-                  "url": "https://github.com/canonical/authd/commit/93180b72a985ca1f3151d62f40f09916e81a6d38"
+                  "sha": "81313f1bd6c583a4cdc33f2cfc4d27346968ae0e",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1775569643,
+                  "message": "deps(go): bump github.com/mattn/go-sqlite3 in the minor-updates group\n\nBumps the minor-updates group with 1 update: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3).\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.38 to 1.14.41\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.38...v1.14.41)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.41\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/authd/commit/81313f1bd6c583a4cdc33f2cfc4d27346968ae0e"
                }
             ],
             "ciActions": [
@@ -8473,25 +8473,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "163543e19389597e932137eaf2b8c17b60d41a8d",
+                  "author": "renovate[bot]",
+                  "timestamp": 1775601379,
+                  "message": "chore(deps): update dependency requests to v2.33.0 [security] (#47)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [requests](https://redirect.github.com/psf/requests)\n([changelog](https://redirect.github.com/psf/requests/blob/master/HISTORY.md))\n| `2.32.5` → `2.33.0` |\n![age](https://developer.mend.io/api/mc/badges/age/pypi/requests/2.33.0?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/pypi/requests/2.32.5/2.33.0?slim=true)\n|\n\n### GitHub Vulnerability Alerts\n\n####\n[CVE-2026-25645](https://redirect.github.com/psf/requests/security/advisories/GHSA-gc5v-m9x4-r6x2)\n\n### Impact\nThe `requests.utils.extract_zipped_paths()` utility function uses a\npredictable filename when extracting files from zip archives into the\nsystem temporary directory. If the target file already exists, it is\nreused without validation. A local attacker with write access to the\ntemp directory could pre-create a malicious file that would be loaded in\nplace of the legitimate one.\n\n### Affected usages\n**Standard usage of the Requests library is not affected by this\nvulnerability.** Only applications that call `extract_zipped_paths()`\ndirectly are impacted.\n\n### Remediation\nUpgrade to at least Requests 2.33.0, where the library now extracts\nfiles to a non-deterministic location.\n\nIf developers are unable to upgrade, they can set `TMPDIR` in their\nenvironment to a directory with restricted write access.\n\n---\n\n### Release Notes\n\n<details>\n<summary>psf/requests (requests)</summary>\n\n###\n[`v2.33.0`](https://redirect.github.com/psf/requests/blob/HEAD/HISTORY.md#2330-2026-03-25)\n\n[Compare\nSource](https://redirect.github.com/psf/requests/compare/v2.32.5...v2.33.0)\n\n**Announcements**\n\n- 📣 Requests is adding inline types. If you have a typed code base that\nuses Requests, please take a look at\n[#&#8203;7271](https://redirect.github.com/psf/requests/issues/7271).\nGive it a try, and report\n  any gaps or feedback you may have in the issue. 📣\n\n**Security**\n\n- CVE-2026-25645 `requests.utils.extract_zipped_paths` now extracts\n  contents to a non-deterministic location to prevent malicious file\n  replacement. This does not affect default usage of Requests, only\n  applications calling the utility function directly.\n\n**Improvements**\n\n- Migrated to a PEP 517 build system using setuptools.\n([#&#8203;7012](https://redirect.github.com/psf/requests/issues/7012))\n\n**Bugfixes**\n\n- Fixed an issue where an empty netrc entry could cause\n  malformed authentication to be applied to Requests on\nPython 3.11+.\n([#&#8203;7205](https://redirect.github.com/psf/requests/issues/7205))\n\n**Deprecations**\n\n- Dropped support for Python 3.9 following its end of support.\n([#&#8203;7196](https://redirect.github.com/psf/requests/issues/7196))\n\n**Documentation**\n\n- Various typo fixes and doc improvements.\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: Branch creation - \"\" (UTC), Automerge - At any time (no\nschedule defined).\n\n🚦 **Automerge**: Enabled.\n\n♻ **Rebasing**: Whenever PR is behind base branch, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/mediawiki-k8s-operator).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4xMDIuMTEiLCJ1cGRhdGVkSW5WZXIiOiI0My4xMDIuMTEiLCJ0YXJnZXRCcmFuY2giOiJtYWluIiwibGFiZWxzIjpbXX0=-->",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/163543e19389597e932137eaf2b8c17b60d41a8d"
+               },
+               {
+                  "sha": "dd9598b3b9da4a34f9a5e0606981ac456273cedc",
+                  "author": "renovate[bot]",
+                  "timestamp": 1775590198,
+                  "message": "chore(deps): update dependency requests to v2.33.0 [security]",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/dd9598b3b9da4a34f9a5e0606981ac456273cedc"
+               },
+               {
                   "sha": "4b01c5eae023119f257e7d8c620575d228916929",
                   "author": "Kat",
                   "timestamp": 1775574170,
                   "message": "fix(README.md) Minor README fixes (#40)\n\nUpdate the license badge and fix some broken comments in the README.",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/4b01c5eae023119f257e7d8c620575d228916929"
-               },
-               {
-                  "sha": "92031efd33131e76058a6dfb08e5c4e9c8efeed0",
-                  "author": "Kat",
-                  "timestamp": 1775147755,
-                  "message": "docs(security): Add page detailing security considerations for MediaWiki (#42)\n\nAn initial page detailing security considerations for MediaWiki.\n\nHere, we detail secrets generation, sensitive configuration handling, as\nwell as potential risks such as CVEs, extensions, and HTTP.\n\n<img width=\"2290\" height=\"2552\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/1865f3d9-8125-4019-962d-00b3242ffa93\"\n/>\n\n\nRequires #41 to be merged first.\n\n---\n[UDENG-9261](https://warthogs.atlassian.net/browse/UDENG-9261)\n\n[UDENG-9261]:\nhttps://warthogs.atlassian.net/browse/UDENG-9261?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/92031efd33131e76058a6dfb08e5c4e9c8efeed0"
-               },
-               {
-                  "sha": "7a8460ed0426a6ccc5842d2ea2ff694a07e7c699",
-                  "author": "Kat",
-                  "timestamp": 1775146986,
-                  "message": "feat: Add Redis support (#25)\n\nThis PR implements support for using Redis as our main cache. As part of\nthis, we added a job runner service for Redis to allow for consumption\nof the job queue in an asynchronous manner (by default, one job gets\nprocessed per HTTP request received). The files involved with the job\nrunner are included in the rock. Much of the setup is based on the\n[Redis MediaWiki docs page](https://www.mediawiki.org/wiki/Redis).\n\nThough we probably could include the composer lock file related to the\nservice, given that we don't use composer to update these files during\nthe charm's lifecycle, it would be difficult to maintain the lock file\nwithout also having the composer.json file in the repository as well.\n\nThe job runner configuration is rather opinionated and is partially\nbased on the sample found in the job runner service source. However, it\nshouldn't cause functionality issues. In theory, worst case, an\nadministrator could run the job queue manually by sshing into the\ncontainer (maybe this should be an action in the future), or they could\njust scale the deployment further should the job queue get excessive.\n\nWhile MediaWiki does support handling multiple Redis endpoints with\nautomatic fallback, it doesn't appear to be the case that the Redis\ncharm will provide endpoints for units other than the leader.\n\nNote, eventually we'll want to move to\n[Valkey](github.com/canonical/valkey-operator), but currently, it\ndoesn't appear to be ready. At least the transition hopefully shouldn't\nbe too difficult, as the fundamentals should still be the same.\n\n---\n[UDENG-9254](https://warthogs.atlassian.net/browse/UDENG-9254)\n\n[UDENG-9254]:\nhttps://warthogs.atlassian.net/browse/UDENG-9254?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/7a8460ed0426a6ccc5842d2ea2ff694a07e7c699"
                }
             ],
             "ciActions": [],
