@@ -3769,25 +3769,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f1b575da7ce5860f53777d4daffd3e0f0fae4ce3",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1775637606,
-                  "message": "fix: improve expired tokens handling for msentraid broker (#1408)\n\nIf the token expired, login would fail with this error\n\n```\nApr 07 10:18:27 ... Failed to refresh token: oauth2: \"invalid_grant\"\n    \"AADSTS700082: The refresh token has expired due to inactivity.\n     The token was issued on 2026-04-02T08:30:48Z and was inactive for 12:00:00.\"\n```\n\nI've added this error code in the `IsTokenExpiredError` function. I've\nalso removed MSEntraID specific code from the generic provider Also,\nadded a test for the `IsTokenExpiredError` function\n\nCloses #1349\nUDENG-9465",
-                  "url": "https://github.com/canonical/authd/commit/f1b575da7ce5860f53777d4daffd3e0f0fae4ce3"
+                  "sha": "eb5825633b49622df0e21810edcc0b7ab3c48c26",
+                  "author": "adombeck",
+                  "timestamp": 1775642771,
+                  "message": "Fix usage of html/template instead of text/template (#1419)",
+                  "url": "https://github.com/canonical/authd/commit/eb5825633b49622df0e21810edcc0b7ab3c48c26"
                },
                {
-                  "sha": "3be6d6301c3c1e1efdd6b6647ecd723b2db8cfdd",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1775624664,
-                  "message": "chore(lint): extend gosec `G101` exclusion to cover `internal/testutils`\n\nThis avoids false positives for hardcoded test tokens in utility code.",
-                  "url": "https://github.com/canonical/authd/commit/3be6d6301c3c1e1efdd6b6647ecd723b2db8cfdd"
+                  "sha": "9dee1fd8cd3ca4a29584a5bc70e1b07e4d8e5c70",
+                  "author": "adombeck",
+                  "timestamp": 1775642742,
+                  "message": "Remove bbolt to SQLite migration code (#1415)\n\nUDENG-9640",
+                  "url": "https://github.com/canonical/authd/commit/9dee1fd8cd3ca4a29584a5bc70e1b07e4d8e5c70"
                },
                {
-                  "sha": "475de7ad017a9d10c4b550e176bef88cd76d91d1",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1775569655,
-                  "message": "refactor: remove msentraid specific code from generic provider\n\nThe generic provider's `IsTokenExpiredError` previously contained an\nmsentraid specific AADSTS code with a TODO to replace it. Now that\nmsentraid has its own override, simplify it to `false` for now",
-                  "url": "https://github.com/canonical/authd/commit/475de7ad017a9d10c4b550e176bef88cd76d91d1"
+                  "sha": "63022e1fbcb57c353b2b17a125069460498a6595",
+                  "author": "adombeck",
+                  "timestamp": 1775639764,
+                  "message": "deps(brokers/go): bump github.com/coreos/go-oidc/v3 from 3.17.0 to 3.18.0 in /authd-oidc-brokers in the minor-updates group (#1417)",
+                  "url": "https://github.com/canonical/authd/commit/63022e1fbcb57c353b2b17a125069460498a6595"
                }
             ],
             "ciActions": [
@@ -5451,25 +5451,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "eb5825633b49622df0e21810edcc0b7ab3c48c26",
+                  "author": "adombeck",
+                  "timestamp": 1775642771,
+                  "message": "Fix usage of html/template instead of text/template (#1419)",
+                  "url": "https://github.com/canonical/authd/commit/eb5825633b49622df0e21810edcc0b7ab3c48c26"
+               },
+               {
+                  "sha": "9dee1fd8cd3ca4a29584a5bc70e1b07e4d8e5c70",
+                  "author": "adombeck",
+                  "timestamp": 1775642742,
+                  "message": "Remove bbolt to SQLite migration code (#1415)\n\nUDENG-9640",
+                  "url": "https://github.com/canonical/authd/commit/9dee1fd8cd3ca4a29584a5bc70e1b07e4d8e5c70"
+               },
+               {
                   "sha": "63022e1fbcb57c353b2b17a125069460498a6595",
                   "author": "adombeck",
                   "timestamp": 1775639764,
                   "message": "deps(brokers/go): bump github.com/coreos/go-oidc/v3 from 3.17.0 to 3.18.0 in /authd-oidc-brokers in the minor-updates group (#1417)",
                   "url": "https://github.com/canonical/authd/commit/63022e1fbcb57c353b2b17a125069460498a6595"
-               },
-               {
-                  "sha": "f1b575da7ce5860f53777d4daffd3e0f0fae4ce3",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1775637606,
-                  "message": "fix: improve expired tokens handling for msentraid broker (#1408)\n\nIf the token expired, login would fail with this error\n\n```\nApr 07 10:18:27 ... Failed to refresh token: oauth2: \"invalid_grant\"\n    \"AADSTS700082: The refresh token has expired due to inactivity.\n     The token was issued on 2026-04-02T08:30:48Z and was inactive for 12:00:00.\"\n```\n\nI've added this error code in the `IsTokenExpiredError` function. I've\nalso removed MSEntraID specific code from the generic provider Also,\nadded a test for the `IsTokenExpiredError` function\n\nCloses #1349\nUDENG-9465",
-                  "url": "https://github.com/canonical/authd/commit/f1b575da7ce5860f53777d4daffd3e0f0fae4ce3"
-               },
-               {
-                  "sha": "7064e26f3aace30a60c948d7d4d5b68d812ac49a",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1775636999,
-                  "message": "deps(brokers/go): bump github.com/coreos/go-oidc/v3\n\nBumps the minor-updates group in /authd-oidc-brokers with 1 update: [github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc).\n\n\nUpdates `github.com/coreos/go-oidc/v3` from 3.17.0 to 3.18.0\n- [Release notes](https://github.com/coreos/go-oidc/releases)\n- [Commits](https://github.com/coreos/go-oidc/compare/v3.17.0...v3.18.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/coreos/go-oidc/v3\n  dependency-version: 3.18.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/7064e26f3aace30a60c948d7d4d5b68d812ac49a"
                }
             ],
             "ciActions": [
@@ -7782,25 +7782,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "eb5825633b49622df0e21810edcc0b7ab3c48c26",
+                  "author": "adombeck",
+                  "timestamp": 1775642771,
+                  "message": "Fix usage of html/template instead of text/template (#1419)",
+                  "url": "https://github.com/canonical/authd/commit/eb5825633b49622df0e21810edcc0b7ab3c48c26"
+               },
+               {
+                  "sha": "9dee1fd8cd3ca4a29584a5bc70e1b07e4d8e5c70",
+                  "author": "adombeck",
+                  "timestamp": 1775642742,
+                  "message": "Remove bbolt to SQLite migration code (#1415)\n\nUDENG-9640",
+                  "url": "https://github.com/canonical/authd/commit/9dee1fd8cd3ca4a29584a5bc70e1b07e4d8e5c70"
+               },
+               {
                   "sha": "63022e1fbcb57c353b2b17a125069460498a6595",
                   "author": "adombeck",
                   "timestamp": 1775639764,
                   "message": "deps(brokers/go): bump github.com/coreos/go-oidc/v3 from 3.17.0 to 3.18.0 in /authd-oidc-brokers in the minor-updates group (#1417)",
                   "url": "https://github.com/canonical/authd/commit/63022e1fbcb57c353b2b17a125069460498a6595"
-               },
-               {
-                  "sha": "f1b575da7ce5860f53777d4daffd3e0f0fae4ce3",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1775637606,
-                  "message": "fix: improve expired tokens handling for msentraid broker (#1408)\n\nIf the token expired, login would fail with this error\n\n```\nApr 07 10:18:27 ... Failed to refresh token: oauth2: \"invalid_grant\"\n    \"AADSTS700082: The refresh token has expired due to inactivity.\n     The token was issued on 2026-04-02T08:30:48Z and was inactive for 12:00:00.\"\n```\n\nI've added this error code in the `IsTokenExpiredError` function. I've\nalso removed MSEntraID specific code from the generic provider Also,\nadded a test for the `IsTokenExpiredError` function\n\nCloses #1349\nUDENG-9465",
-                  "url": "https://github.com/canonical/authd/commit/f1b575da7ce5860f53777d4daffd3e0f0fae4ce3"
-               },
-               {
-                  "sha": "7064e26f3aace30a60c948d7d4d5b68d812ac49a",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1775636999,
-                  "message": "deps(brokers/go): bump github.com/coreos/go-oidc/v3\n\nBumps the minor-updates group in /authd-oidc-brokers with 1 update: [github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc).\n\n\nUpdates `github.com/coreos/go-oidc/v3` from 3.17.0 to 3.18.0\n- [Release notes](https://github.com/coreos/go-oidc/releases)\n- [Commits](https://github.com/coreos/go-oidc/compare/v3.17.0...v3.18.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/coreos/go-oidc/v3\n  dependency-version: 3.18.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/7064e26f3aace30a60c948d7d4d5b68d812ac49a"
                }
             ],
             "ciActions": [
