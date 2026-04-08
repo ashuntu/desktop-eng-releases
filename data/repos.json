@@ -3769,25 +3769,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1590501b68772e31aa59f06d93360c9d06771f71",
-                  "author": "adombeck",
-                  "timestamp": 1775602150,
-                  "message": "deps(go): bump github.com/mattn/go-sqlite3 from 1.14.38 to 1.14.41 in the minor-updates group (#1410)",
-                  "url": "https://github.com/canonical/authd/commit/1590501b68772e31aa59f06d93360c9d06771f71"
+                  "sha": "f1b575da7ce5860f53777d4daffd3e0f0fae4ce3",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1775637606,
+                  "message": "fix: improve expired tokens handling for msentraid broker (#1408)\n\nIf the token expired, login would fail with this error\n\n```\nApr 07 10:18:27 ... Failed to refresh token: oauth2: \"invalid_grant\"\n    \"AADSTS700082: The refresh token has expired due to inactivity.\n     The token was issued on 2026-04-02T08:30:48Z and was inactive for 12:00:00.\"\n```\n\nI've added this error code in the `IsTokenExpiredError` function. I've\nalso removed MSEntraID specific code from the generic provider Also,\nadded a test for the `IsTokenExpiredError` function\n\nCloses #1349\nUDENG-9465",
+                  "url": "https://github.com/canonical/authd/commit/f1b575da7ce5860f53777d4daffd3e0f0fae4ce3"
                },
                {
-                  "sha": "f1f28329f174aa15d6b96cf79f9d612d16c21710",
-                  "author": "adombeck",
-                  "timestamp": 1775572316,
-                  "message": "e2e-tests: Ensure Activities overview is closed after login (#1405)\n\nUDENG-9620",
-                  "url": "https://github.com/canonical/authd/commit/f1f28329f174aa15d6b96cf79f9d612d16c21710"
+                  "sha": "3be6d6301c3c1e1efdd6b6647ecd723b2db8cfdd",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1775624664,
+                  "message": "chore(lint): extend gosec `G101` exclusion to cover `internal/testutils`\n\nThis avoids false positives for hardcoded test tokens in utility code.",
+                  "url": "https://github.com/canonical/authd/commit/3be6d6301c3c1e1efdd6b6647ecd723b2db8cfdd"
                },
                {
-                  "sha": "81313f1bd6c583a4cdc33f2cfc4d27346968ae0e",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1775569643,
-                  "message": "deps(go): bump github.com/mattn/go-sqlite3 in the minor-updates group\n\nBumps the minor-updates group with 1 update: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3).\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.38 to 1.14.41\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.38...v1.14.41)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.41\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/81313f1bd6c583a4cdc33f2cfc4d27346968ae0e"
+                  "sha": "475de7ad017a9d10c4b550e176bef88cd76d91d1",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1775569655,
+                  "message": "refactor: remove msentraid specific code from generic provider\n\nThe generic provider's `IsTokenExpiredError` previously contained an\nmsentraid specific AADSTS code with a TODO to replace it. Now that\nmsentraid has its own override, simplify it to `false` for now",
+                  "url": "https://github.com/canonical/authd/commit/475de7ad017a9d10c4b550e176bef88cd76d91d1"
                }
             ],
             "ciActions": [
@@ -5016,14 +5016,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 565,
-                     "timestamp": 1775261955
+                     "revision": 567,
+                     "timestamp": 1775634839
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 564,
-                     "timestamp": 1775261954
+                     "revision": 566,
+                     "timestamp": 1775634839
                   },
                   {
                      "track": "latest",
@@ -5451,25 +5451,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1590501b68772e31aa59f06d93360c9d06771f71",
+                  "sha": "63022e1fbcb57c353b2b17a125069460498a6595",
                   "author": "adombeck",
-                  "timestamp": 1775602150,
-                  "message": "deps(go): bump github.com/mattn/go-sqlite3 from 1.14.38 to 1.14.41 in the minor-updates group (#1410)",
-                  "url": "https://github.com/canonical/authd/commit/1590501b68772e31aa59f06d93360c9d06771f71"
+                  "timestamp": 1775639764,
+                  "message": "deps(brokers/go): bump github.com/coreos/go-oidc/v3 from 3.17.0 to 3.18.0 in /authd-oidc-brokers in the minor-updates group (#1417)",
+                  "url": "https://github.com/canonical/authd/commit/63022e1fbcb57c353b2b17a125069460498a6595"
                },
                {
-                  "sha": "f1f28329f174aa15d6b96cf79f9d612d16c21710",
-                  "author": "adombeck",
-                  "timestamp": 1775572316,
-                  "message": "e2e-tests: Ensure Activities overview is closed after login (#1405)\n\nUDENG-9620",
-                  "url": "https://github.com/canonical/authd/commit/f1f28329f174aa15d6b96cf79f9d612d16c21710"
+                  "sha": "f1b575da7ce5860f53777d4daffd3e0f0fae4ce3",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1775637606,
+                  "message": "fix: improve expired tokens handling for msentraid broker (#1408)\n\nIf the token expired, login would fail with this error\n\n```\nApr 07 10:18:27 ... Failed to refresh token: oauth2: \"invalid_grant\"\n    \"AADSTS700082: The refresh token has expired due to inactivity.\n     The token was issued on 2026-04-02T08:30:48Z and was inactive for 12:00:00.\"\n```\n\nI've added this error code in the `IsTokenExpiredError` function. I've\nalso removed MSEntraID specific code from the generic provider Also,\nadded a test for the `IsTokenExpiredError` function\n\nCloses #1349\nUDENG-9465",
+                  "url": "https://github.com/canonical/authd/commit/f1b575da7ce5860f53777d4daffd3e0f0fae4ce3"
                },
                {
-                  "sha": "81313f1bd6c583a4cdc33f2cfc4d27346968ae0e",
+                  "sha": "7064e26f3aace30a60c948d7d4d5b68d812ac49a",
                   "author": "dependabot[bot]",
-                  "timestamp": 1775569643,
-                  "message": "deps(go): bump github.com/mattn/go-sqlite3 in the minor-updates group\n\nBumps the minor-updates group with 1 update: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3).\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.38 to 1.14.41\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.38...v1.14.41)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.41\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/81313f1bd6c583a4cdc33f2cfc4d27346968ae0e"
+                  "timestamp": 1775636999,
+                  "message": "deps(brokers/go): bump github.com/coreos/go-oidc/v3\n\nBumps the minor-updates group in /authd-oidc-brokers with 1 update: [github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc).\n\n\nUpdates `github.com/coreos/go-oidc/v3` from 3.17.0 to 3.18.0\n- [Release notes](https://github.com/coreos/go-oidc/releases)\n- [Commits](https://github.com/coreos/go-oidc/compare/v3.17.0...v3.18.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/coreos/go-oidc/v3\n  dependency-version: 3.18.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/authd/commit/7064e26f3aace30a60c948d7d4d5b68d812ac49a"
                }
             ],
             "ciActions": [
@@ -7297,14 +7297,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 565,
-                     "timestamp": 1775261955
+                     "revision": 567,
+                     "timestamp": 1775634839
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 564,
-                     "timestamp": 1775261954
+                     "revision": 566,
+                     "timestamp": 1775634839
                   },
                   {
                      "track": "latest",
@@ -7782,25 +7782,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1590501b68772e31aa59f06d93360c9d06771f71",
+                  "sha": "63022e1fbcb57c353b2b17a125069460498a6595",
                   "author": "adombeck",
-                  "timestamp": 1775602150,
-                  "message": "deps(go): bump github.com/mattn/go-sqlite3 from 1.14.38 to 1.14.41 in the minor-updates group (#1410)",
-                  "url": "https://github.com/canonical/authd/commit/1590501b68772e31aa59f06d93360c9d06771f71"
+                  "timestamp": 1775639764,
+                  "message": "deps(brokers/go): bump github.com/coreos/go-oidc/v3 from 3.17.0 to 3.18.0 in /authd-oidc-brokers in the minor-updates group (#1417)",
+                  "url": "https://github.com/canonical/authd/commit/63022e1fbcb57c353b2b17a125069460498a6595"
                },
                {
-                  "sha": "f1f28329f174aa15d6b96cf79f9d612d16c21710",
-                  "author": "adombeck",
-                  "timestamp": 1775572316,
-                  "message": "e2e-tests: Ensure Activities overview is closed after login (#1405)\n\nUDENG-9620",
-                  "url": "https://github.com/canonical/authd/commit/f1f28329f174aa15d6b96cf79f9d612d16c21710"
+                  "sha": "f1b575da7ce5860f53777d4daffd3e0f0fae4ce3",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1775637606,
+                  "message": "fix: improve expired tokens handling for msentraid broker (#1408)\n\nIf the token expired, login would fail with this error\n\n```\nApr 07 10:18:27 ... Failed to refresh token: oauth2: \"invalid_grant\"\n    \"AADSTS700082: The refresh token has expired due to inactivity.\n     The token was issued on 2026-04-02T08:30:48Z and was inactive for 12:00:00.\"\n```\n\nI've added this error code in the `IsTokenExpiredError` function. I've\nalso removed MSEntraID specific code from the generic provider Also,\nadded a test for the `IsTokenExpiredError` function\n\nCloses #1349\nUDENG-9465",
+                  "url": "https://github.com/canonical/authd/commit/f1b575da7ce5860f53777d4daffd3e0f0fae4ce3"
                },
                {
-                  "sha": "81313f1bd6c583a4cdc33f2cfc4d27346968ae0e",
+                  "sha": "7064e26f3aace30a60c948d7d4d5b68d812ac49a",
                   "author": "dependabot[bot]",
-                  "timestamp": 1775569643,
-                  "message": "deps(go): bump github.com/mattn/go-sqlite3 in the minor-updates group\n\nBumps the minor-updates group with 1 update: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3).\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.38 to 1.14.41\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.38...v1.14.41)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.41\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/81313f1bd6c583a4cdc33f2cfc4d27346968ae0e"
+                  "timestamp": 1775636999,
+                  "message": "deps(brokers/go): bump github.com/coreos/go-oidc/v3\n\nBumps the minor-updates group in /authd-oidc-brokers with 1 update: [github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc).\n\n\nUpdates `github.com/coreos/go-oidc/v3` from 3.17.0 to 3.18.0\n- [Release notes](https://github.com/coreos/go-oidc/releases)\n- [Commits](https://github.com/coreos/go-oidc/compare/v3.17.0...v3.18.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/coreos/go-oidc/v3\n  dependency-version: 3.18.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/authd/commit/7064e26f3aace30a60c948d7d4d5b68d812ac49a"
                }
             ],
             "ciActions": [
@@ -9589,14 +9589,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 565,
-                     "timestamp": 1775261955
+                     "revision": 567,
+                     "timestamp": 1775634839
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 564,
-                     "timestamp": 1775261954
+                     "revision": 566,
+                     "timestamp": 1775634839
                   },
                   {
                      "track": "latest",
