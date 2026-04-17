@@ -3489,25 +3489,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3e9f2c87f48bd621d35d5ae960d44fd0073967fd",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775836343,
-                  "message": "Merge pull request #200 from matthew-hagemann/capitalization-tweaks\n\nstyle: capitalization of strings",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/3e9f2c87f48bd621d35d5ae960d44fd0073967fd"
+                  "sha": "80cd2b431758c6cf7565ee46b09cfb916be5aff3",
+                  "author": "Dennis Loose",
+                  "timestamp": 1776443837,
+                  "message": "Merge pull request #204 from olivercalder/fix-prompting-enablement-errors-message\n\nfix: check for error after snapd change is ready",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/80cd2b431758c6cf7565ee46b09cfb916be5aff3"
                },
                {
-                  "sha": "5652364186a5fb3800d70b40d338d9ae91932d96",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775834512,
-                  "message": "style: capitalization of strings",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/5652364186a5fb3800d70b40d338d9ae91932d96"
+                  "sha": "0cd534377a3e7520e8470183a3611fac315467d1",
+                  "author": "Oliver Calder",
+                  "timestamp": 1776441925,
+                  "message": "fix: return after snapd change error and add test\n\nCo-authored-by: Dennis Loose <dennis.loose@canonical.com>\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/0cd534377a3e7520e8470183a3611fac315467d1"
                },
                {
-                  "sha": "736bf9c84aedbf8a726b8173ca5c5db50062d117",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775771547,
-                  "message": "Merge pull request #199 from matthew-hagemann/ux-tweaks\n\nfix: multiple UX fixes",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/736bf9c84aedbf8a726b8173ca5c5db50062d117"
+                  "sha": "ecdf74a540dac351b7304aa59546c71a090ad48e",
+                  "author": "Oliver Calder",
+                  "timestamp": 1776370919,
+                  "message": "fix: check for error after snapd change is ready\n\nSnapd changes become \"ready\" when they complete and their status is\nready to be checked. When a change errors, it becomes ready as well,\nsince an error status is just another status. Thus, check `change.err`\nonly after `change.ready` is true, and do not assume that just because a\nchange is ready that no error occurred.\n\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/ecdf74a540dac351b7304aa59546c71a090ad48e"
                }
             ],
             "ciActions": [],
@@ -3980,6 +3980,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "2b2aab23bd27fd610cc33fe3e05bdb15376e33bf",
+                  "author": "Kat",
+                  "timestamp": 1776438354,
+                  "message": "ci: Prep CI for publishing charms to Charmhub (#63)",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/2b2aab23bd27fd610cc33fe3e05bdb15376e33bf"
+               },
+               {
                   "sha": "384404801de07538e3fdb0ace28f1ed0b2239e03",
                   "author": "Kat",
                   "timestamp": 1776437132,
@@ -3987,18 +3994,11 @@
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/384404801de07538e3fdb0ace28f1ed0b2239e03"
                },
                {
-                  "sha": "82698f0187157d71889852af532d3fc649d09e42",
-                  "author": "renovate[bot]",
-                  "timestamp": 1776435533,
-                  "message": "fix(deps): update dependency pydantic to v2.13.2 (#62)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [pydantic](https://redirect.github.com/pydantic/pydantic)\n([changelog](https://docs.pydantic.dev/latest/changelog/)) | `==2.13.1`\n→ `==2.13.2` |\n![age](https://developer.mend.io/api/mc/badges/age/pypi/pydantic/2.13.2?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/pypi/pydantic/2.13.1/2.13.2?slim=true)\n|\n\n---\n\n### Release Notes\n\n<details>\n<summary>pydantic/pydantic (pydantic)</summary>\n\n###\n[`v2.13.2`](https://redirect.github.com/pydantic/pydantic/compare/v2.13.1...v2.13.2)\n\n[Compare\nSource](https://redirect.github.com/pydantic/pydantic/compare/v2.13.1...v2.13.2)\n\n</details>\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - At any time (no schedule defined)\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Enabled.\n\n♻ **Rebasing**: Whenever PR is behind base branch, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/mediawiki-k8s-operator).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4xMjMuOCIsInVwZGF0ZWRJblZlciI6IjQzLjEyMy44IiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/82698f0187157d71889852af532d3fc649d09e42"
-               },
-               {
-                  "sha": "ca2c5618c624a9a9f2757e35a746e43c501e5d9d",
+                  "sha": "ed59ae597edc3eb4ad88db280fc89ded1d45fa7c",
                   "author": "kkuo",
-                  "timestamp": 1776353459,
-                  "message": "Add reference page on charm architecture",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/ca2c5618c624a9a9f2757e35a746e43c501e5d9d"
+                  "timestamp": 1776436882,
+                  "message": "ci: Prep CI for publishing charms to charmhub",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/commit/ed59ae597edc3eb4ad88db280fc89ded1d45fa7c"
                }
             ],
             "ciActions": [],
@@ -5031,25 +5031,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ae0d5a91f532a960c9498e2482fbdc75ab2f03c0",
+                  "author": "Paolo Gentili",
+                  "timestamp": 1776444314,
+                  "message": "[Infra] add AGENTS.md for guiding coding agents (#235)",
+                  "url": "https://github.com/canonical/yarf/commit/ae0d5a91f532a960c9498e2482fbdc75ab2f03c0"
+               },
+               {
+                  "sha": "8ba43c7ca9b9fcb0faa04a3f0ab9cfe0e23809b8",
+                  "author": "Paolo Gentili",
+                  "timestamp": 1776443674,
+                  "message": "[Infra] cleanup project root (#236)",
+                  "url": "https://github.com/canonical/yarf/commit/8ba43c7ca9b9fcb0faa04a3f0ab9cfe0e23809b8"
+               },
+               {
                   "sha": "4d159c503e86860fbd6273a18a4bb1a5c6fcec32",
                   "author": "dependabot[bot]",
                   "timestamp": 1776153458,
                   "message": "[Infra] Bump pytest from 9.0.2 to 9.0.3 (#234)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
                   "url": "https://github.com/canonical/yarf/commit/4d159c503e86860fbd6273a18a4bb1a5c6fcec32"
-               },
-               {
-                  "sha": "73a24e0843f6c577ce30503dbd90a7160e8c140f",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1776153429,
-                  "message": "[Infra] Bump actions/github-script from 8.0.0 to 9.0.0 (#233)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/73a24e0843f6c577ce30503dbd90a7160e8c140f"
-               },
-               {
-                  "sha": "1a488a40941c29746e59f524e76c5e5500941963",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1776153419,
-                  "message": "[Infra] Bump actions/upload-artifact from 7.0.0 to 7.0.1 (#232)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/1a488a40941c29746e59f524e76c5e5500941963"
                }
             ],
             "ciActions": [],
@@ -5073,14 +5073,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 574,
-                     "timestamp": 1776154874
+                     "revision": 576,
+                     "timestamp": 1776444374
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 575,
-                     "timestamp": 1776155063
+                     "revision": 577,
+                     "timestamp": 1776444466
                   }
                ],
                "channels": [
@@ -5651,25 +5651,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3e9f2c87f48bd621d35d5ae960d44fd0073967fd",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775836343,
-                  "message": "Merge pull request #200 from matthew-hagemann/capitalization-tweaks\n\nstyle: capitalization of strings",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/3e9f2c87f48bd621d35d5ae960d44fd0073967fd"
+                  "sha": "80cd2b431758c6cf7565ee46b09cfb916be5aff3",
+                  "author": "Dennis Loose",
+                  "timestamp": 1776443837,
+                  "message": "Merge pull request #204 from olivercalder/fix-prompting-enablement-errors-message\n\nfix: check for error after snapd change is ready",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/80cd2b431758c6cf7565ee46b09cfb916be5aff3"
                },
                {
-                  "sha": "5652364186a5fb3800d70b40d338d9ae91932d96",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775834512,
-                  "message": "style: capitalization of strings",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/5652364186a5fb3800d70b40d338d9ae91932d96"
+                  "sha": "0cd534377a3e7520e8470183a3611fac315467d1",
+                  "author": "Oliver Calder",
+                  "timestamp": 1776441925,
+                  "message": "fix: return after snapd change error and add test\n\nCo-authored-by: Dennis Loose <dennis.loose@canonical.com>\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/0cd534377a3e7520e8470183a3611fac315467d1"
                },
                {
-                  "sha": "736bf9c84aedbf8a726b8173ca5c5db50062d117",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775771547,
-                  "message": "Merge pull request #199 from matthew-hagemann/ux-tweaks\n\nfix: multiple UX fixes",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/736bf9c84aedbf8a726b8173ca5c5db50062d117"
+                  "sha": "ecdf74a540dac351b7304aa59546c71a090ad48e",
+                  "author": "Oliver Calder",
+                  "timestamp": 1776370919,
+                  "message": "fix: check for error after snapd change is ready\n\nSnapd changes become \"ready\" when they complete and their status is\nready to be checked. When a change errors, it becomes ready as well,\nsince an error status is just another status. Thus, check `change.err`\nonly after `change.ready` is true, and do not assume that just because a\nchange is ready that no error occurred.\n\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/ecdf74a540dac351b7304aa59546c71a090ad48e"
                }
             ],
             "ciActions": [],
@@ -7267,25 +7267,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ae0d5a91f532a960c9498e2482fbdc75ab2f03c0",
+                  "author": "Paolo Gentili",
+                  "timestamp": 1776444314,
+                  "message": "[Infra] add AGENTS.md for guiding coding agents (#235)",
+                  "url": "https://github.com/canonical/yarf/commit/ae0d5a91f532a960c9498e2482fbdc75ab2f03c0"
+               },
+               {
+                  "sha": "8ba43c7ca9b9fcb0faa04a3f0ab9cfe0e23809b8",
+                  "author": "Paolo Gentili",
+                  "timestamp": 1776443674,
+                  "message": "[Infra] cleanup project root (#236)",
+                  "url": "https://github.com/canonical/yarf/commit/8ba43c7ca9b9fcb0faa04a3f0ab9cfe0e23809b8"
+               },
+               {
                   "sha": "4d159c503e86860fbd6273a18a4bb1a5c6fcec32",
                   "author": "dependabot[bot]",
                   "timestamp": 1776153458,
                   "message": "[Infra] Bump pytest from 9.0.2 to 9.0.3 (#234)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
                   "url": "https://github.com/canonical/yarf/commit/4d159c503e86860fbd6273a18a4bb1a5c6fcec32"
-               },
-               {
-                  "sha": "73a24e0843f6c577ce30503dbd90a7160e8c140f",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1776153429,
-                  "message": "[Infra] Bump actions/github-script from 8.0.0 to 9.0.0 (#233)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/73a24e0843f6c577ce30503dbd90a7160e8c140f"
-               },
-               {
-                  "sha": "1a488a40941c29746e59f524e76c5e5500941963",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1776153419,
-                  "message": "[Infra] Bump actions/upload-artifact from 7.0.0 to 7.0.1 (#232)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/1a488a40941c29746e59f524e76c5e5500941963"
                }
             ],
             "ciActions": [],
@@ -7309,14 +7309,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 574,
-                     "timestamp": 1776154874
+                     "revision": 576,
+                     "timestamp": 1776444374
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 575,
-                     "timestamp": 1776155063
+                     "revision": 578,
+                     "timestamp": 1776445512
                   }
                ],
                "channels": [
@@ -7982,25 +7982,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3e9f2c87f48bd621d35d5ae960d44fd0073967fd",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775836343,
-                  "message": "Merge pull request #200 from matthew-hagemann/capitalization-tweaks\n\nstyle: capitalization of strings",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/3e9f2c87f48bd621d35d5ae960d44fd0073967fd"
+                  "sha": "80cd2b431758c6cf7565ee46b09cfb916be5aff3",
+                  "author": "Dennis Loose",
+                  "timestamp": 1776443837,
+                  "message": "Merge pull request #204 from olivercalder/fix-prompting-enablement-errors-message\n\nfix: check for error after snapd change is ready",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/80cd2b431758c6cf7565ee46b09cfb916be5aff3"
                },
                {
-                  "sha": "5652364186a5fb3800d70b40d338d9ae91932d96",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775834512,
-                  "message": "style: capitalization of strings",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/5652364186a5fb3800d70b40d338d9ae91932d96"
+                  "sha": "0cd534377a3e7520e8470183a3611fac315467d1",
+                  "author": "Oliver Calder",
+                  "timestamp": 1776441925,
+                  "message": "fix: return after snapd change error and add test\n\nCo-authored-by: Dennis Loose <dennis.loose@canonical.com>\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/0cd534377a3e7520e8470183a3611fac315467d1"
                },
                {
-                  "sha": "736bf9c84aedbf8a726b8173ca5c5db50062d117",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1775771547,
-                  "message": "Merge pull request #199 from matthew-hagemann/ux-tweaks\n\nfix: multiple UX fixes",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/736bf9c84aedbf8a726b8173ca5c5db50062d117"
+                  "sha": "ecdf74a540dac351b7304aa59546c71a090ad48e",
+                  "author": "Oliver Calder",
+                  "timestamp": 1776370919,
+                  "message": "fix: check for error after snapd change is ready\n\nSnapd changes become \"ready\" when they complete and their status is\nready to be checked. When a change errors, it becomes ready as well,\nsince an error status is just another status. Thus, check `change.err`\nonly after `change.ready` is true, and do not assume that just because a\nchange is ready that no error occurred.\n\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/ecdf74a540dac351b7304aa59546c71a090ad48e"
                }
             ],
             "ciActions": [],
@@ -9559,25 +9559,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ae0d5a91f532a960c9498e2482fbdc75ab2f03c0",
+                  "author": "Paolo Gentili",
+                  "timestamp": 1776444314,
+                  "message": "[Infra] add AGENTS.md for guiding coding agents (#235)",
+                  "url": "https://github.com/canonical/yarf/commit/ae0d5a91f532a960c9498e2482fbdc75ab2f03c0"
+               },
+               {
+                  "sha": "8ba43c7ca9b9fcb0faa04a3f0ab9cfe0e23809b8",
+                  "author": "Paolo Gentili",
+                  "timestamp": 1776443674,
+                  "message": "[Infra] cleanup project root (#236)",
+                  "url": "https://github.com/canonical/yarf/commit/8ba43c7ca9b9fcb0faa04a3f0ab9cfe0e23809b8"
+               },
+               {
                   "sha": "4d159c503e86860fbd6273a18a4bb1a5c6fcec32",
                   "author": "dependabot[bot]",
                   "timestamp": 1776153458,
                   "message": "[Infra] Bump pytest from 9.0.2 to 9.0.3 (#234)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
                   "url": "https://github.com/canonical/yarf/commit/4d159c503e86860fbd6273a18a4bb1a5c6fcec32"
-               },
-               {
-                  "sha": "73a24e0843f6c577ce30503dbd90a7160e8c140f",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1776153429,
-                  "message": "[Infra] Bump actions/github-script from 8.0.0 to 9.0.0 (#233)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/73a24e0843f6c577ce30503dbd90a7160e8c140f"
-               },
-               {
-                  "sha": "1a488a40941c29746e59f524e76c5e5500941963",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1776153419,
-                  "message": "[Infra] Bump actions/upload-artifact from 7.0.0 to 7.0.1 (#232)\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/yarf/commit/1a488a40941c29746e59f524e76c5e5500941963"
                }
             ],
             "ciActions": [],
@@ -9601,14 +9601,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 574,
-                     "timestamp": 1776154874
+                     "revision": 576,
+                     "timestamp": 1776444374
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 575,
-                     "timestamp": 1776155063
+                     "revision": 578,
+                     "timestamp": 1776445512
                   }
                ],
                "channels": [
