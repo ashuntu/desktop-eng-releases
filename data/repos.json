@@ -3034,25 +3034,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3a6dc1ea79cbb7ef82910a977c5780ce2a237a90",
+                  "author": "Kimon N.",
+                  "timestamp": 1777038027,
+                  "message": "snap: set MOZ_APP_REMOTINGNAME to match snapd-mangled desktop filename (#63)\n\nsnapd installs the app's desktop entry as thunderbird_thunderbird.desktop.\nWayland compositors (notably KDE KWin) match windows to desktop entries\nby comparing the xdg_toplevel app_id to the .desktop filename. Without\nthis env var, Thunderbird advertises its application.ini RemotingName\nas the app_id (thunderbird-esr for ESR, thunderbird for release), which\ndoesn't match thunderbird_thunderbird.desktop -- KDE Plasma on Wayland\nthen falls back to a generic Wayland icon.\n\nSame one-line fix as canonical/firefox-snap#74; already applied on the\nbeta branch in 42a6e83 but never forward-ported.\n\nFixes: #41",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/3a6dc1ea79cbb7ef82910a977c5780ce2a237a90"
+               },
+               {
+                  "sha": "191ed009a40c6834d11b381d798ea8753d9c0cf8",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1776948588,
+                  "message": "Remove gnome-platform folder\n\nCurrently, the snap creates the `gnome-platform` folder as a\nworkaround for an old bug (LP #2016358).\n\nThis workaround isn't used anymore in Firefox, since 2a9002573535c8fb6158e46f601c3c541dea6a46.\nInstead it is replaced by gpu-2404.\n\nThis PR does the same change.",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/191ed009a40c6834d11b381d798ea8753d9c0cf8"
+               },
+               {
                   "sha": "cd573c5e2a17cf2f27d98428869ebf13da3e61bf",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1776950976,
                   "message": "Add README.",
                   "url": "https://github.com/ubuntu/thunderbird/commit/cd573c5e2a17cf2f27d98428869ebf13da3e61bf"
-               },
-               {
-                  "sha": "a140dbc0961b38ad38c7b05a629549b73997988e",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1776667868,
-                  "message": "150.0-1.",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/a140dbc0961b38ad38c7b05a629549b73997988e"
-               },
-               {
-                  "sha": "985021ffe9e7d52191a6d8300168f987d6c3b9b9",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1775807108,
-                  "message": "149.0.2-1",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/985021ffe9e7d52191a6d8300168f987d6c3b9b9"
                }
             ],
             "ciActions": [],
@@ -3067,25 +3067,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ae5a21242f14ef01817196ca5ccfc4b3a8e6fb5f",
+                  "sha": "582f76cbff44a101c3c20b724f127726ee108603",
                   "author": "Marek Suchánek",
-                  "timestamp": 1777026064,
-                  "message": "Revert \"Known-good manpage config\"\n\nThis reverts commit a24f20446431b0e97db4785a63981c4d5538ef10.",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/ae5a21242f14ef01817196ca5ccfc4b3a8e6fb5f"
+                  "timestamp": 1777037505,
+                  "message": "Fix the instructions after further testing",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/582f76cbff44a101c3c20b724f127726ee108603"
                },
                {
-                  "sha": "3a71787f767d4ac21024b211421abba65be8aa5f",
+                  "sha": "5455e5dfd6f46ab46f87731a3b4c954855254aaf",
                   "author": "Marek Suchánek",
-                  "timestamp": 1776965823,
-                  "message": "Merge branch 'main' into 26.04",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/3a71787f767d4ac21024b211421abba65be8aa5f"
+                  "timestamp": 1777036121,
+                  "message": "Merge pull request #96 from ubuntu/tpm-fde-recover-data\n\nRecover data from TPM/FDE",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/5455e5dfd6f46ab46f87731a3b4c954855254aaf"
                },
                {
-                  "sha": "00e39f620742c24cbfadabef512ff2b548c5cfe0",
+                  "sha": "909b7e395d4b57c86017e6f6b53f220e06664938",
                   "author": "Marek Suchánek",
-                  "timestamp": 1776950436,
-                  "message": "Merge pull request #97 from ogayot/patch-1\n\nAdd warning for Ventoy 1.1.11 known issue",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/00e39f620742c24cbfadabef512ff2b548c5cfe0"
+                  "timestamp": 1777036008,
+                  "message": "Merge branch '26.04' into tpm-fde-recover-data",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/909b7e395d4b57c86017e6f6b53f220e06664938"
                }
             ],
             "ciActions": [
@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5dc3fed60ef26d8a6e4ccbe448d891df97abf1d9",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1777037729,
+                  "message": "[e2e] Update list of releases to run the tests on (#1492)\n\nResolute is now officially released. This means that running the e2e tests on Questing doesn't have as much value and devel will now resolve to 26.10 which doesn't have a valid image yet, so we need to update the list of releases we intend to run the e2e tests on.",
+                  "url": "https://github.com/canonical/authd/commit/5dc3fed60ef26d8a6e4ccbe448d891df97abf1d9"
+               },
+               {
+                  "sha": "aefa388b1ed5cdc1f29d0adc3ad113d9ef5e74ef",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1777037123,
+                  "message": "Update list of releases to run the e2e tests on\n\nResolute is now officially released. This means that running the e2e\ntests on Questing doesn't have as much value and devel will now\nresolve to 26.10 which doesn't have a valid image yet, so we need to\nupdate the list of releases we intend to run the e2e tests on.",
+                  "url": "https://github.com/canonical/authd/commit/aefa388b1ed5cdc1f29d0adc3ad113d9ef5e74ef"
+               },
+               {
                   "sha": "c68d0030f386a64c2d16b229b98e564959d26e5d",
                   "author": "adombeck",
                   "timestamp": 1776945778,
                   "message": "Create `broker.conf.d` directory during snap installation (#1481)\n\nCloses #1480\nUDENG-9739",
                   "url": "https://github.com/canonical/authd/commit/c68d0030f386a64c2d16b229b98e564959d26e5d"
-               },
-               {
-                  "sha": "0afb287325137c225ad6c11b36a8a351c514bc6f",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1776851860,
-                  "message": "Create broker.conf.d directory during snap installation\n\nAgent-Logs-Url: https://github.com/canonical/authd/sessions/3ba5efb6-d8ba-4f40-83cf-5f8783815b34\n\nCo-authored-by: adombeck <18482300+adombeck@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0afb287325137c225ad6c11b36a8a351c514bc6f"
-               },
-               {
-                  "sha": "d8e30f738d78b710d2bd91e5764df75f3c670321",
-                  "author": "adombeck",
-                  "timestamp": 1776945594,
-                  "message": "pam/adapter: fix authTracker race with a generation counter (#1449)\n\nCloses #1424",
-                  "url": "https://github.com/canonical/authd/commit/d8e30f738d78b710d2bd91e5764df75f3c670321"
                }
             ],
             "ciActions": [
@@ -5310,25 +5310,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c59ace43b4dc7476ad249b5e50457201d35df195",
+                  "author": "Kat",
+                  "timestamp": 1777036964,
+                  "message": "deps(go-server): bump github.com/jackc/pgx/v5 from 5.9.1 to 5.9.2 in /server in the minor-updates group (#339)\n\nBumps the minor-updates group in /server with 1 update:\n[github.com/jackc/pgx/v5](https://github.com/jackc/pgx).\n\nUpdates `github.com/jackc/pgx/v5` from 5.9.1 to 5.9.2\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/jackc/pgx/blob/master/CHANGELOG.md\">github.com/jackc/pgx/v5's\nchangelog</a>.</em></p>\n<blockquote>\n<h1>5.9.2 (April 18, 2026)</h1>\n<p>Fix SQL Injection via placeholder confusion with dollar quoted string\nliterals (GHSA-j88v-2chj-qfwx)</p>\n<p>SQL injection can occur when:</p>\n<ol>\n<li>The non-default simple protocol is used.</li>\n<li>A dollar quoted string literal is used in the SQL query.</li>\n<li>That query contains text that would be would be interpreted outside\nas a placeholder outside of a string literal.</li>\n<li>The value of that placeholder is controllable by the attacker.</li>\n</ol>\n<p>e.g.</p>\n<pre lang=\"go\"><code>attackValue := `$tag$; drop table canary; --`\n_, err = tx.Exec(ctx, `select $tag$ $1 $tag$, $1`,\npgx.QueryExecModeSimpleProtocol, attackValue)\n</code></pre>\n<p>This is unlikely to occur outside of a contrived scenario.</p>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/0aeabbcf11d859229c1f0b20e710d3596c76bf27\"><code>0aeabbc</code></a>\nRelease v5.9.2</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/60644f84918a8af66d14a4b0d865d4edafd955da\"><code>60644f8</code></a>\nFix SQL sanitizer bugs with dollar-quoted strings and placeholder\noverflow</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/a5680bc945aa7c6ebac2778d859ee7b4ba86db60\"><code>a5680bc</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/jackc/pgx/issues/2531\">#2531</a> from\ndolmen-go/godoc-add-links</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/e34e4524007062710c6a4fb9c8655b75a486b5cd\"><code>e34e452</code></a>\ndoc: Add godoc links</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/08c9bb1f0d8fa6cc10ed8c713e68b1baa64dfe2c\"><code>08c9bb1</code></a>\nFix Stringer types encoded as text instead of numeric value in composite\nfields</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/96b4dbdfd0458cb425bf8454d292a23978872cc8\"><code>96b4dbd</code></a>\nRemove unstable test</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/acf88e0065682e8948696d26fa6438669c4cabee\"><code>acf88e0</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/jackc/pgx/issues/2526\">#2526</a> from\nabrightwell/abrightwell-min-proto</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/2f81f1fc03bef99593e92c64ad9cac954c00e8e6\"><code>2f81f1f</code></a>\nUpdate <code>max_protocol_version</code> and\n<code>min_protocol_version</code> defaults</li>\n<li>See full diff in <a\nhref=\"https://github.com/jackc/pgx/compare/v5.9.1...v5.9.2\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=github.com/jackc/pgx/v5&package-manager=go_modules&previous-version=5.9.1&new-version=5.9.2)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore <dependency name> major version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's major version (unless you unignore this specific\ndependency's major version or upgrade to it yourself)\n- `@dependabot ignore <dependency name> minor version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's minor version (unless you unignore this specific\ndependency's minor version or upgrade to it yourself)\n- `@dependabot ignore <dependency name>` will close this group update PR\nand stop Dependabot creating any more for the specific dependency\n(unless you unignore this specific dependency or upgrade to it yourself)\n- `@dependabot unignore <dependency name>` will remove all of the ignore\nconditions of the specified dependency\n- `@dependabot unignore <dependency name> <ignore condition>` will\nremove the ignore condition of the specified dependency and ignore\nconditions\n\n\n</details>",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c59ace43b4dc7476ad249b5e50457201d35df195"
+               },
+               {
+                  "sha": "649cf8792a9145404d389e1d60cde0eaf6deccb3",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1776935553,
+                  "message": "deps(go-server): bump github.com/jackc/pgx/v5\n\nBumps the minor-updates group in /server with 1 update: [github.com/jackc/pgx/v5](https://github.com/jackc/pgx).\n\n\nUpdates `github.com/jackc/pgx/v5` from 5.9.1 to 5.9.2\n- [Changelog](https://github.com/jackc/pgx/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/jackc/pgx/compare/v5.9.1...v5.9.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/jackc/pgx/v5\n  dependency-version: 5.9.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/649cf8792a9145404d389e1d60cde0eaf6deccb3"
+               },
+               {
                   "sha": "2b83221a1b9c155bdb670d8344b4f4c55e828cee",
                   "author": "Kat",
                   "timestamp": 1776265489,
                   "message": "deps(go-insights): bump golang.org/x/text from 0.35.0 to 0.36.0 in /insights in the minor-updates group across 1 directory (#337)\n\nBumps the minor-updates group with 1 update in the /insights directory:\n[golang.org/x/text](https://github.com/golang/text).\n\nUpdates `golang.org/x/text` from 0.35.0 to 0.36.0\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/golang/text/commit/8577a70117e110160c45f32af0e0df84eef844f7\"><code>8577a70</code></a>\ngo.mod: update golang.org/x dependencies</li>\n<li>See full diff in <a\nhref=\"https://github.com/golang/text/compare/v0.35.0...v0.36.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/2b83221a1b9c155bdb670d8344b4f4c55e828cee"
-               },
-               {
-                  "sha": "28d5c3bd727655f5d298f00b1a3c657c721a6eda",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1776263212,
-                  "message": "deps(go-insights): bump golang.org/x/text\n\nBumps the minor-updates group in /insights with 1 update: [golang.org/x/text](https://github.com/golang/text).\n\n\nUpdates `golang.org/x/text` from 0.35.0 to 0.36.0\n- [Release notes](https://github.com/golang/text/releases)\n- [Commits](https://github.com/golang/text/compare/v0.35.0...v0.36.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/text\n  dependency-version: 0.36.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/28d5c3bd727655f5d298f00b1a3c657c721a6eda"
-               },
-               {
-                  "sha": "c02b6c4914e7620a17a857ff5d67144b21abb046",
-                  "author": "Kat",
-                  "timestamp": 1776263102,
-                  "message": "deps(go-server): bump github.com/testcontainers/testcontainers-go from 0.41.0 to 0.42.0 in /server in the minor-updates group across 1 directory (#336)\n\nBumps the minor-updates group with 1 update in the /server directory:\n[github.com/testcontainers/testcontainers-go](https://github.com/testcontainers/testcontainers-go).\n\nUpdates `github.com/testcontainers/testcontainers-go` from 0.41.0 to\n0.42.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/testcontainers/testcontainers-go/releases\">github.com/testcontainers/testcontainers-go's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v0.42.0</h2>\n<h1>What's Changed</h1>\n<h2>⚠️ Breaking Changes</h2>\n<ul>\n<li>chore!: migrate to moby modules (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3591\">#3591</a>)\n<a href=\"https://github.com/thaJeztah\"><code>@​thaJeztah</code></a></li>\n</ul>\n<h2>🔒 Security</h2>\n<ul>\n<li>chore(deps): bump moby/client v0.4.0, moby/api v1.54.1 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3634\">#3634</a>)\n<a href=\"https://github.com/thaJeztah\"><code>@​thaJeztah</code></a></li>\n</ul>\n<h2>🐛 Bug Fixes</h2>\n<ul>\n<li>fix: return an error when docker host cannot be retrieved (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3613\">#3613</a>)\n<a href=\"https://github.com/ash2k\"><code>@​ash2k</code></a></li>\n</ul>\n<h2>🧹 Housekeeping</h2>\n<ul>\n<li>chore: gitignore Gas Town agent artifacts (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3633\">#3633</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>fix(usage-metrics): include last release in the legend pop over (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3630\">#3630</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>chore: update usage metrics (2026-04) (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3621\">#3621</a>)\n@<a\nhref=\"https://github.com/apps/github-actions\">github-actions[bot]</a></li>\n<li>fix(usage-metrics): order of actions matters (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3623\">#3623</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>fix(usage-metrics): reduce rate-limit cascade errors (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3622\">#3622</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>fix(usage-metrics): replace the per-version inline retry with a\nmulti-pass approach (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3620\">#3620</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n</ul>\n<h2>📦 Dependency updates</h2>\n<ul>\n<li>chore(deps): bump\ngo.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp from\n1.28.0 to 1.43.0 in /modules/grafana-lgtm (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3639\">#3639</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump\ngo.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp from\n1.42.0 to 1.43.0 in /modules/compose (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3641\">#3641</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump\ngo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp from\n1.42.0 to 1.43.0 in /modules/compose (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3645\">#3645</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump mkdocs-include-markdown-plugin from 7.2.1 to 7.2.2\n(<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3626\">#3626</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from\n1.51.2 to 1.97.3 in /modules/localstack (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3638\">#3638</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump\ngo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp from\n1.41.0 to 1.43.0 in /modules/grafana-lgtm (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3643\">#3643</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump go.opentelemetry.io/otel/sdk from 1.41.0 to 1.43.0\nin /modules/milvus (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3644\">#3644</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore: update to Go 1.25.9, 1.26.9 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3647\">#3647</a>)\n<a href=\"https://github.com/thaJeztah\"><code>@​thaJeztah</code></a></li>\n<li>chore(deps): bump bump github.com/klauspost/compress v1.18.5,\ngithub.com/docker/compose v5.1.2 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3646\">#3646</a>)\n<a href=\"https://github.com/thaJeztah\"><code>@​thaJeztah</code></a></li>\n<li>chore(deps): bump moby/client v0.4.0, moby/api v1.54.1 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3634\">#3634</a>)\n<a href=\"https://github.com/thaJeztah\"><code>@​thaJeztah</code></a></li>\n<li>chore(deps): bump golang.org/x/sys from 0.41.0 to 0.42.0 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3629\">#3629</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump github.com/moby/patternmatcher from 0.6.0 to 0.6.1\n(<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3628\">#3628</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump github.com/shirou/gopsutil/v4 from 4.26.2 to\n4.26.3 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3627\">#3627</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>fix(localstack): accept community-archive as a valid tag (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3601\">#3601</a>)\n<a\nhref=\"https://github.com/johnduhart\"><code>@​johnduhart</code></a></li>\n<li>chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.3 to 4.1.4\nin /modules/gcloud (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3632\">#3632</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3625\">#3625</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump pygments from 2.19.2 to 2.20.0 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3615\">#3615</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump google.golang.org/grpc from 1.67.0 to 1.79.3 in\n/modules/milvus (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3612\">#3612</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump google.golang.org/grpc from 1.67.0 to 1.79.3 in\n/modules/etcd (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3611\">#3611</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump google.golang.org/grpc from 1.79.1 to 1.79.3 in\n/modules/ollama (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3610\">#3610</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump google.golang.org/grpc from 1.67.0 to 1.79.3 in\n/modules/pinecone (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3609\">#3609</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump google.golang.org/grpc from 1.67.0 to 1.79.3 in\n/modules/couchbase (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3608\">#3608</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump requests from 2.32.4 to 2.33.0 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3604\">#3604</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump google.golang.org/grpc from 1.79.1 to 1.79.3 in\n/modules/meilisearch (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3607\">#3607</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n<li>chore(deps): bump github.com/moby/buildkit from 0.27.1 to 0.28.1 in\n/modules/compose (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3605\">#3605</a>)\n@<a href=\"https://github.com/apps/dependabot\">dependabot[bot]</a></li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/6e584183e1623fb83a78db902462eb9ee255327b\"><code>6e58418</code></a>\nchore: use new version (v0.42.0) in modules and examples</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/f713dc0c78c37558ed13c985f5ed15101a6cba08\"><code>f713dc0</code></a>\nchore(deps): bump\ngo.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetr...</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/300827abcec0b6e2d8c10c8360d335f29962f701\"><code>300827a</code></a>\nchore(deps): bump\ngo.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetr...</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/7a15ac1b7214c0bc5cb14c31a979a166ac5c088c\"><code>7a15ac1</code></a>\nchore(deps): bump\ngo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptrace...</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/5bae3d2aa7281a71d1c24b5f8bde1391e2e8dfcb\"><code>5bae3d2</code></a>\nfix: return an error when docker host cannot be retrieved (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3613\">#3613</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/fc19484a8ae088b714a9e9d7d9bba2ae383e3e69\"><code>fc19484</code></a>\nchore(deps): bump mkdocs-include-markdown-plugin from 7.2.1 to 7.2.2 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3626\">#3626</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/95bdc0c4a0b368564f052bd7a533f055adab694a\"><code>95bdc0c</code></a>\nchore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3638\">#3638</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/75aa22665b03ec8d597341575001d71ff693f1fc\"><code>75aa226</code></a>\nchore(deps): bump\ngo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptrace...</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/2f59938fb9ce365d974fe21a426ffffe7231caca\"><code>2f59938</code></a>\nchore(deps): bump go.opentelemetry.io/otel/sdk in /modules/milvus (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3644\">#3644</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/580abf68d44021bc7e54f8655a2fb66578205527\"><code>580abf6</code></a>\nchore: update to Go 1.25.9, 1.26.9 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3647\">#3647</a>)</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/testcontainers/testcontainers-go/compare/v0.41.0...v0.42.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/c02b6c4914e7620a17a857ff5d67144b21abb046"
                }
             ],
             "ciActions": [
@@ -5477,25 +5477,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5dc3fed60ef26d8a6e4ccbe448d891df97abf1d9",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1777037729,
+                  "message": "[e2e] Update list of releases to run the tests on (#1492)\n\nResolute is now officially released. This means that running the e2e tests on Questing doesn't have as much value and devel will now resolve to 26.10 which doesn't have a valid image yet, so we need to update the list of releases we intend to run the e2e tests on.",
+                  "url": "https://github.com/canonical/authd/commit/5dc3fed60ef26d8a6e4ccbe448d891df97abf1d9"
+               },
+               {
+                  "sha": "aefa388b1ed5cdc1f29d0adc3ad113d9ef5e74ef",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1777037123,
+                  "message": "Update list of releases to run the e2e tests on\n\nResolute is now officially released. This means that running the e2e\ntests on Questing doesn't have as much value and devel will now\nresolve to 26.10 which doesn't have a valid image yet, so we need to\nupdate the list of releases we intend to run the e2e tests on.",
+                  "url": "https://github.com/canonical/authd/commit/aefa388b1ed5cdc1f29d0adc3ad113d9ef5e74ef"
+               },
+               {
                   "sha": "c68d0030f386a64c2d16b229b98e564959d26e5d",
                   "author": "adombeck",
                   "timestamp": 1776945778,
                   "message": "Create `broker.conf.d` directory during snap installation (#1481)\n\nCloses #1480\nUDENG-9739",
                   "url": "https://github.com/canonical/authd/commit/c68d0030f386a64c2d16b229b98e564959d26e5d"
-               },
-               {
-                  "sha": "0afb287325137c225ad6c11b36a8a351c514bc6f",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1776851860,
-                  "message": "Create broker.conf.d directory during snap installation\n\nAgent-Logs-Url: https://github.com/canonical/authd/sessions/3ba5efb6-d8ba-4f40-83cf-5f8783815b34\n\nCo-authored-by: adombeck <18482300+adombeck@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0afb287325137c225ad6c11b36a8a351c514bc6f"
-               },
-               {
-                  "sha": "d8e30f738d78b710d2bd91e5764df75f3c670321",
-                  "author": "adombeck",
-                  "timestamp": 1776945594,
-                  "message": "pam/adapter: fix authTracker race with a generation counter (#1449)\n\nCloses #1424",
-                  "url": "https://github.com/canonical/authd/commit/d8e30f738d78b710d2bd91e5764df75f3c670321"
                }
             ],
             "ciActions": [
@@ -7834,25 +7834,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5dc3fed60ef26d8a6e4ccbe448d891df97abf1d9",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1777037729,
+                  "message": "[e2e] Update list of releases to run the tests on (#1492)\n\nResolute is now officially released. This means that running the e2e tests on Questing doesn't have as much value and devel will now resolve to 26.10 which doesn't have a valid image yet, so we need to update the list of releases we intend to run the e2e tests on.",
+                  "url": "https://github.com/canonical/authd/commit/5dc3fed60ef26d8a6e4ccbe448d891df97abf1d9"
+               },
+               {
+                  "sha": "aefa388b1ed5cdc1f29d0adc3ad113d9ef5e74ef",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1777037123,
+                  "message": "Update list of releases to run the e2e tests on\n\nResolute is now officially released. This means that running the e2e\ntests on Questing doesn't have as much value and devel will now\nresolve to 26.10 which doesn't have a valid image yet, so we need to\nupdate the list of releases we intend to run the e2e tests on.",
+                  "url": "https://github.com/canonical/authd/commit/aefa388b1ed5cdc1f29d0adc3ad113d9ef5e74ef"
+               },
+               {
                   "sha": "c68d0030f386a64c2d16b229b98e564959d26e5d",
                   "author": "adombeck",
                   "timestamp": 1776945778,
                   "message": "Create `broker.conf.d` directory during snap installation (#1481)\n\nCloses #1480\nUDENG-9739",
                   "url": "https://github.com/canonical/authd/commit/c68d0030f386a64c2d16b229b98e564959d26e5d"
-               },
-               {
-                  "sha": "0afb287325137c225ad6c11b36a8a351c514bc6f",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1776851860,
-                  "message": "Create broker.conf.d directory during snap installation\n\nAgent-Logs-Url: https://github.com/canonical/authd/sessions/3ba5efb6-d8ba-4f40-83cf-5f8783815b34\n\nCo-authored-by: adombeck <18482300+adombeck@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0afb287325137c225ad6c11b36a8a351c514bc6f"
-               },
-               {
-                  "sha": "d8e30f738d78b710d2bd91e5764df75f3c670321",
-                  "author": "adombeck",
-                  "timestamp": 1776945594,
-                  "message": "pam/adapter: fix authTracker race with a generation counter (#1449)\n\nCloses #1424",
-                  "url": "https://github.com/canonical/authd/commit/d8e30f738d78b710d2bd91e5764df75f3c670321"
                }
             ],
             "ciActions": [
