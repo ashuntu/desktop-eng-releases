@@ -4173,25 +4173,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e8ffdbee2b43ce9b8586d9df24653f87f1932c34",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1777013331,
+                  "message": "fix: deserialization for PromptCase with interface inference (#306)\n\nThis fixes a deserialization issue for the scripted client's\n`TypedPromptCase` enum.\n\nThe `untagged` Serde macro previously defaulted to the first loose match\nbased on definition order. With the new `deserialize_prompt_case\nfunction`, we can now identify the correct interface based on JSON\nfields. To avoid ambiguity, we should mandate an `interface` field in\nall prompt-filter JSON objects.\n\nFixes #305\n\n---\n\nUDENG-9866",
+                  "url": "https://github.com/canonical/prompting-client/commit/e8ffdbee2b43ce9b8586d9df24653f87f1932c34"
+               },
+               {
+                  "sha": "e8f0f3fdec209eaba85d9c0c1245b6c18fd67b96",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1776886479,
+                  "message": "fix: deserialization for PromptCase with interface inference",
+                  "url": "https://github.com/canonical/prompting-client/commit/e8f0f3fdec209eaba85d9c0c1245b6c18fd67b96"
+               },
+               {
                   "sha": "e7e210afc455b246bf13416d7a75d513b680aa16",
                   "author": "Gabriele Belluardo",
                   "timestamp": 1775573677,
                   "message": "fix: remove blocking channel send from spawn_for_output (#304)\n\nPreviously, `spawn_for_output` would wait for the subprocess which\ntriggered a prompt to finish, then manually read the stdout and stderr\npipes before sending the output over a MPSC channel. This seemed to be\nthe cause of tests sometimes hanging after the subprocess exited.\n\nIn particular, with the prompting notice backend enabled in snapd, the\nprompting-client integration tests consistently hang, e.g.\n`happy_path_read_single`, which hangs after the successful POST of the\nreply to the prompt. At that point, the triggering process ought to\nfinish and let the test succeed, but for some reason, the tests hang.\nThe PR to enable the prompting notice backend in snapd can be found at\nhttps://github.com/canonical/snapd/pull/16303\n\nThis PR replaces the manual wait and reading of stdout/stderr with\ninstead calling `wait_with_output` and directly using the resulting\noutput stdout/stderr, without a separate reader. Then, importantly,\nrather than sending the output over a MPSC, `spawn_for_output` now\nreturns a `JoinHandle` directly. This means that callers no longer have\na blocking `recv` call from a MPSC channel; instead, they await the\noutput of the subprocess thread handle, using a tokio timeout. This\nprevents the test from hanging as a result of the tokio scheduler,\nregardless of the order in which processes interact and how quickly\nsnapd reacts.",
                   "url": "https://github.com/canonical/prompting-client/commit/e7e210afc455b246bf13416d7a75d513b680aa16"
-               },
-               {
-                  "sha": "e3feff7ff6610cc78ea714d1b2e404d0fdd7e0f4",
-                  "author": "Oliver Calder",
-                  "timestamp": 1775571466,
-                  "message": "fix: rename rx to handle from spawn_for_output\n\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/e3feff7ff6610cc78ea714d1b2e404d0fdd7e0f4"
-               },
-               {
-                  "sha": "a291e5a52667f4aaf39bd5ecad706a9cc8063971",
-                  "author": "Oliver Calder",
-                  "timestamp": 1775528731,
-                  "message": "fix: remove blocking channel send from spawn_for_output\n\nPreviously, `spawn_for_output` would wait for the subprocess which\ntriggered a prompt to finish, then manually read the stdout and stderr\npipes before sending the output over a MPSC channel. This seemed to be\nthe cause of tests sometimes hanging after the subprocess exited.\n\nIn particular, with the prompting notice backend enabled in snapd, the\nprompting-client integration tests consistently hang, e.g.\n`happy_path_read_single`, which hangs after the successful POST of the\nreply to the prompt. At that point, the triggering process ought to\nfinish and let the test succeed, but for some reason, the tests hang.\nThe PR to enable the prompting notice backend in snapd can be found at\nhttps://github.com/canonical/snapd/pull/16303\n\nThis PR replaces the manual wait and reading of stdout/stderr with\ninstead calling `wait_with_output` and directly using the resulting\noutput stdout/stderr, without a separate reader. Then, importantly,\nrather than sending the output over a MPSC, `spawn_for_output` now\nreturns a `JoinHandle` directly. This means that callers no longer have\na blocking `recv` call from a MPSC channel; instead, they await the\noutput of the subprocess thread handle, using a tokio timeout. This\nprevents the test from hanging as a result of the tokio scheduler,\nregardless of the order in which processes interact and how quickly\nsnapd reacts.\n\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/a291e5a52667f4aaf39bd5ecad706a9cc8063971"
                }
             ],
             "ciActions": [],
@@ -6394,25 +6394,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e8ffdbee2b43ce9b8586d9df24653f87f1932c34",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1777013331,
+                  "message": "fix: deserialization for PromptCase with interface inference (#306)\n\nThis fixes a deserialization issue for the scripted client's\n`TypedPromptCase` enum.\n\nThe `untagged` Serde macro previously defaulted to the first loose match\nbased on definition order. With the new `deserialize_prompt_case\nfunction`, we can now identify the correct interface based on JSON\nfields. To avoid ambiguity, we should mandate an `interface` field in\nall prompt-filter JSON objects.\n\nFixes #305\n\n---\n\nUDENG-9866",
+                  "url": "https://github.com/canonical/prompting-client/commit/e8ffdbee2b43ce9b8586d9df24653f87f1932c34"
+               },
+               {
+                  "sha": "e8f0f3fdec209eaba85d9c0c1245b6c18fd67b96",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1776886479,
+                  "message": "fix: deserialization for PromptCase with interface inference",
+                  "url": "https://github.com/canonical/prompting-client/commit/e8f0f3fdec209eaba85d9c0c1245b6c18fd67b96"
+               },
+               {
                   "sha": "e7e210afc455b246bf13416d7a75d513b680aa16",
                   "author": "Gabriele Belluardo",
                   "timestamp": 1775573677,
                   "message": "fix: remove blocking channel send from spawn_for_output (#304)\n\nPreviously, `spawn_for_output` would wait for the subprocess which\ntriggered a prompt to finish, then manually read the stdout and stderr\npipes before sending the output over a MPSC channel. This seemed to be\nthe cause of tests sometimes hanging after the subprocess exited.\n\nIn particular, with the prompting notice backend enabled in snapd, the\nprompting-client integration tests consistently hang, e.g.\n`happy_path_read_single`, which hangs after the successful POST of the\nreply to the prompt. At that point, the triggering process ought to\nfinish and let the test succeed, but for some reason, the tests hang.\nThe PR to enable the prompting notice backend in snapd can be found at\nhttps://github.com/canonical/snapd/pull/16303\n\nThis PR replaces the manual wait and reading of stdout/stderr with\ninstead calling `wait_with_output` and directly using the resulting\noutput stdout/stderr, without a separate reader. Then, importantly,\nrather than sending the output over a MPSC, `spawn_for_output` now\nreturns a `JoinHandle` directly. This means that callers no longer have\na blocking `recv` call from a MPSC channel; instead, they await the\noutput of the subprocess thread handle, using a tokio timeout. This\nprevents the test from hanging as a result of the tokio scheduler,\nregardless of the order in which processes interact and how quickly\nsnapd reacts.",
                   "url": "https://github.com/canonical/prompting-client/commit/e7e210afc455b246bf13416d7a75d513b680aa16"
-               },
-               {
-                  "sha": "e3feff7ff6610cc78ea714d1b2e404d0fdd7e0f4",
-                  "author": "Oliver Calder",
-                  "timestamp": 1775571466,
-                  "message": "fix: rename rx to handle from spawn_for_output\n\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/e3feff7ff6610cc78ea714d1b2e404d0fdd7e0f4"
-               },
-               {
-                  "sha": "a291e5a52667f4aaf39bd5ecad706a9cc8063971",
-                  "author": "Oliver Calder",
-                  "timestamp": 1775528731,
-                  "message": "fix: remove blocking channel send from spawn_for_output\n\nPreviously, `spawn_for_output` would wait for the subprocess which\ntriggered a prompt to finish, then manually read the stdout and stderr\npipes before sending the output over a MPSC channel. This seemed to be\nthe cause of tests sometimes hanging after the subprocess exited.\n\nIn particular, with the prompting notice backend enabled in snapd, the\nprompting-client integration tests consistently hang, e.g.\n`happy_path_read_single`, which hangs after the successful POST of the\nreply to the prompt. At that point, the triggering process ought to\nfinish and let the test succeed, but for some reason, the tests hang.\nThe PR to enable the prompting notice backend in snapd can be found at\nhttps://github.com/canonical/snapd/pull/16303\n\nThis PR replaces the manual wait and reading of stdout/stderr with\ninstead calling `wait_with_output` and directly using the resulting\noutput stdout/stderr, without a separate reader. Then, importantly,\nrather than sending the output over a MPSC, `spawn_for_output` now\nreturns a `JoinHandle` directly. This means that callers no longer have\na blocking `recv` call from a MPSC channel; instead, they await the\noutput of the subprocess thread handle, using a tokio timeout. This\nprevents the test from hanging as a result of the tokio scheduler,\nregardless of the order in which processes interact and how quickly\nsnapd reacts.\n\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/a291e5a52667f4aaf39bd5ecad706a9cc8063971"
                }
             ],
             "ciActions": [],
@@ -8718,25 +8718,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e8ffdbee2b43ce9b8586d9df24653f87f1932c34",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1777013331,
+                  "message": "fix: deserialization for PromptCase with interface inference (#306)\n\nThis fixes a deserialization issue for the scripted client's\n`TypedPromptCase` enum.\n\nThe `untagged` Serde macro previously defaulted to the first loose match\nbased on definition order. With the new `deserialize_prompt_case\nfunction`, we can now identify the correct interface based on JSON\nfields. To avoid ambiguity, we should mandate an `interface` field in\nall prompt-filter JSON objects.\n\nFixes #305\n\n---\n\nUDENG-9866",
+                  "url": "https://github.com/canonical/prompting-client/commit/e8ffdbee2b43ce9b8586d9df24653f87f1932c34"
+               },
+               {
+                  "sha": "e8f0f3fdec209eaba85d9c0c1245b6c18fd67b96",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1776886479,
+                  "message": "fix: deserialization for PromptCase with interface inference",
+                  "url": "https://github.com/canonical/prompting-client/commit/e8f0f3fdec209eaba85d9c0c1245b6c18fd67b96"
+               },
+               {
                   "sha": "e7e210afc455b246bf13416d7a75d513b680aa16",
                   "author": "Gabriele Belluardo",
                   "timestamp": 1775573677,
                   "message": "fix: remove blocking channel send from spawn_for_output (#304)\n\nPreviously, `spawn_for_output` would wait for the subprocess which\ntriggered a prompt to finish, then manually read the stdout and stderr\npipes before sending the output over a MPSC channel. This seemed to be\nthe cause of tests sometimes hanging after the subprocess exited.\n\nIn particular, with the prompting notice backend enabled in snapd, the\nprompting-client integration tests consistently hang, e.g.\n`happy_path_read_single`, which hangs after the successful POST of the\nreply to the prompt. At that point, the triggering process ought to\nfinish and let the test succeed, but for some reason, the tests hang.\nThe PR to enable the prompting notice backend in snapd can be found at\nhttps://github.com/canonical/snapd/pull/16303\n\nThis PR replaces the manual wait and reading of stdout/stderr with\ninstead calling `wait_with_output` and directly using the resulting\noutput stdout/stderr, without a separate reader. Then, importantly,\nrather than sending the output over a MPSC, `spawn_for_output` now\nreturns a `JoinHandle` directly. This means that callers no longer have\na blocking `recv` call from a MPSC channel; instead, they await the\noutput of the subprocess thread handle, using a tokio timeout. This\nprevents the test from hanging as a result of the tokio scheduler,\nregardless of the order in which processes interact and how quickly\nsnapd reacts.",
                   "url": "https://github.com/canonical/prompting-client/commit/e7e210afc455b246bf13416d7a75d513b680aa16"
-               },
-               {
-                  "sha": "e3feff7ff6610cc78ea714d1b2e404d0fdd7e0f4",
-                  "author": "Oliver Calder",
-                  "timestamp": 1775571466,
-                  "message": "fix: rename rx to handle from spawn_for_output\n\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/e3feff7ff6610cc78ea714d1b2e404d0fdd7e0f4"
-               },
-               {
-                  "sha": "a291e5a52667f4aaf39bd5ecad706a9cc8063971",
-                  "author": "Oliver Calder",
-                  "timestamp": 1775528731,
-                  "message": "fix: remove blocking channel send from spawn_for_output\n\nPreviously, `spawn_for_output` would wait for the subprocess which\ntriggered a prompt to finish, then manually read the stdout and stderr\npipes before sending the output over a MPSC channel. This seemed to be\nthe cause of tests sometimes hanging after the subprocess exited.\n\nIn particular, with the prompting notice backend enabled in snapd, the\nprompting-client integration tests consistently hang, e.g.\n`happy_path_read_single`, which hangs after the successful POST of the\nreply to the prompt. At that point, the triggering process ought to\nfinish and let the test succeed, but for some reason, the tests hang.\nThe PR to enable the prompting notice backend in snapd can be found at\nhttps://github.com/canonical/snapd/pull/16303\n\nThis PR replaces the manual wait and reading of stdout/stderr with\ninstead calling `wait_with_output` and directly using the resulting\noutput stdout/stderr, without a separate reader. Then, importantly,\nrather than sending the output over a MPSC, `spawn_for_output` now\nreturns a `JoinHandle` directly. This means that callers no longer have\na blocking `recv` call from a MPSC channel; instead, they await the\noutput of the subprocess thread handle, using a tokio timeout. This\nprevents the test from hanging as a result of the tokio scheduler,\nregardless of the order in which processes interact and how quickly\nsnapd reacts.\n\nSigned-off-by: Oliver Calder <oliver.calder@canonical.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/a291e5a52667f4aaf39bd5ecad706a9cc8063971"
                }
             ],
             "ciActions": [],
