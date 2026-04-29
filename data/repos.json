@@ -3289,6 +3289,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0e1bb43de29f1de23cd80f966591bd895b562f39",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1777476866,
+                  "message": "e2e-tests: Add tests for `allowed_users` broker property (#1469)\n\nAdd tests for the following scenarios:\n- `allowed_users` is set to `OWNER` and the `owner` is set to the test\nuser (login successful)\n- `allowed_users` is set to `OWNER` and `owner` is explicitly set to an\nempty value (login denied)\n- `allowed_users` is set to `user` and login with that user (login\nsuccessful)\n- `allowed_users` set to a specific user and login with a different user\n(login denied)\n- `allowed_users` is set to to `ALL` (login successful)\n\n\nUDENG-9543\nUDENG-9544\nUDENG-9545\nUDENG-9546\nUDENG-9547",
+                  "url": "https://github.com/canonical/authd/commit/0e1bb43de29f1de23cd80f966591bd895b562f39"
+               },
+               {
                   "sha": "c5453d26c269b6621d3fc4b8183e5bd96a7b171e",
                   "author": "Noor Eldeen Mansour",
                   "timestamp": 1777472571,
@@ -3296,18 +3303,11 @@
                   "url": "https://github.com/canonical/authd/commit/c5453d26c269b6621d3fc4b8183e5bd96a7b171e"
                },
                {
-                  "sha": "3d8abfc7428e3f3699e351ac6201d70290cc4862",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1777464182,
-                  "message": "[e2e] Add tests to cover user selection through `su` (#1490)\n\nUsers authenticating with `su` should not be able to change the username\nafter the authentication process has already started, since the `su`\ncommand sets it beforehand.\n\n\nUDENG-9550\nUDENG-9551",
-                  "url": "https://github.com/canonical/authd/commit/3d8abfc7428e3f3699e351ac6201d70290cc4862"
-               },
-               {
-                  "sha": "573350ca359853ea61c56b66af16de36f4b9549d",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1777030309,
-                  "message": "Add tests to check that username can't be changed during su\n\nUsers authenticating with su (both to another user and to root)\nshouldn't be able to change the username already selected in the\ncommand.",
-                  "url": "https://github.com/canonical/authd/commit/573350ca359853ea61c56b66af16de36f4b9549d"
+                  "sha": "0ea21c7635133b55d095ebcce22134592c017197",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1777274158,
+                  "message": "e2e: Add tests for `allowed_users` broker property",
+                  "url": "https://github.com/canonical/authd/commit/0ea21c7635133b55d095ebcce22134592c017197"
                }
             ],
             "ciActions": [
@@ -4274,25 +4274,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d3a9dfc23772dbba62b460167187ac3da15261ac",
+                  "sha": "ceb85fa753107026e9a5f35274f53990c8fff123",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777471465,
-                  "message": "fix(mount): enhance volume activation checks and improve error handling (#68)",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/d3a9dfc23772dbba62b460167187ac3da15261ac"
+                  "timestamp": 1777477342,
+                  "message": "fix(test): set tty to raw mode in TestReadSecret (#69)",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/ceb85fa753107026e9a5f35274f53990c8fff123"
                },
                {
-                  "sha": "0636d96e0a0859a8fb02202cbdecd6ebe6c20ef8",
+                  "sha": "0a2112137e70b390cb1ca883adabb5583bb87638",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777469361,
-                  "message": "refactor(test): update tests to use SearchInProcMounts and improve error handling",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/0636d96e0a0859a8fb02202cbdecd6ebe6c20ef8"
+                  "timestamp": 1777475283,
+                  "message": "fix(test): prevent race condition by setting tty to raw mode",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/0a2112137e70b390cb1ca883adabb5583bb87638"
                },
                {
-                  "sha": "24d103202fa0efad4642b02ea3af6a83caeb5a04",
+                  "sha": "d2e454795ff3e771a09feac3d212d7864377fe90",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777466267,
-                  "message": "test(mount): add test case for handling volume location errors",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/24d103202fa0efad4642b02ea3af6a83caeb5a04"
+                  "timestamp": 1777472829,
+                  "message": "fix(deps): update module golang.org/x/term to v0.42.0 (#33)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [golang.org/x/term](https://pkg.go.dev/golang.org/x/term) | [`v0.39.0`\n→\n`v0.42.0`](https://cs.opensource.google/go/x/term/+/refs/tags/v0.39.0...refs/tags/v0.42.0)\n|\n![age](https://developer.mend.io/api/mc/badges/age/go/golang.org%2fx%2fterm/v0.42.0?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/go/golang.org%2fx%2fterm/v0.39.0/v0.42.0?slim=true)\n|\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - At any time (no schedule defined)\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/snap-tpmctl).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0Mi45Ny4wIiwidXBkYXRlZEluVmVyIjoiNDMuMTUwLjAiLCJ0YXJnZXRCcmFuY2giOiJtYWluIiwibGFiZWxzIjpbXX0=-->",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/d2e454795ff3e771a09feac3d212d7864377fe90"
                }
             ],
             "ciActions": [],
@@ -5478,6 +5478,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0e1bb43de29f1de23cd80f966591bd895b562f39",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1777476866,
+                  "message": "e2e-tests: Add tests for `allowed_users` broker property (#1469)\n\nAdd tests for the following scenarios:\n- `allowed_users` is set to `OWNER` and the `owner` is set to the test\nuser (login successful)\n- `allowed_users` is set to `OWNER` and `owner` is explicitly set to an\nempty value (login denied)\n- `allowed_users` is set to `user` and login with that user (login\nsuccessful)\n- `allowed_users` set to a specific user and login with a different user\n(login denied)\n- `allowed_users` is set to to `ALL` (login successful)\n\n\nUDENG-9543\nUDENG-9544\nUDENG-9545\nUDENG-9546\nUDENG-9547",
+                  "url": "https://github.com/canonical/authd/commit/0e1bb43de29f1de23cd80f966591bd895b562f39"
+               },
+               {
                   "sha": "c5453d26c269b6621d3fc4b8183e5bd96a7b171e",
                   "author": "Noor Eldeen Mansour",
                   "timestamp": 1777472571,
@@ -5485,18 +5492,11 @@
                   "url": "https://github.com/canonical/authd/commit/c5453d26c269b6621d3fc4b8183e5bd96a7b171e"
                },
                {
-                  "sha": "3d8abfc7428e3f3699e351ac6201d70290cc4862",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1777464182,
-                  "message": "[e2e] Add tests to cover user selection through `su` (#1490)\n\nUsers authenticating with `su` should not be able to change the username\nafter the authentication process has already started, since the `su`\ncommand sets it beforehand.\n\n\nUDENG-9550\nUDENG-9551",
-                  "url": "https://github.com/canonical/authd/commit/3d8abfc7428e3f3699e351ac6201d70290cc4862"
-               },
-               {
-                  "sha": "573350ca359853ea61c56b66af16de36f4b9549d",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1777030309,
-                  "message": "Add tests to check that username can't be changed during su\n\nUsers authenticating with su (both to another user and to root)\nshouldn't be able to change the username already selected in the\ncommand.",
-                  "url": "https://github.com/canonical/authd/commit/573350ca359853ea61c56b66af16de36f4b9549d"
+                  "sha": "0ea21c7635133b55d095ebcce22134592c017197",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1777274158,
+                  "message": "e2e: Add tests for `allowed_users` broker property",
+                  "url": "https://github.com/canonical/authd/commit/0ea21c7635133b55d095ebcce22134592c017197"
                }
             ],
             "ciActions": [
@@ -6496,25 +6496,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d3a9dfc23772dbba62b460167187ac3da15261ac",
+                  "sha": "ceb85fa753107026e9a5f35274f53990c8fff123",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777471465,
-                  "message": "fix(mount): enhance volume activation checks and improve error handling (#68)",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/d3a9dfc23772dbba62b460167187ac3da15261ac"
+                  "timestamp": 1777477342,
+                  "message": "fix(test): set tty to raw mode in TestReadSecret (#69)",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/ceb85fa753107026e9a5f35274f53990c8fff123"
                },
                {
-                  "sha": "0636d96e0a0859a8fb02202cbdecd6ebe6c20ef8",
+                  "sha": "0a2112137e70b390cb1ca883adabb5583bb87638",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777469361,
-                  "message": "refactor(test): update tests to use SearchInProcMounts and improve error handling",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/0636d96e0a0859a8fb02202cbdecd6ebe6c20ef8"
+                  "timestamp": 1777475283,
+                  "message": "fix(test): prevent race condition by setting tty to raw mode",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/0a2112137e70b390cb1ca883adabb5583bb87638"
                },
                {
-                  "sha": "24d103202fa0efad4642b02ea3af6a83caeb5a04",
+                  "sha": "d2e454795ff3e771a09feac3d212d7864377fe90",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777466267,
-                  "message": "test(mount): add test case for handling volume location errors",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/24d103202fa0efad4642b02ea3af6a83caeb5a04"
+                  "timestamp": 1777472829,
+                  "message": "fix(deps): update module golang.org/x/term to v0.42.0 (#33)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [golang.org/x/term](https://pkg.go.dev/golang.org/x/term) | [`v0.39.0`\n→\n`v0.42.0`](https://cs.opensource.google/go/x/term/+/refs/tags/v0.39.0...refs/tags/v0.42.0)\n|\n![age](https://developer.mend.io/api/mc/badges/age/go/golang.org%2fx%2fterm/v0.42.0?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/go/golang.org%2fx%2fterm/v0.39.0/v0.42.0?slim=true)\n|\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - At any time (no schedule defined)\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/snap-tpmctl).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0Mi45Ny4wIiwidXBkYXRlZEluVmVyIjoiNDMuMTUwLjAiLCJ0YXJnZXRCcmFuY2giOiJtYWluIiwibGFiZWxzIjpbXX0=-->",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/d2e454795ff3e771a09feac3d212d7864377fe90"
                }
             ],
             "ciActions": [],
@@ -7836,6 +7836,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0e1bb43de29f1de23cd80f966591bd895b562f39",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1777476866,
+                  "message": "e2e-tests: Add tests for `allowed_users` broker property (#1469)\n\nAdd tests for the following scenarios:\n- `allowed_users` is set to `OWNER` and the `owner` is set to the test\nuser (login successful)\n- `allowed_users` is set to `OWNER` and `owner` is explicitly set to an\nempty value (login denied)\n- `allowed_users` is set to `user` and login with that user (login\nsuccessful)\n- `allowed_users` set to a specific user and login with a different user\n(login denied)\n- `allowed_users` is set to to `ALL` (login successful)\n\n\nUDENG-9543\nUDENG-9544\nUDENG-9545\nUDENG-9546\nUDENG-9547",
+                  "url": "https://github.com/canonical/authd/commit/0e1bb43de29f1de23cd80f966591bd895b562f39"
+               },
+               {
                   "sha": "c5453d26c269b6621d3fc4b8183e5bd96a7b171e",
                   "author": "Noor Eldeen Mansour",
                   "timestamp": 1777472571,
@@ -7843,18 +7850,11 @@
                   "url": "https://github.com/canonical/authd/commit/c5453d26c269b6621d3fc4b8183e5bd96a7b171e"
                },
                {
-                  "sha": "3d8abfc7428e3f3699e351ac6201d70290cc4862",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1777464182,
-                  "message": "[e2e] Add tests to cover user selection through `su` (#1490)\n\nUsers authenticating with `su` should not be able to change the username\nafter the authentication process has already started, since the `su`\ncommand sets it beforehand.\n\n\nUDENG-9550\nUDENG-9551",
-                  "url": "https://github.com/canonical/authd/commit/3d8abfc7428e3f3699e351ac6201d70290cc4862"
-               },
-               {
-                  "sha": "573350ca359853ea61c56b66af16de36f4b9549d",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1777030309,
-                  "message": "Add tests to check that username can't be changed during su\n\nUsers authenticating with su (both to another user and to root)\nshouldn't be able to change the username already selected in the\ncommand.",
-                  "url": "https://github.com/canonical/authd/commit/573350ca359853ea61c56b66af16de36f4b9549d"
+                  "sha": "0ea21c7635133b55d095ebcce22134592c017197",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1777274158,
+                  "message": "e2e: Add tests for `allowed_users` broker property",
+                  "url": "https://github.com/canonical/authd/commit/0ea21c7635133b55d095ebcce22134592c017197"
                }
             ],
             "ciActions": [
@@ -8821,25 +8821,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d3a9dfc23772dbba62b460167187ac3da15261ac",
+                  "sha": "ceb85fa753107026e9a5f35274f53990c8fff123",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777471465,
-                  "message": "fix(mount): enhance volume activation checks and improve error handling (#68)",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/d3a9dfc23772dbba62b460167187ac3da15261ac"
+                  "timestamp": 1777477342,
+                  "message": "fix(test): set tty to raw mode in TestReadSecret (#69)",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/ceb85fa753107026e9a5f35274f53990c8fff123"
                },
                {
-                  "sha": "0636d96e0a0859a8fb02202cbdecd6ebe6c20ef8",
+                  "sha": "0a2112137e70b390cb1ca883adabb5583bb87638",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777469361,
-                  "message": "refactor(test): update tests to use SearchInProcMounts and improve error handling",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/0636d96e0a0859a8fb02202cbdecd6ebe6c20ef8"
+                  "timestamp": 1777475283,
+                  "message": "fix(test): prevent race condition by setting tty to raw mode",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/0a2112137e70b390cb1ca883adabb5583bb87638"
                },
                {
-                  "sha": "24d103202fa0efad4642b02ea3af6a83caeb5a04",
+                  "sha": "d2e454795ff3e771a09feac3d212d7864377fe90",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777466267,
-                  "message": "test(mount): add test case for handling volume location errors",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/24d103202fa0efad4642b02ea3af6a83caeb5a04"
+                  "timestamp": 1777472829,
+                  "message": "fix(deps): update module golang.org/x/term to v0.42.0 (#33)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [golang.org/x/term](https://pkg.go.dev/golang.org/x/term) | [`v0.39.0`\n→\n`v0.42.0`](https://cs.opensource.google/go/x/term/+/refs/tags/v0.39.0...refs/tags/v0.42.0)\n|\n![age](https://developer.mend.io/api/mc/badges/age/go/golang.org%2fx%2fterm/v0.42.0?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/go/golang.org%2fx%2fterm/v0.39.0/v0.42.0?slim=true)\n|\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - At any time (no schedule defined)\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/snap-tpmctl).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0Mi45Ny4wIiwidXBkYXRlZEluVmVyIjoiNDMuMTUwLjAiLCJ0YXJnZXRCcmFuY2giOiJtYWluIiwibGFiZWxzIjpbXX0=-->",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/d2e454795ff3e771a09feac3d212d7864377fe90"
                }
             ],
             "ciActions": [],
