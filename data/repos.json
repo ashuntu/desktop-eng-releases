@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e845e2091a76e18f80b5add4d577f3cb169acd86",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1777536005,
+                  "message": "150.0.1-2",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/e845e2091a76e18f80b5add4d577f3cb169acd86"
+               },
+               {
                   "sha": "b940fb0251572452f3026b9a12d1945345d98ecb",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1777444608,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1777038027,
                   "message": "snap: set MOZ_APP_REMOTINGNAME to match snapd-mangled desktop filename (#63)\n\nsnapd installs the app's desktop entry as thunderbird_thunderbird.desktop.\nWayland compositors (notably KDE KWin) match windows to desktop entries\nby comparing the xdg_toplevel app_id to the .desktop filename. Without\nthis env var, Thunderbird advertises its application.ini RemotingName\nas the app_id (thunderbird-esr for ESR, thunderbird for release), which\ndoesn't match thunderbird_thunderbird.desktop -- KDE Plasma on Wayland\nthen falls back to a generic Wayland icon.\n\nSame one-line fix as canonical/firefox-snap#74; already applied on the\nbeta branch in 42a6e83 but never forward-ported.\n\nFixes: #41",
                   "url": "https://github.com/ubuntu/thunderbird/commit/3a6dc1ea79cbb7ef82910a977c5780ce2a237a90"
-               },
-               {
-                  "sha": "191ed009a40c6834d11b381d798ea8753d9c0cf8",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1776948588,
-                  "message": "Remove gnome-platform folder\n\nCurrently, the snap creates the `gnome-platform` folder as a\nworkaround for an old bug (LP #2016358).\n\nThis workaround isn't used anymore in Firefox, since 2a9002573535c8fb6158e46f601c3c541dea6a46.\nInstead it is replaced by gpu-2404.\n\nThis PR does the same change.",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/191ed009a40c6834d11b381d798ea8753d9c0cf8"
                }
             ],
             "ciActions": [],
@@ -4307,25 +4307,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7b5d18c3a577c3df4f320ee22a0ab56b9c1de101",
+                  "author": "Sergio Costas",
+                  "timestamp": 1777542581,
+                  "message": "Add check based on DBus well-known names (#147)\n\nSince, in some cases, snapd-desktop-integration is launched too soon,\nand that triggers launching xdg-desktop-portal too soon too (because\nseveral services from mutter aren't still available in DBus, so\nxdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to specify\nthat a service (snapd-desktop-integration in this case) must be bound to\nthe graphical-session target instead of the default target.\n\nBut since this will require time, in the meantime this patch should fix\nthis problem: it waits until any of the following well-known names do\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n    org.freedesktop.impl.portal.desktop.*\n\nWhen that happens, we can assume that the desktop is ready, and launch\nsnapd-desktop-integration. It's an ugly hack, but it should work until\nfull graphical-session target support is added to snapd.\n\nFix\nhttps://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7b5d18c3a577c3df4f320ee22a0ab56b9c1de101"
+               },
+               {
+                  "sha": "bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1748449322,
+                  "message": "Add check based on DBus well-known names\n\nSince, in some cases, snapd-desktop-integration is launched too\nsoon, and that triggers launching xdg-desktop-portal too soon\ntoo (because several services from mutter aren't still available\nin DBus, so xdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to\nspecify that a service (snapd-desktop-integration in this case)\nmust be bound to the graphical-session target instead of the\ndefault target.\n\nBut since this will require time, in the meantime this patch\nshould fix this problem: it waits until this well-known name does\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n\nWhen that happens, we can assume that the desktop is ready, and\nlaunch snapd-desktop-integration. It's an ugly hack, but it\nshould work until full graphical-session target support is added\nto snapd.\n\nAnyway, since it is not guaranteed that it is launched in any\ndesktop (has been tested only in Gnome Shell), a 10-seconds\ntimeout is added too, to ensure that it is launched safely.\n\nOf course, this works along the previous method of asking for the\nsession type.\n\nFix https://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb"
+               },
+               {
                   "sha": "4473ea9b5252a7f538a89df3f9faf5f605ba8a23",
                   "author": "Sergio Costas",
                   "timestamp": 1774524174,
                   "message": "Remove libnotify source files (#168)\n\nThey interact with TIOBE, giving false errors.",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/4473ea9b5252a7f538a89df3f9faf5f605ba8a23"
-               },
-               {
-                  "sha": "7d0b1afc37888c9201dfcd63193c58de474b4234",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1774524084,
-                  "message": "Remove libnotify source files\n\nThey interact with TIOBE, giving false errors.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7d0b1afc37888c9201dfcd63193c58de474b4234"
-               },
-               {
-                  "sha": "543cdcef0b94bdc0b76f60bd4a7c61472f6b8039",
-                  "author": "Sergio Costas",
-                  "timestamp": 1774459586,
-                  "message": "Upload the right XML file (#167)",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/543cdcef0b94bdc0b76f60bd4a7c61472f6b8039"
                }
             ],
             "ciActions": [],
@@ -6529,25 +6529,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7b5d18c3a577c3df4f320ee22a0ab56b9c1de101",
+                  "author": "Sergio Costas",
+                  "timestamp": 1777542581,
+                  "message": "Add check based on DBus well-known names (#147)\n\nSince, in some cases, snapd-desktop-integration is launched too soon,\nand that triggers launching xdg-desktop-portal too soon too (because\nseveral services from mutter aren't still available in DBus, so\nxdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to specify\nthat a service (snapd-desktop-integration in this case) must be bound to\nthe graphical-session target instead of the default target.\n\nBut since this will require time, in the meantime this patch should fix\nthis problem: it waits until any of the following well-known names do\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n    org.freedesktop.impl.portal.desktop.*\n\nWhen that happens, we can assume that the desktop is ready, and launch\nsnapd-desktop-integration. It's an ugly hack, but it should work until\nfull graphical-session target support is added to snapd.\n\nFix\nhttps://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7b5d18c3a577c3df4f320ee22a0ab56b9c1de101"
+               },
+               {
+                  "sha": "bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1748449322,
+                  "message": "Add check based on DBus well-known names\n\nSince, in some cases, snapd-desktop-integration is launched too\nsoon, and that triggers launching xdg-desktop-portal too soon\ntoo (because several services from mutter aren't still available\nin DBus, so xdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to\nspecify that a service (snapd-desktop-integration in this case)\nmust be bound to the graphical-session target instead of the\ndefault target.\n\nBut since this will require time, in the meantime this patch\nshould fix this problem: it waits until this well-known name does\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n\nWhen that happens, we can assume that the desktop is ready, and\nlaunch snapd-desktop-integration. It's an ugly hack, but it\nshould work until full graphical-session target support is added\nto snapd.\n\nAnyway, since it is not guaranteed that it is launched in any\ndesktop (has been tested only in Gnome Shell), a 10-seconds\ntimeout is added too, to ensure that it is launched safely.\n\nOf course, this works along the previous method of asking for the\nsession type.\n\nFix https://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb"
+               },
+               {
                   "sha": "4473ea9b5252a7f538a89df3f9faf5f605ba8a23",
                   "author": "Sergio Costas",
                   "timestamp": 1774524174,
                   "message": "Remove libnotify source files (#168)\n\nThey interact with TIOBE, giving false errors.",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/4473ea9b5252a7f538a89df3f9faf5f605ba8a23"
-               },
-               {
-                  "sha": "7d0b1afc37888c9201dfcd63193c58de474b4234",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1774524084,
-                  "message": "Remove libnotify source files\n\nThey interact with TIOBE, giving false errors.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7d0b1afc37888c9201dfcd63193c58de474b4234"
-               },
-               {
-                  "sha": "543cdcef0b94bdc0b76f60bd4a7c61472f6b8039",
-                  "author": "Sergio Costas",
-                  "timestamp": 1774459586,
-                  "message": "Upload the right XML file (#167)",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/543cdcef0b94bdc0b76f60bd4a7c61472f6b8039"
                }
             ],
             "ciActions": [],
@@ -8854,25 +8854,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7b5d18c3a577c3df4f320ee22a0ab56b9c1de101",
+                  "author": "Sergio Costas",
+                  "timestamp": 1777542581,
+                  "message": "Add check based on DBus well-known names (#147)\n\nSince, in some cases, snapd-desktop-integration is launched too soon,\nand that triggers launching xdg-desktop-portal too soon too (because\nseveral services from mutter aren't still available in DBus, so\nxdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to specify\nthat a service (snapd-desktop-integration in this case) must be bound to\nthe graphical-session target instead of the default target.\n\nBut since this will require time, in the meantime this patch should fix\nthis problem: it waits until any of the following well-known names do\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n    org.freedesktop.impl.portal.desktop.*\n\nWhen that happens, we can assume that the desktop is ready, and launch\nsnapd-desktop-integration. It's an ugly hack, but it should work until\nfull graphical-session target support is added to snapd.\n\nFix\nhttps://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7b5d18c3a577c3df4f320ee22a0ab56b9c1de101"
+               },
+               {
+                  "sha": "bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1748449322,
+                  "message": "Add check based on DBus well-known names\n\nSince, in some cases, snapd-desktop-integration is launched too\nsoon, and that triggers launching xdg-desktop-portal too soon\ntoo (because several services from mutter aren't still available\nin DBus, so xdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to\nspecify that a service (snapd-desktop-integration in this case)\nmust be bound to the graphical-session target instead of the\ndefault target.\n\nBut since this will require time, in the meantime this patch\nshould fix this problem: it waits until this well-known name does\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n\nWhen that happens, we can assume that the desktop is ready, and\nlaunch snapd-desktop-integration. It's an ugly hack, but it\nshould work until full graphical-session target support is added\nto snapd.\n\nAnyway, since it is not guaranteed that it is launched in any\ndesktop (has been tested only in Gnome Shell), a 10-seconds\ntimeout is added too, to ensure that it is launched safely.\n\nOf course, this works along the previous method of asking for the\nsession type.\n\nFix https://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb"
+               },
+               {
                   "sha": "4473ea9b5252a7f538a89df3f9faf5f605ba8a23",
                   "author": "Sergio Costas",
                   "timestamp": 1774524174,
                   "message": "Remove libnotify source files (#168)\n\nThey interact with TIOBE, giving false errors.",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/4473ea9b5252a7f538a89df3f9faf5f605ba8a23"
-               },
-               {
-                  "sha": "7d0b1afc37888c9201dfcd63193c58de474b4234",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1774524084,
-                  "message": "Remove libnotify source files\n\nThey interact with TIOBE, giving false errors.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7d0b1afc37888c9201dfcd63193c58de474b4234"
-               },
-               {
-                  "sha": "543cdcef0b94bdc0b76f60bd4a7c61472f6b8039",
-                  "author": "Sergio Costas",
-                  "timestamp": 1774459586,
-                  "message": "Upload the right XML file (#167)",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/543cdcef0b94bdc0b76f60bd4a7c61472f6b8039"
                }
             ],
             "ciActions": [],
