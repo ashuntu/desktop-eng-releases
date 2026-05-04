@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "813965ac29506b22cd3c224f2a6cdf183c158bc9",
+                  "author": "qflen",
+                  "timestamp": 1776887156,
+                  "message": "Relocate TMPDIR to $SNAP_USER_COMMON.\n\n$SNAP_USER_COMMON maps to ~/snap/thunderbird/common/ on the host,\nso xdg-document-portal can register attachments for external\nhandlers. The snap's private /tmp — what TMPDIR defaults to without\nthis override — is invisible to the portal, causing \"Open with\nSystem Handler\" to silently fail (bz 2015280).",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/813965ac29506b22cd3c224f2a6cdf183c158bc9"
+               },
+               {
                   "sha": "e845e2091a76e18f80b5add4d577f3cb169acd86",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1777536005,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1777444608,
                   "message": "150.0.1-1",
                   "url": "https://github.com/ubuntu/thunderbird/commit/b940fb0251572452f3026b9a12d1945345d98ecb"
-               },
-               {
-                  "sha": "3a6dc1ea79cbb7ef82910a977c5780ce2a237a90",
-                  "author": "Kimon N.",
-                  "timestamp": 1777038027,
-                  "message": "snap: set MOZ_APP_REMOTINGNAME to match snapd-mangled desktop filename (#63)\n\nsnapd installs the app's desktop entry as thunderbird_thunderbird.desktop.\nWayland compositors (notably KDE KWin) match windows to desktop entries\nby comparing the xdg_toplevel app_id to the .desktop filename. Without\nthis env var, Thunderbird advertises its application.ini RemotingName\nas the app_id (thunderbird-esr for ESR, thunderbird for release), which\ndoesn't match thunderbird_thunderbird.desktop -- KDE Plasma on Wayland\nthen falls back to a generic Wayland icon.\n\nSame one-line fix as canonical/firefox-snap#74; already applied on the\nbeta branch in 42a6e83 but never forward-ported.\n\nFixes: #41",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/3a6dc1ea79cbb7ef82910a977c5780ce2a237a90"
                }
             ],
             "ciActions": [],
