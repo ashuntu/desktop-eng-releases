@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0e1bb43de29f1de23cd80f966591bd895b562f39",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1777476866,
-                  "message": "e2e-tests: Add tests for `allowed_users` broker property (#1469)\n\nAdd tests for the following scenarios:\n- `allowed_users` is set to `OWNER` and the `owner` is set to the test\nuser (login successful)\n- `allowed_users` is set to `OWNER` and `owner` is explicitly set to an\nempty value (login denied)\n- `allowed_users` is set to `user` and login with that user (login\nsuccessful)\n- `allowed_users` set to a specific user and login with a different user\n(login denied)\n- `allowed_users` is set to to `ALL` (login successful)\n\n\nUDENG-9543\nUDENG-9544\nUDENG-9545\nUDENG-9546\nUDENG-9547",
-                  "url": "https://github.com/canonical/authd/commit/0e1bb43de29f1de23cd80f966591bd895b562f39"
+                  "sha": "11a17754fcffc8532862ef47978a84687b529f63",
+                  "author": "adombeck",
+                  "timestamp": 1777884768,
+                  "message": "Support API versioning in broker API and authd (#1446)\n\nUDENG-9793",
+                  "url": "https://github.com/canonical/authd/commit/11a17754fcffc8532862ef47978a84687b529f63"
                },
                {
-                  "sha": "c5453d26c269b6621d3fc4b8183e5bd96a7b171e",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1777472571,
-                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1494)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/Azure/azure-sdk-for-go/sdk/azcore](https://github.com/Azure/azure-sdk-for-go),\n[github.com/canonical/authd](https://github.com/canonical/authd) and\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go).\n\nUpdates `github.com/Azure/azure-sdk-for-go/sdk/azcore` from 1.21.0 to\n1.21.1\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/Azure/azure-sdk-for-go/releases\">github.com/Azure/azure-sdk-for-go/sdk/azcore's\nreleases</a>.</em></p>\n<blockquote>\n<h2>sdk/azcore/v1.21.1</h2>\n<h2>1.21.1 (2026-04-16)</h2>\n<h3>Bugs Fixed</h3>\n<ul>\n<li>Fixed an issue in <code>ResponseError.Error()</code> where the\nrequest URL path was being logged unescaped.</li>\n<li>Redact query parameters when logging errors.</li>\n<li>For <code>runtime.JoinPaths</code>, don't add a slash between root\nand paths when <code>paths</code> starts with <code>?</code> (query\nstring).</li>\n</ul>\n<h3>Other Changes</h3>\n<ul>\n<li>Upgraded to Go 1.25.0.</li>\n<li>Upgraded dependencies.</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/63e4ba18204b0df554e330df8f85662e653e67ab\"><code>63e4ba1</code></a>\nBump release date for azcore (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26613\">#26613</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/fa0312174d17ff4cb7cb0118fa80de07409841c2\"><code>fa03121</code></a>\nremove bypass local dns (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26609\">#26609</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/c47f9a60dd1e9be6943ff0d6a5666a0ac09f6cfa\"><code>c47f9a6</code></a>\nSync eng/common directory with azure-sdk-tools for PR 15153 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26607\">#26607</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/88b8b5b38ecebb929a2e302df054fed1d68618b8\"><code>88b8b5b</code></a>\nChangelog for v2.2.0 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26567\">#26567</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/72ca19ae2b8b4514c4f48a5ff33495b03c08afd0\"><code>72ca19a</code></a>\nStorage STG 101 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26568\">#26568</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/b64baf56c6b168d258b2a0678290ac5f9ab97938\"><code>b64baf5</code></a>\nSync .github directory with azure-sdk-tools repository (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26600\">#26600</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/ecd64dd6500a04da22107925c3ba9fbe8e636f2c\"><code>ecd64dd</code></a>\nPrep azcore@v1.21.1 for release (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26596\">#26596</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/1d02f204d0146ffd7d13d5585bf3766e53c32cc5\"><code>1d02f20</code></a>\nUpdate copilot code review instructions and migration breaking change\nmitigat...</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/f6e9ce3212cc9d654d349778f19065eb5d849197\"><code>f6e9ce3</code></a>\nSync eng/common directory with azure-sdk-tools for PR 14973 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26531\">#26531</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/d5a3baf11e0b743a4009efb8e84cbaee335fc0eb\"><code>d5a3baf</code></a>\nUpdate CODEOWNERS to remove one owner from Custom Providers (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26588\">#26588</a>)</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/Azure/azure-sdk-for-go/compare/sdk/azcore/v1.21.0...sdk/azcore/v1.21.1\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/canonical/authd` from 0.6.1 to 0.6.4\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/e0fcd915afdca7babab4b3f02c22e586fbccaf9e\"><code>e0fcd91</code></a>\nUpload 0.6.4 to resolute</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/44d590e56f8e1e8033748bcfedb1c2884f59c5db\"><code>44d590e</code></a>\nAdd changelog entry for 0.6.4</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/7b024af54894b8785b4bb995abbd60e26f22fe74\"><code>7b024af</code></a>\nfix: preserve user's primary group GID across logins</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/4d24d337a289ec12dcdbd67c9fc60b9490728ed7\"><code>4d24d33</code></a>\nAdd changelog entry for 0.6.2 (<a\nhref=\"https://redirect.github.com/canonical/authd/issues/1420\">#1420</a>)</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/ca1a1cbf546e55d888b1d5fdf1e59d4f4f84ea89\"><code>ca1a1cb</code></a>\nUpload 0.6.2 to resolute</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/92bf8690db63d2b1b9124e1569fc16d8617acfb8\"><code>92bf869</code></a>\nAdd changelog entry for 0.6.2</li>\n<li>See full diff in <a\nhref=\"https://github.com/canonical/authd/compare/v0.6.1...v0.6.4\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/microsoftgraph/msgraph-sdk-go` from 1.96.0 to 1.97.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/releases\">github.com/microsoftgraph/msgraph-sdk-go's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v1.97.0</h2>\n<h2><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.96.0...v1.97.0\">1.97.0</a>\n(2026-04-17)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>generation:</strong> update request builders and models (<a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/58f4bd0eff2c003ce62558bd032845abb3481c6b\">58f4bd0</a>)</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/blob/main/CHANGELOG.md\">github.com/microsoftgraph/msgraph-sdk-go's\nchangelog</a>.</em></p>\n<blockquote>\n<h2><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.96.0...v1.97.0\">1.97.0</a>\n(2026-04-17)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>generation:</strong> update request builders and models (<a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/58f4bd0eff2c003ce62558bd032845abb3481c6b\">58f4bd0</a>)</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/955508b1f095891a582fd628f86dcc7655c9759a\"><code>955508b</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/991\">#991</a>\nfrom microsoftgraph/release-please--branches--main--c...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/285dc13fb88bba59adaa0a26baf9abe32bdcae4a\"><code>285dc13</code></a>\nchore(main): release 1.97.0</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/b88a325b4ce0284efd74e54a6082ea1c9acc3dfc\"><code>b88a325</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/989\">#989</a>\nfrom microsoftgraph/v1.0/pipelinebuild/215572</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/58f4bd0eff2c003ce62558bd032845abb3481c6b\"><code>58f4bd0</code></a>\nfeat(generation): update request builders and models</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/991a166507b8b3115479c484d22e824354ca9075\"><code>991a166</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/978\">#978</a>\nfrom microsoftgraph/dependabot/github_actions/actions...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/37d2ad4cae81653ebc64f8588d250fcfcb2ea5f2\"><code>37d2ad4</code></a>\nMerge branch 'main' into\ndependabot/github_actions/actions/upload-artifact-7</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/328d6f26d6b7d2507ad477101ec1b800aa4382ef\"><code>328d6f2</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/985\">#985</a>\nfrom microsoftgraph/dependabot/github_actions/dependa...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/c8d27894323b0282cdb3dcb56c4b25b47a9538ce\"><code>c8d2789</code></a>\nchore(deps): bump dependabot/fetch-metadata from 2.5.0 to 3.0.0</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/3ca9e1cba7e896bc7b361e9c149bca1bdb4e5700\"><code>3ca9e1c</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/982\">#982</a>\nfrom microsoftgraph/dependabot/go_modules/github.com/...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/0ce02236e01cbc459b524a9f9bb38a5f32a2e8bf\"><code>0ce0223</code></a>\nMerge branch 'main' into\ndependabot/go_modules/github.com/microsoft/kiota-ser...</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.96.0...v1.97.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/canonical/authd/commit/c5453d26c269b6621d3fc4b8183e5bd96a7b171e"
+                  "sha": "07cbb9d9c582e96064f6aeec24c39984280f3981",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1777043128,
+                  "message": "e2e-tests: Increase default pattern match timeout to 10s\n\nI've seen the pattern matching of \"You have signed in\" time out after 5\nseconds. Instead of increasing the timeout of just that one pattern,\nlet's increase the default timeout, because during the browser login,\nbasically each step can be slowed down by a bad network connection and\ntake longer than 5 seconds.",
+                  "url": "https://github.com/canonical/authd/commit/07cbb9d9c582e96064f6aeec24c39984280f3981"
                },
                {
-                  "sha": "0ea21c7635133b55d095ebcce22134592c017197",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1777274158,
-                  "message": "e2e: Add tests for `allowed_users` broker property",
-                  "url": "https://github.com/canonical/authd/commit/0ea21c7635133b55d095ebcce22134592c017197"
+                  "sha": "cd531a871d42a1be8479932776298ed4e02ccae2",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1776194518,
+                  "message": "Support versioning in Broker API and authd\n\nAdds a com.ubuntu.authd.Broker2 D-Bus interface in accordance with\nhttps://dbus.freedesktop.org/doc/dbus-api-design.html#api-versioning\n\nAlso authd now properly considers the possibility of multiple interfaces\nand, for now, chooses the latest one available.\n\nCo-authored-by: Denison Barbosa <denison.barbosa@canonical.com>",
+                  "url": "https://github.com/canonical/authd/commit/cd531a871d42a1be8479932776298ed4e02ccae2"
                }
             ],
             "ciActions": [
@@ -3489,25 +3489,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8d51f0f541faddd0b4798fb68ec5ddcd0a428bd9",
+                  "author": "Juan Ruitiña",
+                  "timestamp": 1777879870,
+                  "message": "Merge pull request #213 from juanruitina/fix/esm-description-copy\n\nfix(ubuntu-pro): update ESM description copy",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/8d51f0f541faddd0b4798fb68ec5ddcd0a428bd9"
+               },
+               {
+                  "sha": "c053fe2b501f9737963578bdebec25750d4291ff",
+                  "author": "Juan Ruitiña",
+                  "timestamp": 1777542549,
+                  "message": "fix(ubuntu-pro): update ESM description copy\n\nRemove specific package counts in favour of broader descriptions\nthat won't become stale. Align wording with current Ubuntu Pro\nmarketing for the ESM section.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/c053fe2b501f9737963578bdebec25750d4291ff"
+               },
+               {
                   "sha": "fad50c09e784911d87b9c9514764f621a358e94d",
                   "author": "Dennis Loose",
                   "timestamp": 1777387714,
                   "message": "Merge pull request #212 from canonical/prompting-toggle-error\n\nfeat: show error message if enabling prompting fails",
                   "url": "https://github.com/canonical/desktop-security-center/commit/fad50c09e784911d87b9c9514764f621a358e94d"
-               },
-               {
-                  "sha": "a0d1b82f66d758946c1d4f661c000e2b1fa67176",
-                  "author": "Dennis Loose",
-                  "timestamp": 1777298866,
-                  "message": "feat: show error message if enabling prompting fails",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a0d1b82f66d758946c1d4f661c000e2b1fa67176"
-               },
-               {
-                  "sha": "2f158b7500b2977431c4e97dcff86ff57e1d2bd6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1777298593,
-                  "message": "feat: add l10n string for generic errors",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/2f158b7500b2977431c4e97dcff86ff57e1d2bd6"
                }
             ],
             "ciActions": [],
@@ -4274,25 +4274,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ceb85fa753107026e9a5f35274f53990c8fff123",
+                  "sha": "e0d1de143435a4fc3da5aae67a9dcf44d1b74b02",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777477342,
-                  "message": "fix(test): set tty to raw mode in TestReadSecret (#69)",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/ceb85fa753107026e9a5f35274f53990c8fff123"
+                  "timestamp": 1777881532,
+                  "message": "fix(tui): correct arguments for cleaning lines (#70)\n\nUDENG-9904",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/e0d1de143435a4fc3da5aae67a9dcf44d1b74b02"
                },
                {
-                  "sha": "0a2112137e70b390cb1ca883adabb5583bb87638",
+                  "sha": "a114e4886ad5b0a3f9f0a7bbb4a30780dada9332",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777475283,
-                  "message": "fix(test): prevent race condition by setting tty to raw mode",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/0a2112137e70b390cb1ca883adabb5583bb87638"
+                  "timestamp": 1777545790,
+                  "message": "test(cmd): update golden files",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/a114e4886ad5b0a3f9f0a7bbb4a30780dada9332"
                },
                {
-                  "sha": "d2e454795ff3e771a09feac3d212d7864377fe90",
+                  "sha": "d4aa9d829b84c7de7e2ec620f2d1ae149f97414c",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777472829,
-                  "message": "fix(deps): update module golang.org/x/term to v0.42.0 (#33)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [golang.org/x/term](https://pkg.go.dev/golang.org/x/term) | [`v0.39.0`\n→\n`v0.42.0`](https://cs.opensource.google/go/x/term/+/refs/tags/v0.39.0...refs/tags/v0.42.0)\n|\n![age](https://developer.mend.io/api/mc/badges/age/go/golang.org%2fx%2fterm/v0.42.0?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/go/golang.org%2fx%2fterm/v0.39.0/v0.42.0?slim=true)\n|\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - At any time (no schedule defined)\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/snap-tpmctl).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0Mi45Ny4wIiwidXBkYXRlZEluVmVyIjoiNDMuMTUwLjAiLCJ0YXJnZXRCcmFuY2giOiJtYWluIiwibGFiZWxzIjpbXX0=-->",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/d2e454795ff3e771a09feac3d212d7864377fe90"
+                  "timestamp": 1777545171,
+                  "message": "fix(tui): correct arguments for cleaning lines",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/d4aa9d829b84c7de7e2ec620f2d1ae149f97414c"
                }
             ],
             "ciActions": [],
@@ -5478,25 +5478,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0e1bb43de29f1de23cd80f966591bd895b562f39",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1777476866,
-                  "message": "e2e-tests: Add tests for `allowed_users` broker property (#1469)\n\nAdd tests for the following scenarios:\n- `allowed_users` is set to `OWNER` and the `owner` is set to the test\nuser (login successful)\n- `allowed_users` is set to `OWNER` and `owner` is explicitly set to an\nempty value (login denied)\n- `allowed_users` is set to `user` and login with that user (login\nsuccessful)\n- `allowed_users` set to a specific user and login with a different user\n(login denied)\n- `allowed_users` is set to to `ALL` (login successful)\n\n\nUDENG-9543\nUDENG-9544\nUDENG-9545\nUDENG-9546\nUDENG-9547",
-                  "url": "https://github.com/canonical/authd/commit/0e1bb43de29f1de23cd80f966591bd895b562f39"
+                  "sha": "11a17754fcffc8532862ef47978a84687b529f63",
+                  "author": "adombeck",
+                  "timestamp": 1777884768,
+                  "message": "Support API versioning in broker API and authd (#1446)\n\nUDENG-9793",
+                  "url": "https://github.com/canonical/authd/commit/11a17754fcffc8532862ef47978a84687b529f63"
                },
                {
-                  "sha": "c5453d26c269b6621d3fc4b8183e5bd96a7b171e",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1777472571,
-                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1494)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/Azure/azure-sdk-for-go/sdk/azcore](https://github.com/Azure/azure-sdk-for-go),\n[github.com/canonical/authd](https://github.com/canonical/authd) and\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go).\n\nUpdates `github.com/Azure/azure-sdk-for-go/sdk/azcore` from 1.21.0 to\n1.21.1\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/Azure/azure-sdk-for-go/releases\">github.com/Azure/azure-sdk-for-go/sdk/azcore's\nreleases</a>.</em></p>\n<blockquote>\n<h2>sdk/azcore/v1.21.1</h2>\n<h2>1.21.1 (2026-04-16)</h2>\n<h3>Bugs Fixed</h3>\n<ul>\n<li>Fixed an issue in <code>ResponseError.Error()</code> where the\nrequest URL path was being logged unescaped.</li>\n<li>Redact query parameters when logging errors.</li>\n<li>For <code>runtime.JoinPaths</code>, don't add a slash between root\nand paths when <code>paths</code> starts with <code>?</code> (query\nstring).</li>\n</ul>\n<h3>Other Changes</h3>\n<ul>\n<li>Upgraded to Go 1.25.0.</li>\n<li>Upgraded dependencies.</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/63e4ba18204b0df554e330df8f85662e653e67ab\"><code>63e4ba1</code></a>\nBump release date for azcore (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26613\">#26613</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/fa0312174d17ff4cb7cb0118fa80de07409841c2\"><code>fa03121</code></a>\nremove bypass local dns (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26609\">#26609</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/c47f9a60dd1e9be6943ff0d6a5666a0ac09f6cfa\"><code>c47f9a6</code></a>\nSync eng/common directory with azure-sdk-tools for PR 15153 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26607\">#26607</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/88b8b5b38ecebb929a2e302df054fed1d68618b8\"><code>88b8b5b</code></a>\nChangelog for v2.2.0 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26567\">#26567</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/72ca19ae2b8b4514c4f48a5ff33495b03c08afd0\"><code>72ca19a</code></a>\nStorage STG 101 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26568\">#26568</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/b64baf56c6b168d258b2a0678290ac5f9ab97938\"><code>b64baf5</code></a>\nSync .github directory with azure-sdk-tools repository (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26600\">#26600</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/ecd64dd6500a04da22107925c3ba9fbe8e636f2c\"><code>ecd64dd</code></a>\nPrep azcore@v1.21.1 for release (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26596\">#26596</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/1d02f204d0146ffd7d13d5585bf3766e53c32cc5\"><code>1d02f20</code></a>\nUpdate copilot code review instructions and migration breaking change\nmitigat...</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/f6e9ce3212cc9d654d349778f19065eb5d849197\"><code>f6e9ce3</code></a>\nSync eng/common directory with azure-sdk-tools for PR 14973 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26531\">#26531</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/d5a3baf11e0b743a4009efb8e84cbaee335fc0eb\"><code>d5a3baf</code></a>\nUpdate CODEOWNERS to remove one owner from Custom Providers (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26588\">#26588</a>)</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/Azure/azure-sdk-for-go/compare/sdk/azcore/v1.21.0...sdk/azcore/v1.21.1\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/canonical/authd` from 0.6.1 to 0.6.4\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/e0fcd915afdca7babab4b3f02c22e586fbccaf9e\"><code>e0fcd91</code></a>\nUpload 0.6.4 to resolute</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/44d590e56f8e1e8033748bcfedb1c2884f59c5db\"><code>44d590e</code></a>\nAdd changelog entry for 0.6.4</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/7b024af54894b8785b4bb995abbd60e26f22fe74\"><code>7b024af</code></a>\nfix: preserve user's primary group GID across logins</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/4d24d337a289ec12dcdbd67c9fc60b9490728ed7\"><code>4d24d33</code></a>\nAdd changelog entry for 0.6.2 (<a\nhref=\"https://redirect.github.com/canonical/authd/issues/1420\">#1420</a>)</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/ca1a1cbf546e55d888b1d5fdf1e59d4f4f84ea89\"><code>ca1a1cb</code></a>\nUpload 0.6.2 to resolute</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/92bf8690db63d2b1b9124e1569fc16d8617acfb8\"><code>92bf869</code></a>\nAdd changelog entry for 0.6.2</li>\n<li>See full diff in <a\nhref=\"https://github.com/canonical/authd/compare/v0.6.1...v0.6.4\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/microsoftgraph/msgraph-sdk-go` from 1.96.0 to 1.97.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/releases\">github.com/microsoftgraph/msgraph-sdk-go's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v1.97.0</h2>\n<h2><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.96.0...v1.97.0\">1.97.0</a>\n(2026-04-17)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>generation:</strong> update request builders and models (<a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/58f4bd0eff2c003ce62558bd032845abb3481c6b\">58f4bd0</a>)</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/blob/main/CHANGELOG.md\">github.com/microsoftgraph/msgraph-sdk-go's\nchangelog</a>.</em></p>\n<blockquote>\n<h2><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.96.0...v1.97.0\">1.97.0</a>\n(2026-04-17)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>generation:</strong> update request builders and models (<a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/58f4bd0eff2c003ce62558bd032845abb3481c6b\">58f4bd0</a>)</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/955508b1f095891a582fd628f86dcc7655c9759a\"><code>955508b</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/991\">#991</a>\nfrom microsoftgraph/release-please--branches--main--c...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/285dc13fb88bba59adaa0a26baf9abe32bdcae4a\"><code>285dc13</code></a>\nchore(main): release 1.97.0</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/b88a325b4ce0284efd74e54a6082ea1c9acc3dfc\"><code>b88a325</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/989\">#989</a>\nfrom microsoftgraph/v1.0/pipelinebuild/215572</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/58f4bd0eff2c003ce62558bd032845abb3481c6b\"><code>58f4bd0</code></a>\nfeat(generation): update request builders and models</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/991a166507b8b3115479c484d22e824354ca9075\"><code>991a166</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/978\">#978</a>\nfrom microsoftgraph/dependabot/github_actions/actions...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/37d2ad4cae81653ebc64f8588d250fcfcb2ea5f2\"><code>37d2ad4</code></a>\nMerge branch 'main' into\ndependabot/github_actions/actions/upload-artifact-7</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/328d6f26d6b7d2507ad477101ec1b800aa4382ef\"><code>328d6f2</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/985\">#985</a>\nfrom microsoftgraph/dependabot/github_actions/dependa...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/c8d27894323b0282cdb3dcb56c4b25b47a9538ce\"><code>c8d2789</code></a>\nchore(deps): bump dependabot/fetch-metadata from 2.5.0 to 3.0.0</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/3ca9e1cba7e896bc7b361e9c149bca1bdb4e5700\"><code>3ca9e1c</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/982\">#982</a>\nfrom microsoftgraph/dependabot/go_modules/github.com/...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/0ce02236e01cbc459b524a9f9bb38a5f32a2e8bf\"><code>0ce0223</code></a>\nMerge branch 'main' into\ndependabot/go_modules/github.com/microsoft/kiota-ser...</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.96.0...v1.97.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/canonical/authd/commit/c5453d26c269b6621d3fc4b8183e5bd96a7b171e"
+                  "sha": "07cbb9d9c582e96064f6aeec24c39984280f3981",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1777043128,
+                  "message": "e2e-tests: Increase default pattern match timeout to 10s\n\nI've seen the pattern matching of \"You have signed in\" time out after 5\nseconds. Instead of increasing the timeout of just that one pattern,\nlet's increase the default timeout, because during the browser login,\nbasically each step can be slowed down by a bad network connection and\ntake longer than 5 seconds.",
+                  "url": "https://github.com/canonical/authd/commit/07cbb9d9c582e96064f6aeec24c39984280f3981"
                },
                {
-                  "sha": "0ea21c7635133b55d095ebcce22134592c017197",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1777274158,
-                  "message": "e2e: Add tests for `allowed_users` broker property",
-                  "url": "https://github.com/canonical/authd/commit/0ea21c7635133b55d095ebcce22134592c017197"
+                  "sha": "cd531a871d42a1be8479932776298ed4e02ccae2",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1776194518,
+                  "message": "Support versioning in Broker API and authd\n\nAdds a com.ubuntu.authd.Broker2 D-Bus interface in accordance with\nhttps://dbus.freedesktop.org/doc/dbus-api-design.html#api-versioning\n\nAlso authd now properly considers the possibility of multiple interfaces\nand, for now, chooses the latest one available.\n\nCo-authored-by: Denison Barbosa <denison.barbosa@canonical.com>",
+                  "url": "https://github.com/canonical/authd/commit/cd531a871d42a1be8479932776298ed4e02ccae2"
                }
             ],
             "ciActions": [
@@ -5678,25 +5678,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8d51f0f541faddd0b4798fb68ec5ddcd0a428bd9",
+                  "author": "Juan Ruitiña",
+                  "timestamp": 1777879870,
+                  "message": "Merge pull request #213 from juanruitina/fix/esm-description-copy\n\nfix(ubuntu-pro): update ESM description copy",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/8d51f0f541faddd0b4798fb68ec5ddcd0a428bd9"
+               },
+               {
+                  "sha": "c053fe2b501f9737963578bdebec25750d4291ff",
+                  "author": "Juan Ruitiña",
+                  "timestamp": 1777542549,
+                  "message": "fix(ubuntu-pro): update ESM description copy\n\nRemove specific package counts in favour of broader descriptions\nthat won't become stale. Align wording with current Ubuntu Pro\nmarketing for the ESM section.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/c053fe2b501f9737963578bdebec25750d4291ff"
+               },
+               {
                   "sha": "fad50c09e784911d87b9c9514764f621a358e94d",
                   "author": "Dennis Loose",
                   "timestamp": 1777387714,
                   "message": "Merge pull request #212 from canonical/prompting-toggle-error\n\nfeat: show error message if enabling prompting fails",
                   "url": "https://github.com/canonical/desktop-security-center/commit/fad50c09e784911d87b9c9514764f621a358e94d"
-               },
-               {
-                  "sha": "a0d1b82f66d758946c1d4f661c000e2b1fa67176",
-                  "author": "Dennis Loose",
-                  "timestamp": 1777298866,
-                  "message": "feat: show error message if enabling prompting fails",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a0d1b82f66d758946c1d4f661c000e2b1fa67176"
-               },
-               {
-                  "sha": "2f158b7500b2977431c4e97dcff86ff57e1d2bd6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1777298593,
-                  "message": "feat: add l10n string for generic errors",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/2f158b7500b2977431c4e97dcff86ff57e1d2bd6"
                }
             ],
             "ciActions": [],
@@ -6496,25 +6496,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ceb85fa753107026e9a5f35274f53990c8fff123",
+                  "sha": "e0d1de143435a4fc3da5aae67a9dcf44d1b74b02",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777477342,
-                  "message": "fix(test): set tty to raw mode in TestReadSecret (#69)",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/ceb85fa753107026e9a5f35274f53990c8fff123"
+                  "timestamp": 1777881532,
+                  "message": "fix(tui): correct arguments for cleaning lines (#70)\n\nUDENG-9904",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/e0d1de143435a4fc3da5aae67a9dcf44d1b74b02"
                },
                {
-                  "sha": "0a2112137e70b390cb1ca883adabb5583bb87638",
+                  "sha": "a114e4886ad5b0a3f9f0a7bbb4a30780dada9332",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777475283,
-                  "message": "fix(test): prevent race condition by setting tty to raw mode",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/0a2112137e70b390cb1ca883adabb5583bb87638"
+                  "timestamp": 1777545790,
+                  "message": "test(cmd): update golden files",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/a114e4886ad5b0a3f9f0a7bbb4a30780dada9332"
                },
                {
-                  "sha": "d2e454795ff3e771a09feac3d212d7864377fe90",
+                  "sha": "d4aa9d829b84c7de7e2ec620f2d1ae149f97414c",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777472829,
-                  "message": "fix(deps): update module golang.org/x/term to v0.42.0 (#33)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [golang.org/x/term](https://pkg.go.dev/golang.org/x/term) | [`v0.39.0`\n→\n`v0.42.0`](https://cs.opensource.google/go/x/term/+/refs/tags/v0.39.0...refs/tags/v0.42.0)\n|\n![age](https://developer.mend.io/api/mc/badges/age/go/golang.org%2fx%2fterm/v0.42.0?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/go/golang.org%2fx%2fterm/v0.39.0/v0.42.0?slim=true)\n|\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - At any time (no schedule defined)\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/snap-tpmctl).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0Mi45Ny4wIiwidXBkYXRlZEluVmVyIjoiNDMuMTUwLjAiLCJ0YXJnZXRCcmFuY2giOiJtYWluIiwibGFiZWxzIjpbXX0=-->",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/d2e454795ff3e771a09feac3d212d7864377fe90"
+                  "timestamp": 1777545171,
+                  "message": "fix(tui): correct arguments for cleaning lines",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/d4aa9d829b84c7de7e2ec620f2d1ae149f97414c"
                }
             ],
             "ciActions": [],
@@ -7836,25 +7836,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0e1bb43de29f1de23cd80f966591bd895b562f39",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1777476866,
-                  "message": "e2e-tests: Add tests for `allowed_users` broker property (#1469)\n\nAdd tests for the following scenarios:\n- `allowed_users` is set to `OWNER` and the `owner` is set to the test\nuser (login successful)\n- `allowed_users` is set to `OWNER` and `owner` is explicitly set to an\nempty value (login denied)\n- `allowed_users` is set to `user` and login with that user (login\nsuccessful)\n- `allowed_users` set to a specific user and login with a different user\n(login denied)\n- `allowed_users` is set to to `ALL` (login successful)\n\n\nUDENG-9543\nUDENG-9544\nUDENG-9545\nUDENG-9546\nUDENG-9547",
-                  "url": "https://github.com/canonical/authd/commit/0e1bb43de29f1de23cd80f966591bd895b562f39"
+                  "sha": "11a17754fcffc8532862ef47978a84687b529f63",
+                  "author": "adombeck",
+                  "timestamp": 1777884768,
+                  "message": "Support API versioning in broker API and authd (#1446)\n\nUDENG-9793",
+                  "url": "https://github.com/canonical/authd/commit/11a17754fcffc8532862ef47978a84687b529f63"
                },
                {
-                  "sha": "c5453d26c269b6621d3fc4b8183e5bd96a7b171e",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1777472571,
-                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1494)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/Azure/azure-sdk-for-go/sdk/azcore](https://github.com/Azure/azure-sdk-for-go),\n[github.com/canonical/authd](https://github.com/canonical/authd) and\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go).\n\nUpdates `github.com/Azure/azure-sdk-for-go/sdk/azcore` from 1.21.0 to\n1.21.1\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/Azure/azure-sdk-for-go/releases\">github.com/Azure/azure-sdk-for-go/sdk/azcore's\nreleases</a>.</em></p>\n<blockquote>\n<h2>sdk/azcore/v1.21.1</h2>\n<h2>1.21.1 (2026-04-16)</h2>\n<h3>Bugs Fixed</h3>\n<ul>\n<li>Fixed an issue in <code>ResponseError.Error()</code> where the\nrequest URL path was being logged unescaped.</li>\n<li>Redact query parameters when logging errors.</li>\n<li>For <code>runtime.JoinPaths</code>, don't add a slash between root\nand paths when <code>paths</code> starts with <code>?</code> (query\nstring).</li>\n</ul>\n<h3>Other Changes</h3>\n<ul>\n<li>Upgraded to Go 1.25.0.</li>\n<li>Upgraded dependencies.</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/63e4ba18204b0df554e330df8f85662e653e67ab\"><code>63e4ba1</code></a>\nBump release date for azcore (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26613\">#26613</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/fa0312174d17ff4cb7cb0118fa80de07409841c2\"><code>fa03121</code></a>\nremove bypass local dns (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26609\">#26609</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/c47f9a60dd1e9be6943ff0d6a5666a0ac09f6cfa\"><code>c47f9a6</code></a>\nSync eng/common directory with azure-sdk-tools for PR 15153 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26607\">#26607</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/88b8b5b38ecebb929a2e302df054fed1d68618b8\"><code>88b8b5b</code></a>\nChangelog for v2.2.0 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26567\">#26567</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/72ca19ae2b8b4514c4f48a5ff33495b03c08afd0\"><code>72ca19a</code></a>\nStorage STG 101 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26568\">#26568</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/b64baf56c6b168d258b2a0678290ac5f9ab97938\"><code>b64baf5</code></a>\nSync .github directory with azure-sdk-tools repository (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26600\">#26600</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/ecd64dd6500a04da22107925c3ba9fbe8e636f2c\"><code>ecd64dd</code></a>\nPrep azcore@v1.21.1 for release (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26596\">#26596</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/1d02f204d0146ffd7d13d5585bf3766e53c32cc5\"><code>1d02f20</code></a>\nUpdate copilot code review instructions and migration breaking change\nmitigat...</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/f6e9ce3212cc9d654d349778f19065eb5d849197\"><code>f6e9ce3</code></a>\nSync eng/common directory with azure-sdk-tools for PR 14973 (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26531\">#26531</a>)</li>\n<li><a\nhref=\"https://github.com/Azure/azure-sdk-for-go/commit/d5a3baf11e0b743a4009efb8e84cbaee335fc0eb\"><code>d5a3baf</code></a>\nUpdate CODEOWNERS to remove one owner from Custom Providers (<a\nhref=\"https://redirect.github.com/Azure/azure-sdk-for-go/issues/26588\">#26588</a>)</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/Azure/azure-sdk-for-go/compare/sdk/azcore/v1.21.0...sdk/azcore/v1.21.1\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/canonical/authd` from 0.6.1 to 0.6.4\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/e0fcd915afdca7babab4b3f02c22e586fbccaf9e\"><code>e0fcd91</code></a>\nUpload 0.6.4 to resolute</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/44d590e56f8e1e8033748bcfedb1c2884f59c5db\"><code>44d590e</code></a>\nAdd changelog entry for 0.6.4</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/7b024af54894b8785b4bb995abbd60e26f22fe74\"><code>7b024af</code></a>\nfix: preserve user's primary group GID across logins</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/4d24d337a289ec12dcdbd67c9fc60b9490728ed7\"><code>4d24d33</code></a>\nAdd changelog entry for 0.6.2 (<a\nhref=\"https://redirect.github.com/canonical/authd/issues/1420\">#1420</a>)</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/ca1a1cbf546e55d888b1d5fdf1e59d4f4f84ea89\"><code>ca1a1cb</code></a>\nUpload 0.6.2 to resolute</li>\n<li><a\nhref=\"https://github.com/canonical/authd/commit/92bf8690db63d2b1b9124e1569fc16d8617acfb8\"><code>92bf869</code></a>\nAdd changelog entry for 0.6.2</li>\n<li>See full diff in <a\nhref=\"https://github.com/canonical/authd/compare/v0.6.1...v0.6.4\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/microsoftgraph/msgraph-sdk-go` from 1.96.0 to 1.97.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/releases\">github.com/microsoftgraph/msgraph-sdk-go's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v1.97.0</h2>\n<h2><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.96.0...v1.97.0\">1.97.0</a>\n(2026-04-17)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>generation:</strong> update request builders and models (<a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/58f4bd0eff2c003ce62558bd032845abb3481c6b\">58f4bd0</a>)</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/blob/main/CHANGELOG.md\">github.com/microsoftgraph/msgraph-sdk-go's\nchangelog</a>.</em></p>\n<blockquote>\n<h2><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.96.0...v1.97.0\">1.97.0</a>\n(2026-04-17)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>generation:</strong> update request builders and models (<a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/58f4bd0eff2c003ce62558bd032845abb3481c6b\">58f4bd0</a>)</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/955508b1f095891a582fd628f86dcc7655c9759a\"><code>955508b</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/991\">#991</a>\nfrom microsoftgraph/release-please--branches--main--c...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/285dc13fb88bba59adaa0a26baf9abe32bdcae4a\"><code>285dc13</code></a>\nchore(main): release 1.97.0</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/b88a325b4ce0284efd74e54a6082ea1c9acc3dfc\"><code>b88a325</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/989\">#989</a>\nfrom microsoftgraph/v1.0/pipelinebuild/215572</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/58f4bd0eff2c003ce62558bd032845abb3481c6b\"><code>58f4bd0</code></a>\nfeat(generation): update request builders and models</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/991a166507b8b3115479c484d22e824354ca9075\"><code>991a166</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/978\">#978</a>\nfrom microsoftgraph/dependabot/github_actions/actions...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/37d2ad4cae81653ebc64f8588d250fcfcb2ea5f2\"><code>37d2ad4</code></a>\nMerge branch 'main' into\ndependabot/github_actions/actions/upload-artifact-7</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/328d6f26d6b7d2507ad477101ec1b800aa4382ef\"><code>328d6f2</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/985\">#985</a>\nfrom microsoftgraph/dependabot/github_actions/dependa...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/c8d27894323b0282cdb3dcb56c4b25b47a9538ce\"><code>c8d2789</code></a>\nchore(deps): bump dependabot/fetch-metadata from 2.5.0 to 3.0.0</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/3ca9e1cba7e896bc7b361e9c149bca1bdb4e5700\"><code>3ca9e1c</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/microsoftgraph/msgraph-sdk-go/issues/982\">#982</a>\nfrom microsoftgraph/dependabot/go_modules/github.com/...</li>\n<li><a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/commit/0ce02236e01cbc459b524a9f9bb38a5f32a2e8bf\"><code>0ce0223</code></a>\nMerge branch 'main' into\ndependabot/go_modules/github.com/microsoft/kiota-ser...</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/microsoftgraph/msgraph-sdk-go/compare/v1.96.0...v1.97.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/canonical/authd/commit/c5453d26c269b6621d3fc4b8183e5bd96a7b171e"
+                  "sha": "07cbb9d9c582e96064f6aeec24c39984280f3981",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1777043128,
+                  "message": "e2e-tests: Increase default pattern match timeout to 10s\n\nI've seen the pattern matching of \"You have signed in\" time out after 5\nseconds. Instead of increasing the timeout of just that one pattern,\nlet's increase the default timeout, because during the browser login,\nbasically each step can be slowed down by a bad network connection and\ntake longer than 5 seconds.",
+                  "url": "https://github.com/canonical/authd/commit/07cbb9d9c582e96064f6aeec24c39984280f3981"
                },
                {
-                  "sha": "0ea21c7635133b55d095ebcce22134592c017197",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1777274158,
-                  "message": "e2e: Add tests for `allowed_users` broker property",
-                  "url": "https://github.com/canonical/authd/commit/0ea21c7635133b55d095ebcce22134592c017197"
+                  "sha": "cd531a871d42a1be8479932776298ed4e02ccae2",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1776194518,
+                  "message": "Support versioning in Broker API and authd\n\nAdds a com.ubuntu.authd.Broker2 D-Bus interface in accordance with\nhttps://dbus.freedesktop.org/doc/dbus-api-design.html#api-versioning\n\nAlso authd now properly considers the possibility of multiple interfaces\nand, for now, chooses the latest one available.\n\nCo-authored-by: Denison Barbosa <denison.barbosa@canonical.com>",
+                  "url": "https://github.com/canonical/authd/commit/cd531a871d42a1be8479932776298ed4e02ccae2"
                }
             ],
             "ciActions": [
@@ -8036,25 +8036,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8d51f0f541faddd0b4798fb68ec5ddcd0a428bd9",
+                  "author": "Juan Ruitiña",
+                  "timestamp": 1777879870,
+                  "message": "Merge pull request #213 from juanruitina/fix/esm-description-copy\n\nfix(ubuntu-pro): update ESM description copy",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/8d51f0f541faddd0b4798fb68ec5ddcd0a428bd9"
+               },
+               {
+                  "sha": "c053fe2b501f9737963578bdebec25750d4291ff",
+                  "author": "Juan Ruitiña",
+                  "timestamp": 1777542549,
+                  "message": "fix(ubuntu-pro): update ESM description copy\n\nRemove specific package counts in favour of broader descriptions\nthat won't become stale. Align wording with current Ubuntu Pro\nmarketing for the ESM section.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/c053fe2b501f9737963578bdebec25750d4291ff"
+               },
+               {
                   "sha": "fad50c09e784911d87b9c9514764f621a358e94d",
                   "author": "Dennis Loose",
                   "timestamp": 1777387714,
                   "message": "Merge pull request #212 from canonical/prompting-toggle-error\n\nfeat: show error message if enabling prompting fails",
                   "url": "https://github.com/canonical/desktop-security-center/commit/fad50c09e784911d87b9c9514764f621a358e94d"
-               },
-               {
-                  "sha": "a0d1b82f66d758946c1d4f661c000e2b1fa67176",
-                  "author": "Dennis Loose",
-                  "timestamp": 1777298866,
-                  "message": "feat: show error message if enabling prompting fails",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a0d1b82f66d758946c1d4f661c000e2b1fa67176"
-               },
-               {
-                  "sha": "2f158b7500b2977431c4e97dcff86ff57e1d2bd6",
-                  "author": "Dennis Loose",
-                  "timestamp": 1777298593,
-                  "message": "feat: add l10n string for generic errors",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/2f158b7500b2977431c4e97dcff86ff57e1d2bd6"
                }
             ],
             "ciActions": [],
@@ -8821,25 +8821,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ceb85fa753107026e9a5f35274f53990c8fff123",
+                  "sha": "e0d1de143435a4fc3da5aae67a9dcf44d1b74b02",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777477342,
-                  "message": "fix(test): set tty to raw mode in TestReadSecret (#69)",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/ceb85fa753107026e9a5f35274f53990c8fff123"
+                  "timestamp": 1777881532,
+                  "message": "fix(tui): correct arguments for cleaning lines (#70)\n\nUDENG-9904",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/e0d1de143435a4fc3da5aae67a9dcf44d1b74b02"
                },
                {
-                  "sha": "0a2112137e70b390cb1ca883adabb5583bb87638",
+                  "sha": "a114e4886ad5b0a3f9f0a7bbb4a30780dada9332",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777475283,
-                  "message": "fix(test): prevent race condition by setting tty to raw mode",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/0a2112137e70b390cb1ca883adabb5583bb87638"
+                  "timestamp": 1777545790,
+                  "message": "test(cmd): update golden files",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/a114e4886ad5b0a3f9f0a7bbb4a30780dada9332"
                },
                {
-                  "sha": "d2e454795ff3e771a09feac3d212d7864377fe90",
+                  "sha": "d4aa9d829b84c7de7e2ec620f2d1ae149f97414c",
                   "author": "Gabriele Belluardo",
-                  "timestamp": 1777472829,
-                  "message": "fix(deps): update module golang.org/x/term to v0.42.0 (#33)\n\nThis PR contains the following updates:\n\n| Package | Change |\n[Age](https://docs.renovatebot.com/merge-confidence/) |\n[Confidence](https://docs.renovatebot.com/merge-confidence/) |\n|---|---|---|---|\n| [golang.org/x/term](https://pkg.go.dev/golang.org/x/term) | [`v0.39.0`\n→\n`v0.42.0`](https://cs.opensource.google/go/x/term/+/refs/tags/v0.39.0...refs/tags/v0.42.0)\n|\n![age](https://developer.mend.io/api/mc/badges/age/go/golang.org%2fx%2fterm/v0.42.0?slim=true)\n|\n![confidence](https://developer.mend.io/api/mc/badges/confidence/go/golang.org%2fx%2fterm/v0.39.0/v0.42.0?slim=true)\n|\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - At any time (no schedule defined)\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/snap-tpmctl).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0Mi45Ny4wIiwidXBkYXRlZEluVmVyIjoiNDMuMTUwLjAiLCJ0YXJnZXRCcmFuY2giOiJtYWluIiwibGFiZWxzIjpbXX0=-->",
-                  "url": "https://github.com/canonical/snap-tpmctl/commit/d2e454795ff3e771a09feac3d212d7864377fe90"
+                  "timestamp": 1777545171,
+                  "message": "fix(tui): correct arguments for cleaning lines",
+                  "url": "https://github.com/canonical/snap-tpmctl/commit/d4aa9d829b84c7de7e2ec620f2d1ae149f97414c"
                }
             ],
             "ciActions": [],
