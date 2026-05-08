@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "aea31d592b6102a639a87013800fe5fae2d5cdd2",
-                  "author": "adombeck",
-                  "timestamp": 1778234527,
-                  "message": "Bump Go toolchain version to 1.25.10 (#1513)",
-                  "url": "https://github.com/canonical/authd/commit/aea31d592b6102a639a87013800fe5fae2d5cdd2"
+                  "sha": "685da6ee1cdd8d1759e9b0c45d60513e6031345a",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1778269597,
+                  "message": "Add test for changing password of local user (#1407)\n\nThis test ensures that authd does not interfere when changing the\npassword of a local user.\n\nUDENG-9558",
+                  "url": "https://github.com/canonical/authd/commit/685da6ee1cdd8d1759e9b0c45d60513e6031345a"
                },
                {
-                  "sha": "872eabb9c766e00a5c530dc1a2c6269392e35c77",
+                  "sha": "4fa285f8d4f2d595ed15d9f44526c6ebb12a704b",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1775563209,
+                  "message": "Add test for changing password of local user\n\nThis test is to make sure authd does not interfere when changing the\npassword of a local user",
+                  "url": "https://github.com/canonical/authd/commit/4fa285f8d4f2d595ed15d9f44526c6ebb12a704b"
+               },
+               {
+                  "sha": "baf621e7f1bb829b749694c67f9df7686fe0ca12",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1778229674,
-                  "message": "Bump Go toolchain version to 1.25.10\n\ngovulncheck reports the following vulnerabilities in go1.25.9:\n\nVulnerability #1: GO-2026-4982\n    Bypass of meta content URL escaping causes XSS in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4982\n  Standard library\n    Found in: html/template@go1.25.9\n    Fixed in: html/template@go1.25.10\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #2: GO-2026-4980\n    Escaper bypass leads to XSS in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4980\n  Standard library\n    Found in: html/template@go1.25.9\n    Fixed in: html/template@go1.25.10\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #3: GO-2026-4971\n    Panic in Dial and LookupPort when handling NUL byte on Windows in net\n  More info: https://pkg.go.dev/vuln/GO-2026-4971\n  Standard library\n    Found in: net@go1.25.9\n    Fixed in: net@go1.25.10\n    Example traces found:\nError:       #1: pam/internal/dbusmodule/transaction.go:51:24: dbusmodule.NewTransaction calls dbus.Dial, which eventually calls net.Dial\nError:       #2: pam/integration-tests/ssh_test.go:777:32: integration.startSSHD calls net.DialTimeout\nError:       #3: pam/integration-tests/vhs-helpers_test.go:417:26: integration.tapeData.SanitizedOutput calls sync.Once.Do, which eventually calls net.Dialer.DialContext\nError:       #4: internal/services/manager_test.go:89:24: services_test.TestAccessAuthorization calls net.Listen\n\nVulnerability #4: GO-2026-4918\n    Infinite loop in HTTP/2 transport when given bad SETTINGS_MAX_FRAME_SIZE in\n    net/http/internal/http2 in golang.org/x/net\n  More info: https://pkg.go.dev/vuln/GO-2026-4918\n  Module: golang.org/x/net\n    Found in: golang.org/x/net@v0.51.0\n    Fixed in: golang.org/x/net@v0.53.0\n\n  Standard library\n    Found in: net/http@go1.25.9\n    Fixed in: net/http@go1.25.10\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:719:14: integration.startSSHD calls httptest.Server.Close, which calls http.Transport.CloseIdleConnections",
-                  "url": "https://github.com/canonical/authd/commit/872eabb9c766e00a5c530dc1a2c6269392e35c77"
-               },
-               {
-                  "sha": "dcc99154c92db3eb59853ed2b2b0763d0262de9f",
-                  "author": "adombeck",
-                  "timestamp": 1778152343,
-                  "message": "Warn about unknown sections and keys in broker.conf (#1462)\n\nCloses #1461",
-                  "url": "https://github.com/canonical/authd/commit/dcc99154c92db3eb59853ed2b2b0763d0262de9f"
+                  "timestamp": 1778238104,
+                  "message": "e2e-tests/vm: Install libpam-pwquality\n\nChanging the password via PAM fails if pam_pwquality.so is not\ninstalled.",
+                  "url": "https://github.com/canonical/authd/commit/baf621e7f1bb829b749694c67f9df7686fe0ca12"
                }
             ],
             "ciActions": [
@@ -5478,25 +5478,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "aea31d592b6102a639a87013800fe5fae2d5cdd2",
-                  "author": "adombeck",
-                  "timestamp": 1778234527,
-                  "message": "Bump Go toolchain version to 1.25.10 (#1513)",
-                  "url": "https://github.com/canonical/authd/commit/aea31d592b6102a639a87013800fe5fae2d5cdd2"
+                  "sha": "685da6ee1cdd8d1759e9b0c45d60513e6031345a",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1778269597,
+                  "message": "Add test for changing password of local user (#1407)\n\nThis test ensures that authd does not interfere when changing the\npassword of a local user.\n\nUDENG-9558",
+                  "url": "https://github.com/canonical/authd/commit/685da6ee1cdd8d1759e9b0c45d60513e6031345a"
                },
                {
-                  "sha": "872eabb9c766e00a5c530dc1a2c6269392e35c77",
+                  "sha": "4fa285f8d4f2d595ed15d9f44526c6ebb12a704b",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1775563209,
+                  "message": "Add test for changing password of local user\n\nThis test is to make sure authd does not interfere when changing the\npassword of a local user",
+                  "url": "https://github.com/canonical/authd/commit/4fa285f8d4f2d595ed15d9f44526c6ebb12a704b"
+               },
+               {
+                  "sha": "baf621e7f1bb829b749694c67f9df7686fe0ca12",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1778229674,
-                  "message": "Bump Go toolchain version to 1.25.10\n\ngovulncheck reports the following vulnerabilities in go1.25.9:\n\nVulnerability #1: GO-2026-4982\n    Bypass of meta content URL escaping causes XSS in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4982\n  Standard library\n    Found in: html/template@go1.25.9\n    Fixed in: html/template@go1.25.10\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #2: GO-2026-4980\n    Escaper bypass leads to XSS in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4980\n  Standard library\n    Found in: html/template@go1.25.9\n    Fixed in: html/template@go1.25.10\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #3: GO-2026-4971\n    Panic in Dial and LookupPort when handling NUL byte on Windows in net\n  More info: https://pkg.go.dev/vuln/GO-2026-4971\n  Standard library\n    Found in: net@go1.25.9\n    Fixed in: net@go1.25.10\n    Example traces found:\nError:       #1: pam/internal/dbusmodule/transaction.go:51:24: dbusmodule.NewTransaction calls dbus.Dial, which eventually calls net.Dial\nError:       #2: pam/integration-tests/ssh_test.go:777:32: integration.startSSHD calls net.DialTimeout\nError:       #3: pam/integration-tests/vhs-helpers_test.go:417:26: integration.tapeData.SanitizedOutput calls sync.Once.Do, which eventually calls net.Dialer.DialContext\nError:       #4: internal/services/manager_test.go:89:24: services_test.TestAccessAuthorization calls net.Listen\n\nVulnerability #4: GO-2026-4918\n    Infinite loop in HTTP/2 transport when given bad SETTINGS_MAX_FRAME_SIZE in\n    net/http/internal/http2 in golang.org/x/net\n  More info: https://pkg.go.dev/vuln/GO-2026-4918\n  Module: golang.org/x/net\n    Found in: golang.org/x/net@v0.51.0\n    Fixed in: golang.org/x/net@v0.53.0\n\n  Standard library\n    Found in: net/http@go1.25.9\n    Fixed in: net/http@go1.25.10\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:719:14: integration.startSSHD calls httptest.Server.Close, which calls http.Transport.CloseIdleConnections",
-                  "url": "https://github.com/canonical/authd/commit/872eabb9c766e00a5c530dc1a2c6269392e35c77"
-               },
-               {
-                  "sha": "dcc99154c92db3eb59853ed2b2b0763d0262de9f",
-                  "author": "adombeck",
-                  "timestamp": 1778152343,
-                  "message": "Warn about unknown sections and keys in broker.conf (#1462)\n\nCloses #1461",
-                  "url": "https://github.com/canonical/authd/commit/dcc99154c92db3eb59853ed2b2b0763d0262de9f"
+                  "timestamp": 1778238104,
+                  "message": "e2e-tests/vm: Install libpam-pwquality\n\nChanging the password via PAM fails if pam_pwquality.so is not\ninstalled.",
+                  "url": "https://github.com/canonical/authd/commit/baf621e7f1bb829b749694c67f9df7686fe0ca12"
                }
             ],
             "ciActions": [
@@ -7836,25 +7836,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "aea31d592b6102a639a87013800fe5fae2d5cdd2",
-                  "author": "adombeck",
-                  "timestamp": 1778234527,
-                  "message": "Bump Go toolchain version to 1.25.10 (#1513)",
-                  "url": "https://github.com/canonical/authd/commit/aea31d592b6102a639a87013800fe5fae2d5cdd2"
+                  "sha": "685da6ee1cdd8d1759e9b0c45d60513e6031345a",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1778269597,
+                  "message": "Add test for changing password of local user (#1407)\n\nThis test ensures that authd does not interfere when changing the\npassword of a local user.\n\nUDENG-9558",
+                  "url": "https://github.com/canonical/authd/commit/685da6ee1cdd8d1759e9b0c45d60513e6031345a"
                },
                {
-                  "sha": "872eabb9c766e00a5c530dc1a2c6269392e35c77",
+                  "sha": "4fa285f8d4f2d595ed15d9f44526c6ebb12a704b",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1775563209,
+                  "message": "Add test for changing password of local user\n\nThis test is to make sure authd does not interfere when changing the\npassword of a local user",
+                  "url": "https://github.com/canonical/authd/commit/4fa285f8d4f2d595ed15d9f44526c6ebb12a704b"
+               },
+               {
+                  "sha": "baf621e7f1bb829b749694c67f9df7686fe0ca12",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1778229674,
-                  "message": "Bump Go toolchain version to 1.25.10\n\ngovulncheck reports the following vulnerabilities in go1.25.9:\n\nVulnerability #1: GO-2026-4982\n    Bypass of meta content URL escaping causes XSS in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4982\n  Standard library\n    Found in: html/template@go1.25.9\n    Fixed in: html/template@go1.25.10\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #2: GO-2026-4980\n    Escaper bypass leads to XSS in html/template\n  More info: https://pkg.go.dev/vuln/GO-2026-4980\n  Standard library\n    Found in: html/template@go1.25.9\n    Fixed in: html/template@go1.25.10\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.Execute\nError:       #2: pam/integration-tests/ssh_test.go:715:30: integration.startSSHD calls httptest.NewServer, which eventually calls template.Template.ExecuteTemplate\n\nVulnerability #3: GO-2026-4971\n    Panic in Dial and LookupPort when handling NUL byte on Windows in net\n  More info: https://pkg.go.dev/vuln/GO-2026-4971\n  Standard library\n    Found in: net@go1.25.9\n    Fixed in: net@go1.25.10\n    Example traces found:\nError:       #1: pam/internal/dbusmodule/transaction.go:51:24: dbusmodule.NewTransaction calls dbus.Dial, which eventually calls net.Dial\nError:       #2: pam/integration-tests/ssh_test.go:777:32: integration.startSSHD calls net.DialTimeout\nError:       #3: pam/integration-tests/vhs-helpers_test.go:417:26: integration.tapeData.SanitizedOutput calls sync.Once.Do, which eventually calls net.Dialer.DialContext\nError:       #4: internal/services/manager_test.go:89:24: services_test.TestAccessAuthorization calls net.Listen\n\nVulnerability #4: GO-2026-4918\n    Infinite loop in HTTP/2 transport when given bad SETTINGS_MAX_FRAME_SIZE in\n    net/http/internal/http2 in golang.org/x/net\n  More info: https://pkg.go.dev/vuln/GO-2026-4918\n  Module: golang.org/x/net\n    Found in: golang.org/x/net@v0.51.0\n    Fixed in: golang.org/x/net@v0.53.0\n\n  Standard library\n    Found in: net/http@go1.25.9\n    Fixed in: net/http@go1.25.10\n    Example traces found:\nError:       #1: pam/integration-tests/ssh_test.go:719:14: integration.startSSHD calls httptest.Server.Close, which calls http.Transport.CloseIdleConnections",
-                  "url": "https://github.com/canonical/authd/commit/872eabb9c766e00a5c530dc1a2c6269392e35c77"
-               },
-               {
-                  "sha": "dcc99154c92db3eb59853ed2b2b0763d0262de9f",
-                  "author": "adombeck",
-                  "timestamp": 1778152343,
-                  "message": "Warn about unknown sections and keys in broker.conf (#1462)\n\nCloses #1461",
-                  "url": "https://github.com/canonical/authd/commit/dcc99154c92db3eb59853ed2b2b0763d0262de9f"
+                  "timestamp": 1778238104,
+                  "message": "e2e-tests/vm: Install libpam-pwquality\n\nChanging the password via PAM fails if pam_pwquality.so is not\ninstalled.",
+                  "url": "https://github.com/canonical/authd/commit/baf621e7f1bb829b749694c67f9df7686fe0ca12"
                }
             ],
             "ciActions": [
