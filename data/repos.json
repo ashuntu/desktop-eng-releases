@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c0d67a7e9db3813201bbe76e25c7e917fe7959d0",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1779194830,
+                  "message": " Fix ReadOnlyNamespace object has no attribute 'warn'.",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/c0d67a7e9db3813201bbe76e25c7e917fe7959d0"
+               },
+               {
                   "sha": "a38ff4fe139995fcebbdeb14bb1ca3842a5a645c",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1779184113,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1779175341,
                   "message": "Revert \"Relocate TMPDIR to $SNAP_USER_COMMON.\"\n\nThis reverts commit 9bb8266e3e3e1b5478c8debf991007401d53cd35.\n\nCaused https://github.com/ubuntu/thunderbird/issues/67.",
                   "url": "https://github.com/ubuntu/thunderbird/commit/5fd4515cc710f664a515329cb9dfcb199401de84"
-               },
-               {
-                  "sha": "185d36e77e9a7de1085bb5feaecbee479b0d44c4",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1778139034,
-                  "message": "150.0.2-1.",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/185d36e77e9a7de1085bb5feaecbee479b0d44c4"
                }
             ],
             "ciActions": [],
@@ -3489,25 +3489,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd7cacb9953cb6bc29f1e0008a3d2f7e6f99b7fa",
+                  "sha": "f7325f80ee7b41bb0e02893cb45d8d9a9887c27e",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1779183187,
-                  "message": "Merge pull request #221 from matthew-hagemann/bootstrap-claude\n\ndocs: AGENTS.md bootstrap",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/dd7cacb9953cb6bc29f1e0008a3d2f7e6f99b7fa"
+                  "timestamp": 1779199332,
+                  "message": "Merge pull request #223 from matthew-hagemann/retry-indeterminate-encryption-status\n\nfeat: retry indeterminate encryption status",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f7325f80ee7b41bb0e02893cb45d8d9a9887c27e"
                },
                {
-                  "sha": "b06cd72777f9b01890b451dc5849676b67335b6a",
+                  "sha": "f42b0a54938591642b5defb511c7132d7be959fb",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1779181870,
-                  "message": "docs: make AGENTS.md content model-agnostic\n\nRemove self-referential headers and Claude-specific intro boilerplate.\nPromote heading levels now that top-level headers were removed.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/b06cd72777f9b01890b451dc5849676b67335b6a"
+                  "timestamp": 1779194197,
+                  "message": "fix: address Copilot PR review comments on retry logic\n\n- Clamp retry delay to remaining maxRetryDuration budget so the loop\n  cannot overshoot the configured time cap\n- Capture previous maxRetryDuration/initialRetryDelay before overriding\n  in tests and restore those values in tearDown instead of hard-coded\n  defaults\n- Add unit tests for TpmAuthenticationModel retry/backoff logic:\n  verifies getStorageEncrypted() call count on successful retry and\n  confirms TpmStateExceptionFailed is thrown after maxRetryDuration\n\nrefactor: remove redundant fields from retry test cases\n\nDerive expectedServiceCalls from indeterminateCallCount + 1 and move\ninitialRetryDelay (always zero) out of the case records into the loop.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f42b0a54938591642b5defb511c7132d7be959fb"
                },
                {
-                  "sha": "3ad715b6d13e29e47222d83ae34c102ad2b9789a",
+                  "sha": "a16478f96caa7055b3845d751489e1fa91c72f1f",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1779180519,
-                  "message": "docs: rename CLAUDE.md to AGENTS.md with CLAUDE.md symlinks\n\nCanonical files are now AGENTS.md to align with company conventions.\nCLAUDE.md symlinks ensure Claude Code still picks up the instructions.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/3ad715b6d13e29e47222d83ae34c102ad2b9789a"
+                  "timestamp": 1779193214,
+                  "message": "refactor: inline default retry duration constants in TpmAuthenticationModel\n\nThe private `_default*` constants were only used to initialize the\n`@visibleForTesting` fields and added unnecessary indirection.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/a16478f96caa7055b3845d751489e1fa91c72f1f"
                }
             ],
             "ciActions": [],
@@ -4655,25 +4655,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c50c3e3518a1c5d3d996dfaabbf0d861917c364b",
+                  "sha": "935831040d3d39811c69a8d236aae8a5599be6e7",
                   "author": "Dennis Loose",
-                  "timestamp": 1778839416,
-                  "message": "feat: improve invalid username error message (#1436)\n\n<img width=\"2024\" height=\"1464\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/f4fbd247-cf49-481e-8f52-08596f92118e\"\n/>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c50c3e3518a1c5d3d996dfaabbf0d861917c364b"
+                  "timestamp": 1779201479,
+                  "message": "feat: announce current wizard step to screen readers (#1438)\n\nThe wizard's step indicator (the dots at the bottom of each page) is\ncurrently invisible to screen readers. This PR wraps it in a `Semantics`\nwidget so assistive technology announces the current position, e.g.\n*\"Step 2 of 5\"*.\n\n## What changed\n\n- **`ubuntu_wizard`** — added a `stepSemanticsLabel` parameter and a\n  static `defaultStepSemanticsLabel` builder to `WizardBar`. When a\n  label is provided, the page indicator dots are wrapped in\n  `Focus` + `Semantics` with `ExcludeSemantics` on the children (so\n  individual dots aren't read separately). Steps are 0-indexed\n  internally but announced as 1-based.\n\n- **`ubuntu_bootstrap`** — added a localized `stepIndicatorLabel`\n  string (`\"Step {CURRENT_STEP} of {TOTAL_STEPS}\"`) and wired up\n  `WizardBar.defaultStepSemanticsLabel` once in `_InstallerApp.build`,\n  so all pages get the behavior without individual call-site changes.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/935831040d3d39811c69a8d236aae8a5599be6e7"
                },
                {
-                  "sha": "445ff918fdc13ec259b97931dd8c88a5f0e8f8fc",
+                  "sha": "768f55f610819ceb8b5a3fc24f740a77f4aae67d",
                   "author": "Dennis Loose",
-                  "timestamp": 1778839405,
-                  "message": "chore: update go (#1437)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/445ff918fdc13ec259b97931dd8c88a5f0e8f8fc"
+                  "timestamp": 1778846646,
+                  "message": "fix: restore Focus wrapper on step indicator Semantics\n\nThe step indicator needs to be focusable as part of keyboard traversal\nso screen reader users can land on it during navigation.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/768f55f610819ceb8b5a3fc24f740a77f4aae67d"
                },
                {
-                  "sha": "0f05f5ceafb8a93a4bfc540e58c2238a3079f8a8",
+                  "sha": "7921e55250b42d30b0c1194d491a606e35691d99",
                   "author": "Dennis Loose",
-                  "timestamp": 1778755150,
-                  "message": "chore: update go",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0f05f5ceafb8a93a4bfc540e58c2238a3079f8a8"
+                  "timestamp": 1778769777,
+                  "message": "fix: add key to step indicator Semantics, reorder WizardBarTheme params\n\nAdds a ValueKey to the Semantics widget so tests can reliably target\nit without picking up unrelated ExcludeSemantics from NavigationToolbar.\nAlso reorders WizardBarTheme constructor to put required named\nparameters before optional ones.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7921e55250b42d30b0c1194d491a606e35691d99"
                }
             ],
             "ciActions": [
@@ -5678,25 +5678,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd7cacb9953cb6bc29f1e0008a3d2f7e6f99b7fa",
+                  "sha": "f7325f80ee7b41bb0e02893cb45d8d9a9887c27e",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1779183187,
-                  "message": "Merge pull request #221 from matthew-hagemann/bootstrap-claude\n\ndocs: AGENTS.md bootstrap",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/dd7cacb9953cb6bc29f1e0008a3d2f7e6f99b7fa"
+                  "timestamp": 1779199332,
+                  "message": "Merge pull request #223 from matthew-hagemann/retry-indeterminate-encryption-status\n\nfeat: retry indeterminate encryption status",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f7325f80ee7b41bb0e02893cb45d8d9a9887c27e"
                },
                {
-                  "sha": "b06cd72777f9b01890b451dc5849676b67335b6a",
+                  "sha": "f42b0a54938591642b5defb511c7132d7be959fb",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1779181870,
-                  "message": "docs: make AGENTS.md content model-agnostic\n\nRemove self-referential headers and Claude-specific intro boilerplate.\nPromote heading levels now that top-level headers were removed.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/b06cd72777f9b01890b451dc5849676b67335b6a"
+                  "timestamp": 1779194197,
+                  "message": "fix: address Copilot PR review comments on retry logic\n\n- Clamp retry delay to remaining maxRetryDuration budget so the loop\n  cannot overshoot the configured time cap\n- Capture previous maxRetryDuration/initialRetryDelay before overriding\n  in tests and restore those values in tearDown instead of hard-coded\n  defaults\n- Add unit tests for TpmAuthenticationModel retry/backoff logic:\n  verifies getStorageEncrypted() call count on successful retry and\n  confirms TpmStateExceptionFailed is thrown after maxRetryDuration\n\nrefactor: remove redundant fields from retry test cases\n\nDerive expectedServiceCalls from indeterminateCallCount + 1 and move\ninitialRetryDelay (always zero) out of the case records into the loop.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f42b0a54938591642b5defb511c7132d7be959fb"
                },
                {
-                  "sha": "3ad715b6d13e29e47222d83ae34c102ad2b9789a",
+                  "sha": "a16478f96caa7055b3845d751489e1fa91c72f1f",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1779180519,
-                  "message": "docs: rename CLAUDE.md to AGENTS.md with CLAUDE.md symlinks\n\nCanonical files are now AGENTS.md to align with company conventions.\nCLAUDE.md symlinks ensure Claude Code still picks up the instructions.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/3ad715b6d13e29e47222d83ae34c102ad2b9789a"
+                  "timestamp": 1779193214,
+                  "message": "refactor: inline default retry duration constants in TpmAuthenticationModel\n\nThe private `_default*` constants were only used to initialize the\n`@visibleForTesting` fields and added unnecessary indirection.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/a16478f96caa7055b3845d751489e1fa91c72f1f"
                }
             ],
             "ciActions": [],
@@ -6877,25 +6877,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c50c3e3518a1c5d3d996dfaabbf0d861917c364b",
+                  "sha": "935831040d3d39811c69a8d236aae8a5599be6e7",
                   "author": "Dennis Loose",
-                  "timestamp": 1778839416,
-                  "message": "feat: improve invalid username error message (#1436)\n\n<img width=\"2024\" height=\"1464\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/f4fbd247-cf49-481e-8f52-08596f92118e\"\n/>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c50c3e3518a1c5d3d996dfaabbf0d861917c364b"
+                  "timestamp": 1779201479,
+                  "message": "feat: announce current wizard step to screen readers (#1438)\n\nThe wizard's step indicator (the dots at the bottom of each page) is\ncurrently invisible to screen readers. This PR wraps it in a `Semantics`\nwidget so assistive technology announces the current position, e.g.\n*\"Step 2 of 5\"*.\n\n## What changed\n\n- **`ubuntu_wizard`** — added a `stepSemanticsLabel` parameter and a\n  static `defaultStepSemanticsLabel` builder to `WizardBar`. When a\n  label is provided, the page indicator dots are wrapped in\n  `Focus` + `Semantics` with `ExcludeSemantics` on the children (so\n  individual dots aren't read separately). Steps are 0-indexed\n  internally but announced as 1-based.\n\n- **`ubuntu_bootstrap`** — added a localized `stepIndicatorLabel`\n  string (`\"Step {CURRENT_STEP} of {TOTAL_STEPS}\"`) and wired up\n  `WizardBar.defaultStepSemanticsLabel` once in `_InstallerApp.build`,\n  so all pages get the behavior without individual call-site changes.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/935831040d3d39811c69a8d236aae8a5599be6e7"
                },
                {
-                  "sha": "445ff918fdc13ec259b97931dd8c88a5f0e8f8fc",
+                  "sha": "768f55f610819ceb8b5a3fc24f740a77f4aae67d",
                   "author": "Dennis Loose",
-                  "timestamp": 1778839405,
-                  "message": "chore: update go (#1437)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/445ff918fdc13ec259b97931dd8c88a5f0e8f8fc"
+                  "timestamp": 1778846646,
+                  "message": "fix: restore Focus wrapper on step indicator Semantics\n\nThe step indicator needs to be focusable as part of keyboard traversal\nso screen reader users can land on it during navigation.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/768f55f610819ceb8b5a3fc24f740a77f4aae67d"
                },
                {
-                  "sha": "0f05f5ceafb8a93a4bfc540e58c2238a3079f8a8",
+                  "sha": "7921e55250b42d30b0c1194d491a606e35691d99",
                   "author": "Dennis Loose",
-                  "timestamp": 1778755150,
-                  "message": "chore: update go",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0f05f5ceafb8a93a4bfc540e58c2238a3079f8a8"
+                  "timestamp": 1778769777,
+                  "message": "fix: add key to step indicator Semantics, reorder WizardBarTheme params\n\nAdds a ValueKey to the Semantics widget so tests can reliably target\nit without picking up unrelated ExcludeSemantics from NavigationToolbar.\nAlso reorders WizardBarTheme constructor to put required named\nparameters before optional ones.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7921e55250b42d30b0c1194d491a606e35691d99"
                }
             ],
             "ciActions": [
@@ -8036,25 +8036,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd7cacb9953cb6bc29f1e0008a3d2f7e6f99b7fa",
+                  "sha": "f7325f80ee7b41bb0e02893cb45d8d9a9887c27e",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1779183187,
-                  "message": "Merge pull request #221 from matthew-hagemann/bootstrap-claude\n\ndocs: AGENTS.md bootstrap",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/dd7cacb9953cb6bc29f1e0008a3d2f7e6f99b7fa"
+                  "timestamp": 1779199332,
+                  "message": "Merge pull request #223 from matthew-hagemann/retry-indeterminate-encryption-status\n\nfeat: retry indeterminate encryption status",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f7325f80ee7b41bb0e02893cb45d8d9a9887c27e"
                },
                {
-                  "sha": "b06cd72777f9b01890b451dc5849676b67335b6a",
+                  "sha": "f42b0a54938591642b5defb511c7132d7be959fb",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1779181870,
-                  "message": "docs: make AGENTS.md content model-agnostic\n\nRemove self-referential headers and Claude-specific intro boilerplate.\nPromote heading levels now that top-level headers were removed.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/b06cd72777f9b01890b451dc5849676b67335b6a"
+                  "timestamp": 1779194197,
+                  "message": "fix: address Copilot PR review comments on retry logic\n\n- Clamp retry delay to remaining maxRetryDuration budget so the loop\n  cannot overshoot the configured time cap\n- Capture previous maxRetryDuration/initialRetryDelay before overriding\n  in tests and restore those values in tearDown instead of hard-coded\n  defaults\n- Add unit tests for TpmAuthenticationModel retry/backoff logic:\n  verifies getStorageEncrypted() call count on successful retry and\n  confirms TpmStateExceptionFailed is thrown after maxRetryDuration\n\nrefactor: remove redundant fields from retry test cases\n\nDerive expectedServiceCalls from indeterminateCallCount + 1 and move\ninitialRetryDelay (always zero) out of the case records into the loop.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f42b0a54938591642b5defb511c7132d7be959fb"
                },
                {
-                  "sha": "3ad715b6d13e29e47222d83ae34c102ad2b9789a",
+                  "sha": "a16478f96caa7055b3845d751489e1fa91c72f1f",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1779180519,
-                  "message": "docs: rename CLAUDE.md to AGENTS.md with CLAUDE.md symlinks\n\nCanonical files are now AGENTS.md to align with company conventions.\nCLAUDE.md symlinks ensure Claude Code still picks up the instructions.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/3ad715b6d13e29e47222d83ae34c102ad2b9789a"
+                  "timestamp": 1779193214,
+                  "message": "refactor: inline default retry duration constants in TpmAuthenticationModel\n\nThe private `_default*` constants were only used to initialize the\n`@visibleForTesting` fields and added unnecessary indirection.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/a16478f96caa7055b3845d751489e1fa91c72f1f"
                }
             ],
             "ciActions": [],
@@ -9202,25 +9202,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c50c3e3518a1c5d3d996dfaabbf0d861917c364b",
+                  "sha": "935831040d3d39811c69a8d236aae8a5599be6e7",
                   "author": "Dennis Loose",
-                  "timestamp": 1778839416,
-                  "message": "feat: improve invalid username error message (#1436)\n\n<img width=\"2024\" height=\"1464\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/f4fbd247-cf49-481e-8f52-08596f92118e\"\n/>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c50c3e3518a1c5d3d996dfaabbf0d861917c364b"
+                  "timestamp": 1779201479,
+                  "message": "feat: announce current wizard step to screen readers (#1438)\n\nThe wizard's step indicator (the dots at the bottom of each page) is\ncurrently invisible to screen readers. This PR wraps it in a `Semantics`\nwidget so assistive technology announces the current position, e.g.\n*\"Step 2 of 5\"*.\n\n## What changed\n\n- **`ubuntu_wizard`** — added a `stepSemanticsLabel` parameter and a\n  static `defaultStepSemanticsLabel` builder to `WizardBar`. When a\n  label is provided, the page indicator dots are wrapped in\n  `Focus` + `Semantics` with `ExcludeSemantics` on the children (so\n  individual dots aren't read separately). Steps are 0-indexed\n  internally but announced as 1-based.\n\n- **`ubuntu_bootstrap`** — added a localized `stepIndicatorLabel`\n  string (`\"Step {CURRENT_STEP} of {TOTAL_STEPS}\"`) and wired up\n  `WizardBar.defaultStepSemanticsLabel` once in `_InstallerApp.build`,\n  so all pages get the behavior without individual call-site changes.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/935831040d3d39811c69a8d236aae8a5599be6e7"
                },
                {
-                  "sha": "445ff918fdc13ec259b97931dd8c88a5f0e8f8fc",
+                  "sha": "768f55f610819ceb8b5a3fc24f740a77f4aae67d",
                   "author": "Dennis Loose",
-                  "timestamp": 1778839405,
-                  "message": "chore: update go (#1437)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/445ff918fdc13ec259b97931dd8c88a5f0e8f8fc"
+                  "timestamp": 1778846646,
+                  "message": "fix: restore Focus wrapper on step indicator Semantics\n\nThe step indicator needs to be focusable as part of keyboard traversal\nso screen reader users can land on it during navigation.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/768f55f610819ceb8b5a3fc24f740a77f4aae67d"
                },
                {
-                  "sha": "0f05f5ceafb8a93a4bfc540e58c2238a3079f8a8",
+                  "sha": "7921e55250b42d30b0c1194d491a606e35691d99",
                   "author": "Dennis Loose",
-                  "timestamp": 1778755150,
-                  "message": "chore: update go",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0f05f5ceafb8a93a4bfc540e58c2238a3079f8a8"
+                  "timestamp": 1778769777,
+                  "message": "fix: add key to step indicator Semantics, reorder WizardBarTheme params\n\nAdds a ValueKey to the Semantics widget so tests can reliably target\nit without picking up unrelated ExcludeSemantics from NavigationToolbar.\nAlso reorders WizardBarTheme constructor to put required named\nparameters before optional ones.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7921e55250b42d30b0c1194d491a606e35691d99"
                }
             ],
             "ciActions": [
