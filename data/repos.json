@@ -3289,6 +3289,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "563978e8b43d7839bda5ac34879732fd3dc43e25",
+                  "author": "adombeck",
+                  "timestamp": 1779458655,
+                  "message": "e2e: Add tests for `home_base_dir` broker property (#1521)\n\nUDENG-9527\nUDENG-9526",
+                  "url": "https://github.com/canonical/authd/commit/563978e8b43d7839bda5ac34879732fd3dc43e25"
+               },
+               {
                   "sha": "8c5236f572731a98f2014812490639a63174946e",
                   "author": "Denison Barbosa",
                   "timestamp": 1779374927,
@@ -3296,18 +3303,11 @@
                   "url": "https://github.com/canonical/authd/commit/8c5236f572731a98f2014812490639a63174946e"
                },
                {
-                  "sha": "db7ce6a39ecfcf26325e46d41a42cd91a612bd3b",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1779365412,
-                  "message": "Improve broker_disabled test to also check GDM\n\nWe used to only check whether the remote user was redirected to the\nlocal broker (if there is no remote broker available) only for CLI\nlogins.\n\nAdded a check to also ensure that the behavior is the same when the user\ntries authenticating through GDM.",
-                  "url": "https://github.com/canonical/authd/commit/db7ce6a39ecfcf26325e46d41a42cd91a612bd3b"
-               },
-               {
-                  "sha": "41eddd4122937727a1cc144b53415ea936e7212e",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1779362690,
-                  "message": "deps(go): bump google.golang.org/grpc from 1.81.0 to 1.81.1 in the minor-updates group (#1531)\n\nBumps the minor-updates group with 1 update:\n[google.golang.org/grpc](https://github.com/grpc/grpc-go).\n\nUpdates `google.golang.org/grpc` from 1.81.0 to 1.81.1",
-                  "url": "https://github.com/canonical/authd/commit/41eddd4122937727a1cc144b53415ea936e7212e"
+                  "sha": "b80e928efcc4890bb9f1886dda64c3e89a3d723a",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1779108163,
+                  "message": "e2e: Add tests for `home_base_dir` broker property\n\nUDENG-9527\nUDENG-9526",
+                  "url": "https://github.com/canonical/authd/commit/b80e928efcc4890bb9f1886dda64c3e89a3d723a"
                }
             ],
             "ciActions": [
@@ -4655,25 +4655,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "935831040d3d39811c69a8d236aae8a5599be6e7",
+                  "sha": "25f9d112e303d4a484038e5cb59bcb83bc6355cc",
                   "author": "Dennis Loose",
-                  "timestamp": 1779201479,
-                  "message": "feat: announce current wizard step to screen readers (#1438)\n\nThe wizard's step indicator (the dots at the bottom of each page) is\ncurrently invisible to screen readers. This PR wraps it in a `Semantics`\nwidget so assistive technology announces the current position, e.g.\n*\"Step 2 of 5\"*.\n\n## What changed\n\n- **`ubuntu_wizard`** — added a `stepSemanticsLabel` parameter and a\n  static `defaultStepSemanticsLabel` builder to `WizardBar`. When a\n  label is provided, the page indicator dots are wrapped in\n  `Focus` + `Semantics` with `ExcludeSemantics` on the children (so\n  individual dots aren't read separately). Steps are 0-indexed\n  internally but announced as 1-based.\n\n- **`ubuntu_bootstrap`** — added a localized `stepIndicatorLabel`\n  string (`\"Step {CURRENT_STEP} of {TOTAL_STEPS}\"`) and wired up\n  `WizardBar.defaultStepSemanticsLabel` once in `_InstallerApp.build`,\n  so all pages get the behavior without individual call-site changes.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/935831040d3d39811c69a8d236aae8a5599be6e7"
+                  "timestamp": 1779453092,
+                  "message": "chore: update to flutter 3.44 (#1442)\n\nUDENG-10212",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/25f9d112e303d4a484038e5cb59bcb83bc6355cc"
                },
                {
-                  "sha": "768f55f610819ceb8b5a3fc24f740a77f4aae67d",
+                  "sha": "ac4881d49d1f4b0b74e5180835d0803d12cbeb81",
                   "author": "Dennis Loose",
-                  "timestamp": 1778846646,
-                  "message": "fix: restore Focus wrapper on step indicator Semantics\n\nThe step indicator needs to be focusable as part of keyboard traversal\nso screen reader users can land on it during navigation.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/768f55f610819ceb8b5a3fc24f740a77f4aae67d"
+                  "timestamp": 1779378463,
+                  "message": "fix: use forked flutter_html with workaround",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ac4881d49d1f4b0b74e5180835d0803d12cbeb81"
                },
                {
-                  "sha": "7921e55250b42d30b0c1194d491a606e35691d99",
+                  "sha": "d6fbb68e6891f5a7135e7dc04e40e121737105ad",
                   "author": "Dennis Loose",
-                  "timestamp": 1778769777,
-                  "message": "fix: add key to step indicator Semantics, reorder WizardBarTheme params\n\nAdds a ValueKey to the Semantics widget so tests can reliably target\nit without picking up unrelated ExcludeSemantics from NavigationToolbar.\nAlso reorders WizardBarTheme constructor to put required named\nparameters before optional ones.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7921e55250b42d30b0c1194d491a606e35691d99"
+                  "timestamp": 1779266948,
+                  "message": "chore: update to flutter 3.44",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d6fbb68e6891f5a7135e7dc04e40e121737105ad"
                }
             ],
             "ciActions": [
@@ -4718,9 +4718,18 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 327893936,
+                  "version": "rev85",
+                  "timestamp": 1779457676,
+                  "title": "Revision 85",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 78</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:50 UTC on 22 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/109\">#109</a></li>\n<li>feat(.g/workflows): Update workflow permissions by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/111\">#111</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev85",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85...main"
+               },
                {
                   "id": 323635599,
                   "version": "rev84",
@@ -4738,15 +4747,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 77</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 07:06 UTC on 14 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/106\">#106</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev82...rev83\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev82&hellip;rev83</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev83",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev83...main"
-               },
-               {
-                  "id": 321793148,
-                  "version": "rev82",
-                  "timestamp": 1778668768,
-                  "title": "Revision 82",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 76</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 10:41 UTC on 13 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency requests to v2.34.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/107\">#107</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev81...rev82\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev81&hellip;rev82</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev82",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev82...main"
                }
             ],
             "commits": null,
@@ -4758,8 +4758,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 84,
-                     "timestamp": 1778920827
+                     "revision": 85,
+                     "timestamp": 1779457814
                   }
                ],
                "channels": [
@@ -5478,6 +5478,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "563978e8b43d7839bda5ac34879732fd3dc43e25",
+                  "author": "adombeck",
+                  "timestamp": 1779458655,
+                  "message": "e2e: Add tests for `home_base_dir` broker property (#1521)\n\nUDENG-9527\nUDENG-9526",
+                  "url": "https://github.com/canonical/authd/commit/563978e8b43d7839bda5ac34879732fd3dc43e25"
+               },
+               {
                   "sha": "8c5236f572731a98f2014812490639a63174946e",
                   "author": "Denison Barbosa",
                   "timestamp": 1779374927,
@@ -5485,18 +5492,11 @@
                   "url": "https://github.com/canonical/authd/commit/8c5236f572731a98f2014812490639a63174946e"
                },
                {
-                  "sha": "db7ce6a39ecfcf26325e46d41a42cd91a612bd3b",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1779365412,
-                  "message": "Improve broker_disabled test to also check GDM\n\nWe used to only check whether the remote user was redirected to the\nlocal broker (if there is no remote broker available) only for CLI\nlogins.\n\nAdded a check to also ensure that the behavior is the same when the user\ntries authenticating through GDM.",
-                  "url": "https://github.com/canonical/authd/commit/db7ce6a39ecfcf26325e46d41a42cd91a612bd3b"
-               },
-               {
-                  "sha": "41eddd4122937727a1cc144b53415ea936e7212e",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1779362690,
-                  "message": "deps(go): bump google.golang.org/grpc from 1.81.0 to 1.81.1 in the minor-updates group (#1531)\n\nBumps the minor-updates group with 1 update:\n[google.golang.org/grpc](https://github.com/grpc/grpc-go).\n\nUpdates `google.golang.org/grpc` from 1.81.0 to 1.81.1",
-                  "url": "https://github.com/canonical/authd/commit/41eddd4122937727a1cc144b53415ea936e7212e"
+                  "sha": "b80e928efcc4890bb9f1886dda64c3e89a3d723a",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1779108163,
+                  "message": "e2e: Add tests for `home_base_dir` broker property\n\nUDENG-9527\nUDENG-9526",
+                  "url": "https://github.com/canonical/authd/commit/b80e928efcc4890bb9f1886dda64c3e89a3d723a"
                }
             ],
             "ciActions": [
@@ -6877,25 +6877,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "935831040d3d39811c69a8d236aae8a5599be6e7",
+                  "sha": "25f9d112e303d4a484038e5cb59bcb83bc6355cc",
                   "author": "Dennis Loose",
-                  "timestamp": 1779201479,
-                  "message": "feat: announce current wizard step to screen readers (#1438)\n\nThe wizard's step indicator (the dots at the bottom of each page) is\ncurrently invisible to screen readers. This PR wraps it in a `Semantics`\nwidget so assistive technology announces the current position, e.g.\n*\"Step 2 of 5\"*.\n\n## What changed\n\n- **`ubuntu_wizard`** — added a `stepSemanticsLabel` parameter and a\n  static `defaultStepSemanticsLabel` builder to `WizardBar`. When a\n  label is provided, the page indicator dots are wrapped in\n  `Focus` + `Semantics` with `ExcludeSemantics` on the children (so\n  individual dots aren't read separately). Steps are 0-indexed\n  internally but announced as 1-based.\n\n- **`ubuntu_bootstrap`** — added a localized `stepIndicatorLabel`\n  string (`\"Step {CURRENT_STEP} of {TOTAL_STEPS}\"`) and wired up\n  `WizardBar.defaultStepSemanticsLabel` once in `_InstallerApp.build`,\n  so all pages get the behavior without individual call-site changes.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/935831040d3d39811c69a8d236aae8a5599be6e7"
+                  "timestamp": 1779453092,
+                  "message": "chore: update to flutter 3.44 (#1442)\n\nUDENG-10212",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/25f9d112e303d4a484038e5cb59bcb83bc6355cc"
                },
                {
-                  "sha": "768f55f610819ceb8b5a3fc24f740a77f4aae67d",
+                  "sha": "ac4881d49d1f4b0b74e5180835d0803d12cbeb81",
                   "author": "Dennis Loose",
-                  "timestamp": 1778846646,
-                  "message": "fix: restore Focus wrapper on step indicator Semantics\n\nThe step indicator needs to be focusable as part of keyboard traversal\nso screen reader users can land on it during navigation.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/768f55f610819ceb8b5a3fc24f740a77f4aae67d"
+                  "timestamp": 1779378463,
+                  "message": "fix: use forked flutter_html with workaround",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ac4881d49d1f4b0b74e5180835d0803d12cbeb81"
                },
                {
-                  "sha": "7921e55250b42d30b0c1194d491a606e35691d99",
+                  "sha": "d6fbb68e6891f5a7135e7dc04e40e121737105ad",
                   "author": "Dennis Loose",
-                  "timestamp": 1778769777,
-                  "message": "fix: add key to step indicator Semantics, reorder WizardBarTheme params\n\nAdds a ValueKey to the Semantics widget so tests can reliably target\nit without picking up unrelated ExcludeSemantics from NavigationToolbar.\nAlso reorders WizardBarTheme constructor to put required named\nparameters before optional ones.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7921e55250b42d30b0c1194d491a606e35691d99"
+                  "timestamp": 1779266948,
+                  "message": "chore: update to flutter 3.44",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d6fbb68e6891f5a7135e7dc04e40e121737105ad"
                }
             ],
             "ciActions": [
@@ -6940,9 +6940,18 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 327893936,
+                  "version": "rev85",
+                  "timestamp": 1779457676,
+                  "title": "Revision 85",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 78</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:50 UTC on 22 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/109\">#109</a></li>\n<li>feat(.g/workflows): Update workflow permissions by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/111\">#111</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev85",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85...main"
+               },
                {
                   "id": 323635599,
                   "version": "rev84",
@@ -6960,15 +6969,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 77</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 07:06 UTC on 14 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/106\">#106</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev82...rev83\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev82&hellip;rev83</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev83",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev83...main"
-               },
-               {
-                  "id": 321793148,
-                  "version": "rev82",
-                  "timestamp": 1778668768,
-                  "title": "Revision 82",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 76</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 10:41 UTC on 13 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency requests to v2.34.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/107\">#107</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev81...rev82\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev81&hellip;rev82</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev82",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev82...main"
                }
             ],
             "commits": null,
@@ -6980,8 +6980,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 84,
-                     "timestamp": 1778920827
+                     "revision": 85,
+                     "timestamp": 1779457814
                   }
                ],
                "channels": [
@@ -7836,6 +7836,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "563978e8b43d7839bda5ac34879732fd3dc43e25",
+                  "author": "adombeck",
+                  "timestamp": 1779458655,
+                  "message": "e2e: Add tests for `home_base_dir` broker property (#1521)\n\nUDENG-9527\nUDENG-9526",
+                  "url": "https://github.com/canonical/authd/commit/563978e8b43d7839bda5ac34879732fd3dc43e25"
+               },
+               {
                   "sha": "8c5236f572731a98f2014812490639a63174946e",
                   "author": "Denison Barbosa",
                   "timestamp": 1779374927,
@@ -7843,18 +7850,11 @@
                   "url": "https://github.com/canonical/authd/commit/8c5236f572731a98f2014812490639a63174946e"
                },
                {
-                  "sha": "db7ce6a39ecfcf26325e46d41a42cd91a612bd3b",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1779365412,
-                  "message": "Improve broker_disabled test to also check GDM\n\nWe used to only check whether the remote user was redirected to the\nlocal broker (if there is no remote broker available) only for CLI\nlogins.\n\nAdded a check to also ensure that the behavior is the same when the user\ntries authenticating through GDM.",
-                  "url": "https://github.com/canonical/authd/commit/db7ce6a39ecfcf26325e46d41a42cd91a612bd3b"
-               },
-               {
-                  "sha": "41eddd4122937727a1cc144b53415ea936e7212e",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1779362690,
-                  "message": "deps(go): bump google.golang.org/grpc from 1.81.0 to 1.81.1 in the minor-updates group (#1531)\n\nBumps the minor-updates group with 1 update:\n[google.golang.org/grpc](https://github.com/grpc/grpc-go).\n\nUpdates `google.golang.org/grpc` from 1.81.0 to 1.81.1",
-                  "url": "https://github.com/canonical/authd/commit/41eddd4122937727a1cc144b53415ea936e7212e"
+                  "sha": "b80e928efcc4890bb9f1886dda64c3e89a3d723a",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1779108163,
+                  "message": "e2e: Add tests for `home_base_dir` broker property\n\nUDENG-9527\nUDENG-9526",
+                  "url": "https://github.com/canonical/authd/commit/b80e928efcc4890bb9f1886dda64c3e89a3d723a"
                }
             ],
             "ciActions": [
@@ -9202,25 +9202,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "935831040d3d39811c69a8d236aae8a5599be6e7",
+                  "sha": "25f9d112e303d4a484038e5cb59bcb83bc6355cc",
                   "author": "Dennis Loose",
-                  "timestamp": 1779201479,
-                  "message": "feat: announce current wizard step to screen readers (#1438)\n\nThe wizard's step indicator (the dots at the bottom of each page) is\ncurrently invisible to screen readers. This PR wraps it in a `Semantics`\nwidget so assistive technology announces the current position, e.g.\n*\"Step 2 of 5\"*.\n\n## What changed\n\n- **`ubuntu_wizard`** — added a `stepSemanticsLabel` parameter and a\n  static `defaultStepSemanticsLabel` builder to `WizardBar`. When a\n  label is provided, the page indicator dots are wrapped in\n  `Focus` + `Semantics` with `ExcludeSemantics` on the children (so\n  individual dots aren't read separately). Steps are 0-indexed\n  internally but announced as 1-based.\n\n- **`ubuntu_bootstrap`** — added a localized `stepIndicatorLabel`\n  string (`\"Step {CURRENT_STEP} of {TOTAL_STEPS}\"`) and wired up\n  `WizardBar.defaultStepSemanticsLabel` once in `_InstallerApp.build`,\n  so all pages get the behavior without individual call-site changes.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/935831040d3d39811c69a8d236aae8a5599be6e7"
+                  "timestamp": 1779453092,
+                  "message": "chore: update to flutter 3.44 (#1442)\n\nUDENG-10212",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/25f9d112e303d4a484038e5cb59bcb83bc6355cc"
                },
                {
-                  "sha": "768f55f610819ceb8b5a3fc24f740a77f4aae67d",
+                  "sha": "ac4881d49d1f4b0b74e5180835d0803d12cbeb81",
                   "author": "Dennis Loose",
-                  "timestamp": 1778846646,
-                  "message": "fix: restore Focus wrapper on step indicator Semantics\n\nThe step indicator needs to be focusable as part of keyboard traversal\nso screen reader users can land on it during navigation.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/768f55f610819ceb8b5a3fc24f740a77f4aae67d"
+                  "timestamp": 1779378463,
+                  "message": "fix: use forked flutter_html with workaround",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ac4881d49d1f4b0b74e5180835d0803d12cbeb81"
                },
                {
-                  "sha": "7921e55250b42d30b0c1194d491a606e35691d99",
+                  "sha": "d6fbb68e6891f5a7135e7dc04e40e121737105ad",
                   "author": "Dennis Loose",
-                  "timestamp": 1778769777,
-                  "message": "fix: add key to step indicator Semantics, reorder WizardBarTheme params\n\nAdds a ValueKey to the Semantics widget so tests can reliably target\nit without picking up unrelated ExcludeSemantics from NavigationToolbar.\nAlso reorders WizardBarTheme constructor to put required named\nparameters before optional ones.\n\nCo-authored-by: GitHub Copilot <copilot@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7921e55250b42d30b0c1194d491a606e35691d99"
+                  "timestamp": 1779266948,
+                  "message": "chore: update to flutter 3.44",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d6fbb68e6891f5a7135e7dc04e40e121737105ad"
                }
             ],
             "ciActions": [
@@ -9300,9 +9300,18 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 327893936,
+                  "version": "rev85",
+                  "timestamp": 1779457676,
+                  "title": "Revision 85",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 78</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:50 UTC on 22 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/109\">#109</a></li>\n<li>feat(.g/workflows): Update workflow permissions by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/111\">#111</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev85",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85...main"
+               },
                {
                   "id": 323635599,
                   "version": "rev84",
@@ -9320,15 +9329,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 77</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 07:06 UTC on 14 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/106\">#106</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev82...rev83\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev82&hellip;rev83</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev83",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev83...main"
-               },
-               {
-                  "id": 321793148,
-                  "version": "rev82",
-                  "timestamp": 1778668768,
-                  "title": "Revision 82",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 76</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 10:41 UTC on 13 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency requests to v2.34.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/107\">#107</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev81...rev82\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev81&hellip;rev82</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev82",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev82...main"
                }
             ],
             "commits": null,
@@ -9340,8 +9340,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 84,
-                     "timestamp": 1778920827
+                     "revision": 85,
+                     "timestamp": 1779457814
                   }
                ],
                "channels": [
