@@ -3979,6 +3979,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 331114384,
+                  "version": "rev44",
+                  "timestamp": 1779997810,
+                  "title": "Revision 44",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.6.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 35</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:13 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>feat: SAML support by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/122\">#122</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev43...rev44\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev43&hellip;rev44</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev44",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev44...main"
+               },
+               {
                   "id": 330984329,
                   "version": "rev43",
                   "timestamp": 1779980533,
@@ -3995,15 +4004,6 @@
                   "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 34\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.6.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 16:21 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>feat: Add action to force reconciliation by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/130\">#130</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev41...rev42\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev41&hellip;rev42</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev42",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev42...main"
-               },
-               {
-                  "id": 330959111,
-                  "version": "rev41",
-                  "timestamp": 1779976595,
-                  "title": "Revision 41",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.6.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 34</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 15:59 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>tests(integration): add option to specify number of MediaWiki units for deployment by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/129\">#129</a></li>\n<li>fix(deps): update all non-major dependencies by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/134\">#134</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev40...rev41\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev40&hellip;rev41</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev41",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev41...main"
                }
             ],
             "commits": null,
@@ -4018,8 +4018,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 43,
-                     "timestamp": 1779986893
+                     "revision": 44,
+                     "timestamp": 1779999192
                   }
                ],
                "channels": [
@@ -5311,25 +5311,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "611c5e0d10a6f1ee46556013ac8d21818bc83deb",
+                  "sha": "a5605c4111a357a9fa9dd516bbf2962a867860e3",
                   "author": "Kat",
-                  "timestamp": 1779988873,
-                  "message": "deps(go.work): Bump go toolchain to 1.25.10 (#346)\n\nFixes a few security issues.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/611c5e0d10a6f1ee46556013ac8d21818bc83deb"
+                  "timestamp": 1779996030,
+                  "message": "refactor(insights): Improve flexibility of Linux OS collection (#345)\n\nHere, we improve the flexibility of the collection of OS information on\nLinux in a number of ways.\n\nFirstly, we replace the `lsb_release` based collection with direct\nparsing of `os-release` while taking care to replicate the behavior of\n`lsb_release`. This removes the dependency, and also gives us more\ncontrol.\n\nThis is especially useful for the case of strictly confined snaps where\nwe care about the host distribution information, not the snap\ninformation. The priority order is\n`/var/lib/snapd/hostfs/etc/os-release`,\n`/var/lib/snapd/hostfs/usr/lib/os-release`, `/etc/os-release`,\n`/usr/lib/os-release`. However, like with `lsb_release`, we do not fall\nback if an `os-release` is present but is malformed.\n\nSecond, we detect if we're in a strictly confined snap, and if so, we\nprioritize reading from `/etc/lsb-release` since that is populated with\nthe host information. The reason for not prioritizing\n`/var/lib/snapd/hostfs/*` is because that requires the use of a\n`system-observe` connection, which requires store approval. We don't\ndefault to `/etc/lsb-release` from the start since `/etc/lsb-release`\nisn't a well-defined standard, and we will generally prefer\n`/etc/os-release` where it is available and correct.\n\n---\n[UDENG-9921](https://warthogs.atlassian.net/browse/UDENG-9921)\n\n[UDENG-9921]:\nhttps://warthogs.atlassian.net/browse/UDENG-9921?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a5605c4111a357a9fa9dd516bbf2962a867860e3"
                },
                {
-                  "sha": "69c5a4c2f2e2a654a8cca25113987a4f3e8def91",
+                  "sha": "e87729c81d3297ca8c55bd3b04cea6620d54665c",
                   "author": "kkuo",
-                  "timestamp": 1779404496,
-                  "message": "deps(go.work): Bump go toolchain to 1.25.10",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/69c5a4c2f2e2a654a8cca25113987a4f3e8def91"
+                  "timestamp": 1779403838,
+                  "message": "Special OS collection inside confined snaps\n\nSince `var/lib/snapd/hostfs/etc/os-release` and `var/lib/snapd/hostfs/usr/lib/os-release` are only available with `system-observe`, it is suboptimal for it to be the main way we\nget OS information.\n\nInstead, when we detect that we are in a strictly confined snap, we try to parse from `/etc/lsb-release` first, since that is properly populated with the host information.\n\nTo detect if we are in a confined snap, we check to see if `$SNAP` is set, and then parse confinement from `$SNAP/meta/snap.yaml`. Only if it is either a dev or strict confinement,\ndo we try to read from `/etc/lsb-release`. If that fails, then we fall back to the typical methods.\n\nThe reason for not defaulting to `lsb-release` in the first place is because it is non-standard such that we prefer `os-release` if it is available.\n\nNote that if reading `lsb-release` is skipped or fails, and one of the `os-releases` in `/var/lib/snapd/hostfs` is present but we don't have the `system-observe` connection, we\nget a permission error, and we skip OS info collection.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e87729c81d3297ca8c55bd3b04cea6620d54665c"
                },
                {
-                  "sha": "128c456740cb8bcb66f771da4308c1fbf636824e",
-                  "author": "Kat",
-                  "timestamp": 1778742331,
-                  "message": "deps(go-server): bump github.com/fsnotify/fsnotify from 1.10.0 to 1.10.1 in /server in the minor-updates group (#343)\n\nBumps the minor-updates group in /server with 1 update:\n[github.com/fsnotify/fsnotify](https://github.com/fsnotify/fsnotify).\n\nUpdates `github.com/fsnotify/fsnotify` from 1.10.0 to 1.10.1\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/fsnotify/fsnotify/releases\">github.com/fsnotify/fsnotify's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v1.10.1</h2>\n<h3>Changes and fixes</h3>\n<ul>\n<li>\n<p>inotify: don't remove sibling watches sharing a path prefix (<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/754\">#754</a>)</p>\n</li>\n<li>\n<p>inotify, windows: don't rename sibling watches sharing a path prefix\n(<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/755\">#755</a>)</p>\n</li>\n</ul>\n<p><a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/754\">#754</a>:\n<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/pull/754\">fsnotify/fsnotify#754</a>\n<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/755\">#755</a>:\n<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/pull/755\">fsnotify/fsnotify#755</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/fsnotify/fsnotify/blob/main/CHANGELOG.md\">github.com/fsnotify/fsnotify's\nchangelog</a>.</em></p>\n<blockquote>\n<h2>1.10.1 2026-05-04</h2>\n<h3>Changes and fixes</h3>\n<ul>\n<li>\n<p>inotify: don't remove sibling watches sharing a path prefix (<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/754\">#754</a>)</p>\n</li>\n<li>\n<p>inotify, windows: don't rename sibling watches sharing a path prefix\n(<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/755\">#755</a>)</p>\n</li>\n</ul>\n<p><a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/754\">#754</a>:\n<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/pull/754\">fsnotify/fsnotify#754</a>\n<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/755\">#755</a>:\n<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/pull/755\">fsnotify/fsnotify#755</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/fsnotify/fsnotify/commit/76b01a6e8f502187fecedea8b025e79e5a86085c\"><code>76b01a6</code></a>\nRelease 1.10.1</li>\n<li><a\nhref=\"https://github.com/fsnotify/fsnotify/commit/fec150b807510e54e5b25def4b6e5fb001b4898c\"><code>fec150b</code></a>\nUpdate changelog</li>\n<li><a\nhref=\"https://github.com/fsnotify/fsnotify/commit/162b4216ab8f92ecd26425530bee198972c9b3cb\"><code>162b421</code></a>\ninotify, windows: don't rename sibling watches sharing a path prefix (<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/755\">#755</a>)</li>\n<li><a\nhref=\"https://github.com/fsnotify/fsnotify/commit/224257f23b2f3a96509b316c5cead71dd4a9099a\"><code>224257f</code></a>\ninotify: don't remove sibling watches sharing a path prefix (<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/754\">#754</a>)</li>\n<li><a\nhref=\"https://github.com/fsnotify/fsnotify/commit/e0c956c0ccaf51562fee30ef5c055c74e6ae2104\"><code>e0c956c</code></a>\nwindows: document directory Write events and stabilize tests (<a\nhref=\"https://redirect.github.com/fsnotify/fsnotify/issues/745\">#745</a>)</li>\n<li>See full diff in <a\nhref=\"https://github.com/fsnotify/fsnotify/compare/v1.10.0...v1.10.1\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=github.com/fsnotify/fsnotify&package-manager=go_modules&previous-version=1.10.0&new-version=1.10.1)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore <dependency name> major version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's major version (unless you unignore this specific\ndependency's major version or upgrade to it yourself)\n- `@dependabot ignore <dependency name> minor version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's minor version (unless you unignore this specific\ndependency's minor version or upgrade to it yourself)\n- `@dependabot ignore <dependency name>` will close this group update PR\nand stop Dependabot creating any more for the specific dependency\n(unless you unignore this specific dependency or upgrade to it yourself)\n- `@dependabot unignore <dependency name>` will remove all of the ignore\nconditions of the specified dependency\n- `@dependabot unignore <dependency name> <ignore condition>` will\nremove the ignore condition of the specified dependency and ignore\nconditions\n\n\n</details>",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/128c456740cb8bcb66f771da4308c1fbf636824e"
+                  "sha": "f2021acc572efe5720d0988a3e0ba86a7c172f74",
+                  "author": "kkuo",
+                  "timestamp": 1779398031,
+                  "message": "Collect linux OS info from `os-release`\n\nHere, we replace the `lsb_release` based collection with direct parsing of `os-release` while taking care to replicate the behavior of `lsb_release`. This removes the dependency,\nand also gives us more control.\n\nThis is especially useful for the case of strictly confined snaps where we care about the host distribution information, not the snap information. The priority order is\n`/var/lib/snapd/hostfs/etc/os-release`, `/var/lib/snapd/hostfs/usr/lib/os-release`, `/etc/os-release`, `/usr/lib/os-release`. However, like with `lsb_release`, we do not fall back\nif an `os-release` is present but is malformed.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f2021acc572efe5720d0988a3e0ba86a7c172f74"
                }
             ],
             "ciActions": [
@@ -6201,6 +6201,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 331114384,
+                  "version": "rev44",
+                  "timestamp": 1779997810,
+                  "title": "Revision 44",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.6.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 35</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:13 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>feat: SAML support by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/122\">#122</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev43...rev44\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev43&hellip;rev44</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev44",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev44...main"
+               },
+               {
                   "id": 330984329,
                   "version": "rev43",
                   "timestamp": 1779980533,
@@ -6217,15 +6226,6 @@
                   "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 34\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.6.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 16:21 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>feat: Add action to force reconciliation by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/130\">#130</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev41...rev42\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev41&hellip;rev42</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev42",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev42...main"
-               },
-               {
-                  "id": 330959111,
-                  "version": "rev41",
-                  "timestamp": 1779976595,
-                  "title": "Revision 41",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.6.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 34</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 15:59 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>tests(integration): add option to specify number of MediaWiki units for deployment by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/129\">#129</a></li>\n<li>fix(deps): update all non-major dependencies by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/134\">#134</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev40...rev41\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev40&hellip;rev41</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev41",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev41...main"
                }
             ],
             "commits": null,
@@ -6240,8 +6240,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 43,
-                     "timestamp": 1779986893
+                     "revision": 44,
+                     "timestamp": 1779999192
                   }
                ],
                "channels": [
@@ -8526,6 +8526,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 331114384,
+                  "version": "rev44",
+                  "timestamp": 1779997810,
+                  "title": "Revision 44",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.6.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 35</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:13 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>feat: SAML support by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/122\">#122</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev43...rev44\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev43&hellip;rev44</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev44",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev44...main"
+               },
+               {
                   "id": 330984329,
                   "version": "rev43",
                   "timestamp": 1779980533,
@@ -8542,15 +8551,6 @@
                   "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 34\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.6.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 16:21 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>feat: Add action to force reconciliation by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/130\">#130</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev41...rev42\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev41&hellip;rev42</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev42",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev42...main"
-               },
-               {
-                  "id": 330959111,
-                  "version": "rev41",
-                  "timestamp": 1779976595,
-                  "title": "Revision 41",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.6.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 34</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 15:59 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>tests(integration): add option to specify number of MediaWiki units for deployment by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/129\">#129</a></li>\n<li>fix(deps): update all non-major dependencies by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/134\">#134</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev40...rev41\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev40&hellip;rev41</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev41",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev41...main"
                }
             ],
             "commits": null,
@@ -8565,8 +8565,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 43,
-                     "timestamp": 1779986893
+                     "revision": 44,
+                     "timestamp": 1779999192
                   }
                ],
                "channels": [
