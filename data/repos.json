@@ -3099,7 +3099,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -3489,25 +3489,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e7518bf2c96ad201f4a1358c2c2c280626d6778e",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1780348590,
+                  "message": "Merge pull request #227 from canonical/test/better-mock-assertions\n\ntest: add better mock assertions",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/e7518bf2c96ad201f4a1358c2c2c280626d6778e"
+               },
+               {
+                  "sha": "658716f59684e0c000d1361d140ca5c56877b65e",
+                  "author": "Soumya Ranjan Patnaik",
+                  "timestamp": 1780154581,
+                  "message": "test: add better mock assertions",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/658716f59684e0c000d1361d140ca5c56877b65e"
+               },
+               {
                   "sha": "f7325f80ee7b41bb0e02893cb45d8d9a9887c27e",
                   "author": "Matthew Hagemann",
                   "timestamp": 1779199332,
                   "message": "Merge pull request #223 from matthew-hagemann/retry-indeterminate-encryption-status\n\nfeat: retry indeterminate encryption status",
                   "url": "https://github.com/canonical/desktop-security-center/commit/f7325f80ee7b41bb0e02893cb45d8d9a9887c27e"
-               },
-               {
-                  "sha": "f42b0a54938591642b5defb511c7132d7be959fb",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1779194197,
-                  "message": "fix: address Copilot PR review comments on retry logic\n\n- Clamp retry delay to remaining maxRetryDuration budget so the loop\n  cannot overshoot the configured time cap\n- Capture previous maxRetryDuration/initialRetryDelay before overriding\n  in tests and restore those values in tearDown instead of hard-coded\n  defaults\n- Add unit tests for TpmAuthenticationModel retry/backoff logic:\n  verifies getStorageEncrypted() call count on successful retry and\n  confirms TpmStateExceptionFailed is thrown after maxRetryDuration\n\nrefactor: remove redundant fields from retry test cases\n\nDerive expectedServiceCalls from indeterminateCallCount + 1 and move\ninitialRetryDelay (always zero) out of the case records into the loop.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/f42b0a54938591642b5defb511c7132d7be959fb"
-               },
-               {
-                  "sha": "a16478f96caa7055b3845d751489e1fa91c72f1f",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1779193214,
-                  "message": "refactor: inline default retry duration constants in TpmAuthenticationModel\n\nThe private `_default*` constants were only used to initialize the\n`@visibleForTesting` fields and added unnecessary indirection.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a16478f96caa7055b3845d751489e1fa91c72f1f"
                }
             ],
             "ciActions": [],
@@ -4722,6 +4722,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 332743702,
+                  "version": "rev88",
+                  "timestamp": 1780344313,
+                  "title": "Revision 88",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 82</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 20:06 UTC on 1 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency ops to v3.7.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/114\">#114</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev87...rev88\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev87&hellip;rev88</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev88",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev88...main"
+               },
+               {
                   "id": 332562253,
                   "version": "rev87",
                   "timestamp": 1780325301,
@@ -4738,15 +4747,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 80</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:26 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/113\">#113</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/112\">#112</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev86",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev86...main"
-               },
-               {
-                  "id": 327893936,
-                  "version": "rev85",
-                  "timestamp": 1779457676,
-                  "title": "Revision 85",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 78</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:50 UTC on 22 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/109\">#109</a></li>\n<li>feat(.g/workflows): Update workflow permissions by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/111\">#111</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev85",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85...main"
                }
             ],
             "commits": null,
@@ -4758,8 +4758,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 87,
-                     "timestamp": 1780325417
+                     "revision": 88,
+                     "timestamp": 1780344419
                   }
                ],
                "channels": [
@@ -5678,25 +5678,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e7518bf2c96ad201f4a1358c2c2c280626d6778e",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1780348590,
+                  "message": "Merge pull request #227 from canonical/test/better-mock-assertions\n\ntest: add better mock assertions",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/e7518bf2c96ad201f4a1358c2c2c280626d6778e"
+               },
+               {
+                  "sha": "658716f59684e0c000d1361d140ca5c56877b65e",
+                  "author": "Soumya Ranjan Patnaik",
+                  "timestamp": 1780154581,
+                  "message": "test: add better mock assertions",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/658716f59684e0c000d1361d140ca5c56877b65e"
+               },
+               {
                   "sha": "f7325f80ee7b41bb0e02893cb45d8d9a9887c27e",
                   "author": "Matthew Hagemann",
                   "timestamp": 1779199332,
                   "message": "Merge pull request #223 from matthew-hagemann/retry-indeterminate-encryption-status\n\nfeat: retry indeterminate encryption status",
                   "url": "https://github.com/canonical/desktop-security-center/commit/f7325f80ee7b41bb0e02893cb45d8d9a9887c27e"
-               },
-               {
-                  "sha": "f42b0a54938591642b5defb511c7132d7be959fb",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1779194197,
-                  "message": "fix: address Copilot PR review comments on retry logic\n\n- Clamp retry delay to remaining maxRetryDuration budget so the loop\n  cannot overshoot the configured time cap\n- Capture previous maxRetryDuration/initialRetryDelay before overriding\n  in tests and restore those values in tearDown instead of hard-coded\n  defaults\n- Add unit tests for TpmAuthenticationModel retry/backoff logic:\n  verifies getStorageEncrypted() call count on successful retry and\n  confirms TpmStateExceptionFailed is thrown after maxRetryDuration\n\nrefactor: remove redundant fields from retry test cases\n\nDerive expectedServiceCalls from indeterminateCallCount + 1 and move\ninitialRetryDelay (always zero) out of the case records into the loop.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/f42b0a54938591642b5defb511c7132d7be959fb"
-               },
-               {
-                  "sha": "a16478f96caa7055b3845d751489e1fa91c72f1f",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1779193214,
-                  "message": "refactor: inline default retry duration constants in TpmAuthenticationModel\n\nThe private `_default*` constants were only used to initialize the\n`@visibleForTesting` fields and added unnecessary indirection.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a16478f96caa7055b3845d751489e1fa91c72f1f"
                }
             ],
             "ciActions": [],
@@ -6944,6 +6944,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 332743702,
+                  "version": "rev88",
+                  "timestamp": 1780344313,
+                  "title": "Revision 88",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 82</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 20:06 UTC on 1 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency ops to v3.7.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/114\">#114</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev87...rev88\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev87&hellip;rev88</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev88",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev88...main"
+               },
+               {
                   "id": 332562253,
                   "version": "rev87",
                   "timestamp": 1780325301,
@@ -6960,15 +6969,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 80</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:26 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/113\">#113</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/112\">#112</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev86",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev86...main"
-               },
-               {
-                  "id": 327893936,
-                  "version": "rev85",
-                  "timestamp": 1779457676,
-                  "title": "Revision 85",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 78</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:50 UTC on 22 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/109\">#109</a></li>\n<li>feat(.g/workflows): Update workflow permissions by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/111\">#111</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev85",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85...main"
                }
             ],
             "commits": null,
@@ -6980,8 +6980,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 87,
-                     "timestamp": 1780325417
+                     "revision": 88,
+                     "timestamp": 1780344419
                   }
                ],
                "channels": [
@@ -7640,7 +7640,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -8036,25 +8036,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e7518bf2c96ad201f4a1358c2c2c280626d6778e",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1780348590,
+                  "message": "Merge pull request #227 from canonical/test/better-mock-assertions\n\ntest: add better mock assertions",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/e7518bf2c96ad201f4a1358c2c2c280626d6778e"
+               },
+               {
+                  "sha": "658716f59684e0c000d1361d140ca5c56877b65e",
+                  "author": "Soumya Ranjan Patnaik",
+                  "timestamp": 1780154581,
+                  "message": "test: add better mock assertions",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/658716f59684e0c000d1361d140ca5c56877b65e"
+               },
+               {
                   "sha": "f7325f80ee7b41bb0e02893cb45d8d9a9887c27e",
                   "author": "Matthew Hagemann",
                   "timestamp": 1779199332,
                   "message": "Merge pull request #223 from matthew-hagemann/retry-indeterminate-encryption-status\n\nfeat: retry indeterminate encryption status",
                   "url": "https://github.com/canonical/desktop-security-center/commit/f7325f80ee7b41bb0e02893cb45d8d9a9887c27e"
-               },
-               {
-                  "sha": "f42b0a54938591642b5defb511c7132d7be959fb",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1779194197,
-                  "message": "fix: address Copilot PR review comments on retry logic\n\n- Clamp retry delay to remaining maxRetryDuration budget so the loop\n  cannot overshoot the configured time cap\n- Capture previous maxRetryDuration/initialRetryDelay before overriding\n  in tests and restore those values in tearDown instead of hard-coded\n  defaults\n- Add unit tests for TpmAuthenticationModel retry/backoff logic:\n  verifies getStorageEncrypted() call count on successful retry and\n  confirms TpmStateExceptionFailed is thrown after maxRetryDuration\n\nrefactor: remove redundant fields from retry test cases\n\nDerive expectedServiceCalls from indeterminateCallCount + 1 and move\ninitialRetryDelay (always zero) out of the case records into the loop.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/f42b0a54938591642b5defb511c7132d7be959fb"
-               },
-               {
-                  "sha": "a16478f96caa7055b3845d751489e1fa91c72f1f",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1779193214,
-                  "message": "refactor: inline default retry duration constants in TpmAuthenticationModel\n\nThe private `_default*` constants were only used to initialize the\n`@visibleForTesting` fields and added unnecessary indirection.\n\nCo-authored-by: Claude <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a16478f96caa7055b3845d751489e1fa91c72f1f"
                }
             ],
             "ciActions": [],
@@ -9304,6 +9304,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 332743702,
+                  "version": "rev88",
+                  "timestamp": 1780344313,
+                  "title": "Revision 88",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 82</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 20:06 UTC on 1 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency ops to v3.7.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/114\">#114</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev87...rev88\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev87&hellip;rev88</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev88",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev88...main"
+               },
+               {
                   "id": 332562253,
                   "version": "rev87",
                   "timestamp": 1780325301,
@@ -9320,15 +9329,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 80</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:26 UTC on 28 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/113\">#113</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/112\">#112</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev86",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev86...main"
-               },
-               {
-                  "id": 327893936,
-                  "version": "rev85",
-                  "timestamp": 1779457676,
-                  "title": "Revision 85",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 78</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:50 UTC on 22 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/109\">#109</a></li>\n<li>feat(.g/workflows): Update workflow permissions by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/111\">#111</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev85",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev85...main"
                }
             ],
             "commits": null,
@@ -9340,8 +9340,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 87,
-                     "timestamp": 1780325417
+                     "revision": 88,
+                     "timestamp": 1780344419
                   }
                ],
                "channels": [
@@ -9781,7 +9781,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
