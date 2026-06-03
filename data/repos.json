@@ -3099,7 +3099,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 3,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9f692928f11042026ee7a7e05e9af934d9089bf3",
+                  "sha": "f1d0294165cf3951c149d1c8c58eeb68f62ad9c0",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1780488163,
+                  "message": "Bump toolchain to 1.25.11 (#1558)\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
+                  "url": "https://github.com/canonical/authd/commit/f1d0294165cf3951c149d1c8c58eeb68f62ad9c0"
+               },
+               {
+                  "sha": "dd41f938f52424ede482e7345ba9082611457dbd",
                   "author": "adombeck",
-                  "timestamp": 1780402019,
-                  "message": "authd-oidc-brokers: split Provider into core + optional interfaces (#1550)\n\nCloses #1549\nUDENG-9739",
-                  "url": "https://github.com/canonical/authd/commit/9f692928f11042026ee7a7e05e9af934d9089bf3"
+                  "timestamp": 1780487788,
+                  "message": "Use cargo 1.91 on Noble (#1375)\n\nUDENG-8123",
+                  "url": "https://github.com/canonical/authd/commit/dd41f938f52424ede482e7345ba9082611457dbd"
                },
                {
-                  "sha": "0deac3a44e3a2e0758e1e317aa521dc7e5faacf4",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1780063515,
-                  "message": "broker: split Provider into core + optional interfaces\n\nSplit the monolithic 16-method Provider interface into:\n- Core Provider (8 methods): the minimum every provider must implement\n- GroupFetcher: for providers that fetch group memberships\n- MetadataProvider: for providers that supply extra metadata/token fields\n- DeviceRegistrar: for providers that support device registration\n- UserDisabledChecker: for providers that detect disabled users\n\nRemove 7 no-op methods from GenericProvider, making it clear which\ncapabilities are provider-specific. The broker uses type assertions\nto check for optional interfaces, with sensible defaults when a\ncapability is not available.\n\nSupportsDeviceRegistration() is replaced by checking if the provider\nimplements DeviceRegistrar. token.NewAuthCachedInfo now takes\nextraFields directly instead of the full Provider interface.\n\nMockProvider's device registration support is handled via a\nMockDeviceRegistrarProvider wrapper, allowing tests to control\nwhether the mock satisfies the DeviceRegistrar interface.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0deac3a44e3a2e0758e1e317aa521dc7e5faacf4"
-               },
-               {
-                  "sha": "80db34019bb6ff2b3a20772ca0152a84b3ccc920",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1780063149,
-                  "message": "broker: use shared error types instead of himmelblau-specific ones\n\nAdd ErrDeviceDisabled, ErrInvalidRedirectURI, and RetryWithDeviceAuthError to\nproviders/errors. Have msentraid wrap himmelblau errors into these shared types\nin GetGroups. Update broker to check shared error types and remove the direct\nhimmelblau import.\n\nThis decouples the broker package from the msentraid/himmelblau package,\nmaking the broker provider-agnostic with respect to error handling.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/80db34019bb6ff2b3a20772ca0152a84b3ccc920"
+                  "sha": "9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1780487533,
+                  "message": "Bump toolchain to 1.25.11\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
+                  "url": "https://github.com/canonical/authd/commit/9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3"
                }
             ],
             "ciActions": [
@@ -5478,25 +5478,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9f692928f11042026ee7a7e05e9af934d9089bf3",
+                  "sha": "f1d0294165cf3951c149d1c8c58eeb68f62ad9c0",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1780488163,
+                  "message": "Bump toolchain to 1.25.11 (#1558)\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
+                  "url": "https://github.com/canonical/authd/commit/f1d0294165cf3951c149d1c8c58eeb68f62ad9c0"
+               },
+               {
+                  "sha": "dd41f938f52424ede482e7345ba9082611457dbd",
                   "author": "adombeck",
-                  "timestamp": 1780402019,
-                  "message": "authd-oidc-brokers: split Provider into core + optional interfaces (#1550)\n\nCloses #1549\nUDENG-9739",
-                  "url": "https://github.com/canonical/authd/commit/9f692928f11042026ee7a7e05e9af934d9089bf3"
+                  "timestamp": 1780487788,
+                  "message": "Use cargo 1.91 on Noble (#1375)\n\nUDENG-8123",
+                  "url": "https://github.com/canonical/authd/commit/dd41f938f52424ede482e7345ba9082611457dbd"
                },
                {
-                  "sha": "0deac3a44e3a2e0758e1e317aa521dc7e5faacf4",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1780063515,
-                  "message": "broker: split Provider into core + optional interfaces\n\nSplit the monolithic 16-method Provider interface into:\n- Core Provider (8 methods): the minimum every provider must implement\n- GroupFetcher: for providers that fetch group memberships\n- MetadataProvider: for providers that supply extra metadata/token fields\n- DeviceRegistrar: for providers that support device registration\n- UserDisabledChecker: for providers that detect disabled users\n\nRemove 7 no-op methods from GenericProvider, making it clear which\ncapabilities are provider-specific. The broker uses type assertions\nto check for optional interfaces, with sensible defaults when a\ncapability is not available.\n\nSupportsDeviceRegistration() is replaced by checking if the provider\nimplements DeviceRegistrar. token.NewAuthCachedInfo now takes\nextraFields directly instead of the full Provider interface.\n\nMockProvider's device registration support is handled via a\nMockDeviceRegistrarProvider wrapper, allowing tests to control\nwhether the mock satisfies the DeviceRegistrar interface.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0deac3a44e3a2e0758e1e317aa521dc7e5faacf4"
-               },
-               {
-                  "sha": "80db34019bb6ff2b3a20772ca0152a84b3ccc920",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1780063149,
-                  "message": "broker: use shared error types instead of himmelblau-specific ones\n\nAdd ErrDeviceDisabled, ErrInvalidRedirectURI, and RetryWithDeviceAuthError to\nproviders/errors. Have msentraid wrap himmelblau errors into these shared types\nin GetGroups. Update broker to check shared error types and remove the direct\nhimmelblau import.\n\nThis decouples the broker package from the msentraid/himmelblau package,\nmaking the broker provider-agnostic with respect to error handling.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/80db34019bb6ff2b3a20772ca0152a84b3ccc920"
+                  "sha": "9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1780487533,
+                  "message": "Bump toolchain to 1.25.11\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
+                  "url": "https://github.com/canonical/authd/commit/9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3"
                }
             ],
             "ciActions": [
@@ -6996,7 +6996,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 170,
+            "newCommits": 187,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7640,7 +7640,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 3,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -7836,25 +7836,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9f692928f11042026ee7a7e05e9af934d9089bf3",
+                  "sha": "f1d0294165cf3951c149d1c8c58eeb68f62ad9c0",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1780488163,
+                  "message": "Bump toolchain to 1.25.11 (#1558)\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
+                  "url": "https://github.com/canonical/authd/commit/f1d0294165cf3951c149d1c8c58eeb68f62ad9c0"
+               },
+               {
+                  "sha": "dd41f938f52424ede482e7345ba9082611457dbd",
                   "author": "adombeck",
-                  "timestamp": 1780402019,
-                  "message": "authd-oidc-brokers: split Provider into core + optional interfaces (#1550)\n\nCloses #1549\nUDENG-9739",
-                  "url": "https://github.com/canonical/authd/commit/9f692928f11042026ee7a7e05e9af934d9089bf3"
+                  "timestamp": 1780487788,
+                  "message": "Use cargo 1.91 on Noble (#1375)\n\nUDENG-8123",
+                  "url": "https://github.com/canonical/authd/commit/dd41f938f52424ede482e7345ba9082611457dbd"
                },
                {
-                  "sha": "0deac3a44e3a2e0758e1e317aa521dc7e5faacf4",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1780063515,
-                  "message": "broker: split Provider into core + optional interfaces\n\nSplit the monolithic 16-method Provider interface into:\n- Core Provider (8 methods): the minimum every provider must implement\n- GroupFetcher: for providers that fetch group memberships\n- MetadataProvider: for providers that supply extra metadata/token fields\n- DeviceRegistrar: for providers that support device registration\n- UserDisabledChecker: for providers that detect disabled users\n\nRemove 7 no-op methods from GenericProvider, making it clear which\ncapabilities are provider-specific. The broker uses type assertions\nto check for optional interfaces, with sensible defaults when a\ncapability is not available.\n\nSupportsDeviceRegistration() is replaced by checking if the provider\nimplements DeviceRegistrar. token.NewAuthCachedInfo now takes\nextraFields directly instead of the full Provider interface.\n\nMockProvider's device registration support is handled via a\nMockDeviceRegistrarProvider wrapper, allowing tests to control\nwhether the mock satisfies the DeviceRegistrar interface.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0deac3a44e3a2e0758e1e317aa521dc7e5faacf4"
-               },
-               {
-                  "sha": "80db34019bb6ff2b3a20772ca0152a84b3ccc920",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1780063149,
-                  "message": "broker: use shared error types instead of himmelblau-specific ones\n\nAdd ErrDeviceDisabled, ErrInvalidRedirectURI, and RetryWithDeviceAuthError to\nproviders/errors. Have msentraid wrap himmelblau errors into these shared types\nin GetGroups. Update broker to check shared error types and remove the direct\nhimmelblau import.\n\nThis decouples the broker package from the msentraid/himmelblau package,\nmaking the broker provider-agnostic with respect to error handling.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/80db34019bb6ff2b3a20772ca0152a84b3ccc920"
+                  "sha": "9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1780487533,
+                  "message": "Bump toolchain to 1.25.11\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
+                  "url": "https://github.com/canonical/authd/commit/9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3"
                }
             ],
             "ciActions": [
@@ -9781,7 +9781,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 3,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
