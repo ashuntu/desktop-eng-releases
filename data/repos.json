@@ -3099,7 +3099,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 3,
+            "newCommits": 6,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -3456,25 +3456,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "597d1e95cb9050969cc5c9719de71f366a3c6117",
-                  "author": "adombeck",
-                  "timestamp": 1779780554,
-                  "message": "feat: Allow setting the Team field of new Jira issues (#126)\n\nUDENG-10227",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/597d1e95cb9050969cc5c9719de71f366a3c6117"
+                  "sha": "ba4efbf67e9bf9ff3571915b6bf80f80dec8de22",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1780502974,
+                  "message": "fix: Check GOTOOLCHAIN before attempting to override it (#127)\n\nWhen we moved the v2 tag yesterday we broke CI for projects based on\nworkspaces (at least two I observed: ubuntu-pro-for-wsl and\nubuntu-insights).\n\n```\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  GOTOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${GOTOOLCHAIN}\" == \"null\" ]; then\n    GOTOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${GOTOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\n  go: invalid GOTOOLCHAIN \"null\"\n  Error: Process completed with exit code 1.\n``` \n\nThe error is somewhat misleading as there seems to be no way for\n`GOTOOLCHAIN` end up being \"null\" when `go install` runs. [See one\nexample\nhere](https://github.com/ubuntu/ubuntu-insights/actions/runs/26596853884/job/78369986955#step:4:690).\n\nThe most significant change in between the previous v2 and the current\none is the upgrade of the `actions/setup-go` from v5 to v6. In this new\nversion, that action sets `GOTOOLCHAIN` to `local` when invoked with a\n`go-version-file`. It seems that overwriting that environment variable\nbreaks in GitHub Actions for environment specifics I'm not sure about\nthe details.\n\nBut that's not all. If we adjust the snippet of code that manipulates\nthe `GOTOOLCHAIN` environment variable, we still end up with\n`govulncheck` being invoked against a wrong version of the Go toolchain.\nThat's because we don't set the precise toolchain version in `go.mod`\nfiles in a workspace, but rather at the parent `go.work`. So, the\ncurrent implementation of the `go/code-sanity` action will always\ninstall the earliest toolchain of a minor Go version (like 1.25.0 or\n1.26.0) and `govulncheck` will report vulnerabilities that are not in\neffect if the workspace is already using a newer toolchain (such as\n1.25.10 or 1.26.3).\n\n```\n[57](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/26598020426/job/78374066710#step:7:582)\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  TOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${TOOLCHAIN}\" == \"null\" ]; then\n    TOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${TOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\nRun # govulncheck\n=== Symbol Results ===\n\nVulnerability #1: GO-2026-4971\n    Panic in Dial and LookupPort when handling NUL byte on Windows in net\n  More info: https://pkg.go.dev/vuln/GO-2026-4971\n  Standard library\n    Found in: net@go1.26\n    Fixed in: net@go1.26.3\n    Example traces found:\nError:       #1: go/agentapi.pb.go:734:36: go.file_agentapi_proto_rawDescGZIP calls sync.Once.Do, which eventually calls net.Dialer.DialContext\n\nVulnerability #2: GO-2026-4947\n    Unexpected work during chain building in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-4947\n  Standard library\n    Found in: crypto/x509@go1.26\n    Fixed in: crypto/x509@go1.26.2\n``` \n\nThe proper fix for this seems to be accepting the `go.work` file as an\ninput to `actions/setup-go` so we can use the precise version of the\ntoolchain declared there instead of the Go version present in a child\nmodule.\n\nFor completeness, it's worth noting that with `actions/setup-go@v5` that\nwasn't a problem because the action would setup the earliest toolchain\nof the minor Go version but then any go command inside the workspace\nwould trigger a local installation of the correct toolchain version as\ndefined in the `go.work` - wasteful in the sense that two installs would\nhappen ( [see here for an\nexample](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/25488536723/job/74790296897#step:7:31)\n).",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/ba4efbf67e9bf9ff3571915b6bf80f80dec8de22"
                },
                {
-                  "sha": "73c383e8f4d54a6c58a6f2a7ccb94a37586c52c1",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1779361551,
-                  "message": "feat: Support getting the team ID of a specified issue\n\nTo automatically set the team of newly created issues, the team ID must\nbe specified in ~/.jira_credentials. To make that easier, add a command\nwhich allows retrieving the team ID of an existing issue.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/73c383e8f4d54a6c58a6f2a7ccb94a37586c52c1"
+                  "sha": "107ff26f8d799c96efc1f498eecd16cbe04c63d6",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1780485635,
+                  "message": "Set and export GOTOOLCHAIN with no else block",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/107ff26f8d799c96efc1f498eecd16cbe04c63d6"
                },
                {
-                  "sha": "5308799a082d19aeedd8b2c4edd03fa8dbaee1a4",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1779360890,
-                  "message": "feat: Allow setting the Team field of new Jira issues\n\nWe now require the Team field of issues to be set for them to show up\non our pulse board. The jira CLI tool now supports that.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/5308799a082d19aeedd8b2c4edd03fa8dbaee1a4"
+                  "sha": "c3fb656a090b41aa23aaaebe97769b8c1b7aa401",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1780054734,
+                  "message": "Accepts a specific go version file\n\nThis allows a workspace to pass the go.work file\nand let the setup-go action define the GOTOOLCHAIN\nso we don't need to override it when installing govulncheck.\nIt still falls back to the previous behaviour\n( ${{working-directory}}/go.mod)",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c3fb656a090b41aa23aaaebe97769b8c1b7aa401"
                }
             ],
             "ciActions": [],
@@ -3979,6 +3979,24 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 333907675,
+                  "version": "rev52",
+                  "timestamp": 1780507330,
+                  "title": "Revision 52",
+                  "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 42\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:08 UTC on 3 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/149\">#149</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev51...rev52\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev51&hellip;rev52</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev52",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev52...main"
+               },
+               {
+                  "id": 333889101,
+                  "version": "rev51",
+                  "timestamp": 1780498644,
+                  "title": "Revision 51",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 42</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:43 UTC on 3 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Add metrics reference page by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/148\">#148</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev50...rev51\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev50&hellip;rev51</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev51",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev51...main"
+               },
+               {
                   "id": 333385094,
                   "version": "rev50",
                   "timestamp": 1780431996,
@@ -3986,24 +4004,6 @@
                   "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 41\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 21:23 UTC on 2 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: add id-token write permission by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/143\">#143</a></li>\n<li>fix(deps): update all non-major dependencies to v1.3.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/146\">#146</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev49...rev50\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev49&hellip;rev50</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev50",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev50...main"
-               },
-               {
-                  "id": 333372177,
-                  "version": "rev49",
-                  "timestamp": 1780431431,
-                  "title": "Revision 49",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 41</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:56 UTC on 2 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency mediawiki-k8s to v48 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/142\">#142</a></li>\n<li>fix: Pin traefik-k8s to 298 for integration tests by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/147\">#147</a></li>\n<li>maint: update linkcheck ignore list by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/145\">#145</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev48...rev49\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev48&hellip;rev49</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev49",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev49...main"
-               },
-               {
-                  "id": 331899111,
-                  "version": "rev48",
-                  "timestamp": 1780126178,
-                  "title": "Revision 48",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 39</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 08:19 UTC on 30 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency mediawiki-k8s to v47 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/140\">#140</a></li>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/141\">#141</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev47...rev48\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev47&hellip;rev48</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev48",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev48...main"
                }
             ],
             "commits": null,
@@ -4018,8 +4018,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 50,
-                     "timestamp": 1780435384
+                     "revision": 52,
+                     "timestamp": 1780510127
                   }
                ],
                "channels": [
@@ -4453,25 +4453,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "90c41b90b9e369f786f031e29411773c109a3a82",
+                  "author": "ashuntu",
+                  "timestamp": 1780507740,
+                  "message": "fix: Correct MangoHUD links (#507)\n\nFixes https://github.com/canonical/steam-snap/issues/506",
+                  "url": "https://github.com/canonical/steam-snap/commit/90c41b90b9e369f786f031e29411773c109a3a82"
+               },
+               {
+                  "sha": "b4929a2278716614f230c907d9ca35cc6ce3a0a8",
+                  "author": "ashuntu",
+                  "timestamp": 1780505061,
+                  "message": "fix: Correct MangoHUD links",
+                  "url": "https://github.com/canonical/steam-snap/commit/b4929a2278716614f230c907d9ca35cc6ce3a0a8"
+               },
+               {
                   "sha": "75ccfcc13870d9677ffb74b4ccfb468f9f4aafc3",
                   "author": "Andreia",
                   "timestamp": 1779964909,
                   "message": "Update change-mesa-graphics.md with version check\n\nContribution originally by @ph818.\r\n\r\nCloses #503.\n\nSigned-off-by: Andreia <andreia.velasco@canonical.com>",
                   "url": "https://github.com/canonical/steam-snap/commit/75ccfcc13870d9677ffb74b4ccfb468f9f4aafc3"
-               },
-               {
-                  "sha": "7efca22486e3d24068b9ed17ab3e3aa595a764f9",
-                  "author": "Shane Crowley",
-                  "timestamp": 1779879534,
-                  "message": "docs: add more prominent snap links (#505)\n\nFor a user who lands on the README or the docs, it is not obvious where\nto actually get the Steam snap.\n\nThis adds a Snap Store badge to both the README and the docs. Note, the\nbadge only appears in the homepage of the docs.\n\nLight- and dark-specific badges are used for the docs. I couldn't get\nthis working for the README, as I believe it only works for local images\nin repos and that seemed to be the case during my tests.\n\nOne additional change is the removal of in-line links in the main\nhomepage text. There are already a lot of links on the homepage, so we\nprobably don't need them. If someone is unclear about a term it's an\ninvitation to continue reading or find information in the docs.\n\n<img width=\"1468\" height=\"1108\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/fd93406d-8a00-44e9-adaa-e7274fdf9ae7\"\n/>\n\n<img width=\"1460\" height=\"1079\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/54dc5661-7a83-436c-b07f-b0801d243b88\"\n/>",
-                  "url": "https://github.com/canonical/steam-snap/commit/7efca22486e3d24068b9ed17ab3e3aa595a764f9"
-               },
-               {
-                  "sha": "6e40adadfe31648843296ad2c736eed000a976ef",
-                  "author": "shanecrowley",
-                  "timestamp": 1779878241,
-                  "message": "simplify main homepage text\n\nThere are plenty of links already on the homepage.\nWe can assume that many users already know what Steam is, for example,\nand that if they are interested in knowing what MangoHUD is they can\nfind more info in the docs.",
-                  "url": "https://github.com/canonical/steam-snap/commit/6e40adadfe31648843296ad2c736eed000a976ef"
                }
             ],
             "ciActions": [],
@@ -5645,25 +5645,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "597d1e95cb9050969cc5c9719de71f366a3c6117",
-                  "author": "adombeck",
-                  "timestamp": 1779780554,
-                  "message": "feat: Allow setting the Team field of new Jira issues (#126)\n\nUDENG-10227",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/597d1e95cb9050969cc5c9719de71f366a3c6117"
+                  "sha": "ba4efbf67e9bf9ff3571915b6bf80f80dec8de22",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1780502974,
+                  "message": "fix: Check GOTOOLCHAIN before attempting to override it (#127)\n\nWhen we moved the v2 tag yesterday we broke CI for projects based on\nworkspaces (at least two I observed: ubuntu-pro-for-wsl and\nubuntu-insights).\n\n```\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  GOTOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${GOTOOLCHAIN}\" == \"null\" ]; then\n    GOTOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${GOTOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\n  go: invalid GOTOOLCHAIN \"null\"\n  Error: Process completed with exit code 1.\n``` \n\nThe error is somewhat misleading as there seems to be no way for\n`GOTOOLCHAIN` end up being \"null\" when `go install` runs. [See one\nexample\nhere](https://github.com/ubuntu/ubuntu-insights/actions/runs/26596853884/job/78369986955#step:4:690).\n\nThe most significant change in between the previous v2 and the current\none is the upgrade of the `actions/setup-go` from v5 to v6. In this new\nversion, that action sets `GOTOOLCHAIN` to `local` when invoked with a\n`go-version-file`. It seems that overwriting that environment variable\nbreaks in GitHub Actions for environment specifics I'm not sure about\nthe details.\n\nBut that's not all. If we adjust the snippet of code that manipulates\nthe `GOTOOLCHAIN` environment variable, we still end up with\n`govulncheck` being invoked against a wrong version of the Go toolchain.\nThat's because we don't set the precise toolchain version in `go.mod`\nfiles in a workspace, but rather at the parent `go.work`. So, the\ncurrent implementation of the `go/code-sanity` action will always\ninstall the earliest toolchain of a minor Go version (like 1.25.0 or\n1.26.0) and `govulncheck` will report vulnerabilities that are not in\neffect if the workspace is already using a newer toolchain (such as\n1.25.10 or 1.26.3).\n\n```\n[57](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/26598020426/job/78374066710#step:7:582)\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  TOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${TOOLCHAIN}\" == \"null\" ]; then\n    TOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${TOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\nRun # govulncheck\n=== Symbol Results ===\n\nVulnerability #1: GO-2026-4971\n    Panic in Dial and LookupPort when handling NUL byte on Windows in net\n  More info: https://pkg.go.dev/vuln/GO-2026-4971\n  Standard library\n    Found in: net@go1.26\n    Fixed in: net@go1.26.3\n    Example traces found:\nError:       #1: go/agentapi.pb.go:734:36: go.file_agentapi_proto_rawDescGZIP calls sync.Once.Do, which eventually calls net.Dialer.DialContext\n\nVulnerability #2: GO-2026-4947\n    Unexpected work during chain building in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-4947\n  Standard library\n    Found in: crypto/x509@go1.26\n    Fixed in: crypto/x509@go1.26.2\n``` \n\nThe proper fix for this seems to be accepting the `go.work` file as an\ninput to `actions/setup-go` so we can use the precise version of the\ntoolchain declared there instead of the Go version present in a child\nmodule.\n\nFor completeness, it's worth noting that with `actions/setup-go@v5` that\nwasn't a problem because the action would setup the earliest toolchain\nof the minor Go version but then any go command inside the workspace\nwould trigger a local installation of the correct toolchain version as\ndefined in the `go.work` - wasteful in the sense that two installs would\nhappen ( [see here for an\nexample](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/25488536723/job/74790296897#step:7:31)\n).",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/ba4efbf67e9bf9ff3571915b6bf80f80dec8de22"
                },
                {
-                  "sha": "73c383e8f4d54a6c58a6f2a7ccb94a37586c52c1",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1779361551,
-                  "message": "feat: Support getting the team ID of a specified issue\n\nTo automatically set the team of newly created issues, the team ID must\nbe specified in ~/.jira_credentials. To make that easier, add a command\nwhich allows retrieving the team ID of an existing issue.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/73c383e8f4d54a6c58a6f2a7ccb94a37586c52c1"
+                  "sha": "107ff26f8d799c96efc1f498eecd16cbe04c63d6",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1780485635,
+                  "message": "Set and export GOTOOLCHAIN with no else block",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/107ff26f8d799c96efc1f498eecd16cbe04c63d6"
                },
                {
-                  "sha": "5308799a082d19aeedd8b2c4edd03fa8dbaee1a4",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1779360890,
-                  "message": "feat: Allow setting the Team field of new Jira issues\n\nWe now require the Team field of issues to be set for them to show up\non our pulse board. The jira CLI tool now supports that.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/5308799a082d19aeedd8b2c4edd03fa8dbaee1a4"
+                  "sha": "c3fb656a090b41aa23aaaebe97769b8c1b7aa401",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1780054734,
+                  "message": "Accepts a specific go version file\n\nThis allows a workspace to pass the go.work file\nand let the setup-go action define the GOTOOLCHAIN\nso we don't need to override it when installing govulncheck.\nIt still falls back to the previous behaviour\n( ${{working-directory}}/go.mod)",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c3fb656a090b41aa23aaaebe97769b8c1b7aa401"
                }
             ],
             "ciActions": [],
@@ -6201,6 +6201,24 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 333907675,
+                  "version": "rev52",
+                  "timestamp": 1780507330,
+                  "title": "Revision 52",
+                  "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 42\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:08 UTC on 3 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/149\">#149</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev51...rev52\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev51&hellip;rev52</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev52",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev52...main"
+               },
+               {
+                  "id": 333889101,
+                  "version": "rev51",
+                  "timestamp": 1780498644,
+                  "title": "Revision 51",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 42</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:43 UTC on 3 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Add metrics reference page by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/148\">#148</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev50...rev51\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev50&hellip;rev51</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev51",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev51...main"
+               },
+               {
                   "id": 333385094,
                   "version": "rev50",
                   "timestamp": 1780431996,
@@ -6208,24 +6226,6 @@
                   "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 41\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 21:23 UTC on 2 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: add id-token write permission by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/143\">#143</a></li>\n<li>fix(deps): update all non-major dependencies to v1.3.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/146\">#146</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev49...rev50\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev49&hellip;rev50</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev50",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev50...main"
-               },
-               {
-                  "id": 333372177,
-                  "version": "rev49",
-                  "timestamp": 1780431431,
-                  "title": "Revision 49",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 41</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:56 UTC on 2 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency mediawiki-k8s to v48 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/142\">#142</a></li>\n<li>fix: Pin traefik-k8s to 298 for integration tests by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/147\">#147</a></li>\n<li>maint: update linkcheck ignore list by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/145\">#145</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev48...rev49\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev48&hellip;rev49</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev49",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev49...main"
-               },
-               {
-                  "id": 331899111,
-                  "version": "rev48",
-                  "timestamp": 1780126178,
-                  "title": "Revision 48",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 39</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 08:19 UTC on 30 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency mediawiki-k8s to v47 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/140\">#140</a></li>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/141\">#141</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev47...rev48\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev47&hellip;rev48</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev48",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev48...main"
                }
             ],
             "commits": null,
@@ -6240,8 +6240,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 50,
-                     "timestamp": 1780435384
+                     "revision": 52,
+                     "timestamp": 1780510127
                   }
                ],
                "channels": [
@@ -6675,25 +6675,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "90c41b90b9e369f786f031e29411773c109a3a82",
+                  "author": "ashuntu",
+                  "timestamp": 1780507740,
+                  "message": "fix: Correct MangoHUD links (#507)\n\nFixes https://github.com/canonical/steam-snap/issues/506",
+                  "url": "https://github.com/canonical/steam-snap/commit/90c41b90b9e369f786f031e29411773c109a3a82"
+               },
+               {
+                  "sha": "b4929a2278716614f230c907d9ca35cc6ce3a0a8",
+                  "author": "ashuntu",
+                  "timestamp": 1780505061,
+                  "message": "fix: Correct MangoHUD links",
+                  "url": "https://github.com/canonical/steam-snap/commit/b4929a2278716614f230c907d9ca35cc6ce3a0a8"
+               },
+               {
                   "sha": "75ccfcc13870d9677ffb74b4ccfb468f9f4aafc3",
                   "author": "Andreia",
                   "timestamp": 1779964909,
                   "message": "Update change-mesa-graphics.md with version check\n\nContribution originally by @ph818.\r\n\r\nCloses #503.\n\nSigned-off-by: Andreia <andreia.velasco@canonical.com>",
                   "url": "https://github.com/canonical/steam-snap/commit/75ccfcc13870d9677ffb74b4ccfb468f9f4aafc3"
-               },
-               {
-                  "sha": "7efca22486e3d24068b9ed17ab3e3aa595a764f9",
-                  "author": "Shane Crowley",
-                  "timestamp": 1779879534,
-                  "message": "docs: add more prominent snap links (#505)\n\nFor a user who lands on the README or the docs, it is not obvious where\nto actually get the Steam snap.\n\nThis adds a Snap Store badge to both the README and the docs. Note, the\nbadge only appears in the homepage of the docs.\n\nLight- and dark-specific badges are used for the docs. I couldn't get\nthis working for the README, as I believe it only works for local images\nin repos and that seemed to be the case during my tests.\n\nOne additional change is the removal of in-line links in the main\nhomepage text. There are already a lot of links on the homepage, so we\nprobably don't need them. If someone is unclear about a term it's an\ninvitation to continue reading or find information in the docs.\n\n<img width=\"1468\" height=\"1108\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/fd93406d-8a00-44e9-adaa-e7274fdf9ae7\"\n/>\n\n<img width=\"1460\" height=\"1079\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/54dc5661-7a83-436c-b07f-b0801d243b88\"\n/>",
-                  "url": "https://github.com/canonical/steam-snap/commit/7efca22486e3d24068b9ed17ab3e3aa595a764f9"
-               },
-               {
-                  "sha": "6e40adadfe31648843296ad2c736eed000a976ef",
-                  "author": "shanecrowley",
-                  "timestamp": 1779878241,
-                  "message": "simplify main homepage text\n\nThere are plenty of links already on the homepage.\nWe can assume that many users already know what Steam is, for example,\nand that if they are interested in knowing what MangoHUD is they can\nfind more info in the docs.",
-                  "url": "https://github.com/canonical/steam-snap/commit/6e40adadfe31648843296ad2c736eed000a976ef"
                }
             ],
             "ciActions": [],
@@ -6940,7 +6940,7 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
@@ -6996,7 +6996,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 187,
+            "newCommits": 196,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7640,7 +7640,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 3,
+            "newCommits": 6,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -8003,25 +8003,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "597d1e95cb9050969cc5c9719de71f366a3c6117",
-                  "author": "adombeck",
-                  "timestamp": 1779780554,
-                  "message": "feat: Allow setting the Team field of new Jira issues (#126)\n\nUDENG-10227",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/597d1e95cb9050969cc5c9719de71f366a3c6117"
+                  "sha": "ba4efbf67e9bf9ff3571915b6bf80f80dec8de22",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1780502974,
+                  "message": "fix: Check GOTOOLCHAIN before attempting to override it (#127)\n\nWhen we moved the v2 tag yesterday we broke CI for projects based on\nworkspaces (at least two I observed: ubuntu-pro-for-wsl and\nubuntu-insights).\n\n```\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  GOTOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${GOTOOLCHAIN}\" == \"null\" ]; then\n    GOTOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${GOTOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\n  go: invalid GOTOOLCHAIN \"null\"\n  Error: Process completed with exit code 1.\n``` \n\nThe error is somewhat misleading as there seems to be no way for\n`GOTOOLCHAIN` end up being \"null\" when `go install` runs. [See one\nexample\nhere](https://github.com/ubuntu/ubuntu-insights/actions/runs/26596853884/job/78369986955#step:4:690).\n\nThe most significant change in between the previous v2 and the current\none is the upgrade of the `actions/setup-go` from v5 to v6. In this new\nversion, that action sets `GOTOOLCHAIN` to `local` when invoked with a\n`go-version-file`. It seems that overwriting that environment variable\nbreaks in GitHub Actions for environment specifics I'm not sure about\nthe details.\n\nBut that's not all. If we adjust the snippet of code that manipulates\nthe `GOTOOLCHAIN` environment variable, we still end up with\n`govulncheck` being invoked against a wrong version of the Go toolchain.\nThat's because we don't set the precise toolchain version in `go.mod`\nfiles in a workspace, but rather at the parent `go.work`. So, the\ncurrent implementation of the `go/code-sanity` action will always\ninstall the earliest toolchain of a minor Go version (like 1.25.0 or\n1.26.0) and `govulncheck` will report vulnerabilities that are not in\neffect if the workspace is already using a newer toolchain (such as\n1.25.10 or 1.26.3).\n\n```\n[57](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/26598020426/job/78374066710#step:7:582)\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  TOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${TOOLCHAIN}\" == \"null\" ]; then\n    TOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${TOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\nRun # govulncheck\n=== Symbol Results ===\n\nVulnerability #1: GO-2026-4971\n    Panic in Dial and LookupPort when handling NUL byte on Windows in net\n  More info: https://pkg.go.dev/vuln/GO-2026-4971\n  Standard library\n    Found in: net@go1.26\n    Fixed in: net@go1.26.3\n    Example traces found:\nError:       #1: go/agentapi.pb.go:734:36: go.file_agentapi_proto_rawDescGZIP calls sync.Once.Do, which eventually calls net.Dialer.DialContext\n\nVulnerability #2: GO-2026-4947\n    Unexpected work during chain building in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-4947\n  Standard library\n    Found in: crypto/x509@go1.26\n    Fixed in: crypto/x509@go1.26.2\n``` \n\nThe proper fix for this seems to be accepting the `go.work` file as an\ninput to `actions/setup-go` so we can use the precise version of the\ntoolchain declared there instead of the Go version present in a child\nmodule.\n\nFor completeness, it's worth noting that with `actions/setup-go@v5` that\nwasn't a problem because the action would setup the earliest toolchain\nof the minor Go version but then any go command inside the workspace\nwould trigger a local installation of the correct toolchain version as\ndefined in the `go.work` - wasteful in the sense that two installs would\nhappen ( [see here for an\nexample](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/25488536723/job/74790296897#step:7:31)\n).",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/ba4efbf67e9bf9ff3571915b6bf80f80dec8de22"
                },
                {
-                  "sha": "73c383e8f4d54a6c58a6f2a7ccb94a37586c52c1",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1779361551,
-                  "message": "feat: Support getting the team ID of a specified issue\n\nTo automatically set the team of newly created issues, the team ID must\nbe specified in ~/.jira_credentials. To make that easier, add a command\nwhich allows retrieving the team ID of an existing issue.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/73c383e8f4d54a6c58a6f2a7ccb94a37586c52c1"
+                  "sha": "107ff26f8d799c96efc1f498eecd16cbe04c63d6",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1780485635,
+                  "message": "Set and export GOTOOLCHAIN with no else block",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/107ff26f8d799c96efc1f498eecd16cbe04c63d6"
                },
                {
-                  "sha": "5308799a082d19aeedd8b2c4edd03fa8dbaee1a4",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1779360890,
-                  "message": "feat: Allow setting the Team field of new Jira issues\n\nWe now require the Team field of issues to be set for them to show up\non our pulse board. The jira CLI tool now supports that.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/5308799a082d19aeedd8b2c4edd03fa8dbaee1a4"
+                  "sha": "c3fb656a090b41aa23aaaebe97769b8c1b7aa401",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1780054734,
+                  "message": "Accepts a specific go version file\n\nThis allows a workspace to pass the go.work file\nand let the setup-go action define the GOTOOLCHAIN\nso we don't need to override it when installing govulncheck.\nIt still falls back to the previous behaviour\n( ${{working-directory}}/go.mod)",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c3fb656a090b41aa23aaaebe97769b8c1b7aa401"
                }
             ],
             "ciActions": [],
@@ -8526,6 +8526,24 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 333907675,
+                  "version": "rev52",
+                  "timestamp": 1780507330,
+                  "title": "Revision 52",
+                  "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 42\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:08 UTC on 3 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/149\">#149</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev51...rev52\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev51&hellip;rev52</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev52",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev52...main"
+               },
+               {
+                  "id": 333889101,
+                  "version": "rev51",
+                  "timestamp": 1780498644,
+                  "title": "Revision 51",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 42</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:43 UTC on 3 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Add metrics reference page by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/148\">#148</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev50...rev51\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev50&hellip;rev51</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev51",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev51...main"
+               },
+               {
                   "id": 333385094,
                   "version": "rev50",
                   "timestamp": 1780431996,
@@ -8533,24 +8551,6 @@
                   "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 41\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 21:23 UTC on 2 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: add id-token write permission by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/143\">#143</a></li>\n<li>fix(deps): update all non-major dependencies to v1.3.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/146\">#146</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev49...rev50\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev49&hellip;rev50</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev50",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev50...main"
-               },
-               {
-                  "id": 333372177,
-                  "version": "rev49",
-                  "timestamp": 1780431431,
-                  "title": "Revision 49",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 41</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:56 UTC on 2 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency mediawiki-k8s to v48 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/142\">#142</a></li>\n<li>fix: Pin traefik-k8s to 298 for integration tests by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/147\">#147</a></li>\n<li>maint: update linkcheck ignore list by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/145\">#145</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev48...rev49\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev48&hellip;rev49</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev49",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev49...main"
-               },
-               {
-                  "id": 331899111,
-                  "version": "rev48",
-                  "timestamp": 1780126178,
-                  "title": "Revision 48",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 39</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 08:19 UTC on 30 May 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency mediawiki-k8s to v47 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/140\">#140</a></li>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/141\">#141</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev47...rev48\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev47&hellip;rev48</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev48",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev48...main"
                }
             ],
             "commits": null,
@@ -8565,8 +8565,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 50,
-                     "timestamp": 1780435384
+                     "revision": 52,
+                     "timestamp": 1780510127
                   }
                ],
                "channels": [
@@ -9000,25 +9000,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "90c41b90b9e369f786f031e29411773c109a3a82",
+                  "author": "ashuntu",
+                  "timestamp": 1780507740,
+                  "message": "fix: Correct MangoHUD links (#507)\n\nFixes https://github.com/canonical/steam-snap/issues/506",
+                  "url": "https://github.com/canonical/steam-snap/commit/90c41b90b9e369f786f031e29411773c109a3a82"
+               },
+               {
+                  "sha": "b4929a2278716614f230c907d9ca35cc6ce3a0a8",
+                  "author": "ashuntu",
+                  "timestamp": 1780505061,
+                  "message": "fix: Correct MangoHUD links",
+                  "url": "https://github.com/canonical/steam-snap/commit/b4929a2278716614f230c907d9ca35cc6ce3a0a8"
+               },
+               {
                   "sha": "75ccfcc13870d9677ffb74b4ccfb468f9f4aafc3",
                   "author": "Andreia",
                   "timestamp": 1779964909,
                   "message": "Update change-mesa-graphics.md with version check\n\nContribution originally by @ph818.\r\n\r\nCloses #503.\n\nSigned-off-by: Andreia <andreia.velasco@canonical.com>",
                   "url": "https://github.com/canonical/steam-snap/commit/75ccfcc13870d9677ffb74b4ccfb468f9f4aafc3"
-               },
-               {
-                  "sha": "7efca22486e3d24068b9ed17ab3e3aa595a764f9",
-                  "author": "Shane Crowley",
-                  "timestamp": 1779879534,
-                  "message": "docs: add more prominent snap links (#505)\n\nFor a user who lands on the README or the docs, it is not obvious where\nto actually get the Steam snap.\n\nThis adds a Snap Store badge to both the README and the docs. Note, the\nbadge only appears in the homepage of the docs.\n\nLight- and dark-specific badges are used for the docs. I couldn't get\nthis working for the README, as I believe it only works for local images\nin repos and that seemed to be the case during my tests.\n\nOne additional change is the removal of in-line links in the main\nhomepage text. There are already a lot of links on the homepage, so we\nprobably don't need them. If someone is unclear about a term it's an\ninvitation to continue reading or find information in the docs.\n\n<img width=\"1468\" height=\"1108\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/fd93406d-8a00-44e9-adaa-e7274fdf9ae7\"\n/>\n\n<img width=\"1460\" height=\"1079\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/54dc5661-7a83-436c-b07f-b0801d243b88\"\n/>",
-                  "url": "https://github.com/canonical/steam-snap/commit/7efca22486e3d24068b9ed17ab3e3aa595a764f9"
-               },
-               {
-                  "sha": "6e40adadfe31648843296ad2c736eed000a976ef",
-                  "author": "shanecrowley",
-                  "timestamp": 1779878241,
-                  "message": "simplify main homepage text\n\nThere are plenty of links already on the homepage.\nWe can assume that many users already know what Steam is, for example,\nand that if they are interested in knowing what MangoHUD is they can\nfind more info in the docs.",
-                  "url": "https://github.com/canonical/steam-snap/commit/6e40adadfe31648843296ad2c736eed000a976ef"
                }
             ],
             "ciActions": [],
@@ -9300,7 +9300,7 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
@@ -9781,7 +9781,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 3,
+            "newCommits": 6,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
