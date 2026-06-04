@@ -3881,25 +3881,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "645588280282855f31f239d3c939c695f189811d",
+                  "sha": "c4f216034a47d65ab33e8101c75481656fc00e14",
                   "author": "Doug Smythies",
-                  "timestamp": 1769185275,
-                  "message": "25.04 EOL edits. Mainly deletions.",
-                  "url": "https://github.com/canonical/help.ubuntu.com/commit/645588280282855f31f239d3c939c695f189811d"
+                  "timestamp": 1776982446,
+                  "message": "26.04 Release Day Edits.",
+                  "url": "https://github.com/canonical/help.ubuntu.com/commit/c4f216034a47d65ab33e8101c75481656fc00e14"
                },
                {
-                  "sha": "8b9d6a9acab9cf94ddd0057dcf002c05c6bdcac0",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1764948571,
-                  "message": "Correct link",
-                  "url": "https://github.com/canonical/help.ubuntu.com/commit/8b9d6a9acab9cf94ddd0057dcf002c05c6bdcac0"
+                  "sha": "768f983a2e0d1b861c4a982b9300e81de6d967ff",
+                  "author": "Doug Smythies",
+                  "timestamp": 1773955934,
+                  "message": "forgot to add the 26.04 directory.",
+                  "url": "https://github.com/canonical/help.ubuntu.com/commit/768f983a2e0d1b861c4a982b9300e81de6d967ff"
                },
                {
-                  "sha": "f6e7332e5e1ee082b21cec9724a4da12a78623b2",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1764668159,
-                  "message": "More flexible redirect",
-                  "url": "https://github.com/canonical/help.ubuntu.com/commit/f6e7332e5e1ee082b21cec9724a4da12a78623b2"
+                  "sha": "ed1ff257d67b6942a1c32a9dee99e0feb218a12d",
+                  "author": "Doug Smythies",
+                  "timestamp": 1773955800,
+                  "message": "Add 26.04 Desktop help - preliminary.",
+                  "url": "https://github.com/canonical/help.ubuntu.com/commit/ed1ff257d67b6942a1c32a9dee99e0feb218a12d"
                }
             ],
             "ciActions": [],
@@ -5311,25 +5311,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a5605c4111a357a9fa9dd516bbf2962a867860e3",
+                  "sha": "818272927169ec97f22d4344f55ecdf5e6cdaab7",
                   "author": "Kat",
-                  "timestamp": 1779996030,
-                  "message": "refactor(insights): Improve flexibility of Linux OS collection (#345)\n\nHere, we improve the flexibility of the collection of OS information on\nLinux in a number of ways.\n\nFirstly, we replace the `lsb_release` based collection with direct\nparsing of `os-release` while taking care to replicate the behavior of\n`lsb_release`. This removes the dependency, and also gives us more\ncontrol.\n\nThis is especially useful for the case of strictly confined snaps where\nwe care about the host distribution information, not the snap\ninformation. The priority order is\n`/var/lib/snapd/hostfs/etc/os-release`,\n`/var/lib/snapd/hostfs/usr/lib/os-release`, `/etc/os-release`,\n`/usr/lib/os-release`. However, like with `lsb_release`, we do not fall\nback if an `os-release` is present but is malformed.\n\nSecond, we detect if we're in a strictly confined snap, and if so, we\nprioritize reading from `/etc/lsb-release` since that is populated with\nthe host information. The reason for not prioritizing\n`/var/lib/snapd/hostfs/*` is because that requires the use of a\n`system-observe` connection, which requires store approval. We don't\ndefault to `/etc/lsb-release` from the start since `/etc/lsb-release`\nisn't a well-defined standard, and we will generally prefer\n`/etc/os-release` where it is available and correct.\n\n---\n[UDENG-9921](https://warthogs.atlassian.net/browse/UDENG-9921)\n\n[UDENG-9921]:\nhttps://warthogs.atlassian.net/browse/UDENG-9921?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a5605c4111a357a9fa9dd516bbf2962a867860e3"
+                  "timestamp": 1780579580,
+                  "message": "fix(qa): Specify go version file for code sanity checks (#349)\n\nTo fix the go-sanity job, we need to now specify for it to consider the\nroot `go.work` as the source of truth for the go version to use.\n\nTo resolve some CVE issues, we also bump the toolchain version to\n1.25.11.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/818272927169ec97f22d4344f55ecdf5e6cdaab7"
                },
                {
-                  "sha": "e87729c81d3297ca8c55bd3b04cea6620d54665c",
+                  "sha": "1fc2964069e33eb8155bda3ae27c1774c9e47e65",
                   "author": "kkuo",
-                  "timestamp": 1779403838,
-                  "message": "Special OS collection inside confined snaps\n\nSince `var/lib/snapd/hostfs/etc/os-release` and `var/lib/snapd/hostfs/usr/lib/os-release` are only available with `system-observe`, it is suboptimal for it to be the main way we\nget OS information.\n\nInstead, when we detect that we are in a strictly confined snap, we try to parse from `/etc/lsb-release` first, since that is properly populated with the host information.\n\nTo detect if we are in a confined snap, we check to see if `$SNAP` is set, and then parse confinement from `$SNAP/meta/snap.yaml`. Only if it is either a dev or strict confinement,\ndo we try to read from `/etc/lsb-release`. If that fails, then we fall back to the typical methods.\n\nThe reason for not defaulting to `lsb-release` in the first place is because it is non-standard such that we prefer `os-release` if it is available.\n\nNote that if reading `lsb-release` is skipped or fails, and one of the `os-releases` in `/var/lib/snapd/hostfs` is present but we don't have the `system-observe` connection, we\nget a permission error, and we skip OS info collection.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e87729c81d3297ca8c55bd3b04cea6620d54665c"
+                  "timestamp": 1780524583,
+                  "message": "deps(tools): Run go mod tidy",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/1fc2964069e33eb8155bda3ae27c1774c9e47e65"
                },
                {
-                  "sha": "f2021acc572efe5720d0988a3e0ba86a7c172f74",
+                  "sha": "b1b92391a5560a9f16578b27598be85d9b7305c0",
                   "author": "kkuo",
-                  "timestamp": 1779398031,
-                  "message": "Collect linux OS info from `os-release`\n\nHere, we replace the `lsb_release` based collection with direct parsing of `os-release` while taking care to replicate the behavior of `lsb_release`. This removes the dependency,\nand also gives us more control.\n\nThis is especially useful for the case of strictly confined snaps where we care about the host distribution information, not the snap information. The priority order is\n`/var/lib/snapd/hostfs/etc/os-release`, `/var/lib/snapd/hostfs/usr/lib/os-release`, `/etc/os-release`, `/usr/lib/os-release`. However, like with `lsb_release`, we do not fall back\nif an `os-release` is present but is malformed.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/f2021acc572efe5720d0988a3e0ba86a7c172f74"
+                  "timestamp": 1780524420,
+                  "message": "deps(go.work): Bump toolchain ver to 1.25.11",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b1b92391a5560a9f16578b27598be85d9b7305c0"
                }
             ],
             "ciActions": [
@@ -6070,25 +6070,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "645588280282855f31f239d3c939c695f189811d",
+                  "sha": "c4f216034a47d65ab33e8101c75481656fc00e14",
                   "author": "Doug Smythies",
-                  "timestamp": 1769185275,
-                  "message": "25.04 EOL edits. Mainly deletions.",
-                  "url": "https://github.com/canonical/help.ubuntu.com/commit/645588280282855f31f239d3c939c695f189811d"
+                  "timestamp": 1776982446,
+                  "message": "26.04 Release Day Edits.",
+                  "url": "https://github.com/canonical/help.ubuntu.com/commit/c4f216034a47d65ab33e8101c75481656fc00e14"
                },
                {
-                  "sha": "8b9d6a9acab9cf94ddd0057dcf002c05c6bdcac0",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1764948571,
-                  "message": "Correct link",
-                  "url": "https://github.com/canonical/help.ubuntu.com/commit/8b9d6a9acab9cf94ddd0057dcf002c05c6bdcac0"
+                  "sha": "768f983a2e0d1b861c4a982b9300e81de6d967ff",
+                  "author": "Doug Smythies",
+                  "timestamp": 1773955934,
+                  "message": "forgot to add the 26.04 directory.",
+                  "url": "https://github.com/canonical/help.ubuntu.com/commit/768f983a2e0d1b861c4a982b9300e81de6d967ff"
                },
                {
-                  "sha": "f6e7332e5e1ee082b21cec9724a4da12a78623b2",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1764668159,
-                  "message": "More flexible redirect",
-                  "url": "https://github.com/canonical/help.ubuntu.com/commit/f6e7332e5e1ee082b21cec9724a4da12a78623b2"
+                  "sha": "ed1ff257d67b6942a1c32a9dee99e0feb218a12d",
+                  "author": "Doug Smythies",
+                  "timestamp": 1773955800,
+                  "message": "Add 26.04 Desktop help - preliminary.",
+                  "url": "https://github.com/canonical/help.ubuntu.com/commit/ed1ff257d67b6942a1c32a9dee99e0feb218a12d"
                }
             ],
             "ciActions": [],
@@ -6996,7 +6996,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 196,
+            "newCommits": 202,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -8428,25 +8428,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "645588280282855f31f239d3c939c695f189811d",
+                  "sha": "c4f216034a47d65ab33e8101c75481656fc00e14",
                   "author": "Doug Smythies",
-                  "timestamp": 1769185275,
-                  "message": "25.04 EOL edits. Mainly deletions.",
-                  "url": "https://github.com/canonical/help.ubuntu.com/commit/645588280282855f31f239d3c939c695f189811d"
+                  "timestamp": 1776982446,
+                  "message": "26.04 Release Day Edits.",
+                  "url": "https://github.com/canonical/help.ubuntu.com/commit/c4f216034a47d65ab33e8101c75481656fc00e14"
                },
                {
-                  "sha": "8b9d6a9acab9cf94ddd0057dcf002c05c6bdcac0",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1764948571,
-                  "message": "Correct link",
-                  "url": "https://github.com/canonical/help.ubuntu.com/commit/8b9d6a9acab9cf94ddd0057dcf002c05c6bdcac0"
+                  "sha": "768f983a2e0d1b861c4a982b9300e81de6d967ff",
+                  "author": "Doug Smythies",
+                  "timestamp": 1773955934,
+                  "message": "forgot to add the 26.04 directory.",
+                  "url": "https://github.com/canonical/help.ubuntu.com/commit/768f983a2e0d1b861c4a982b9300e81de6d967ff"
                },
                {
-                  "sha": "f6e7332e5e1ee082b21cec9724a4da12a78623b2",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1764668159,
-                  "message": "More flexible redirect",
-                  "url": "https://github.com/canonical/help.ubuntu.com/commit/f6e7332e5e1ee082b21cec9724a4da12a78623b2"
+                  "sha": "ed1ff257d67b6942a1c32a9dee99e0feb218a12d",
+                  "author": "Doug Smythies",
+                  "timestamp": 1773955800,
+                  "message": "Add 26.04 Desktop help - preliminary.",
+                  "url": "https://github.com/canonical/help.ubuntu.com/commit/ed1ff257d67b6942a1c32a9dee99e0feb218a12d"
                }
             ],
             "ciActions": [],
