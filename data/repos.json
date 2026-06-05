@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8885be45f0277886b8e7ecc6c98d689181d63d50",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1780659216,
+                  "message": "Layout Libcanberra modules.\n\nLibcanberra as shipped in 24.04 tries to load\n\n  /usr/lib/x86_64-linux-gnu/libcanberra-0.30/libcanberra-pulse.so\n\nwhich does not exist in the snap and results in a failure to play notification\nsounds as per https://bugzilla.mozilla.org/show_bug.cgi?id=2035283.\n\nUse a layout to expose it from the Gnome runtime.",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/8885be45f0277886b8e7ecc6c98d689181d63d50"
+               },
+               {
                   "sha": "7dbad851c808f8734c0793fa00483d8cc2a6ac18",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1779264655,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1779194830,
                   "message": "Fix ReadOnlyNamespace object has no attribute 'warn'.",
                   "url": "https://github.com/ubuntu/thunderbird/commit/f2014e05b5ff921d465a88505b72e64ffd9c0027"
-               },
-               {
-                  "sha": "a38ff4fe139995fcebbdeb14bb1ca3842a5a645c",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1779184113,
-                  "message": "151.0-1",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/a38ff4fe139995fcebbdeb14bb1ca3842a5a645c"
                }
             ],
             "ciActions": [],
@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f1d0294165cf3951c149d1c8c58eeb68f62ad9c0",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1780488163,
-                  "message": "Bump toolchain to 1.25.11 (#1558)\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
-                  "url": "https://github.com/canonical/authd/commit/f1d0294165cf3951c149d1c8c58eeb68f62ad9c0"
-               },
-               {
-                  "sha": "dd41f938f52424ede482e7345ba9082611457dbd",
+                  "sha": "ffe08c279e52b9e72f2c9ca54d78e1b653467473",
                   "author": "adombeck",
-                  "timestamp": 1780487788,
-                  "message": "Use cargo 1.91 on Noble (#1375)\n\nUDENG-8123",
-                  "url": "https://github.com/canonical/authd/commit/dd41f938f52424ede482e7345ba9082611457dbd"
+                  "timestamp": 1780660269,
+                  "message": "deps(rust): bump the minor-updates group across 1 directory with 13 updates (#1483)\n\nUDENG-8347",
+                  "url": "https://github.com/canonical/authd/commit/ffe08c279e52b9e72f2c9ca54d78e1b653467473"
                },
                {
-                  "sha": "9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1780487533,
-                  "message": "Bump toolchain to 1.25.11\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
-                  "url": "https://github.com/canonical/authd/commit/9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3"
+                  "sha": "886187165b0812b173b4cb5418f05415e348801f",
+                  "author": "adombeck",
+                  "timestamp": 1780659971,
+                  "message": "Explicitly define our Rust MSRV (#1365)\n\nUDENG-9430",
+                  "url": "https://github.com/canonical/authd/commit/886187165b0812b173b4cb5418f05415e348801f"
+               },
+               {
+                  "sha": "b16c92c41ff1c90959ac9af65935517d830adbd0",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1780655132,
+                  "message": "debian/rules: Fix dh_auto_clean using wrong cargo version\n\n'dh_auto_clean --buildsystem=cargo' calls /usr/share/cargo/bin/cargo\nwhich is not the cargo version we want in some cases: on Noble and\nQuesting we install the cargo-1.91 package which installs\n/usr/lib/rust-1.91/share/cargo/bin/cargo.\n\nWe already prepend the correct directory to PATH in debian/rules by\ncalling get-depends-cargo-bin-paths.sh, so we can check if the cargo\nexecutable that's found in PATH is /usr/share/cargo/bin/cargo. If it's\nnot, then we need to do what 'dh_auto_clean --buildsystem=cargo' does\nourselves, but using the cargo in PATH.\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
+                  "url": "https://github.com/canonical/authd/commit/b16c92c41ff1c90959ac9af65935517d830adbd0"
                }
             ],
             "ciActions": [
@@ -5478,25 +5478,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f1d0294165cf3951c149d1c8c58eeb68f62ad9c0",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1780488163,
-                  "message": "Bump toolchain to 1.25.11 (#1558)\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
-                  "url": "https://github.com/canonical/authd/commit/f1d0294165cf3951c149d1c8c58eeb68f62ad9c0"
-               },
-               {
-                  "sha": "dd41f938f52424ede482e7345ba9082611457dbd",
+                  "sha": "ffe08c279e52b9e72f2c9ca54d78e1b653467473",
                   "author": "adombeck",
-                  "timestamp": 1780487788,
-                  "message": "Use cargo 1.91 on Noble (#1375)\n\nUDENG-8123",
-                  "url": "https://github.com/canonical/authd/commit/dd41f938f52424ede482e7345ba9082611457dbd"
+                  "timestamp": 1780660269,
+                  "message": "deps(rust): bump the minor-updates group across 1 directory with 13 updates (#1483)\n\nUDENG-8347",
+                  "url": "https://github.com/canonical/authd/commit/ffe08c279e52b9e72f2c9ca54d78e1b653467473"
                },
                {
-                  "sha": "9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1780487533,
-                  "message": "Bump toolchain to 1.25.11\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
-                  "url": "https://github.com/canonical/authd/commit/9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3"
+                  "sha": "886187165b0812b173b4cb5418f05415e348801f",
+                  "author": "adombeck",
+                  "timestamp": 1780659971,
+                  "message": "Explicitly define our Rust MSRV (#1365)\n\nUDENG-9430",
+                  "url": "https://github.com/canonical/authd/commit/886187165b0812b173b4cb5418f05415e348801f"
+               },
+               {
+                  "sha": "b16c92c41ff1c90959ac9af65935517d830adbd0",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1780655132,
+                  "message": "debian/rules: Fix dh_auto_clean using wrong cargo version\n\n'dh_auto_clean --buildsystem=cargo' calls /usr/share/cargo/bin/cargo\nwhich is not the cargo version we want in some cases: on Noble and\nQuesting we install the cargo-1.91 package which installs\n/usr/lib/rust-1.91/share/cargo/bin/cargo.\n\nWe already prepend the correct directory to PATH in debian/rules by\ncalling get-depends-cargo-bin-paths.sh, so we can check if the cargo\nexecutable that's found in PATH is /usr/share/cargo/bin/cargo. If it's\nnot, then we need to do what 'dh_auto_clean --buildsystem=cargo' does\nourselves, but using the cargo in PATH.\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
+                  "url": "https://github.com/canonical/authd/commit/b16c92c41ff1c90959ac9af65935517d830adbd0"
                }
             ],
             "ciActions": [
@@ -7836,25 +7836,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f1d0294165cf3951c149d1c8c58eeb68f62ad9c0",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1780488163,
-                  "message": "Bump toolchain to 1.25.11 (#1558)\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
-                  "url": "https://github.com/canonical/authd/commit/f1d0294165cf3951c149d1c8c58eeb68f62ad9c0"
-               },
-               {
-                  "sha": "dd41f938f52424ede482e7345ba9082611457dbd",
+                  "sha": "ffe08c279e52b9e72f2c9ca54d78e1b653467473",
                   "author": "adombeck",
-                  "timestamp": 1780487788,
-                  "message": "Use cargo 1.91 on Noble (#1375)\n\nUDENG-8123",
-                  "url": "https://github.com/canonical/authd/commit/dd41f938f52424ede482e7345ba9082611457dbd"
+                  "timestamp": 1780660269,
+                  "message": "deps(rust): bump the minor-updates group across 1 directory with 13 updates (#1483)\n\nUDENG-8347",
+                  "url": "https://github.com/canonical/authd/commit/ffe08c279e52b9e72f2c9ca54d78e1b653467473"
                },
                {
-                  "sha": "9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3",
-                  "author": "denisonbarbosa",
-                  "timestamp": 1780487533,
-                  "message": "Bump toolchain to 1.25.11\n\nFixes vulnerabilities:\n\nVulnerability 1: GO-2026-5039\n    Arbitrary inputs are included in errors without any escaping in\n    net/textproto\n  More info: https://pkg.go.dev/vuln/GO-2026-5039\n  Standard library\n    Found in: net/textproto@go1.25.10\n    Fixed in: net/textproto@go1.25.11\n\nVulnerability 2: GO-2026-5037\n    Inefficient candidate hostname parsing in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-5037\n  Standard library\n    Found in: crypto/x509@go1.25.10\n    Fixed in: crypto/x509@go1.25.11",
-                  "url": "https://github.com/canonical/authd/commit/9d7ba865dd5071ff2df57ff6a0c0289f4a8c54b3"
+                  "sha": "886187165b0812b173b4cb5418f05415e348801f",
+                  "author": "adombeck",
+                  "timestamp": 1780659971,
+                  "message": "Explicitly define our Rust MSRV (#1365)\n\nUDENG-9430",
+                  "url": "https://github.com/canonical/authd/commit/886187165b0812b173b4cb5418f05415e348801f"
+               },
+               {
+                  "sha": "b16c92c41ff1c90959ac9af65935517d830adbd0",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1780655132,
+                  "message": "debian/rules: Fix dh_auto_clean using wrong cargo version\n\n'dh_auto_clean --buildsystem=cargo' calls /usr/share/cargo/bin/cargo\nwhich is not the cargo version we want in some cases: on Noble and\nQuesting we install the cargo-1.91 package which installs\n/usr/lib/rust-1.91/share/cargo/bin/cargo.\n\nWe already prepend the correct directory to PATH in debian/rules by\ncalling get-depends-cargo-bin-paths.sh, so we can check if the cargo\nexecutable that's found in PATH is /usr/share/cargo/bin/cargo. If it's\nnot, then we need to do what 'dh_auto_clean --buildsystem=cargo' does\nourselves, but using the cargo in PATH.\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
+                  "url": "https://github.com/canonical/authd/commit/b16c92c41ff1c90959ac9af65935517d830adbd0"
                }
             ],
             "ciActions": [
