@@ -1724,6 +1724,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "69b626a604de68315f754b57260d37505a551caf",
+                  "author": "Mike Gorse",
+                  "timestamp": 1780905706,
+                  "message": "Backport at-spi2-atk collection fix (#361)\n\nThis is needed by orca 50. See\nhttps://gitlab.gnome.org/GNOME/orca/-/commit/e56f8753",
+                  "url": "https://github.com/ubuntu/gnome-sdk/commit/69b626a604de68315f754b57260d37505a551caf"
+               },
+               {
                   "sha": "82e798c8b67745955a187da564ad9a49c1696eef",
                   "author": "Marco Trevisan (Treviño)",
                   "timestamp": 1767979925,
@@ -1736,13 +1743,6 @@
                   "timestamp": 1772635703,
                   "message": "snap: Update clutter archived git URI",
                   "url": "https://github.com/ubuntu/gnome-sdk/commit/b145cc66201f884bfdf974a7c6a21e120b8034e1"
-               },
-               {
-                  "sha": "f48647aed91a79a6f7be002cd2aa17e53f23544b",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1772635055,
-                  "message": "snap: Update libdazzle git source",
-                  "url": "https://github.com/ubuntu/gnome-sdk/commit/f48647aed91a79a6f7be002cd2aa17e53f23544b"
                }
             ],
             "ciActions": [],
@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ffe08c279e52b9e72f2c9ca54d78e1b653467473",
+                  "sha": "9fd3425b12ca72f3989e6f8b030000cc1a283ea6",
                   "author": "adombeck",
-                  "timestamp": 1780660269,
-                  "message": "deps(rust): bump the minor-updates group across 1 directory with 13 updates (#1483)\n\nUDENG-8347",
-                  "url": "https://github.com/canonical/authd/commit/ffe08c279e52b9e72f2c9ca54d78e1b653467473"
+                  "timestamp": 1780915046,
+                  "message": "ci: Fix broker snap build (#1563)\n\nCloses #1562 \nUDENG-10608",
+                  "url": "https://github.com/canonical/authd/commit/9fd3425b12ca72f3989e6f8b030000cc1a283ea6"
                },
                {
-                  "sha": "886187165b0812b173b4cb5418f05415e348801f",
-                  "author": "adombeck",
-                  "timestamp": 1780659971,
-                  "message": "Explicitly define our Rust MSRV (#1365)\n\nUDENG-9430",
-                  "url": "https://github.com/canonical/authd/commit/886187165b0812b173b4cb5418f05415e348801f"
-               },
-               {
-                  "sha": "b16c92c41ff1c90959ac9af65935517d830adbd0",
+                  "sha": "ce486fb45b882d295bd3e6d6774edb114f5bb986",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1780655132,
-                  "message": "debian/rules: Fix dh_auto_clean using wrong cargo version\n\n'dh_auto_clean --buildsystem=cargo' calls /usr/share/cargo/bin/cargo\nwhich is not the cargo version we want in some cases: on Noble and\nQuesting we install the cargo-1.91 package which installs\n/usr/lib/rust-1.91/share/cargo/bin/cargo.\n\nWe already prepend the correct directory to PATH in debian/rules by\ncalling get-depends-cargo-bin-paths.sh, so we can check if the cargo\nexecutable that's found in PATH is /usr/share/cargo/bin/cargo. If it's\nnot, then we need to do what 'dh_auto_clean --buildsystem=cargo' does\nourselves, but using the cargo in PATH.\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
-                  "url": "https://github.com/canonical/authd/commit/b16c92c41ff1c90959ac9af65935517d830adbd0"
+                  "timestamp": 1780915002,
+                  "message": "ci: Fix broker snap build\n\nThe build-broker-snap workflow was failing because `git fetch --tags --unshallow`\nwas also recursing into the libhimmelblau submodule (due to `submodule.recurse=true`\nset by actions/checkout with submodules:recursive). When unshallowing the submodule,\ngit tried to fetch commit f54a712ef68e5c6d679e4f2257122774b681a751, which is\nreferenced in the authd history but no longer exists in the upstream libhimmelblau\nGitLab repository.\n\nAdding --no-recurse-submodules prevents the fetch from trying to unshallow the\nsubmodule history. The submodule is already at the correct commit from the\nactions/checkout step, so its history doesn't need to be unshallowed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ce486fb45b882d295bd3e6d6774edb114f5bb986"
+               },
+               {
+                  "sha": "ffcde81f2a51bd196cc565db6135cb2f292fab5c",
+                  "author": "adombeck",
+                  "timestamp": 1780907927,
+                  "message": "debian/rules: Fix dh_auto_configure using wrong cargo version (#1560)\n\nUDENG-10573",
+                  "url": "https://github.com/canonical/authd/commit/ffcde81f2a51bd196cc565db6135cb2f292fab5c"
                }
             ],
             "ciActions": [
@@ -5504,25 +5504,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ffe08c279e52b9e72f2c9ca54d78e1b653467473",
+                  "sha": "9fd3425b12ca72f3989e6f8b030000cc1a283ea6",
                   "author": "adombeck",
-                  "timestamp": 1780660269,
-                  "message": "deps(rust): bump the minor-updates group across 1 directory with 13 updates (#1483)\n\nUDENG-8347",
-                  "url": "https://github.com/canonical/authd/commit/ffe08c279e52b9e72f2c9ca54d78e1b653467473"
+                  "timestamp": 1780915046,
+                  "message": "ci: Fix broker snap build (#1563)\n\nCloses #1562 \nUDENG-10608",
+                  "url": "https://github.com/canonical/authd/commit/9fd3425b12ca72f3989e6f8b030000cc1a283ea6"
                },
                {
-                  "sha": "886187165b0812b173b4cb5418f05415e348801f",
-                  "author": "adombeck",
-                  "timestamp": 1780659971,
-                  "message": "Explicitly define our Rust MSRV (#1365)\n\nUDENG-9430",
-                  "url": "https://github.com/canonical/authd/commit/886187165b0812b173b4cb5418f05415e348801f"
-               },
-               {
-                  "sha": "b16c92c41ff1c90959ac9af65935517d830adbd0",
+                  "sha": "ce486fb45b882d295bd3e6d6774edb114f5bb986",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1780655132,
-                  "message": "debian/rules: Fix dh_auto_clean using wrong cargo version\n\n'dh_auto_clean --buildsystem=cargo' calls /usr/share/cargo/bin/cargo\nwhich is not the cargo version we want in some cases: on Noble and\nQuesting we install the cargo-1.91 package which installs\n/usr/lib/rust-1.91/share/cargo/bin/cargo.\n\nWe already prepend the correct directory to PATH in debian/rules by\ncalling get-depends-cargo-bin-paths.sh, so we can check if the cargo\nexecutable that's found in PATH is /usr/share/cargo/bin/cargo. If it's\nnot, then we need to do what 'dh_auto_clean --buildsystem=cargo' does\nourselves, but using the cargo in PATH.\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
-                  "url": "https://github.com/canonical/authd/commit/b16c92c41ff1c90959ac9af65935517d830adbd0"
+                  "timestamp": 1780915002,
+                  "message": "ci: Fix broker snap build\n\nThe build-broker-snap workflow was failing because `git fetch --tags --unshallow`\nwas also recursing into the libhimmelblau submodule (due to `submodule.recurse=true`\nset by actions/checkout with submodules:recursive). When unshallowing the submodule,\ngit tried to fetch commit f54a712ef68e5c6d679e4f2257122774b681a751, which is\nreferenced in the authd history but no longer exists in the upstream libhimmelblau\nGitLab repository.\n\nAdding --no-recurse-submodules prevents the fetch from trying to unshallow the\nsubmodule history. The submodule is already at the correct commit from the\nactions/checkout step, so its history doesn't need to be unshallowed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ce486fb45b882d295bd3e6d6774edb114f5bb986"
+               },
+               {
+                  "sha": "ffcde81f2a51bd196cc565db6135cb2f292fab5c",
+                  "author": "adombeck",
+                  "timestamp": 1780907927,
+                  "message": "debian/rules: Fix dh_auto_configure using wrong cargo version (#1560)\n\nUDENG-10573",
+                  "url": "https://github.com/canonical/authd/commit/ffcde81f2a51bd196cc565db6135cb2f292fab5c"
                }
             ],
             "ciActions": [
@@ -7888,25 +7888,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ffe08c279e52b9e72f2c9ca54d78e1b653467473",
+                  "sha": "9fd3425b12ca72f3989e6f8b030000cc1a283ea6",
                   "author": "adombeck",
-                  "timestamp": 1780660269,
-                  "message": "deps(rust): bump the minor-updates group across 1 directory with 13 updates (#1483)\n\nUDENG-8347",
-                  "url": "https://github.com/canonical/authd/commit/ffe08c279e52b9e72f2c9ca54d78e1b653467473"
+                  "timestamp": 1780915046,
+                  "message": "ci: Fix broker snap build (#1563)\n\nCloses #1562 \nUDENG-10608",
+                  "url": "https://github.com/canonical/authd/commit/9fd3425b12ca72f3989e6f8b030000cc1a283ea6"
                },
                {
-                  "sha": "886187165b0812b173b4cb5418f05415e348801f",
-                  "author": "adombeck",
-                  "timestamp": 1780659971,
-                  "message": "Explicitly define our Rust MSRV (#1365)\n\nUDENG-9430",
-                  "url": "https://github.com/canonical/authd/commit/886187165b0812b173b4cb5418f05415e348801f"
-               },
-               {
-                  "sha": "b16c92c41ff1c90959ac9af65935517d830adbd0",
+                  "sha": "ce486fb45b882d295bd3e6d6774edb114f5bb986",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1780655132,
-                  "message": "debian/rules: Fix dh_auto_clean using wrong cargo version\n\n'dh_auto_clean --buildsystem=cargo' calls /usr/share/cargo/bin/cargo\nwhich is not the cargo version we want in some cases: on Noble and\nQuesting we install the cargo-1.91 package which installs\n/usr/lib/rust-1.91/share/cargo/bin/cargo.\n\nWe already prepend the correct directory to PATH in debian/rules by\ncalling get-depends-cargo-bin-paths.sh, so we can check if the cargo\nexecutable that's found in PATH is /usr/share/cargo/bin/cargo. If it's\nnot, then we need to do what 'dh_auto_clean --buildsystem=cargo' does\nourselves, but using the cargo in PATH.\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
-                  "url": "https://github.com/canonical/authd/commit/b16c92c41ff1c90959ac9af65935517d830adbd0"
+                  "timestamp": 1780915002,
+                  "message": "ci: Fix broker snap build\n\nThe build-broker-snap workflow was failing because `git fetch --tags --unshallow`\nwas also recursing into the libhimmelblau submodule (due to `submodule.recurse=true`\nset by actions/checkout with submodules:recursive). When unshallowing the submodule,\ngit tried to fetch commit f54a712ef68e5c6d679e4f2257122774b681a751, which is\nreferenced in the authd history but no longer exists in the upstream libhimmelblau\nGitLab repository.\n\nAdding --no-recurse-submodules prevents the fetch from trying to unshallow the\nsubmodule history. The submodule is already at the correct commit from the\nactions/checkout step, so its history doesn't need to be unshallowed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ce486fb45b882d295bd3e6d6774edb114f5bb986"
+               },
+               {
+                  "sha": "ffcde81f2a51bd196cc565db6135cb2f292fab5c",
+                  "author": "adombeck",
+                  "timestamp": 1780907927,
+                  "message": "debian/rules: Fix dh_auto_configure using wrong cargo version (#1560)\n\nUDENG-10573",
+                  "url": "https://github.com/canonical/authd/commit/ffcde81f2a51bd196cc565db6135cb2f292fab5c"
                }
             ],
             "ciActions": [
