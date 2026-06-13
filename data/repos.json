@@ -3289,25 +3289,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8c9eecf0441bd6db47ddc3d74e715ba7b6f56c1f",
+                  "sha": "ad3ff127b40870dd2de8dcee96a43e24d482ff8f",
                   "author": "adombeck",
-                  "timestamp": 1781271102,
-                  "message": "ci: Force fresh VM image on scheduled e2e tests (#1582)\n\nUDENG-10686",
-                  "url": "https://github.com/canonical/authd/commit/8c9eecf0441bd6db47ddc3d74e715ba7b6f56c1f"
+                  "timestamp": 1781347895,
+                  "message": "ci: Run e2e-tests on-demand via PR label (#1579)\n\nUDENG-10684",
+                  "url": "https://github.com/canonical/authd/commit/ad3ff127b40870dd2de8dcee96a43e24d482ff8f"
                },
                {
-                  "sha": "0d159a566be945e66245d0f075ba4a41977e00a4",
+                  "sha": "bf6f6a0a90adcaeb096189ecbb2d66f530101d50",
                   "author": "adombeck",
-                  "timestamp": 1781271009,
-                  "message": "e2e-tests: Avoid updating all packages (#1580)\n\nUDENG-10685",
-                  "url": "https://github.com/canonical/authd/commit/0d159a566be945e66245d0f075ba4a41977e00a4"
+                  "timestamp": 1781347729,
+                  "message": "pam/integration-tests: Replace VHS with ptytest (#1529)\n\nCloses #1511, #1554\nUDENG-10152, UDENG-10527",
+                  "url": "https://github.com/canonical/authd/commit/bf6f6a0a90adcaeb096189ecbb2d66f530101d50"
                },
                {
-                  "sha": "a31635fc38ae2fe10fb93b075a32d3907aa7339c",
+                  "sha": "85937417c9e4e36654b63a693687420ced138e55",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1781270492,
-                  "message": "ci: Force fresh VM image on scheduled e2e tests\n\nThe Monday scheduled e2e test run should use a fresh VM image to capture\nany OS updates or system state changes. Previously it would reuse a cached\nimage if available. Add a force-fresh-image flag that triggers on schedule\nevents to skip the cache restore and always provision a new VM.\n\nCo-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/a31635fc38ae2fe10fb93b075a32d3907aa7339c"
+                  "timestamp": 1781260552,
+                  "message": "pam/integration-tests: seed mkhomedir skel with .bashrc and .profile\n\nCopying just the two shell init files lets shells in new test homes\nbehave normally while still avoiding the large rustup toolchain that\ncan wedge mkhomedir_helper on CI runners.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/85937417c9e4e36654b63a693687420ced138e55"
                }
             ],
             "ciActions": [
@@ -3979,6 +3979,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 338936228,
+                  "version": "rev66",
+                  "timestamp": 1781323226,
+                  "title": "Revision 66",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 55</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 08:59 UTC on 13 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/166\">#166</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev65...rev66\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev65&hellip;rev66</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev66",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev66...main"
+               },
+               {
                   "id": 338770321,
                   "version": "rev65",
                   "timestamp": 1781290544,
@@ -3995,15 +4004,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 53</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:12 UTC on 12 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: disable git-sync metrics job when not in use by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/162\">#162</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev63...rev64\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev63&hellip;rev64</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev64",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev64...main"
-               },
-               {
-                  "id": 338132557,
-                  "version": "rev63",
-                  "timestamp": 1781195368,
-                  "title": "Revision 63",
-                  "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 52\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:45 UTC on 11 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: add database schema update before installation retry by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/161\">#161</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev62...rev63\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev62&hellip;rev63</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev63",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev63...main"
                }
             ],
             "commits": null,
@@ -4018,8 +4018,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 65,
-                     "timestamp": 1781292404
+                     "revision": 66,
+                     "timestamp": 1781341153
                   }
                ],
                "channels": [
@@ -5511,25 +5511,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8c9eecf0441bd6db47ddc3d74e715ba7b6f56c1f",
+                  "sha": "ad3ff127b40870dd2de8dcee96a43e24d482ff8f",
                   "author": "adombeck",
-                  "timestamp": 1781271102,
-                  "message": "ci: Force fresh VM image on scheduled e2e tests (#1582)\n\nUDENG-10686",
-                  "url": "https://github.com/canonical/authd/commit/8c9eecf0441bd6db47ddc3d74e715ba7b6f56c1f"
+                  "timestamp": 1781347895,
+                  "message": "ci: Run e2e-tests on-demand via PR label (#1579)\n\nUDENG-10684",
+                  "url": "https://github.com/canonical/authd/commit/ad3ff127b40870dd2de8dcee96a43e24d482ff8f"
                },
                {
-                  "sha": "0d159a566be945e66245d0f075ba4a41977e00a4",
+                  "sha": "bf6f6a0a90adcaeb096189ecbb2d66f530101d50",
                   "author": "adombeck",
-                  "timestamp": 1781271009,
-                  "message": "e2e-tests: Avoid updating all packages (#1580)\n\nUDENG-10685",
-                  "url": "https://github.com/canonical/authd/commit/0d159a566be945e66245d0f075ba4a41977e00a4"
+                  "timestamp": 1781347729,
+                  "message": "pam/integration-tests: Replace VHS with ptytest (#1529)\n\nCloses #1511, #1554\nUDENG-10152, UDENG-10527",
+                  "url": "https://github.com/canonical/authd/commit/bf6f6a0a90adcaeb096189ecbb2d66f530101d50"
                },
                {
-                  "sha": "a31635fc38ae2fe10fb93b075a32d3907aa7339c",
+                  "sha": "85937417c9e4e36654b63a693687420ced138e55",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1781270492,
-                  "message": "ci: Force fresh VM image on scheduled e2e tests\n\nThe Monday scheduled e2e test run should use a fresh VM image to capture\nany OS updates or system state changes. Previously it would reuse a cached\nimage if available. Add a force-fresh-image flag that triggers on schedule\nevents to skip the cache restore and always provision a new VM.\n\nCo-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/a31635fc38ae2fe10fb93b075a32d3907aa7339c"
+                  "timestamp": 1781260552,
+                  "message": "pam/integration-tests: seed mkhomedir skel with .bashrc and .profile\n\nCopying just the two shell init files lets shells in new test homes\nbehave normally while still avoiding the large rustup toolchain that\ncan wedge mkhomedir_helper on CI runners.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/85937417c9e4e36654b63a693687420ced138e55"
                }
             ],
             "ciActions": [
@@ -6234,6 +6234,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 338936228,
+                  "version": "rev66",
+                  "timestamp": 1781323226,
+                  "title": "Revision 66",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 55</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 08:59 UTC on 13 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/166\">#166</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev65...rev66\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev65&hellip;rev66</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev66",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev66...main"
+               },
+               {
                   "id": 338770321,
                   "version": "rev65",
                   "timestamp": 1781290544,
@@ -6250,15 +6259,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 53</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:12 UTC on 12 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: disable git-sync metrics job when not in use by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/162\">#162</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev63...rev64\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev63&hellip;rev64</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev64",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev64...main"
-               },
-               {
-                  "id": 338132557,
-                  "version": "rev63",
-                  "timestamp": 1781195368,
-                  "title": "Revision 63",
-                  "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 52\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:45 UTC on 11 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: add database schema update before installation retry by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/161\">#161</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev62...rev63\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev62&hellip;rev63</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev63",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev63...main"
                }
             ],
             "commits": null,
@@ -6273,8 +6273,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 65,
-                     "timestamp": 1781292404
+                     "revision": 66,
+                     "timestamp": 1781341153
                   }
                ],
                "channels": [
@@ -7902,25 +7902,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8c9eecf0441bd6db47ddc3d74e715ba7b6f56c1f",
+                  "sha": "ad3ff127b40870dd2de8dcee96a43e24d482ff8f",
                   "author": "adombeck",
-                  "timestamp": 1781271102,
-                  "message": "ci: Force fresh VM image on scheduled e2e tests (#1582)\n\nUDENG-10686",
-                  "url": "https://github.com/canonical/authd/commit/8c9eecf0441bd6db47ddc3d74e715ba7b6f56c1f"
+                  "timestamp": 1781347895,
+                  "message": "ci: Run e2e-tests on-demand via PR label (#1579)\n\nUDENG-10684",
+                  "url": "https://github.com/canonical/authd/commit/ad3ff127b40870dd2de8dcee96a43e24d482ff8f"
                },
                {
-                  "sha": "0d159a566be945e66245d0f075ba4a41977e00a4",
+                  "sha": "bf6f6a0a90adcaeb096189ecbb2d66f530101d50",
                   "author": "adombeck",
-                  "timestamp": 1781271009,
-                  "message": "e2e-tests: Avoid updating all packages (#1580)\n\nUDENG-10685",
-                  "url": "https://github.com/canonical/authd/commit/0d159a566be945e66245d0f075ba4a41977e00a4"
+                  "timestamp": 1781347729,
+                  "message": "pam/integration-tests: Replace VHS with ptytest (#1529)\n\nCloses #1511, #1554\nUDENG-10152, UDENG-10527",
+                  "url": "https://github.com/canonical/authd/commit/bf6f6a0a90adcaeb096189ecbb2d66f530101d50"
                },
                {
-                  "sha": "a31635fc38ae2fe10fb93b075a32d3907aa7339c",
+                  "sha": "85937417c9e4e36654b63a693687420ced138e55",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1781270492,
-                  "message": "ci: Force fresh VM image on scheduled e2e tests\n\nThe Monday scheduled e2e test run should use a fresh VM image to capture\nany OS updates or system state changes. Previously it would reuse a cached\nimage if available. Add a force-fresh-image flag that triggers on schedule\nevents to skip the cache restore and always provision a new VM.\n\nCo-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/a31635fc38ae2fe10fb93b075a32d3907aa7339c"
+                  "timestamp": 1781260552,
+                  "message": "pam/integration-tests: seed mkhomedir skel with .bashrc and .profile\n\nCopying just the two shell init files lets shells in new test homes\nbehave normally while still avoiding the large rustup toolchain that\ncan wedge mkhomedir_helper on CI runners.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/85937417c9e4e36654b63a693687420ced138e55"
                }
             ],
             "ciActions": [
@@ -8592,6 +8592,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 338936228,
+                  "version": "rev66",
+                  "timestamp": 1781323226,
+                  "title": "Revision 66",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 55</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 08:59 UTC on 13 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/166\">#166</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev65...rev66\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev65&hellip;rev66</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev66",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev66...main"
+               },
+               {
                   "id": 338770321,
                   "version": "rev65",
                   "timestamp": 1781290544,
@@ -8608,15 +8617,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 53</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:12 UTC on 12 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: disable git-sync metrics job when not in use by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/162\">#162</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev63...rev64\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev63&hellip;rev64</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev64",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev64...main"
-               },
-               {
-                  "id": 338132557,
-                  "version": "rev63",
-                  "timestamp": 1781195368,
-                  "title": "Revision 63",
-                  "body": "<p>resources:\n    -  mediawiki-image: undefined\n       resource-revision: 52\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:45 UTC on 11 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: add database schema update before installation retry by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/161\">#161</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev62...rev63\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev62&hellip;rev63</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev63",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev63...main"
                }
             ],
             "commits": null,
@@ -8631,8 +8631,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 65,
-                     "timestamp": 1781292404
+                     "revision": 66,
+                     "timestamp": 1781341153
                   }
                ],
                "channels": [
