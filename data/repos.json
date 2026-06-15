@@ -1011,6 +1011,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "986e80c2b63c2c09449f681138ea859b9778d680",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1781529745,
+                  "message": "Update tag",
+                  "url": "https://github.com/ubuntu/gnome-contacts/commit/986e80c2b63c2c09449f681138ea859b9778d680"
+               },
+               {
                   "sha": "c9b4fe9efab79b8c1c687bf9abfa648a92414e89",
                   "author": "github-actions[bot]",
                   "timestamp": 1780220950,
@@ -1023,13 +1030,6 @@
                   "timestamp": 1779445618,
                   "message": "Update tag",
                   "url": "https://github.com/ubuntu/gnome-contacts/commit/b8f65e9dc72a548e6575b11ae0f389d51ce9d22d"
-               },
-               {
-                  "sha": "41e108058e09b07f37da9fee2507a01c95e6b1a9",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1778838632,
-                  "message": "Update tag",
-                  "url": "https://github.com/ubuntu/gnome-contacts/commit/41e108058e09b07f37da9fee2507a01c95e6b1a9"
                }
             ],
             "ciActions": [],
@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781519639,
-                  "message": "Fix disabled-user bypass after online-to-offline transition (#1583)\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled\nuser\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication\npaths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.\n\n\nUDENG-10645",
-                  "url": "https://github.com/canonical/authd/commit/e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed"
+                  "sha": "a41d46361500d2e5a74ec9f3668bf388110e2a63",
+                  "author": "Shane Crowley",
+                  "timestamp": 1781533913,
+                  "message": "docs: update config for authd docs URL migration (#1556)\n\nThis config change is necessary for completion of the migration of the\ndocs to a new URL at `ubuntu.com/docs/authd`.\n\nCurrently the `edge` docs are using this PR branch, which has been\ntested prior to proposing this merge to main.\n\nWe will also need to apply the config change to the `stable-docs`\nbranch.",
+                  "url": "https://github.com/canonical/authd/commit/a41d46361500d2e5a74ec9f3668bf388110e2a63"
                },
                {
-                  "sha": "0771f195b01241b8f13d62cfa29c538be9f1b277",
+                  "sha": "d94e60b15542588aeb181ab9a3b56db4000ac534",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781218951,
-                  "message": "Fix disabled-user bypass after online-to-offline transition\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled user\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication paths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.",
-                  "url": "https://github.com/canonical/authd/commit/0771f195b01241b8f13d62cfa29c538be9f1b277"
+                  "timestamp": 1781530106,
+                  "message": "Drop the `wiki` word for the troubleshooting page hyperlink",
+                  "url": "https://github.com/canonical/authd/commit/d94e60b15542588aeb181ab9a3b56db4000ac534"
                },
                {
-                  "sha": "de29c29ac1cabac3bc2f3ca4d82907ffa61930c0",
+                  "sha": "d47b075bbbb36a738f912983dcf9c3bffcd0a8f2",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781519029,
-                  "message": "Reject control characters in owner username to prevent INI injection (#1587)\n\nAn IdP-supplied username containing newlines gets written verbatim into\nthe INI config drop-in via Go template without escaping. Injected keys\nlike 'allowed_users = ALL' become effective on reload.\n\nReject any non-graphic characters before templating so owner\nauto-registration only writes usernames made of graphic runes. This\nblocks the newline injection vector and avoids writing other\nnon-graphic runes into generated config values.\n\nUDENG-10692",
-                  "url": "https://github.com/canonical/authd/commit/de29c29ac1cabac3bc2f3ca4d82907ffa61930c0"
+                  "timestamp": 1781529274,
+                  "message": "Migrate all docs URLs to `ubuntu.com/docs/authd`",
+                  "url": "https://github.com/canonical/authd/commit/d47b075bbbb36a738f912983dcf9c3bffcd0a8f2"
                }
             ],
             "ciActions": [
@@ -3528,25 +3528,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "83b51e2481120ebeb0621317a6f3929d6e5ab1f0",
+                  "sha": "c41024c06451aa4b40d53fe9d8853046bd8f48f9",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1781187256,
-                  "message": "Merge pull request #208 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/83b51e2481120ebeb0621317a6f3929d6e5ab1f0"
+                  "timestamp": 1781528091,
+                  "message": "Merge pull request #224 from canonical/feat/rules/non-binary-menu-selection\n\nAllow granular control for permission for each app",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/c41024c06451aa4b40d53fe9d8853046bd8f48f9"
                },
                {
-                  "sha": "76b2d59c93d85329875e5ea4ac1e5518139d2cec",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1781167488,
-                  "message": "chore: sync desktop file translations\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/76b2d59c93d85329875e5ea4ac1e5518139d2cec"
+                  "sha": "f531c2fda2deae5209de82310e44f91f861b7163",
+                  "author": "Soumya Ranjan Patnaik",
+                  "timestamp": 1779373397,
+                  "message": "test(app_permissions): update tests to use menu instead of switch",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f531c2fda2deae5209de82310e44f91f861b7163"
                },
                {
-                  "sha": "9d6361d77bdaab3a851e1d029918c9de1a3211b3",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1781105578,
-                  "message": "chore: regen l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/9d6361d77bdaab3a851e1d029918c9de1a3211b3"
+                  "sha": "3540a1481ebe68733380acb8557c54b85904bf52",
+                  "author": "Soumya Ranjan Patnaik",
+                  "timestamp": 1780171701,
+                  "message": "fix: ensure menu item autofocus and improve semantics",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/3540a1481ebe68733380acb8557c54b85904bf52"
                }
             ],
             "ciActions": [],
@@ -4018,6 +4018,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 339706093,
+                  "version": "rev67",
+                  "timestamp": 1781538012,
+                  "title": "Revision 67",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 56</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:41 UTC on 15 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/164\">#164</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev66...rev67\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev66&hellip;rev67</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev67",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev67...main"
+               },
+               {
                   "id": 338936228,
                   "version": "rev66",
                   "timestamp": 1781323226,
@@ -4034,15 +4043,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 54</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 19:26 UTC on 12 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs(how-to): add COS integration guide by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/160\">#160</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev64...rev65\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev64&hellip;rev65</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev65",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev65...main"
-               },
-               {
-                  "id": 338736312,
-                  "version": "rev64",
-                  "timestamp": 1781280072,
-                  "title": "Revision 64",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 53</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:12 UTC on 12 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: disable git-sync metrics job when not in use by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/162\">#162</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev63...rev64\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev63&hellip;rev64</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev64",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev64...main"
                }
             ],
             "commits": null,
@@ -4057,8 +4057,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 66,
-                     "timestamp": 1781341153
+                     "revision": 67,
+                     "timestamp": 1781545304
                   }
                ],
                "channels": [
@@ -5550,25 +5550,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781519639,
-                  "message": "Fix disabled-user bypass after online-to-offline transition (#1583)\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled\nuser\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication\npaths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.\n\n\nUDENG-10645",
-                  "url": "https://github.com/canonical/authd/commit/e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed"
+                  "sha": "a41d46361500d2e5a74ec9f3668bf388110e2a63",
+                  "author": "Shane Crowley",
+                  "timestamp": 1781533913,
+                  "message": "docs: update config for authd docs URL migration (#1556)\n\nThis config change is necessary for completion of the migration of the\ndocs to a new URL at `ubuntu.com/docs/authd`.\n\nCurrently the `edge` docs are using this PR branch, which has been\ntested prior to proposing this merge to main.\n\nWe will also need to apply the config change to the `stable-docs`\nbranch.",
+                  "url": "https://github.com/canonical/authd/commit/a41d46361500d2e5a74ec9f3668bf388110e2a63"
                },
                {
-                  "sha": "0771f195b01241b8f13d62cfa29c538be9f1b277",
+                  "sha": "d94e60b15542588aeb181ab9a3b56db4000ac534",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781218951,
-                  "message": "Fix disabled-user bypass after online-to-offline transition\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled user\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication paths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.",
-                  "url": "https://github.com/canonical/authd/commit/0771f195b01241b8f13d62cfa29c538be9f1b277"
+                  "timestamp": 1781530106,
+                  "message": "Drop the `wiki` word for the troubleshooting page hyperlink",
+                  "url": "https://github.com/canonical/authd/commit/d94e60b15542588aeb181ab9a3b56db4000ac534"
                },
                {
-                  "sha": "de29c29ac1cabac3bc2f3ca4d82907ffa61930c0",
+                  "sha": "d47b075bbbb36a738f912983dcf9c3bffcd0a8f2",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781519029,
-                  "message": "Reject control characters in owner username to prevent INI injection (#1587)\n\nAn IdP-supplied username containing newlines gets written verbatim into\nthe INI config drop-in via Go template without escaping. Injected keys\nlike 'allowed_users = ALL' become effective on reload.\n\nReject any non-graphic characters before templating so owner\nauto-registration only writes usernames made of graphic runes. This\nblocks the newline injection vector and avoids writing other\nnon-graphic runes into generated config values.\n\nUDENG-10692",
-                  "url": "https://github.com/canonical/authd/commit/de29c29ac1cabac3bc2f3ca4d82907ffa61930c0"
+                  "timestamp": 1781529274,
+                  "message": "Migrate all docs URLs to `ubuntu.com/docs/authd`",
+                  "url": "https://github.com/canonical/authd/commit/d47b075bbbb36a738f912983dcf9c3bffcd0a8f2"
                }
             ],
             "ciActions": [
@@ -5750,25 +5750,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "83b51e2481120ebeb0621317a6f3929d6e5ab1f0",
+                  "sha": "c41024c06451aa4b40d53fe9d8853046bd8f48f9",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1781187256,
-                  "message": "Merge pull request #208 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/83b51e2481120ebeb0621317a6f3929d6e5ab1f0"
+                  "timestamp": 1781528091,
+                  "message": "Merge pull request #224 from canonical/feat/rules/non-binary-menu-selection\n\nAllow granular control for permission for each app",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/c41024c06451aa4b40d53fe9d8853046bd8f48f9"
                },
                {
-                  "sha": "76b2d59c93d85329875e5ea4ac1e5518139d2cec",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1781167488,
-                  "message": "chore: sync desktop file translations\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/76b2d59c93d85329875e5ea4ac1e5518139d2cec"
+                  "sha": "f531c2fda2deae5209de82310e44f91f861b7163",
+                  "author": "Soumya Ranjan Patnaik",
+                  "timestamp": 1779373397,
+                  "message": "test(app_permissions): update tests to use menu instead of switch",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f531c2fda2deae5209de82310e44f91f861b7163"
                },
                {
-                  "sha": "9d6361d77bdaab3a851e1d029918c9de1a3211b3",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1781105578,
-                  "message": "chore: regen l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/9d6361d77bdaab3a851e1d029918c9de1a3211b3"
+                  "sha": "3540a1481ebe68733380acb8557c54b85904bf52",
+                  "author": "Soumya Ranjan Patnaik",
+                  "timestamp": 1780171701,
+                  "message": "fix: ensure menu item autofocus and improve semantics",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/3540a1481ebe68733380acb8557c54b85904bf52"
                }
             ],
             "ciActions": [],
@@ -6273,6 +6273,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 339706093,
+                  "version": "rev67",
+                  "timestamp": 1781538012,
+                  "title": "Revision 67",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 56</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:41 UTC on 15 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/164\">#164</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev66...rev67\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev66&hellip;rev67</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev67",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev67...main"
+               },
+               {
                   "id": 338936228,
                   "version": "rev66",
                   "timestamp": 1781323226,
@@ -6289,15 +6298,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 54</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 19:26 UTC on 12 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs(how-to): add COS integration guide by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/160\">#160</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev64...rev65\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev64&hellip;rev65</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev65",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev65...main"
-               },
-               {
-                  "id": 338736312,
-                  "version": "rev64",
-                  "timestamp": 1781280072,
-                  "title": "Revision 64",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 53</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:12 UTC on 12 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: disable git-sync metrics job when not in use by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/162\">#162</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev63...rev64\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev63&hellip;rev64</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev64",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev64...main"
                }
             ],
             "commits": null,
@@ -6312,8 +6312,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 66,
-                     "timestamp": 1781341153
+                     "revision": 67,
+                     "timestamp": 1781545304
                   }
                ],
                "channels": [
@@ -7101,7 +7101,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 214,
+            "newCommits": 229,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7941,25 +7941,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781519639,
-                  "message": "Fix disabled-user bypass after online-to-offline transition (#1583)\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled\nuser\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication\npaths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.\n\n\nUDENG-10645",
-                  "url": "https://github.com/canonical/authd/commit/e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed"
+                  "sha": "a41d46361500d2e5a74ec9f3668bf388110e2a63",
+                  "author": "Shane Crowley",
+                  "timestamp": 1781533913,
+                  "message": "docs: update config for authd docs URL migration (#1556)\n\nThis config change is necessary for completion of the migration of the\ndocs to a new URL at `ubuntu.com/docs/authd`.\n\nCurrently the `edge` docs are using this PR branch, which has been\ntested prior to proposing this merge to main.\n\nWe will also need to apply the config change to the `stable-docs`\nbranch.",
+                  "url": "https://github.com/canonical/authd/commit/a41d46361500d2e5a74ec9f3668bf388110e2a63"
                },
                {
-                  "sha": "0771f195b01241b8f13d62cfa29c538be9f1b277",
+                  "sha": "d94e60b15542588aeb181ab9a3b56db4000ac534",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781218951,
-                  "message": "Fix disabled-user bypass after online-to-offline transition\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled user\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication paths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.",
-                  "url": "https://github.com/canonical/authd/commit/0771f195b01241b8f13d62cfa29c538be9f1b277"
+                  "timestamp": 1781530106,
+                  "message": "Drop the `wiki` word for the troubleshooting page hyperlink",
+                  "url": "https://github.com/canonical/authd/commit/d94e60b15542588aeb181ab9a3b56db4000ac534"
                },
                {
-                  "sha": "de29c29ac1cabac3bc2f3ca4d82907ffa61930c0",
+                  "sha": "d47b075bbbb36a738f912983dcf9c3bffcd0a8f2",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781519029,
-                  "message": "Reject control characters in owner username to prevent INI injection (#1587)\n\nAn IdP-supplied username containing newlines gets written verbatim into\nthe INI config drop-in via Go template without escaping. Injected keys\nlike 'allowed_users = ALL' become effective on reload.\n\nReject any non-graphic characters before templating so owner\nauto-registration only writes usernames made of graphic runes. This\nblocks the newline injection vector and avoids writing other\nnon-graphic runes into generated config values.\n\nUDENG-10692",
-                  "url": "https://github.com/canonical/authd/commit/de29c29ac1cabac3bc2f3ca4d82907ffa61930c0"
+                  "timestamp": 1781529274,
+                  "message": "Migrate all docs URLs to `ubuntu.com/docs/authd`",
+                  "url": "https://github.com/canonical/authd/commit/d47b075bbbb36a738f912983dcf9c3bffcd0a8f2"
                }
             ],
             "ciActions": [
@@ -8141,25 +8141,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "83b51e2481120ebeb0621317a6f3929d6e5ab1f0",
+                  "sha": "c41024c06451aa4b40d53fe9d8853046bd8f48f9",
                   "author": "Matthew Hagemann",
-                  "timestamp": 1781187256,
-                  "message": "Merge pull request #208 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/83b51e2481120ebeb0621317a6f3929d6e5ab1f0"
+                  "timestamp": 1781528091,
+                  "message": "Merge pull request #224 from canonical/feat/rules/non-binary-menu-selection\n\nAllow granular control for permission for each app",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/c41024c06451aa4b40d53fe9d8853046bd8f48f9"
                },
                {
-                  "sha": "76b2d59c93d85329875e5ea4ac1e5518139d2cec",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1781167488,
-                  "message": "chore: sync desktop file translations\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/76b2d59c93d85329875e5ea4ac1e5518139d2cec"
+                  "sha": "f531c2fda2deae5209de82310e44f91f861b7163",
+                  "author": "Soumya Ranjan Patnaik",
+                  "timestamp": 1779373397,
+                  "message": "test(app_permissions): update tests to use menu instead of switch",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/f531c2fda2deae5209de82310e44f91f861b7163"
                },
                {
-                  "sha": "9d6361d77bdaab3a851e1d029918c9de1a3211b3",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1781105578,
-                  "message": "chore: regen l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/9d6361d77bdaab3a851e1d029918c9de1a3211b3"
+                  "sha": "3540a1481ebe68733380acb8557c54b85904bf52",
+                  "author": "Soumya Ranjan Patnaik",
+                  "timestamp": 1780171701,
+                  "message": "fix: ensure menu item autofocus and improve semantics",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/3540a1481ebe68733380acb8557c54b85904bf52"
                }
             ],
             "ciActions": [],
@@ -8631,6 +8631,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 339706093,
+                  "version": "rev67",
+                  "timestamp": 1781538012,
+                  "title": "Revision 67",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 56</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:41 UTC on 15 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/164\">#164</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev66...rev67\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev66&hellip;rev67</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev67",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev67...main"
+               },
+               {
                   "id": 338936228,
                   "version": "rev66",
                   "timestamp": 1781323226,
@@ -8647,15 +8656,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 54</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 19:26 UTC on 12 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs(how-to): add COS integration guide by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/160\">#160</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev64...rev65\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev64&hellip;rev65</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev65",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev65...main"
-               },
-               {
-                  "id": 338736312,
-                  "version": "rev64",
-                  "timestamp": 1781280072,
-                  "title": "Revision 64",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 53</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:12 UTC on 12 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: disable git-sync metrics job when not in use by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/162\">#162</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev63...rev64\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev63&hellip;rev64</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev64",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev64...main"
                }
             ],
             "commits": null,
@@ -8670,8 +8670,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 66,
-                     "timestamp": 1781341153
+                     "revision": 67,
+                     "timestamp": 1781545304
                   }
                ],
                "channels": [
