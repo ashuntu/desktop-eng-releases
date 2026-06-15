@@ -3060,12 +3060,58 @@
             "snap": null
          },
          {
+            "name": "Tiling-Assistant",
+            "defaultBranch": "main",
+            "newCommits": 10,
+            "url": "https://github.com/ubuntu/Tiling-Assistant",
+            "releases": [
+               {
+                  "id": 282734448,
+                  "version": "v54",
+                  "timestamp": 1770154065,
+                  "title": "Tiling Assistant v54",
+                  "body": "<p>Read about all the changes <a href=\"https://github.com/Leleat/Tiling-Assistant/blob/main/CHANGELOG.md#v54\">here</a>.</p>\n",
+                  "url": "https://github.com/ubuntu/Tiling-Assistant/releases/tag/v54",
+                  "compareUrl": "https://github.com/ubuntu/Tiling-Assistant/compare/v54...main"
+               },
+               {
+                  "id": 243833617,
+                  "version": "v53",
+                  "timestamp": 1756720660,
+                  "title": "Tiling Assistant v53",
+                  "body": "<p>Read about all the changes <a href=\"https://github.com/Leleat/Tiling-Assistant/blob/main/CHANGELOG.md#v53\">here</a>.</p>\n",
+                  "url": "https://github.com/ubuntu/Tiling-Assistant/releases/tag/v53",
+                  "compareUrl": "https://github.com/ubuntu/Tiling-Assistant/compare/v53...main"
+               },
+               {
+                  "id": 215980641,
+                  "version": "v52",
+                  "timestamp": 1746103635,
+                  "title": "Tiling Assistant v52",
+                  "body": "<p>Read about all the changes <a href=\"https://github.com/Leleat/Tiling-Assistant/blob/main/CHANGELOG.md#v52\">here</a>.</p>\n",
+                  "url": "https://github.com/ubuntu/Tiling-Assistant/releases/tag/v52",
+                  "compareUrl": "https://github.com/ubuntu/Tiling-Assistant/compare/v52...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "ubuntu-desktop-documentation",
             "defaultBranch": "main",
             "newCommits": 0,
             "url": "https://github.com/ubuntu/ubuntu-desktop-documentation",
             "releases": null,
             "commits": [
+               {
+                  "sha": "2e98ad997ee80f71aa670857752f6552073bd885",
+                  "author": "Marek Suchánek",
+                  "timestamp": 1781514332,
+                  "message": "Update the intersphinx mapping",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/2e98ad997ee80f71aa670857752f6552073bd885"
+               },
                {
                   "sha": "7dda90f2b6a2d4f0513d8609841ccbbdce6cc357",
                   "author": "Marek Suchánek",
@@ -3079,13 +3125,6 @@
                   "timestamp": 1781003658,
                   "message": "Merge pull request #133 from ubuntu/migrate\n\nMigrate to the ubuntu.com domain",
                   "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/fcd6cd6bdf7f1a6b75e4f47d5d2e97bd8e765678"
-               },
-               {
-                  "sha": "2e508596e6be6c4de197a436e3fc9656697e761b",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1780931255,
-                  "message": "Fix sitemap_url_scheme",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/2e508596e6be6c4de197a436e3fc9656697e761b"
                }
             ],
             "ciActions": [
@@ -3289,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ad3ff127b40870dd2de8dcee96a43e24d482ff8f",
-                  "author": "adombeck",
-                  "timestamp": 1781347895,
-                  "message": "ci: Run e2e-tests on-demand via PR label (#1579)\n\nUDENG-10684",
-                  "url": "https://github.com/canonical/authd/commit/ad3ff127b40870dd2de8dcee96a43e24d482ff8f"
+                  "sha": "e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1781519639,
+                  "message": "Fix disabled-user bypass after online-to-offline transition (#1583)\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled\nuser\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication\npaths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.\n\n\nUDENG-10645",
+                  "url": "https://github.com/canonical/authd/commit/e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed"
                },
                {
-                  "sha": "bf6f6a0a90adcaeb096189ecbb2d66f530101d50",
-                  "author": "adombeck",
-                  "timestamp": 1781347729,
-                  "message": "pam/integration-tests: Replace VHS with ptytest (#1529)\n\nCloses #1511, #1554\nUDENG-10152, UDENG-10527",
-                  "url": "https://github.com/canonical/authd/commit/bf6f6a0a90adcaeb096189ecbb2d66f530101d50"
+                  "sha": "0771f195b01241b8f13d62cfa29c538be9f1b277",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1781218951,
+                  "message": "Fix disabled-user bypass after online-to-offline transition\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled user\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication paths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.",
+                  "url": "https://github.com/canonical/authd/commit/0771f195b01241b8f13d62cfa29c538be9f1b277"
                },
                {
-                  "sha": "85937417c9e4e36654b63a693687420ced138e55",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1781260552,
-                  "message": "pam/integration-tests: seed mkhomedir skel with .bashrc and .profile\n\nCopying just the two shell init files lets shells in new test homes\nbehave normally while still avoiding the large rustup toolchain that\ncan wedge mkhomedir_helper on CI runners.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/85937417c9e4e36654b63a693687420ced138e55"
+                  "sha": "de29c29ac1cabac3bc2f3ca4d82907ffa61930c0",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1781519029,
+                  "message": "Reject control characters in owner username to prevent INI injection (#1587)\n\nAn IdP-supplied username containing newlines gets written verbatim into\nthe INI config drop-in via Go template without escaping. Injected keys\nlike 'allowed_users = ALL' become effective on reload.\n\nReject any non-graphic characters before templating so owner\nauto-registration only writes usernames made of graphic runes. This\nblocks the newline injection vector and avoids writing other\nnon-graphic runes into generated config values.\n\nUDENG-10692",
+                  "url": "https://github.com/canonical/authd/commit/de29c29ac1cabac3bc2f3ca4d82907ffa61930c0"
                }
             ],
             "ciActions": [
@@ -4039,25 +4078,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7523b28ce8a6f67e8308e92f8067109adc8a551c",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1781526334,
+                  "message": "Added comments to the architecture diagram",
+                  "url": "https://github.com/canonical/myna/commit/7523b28ce8a6f67e8308e92f8067109adc8a551c"
+               },
+               {
+                  "sha": "13e3330bdb0c3cf1a320758dd94155575bba7ff4",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1781518364,
+                  "message": "fix(myna): Fixed arrows in the diagram",
+                  "url": "https://github.com/canonical/myna/commit/13e3330bdb0c3cf1a320758dd94155575bba7ff4"
+               },
+               {
                   "sha": "2c7d2a20df2c1f0e2c15119fac67ea175987333b",
                   "author": "Jean-Baptiste Lallement",
                   "timestamp": 1781270754,
                   "message": "Dropped state management from diagram",
                   "url": "https://github.com/canonical/myna/commit/2c7d2a20df2c1f0e2c15119fac67ea175987333b"
-               },
-               {
-                  "sha": "ffcad2e90f1e18262e3ca444ac6b369ebfe2898f",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1781268996,
-                  "message": "refined the list of protected applications",
-                  "url": "https://github.com/canonical/myna/commit/ffcad2e90f1e18262e3ca444ac6b369ebfe2898f"
-               },
-               {
-                  "sha": "aabb4d568cb6cc9b178bf69b5d4c0ca7a501cabf",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1781268456,
-                  "message": "Updated architecture diagram",
-                  "url": "https://github.com/canonical/myna/commit/aabb4d568cb6cc9b178bf69b5d4c0ca7a501cabf"
                }
             ],
             "ciActions": [],
@@ -5511,25 +5550,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ad3ff127b40870dd2de8dcee96a43e24d482ff8f",
-                  "author": "adombeck",
-                  "timestamp": 1781347895,
-                  "message": "ci: Run e2e-tests on-demand via PR label (#1579)\n\nUDENG-10684",
-                  "url": "https://github.com/canonical/authd/commit/ad3ff127b40870dd2de8dcee96a43e24d482ff8f"
+                  "sha": "e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1781519639,
+                  "message": "Fix disabled-user bypass after online-to-offline transition (#1583)\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled\nuser\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication\npaths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.\n\n\nUDENG-10645",
+                  "url": "https://github.com/canonical/authd/commit/e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed"
                },
                {
-                  "sha": "bf6f6a0a90adcaeb096189ecbb2d66f530101d50",
-                  "author": "adombeck",
-                  "timestamp": 1781347729,
-                  "message": "pam/integration-tests: Replace VHS with ptytest (#1529)\n\nCloses #1511, #1554\nUDENG-10152, UDENG-10527",
-                  "url": "https://github.com/canonical/authd/commit/bf6f6a0a90adcaeb096189ecbb2d66f530101d50"
+                  "sha": "0771f195b01241b8f13d62cfa29c538be9f1b277",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1781218951,
+                  "message": "Fix disabled-user bypass after online-to-offline transition\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled user\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication paths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.",
+                  "url": "https://github.com/canonical/authd/commit/0771f195b01241b8f13d62cfa29c538be9f1b277"
                },
                {
-                  "sha": "85937417c9e4e36654b63a693687420ced138e55",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1781260552,
-                  "message": "pam/integration-tests: seed mkhomedir skel with .bashrc and .profile\n\nCopying just the two shell init files lets shells in new test homes\nbehave normally while still avoiding the large rustup toolchain that\ncan wedge mkhomedir_helper on CI runners.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/85937417c9e4e36654b63a693687420ced138e55"
+                  "sha": "de29c29ac1cabac3bc2f3ca4d82907ffa61930c0",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1781519029,
+                  "message": "Reject control characters in owner username to prevent INI injection (#1587)\n\nAn IdP-supplied username containing newlines gets written verbatim into\nthe INI config drop-in via Go template without escaping. Injected keys\nlike 'allowed_users = ALL' become effective on reload.\n\nReject any non-graphic characters before templating so owner\nauto-registration only writes usernames made of graphic runes. This\nblocks the newline injection vector and avoids writing other\nnon-graphic runes into generated config values.\n\nUDENG-10692",
+                  "url": "https://github.com/canonical/authd/commit/de29c29ac1cabac3bc2f3ca4d82907ffa61930c0"
                }
             ],
             "ciActions": [
@@ -6294,25 +6333,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7523b28ce8a6f67e8308e92f8067109adc8a551c",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1781526334,
+                  "message": "Added comments to the architecture diagram",
+                  "url": "https://github.com/canonical/myna/commit/7523b28ce8a6f67e8308e92f8067109adc8a551c"
+               },
+               {
+                  "sha": "13e3330bdb0c3cf1a320758dd94155575bba7ff4",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1781518364,
+                  "message": "fix(myna): Fixed arrows in the diagram",
+                  "url": "https://github.com/canonical/myna/commit/13e3330bdb0c3cf1a320758dd94155575bba7ff4"
+               },
+               {
                   "sha": "2c7d2a20df2c1f0e2c15119fac67ea175987333b",
                   "author": "Jean-Baptiste Lallement",
                   "timestamp": 1781270754,
                   "message": "Dropped state management from diagram",
                   "url": "https://github.com/canonical/myna/commit/2c7d2a20df2c1f0e2c15119fac67ea175987333b"
-               },
-               {
-                  "sha": "ffcad2e90f1e18262e3ca444ac6b369ebfe2898f",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1781268996,
-                  "message": "refined the list of protected applications",
-                  "url": "https://github.com/canonical/myna/commit/ffcad2e90f1e18262e3ca444ac6b369ebfe2898f"
-               },
-               {
-                  "sha": "aabb4d568cb6cc9b178bf69b5d4c0ca7a501cabf",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1781268456,
-                  "message": "Updated architecture diagram",
-                  "url": "https://github.com/canonical/myna/commit/aabb4d568cb6cc9b178bf69b5d4c0ca7a501cabf"
                }
             ],
             "ciActions": [],
@@ -7902,25 +7941,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ad3ff127b40870dd2de8dcee96a43e24d482ff8f",
-                  "author": "adombeck",
-                  "timestamp": 1781347895,
-                  "message": "ci: Run e2e-tests on-demand via PR label (#1579)\n\nUDENG-10684",
-                  "url": "https://github.com/canonical/authd/commit/ad3ff127b40870dd2de8dcee96a43e24d482ff8f"
+                  "sha": "e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1781519639,
+                  "message": "Fix disabled-user bypass after online-to-offline transition (#1583)\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled\nuser\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication\npaths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.\n\n\nUDENG-10645",
+                  "url": "https://github.com/canonical/authd/commit/e8528d4f46d2d19e4d05453d5a0eb8cb7fc18fed"
                },
                {
-                  "sha": "bf6f6a0a90adcaeb096189ecbb2d66f530101d50",
-                  "author": "adombeck",
-                  "timestamp": 1781347729,
-                  "message": "pam/integration-tests: Replace VHS with ptytest (#1529)\n\nCloses #1511, #1554\nUDENG-10152, UDENG-10527",
-                  "url": "https://github.com/canonical/authd/commit/bf6f6a0a90adcaeb096189ecbb2d66f530101d50"
+                  "sha": "0771f195b01241b8f13d62cfa29c538be9f1b277",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1781218951,
+                  "message": "Fix disabled-user bypass after online-to-offline transition\n\nDisabled-account checks were applied only at session start. When token\nrefresh fails with a network error, the session falls back to offline\nwithout re-evaluating the cached disabled flags, allowing a disabled user\nto log in if the network drops mid-auth.\n\nConsolidate checks to the post-refresh block where all authentication paths\nconverge. This catches both offline-at-start and online→offline-fallback\ncases. Removes duplicate logic and establishes a single canonical gate\nbefore access grant.",
+                  "url": "https://github.com/canonical/authd/commit/0771f195b01241b8f13d62cfa29c538be9f1b277"
                },
                {
-                  "sha": "85937417c9e4e36654b63a693687420ced138e55",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1781260552,
-                  "message": "pam/integration-tests: seed mkhomedir skel with .bashrc and .profile\n\nCopying just the two shell init files lets shells in new test homes\nbehave normally while still avoiding the large rustup toolchain that\ncan wedge mkhomedir_helper on CI runners.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/85937417c9e4e36654b63a693687420ced138e55"
+                  "sha": "de29c29ac1cabac3bc2f3ca4d82907ffa61930c0",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1781519029,
+                  "message": "Reject control characters in owner username to prevent INI injection (#1587)\n\nAn IdP-supplied username containing newlines gets written verbatim into\nthe INI config drop-in via Go template without escaping. Injected keys\nlike 'allowed_users = ALL' become effective on reload.\n\nReject any non-graphic characters before templating so owner\nauto-registration only writes usernames made of graphic runes. This\nblocks the newline injection vector and avoids writing other\nnon-graphic runes into generated config values.\n\nUDENG-10692",
+                  "url": "https://github.com/canonical/authd/commit/de29c29ac1cabac3bc2f3ca4d82907ffa61930c0"
                }
             ],
             "ciActions": [
@@ -8652,25 +8691,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7523b28ce8a6f67e8308e92f8067109adc8a551c",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1781526334,
+                  "message": "Added comments to the architecture diagram",
+                  "url": "https://github.com/canonical/myna/commit/7523b28ce8a6f67e8308e92f8067109adc8a551c"
+               },
+               {
+                  "sha": "13e3330bdb0c3cf1a320758dd94155575bba7ff4",
+                  "author": "Jean-Baptiste Lallement",
+                  "timestamp": 1781518364,
+                  "message": "fix(myna): Fixed arrows in the diagram",
+                  "url": "https://github.com/canonical/myna/commit/13e3330bdb0c3cf1a320758dd94155575bba7ff4"
+               },
+               {
                   "sha": "2c7d2a20df2c1f0e2c15119fac67ea175987333b",
                   "author": "Jean-Baptiste Lallement",
                   "timestamp": 1781270754,
                   "message": "Dropped state management from diagram",
                   "url": "https://github.com/canonical/myna/commit/2c7d2a20df2c1f0e2c15119fac67ea175987333b"
-               },
-               {
-                  "sha": "ffcad2e90f1e18262e3ca444ac6b369ebfe2898f",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1781268996,
-                  "message": "refined the list of protected applications",
-                  "url": "https://github.com/canonical/myna/commit/ffcad2e90f1e18262e3ca444ac6b369ebfe2898f"
-               },
-               {
-                  "sha": "aabb4d568cb6cc9b178bf69b5d4c0ca7a501cabf",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1781268456,
-                  "message": "Updated architecture diagram",
-                  "url": "https://github.com/canonical/myna/commit/aabb4d568cb6cc9b178bf69b5d4c0ca7a501cabf"
                }
             ],
             "ciActions": [],
