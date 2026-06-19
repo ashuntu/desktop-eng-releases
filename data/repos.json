@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5f71aa836a356a443f80ee82042a85393df169cb",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781788664,
-                  "message": "Enforce OIDC §5.3.2 sub claim validation between ID token and UserInfo response (#1578)\n\nUDENG-10682\n\n---\n\nFixes a spec compliance gap where the `sub` claim in a `/userinfo`\nresponse was not verified against the `sub` from the\ncryptographically-verified ID token before merging claims (OIDC Core\n§5.3.2).\n\n## Background\n\nWhen the ID token is missing a required claim (e.g. `email_verified` on\na real generic/google provider), the broker falls back to fetching\nclaims from the `/userinfo` endpoint and merges them. Without a `sub`\nmismatch check, a malicious or MITM'd IdP could supply a different `sub`\nvia `/userinfo`, overriding the verified identity. This is a\ndefense-in-depth fix; exploitation requires a compromised IdP.\n\n## Changes\n\n- **`authd-oidc-brokers/internal/broker/broker.go`**: After fetching\n`/userinfo` claims, validates that the `sub` claim (if present) exactly\nmatches `idToken.Subject` before merging. Returns an error — and denies\nauthentication — if they differ, preventing identity substitution.\n- **`authd-oidc-brokers/internal/broker/broker_test.go`**: Adds\nregression test\n`Error_when_thin_id_token_and_userinfo_sub_does_not_match_id_token_sub`\nthat simulates the attack scenario (ID token with `attacker-provider-id`\nmissing a required claim, `/userinfo` response with `sub =\nvictim-provider-id`) and verifies the broker returns `access: denied`\nwith `{\"message\":\"Could not get user info\"}`.\n\nThe test was verified to fail against the unfixed code and pass after\nthe fix.",
-                  "url": "https://github.com/canonical/authd/commit/5f71aa836a356a443f80ee82042a85393df169cb"
-               },
-               {
-                  "sha": "a6539fa7123e098c0a9099c68789018ee1e7bdaa",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1781218825,
-                  "message": "broker: enforce OIDC §5.3.2 sub match between ID token and UserInfo response\n\nWhen the ID token is missing a required claim and the /userinfo endpoint is\nfetched as a fallback, the sub claim in the UserInfo response must equal the\nsub from the verified ID token. Without this check, a malicious or MITM'd\nIdP could supply a different sub via /userinfo, overriding the\ncryptographically-verified identity and allowing UID takeover via\nUserByProviderID.\n\nAdds a regression test that verifies the broker returns \"denied\" when the\nuserinfo sub does not match the ID token sub.\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
-                  "url": "https://github.com/canonical/authd/commit/a6539fa7123e098c0a9099c68789018ee1e7bdaa"
-               },
-               {
-                  "sha": "abe94923059405766330c0f5891d3f9d3cfb85cb",
+                  "sha": "7740cff9849338e929fd0f5629c94a835aa5aac1",
                   "author": "Denison Barbosa",
-                  "timestamp": 1781785765,
-                  "message": "deps(ci): bump codecov/codecov-action from 6 to 7 in the gh-actions group across 1 directory (#1576)\n\nBumps the gh-actions group with 1 update in the / directory:\n[codecov/codecov-action](https://github.com/codecov/codecov-action).\n\nUpdates `codecov/codecov-action` from 6 to 7",
-                  "url": "https://github.com/canonical/authd/commit/abe94923059405766330c0f5891d3f9d3cfb85cb"
+                  "timestamp": 1781865608,
+                  "message": "CI: Update list of releases used in the actions (#1591)\n\nQuesting will be EOL in less than a month, and we likely won't do any\nreleases for it before then, so we can stop running builds for it.\n\nMeanwhile, Resolute was released, which means \"devel\" started to resolve\nto a different release (i.e., Stonking), so we need to explicitly target\nResolute in our workflows.\n\nUDENG-10699\nUDENG-10697",
+                  "url": "https://github.com/canonical/authd/commit/7740cff9849338e929fd0f5629c94a835aa5aac1"
+               },
+               {
+                  "sha": "4ab98832667cbed902e42bb1db5a4ad21c809570",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1781864933,
+                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1586)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/Azure/azure-sdk-for-go/sdk/azcore](https://github.com/Azure/azure-sdk-for-go),\n[golang.org/x/crypto](https://github.com/golang/crypto) and\ngopkg.in/ini.v1.\n\nUpdates `github.com/Azure/azure-sdk-for-go/sdk/azcore` from 1.21.1 to\n1.22.0\nUpdates `golang.org/x/crypto` from 0.52.0 to 0.53.0\nUpdates `gopkg.in/ini.v1` from 1.67.2 to 1.67.3",
+                  "url": "https://github.com/canonical/authd/commit/4ab98832667cbed902e42bb1db5a4ad21c809570"
+               },
+               {
+                  "sha": "27ffdfb593924ec0afcce938a500cf71ffc22575",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1781615168,
+                  "message": "e2e-tests: remove Questing mentions and assets\n\nWe stopped running e2e tests for Questing on CI a while ago. Now that we\nare also stopping to build packages for it, we can also remove the e2e\ntests assets and mentions of it as well, as we likely won't need to run\ne2e tests manually on it again.",
+                  "url": "https://github.com/canonical/authd/commit/27ffdfb593924ec0afcce938a500cf71ffc22575"
                }
             ],
             "ciActions": [
@@ -3630,25 +3630,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "396466f30f46a6d86d178de4898baab75e80b928",
+                  "sha": "8cf88d4b889e4634a17386cadf5c91a2c826f8be",
                   "author": "Dennis Loose",
-                  "timestamp": 1778618574,
-                  "message": "Properly embed credentials of embargo remote (#394)\n\nWorks with a remote in this style:\n\n[fwupd Remote]\nEnabled=true\nTitle=Embargoed for ACME\nMetadataURI=https://fwupd.org/downloads/firmware-foo.xml.gz\nUsername=foo@example.com\nPassword=foobar\n\n\nFixes #274",
-                  "url": "https://github.com/canonical/firmware-updater/commit/396466f30f46a6d86d178de4898baab75e80b928"
+                  "timestamp": 1781854480,
+                  "message": "chore: update flutter and yaru (#397)\n\nUpdates to flutter 3.44.2 and yaru 10.1",
+                  "url": "https://github.com/canonical/firmware-updater/commit/8cf88d4b889e4634a17386cadf5c91a2c826f8be"
                },
                {
-                  "sha": "a343f58e19df775b1ec278a9c47085fcaab4fafe",
-                  "author": "Daniel Schaefer",
-                  "timestamp": 1776079316,
-                  "message": "Properly embed credentials of embargo remote\n\nWorks with a remote in this style:\n\n[fwupd Remote]\nEnabled=true\nTitle=Embargoed for ACME\nMetadataURI=https://fwupd.org/downloads/firmware-foo.xml.gz\nUsername=foo@example.com\nPassword=foobar\n\nSigned-off-by: Daniel Schaefer <dhs@frame.work>",
-                  "url": "https://github.com/canonical/firmware-updater/commit/a343f58e19df775b1ec278a9c47085fcaab4fafe"
+                  "sha": "e24db767fda52dd1707cde736b01326901671436",
+                  "author": "Dennis Loose",
+                  "timestamp": 1781769192,
+                  "message": "chore: update to yaru 10.2",
+                  "url": "https://github.com/canonical/firmware-updater/commit/e24db767fda52dd1707cde736b01326901671436"
                },
                {
-                  "sha": "5645b808ecf828117cfd125dc1ed190e22c9f443",
+                  "sha": "4f82bdaebc3da44b6a2a41d3f423545a64d1caa9",
                   "author": "Dennis Loose",
-                  "timestamp": 1776680789,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#349)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Firmware\nUpdater](https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/firmware-updater/horizontal-auto.svg)\n\nCloses #388",
-                  "url": "https://github.com/canonical/firmware-updater/commit/5645b808ecf828117cfd125dc1ed190e22c9f443"
+                  "timestamp": 1781709996,
+                  "message": "chore: add .git-blame-ignore-revs",
+                  "url": "https://github.com/canonical/firmware-updater/commit/4f82bdaebc3da44b6a2a41d3f423545a64d1caa9"
                }
             ],
             "ciActions": [
@@ -5550,25 +5550,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5f71aa836a356a443f80ee82042a85393df169cb",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781788664,
-                  "message": "Enforce OIDC §5.3.2 sub claim validation between ID token and UserInfo response (#1578)\n\nUDENG-10682\n\n---\n\nFixes a spec compliance gap where the `sub` claim in a `/userinfo`\nresponse was not verified against the `sub` from the\ncryptographically-verified ID token before merging claims (OIDC Core\n§5.3.2).\n\n## Background\n\nWhen the ID token is missing a required claim (e.g. `email_verified` on\na real generic/google provider), the broker falls back to fetching\nclaims from the `/userinfo` endpoint and merges them. Without a `sub`\nmismatch check, a malicious or MITM'd IdP could supply a different `sub`\nvia `/userinfo`, overriding the verified identity. This is a\ndefense-in-depth fix; exploitation requires a compromised IdP.\n\n## Changes\n\n- **`authd-oidc-brokers/internal/broker/broker.go`**: After fetching\n`/userinfo` claims, validates that the `sub` claim (if present) exactly\nmatches `idToken.Subject` before merging. Returns an error — and denies\nauthentication — if they differ, preventing identity substitution.\n- **`authd-oidc-brokers/internal/broker/broker_test.go`**: Adds\nregression test\n`Error_when_thin_id_token_and_userinfo_sub_does_not_match_id_token_sub`\nthat simulates the attack scenario (ID token with `attacker-provider-id`\nmissing a required claim, `/userinfo` response with `sub =\nvictim-provider-id`) and verifies the broker returns `access: denied`\nwith `{\"message\":\"Could not get user info\"}`.\n\nThe test was verified to fail against the unfixed code and pass after\nthe fix.",
-                  "url": "https://github.com/canonical/authd/commit/5f71aa836a356a443f80ee82042a85393df169cb"
-               },
-               {
-                  "sha": "a6539fa7123e098c0a9099c68789018ee1e7bdaa",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1781218825,
-                  "message": "broker: enforce OIDC §5.3.2 sub match between ID token and UserInfo response\n\nWhen the ID token is missing a required claim and the /userinfo endpoint is\nfetched as a fallback, the sub claim in the UserInfo response must equal the\nsub from the verified ID token. Without this check, a malicious or MITM'd\nIdP could supply a different sub via /userinfo, overriding the\ncryptographically-verified identity and allowing UID takeover via\nUserByProviderID.\n\nAdds a regression test that verifies the broker returns \"denied\" when the\nuserinfo sub does not match the ID token sub.\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
-                  "url": "https://github.com/canonical/authd/commit/a6539fa7123e098c0a9099c68789018ee1e7bdaa"
-               },
-               {
-                  "sha": "abe94923059405766330c0f5891d3f9d3cfb85cb",
+                  "sha": "7740cff9849338e929fd0f5629c94a835aa5aac1",
                   "author": "Denison Barbosa",
-                  "timestamp": 1781785765,
-                  "message": "deps(ci): bump codecov/codecov-action from 6 to 7 in the gh-actions group across 1 directory (#1576)\n\nBumps the gh-actions group with 1 update in the / directory:\n[codecov/codecov-action](https://github.com/codecov/codecov-action).\n\nUpdates `codecov/codecov-action` from 6 to 7",
-                  "url": "https://github.com/canonical/authd/commit/abe94923059405766330c0f5891d3f9d3cfb85cb"
+                  "timestamp": 1781865608,
+                  "message": "CI: Update list of releases used in the actions (#1591)\n\nQuesting will be EOL in less than a month, and we likely won't do any\nreleases for it before then, so we can stop running builds for it.\n\nMeanwhile, Resolute was released, which means \"devel\" started to resolve\nto a different release (i.e., Stonking), so we need to explicitly target\nResolute in our workflows.\n\nUDENG-10699\nUDENG-10697",
+                  "url": "https://github.com/canonical/authd/commit/7740cff9849338e929fd0f5629c94a835aa5aac1"
+               },
+               {
+                  "sha": "4ab98832667cbed902e42bb1db5a4ad21c809570",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1781864933,
+                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1586)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/Azure/azure-sdk-for-go/sdk/azcore](https://github.com/Azure/azure-sdk-for-go),\n[golang.org/x/crypto](https://github.com/golang/crypto) and\ngopkg.in/ini.v1.\n\nUpdates `github.com/Azure/azure-sdk-for-go/sdk/azcore` from 1.21.1 to\n1.22.0\nUpdates `golang.org/x/crypto` from 0.52.0 to 0.53.0\nUpdates `gopkg.in/ini.v1` from 1.67.2 to 1.67.3",
+                  "url": "https://github.com/canonical/authd/commit/4ab98832667cbed902e42bb1db5a4ad21c809570"
+               },
+               {
+                  "sha": "27ffdfb593924ec0afcce938a500cf71ffc22575",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1781615168,
+                  "message": "e2e-tests: remove Questing mentions and assets\n\nWe stopped running e2e tests for Questing on CI a while ago. Now that we\nare also stopping to build packages for it, we can also remove the e2e\ntests assets and mentions of it as well, as we likely won't need to run\ne2e tests manually on it again.",
+                  "url": "https://github.com/canonical/authd/commit/27ffdfb593924ec0afcce938a500cf71ffc22575"
                }
             ],
             "ciActions": [
@@ -5852,25 +5852,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "396466f30f46a6d86d178de4898baab75e80b928",
+                  "sha": "8cf88d4b889e4634a17386cadf5c91a2c826f8be",
                   "author": "Dennis Loose",
-                  "timestamp": 1778618574,
-                  "message": "Properly embed credentials of embargo remote (#394)\n\nWorks with a remote in this style:\n\n[fwupd Remote]\nEnabled=true\nTitle=Embargoed for ACME\nMetadataURI=https://fwupd.org/downloads/firmware-foo.xml.gz\nUsername=foo@example.com\nPassword=foobar\n\n\nFixes #274",
-                  "url": "https://github.com/canonical/firmware-updater/commit/396466f30f46a6d86d178de4898baab75e80b928"
+                  "timestamp": 1781854480,
+                  "message": "chore: update flutter and yaru (#397)\n\nUpdates to flutter 3.44.2 and yaru 10.1",
+                  "url": "https://github.com/canonical/firmware-updater/commit/8cf88d4b889e4634a17386cadf5c91a2c826f8be"
                },
                {
-                  "sha": "a343f58e19df775b1ec278a9c47085fcaab4fafe",
-                  "author": "Daniel Schaefer",
-                  "timestamp": 1776079316,
-                  "message": "Properly embed credentials of embargo remote\n\nWorks with a remote in this style:\n\n[fwupd Remote]\nEnabled=true\nTitle=Embargoed for ACME\nMetadataURI=https://fwupd.org/downloads/firmware-foo.xml.gz\nUsername=foo@example.com\nPassword=foobar\n\nSigned-off-by: Daniel Schaefer <dhs@frame.work>",
-                  "url": "https://github.com/canonical/firmware-updater/commit/a343f58e19df775b1ec278a9c47085fcaab4fafe"
+                  "sha": "e24db767fda52dd1707cde736b01326901671436",
+                  "author": "Dennis Loose",
+                  "timestamp": 1781769192,
+                  "message": "chore: update to yaru 10.2",
+                  "url": "https://github.com/canonical/firmware-updater/commit/e24db767fda52dd1707cde736b01326901671436"
                },
                {
-                  "sha": "5645b808ecf828117cfd125dc1ed190e22c9f443",
+                  "sha": "4f82bdaebc3da44b6a2a41d3f423545a64d1caa9",
                   "author": "Dennis Loose",
-                  "timestamp": 1776680789,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#349)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Firmware\nUpdater](https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/firmware-updater/horizontal-auto.svg)\n\nCloses #388",
-                  "url": "https://github.com/canonical/firmware-updater/commit/5645b808ecf828117cfd125dc1ed190e22c9f443"
+                  "timestamp": 1781709996,
+                  "message": "chore: add .git-blame-ignore-revs",
+                  "url": "https://github.com/canonical/firmware-updater/commit/4f82bdaebc3da44b6a2a41d3f423545a64d1caa9"
                }
             ],
             "ciActions": [
@@ -7941,25 +7941,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5f71aa836a356a443f80ee82042a85393df169cb",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1781788664,
-                  "message": "Enforce OIDC §5.3.2 sub claim validation between ID token and UserInfo response (#1578)\n\nUDENG-10682\n\n---\n\nFixes a spec compliance gap where the `sub` claim in a `/userinfo`\nresponse was not verified against the `sub` from the\ncryptographically-verified ID token before merging claims (OIDC Core\n§5.3.2).\n\n## Background\n\nWhen the ID token is missing a required claim (e.g. `email_verified` on\na real generic/google provider), the broker falls back to fetching\nclaims from the `/userinfo` endpoint and merges them. Without a `sub`\nmismatch check, a malicious or MITM'd IdP could supply a different `sub`\nvia `/userinfo`, overriding the verified identity. This is a\ndefense-in-depth fix; exploitation requires a compromised IdP.\n\n## Changes\n\n- **`authd-oidc-brokers/internal/broker/broker.go`**: After fetching\n`/userinfo` claims, validates that the `sub` claim (if present) exactly\nmatches `idToken.Subject` before merging. Returns an error — and denies\nauthentication — if they differ, preventing identity substitution.\n- **`authd-oidc-brokers/internal/broker/broker_test.go`**: Adds\nregression test\n`Error_when_thin_id_token_and_userinfo_sub_does_not_match_id_token_sub`\nthat simulates the attack scenario (ID token with `attacker-provider-id`\nmissing a required claim, `/userinfo` response with `sub =\nvictim-provider-id`) and verifies the broker returns `access: denied`\nwith `{\"message\":\"Could not get user info\"}`.\n\nThe test was verified to fail against the unfixed code and pass after\nthe fix.",
-                  "url": "https://github.com/canonical/authd/commit/5f71aa836a356a443f80ee82042a85393df169cb"
-               },
-               {
-                  "sha": "a6539fa7123e098c0a9099c68789018ee1e7bdaa",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1781218825,
-                  "message": "broker: enforce OIDC §5.3.2 sub match between ID token and UserInfo response\n\nWhen the ID token is missing a required claim and the /userinfo endpoint is\nfetched as a fallback, the sub claim in the UserInfo response must equal the\nsub from the verified ID token. Without this check, a malicious or MITM'd\nIdP could supply a different sub via /userinfo, overriding the\ncryptographically-verified identity and allowing UID takeover via\nUserByProviderID.\n\nAdds a regression test that verifies the broker returns \"denied\" when the\nuserinfo sub does not match the ID token sub.\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
-                  "url": "https://github.com/canonical/authd/commit/a6539fa7123e098c0a9099c68789018ee1e7bdaa"
-               },
-               {
-                  "sha": "abe94923059405766330c0f5891d3f9d3cfb85cb",
+                  "sha": "7740cff9849338e929fd0f5629c94a835aa5aac1",
                   "author": "Denison Barbosa",
-                  "timestamp": 1781785765,
-                  "message": "deps(ci): bump codecov/codecov-action from 6 to 7 in the gh-actions group across 1 directory (#1576)\n\nBumps the gh-actions group with 1 update in the / directory:\n[codecov/codecov-action](https://github.com/codecov/codecov-action).\n\nUpdates `codecov/codecov-action` from 6 to 7",
-                  "url": "https://github.com/canonical/authd/commit/abe94923059405766330c0f5891d3f9d3cfb85cb"
+                  "timestamp": 1781865608,
+                  "message": "CI: Update list of releases used in the actions (#1591)\n\nQuesting will be EOL in less than a month, and we likely won't do any\nreleases for it before then, so we can stop running builds for it.\n\nMeanwhile, Resolute was released, which means \"devel\" started to resolve\nto a different release (i.e., Stonking), so we need to explicitly target\nResolute in our workflows.\n\nUDENG-10699\nUDENG-10697",
+                  "url": "https://github.com/canonical/authd/commit/7740cff9849338e929fd0f5629c94a835aa5aac1"
+               },
+               {
+                  "sha": "4ab98832667cbed902e42bb1db5a4ad21c809570",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1781864933,
+                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1586)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/Azure/azure-sdk-for-go/sdk/azcore](https://github.com/Azure/azure-sdk-for-go),\n[golang.org/x/crypto](https://github.com/golang/crypto) and\ngopkg.in/ini.v1.\n\nUpdates `github.com/Azure/azure-sdk-for-go/sdk/azcore` from 1.21.1 to\n1.22.0\nUpdates `golang.org/x/crypto` from 0.52.0 to 0.53.0\nUpdates `gopkg.in/ini.v1` from 1.67.2 to 1.67.3",
+                  "url": "https://github.com/canonical/authd/commit/4ab98832667cbed902e42bb1db5a4ad21c809570"
+               },
+               {
+                  "sha": "27ffdfb593924ec0afcce938a500cf71ffc22575",
+                  "author": "denisonbarbosa",
+                  "timestamp": 1781615168,
+                  "message": "e2e-tests: remove Questing mentions and assets\n\nWe stopped running e2e tests for Questing on CI a while ago. Now that we\nare also stopping to build packages for it, we can also remove the e2e\ntests assets and mentions of it as well, as we likely won't need to run\ne2e tests manually on it again.",
+                  "url": "https://github.com/canonical/authd/commit/27ffdfb593924ec0afcce938a500cf71ffc22575"
                }
             ],
             "ciActions": [
@@ -8243,25 +8243,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "396466f30f46a6d86d178de4898baab75e80b928",
+                  "sha": "8cf88d4b889e4634a17386cadf5c91a2c826f8be",
                   "author": "Dennis Loose",
-                  "timestamp": 1778618574,
-                  "message": "Properly embed credentials of embargo remote (#394)\n\nWorks with a remote in this style:\n\n[fwupd Remote]\nEnabled=true\nTitle=Embargoed for ACME\nMetadataURI=https://fwupd.org/downloads/firmware-foo.xml.gz\nUsername=foo@example.com\nPassword=foobar\n\n\nFixes #274",
-                  "url": "https://github.com/canonical/firmware-updater/commit/396466f30f46a6d86d178de4898baab75e80b928"
+                  "timestamp": 1781854480,
+                  "message": "chore: update flutter and yaru (#397)\n\nUpdates to flutter 3.44.2 and yaru 10.1",
+                  "url": "https://github.com/canonical/firmware-updater/commit/8cf88d4b889e4634a17386cadf5c91a2c826f8be"
                },
                {
-                  "sha": "a343f58e19df775b1ec278a9c47085fcaab4fafe",
-                  "author": "Daniel Schaefer",
-                  "timestamp": 1776079316,
-                  "message": "Properly embed credentials of embargo remote\n\nWorks with a remote in this style:\n\n[fwupd Remote]\nEnabled=true\nTitle=Embargoed for ACME\nMetadataURI=https://fwupd.org/downloads/firmware-foo.xml.gz\nUsername=foo@example.com\nPassword=foobar\n\nSigned-off-by: Daniel Schaefer <dhs@frame.work>",
-                  "url": "https://github.com/canonical/firmware-updater/commit/a343f58e19df775b1ec278a9c47085fcaab4fafe"
+                  "sha": "e24db767fda52dd1707cde736b01326901671436",
+                  "author": "Dennis Loose",
+                  "timestamp": 1781769192,
+                  "message": "chore: update to yaru 10.2",
+                  "url": "https://github.com/canonical/firmware-updater/commit/e24db767fda52dd1707cde736b01326901671436"
                },
                {
-                  "sha": "5645b808ecf828117cfd125dc1ed190e22c9f443",
+                  "sha": "4f82bdaebc3da44b6a2a41d3f423545a64d1caa9",
                   "author": "Dennis Loose",
-                  "timestamp": 1776680789,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#349)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Firmware\nUpdater](https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/firmware-updater/horizontal-auto.svg)\n\nCloses #388",
-                  "url": "https://github.com/canonical/firmware-updater/commit/5645b808ecf828117cfd125dc1ed190e22c9f443"
+                  "timestamp": 1781709996,
+                  "message": "chore: add .git-blame-ignore-revs",
+                  "url": "https://github.com/canonical/firmware-updater/commit/4f82bdaebc3da44b6a2a41d3f423545a64d1caa9"
                }
             ],
             "ciActions": [
