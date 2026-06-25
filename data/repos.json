@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "510829331de2935e985f817e5b09da707e0da7c4",
+                  "sha": "52516cfcc9646385f6c19009fcc83b9a00737c96",
                   "author": "adombeck",
-                  "timestamp": 1782307797,
-                  "message": "conf: Add comments for issuer and client_id settings (#1611)",
-                  "url": "https://github.com/canonical/authd/commit/510829331de2935e985f817e5b09da707e0da7c4"
+                  "timestamp": 1782388031,
+                  "message": "snap: Don't auto-restart the broker daemon (#1622)\n\nUDENG-10820",
+                  "url": "https://github.com/canonical/authd/commit/52516cfcc9646385f6c19009fcc83b9a00737c96"
                },
                {
-                  "sha": "1ca391004c73a9f76414a618d116c3d4d18d649c",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1782307622,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#1573)\n\nBumps the minor-updates group with 4 updates in the / directory:\n[github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3),\n[golang.org/x/sys](https://github.com/golang/sys),\n[golang.org/x/term](https://github.com/golang/term) and gopkg.in/ini.v1.\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.44 to 1.14.47\nUpdates `golang.org/x/sys` from 0.45.0 to 0.46.0\nUpdates `golang.org/x/term` from 0.43.0 to 0.44.0\nUpdates `gopkg.in/ini.v1` from 1.67.2 to 1.67.3",
-                  "url": "https://github.com/canonical/authd/commit/1ca391004c73a9f76414a618d116c3d4d18d649c"
+                  "sha": "204af96556d3deb010d66d147529d67437954e46",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1782303255,
+                  "message": "snap: Don't auto-restart the broker daemon\n\nThe broker is D-Bus activated, so each login attempt re-triggers a start;\nautomatic restart adds little for what are deterministic startup failures\n(bad config, missing library, name conflict). Worse, the restart loop trips\nsystemd's start limiter, after which `systemctl status` only shows the\nrate-limiter's \"Start request repeated too quickly\" messages — scoped to an\nempty current invocation — hiding the broker's actual error. With no\nrestart, a failed start leaves its real error visible in `systemctl status`,\nand the next D-Bus activation simply tries again.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/204af96556d3deb010d66d147529d67437954e46"
                },
                {
-                  "sha": "4453cb7ccbd1a6c8e3674bf2d7ff47906022ba15",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1782305228,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates\n\nBumps the minor-updates group with 4 updates in the / directory: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3), [golang.org/x/sys](https://github.com/golang/sys), [golang.org/x/term](https://github.com/golang/term) and gopkg.in/ini.v1.\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.44 to 1.14.47\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.44...v1.14.47)\n\nUpdates `golang.org/x/sys` from 0.45.0 to 0.46.0\n- [Commits](https://github.com/golang/sys/compare/v0.45.0...v0.46.0)\n\nUpdates `golang.org/x/term` from 0.43.0 to 0.44.0\n- [Commits](https://github.com/golang/term/compare/v0.43.0...v0.44.0)\n\nUpdates `gopkg.in/ini.v1` from 1.67.2 to 1.67.3\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.45\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/sys\n  dependency-version: 0.46.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/term\n  dependency-version: 0.44.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: gopkg.in/ini.v1\n  dependency-version: 1.67.3\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4453cb7ccbd1a6c8e3674bf2d7ff47906022ba15"
+                  "sha": "31f8478cd213b12b72e1b2e15d474f87b759367e",
+                  "author": "adombeck",
+                  "timestamp": 1782381906,
+                  "message": "broker: Improve error message when initializing broker (#1619)\n\nUDENG-10819",
+                  "url": "https://github.com/canonical/authd/commit/31f8478cd213b12b72e1b2e15d474f87b759367e"
                }
             ],
             "ciActions": [
@@ -5550,25 +5550,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "510829331de2935e985f817e5b09da707e0da7c4",
+                  "sha": "52516cfcc9646385f6c19009fcc83b9a00737c96",
                   "author": "adombeck",
-                  "timestamp": 1782307797,
-                  "message": "conf: Add comments for issuer and client_id settings (#1611)",
-                  "url": "https://github.com/canonical/authd/commit/510829331de2935e985f817e5b09da707e0da7c4"
+                  "timestamp": 1782388031,
+                  "message": "snap: Don't auto-restart the broker daemon (#1622)\n\nUDENG-10820",
+                  "url": "https://github.com/canonical/authd/commit/52516cfcc9646385f6c19009fcc83b9a00737c96"
                },
                {
-                  "sha": "1ca391004c73a9f76414a618d116c3d4d18d649c",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1782307622,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#1573)\n\nBumps the minor-updates group with 4 updates in the / directory:\n[github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3),\n[golang.org/x/sys](https://github.com/golang/sys),\n[golang.org/x/term](https://github.com/golang/term) and gopkg.in/ini.v1.\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.44 to 1.14.47\nUpdates `golang.org/x/sys` from 0.45.0 to 0.46.0\nUpdates `golang.org/x/term` from 0.43.0 to 0.44.0\nUpdates `gopkg.in/ini.v1` from 1.67.2 to 1.67.3",
-                  "url": "https://github.com/canonical/authd/commit/1ca391004c73a9f76414a618d116c3d4d18d649c"
+                  "sha": "204af96556d3deb010d66d147529d67437954e46",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1782303255,
+                  "message": "snap: Don't auto-restart the broker daemon\n\nThe broker is D-Bus activated, so each login attempt re-triggers a start;\nautomatic restart adds little for what are deterministic startup failures\n(bad config, missing library, name conflict). Worse, the restart loop trips\nsystemd's start limiter, after which `systemctl status` only shows the\nrate-limiter's \"Start request repeated too quickly\" messages — scoped to an\nempty current invocation — hiding the broker's actual error. With no\nrestart, a failed start leaves its real error visible in `systemctl status`,\nand the next D-Bus activation simply tries again.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/204af96556d3deb010d66d147529d67437954e46"
                },
                {
-                  "sha": "4453cb7ccbd1a6c8e3674bf2d7ff47906022ba15",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1782305228,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates\n\nBumps the minor-updates group with 4 updates in the / directory: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3), [golang.org/x/sys](https://github.com/golang/sys), [golang.org/x/term](https://github.com/golang/term) and gopkg.in/ini.v1.\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.44 to 1.14.47\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.44...v1.14.47)\n\nUpdates `golang.org/x/sys` from 0.45.0 to 0.46.0\n- [Commits](https://github.com/golang/sys/compare/v0.45.0...v0.46.0)\n\nUpdates `golang.org/x/term` from 0.43.0 to 0.44.0\n- [Commits](https://github.com/golang/term/compare/v0.43.0...v0.44.0)\n\nUpdates `gopkg.in/ini.v1` from 1.67.2 to 1.67.3\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.45\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/sys\n  dependency-version: 0.46.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/term\n  dependency-version: 0.44.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: gopkg.in/ini.v1\n  dependency-version: 1.67.3\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4453cb7ccbd1a6c8e3674bf2d7ff47906022ba15"
+                  "sha": "31f8478cd213b12b72e1b2e15d474f87b759367e",
+                  "author": "adombeck",
+                  "timestamp": 1782381906,
+                  "message": "broker: Improve error message when initializing broker (#1619)\n\nUDENG-10819",
+                  "url": "https://github.com/canonical/authd/commit/31f8478cd213b12b72e1b2e15d474f87b759367e"
                }
             ],
             "ciActions": [
@@ -7941,25 +7941,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "510829331de2935e985f817e5b09da707e0da7c4",
+                  "sha": "52516cfcc9646385f6c19009fcc83b9a00737c96",
                   "author": "adombeck",
-                  "timestamp": 1782307797,
-                  "message": "conf: Add comments for issuer and client_id settings (#1611)",
-                  "url": "https://github.com/canonical/authd/commit/510829331de2935e985f817e5b09da707e0da7c4"
+                  "timestamp": 1782388031,
+                  "message": "snap: Don't auto-restart the broker daemon (#1622)\n\nUDENG-10820",
+                  "url": "https://github.com/canonical/authd/commit/52516cfcc9646385f6c19009fcc83b9a00737c96"
                },
                {
-                  "sha": "1ca391004c73a9f76414a618d116c3d4d18d649c",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1782307622,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#1573)\n\nBumps the minor-updates group with 4 updates in the / directory:\n[github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3),\n[golang.org/x/sys](https://github.com/golang/sys),\n[golang.org/x/term](https://github.com/golang/term) and gopkg.in/ini.v1.\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.44 to 1.14.47\nUpdates `golang.org/x/sys` from 0.45.0 to 0.46.0\nUpdates `golang.org/x/term` from 0.43.0 to 0.44.0\nUpdates `gopkg.in/ini.v1` from 1.67.2 to 1.67.3",
-                  "url": "https://github.com/canonical/authd/commit/1ca391004c73a9f76414a618d116c3d4d18d649c"
+                  "sha": "204af96556d3deb010d66d147529d67437954e46",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1782303255,
+                  "message": "snap: Don't auto-restart the broker daemon\n\nThe broker is D-Bus activated, so each login attempt re-triggers a start;\nautomatic restart adds little for what are deterministic startup failures\n(bad config, missing library, name conflict). Worse, the restart loop trips\nsystemd's start limiter, after which `systemctl status` only shows the\nrate-limiter's \"Start request repeated too quickly\" messages — scoped to an\nempty current invocation — hiding the broker's actual error. With no\nrestart, a failed start leaves its real error visible in `systemctl status`,\nand the next D-Bus activation simply tries again.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/204af96556d3deb010d66d147529d67437954e46"
                },
                {
-                  "sha": "4453cb7ccbd1a6c8e3674bf2d7ff47906022ba15",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1782305228,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates\n\nBumps the minor-updates group with 4 updates in the / directory: [github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3), [golang.org/x/sys](https://github.com/golang/sys), [golang.org/x/term](https://github.com/golang/term) and gopkg.in/ini.v1.\n\n\nUpdates `github.com/mattn/go-sqlite3` from 1.14.44 to 1.14.47\n- [Release notes](https://github.com/mattn/go-sqlite3/releases)\n- [Commits](https://github.com/mattn/go-sqlite3/compare/v1.14.44...v1.14.47)\n\nUpdates `golang.org/x/sys` from 0.45.0 to 0.46.0\n- [Commits](https://github.com/golang/sys/compare/v0.45.0...v0.46.0)\n\nUpdates `golang.org/x/term` from 0.43.0 to 0.44.0\n- [Commits](https://github.com/golang/term/compare/v0.43.0...v0.44.0)\n\nUpdates `gopkg.in/ini.v1` from 1.67.2 to 1.67.3\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-sqlite3\n  dependency-version: 1.14.45\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/sys\n  dependency-version: 0.46.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: golang.org/x/term\n  dependency-version: 0.44.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n- dependency-name: gopkg.in/ini.v1\n  dependency-version: 1.67.3\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4453cb7ccbd1a6c8e3674bf2d7ff47906022ba15"
+                  "sha": "31f8478cd213b12b72e1b2e15d474f87b759367e",
+                  "author": "adombeck",
+                  "timestamp": 1782381906,
+                  "message": "broker: Improve error message when initializing broker (#1619)\n\nUDENG-10819",
+                  "url": "https://github.com/canonical/authd/commit/31f8478cd213b12b72e1b2e15d474f87b759367e"
                }
             ],
             "ciActions": [
