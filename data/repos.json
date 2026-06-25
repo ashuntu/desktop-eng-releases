@@ -3106,6 +3106,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bd261bcf1b9f10180bceb83acb74f1080af54596",
+                  "author": "Marek Suchánek",
+                  "timestamp": 1782405442,
+                  "message": "Reduce links to help.ubuntu.com",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/bd261bcf1b9f10180bceb83acb74f1080af54596"
+               },
+               {
                   "sha": "64acfe4edf0627d9e0ea427c4e33024bc8963004",
                   "author": "Marek Suchánek",
                   "timestamp": 1782305959,
@@ -3118,13 +3125,6 @@
                   "timestamp": 1782305804,
                   "message": "Add a sample redirects file for Starter Pack 2.0",
                   "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/ee2f663fae0ab044c20f3dffcca54b632357e91e"
-               },
-               {
-                  "sha": "5d423546c1c50ce3ed9c2a057aae9295ea663120",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1782305343,
-                  "message": "Reintroduce a missing module",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/5d423546c1c50ce3ed9c2a057aae9295ea663120"
                }
             ],
             "ciActions": [
@@ -3328,6 +3328,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "00fd6af02b3b48584491227a9fa71b210c613f04",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1782390806,
+                  "message": "authctl: add authctl user set-home (#1570)\n\nAdd the `authctl user set-home <user> <path>` subcommand, which sets a\nuser's home directory to the given absolute path and moves the existing\ndirectory contents to the new location when present.\n\nThe command offers username and directory shell completion, reports\nwhether the directory was moved, and surfaces any warnings returned by\nthe daemon. Regenerate the CLI reference documentation and the authctl\nman page to include the new subcommand.\n\n\nUDENG-10623",
+                  "url": "https://github.com/canonical/authd/commit/00fd6af02b3b48584491227a9fa71b210c613f04"
+               },
+               {
                   "sha": "52516cfcc9646385f6c19009fcc83b9a00737c96",
                   "author": "adombeck",
                   "timestamp": 1782388031,
@@ -3340,13 +3347,6 @@
                   "timestamp": 1782303255,
                   "message": "snap: Don't auto-restart the broker daemon\n\nThe broker is D-Bus activated, so each login attempt re-triggers a start;\nautomatic restart adds little for what are deterministic startup failures\n(bad config, missing library, name conflict). Worse, the restart loop trips\nsystemd's start limiter, after which `systemctl status` only shows the\nrate-limiter's \"Start request repeated too quickly\" messages — scoped to an\nempty current invocation — hiding the broker's actual error. With no\nrestart, a failed start leaves its real error visible in `systemctl status`,\nand the next D-Bus activation simply tries again.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
                   "url": "https://github.com/canonical/authd/commit/204af96556d3deb010d66d147529d67437954e46"
-               },
-               {
-                  "sha": "31f8478cd213b12b72e1b2e15d474f87b759367e",
-                  "author": "adombeck",
-                  "timestamp": 1782381906,
-                  "message": "broker: Improve error message when initializing broker (#1619)\n\nUDENG-10819",
-                  "url": "https://github.com/canonical/authd/commit/31f8478cd213b12b72e1b2e15d474f87b759367e"
                }
             ],
             "ciActions": [
@@ -4018,6 +4018,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 344825079,
+                  "version": "rev80",
+                  "timestamp": 1782399039,
+                  "title": "Revision 80",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 68</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 15:43 UTC on 25 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(mediawiki_rock): Fix inclusion of logrotate config for mw logs by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/181\">#181</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev79...rev80\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev79&hellip;rev80</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev80",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev80...main"
+               },
+               {
                   "id": 344386498,
                   "version": "rev79",
                   "timestamp": 1782326823,
@@ -4034,15 +4043,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 66</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:50 UTC on 24 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(saml): Explicitly set the entityID to the URL origin by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/180\">#180</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev77...rev78\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev77&hellip;rev78</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev78",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev78...main"
-               },
-               {
-                  "id": 343158104,
-                  "version": "rev77",
-                  "timestamp": 1782160309,
-                  "title": "Revision 77",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 65</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:55 UTC on 22 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/178\">#178</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev76...rev77\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev76&hellip;rev77</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev77",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev77...main"
                }
             ],
             "commits": null,
@@ -4057,8 +4057,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 79,
-                     "timestamp": 1782338167
+                     "revision": 80,
+                     "timestamp": 1782402235
                   }
                ],
                "channels": [
@@ -5550,6 +5550,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "00fd6af02b3b48584491227a9fa71b210c613f04",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1782390806,
+                  "message": "authctl: add authctl user set-home (#1570)\n\nAdd the `authctl user set-home <user> <path>` subcommand, which sets a\nuser's home directory to the given absolute path and moves the existing\ndirectory contents to the new location when present.\n\nThe command offers username and directory shell completion, reports\nwhether the directory was moved, and surfaces any warnings returned by\nthe daemon. Regenerate the CLI reference documentation and the authctl\nman page to include the new subcommand.\n\n\nUDENG-10623",
+                  "url": "https://github.com/canonical/authd/commit/00fd6af02b3b48584491227a9fa71b210c613f04"
+               },
+               {
                   "sha": "52516cfcc9646385f6c19009fcc83b9a00737c96",
                   "author": "adombeck",
                   "timestamp": 1782388031,
@@ -5562,13 +5569,6 @@
                   "timestamp": 1782303255,
                   "message": "snap: Don't auto-restart the broker daemon\n\nThe broker is D-Bus activated, so each login attempt re-triggers a start;\nautomatic restart adds little for what are deterministic startup failures\n(bad config, missing library, name conflict). Worse, the restart loop trips\nsystemd's start limiter, after which `systemctl status` only shows the\nrate-limiter's \"Start request repeated too quickly\" messages — scoped to an\nempty current invocation — hiding the broker's actual error. With no\nrestart, a failed start leaves its real error visible in `systemctl status`,\nand the next D-Bus activation simply tries again.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
                   "url": "https://github.com/canonical/authd/commit/204af96556d3deb010d66d147529d67437954e46"
-               },
-               {
-                  "sha": "31f8478cd213b12b72e1b2e15d474f87b759367e",
-                  "author": "adombeck",
-                  "timestamp": 1782381906,
-                  "message": "broker: Improve error message when initializing broker (#1619)\n\nUDENG-10819",
-                  "url": "https://github.com/canonical/authd/commit/31f8478cd213b12b72e1b2e15d474f87b759367e"
                }
             ],
             "ciActions": [
@@ -6273,6 +6273,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 344825079,
+                  "version": "rev80",
+                  "timestamp": 1782399039,
+                  "title": "Revision 80",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 68</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 15:43 UTC on 25 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(mediawiki_rock): Fix inclusion of logrotate config for mw logs by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/181\">#181</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev79...rev80\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev79&hellip;rev80</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev80",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev80...main"
+               },
+               {
                   "id": 344386498,
                   "version": "rev79",
                   "timestamp": 1782326823,
@@ -6289,15 +6298,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 66</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:50 UTC on 24 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(saml): Explicitly set the entityID to the URL origin by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/180\">#180</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev77...rev78\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev77&hellip;rev78</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev78",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev78...main"
-               },
-               {
-                  "id": 343158104,
-                  "version": "rev77",
-                  "timestamp": 1782160309,
-                  "title": "Revision 77",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 65</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:55 UTC on 22 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/178\">#178</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev76...rev77\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev76&hellip;rev77</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev77",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev77...main"
                }
             ],
             "commits": null,
@@ -6312,8 +6312,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 79,
-                     "timestamp": 1782338167
+                     "revision": 80,
+                     "timestamp": 1782402235
                   }
                ],
                "channels": [
@@ -7101,7 +7101,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 252,
+            "newCommits": 254,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7941,6 +7941,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "00fd6af02b3b48584491227a9fa71b210c613f04",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1782390806,
+                  "message": "authctl: add authctl user set-home (#1570)\n\nAdd the `authctl user set-home <user> <path>` subcommand, which sets a\nuser's home directory to the given absolute path and moves the existing\ndirectory contents to the new location when present.\n\nThe command offers username and directory shell completion, reports\nwhether the directory was moved, and surfaces any warnings returned by\nthe daemon. Regenerate the CLI reference documentation and the authctl\nman page to include the new subcommand.\n\n\nUDENG-10623",
+                  "url": "https://github.com/canonical/authd/commit/00fd6af02b3b48584491227a9fa71b210c613f04"
+               },
+               {
                   "sha": "52516cfcc9646385f6c19009fcc83b9a00737c96",
                   "author": "adombeck",
                   "timestamp": 1782388031,
@@ -7953,13 +7960,6 @@
                   "timestamp": 1782303255,
                   "message": "snap: Don't auto-restart the broker daemon\n\nThe broker is D-Bus activated, so each login attempt re-triggers a start;\nautomatic restart adds little for what are deterministic startup failures\n(bad config, missing library, name conflict). Worse, the restart loop trips\nsystemd's start limiter, after which `systemctl status` only shows the\nrate-limiter's \"Start request repeated too quickly\" messages — scoped to an\nempty current invocation — hiding the broker's actual error. With no\nrestart, a failed start leaves its real error visible in `systemctl status`,\nand the next D-Bus activation simply tries again.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
                   "url": "https://github.com/canonical/authd/commit/204af96556d3deb010d66d147529d67437954e46"
-               },
-               {
-                  "sha": "31f8478cd213b12b72e1b2e15d474f87b759367e",
-                  "author": "adombeck",
-                  "timestamp": 1782381906,
-                  "message": "broker: Improve error message when initializing broker (#1619)\n\nUDENG-10819",
-                  "url": "https://github.com/canonical/authd/commit/31f8478cd213b12b72e1b2e15d474f87b759367e"
                }
             ],
             "ciActions": [
@@ -8631,6 +8631,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 344825079,
+                  "version": "rev80",
+                  "timestamp": 1782399039,
+                  "title": "Revision 80",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 68</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 15:43 UTC on 25 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(mediawiki_rock): Fix inclusion of logrotate config for mw logs by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/181\">#181</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev79...rev80\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev79&hellip;rev80</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev80",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev80...main"
+               },
+               {
                   "id": 344386498,
                   "version": "rev79",
                   "timestamp": 1782326823,
@@ -8647,15 +8656,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 66</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:50 UTC on 24 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(saml): Explicitly set the entityID to the URL origin by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/180\">#180</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev77...rev78\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev77&hellip;rev78</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev78",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev78...main"
-               },
-               {
-                  "id": 343158104,
-                  "version": "rev77",
-                  "timestamp": 1782160309,
-                  "title": "Revision 77",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 65</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:55 UTC on 22 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/178\">#178</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev76...rev77\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev76&hellip;rev77</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev77",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev77...main"
                }
             ],
             "commits": null,
@@ -8670,8 +8670,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 79,
-                     "timestamp": 1782338167
+                     "revision": 80,
+                     "timestamp": 1782402235
                   }
                ],
                "channels": [
