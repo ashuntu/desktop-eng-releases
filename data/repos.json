@@ -1011,6 +1011,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7077ad7e78e34240f387a36bbbaaaf22bd358e09",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1782469567,
+                  "message": "Update tag",
+                  "url": "https://github.com/ubuntu/gnome-contacts/commit/7077ad7e78e34240f387a36bbbaaaf22bd358e09"
+               },
+               {
                   "sha": "986e80c2b63c2c09449f681138ea859b9778d680",
                   "author": "github-actions[bot]",
                   "timestamp": 1781529745,
@@ -1023,13 +1030,6 @@
                   "timestamp": 1780220950,
                   "message": "Update tag",
                   "url": "https://github.com/ubuntu/gnome-contacts/commit/c9b4fe9efab79b8c1c687bf9abfa648a92414e89"
-               },
-               {
-                  "sha": "b8f65e9dc72a548e6575b11ae0f389d51ce9d22d",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1779445618,
-                  "message": "Update tag",
-                  "url": "https://github.com/ubuntu/gnome-contacts/commit/b8f65e9dc72a548e6575b11ae0f389d51ce9d22d"
                }
             ],
             "ciActions": [],
@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "00fd6af02b3b48584491227a9fa71b210c613f04",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1782390806,
-                  "message": "authctl: add authctl user set-home (#1570)\n\nAdd the `authctl user set-home <user> <path>` subcommand, which sets a\nuser's home directory to the given absolute path and moves the existing\ndirectory contents to the new location when present.\n\nThe command offers username and directory shell completion, reports\nwhether the directory was moved, and surfaces any warnings returned by\nthe daemon. Regenerate the CLI reference documentation and the authctl\nman page to include the new subcommand.\n\n\nUDENG-10623",
-                  "url": "https://github.com/canonical/authd/commit/00fd6af02b3b48584491227a9fa71b210c613f04"
-               },
-               {
-                  "sha": "52516cfcc9646385f6c19009fcc83b9a00737c96",
+                  "sha": "ea62880b626105b2dae03d403708f8e2d5b042de",
                   "author": "adombeck",
-                  "timestamp": 1782388031,
-                  "message": "snap: Don't auto-restart the broker daemon (#1622)\n\nUDENG-10820",
-                  "url": "https://github.com/canonical/authd/commit/52516cfcc9646385f6c19009fcc83b9a00737c96"
+                  "timestamp": 1782480120,
+                  "message": "pam/tests: Avoid snapshotting a half-rendered QR matrix (#1625)",
+                  "url": "https://github.com/canonical/authd/commit/ea62880b626105b2dae03d403708f8e2d5b042de"
                },
                {
-                  "sha": "204af96556d3deb010d66d147529d67437954e46",
+                  "sha": "d62e6b9d0634a1ef407b3676e1e7411a3eb49b01",
+                  "author": "adombeck",
+                  "timestamp": 1782474405,
+                  "message": "e2e-tests/r2-worker: Add log.html shortcut to directory listings (#1630)",
+                  "url": "https://github.com/canonical/authd/commit/d62e6b9d0634a1ef407b3676e1e7411a3eb49b01"
+               },
+               {
+                  "sha": "df326490fcb7acf2318a097d1682dce803073a21",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782303255,
-                  "message": "snap: Don't auto-restart the broker daemon\n\nThe broker is D-Bus activated, so each login attempt re-triggers a start;\nautomatic restart adds little for what are deterministic startup failures\n(bad config, missing library, name conflict). Worse, the restart loop trips\nsystemd's start limiter, after which `systemctl status` only shows the\nrate-limiter's \"Start request repeated too quickly\" messages — scoped to an\nempty current invocation — hiding the broker's actual error. With no\nrestart, a failed start leaves its real error visible in `systemctl status`,\nand the next D-Bus activation simply tries again.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/204af96556d3deb010d66d147529d67437954e46"
+                  "timestamp": 1782469645,
+                  "message": "e2e-tests/r2-worker: Walk '..' past collapsing ancestors\n\nAfter redirecting through single-child directories, the '..' link\npointed at the immediate parent, which itself just redirected straight\nback down — making '..' a no-op. Walk up past any ancestor that would\nonly collapse back here so '..' lands on a directory with a real choice.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/df326490fcb7acf2318a097d1682dce803073a21"
                }
             ],
             "ciActions": [
@@ -4477,6 +4477,47 @@
             "snap": null
          },
          {
+            "name": "stdlibc.dart",
+            "defaultBranch": "main",
+            "newCommits": 31,
+            "url": "https://github.com/canonical/stdlibc.dart",
+            "releases": [
+               {
+                  "id": 108514912,
+                  "version": "v0.1.5",
+                  "timestamp": 1686717770,
+                  "title": "v0.1.5",
+                  "body": "<h2>0.1.5 (2023-06-14)</h2>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: nothing (yet another release-please test, sorry) by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/95\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/95</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.4...v0.1.5\">https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.4&hellip;v0.1.5</a></p>\n",
+                  "url": "https://github.com/canonical/stdlibc.dart/releases/tag/v0.1.5",
+                  "compareUrl": "https://github.com/canonical/stdlibc.dart/compare/v0.1.5...main"
+               },
+               {
+                  "id": 108514756,
+                  "version": "v0.1.4",
+                  "timestamp": 1686691162,
+                  "title": "v0.1.4",
+                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>ci: auto-publish on release by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/91\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/91</a></li>\n<li>chore: release 0.1.4 by <a href=\"http://github.com/github-actions\">@github-actions</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/92\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/92</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.3...v0.1.4\">https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.3&hellip;v0.1.4</a></p>\n",
+                  "url": "https://github.com/canonical/stdlibc.dart/releases/tag/v0.1.4",
+                  "compareUrl": "https://github.com/canonical/stdlibc.dart/compare/v0.1.4...main"
+               },
+               {
+                  "id": 108443224,
+                  "version": "v0.1.3",
+                  "timestamp": 1686690516,
+                  "title": "v0.1.3",
+                  "body": "<h2>0.1.3 (2023-06-13)</h2>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>ci: release please by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/85\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/85</a></li>\n<li>fix: nothing (testing release-please) by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/86\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/86</a></li>\n<li>chore: github style changelog by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/88\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/88</a></li>\n<li>ci: auto-publish by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/89\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/89</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.2...v0.1.3\">https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.2&hellip;v0.1.3</a></p>\n",
+                  "url": "https://github.com/canonical/stdlibc.dart/releases/tag/v0.1.3",
+                  "compareUrl": "https://github.com/canonical/stdlibc.dart/compare/v0.1.3...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [
+               "https://github.com/ubuntu-flutter-community/stdlibc.dart/actions/workflows/tests.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "steam-snap",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -4506,6 +4547,41 @@
                }
             ],
             "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "subiquity_client.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/subiquity_client.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "1519616719c9f09593aa7db131908c6d17b18092",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1698630748,
+                  "message": "chore(deps): bump subiquity from `b9be528` to `2336e5e` (#210)\n\nBumps [subiquity](https://github.com/canonical/subiquity) from `b9be528` to `2336e5e`.\n- [Release notes](https://github.com/canonical/subiquity/releases)\n- [Commits](https://github.com/canonical/subiquity/compare/b9be528577550a8b474ef23a3a1d59b926313c76...2336e5e37ff4b4a079a92fd12fce74ad0c0b2ebb)\n\n---\nupdated-dependencies:\n- dependency-name: subiquity\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/subiquity_client.dart/commit/1519616719c9f09593aa7db131908c6d17b18092"
+               },
+               {
+                  "sha": "237a6374e81edd2da221ebbde14f78872e68b04e",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1698371963,
+                  "message": "chore(deps): bump subiquity from `01fd8d2` to `b9be528` (#209)\n\nBumps [subiquity](https://github.com/canonical/subiquity) from `01fd8d2` to `b9be528`.\n- [Release notes](https://github.com/canonical/subiquity/releases)\n- [Commits](https://github.com/canonical/subiquity/compare/01fd8d22a95afff7ede308437856e43832210350...b9be528577550a8b474ef23a3a1d59b926313c76)\n\n---\nupdated-dependencies:\n- dependency-name: subiquity\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/subiquity_client.dart/commit/237a6374e81edd2da221ebbde14f78872e68b04e"
+               },
+               {
+                  "sha": "2d30adc64e9f02f083ae46d538e87cd75c79e545",
+                  "author": "Ken VanDine",
+                  "timestamp": 1696982238,
+                  "message": "Merge pull request #207 from mwhudson/update-subiquity\n\nupdate subiquity from 7717b0d to 01fd8d2",
+                  "url": "https://github.com/canonical/subiquity_client.dart/commit/2d30adc64e9f02f083ae46d538e87cd75c79e545"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/canonical/subiquity_client.dart/workflows/CI"
+            ],
             "charm": null,
             "snap": null
          },
@@ -5048,7 +5124,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 22,
+            "newCommits": 23,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5151,82 +5227,6 @@
             ],
             "commits": null,
             "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "stdlibc.dart",
-            "defaultBranch": "main",
-            "newCommits": 31,
-            "url": "https://github.com/canonical/stdlibc.dart",
-            "releases": [
-               {
-                  "id": 108514912,
-                  "version": "v0.1.5",
-                  "timestamp": 1686717770,
-                  "title": "v0.1.5",
-                  "body": "<h2>0.1.5 (2023-06-14)</h2>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: nothing (yet another release-please test, sorry) by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/95\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/95</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.4...v0.1.5\">https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.4&hellip;v0.1.5</a></p>\n",
-                  "url": "https://github.com/canonical/stdlibc.dart/releases/tag/v0.1.5",
-                  "compareUrl": "https://github.com/canonical/stdlibc.dart/compare/v0.1.5...main"
-               },
-               {
-                  "id": 108514756,
-                  "version": "v0.1.4",
-                  "timestamp": 1686691162,
-                  "title": "v0.1.4",
-                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>ci: auto-publish on release by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/91\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/91</a></li>\n<li>chore: release 0.1.4 by <a href=\"http://github.com/github-actions\">@github-actions</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/92\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/92</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.3...v0.1.4\">https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.3&hellip;v0.1.4</a></p>\n",
-                  "url": "https://github.com/canonical/stdlibc.dart/releases/tag/v0.1.4",
-                  "compareUrl": "https://github.com/canonical/stdlibc.dart/compare/v0.1.4...main"
-               },
-               {
-                  "id": 108443224,
-                  "version": "v0.1.3",
-                  "timestamp": 1686690516,
-                  "title": "v0.1.3",
-                  "body": "<h2>0.1.3 (2023-06-13)</h2>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>ci: release please by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/85\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/85</a></li>\n<li>fix: nothing (testing release-please) by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/86\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/86</a></li>\n<li>chore: github style changelog by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/88\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/88</a></li>\n<li>ci: auto-publish by <a href=\"http://github.com/jpnurmi\">@jpnurmi</a> in <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/89\">https://github.com/ubuntu-flutter-community/stdlibc.dart/pull/89</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.2...v0.1.3\">https://github.com/ubuntu-flutter-community/stdlibc.dart/compare/v0.1.2&hellip;v0.1.3</a></p>\n",
-                  "url": "https://github.com/canonical/stdlibc.dart/releases/tag/v0.1.3",
-                  "compareUrl": "https://github.com/canonical/stdlibc.dart/compare/v0.1.3...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [
-               "https://github.com/ubuntu-flutter-community/stdlibc.dart/actions/workflows/tests.yaml"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "subiquity_client.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/subiquity_client.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "1519616719c9f09593aa7db131908c6d17b18092",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1698630748,
-                  "message": "chore(deps): bump subiquity from `b9be528` to `2336e5e` (#210)\n\nBumps [subiquity](https://github.com/canonical/subiquity) from `b9be528` to `2336e5e`.\n- [Release notes](https://github.com/canonical/subiquity/releases)\n- [Commits](https://github.com/canonical/subiquity/compare/b9be528577550a8b474ef23a3a1d59b926313c76...2336e5e37ff4b4a079a92fd12fce74ad0c0b2ebb)\n\n---\nupdated-dependencies:\n- dependency-name: subiquity\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/subiquity_client.dart/commit/1519616719c9f09593aa7db131908c6d17b18092"
-               },
-               {
-                  "sha": "237a6374e81edd2da221ebbde14f78872e68b04e",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1698371963,
-                  "message": "chore(deps): bump subiquity from `01fd8d2` to `b9be528` (#209)\n\nBumps [subiquity](https://github.com/canonical/subiquity) from `01fd8d2` to `b9be528`.\n- [Release notes](https://github.com/canonical/subiquity/releases)\n- [Commits](https://github.com/canonical/subiquity/compare/01fd8d22a95afff7ede308437856e43832210350...b9be528577550a8b474ef23a3a1d59b926313c76)\n\n---\nupdated-dependencies:\n- dependency-name: subiquity\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/subiquity_client.dart/commit/237a6374e81edd2da221ebbde14f78872e68b04e"
-               },
-               {
-                  "sha": "2d30adc64e9f02f083ae46d538e87cd75c79e545",
-                  "author": "Ken VanDine",
-                  "timestamp": 1696982238,
-                  "message": "Merge pull request #207 from mwhudson/update-subiquity\n\nupdate subiquity from 7717b0d to 01fd8d2",
-                  "url": "https://github.com/canonical/subiquity_client.dart/commit/2d30adc64e9f02f083ae46d538e87cd75c79e545"
-               }
-            ],
-            "ciActions": [
-               "https://github.com/canonical/subiquity_client.dart/workflows/CI"
-            ],
             "charm": null,
             "snap": null
          },
@@ -5550,25 +5550,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "00fd6af02b3b48584491227a9fa71b210c613f04",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1782390806,
-                  "message": "authctl: add authctl user set-home (#1570)\n\nAdd the `authctl user set-home <user> <path>` subcommand, which sets a\nuser's home directory to the given absolute path and moves the existing\ndirectory contents to the new location when present.\n\nThe command offers username and directory shell completion, reports\nwhether the directory was moved, and surfaces any warnings returned by\nthe daemon. Regenerate the CLI reference documentation and the authctl\nman page to include the new subcommand.\n\n\nUDENG-10623",
-                  "url": "https://github.com/canonical/authd/commit/00fd6af02b3b48584491227a9fa71b210c613f04"
-               },
-               {
-                  "sha": "52516cfcc9646385f6c19009fcc83b9a00737c96",
+                  "sha": "ea62880b626105b2dae03d403708f8e2d5b042de",
                   "author": "adombeck",
-                  "timestamp": 1782388031,
-                  "message": "snap: Don't auto-restart the broker daemon (#1622)\n\nUDENG-10820",
-                  "url": "https://github.com/canonical/authd/commit/52516cfcc9646385f6c19009fcc83b9a00737c96"
+                  "timestamp": 1782480120,
+                  "message": "pam/tests: Avoid snapshotting a half-rendered QR matrix (#1625)",
+                  "url": "https://github.com/canonical/authd/commit/ea62880b626105b2dae03d403708f8e2d5b042de"
                },
                {
-                  "sha": "204af96556d3deb010d66d147529d67437954e46",
+                  "sha": "d62e6b9d0634a1ef407b3676e1e7411a3eb49b01",
+                  "author": "adombeck",
+                  "timestamp": 1782474405,
+                  "message": "e2e-tests/r2-worker: Add log.html shortcut to directory listings (#1630)",
+                  "url": "https://github.com/canonical/authd/commit/d62e6b9d0634a1ef407b3676e1e7411a3eb49b01"
+               },
+               {
+                  "sha": "df326490fcb7acf2318a097d1682dce803073a21",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782303255,
-                  "message": "snap: Don't auto-restart the broker daemon\n\nThe broker is D-Bus activated, so each login attempt re-triggers a start;\nautomatic restart adds little for what are deterministic startup failures\n(bad config, missing library, name conflict). Worse, the restart loop trips\nsystemd's start limiter, after which `systemctl status` only shows the\nrate-limiter's \"Start request repeated too quickly\" messages — scoped to an\nempty current invocation — hiding the broker's actual error. With no\nrestart, a failed start leaves its real error visible in `systemctl status`,\nand the next D-Bus activation simply tries again.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/204af96556d3deb010d66d147529d67437954e46"
+                  "timestamp": 1782469645,
+                  "message": "e2e-tests/r2-worker: Walk '..' past collapsing ancestors\n\nAfter redirecting through single-child directories, the '..' link\npointed at the immediate parent, which itself just redirected straight\nback down — making '..' a no-op. Walk up past any ancestor that would\nonly collapse back here so '..' lands on a directory with a real choice.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/df326490fcb7acf2318a097d1682dce803073a21"
                }
             ],
             "ciActions": [
@@ -7101,7 +7101,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 254,
+            "newCommits": 264,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7420,7 +7420,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 22,
+            "newCommits": 23,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7941,25 +7941,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "00fd6af02b3b48584491227a9fa71b210c613f04",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1782390806,
-                  "message": "authctl: add authctl user set-home (#1570)\n\nAdd the `authctl user set-home <user> <path>` subcommand, which sets a\nuser's home directory to the given absolute path and moves the existing\ndirectory contents to the new location when present.\n\nThe command offers username and directory shell completion, reports\nwhether the directory was moved, and surfaces any warnings returned by\nthe daemon. Regenerate the CLI reference documentation and the authctl\nman page to include the new subcommand.\n\n\nUDENG-10623",
-                  "url": "https://github.com/canonical/authd/commit/00fd6af02b3b48584491227a9fa71b210c613f04"
-               },
-               {
-                  "sha": "52516cfcc9646385f6c19009fcc83b9a00737c96",
+                  "sha": "ea62880b626105b2dae03d403708f8e2d5b042de",
                   "author": "adombeck",
-                  "timestamp": 1782388031,
-                  "message": "snap: Don't auto-restart the broker daemon (#1622)\n\nUDENG-10820",
-                  "url": "https://github.com/canonical/authd/commit/52516cfcc9646385f6c19009fcc83b9a00737c96"
+                  "timestamp": 1782480120,
+                  "message": "pam/tests: Avoid snapshotting a half-rendered QR matrix (#1625)",
+                  "url": "https://github.com/canonical/authd/commit/ea62880b626105b2dae03d403708f8e2d5b042de"
                },
                {
-                  "sha": "204af96556d3deb010d66d147529d67437954e46",
+                  "sha": "d62e6b9d0634a1ef407b3676e1e7411a3eb49b01",
+                  "author": "adombeck",
+                  "timestamp": 1782474405,
+                  "message": "e2e-tests/r2-worker: Add log.html shortcut to directory listings (#1630)",
+                  "url": "https://github.com/canonical/authd/commit/d62e6b9d0634a1ef407b3676e1e7411a3eb49b01"
+               },
+               {
+                  "sha": "df326490fcb7acf2318a097d1682dce803073a21",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782303255,
-                  "message": "snap: Don't auto-restart the broker daemon\n\nThe broker is D-Bus activated, so each login attempt re-triggers a start;\nautomatic restart adds little for what are deterministic startup failures\n(bad config, missing library, name conflict). Worse, the restart loop trips\nsystemd's start limiter, after which `systemctl status` only shows the\nrate-limiter's \"Start request repeated too quickly\" messages — scoped to an\nempty current invocation — hiding the broker's actual error. With no\nrestart, a failed start leaves its real error visible in `systemctl status`,\nand the next D-Bus activation simply tries again.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/204af96556d3deb010d66d147529d67437954e46"
+                  "timestamp": 1782469645,
+                  "message": "e2e-tests/r2-worker: Walk '..' past collapsing ancestors\n\nAfter redirecting through single-child directories, the '..' link\npointed at the immediate parent, which itself just redirected straight\nback down — making '..' a no-op. Walk up past any ancestor that would\nonly collapse back here so '..' lands on a directory with a real choice.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/df326490fcb7acf2318a097d1682dce803073a21"
                }
             ],
             "ciActions": [
@@ -9772,7 +9772,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 22,
+            "newCommits": 23,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
