@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ea62880b626105b2dae03d403708f8e2d5b042de",
-                  "author": "adombeck",
-                  "timestamp": 1782480120,
-                  "message": "pam/tests: Avoid snapshotting a half-rendered QR matrix (#1625)",
-                  "url": "https://github.com/canonical/authd/commit/ea62880b626105b2dae03d403708f8e2d5b042de"
+                  "sha": "37b90b8e049fa2c68a108695c8a0ac5caddfe688",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1782709213,
+                  "message": "e2e-tests: tolerate apostrophe variants in Google login flow (#1627)\n\nThe google end-to-end tests are failing recently, as shown in these e2e\nruns for #1620:\n\n\n[[noble](https://authd-e2e-test-logs.adrian-dombeck.workers.dev/pr-1620/run-28159619077-1/noble-authd-google/log.html)],\n[[resolute](https://authd-e2e-test-logs.adrian-dombeck.workers.dev/pr-1620/run-28159619077-1/resolute-authd-google/log.html)],\n[[devel](https://authd-e2e-test-logs.adrian-dombeck.workers.dev/pr-1620/run-28159619077-1/devel-authd-google/log.html)]\n\n We can see the error in the logs as\n\n```\nTimeoutError: Timed out after 20000ms waiting for pattern 'Email or phone|Enter your password|2-Step Verification|Verify it’s you|Choose an account|You’re signing back in|Continue on your device|Wrong code. Try again.|Wrong number of digits. Try again.|Couldn’t find your Google Account|Enter a valid email or phone number|Wrong password'\n```\n\nThe Google device-code flow intermittently failed to match pages like\n\"Verify it's you\", \"You're signing back in\", and \"Couldn't find your\nGoogle Account\". Google can serve either typographic (curly) or straight\napostrophes in these texts, and page text casing can vary across locales\nor browser sessions. The exact string comparison therefore missed the\npage, causing the test to time out.\n\nSwitch the matchers to case-insensitive substring matching via a small\n`_matches_phrase` helper, and use a regex character class `['’]` in the\napostrophe-bearing constants so the page detection fires regardless of\nwhich variant appears.\n\nUDENG-10824",
+                  "url": "https://github.com/canonical/authd/commit/37b90b8e049fa2c68a108695c8a0ac5caddfe688"
                },
                {
-                  "sha": "d62e6b9d0634a1ef407b3676e1e7411a3eb49b01",
-                  "author": "adombeck",
-                  "timestamp": 1782474405,
-                  "message": "e2e-tests/r2-worker: Add log.html shortcut to directory listings (#1630)",
-                  "url": "https://github.com/canonical/authd/commit/d62e6b9d0634a1ef407b3676e1e7411a3eb49b01"
+                  "sha": "8c5e367543d78faaeb7885ef0bbccda7b8122521",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1782487027,
+                  "message": "e2e-tests/google: tolerate both apostrophe variants in page texts\n\nGoogle can serve either typographic (curly) or straight apostrophes in\nthe sign-in texts, depending on locale or page version. Hardcoding one\nvariant causes the test to miss the verification, re-auth or\nwrong-email pages when the other variant is present.",
+                  "url": "https://github.com/canonical/authd/commit/8c5e367543d78faaeb7885ef0bbccda7b8122521"
                },
                {
-                  "sha": "df326490fcb7acf2318a097d1682dce803073a21",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782469645,
-                  "message": "e2e-tests/r2-worker: Walk '..' past collapsing ancestors\n\nAfter redirecting through single-child directories, the '..' link\npointed at the immediate parent, which itself just redirected straight\nback down — making '..' a no-op. Walk up past any ancestor that would\nonly collapse back here so '..' lands on a directory with a real choice.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/df326490fcb7acf2318a097d1682dce803073a21"
+                  "sha": "6210ea39c72bd0a59fc01893719ab43a41921c92",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1782486999,
+                  "message": "e2e-tests/google: make phrase matching case-insensitive\n\nGoogle serves page text in varying case by locale and session state; a case-sensitive exact match can miss a page and either time out or route to the wrong handler.\n\nDispatch uses apostrophe-free substrings (\"verify it\", \"signing back in\", \"find your google account\") rather than the full module-level constants so it stays independent of the regex alternation those constants carry for wait_for_pattern.\n\n\"verification code\" is added alongside the two-step phrases to cover a TOTP page variant where Google omits the \"2-Step Verification\" heading and shows only the code-entry prompt.",
+                  "url": "https://github.com/canonical/authd/commit/6210ea39c72bd0a59fc01893719ab43a41921c92"
                }
             ],
             "ciActions": [
@@ -5550,25 +5550,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ea62880b626105b2dae03d403708f8e2d5b042de",
-                  "author": "adombeck",
-                  "timestamp": 1782480120,
-                  "message": "pam/tests: Avoid snapshotting a half-rendered QR matrix (#1625)",
-                  "url": "https://github.com/canonical/authd/commit/ea62880b626105b2dae03d403708f8e2d5b042de"
+                  "sha": "37b90b8e049fa2c68a108695c8a0ac5caddfe688",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1782709213,
+                  "message": "e2e-tests: tolerate apostrophe variants in Google login flow (#1627)\n\nThe google end-to-end tests are failing recently, as shown in these e2e\nruns for #1620:\n\n\n[[noble](https://authd-e2e-test-logs.adrian-dombeck.workers.dev/pr-1620/run-28159619077-1/noble-authd-google/log.html)],\n[[resolute](https://authd-e2e-test-logs.adrian-dombeck.workers.dev/pr-1620/run-28159619077-1/resolute-authd-google/log.html)],\n[[devel](https://authd-e2e-test-logs.adrian-dombeck.workers.dev/pr-1620/run-28159619077-1/devel-authd-google/log.html)]\n\n We can see the error in the logs as\n\n```\nTimeoutError: Timed out after 20000ms waiting for pattern 'Email or phone|Enter your password|2-Step Verification|Verify it’s you|Choose an account|You’re signing back in|Continue on your device|Wrong code. Try again.|Wrong number of digits. Try again.|Couldn’t find your Google Account|Enter a valid email or phone number|Wrong password'\n```\n\nThe Google device-code flow intermittently failed to match pages like\n\"Verify it's you\", \"You're signing back in\", and \"Couldn't find your\nGoogle Account\". Google can serve either typographic (curly) or straight\napostrophes in these texts, and page text casing can vary across locales\nor browser sessions. The exact string comparison therefore missed the\npage, causing the test to time out.\n\nSwitch the matchers to case-insensitive substring matching via a small\n`_matches_phrase` helper, and use a regex character class `['’]` in the\napostrophe-bearing constants so the page detection fires regardless of\nwhich variant appears.\n\nUDENG-10824",
+                  "url": "https://github.com/canonical/authd/commit/37b90b8e049fa2c68a108695c8a0ac5caddfe688"
                },
                {
-                  "sha": "d62e6b9d0634a1ef407b3676e1e7411a3eb49b01",
-                  "author": "adombeck",
-                  "timestamp": 1782474405,
-                  "message": "e2e-tests/r2-worker: Add log.html shortcut to directory listings (#1630)",
-                  "url": "https://github.com/canonical/authd/commit/d62e6b9d0634a1ef407b3676e1e7411a3eb49b01"
+                  "sha": "8c5e367543d78faaeb7885ef0bbccda7b8122521",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1782487027,
+                  "message": "e2e-tests/google: tolerate both apostrophe variants in page texts\n\nGoogle can serve either typographic (curly) or straight apostrophes in\nthe sign-in texts, depending on locale or page version. Hardcoding one\nvariant causes the test to miss the verification, re-auth or\nwrong-email pages when the other variant is present.",
+                  "url": "https://github.com/canonical/authd/commit/8c5e367543d78faaeb7885ef0bbccda7b8122521"
                },
                {
-                  "sha": "df326490fcb7acf2318a097d1682dce803073a21",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782469645,
-                  "message": "e2e-tests/r2-worker: Walk '..' past collapsing ancestors\n\nAfter redirecting through single-child directories, the '..' link\npointed at the immediate parent, which itself just redirected straight\nback down — making '..' a no-op. Walk up past any ancestor that would\nonly collapse back here so '..' lands on a directory with a real choice.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/df326490fcb7acf2318a097d1682dce803073a21"
+                  "sha": "6210ea39c72bd0a59fc01893719ab43a41921c92",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1782486999,
+                  "message": "e2e-tests/google: make phrase matching case-insensitive\n\nGoogle serves page text in varying case by locale and session state; a case-sensitive exact match can miss a page and either time out or route to the wrong handler.\n\nDispatch uses apostrophe-free substrings (\"verify it\", \"signing back in\", \"find your google account\") rather than the full module-level constants so it stays independent of the regex alternation those constants carry for wait_for_pattern.\n\n\"verification code\" is added alongside the two-step phrases to cover a TOTP page variant where Google omits the \"2-Step Verification\" heading and shows only the code-entry prompt.",
+                  "url": "https://github.com/canonical/authd/commit/6210ea39c72bd0a59fc01893719ab43a41921c92"
                }
             ],
             "ciActions": [
@@ -7941,25 +7941,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ea62880b626105b2dae03d403708f8e2d5b042de",
-                  "author": "adombeck",
-                  "timestamp": 1782480120,
-                  "message": "pam/tests: Avoid snapshotting a half-rendered QR matrix (#1625)",
-                  "url": "https://github.com/canonical/authd/commit/ea62880b626105b2dae03d403708f8e2d5b042de"
+                  "sha": "37b90b8e049fa2c68a108695c8a0ac5caddfe688",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1782709213,
+                  "message": "e2e-tests: tolerate apostrophe variants in Google login flow (#1627)\n\nThe google end-to-end tests are failing recently, as shown in these e2e\nruns for #1620:\n\n\n[[noble](https://authd-e2e-test-logs.adrian-dombeck.workers.dev/pr-1620/run-28159619077-1/noble-authd-google/log.html)],\n[[resolute](https://authd-e2e-test-logs.adrian-dombeck.workers.dev/pr-1620/run-28159619077-1/resolute-authd-google/log.html)],\n[[devel](https://authd-e2e-test-logs.adrian-dombeck.workers.dev/pr-1620/run-28159619077-1/devel-authd-google/log.html)]\n\n We can see the error in the logs as\n\n```\nTimeoutError: Timed out after 20000ms waiting for pattern 'Email or phone|Enter your password|2-Step Verification|Verify it’s you|Choose an account|You’re signing back in|Continue on your device|Wrong code. Try again.|Wrong number of digits. Try again.|Couldn’t find your Google Account|Enter a valid email or phone number|Wrong password'\n```\n\nThe Google device-code flow intermittently failed to match pages like\n\"Verify it's you\", \"You're signing back in\", and \"Couldn't find your\nGoogle Account\". Google can serve either typographic (curly) or straight\napostrophes in these texts, and page text casing can vary across locales\nor browser sessions. The exact string comparison therefore missed the\npage, causing the test to time out.\n\nSwitch the matchers to case-insensitive substring matching via a small\n`_matches_phrase` helper, and use a regex character class `['’]` in the\napostrophe-bearing constants so the page detection fires regardless of\nwhich variant appears.\n\nUDENG-10824",
+                  "url": "https://github.com/canonical/authd/commit/37b90b8e049fa2c68a108695c8a0ac5caddfe688"
                },
                {
-                  "sha": "d62e6b9d0634a1ef407b3676e1e7411a3eb49b01",
-                  "author": "adombeck",
-                  "timestamp": 1782474405,
-                  "message": "e2e-tests/r2-worker: Add log.html shortcut to directory listings (#1630)",
-                  "url": "https://github.com/canonical/authd/commit/d62e6b9d0634a1ef407b3676e1e7411a3eb49b01"
+                  "sha": "8c5e367543d78faaeb7885ef0bbccda7b8122521",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1782487027,
+                  "message": "e2e-tests/google: tolerate both apostrophe variants in page texts\n\nGoogle can serve either typographic (curly) or straight apostrophes in\nthe sign-in texts, depending on locale or page version. Hardcoding one\nvariant causes the test to miss the verification, re-auth or\nwrong-email pages when the other variant is present.",
+                  "url": "https://github.com/canonical/authd/commit/8c5e367543d78faaeb7885ef0bbccda7b8122521"
                },
                {
-                  "sha": "df326490fcb7acf2318a097d1682dce803073a21",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782469645,
-                  "message": "e2e-tests/r2-worker: Walk '..' past collapsing ancestors\n\nAfter redirecting through single-child directories, the '..' link\npointed at the immediate parent, which itself just redirected straight\nback down — making '..' a no-op. Walk up past any ancestor that would\nonly collapse back here so '..' lands on a directory with a real choice.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/df326490fcb7acf2318a097d1682dce803073a21"
+                  "sha": "6210ea39c72bd0a59fc01893719ab43a41921c92",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1782486999,
+                  "message": "e2e-tests/google: make phrase matching case-insensitive\n\nGoogle serves page text in varying case by locale and session state; a case-sensitive exact match can miss a page and either time out or route to the wrong handler.\n\nDispatch uses apostrophe-free substrings (\"verify it\", \"signing back in\", \"find your google account\") rather than the full module-level constants so it stays independent of the regex alternation those constants carry for wait_for_pattern.\n\n\"verification code\" is added alongside the two-step phrases to cover a TOTP page variant where Google omits the \"2-Step Verification\" heading and shows only the code-entry prompt.",
+                  "url": "https://github.com/canonical/authd/commit/6210ea39c72bd0a59fc01893719ab43a41921c92"
                }
             ],
             "ciActions": [
