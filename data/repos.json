@@ -3328,6 +3328,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f9b39a80fd54d07cb9ff6b2208683b262a37beec",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1782854796,
+                  "message": "brokers: use providerID for user identification (#1546)\n\nWe used to rely on emails or `preferred_username` to identify remote\nusers. These are not guaranteed to be stable and can create difficulties\nwhen trying to identify users who have changed their email/username. In\norder to better identify the users and properly match them to their\nrespective local accounts, we need to switch to using the `sub` (`oid`\nfor EntraID) claim, which is a unique ID assigned by the provider to its\nusers, to identify the remote users. These will be generically named\nproviderID in the code, since we use different values for the brokers.\n\nThis also helps us to implement new features, such as allowing login\nwith shortened usernames.\n\nUDENG-9399",
+                  "url": "https://github.com/canonical/authd/commit/f9b39a80fd54d07cb9ff6b2208683b262a37beec"
+               },
+               {
                   "sha": "392a78dc9bb3c72754633e01afcb6e9a8edf19bb",
                   "author": "adombeck",
                   "timestamp": 1782814720,
@@ -3340,13 +3347,6 @@
                   "timestamp": 1782814419,
                   "message": "Fix e2e commit status not appearing on PR (#1647)",
                   "url": "https://github.com/canonical/authd/commit/e414fe3b5e10bfd7682c56bcc02a17473dacb39e"
-               },
-               {
-                  "sha": "f1eb818f435160417993442286e82281903a1d63",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782810665,
-                  "message": "Fix e2e commit status not appearing on PR due to stale merge commit SHA\n\nFor pull_request events, github.sha is a temporary merge commit that\nGitHub generates to test merging the feature branch into the base. This\nSHA is invalidated whenever the base branch advances: GitHub creates a\nnew merge commit, leaving any status posted to the old SHA invisible on\nthe PR — even though the API returns 201.\n\nUse context.payload.pull_request?.head?.sha (the feature branch HEAD,\nwhich is stable across base-branch updates) for pull_request triggers,\nfalling back to context.sha for push/schedule/workflow_dispatch events.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f1eb818f435160417993442286e82281903a1d63"
                }
             ],
             "ciActions": [
@@ -5636,6 +5636,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f9b39a80fd54d07cb9ff6b2208683b262a37beec",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1782854796,
+                  "message": "brokers: use providerID for user identification (#1546)\n\nWe used to rely on emails or `preferred_username` to identify remote\nusers. These are not guaranteed to be stable and can create difficulties\nwhen trying to identify users who have changed their email/username. In\norder to better identify the users and properly match them to their\nrespective local accounts, we need to switch to using the `sub` (`oid`\nfor EntraID) claim, which is a unique ID assigned by the provider to its\nusers, to identify the remote users. These will be generically named\nproviderID in the code, since we use different values for the brokers.\n\nThis also helps us to implement new features, such as allowing login\nwith shortened usernames.\n\nUDENG-9399",
+                  "url": "https://github.com/canonical/authd/commit/f9b39a80fd54d07cb9ff6b2208683b262a37beec"
+               },
+               {
                   "sha": "392a78dc9bb3c72754633e01afcb6e9a8edf19bb",
                   "author": "adombeck",
                   "timestamp": 1782814720,
@@ -5648,13 +5655,6 @@
                   "timestamp": 1782814419,
                   "message": "Fix e2e commit status not appearing on PR (#1647)",
                   "url": "https://github.com/canonical/authd/commit/e414fe3b5e10bfd7682c56bcc02a17473dacb39e"
-               },
-               {
-                  "sha": "f1eb818f435160417993442286e82281903a1d63",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782810665,
-                  "message": "Fix e2e commit status not appearing on PR due to stale merge commit SHA\n\nFor pull_request events, github.sha is a temporary merge commit that\nGitHub generates to test merging the feature branch into the base. This\nSHA is invalidated whenever the base branch advances: GitHub creates a\nnew merge commit, leaving any status posted to the old SHA invisible on\nthe PR — even though the API returns 201.\n\nUse context.payload.pull_request?.head?.sha (the feature branch HEAD,\nwhich is stable across base-branch updates) for pull_request triggers,\nfalling back to context.sha for push/schedule/workflow_dispatch events.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f1eb818f435160417993442286e82281903a1d63"
                }
             ],
             "ciActions": [
@@ -8113,6 +8113,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f9b39a80fd54d07cb9ff6b2208683b262a37beec",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1782854796,
+                  "message": "brokers: use providerID for user identification (#1546)\n\nWe used to rely on emails or `preferred_username` to identify remote\nusers. These are not guaranteed to be stable and can create difficulties\nwhen trying to identify users who have changed their email/username. In\norder to better identify the users and properly match them to their\nrespective local accounts, we need to switch to using the `sub` (`oid`\nfor EntraID) claim, which is a unique ID assigned by the provider to its\nusers, to identify the remote users. These will be generically named\nproviderID in the code, since we use different values for the brokers.\n\nThis also helps us to implement new features, such as allowing login\nwith shortened usernames.\n\nUDENG-9399",
+                  "url": "https://github.com/canonical/authd/commit/f9b39a80fd54d07cb9ff6b2208683b262a37beec"
+               },
+               {
                   "sha": "392a78dc9bb3c72754633e01afcb6e9a8edf19bb",
                   "author": "adombeck",
                   "timestamp": 1782814720,
@@ -8125,13 +8132,6 @@
                   "timestamp": 1782814419,
                   "message": "Fix e2e commit status not appearing on PR (#1647)",
                   "url": "https://github.com/canonical/authd/commit/e414fe3b5e10bfd7682c56bcc02a17473dacb39e"
-               },
-               {
-                  "sha": "f1eb818f435160417993442286e82281903a1d63",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782810665,
-                  "message": "Fix e2e commit status not appearing on PR due to stale merge commit SHA\n\nFor pull_request events, github.sha is a temporary merge commit that\nGitHub generates to test merging the feature branch into the base. This\nSHA is invalidated whenever the base branch advances: GitHub creates a\nnew merge commit, leaving any status posted to the old SHA invisible on\nthe PR — even though the API returns 201.\n\nUse context.payload.pull_request?.head?.sha (the feature branch HEAD,\nwhich is stable across base-branch updates) for pull_request triggers,\nfalling back to context.sha for push/schedule/workflow_dispatch events.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f1eb818f435160417993442286e82281903a1d63"
                }
             ],
             "ciActions": [
