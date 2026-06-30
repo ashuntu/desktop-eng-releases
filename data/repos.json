@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a013b706f76d827dba3e4be6ab8c4c4bf625f1b5",
+                  "sha": "8c9781d35790db7ccedfae2e34c8d53f365d11ab",
                   "author": "adombeck",
-                  "timestamp": 1782774335,
-                  "message": "e2e-tests: only replay journal once the host is connected (#1638)\n\nUDENG-10845",
-                  "url": "https://github.com/canonical/authd/commit/a013b706f76d827dba3e4be6ab8c4c4bf625f1b5"
+                  "timestamp": 1782774708,
+                  "message": "e2e-tests: Wait for GDM login screen to be fully loaded (#1645)\n\nCloses #1644\nUDENG-10847",
+                  "url": "https://github.com/canonical/authd/commit/8c9781d35790db7ccedfae2e34c8d53f365d11ab"
                },
                {
-                  "sha": "0f8120f2f5fbfdd418ab0f8e250456f199136964",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782731922,
-                  "message": "e2e-tests: bound journal-export restarts so it stops after tests\n\nRate limiting was disabled, so once the host stops listening the\nservice restarted indefinitely. Keep retrying every second but allow\nup to 300 restarts in 600s, so transient gaps between test suites are\ntolerated while the service still gives up about five minutes after\nthe run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0f8120f2f5fbfdd418ab0f8e250456f199136964"
+                  "sha": "1f139f8fd437e7e44c9c277d580c6b7cf8123e62",
+                  "author": "adombeck",
+                  "timestamp": 1782774632,
+                  "message": "e2e-tests: add device registration test for msentraid (#1641)\n\nUDENG-10738",
+                  "url": "https://github.com/canonical/authd/commit/1f139f8fd437e7e44c9c277d580c6b7cf8123e62"
                },
                {
-                  "sha": "92400e8342abb0c9567e5575df37cfa3dc110e6b",
+                  "sha": "c4fc90bed6b7002ffad78cf8d4e44a3df319b565",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782731906,
-                  "message": "e2e-tests: only replay journal once the host is connected\n\nThe journal-export service piped journalctl into socat, so the full\nboot journal was read and serialized on every start regardless of\nwhether the host was listening. After tests finish the host stops\nlistening, socat fails, and the 1s restart loop re-replays the whole\n(now large) journal every second, burning CPU.\n\nLet socat establish the connection first and exec journalctl only on\nsuccess, so the expensive replay happens only when there is somewhere\nto send it; a failed connect now exits cheaply.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/92400e8342abb0c9567e5575df37cfa3dc110e6b"
+                  "timestamp": 1782255753,
+                  "message": "e2e-tests: add device registration test for msentraid\n\nAdd an e2e test that enables 'register_device' and verifies the machine\nis registered as a device in Microsoft Entra ID during device\nauthentication. The test is msentraid-only and is skipped for other\nbrokers.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/c4fc90bed6b7002ffad78cf8d4e44a3df319b565"
                }
             ],
             "ciActions": [
@@ -4014,9 +4014,18 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
+               {
+                  "id": 346543149,
+                  "version": "rev86",
+                  "timestamp": 1782772053,
+                  "title": "Revision 86",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 74</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 23:08 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency <a href=\"https://gerrit.wikimedia.org/r/mediawiki/core.git\">https://gerrit.wikimedia.org/r/mediawiki/core.git</a> to v1.45.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/189\">#189</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev86",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...main"
+               },
                {
                   "id": 346515013,
                   "version": "rev85",
@@ -4034,15 +4043,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 72</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:51 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/183\">#183</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev83...rev84\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev83&hellip;rev84</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev84",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...main"
-               },
-               {
-                  "id": 346438633,
-                  "version": "rev83",
-                  "timestamp": 1782755650,
-                  "title": "Revision 83",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 71</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 18:26 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Cleanup the database following failed install attempts by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/184\">#184</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev82...rev83\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev82&hellip;rev83</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev83",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev83...main"
                }
             ],
             "commits": null,
@@ -4057,8 +4057,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 85,
-                     "timestamp": 1782768599
+                     "revision": 86,
+                     "timestamp": 1782774491
                   }
                ],
                "channels": [
@@ -4104,39 +4104,6 @@
             "snap": null
          },
          {
-            "name": "nm.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/nm.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756088060,
-                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
-               },
-               {
-                  "sha": "8bfcc709f591f5fa1774d80bbc1818c6384dfcc6",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756087873,
-                  "message": "Move tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/8bfcc709f591f5fa1774d80bbc1818c6384dfcc6"
-               },
-               {
-                  "sha": "d9bab233e2555881866f5673b2fdc5abed6217ea",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756075408,
-                  "message": "Remove CLA checker",
-                  "url": "https://github.com/canonical/nm.dart/commit/d9bab233e2555881866f5673b2fdc5abed6217ea"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "odrs.dart",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -4168,39 +4135,6 @@
             "ciActions": [
                "https://github.com/canonical/odrs.dart/actions/workflows/ci.yaml"
             ],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "packagekit.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/packagekit.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
-                  "author": "ashuntu",
-                  "timestamp": 1772066466,
-                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
-               },
-               {
-                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
-                  "author": "ashuntu",
-                  "timestamp": 1771891119,
-                  "message": "fix: Add .vscode/ to .gitignore",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
-               },
-               {
-                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
-                  "author": "ashuntu",
-                  "timestamp": 1771891112,
-                  "message": "fix: Resolve ubuntu_lints errors",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
-               }
-            ],
-            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -4876,9 +4810,27 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 346644979,
+                  "version": "rev97",
+                  "timestamp": 1782799717,
+                  "title": "Revision 97",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 90</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 06:10 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency ops to v3.8.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/127\">#127</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...rev97\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96&hellip;rev97</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev97",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...main"
+               },
+               {
+                  "id": 346546500,
+                  "version": "rev96",
+                  "timestamp": 1782775284,
+                  "title": "Revision 96",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:23 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/126\">#126</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/124\">#124</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95...rev96\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95&hellip;rev96</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev96",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...main"
+               },
                {
                   "id": 346519686,
                   "version": "rev95",
@@ -4887,24 +4839,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 21:41 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/125\">#125</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev94...rev95\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev94&hellip;rev95</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev95",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95...main"
-               },
-               {
-                  "id": 342972530,
-                  "version": "rev94",
-                  "timestamp": 1782139600,
-                  "title": "Revision 94",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 88</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:49 UTC on 22 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.9.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/121\">#121</a></li>\n<li>deps(github-actions): update actions/checkout action to v7 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/122\">#122</a></li>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/123\">#123</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev93...rev94\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev93&hellip;rev94</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev94",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev94...main"
-               },
-               {
-                  "id": 340433627,
-                  "version": "rev93",
-                  "timestamp": 1781647531,
-                  "title": "Revision 93",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 86</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:07 UTC on 16 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/119\">#119</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev92...rev93\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev92&hellip;rev93</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev93",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev93...main"
                }
             ],
             "commits": null,
@@ -4916,8 +4850,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 95,
-                     "timestamp": 1782769304
+                     "revision": 97,
+                     "timestamp": 1782799839
                   }
                ],
                "channels": [
@@ -5317,6 +5251,72 @@
             "snap": null
          },
          {
+            "name": "nm.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/nm.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756088060,
+                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
+                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
+               },
+               {
+                  "sha": "8bfcc709f591f5fa1774d80bbc1818c6384dfcc6",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756087873,
+                  "message": "Move tests from 20.04 to 24.04",
+                  "url": "https://github.com/canonical/nm.dart/commit/8bfcc709f591f5fa1774d80bbc1818c6384dfcc6"
+               },
+               {
+                  "sha": "d9bab233e2555881866f5673b2fdc5abed6217ea",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756075408,
+                  "message": "Remove CLA checker",
+                  "url": "https://github.com/canonical/nm.dart/commit/d9bab233e2555881866f5673b2fdc5abed6217ea"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "packagekit.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/packagekit.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
+                  "author": "ashuntu",
+                  "timestamp": 1772066466,
+                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
+               },
+               {
+                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
+                  "author": "ashuntu",
+                  "timestamp": 1771891119,
+                  "message": "fix: Add .vscode/ to .gitignore",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
+               },
+               {
+                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
+                  "author": "ashuntu",
+                  "timestamp": 1771891112,
+                  "message": "fix: Resolve ubuntu_lints errors",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "ubuntu-desktop-provision-screenshots",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -5469,25 +5469,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "53791a95aecd3643dba7c53ad88bd7844f9a75f8",
+                  "sha": "34bb5e5cf88e09521e16e76e084c4a0f3ad18306",
                   "author": "Kat",
-                  "timestamp": 1782745370,
-                  "message": "deps(go-insights): bump github.com/ubuntu/ubuntu-insights/common from 0.9.2 to 0.10.0 in /insights in the minor-updates group (#363)\n\nBumps the minor-updates group in /insights with 1 update:\n[github.com/ubuntu/ubuntu-insights/common](https://github.com/ubuntu/ubuntu-insights).\n\nUpdates `github.com/ubuntu/ubuntu-insights/common` from 0.9.2 to 0.10.0\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/ba7991ec15511341c94bda74fc8c8e24935eac22\"><code>ba7991e</code></a>\nfix(fileutils): move permission setting after rename</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/68a0aa0e6e7562a4483e822601a17db79f3b4bb7\"><code>68a0aa0</code></a>\nrefactor(insights): fold system opt-out into the consent manager</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/0ae960871e0d5dc0c7efe8db0f38be4122c36486\"><code>0ae9608</code></a>\nfeat(insights): Wire system opt-out into the Go API</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/ebd2dbe5573ae8e517a8c2e1112b3b9bc66b8f17\"><code>ebd2dbe</code></a>\nfeat(insights/systemconfig): Add system config manager</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/5016bb4384e4941491c498da01c5d3f530bc1e2c\"><code>5016bb4</code></a>\nfeat(insights/constants): Add system config path constants</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/58afc4e4dfb49c76f2437fcbfb14da5efe2610ab\"><code>58afc4e</code></a>\nrefactor(insights/consent): Use shared atomic write helper</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/6b5ddbdb8275820df64dcb7350e2c604b2674c0a\"><code>6b5ddbd</code></a>\nrefactor(common/fileutils): Add AtomicWriteWithPerm helper</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/65e5c21f8aae299bc099d101bd3d2448cf0dedf8\"><code>65e5c21</code></a>\nfeat(insights): query Ubuntu Pro attach state over D-Bus with CLI\nfallback (#...</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/bf5463b98237cbea849264c06e9f1438303c0b35\"><code>bf5463b</code></a>\npackaging(insights): declare godbus/dbus/v5 license in d/copyright</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/6307b78f12aa58320c3fe9f79498b9cec786a783\"><code>6307b78</code></a>\nfeat(snap): enable ubuntu-pro-control plug</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/ubuntu/ubuntu-insights/compare/common/v0.9.2...common/v0.10.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=github.com/ubuntu/ubuntu-insights/common&package-manager=go_modules&previous-version=0.9.2&new-version=0.10.0)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore <dependency name> major version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's major version (unless you unignore this specific\ndependency's major version or upgrade to it yourself)\n- `@dependabot ignore <dependency name> minor version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's minor version (unless you unignore this specific\ndependency's minor version or upgrade to it yourself)\n- `@dependabot ignore <dependency name>` will close this group update PR\nand stop Dependabot creating any more for the specific dependency\n(unless you unignore this specific dependency or upgrade to it yourself)\n- `@dependabot unignore <dependency name>` will remove all of the ignore\nconditions of the specified dependency\n- `@dependabot unignore <dependency name> <ignore condition>` will\nremove the ignore condition of the specified dependency and ignore\nconditions\n\n\n</details>",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/53791a95aecd3643dba7c53ad88bd7844f9a75f8"
+                  "timestamp": 1782776288,
+                  "message": "feat(insights): add system-opt-out CLI subcommand (#357)\n\nThis pull request adds support for managing a system-wide opt-out state\nfor data collection and upload in the Ubuntu Insights CLI. It introduces\na new `system-opt-out` command, updates the configuration and command\nhandling to support a system-wide config directory, and ensures that\nboth collection and upload operations respect the system opt-out state.\nComprehensive tests and golden files are included to verify the new\nfunctionality.\n\n**System-wide opt-out management:**\n* Added a new `system-opt-out` command with support for setting and\nquerying the system-wide opt-out state, which overrides per-user consent\nfor data collection and upload. This includes input validation, helpful\nwarnings, and integration with the CLI's flag system.\n(`insights/cmd/insights/commands/system_opt_out.go`,\n`insights/cmd/insights/commands/root.go`)\n[[1]](diffhunk://#diff-bbbec41273c00ae948f45830a4fc93a2c93917bd8ab958f4c3146c73f28dab78R1-R90)\n[[2]](diffhunk://#diff-9f09367f1f5e2ffee44589c6f3af790ddd999812507533d404fa4975f80f4c91R120)\n[[3]](diffhunk://#diff-9f09367f1f5e2ffee44589c6f3af790ddd999812507533d404fa4975f80f4c91R44-R47)\n[[4]](diffhunk://#diff-9f09367f1f5e2ffee44589c6f3af790ddd999812507533d404fa4975f80f4c91R136)\n[[5]](diffhunk://#diff-9f09367f1f5e2ffee44589c6f3af790ddd999812507533d404fa4975f80f4c91R150-R154)\n\n* Updated the configuration struct and command-line flags to support a\nnew `--system-config-dir` option for specifying the location of the\nsystem-wide configuration file.\n(`insights/cmd/insights/commands/root.go`)\n[[1]](diffhunk://#diff-9f09367f1f5e2ffee44589c6f3af790ddd999812507533d404fa4975f80f4c91R29)\n[[2]](diffhunk://#diff-9f09367f1f5e2ffee44589c6f3af790ddd999812507533d404fa4975f80f4c91R136)\n[[3]](diffhunk://#diff-9f09367f1f5e2ffee44589c6f3af790ddd999812507533d404fa4975f80f4c91R150-R154)\n\n**Integration with existing commands:**\n* Modified the consent, collect, and upload commands to use the new\nsystem config directory and to respect the system opt-out state,\nincluding warning users when the system opt-out is active and overrides\nper-user consent. (`insights/cmd/insights/commands/consent.go`,\n`insights/cmd/insights/commands/collect.go`,\n`insights/cmd/insights/commands/upload.go`)\n[[1]](diffhunk://#diff-8e99ddc8866ad165cbd3bade9c632bbd89e25088ebf417937e5eb68c5f74764bR12)\n[[2]](diffhunk://#diff-8e99ddc8866ad165cbd3bade9c632bbd89e25088ebf417937e5eb68c5f74764bR65-R72)\n[[3]](diffhunk://#diff-e8729bf226897fcd2aac5a2abffb6ad8333d8b6a0159d348c2c384882eea1254L78-R78)\n[[4]](diffhunk://#diff-689cbe78a5c6c5f07dc6c9897f9e9e7ebd8937ea29bc6e9f8deb8d6e845bfc56L51-R51)\n\n**Testing and validation:**\n* Added a comprehensive test suite for the new `system-opt-out` command,\ncovering both querying and setting the opt-out state, error handling,\nand usage errors.\n(`insights/cmd/insights/commands/system_opt_out_test.go`)\n* Added golden files for expected system config file states after\nrunning the command with various arguments.\n(`insights/cmd/insights/commands/testdata/TestSetSystemOptOut/golden/*`,\n`insights/cmd/insights/commands/testdata/TestSetSystemOptOut/golden/usage_errors_when_state_is_unparsable*`)\n[[1]](diffhunk://#diff-0108c9adec49260c152fcbf859764a2f55cad2690f07507b330a08e159f34dbbR1-R2)\n[[2]](diffhunk://#diff-67d0b2be8ba12f0535fc0cb7aaa44f162b667e2410b828b4c65cacc946fb8fdcR1-R2)\n[[3]](diffhunk://#diff-67fd8cc3659df860db4049e878e5b47588fc3c197700c80cfb97d20d7c13dd48R1)\n\n---\n[UDENG-10539](https://warthogs.atlassian.net/browse/UDENG-10539)\n\n[UDENG-10539]:\nhttps://warthogs.atlassian.net/browse/UDENG-10539?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/34bb5e5cf88e09521e16e76e084c4a0f3ad18306"
                },
                {
-                  "sha": "9366515c7441213240d4f38f39b13fa17d83d5f9",
-                  "author": "Kat",
-                  "timestamp": 1782745342,
-                  "message": "deps(go-server): bump github.com/ubuntu/ubuntu-insights/common from 0.9.2 to 0.10.0 in /server in the minor-updates group (#362)\n\nBumps the minor-updates group in /server with 1 update:\n[github.com/ubuntu/ubuntu-insights/common](https://github.com/ubuntu/ubuntu-insights).\n\nUpdates `github.com/ubuntu/ubuntu-insights/common` from 0.9.2 to 0.10.0\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/ba7991ec15511341c94bda74fc8c8e24935eac22\"><code>ba7991e</code></a>\nfix(fileutils): move permission setting after rename</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/68a0aa0e6e7562a4483e822601a17db79f3b4bb7\"><code>68a0aa0</code></a>\nrefactor(insights): fold system opt-out into the consent manager</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/0ae960871e0d5dc0c7efe8db0f38be4122c36486\"><code>0ae9608</code></a>\nfeat(insights): Wire system opt-out into the Go API</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/ebd2dbe5573ae8e517a8c2e1112b3b9bc66b8f17\"><code>ebd2dbe</code></a>\nfeat(insights/systemconfig): Add system config manager</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/5016bb4384e4941491c498da01c5d3f530bc1e2c\"><code>5016bb4</code></a>\nfeat(insights/constants): Add system config path constants</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/58afc4e4dfb49c76f2437fcbfb14da5efe2610ab\"><code>58afc4e</code></a>\nrefactor(insights/consent): Use shared atomic write helper</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/6b5ddbdb8275820df64dcb7350e2c604b2674c0a\"><code>6b5ddbd</code></a>\nrefactor(common/fileutils): Add AtomicWriteWithPerm helper</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/65e5c21f8aae299bc099d101bd3d2448cf0dedf8\"><code>65e5c21</code></a>\nfeat(insights): query Ubuntu Pro attach state over D-Bus with CLI\nfallback (#...</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/bf5463b98237cbea849264c06e9f1438303c0b35\"><code>bf5463b</code></a>\npackaging(insights): declare godbus/dbus/v5 license in d/copyright</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/6307b78f12aa58320c3fe9f79498b9cec786a783\"><code>6307b78</code></a>\nfeat(snap): enable ubuntu-pro-control plug</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/ubuntu/ubuntu-insights/compare/common/v0.9.2...common/v0.10.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=github.com/ubuntu/ubuntu-insights/common&package-manager=go_modules&previous-version=0.9.2&new-version=0.10.0)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore <dependency name> major version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's major version (unless you unignore this specific\ndependency's major version or upgrade to it yourself)\n- `@dependabot ignore <dependency name> minor version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's minor version (unless you unignore this specific\ndependency's minor version or upgrade to it yourself)\n- `@dependabot ignore <dependency name>` will close this group update PR\nand stop Dependabot creating any more for the specific dependency\n(unless you unignore this specific dependency or upgrade to it yourself)\n- `@dependabot unignore <dependency name>` will remove all of the ignore\nconditions of the specified dependency\n- `@dependabot unignore <dependency name> <ignore condition>` will\nremove the ignore condition of the specified dependency and ignore\nconditions\n\n\n</details>",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/9366515c7441213240d4f38f39b13fa17d83d5f9"
+                  "sha": "7ca418b374dc8f19670ad477f2d56b27b291aa74",
+                  "author": "kkuo",
+                  "timestamp": 1782498298,
+                  "message": "feat(integration-tests): add system opt-out tests\n\n* Implement tests for system opt-out functionality\n* Validate behavior with various system config states\n* Ensure proper handling of opt-out payloads during uploads",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7ca418b374dc8f19670ad477f2d56b27b291aa74"
                },
                {
-                  "sha": "00b812bf89002cfb6ea66876b6bda5fdc0d4f846",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1782504333,
-                  "message": "deps(go-insights): bump github.com/ubuntu/ubuntu-insights/common\n\nBumps the minor-updates group in /insights with 1 update: [github.com/ubuntu/ubuntu-insights/common](https://github.com/ubuntu/ubuntu-insights).\n\n\nUpdates `github.com/ubuntu/ubuntu-insights/common` from 0.9.2 to 0.10.0\n- [Commits](https://github.com/ubuntu/ubuntu-insights/compare/common/v0.9.2...common/v0.10.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/ubuntu/ubuntu-insights/common\n  dependency-version: 0.10.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/00b812bf89002cfb6ea66876b6bda5fdc0d4f846"
+                  "sha": "8ca24310d5c0d58fa29c022830150dc052af05ef",
+                  "author": "kkuo",
+                  "timestamp": 1782247638,
+                  "message": "docs(insights): add system-wide opt-out command to CLI documentation",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8ca24310d5c0d58fa29c022830150dc052af05ef"
                }
             ],
             "ciActions": [
@@ -5636,25 +5636,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a013b706f76d827dba3e4be6ab8c4c4bf625f1b5",
+                  "sha": "8c9781d35790db7ccedfae2e34c8d53f365d11ab",
                   "author": "adombeck",
-                  "timestamp": 1782774335,
-                  "message": "e2e-tests: only replay journal once the host is connected (#1638)\n\nUDENG-10845",
-                  "url": "https://github.com/canonical/authd/commit/a013b706f76d827dba3e4be6ab8c4c4bf625f1b5"
+                  "timestamp": 1782774708,
+                  "message": "e2e-tests: Wait for GDM login screen to be fully loaded (#1645)\n\nCloses #1644\nUDENG-10847",
+                  "url": "https://github.com/canonical/authd/commit/8c9781d35790db7ccedfae2e34c8d53f365d11ab"
                },
                {
-                  "sha": "0f8120f2f5fbfdd418ab0f8e250456f199136964",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782731922,
-                  "message": "e2e-tests: bound journal-export restarts so it stops after tests\n\nRate limiting was disabled, so once the host stops listening the\nservice restarted indefinitely. Keep retrying every second but allow\nup to 300 restarts in 600s, so transient gaps between test suites are\ntolerated while the service still gives up about five minutes after\nthe run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0f8120f2f5fbfdd418ab0f8e250456f199136964"
+                  "sha": "1f139f8fd437e7e44c9c277d580c6b7cf8123e62",
+                  "author": "adombeck",
+                  "timestamp": 1782774632,
+                  "message": "e2e-tests: add device registration test for msentraid (#1641)\n\nUDENG-10738",
+                  "url": "https://github.com/canonical/authd/commit/1f139f8fd437e7e44c9c277d580c6b7cf8123e62"
                },
                {
-                  "sha": "92400e8342abb0c9567e5575df37cfa3dc110e6b",
+                  "sha": "c4fc90bed6b7002ffad78cf8d4e44a3df319b565",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782731906,
-                  "message": "e2e-tests: only replay journal once the host is connected\n\nThe journal-export service piped journalctl into socat, so the full\nboot journal was read and serialized on every start regardless of\nwhether the host was listening. After tests finish the host stops\nlistening, socat fails, and the 1s restart loop re-replays the whole\n(now large) journal every second, burning CPU.\n\nLet socat establish the connection first and exec journalctl only on\nsuccess, so the expensive replay happens only when there is somewhere\nto send it; a failed connect now exits cheaply.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/92400e8342abb0c9567e5575df37cfa3dc110e6b"
+                  "timestamp": 1782255753,
+                  "message": "e2e-tests: add device registration test for msentraid\n\nAdd an e2e test that enables 'register_device' and verifies the machine\nis registered as a device in Microsoft Entra ID during device\nauthentication. The test is msentraid-only and is skipped for other\nbrokers.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/c4fc90bed6b7002ffad78cf8d4e44a3df319b565"
                }
             ],
             "ciActions": [
@@ -7217,9 +7217,27 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 346644979,
+                  "version": "rev97",
+                  "timestamp": 1782799717,
+                  "title": "Revision 97",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 90</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 06:10 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency ops to v3.8.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/127\">#127</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...rev97\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96&hellip;rev97</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev97",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...main"
+               },
+               {
+                  "id": 346546500,
+                  "version": "rev96",
+                  "timestamp": 1782775284,
+                  "title": "Revision 96",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:23 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/126\">#126</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/124\">#124</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95...rev96\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95&hellip;rev96</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev96",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...main"
+               },
                {
                   "id": 346519686,
                   "version": "rev95",
@@ -7228,24 +7246,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 21:41 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/125\">#125</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev94...rev95\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev94&hellip;rev95</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev95",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95...main"
-               },
-               {
-                  "id": 342972530,
-                  "version": "rev94",
-                  "timestamp": 1782139600,
-                  "title": "Revision 94",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 88</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:49 UTC on 22 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.9.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/121\">#121</a></li>\n<li>deps(github-actions): update actions/checkout action to v7 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/122\">#122</a></li>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/123\">#123</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev93...rev94\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev93&hellip;rev94</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev94",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev94...main"
-               },
-               {
-                  "id": 340433627,
-                  "version": "rev93",
-                  "timestamp": 1781647531,
-                  "title": "Revision 93",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 86</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:07 UTC on 16 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/119\">#119</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev92...rev93\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev92&hellip;rev93</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev93",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev93...main"
                }
             ],
             "commits": null,
@@ -7257,8 +7257,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 95,
-                     "timestamp": 1782769304
+                     "revision": 97,
+                     "timestamp": 1782799839
                   }
                ],
                "channels": [
@@ -8113,25 +8113,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a013b706f76d827dba3e4be6ab8c4c4bf625f1b5",
+                  "sha": "8c9781d35790db7ccedfae2e34c8d53f365d11ab",
                   "author": "adombeck",
-                  "timestamp": 1782774335,
-                  "message": "e2e-tests: only replay journal once the host is connected (#1638)\n\nUDENG-10845",
-                  "url": "https://github.com/canonical/authd/commit/a013b706f76d827dba3e4be6ab8c4c4bf625f1b5"
+                  "timestamp": 1782774708,
+                  "message": "e2e-tests: Wait for GDM login screen to be fully loaded (#1645)\n\nCloses #1644\nUDENG-10847",
+                  "url": "https://github.com/canonical/authd/commit/8c9781d35790db7ccedfae2e34c8d53f365d11ab"
                },
                {
-                  "sha": "0f8120f2f5fbfdd418ab0f8e250456f199136964",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782731922,
-                  "message": "e2e-tests: bound journal-export restarts so it stops after tests\n\nRate limiting was disabled, so once the host stops listening the\nservice restarted indefinitely. Keep retrying every second but allow\nup to 300 restarts in 600s, so transient gaps between test suites are\ntolerated while the service still gives up about five minutes after\nthe run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0f8120f2f5fbfdd418ab0f8e250456f199136964"
+                  "sha": "1f139f8fd437e7e44c9c277d580c6b7cf8123e62",
+                  "author": "adombeck",
+                  "timestamp": 1782774632,
+                  "message": "e2e-tests: add device registration test for msentraid (#1641)\n\nUDENG-10738",
+                  "url": "https://github.com/canonical/authd/commit/1f139f8fd437e7e44c9c277d580c6b7cf8123e62"
                },
                {
-                  "sha": "92400e8342abb0c9567e5575df37cfa3dc110e6b",
+                  "sha": "c4fc90bed6b7002ffad78cf8d4e44a3df319b565",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782731906,
-                  "message": "e2e-tests: only replay journal once the host is connected\n\nThe journal-export service piped journalctl into socat, so the full\nboot journal was read and serialized on every start regardless of\nwhether the host was listening. After tests finish the host stops\nlistening, socat fails, and the 1s restart loop re-replays the whole\n(now large) journal every second, burning CPU.\n\nLet socat establish the connection first and exec journalctl only on\nsuccess, so the expensive replay happens only when there is somewhere\nto send it; a failed connect now exits cheaply.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/92400e8342abb0c9567e5575df37cfa3dc110e6b"
+                  "timestamp": 1782255753,
+                  "message": "e2e-tests: add device registration test for msentraid\n\nAdd an e2e test that enables 'register_device' and verifies the machine\nis registered as a device in Microsoft Entra ID during device\nauthentication. The test is msentraid-only and is skipped for other\nbrokers.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+                  "url": "https://github.com/canonical/authd/commit/c4fc90bed6b7002ffad78cf8d4e44a3df319b565"
                }
             ],
             "ciActions": [
@@ -9696,9 +9696,27 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 346644979,
+                  "version": "rev97",
+                  "timestamp": 1782799717,
+                  "title": "Revision 97",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 90</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 06:10 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency ops to v3.8.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/127\">#127</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...rev97\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96&hellip;rev97</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev97",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...main"
+               },
+               {
+                  "id": 346546500,
+                  "version": "rev96",
+                  "timestamp": 1782775284,
+                  "title": "Revision 96",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:23 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/126\">#126</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/124\">#124</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95...rev96\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95&hellip;rev96</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev96",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...main"
+               },
                {
                   "id": 346519686,
                   "version": "rev95",
@@ -9707,24 +9725,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 21:41 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/125\">#125</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev94...rev95\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev94&hellip;rev95</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev95",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95...main"
-               },
-               {
-                  "id": 342972530,
-                  "version": "rev94",
-                  "timestamp": 1782139600,
-                  "title": "Revision 94",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 88</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:49 UTC on 22 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.9.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/121\">#121</a></li>\n<li>deps(github-actions): update actions/checkout action to v7 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/122\">#122</a></li>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/123\">#123</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev93...rev94\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev93&hellip;rev94</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev94",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev94...main"
-               },
-               {
-                  "id": 340433627,
-                  "version": "rev93",
-                  "timestamp": 1781647531,
-                  "title": "Revision 93",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 86</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:07 UTC on 16 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/119\">#119</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev92...rev93\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev92&hellip;rev93</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev93",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev93...main"
                }
             ],
             "commits": null,
@@ -9736,8 +9736,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 95,
-                     "timestamp": 1782769304
+                     "revision": 97,
+                     "timestamp": 1782799839
                   }
                ],
                "channels": [
