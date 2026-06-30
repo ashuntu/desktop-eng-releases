@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4132a9c101aa2c2e30a636ac2c8452e7808bfb2a",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1780467654,
+                  "message": "Drop no-attribute-warn.patch.",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/4132a9c101aa2c2e30a636ac2c8452e7808bfb2a"
+               },
+               {
                   "sha": "90e89f134a755d8b5878aed958aa5d47c4804081",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1782721696,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1780659216,
                   "message": "Layout Libcanberra modules.\n\nLibcanberra as shipped in 24.04 tries to load\n\n  /usr/lib/x86_64-linux-gnu/libcanberra-0.30/libcanberra-pulse.so\n\nwhich does not exist in the snap and results in a failure to play notification\nsounds as per https://bugzilla.mozilla.org/show_bug.cgi?id=2035283.\n\nUse a layout to expose it from the Gnome runtime.",
                   "url": "https://github.com/ubuntu/thunderbird/commit/8885be45f0277886b8e7ecc6c98d689181d63d50"
-               },
-               {
-                  "sha": "7dbad851c808f8734c0793fa00483d8cc2a6ac18",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1779264655,
-                  "message": "Use Rust from Ubuntu's archive.\n\nThe whole fetching of Rust delays the build enough to have\nLaunchpad's proxy token expire and cause the build to fail\nfor Risc-V.",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/7dbad851c808f8734c0793fa00483d8cc2a6ac18"
                }
             ],
             "ciActions": [],
@@ -3106,6 +3106,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7248b22c82b7e775818daec990cfc422387ca5e9",
+                  "author": "Marek Suchánek",
+                  "timestamp": 1782835990,
+                  "message": "Don't assume that the correct Orca layout is selected",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/7248b22c82b7e775818daec990cfc422387ca5e9"
+               },
+               {
                   "sha": "bd261bcf1b9f10180bceb83acb74f1080af54596",
                   "author": "Marek Suchánek",
                   "timestamp": 1782405442,
@@ -3118,13 +3125,6 @@
                   "timestamp": 1782305959,
                   "message": "Merge pull request #148 from ubuntu/starter-pack-2.0\n\nUpdate to Starter Pack 2.0",
                   "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/64acfe4edf0627d9e0ea427c4e33024bc8963004"
-               },
-               {
-                  "sha": "ee2f663fae0ab044c20f3dffcca54b632357e91e",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1782305804,
-                  "message": "Add a sample redirects file for Starter Pack 2.0",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/ee2f663fae0ab044c20f3dffcca54b632357e91e"
                }
             ],
             "ciActions": [
@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8c9781d35790db7ccedfae2e34c8d53f365d11ab",
+                  "sha": "392a78dc9bb3c72754633e01afcb6e9a8edf19bb",
                   "author": "adombeck",
-                  "timestamp": 1782774708,
-                  "message": "e2e-tests: Wait for GDM login screen to be fully loaded (#1645)\n\nCloses #1644\nUDENG-10847",
-                  "url": "https://github.com/canonical/authd/commit/8c9781d35790db7ccedfae2e34c8d53f365d11ab"
+                  "timestamp": 1782814720,
+                  "message": "e2e-tests: Add yarf as a git submodule (#1646)",
+                  "url": "https://github.com/canonical/authd/commit/392a78dc9bb3c72754633e01afcb6e9a8edf19bb"
                },
                {
-                  "sha": "1f139f8fd437e7e44c9c277d580c6b7cf8123e62",
+                  "sha": "e414fe3b5e10bfd7682c56bcc02a17473dacb39e",
                   "author": "adombeck",
-                  "timestamp": 1782774632,
-                  "message": "e2e-tests: add device registration test for msentraid (#1641)\n\nUDENG-10738",
-                  "url": "https://github.com/canonical/authd/commit/1f139f8fd437e7e44c9c277d580c6b7cf8123e62"
+                  "timestamp": 1782814419,
+                  "message": "Fix e2e commit status not appearing on PR (#1647)",
+                  "url": "https://github.com/canonical/authd/commit/e414fe3b5e10bfd7682c56bcc02a17473dacb39e"
                },
                {
-                  "sha": "c4fc90bed6b7002ffad78cf8d4e44a3df319b565",
+                  "sha": "f1eb818f435160417993442286e82281903a1d63",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782255753,
-                  "message": "e2e-tests: add device registration test for msentraid\n\nAdd an e2e test that enables 'register_device' and verifies the machine\nis registered as a device in Microsoft Entra ID during device\nauthentication. The test is msentraid-only and is skipped for other\nbrokers.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/c4fc90bed6b7002ffad78cf8d4e44a3df319b565"
+                  "timestamp": 1782810665,
+                  "message": "Fix e2e commit status not appearing on PR due to stale merge commit SHA\n\nFor pull_request events, github.sha is a temporary merge commit that\nGitHub generates to test merging the feature branch into the base. This\nSHA is invalidated whenever the base branch advances: GitHub creates a\nnew merge commit, leaving any status posted to the old SHA invisible on\nthe PR — even though the API returns 201.\n\nUse context.payload.pull_request?.head?.sha (the feature branch HEAD,\nwhich is stable across base-branch updates) for pull_request triggers,\nfalling back to context.sha for push/schedule/workflow_dispatch events.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/f1eb818f435160417993442286e82281903a1d63"
                }
             ],
             "ciActions": [
@@ -4104,6 +4104,39 @@
             "snap": null
          },
          {
+            "name": "nm.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/nm.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756088060,
+                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
+                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
+               },
+               {
+                  "sha": "8bfcc709f591f5fa1774d80bbc1818c6384dfcc6",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756087873,
+                  "message": "Move tests from 20.04 to 24.04",
+                  "url": "https://github.com/canonical/nm.dart/commit/8bfcc709f591f5fa1774d80bbc1818c6384dfcc6"
+               },
+               {
+                  "sha": "d9bab233e2555881866f5673b2fdc5abed6217ea",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756075408,
+                  "message": "Remove CLA checker",
+                  "url": "https://github.com/canonical/nm.dart/commit/d9bab233e2555881866f5673b2fdc5abed6217ea"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "odrs.dart",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -4135,6 +4168,39 @@
             "ciActions": [
                "https://github.com/canonical/odrs.dart/actions/workflows/ci.yaml"
             ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "packagekit.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/packagekit.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
+                  "author": "ashuntu",
+                  "timestamp": 1772066466,
+                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
+               },
+               {
+                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
+                  "author": "ashuntu",
+                  "timestamp": 1771891119,
+                  "message": "fix: Add .vscode/ to .gitignore",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
+               },
+               {
+                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
+                  "author": "ashuntu",
+                  "timestamp": 1771891112,
+                  "message": "fix: Resolve ubuntu_lints errors",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
+               }
+            ],
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -5251,72 +5317,6 @@
             "snap": null
          },
          {
-            "name": "nm.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/nm.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756088060,
-                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
-               },
-               {
-                  "sha": "8bfcc709f591f5fa1774d80bbc1818c6384dfcc6",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756087873,
-                  "message": "Move tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/8bfcc709f591f5fa1774d80bbc1818c6384dfcc6"
-               },
-               {
-                  "sha": "d9bab233e2555881866f5673b2fdc5abed6217ea",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756075408,
-                  "message": "Remove CLA checker",
-                  "url": "https://github.com/canonical/nm.dart/commit/d9bab233e2555881866f5673b2fdc5abed6217ea"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "packagekit.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/packagekit.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
-                  "author": "ashuntu",
-                  "timestamp": 1772066466,
-                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
-               },
-               {
-                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
-                  "author": "ashuntu",
-                  "timestamp": 1771891119,
-                  "message": "fix: Add .vscode/ to .gitignore",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
-               },
-               {
-                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
-                  "author": "ashuntu",
-                  "timestamp": 1771891112,
-                  "message": "fix: Resolve ubuntu_lints errors",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "ubuntu-desktop-provision-screenshots",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -5636,25 +5636,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8c9781d35790db7ccedfae2e34c8d53f365d11ab",
+                  "sha": "392a78dc9bb3c72754633e01afcb6e9a8edf19bb",
                   "author": "adombeck",
-                  "timestamp": 1782774708,
-                  "message": "e2e-tests: Wait for GDM login screen to be fully loaded (#1645)\n\nCloses #1644\nUDENG-10847",
-                  "url": "https://github.com/canonical/authd/commit/8c9781d35790db7ccedfae2e34c8d53f365d11ab"
+                  "timestamp": 1782814720,
+                  "message": "e2e-tests: Add yarf as a git submodule (#1646)",
+                  "url": "https://github.com/canonical/authd/commit/392a78dc9bb3c72754633e01afcb6e9a8edf19bb"
                },
                {
-                  "sha": "1f139f8fd437e7e44c9c277d580c6b7cf8123e62",
+                  "sha": "e414fe3b5e10bfd7682c56bcc02a17473dacb39e",
                   "author": "adombeck",
-                  "timestamp": 1782774632,
-                  "message": "e2e-tests: add device registration test for msentraid (#1641)\n\nUDENG-10738",
-                  "url": "https://github.com/canonical/authd/commit/1f139f8fd437e7e44c9c277d580c6b7cf8123e62"
+                  "timestamp": 1782814419,
+                  "message": "Fix e2e commit status not appearing on PR (#1647)",
+                  "url": "https://github.com/canonical/authd/commit/e414fe3b5e10bfd7682c56bcc02a17473dacb39e"
                },
                {
-                  "sha": "c4fc90bed6b7002ffad78cf8d4e44a3df319b565",
+                  "sha": "f1eb818f435160417993442286e82281903a1d63",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782255753,
-                  "message": "e2e-tests: add device registration test for msentraid\n\nAdd an e2e test that enables 'register_device' and verifies the machine\nis registered as a device in Microsoft Entra ID during device\nauthentication. The test is msentraid-only and is skipped for other\nbrokers.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/c4fc90bed6b7002ffad78cf8d4e44a3df319b565"
+                  "timestamp": 1782810665,
+                  "message": "Fix e2e commit status not appearing on PR due to stale merge commit SHA\n\nFor pull_request events, github.sha is a temporary merge commit that\nGitHub generates to test merging the feature branch into the base. This\nSHA is invalidated whenever the base branch advances: GitHub creates a\nnew merge commit, leaving any status posted to the old SHA invisible on\nthe PR — even though the API returns 201.\n\nUse context.payload.pull_request?.head?.sha (the feature branch HEAD,\nwhich is stable across base-branch updates) for pull_request triggers,\nfalling back to context.sha for push/schedule/workflow_dispatch events.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/f1eb818f435160417993442286e82281903a1d63"
                }
             ],
             "ciActions": [
@@ -8113,25 +8113,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8c9781d35790db7ccedfae2e34c8d53f365d11ab",
+                  "sha": "392a78dc9bb3c72754633e01afcb6e9a8edf19bb",
                   "author": "adombeck",
-                  "timestamp": 1782774708,
-                  "message": "e2e-tests: Wait for GDM login screen to be fully loaded (#1645)\n\nCloses #1644\nUDENG-10847",
-                  "url": "https://github.com/canonical/authd/commit/8c9781d35790db7ccedfae2e34c8d53f365d11ab"
+                  "timestamp": 1782814720,
+                  "message": "e2e-tests: Add yarf as a git submodule (#1646)",
+                  "url": "https://github.com/canonical/authd/commit/392a78dc9bb3c72754633e01afcb6e9a8edf19bb"
                },
                {
-                  "sha": "1f139f8fd437e7e44c9c277d580c6b7cf8123e62",
+                  "sha": "e414fe3b5e10bfd7682c56bcc02a17473dacb39e",
                   "author": "adombeck",
-                  "timestamp": 1782774632,
-                  "message": "e2e-tests: add device registration test for msentraid (#1641)\n\nUDENG-10738",
-                  "url": "https://github.com/canonical/authd/commit/1f139f8fd437e7e44c9c277d580c6b7cf8123e62"
+                  "timestamp": 1782814419,
+                  "message": "Fix e2e commit status not appearing on PR (#1647)",
+                  "url": "https://github.com/canonical/authd/commit/e414fe3b5e10bfd7682c56bcc02a17473dacb39e"
                },
                {
-                  "sha": "c4fc90bed6b7002ffad78cf8d4e44a3df319b565",
+                  "sha": "f1eb818f435160417993442286e82281903a1d63",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782255753,
-                  "message": "e2e-tests: add device registration test for msentraid\n\nAdd an e2e test that enables 'register_device' and verifies the machine\nis registered as a device in Microsoft Entra ID during device\nauthentication. The test is msentraid-only and is skipped for other\nbrokers.\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
-                  "url": "https://github.com/canonical/authd/commit/c4fc90bed6b7002ffad78cf8d4e44a3df319b565"
+                  "timestamp": 1782810665,
+                  "message": "Fix e2e commit status not appearing on PR due to stale merge commit SHA\n\nFor pull_request events, github.sha is a temporary merge commit that\nGitHub generates to test merging the feature branch into the base. This\nSHA is invalidated whenever the base branch advances: GitHub creates a\nnew merge commit, leaving any status posted to the old SHA invisible on\nthe PR — even though the API returns 201.\n\nUse context.payload.pull_request?.head?.sha (the feature branch HEAD,\nwhich is stable across base-branch updates) for pull_request triggers,\nfalling back to context.sha for push/schedule/workflow_dispatch events.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/f1eb818f435160417993442286e82281903a1d63"
                }
             ],
             "ciActions": [
