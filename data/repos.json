@@ -4018,6 +4018,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 347000969,
+                  "version": "rev87",
+                  "timestamp": 1782836262,
+                  "title": "Revision 87",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 75</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:42 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: replace create-and-promote-user with wrapper around create and promote script by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/191\">#191</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...rev87\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev86&hellip;rev87</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev87",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev87...main"
+               },
+               {
                   "id": 346543149,
                   "version": "rev86",
                   "timestamp": 1782772053,
@@ -4034,15 +4043,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 73</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 21:29 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/188\">#188</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev85",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...main"
-               },
-               {
-                  "id": 346500534,
-                  "version": "rev84",
-                  "timestamp": 1782757612,
-                  "title": "Revision 84",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 72</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:51 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/183\">#183</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev83...rev84\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev83&hellip;rev84</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev84",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...main"
                }
             ],
             "commits": null,
@@ -4057,8 +4057,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 86,
-                     "timestamp": 1782774491
+                     "revision": 87,
+                     "timestamp": 1782841375
                   }
                ],
                "channels": [
@@ -5570,25 +5570,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "044c0af968f3a5d5ae8bfa997f1608b20ef106d2",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1782844027,
+                  "message": "Update cdimages URL (#57)\n\nRef:\nhttps://discourse.ubuntu.com/t/some-recent-cdimage-changes-for-improved-consistency/84525",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/044c0af968f3a5d5ae8bfa997f1608b20ef106d2"
+               },
+               {
+                  "sha": "bfdfcede36fb837be02295a75b272263bc749d52",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1782843356,
+                  "message": "Update cdimages URL\n\nRef: https://discourse.ubuntu.com/t/some-recent-cdimage-changes-for-improved-consistency/84525",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/bfdfcede36fb837be02295a75b272263bc749d52"
+               },
+               {
                   "sha": "077b799888a1458d44fade69787260c9b38ca58d",
                   "author": "Carlos Nihelton",
                   "timestamp": 1782329363,
                   "message": "fix: Exports LC_* variables into the user session ... (#55)\n\n... as shown by `systemctl show-environment`.\n\nWSL2 doesn't go through PAM when creating the user session, so\n`pam_env.so` doesn't have the chance to export some interesting\nenvironment variables, such as the locale related ones.\n\nWSL2 init itself does export `LANG` if found in the `locale.conf` file,\nbut only that var, no others.\n\nThis PR adds a shell script into `/etc/profile.d` that reads the output\nof `systemctl show-environment` and exports the variables it's\ninterested in. This way we delegate to systemd to actually read and\nparse the multiple files that might be interesting for this purpose.\n\nOther variable patterns might be added to that regex as we find more\ninteresting use cases. But we need to be careful: if we didn't filter it\nwe'd end up overwriting `PATH` with a much smaller scope.\n\nHere's how a system set up per the description in #313 would look like\nwith this patch in place:\n\n```\nu@DESKTOP-551PQ9O:~$ locale\nLANG=C.UTF-8\nLANGUAGE=\nLC_CTYPE=\"C.UTF-8\"\nLC_NUMERIC=\"C.UTF-8\"\nLC_TIME=\"C.UTF-8\"\nLC_COLLATE=\"C.UTF-8\"\nLC_MONETARY=\"C.UTF-8\"\nLC_MESSAGES=de_DE.UTF-8\nLC_PAPER=\"C.UTF-8\"\nLC_NAME=\"C.UTF-8\"\nLC_ADDRESS=\"C.UTF-8\"\nLC_TELEPHONE=\"C.UTF-8\"\nLC_MEASUREMENT=\"C.UTF-8\"\nLC_IDENTIFICATION=\"C.UTF-8\"\nLC_ALL=\nu@DESKTOP-551PQ9O:~$ systemctl show-environment\nLANG=C.UTF-8\nLC_MESSAGES=de_DE.UTF-8\nPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin\nu@DESKTOP-551PQ9O:~$ cat /etc/default/locale\nLANG=C.UTF-8\nLC_MESSAGES=de_DE.UTF-8\nu@DESKTOP-551PQ9O:~$\n```\n\nFixes https://github.com/ubuntu/WSL/issues/313\n\n---\nUDENG-220",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/077b799888a1458d44fade69787260c9b38ca58d"
-               },
-               {
-                  "sha": "5849a0924adbff006e19e089d8df478442b2cec6",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1782304019,
-                  "message": "Integration testing for the LC_* variables\n\nIf systemd and cloud-init do nothing, we should have the C.UTF-8 locale,\nso printf should outut 0.500. With both ON but only WSL exporting LANG,\nwe still should get that value. If our fix script exports LC_NUMERIC,\nonly then we can get the expected \"0,500\".\nSource profile manually As we're actually running a script directly with\n`wsl.exe -- bash $script` we're not in a login shell, so sourcing\nprofile is (likely) skipped.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/5849a0924adbff006e19e089d8df478442b2cec6"
-               },
-               {
-                  "sha": "e49b208bb1cd459eef29020e1c3fb4be2f87e687",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1782301926,
-                  "message": "Error messages to the void\n\nIf systemd is disabled or not available (WSL1) we don't want to\nhave error messages like the one below in our shell:\n\nSystem has not been booted with systemd as init system (PID 1). Can't operate.\nFailed to connect to system scope bus via local transport: Host is down",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/e49b208bb1cd459eef29020e1c3fb4be2f87e687"
                }
             ],
             "ciActions": [],
@@ -6359,6 +6359,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 347000969,
+                  "version": "rev87",
+                  "timestamp": 1782836262,
+                  "title": "Revision 87",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 75</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:42 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: replace create-and-promote-user with wrapper around create and promote script by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/191\">#191</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...rev87\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev86&hellip;rev87</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev87",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev87...main"
+               },
+               {
                   "id": 346543149,
                   "version": "rev86",
                   "timestamp": 1782772053,
@@ -6375,15 +6384,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 73</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 21:29 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/188\">#188</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev85",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...main"
-               },
-               {
-                  "id": 346500534,
-                  "version": "rev84",
-                  "timestamp": 1782757612,
-                  "title": "Revision 84",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 72</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:51 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/183\">#183</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev83...rev84\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev83&hellip;rev84</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev84",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...main"
                }
             ],
             "commits": null,
@@ -6398,8 +6398,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 86,
-                     "timestamp": 1782774491
+                     "revision": 87,
+                     "timestamp": 1782841375
                   }
                ],
                "channels": [
@@ -7884,25 +7884,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "044c0af968f3a5d5ae8bfa997f1608b20ef106d2",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1782844027,
+                  "message": "Update cdimages URL (#57)\n\nRef:\nhttps://discourse.ubuntu.com/t/some-recent-cdimage-changes-for-improved-consistency/84525",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/044c0af968f3a5d5ae8bfa997f1608b20ef106d2"
+               },
+               {
+                  "sha": "bfdfcede36fb837be02295a75b272263bc749d52",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1782843356,
+                  "message": "Update cdimages URL\n\nRef: https://discourse.ubuntu.com/t/some-recent-cdimage-changes-for-improved-consistency/84525",
+                  "url": "https://github.com/ubuntu/wsl-setup/commit/bfdfcede36fb837be02295a75b272263bc749d52"
+               },
+               {
                   "sha": "077b799888a1458d44fade69787260c9b38ca58d",
                   "author": "Carlos Nihelton",
                   "timestamp": 1782329363,
                   "message": "fix: Exports LC_* variables into the user session ... (#55)\n\n... as shown by `systemctl show-environment`.\n\nWSL2 doesn't go through PAM when creating the user session, so\n`pam_env.so` doesn't have the chance to export some interesting\nenvironment variables, such as the locale related ones.\n\nWSL2 init itself does export `LANG` if found in the `locale.conf` file,\nbut only that var, no others.\n\nThis PR adds a shell script into `/etc/profile.d` that reads the output\nof `systemctl show-environment` and exports the variables it's\ninterested in. This way we delegate to systemd to actually read and\nparse the multiple files that might be interesting for this purpose.\n\nOther variable patterns might be added to that regex as we find more\ninteresting use cases. But we need to be careful: if we didn't filter it\nwe'd end up overwriting `PATH` with a much smaller scope.\n\nHere's how a system set up per the description in #313 would look like\nwith this patch in place:\n\n```\nu@DESKTOP-551PQ9O:~$ locale\nLANG=C.UTF-8\nLANGUAGE=\nLC_CTYPE=\"C.UTF-8\"\nLC_NUMERIC=\"C.UTF-8\"\nLC_TIME=\"C.UTF-8\"\nLC_COLLATE=\"C.UTF-8\"\nLC_MONETARY=\"C.UTF-8\"\nLC_MESSAGES=de_DE.UTF-8\nLC_PAPER=\"C.UTF-8\"\nLC_NAME=\"C.UTF-8\"\nLC_ADDRESS=\"C.UTF-8\"\nLC_TELEPHONE=\"C.UTF-8\"\nLC_MEASUREMENT=\"C.UTF-8\"\nLC_IDENTIFICATION=\"C.UTF-8\"\nLC_ALL=\nu@DESKTOP-551PQ9O:~$ systemctl show-environment\nLANG=C.UTF-8\nLC_MESSAGES=de_DE.UTF-8\nPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin\nu@DESKTOP-551PQ9O:~$ cat /etc/default/locale\nLANG=C.UTF-8\nLC_MESSAGES=de_DE.UTF-8\nu@DESKTOP-551PQ9O:~$\n```\n\nFixes https://github.com/ubuntu/WSL/issues/313\n\n---\nUDENG-220",
                   "url": "https://github.com/ubuntu/wsl-setup/commit/077b799888a1458d44fade69787260c9b38ca58d"
-               },
-               {
-                  "sha": "5849a0924adbff006e19e089d8df478442b2cec6",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1782304019,
-                  "message": "Integration testing for the LC_* variables\n\nIf systemd and cloud-init do nothing, we should have the C.UTF-8 locale,\nso printf should outut 0.500. With both ON but only WSL exporting LANG,\nwe still should get that value. If our fix script exports LC_NUMERIC,\nonly then we can get the expected \"0,500\".\nSource profile manually As we're actually running a script directly with\n`wsl.exe -- bash $script` we're not in a login shell, so sourcing\nprofile is (likely) skipped.",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/5849a0924adbff006e19e089d8df478442b2cec6"
-               },
-               {
-                  "sha": "e49b208bb1cd459eef29020e1c3fb4be2f87e687",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1782301926,
-                  "message": "Error messages to the void\n\nIf systemd is disabled or not available (WSL1) we don't want to\nhave error messages like the one below in our shell:\n\nSystem has not been booted with systemd as init system (PID 1). Can't operate.\nFailed to connect to system scope bus via local transport: Host is down",
-                  "url": "https://github.com/ubuntu/wsl-setup/commit/e49b208bb1cd459eef29020e1c3fb4be2f87e687"
                }
             ],
             "ciActions": [],
@@ -8803,6 +8803,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 347000969,
+                  "version": "rev87",
+                  "timestamp": 1782836262,
+                  "title": "Revision 87",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 75</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:42 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: replace create-and-promote-user with wrapper around create and promote script by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/191\">#191</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...rev87\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev86&hellip;rev87</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev87",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev87...main"
+               },
+               {
                   "id": 346543149,
                   "version": "rev86",
                   "timestamp": 1782772053,
@@ -8819,15 +8828,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 73</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 21:29 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/188\">#188</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev85",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...main"
-               },
-               {
-                  "id": 346500534,
-                  "version": "rev84",
-                  "timestamp": 1782757612,
-                  "title": "Revision 84",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 72</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:51 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/183\">#183</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev83...rev84\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev83&hellip;rev84</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev84",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...main"
                }
             ],
             "commits": null,
@@ -8842,8 +8842,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 86,
-                     "timestamp": 1782774491
+                     "revision": 87,
+                     "timestamp": 1782841375
                   }
                ],
                "channels": [
