@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef",
+                  "sha": "23a613eb62b07169a2fe8639e13aadd423a4a14c",
                   "author": "adombeck",
-                  "timestamp": 1782919504,
-                  "message": "e2e-tests: enable AI agents to author tests (#1639)\n\nUDENG-10846",
-                  "url": "https://github.com/canonical/authd/commit/e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef"
+                  "timestamp": 1782935680,
+                  "message": "Fix broker Go tests (#1655)",
+                  "url": "https://github.com/canonical/authd/commit/23a613eb62b07169a2fe8639e13aadd423a4a14c"
                },
                {
-                  "sha": "536054a0fa63af1615a9f346c844b24fef1e9b59",
-                  "author": "adombeck",
-                  "timestamp": 1782919400,
-                  "message": "broker: Allow login when token cannot be stored (#1522)\n\nCloses #1182\nUDENG-10203",
-                  "url": "https://github.com/canonical/authd/commit/536054a0fa63af1615a9f346c844b24fef1e9b59"
-               },
-               {
-                  "sha": "b83176cb92fb941d36b58956c31def5de757b9c8",
+                  "sha": "35c3a93f2ff6c123a07ec404c968a57c700fd1f3",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1779871039,
-                  "message": "Add test case for allowing login when token cannot be stored",
-                  "url": "https://github.com/canonical/authd/commit/b83176cb92fb941d36b58956c31def5de757b9c8"
+                  "timestamp": 1782935211,
+                  "message": "broker: fix golden files corrupted by rebase conflict in b83176cb9\n\nCommit b83176cb9 (\"Add test case for allowing login when token cannot be\nstored\") introduced golden files that were left in an inconsistent state\nafter a rebase conflict: test data directories were still keyed by email\naddress rather than user ID, and one golden file retained the old\n`uuid` field name instead of `provider_id`.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/35c3a93f2ff6c123a07ec404c968a57c700fd1f3"
+               },
+               {
+                  "sha": "51f3888a123f6b04846cf87793c271acbe5c1e7e",
+                  "author": "adombeck",
+                  "timestamp": 1782926583,
+                  "message": "snap: retry go mod download all on transient network failures (#1653)\n\nUDENG-10876",
+                  "url": "https://github.com/canonical/authd/commit/51f3888a123f6b04846cf87793c271acbe5c1e7e"
                }
             ],
             "ciActions": [
@@ -4018,6 +4018,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 347690951,
+                  "version": "rev88",
+                  "timestamp": 1782935066,
+                  "title": "Revision 88",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 76</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:04 UTC on 1 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: update ops dependency to v3.8.0 by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/192\">#192</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev87...rev88\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev87&hellip;rev88</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev88",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev88...main"
+               },
+               {
                   "id": 347000969,
                   "version": "rev87",
                   "timestamp": 1782836262,
@@ -4034,15 +4043,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 74</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 23:08 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency <a href=\"https://gerrit.wikimedia.org/r/mediawiki/core.git\">https://gerrit.wikimedia.org/r/mediawiki/core.git</a> to v1.45.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/189\">#189</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev86",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...main"
-               },
-               {
-                  "id": 346515013,
-                  "version": "rev85",
-                  "timestamp": 1782765604,
-                  "title": "Revision 85",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 73</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 21:29 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/188\">#188</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev85",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...main"
                }
             ],
             "commits": null,
@@ -4057,8 +4057,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 87,
-                     "timestamp": 1782841375
+                     "revision": 88,
+                     "timestamp": 1782936257
                   }
                ],
                "channels": [
@@ -5636,25 +5636,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef",
+                  "sha": "23a613eb62b07169a2fe8639e13aadd423a4a14c",
                   "author": "adombeck",
-                  "timestamp": 1782919504,
-                  "message": "e2e-tests: enable AI agents to author tests (#1639)\n\nUDENG-10846",
-                  "url": "https://github.com/canonical/authd/commit/e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef"
+                  "timestamp": 1782935680,
+                  "message": "Fix broker Go tests (#1655)",
+                  "url": "https://github.com/canonical/authd/commit/23a613eb62b07169a2fe8639e13aadd423a4a14c"
                },
                {
-                  "sha": "536054a0fa63af1615a9f346c844b24fef1e9b59",
-                  "author": "adombeck",
-                  "timestamp": 1782919400,
-                  "message": "broker: Allow login when token cannot be stored (#1522)\n\nCloses #1182\nUDENG-10203",
-                  "url": "https://github.com/canonical/authd/commit/536054a0fa63af1615a9f346c844b24fef1e9b59"
-               },
-               {
-                  "sha": "b83176cb92fb941d36b58956c31def5de757b9c8",
+                  "sha": "35c3a93f2ff6c123a07ec404c968a57c700fd1f3",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1779871039,
-                  "message": "Add test case for allowing login when token cannot be stored",
-                  "url": "https://github.com/canonical/authd/commit/b83176cb92fb941d36b58956c31def5de757b9c8"
+                  "timestamp": 1782935211,
+                  "message": "broker: fix golden files corrupted by rebase conflict in b83176cb9\n\nCommit b83176cb9 (\"Add test case for allowing login when token cannot be\nstored\") introduced golden files that were left in an inconsistent state\nafter a rebase conflict: test data directories were still keyed by email\naddress rather than user ID, and one golden file retained the old\n`uuid` field name instead of `provider_id`.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/35c3a93f2ff6c123a07ec404c968a57c700fd1f3"
+               },
+               {
+                  "sha": "51f3888a123f6b04846cf87793c271acbe5c1e7e",
+                  "author": "adombeck",
+                  "timestamp": 1782926583,
+                  "message": "snap: retry go mod download all on transient network failures (#1653)\n\nUDENG-10876",
+                  "url": "https://github.com/canonical/authd/commit/51f3888a123f6b04846cf87793c271acbe5c1e7e"
                }
             ],
             "ciActions": [
@@ -6359,6 +6359,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 347690951,
+                  "version": "rev88",
+                  "timestamp": 1782935066,
+                  "title": "Revision 88",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 76</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:04 UTC on 1 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: update ops dependency to v3.8.0 by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/192\">#192</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev87...rev88\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev87&hellip;rev88</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev88",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev88...main"
+               },
+               {
                   "id": 347000969,
                   "version": "rev87",
                   "timestamp": 1782836262,
@@ -6375,15 +6384,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 74</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 23:08 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency <a href=\"https://gerrit.wikimedia.org/r/mediawiki/core.git\">https://gerrit.wikimedia.org/r/mediawiki/core.git</a> to v1.45.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/189\">#189</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev86",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...main"
-               },
-               {
-                  "id": 346515013,
-                  "version": "rev85",
-                  "timestamp": 1782765604,
-                  "title": "Revision 85",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 73</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 21:29 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/188\">#188</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev85",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...main"
                }
             ],
             "commits": null,
@@ -6398,8 +6398,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 87,
-                     "timestamp": 1782841375
+                     "revision": 88,
+                     "timestamp": 1782936257
                   }
                ],
                "channels": [
@@ -8113,25 +8113,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef",
+                  "sha": "23a613eb62b07169a2fe8639e13aadd423a4a14c",
                   "author": "adombeck",
-                  "timestamp": 1782919504,
-                  "message": "e2e-tests: enable AI agents to author tests (#1639)\n\nUDENG-10846",
-                  "url": "https://github.com/canonical/authd/commit/e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef"
+                  "timestamp": 1782935680,
+                  "message": "Fix broker Go tests (#1655)",
+                  "url": "https://github.com/canonical/authd/commit/23a613eb62b07169a2fe8639e13aadd423a4a14c"
                },
                {
-                  "sha": "536054a0fa63af1615a9f346c844b24fef1e9b59",
-                  "author": "adombeck",
-                  "timestamp": 1782919400,
-                  "message": "broker: Allow login when token cannot be stored (#1522)\n\nCloses #1182\nUDENG-10203",
-                  "url": "https://github.com/canonical/authd/commit/536054a0fa63af1615a9f346c844b24fef1e9b59"
-               },
-               {
-                  "sha": "b83176cb92fb941d36b58956c31def5de757b9c8",
+                  "sha": "35c3a93f2ff6c123a07ec404c968a57c700fd1f3",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1779871039,
-                  "message": "Add test case for allowing login when token cannot be stored",
-                  "url": "https://github.com/canonical/authd/commit/b83176cb92fb941d36b58956c31def5de757b9c8"
+                  "timestamp": 1782935211,
+                  "message": "broker: fix golden files corrupted by rebase conflict in b83176cb9\n\nCommit b83176cb9 (\"Add test case for allowing login when token cannot be\nstored\") introduced golden files that were left in an inconsistent state\nafter a rebase conflict: test data directories were still keyed by email\naddress rather than user ID, and one golden file retained the old\n`uuid` field name instead of `provider_id`.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/35c3a93f2ff6c123a07ec404c968a57c700fd1f3"
+               },
+               {
+                  "sha": "51f3888a123f6b04846cf87793c271acbe5c1e7e",
+                  "author": "adombeck",
+                  "timestamp": 1782926583,
+                  "message": "snap: retry go mod download all on transient network failures (#1653)\n\nUDENG-10876",
+                  "url": "https://github.com/canonical/authd/commit/51f3888a123f6b04846cf87793c271acbe5c1e7e"
                }
             ],
             "ciActions": [
@@ -8803,6 +8803,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 347690951,
+                  "version": "rev88",
+                  "timestamp": 1782935066,
+                  "title": "Revision 88",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 76</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 20:04 UTC on 1 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: update ops dependency to v3.8.0 by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/192\">#192</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev87...rev88\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev87&hellip;rev88</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev88",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev88...main"
+               },
+               {
                   "id": 347000969,
                   "version": "rev87",
                   "timestamp": 1782836262,
@@ -8819,15 +8828,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 74</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 23:08 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency <a href=\"https://gerrit.wikimedia.org/r/mediawiki/core.git\">https://gerrit.wikimedia.org/r/mediawiki/core.git</a> to v1.45.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/189\">#189</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev86",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...main"
-               },
-               {
-                  "id": 346515013,
-                  "version": "rev85",
-                  "timestamp": 1782765604,
-                  "title": "Revision 85",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 73</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 21:29 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/188\">#188</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev84...rev85\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev84&hellip;rev85</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev85",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...main"
                }
             ],
             "commits": null,
@@ -8842,8 +8842,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 87,
-                     "timestamp": 1782841375
+                     "revision": 88,
+                     "timestamp": 1782936257
                   }
                ],
                "channels": [
