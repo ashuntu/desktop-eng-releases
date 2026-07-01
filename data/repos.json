@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "69e9556722c16e9e28fa0456056b437e50e5cedb",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1782897115,
+                  "message": "Drop no-attribute-warn.patch from patches/series too.",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/69e9556722c16e9e28fa0456056b437e50e5cedb"
+               },
+               {
                   "sha": "4132a9c101aa2c2e30a636ac2c8452e7808bfb2a",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1780467654,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1782721696,
                   "message": "152.0.1",
                   "url": "https://github.com/ubuntu/thunderbird/commit/90e89f134a755d8b5878aed958aa5d47c4804081"
-               },
-               {
-                  "sha": "8885be45f0277886b8e7ecc6c98d689181d63d50",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1780659216,
-                  "message": "Layout Libcanberra modules.\n\nLibcanberra as shipped in 24.04 tries to load\n\n  /usr/lib/x86_64-linux-gnu/libcanberra-0.30/libcanberra-pulse.so\n\nwhich does not exist in the snap and results in a failure to play notification\nsounds as per https://bugzilla.mozilla.org/show_bug.cgi?id=2035283.\n\nUse a layout to expose it from the Gnome runtime.",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/8885be45f0277886b8e7ecc6c98d689181d63d50"
                }
             ],
             "ciActions": [],
@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f7b1c17d98584c7291059cc6f381517cecde3a0b",
+                  "sha": "e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef",
                   "author": "adombeck",
-                  "timestamp": 1782858632,
-                  "message": "e2e-tests: Increase sshd LoginGraceTime to avoid auth timeouts (#1651)\n\nCloses #1650\nUDENG-10873",
-                  "url": "https://github.com/canonical/authd/commit/f7b1c17d98584c7291059cc6f381517cecde3a0b"
+                  "timestamp": 1782919504,
+                  "message": "e2e-tests: enable AI agents to author tests (#1639)\n\nUDENG-10846",
+                  "url": "https://github.com/canonical/authd/commit/e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef"
                },
                {
-                  "sha": "e3560ededbc4336b7eef1491ae2b741d2d6b5cf4",
+                  "sha": "536054a0fa63af1615a9f346c844b24fef1e9b59",
+                  "author": "adombeck",
+                  "timestamp": 1782919400,
+                  "message": "broker: Allow login when token cannot be stored (#1522)\n\nCloses #1182\nUDENG-10203",
+                  "url": "https://github.com/canonical/authd/commit/536054a0fa63af1615a9f346c844b24fef1e9b59"
+               },
+               {
+                  "sha": "b83176cb92fb941d36b58956c31def5de757b9c8",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782854961,
-                  "message": "e2e-tests: Increase sshd LoginGraceTime to avoid auth timeouts\n\nSSH logins in the e2e-tests sometimes failed with \"Timeout before\nauthentication\". The device authentication flow can take more than two\nminutes, but sshd aborts the connection after the default LoginGraceTime\nof 120 seconds before authentication completes.\n\nRaise LoginGraceTime to 300 seconds so slow device authentications have\nenough time to finish. The directive is global-only, so it must precede\nthe Match block.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/e3560ededbc4336b7eef1491ae2b741d2d6b5cf4"
-               },
-               {
-                  "sha": "f9b39a80fd54d07cb9ff6b2208683b262a37beec",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1782854796,
-                  "message": "brokers: use providerID for user identification (#1546)\n\nWe used to rely on emails or `preferred_username` to identify remote\nusers. These are not guaranteed to be stable and can create difficulties\nwhen trying to identify users who have changed their email/username. In\norder to better identify the users and properly match them to their\nrespective local accounts, we need to switch to using the `sub` (`oid`\nfor EntraID) claim, which is a unique ID assigned by the provider to its\nusers, to identify the remote users. These will be generically named\nproviderID in the code, since we use different values for the brokers.\n\nThis also helps us to implement new features, such as allowing login\nwith shortened usernames.\n\nUDENG-9399",
-                  "url": "https://github.com/canonical/authd/commit/f9b39a80fd54d07cb9ff6b2208683b262a37beec"
+                  "timestamp": 1779871039,
+                  "message": "Add test case for allowing login when token cannot be stored",
+                  "url": "https://github.com/canonical/authd/commit/b83176cb92fb941d36b58956c31def5de757b9c8"
                }
             ],
             "ciActions": [
@@ -5636,25 +5636,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f7b1c17d98584c7291059cc6f381517cecde3a0b",
+                  "sha": "e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef",
                   "author": "adombeck",
-                  "timestamp": 1782858632,
-                  "message": "e2e-tests: Increase sshd LoginGraceTime to avoid auth timeouts (#1651)\n\nCloses #1650\nUDENG-10873",
-                  "url": "https://github.com/canonical/authd/commit/f7b1c17d98584c7291059cc6f381517cecde3a0b"
+                  "timestamp": 1782919504,
+                  "message": "e2e-tests: enable AI agents to author tests (#1639)\n\nUDENG-10846",
+                  "url": "https://github.com/canonical/authd/commit/e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef"
                },
                {
-                  "sha": "e3560ededbc4336b7eef1491ae2b741d2d6b5cf4",
+                  "sha": "536054a0fa63af1615a9f346c844b24fef1e9b59",
+                  "author": "adombeck",
+                  "timestamp": 1782919400,
+                  "message": "broker: Allow login when token cannot be stored (#1522)\n\nCloses #1182\nUDENG-10203",
+                  "url": "https://github.com/canonical/authd/commit/536054a0fa63af1615a9f346c844b24fef1e9b59"
+               },
+               {
+                  "sha": "b83176cb92fb941d36b58956c31def5de757b9c8",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782854961,
-                  "message": "e2e-tests: Increase sshd LoginGraceTime to avoid auth timeouts\n\nSSH logins in the e2e-tests sometimes failed with \"Timeout before\nauthentication\". The device authentication flow can take more than two\nminutes, but sshd aborts the connection after the default LoginGraceTime\nof 120 seconds before authentication completes.\n\nRaise LoginGraceTime to 300 seconds so slow device authentications have\nenough time to finish. The directive is global-only, so it must precede\nthe Match block.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/e3560ededbc4336b7eef1491ae2b741d2d6b5cf4"
-               },
-               {
-                  "sha": "f9b39a80fd54d07cb9ff6b2208683b262a37beec",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1782854796,
-                  "message": "brokers: use providerID for user identification (#1546)\n\nWe used to rely on emails or `preferred_username` to identify remote\nusers. These are not guaranteed to be stable and can create difficulties\nwhen trying to identify users who have changed their email/username. In\norder to better identify the users and properly match them to their\nrespective local accounts, we need to switch to using the `sub` (`oid`\nfor EntraID) claim, which is a unique ID assigned by the provider to its\nusers, to identify the remote users. These will be generically named\nproviderID in the code, since we use different values for the brokers.\n\nThis also helps us to implement new features, such as allowing login\nwith shortened usernames.\n\nUDENG-9399",
-                  "url": "https://github.com/canonical/authd/commit/f9b39a80fd54d07cb9ff6b2208683b262a37beec"
+                  "timestamp": 1779871039,
+                  "message": "Add test case for allowing login when token cannot be stored",
+                  "url": "https://github.com/canonical/authd/commit/b83176cb92fb941d36b58956c31def5de757b9c8"
                }
             ],
             "ciActions": [
@@ -8113,25 +8113,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f7b1c17d98584c7291059cc6f381517cecde3a0b",
+                  "sha": "e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef",
                   "author": "adombeck",
-                  "timestamp": 1782858632,
-                  "message": "e2e-tests: Increase sshd LoginGraceTime to avoid auth timeouts (#1651)\n\nCloses #1650\nUDENG-10873",
-                  "url": "https://github.com/canonical/authd/commit/f7b1c17d98584c7291059cc6f381517cecde3a0b"
+                  "timestamp": 1782919504,
+                  "message": "e2e-tests: enable AI agents to author tests (#1639)\n\nUDENG-10846",
+                  "url": "https://github.com/canonical/authd/commit/e9d7cf21e3edf8ead0dbe7c5b557cb9e8dfd37ef"
                },
                {
-                  "sha": "e3560ededbc4336b7eef1491ae2b741d2d6b5cf4",
+                  "sha": "536054a0fa63af1615a9f346c844b24fef1e9b59",
+                  "author": "adombeck",
+                  "timestamp": 1782919400,
+                  "message": "broker: Allow login when token cannot be stored (#1522)\n\nCloses #1182\nUDENG-10203",
+                  "url": "https://github.com/canonical/authd/commit/536054a0fa63af1615a9f346c844b24fef1e9b59"
+               },
+               {
+                  "sha": "b83176cb92fb941d36b58956c31def5de757b9c8",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782854961,
-                  "message": "e2e-tests: Increase sshd LoginGraceTime to avoid auth timeouts\n\nSSH logins in the e2e-tests sometimes failed with \"Timeout before\nauthentication\". The device authentication flow can take more than two\nminutes, but sshd aborts the connection after the default LoginGraceTime\nof 120 seconds before authentication completes.\n\nRaise LoginGraceTime to 300 seconds so slow device authentications have\nenough time to finish. The directive is global-only, so it must precede\nthe Match block.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/e3560ededbc4336b7eef1491ae2b741d2d6b5cf4"
-               },
-               {
-                  "sha": "f9b39a80fd54d07cb9ff6b2208683b262a37beec",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1782854796,
-                  "message": "brokers: use providerID for user identification (#1546)\n\nWe used to rely on emails or `preferred_username` to identify remote\nusers. These are not guaranteed to be stable and can create difficulties\nwhen trying to identify users who have changed their email/username. In\norder to better identify the users and properly match them to their\nrespective local accounts, we need to switch to using the `sub` (`oid`\nfor EntraID) claim, which is a unique ID assigned by the provider to its\nusers, to identify the remote users. These will be generically named\nproviderID in the code, since we use different values for the brokers.\n\nThis also helps us to implement new features, such as allowing login\nwith shortened usernames.\n\nUDENG-9399",
-                  "url": "https://github.com/canonical/authd/commit/f9b39a80fd54d07cb9ff6b2208683b262a37beec"
+                  "timestamp": 1779871039,
+                  "message": "Add test case for allowing login when token cannot be stored",
+                  "url": "https://github.com/canonical/authd/commit/b83176cb92fb941d36b58956c31def5de757b9c8"
                }
             ],
             "ciActions": [
