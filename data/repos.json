@@ -1011,6 +1011,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "44b54666890d5d7974c55de5e1af5621d5dd7f79",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1782987168,
+                  "message": "Update tag",
+                  "url": "https://github.com/ubuntu/gnome-contacts/commit/44b54666890d5d7974c55de5e1af5621d5dd7f79"
+               },
+               {
                   "sha": "7077ad7e78e34240f387a36bbbaaaf22bd358e09",
                   "author": "github-actions[bot]",
                   "timestamp": 1782469567,
@@ -1023,13 +1030,6 @@
                   "timestamp": 1781529745,
                   "message": "Update tag",
                   "url": "https://github.com/ubuntu/gnome-contacts/commit/986e80c2b63c2c09449f681138ea859b9778d680"
-               },
-               {
-                  "sha": "c9b4fe9efab79b8c1c687bf9abfa648a92414e89",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1780220950,
-                  "message": "Update tag",
-                  "url": "https://github.com/ubuntu/gnome-contacts/commit/c9b4fe9efab79b8c1c687bf9abfa648a92414e89"
                }
             ],
             "ciActions": [],
@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "23a613eb62b07169a2fe8639e13aadd423a4a14c",
+                  "sha": "a5b71fbea6a40c897b2181de85f67bff7dd48a9f",
                   "author": "adombeck",
-                  "timestamp": 1782935680,
-                  "message": "Fix broker Go tests (#1655)",
-                  "url": "https://github.com/canonical/authd/commit/23a613eb62b07169a2fe8639e13aadd423a4a14c"
+                  "timestamp": 1783009028,
+                  "message": "tests/lxd: fix bind mount when running from git worktree (#1659)",
+                  "url": "https://github.com/canonical/authd/commit/a5b71fbea6a40c897b2181de85f67bff7dd48a9f"
                },
                {
-                  "sha": "35c3a93f2ff6c123a07ec404c968a57c700fd1f3",
+                  "sha": "0f244fc4f5a574c6a7b6f0af543524feb76a402e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782935211,
-                  "message": "broker: fix golden files corrupted by rebase conflict in b83176cb9\n\nCommit b83176cb9 (\"Add test case for allowing login when token cannot be\nstored\") introduced golden files that were left in an inconsistent state\nafter a rebase conflict: test data directories were still keyed by email\naddress rather than user ID, and one golden file retained the old\n`uuid` field name instead of `provider_id`.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/35c3a93f2ff6c123a07ec404c968a57c700fd1f3"
+                  "timestamp": 1782940042,
+                  "message": "tests/lxd: fix bind mount not updated when running from a different worktree\n\nensureBindMount only checked for the existence of the \"project\" LXD\ndevice but did not verify that its source path matches the current\ncheckout. When tests are run from a differently-named worktree (e.g.\nauthd-856-allow-non-root instead of authd) the container already has the\ndevice pointing at the old path, so the CWD passed with --cwd is not\nvisible inside the container and go test fails with \"go.mod file not\nfound\". Fix by also comparing the stored source path and replacing the\ndevice when it differs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/0f244fc4f5a574c6a7b6f0af543524feb76a402e"
                },
                {
-                  "sha": "51f3888a123f6b04846cf87793c271acbe5c1e7e",
+                  "sha": "d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4",
                   "author": "adombeck",
-                  "timestamp": 1782926583,
-                  "message": "snap: retry go mod download all on transient network failures (#1653)\n\nUDENG-10876",
-                  "url": "https://github.com/canonical/authd/commit/51f3888a123f6b04846cf87793c271acbe5c1e7e"
+                  "timestamp": 1783007520,
+                  "message": "deps(go): bump golang.org/x/net from 0.51.0 to 0.55.0 (#1660)",
+                  "url": "https://github.com/canonical/authd/commit/d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4"
                }
             ],
             "ciActions": [
@@ -4018,6 +4018,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 348146720,
+                  "version": "rev89",
+                  "timestamp": 1783007290,
+                  "title": "Revision 89",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 77</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 15:52 UTC on 2 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Discard changes when doing composer operations by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/193\">#193</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev88...rev89\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev88&hellip;rev89</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev89",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev89...main"
+               },
+               {
                   "id": 347690951,
                   "version": "rev88",
                   "timestamp": 1782935066,
@@ -4034,15 +4043,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 75</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:42 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: replace create-and-promote-user with wrapper around create and promote script by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/191\">#191</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...rev87\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev86&hellip;rev87</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev87",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev87...main"
-               },
-               {
-                  "id": 346543149,
-                  "version": "rev86",
-                  "timestamp": 1782772053,
-                  "title": "Revision 86",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 74</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 23:08 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency <a href=\"https://gerrit.wikimedia.org/r/mediawiki/core.git\">https://gerrit.wikimedia.org/r/mediawiki/core.git</a> to v1.45.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/189\">#189</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev86",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...main"
                }
             ],
             "commits": null,
@@ -4057,8 +4057,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 88,
-                     "timestamp": 1782936257
+                     "revision": 89,
+                     "timestamp": 1783007576
                   }
                ],
                "channels": [
@@ -4813,25 +4813,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a6533b966cedbd454a0b0906303c540755cded1f",
+                  "sha": "e6e3bb392e41b866fa0d29f40bab871969d4475f",
                   "author": "Dennis Loose",
-                  "timestamp": 1782729409,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 88ecc3e (#1480)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/8e4118acb6fafebafd5e74b88daa2d7fa4f93267..88ecc3e98abd66e48b69b31d8285c805b0a0cc8a))\n| digest | `8e4118a` → `88ecc3e` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNDIuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI0Mi4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a6533b966cedbd454a0b0906303c540755cded1f"
+                  "timestamp": 1782979539,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 11e104d (#1486)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/88ecc3e98abd66e48b69b31d8285c805b0a0cc8a..11e104dfc16dc5b744f98cd96dbc942b2930f601))\n| digest | `88ecc3e` → `11e104d` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNDIuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI0Mi4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e6e3bb392e41b866fa0d29f40bab871969d4475f"
                },
                {
-                  "sha": "a5c3444e027c6bdba67a9774ed776f63739e3e54",
-                  "author": "renovate[bot]",
-                  "timestamp": 1782727846,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 88ecc3e",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a5c3444e027c6bdba67a9774ed776f63739e3e54"
+                  "sha": "c3c37c119e3526dbb7c56621ef029bd2cab3b4a4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1782978831,
+                  "message": "chore: regenerate mocks",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c3c37c119e3526dbb7c56621ef029bd2cab3b4a4"
                },
                {
-                  "sha": "3409da901ddd78493094a6328737ee01d5a033e1",
+                  "sha": "79e0ebfdcca7eb6f75cf94495c337dc9cefe23b2",
                   "author": "Dennis Loose",
-                  "timestamp": 1782727477,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 8e4118a (#1478)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/4bfdc8f76a1b0552a1c1d088537ae7c3407f1901..8e4118acb6fafebafd5e74b88daa2d7fa4f93267))\n| digest | `4bfdc8f` → `8e4118a` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNDIuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI0Mi4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3409da901ddd78493094a6328737ee01d5a033e1"
+                  "timestamp": 1782903598,
+                  "message": "chore: update subiquity types",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/79e0ebfdcca7eb6f75cf94495c337dc9cefe23b2"
                }
             ],
             "ciActions": [
@@ -5636,25 +5636,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "23a613eb62b07169a2fe8639e13aadd423a4a14c",
+                  "sha": "a5b71fbea6a40c897b2181de85f67bff7dd48a9f",
                   "author": "adombeck",
-                  "timestamp": 1782935680,
-                  "message": "Fix broker Go tests (#1655)",
-                  "url": "https://github.com/canonical/authd/commit/23a613eb62b07169a2fe8639e13aadd423a4a14c"
+                  "timestamp": 1783009028,
+                  "message": "tests/lxd: fix bind mount when running from git worktree (#1659)",
+                  "url": "https://github.com/canonical/authd/commit/a5b71fbea6a40c897b2181de85f67bff7dd48a9f"
                },
                {
-                  "sha": "35c3a93f2ff6c123a07ec404c968a57c700fd1f3",
+                  "sha": "0f244fc4f5a574c6a7b6f0af543524feb76a402e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782935211,
-                  "message": "broker: fix golden files corrupted by rebase conflict in b83176cb9\n\nCommit b83176cb9 (\"Add test case for allowing login when token cannot be\nstored\") introduced golden files that were left in an inconsistent state\nafter a rebase conflict: test data directories were still keyed by email\naddress rather than user ID, and one golden file retained the old\n`uuid` field name instead of `provider_id`.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/35c3a93f2ff6c123a07ec404c968a57c700fd1f3"
+                  "timestamp": 1782940042,
+                  "message": "tests/lxd: fix bind mount not updated when running from a different worktree\n\nensureBindMount only checked for the existence of the \"project\" LXD\ndevice but did not verify that its source path matches the current\ncheckout. When tests are run from a differently-named worktree (e.g.\nauthd-856-allow-non-root instead of authd) the container already has the\ndevice pointing at the old path, so the CWD passed with --cwd is not\nvisible inside the container and go test fails with \"go.mod file not\nfound\". Fix by also comparing the stored source path and replacing the\ndevice when it differs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/0f244fc4f5a574c6a7b6f0af543524feb76a402e"
                },
                {
-                  "sha": "51f3888a123f6b04846cf87793c271acbe5c1e7e",
+                  "sha": "d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4",
                   "author": "adombeck",
-                  "timestamp": 1782926583,
-                  "message": "snap: retry go mod download all on transient network failures (#1653)\n\nUDENG-10876",
-                  "url": "https://github.com/canonical/authd/commit/51f3888a123f6b04846cf87793c271acbe5c1e7e"
+                  "timestamp": 1783007520,
+                  "message": "deps(go): bump golang.org/x/net from 0.51.0 to 0.55.0 (#1660)",
+                  "url": "https://github.com/canonical/authd/commit/d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4"
                }
             ],
             "ciActions": [
@@ -6359,6 +6359,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 348146720,
+                  "version": "rev89",
+                  "timestamp": 1783007290,
+                  "title": "Revision 89",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 77</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 15:52 UTC on 2 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Discard changes when doing composer operations by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/193\">#193</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev88...rev89\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev88&hellip;rev89</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev89",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev89...main"
+               },
+               {
                   "id": 347690951,
                   "version": "rev88",
                   "timestamp": 1782935066,
@@ -6375,15 +6384,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 75</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:42 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: replace create-and-promote-user with wrapper around create and promote script by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/191\">#191</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...rev87\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev86&hellip;rev87</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev87",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev87...main"
-               },
-               {
-                  "id": 346543149,
-                  "version": "rev86",
-                  "timestamp": 1782772053,
-                  "title": "Revision 86",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 74</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 23:08 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency <a href=\"https://gerrit.wikimedia.org/r/mediawiki/core.git\">https://gerrit.wikimedia.org/r/mediawiki/core.git</a> to v1.45.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/189\">#189</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev86",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...main"
                }
             ],
             "commits": null,
@@ -6398,8 +6398,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 88,
-                     "timestamp": 1782936257
+                     "revision": 89,
+                     "timestamp": 1783007576
                   }
                ],
                "channels": [
@@ -7154,25 +7154,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a6533b966cedbd454a0b0906303c540755cded1f",
+                  "sha": "e6e3bb392e41b866fa0d29f40bab871969d4475f",
                   "author": "Dennis Loose",
-                  "timestamp": 1782729409,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 88ecc3e (#1480)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/8e4118acb6fafebafd5e74b88daa2d7fa4f93267..88ecc3e98abd66e48b69b31d8285c805b0a0cc8a))\n| digest | `8e4118a` → `88ecc3e` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNDIuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI0Mi4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a6533b966cedbd454a0b0906303c540755cded1f"
+                  "timestamp": 1782979539,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 11e104d (#1486)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/88ecc3e98abd66e48b69b31d8285c805b0a0cc8a..11e104dfc16dc5b744f98cd96dbc942b2930f601))\n| digest | `88ecc3e` → `11e104d` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNDIuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI0Mi4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e6e3bb392e41b866fa0d29f40bab871969d4475f"
                },
                {
-                  "sha": "a5c3444e027c6bdba67a9774ed776f63739e3e54",
-                  "author": "renovate[bot]",
-                  "timestamp": 1782727846,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 88ecc3e",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a5c3444e027c6bdba67a9774ed776f63739e3e54"
+                  "sha": "c3c37c119e3526dbb7c56621ef029bd2cab3b4a4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1782978831,
+                  "message": "chore: regenerate mocks",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c3c37c119e3526dbb7c56621ef029bd2cab3b4a4"
                },
                {
-                  "sha": "3409da901ddd78493094a6328737ee01d5a033e1",
+                  "sha": "79e0ebfdcca7eb6f75cf94495c337dc9cefe23b2",
                   "author": "Dennis Loose",
-                  "timestamp": 1782727477,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 8e4118a (#1478)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/4bfdc8f76a1b0552a1c1d088537ae7c3407f1901..8e4118acb6fafebafd5e74b88daa2d7fa4f93267))\n| digest | `4bfdc8f` → `8e4118a` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNDIuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI0Mi4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3409da901ddd78493094a6328737ee01d5a033e1"
+                  "timestamp": 1782903598,
+                  "message": "chore: update subiquity types",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/79e0ebfdcca7eb6f75cf94495c337dc9cefe23b2"
                }
             ],
             "ciActions": [
@@ -7273,7 +7273,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 266,
+            "newCommits": 269,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -8113,25 +8113,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "23a613eb62b07169a2fe8639e13aadd423a4a14c",
+                  "sha": "a5b71fbea6a40c897b2181de85f67bff7dd48a9f",
                   "author": "adombeck",
-                  "timestamp": 1782935680,
-                  "message": "Fix broker Go tests (#1655)",
-                  "url": "https://github.com/canonical/authd/commit/23a613eb62b07169a2fe8639e13aadd423a4a14c"
+                  "timestamp": 1783009028,
+                  "message": "tests/lxd: fix bind mount when running from git worktree (#1659)",
+                  "url": "https://github.com/canonical/authd/commit/a5b71fbea6a40c897b2181de85f67bff7dd48a9f"
                },
                {
-                  "sha": "35c3a93f2ff6c123a07ec404c968a57c700fd1f3",
+                  "sha": "0f244fc4f5a574c6a7b6f0af543524feb76a402e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1782935211,
-                  "message": "broker: fix golden files corrupted by rebase conflict in b83176cb9\n\nCommit b83176cb9 (\"Add test case for allowing login when token cannot be\nstored\") introduced golden files that were left in an inconsistent state\nafter a rebase conflict: test data directories were still keyed by email\naddress rather than user ID, and one golden file retained the old\n`uuid` field name instead of `provider_id`.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/35c3a93f2ff6c123a07ec404c968a57c700fd1f3"
+                  "timestamp": 1782940042,
+                  "message": "tests/lxd: fix bind mount not updated when running from a different worktree\n\nensureBindMount only checked for the existence of the \"project\" LXD\ndevice but did not verify that its source path matches the current\ncheckout. When tests are run from a differently-named worktree (e.g.\nauthd-856-allow-non-root instead of authd) the container already has the\ndevice pointing at the old path, so the CWD passed with --cwd is not\nvisible inside the container and go test fails with \"go.mod file not\nfound\". Fix by also comparing the stored source path and replacing the\ndevice when it differs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/0f244fc4f5a574c6a7b6f0af543524feb76a402e"
                },
                {
-                  "sha": "51f3888a123f6b04846cf87793c271acbe5c1e7e",
+                  "sha": "d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4",
                   "author": "adombeck",
-                  "timestamp": 1782926583,
-                  "message": "snap: retry go mod download all on transient network failures (#1653)\n\nUDENG-10876",
-                  "url": "https://github.com/canonical/authd/commit/51f3888a123f6b04846cf87793c271acbe5c1e7e"
+                  "timestamp": 1783007520,
+                  "message": "deps(go): bump golang.org/x/net from 0.51.0 to 0.55.0 (#1660)",
+                  "url": "https://github.com/canonical/authd/commit/d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4"
                }
             ],
             "ciActions": [
@@ -8803,6 +8803,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 348146720,
+                  "version": "rev89",
+                  "timestamp": 1783007290,
+                  "title": "Revision 89",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 77</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 15:52 UTC on 2 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Discard changes when doing composer operations by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/193\">#193</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev88...rev89\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev88&hellip;rev89</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev89",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev89...main"
+               },
+               {
                   "id": 347690951,
                   "version": "rev88",
                   "timestamp": 1782935066,
@@ -8819,15 +8828,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 75</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 17:42 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: replace create-and-promote-user with wrapper around create and promote script by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/191\">#191</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...rev87\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev86&hellip;rev87</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev87",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev87...main"
-               },
-               {
-                  "id": 346543149,
-                  "version": "rev86",
-                  "timestamp": 1782772053,
-                  "title": "Revision 86",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.0\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 74</p>\n\n<p>Static resources:\n Released to &lsquo;1.45/edge&rsquo; at 23:08 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency <a href=\"https://gerrit.wikimedia.org/r/mediawiki/core.git\">https://gerrit.wikimedia.org/r/mediawiki/core.git</a> to v1.45.4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/189\">#189</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev85...rev86\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev85&hellip;rev86</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev86",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev86...main"
                }
             ],
             "commits": null,
@@ -8842,8 +8842,8 @@
                   {
                      "track": "1.45",
                      "channel": "edge",
-                     "revision": 88,
-                     "timestamp": 1782936257
+                     "revision": 89,
+                     "timestamp": 1783007576
                   }
                ],
                "channels": [
@@ -9598,25 +9598,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a6533b966cedbd454a0b0906303c540755cded1f",
+                  "sha": "e6e3bb392e41b866fa0d29f40bab871969d4475f",
                   "author": "Dennis Loose",
-                  "timestamp": 1782729409,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 88ecc3e (#1480)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/8e4118acb6fafebafd5e74b88daa2d7fa4f93267..88ecc3e98abd66e48b69b31d8285c805b0a0cc8a))\n| digest | `8e4118a` → `88ecc3e` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNDIuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI0Mi4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a6533b966cedbd454a0b0906303c540755cded1f"
+                  "timestamp": 1782979539,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 11e104d (#1486)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/88ecc3e98abd66e48b69b31d8285c805b0a0cc8a..11e104dfc16dc5b744f98cd96dbc942b2930f601))\n| digest | `88ecc3e` → `11e104d` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNDIuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI0Mi4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e6e3bb392e41b866fa0d29f40bab871969d4475f"
                },
                {
-                  "sha": "a5c3444e027c6bdba67a9774ed776f63739e3e54",
-                  "author": "renovate[bot]",
-                  "timestamp": 1782727846,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 88ecc3e",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a5c3444e027c6bdba67a9774ed776f63739e3e54"
+                  "sha": "c3c37c119e3526dbb7c56621ef029bd2cab3b4a4",
+                  "author": "Dennis Loose",
+                  "timestamp": 1782978831,
+                  "message": "chore: regenerate mocks",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c3c37c119e3526dbb7c56621ef029bd2cab3b4a4"
                },
                {
-                  "sha": "3409da901ddd78493094a6328737ee01d5a033e1",
+                  "sha": "79e0ebfdcca7eb6f75cf94495c337dc9cefe23b2",
                   "author": "Dennis Loose",
-                  "timestamp": 1782727477,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 8e4118a (#1478)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/4bfdc8f76a1b0552a1c1d088537ae7c3407f1901..8e4118acb6fafebafd5e74b88daa2d7fa4f93267))\n| digest | `4bfdc8f` → `8e4118a` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNDIuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI0Mi4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3409da901ddd78493094a6328737ee01d5a033e1"
+                  "timestamp": 1782903598,
+                  "message": "chore: update subiquity types",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/79e0ebfdcca7eb6f75cf94495c337dc9cefe23b2"
                }
             ],
             "ciActions": [
