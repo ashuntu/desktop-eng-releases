@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4452d4f5fa9c5fd239e19758074d0ce9a325fce3",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1780664099,
+                  "message": "Disable JIT on Risc-V.",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/4452d4f5fa9c5fd239e19758074d0ce9a325fce3"
+               },
+               {
                   "sha": "69e9556722c16e9e28fa0456056b437e50e5cedb",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1782897115,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1780467654,
                   "message": "Drop no-attribute-warn.patch.",
                   "url": "https://github.com/ubuntu/thunderbird/commit/4132a9c101aa2c2e30a636ac2c8452e7808bfb2a"
-               },
-               {
-                  "sha": "90e89f134a755d8b5878aed958aa5d47c4804081",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1782721696,
-                  "message": "152.0.1",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/90e89f134a755d8b5878aed958aa5d47c4804081"
                }
             ],
             "ciActions": [],
@@ -3106,6 +3106,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ec9990ba1f0fd5029c248837eecc52885df19990",
+                  "author": "Marek Suchánek",
+                  "timestamp": 1783084390,
+                  "message": "Confirm Orca changes",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/ec9990ba1f0fd5029c248837eecc52885df19990"
+               },
+               {
                   "sha": "7248b22c82b7e775818daec990cfc422387ca5e9",
                   "author": "Marek Suchánek",
                   "timestamp": 1782835990,
@@ -3118,13 +3125,6 @@
                   "timestamp": 1782405442,
                   "message": "Reduce links to help.ubuntu.com",
                   "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/bd261bcf1b9f10180bceb83acb74f1080af54596"
-               },
-               {
-                  "sha": "64acfe4edf0627d9e0ea427c4e33024bc8963004",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1782305959,
-                  "message": "Merge pull request #148 from ubuntu/starter-pack-2.0\n\nUpdate to Starter Pack 2.0",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/64acfe4edf0627d9e0ea427c4e33024bc8963004"
                }
             ],
             "ciActions": [
@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a5b71fbea6a40c897b2181de85f67bff7dd48a9f",
-                  "author": "adombeck",
-                  "timestamp": 1783009028,
-                  "message": "tests/lxd: fix bind mount when running from git worktree (#1659)",
-                  "url": "https://github.com/canonical/authd/commit/a5b71fbea6a40c897b2181de85f67bff7dd48a9f"
+                  "sha": "7861dd25aa094769e266940569470b8f5f4e64c9",
+                  "author": "Shane Crowley",
+                  "timestamp": 1783074357,
+                  "message": "docs: conditional rendering (#1635)\n\nWe build two versions of the docs: edge and stable.\nIn some limited cases, it may be beneficial to conditionally render\ncontent.\n\nThe obvious example is our installation guide, which currently defaults\nto instructions to install stable versions of authd and the brokers,\neven when a user is on the edge version of the docs.\n\nThis PR adds a configuration change so that tags (edge, stable) are\ncreated based on the version being built on Read the Docs. The `only`\ndirective can then be used on individual pages to specify content that\nshould only be rendered in specific versions.\n\nThe PR uses this functionality to conditionally render version-specific\ninstallation instructions.\n\nReviewers can check this by previewing the different versions locally:\n\n```bash\n# Edge version\nREADTHEDOCS_VERSION=edge-docs make run \n```\n\n```bash\n# Stable version (default)\nREADTHEDOCS_VERSION=stable-docs make run \n```\n\nAnd then comparing the results at\nhttp://127.0.0.1:8000/howto/install-authd/\n\n---\n\nThe PR also updates the contributing guide to reflect these changes and\nmakes some minor modifications to wording in the installation guide to\naccomodate the changes.\n\n---\n\nThanks to @nooreldeenmansour for proposing and testing this solution.\n\nUDENG-10618",
+                  "url": "https://github.com/canonical/authd/commit/7861dd25aa094769e266940569470b8f5f4e64c9"
                },
                {
-                  "sha": "0f244fc4f5a574c6a7b6f0af543524feb76a402e",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782940042,
-                  "message": "tests/lxd: fix bind mount not updated when running from a different worktree\n\nensureBindMount only checked for the existence of the \"project\" LXD\ndevice but did not verify that its source path matches the current\ncheckout. When tests are run from a differently-named worktree (e.g.\nauthd-856-allow-non-root instead of authd) the container already has the\ndevice pointing at the old path, so the CWD passed with --cwd is not\nvisible inside the container and go test fails with \"go.mod file not\nfound\". Fix by also comparing the stored source path and replacing the\ndevice when it differs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0f244fc4f5a574c6a7b6f0af543524feb76a402e"
+                  "sha": "1c7881532f95c9cab5e46f4db5c9fe84423cd074",
+                  "author": "shanecrowley",
+                  "timestamp": 1782474208,
+                  "message": "implement conditional rendering for docs\n\n* conditional rendering based on tagged versions\n* conditionally render install doc based on authd version\n* add contributing guidelines on doc variant builds\n* minor fixups with formatting and links\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
+                  "url": "https://github.com/canonical/authd/commit/1c7881532f95c9cab5e46f4db5c9fe84423cd074"
                },
                {
-                  "sha": "d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4",
-                  "author": "adombeck",
-                  "timestamp": 1783007520,
-                  "message": "deps(go): bump golang.org/x/net from 0.51.0 to 0.55.0 (#1660)",
-                  "url": "https://github.com/canonical/authd/commit/d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4"
+                  "sha": "9cba9cd3304c9d1366f1c52f2423f5288a650b42",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1783073228,
+                  "message": "ci: exclude conf/ changes from brokers QA trigger (#1671)\n\nChanges to `authd-oidc-brokers/conf/` (broker configuration files) are\ndocumentation/configuration-only and should not trigger the full broker\nCI suite.",
+                  "url": "https://github.com/canonical/authd/commit/9cba9cd3304c9d1366f1c52f2423f5288a650b42"
                }
             ],
             "ciActions": [
@@ -4465,25 +4465,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7bd5693903a74c717fcc1aed04e1f7af64ef8306",
+                  "author": "Sergio Costas",
+                  "timestamp": 1783090164,
+                  "message": "Fix g_atomic_ref_count_dec assertion error (#170)\n\nWhen `user-session-helper` is run, an error is shown in the journal:\n\n    g_atomic_ref_count_dec: assertion 'old_value > 0' failed\n\nThis is because a GVariant is being defined with g_autoptr and freed,\nwhen, in reality, it belongs to a container object, thus being released\ntwice.\n\nThis patch fixes it.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7bd5693903a74c717fcc1aed04e1f7af64ef8306"
+               },
+               {
+                  "sha": "c4b31ff22ea087516e7dbb8b43cd16045d9d6fc4",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1783084920,
+                  "message": "Fix g_atomic_ref_count_dec assertion error\n\nWhen `user-session-helper` is run, an error is shown in the\njournal:\n\n    g_atomic_ref_count_dec: assertion 'old_value > 0' failed\n\nThis is because a GVariant is being defined with g_autoptr and\nfreed, when, in reality, it belongs to a container object, thus\nbeing released twice.\n\nThis patch fixes it.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/c4b31ff22ea087516e7dbb8b43cd16045d9d6fc4"
+               },
+               {
                   "sha": "7b5d18c3a577c3df4f320ee22a0ab56b9c1de101",
                   "author": "Sergio Costas",
                   "timestamp": 1777542581,
                   "message": "Add check based on DBus well-known names (#147)\n\nSince, in some cases, snapd-desktop-integration is launched too soon,\nand that triggers launching xdg-desktop-portal too soon too (because\nseveral services from mutter aren't still available in DBus, so\nxdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to specify\nthat a service (snapd-desktop-integration in this case) must be bound to\nthe graphical-session target instead of the default target.\n\nBut since this will require time, in the meantime this patch should fix\nthis problem: it waits until any of the following well-known names do\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n    org.freedesktop.impl.portal.desktop.*\n\nWhen that happens, we can assume that the desktop is ready, and launch\nsnapd-desktop-integration. It's an ugly hack, but it should work until\nfull graphical-session target support is added to snapd.\n\nFix\nhttps://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/7b5d18c3a577c3df4f320ee22a0ab56b9c1de101"
-               },
-               {
-                  "sha": "bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1748449322,
-                  "message": "Add check based on DBus well-known names\n\nSince, in some cases, snapd-desktop-integration is launched too\nsoon, and that triggers launching xdg-desktop-portal too soon\ntoo (because several services from mutter aren't still available\nin DBus, so xdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to\nspecify that a service (snapd-desktop-integration in this case)\nmust be bound to the graphical-session target instead of the\ndefault target.\n\nBut since this will require time, in the meantime this patch\nshould fix this problem: it waits until this well-known name does\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n\nWhen that happens, we can assume that the desktop is ready, and\nlaunch snapd-desktop-integration. It's an ugly hack, but it\nshould work until full graphical-session target support is added\nto snapd.\n\nAnyway, since it is not guaranteed that it is launched in any\ndesktop (has been tested only in Gnome Shell), a 10-seconds\ntimeout is added too, to ensure that it is launched safely.\n\nOf course, this works along the previous method of asking for the\nsession type.\n\nFix https://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb"
-               },
-               {
-                  "sha": "4473ea9b5252a7f538a89df3f9faf5f605ba8a23",
-                  "author": "Sergio Costas",
-                  "timestamp": 1774524174,
-                  "message": "Remove libnotify source files (#168)\n\nThey interact with TIOBE, giving false errors.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4473ea9b5252a7f538a89df3f9faf5f605ba8a23"
                }
             ],
             "ciActions": [],
@@ -5636,25 +5636,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a5b71fbea6a40c897b2181de85f67bff7dd48a9f",
-                  "author": "adombeck",
-                  "timestamp": 1783009028,
-                  "message": "tests/lxd: fix bind mount when running from git worktree (#1659)",
-                  "url": "https://github.com/canonical/authd/commit/a5b71fbea6a40c897b2181de85f67bff7dd48a9f"
+                  "sha": "7861dd25aa094769e266940569470b8f5f4e64c9",
+                  "author": "Shane Crowley",
+                  "timestamp": 1783074357,
+                  "message": "docs: conditional rendering (#1635)\n\nWe build two versions of the docs: edge and stable.\nIn some limited cases, it may be beneficial to conditionally render\ncontent.\n\nThe obvious example is our installation guide, which currently defaults\nto instructions to install stable versions of authd and the brokers,\neven when a user is on the edge version of the docs.\n\nThis PR adds a configuration change so that tags (edge, stable) are\ncreated based on the version being built on Read the Docs. The `only`\ndirective can then be used on individual pages to specify content that\nshould only be rendered in specific versions.\n\nThe PR uses this functionality to conditionally render version-specific\ninstallation instructions.\n\nReviewers can check this by previewing the different versions locally:\n\n```bash\n# Edge version\nREADTHEDOCS_VERSION=edge-docs make run \n```\n\n```bash\n# Stable version (default)\nREADTHEDOCS_VERSION=stable-docs make run \n```\n\nAnd then comparing the results at\nhttp://127.0.0.1:8000/howto/install-authd/\n\n---\n\nThe PR also updates the contributing guide to reflect these changes and\nmakes some minor modifications to wording in the installation guide to\naccomodate the changes.\n\n---\n\nThanks to @nooreldeenmansour for proposing and testing this solution.\n\nUDENG-10618",
+                  "url": "https://github.com/canonical/authd/commit/7861dd25aa094769e266940569470b8f5f4e64c9"
                },
                {
-                  "sha": "0f244fc4f5a574c6a7b6f0af543524feb76a402e",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782940042,
-                  "message": "tests/lxd: fix bind mount not updated when running from a different worktree\n\nensureBindMount only checked for the existence of the \"project\" LXD\ndevice but did not verify that its source path matches the current\ncheckout. When tests are run from a differently-named worktree (e.g.\nauthd-856-allow-non-root instead of authd) the container already has the\ndevice pointing at the old path, so the CWD passed with --cwd is not\nvisible inside the container and go test fails with \"go.mod file not\nfound\". Fix by also comparing the stored source path and replacing the\ndevice when it differs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0f244fc4f5a574c6a7b6f0af543524feb76a402e"
+                  "sha": "1c7881532f95c9cab5e46f4db5c9fe84423cd074",
+                  "author": "shanecrowley",
+                  "timestamp": 1782474208,
+                  "message": "implement conditional rendering for docs\n\n* conditional rendering based on tagged versions\n* conditionally render install doc based on authd version\n* add contributing guidelines on doc variant builds\n* minor fixups with formatting and links\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
+                  "url": "https://github.com/canonical/authd/commit/1c7881532f95c9cab5e46f4db5c9fe84423cd074"
                },
                {
-                  "sha": "d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4",
-                  "author": "adombeck",
-                  "timestamp": 1783007520,
-                  "message": "deps(go): bump golang.org/x/net from 0.51.0 to 0.55.0 (#1660)",
-                  "url": "https://github.com/canonical/authd/commit/d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4"
+                  "sha": "9cba9cd3304c9d1366f1c52f2423f5288a650b42",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1783073228,
+                  "message": "ci: exclude conf/ changes from brokers QA trigger (#1671)\n\nChanges to `authd-oidc-brokers/conf/` (broker configuration files) are\ndocumentation/configuration-only and should not trigger the full broker\nCI suite.",
+                  "url": "https://github.com/canonical/authd/commit/9cba9cd3304c9d1366f1c52f2423f5288a650b42"
                }
             ],
             "ciActions": [
@@ -6806,25 +6806,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7bd5693903a74c717fcc1aed04e1f7af64ef8306",
+                  "author": "Sergio Costas",
+                  "timestamp": 1783090164,
+                  "message": "Fix g_atomic_ref_count_dec assertion error (#170)\n\nWhen `user-session-helper` is run, an error is shown in the journal:\n\n    g_atomic_ref_count_dec: assertion 'old_value > 0' failed\n\nThis is because a GVariant is being defined with g_autoptr and freed,\nwhen, in reality, it belongs to a container object, thus being released\ntwice.\n\nThis patch fixes it.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7bd5693903a74c717fcc1aed04e1f7af64ef8306"
+               },
+               {
+                  "sha": "c4b31ff22ea087516e7dbb8b43cd16045d9d6fc4",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1783084920,
+                  "message": "Fix g_atomic_ref_count_dec assertion error\n\nWhen `user-session-helper` is run, an error is shown in the\njournal:\n\n    g_atomic_ref_count_dec: assertion 'old_value > 0' failed\n\nThis is because a GVariant is being defined with g_autoptr and\nfreed, when, in reality, it belongs to a container object, thus\nbeing released twice.\n\nThis patch fixes it.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/c4b31ff22ea087516e7dbb8b43cd16045d9d6fc4"
+               },
+               {
                   "sha": "7b5d18c3a577c3df4f320ee22a0ab56b9c1de101",
                   "author": "Sergio Costas",
                   "timestamp": 1777542581,
                   "message": "Add check based on DBus well-known names (#147)\n\nSince, in some cases, snapd-desktop-integration is launched too soon,\nand that triggers launching xdg-desktop-portal too soon too (because\nseveral services from mutter aren't still available in DBus, so\nxdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to specify\nthat a service (snapd-desktop-integration in this case) must be bound to\nthe graphical-session target instead of the default target.\n\nBut since this will require time, in the meantime this patch should fix\nthis problem: it waits until any of the following well-known names do\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n    org.freedesktop.impl.portal.desktop.*\n\nWhen that happens, we can assume that the desktop is ready, and launch\nsnapd-desktop-integration. It's an ugly hack, but it should work until\nfull graphical-session target support is added to snapd.\n\nFix\nhttps://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/7b5d18c3a577c3df4f320ee22a0ab56b9c1de101"
-               },
-               {
-                  "sha": "bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1748449322,
-                  "message": "Add check based on DBus well-known names\n\nSince, in some cases, snapd-desktop-integration is launched too\nsoon, and that triggers launching xdg-desktop-portal too soon\ntoo (because several services from mutter aren't still available\nin DBus, so xdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to\nspecify that a service (snapd-desktop-integration in this case)\nmust be bound to the graphical-session target instead of the\ndefault target.\n\nBut since this will require time, in the meantime this patch\nshould fix this problem: it waits until this well-known name does\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n\nWhen that happens, we can assume that the desktop is ready, and\nlaunch snapd-desktop-integration. It's an ugly hack, but it\nshould work until full graphical-session target support is added\nto snapd.\n\nAnyway, since it is not guaranteed that it is launched in any\ndesktop (has been tested only in Gnome Shell), a 10-seconds\ntimeout is added too, to ensure that it is launched safely.\n\nOf course, this works along the previous method of asking for the\nsession type.\n\nFix https://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb"
-               },
-               {
-                  "sha": "4473ea9b5252a7f538a89df3f9faf5f605ba8a23",
-                  "author": "Sergio Costas",
-                  "timestamp": 1774524174,
-                  "message": "Remove libnotify source files (#168)\n\nThey interact with TIOBE, giving false errors.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4473ea9b5252a7f538a89df3f9faf5f605ba8a23"
                }
             ],
             "ciActions": [],
@@ -8113,25 +8113,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a5b71fbea6a40c897b2181de85f67bff7dd48a9f",
-                  "author": "adombeck",
-                  "timestamp": 1783009028,
-                  "message": "tests/lxd: fix bind mount when running from git worktree (#1659)",
-                  "url": "https://github.com/canonical/authd/commit/a5b71fbea6a40c897b2181de85f67bff7dd48a9f"
+                  "sha": "7861dd25aa094769e266940569470b8f5f4e64c9",
+                  "author": "Shane Crowley",
+                  "timestamp": 1783074357,
+                  "message": "docs: conditional rendering (#1635)\n\nWe build two versions of the docs: edge and stable.\nIn some limited cases, it may be beneficial to conditionally render\ncontent.\n\nThe obvious example is our installation guide, which currently defaults\nto instructions to install stable versions of authd and the brokers,\neven when a user is on the edge version of the docs.\n\nThis PR adds a configuration change so that tags (edge, stable) are\ncreated based on the version being built on Read the Docs. The `only`\ndirective can then be used on individual pages to specify content that\nshould only be rendered in specific versions.\n\nThe PR uses this functionality to conditionally render version-specific\ninstallation instructions.\n\nReviewers can check this by previewing the different versions locally:\n\n```bash\n# Edge version\nREADTHEDOCS_VERSION=edge-docs make run \n```\n\n```bash\n# Stable version (default)\nREADTHEDOCS_VERSION=stable-docs make run \n```\n\nAnd then comparing the results at\nhttp://127.0.0.1:8000/howto/install-authd/\n\n---\n\nThe PR also updates the contributing guide to reflect these changes and\nmakes some minor modifications to wording in the installation guide to\naccomodate the changes.\n\n---\n\nThanks to @nooreldeenmansour for proposing and testing this solution.\n\nUDENG-10618",
+                  "url": "https://github.com/canonical/authd/commit/7861dd25aa094769e266940569470b8f5f4e64c9"
                },
                {
-                  "sha": "0f244fc4f5a574c6a7b6f0af543524feb76a402e",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1782940042,
-                  "message": "tests/lxd: fix bind mount not updated when running from a different worktree\n\nensureBindMount only checked for the existence of the \"project\" LXD\ndevice but did not verify that its source path matches the current\ncheckout. When tests are run from a differently-named worktree (e.g.\nauthd-856-allow-non-root instead of authd) the container already has the\ndevice pointing at the old path, so the CWD passed with --cwd is not\nvisible inside the container and go test fails with \"go.mod file not\nfound\". Fix by also comparing the stored source path and replacing the\ndevice when it differs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0f244fc4f5a574c6a7b6f0af543524feb76a402e"
+                  "sha": "1c7881532f95c9cab5e46f4db5c9fe84423cd074",
+                  "author": "shanecrowley",
+                  "timestamp": 1782474208,
+                  "message": "implement conditional rendering for docs\n\n* conditional rendering based on tagged versions\n* conditionally render install doc based on authd version\n* add contributing guidelines on doc variant builds\n* minor fixups with formatting and links\n\nCo-authored-by: Noor Eldeen Mansour <nooreldeen.mansour@canonical.com>",
+                  "url": "https://github.com/canonical/authd/commit/1c7881532f95c9cab5e46f4db5c9fe84423cd074"
                },
                {
-                  "sha": "d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4",
-                  "author": "adombeck",
-                  "timestamp": 1783007520,
-                  "message": "deps(go): bump golang.org/x/net from 0.51.0 to 0.55.0 (#1660)",
-                  "url": "https://github.com/canonical/authd/commit/d5c9ce7c47e4b03a08fa1d9539866f4ed2c023a4"
+                  "sha": "9cba9cd3304c9d1366f1c52f2423f5288a650b42",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1783073228,
+                  "message": "ci: exclude conf/ changes from brokers QA trigger (#1671)\n\nChanges to `authd-oidc-brokers/conf/` (broker configuration files) are\ndocumentation/configuration-only and should not trigger the full broker\nCI suite.",
+                  "url": "https://github.com/canonical/authd/commit/9cba9cd3304c9d1366f1c52f2423f5288a650b42"
                }
             ],
             "ciActions": [
@@ -9250,25 +9250,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7bd5693903a74c717fcc1aed04e1f7af64ef8306",
+                  "author": "Sergio Costas",
+                  "timestamp": 1783090164,
+                  "message": "Fix g_atomic_ref_count_dec assertion error (#170)\n\nWhen `user-session-helper` is run, an error is shown in the journal:\n\n    g_atomic_ref_count_dec: assertion 'old_value > 0' failed\n\nThis is because a GVariant is being defined with g_autoptr and freed,\nwhen, in reality, it belongs to a container object, thus being released\ntwice.\n\nThis patch fixes it.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/7bd5693903a74c717fcc1aed04e1f7af64ef8306"
+               },
+               {
+                  "sha": "c4b31ff22ea087516e7dbb8b43cd16045d9d6fc4",
+                  "author": "Sergio Costas Rodriguez",
+                  "timestamp": 1783084920,
+                  "message": "Fix g_atomic_ref_count_dec assertion error\n\nWhen `user-session-helper` is run, an error is shown in the\njournal:\n\n    g_atomic_ref_count_dec: assertion 'old_value > 0' failed\n\nThis is because a GVariant is being defined with g_autoptr and\nfreed, when, in reality, it belongs to a container object, thus\nbeing released twice.\n\nThis patch fixes it.",
+                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/c4b31ff22ea087516e7dbb8b43cd16045d9d6fc4"
+               },
+               {
                   "sha": "7b5d18c3a577c3df4f320ee22a0ab56b9c1de101",
                   "author": "Sergio Costas",
                   "timestamp": 1777542581,
                   "message": "Add check based on DBus well-known names (#147)\n\nSince, in some cases, snapd-desktop-integration is launched too soon,\nand that triggers launching xdg-desktop-portal too soon too (because\nseveral services from mutter aren't still available in DBus, so\nxdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to specify\nthat a service (snapd-desktop-integration in this case) must be bound to\nthe graphical-session target instead of the default target.\n\nBut since this will require time, in the meantime this patch should fix\nthis problem: it waits until any of the following well-known names do\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n    org.freedesktop.impl.portal.desktop.*\n\nWhen that happens, we can assume that the desktop is ready, and launch\nsnapd-desktop-integration. It's an ugly hack, but it should work until\nfull graphical-session target support is added to snapd.\n\nFix\nhttps://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
                   "url": "https://github.com/canonical/snapd-desktop-integration/commit/7b5d18c3a577c3df4f320ee22a0ab56b9c1de101"
-               },
-               {
-                  "sha": "bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1748449322,
-                  "message": "Add check based on DBus well-known names\n\nSince, in some cases, snapd-desktop-integration is launched too\nsoon, and that triggers launching xdg-desktop-portal too soon\ntoo (because several services from mutter aren't still available\nin DBus, so xdg-desktop-portal presumes that they don't exist).\n\nTo really fix this, a change in snapd is required that allows to\nspecify that a service (snapd-desktop-integration in this case)\nmust be bound to the graphical-session target instead of the\ndefault target.\n\nBut since this will require time, in the meantime this patch\nshould fix this problem: it waits until this well-known name does\nappear in the bus:\n\n    org.freedesktop.portal.Desktop\n\nWhen that happens, we can assume that the desktop is ready, and\nlaunch snapd-desktop-integration. It's an ugly hack, but it\nshould work until full graphical-session target support is added\nto snapd.\n\nAnyway, since it is not guaranteed that it is launched in any\ndesktop (has been tested only in Gnome Shell), a 10-seconds\ntimeout is added too, to ensure that it is launched safely.\n\nOf course, this works along the previous method of asking for the\nsession type.\n\nFix https://bugs.launchpad.net/xdg-desktop-portal/+bug/2042301/comments/22",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/bfd4fa973c22d778606cb61e7ef4dc06fce9c9bb"
-               },
-               {
-                  "sha": "4473ea9b5252a7f538a89df3f9faf5f605ba8a23",
-                  "author": "Sergio Costas",
-                  "timestamp": 1774524174,
-                  "message": "Remove libnotify source files (#168)\n\nThey interact with TIOBE, giving false errors.",
-                  "url": "https://github.com/canonical/snapd-desktop-integration/commit/4473ea9b5252a7f538a89df3f9faf5f605ba8a23"
                }
             ],
             "ciActions": [],
