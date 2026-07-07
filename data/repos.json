@@ -3328,25 +3328,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b5a55e324f6af2c9a3e310677f48d7e1f40c1c0c",
+                  "sha": "d610fbd154305be83588b8449cc1013f14cc9d64",
                   "author": "adombeck",
-                  "timestamp": 1783375220,
-                  "message": "Automatically set parent of gh-jira-synced tasks (#1678)\n\nUDENG-10962",
-                  "url": "https://github.com/canonical/authd/commit/b5a55e324f6af2c9a3e310677f48d7e1f40c1c0c"
+                  "timestamp": 1783443933,
+                  "message": "Use \"device code flow\" terminology consistently (#1615)\n\nUDENG-10967",
+                  "url": "https://github.com/canonical/authd/commit/d610fbd154305be83588b8449cc1013f14cc9d64"
                },
                {
-                  "sha": "9c95eb43f29e6e32f1e2e4641d4c37663caa5652",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1783374612,
-                  "message": "Automatically set parent of gh-jira-synced tasks\n\nTasks synced from GitHub issues are usually maintenance tasks, so add\nthem to the \"Maintenance - Enterprise\" epic by default.",
-                  "url": "https://github.com/canonical/authd/commit/9c95eb43f29e6e32f1e2e4641d4c37663caa5652"
+                  "sha": "6cd00a7f81d46203e2d40832985a67e9bc5ff994",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1783443865,
+                  "message": "broker/msentraid: handle additional Entra token-expiry error codes (#1681)\n\nAdded additional token expiry codes, here is the reference:\nhttps://learn.microsoft.com/en-us/entra/identity-platform/reference-error-codes\n\nCloses #1680",
+                  "url": "https://github.com/canonical/authd/commit/6cd00a7f81d46203e2d40832985a67e9bc5ff994"
                },
                {
-                  "sha": "0bdad0ecd2cd3c441e14baecceea1907f8667071",
-                  "author": "adombeck",
-                  "timestamp": 1783353284,
-                  "message": "broker: allow placeholder values in main config overridden by drop-ins (#1663)\n\nCloses #1662\nUDENG-10904",
-                  "url": "https://github.com/canonical/authd/commit/0bdad0ecd2cd3c441e14baecceea1907f8667071"
+                  "sha": "3513ee843e0615dffee5489b560f2c9cee551707",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1783437226,
+                  "message": "broker/msentraid: handle additional Entra token-expiry error codes\n\nAADSTS50078 (MFA session expired), AADSTS50089 (flow token expired),\nand AADSTS70008 (refresh token expired due to inactivity, legacy code\nfor AADSTS700082) were not recognised by IsTokenExpiredError, so the\nbroker would return AuthDenied instead of triggering device\nre-authentication on these conditions.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/3513ee843e0615dffee5489b560f2c9cee551707"
                }
             ],
             "ciActions": [
@@ -5147,41 +5147,6 @@
             "snap": null
          },
          {
-            "name": "xdg_locale.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/xdg_locale.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "7013b990e802d2cb58aba09fa73809be36aebe19",
-                  "author": "Dennis Loose",
-                  "timestamp": 1686129889,
-                  "message": "docs: add missing docstrings",
-                  "url": "https://github.com/canonical/xdg_locale.dart/commit/7013b990e802d2cb58aba09fa73809be36aebe19"
-               },
-               {
-                  "sha": "2195213ee3eefb01d49ed33251ac50330261c38b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1686129510,
-                  "message": "docs: add example",
-                  "url": "https://github.com/canonical/xdg_locale.dart/commit/2195213ee3eefb01d49ed33251ac50330261c38b"
-               },
-               {
-                  "sha": "51e855c459973d823847df7ac7da863f98c5f645",
-                  "author": "Dennis Loose",
-                  "timestamp": 1686129279,
-                  "message": "docs: update readme and contribution guide",
-                  "url": "https://github.com/canonical/xdg_locale.dart/commit/51e855c459973d823847df7ac7da863f98c5f645"
-               }
-            ],
-            "ciActions": [
-               "https://github.com/canonical/xdg_locale.dart/workflows/Tests"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "xdg_status_notifier_item.dart",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -5264,14 +5229,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 617,
-                     "timestamp": 1783414068
+                     "revision": 620,
+                     "timestamp": 1783444799
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 618,
-                     "timestamp": 1783414308
+                     "revision": 619,
+                     "timestamp": 1783443883
                   }
                ],
                "channels": [
@@ -5354,6 +5319,41 @@
             ],
             "ciActions": [
                "https://github.com/canonical/ubuntu-desktop-provision-screenshots/actions/workflows/main.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "xdg_locale.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/xdg_locale.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "7013b990e802d2cb58aba09fa73809be36aebe19",
+                  "author": "Dennis Loose",
+                  "timestamp": 1686129889,
+                  "message": "docs: add missing docstrings",
+                  "url": "https://github.com/canonical/xdg_locale.dart/commit/7013b990e802d2cb58aba09fa73809be36aebe19"
+               },
+               {
+                  "sha": "2195213ee3eefb01d49ed33251ac50330261c38b",
+                  "author": "Dennis Loose",
+                  "timestamp": 1686129510,
+                  "message": "docs: add example",
+                  "url": "https://github.com/canonical/xdg_locale.dart/commit/2195213ee3eefb01d49ed33251ac50330261c38b"
+               },
+               {
+                  "sha": "51e855c459973d823847df7ac7da863f98c5f645",
+                  "author": "Dennis Loose",
+                  "timestamp": 1686129279,
+                  "message": "docs: update readme and contribution guide",
+                  "url": "https://github.com/canonical/xdg_locale.dart/commit/51e855c459973d823847df7ac7da863f98c5f645"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/canonical/xdg_locale.dart/workflows/Tests"
             ],
             "charm": null,
             "snap": null
@@ -5643,25 +5643,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b5a55e324f6af2c9a3e310677f48d7e1f40c1c0c",
+                  "sha": "d610fbd154305be83588b8449cc1013f14cc9d64",
                   "author": "adombeck",
-                  "timestamp": 1783375220,
-                  "message": "Automatically set parent of gh-jira-synced tasks (#1678)\n\nUDENG-10962",
-                  "url": "https://github.com/canonical/authd/commit/b5a55e324f6af2c9a3e310677f48d7e1f40c1c0c"
+                  "timestamp": 1783443933,
+                  "message": "Use \"device code flow\" terminology consistently (#1615)\n\nUDENG-10967",
+                  "url": "https://github.com/canonical/authd/commit/d610fbd154305be83588b8449cc1013f14cc9d64"
                },
                {
-                  "sha": "9c95eb43f29e6e32f1e2e4641d4c37663caa5652",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1783374612,
-                  "message": "Automatically set parent of gh-jira-synced tasks\n\nTasks synced from GitHub issues are usually maintenance tasks, so add\nthem to the \"Maintenance - Enterprise\" epic by default.",
-                  "url": "https://github.com/canonical/authd/commit/9c95eb43f29e6e32f1e2e4641d4c37663caa5652"
+                  "sha": "6cd00a7f81d46203e2d40832985a67e9bc5ff994",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1783443865,
+                  "message": "broker/msentraid: handle additional Entra token-expiry error codes (#1681)\n\nAdded additional token expiry codes, here is the reference:\nhttps://learn.microsoft.com/en-us/entra/identity-platform/reference-error-codes\n\nCloses #1680",
+                  "url": "https://github.com/canonical/authd/commit/6cd00a7f81d46203e2d40832985a67e9bc5ff994"
                },
                {
-                  "sha": "0bdad0ecd2cd3c441e14baecceea1907f8667071",
-                  "author": "adombeck",
-                  "timestamp": 1783353284,
-                  "message": "broker: allow placeholder values in main config overridden by drop-ins (#1663)\n\nCloses #1662\nUDENG-10904",
-                  "url": "https://github.com/canonical/authd/commit/0bdad0ecd2cd3c441e14baecceea1907f8667071"
+                  "sha": "3513ee843e0615dffee5489b560f2c9cee551707",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1783437226,
+                  "message": "broker/msentraid: handle additional Entra token-expiry error codes\n\nAADSTS50078 (MFA session expired), AADSTS50089 (flow token expired),\nand AADSTS70008 (refresh token expired due to inactivity, legacy code\nfor AADSTS700082) were not recognised by IsTokenExpiredError, so the\nbroker would return AuthDenied instead of triggering device\nre-authentication on these conditions.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/3513ee843e0615dffee5489b560f2c9cee551707"
                }
             ],
             "ciActions": [
@@ -7287,7 +7287,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 269,
+            "newCommits": 292,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7653,14 +7653,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 617,
-                     "timestamp": 1783414068
+                     "revision": 620,
+                     "timestamp": 1783444799
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 618,
-                     "timestamp": 1783414308
+                     "revision": 619,
+                     "timestamp": 1783443883
                   }
                ],
                "channels": [
@@ -8127,25 +8127,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b5a55e324f6af2c9a3e310677f48d7e1f40c1c0c",
+                  "sha": "d610fbd154305be83588b8449cc1013f14cc9d64",
                   "author": "adombeck",
-                  "timestamp": 1783375220,
-                  "message": "Automatically set parent of gh-jira-synced tasks (#1678)\n\nUDENG-10962",
-                  "url": "https://github.com/canonical/authd/commit/b5a55e324f6af2c9a3e310677f48d7e1f40c1c0c"
+                  "timestamp": 1783443933,
+                  "message": "Use \"device code flow\" terminology consistently (#1615)\n\nUDENG-10967",
+                  "url": "https://github.com/canonical/authd/commit/d610fbd154305be83588b8449cc1013f14cc9d64"
                },
                {
-                  "sha": "9c95eb43f29e6e32f1e2e4641d4c37663caa5652",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1783374612,
-                  "message": "Automatically set parent of gh-jira-synced tasks\n\nTasks synced from GitHub issues are usually maintenance tasks, so add\nthem to the \"Maintenance - Enterprise\" epic by default.",
-                  "url": "https://github.com/canonical/authd/commit/9c95eb43f29e6e32f1e2e4641d4c37663caa5652"
+                  "sha": "6cd00a7f81d46203e2d40832985a67e9bc5ff994",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1783443865,
+                  "message": "broker/msentraid: handle additional Entra token-expiry error codes (#1681)\n\nAdded additional token expiry codes, here is the reference:\nhttps://learn.microsoft.com/en-us/entra/identity-platform/reference-error-codes\n\nCloses #1680",
+                  "url": "https://github.com/canonical/authd/commit/6cd00a7f81d46203e2d40832985a67e9bc5ff994"
                },
                {
-                  "sha": "0bdad0ecd2cd3c441e14baecceea1907f8667071",
-                  "author": "adombeck",
-                  "timestamp": 1783353284,
-                  "message": "broker: allow placeholder values in main config overridden by drop-ins (#1663)\n\nCloses #1662\nUDENG-10904",
-                  "url": "https://github.com/canonical/authd/commit/0bdad0ecd2cd3c441e14baecceea1907f8667071"
+                  "sha": "3513ee843e0615dffee5489b560f2c9cee551707",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1783437226,
+                  "message": "broker/msentraid: handle additional Entra token-expiry error codes\n\nAADSTS50078 (MFA session expired), AADSTS50089 (flow token expired),\nand AADSTS70008 (refresh token expired due to inactivity, legacy code\nfor AADSTS700082) were not recognised by IsTokenExpiredError, so the\nbroker would return AuthDenied instead of triggering device\nre-authentication on these conditions.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/3513ee843e0615dffee5489b560f2c9cee551707"
                }
             ],
             "ciActions": [
@@ -10098,14 +10098,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 617,
-                     "timestamp": 1783414068
+                     "revision": 620,
+                     "timestamp": 1783444799
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 618,
-                     "timestamp": 1783414308
+                     "revision": 619,
+                     "timestamp": 1783443883
                   }
                ],
                "channels": [
