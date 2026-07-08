@@ -3361,25 +3361,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "92491487871260d15fceeecc5c59ed4501bd684b",
+                  "sha": "4056d29cc4d50d3ed6eb0b8d49aaea73e819a607",
                   "author": "adombeck",
-                  "timestamp": 1783531441,
-                  "message": "pam/integration-tests: discard partial QR snapshot in regenerations test (#1703)\n\nCloses #1702 \nUDENG-10976",
-                  "url": "https://github.com/canonical/authd/commit/92491487871260d15fceeecc5c59ed4501bd684b"
+                  "timestamp": 1783551314,
+                  "message": "pam: fall back to native mode when TERM=dumb (#1704)\n\nCloses https://github.com/canonical/authd/issues/1692\nUDENG-10977",
+                  "url": "https://github.com/canonical/authd/commit/4056d29cc4d50d3ed6eb0b8d49aaea73e819a607"
                },
                {
-                  "sha": "6e01d51e62ab6eed8479173edd5334f70d489e55",
+                  "sha": "895eafc401dcf77f2df0354c54f48b8734814b3d",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1783531287,
-                  "message": "pam/integration-tests: skip flaky ASAN password-reset test\n\nDeny_authentication_if_newpassword_does_not_match_required_criteria\nfails intermittently in ASAN runs: the authd-pam child process crashes\nwith an ASAN-internal CHECK failure in ThreadRegistry::StartThread.\nASAN's thread registry receives a corrupt thread index (0x62c81000)\nagainst a 6-entry vector, which is a known symptom of Go's memory\nmanagement corrupting ASAN's mmap-backed internal data structures when\nmany ASAN-instrumented processes run in parallel.\n\nThe test logic is correct (it has golden files and passes in normal\nruns). Add a flaky field to the test-case struct and skip the test when\nAUTHD_SKIP_FLAKY_TESTS is set, matching the pattern already used for\nsimilar intermittent ASAN failures elsewhere in the suite.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/6e01d51e62ab6eed8479173edd5334f70d489e55"
+                  "timestamp": 1783529542,
+                  "message": "pam: fall back to native mode when TERM=dumb\n\nWhen TERM is set to \"dumb\", the terminal cannot render escape sequences\nor cursor positioning, making the interactive TUI unusable. Non-interactive\nconsumers like Emacs TRAMP, scripted sudo, Ansible, and cron-driven\nprivilege escalation set TERM=dumb and expect plain text PAM conversation\nprompts rather than a full-screen TUI.\n\nAdd IsDumbTerminal() to detect this condition and exclude dumb terminals\nfrom the InteractiveTerminal code path in the PAM module. The module falls\nback to Native mode, which uses standard PAM conversation for prompts.\n\nApply the same guard in nativeModel: skip interactive prompt formatting\nand QR code rendering on dumb terminals.\n\nFixes: https://github.com/canonical/authd/issues/1692\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/895eafc401dcf77f2df0354c54f48b8734814b3d"
                },
                {
-                  "sha": "0d09c1acd81fcc0f19e137f4340d151c70231791",
+                  "sha": "12c1605711f4207f29d9712648d48e34cc2393f5",
                   "author": "adombeck",
-                  "timestamp": 1783530501,
-                  "message": "Improve PAM prompts (#1614)\n\nUDENG-10817",
-                  "url": "https://github.com/canonical/authd/commit/0d09c1acd81fcc0f19e137f4340d151c70231791"
+                  "timestamp": 1783546451,
+                  "message": "ci: retry ASAN integration tests on ASAN-internal check failures (#1708)\n\nCloses #1707\nUDENG-10979",
+                  "url": "https://github.com/canonical/authd/commit/12c1605711f4207f29d9712648d48e34cc2393f5"
                }
             ],
             "ciActions": [
@@ -5676,25 +5676,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "92491487871260d15fceeecc5c59ed4501bd684b",
+                  "sha": "4056d29cc4d50d3ed6eb0b8d49aaea73e819a607",
                   "author": "adombeck",
-                  "timestamp": 1783531441,
-                  "message": "pam/integration-tests: discard partial QR snapshot in regenerations test (#1703)\n\nCloses #1702 \nUDENG-10976",
-                  "url": "https://github.com/canonical/authd/commit/92491487871260d15fceeecc5c59ed4501bd684b"
+                  "timestamp": 1783551314,
+                  "message": "pam: fall back to native mode when TERM=dumb (#1704)\n\nCloses https://github.com/canonical/authd/issues/1692\nUDENG-10977",
+                  "url": "https://github.com/canonical/authd/commit/4056d29cc4d50d3ed6eb0b8d49aaea73e819a607"
                },
                {
-                  "sha": "6e01d51e62ab6eed8479173edd5334f70d489e55",
+                  "sha": "895eafc401dcf77f2df0354c54f48b8734814b3d",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1783531287,
-                  "message": "pam/integration-tests: skip flaky ASAN password-reset test\n\nDeny_authentication_if_newpassword_does_not_match_required_criteria\nfails intermittently in ASAN runs: the authd-pam child process crashes\nwith an ASAN-internal CHECK failure in ThreadRegistry::StartThread.\nASAN's thread registry receives a corrupt thread index (0x62c81000)\nagainst a 6-entry vector, which is a known symptom of Go's memory\nmanagement corrupting ASAN's mmap-backed internal data structures when\nmany ASAN-instrumented processes run in parallel.\n\nThe test logic is correct (it has golden files and passes in normal\nruns). Add a flaky field to the test-case struct and skip the test when\nAUTHD_SKIP_FLAKY_TESTS is set, matching the pattern already used for\nsimilar intermittent ASAN failures elsewhere in the suite.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/6e01d51e62ab6eed8479173edd5334f70d489e55"
+                  "timestamp": 1783529542,
+                  "message": "pam: fall back to native mode when TERM=dumb\n\nWhen TERM is set to \"dumb\", the terminal cannot render escape sequences\nor cursor positioning, making the interactive TUI unusable. Non-interactive\nconsumers like Emacs TRAMP, scripted sudo, Ansible, and cron-driven\nprivilege escalation set TERM=dumb and expect plain text PAM conversation\nprompts rather than a full-screen TUI.\n\nAdd IsDumbTerminal() to detect this condition and exclude dumb terminals\nfrom the InteractiveTerminal code path in the PAM module. The module falls\nback to Native mode, which uses standard PAM conversation for prompts.\n\nApply the same guard in nativeModel: skip interactive prompt formatting\nand QR code rendering on dumb terminals.\n\nFixes: https://github.com/canonical/authd/issues/1692\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/895eafc401dcf77f2df0354c54f48b8734814b3d"
                },
                {
-                  "sha": "0d09c1acd81fcc0f19e137f4340d151c70231791",
+                  "sha": "12c1605711f4207f29d9712648d48e34cc2393f5",
                   "author": "adombeck",
-                  "timestamp": 1783530501,
-                  "message": "Improve PAM prompts (#1614)\n\nUDENG-10817",
-                  "url": "https://github.com/canonical/authd/commit/0d09c1acd81fcc0f19e137f4340d151c70231791"
+                  "timestamp": 1783546451,
+                  "message": "ci: retry ASAN integration tests on ASAN-internal check failures (#1708)\n\nCloses #1707\nUDENG-10979",
+                  "url": "https://github.com/canonical/authd/commit/12c1605711f4207f29d9712648d48e34cc2393f5"
                }
             ],
             "ciActions": [
@@ -8160,25 +8160,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "92491487871260d15fceeecc5c59ed4501bd684b",
+                  "sha": "4056d29cc4d50d3ed6eb0b8d49aaea73e819a607",
                   "author": "adombeck",
-                  "timestamp": 1783531441,
-                  "message": "pam/integration-tests: discard partial QR snapshot in regenerations test (#1703)\n\nCloses #1702 \nUDENG-10976",
-                  "url": "https://github.com/canonical/authd/commit/92491487871260d15fceeecc5c59ed4501bd684b"
+                  "timestamp": 1783551314,
+                  "message": "pam: fall back to native mode when TERM=dumb (#1704)\n\nCloses https://github.com/canonical/authd/issues/1692\nUDENG-10977",
+                  "url": "https://github.com/canonical/authd/commit/4056d29cc4d50d3ed6eb0b8d49aaea73e819a607"
                },
                {
-                  "sha": "6e01d51e62ab6eed8479173edd5334f70d489e55",
+                  "sha": "895eafc401dcf77f2df0354c54f48b8734814b3d",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1783531287,
-                  "message": "pam/integration-tests: skip flaky ASAN password-reset test\n\nDeny_authentication_if_newpassword_does_not_match_required_criteria\nfails intermittently in ASAN runs: the authd-pam child process crashes\nwith an ASAN-internal CHECK failure in ThreadRegistry::StartThread.\nASAN's thread registry receives a corrupt thread index (0x62c81000)\nagainst a 6-entry vector, which is a known symptom of Go's memory\nmanagement corrupting ASAN's mmap-backed internal data structures when\nmany ASAN-instrumented processes run in parallel.\n\nThe test logic is correct (it has golden files and passes in normal\nruns). Add a flaky field to the test-case struct and skip the test when\nAUTHD_SKIP_FLAKY_TESTS is set, matching the pattern already used for\nsimilar intermittent ASAN failures elsewhere in the suite.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/6e01d51e62ab6eed8479173edd5334f70d489e55"
+                  "timestamp": 1783529542,
+                  "message": "pam: fall back to native mode when TERM=dumb\n\nWhen TERM is set to \"dumb\", the terminal cannot render escape sequences\nor cursor positioning, making the interactive TUI unusable. Non-interactive\nconsumers like Emacs TRAMP, scripted sudo, Ansible, and cron-driven\nprivilege escalation set TERM=dumb and expect plain text PAM conversation\nprompts rather than a full-screen TUI.\n\nAdd IsDumbTerminal() to detect this condition and exclude dumb terminals\nfrom the InteractiveTerminal code path in the PAM module. The module falls\nback to Native mode, which uses standard PAM conversation for prompts.\n\nApply the same guard in nativeModel: skip interactive prompt formatting\nand QR code rendering on dumb terminals.\n\nFixes: https://github.com/canonical/authd/issues/1692\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/895eafc401dcf77f2df0354c54f48b8734814b3d"
                },
                {
-                  "sha": "0d09c1acd81fcc0f19e137f4340d151c70231791",
+                  "sha": "12c1605711f4207f29d9712648d48e34cc2393f5",
                   "author": "adombeck",
-                  "timestamp": 1783530501,
-                  "message": "Improve PAM prompts (#1614)\n\nUDENG-10817",
-                  "url": "https://github.com/canonical/authd/commit/0d09c1acd81fcc0f19e137f4340d151c70231791"
+                  "timestamp": 1783546451,
+                  "message": "ci: retry ASAN integration tests on ASAN-internal check failures (#1708)\n\nCloses #1707\nUDENG-10979",
+                  "url": "https://github.com/canonical/authd/commit/12c1605711f4207f29d9712648d48e34cc2393f5"
                }
             ],
             "ciActions": [
