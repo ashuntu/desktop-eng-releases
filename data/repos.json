@@ -3361,25 +3361,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f2c478fd302d2769ea50525cdd0769b66ad53ceb",
+                  "sha": "92491487871260d15fceeecc5c59ed4501bd684b",
                   "author": "adombeck",
-                  "timestamp": 1783521928,
-                  "message": "broker: fail on unknown config sections and keys (#1685)\n\nCloses #1666\nUDENG-10922",
-                  "url": "https://github.com/canonical/authd/commit/f2c478fd302d2769ea50525cdd0769b66ad53ceb"
+                  "timestamp": 1783531441,
+                  "message": "pam/integration-tests: discard partial QR snapshot in regenerations test (#1703)\n\nCloses #1702 \nUDENG-10976",
+                  "url": "https://github.com/canonical/authd/commit/92491487871260d15fceeecc5c59ed4501bd684b"
                },
                {
-                  "sha": "fd8d01b2e8296a1d21676c8fc8681147b0153b62",
-                  "author": "adombeck",
-                  "timestamp": 1783519260,
-                  "message": "Fix selection menu shown briefly before auto-selection (#1524)\n\nCloses #1523 \nUDENG-10960",
-                  "url": "https://github.com/canonical/authd/commit/fd8d01b2e8296a1d21676c8fc8681147b0153b62"
+                  "sha": "6e01d51e62ab6eed8479173edd5334f70d489e55",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1783531287,
+                  "message": "pam/integration-tests: skip flaky ASAN password-reset test\n\nDeny_authentication_if_newpassword_does_not_match_required_criteria\nfails intermittently in ASAN runs: the authd-pam child process crashes\nwith an ASAN-internal CHECK failure in ThreadRegistry::StartThread.\nASAN's thread registry receives a corrupt thread index (0x62c81000)\nagainst a 6-entry vector, which is a known symptom of Go's memory\nmanagement corrupting ASAN's mmap-backed internal data structures when\nmany ASAN-instrumented processes run in parallel.\n\nThe test logic is correct (it has golden files and passes in normal\nruns). Add a flaky field to the test-case struct and skip the test when\nAUTHD_SKIP_FLAKY_TESTS is set, matching the pattern already used for\nsimilar intermittent ASAN failures elsewhere in the suite.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/6e01d51e62ab6eed8479173edd5334f70d489e55"
                },
                {
-                  "sha": "de47256ae37c54c5d63c1fbf1a96332cc2bc47e1",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1783506279,
-                  "message": "Avoid keeping invalid deferred auth mode selections",
-                  "url": "https://github.com/canonical/authd/commit/de47256ae37c54c5d63c1fbf1a96332cc2bc47e1"
+                  "sha": "0d09c1acd81fcc0f19e137f4340d151c70231791",
+                  "author": "adombeck",
+                  "timestamp": 1783530501,
+                  "message": "Improve PAM prompts (#1614)\n\nUDENG-10817",
+                  "url": "https://github.com/canonical/authd/commit/0d09c1acd81fcc0f19e137f4340d151c70231791"
                }
             ],
             "ciActions": [
@@ -5676,25 +5676,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f2c478fd302d2769ea50525cdd0769b66ad53ceb",
+                  "sha": "92491487871260d15fceeecc5c59ed4501bd684b",
                   "author": "adombeck",
-                  "timestamp": 1783521928,
-                  "message": "broker: fail on unknown config sections and keys (#1685)\n\nCloses #1666\nUDENG-10922",
-                  "url": "https://github.com/canonical/authd/commit/f2c478fd302d2769ea50525cdd0769b66ad53ceb"
+                  "timestamp": 1783531441,
+                  "message": "pam/integration-tests: discard partial QR snapshot in regenerations test (#1703)\n\nCloses #1702 \nUDENG-10976",
+                  "url": "https://github.com/canonical/authd/commit/92491487871260d15fceeecc5c59ed4501bd684b"
                },
                {
-                  "sha": "fd8d01b2e8296a1d21676c8fc8681147b0153b62",
-                  "author": "adombeck",
-                  "timestamp": 1783519260,
-                  "message": "Fix selection menu shown briefly before auto-selection (#1524)\n\nCloses #1523 \nUDENG-10960",
-                  "url": "https://github.com/canonical/authd/commit/fd8d01b2e8296a1d21676c8fc8681147b0153b62"
+                  "sha": "6e01d51e62ab6eed8479173edd5334f70d489e55",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1783531287,
+                  "message": "pam/integration-tests: skip flaky ASAN password-reset test\n\nDeny_authentication_if_newpassword_does_not_match_required_criteria\nfails intermittently in ASAN runs: the authd-pam child process crashes\nwith an ASAN-internal CHECK failure in ThreadRegistry::StartThread.\nASAN's thread registry receives a corrupt thread index (0x62c81000)\nagainst a 6-entry vector, which is a known symptom of Go's memory\nmanagement corrupting ASAN's mmap-backed internal data structures when\nmany ASAN-instrumented processes run in parallel.\n\nThe test logic is correct (it has golden files and passes in normal\nruns). Add a flaky field to the test-case struct and skip the test when\nAUTHD_SKIP_FLAKY_TESTS is set, matching the pattern already used for\nsimilar intermittent ASAN failures elsewhere in the suite.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/6e01d51e62ab6eed8479173edd5334f70d489e55"
                },
                {
-                  "sha": "de47256ae37c54c5d63c1fbf1a96332cc2bc47e1",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1783506279,
-                  "message": "Avoid keeping invalid deferred auth mode selections",
-                  "url": "https://github.com/canonical/authd/commit/de47256ae37c54c5d63c1fbf1a96332cc2bc47e1"
+                  "sha": "0d09c1acd81fcc0f19e137f4340d151c70231791",
+                  "author": "adombeck",
+                  "timestamp": 1783530501,
+                  "message": "Improve PAM prompts (#1614)\n\nUDENG-10817",
+                  "url": "https://github.com/canonical/authd/commit/0d09c1acd81fcc0f19e137f4340d151c70231791"
                }
             ],
             "ciActions": [
@@ -7320,7 +7320,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 292,
+            "newCommits": 296,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -8160,25 +8160,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f2c478fd302d2769ea50525cdd0769b66ad53ceb",
+                  "sha": "92491487871260d15fceeecc5c59ed4501bd684b",
                   "author": "adombeck",
-                  "timestamp": 1783521928,
-                  "message": "broker: fail on unknown config sections and keys (#1685)\n\nCloses #1666\nUDENG-10922",
-                  "url": "https://github.com/canonical/authd/commit/f2c478fd302d2769ea50525cdd0769b66ad53ceb"
+                  "timestamp": 1783531441,
+                  "message": "pam/integration-tests: discard partial QR snapshot in regenerations test (#1703)\n\nCloses #1702 \nUDENG-10976",
+                  "url": "https://github.com/canonical/authd/commit/92491487871260d15fceeecc5c59ed4501bd684b"
                },
                {
-                  "sha": "fd8d01b2e8296a1d21676c8fc8681147b0153b62",
-                  "author": "adombeck",
-                  "timestamp": 1783519260,
-                  "message": "Fix selection menu shown briefly before auto-selection (#1524)\n\nCloses #1523 \nUDENG-10960",
-                  "url": "https://github.com/canonical/authd/commit/fd8d01b2e8296a1d21676c8fc8681147b0153b62"
+                  "sha": "6e01d51e62ab6eed8479173edd5334f70d489e55",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1783531287,
+                  "message": "pam/integration-tests: skip flaky ASAN password-reset test\n\nDeny_authentication_if_newpassword_does_not_match_required_criteria\nfails intermittently in ASAN runs: the authd-pam child process crashes\nwith an ASAN-internal CHECK failure in ThreadRegistry::StartThread.\nASAN's thread registry receives a corrupt thread index (0x62c81000)\nagainst a 6-entry vector, which is a known symptom of Go's memory\nmanagement corrupting ASAN's mmap-backed internal data structures when\nmany ASAN-instrumented processes run in parallel.\n\nThe test logic is correct (it has golden files and passes in normal\nruns). Add a flaky field to the test-case struct and skip the test when\nAUTHD_SKIP_FLAKY_TESTS is set, matching the pattern already used for\nsimilar intermittent ASAN failures elsewhere in the suite.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/6e01d51e62ab6eed8479173edd5334f70d489e55"
                },
                {
-                  "sha": "de47256ae37c54c5d63c1fbf1a96332cc2bc47e1",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1783506279,
-                  "message": "Avoid keeping invalid deferred auth mode selections",
-                  "url": "https://github.com/canonical/authd/commit/de47256ae37c54c5d63c1fbf1a96332cc2bc47e1"
+                  "sha": "0d09c1acd81fcc0f19e137f4340d151c70231791",
+                  "author": "adombeck",
+                  "timestamp": 1783530501,
+                  "message": "Improve PAM prompts (#1614)\n\nUDENG-10817",
+                  "url": "https://github.com/canonical/authd/commit/0d09c1acd81fcc0f19e137f4340d151c70231791"
                }
             ],
             "ciActions": [
