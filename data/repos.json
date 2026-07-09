@@ -3361,6 +3361,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c358b86e9cec5619da585d4e94ef3ebed5b0888c",
+                  "author": "adombeck",
+                  "timestamp": 1783556349,
+                  "message": "pam/gdm: serialise concurrent PAM conversations (#1713)\n\nCloses #1712\nUDENG-10980",
+                  "url": "https://github.com/canonical/authd/commit/c358b86e9cec5619da585d4e94ef3ebed5b0888c"
+               },
+               {
                   "sha": "4056d29cc4d50d3ed6eb0b8d49aaea73e819a607",
                   "author": "adombeck",
                   "timestamp": 1783551314,
@@ -3368,18 +3375,11 @@
                   "url": "https://github.com/canonical/authd/commit/4056d29cc4d50d3ed6eb0b8d49aaea73e819a607"
                },
                {
-                  "sha": "895eafc401dcf77f2df0354c54f48b8734814b3d",
+                  "sha": "c0fc9985159be70bd66a80c9693c5574cf4277c0",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1783529542,
-                  "message": "pam: fall back to native mode when TERM=dumb\n\nWhen TERM is set to \"dumb\", the terminal cannot render escape sequences\nor cursor positioning, making the interactive TUI unusable. Non-interactive\nconsumers like Emacs TRAMP, scripted sudo, Ansible, and cron-driven\nprivilege escalation set TERM=dumb and expect plain text PAM conversation\nprompts rather than a full-screen TUI.\n\nAdd IsDumbTerminal() to detect this condition and exclude dumb terminals\nfrom the InteractiveTerminal code path in the PAM module. The module falls\nback to Native mode, which uses standard PAM conversation for prompts.\n\nApply the same guard in nativeModel: skip interactive prompt formatting\nand QR code rendering on dumb terminals.\n\nFixes: https://github.com/canonical/authd/issues/1692\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/895eafc401dcf77f2df0354c54f48b8734814b3d"
-               },
-               {
-                  "sha": "12c1605711f4207f29d9712648d48e34cc2393f5",
-                  "author": "adombeck",
-                  "timestamp": 1783546451,
-                  "message": "ci: retry ASAN integration tests on ASAN-internal check failures (#1708)\n\nCloses #1707\nUDENG-10979",
-                  "url": "https://github.com/canonical/authd/commit/12c1605711f4207f29d9712648d48e34cc2393f5"
+                  "timestamp": 1783546523,
+                  "message": "pam/gdm: serialise concurrent PAM conversations\n\nThe Bubble Tea event loop runs each tea.Cmd in its own goroutine, so\nhandlers like emitEvent (brokersListReceived, userSelected, ...) and\npollGdm can call gdm.SendData concurrently. Both funnel into sendToGdm,\nwhich invokes pamMTx.StartConv. The GDM conversation callback\n(pam_conv.conv) is not goroutine-safe, so concurrent calls can interleave\nthe binary JSON request/response stream shared with the GNOME Shell authd\nextension. The existing conversations atomic.Int32 acknowledged that\nsendToGdm is reached from multiple goroutines but did nothing to prevent\noverlapping conversations.\n\nThis is a plausible cause of an observed failure where GDM never starts\ngnome-session and the login screen stays frozen: a corrupted conversation\nstream would leave the extension stuck.\n\nFix: add convMu, a package-level sync.Mutex, held by sendToGdm for the\nfull send-plus-receive round trip so at most one PAM conversation is live\nat any instant. The conversations counter is still incremented before\nacquiring the lock, so ConversationInProgress keeps returning true while\ncallers are waiting and shutdown continues to drain queued conversations.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/c0fc9985159be70bd66a80c9693c5574cf4277c0"
                }
             ],
             "ciActions": [
@@ -5509,25 +5509,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "6a6654f1297c7254454dc9e9f26af0017136caf8",
+                  "author": "Kat",
+                  "timestamp": 1783553791,
+                  "message": "deps(go): upgrade Go version to 1.26 (#366)\n\nUpgrading Go to 1.26 as well as Go dependencies.",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6a6654f1297c7254454dc9e9f26af0017136caf8"
+               },
+               {
+                  "sha": "98f237cfd4374838d99b931adb76ef6f31c3b2e0",
+                  "author": "kkuo",
+                  "timestamp": 1783549107,
+                  "message": "deps(go): upgrade Go version to 1.26",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/98f237cfd4374838d99b931adb76ef6f31c3b2e0"
+               },
+               {
                   "sha": "17b5e4951467b0b37489f7529347f212d38ae68c",
                   "author": "Kat",
                   "timestamp": 1783521238,
                   "message": "feat(insights): add system opt-out C bindings (#361)\n\nImplemented C bindings for system opt-out features. Relevant tests were\nadded and golden files regenerated.\n\nOf note:\n`insights_get_system_opt_out` and `insights_set_system_opt_out_state`\nwere added.\n\n\nBreaking: \nABI compatibility is broken here, as we are increasing the config struct\nsizes, so we are incrementing the SONAME. This is being done in\nanticipation that the release these changes will be a part of will be\nversion 1.0.0.\n\n---\n[UDENG-10540](https://warthogs.atlassian.net/browse/UDENG-10540)\n\n[UDENG-10540]:\nhttps://warthogs.atlassian.net/browse/UDENG-10540?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/17b5e4951467b0b37489f7529347f212d38ae68c"
-               },
-               {
-                  "sha": "907109c08aa79da705d5f3ca8beb8fcf4f526257",
-                  "author": "kkuo",
-                  "timestamp": 1782507066,
-                  "message": "feat(insights): bump libinsights SONAME to 1\n\nBump the SONAME to libinsights.so.1 and rename the libinsights0 package/packaging to libinsights1, with a 1.0.0 release entry. Reorganize the public C structs in types.h accordingly.\n\nBREAKING CHANGE: insights_config layout changed and SONAME bumped to 1.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/907109c08aa79da705d5f3ca8beb8fcf4f526257"
-               },
-               {
-                  "sha": "7986e6e7e6bc8a17fd467018eb5a707704de2d43",
-                  "author": "kkuo",
-                  "timestamp": 1782504969,
-                  "message": "fix(insights): address review feedback on system opt-out C bindings\n\n- Append system_config_dir to insights_config to avoid ABI break\n- Route exported system opt-out funcs through custom helpers\n- Add new C symbols to libinsights0.symbols\n- Remove dead code in system opt-out get test",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7986e6e7e6bc8a17fd467018eb5a707704de2d43"
                }
             ],
             "ciActions": [
@@ -5676,6 +5676,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c358b86e9cec5619da585d4e94ef3ebed5b0888c",
+                  "author": "adombeck",
+                  "timestamp": 1783556349,
+                  "message": "pam/gdm: serialise concurrent PAM conversations (#1713)\n\nCloses #1712\nUDENG-10980",
+                  "url": "https://github.com/canonical/authd/commit/c358b86e9cec5619da585d4e94ef3ebed5b0888c"
+               },
+               {
                   "sha": "4056d29cc4d50d3ed6eb0b8d49aaea73e819a607",
                   "author": "adombeck",
                   "timestamp": 1783551314,
@@ -5683,18 +5690,11 @@
                   "url": "https://github.com/canonical/authd/commit/4056d29cc4d50d3ed6eb0b8d49aaea73e819a607"
                },
                {
-                  "sha": "895eafc401dcf77f2df0354c54f48b8734814b3d",
+                  "sha": "c0fc9985159be70bd66a80c9693c5574cf4277c0",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1783529542,
-                  "message": "pam: fall back to native mode when TERM=dumb\n\nWhen TERM is set to \"dumb\", the terminal cannot render escape sequences\nor cursor positioning, making the interactive TUI unusable. Non-interactive\nconsumers like Emacs TRAMP, scripted sudo, Ansible, and cron-driven\nprivilege escalation set TERM=dumb and expect plain text PAM conversation\nprompts rather than a full-screen TUI.\n\nAdd IsDumbTerminal() to detect this condition and exclude dumb terminals\nfrom the InteractiveTerminal code path in the PAM module. The module falls\nback to Native mode, which uses standard PAM conversation for prompts.\n\nApply the same guard in nativeModel: skip interactive prompt formatting\nand QR code rendering on dumb terminals.\n\nFixes: https://github.com/canonical/authd/issues/1692\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/895eafc401dcf77f2df0354c54f48b8734814b3d"
-               },
-               {
-                  "sha": "12c1605711f4207f29d9712648d48e34cc2393f5",
-                  "author": "adombeck",
-                  "timestamp": 1783546451,
-                  "message": "ci: retry ASAN integration tests on ASAN-internal check failures (#1708)\n\nCloses #1707\nUDENG-10979",
-                  "url": "https://github.com/canonical/authd/commit/12c1605711f4207f29d9712648d48e34cc2393f5"
+                  "timestamp": 1783546523,
+                  "message": "pam/gdm: serialise concurrent PAM conversations\n\nThe Bubble Tea event loop runs each tea.Cmd in its own goroutine, so\nhandlers like emitEvent (brokersListReceived, userSelected, ...) and\npollGdm can call gdm.SendData concurrently. Both funnel into sendToGdm,\nwhich invokes pamMTx.StartConv. The GDM conversation callback\n(pam_conv.conv) is not goroutine-safe, so concurrent calls can interleave\nthe binary JSON request/response stream shared with the GNOME Shell authd\nextension. The existing conversations atomic.Int32 acknowledged that\nsendToGdm is reached from multiple goroutines but did nothing to prevent\noverlapping conversations.\n\nThis is a plausible cause of an observed failure where GDM never starts\ngnome-session and the login screen stays frozen: a corrupted conversation\nstream would leave the extension stuck.\n\nFix: add convMu, a package-level sync.Mutex, held by sendToGdm for the\nfull send-plus-receive round trip so at most one PAM conversation is live\nat any instant. The conversations counter is still incremented before\nacquiring the lock, so ConversationInProgress keeps returning true while\ncallers are waiting and shutdown continues to drain queued conversations.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/c0fc9985159be70bd66a80c9693c5574cf4277c0"
                }
             ],
             "ciActions": [
@@ -8160,6 +8160,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "c358b86e9cec5619da585d4e94ef3ebed5b0888c",
+                  "author": "adombeck",
+                  "timestamp": 1783556349,
+                  "message": "pam/gdm: serialise concurrent PAM conversations (#1713)\n\nCloses #1712\nUDENG-10980",
+                  "url": "https://github.com/canonical/authd/commit/c358b86e9cec5619da585d4e94ef3ebed5b0888c"
+               },
+               {
                   "sha": "4056d29cc4d50d3ed6eb0b8d49aaea73e819a607",
                   "author": "adombeck",
                   "timestamp": 1783551314,
@@ -8167,18 +8174,11 @@
                   "url": "https://github.com/canonical/authd/commit/4056d29cc4d50d3ed6eb0b8d49aaea73e819a607"
                },
                {
-                  "sha": "895eafc401dcf77f2df0354c54f48b8734814b3d",
+                  "sha": "c0fc9985159be70bd66a80c9693c5574cf4277c0",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1783529542,
-                  "message": "pam: fall back to native mode when TERM=dumb\n\nWhen TERM is set to \"dumb\", the terminal cannot render escape sequences\nor cursor positioning, making the interactive TUI unusable. Non-interactive\nconsumers like Emacs TRAMP, scripted sudo, Ansible, and cron-driven\nprivilege escalation set TERM=dumb and expect plain text PAM conversation\nprompts rather than a full-screen TUI.\n\nAdd IsDumbTerminal() to detect this condition and exclude dumb terminals\nfrom the InteractiveTerminal code path in the PAM module. The module falls\nback to Native mode, which uses standard PAM conversation for prompts.\n\nApply the same guard in nativeModel: skip interactive prompt formatting\nand QR code rendering on dumb terminals.\n\nFixes: https://github.com/canonical/authd/issues/1692\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/895eafc401dcf77f2df0354c54f48b8734814b3d"
-               },
-               {
-                  "sha": "12c1605711f4207f29d9712648d48e34cc2393f5",
-                  "author": "adombeck",
-                  "timestamp": 1783546451,
-                  "message": "ci: retry ASAN integration tests on ASAN-internal check failures (#1708)\n\nCloses #1707\nUDENG-10979",
-                  "url": "https://github.com/canonical/authd/commit/12c1605711f4207f29d9712648d48e34cc2393f5"
+                  "timestamp": 1783546523,
+                  "message": "pam/gdm: serialise concurrent PAM conversations\n\nThe Bubble Tea event loop runs each tea.Cmd in its own goroutine, so\nhandlers like emitEvent (brokersListReceived, userSelected, ...) and\npollGdm can call gdm.SendData concurrently. Both funnel into sendToGdm,\nwhich invokes pamMTx.StartConv. The GDM conversation callback\n(pam_conv.conv) is not goroutine-safe, so concurrent calls can interleave\nthe binary JSON request/response stream shared with the GNOME Shell authd\nextension. The existing conversations atomic.Int32 acknowledged that\nsendToGdm is reached from multiple goroutines but did nothing to prevent\noverlapping conversations.\n\nThis is a plausible cause of an observed failure where GDM never starts\ngnome-session and the login screen stays frozen: a corrupted conversation\nstream would leave the extension stuck.\n\nFix: add convMu, a package-level sync.Mutex, held by sendToGdm for the\nfull send-plus-receive round trip so at most one PAM conversation is live\nat any instant. The conversations counter is still incremented before\nacquiring the lock, so ConversationInProgress keeps returning true while\ncallers are waiting and shutdown continues to drain queued conversations.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/c0fc9985159be70bd66a80c9693c5574cf4277c0"
                }
             ],
             "ciActions": [
