@@ -3361,25 +3361,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c358b86e9cec5619da585d4e94ef3ebed5b0888c",
+                  "sha": "705f7d8495e1bb7bec9f96a0a23003137808d48d",
                   "author": "adombeck",
-                  "timestamp": 1783556349,
-                  "message": "pam/gdm: serialise concurrent PAM conversations (#1713)\n\nCloses #1712\nUDENG-10980",
-                  "url": "https://github.com/canonical/authd/commit/c358b86e9cec5619da585d4e94ef3ebed5b0888c"
+                  "timestamp": 1783599795,
+                  "message": "e2e-tests: exclude msentraid-only tests via tag (#1717)",
+                  "url": "https://github.com/canonical/authd/commit/705f7d8495e1bb7bec9f96a0a23003137808d48d"
                },
                {
-                  "sha": "4056d29cc4d50d3ed6eb0b8d49aaea73e819a607",
+                  "sha": "acb76cb56f036e269df14575036447d63efd91aa",
                   "author": "adombeck",
-                  "timestamp": 1783551314,
-                  "message": "pam: fall back to native mode when TERM=dumb (#1704)\n\nCloses https://github.com/canonical/authd/issues/1692\nUDENG-10977",
-                  "url": "https://github.com/canonical/authd/commit/4056d29cc4d50d3ed6eb0b8d49aaea73e819a607"
+                  "timestamp": 1783599786,
+                  "message": "robot.toml: enable robotcode SemanticModel analysis (#1718)",
+                  "url": "https://github.com/canonical/authd/commit/acb76cb56f036e269df14575036447d63efd91aa"
                },
                {
-                  "sha": "c0fc9985159be70bd66a80c9693c5574cf4277c0",
+                  "sha": "178b53be34dc9bf4283441796e63eca82b76ff40",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1783546523,
-                  "message": "pam/gdm: serialise concurrent PAM conversations\n\nThe Bubble Tea event loop runs each tea.Cmd in its own goroutine, so\nhandlers like emitEvent (brokersListReceived, userSelected, ...) and\npollGdm can call gdm.SendData concurrently. Both funnel into sendToGdm,\nwhich invokes pamMTx.StartConv. The GDM conversation callback\n(pam_conv.conv) is not goroutine-safe, so concurrent calls can interleave\nthe binary JSON request/response stream shared with the GNOME Shell authd\nextension. The existing conversations atomic.Int32 acknowledged that\nsendToGdm is reached from multiple goroutines but did nothing to prevent\noverlapping conversations.\n\nThis is a plausible cause of an observed failure where GDM never starts\ngnome-session and the login screen stays frozen: a corrupted conversation\nstream would leave the extension stuck.\n\nFix: add convMu, a package-level sync.Mutex, held by sendToGdm for the\nfull send-plus-receive round trip so at most one PAM conversation is live\nat any instant. The conversations counter is still incremented before\nacquiring the lock, so ConversationInProgress keeps returning true while\ncallers are waiting and shutdown continues to drain queued conversations.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/c0fc9985159be70bd66a80c9693c5574cf4277c0"
+                  "timestamp": 1783598534,
+                  "message": "robot.toml: enable robotcode SemanticModel analysis\n\nEnables richer static analysis in robotcode (VS Code / IntelliJ),\nincluding goto-definition for keyword names passed as arguments to\nrun_keyword-style keywords.\n\nRequires robotcode ≥ 2.6.0.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/178b53be34dc9bf4283441796e63eca82b76ff40"
                }
             ],
             "ciActions": [
@@ -3528,25 +3528,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cebbafe82a9a158edc9bbacaf1e261f133081d99",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1783596999,
+                  "message": "feat: add action to setup contract tests with Workshop (#131)\n\nAdd a reusable common action for contract tests and make LXD storage\nsize configurable.\n\nNote that `16GiB` is a safer default LXD storage size for CI stability\nand remains overrideable by callers.\n\n---\n\nUDENG-10753",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/cebbafe82a9a158edc9bbacaf1e261f133081d99"
+               },
+               {
+                  "sha": "1c56c0a9d439f25e2a086957eb984d2e071de04a",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1783503358,
+                  "message": "feat: add action to setup contract tests with Workshop",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/1c56c0a9d439f25e2a086957eb984d2e071de04a"
+               },
+               {
                   "sha": "ddfbb7ae3eed889b19c009577bfd27a4632c8886",
                   "author": "adombeck",
                   "timestamp": 1783352486,
                   "message": "fix: gh-actions/build-debian: Fix 'cd: null directory' (#129)\n\nUDENG-10958",
                   "url": "https://github.com/canonical/desktop-engineering/commit/ddfbb7ae3eed889b19c009577bfd27a4632c8886"
-               },
-               {
-                  "sha": "80a96a476af0a67b14cd16d5064ad531d2f91ced",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1781211872,
-                  "message": "gh-actions/build-debian: Fix 'cd: null directory'\n\nOn Resolute, using `cd ''` in bash fails. On Noble it did not.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/80a96a476af0a67b14cd16d5064ad531d2f91ced"
-               },
-               {
-                  "sha": "ba4efbf67e9bf9ff3571915b6bf80f80dec8de22",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1780502974,
-                  "message": "fix: Check GOTOOLCHAIN before attempting to override it (#127)\n\nWhen we moved the v2 tag yesterday we broke CI for projects based on\nworkspaces (at least two I observed: ubuntu-pro-for-wsl and\nubuntu-insights).\n\n```\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  GOTOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${GOTOOLCHAIN}\" == \"null\" ]; then\n    GOTOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${GOTOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\n  go: invalid GOTOOLCHAIN \"null\"\n  Error: Process completed with exit code 1.\n``` \n\nThe error is somewhat misleading as there seems to be no way for\n`GOTOOLCHAIN` end up being \"null\" when `go install` runs. [See one\nexample\nhere](https://github.com/ubuntu/ubuntu-insights/actions/runs/26596853884/job/78369986955#step:4:690).\n\nThe most significant change in between the previous v2 and the current\none is the upgrade of the `actions/setup-go` from v5 to v6. In this new\nversion, that action sets `GOTOOLCHAIN` to `local` when invoked with a\n`go-version-file`. It seems that overwriting that environment variable\nbreaks in GitHub Actions for environment specifics I'm not sure about\nthe details.\n\nBut that's not all. If we adjust the snippet of code that manipulates\nthe `GOTOOLCHAIN` environment variable, we still end up with\n`govulncheck` being invoked against a wrong version of the Go toolchain.\nThat's because we don't set the precise toolchain version in `go.mod`\nfiles in a workspace, but rather at the parent `go.work`. So, the\ncurrent implementation of the `go/code-sanity` action will always\ninstall the earliest toolchain of a minor Go version (like 1.25.0 or\n1.26.0) and `govulncheck` will report vulnerabilities that are not in\neffect if the workspace is already using a newer toolchain (such as\n1.25.10 or 1.26.3).\n\n```\n[57](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/26598020426/job/78374066710#step:7:582)\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  TOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${TOOLCHAIN}\" == \"null\" ]; then\n    TOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${TOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\nRun # govulncheck\n=== Symbol Results ===\n\nVulnerability #1: GO-2026-4971\n    Panic in Dial and LookupPort when handling NUL byte on Windows in net\n  More info: https://pkg.go.dev/vuln/GO-2026-4971\n  Standard library\n    Found in: net@go1.26\n    Fixed in: net@go1.26.3\n    Example traces found:\nError:       #1: go/agentapi.pb.go:734:36: go.file_agentapi_proto_rawDescGZIP calls sync.Once.Do, which eventually calls net.Dialer.DialContext\n\nVulnerability #2: GO-2026-4947\n    Unexpected work during chain building in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-4947\n  Standard library\n    Found in: crypto/x509@go1.26\n    Fixed in: crypto/x509@go1.26.2\n``` \n\nThe proper fix for this seems to be accepting the `go.work` file as an\ninput to `actions/setup-go` so we can use the precise version of the\ntoolchain declared there instead of the Go version present in a child\nmodule.\n\nFor completeness, it's worth noting that with `actions/setup-go@v5` that\nwasn't a problem because the action would setup the earliest toolchain\nof the minor Go version but then any go command inside the workspace\nwould trigger a local installation of the correct toolchain version as\ndefined in the `go.work` - wasteful in the sense that two installs would\nhappen ( [see here for an\nexample](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/25488536723/job/74790296897#step:7:31)\n).",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/ba4efbf67e9bf9ff3571915b6bf80f80dec8de22"
                }
             ],
             "ciActions": [],
@@ -5250,7 +5250,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 33,
+            "newCommits": 36,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5285,26 +5285,26 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 607,
-                     "timestamp": 1780360987
+                     "revision": 621,
+                     "timestamp": 1783587987
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 606,
-                     "timestamp": 1780360988
+                     "revision": 622,
+                     "timestamp": 1783587987
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 620,
-                     "timestamp": 1783444799
+                     "revision": 621,
+                     "timestamp": 1783583897
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 619,
-                     "timestamp": 1783443883
+                     "revision": 623,
+                     "timestamp": 1783596855
                   }
                ],
                "channels": [
@@ -5676,25 +5676,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c358b86e9cec5619da585d4e94ef3ebed5b0888c",
+                  "sha": "705f7d8495e1bb7bec9f96a0a23003137808d48d",
                   "author": "adombeck",
-                  "timestamp": 1783556349,
-                  "message": "pam/gdm: serialise concurrent PAM conversations (#1713)\n\nCloses #1712\nUDENG-10980",
-                  "url": "https://github.com/canonical/authd/commit/c358b86e9cec5619da585d4e94ef3ebed5b0888c"
+                  "timestamp": 1783599795,
+                  "message": "e2e-tests: exclude msentraid-only tests via tag (#1717)",
+                  "url": "https://github.com/canonical/authd/commit/705f7d8495e1bb7bec9f96a0a23003137808d48d"
                },
                {
-                  "sha": "4056d29cc4d50d3ed6eb0b8d49aaea73e819a607",
+                  "sha": "acb76cb56f036e269df14575036447d63efd91aa",
                   "author": "adombeck",
-                  "timestamp": 1783551314,
-                  "message": "pam: fall back to native mode when TERM=dumb (#1704)\n\nCloses https://github.com/canonical/authd/issues/1692\nUDENG-10977",
-                  "url": "https://github.com/canonical/authd/commit/4056d29cc4d50d3ed6eb0b8d49aaea73e819a607"
+                  "timestamp": 1783599786,
+                  "message": "robot.toml: enable robotcode SemanticModel analysis (#1718)",
+                  "url": "https://github.com/canonical/authd/commit/acb76cb56f036e269df14575036447d63efd91aa"
                },
                {
-                  "sha": "c0fc9985159be70bd66a80c9693c5574cf4277c0",
+                  "sha": "178b53be34dc9bf4283441796e63eca82b76ff40",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1783546523,
-                  "message": "pam/gdm: serialise concurrent PAM conversations\n\nThe Bubble Tea event loop runs each tea.Cmd in its own goroutine, so\nhandlers like emitEvent (brokersListReceived, userSelected, ...) and\npollGdm can call gdm.SendData concurrently. Both funnel into sendToGdm,\nwhich invokes pamMTx.StartConv. The GDM conversation callback\n(pam_conv.conv) is not goroutine-safe, so concurrent calls can interleave\nthe binary JSON request/response stream shared with the GNOME Shell authd\nextension. The existing conversations atomic.Int32 acknowledged that\nsendToGdm is reached from multiple goroutines but did nothing to prevent\noverlapping conversations.\n\nThis is a plausible cause of an observed failure where GDM never starts\ngnome-session and the login screen stays frozen: a corrupted conversation\nstream would leave the extension stuck.\n\nFix: add convMu, a package-level sync.Mutex, held by sendToGdm for the\nfull send-plus-receive round trip so at most one PAM conversation is live\nat any instant. The conversations counter is still incremented before\nacquiring the lock, so ConversationInProgress keeps returning true while\ncallers are waiting and shutdown continues to drain queued conversations.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/c0fc9985159be70bd66a80c9693c5574cf4277c0"
+                  "timestamp": 1783598534,
+                  "message": "robot.toml: enable robotcode SemanticModel analysis\n\nEnables richer static analysis in robotcode (VS Code / IntelliJ),\nincluding goto-definition for keyword names passed as arguments to\nrun_keyword-style keywords.\n\nRequires robotcode ≥ 2.6.0.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/178b53be34dc9bf4283441796e63eca82b76ff40"
                }
             ],
             "ciActions": [
@@ -5843,25 +5843,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cebbafe82a9a158edc9bbacaf1e261f133081d99",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1783596999,
+                  "message": "feat: add action to setup contract tests with Workshop (#131)\n\nAdd a reusable common action for contract tests and make LXD storage\nsize configurable.\n\nNote that `16GiB` is a safer default LXD storage size for CI stability\nand remains overrideable by callers.\n\n---\n\nUDENG-10753",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/cebbafe82a9a158edc9bbacaf1e261f133081d99"
+               },
+               {
+                  "sha": "1c56c0a9d439f25e2a086957eb984d2e071de04a",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1783503358,
+                  "message": "feat: add action to setup contract tests with Workshop",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/1c56c0a9d439f25e2a086957eb984d2e071de04a"
+               },
+               {
                   "sha": "ddfbb7ae3eed889b19c009577bfd27a4632c8886",
                   "author": "adombeck",
                   "timestamp": 1783352486,
                   "message": "fix: gh-actions/build-debian: Fix 'cd: null directory' (#129)\n\nUDENG-10958",
                   "url": "https://github.com/canonical/desktop-engineering/commit/ddfbb7ae3eed889b19c009577bfd27a4632c8886"
-               },
-               {
-                  "sha": "80a96a476af0a67b14cd16d5064ad531d2f91ced",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1781211872,
-                  "message": "gh-actions/build-debian: Fix 'cd: null directory'\n\nOn Resolute, using `cd ''` in bash fails. On Noble it did not.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/80a96a476af0a67b14cd16d5064ad531d2f91ced"
-               },
-               {
-                  "sha": "ba4efbf67e9bf9ff3571915b6bf80f80dec8de22",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1780502974,
-                  "message": "fix: Check GOTOOLCHAIN before attempting to override it (#127)\n\nWhen we moved the v2 tag yesterday we broke CI for projects based on\nworkspaces (at least two I observed: ubuntu-pro-for-wsl and\nubuntu-insights).\n\n```\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  GOTOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${GOTOOLCHAIN}\" == \"null\" ]; then\n    GOTOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${GOTOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\n  go: invalid GOTOOLCHAIN \"null\"\n  Error: Process completed with exit code 1.\n``` \n\nThe error is somewhat misleading as there seems to be no way for\n`GOTOOLCHAIN` end up being \"null\" when `go install` runs. [See one\nexample\nhere](https://github.com/ubuntu/ubuntu-insights/actions/runs/26596853884/job/78369986955#step:4:690).\n\nThe most significant change in between the previous v2 and the current\none is the upgrade of the `actions/setup-go` from v5 to v6. In this new\nversion, that action sets `GOTOOLCHAIN` to `local` when invoked with a\n`go-version-file`. It seems that overwriting that environment variable\nbreaks in GitHub Actions for environment specifics I'm not sure about\nthe details.\n\nBut that's not all. If we adjust the snippet of code that manipulates\nthe `GOTOOLCHAIN` environment variable, we still end up with\n`govulncheck` being invoked against a wrong version of the Go toolchain.\nThat's because we don't set the precise toolchain version in `go.mod`\nfiles in a workspace, but rather at the parent `go.work`. So, the\ncurrent implementation of the `go/code-sanity` action will always\ninstall the earliest toolchain of a minor Go version (like 1.25.0 or\n1.26.0) and `govulncheck` will report vulnerabilities that are not in\neffect if the workspace is already using a newer toolchain (such as\n1.25.10 or 1.26.3).\n\n```\n[57](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/26598020426/job/78374066710#step:7:582)\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  TOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${TOOLCHAIN}\" == \"null\" ]; then\n    TOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${TOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\nRun # govulncheck\n=== Symbol Results ===\n\nVulnerability #1: GO-2026-4971\n    Panic in Dial and LookupPort when handling NUL byte on Windows in net\n  More info: https://pkg.go.dev/vuln/GO-2026-4971\n  Standard library\n    Found in: net@go1.26\n    Fixed in: net@go1.26.3\n    Example traces found:\nError:       #1: go/agentapi.pb.go:734:36: go.file_agentapi_proto_rawDescGZIP calls sync.Once.Do, which eventually calls net.Dialer.DialContext\n\nVulnerability #2: GO-2026-4947\n    Unexpected work during chain building in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-4947\n  Standard library\n    Found in: crypto/x509@go1.26\n    Fixed in: crypto/x509@go1.26.2\n``` \n\nThe proper fix for this seems to be accepting the `go.work` file as an\ninput to `actions/setup-go` so we can use the precise version of the\ntoolchain declared there instead of the Go version present in a child\nmodule.\n\nFor completeness, it's worth noting that with `actions/setup-go@v5` that\nwasn't a problem because the action would setup the earliest toolchain\nof the minor Go version but then any go command inside the workspace\nwould trigger a local installation of the correct toolchain version as\ndefined in the `go.work` - wasteful in the sense that two installs would\nhappen ( [see here for an\nexample](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/25488536723/job/74790296897#step:7:31)\n).",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/ba4efbf67e9bf9ff3571915b6bf80f80dec8de22"
                }
             ],
             "ciActions": [],
@@ -7639,7 +7639,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 33,
+            "newCommits": 36,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7674,26 +7674,26 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 607,
-                     "timestamp": 1780360987
+                     "revision": 621,
+                     "timestamp": 1783587987
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 606,
-                     "timestamp": 1780360988
+                     "revision": 622,
+                     "timestamp": 1783587987
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 620,
-                     "timestamp": 1783444799
+                     "revision": 621,
+                     "timestamp": 1783583897
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 619,
-                     "timestamp": 1783443883
+                     "revision": 623,
+                     "timestamp": 1783596855
                   }
                ],
                "channels": [
@@ -8160,25 +8160,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c358b86e9cec5619da585d4e94ef3ebed5b0888c",
+                  "sha": "705f7d8495e1bb7bec9f96a0a23003137808d48d",
                   "author": "adombeck",
-                  "timestamp": 1783556349,
-                  "message": "pam/gdm: serialise concurrent PAM conversations (#1713)\n\nCloses #1712\nUDENG-10980",
-                  "url": "https://github.com/canonical/authd/commit/c358b86e9cec5619da585d4e94ef3ebed5b0888c"
+                  "timestamp": 1783599795,
+                  "message": "e2e-tests: exclude msentraid-only tests via tag (#1717)",
+                  "url": "https://github.com/canonical/authd/commit/705f7d8495e1bb7bec9f96a0a23003137808d48d"
                },
                {
-                  "sha": "4056d29cc4d50d3ed6eb0b8d49aaea73e819a607",
+                  "sha": "acb76cb56f036e269df14575036447d63efd91aa",
                   "author": "adombeck",
-                  "timestamp": 1783551314,
-                  "message": "pam: fall back to native mode when TERM=dumb (#1704)\n\nCloses https://github.com/canonical/authd/issues/1692\nUDENG-10977",
-                  "url": "https://github.com/canonical/authd/commit/4056d29cc4d50d3ed6eb0b8d49aaea73e819a607"
+                  "timestamp": 1783599786,
+                  "message": "robot.toml: enable robotcode SemanticModel analysis (#1718)",
+                  "url": "https://github.com/canonical/authd/commit/acb76cb56f036e269df14575036447d63efd91aa"
                },
                {
-                  "sha": "c0fc9985159be70bd66a80c9693c5574cf4277c0",
+                  "sha": "178b53be34dc9bf4283441796e63eca82b76ff40",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1783546523,
-                  "message": "pam/gdm: serialise concurrent PAM conversations\n\nThe Bubble Tea event loop runs each tea.Cmd in its own goroutine, so\nhandlers like emitEvent (brokersListReceived, userSelected, ...) and\npollGdm can call gdm.SendData concurrently. Both funnel into sendToGdm,\nwhich invokes pamMTx.StartConv. The GDM conversation callback\n(pam_conv.conv) is not goroutine-safe, so concurrent calls can interleave\nthe binary JSON request/response stream shared with the GNOME Shell authd\nextension. The existing conversations atomic.Int32 acknowledged that\nsendToGdm is reached from multiple goroutines but did nothing to prevent\noverlapping conversations.\n\nThis is a plausible cause of an observed failure where GDM never starts\ngnome-session and the login screen stays frozen: a corrupted conversation\nstream would leave the extension stuck.\n\nFix: add convMu, a package-level sync.Mutex, held by sendToGdm for the\nfull send-plus-receive round trip so at most one PAM conversation is live\nat any instant. The conversations counter is still incremented before\nacquiring the lock, so ConversationInProgress keeps returning true while\ncallers are waiting and shutdown continues to drain queued conversations.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/c0fc9985159be70bd66a80c9693c5574cf4277c0"
+                  "timestamp": 1783598534,
+                  "message": "robot.toml: enable robotcode SemanticModel analysis\n\nEnables richer static analysis in robotcode (VS Code / IntelliJ),\nincluding goto-definition for keyword names passed as arguments to\nrun_keyword-style keywords.\n\nRequires robotcode ≥ 2.6.0.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/178b53be34dc9bf4283441796e63eca82b76ff40"
                }
             ],
             "ciActions": [
@@ -8327,25 +8327,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cebbafe82a9a158edc9bbacaf1e261f133081d99",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1783596999,
+                  "message": "feat: add action to setup contract tests with Workshop (#131)\n\nAdd a reusable common action for contract tests and make LXD storage\nsize configurable.\n\nNote that `16GiB` is a safer default LXD storage size for CI stability\nand remains overrideable by callers.\n\n---\n\nUDENG-10753",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/cebbafe82a9a158edc9bbacaf1e261f133081d99"
+               },
+               {
+                  "sha": "1c56c0a9d439f25e2a086957eb984d2e071de04a",
+                  "author": "Gabriele Belluardo",
+                  "timestamp": 1783503358,
+                  "message": "feat: add action to setup contract tests with Workshop",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/1c56c0a9d439f25e2a086957eb984d2e071de04a"
+               },
+               {
                   "sha": "ddfbb7ae3eed889b19c009577bfd27a4632c8886",
                   "author": "adombeck",
                   "timestamp": 1783352486,
                   "message": "fix: gh-actions/build-debian: Fix 'cd: null directory' (#129)\n\nUDENG-10958",
                   "url": "https://github.com/canonical/desktop-engineering/commit/ddfbb7ae3eed889b19c009577bfd27a4632c8886"
-               },
-               {
-                  "sha": "80a96a476af0a67b14cd16d5064ad531d2f91ced",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1781211872,
-                  "message": "gh-actions/build-debian: Fix 'cd: null directory'\n\nOn Resolute, using `cd ''` in bash fails. On Noble it did not.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/80a96a476af0a67b14cd16d5064ad531d2f91ced"
-               },
-               {
-                  "sha": "ba4efbf67e9bf9ff3571915b6bf80f80dec8de22",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1780502974,
-                  "message": "fix: Check GOTOOLCHAIN before attempting to override it (#127)\n\nWhen we moved the v2 tag yesterday we broke CI for projects based on\nworkspaces (at least two I observed: ubuntu-pro-for-wsl and\nubuntu-insights).\n\n```\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  GOTOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${GOTOOLCHAIN}\" == \"null\" ]; then\n    GOTOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${GOTOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\n  go: invalid GOTOOLCHAIN \"null\"\n  Error: Process completed with exit code 1.\n``` \n\nThe error is somewhat misleading as there seems to be no way for\n`GOTOOLCHAIN` end up being \"null\" when `go install` runs. [See one\nexample\nhere](https://github.com/ubuntu/ubuntu-insights/actions/runs/26596853884/job/78369986955#step:4:690).\n\nThe most significant change in between the previous v2 and the current\none is the upgrade of the `actions/setup-go` from v5 to v6. In this new\nversion, that action sets `GOTOOLCHAIN` to `local` when invoked with a\n`go-version-file`. It seems that overwriting that environment variable\nbreaks in GitHub Actions for environment specifics I'm not sure about\nthe details.\n\nBut that's not all. If we adjust the snippet of code that manipulates\nthe `GOTOOLCHAIN` environment variable, we still end up with\n`govulncheck` being invoked against a wrong version of the Go toolchain.\nThat's because we don't set the precise toolchain version in `go.mod`\nfiles in a workspace, but rather at the parent `go.work`. So, the\ncurrent implementation of the `go/code-sanity` action will always\ninstall the earliest toolchain of a minor Go version (like 1.25.0 or\n1.26.0) and `govulncheck` will report vulnerabilities that are not in\neffect if the workspace is already using a newer toolchain (such as\n1.25.10 or 1.26.3).\n\n```\n[57](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/26598020426/job/78374066710#step:7:582)\nRun # Install govulncheck\n  # Install govulncheck\n  echo \"::group::Install govulncheck\"\n  TOOLCHAIN=$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Toolchain')\n  if [ \"${TOOLCHAIN}\" == \"null\" ]; then\n    TOOLCHAIN=\"go$(go mod edit -json \"/home/runner/work/ubuntu-pro-for-wsl/ubuntu-pro-for-wsl/tools/go.mod\" | jq -r '.Go')\"\n  fi\n  GOTOOLCHAIN=${TOOLCHAIN} \\\n    go install golang.org/x/vuln/cmd/govulncheck@v1.1.4\n  echo \"::endgroup::\"\n  shell: /usr/bin/bash --noprofile --norc -euo pipefail {0}\n  env:\n    FLUTTER_ROOT: /opt/hostedtoolcache/flutter/stable-3.41.9-x64/flutter\n    PUB_CACHE: /home/runner/.pub-cache\n    GOTOOLCHAIN: local\n    GOLANGCI_LINT_OUTPUT_PATH: /tmp/golangci-lint.txt\nInstall govulncheck\nRun # govulncheck\n=== Symbol Results ===\n\nVulnerability #1: GO-2026-4971\n    Panic in Dial and LookupPort when handling NUL byte on Windows in net\n  More info: https://pkg.go.dev/vuln/GO-2026-4971\n  Standard library\n    Found in: net@go1.26\n    Fixed in: net@go1.26.3\n    Example traces found:\nError:       #1: go/agentapi.pb.go:734:36: go.file_agentapi_proto_rawDescGZIP calls sync.Once.Do, which eventually calls net.Dialer.DialContext\n\nVulnerability #2: GO-2026-4947\n    Unexpected work during chain building in crypto/x509\n  More info: https://pkg.go.dev/vuln/GO-2026-4947\n  Standard library\n    Found in: crypto/x509@go1.26\n    Fixed in: crypto/x509@go1.26.2\n``` \n\nThe proper fix for this seems to be accepting the `go.work` file as an\ninput to `actions/setup-go` so we can use the precise version of the\ntoolchain declared there instead of the Go version present in a child\nmodule.\n\nFor completeness, it's worth noting that with `actions/setup-go@v5` that\nwasn't a problem because the action would setup the earliest toolchain\nof the minor Go version but then any go command inside the workspace\nwould trigger a local installation of the correct toolchain version as\ndefined in the `go.work` - wasteful in the sense that two installs would\nhappen ( [see here for an\nexample](https://github.com/canonical/ubuntu-pro-for-wsl/actions/runs/25488536723/job/74790296897#step:7:31)\n).",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/ba4efbf67e9bf9ff3571915b6bf80f80dec8de22"
                }
             ],
             "ciActions": [],
@@ -10084,7 +10084,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 33,
+            "newCommits": 36,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10119,26 +10119,26 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 607,
-                     "timestamp": 1780360987
+                     "revision": 621,
+                     "timestamp": 1783587987
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 606,
-                     "timestamp": 1780360988
+                     "revision": 622,
+                     "timestamp": 1783587987
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 620,
-                     "timestamp": 1783444799
+                     "revision": 621,
+                     "timestamp": 1783583897
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 619,
-                     "timestamp": 1783443883
+                     "revision": 623,
+                     "timestamp": 1783596855
                   }
                ],
                "channels": [
