@@ -3361,25 +3361,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4ecf14f11a4a05633b5b6a96efe44da0ace1d2b8",
+                  "author": "adombeck",
+                  "timestamp": 1783979111,
+                  "message": "pam/native: extract formatInfo function (#1732)",
+                  "url": "https://github.com/canonical/authd/commit/4ecf14f11a4a05633b5b6a96efe44da0ace1d2b8"
+               },
+               {
+                  "sha": "42ea4f031d7370cef5bdf8d69f8d6101c43996e3",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1783977949,
+                  "message": "pam/native: extract formatInfo function\n\nExtract a formatInfo function to avoid repeating the formatting logic.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/42ea4f031d7370cef5bdf8d69f8d6101c43996e3"
+               },
+               {
                   "sha": "fccf11b27cff05b09bd4125ad9c78430224f3ab0",
                   "author": "adombeck",
                   "timestamp": 1783944608,
                   "message": "e2e-tests: fix infinite loop when Google rejects the email address (#1716)\n\nCloses #1715\nUDENG-10981",
                   "url": "https://github.com/canonical/authd/commit/fccf11b27cff05b09bd4125ad9c78430224f3ab0"
-               },
-               {
-                  "sha": "a0262c977f66f18ed1f737741be829c38fd7df93",
-                  "author": "adombeck",
-                  "timestamp": 1783690347,
-                  "message": "Use \"authentication flow\" terminology consistently (#1616)",
-                  "url": "https://github.com/canonical/authd/commit/a0262c977f66f18ed1f737741be829c38fd7df93"
-               },
-               {
-                  "sha": "846e316e29d7aef7a3667f5c69308463453cbd06",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1783548287,
-                  "message": "Fix grammatical error",
-                  "url": "https://github.com/canonical/authd/commit/846e316e29d7aef7a3667f5c69308463453cbd06"
                }
             ],
             "ciActions": [
@@ -4651,25 +4651,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "af5e67173356332e63d340a6739943126c88aef0",
+                  "sha": "f2a449db5f3e5fce7ccfd3224bc3539da86a9995",
                   "author": "ashuntu",
-                  "timestamp": 1780957789,
-                  "message": "fix: Reference phrasing (#511)\n\nFixes https://github.com/canonical/steam-snap/issues/510",
-                  "url": "https://github.com/canonical/steam-snap/commit/af5e67173356332e63d340a6739943126c88aef0"
+                  "timestamp": 1783980167,
+                  "message": "Steamlink fix (#518)\n\nFixes #502 \n\npw_loop_new returns nullptr because it can't find libspa-support.so and\nsteam passes the nullptr to pw_thread_loop_start\n[Putting this in desktop-launch was enough to make my phone connect to\nmy\ndesktop](https://github.com/canonical/snapcraft-desktop-integration/blob/main/common/desktop-exports#L134)\n\ndesktop - desktop connection does something different (requires\n-pipewire arg to even work) and will still crash steam, now it fails to\ncreate pipewire context because it can't find client.conf from pipewire\npackage, and then it fails to load i386 modules.\nAdding pipewire and i386 modules package to stage-packages fixes it.\n\nAt this point steamlink works, and is just as bad as .deb version on\nwayland. One thing that does happen in the snap after all this but\ndoesn't on deb is that steam complains about lack of i386 dri_gbm.so, I\nthink mesa snap package installs libgbm1 but i386 is not there, even\nafter putting it in the steam snap it still throws:\n```\nCDesktopCapturePipeWire: Opening DRM render node /dev/dri/renderD128\nCDesktopCapturePipeWire: Couldn't create EGL display: 0x300c\n```\nAnd I have no idea how to fix it, but steam link works so I just left it\nat this point.",
+                  "url": "https://github.com/canonical/steam-snap/commit/f2a449db5f3e5fce7ccfd3224bc3539da86a9995"
                },
                {
-                  "sha": "ba88668efe9881b6ce8f63969d7b36c966eb1c02",
-                  "author": "ashuntu",
-                  "timestamp": 1780949118,
-                  "message": "fix: Reference phrasing",
-                  "url": "https://github.com/canonical/steam-snap/commit/ba88668efe9881b6ce8f63969d7b36c966eb1c02"
+                  "sha": "7f7160de74244c04eb91a6f64bd012058dcee73b",
+                  "author": "fntenjr",
+                  "timestamp": 1782724514,
+                  "message": "Add pipewire to stage-packages\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/steam-snap/commit/7f7160de74244c04eb91a6f64bd012058dcee73b"
                },
                {
-                  "sha": "90c41b90b9e369f786f031e29411773c109a3a82",
-                  "author": "ashuntu",
-                  "timestamp": 1780507740,
-                  "message": "fix: Correct MangoHUD links (#507)\n\nFixes https://github.com/canonical/steam-snap/issues/506",
-                  "url": "https://github.com/canonical/steam-snap/commit/90c41b90b9e369f786f031e29411773c109a3a82"
+                  "sha": "84d285f81124cd1aa8693c0b1c0e9309c03a9fe5",
+                  "author": "fntenjr",
+                  "timestamp": 1782724305,
+                  "message": "Tell pipewire where to find spa and config\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/steam-snap/commit/84d285f81124cd1aa8693c0b1c0e9309c03a9fe5"
                }
             ],
             "ciActions": [],
@@ -5676,25 +5676,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4ecf14f11a4a05633b5b6a96efe44da0ace1d2b8",
+                  "author": "adombeck",
+                  "timestamp": 1783979111,
+                  "message": "pam/native: extract formatInfo function (#1732)",
+                  "url": "https://github.com/canonical/authd/commit/4ecf14f11a4a05633b5b6a96efe44da0ace1d2b8"
+               },
+               {
+                  "sha": "42ea4f031d7370cef5bdf8d69f8d6101c43996e3",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1783977949,
+                  "message": "pam/native: extract formatInfo function\n\nExtract a formatInfo function to avoid repeating the formatting logic.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/42ea4f031d7370cef5bdf8d69f8d6101c43996e3"
+               },
+               {
                   "sha": "fccf11b27cff05b09bd4125ad9c78430224f3ab0",
                   "author": "adombeck",
                   "timestamp": 1783944608,
                   "message": "e2e-tests: fix infinite loop when Google rejects the email address (#1716)\n\nCloses #1715\nUDENG-10981",
                   "url": "https://github.com/canonical/authd/commit/fccf11b27cff05b09bd4125ad9c78430224f3ab0"
-               },
-               {
-                  "sha": "a0262c977f66f18ed1f737741be829c38fd7df93",
-                  "author": "adombeck",
-                  "timestamp": 1783690347,
-                  "message": "Use \"authentication flow\" terminology consistently (#1616)",
-                  "url": "https://github.com/canonical/authd/commit/a0262c977f66f18ed1f737741be829c38fd7df93"
-               },
-               {
-                  "sha": "846e316e29d7aef7a3667f5c69308463453cbd06",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1783548287,
-                  "message": "Fix grammatical error",
-                  "url": "https://github.com/canonical/authd/commit/846e316e29d7aef7a3667f5c69308463453cbd06"
                }
             ],
             "ciActions": [
@@ -6999,25 +6999,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "af5e67173356332e63d340a6739943126c88aef0",
+                  "sha": "f2a449db5f3e5fce7ccfd3224bc3539da86a9995",
                   "author": "ashuntu",
-                  "timestamp": 1780957789,
-                  "message": "fix: Reference phrasing (#511)\n\nFixes https://github.com/canonical/steam-snap/issues/510",
-                  "url": "https://github.com/canonical/steam-snap/commit/af5e67173356332e63d340a6739943126c88aef0"
+                  "timestamp": 1783980167,
+                  "message": "Steamlink fix (#518)\n\nFixes #502 \n\npw_loop_new returns nullptr because it can't find libspa-support.so and\nsteam passes the nullptr to pw_thread_loop_start\n[Putting this in desktop-launch was enough to make my phone connect to\nmy\ndesktop](https://github.com/canonical/snapcraft-desktop-integration/blob/main/common/desktop-exports#L134)\n\ndesktop - desktop connection does something different (requires\n-pipewire arg to even work) and will still crash steam, now it fails to\ncreate pipewire context because it can't find client.conf from pipewire\npackage, and then it fails to load i386 modules.\nAdding pipewire and i386 modules package to stage-packages fixes it.\n\nAt this point steamlink works, and is just as bad as .deb version on\nwayland. One thing that does happen in the snap after all this but\ndoesn't on deb is that steam complains about lack of i386 dri_gbm.so, I\nthink mesa snap package installs libgbm1 but i386 is not there, even\nafter putting it in the steam snap it still throws:\n```\nCDesktopCapturePipeWire: Opening DRM render node /dev/dri/renderD128\nCDesktopCapturePipeWire: Couldn't create EGL display: 0x300c\n```\nAnd I have no idea how to fix it, but steam link works so I just left it\nat this point.",
+                  "url": "https://github.com/canonical/steam-snap/commit/f2a449db5f3e5fce7ccfd3224bc3539da86a9995"
                },
                {
-                  "sha": "ba88668efe9881b6ce8f63969d7b36c966eb1c02",
-                  "author": "ashuntu",
-                  "timestamp": 1780949118,
-                  "message": "fix: Reference phrasing",
-                  "url": "https://github.com/canonical/steam-snap/commit/ba88668efe9881b6ce8f63969d7b36c966eb1c02"
+                  "sha": "7f7160de74244c04eb91a6f64bd012058dcee73b",
+                  "author": "fntenjr",
+                  "timestamp": 1782724514,
+                  "message": "Add pipewire to stage-packages\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/steam-snap/commit/7f7160de74244c04eb91a6f64bd012058dcee73b"
                },
                {
-                  "sha": "90c41b90b9e369f786f031e29411773c109a3a82",
-                  "author": "ashuntu",
-                  "timestamp": 1780507740,
-                  "message": "fix: Correct MangoHUD links (#507)\n\nFixes https://github.com/canonical/steam-snap/issues/506",
-                  "url": "https://github.com/canonical/steam-snap/commit/90c41b90b9e369f786f031e29411773c109a3a82"
+                  "sha": "84d285f81124cd1aa8693c0b1c0e9309c03a9fe5",
+                  "author": "fntenjr",
+                  "timestamp": 1782724305,
+                  "message": "Tell pipewire where to find spa and config\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/steam-snap/commit/84d285f81124cd1aa8693c0b1c0e9309c03a9fe5"
                }
             ],
             "ciActions": [],
@@ -8160,25 +8160,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4ecf14f11a4a05633b5b6a96efe44da0ace1d2b8",
+                  "author": "adombeck",
+                  "timestamp": 1783979111,
+                  "message": "pam/native: extract formatInfo function (#1732)",
+                  "url": "https://github.com/canonical/authd/commit/4ecf14f11a4a05633b5b6a96efe44da0ace1d2b8"
+               },
+               {
+                  "sha": "42ea4f031d7370cef5bdf8d69f8d6101c43996e3",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1783977949,
+                  "message": "pam/native: extract formatInfo function\n\nExtract a formatInfo function to avoid repeating the formatting logic.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/42ea4f031d7370cef5bdf8d69f8d6101c43996e3"
+               },
+               {
                   "sha": "fccf11b27cff05b09bd4125ad9c78430224f3ab0",
                   "author": "adombeck",
                   "timestamp": 1783944608,
                   "message": "e2e-tests: fix infinite loop when Google rejects the email address (#1716)\n\nCloses #1715\nUDENG-10981",
                   "url": "https://github.com/canonical/authd/commit/fccf11b27cff05b09bd4125ad9c78430224f3ab0"
-               },
-               {
-                  "sha": "a0262c977f66f18ed1f737741be829c38fd7df93",
-                  "author": "adombeck",
-                  "timestamp": 1783690347,
-                  "message": "Use \"authentication flow\" terminology consistently (#1616)",
-                  "url": "https://github.com/canonical/authd/commit/a0262c977f66f18ed1f737741be829c38fd7df93"
-               },
-               {
-                  "sha": "846e316e29d7aef7a3667f5c69308463453cbd06",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1783548287,
-                  "message": "Fix grammatical error",
-                  "url": "https://github.com/canonical/authd/commit/846e316e29d7aef7a3667f5c69308463453cbd06"
                }
             ],
             "ciActions": [
@@ -9450,25 +9450,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "af5e67173356332e63d340a6739943126c88aef0",
+                  "sha": "f2a449db5f3e5fce7ccfd3224bc3539da86a9995",
                   "author": "ashuntu",
-                  "timestamp": 1780957789,
-                  "message": "fix: Reference phrasing (#511)\n\nFixes https://github.com/canonical/steam-snap/issues/510",
-                  "url": "https://github.com/canonical/steam-snap/commit/af5e67173356332e63d340a6739943126c88aef0"
+                  "timestamp": 1783980167,
+                  "message": "Steamlink fix (#518)\n\nFixes #502 \n\npw_loop_new returns nullptr because it can't find libspa-support.so and\nsteam passes the nullptr to pw_thread_loop_start\n[Putting this in desktop-launch was enough to make my phone connect to\nmy\ndesktop](https://github.com/canonical/snapcraft-desktop-integration/blob/main/common/desktop-exports#L134)\n\ndesktop - desktop connection does something different (requires\n-pipewire arg to even work) and will still crash steam, now it fails to\ncreate pipewire context because it can't find client.conf from pipewire\npackage, and then it fails to load i386 modules.\nAdding pipewire and i386 modules package to stage-packages fixes it.\n\nAt this point steamlink works, and is just as bad as .deb version on\nwayland. One thing that does happen in the snap after all this but\ndoesn't on deb is that steam complains about lack of i386 dri_gbm.so, I\nthink mesa snap package installs libgbm1 but i386 is not there, even\nafter putting it in the steam snap it still throws:\n```\nCDesktopCapturePipeWire: Opening DRM render node /dev/dri/renderD128\nCDesktopCapturePipeWire: Couldn't create EGL display: 0x300c\n```\nAnd I have no idea how to fix it, but steam link works so I just left it\nat this point.",
+                  "url": "https://github.com/canonical/steam-snap/commit/f2a449db5f3e5fce7ccfd3224bc3539da86a9995"
                },
                {
-                  "sha": "ba88668efe9881b6ce8f63969d7b36c966eb1c02",
-                  "author": "ashuntu",
-                  "timestamp": 1780949118,
-                  "message": "fix: Reference phrasing",
-                  "url": "https://github.com/canonical/steam-snap/commit/ba88668efe9881b6ce8f63969d7b36c966eb1c02"
+                  "sha": "7f7160de74244c04eb91a6f64bd012058dcee73b",
+                  "author": "fntenjr",
+                  "timestamp": 1782724514,
+                  "message": "Add pipewire to stage-packages\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/steam-snap/commit/7f7160de74244c04eb91a6f64bd012058dcee73b"
                },
                {
-                  "sha": "90c41b90b9e369f786f031e29411773c109a3a82",
-                  "author": "ashuntu",
-                  "timestamp": 1780507740,
-                  "message": "fix: Correct MangoHUD links (#507)\n\nFixes https://github.com/canonical/steam-snap/issues/506",
-                  "url": "https://github.com/canonical/steam-snap/commit/90c41b90b9e369f786f031e29411773c109a3a82"
+                  "sha": "84d285f81124cd1aa8693c0b1c0e9309c03a9fe5",
+                  "author": "fntenjr",
+                  "timestamp": 1782724305,
+                  "message": "Tell pipewire where to find spa and config\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/steam-snap/commit/84d285f81124cd1aa8693c0b1c0e9309c03a9fe5"
                }
             ],
             "ciActions": [],
