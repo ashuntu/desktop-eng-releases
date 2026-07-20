@@ -3361,25 +3361,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a772be148a47dd5655096e66528f5069d41be5d7",
+                  "sha": "9905a37c64ae4b3152c9577d49c1070e3bab2ee4",
                   "author": "adombeck",
-                  "timestamp": 1784548279,
-                  "message": "e2e: select dependency PPA from PR descriptions (#1741)",
-                  "url": "https://github.com/canonical/authd/commit/a772be148a47dd5655096e66528f5069d41be5d7"
+                  "timestamp": 1784560319,
+                  "message": "snap: install compatible prebuilt cargo-c (#1747)\n\nCloses #1748 \nUDENG-11052",
+                  "url": "https://github.com/canonical/authd/commit/9905a37c64ae4b3152c9577d49c1070e3bab2ee4"
                },
                {
-                  "sha": "7be3714dc40a2b9c5172fff64ecba70ed1b71a27",
-                  "author": "adombeck",
-                  "timestamp": 1784547482,
-                  "message": "pam/main-exec: Exit with failure if the server connection is lost (#904)\n\nUDENG-6770",
-                  "url": "https://github.com/canonical/authd/commit/7be3714dc40a2b9c5172fff64ecba70ed1b71a27"
+                  "sha": "c3dacc22a5510a4f12ed90e2d002afbb00bef1da",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784558772,
+                  "message": "ci(brokers-qa): cache downloaded cargo-c binary\n\nThe go-sanity and go-tests jobs run on ephemeral GitHub-hosted\nrunners, so each run re-downloads and reinstalls cargo-c from\nscratch even when the pinned version hasn't changed. Cache the\ninstalled cargo-cbuild binary, keyed on the install-cargo-c script's\ncontents, to skip the redundant download on unchanged runs.\n\nThe self-hosted TICS runner isn't affected: its filesystem persists\nacross runs, so the installer's own skip-if-already-installed check\nalready avoids re-downloading there without needing a cache action.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/c3dacc22a5510a4f12ed90e2d002afbb00bef1da"
                },
                {
-                  "sha": "82e187ab1cfba06133dd4031972b74aa3180cbd1",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1781100527,
-                  "message": "ptytest/launcher: Add signals handler to redirect to child",
-                  "url": "https://github.com/canonical/authd/commit/82e187ab1cfba06133dd4031972b74aa3180cbd1"
+                  "sha": "3fb9e989dbd0db486740652d7ffb26ee1a2c9c35",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784548878,
+                  "message": "ci: automate cargo-c release update PRs\n\nOpen a weekly pull request for each new stable cargo-c release so the\nverified Snap installer stays current without tracking unreleased\ncommits.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/3fb9e989dbd0db486740652d7ffb26ee1a2c9c35"
                }
             ],
             "ciActions": [
@@ -4916,9 +4916,27 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 356795122,
+                  "version": "rev99",
+                  "timestamp": 1784559169,
+                  "title": "Revision 99",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 94</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:55 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/133\">#133</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98...rev99\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98&hellip;rev99</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev99",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev99...main"
+               },
+               {
+                  "id": 356826437,
+                  "version": "rev100",
+                  "timestamp": 1784561925,
+                  "title": "Revision 100",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 95</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 15:40 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update actions/setup-python action to v7 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/134\">#134</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev99...rev100\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev99&hellip;rev100</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev100",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev100...main"
+               },
                {
                   "id": 350961209,
                   "version": "rev98",
@@ -4927,24 +4945,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 93</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:51 UTC on 8 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/128\">#128</a></li>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/129\">#129</a></li>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/130\">#130</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...rev98\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97&hellip;rev98</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev98",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98...main"
-               },
-               {
-                  "id": 346644979,
-                  "version": "rev97",
-                  "timestamp": 1782799717,
-                  "title": "Revision 97",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 90</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 06:10 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency ops to v3.8.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/127\">#127</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...rev97\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96&hellip;rev97</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev97",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...main"
-               },
-               {
-                  "id": 346546500,
-                  "version": "rev96",
-                  "timestamp": 1782775284,
-                  "title": "Revision 96",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:23 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/126\">#126</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/124\">#124</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95...rev96\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95&hellip;rev96</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev96",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...main"
                }
             ],
             "commits": null,
@@ -4956,8 +4956,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 98,
-                     "timestamp": 1783518686
+                     "revision": 100,
+                     "timestamp": 1784562044
                   }
                ],
                "channels": [
@@ -5676,25 +5676,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a772be148a47dd5655096e66528f5069d41be5d7",
+                  "sha": "9905a37c64ae4b3152c9577d49c1070e3bab2ee4",
                   "author": "adombeck",
-                  "timestamp": 1784548279,
-                  "message": "e2e: select dependency PPA from PR descriptions (#1741)",
-                  "url": "https://github.com/canonical/authd/commit/a772be148a47dd5655096e66528f5069d41be5d7"
+                  "timestamp": 1784560319,
+                  "message": "snap: install compatible prebuilt cargo-c (#1747)\n\nCloses #1748 \nUDENG-11052",
+                  "url": "https://github.com/canonical/authd/commit/9905a37c64ae4b3152c9577d49c1070e3bab2ee4"
                },
                {
-                  "sha": "7be3714dc40a2b9c5172fff64ecba70ed1b71a27",
-                  "author": "adombeck",
-                  "timestamp": 1784547482,
-                  "message": "pam/main-exec: Exit with failure if the server connection is lost (#904)\n\nUDENG-6770",
-                  "url": "https://github.com/canonical/authd/commit/7be3714dc40a2b9c5172fff64ecba70ed1b71a27"
+                  "sha": "c3dacc22a5510a4f12ed90e2d002afbb00bef1da",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784558772,
+                  "message": "ci(brokers-qa): cache downloaded cargo-c binary\n\nThe go-sanity and go-tests jobs run on ephemeral GitHub-hosted\nrunners, so each run re-downloads and reinstalls cargo-c from\nscratch even when the pinned version hasn't changed. Cache the\ninstalled cargo-cbuild binary, keyed on the install-cargo-c script's\ncontents, to skip the redundant download on unchanged runs.\n\nThe self-hosted TICS runner isn't affected: its filesystem persists\nacross runs, so the installer's own skip-if-already-installed check\nalready avoids re-downloading there without needing a cache action.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/c3dacc22a5510a4f12ed90e2d002afbb00bef1da"
                },
                {
-                  "sha": "82e187ab1cfba06133dd4031972b74aa3180cbd1",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1781100527,
-                  "message": "ptytest/launcher: Add signals handler to redirect to child",
-                  "url": "https://github.com/canonical/authd/commit/82e187ab1cfba06133dd4031972b74aa3180cbd1"
+                  "sha": "3fb9e989dbd0db486740652d7ffb26ee1a2c9c35",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784548878,
+                  "message": "ci: automate cargo-c release update PRs\n\nOpen a weekly pull request for each new stable cargo-c release so the\nverified Snap installer stays current without tracking unreleased\ncommits.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/3fb9e989dbd0db486740652d7ffb26ee1a2c9c35"
                }
             ],
             "ciActions": [
@@ -7262,6 +7262,62 @@
             "snap": null
          },
          {
+            "name": "ubuntu-insights-k8s-operator",
+            "defaultBranch": "main",
+            "newCommits": 2,
+            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
+            "releases": [
+               {
+                  "id": 356795122,
+                  "version": "rev99",
+                  "timestamp": 1784559169,
+                  "title": "Revision 99",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 94</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:55 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/133\">#133</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98...rev99\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98&hellip;rev99</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev99",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev99...main"
+               },
+               {
+                  "id": 356826437,
+                  "version": "rev100",
+                  "timestamp": 1784561925,
+                  "title": "Revision 100",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 95</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 15:40 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update actions/setup-python action to v7 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/134\">#134</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev99...rev100\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev99&hellip;rev100</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev100",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev100...main"
+               },
+               {
+                  "id": 350961209,
+                  "version": "rev98",
+                  "timestamp": 1783518574,
+                  "title": "Revision 98",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 93</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:51 UTC on 8 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/128\">#128</a></li>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/129\">#129</a></li>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/130\">#130</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...rev98\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97&hellip;rev98</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev98",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
+            "charm": {
+               "name": "ubuntu-insights-server-k8s",
+               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
+               "releases": [
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 100,
+                     "timestamp": 1784562044
+                  }
+               ],
+               "channels": [
+                  "edge"
+               ],
+               "tracks": [
+                  "latest"
+               ]
+            },
+            "snap": null
+         },
+         {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
             "newCommits": 34,
@@ -7300,62 +7356,6 @@
                "https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/qa.yaml"
             ],
             "charm": null,
-            "snap": null
-         },
-         {
-            "name": "ubuntu-insights-k8s-operator",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
-            "releases": [
-               {
-                  "id": 350961209,
-                  "version": "rev98",
-                  "timestamp": 1783518574,
-                  "title": "Revision 98",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 93</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:51 UTC on 8 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/128\">#128</a></li>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/129\">#129</a></li>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/130\">#130</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...rev98\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97&hellip;rev98</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev98",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98...main"
-               },
-               {
-                  "id": 346644979,
-                  "version": "rev97",
-                  "timestamp": 1782799717,
-                  "title": "Revision 97",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 90</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 06:10 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency ops to v3.8.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/127\">#127</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...rev97\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96&hellip;rev97</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev97",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...main"
-               },
-               {
-                  "id": 346546500,
-                  "version": "rev96",
-                  "timestamp": 1782775284,
-                  "title": "Revision 96",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:23 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/126\">#126</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/124\">#124</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95...rev96\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95&hellip;rev96</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev96",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": {
-               "name": "ubuntu-insights-server-k8s",
-               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
-               "releases": [
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 98,
-                     "timestamp": 1783518686
-                  }
-               ],
-               "channels": [
-                  "edge"
-               ],
-               "tracks": [
-                  "latest"
-               ]
-            },
             "snap": null
          },
          {
@@ -8160,25 +8160,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a772be148a47dd5655096e66528f5069d41be5d7",
+                  "sha": "9905a37c64ae4b3152c9577d49c1070e3bab2ee4",
                   "author": "adombeck",
-                  "timestamp": 1784548279,
-                  "message": "e2e: select dependency PPA from PR descriptions (#1741)",
-                  "url": "https://github.com/canonical/authd/commit/a772be148a47dd5655096e66528f5069d41be5d7"
+                  "timestamp": 1784560319,
+                  "message": "snap: install compatible prebuilt cargo-c (#1747)\n\nCloses #1748 \nUDENG-11052",
+                  "url": "https://github.com/canonical/authd/commit/9905a37c64ae4b3152c9577d49c1070e3bab2ee4"
                },
                {
-                  "sha": "7be3714dc40a2b9c5172fff64ecba70ed1b71a27",
-                  "author": "adombeck",
-                  "timestamp": 1784547482,
-                  "message": "pam/main-exec: Exit with failure if the server connection is lost (#904)\n\nUDENG-6770",
-                  "url": "https://github.com/canonical/authd/commit/7be3714dc40a2b9c5172fff64ecba70ed1b71a27"
+                  "sha": "c3dacc22a5510a4f12ed90e2d002afbb00bef1da",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784558772,
+                  "message": "ci(brokers-qa): cache downloaded cargo-c binary\n\nThe go-sanity and go-tests jobs run on ephemeral GitHub-hosted\nrunners, so each run re-downloads and reinstalls cargo-c from\nscratch even when the pinned version hasn't changed. Cache the\ninstalled cargo-cbuild binary, keyed on the install-cargo-c script's\ncontents, to skip the redundant download on unchanged runs.\n\nThe self-hosted TICS runner isn't affected: its filesystem persists\nacross runs, so the installer's own skip-if-already-installed check\nalready avoids re-downloading there without needing a cache action.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/c3dacc22a5510a4f12ed90e2d002afbb00bef1da"
                },
                {
-                  "sha": "82e187ab1cfba06133dd4031972b74aa3180cbd1",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1781100527,
-                  "message": "ptytest/launcher: Add signals handler to redirect to child",
-                  "url": "https://github.com/canonical/authd/commit/82e187ab1cfba06133dd4031972b74aa3180cbd1"
+                  "sha": "3fb9e989dbd0db486740652d7ffb26ee1a2c9c35",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784548878,
+                  "message": "ci: automate cargo-c release update PRs\n\nOpen a weekly pull request for each new stable cargo-c release so the\nverified Snap installer stays current without tracking unreleased\ncommits.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/3fb9e989dbd0db486740652d7ffb26ee1a2c9c35"
                }
             ],
             "ciActions": [
@@ -9750,9 +9750,27 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 356795122,
+                  "version": "rev99",
+                  "timestamp": 1784559169,
+                  "title": "Revision 99",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 94</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:55 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/133\">#133</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98...rev99\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98&hellip;rev99</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev99",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev99...main"
+               },
+               {
+                  "id": 356826437,
+                  "version": "rev100",
+                  "timestamp": 1784561925,
+                  "title": "Revision 100",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 95</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 15:40 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update actions/setup-python action to v7 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/134\">#134</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev99...rev100\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev99&hellip;rev100</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev100",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev100...main"
+               },
                {
                   "id": 350961209,
                   "version": "rev98",
@@ -9761,24 +9779,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 93</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 13:51 UTC on 8 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/128\">#128</a></li>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/129\">#129</a></li>\n<li>deps(github-actions): update astral-sh/setup-uv action to v8.3.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/130\">#130</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...rev98\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97&hellip;rev98</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev98",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev98...main"
-               },
-               {
-                  "id": 346644979,
-                  "version": "rev97",
-                  "timestamp": 1782799717,
-                  "title": "Revision 97",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 90</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 06:10 UTC on 30 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency ops to v3.8.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/127\">#127</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...rev97\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96&hellip;rev97</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev97",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev97...main"
-               },
-               {
-                  "id": 346546500,
-                  "version": "rev96",
-                  "timestamp": 1782775284,
-                  "title": "Revision 96",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:23 UTC on 29 Jun 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency jubilant to v1.11.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/126\">#126</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/124\">#124</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95...rev96\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev95&hellip;rev96</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev96",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev96...main"
                }
             ],
             "commits": null,
@@ -9790,8 +9790,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 98,
-                     "timestamp": 1783518686
+                     "revision": 100,
+                     "timestamp": 1784562044
                   }
                ],
                "channels": [
