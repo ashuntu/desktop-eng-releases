@@ -3062,7 +3062,7 @@
          {
             "name": "Tiling-Assistant",
             "defaultBranch": "main",
-            "newCommits": 11,
+            "newCommits": 12,
             "url": "https://github.com/ubuntu/Tiling-Assistant",
             "releases": [
                {
@@ -3171,7 +3171,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -3698,25 +3698,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "accbb96f9d35cfea1525f76e41e2bbb2891e3cef",
+                  "author": "Robert Ancell",
+                  "timestamp": 1784698048,
+                  "message": "Update Flutter description\n\nMatch the wording used on flutter.dev: describe Flutter as an open source,\nmulti-platform framework and drop the reference to Google.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/accbb96f9d35cfea1525f76e41e2bbb2891e3cef"
+               },
+               {
+                  "sha": "e99f820147a952d4a743dcf73976b463a684388d",
+                  "author": "Robert Ancell",
+                  "timestamp": 1784685226,
+                  "message": "Fix cross-distro test CI\n\nGet the containerised, cross-distro app-build/run tests passing again and\nmake the built apps run on hosts with older glibc.\n\nSwitch the snap to core22:\n\n- Change the base from core24 to core22 so locally-compiled native code\n  (the app runner and the window_manager plugin) targets glibc 2.35\n  instead of 2.39. This lets the built apps run on Ubuntu 22.04 as well\n  as newer distributions (glibc is backwards compatible); on core24 they\n  required GLIBC_2.38+ and failed to start on 22.04.\n- Replace the core24 'platforms:' map with the core22 'architectures:'\n  list and rename CRAFT_ARCH_TRIPLET_BUILD_FOR to CRAFT_ARCH_TRIPLET\n  throughout snapcraft.yaml and env.sh, and point env.sh at\n  /snap/core22 for the CA bundle and rpath-link paths.\n- Update the clang/llvm lint ignore entries from llvm-18/libclang-18 to\n  the llvm-14/libclang-14 shipped on core22.\n\nRun the systemd test container with --cgroupns=host:\n\n- On the current cgroup v2 runners systemd (PID 1) could not set up its\n  cgroup hierarchy and exited immediately, so every 'docker exec'\n  reported 'container is not running' until the snapd-startup wait timed\n  out. Also dump container status/logs on timeout to aid debugging.\n\nMake the bundled linker self-contained:\n\n- The glibc ld scripts (libc.so, libm.so, ...) reference their real\n  runtime objects (libc.so.6, libm.so.6, libmvec.so.1, ...) by absolute\n  path; left unchanged the bundled linker resolves them against the\n  host's glibc and fails when the host glibc differs from the snap's.\n  Rewrite those references (and any absolute symlinks) to point inside\n  the snap. On core22 the runtime objects and the loader are installed\n  under lib/<triplet> and lib64 rather than usr/lib/<triplet>, so mirror\n  them into usr/lib/<triplet> and usr/lib64 first, matching where the\n  rewritten references point.\n- Add -Wl,-rpath-link (snap and core22 base library dirs) to LDFLAGS.\n  -L only affects direct -l lookups; the indirect DT_NEEDED dependencies\n  of prebuilt shared libraries (e.g. the Flutter engine's\n  libflutter_linux_gtk.so, needing libglib/libgio/libpthread/...) are\n  resolved via -rpath-link. Without it the linker fell back to the\n  host's /lib/<triplet>, leaking host libraries into the build.\n- Bundle clang's runtime dependency closure (libbsd0, libedit2, libmd0,\n  libtinfo6, libzstd1) as stage-packages. These were previously borrowed\n  from Debian/Ubuntu hosts and are absent on Fedora, where clang++ failed\n  to load with 'libbsd.so.0: cannot open shared object file'.\n\nFix the test container images:\n\n- Install the GLESv2 runtime (libgles2 / mesa-libGLES / Mesa-libGLESv2-2)\n  in every test image; without it running the app failed with\n  \"Couldn't open libGLESv2.so.2\".\n- openSUSE: install 'systemd' instead of the removed 'systemd-sysvinit'\n  package (systemd now provides /sbin/init directly), and bump the Leap\n  snappy repository from openSUSE_Leap_15.6 to openSUSE_Leap_16.0 to\n  match the rolled base image.\n\nBump geekyeggo/delete-artifact from v1 to v6 in the cleanup job; v1 used\nthe legacy artifact API and failed with 'Failed to list artifacts;\nstatus code 404' against upload-artifact@v4.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/e99f820147a952d4a743dcf73976b463a684388d"
+               },
+               {
                   "sha": "645e5492584bcef785ab8a057585a02f21e19c7e",
                   "author": "Robert Ancell",
                   "timestamp": 1784686980,
                   "message": "Merge pull request #127 from robert-ancell/add-readme\n\nAdd README",
                   "url": "https://github.com/canonical/flutter-snap/commit/645e5492584bcef785ab8a057585a02f21e19c7e"
-               },
-               {
-                  "sha": "f7a34ad2834a3740dc33d5d97478ddf7910e1e7a",
-                  "author": "Robert Ancell",
-                  "timestamp": 1784686953,
-                  "message": "Merge pull request #129 from robert-ancell/ubuntu-25.10\n\nUbuntu 25.04 is no longer supported, use 25.10",
-                  "url": "https://github.com/canonical/flutter-snap/commit/f7a34ad2834a3740dc33d5d97478ddf7910e1e7a"
-               },
-               {
-                  "sha": "f6c7f7f03691eb92416a0d08a5cc1685193684fe",
-                  "author": "Robert Ancell",
-                  "timestamp": 1784685817,
-                  "message": "Build on 26.04",
-                  "url": "https://github.com/canonical/flutter-snap/commit/f6c7f7f03691eb92416a0d08a5cc1685193684fe"
                }
             ],
             "ciActions": [],
@@ -4047,7 +4047,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 8,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -4853,25 +4853,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3ea2715a9c1a6fc94fff28b844e43daae91a2a5e",
+                  "sha": "732227ada25dac04afc53a0f7611c8e6735d32d9",
                   "author": "Dennis Loose",
-                  "timestamp": 1784649329,
-                  "message": "feat: update l10n strings for PIN/passphrase (#1501)\n\nUpdate the l10n strings for the PIN/passphrase page as discussed.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3ea2715a9c1a6fc94fff28b844e43daae91a2a5e"
+                  "timestamp": 1784723635,
+                  "message": "feat(tpm-action): show single proceed action without expansion panel (#1500)\n\nThis PR simplifies the UI of the TPM action page in case there is only a\nsingle 'proceed' (ignore) action:\n\nBefore:\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-07-21\n16-47-55\"\nsrc=\"https://github.com/user-attachments/assets/8df3d63f-54e3-4e36-8e9b-1c5045f056f7\"\n/>\n\nAfter:\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-07-21\n16-54-50\"\nsrc=\"https://github.com/user-attachments/assets/dcb2a8bb-052d-4738-b47f-7b2259a551b1\"\n/>\n\nUDENG-11012",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/732227ada25dac04afc53a0f7611c8e6735d32d9"
                },
                {
-                  "sha": "797599f6b149ed3582be4a0cd1ab6af0d01d62a5",
+                  "sha": "db8ab3e0d2a1c5443a56745e4cda28e92a30f515",
                   "author": "Dennis Loose",
-                  "timestamp": 1784647469,
-                  "message": "feat: update l10n strings for PIN/passphrase",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/797599f6b149ed3582be4a0cd1ab6af0d01d62a5"
+                  "timestamp": 1784715277,
+                  "message": "feat: add separate title for actionable errors",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/db8ab3e0d2a1c5443a56745e4cda28e92a30f515"
                },
                {
-                  "sha": "083e03c4c55e51ade07734767947f79d3aea930a",
+                  "sha": "a153eae2bcdc0330127bbf49e87cf290e9bd3024",
                   "author": "Dennis Loose",
-                  "timestamp": 1784196531,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to a768945 (#1496)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/b0fe04c67e9795930d76b35d05c236f9eb7537db..a768945c41b51b161b37b86dba886714d6ad250e))\n| digest | `b0fe04c` → `a768945` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNTkuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI1OS4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/083e03c4c55e51ade07734767947f79d3aea930a"
+                  "timestamp": 1784643283,
+                  "message": "feat(tpm-action): show single proceed action without expansion panel",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a153eae2bcdc0330127bbf49e87cf290e9bd3024"
                }
             ],
             "ciActions": [
@@ -4916,9 +4916,18 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 357771278,
+                  "version": "rev103",
+                  "timestamp": 1784692915,
+                  "title": "Revision 103",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 96</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 04:04 UTC on 22 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v9 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/135\">#135</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev102...rev103\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev102&hellip;rev103</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev103",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev103...main"
+               },
                {
                   "id": 356795122,
                   "version": "rev99",
@@ -4936,15 +4945,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 95</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 17:53 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/132\">#132</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev101...rev102\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev101&hellip;rev102</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev102",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev102...main"
-               },
-               {
-                  "id": 356896568,
-                  "version": "rev101",
-                  "timestamp": 1784568821,
-                  "title": "Revision 101",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 95</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 17:35 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.10.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/131\">#131</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev100...rev101\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev100&hellip;rev101</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev101",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev101...main"
                }
             ],
             "commits": null,
@@ -4956,8 +4956,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 102,
-                     "timestamp": 1784570030
+                     "revision": 103,
+                     "timestamp": 1784693056
                   }
                ],
                "channels": [
@@ -5250,7 +5250,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 42,
+            "newCommits": 44,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5285,26 +5285,26 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 626,
-                     "timestamp": 1784248926
+                     "revision": 629,
+                     "timestamp": 1784705715
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 627,
-                     "timestamp": 1784248926
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 629,
-                     "timestamp": 1784626061
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
                      "revision": 628,
-                     "timestamp": 1784624459
+                     "timestamp": 1784705714
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 633,
+                     "timestamp": 1784725321
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 632,
+                     "timestamp": 1784725167
                   }
                ],
                "channels": [
@@ -6013,25 +6013,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "accbb96f9d35cfea1525f76e41e2bbb2891e3cef",
+                  "author": "Robert Ancell",
+                  "timestamp": 1784698048,
+                  "message": "Update Flutter description\n\nMatch the wording used on flutter.dev: describe Flutter as an open source,\nmulti-platform framework and drop the reference to Google.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/accbb96f9d35cfea1525f76e41e2bbb2891e3cef"
+               },
+               {
+                  "sha": "e99f820147a952d4a743dcf73976b463a684388d",
+                  "author": "Robert Ancell",
+                  "timestamp": 1784685226,
+                  "message": "Fix cross-distro test CI\n\nGet the containerised, cross-distro app-build/run tests passing again and\nmake the built apps run on hosts with older glibc.\n\nSwitch the snap to core22:\n\n- Change the base from core24 to core22 so locally-compiled native code\n  (the app runner and the window_manager plugin) targets glibc 2.35\n  instead of 2.39. This lets the built apps run on Ubuntu 22.04 as well\n  as newer distributions (glibc is backwards compatible); on core24 they\n  required GLIBC_2.38+ and failed to start on 22.04.\n- Replace the core24 'platforms:' map with the core22 'architectures:'\n  list and rename CRAFT_ARCH_TRIPLET_BUILD_FOR to CRAFT_ARCH_TRIPLET\n  throughout snapcraft.yaml and env.sh, and point env.sh at\n  /snap/core22 for the CA bundle and rpath-link paths.\n- Update the clang/llvm lint ignore entries from llvm-18/libclang-18 to\n  the llvm-14/libclang-14 shipped on core22.\n\nRun the systemd test container with --cgroupns=host:\n\n- On the current cgroup v2 runners systemd (PID 1) could not set up its\n  cgroup hierarchy and exited immediately, so every 'docker exec'\n  reported 'container is not running' until the snapd-startup wait timed\n  out. Also dump container status/logs on timeout to aid debugging.\n\nMake the bundled linker self-contained:\n\n- The glibc ld scripts (libc.so, libm.so, ...) reference their real\n  runtime objects (libc.so.6, libm.so.6, libmvec.so.1, ...) by absolute\n  path; left unchanged the bundled linker resolves them against the\n  host's glibc and fails when the host glibc differs from the snap's.\n  Rewrite those references (and any absolute symlinks) to point inside\n  the snap. On core22 the runtime objects and the loader are installed\n  under lib/<triplet> and lib64 rather than usr/lib/<triplet>, so mirror\n  them into usr/lib/<triplet> and usr/lib64 first, matching where the\n  rewritten references point.\n- Add -Wl,-rpath-link (snap and core22 base library dirs) to LDFLAGS.\n  -L only affects direct -l lookups; the indirect DT_NEEDED dependencies\n  of prebuilt shared libraries (e.g. the Flutter engine's\n  libflutter_linux_gtk.so, needing libglib/libgio/libpthread/...) are\n  resolved via -rpath-link. Without it the linker fell back to the\n  host's /lib/<triplet>, leaking host libraries into the build.\n- Bundle clang's runtime dependency closure (libbsd0, libedit2, libmd0,\n  libtinfo6, libzstd1) as stage-packages. These were previously borrowed\n  from Debian/Ubuntu hosts and are absent on Fedora, where clang++ failed\n  to load with 'libbsd.so.0: cannot open shared object file'.\n\nFix the test container images:\n\n- Install the GLESv2 runtime (libgles2 / mesa-libGLES / Mesa-libGLESv2-2)\n  in every test image; without it running the app failed with\n  \"Couldn't open libGLESv2.so.2\".\n- openSUSE: install 'systemd' instead of the removed 'systemd-sysvinit'\n  package (systemd now provides /sbin/init directly), and bump the Leap\n  snappy repository from openSUSE_Leap_15.6 to openSUSE_Leap_16.0 to\n  match the rolled base image.\n\nBump geekyeggo/delete-artifact from v1 to v6 in the cleanup job; v1 used\nthe legacy artifact API and failed with 'Failed to list artifacts;\nstatus code 404' against upload-artifact@v4.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/e99f820147a952d4a743dcf73976b463a684388d"
+               },
+               {
                   "sha": "645e5492584bcef785ab8a057585a02f21e19c7e",
                   "author": "Robert Ancell",
                   "timestamp": 1784686980,
                   "message": "Merge pull request #127 from robert-ancell/add-readme\n\nAdd README",
                   "url": "https://github.com/canonical/flutter-snap/commit/645e5492584bcef785ab8a057585a02f21e19c7e"
-               },
-               {
-                  "sha": "f7a34ad2834a3740dc33d5d97478ddf7910e1e7a",
-                  "author": "Robert Ancell",
-                  "timestamp": 1784686953,
-                  "message": "Merge pull request #129 from robert-ancell/ubuntu-25.10\n\nUbuntu 25.04 is no longer supported, use 25.10",
-                  "url": "https://github.com/canonical/flutter-snap/commit/f7a34ad2834a3740dc33d5d97478ddf7910e1e7a"
-               },
-               {
-                  "sha": "f6c7f7f03691eb92416a0d08a5cc1685193684fe",
-                  "author": "Robert Ancell",
-                  "timestamp": 1784685817,
-                  "message": "Build on 26.04",
-                  "url": "https://github.com/canonical/flutter-snap/commit/f6c7f7f03691eb92416a0d08a5cc1685193684fe"
                }
             ],
             "ciActions": [],
@@ -6395,7 +6395,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 8,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -7201,25 +7201,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3ea2715a9c1a6fc94fff28b844e43daae91a2a5e",
+                  "sha": "732227ada25dac04afc53a0f7611c8e6735d32d9",
                   "author": "Dennis Loose",
-                  "timestamp": 1784649329,
-                  "message": "feat: update l10n strings for PIN/passphrase (#1501)\n\nUpdate the l10n strings for the PIN/passphrase page as discussed.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3ea2715a9c1a6fc94fff28b844e43daae91a2a5e"
+                  "timestamp": 1784723635,
+                  "message": "feat(tpm-action): show single proceed action without expansion panel (#1500)\n\nThis PR simplifies the UI of the TPM action page in case there is only a\nsingle 'proceed' (ignore) action:\n\nBefore:\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-07-21\n16-47-55\"\nsrc=\"https://github.com/user-attachments/assets/8df3d63f-54e3-4e36-8e9b-1c5045f056f7\"\n/>\n\nAfter:\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-07-21\n16-54-50\"\nsrc=\"https://github.com/user-attachments/assets/dcb2a8bb-052d-4738-b47f-7b2259a551b1\"\n/>\n\nUDENG-11012",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/732227ada25dac04afc53a0f7611c8e6735d32d9"
                },
                {
-                  "sha": "797599f6b149ed3582be4a0cd1ab6af0d01d62a5",
+                  "sha": "db8ab3e0d2a1c5443a56745e4cda28e92a30f515",
                   "author": "Dennis Loose",
-                  "timestamp": 1784647469,
-                  "message": "feat: update l10n strings for PIN/passphrase",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/797599f6b149ed3582be4a0cd1ab6af0d01d62a5"
+                  "timestamp": 1784715277,
+                  "message": "feat: add separate title for actionable errors",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/db8ab3e0d2a1c5443a56745e4cda28e92a30f515"
                },
                {
-                  "sha": "083e03c4c55e51ade07734767947f79d3aea930a",
+                  "sha": "a153eae2bcdc0330127bbf49e87cf290e9bd3024",
                   "author": "Dennis Loose",
-                  "timestamp": 1784196531,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to a768945 (#1496)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/b0fe04c67e9795930d76b35d05c236f9eb7537db..a768945c41b51b161b37b86dba886714d6ad250e))\n| digest | `b0fe04c` → `a768945` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNTkuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI1OS4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/083e03c4c55e51ade07734767947f79d3aea930a"
+                  "timestamp": 1784643283,
+                  "message": "feat(tpm-action): show single proceed action without expansion panel",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a153eae2bcdc0330127bbf49e87cf290e9bd3024"
                }
             ],
             "ciActions": [
@@ -7264,9 +7264,18 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 357771278,
+                  "version": "rev103",
+                  "timestamp": 1784692915,
+                  "title": "Revision 103",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 96</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 04:04 UTC on 22 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v9 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/135\">#135</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev102...rev103\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev102&hellip;rev103</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev103",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev103...main"
+               },
                {
                   "id": 356795122,
                   "version": "rev99",
@@ -7284,15 +7293,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 95</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 17:53 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/132\">#132</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev101...rev102\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev101&hellip;rev102</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev102",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev102...main"
-               },
-               {
-                  "id": 356896568,
-                  "version": "rev101",
-                  "timestamp": 1784568821,
-                  "title": "Revision 101",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 95</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 17:35 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.10.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/131\">#131</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev100...rev101\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev100&hellip;rev101</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev101",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev101...main"
                }
             ],
             "commits": null,
@@ -7304,8 +7304,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 102,
-                     "timestamp": 1784570030
+                     "revision": 103,
+                     "timestamp": 1784693056
                   }
                ],
                "channels": [
@@ -7639,7 +7639,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 42,
+            "newCommits": 44,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7674,26 +7674,26 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 626,
-                     "timestamp": 1784248926
+                     "revision": 629,
+                     "timestamp": 1784705715
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 627,
-                     "timestamp": 1784248926
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 629,
-                     "timestamp": 1784626061
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
                      "revision": 628,
-                     "timestamp": 1784624459
+                     "timestamp": 1784705714
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 633,
+                     "timestamp": 1784725321
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 632,
+                     "timestamp": 1784725167
                   }
                ],
                "channels": [
@@ -7964,7 +7964,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -8497,25 +8497,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "accbb96f9d35cfea1525f76e41e2bbb2891e3cef",
+                  "author": "Robert Ancell",
+                  "timestamp": 1784698048,
+                  "message": "Update Flutter description\n\nMatch the wording used on flutter.dev: describe Flutter as an open source,\nmulti-platform framework and drop the reference to Google.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/accbb96f9d35cfea1525f76e41e2bbb2891e3cef"
+               },
+               {
+                  "sha": "e99f820147a952d4a743dcf73976b463a684388d",
+                  "author": "Robert Ancell",
+                  "timestamp": 1784685226,
+                  "message": "Fix cross-distro test CI\n\nGet the containerised, cross-distro app-build/run tests passing again and\nmake the built apps run on hosts with older glibc.\n\nSwitch the snap to core22:\n\n- Change the base from core24 to core22 so locally-compiled native code\n  (the app runner and the window_manager plugin) targets glibc 2.35\n  instead of 2.39. This lets the built apps run on Ubuntu 22.04 as well\n  as newer distributions (glibc is backwards compatible); on core24 they\n  required GLIBC_2.38+ and failed to start on 22.04.\n- Replace the core24 'platforms:' map with the core22 'architectures:'\n  list and rename CRAFT_ARCH_TRIPLET_BUILD_FOR to CRAFT_ARCH_TRIPLET\n  throughout snapcraft.yaml and env.sh, and point env.sh at\n  /snap/core22 for the CA bundle and rpath-link paths.\n- Update the clang/llvm lint ignore entries from llvm-18/libclang-18 to\n  the llvm-14/libclang-14 shipped on core22.\n\nRun the systemd test container with --cgroupns=host:\n\n- On the current cgroup v2 runners systemd (PID 1) could not set up its\n  cgroup hierarchy and exited immediately, so every 'docker exec'\n  reported 'container is not running' until the snapd-startup wait timed\n  out. Also dump container status/logs on timeout to aid debugging.\n\nMake the bundled linker self-contained:\n\n- The glibc ld scripts (libc.so, libm.so, ...) reference their real\n  runtime objects (libc.so.6, libm.so.6, libmvec.so.1, ...) by absolute\n  path; left unchanged the bundled linker resolves them against the\n  host's glibc and fails when the host glibc differs from the snap's.\n  Rewrite those references (and any absolute symlinks) to point inside\n  the snap. On core22 the runtime objects and the loader are installed\n  under lib/<triplet> and lib64 rather than usr/lib/<triplet>, so mirror\n  them into usr/lib/<triplet> and usr/lib64 first, matching where the\n  rewritten references point.\n- Add -Wl,-rpath-link (snap and core22 base library dirs) to LDFLAGS.\n  -L only affects direct -l lookups; the indirect DT_NEEDED dependencies\n  of prebuilt shared libraries (e.g. the Flutter engine's\n  libflutter_linux_gtk.so, needing libglib/libgio/libpthread/...) are\n  resolved via -rpath-link. Without it the linker fell back to the\n  host's /lib/<triplet>, leaking host libraries into the build.\n- Bundle clang's runtime dependency closure (libbsd0, libedit2, libmd0,\n  libtinfo6, libzstd1) as stage-packages. These were previously borrowed\n  from Debian/Ubuntu hosts and are absent on Fedora, where clang++ failed\n  to load with 'libbsd.so.0: cannot open shared object file'.\n\nFix the test container images:\n\n- Install the GLESv2 runtime (libgles2 / mesa-libGLES / Mesa-libGLESv2-2)\n  in every test image; without it running the app failed with\n  \"Couldn't open libGLESv2.so.2\".\n- openSUSE: install 'systemd' instead of the removed 'systemd-sysvinit'\n  package (systemd now provides /sbin/init directly), and bump the Leap\n  snappy repository from openSUSE_Leap_15.6 to openSUSE_Leap_16.0 to\n  match the rolled base image.\n\nBump geekyeggo/delete-artifact from v1 to v6 in the cleanup job; v1 used\nthe legacy artifact API and failed with 'Failed to list artifacts;\nstatus code 404' against upload-artifact@v4.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/e99f820147a952d4a743dcf73976b463a684388d"
+               },
+               {
                   "sha": "645e5492584bcef785ab8a057585a02f21e19c7e",
                   "author": "Robert Ancell",
                   "timestamp": 1784686980,
                   "message": "Merge pull request #127 from robert-ancell/add-readme\n\nAdd README",
                   "url": "https://github.com/canonical/flutter-snap/commit/645e5492584bcef785ab8a057585a02f21e19c7e"
-               },
-               {
-                  "sha": "f7a34ad2834a3740dc33d5d97478ddf7910e1e7a",
-                  "author": "Robert Ancell",
-                  "timestamp": 1784686953,
-                  "message": "Merge pull request #129 from robert-ancell/ubuntu-25.10\n\nUbuntu 25.04 is no longer supported, use 25.10",
-                  "url": "https://github.com/canonical/flutter-snap/commit/f7a34ad2834a3740dc33d5d97478ddf7910e1e7a"
-               },
-               {
-                  "sha": "f6c7f7f03691eb92416a0d08a5cc1685193684fe",
-                  "author": "Robert Ancell",
-                  "timestamp": 1784685817,
-                  "message": "Build on 26.04",
-                  "url": "https://github.com/canonical/flutter-snap/commit/f6c7f7f03691eb92416a0d08a5cc1685193684fe"
                }
             ],
             "ciActions": [],
@@ -8846,9 +8846,18 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
+               {
+                  "id": 358081020,
+                  "version": "rev102",
+                  "timestamp": 1784729473,
+                  "title": "Revision 102",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 89</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 14:17 UTC on 22 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update dependency mediawiki-k8s to v101 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/214\">#214</a></li>\n<li>docs: unpublish stubs by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/217\">#217</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev101...rev102\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev101&hellip;rev102</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev102",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev102...main"
+               },
                {
                   "id": 356259817,
                   "version": "rev101",
@@ -8866,15 +8875,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 87</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 03:32 UTC on 18 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/210\">#210</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev99...rev100\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev99&hellip;rev100</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev100",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev100...main"
-               },
-               {
-                  "id": 355904568,
-                  "version": "rev99",
-                  "timestamp": 1784317788,
-                  "title": "Revision 99",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 86</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 20:19 UTC on 17 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): update registry.k8s.io/git-sync/git-sync docker tag to v4.7.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/208\">#208</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev98...rev99\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev98&hellip;rev99</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev99",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev99...main"
                }
             ],
             "commits": null,
@@ -8889,8 +8889,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 101,
-                     "timestamp": 1784436805
+                     "revision": 102,
+                     "timestamp": 1784729856
                   },
                   {
                      "track": "1.45",
@@ -9652,25 +9652,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3ea2715a9c1a6fc94fff28b844e43daae91a2a5e",
+                  "sha": "732227ada25dac04afc53a0f7611c8e6735d32d9",
                   "author": "Dennis Loose",
-                  "timestamp": 1784649329,
-                  "message": "feat: update l10n strings for PIN/passphrase (#1501)\n\nUpdate the l10n strings for the PIN/passphrase page as discussed.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3ea2715a9c1a6fc94fff28b844e43daae91a2a5e"
+                  "timestamp": 1784723635,
+                  "message": "feat(tpm-action): show single proceed action without expansion panel (#1500)\n\nThis PR simplifies the UI of the TPM action page in case there is only a\nsingle 'proceed' (ignore) action:\n\nBefore:\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-07-21\n16-47-55\"\nsrc=\"https://github.com/user-attachments/assets/8df3d63f-54e3-4e36-8e9b-1c5045f056f7\"\n/>\n\nAfter:\n<img width=\"2024\" height=\"1464\" alt=\"Screenshot From 2026-07-21\n16-54-50\"\nsrc=\"https://github.com/user-attachments/assets/dcb2a8bb-052d-4738-b47f-7b2259a551b1\"\n/>\n\nUDENG-11012",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/732227ada25dac04afc53a0f7611c8e6735d32d9"
                },
                {
-                  "sha": "797599f6b149ed3582be4a0cd1ab6af0d01d62a5",
+                  "sha": "db8ab3e0d2a1c5443a56745e4cda28e92a30f515",
                   "author": "Dennis Loose",
-                  "timestamp": 1784647469,
-                  "message": "feat: update l10n strings for PIN/passphrase",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/797599f6b149ed3582be4a0cd1ab6af0d01d62a5"
+                  "timestamp": 1784715277,
+                  "message": "feat: add separate title for actionable errors",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/db8ab3e0d2a1c5443a56745e4cda28e92a30f515"
                },
                {
-                  "sha": "083e03c4c55e51ade07734767947f79d3aea930a",
+                  "sha": "a153eae2bcdc0330127bbf49e87cf290e9bd3024",
                   "author": "Dennis Loose",
-                  "timestamp": 1784196531,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to a768945 (#1496)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/b0fe04c67e9795930d76b35d05c236f9eb7537db..a768945c41b51b161b37b86dba886714d6ad250e))\n| digest | `b0fe04c` → `a768945` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0My4yNTkuMiIsInVwZGF0ZWRJblZlciI6IjQzLjI1OS4yIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/083e03c4c55e51ade07734767947f79d3aea930a"
+                  "timestamp": 1784643283,
+                  "message": "feat(tpm-action): show single proceed action without expansion panel",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a153eae2bcdc0330127bbf49e87cf290e9bd3024"
                }
             ],
             "ciActions": [
@@ -9750,9 +9750,18 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 357771278,
+                  "version": "rev103",
+                  "timestamp": 1784692915,
+                  "title": "Revision 103",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 96</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 04:04 UTC on 22 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v9 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/135\">#135</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev102...rev103\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev102&hellip;rev103</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev103",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev103...main"
+               },
                {
                   "id": 356795122,
                   "version": "rev99",
@@ -9770,15 +9779,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 95</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 17:53 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/132\">#132</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev101...rev102\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev101&hellip;rev102</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev102",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev102...main"
-               },
-               {
-                  "id": 356896568,
-                  "version": "rev101",
-                  "timestamp": 1784568821,
-                  "title": "Revision 101",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 95</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 17:35 UTC on 20 Jul 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency cosl to v1.10.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/131\">#131</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev100...rev101\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev100&hellip;rev101</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev101",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev101...main"
                }
             ],
             "commits": null,
@@ -9790,8 +9790,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 102,
-                     "timestamp": 1784570030
+                     "revision": 103,
+                     "timestamp": 1784693056
                   }
                ],
                "channels": [
@@ -10084,7 +10084,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 42,
+            "newCommits": 44,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10119,26 +10119,26 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 626,
-                     "timestamp": 1784248926
+                     "revision": 629,
+                     "timestamp": 1784705715
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 627,
-                     "timestamp": 1784248926
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 629,
-                     "timestamp": 1784626061
-                  },
-                  {
-                     "track": "latest",
-                     "channel": "edge",
                      "revision": 628,
-                     "timestamp": 1784624459
+                     "timestamp": 1784705714
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 633,
+                     "timestamp": 1784725321
+                  },
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 632,
+                     "timestamp": 1784725167
                   }
                ],
                "channels": [
@@ -10231,7 +10231,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
