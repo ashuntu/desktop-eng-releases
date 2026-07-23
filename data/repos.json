@@ -3698,6 +3698,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "40594c86f98fbfaa154fe0ded17b24099205043c",
+                  "author": "Robert Ancell",
+                  "timestamp": 1784763557,
+                  "message": "Document the environment variables in env.sh\n\nAdd a short comment above each variable explaining why it is needed and\nseparate unrelated variables with blank lines. Refer to the base snap\npath via a $CORE variable rather than repeating it.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/40594c86f98fbfaa154fe0ded17b24099205043c"
+               },
+               {
                   "sha": "1473d102b12891ebf7fe1649ad64f920ca650bf6",
                   "author": "Robert Ancell",
                   "timestamp": 1784763076,
@@ -3710,13 +3717,6 @@
                   "timestamp": 1784698048,
                   "message": "Update Flutter description\n\nMatch the wording used on flutter.dev: describe Flutter as an open source,\nmulti-platform framework and drop the reference to Google.",
                   "url": "https://github.com/canonical/flutter-snap/commit/accbb96f9d35cfea1525f76e41e2bbb2891e3cef"
-               },
-               {
-                  "sha": "e99f820147a952d4a743dcf73976b463a684388d",
-                  "author": "Robert Ancell",
-                  "timestamp": 1784685226,
-                  "message": "Fix cross-distro test CI\n\nGet the containerised, cross-distro app-build/run tests passing again and\nmake the built apps run on hosts with older glibc.\n\nSwitch the snap to core22:\n\n- Change the base from core24 to core22 so locally-compiled native code\n  (the app runner and the window_manager plugin) targets glibc 2.35\n  instead of 2.39. This lets the built apps run on Ubuntu 22.04 as well\n  as newer distributions (glibc is backwards compatible); on core24 they\n  required GLIBC_2.38+ and failed to start on 22.04.\n- Replace the core24 'platforms:' map with the core22 'architectures:'\n  list and rename CRAFT_ARCH_TRIPLET_BUILD_FOR to CRAFT_ARCH_TRIPLET\n  throughout snapcraft.yaml and env.sh, and point env.sh at\n  /snap/core22 for the CA bundle and rpath-link paths.\n- Update the clang/llvm lint ignore entries from llvm-18/libclang-18 to\n  the llvm-14/libclang-14 shipped on core22.\n\nRun the systemd test container with --cgroupns=host:\n\n- On the current cgroup v2 runners systemd (PID 1) could not set up its\n  cgroup hierarchy and exited immediately, so every 'docker exec'\n  reported 'container is not running' until the snapd-startup wait timed\n  out. Also dump container status/logs on timeout to aid debugging.\n\nMake the bundled linker self-contained:\n\n- The glibc ld scripts (libc.so, libm.so, ...) reference their real\n  runtime objects (libc.so.6, libm.so.6, libmvec.so.1, ...) by absolute\n  path; left unchanged the bundled linker resolves them against the\n  host's glibc and fails when the host glibc differs from the snap's.\n  Rewrite those references (and any absolute symlinks) to point inside\n  the snap. On core22 the runtime objects and the loader are installed\n  under lib/<triplet> and lib64 rather than usr/lib/<triplet>, so mirror\n  them into usr/lib/<triplet> and usr/lib64 first, matching where the\n  rewritten references point.\n- Add -Wl,-rpath-link (snap and core22 base library dirs) to LDFLAGS.\n  -L only affects direct -l lookups; the indirect DT_NEEDED dependencies\n  of prebuilt shared libraries (e.g. the Flutter engine's\n  libflutter_linux_gtk.so, needing libglib/libgio/libpthread/...) are\n  resolved via -rpath-link. Without it the linker fell back to the\n  host's /lib/<triplet>, leaking host libraries into the build.\n- Bundle clang's runtime dependency closure (libbsd0, libedit2, libmd0,\n  libtinfo6, libzstd1) as stage-packages. These were previously borrowed\n  from Debian/Ubuntu hosts and are absent on Fedora, where clang++ failed\n  to load with 'libbsd.so.0: cannot open shared object file'.\n\nFix the test container images:\n\n- Install the GLESv2 runtime (libgles2 / mesa-libGLES / Mesa-libGLESv2-2)\n  in every test image; without it running the app failed with\n  \"Couldn't open libGLESv2.so.2\".\n- openSUSE: install 'systemd' instead of the removed 'systemd-sysvinit'\n  package (systemd now provides /sbin/init directly), and bump the Leap\n  snappy repository from openSUSE_Leap_15.6 to openSUSE_Leap_16.0 to\n  match the rolled base image.\n\nBump geekyeggo/delete-artifact from v1 to v6 in the cleanup job; v1 used\nthe legacy artifact API and failed with 'Failed to list artifacts;\nstatus code 404' against upload-artifact@v4.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/e99f820147a952d4a743dcf73976b463a684388d"
                }
             ],
             "ciActions": [],
@@ -5285,14 +5285,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 629,
-                     "timestamp": 1784705715
+                     "revision": 633,
+                     "timestamp": 1784766590
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 628,
-                     "timestamp": 1784705714
+                     "revision": 632,
+                     "timestamp": 1784766589
                   },
                   {
                      "track": "latest",
@@ -6013,6 +6013,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "40594c86f98fbfaa154fe0ded17b24099205043c",
+                  "author": "Robert Ancell",
+                  "timestamp": 1784763557,
+                  "message": "Document the environment variables in env.sh\n\nAdd a short comment above each variable explaining why it is needed and\nseparate unrelated variables with blank lines. Refer to the base snap\npath via a $CORE variable rather than repeating it.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/40594c86f98fbfaa154fe0ded17b24099205043c"
+               },
+               {
                   "sha": "1473d102b12891ebf7fe1649ad64f920ca650bf6",
                   "author": "Robert Ancell",
                   "timestamp": 1784763076,
@@ -6025,13 +6032,6 @@
                   "timestamp": 1784698048,
                   "message": "Update Flutter description\n\nMatch the wording used on flutter.dev: describe Flutter as an open source,\nmulti-platform framework and drop the reference to Google.",
                   "url": "https://github.com/canonical/flutter-snap/commit/accbb96f9d35cfea1525f76e41e2bbb2891e3cef"
-               },
-               {
-                  "sha": "e99f820147a952d4a743dcf73976b463a684388d",
-                  "author": "Robert Ancell",
-                  "timestamp": 1784685226,
-                  "message": "Fix cross-distro test CI\n\nGet the containerised, cross-distro app-build/run tests passing again and\nmake the built apps run on hosts with older glibc.\n\nSwitch the snap to core22:\n\n- Change the base from core24 to core22 so locally-compiled native code\n  (the app runner and the window_manager plugin) targets glibc 2.35\n  instead of 2.39. This lets the built apps run on Ubuntu 22.04 as well\n  as newer distributions (glibc is backwards compatible); on core24 they\n  required GLIBC_2.38+ and failed to start on 22.04.\n- Replace the core24 'platforms:' map with the core22 'architectures:'\n  list and rename CRAFT_ARCH_TRIPLET_BUILD_FOR to CRAFT_ARCH_TRIPLET\n  throughout snapcraft.yaml and env.sh, and point env.sh at\n  /snap/core22 for the CA bundle and rpath-link paths.\n- Update the clang/llvm lint ignore entries from llvm-18/libclang-18 to\n  the llvm-14/libclang-14 shipped on core22.\n\nRun the systemd test container with --cgroupns=host:\n\n- On the current cgroup v2 runners systemd (PID 1) could not set up its\n  cgroup hierarchy and exited immediately, so every 'docker exec'\n  reported 'container is not running' until the snapd-startup wait timed\n  out. Also dump container status/logs on timeout to aid debugging.\n\nMake the bundled linker self-contained:\n\n- The glibc ld scripts (libc.so, libm.so, ...) reference their real\n  runtime objects (libc.so.6, libm.so.6, libmvec.so.1, ...) by absolute\n  path; left unchanged the bundled linker resolves them against the\n  host's glibc and fails when the host glibc differs from the snap's.\n  Rewrite those references (and any absolute symlinks) to point inside\n  the snap. On core22 the runtime objects and the loader are installed\n  under lib/<triplet> and lib64 rather than usr/lib/<triplet>, so mirror\n  them into usr/lib/<triplet> and usr/lib64 first, matching where the\n  rewritten references point.\n- Add -Wl,-rpath-link (snap and core22 base library dirs) to LDFLAGS.\n  -L only affects direct -l lookups; the indirect DT_NEEDED dependencies\n  of prebuilt shared libraries (e.g. the Flutter engine's\n  libflutter_linux_gtk.so, needing libglib/libgio/libpthread/...) are\n  resolved via -rpath-link. Without it the linker fell back to the\n  host's /lib/<triplet>, leaking host libraries into the build.\n- Bundle clang's runtime dependency closure (libbsd0, libedit2, libmd0,\n  libtinfo6, libzstd1) as stage-packages. These were previously borrowed\n  from Debian/Ubuntu hosts and are absent on Fedora, where clang++ failed\n  to load with 'libbsd.so.0: cannot open shared object file'.\n\nFix the test container images:\n\n- Install the GLESv2 runtime (libgles2 / mesa-libGLES / Mesa-libGLESv2-2)\n  in every test image; without it running the app failed with\n  \"Couldn't open libGLESv2.so.2\".\n- openSUSE: install 'systemd' instead of the removed 'systemd-sysvinit'\n  package (systemd now provides /sbin/init directly), and bump the Leap\n  snappy repository from openSUSE_Leap_15.6 to openSUSE_Leap_16.0 to\n  match the rolled base image.\n\nBump geekyeggo/delete-artifact from v1 to v6 in the cleanup job; v1 used\nthe legacy artifact API and failed with 'Failed to list artifacts;\nstatus code 404' against upload-artifact@v4.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/e99f820147a952d4a743dcf73976b463a684388d"
                }
             ],
             "ciActions": [],
@@ -7674,14 +7674,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 629,
-                     "timestamp": 1784705715
+                     "revision": 633,
+                     "timestamp": 1784766590
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 628,
-                     "timestamp": 1784705714
+                     "revision": 632,
+                     "timestamp": 1784766589
                   },
                   {
                      "track": "latest",
@@ -10119,14 +10119,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 629,
-                     "timestamp": 1784705715
+                     "revision": 633,
+                     "timestamp": 1784766590
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 628,
-                     "timestamp": 1784705714
+                     "revision": 632,
+                     "timestamp": 1784766589
                   },
                   {
                      "track": "latest",
