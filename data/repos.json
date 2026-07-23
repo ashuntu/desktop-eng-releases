@@ -4651,25 +4651,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f2a449db5f3e5fce7ccfd3224bc3539da86a9995",
-                  "author": "ashuntu",
-                  "timestamp": 1783980167,
-                  "message": "Steamlink fix (#518)\n\nFixes #502 \n\npw_loop_new returns nullptr because it can't find libspa-support.so and\nsteam passes the nullptr to pw_thread_loop_start\n[Putting this in desktop-launch was enough to make my phone connect to\nmy\ndesktop](https://github.com/canonical/snapcraft-desktop-integration/blob/main/common/desktop-exports#L134)\n\ndesktop - desktop connection does something different (requires\n-pipewire arg to even work) and will still crash steam, now it fails to\ncreate pipewire context because it can't find client.conf from pipewire\npackage, and then it fails to load i386 modules.\nAdding pipewire and i386 modules package to stage-packages fixes it.\n\nAt this point steamlink works, and is just as bad as .deb version on\nwayland. One thing that does happen in the snap after all this but\ndoesn't on deb is that steam complains about lack of i386 dri_gbm.so, I\nthink mesa snap package installs libgbm1 but i386 is not there, even\nafter putting it in the steam snap it still throws:\n```\nCDesktopCapturePipeWire: Opening DRM render node /dev/dri/renderD128\nCDesktopCapturePipeWire: Couldn't create EGL display: 0x300c\n```\nAnd I have no idea how to fix it, but steam link works so I just left it\nat this point.",
-                  "url": "https://github.com/canonical/steam-snap/commit/f2a449db5f3e5fce7ccfd3224bc3539da86a9995"
+                  "sha": "96f3e6df7e2792dcc9deb8ada78ced0a99030301",
+                  "author": "Shane Crowley",
+                  "timestamp": 1784791765,
+                  "message": "docs: URL migration branch (#522)\n\nThis PR introduces changes necessary to migrate the steam documentation\nURL to `ubuntu.com/docs/steam`.\n\nIt also enables Google Analytics for tracking docs traffic.\n\nUDENG-10935",
+                  "url": "https://github.com/canonical/steam-snap/commit/96f3e6df7e2792dcc9deb8ada78ced0a99030301"
                },
                {
-                  "sha": "7f7160de74244c04eb91a6f64bd012058dcee73b",
-                  "author": "fntenjr",
-                  "timestamp": 1782724514,
-                  "message": "Add pipewire to stage-packages\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/steam-snap/commit/7f7160de74244c04eb91a6f64bd012058dcee73b"
+                  "sha": "df485f654cf961d47093d6f5c7c2dc4d1b0a3735",
+                  "author": "shanecrowley",
+                  "timestamp": 1784733851,
+                  "message": "remove needless f-strings\n\nthese were carried over from the documentation for the url migration",
+                  "url": "https://github.com/canonical/steam-snap/commit/df485f654cf961d47093d6f5c7c2dc4d1b0a3735"
                },
                {
-                  "sha": "84d285f81124cd1aa8693c0b1c0e9309c03a9fe5",
-                  "author": "fntenjr",
-                  "timestamp": 1782724305,
-                  "message": "Tell pipewire where to find spa and config\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/steam-snap/commit/84d285f81124cd1aa8693c0b1c0e9309c03a9fe5"
+                  "sha": "cebb5db91a11e2228a0aadda220b5cfc0c8dff8b",
+                  "author": "shanecrowley",
+                  "timestamp": 1784621814,
+                  "message": "add GA and cookie consent banner",
+                  "url": "https://github.com/canonical/steam-snap/commit/cebb5db91a11e2228a0aadda220b5cfc0c8dff8b"
                }
             ],
             "ciActions": [],
@@ -5250,7 +5250,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 44,
+            "newCommits": 45,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5297,14 +5297,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 633,
-                     "timestamp": 1784725321
+                     "revision": 635,
+                     "timestamp": 1784791689
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 632,
-                     "timestamp": 1784725167
+                     "revision": 634,
+                     "timestamp": 1784791577
                   }
                ],
                "channels": [
@@ -6999,25 +6999,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f2a449db5f3e5fce7ccfd3224bc3539da86a9995",
-                  "author": "ashuntu",
-                  "timestamp": 1783980167,
-                  "message": "Steamlink fix (#518)\n\nFixes #502 \n\npw_loop_new returns nullptr because it can't find libspa-support.so and\nsteam passes the nullptr to pw_thread_loop_start\n[Putting this in desktop-launch was enough to make my phone connect to\nmy\ndesktop](https://github.com/canonical/snapcraft-desktop-integration/blob/main/common/desktop-exports#L134)\n\ndesktop - desktop connection does something different (requires\n-pipewire arg to even work) and will still crash steam, now it fails to\ncreate pipewire context because it can't find client.conf from pipewire\npackage, and then it fails to load i386 modules.\nAdding pipewire and i386 modules package to stage-packages fixes it.\n\nAt this point steamlink works, and is just as bad as .deb version on\nwayland. One thing that does happen in the snap after all this but\ndoesn't on deb is that steam complains about lack of i386 dri_gbm.so, I\nthink mesa snap package installs libgbm1 but i386 is not there, even\nafter putting it in the steam snap it still throws:\n```\nCDesktopCapturePipeWire: Opening DRM render node /dev/dri/renderD128\nCDesktopCapturePipeWire: Couldn't create EGL display: 0x300c\n```\nAnd I have no idea how to fix it, but steam link works so I just left it\nat this point.",
-                  "url": "https://github.com/canonical/steam-snap/commit/f2a449db5f3e5fce7ccfd3224bc3539da86a9995"
+                  "sha": "96f3e6df7e2792dcc9deb8ada78ced0a99030301",
+                  "author": "Shane Crowley",
+                  "timestamp": 1784791765,
+                  "message": "docs: URL migration branch (#522)\n\nThis PR introduces changes necessary to migrate the steam documentation\nURL to `ubuntu.com/docs/steam`.\n\nIt also enables Google Analytics for tracking docs traffic.\n\nUDENG-10935",
+                  "url": "https://github.com/canonical/steam-snap/commit/96f3e6df7e2792dcc9deb8ada78ced0a99030301"
                },
                {
-                  "sha": "7f7160de74244c04eb91a6f64bd012058dcee73b",
-                  "author": "fntenjr",
-                  "timestamp": 1782724514,
-                  "message": "Add pipewire to stage-packages\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/steam-snap/commit/7f7160de74244c04eb91a6f64bd012058dcee73b"
+                  "sha": "df485f654cf961d47093d6f5c7c2dc4d1b0a3735",
+                  "author": "shanecrowley",
+                  "timestamp": 1784733851,
+                  "message": "remove needless f-strings\n\nthese were carried over from the documentation for the url migration",
+                  "url": "https://github.com/canonical/steam-snap/commit/df485f654cf961d47093d6f5c7c2dc4d1b0a3735"
                },
                {
-                  "sha": "84d285f81124cd1aa8693c0b1c0e9309c03a9fe5",
-                  "author": "fntenjr",
-                  "timestamp": 1782724305,
-                  "message": "Tell pipewire where to find spa and config\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/steam-snap/commit/84d285f81124cd1aa8693c0b1c0e9309c03a9fe5"
+                  "sha": "cebb5db91a11e2228a0aadda220b5cfc0c8dff8b",
+                  "author": "shanecrowley",
+                  "timestamp": 1784621814,
+                  "message": "add GA and cookie consent banner",
+                  "url": "https://github.com/canonical/steam-snap/commit/cebb5db91a11e2228a0aadda220b5cfc0c8dff8b"
                }
             ],
             "ciActions": [],
@@ -7639,7 +7639,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 44,
+            "newCommits": 45,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7686,14 +7686,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 633,
-                     "timestamp": 1784725321
+                     "revision": 635,
+                     "timestamp": 1784791689
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 632,
-                     "timestamp": 1784725167
+                     "revision": 634,
+                     "timestamp": 1784791577
                   }
                ],
                "channels": [
@@ -9450,25 +9450,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f2a449db5f3e5fce7ccfd3224bc3539da86a9995",
-                  "author": "ashuntu",
-                  "timestamp": 1783980167,
-                  "message": "Steamlink fix (#518)\n\nFixes #502 \n\npw_loop_new returns nullptr because it can't find libspa-support.so and\nsteam passes the nullptr to pw_thread_loop_start\n[Putting this in desktop-launch was enough to make my phone connect to\nmy\ndesktop](https://github.com/canonical/snapcraft-desktop-integration/blob/main/common/desktop-exports#L134)\n\ndesktop - desktop connection does something different (requires\n-pipewire arg to even work) and will still crash steam, now it fails to\ncreate pipewire context because it can't find client.conf from pipewire\npackage, and then it fails to load i386 modules.\nAdding pipewire and i386 modules package to stage-packages fixes it.\n\nAt this point steamlink works, and is just as bad as .deb version on\nwayland. One thing that does happen in the snap after all this but\ndoesn't on deb is that steam complains about lack of i386 dri_gbm.so, I\nthink mesa snap package installs libgbm1 but i386 is not there, even\nafter putting it in the steam snap it still throws:\n```\nCDesktopCapturePipeWire: Opening DRM render node /dev/dri/renderD128\nCDesktopCapturePipeWire: Couldn't create EGL display: 0x300c\n```\nAnd I have no idea how to fix it, but steam link works so I just left it\nat this point.",
-                  "url": "https://github.com/canonical/steam-snap/commit/f2a449db5f3e5fce7ccfd3224bc3539da86a9995"
+                  "sha": "96f3e6df7e2792dcc9deb8ada78ced0a99030301",
+                  "author": "Shane Crowley",
+                  "timestamp": 1784791765,
+                  "message": "docs: URL migration branch (#522)\n\nThis PR introduces changes necessary to migrate the steam documentation\nURL to `ubuntu.com/docs/steam`.\n\nIt also enables Google Analytics for tracking docs traffic.\n\nUDENG-10935",
+                  "url": "https://github.com/canonical/steam-snap/commit/96f3e6df7e2792dcc9deb8ada78ced0a99030301"
                },
                {
-                  "sha": "7f7160de74244c04eb91a6f64bd012058dcee73b",
-                  "author": "fntenjr",
-                  "timestamp": 1782724514,
-                  "message": "Add pipewire to stage-packages\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/steam-snap/commit/7f7160de74244c04eb91a6f64bd012058dcee73b"
+                  "sha": "df485f654cf961d47093d6f5c7c2dc4d1b0a3735",
+                  "author": "shanecrowley",
+                  "timestamp": 1784733851,
+                  "message": "remove needless f-strings\n\nthese were carried over from the documentation for the url migration",
+                  "url": "https://github.com/canonical/steam-snap/commit/df485f654cf961d47093d6f5c7c2dc4d1b0a3735"
                },
                {
-                  "sha": "84d285f81124cd1aa8693c0b1c0e9309c03a9fe5",
-                  "author": "fntenjr",
-                  "timestamp": 1782724305,
-                  "message": "Tell pipewire where to find spa and config\n\nSigned-off-by: fntenjr <203029929+fntenjr@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/steam-snap/commit/84d285f81124cd1aa8693c0b1c0e9309c03a9fe5"
+                  "sha": "cebb5db91a11e2228a0aadda220b5cfc0c8dff8b",
+                  "author": "shanecrowley",
+                  "timestamp": 1784621814,
+                  "message": "add GA and cookie consent banner",
+                  "url": "https://github.com/canonical/steam-snap/commit/cebb5db91a11e2228a0aadda220b5cfc0c8dff8b"
                }
             ],
             "ciActions": [],
@@ -10084,7 +10084,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 44,
+            "newCommits": 45,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10131,14 +10131,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 633,
-                     "timestamp": 1784725321
+                     "revision": 635,
+                     "timestamp": 1784791689
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 632,
-                     "timestamp": 1784725167
+                     "revision": 634,
+                     "timestamp": 1784791577
                   }
                ],
                "channels": [
