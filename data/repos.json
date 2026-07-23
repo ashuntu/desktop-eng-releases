@@ -3361,6 +3361,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1784811330,
+                  "message": "Fix failing SSH integration tests on Ubuntu 26.04 (#1736)\n\nUbuntu 26.04's OpenSSH 10.2p1-2ubuntu3.3 permits PAM authentication to\ncomplete before rejecting a PAM-side change to the requested username.\nAuthd's username canonicalization therefore lets uppercase SSH logins\nreach the broker and password prompts, and persist the canonical user,\nbefore sshd exits with status 255.\n\nThe recorded user is expected because PAM authentication succeeded; sshd\nstill denies the SSH session. Drive that deferred flow, retain the\nrejected-exit assertion, and ensure the rejected session does not create\na home directory.\n\nThis ordering follows OpenSSH commit 2425d7f, which avoids comparing\nPAM_USER with NSS's canonical account name:\nhttps://github.com/openssh/openssh-portable/commit/2425d7faf4154b32b5f836596023cf2432b81eaf\nThat change avoids an invalid-user pre-auth oracle: Bug 3934:\nhttps://lists.mindrot.org/pipermail/openssh-bugs/2026-March/027376.html\n\nCloses #1735\nUDENG-11048",
+                  "url": "https://github.com/canonical/authd/commit/72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847"
+               },
+               {
                   "sha": "2dbf680f061f574a63b6882d4898455c6da62683",
                   "author": "Denison Barbosa",
                   "timestamp": 1784631882,
@@ -3373,13 +3380,6 @@
                   "timestamp": 1784631843,
                   "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1729)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc),\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go)\nand [golang.org/x/crypto](https://github.com/golang/crypto).",
                   "url": "https://github.com/canonical/authd/commit/6fb950381b2a46a0e983a6ed1b91292da656898f"
-               },
-               {
-                  "sha": "6c320bdbec460de019539cae6aa8a50fea192aba",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1784631778,
-                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#1750)\n\nBumps the gh-actions group with 2 updates in the / directory:\n[actions/cache](https://github.com/actions/cache) and\n[actions/setup-go](https://github.com/actions/setup-go).",
-                  "url": "https://github.com/canonical/authd/commit/6c320bdbec460de019539cae6aa8a50fea192aba"
                }
             ],
             "ciActions": [
@@ -5676,6 +5676,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1784811330,
+                  "message": "Fix failing SSH integration tests on Ubuntu 26.04 (#1736)\n\nUbuntu 26.04's OpenSSH 10.2p1-2ubuntu3.3 permits PAM authentication to\ncomplete before rejecting a PAM-side change to the requested username.\nAuthd's username canonicalization therefore lets uppercase SSH logins\nreach the broker and password prompts, and persist the canonical user,\nbefore sshd exits with status 255.\n\nThe recorded user is expected because PAM authentication succeeded; sshd\nstill denies the SSH session. Drive that deferred flow, retain the\nrejected-exit assertion, and ensure the rejected session does not create\na home directory.\n\nThis ordering follows OpenSSH commit 2425d7f, which avoids comparing\nPAM_USER with NSS's canonical account name:\nhttps://github.com/openssh/openssh-portable/commit/2425d7faf4154b32b5f836596023cf2432b81eaf\nThat change avoids an invalid-user pre-auth oracle: Bug 3934:\nhttps://lists.mindrot.org/pipermail/openssh-bugs/2026-March/027376.html\n\nCloses #1735\nUDENG-11048",
+                  "url": "https://github.com/canonical/authd/commit/72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847"
+               },
+               {
                   "sha": "2dbf680f061f574a63b6882d4898455c6da62683",
                   "author": "Denison Barbosa",
                   "timestamp": 1784631882,
@@ -5688,13 +5695,6 @@
                   "timestamp": 1784631843,
                   "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1729)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc),\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go)\nand [golang.org/x/crypto](https://github.com/golang/crypto).",
                   "url": "https://github.com/canonical/authd/commit/6fb950381b2a46a0e983a6ed1b91292da656898f"
-               },
-               {
-                  "sha": "6c320bdbec460de019539cae6aa8a50fea192aba",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1784631778,
-                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#1750)\n\nBumps the gh-actions group with 2 updates in the / directory:\n[actions/cache](https://github.com/actions/cache) and\n[actions/setup-go](https://github.com/actions/setup-go).",
-                  "url": "https://github.com/canonical/authd/commit/6c320bdbec460de019539cae6aa8a50fea192aba"
                }
             ],
             "ciActions": [
@@ -7262,6 +7262,47 @@
             "snap": null
          },
          {
+            "name": "ubuntu-pro-for-wsl",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
+            "releases": [
+               {
+                  "id": 358684809,
+                  "version": "1.1.1",
+                  "timestamp": 1784810545,
+                  "title": "1.1.1.0",
+                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: structure streamlining by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1709\">#1709</a></li>\n<li>fix(ci): Improvements to dependabot and publish workflows by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1717\">#1717</a></li>\n<li>deps(end-to-end): bump google.golang.org/grpc from 1.82.0 to 1.82.1 in /end-to-end by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1711\">#1711</a></li>\n<li>deps(agentapi): bump google.golang.org/grpc from 1.82.0 to 1.82.1 in /agentapi by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1712\">#1712</a></li>\n<li>deps(wsl-pro-service): bump google.golang.org/grpc from 1.82.0 to 1.82.1 in /wsl-pro-service by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1713\">#1713</a></li>\n<li>deps(common): bump google.golang.org/grpc from 1.82.0 to 1.82.1 in /common by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1714\">#1714</a></li>\n<li>deps(windows-agent): bump google.golang.org/grpc from 1.82.0 to 1.82.1 in /windows-agent by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1715\">#1715</a></li>\n<li>deps(wsl-pro-service): Auto update WSL-Pro-Service dependencies by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1721\">#1721</a></li>\n<li>deps(gh-actions): bump actions/setup-go from 6 to 7 by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1710\">#1710</a></li>\n<li>deps(go): bump google.golang.org/grpc from 1.81.1 to 1.82.1 in /mocks by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1719\">#1719</a></li>\n<li>deps(go): bump golang.org/x/sys from 0.45.0 to 0.47.0 in /storeapi/go-wrapper/microsoftstore by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1720\">#1720</a></li>\n<li>deps(go): bump google.golang.org/grpc from 1.82.0 to 1.82.1 in /wsl-pro-service by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1722\">#1722</a></li>\n<li>fix(msix): Pin to a patched winappCLI from their CI builds by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1723\">#1723</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1718\">#1718</a></li>\n<li>deps(gh-actions): bump microsoft/setup-WinAppCli from 2e1c15e9fe58b43697420e71d3aac9e6cd956273 to b93bbddc1f7abc061ca0d3a8119e3a0c7dd71495 by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1724\">#1724</a></li>\n<li>deps(go): bump google.golang.org/grpc from 1.81.1 to 1.82.1 in /generate by <a href=\"http://github.com/dependabot\">@dependabot</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1725\">#1725</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.1.0...1.1.1\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.1.0&hellip;1.1.1</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/untagged-2ec76d1b5819f7303089",
+                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.1.1...main"
+               },
+               {
+                  "id": 354470084,
+                  "version": "1.1.0",
+                  "timestamp": 1784122165,
+                  "title": "1.1.0.0",
+                  "body": "<h2>ARM64 builds are now available</h2>\n\n<p>This is the first version of Pro for WSL includes builds for ARM64 besides x64 Windows.</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs(explanation): Add explanation page on data collection in WSL by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1581\">#1581</a></li>\n<li>docs: add general wsl glossary by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1587\">#1587</a></li>\n<li>docs: instance management guide by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1600\">#1600</a></li>\n<li>fix: Upgrade to Go 1.26 by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1601\">#1601</a></li>\n<li>maint(docs): Updates the CUDA guide by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1626\">#1626</a></li>\n<li>fix(windows-agent): Delivers tasks to newly connected WSL instances by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1620\">#1620</a></li>\n<li>feat(wsl-pro-service): Hack systemd to read WSL2_DISTRO_NAME from PID 2 by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1621\">#1621</a></li>\n<li>maint(CI): end-to-end tests with tar images and running on GH hosted runners by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1614\">#1614</a></li>\n<li>feat(docs): Explanation about time sync by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1627\">#1627</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1631\">#1631</a></li>\n<li>fix(windows-agent): Hanging on Ctrl-C due to shutdown ordering deadlock by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> with <a href=\"http://github.com/Copilot\">@Copilot</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1638\">#1638</a></li>\n<li>docs: edit config for url migration by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1667\">#1667</a></li>\n<li>docs: remove in-docs release notes and create upgrade guide by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1643\">#1643</a></li>\n<li>fix(CI): Avoid publishing on docs-specific tags by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1675\">#1675</a></li>\n<li>docs: fix terminal commands in custom distro guide by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1684\">#1684</a></li>\n<li>fix(CI): Fork flutter-action to allow set up on ARM64 runners by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1686\">#1686</a></li>\n<li>feat(ci): Build MSIX bundle from x64 and ARM64 packages by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1683\">#1683</a></li>\n<li>fix(CI): Revert &ldquo;Temporary fix for the build-debian action&rdquo; by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1689\">#1689</a></li>\n<li>docs: migrate to Mermaid diagrams by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1690\">#1690</a></li>\n<li>fix(CI): Update actions/cache and the cdimages URL by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1695\">#1695</a></li>\n<li>feat: Migrate packaging to winappCli by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1694\">#1694</a></li>\n<li>fix: Upgrade go toolchain by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1703\">#1703</a></li>\n<li>Plus multiple dependencies upgrades by dependabot and translations by weblate and contributors.</li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.6...1.1.0\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.6&hellip;1.1.0</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/1.1.0",
+                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.1.0...main"
+               },
+               {
+                  "id": 292986712,
+                  "version": "1.0.6",
+                  "timestamp": 1772630865,
+                  "title": "1.0.6.0",
+                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Dart, GitHub actions and Go dependency updates</li>\n<li>Updated translations</li>\n<li>fix(wsl-pro-service): Subprocess cmd.exe in unicode mode by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1552\">#1552</a></li>\n<li>feat(CI): Skip publishing the MSIX sometimes by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1558\">#1558</a></li>\n<li>fix(ci): Fix the update-po CI job by <a href=\"http://github.com/adombeck\">@adombeck</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1566\">#1566</a></li>\n<li>docs: add top-level pro explanation by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1573\">#1573</a></li>\n<li>fix(windows-agent): Landscape sourced from Registry doesn&rsquo;t load on restart by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1577\">#1577</a></li>\n<li>fix(ci): Unbreak TICS workflows by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1578\">#1578</a></li>\n<li>feat(.github/instructions): Add copilot instructions on handing reviews for translations by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1579\">#1579</a></li>\n<li>fix(windows-agent): Handling DNS errors more gracefully by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1580\">#1580</a></li>\n<li>fix(wsl-pro-service): invoke self instead of <code>go test -run</code> for mock executables by <a href=\"http://github.com/Copilot\">@Copilot</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1582\">#1582</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.5...1.0.6\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.5&hellip;1.0.6</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/1.0.6",
+                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.6...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [
+               "https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/qa.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -7315,47 +7356,6 @@
                   "latest"
                ]
             },
-            "snap": null
-         },
-         {
-            "name": "ubuntu-pro-for-wsl",
-            "defaultBranch": "main",
-            "newCommits": 44,
-            "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
-            "releases": [
-               {
-                  "id": 354470084,
-                  "version": "1.1.0",
-                  "timestamp": 1784122165,
-                  "title": "1.1.0.0",
-                  "body": "<h2>ARM64 builds are now available</h2>\n\n<p>This is the first version of Pro for WSL includes builds for ARM64 besides x64 Windows.</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs(explanation): Add explanation page on data collection in WSL by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1581\">#1581</a></li>\n<li>docs: add general wsl glossary by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1587\">#1587</a></li>\n<li>docs: instance management guide by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1600\">#1600</a></li>\n<li>fix: Upgrade to Go 1.26 by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1601\">#1601</a></li>\n<li>maint(docs): Updates the CUDA guide by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1626\">#1626</a></li>\n<li>fix(windows-agent): Delivers tasks to newly connected WSL instances by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1620\">#1620</a></li>\n<li>feat(wsl-pro-service): Hack systemd to read WSL2_DISTRO_NAME from PID 2 by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1621\">#1621</a></li>\n<li>maint(CI): end-to-end tests with tar images and running on GH hosted runners by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1614\">#1614</a></li>\n<li>feat(docs): Explanation about time sync by <a href=\"http://github.com/cnihelton\">@cnihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1627\">#1627</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1631\">#1631</a></li>\n<li>fix(windows-agent): Hanging on Ctrl-C due to shutdown ordering deadlock by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> with <a href=\"http://github.com/Copilot\">@Copilot</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1638\">#1638</a></li>\n<li>docs: edit config for url migration by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1667\">#1667</a></li>\n<li>docs: remove in-docs release notes and create upgrade guide by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1643\">#1643</a></li>\n<li>fix(CI): Avoid publishing on docs-specific tags by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1675\">#1675</a></li>\n<li>docs: fix terminal commands in custom distro guide by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1684\">#1684</a></li>\n<li>fix(CI): Fork flutter-action to allow set up on ARM64 runners by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1686\">#1686</a></li>\n<li>feat(ci): Build MSIX bundle from x64 and ARM64 packages by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1683\">#1683</a></li>\n<li>fix(CI): Revert &ldquo;Temporary fix for the build-debian action&rdquo; by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1689\">#1689</a></li>\n<li>docs: migrate to Mermaid diagrams by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1690\">#1690</a></li>\n<li>fix(CI): Update actions/cache and the cdimages URL by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1695\">#1695</a></li>\n<li>feat: Migrate packaging to winappCli by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1694\">#1694</a></li>\n<li>fix: Upgrade go toolchain by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1703\">#1703</a></li>\n<li>Plus multiple dependencies upgrades by dependabot and translations by weblate and contributors.</li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.6...1.1.0\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.6&hellip;1.1.0</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/1.1.0",
-                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.1.0...main"
-               },
-               {
-                  "id": 292986712,
-                  "version": "1.0.6",
-                  "timestamp": 1772630865,
-                  "title": "1.0.6.0",
-                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>Dart, GitHub actions and Go dependency updates</li>\n<li>Updated translations</li>\n<li>fix(wsl-pro-service): Subprocess cmd.exe in unicode mode by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1552\">#1552</a></li>\n<li>feat(CI): Skip publishing the MSIX sometimes by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1558\">#1558</a></li>\n<li>fix(ci): Fix the update-po CI job by <a href=\"http://github.com/adombeck\">@adombeck</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1566\">#1566</a></li>\n<li>docs: add top-level pro explanation by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1573\">#1573</a></li>\n<li>fix(windows-agent): Landscape sourced from Registry doesn&rsquo;t load on restart by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1577\">#1577</a></li>\n<li>fix(ci): Unbreak TICS workflows by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1578\">#1578</a></li>\n<li>feat(.github/instructions): Add copilot instructions on handing reviews for translations by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1579\">#1579</a></li>\n<li>fix(windows-agent): Handling DNS errors more gracefully by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1580\">#1580</a></li>\n<li>fix(wsl-pro-service): invoke self instead of <code>go test -run</code> for mock executables by <a href=\"http://github.com/Copilot\">@Copilot</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1582\">#1582</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.5...1.0.6\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.5&hellip;1.0.6</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/1.0.6",
-                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.6...main"
-               },
-               {
-                  "id": 279985669,
-                  "version": "1.0.5",
-                  "timestamp": 1769443990,
-                  "title": "1.0.5.0",
-                  "body": "<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: update Pro notice and MS store guidance by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1473\">#1473</a></li>\n<li>docs: replace msstore download links for app by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1474\">#1474</a></li>\n<li>fix(windows-agent): Registry access is still virtualized by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1478\">#1478</a></li>\n<li>feat(ci): Integrates with OSV Scanner by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1475\">#1475</a></li>\n<li>docs: update starter pack to 1.3.1 by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1491\">#1491</a></li>\n<li>docs: update install instructions by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1497\">#1497</a></li>\n<li>fix: Remove Pro for WSL unreleased notice from SECURITY.md by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1503\">#1503</a></li>\n<li>feat(l10n): Translations update from Hosted Weblate by <a href=\"http://github.com/weblate\">@weblate</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1492\">#1492</a></li>\n<li>docs: add release notes for v1 of Pro app by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1500\">#1500</a></li>\n<li>docs: disable faulty edit button by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1498\">#1498</a></li>\n<li>docs: improve consistency of content blocks by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1499\">#1499</a></li>\n<li>docs: update deployment tutorial by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1501\">#1501</a></li>\n<li>fix(wsl-pro-service): Lintian fixes by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1504\">#1504</a></li>\n<li>maint: Defines the scope of a security issue by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1512\">#1512</a></li>\n<li>docs: apply new homepage structure by <a href=\"http://github.com/edibotopic\">@edibotopic</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1524\">#1524</a></li>\n<li>fix(msix): Better app icon with no text by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1525\">#1525</a></li>\n<li>feat(windows-agent): Ensure telemetry consent registry is set and valid by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1536\">#1536</a></li>\n<li>feat(msix): Packaging for chocolatey by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1527\">#1527</a></li>\n<li>fix(docs): Reword the binfmt explanation page by <a href=\"http://github.com/CarlosNihelton\">@CarlosNihelton</a> in <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/pull/1543\">#1543</a></li>\n<li>Updated translations and multiple dependencies.</li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.1...1.0.5\">https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.1&hellip;1.0.5</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-pro-for-wsl/releases/tag/1.0.5",
-                  "compareUrl": "https://github.com/canonical/ubuntu-pro-for-wsl/compare/1.0.5...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [
-               "https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/qa.yaml"
-            ],
-            "charm": null,
             "snap": null
          },
          {
@@ -8160,6 +8160,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1784811330,
+                  "message": "Fix failing SSH integration tests on Ubuntu 26.04 (#1736)\n\nUbuntu 26.04's OpenSSH 10.2p1-2ubuntu3.3 permits PAM authentication to\ncomplete before rejecting a PAM-side change to the requested username.\nAuthd's username canonicalization therefore lets uppercase SSH logins\nreach the broker and password prompts, and persist the canonical user,\nbefore sshd exits with status 255.\n\nThe recorded user is expected because PAM authentication succeeded; sshd\nstill denies the SSH session. Drive that deferred flow, retain the\nrejected-exit assertion, and ensure the rejected session does not create\na home directory.\n\nThis ordering follows OpenSSH commit 2425d7f, which avoids comparing\nPAM_USER with NSS's canonical account name:\nhttps://github.com/openssh/openssh-portable/commit/2425d7faf4154b32b5f836596023cf2432b81eaf\nThat change avoids an invalid-user pre-auth oracle: Bug 3934:\nhttps://lists.mindrot.org/pipermail/openssh-bugs/2026-March/027376.html\n\nCloses #1735\nUDENG-11048",
+                  "url": "https://github.com/canonical/authd/commit/72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847"
+               },
+               {
                   "sha": "2dbf680f061f574a63b6882d4898455c6da62683",
                   "author": "Denison Barbosa",
                   "timestamp": 1784631882,
@@ -8172,13 +8179,6 @@
                   "timestamp": 1784631843,
                   "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1729)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc),\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go)\nand [golang.org/x/crypto](https://github.com/golang/crypto).",
                   "url": "https://github.com/canonical/authd/commit/6fb950381b2a46a0e983a6ed1b91292da656898f"
-               },
-               {
-                  "sha": "6c320bdbec460de019539cae6aa8a50fea192aba",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1784631778,
-                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#1750)\n\nBumps the gh-actions group with 2 updates in the / directory:\n[actions/cache](https://github.com/actions/cache) and\n[actions/setup-go](https://github.com/actions/setup-go).",
-                  "url": "https://github.com/canonical/authd/commit/6c320bdbec460de019539cae6aa8a50fea192aba"
                }
             ],
             "ciActions": [
