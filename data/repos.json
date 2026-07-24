@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5f91f904ab3eef21eb821045bf2d28829f1bef1c",
+                  "author": "Orazio Lucio Terranova",
+                  "timestamp": 1784896185,
+                  "message": "docs: remove configure extra scopes section since no supported provider uses it (#1727)\n\nConfigure extra scopes is only relevant for identity providers that\nrequire additional OIDC scopes beyond the default ones, for example\nOkta.\nSince authd does not support any identity providers requiring it this PR\nmeans to hide the section from all tabs (Keycloak, Entra ID, Google IAM)\ncommenting out so that it can be simply added back when authd will\nsupport an identity provider that requires it.\n\nUDENG-10995\nCloses #1670",
+                  "url": "https://github.com/canonical/authd/commit/5f91f904ab3eef21eb821045bf2d28829f1bef1c"
+               },
+               {
+                  "sha": "9dbcea2afa9e4e8ebde6407af0e5f58801509b33",
+                  "author": "Orazio Lucio Terranova",
+                  "timestamp": 1784896166,
+                  "message": "e2e-tests: verify local user password can be changed via CLI (#1724)\n\nAdds test to check local user can change password via CLI.\nNew test checks too that system correctly rejects too short passwords\n(<8 chars) or passwords too simple or present in dictionary (i.e.\n12345678)\nPassword previously used are allowed since test VMs are not configured\nto reject them\n\nUpdated TESTING.md to address previously not described issues and\nconfiguration steps\n\nUDENG-9539\nUDENG-9540",
+                  "url": "https://github.com/canonical/authd/commit/9dbcea2afa9e4e8ebde6407af0e5f58801509b33"
+               },
+               {
                   "sha": "72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847",
                   "author": "Marco Trevisan",
                   "timestamp": 1784811330,
                   "message": "Fix failing SSH integration tests on Ubuntu 26.04 (#1736)\n\nUbuntu 26.04's OpenSSH 10.2p1-2ubuntu3.3 permits PAM authentication to\ncomplete before rejecting a PAM-side change to the requested username.\nAuthd's username canonicalization therefore lets uppercase SSH logins\nreach the broker and password prompts, and persist the canonical user,\nbefore sshd exits with status 255.\n\nThe recorded user is expected because PAM authentication succeeded; sshd\nstill denies the SSH session. Drive that deferred flow, retain the\nrejected-exit assertion, and ensure the rejected session does not create\na home directory.\n\nThis ordering follows OpenSSH commit 2425d7f, which avoids comparing\nPAM_USER with NSS's canonical account name:\nhttps://github.com/openssh/openssh-portable/commit/2425d7faf4154b32b5f836596023cf2432b81eaf\nThat change avoids an invalid-user pre-auth oracle: Bug 3934:\nhttps://lists.mindrot.org/pipermail/openssh-bugs/2026-March/027376.html\n\nCloses #1735\nUDENG-11048",
                   "url": "https://github.com/canonical/authd/commit/72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847"
-               },
-               {
-                  "sha": "2dbf680f061f574a63b6882d4898455c6da62683",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1784631882,
-                  "message": "deps(brokers/go-tools): bump golang.org/x/mod from 0.37.0 to 0.38.0 in /authd-oidc-brokers/tools in the minor-updates group across 1 directory (#1728)\n\nBumps the minor-updates group with 1 update in the\n/authd-oidc-brokers/tools directory:\n[golang.org/x/mod](https://github.com/golang/mod).",
-                  "url": "https://github.com/canonical/authd/commit/2dbf680f061f574a63b6882d4898455c6da62683"
-               },
-               {
-                  "sha": "6fb950381b2a46a0e983a6ed1b91292da656898f",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1784631843,
-                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1729)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc),\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go)\nand [golang.org/x/crypto](https://github.com/golang/crypto).",
-                  "url": "https://github.com/canonical/authd/commit/6fb950381b2a46a0e983a6ed1b91292da656898f"
                }
             ],
             "ciActions": [
@@ -5709,25 +5709,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5f91f904ab3eef21eb821045bf2d28829f1bef1c",
+                  "author": "Orazio Lucio Terranova",
+                  "timestamp": 1784896185,
+                  "message": "docs: remove configure extra scopes section since no supported provider uses it (#1727)\n\nConfigure extra scopes is only relevant for identity providers that\nrequire additional OIDC scopes beyond the default ones, for example\nOkta.\nSince authd does not support any identity providers requiring it this PR\nmeans to hide the section from all tabs (Keycloak, Entra ID, Google IAM)\ncommenting out so that it can be simply added back when authd will\nsupport an identity provider that requires it.\n\nUDENG-10995\nCloses #1670",
+                  "url": "https://github.com/canonical/authd/commit/5f91f904ab3eef21eb821045bf2d28829f1bef1c"
+               },
+               {
+                  "sha": "9dbcea2afa9e4e8ebde6407af0e5f58801509b33",
+                  "author": "Orazio Lucio Terranova",
+                  "timestamp": 1784896166,
+                  "message": "e2e-tests: verify local user password can be changed via CLI (#1724)\n\nAdds test to check local user can change password via CLI.\nNew test checks too that system correctly rejects too short passwords\n(<8 chars) or passwords too simple or present in dictionary (i.e.\n12345678)\nPassword previously used are allowed since test VMs are not configured\nto reject them\n\nUpdated TESTING.md to address previously not described issues and\nconfiguration steps\n\nUDENG-9539\nUDENG-9540",
+                  "url": "https://github.com/canonical/authd/commit/9dbcea2afa9e4e8ebde6407af0e5f58801509b33"
+               },
+               {
                   "sha": "72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847",
                   "author": "Marco Trevisan",
                   "timestamp": 1784811330,
                   "message": "Fix failing SSH integration tests on Ubuntu 26.04 (#1736)\n\nUbuntu 26.04's OpenSSH 10.2p1-2ubuntu3.3 permits PAM authentication to\ncomplete before rejecting a PAM-side change to the requested username.\nAuthd's username canonicalization therefore lets uppercase SSH logins\nreach the broker and password prompts, and persist the canonical user,\nbefore sshd exits with status 255.\n\nThe recorded user is expected because PAM authentication succeeded; sshd\nstill denies the SSH session. Drive that deferred flow, retain the\nrejected-exit assertion, and ensure the rejected session does not create\na home directory.\n\nThis ordering follows OpenSSH commit 2425d7f, which avoids comparing\nPAM_USER with NSS's canonical account name:\nhttps://github.com/openssh/openssh-portable/commit/2425d7faf4154b32b5f836596023cf2432b81eaf\nThat change avoids an invalid-user pre-auth oracle: Bug 3934:\nhttps://lists.mindrot.org/pipermail/openssh-bugs/2026-March/027376.html\n\nCloses #1735\nUDENG-11048",
                   "url": "https://github.com/canonical/authd/commit/72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847"
-               },
-               {
-                  "sha": "2dbf680f061f574a63b6882d4898455c6da62683",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1784631882,
-                  "message": "deps(brokers/go-tools): bump golang.org/x/mod from 0.37.0 to 0.38.0 in /authd-oidc-brokers/tools in the minor-updates group across 1 directory (#1728)\n\nBumps the minor-updates group with 1 update in the\n/authd-oidc-brokers/tools directory:\n[golang.org/x/mod](https://github.com/golang/mod).",
-                  "url": "https://github.com/canonical/authd/commit/2dbf680f061f574a63b6882d4898455c6da62683"
-               },
-               {
-                  "sha": "6fb950381b2a46a0e983a6ed1b91292da656898f",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1784631843,
-                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1729)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc),\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go)\nand [golang.org/x/crypto](https://github.com/golang/crypto).",
-                  "url": "https://github.com/canonical/authd/commit/6fb950381b2a46a0e983a6ed1b91292da656898f"
                }
             ],
             "ciActions": [
@@ -8193,25 +8193,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "5f91f904ab3eef21eb821045bf2d28829f1bef1c",
+                  "author": "Orazio Lucio Terranova",
+                  "timestamp": 1784896185,
+                  "message": "docs: remove configure extra scopes section since no supported provider uses it (#1727)\n\nConfigure extra scopes is only relevant for identity providers that\nrequire additional OIDC scopes beyond the default ones, for example\nOkta.\nSince authd does not support any identity providers requiring it this PR\nmeans to hide the section from all tabs (Keycloak, Entra ID, Google IAM)\ncommenting out so that it can be simply added back when authd will\nsupport an identity provider that requires it.\n\nUDENG-10995\nCloses #1670",
+                  "url": "https://github.com/canonical/authd/commit/5f91f904ab3eef21eb821045bf2d28829f1bef1c"
+               },
+               {
+                  "sha": "9dbcea2afa9e4e8ebde6407af0e5f58801509b33",
+                  "author": "Orazio Lucio Terranova",
+                  "timestamp": 1784896166,
+                  "message": "e2e-tests: verify local user password can be changed via CLI (#1724)\n\nAdds test to check local user can change password via CLI.\nNew test checks too that system correctly rejects too short passwords\n(<8 chars) or passwords too simple or present in dictionary (i.e.\n12345678)\nPassword previously used are allowed since test VMs are not configured\nto reject them\n\nUpdated TESTING.md to address previously not described issues and\nconfiguration steps\n\nUDENG-9539\nUDENG-9540",
+                  "url": "https://github.com/canonical/authd/commit/9dbcea2afa9e4e8ebde6407af0e5f58801509b33"
+               },
+               {
                   "sha": "72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847",
                   "author": "Marco Trevisan",
                   "timestamp": 1784811330,
                   "message": "Fix failing SSH integration tests on Ubuntu 26.04 (#1736)\n\nUbuntu 26.04's OpenSSH 10.2p1-2ubuntu3.3 permits PAM authentication to\ncomplete before rejecting a PAM-side change to the requested username.\nAuthd's username canonicalization therefore lets uppercase SSH logins\nreach the broker and password prompts, and persist the canonical user,\nbefore sshd exits with status 255.\n\nThe recorded user is expected because PAM authentication succeeded; sshd\nstill denies the SSH session. Drive that deferred flow, retain the\nrejected-exit assertion, and ensure the rejected session does not create\na home directory.\n\nThis ordering follows OpenSSH commit 2425d7f, which avoids comparing\nPAM_USER with NSS's canonical account name:\nhttps://github.com/openssh/openssh-portable/commit/2425d7faf4154b32b5f836596023cf2432b81eaf\nThat change avoids an invalid-user pre-auth oracle: Bug 3934:\nhttps://lists.mindrot.org/pipermail/openssh-bugs/2026-March/027376.html\n\nCloses #1735\nUDENG-11048",
                   "url": "https://github.com/canonical/authd/commit/72e9eafa38b4b9ec5fb2997cd7d8fbe71d4d1847"
-               },
-               {
-                  "sha": "2dbf680f061f574a63b6882d4898455c6da62683",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1784631882,
-                  "message": "deps(brokers/go-tools): bump golang.org/x/mod from 0.37.0 to 0.38.0 in /authd-oidc-brokers/tools in the minor-updates group across 1 directory (#1728)\n\nBumps the minor-updates group with 1 update in the\n/authd-oidc-brokers/tools directory:\n[golang.org/x/mod](https://github.com/golang/mod).",
-                  "url": "https://github.com/canonical/authd/commit/2dbf680f061f574a63b6882d4898455c6da62683"
-               },
-               {
-                  "sha": "6fb950381b2a46a0e983a6ed1b91292da656898f",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1784631843,
-                  "message": "deps(brokers/go): bump the minor-updates group across 1 directory with 3 updates (#1729)\n\nBumps the minor-updates group with 3 updates in the /authd-oidc-brokers\ndirectory:\n[github.com/coreos/go-oidc/v3](https://github.com/coreos/go-oidc),\n[github.com/microsoftgraph/msgraph-sdk-go](https://github.com/microsoftgraph/msgraph-sdk-go)\nand [golang.org/x/crypto](https://github.com/golang/crypto).",
-                  "url": "https://github.com/canonical/authd/commit/6fb950381b2a46a0e983a6ed1b91292da656898f"
                }
             ],
             "ciActions": [
