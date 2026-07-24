@@ -3698,25 +3698,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "40594c86f98fbfaa154fe0ded17b24099205043c",
+                  "sha": "67549b9ab3a2cefe21c56e38379ca2a62c3cc787",
                   "author": "Robert Ancell",
-                  "timestamp": 1784763557,
-                  "message": "Document the environment variables in env.sh\n\nAdd a short comment above each variable explaining why it is needed and\nseparate unrelated variables with blank lines. Refer to the base snap\npath via a $CORE variable rather than repeating it.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/40594c86f98fbfaa154fe0ded17b24099205043c"
+                  "timestamp": 1784852269,
+                  "message": "Update README for recent bundling changes",
+                  "url": "https://github.com/canonical/flutter-snap/commit/67549b9ab3a2cefe21c56e38379ca2a62c3cc787"
                },
                {
-                  "sha": "1473d102b12891ebf7fe1649ad64f920ca650bf6",
+                  "sha": "5ccf55df9227a8ae5e882bd9bd511cc4b21329ce",
                   "author": "Robert Ancell",
-                  "timestamp": 1784763076,
-                  "message": "Load GIO modules from the snap\n\nThe snap ships an older glibc than some hosts (core22, glibc 2.35). Under\nclassic confinement GIO otherwise scans the host's module directory and\nloads modules built against a newer glibc, e.g. gvfs' libgvfsdbus.so which\nneeds GLIBC_2.38, failing with a version mismatch when running flutter.\nSet GIO_MODULE_DIR to the snap's own modules so only compatible modules are\nloaded.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/1473d102b12891ebf7fe1649ad64f920ca650bf6"
+                  "timestamp": 1784765799,
+                  "message": "Default to the stable Flutter channel\n\nThe SDK was cloned from the master branch, so the snap tracked the\nmaster channel instead of stable. Clone the stable branch so new\ninstalls default to the stable channel.\n\nFixes: https://github.com/canonical/flutter-snap/issues/114",
+                  "url": "https://github.com/canonical/flutter-snap/commit/5ccf55df9227a8ae5e882bd9bd511cc4b21329ce"
                },
                {
-                  "sha": "accbb96f9d35cfea1525f76e41e2bbb2891e3cef",
+                  "sha": "1730d52db2714070c0c171221807e76727a00761",
                   "author": "Robert Ancell",
-                  "timestamp": 1784698048,
-                  "message": "Update Flutter description\n\nMatch the wording used on flutter.dev: describe Flutter as an open source,\nmulti-platform framework and drop the reference to Google.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/accbb96f9d35cfea1525f76e41e2bbb2891e3cef"
+                  "timestamp": 1784780739,
+                  "message": "CI: install the GCC C++ toolchain clang links against\n\nclang++ uses GCC's C++ toolchain to link (crt startup objects and\nlibstdc++), which the clang package does not always pull in. Without it\n'flutter build linux' fails with missing ld / crtbeginS.o / -lstdc++.\nInstall g++ on Debian and Ubuntu and gcc-c++ on openSUSE, in both the\ntest images and the commands check-deps.sh suggests. Fedora's clang\nalready depends on these.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/1730d52db2714070c0c171221807e76727a00761"
                }
             ],
             "ciActions": [],
@@ -5285,14 +5285,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 633,
-                     "timestamp": 1784766590
+                     "revision": 637,
+                     "timestamp": 1784852971
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 632,
-                     "timestamp": 1784766589
+                     "revision": 636,
+                     "timestamp": 1784852971
                   },
                   {
                      "track": "latest",
@@ -6013,25 +6013,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "40594c86f98fbfaa154fe0ded17b24099205043c",
+                  "sha": "67549b9ab3a2cefe21c56e38379ca2a62c3cc787",
                   "author": "Robert Ancell",
-                  "timestamp": 1784763557,
-                  "message": "Document the environment variables in env.sh\n\nAdd a short comment above each variable explaining why it is needed and\nseparate unrelated variables with blank lines. Refer to the base snap\npath via a $CORE variable rather than repeating it.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/40594c86f98fbfaa154fe0ded17b24099205043c"
+                  "timestamp": 1784852269,
+                  "message": "Update README for recent bundling changes",
+                  "url": "https://github.com/canonical/flutter-snap/commit/67549b9ab3a2cefe21c56e38379ca2a62c3cc787"
                },
                {
-                  "sha": "1473d102b12891ebf7fe1649ad64f920ca650bf6",
+                  "sha": "5ccf55df9227a8ae5e882bd9bd511cc4b21329ce",
                   "author": "Robert Ancell",
-                  "timestamp": 1784763076,
-                  "message": "Load GIO modules from the snap\n\nThe snap ships an older glibc than some hosts (core22, glibc 2.35). Under\nclassic confinement GIO otherwise scans the host's module directory and\nloads modules built against a newer glibc, e.g. gvfs' libgvfsdbus.so which\nneeds GLIBC_2.38, failing with a version mismatch when running flutter.\nSet GIO_MODULE_DIR to the snap's own modules so only compatible modules are\nloaded.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/1473d102b12891ebf7fe1649ad64f920ca650bf6"
+                  "timestamp": 1784765799,
+                  "message": "Default to the stable Flutter channel\n\nThe SDK was cloned from the master branch, so the snap tracked the\nmaster channel instead of stable. Clone the stable branch so new\ninstalls default to the stable channel.\n\nFixes: https://github.com/canonical/flutter-snap/issues/114",
+                  "url": "https://github.com/canonical/flutter-snap/commit/5ccf55df9227a8ae5e882bd9bd511cc4b21329ce"
                },
                {
-                  "sha": "accbb96f9d35cfea1525f76e41e2bbb2891e3cef",
+                  "sha": "1730d52db2714070c0c171221807e76727a00761",
                   "author": "Robert Ancell",
-                  "timestamp": 1784698048,
-                  "message": "Update Flutter description\n\nMatch the wording used on flutter.dev: describe Flutter as an open source,\nmulti-platform framework and drop the reference to Google.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/accbb96f9d35cfea1525f76e41e2bbb2891e3cef"
+                  "timestamp": 1784780739,
+                  "message": "CI: install the GCC C++ toolchain clang links against\n\nclang++ uses GCC's C++ toolchain to link (crt startup objects and\nlibstdc++), which the clang package does not always pull in. Without it\n'flutter build linux' fails with missing ld / crtbeginS.o / -lstdc++.\nInstall g++ on Debian and Ubuntu and gcc-c++ on openSUSE, in both the\ntest images and the commands check-deps.sh suggests. Fedora's clang\nalready depends on these.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/1730d52db2714070c0c171221807e76727a00761"
                }
             ],
             "ciActions": [],
@@ -7674,14 +7674,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 633,
-                     "timestamp": 1784766590
+                     "revision": 637,
+                     "timestamp": 1784852971
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 632,
-                     "timestamp": 1784766589
+                     "revision": 636,
+                     "timestamp": 1784852971
                   },
                   {
                      "track": "latest",
@@ -7714,7 +7714,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 55,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -7746,7 +7746,9 @@
                }
             ],
             "commits": null,
-            "ciActions": null,
+            "ciActions": [
+               "https://github.com/ubuntu/adsys/actions/workflows/qa.yaml"
+            ],
             "charm": null,
             "snap": null
          },
@@ -8495,25 +8497,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "40594c86f98fbfaa154fe0ded17b24099205043c",
+                  "sha": "67549b9ab3a2cefe21c56e38379ca2a62c3cc787",
                   "author": "Robert Ancell",
-                  "timestamp": 1784763557,
-                  "message": "Document the environment variables in env.sh\n\nAdd a short comment above each variable explaining why it is needed and\nseparate unrelated variables with blank lines. Refer to the base snap\npath via a $CORE variable rather than repeating it.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/40594c86f98fbfaa154fe0ded17b24099205043c"
+                  "timestamp": 1784852269,
+                  "message": "Update README for recent bundling changes",
+                  "url": "https://github.com/canonical/flutter-snap/commit/67549b9ab3a2cefe21c56e38379ca2a62c3cc787"
                },
                {
-                  "sha": "1473d102b12891ebf7fe1649ad64f920ca650bf6",
+                  "sha": "5ccf55df9227a8ae5e882bd9bd511cc4b21329ce",
                   "author": "Robert Ancell",
-                  "timestamp": 1784763076,
-                  "message": "Load GIO modules from the snap\n\nThe snap ships an older glibc than some hosts (core22, glibc 2.35). Under\nclassic confinement GIO otherwise scans the host's module directory and\nloads modules built against a newer glibc, e.g. gvfs' libgvfsdbus.so which\nneeds GLIBC_2.38, failing with a version mismatch when running flutter.\nSet GIO_MODULE_DIR to the snap's own modules so only compatible modules are\nloaded.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/1473d102b12891ebf7fe1649ad64f920ca650bf6"
+                  "timestamp": 1784765799,
+                  "message": "Default to the stable Flutter channel\n\nThe SDK was cloned from the master branch, so the snap tracked the\nmaster channel instead of stable. Clone the stable branch so new\ninstalls default to the stable channel.\n\nFixes: https://github.com/canonical/flutter-snap/issues/114",
+                  "url": "https://github.com/canonical/flutter-snap/commit/5ccf55df9227a8ae5e882bd9bd511cc4b21329ce"
                },
                {
-                  "sha": "accbb96f9d35cfea1525f76e41e2bbb2891e3cef",
+                  "sha": "1730d52db2714070c0c171221807e76727a00761",
                   "author": "Robert Ancell",
-                  "timestamp": 1784698048,
-                  "message": "Update Flutter description\n\nMatch the wording used on flutter.dev: describe Flutter as an open source,\nmulti-platform framework and drop the reference to Google.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/accbb96f9d35cfea1525f76e41e2bbb2891e3cef"
+                  "timestamp": 1784780739,
+                  "message": "CI: install the GCC C++ toolchain clang links against\n\nclang++ uses GCC's C++ toolchain to link (crt startup objects and\nlibstdc++), which the clang package does not always pull in. Without it\n'flutter build linux' fails with missing ld / crtbeginS.o / -lstdc++.\nInstall g++ on Debian and Ubuntu and gcc-c++ on openSUSE, in both the\ntest images and the commands check-deps.sh suggests. Fedora's clang\nalready depends on these.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/1730d52db2714070c0c171221807e76727a00761"
                }
             ],
             "ciActions": [],
@@ -10117,14 +10119,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 633,
-                     "timestamp": 1784766590
+                     "revision": 637,
+                     "timestamp": 1784852971
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 632,
-                     "timestamp": 1784766589
+                     "revision": 636,
+                     "timestamp": 1784852971
                   },
                   {
                      "track": "latest",
