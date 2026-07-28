@@ -3731,25 +3731,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "67549b9ab3a2cefe21c56e38379ca2a62c3cc787",
+                  "sha": "60da5cd0c05d9443a08260123b61da647bb2f78b",
                   "author": "Robert Ancell",
-                  "timestamp": 1784852269,
-                  "message": "Update README for recent bundling changes",
-                  "url": "https://github.com/canonical/flutter-snap/commit/67549b9ab3a2cefe21c56e38379ca2a62c3cc787"
+                  "timestamp": 1785202488,
+                  "message": "CI: hold snap auto-refresh in the test container\n\nInstalling a snap can make snapd refresh and restart itself, which\noccasionally fails with \"snapd rollback across the restart\" and breaks\nthe test job. A background auto-refresh of snapd can trigger the same\nrestart at any point during the run.\n\nHold automatic refreshes with \"snap refresh --hold\" once snapd is ready,\nso snapd does not spontaneously refresh itself while the tests run.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/60da5cd0c05d9443a08260123b61da647bb2f78b"
                },
                {
-                  "sha": "5ccf55df9227a8ae5e882bd9bd511cc4b21329ce",
+                  "sha": "dab4e87897b8975e559a60ef06edbbc5db420a2f",
                   "author": "Robert Ancell",
-                  "timestamp": 1784765799,
-                  "message": "Default to the stable Flutter channel\n\nThe SDK was cloned from the master branch, so the snap tracked the\nmaster channel instead of stable. Clone the stable branch so new\ninstalls default to the stable channel.\n\nFixes: https://github.com/canonical/flutter-snap/issues/114",
-                  "url": "https://github.com/canonical/flutter-snap/commit/5ccf55df9227a8ae5e882bd9bd511cc4b21329ce"
+                  "timestamp": 1785202836,
+                  "message": "CI: extract the shared test job into a reusable workflow\n\nci.yaml and daily.yaml duplicated the same test matrix and steps, which\nhad to be kept in sync by hand. Move the test job into a reusable\nworkflow (test.yaml, workflow_call) and have both workflows call it.\n\nThe only difference between the two was which snap is installed, so the\nreusable workflow takes a \"snap\" input: \"artifact\" installs the snap\nbuilt and uploaded earlier in the CI run, while \"candidate\" installs the\npublished candidate snap for the daily check.\n\nAlso stop the cleanup job from deleting the snap artifacts when a test\nfails: it ran with \"always()\", so re-running only the failed test job\nfailed at the download step with \"Artifact not found for name:\nsnap-amd64\". Clean up only on success so the artifacts survive a failed\nrun and the failed job can be re-run without rebuilding.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/dab4e87897b8975e559a60ef06edbbc5db420a2f"
                },
                {
-                  "sha": "1730d52db2714070c0c171221807e76727a00761",
+                  "sha": "2a0c361801c789c215b65bc4382d47c341d12e48",
                   "author": "Robert Ancell",
-                  "timestamp": 1784780739,
-                  "message": "CI: install the GCC C++ toolchain clang links against\n\nclang++ uses GCC's C++ toolchain to link (crt startup objects and\nlibstdc++), which the clang package does not always pull in. Without it\n'flutter build linux' fails with missing ld / crtbeginS.o / -lstdc++.\nInstall g++ on Debian and Ubuntu and gcc-c++ on openSUSE, in both the\ntest images and the commands check-deps.sh suggests. Fedora's clang\nalready depends on these.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/1730d52db2714070c0c171221807e76727a00761"
+                  "timestamp": 1785195021,
+                  "message": "Harden shell scripts and add shellcheck lint job\n\nBring dart.sh in line with flutter.sh: run under 'set -e', report errors\nto stderr and exit non-zero when Flutter is not initialized or the Dart\nbinary is missing (previously these exited 0, hiding failures).\n\nFix shellcheck findings across the runtime and CI helper scripts: quote\nvariable expansions, replace legacy backticks with $(), drop useless\nuses of cat, and use POSIX-safe constructs in the /bin/sh helpers. Where\nword splitting is intentional (docker exec runner and install args) the\nbehaviour is kept with a targeted shellcheck directive.\n\nAdd a shellcheck lint job to the CI workflow so these issues are caught\nautomatically, and bump actions/checkout from the deprecated v2 to v4.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/2a0c361801c789c215b65bc4382d47c341d12e48"
                }
             ],
             "ciActions": [],
@@ -6046,25 +6046,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "67549b9ab3a2cefe21c56e38379ca2a62c3cc787",
+                  "sha": "60da5cd0c05d9443a08260123b61da647bb2f78b",
                   "author": "Robert Ancell",
-                  "timestamp": 1784852269,
-                  "message": "Update README for recent bundling changes",
-                  "url": "https://github.com/canonical/flutter-snap/commit/67549b9ab3a2cefe21c56e38379ca2a62c3cc787"
+                  "timestamp": 1785202488,
+                  "message": "CI: hold snap auto-refresh in the test container\n\nInstalling a snap can make snapd refresh and restart itself, which\noccasionally fails with \"snapd rollback across the restart\" and breaks\nthe test job. A background auto-refresh of snapd can trigger the same\nrestart at any point during the run.\n\nHold automatic refreshes with \"snap refresh --hold\" once snapd is ready,\nso snapd does not spontaneously refresh itself while the tests run.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/60da5cd0c05d9443a08260123b61da647bb2f78b"
                },
                {
-                  "sha": "5ccf55df9227a8ae5e882bd9bd511cc4b21329ce",
+                  "sha": "dab4e87897b8975e559a60ef06edbbc5db420a2f",
                   "author": "Robert Ancell",
-                  "timestamp": 1784765799,
-                  "message": "Default to the stable Flutter channel\n\nThe SDK was cloned from the master branch, so the snap tracked the\nmaster channel instead of stable. Clone the stable branch so new\ninstalls default to the stable channel.\n\nFixes: https://github.com/canonical/flutter-snap/issues/114",
-                  "url": "https://github.com/canonical/flutter-snap/commit/5ccf55df9227a8ae5e882bd9bd511cc4b21329ce"
+                  "timestamp": 1785202836,
+                  "message": "CI: extract the shared test job into a reusable workflow\n\nci.yaml and daily.yaml duplicated the same test matrix and steps, which\nhad to be kept in sync by hand. Move the test job into a reusable\nworkflow (test.yaml, workflow_call) and have both workflows call it.\n\nThe only difference between the two was which snap is installed, so the\nreusable workflow takes a \"snap\" input: \"artifact\" installs the snap\nbuilt and uploaded earlier in the CI run, while \"candidate\" installs the\npublished candidate snap for the daily check.\n\nAlso stop the cleanup job from deleting the snap artifacts when a test\nfails: it ran with \"always()\", so re-running only the failed test job\nfailed at the download step with \"Artifact not found for name:\nsnap-amd64\". Clean up only on success so the artifacts survive a failed\nrun and the failed job can be re-run without rebuilding.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/dab4e87897b8975e559a60ef06edbbc5db420a2f"
                },
                {
-                  "sha": "1730d52db2714070c0c171221807e76727a00761",
+                  "sha": "2a0c361801c789c215b65bc4382d47c341d12e48",
                   "author": "Robert Ancell",
-                  "timestamp": 1784780739,
-                  "message": "CI: install the GCC C++ toolchain clang links against\n\nclang++ uses GCC's C++ toolchain to link (crt startup objects and\nlibstdc++), which the clang package does not always pull in. Without it\n'flutter build linux' fails with missing ld / crtbeginS.o / -lstdc++.\nInstall g++ on Debian and Ubuntu and gcc-c++ on openSUSE, in both the\ntest images and the commands check-deps.sh suggests. Fedora's clang\nalready depends on these.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/1730d52db2714070c0c171221807e76727a00761"
+                  "timestamp": 1785195021,
+                  "message": "Harden shell scripts and add shellcheck lint job\n\nBring dart.sh in line with flutter.sh: run under 'set -e', report errors\nto stderr and exit non-zero when Flutter is not initialized or the Dart\nbinary is missing (previously these exited 0, hiding failures).\n\nFix shellcheck findings across the runtime and CI helper scripts: quote\nvariable expansions, replace legacy backticks with $(), drop useless\nuses of cat, and use POSIX-safe constructs in the /bin/sh helpers. Where\nword splitting is intentional (docker exec runner and install args) the\nbehaviour is kept with a targeted shellcheck directive.\n\nAdd a shellcheck lint job to the CI workflow so these issues are caught\nautomatically, and bump actions/checkout from the deprecated v2 to v4.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/2a0c361801c789c215b65bc4382d47c341d12e48"
                }
             ],
             "ciActions": [],
@@ -8530,25 +8530,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "67549b9ab3a2cefe21c56e38379ca2a62c3cc787",
+                  "sha": "60da5cd0c05d9443a08260123b61da647bb2f78b",
                   "author": "Robert Ancell",
-                  "timestamp": 1784852269,
-                  "message": "Update README for recent bundling changes",
-                  "url": "https://github.com/canonical/flutter-snap/commit/67549b9ab3a2cefe21c56e38379ca2a62c3cc787"
+                  "timestamp": 1785202488,
+                  "message": "CI: hold snap auto-refresh in the test container\n\nInstalling a snap can make snapd refresh and restart itself, which\noccasionally fails with \"snapd rollback across the restart\" and breaks\nthe test job. A background auto-refresh of snapd can trigger the same\nrestart at any point during the run.\n\nHold automatic refreshes with \"snap refresh --hold\" once snapd is ready,\nso snapd does not spontaneously refresh itself while the tests run.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/60da5cd0c05d9443a08260123b61da647bb2f78b"
                },
                {
-                  "sha": "5ccf55df9227a8ae5e882bd9bd511cc4b21329ce",
+                  "sha": "dab4e87897b8975e559a60ef06edbbc5db420a2f",
                   "author": "Robert Ancell",
-                  "timestamp": 1784765799,
-                  "message": "Default to the stable Flutter channel\n\nThe SDK was cloned from the master branch, so the snap tracked the\nmaster channel instead of stable. Clone the stable branch so new\ninstalls default to the stable channel.\n\nFixes: https://github.com/canonical/flutter-snap/issues/114",
-                  "url": "https://github.com/canonical/flutter-snap/commit/5ccf55df9227a8ae5e882bd9bd511cc4b21329ce"
+                  "timestamp": 1785202836,
+                  "message": "CI: extract the shared test job into a reusable workflow\n\nci.yaml and daily.yaml duplicated the same test matrix and steps, which\nhad to be kept in sync by hand. Move the test job into a reusable\nworkflow (test.yaml, workflow_call) and have both workflows call it.\n\nThe only difference between the two was which snap is installed, so the\nreusable workflow takes a \"snap\" input: \"artifact\" installs the snap\nbuilt and uploaded earlier in the CI run, while \"candidate\" installs the\npublished candidate snap for the daily check.\n\nAlso stop the cleanup job from deleting the snap artifacts when a test\nfails: it ran with \"always()\", so re-running only the failed test job\nfailed at the download step with \"Artifact not found for name:\nsnap-amd64\". Clean up only on success so the artifacts survive a failed\nrun and the failed job can be re-run without rebuilding.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/dab4e87897b8975e559a60ef06edbbc5db420a2f"
                },
                {
-                  "sha": "1730d52db2714070c0c171221807e76727a00761",
+                  "sha": "2a0c361801c789c215b65bc4382d47c341d12e48",
                   "author": "Robert Ancell",
-                  "timestamp": 1784780739,
-                  "message": "CI: install the GCC C++ toolchain clang links against\n\nclang++ uses GCC's C++ toolchain to link (crt startup objects and\nlibstdc++), which the clang package does not always pull in. Without it\n'flutter build linux' fails with missing ld / crtbeginS.o / -lstdc++.\nInstall g++ on Debian and Ubuntu and gcc-c++ on openSUSE, in both the\ntest images and the commands check-deps.sh suggests. Fedora's clang\nalready depends on these.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/1730d52db2714070c0c171221807e76727a00761"
+                  "timestamp": 1785195021,
+                  "message": "Harden shell scripts and add shellcheck lint job\n\nBring dart.sh in line with flutter.sh: run under 'set -e', report errors\nto stderr and exit non-zero when Flutter is not initialized or the Dart\nbinary is missing (previously these exited 0, hiding failures).\n\nFix shellcheck findings across the runtime and CI helper scripts: quote\nvariable expansions, replace legacy backticks with $(), drop useless\nuses of cat, and use POSIX-safe constructs in the /bin/sh helpers. Where\nword splitting is intentional (docker exec runner and install args) the\nbehaviour is kept with a targeted shellcheck directive.\n\nAdd a shellcheck lint job to the CI workflow so these issues are caught\nautomatically, and bump actions/checkout from the deprecated v2 to v4.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/2a0c361801c789c215b65bc4382d47c341d12e48"
                }
             ],
             "ciActions": [],
