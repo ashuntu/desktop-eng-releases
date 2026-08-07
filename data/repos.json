@@ -3361,25 +3361,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "12c359e5ca0a40f954025f9a42f59799b292fcee",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1786113656,
+                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs (#44)\n\n`AppstreamReleaseType` is missing `snapshot`, which libappstream defines\nas `AS_RELEASE_KIND_SNAPSHOT` and the Ubuntu archive emits. The DEP-11\nmetadata for `resolute-updates/main` currently carries one, for nautilus\n50.2.2.\n\nOn its own that would be a plain `FormatException`. But collection\nparsing runs in an isolate spawned without an error port, so the isolate\ndies without ever sending a result and `await port.first` never\ncompletes. `load()` then hangs forever: no error, no log, no stack\ntrace, just a future that never resolves — and every consumer waiting on\nthe pool hangs with it. This is what is currently freezing the Ubuntu\nApp Center's Manage page (ubuntu/app-center#2139); the \"unhandled\nexception\" the reporter sees in the terminal is the dying isolate,\nprinted by the runtime while the app itself just stops.\n\nChanges:\n\n- Add `snapshot` to `AppstreamReleaseType`.\n- Pass `onError` to `Isolate.spawn` and race it against the result port,\nso a failed parse surfaces as `AppstreamCollectionLoadException` instead\nof hanging.\n- Let `AppstreamPool` take custom catalog directory prefixes, so the\nfailure path is reachable from a test.\n\nThe regression test hangs for its full 30 s timeout without the second\nchange. Verified against a real system catalog: 2745 components load in\n3.4 s, including the nautilus snapshot release that previously hung the\npool.\n\nOne thing deliberately left out: `load()` still fails as a whole if any\nsingle catalog file fails to parse. It just fails loudly now instead of\nhanging. Making the pool skip unparseable catalogs and keep the rest\nwould be a behaviour change, and seemed better left to your call than\nbundled into a bugfix.",
+                  "url": "https://github.com/canonical/appstream.dart/commit/12c359e5ca0a40f954025f9a42f59799b292fcee"
+               },
+               {
+                  "sha": "33b05768a81b389da831f526086299911322a2fa",
+                  "author": "Victor C.",
+                  "timestamp": 1786012584,
+                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs\n\n`AppstreamReleaseType` was missing `snapshot`, which libappstream defines\n(`AS_RELEASE_KIND_SNAPSHOT`) and the Ubuntu archive emits — the DEP-11\nmetadata for `resolute-updates/main` currently carries one for nautilus.\n\nOn its own that would be a plain `FormatException`, but parsing runs in an\nisolate spawned without an error port. The isolate died without ever sending\na result, so `await port.first` never completed and `load()` hung forever:\nno error, no log, just a future that never resolves. Any consumer waiting on\nthe pool hangs with it.\n\nWire up `onError` so a failed parse surfaces as\n`AppstreamCollectionLoadException`, and let `AppstreamPool` take custom\ncatalog directory prefixes so the failure path can be tested.",
+                  "url": "https://github.com/canonical/appstream.dart/commit/33b05768a81b389da831f526086299911322a2fa"
+               },
+               {
                   "sha": "9f13b368dd31333d37ee7bf9a10280fc39507627",
                   "author": "ashuntu",
                   "timestamp": 1772066444,
                   "message": "fix: Add ubuntu_lints (#43)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible (this results in a fair amount of casting\ndue to the nature of the library, please double check these)\n- Trailing commas\n\nAlso done for packagekit.dart:\nhttps://github.com/canonical/packagekit.dart/pull/34",
                   "url": "https://github.com/canonical/appstream.dart/commit/9f13b368dd31333d37ee7bf9a10280fc39507627"
-               },
-               {
-                  "sha": "23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951",
-                  "author": "ashuntu",
-                  "timestamp": 1771376410,
-                  "message": "fix: add .vscode/ to .gitignore",
-                  "url": "https://github.com/canonical/appstream.dart/commit/23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951"
-               },
-               {
-                  "sha": "1e869069e784c0f408e51baa29fa06eff462a0a1",
-                  "author": "ashuntu",
-                  "timestamp": 1771376399,
-                  "message": "fix: add ubuntu_lints",
-                  "url": "https://github.com/canonical/appstream.dart/commit/1e869069e784c0f408e51baa29fa06eff462a0a1"
                }
             ],
             "ciActions": [],
@@ -5676,25 +5676,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "12c359e5ca0a40f954025f9a42f59799b292fcee",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1786113656,
+                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs (#44)\n\n`AppstreamReleaseType` is missing `snapshot`, which libappstream defines\nas `AS_RELEASE_KIND_SNAPSHOT` and the Ubuntu archive emits. The DEP-11\nmetadata for `resolute-updates/main` currently carries one, for nautilus\n50.2.2.\n\nOn its own that would be a plain `FormatException`. But collection\nparsing runs in an isolate spawned without an error port, so the isolate\ndies without ever sending a result and `await port.first` never\ncompletes. `load()` then hangs forever: no error, no log, no stack\ntrace, just a future that never resolves — and every consumer waiting on\nthe pool hangs with it. This is what is currently freezing the Ubuntu\nApp Center's Manage page (ubuntu/app-center#2139); the \"unhandled\nexception\" the reporter sees in the terminal is the dying isolate,\nprinted by the runtime while the app itself just stops.\n\nChanges:\n\n- Add `snapshot` to `AppstreamReleaseType`.\n- Pass `onError` to `Isolate.spawn` and race it against the result port,\nso a failed parse surfaces as `AppstreamCollectionLoadException` instead\nof hanging.\n- Let `AppstreamPool` take custom catalog directory prefixes, so the\nfailure path is reachable from a test.\n\nThe regression test hangs for its full 30 s timeout without the second\nchange. Verified against a real system catalog: 2745 components load in\n3.4 s, including the nautilus snapshot release that previously hung the\npool.\n\nOne thing deliberately left out: `load()` still fails as a whole if any\nsingle catalog file fails to parse. It just fails loudly now instead of\nhanging. Making the pool skip unparseable catalogs and keep the rest\nwould be a behaviour change, and seemed better left to your call than\nbundled into a bugfix.",
+                  "url": "https://github.com/canonical/appstream.dart/commit/12c359e5ca0a40f954025f9a42f59799b292fcee"
+               },
+               {
+                  "sha": "33b05768a81b389da831f526086299911322a2fa",
+                  "author": "Victor C.",
+                  "timestamp": 1786012584,
+                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs\n\n`AppstreamReleaseType` was missing `snapshot`, which libappstream defines\n(`AS_RELEASE_KIND_SNAPSHOT`) and the Ubuntu archive emits — the DEP-11\nmetadata for `resolute-updates/main` currently carries one for nautilus.\n\nOn its own that would be a plain `FormatException`, but parsing runs in an\nisolate spawned without an error port. The isolate died without ever sending\na result, so `await port.first` never completed and `load()` hung forever:\nno error, no log, just a future that never resolves. Any consumer waiting on\nthe pool hangs with it.\n\nWire up `onError` so a failed parse surfaces as\n`AppstreamCollectionLoadException`, and let `AppstreamPool` take custom\ncatalog directory prefixes so the failure path can be tested.",
+                  "url": "https://github.com/canonical/appstream.dart/commit/33b05768a81b389da831f526086299911322a2fa"
+               },
+               {
                   "sha": "9f13b368dd31333d37ee7bf9a10280fc39507627",
                   "author": "ashuntu",
                   "timestamp": 1772066444,
                   "message": "fix: Add ubuntu_lints (#43)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible (this results in a fair amount of casting\ndue to the nature of the library, please double check these)\n- Trailing commas\n\nAlso done for packagekit.dart:\nhttps://github.com/canonical/packagekit.dart/pull/34",
                   "url": "https://github.com/canonical/appstream.dart/commit/9f13b368dd31333d37ee7bf9a10280fc39507627"
-               },
-               {
-                  "sha": "23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951",
-                  "author": "ashuntu",
-                  "timestamp": 1771376410,
-                  "message": "fix: add .vscode/ to .gitignore",
-                  "url": "https://github.com/canonical/appstream.dart/commit/23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951"
-               },
-               {
-                  "sha": "1e869069e784c0f408e51baa29fa06eff462a0a1",
-                  "author": "ashuntu",
-                  "timestamp": 1771376399,
-                  "message": "fix: add ubuntu_lints",
-                  "url": "https://github.com/canonical/appstream.dart/commit/1e869069e784c0f408e51baa29fa06eff462a0a1"
                }
             ],
             "ciActions": [],
@@ -8160,25 +8160,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "12c359e5ca0a40f954025f9a42f59799b292fcee",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1786113656,
+                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs (#44)\n\n`AppstreamReleaseType` is missing `snapshot`, which libappstream defines\nas `AS_RELEASE_KIND_SNAPSHOT` and the Ubuntu archive emits. The DEP-11\nmetadata for `resolute-updates/main` currently carries one, for nautilus\n50.2.2.\n\nOn its own that would be a plain `FormatException`. But collection\nparsing runs in an isolate spawned without an error port, so the isolate\ndies without ever sending a result and `await port.first` never\ncompletes. `load()` then hangs forever: no error, no log, no stack\ntrace, just a future that never resolves — and every consumer waiting on\nthe pool hangs with it. This is what is currently freezing the Ubuntu\nApp Center's Manage page (ubuntu/app-center#2139); the \"unhandled\nexception\" the reporter sees in the terminal is the dying isolate,\nprinted by the runtime while the app itself just stops.\n\nChanges:\n\n- Add `snapshot` to `AppstreamReleaseType`.\n- Pass `onError` to `Isolate.spawn` and race it against the result port,\nso a failed parse surfaces as `AppstreamCollectionLoadException` instead\nof hanging.\n- Let `AppstreamPool` take custom catalog directory prefixes, so the\nfailure path is reachable from a test.\n\nThe regression test hangs for its full 30 s timeout without the second\nchange. Verified against a real system catalog: 2745 components load in\n3.4 s, including the nautilus snapshot release that previously hung the\npool.\n\nOne thing deliberately left out: `load()` still fails as a whole if any\nsingle catalog file fails to parse. It just fails loudly now instead of\nhanging. Making the pool skip unparseable catalogs and keep the rest\nwould be a behaviour change, and seemed better left to your call than\nbundled into a bugfix.",
+                  "url": "https://github.com/canonical/appstream.dart/commit/12c359e5ca0a40f954025f9a42f59799b292fcee"
+               },
+               {
+                  "sha": "33b05768a81b389da831f526086299911322a2fa",
+                  "author": "Victor C.",
+                  "timestamp": 1786012584,
+                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs\n\n`AppstreamReleaseType` was missing `snapshot`, which libappstream defines\n(`AS_RELEASE_KIND_SNAPSHOT`) and the Ubuntu archive emits — the DEP-11\nmetadata for `resolute-updates/main` currently carries one for nautilus.\n\nOn its own that would be a plain `FormatException`, but parsing runs in an\nisolate spawned without an error port. The isolate died without ever sending\na result, so `await port.first` never completed and `load()` hung forever:\nno error, no log, just a future that never resolves. Any consumer waiting on\nthe pool hangs with it.\n\nWire up `onError` so a failed parse surfaces as\n`AppstreamCollectionLoadException`, and let `AppstreamPool` take custom\ncatalog directory prefixes so the failure path can be tested.",
+                  "url": "https://github.com/canonical/appstream.dart/commit/33b05768a81b389da831f526086299911322a2fa"
+               },
+               {
                   "sha": "9f13b368dd31333d37ee7bf9a10280fc39507627",
                   "author": "ashuntu",
                   "timestamp": 1772066444,
                   "message": "fix: Add ubuntu_lints (#43)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible (this results in a fair amount of casting\ndue to the nature of the library, please double check these)\n- Trailing commas\n\nAlso done for packagekit.dart:\nhttps://github.com/canonical/packagekit.dart/pull/34",
                   "url": "https://github.com/canonical/appstream.dart/commit/9f13b368dd31333d37ee7bf9a10280fc39507627"
-               },
-               {
-                  "sha": "23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951",
-                  "author": "ashuntu",
-                  "timestamp": 1771376410,
-                  "message": "fix: add .vscode/ to .gitignore",
-                  "url": "https://github.com/canonical/appstream.dart/commit/23bd2aff7a48f7fac619fe8c5c9b392c0dfbc951"
-               },
-               {
-                  "sha": "1e869069e784c0f408e51baa29fa06eff462a0a1",
-                  "author": "ashuntu",
-                  "timestamp": 1771376399,
-                  "message": "fix: add ubuntu_lints",
-                  "url": "https://github.com/canonical/appstream.dart/commit/1e869069e784c0f408e51baa29fa06eff462a0a1"
                }
             ],
             "ciActions": [],
