@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4c00306c3a279744e7ed69d36a7819e4ba104bac",
+                  "sha": "a5623c2e01f7cbeb235b06a4ad891597e1505809",
                   "author": "adombeck",
-                  "timestamp": 1786351076,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#1738)",
-                  "url": "https://github.com/canonical/authd/commit/4c00306c3a279744e7ed69d36a7819e4ba104bac"
+                  "timestamp": 1786449522,
+                  "message": "Ensure GDM sees managed users after reboot (#1744)\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nAlso adds an e2e-test to test that the authd user shows up in GDM after\na reboot.\n\nCloses #1743 \nUDENG-11043",
+                  "url": "https://github.com/canonical/authd/commit/a5623c2e01f7cbeb235b06a4ad891597e1505809"
                },
                {
-                  "sha": "4c01ff4dbd36edcab19baa04f712ceaeaf329fd5",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1786342009,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau from `78bce95` to `573d970` (#1758)\n\nBumps\n[authd-oidc-brokers/third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau)\nfrom `78bce95` to `573d970`.\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/573d970fb09f5a46d1194039c4fe75b25db5d9a2\"><code>573d970</code></a>\nMerge branch 'dependabot/cargo/all-cargo-updates-bbf8a6edc3' into\n'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/a1db73054f26138455c4e1c808f8df9372188e46\"><code>a1db730</code></a>\nAdd funding.json wellKnown pointer</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/777e24f7607dc151e333b911a5163496793e1ee2\"><code>777e24f</code></a>\nMerge branch 'dependabot/cargo/all-cargo-updates-bbf8a6edc3' into\n'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/e5f7fd810c56a9d030ecdc8bd84e9d67b7f7d91f\"><code>e5f7fd8</code></a>\nVersion 0.8.29</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/1e1261f270ad5e671cad9f9283cca7bd9b4cb215\"><code>1e1261f</code></a>\ncargo update warning crates</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/0af982f20e00f124d56c187a1c98139670cba18a\"><code>0af982f</code></a>\ndeps(rust): bump the all-cargo-updates group across 1 directory with 10\nupdates</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/b1d3c2716c87b268511efde03d9dca72639c3530\"><code>b1d3c27</code></a>\nMerge branch 'dmulder/roadmap' into 'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/f7b631e9d3df56bb9b30fd3b0b78ea6486546354\"><code>f7b631e</code></a>\ndocs: add Entra parity roadmap</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/18b054ec8f47f19c86ed5d31362c9ec310de196e\"><code>18b054e</code></a>\nMerge branch 'dmulder/cert_p2p_access' into 'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/a32c6e5a1be88cbd8b3e1f97c56e577f630552c8\"><code>a32c6e5</code></a>\nVersion 0.8.28</li>\n<li>Additional commits viewable in <a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/compare/78bce95a8e5d64bf2214d55f3e5ff6423c6a9981...573d970fb09f5a46d1194039c4fe75b25db5d9a2\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore this major version` will close this PR and stop\nDependabot creating any more for this major version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this minor version` will close this PR and stop\nDependabot creating any more for this minor version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this dependency` will close this PR and stop\nDependabot creating any more for this dependency (unless you reopen the\nPR or upgrade to it yourself)\n\n\n</details>",
-                  "url": "https://github.com/canonical/authd/commit/4c01ff4dbd36edcab19baa04f712ceaeaf329fd5"
+                  "sha": "8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784467401,
+                  "message": "e2e snapshots survive missing metadata\n\nA failed or metadata-only-deleted live snapshot leaves its deterministic disk\nfilename behind. Subsequent provisioning then cannot recreate the snapshot.\nUse a unique external disk and memory filename for each live snapshot instead.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f"
                },
                {
-                  "sha": "0530935daad9976148df920263c1b1a8931b4f5c",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1786142581,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau\n\nBumps [authd-oidc-brokers/third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau) from `78bce95` to `573d970`.\n- [Commits](https://gitlab.com/samba-team/libhimmelblau/compare/78bce95a8e5d64bf2214d55f3e5ff6423c6a9981...573d970fb09f5a46d1194039c4fe75b25db5d9a2)\n\n---\nupdated-dependencies:\n- dependency-name: authd-oidc-brokers/third_party/libhimmelblau\n  dependency-version: 573d970fb09f5a46d1194039c4fe75b25db5d9a2\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0530935daad9976148df920263c1b1a8931b4f5c"
+                  "sha": "7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784386654,
+                  "message": "Ensure GDM sees managed users after reboot\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181"
                }
             ],
             "ciActions": [
@@ -5709,25 +5709,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4c00306c3a279744e7ed69d36a7819e4ba104bac",
+                  "sha": "a5623c2e01f7cbeb235b06a4ad891597e1505809",
                   "author": "adombeck",
-                  "timestamp": 1786351076,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#1738)",
-                  "url": "https://github.com/canonical/authd/commit/4c00306c3a279744e7ed69d36a7819e4ba104bac"
+                  "timestamp": 1786449522,
+                  "message": "Ensure GDM sees managed users after reboot (#1744)\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nAlso adds an e2e-test to test that the authd user shows up in GDM after\na reboot.\n\nCloses #1743 \nUDENG-11043",
+                  "url": "https://github.com/canonical/authd/commit/a5623c2e01f7cbeb235b06a4ad891597e1505809"
                },
                {
-                  "sha": "4c01ff4dbd36edcab19baa04f712ceaeaf329fd5",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1786342009,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau from `78bce95` to `573d970` (#1758)\n\nBumps\n[authd-oidc-brokers/third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau)\nfrom `78bce95` to `573d970`.\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/573d970fb09f5a46d1194039c4fe75b25db5d9a2\"><code>573d970</code></a>\nMerge branch 'dependabot/cargo/all-cargo-updates-bbf8a6edc3' into\n'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/a1db73054f26138455c4e1c808f8df9372188e46\"><code>a1db730</code></a>\nAdd funding.json wellKnown pointer</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/777e24f7607dc151e333b911a5163496793e1ee2\"><code>777e24f</code></a>\nMerge branch 'dependabot/cargo/all-cargo-updates-bbf8a6edc3' into\n'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/e5f7fd810c56a9d030ecdc8bd84e9d67b7f7d91f\"><code>e5f7fd8</code></a>\nVersion 0.8.29</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/1e1261f270ad5e671cad9f9283cca7bd9b4cb215\"><code>1e1261f</code></a>\ncargo update warning crates</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/0af982f20e00f124d56c187a1c98139670cba18a\"><code>0af982f</code></a>\ndeps(rust): bump the all-cargo-updates group across 1 directory with 10\nupdates</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/b1d3c2716c87b268511efde03d9dca72639c3530\"><code>b1d3c27</code></a>\nMerge branch 'dmulder/roadmap' into 'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/f7b631e9d3df56bb9b30fd3b0b78ea6486546354\"><code>f7b631e</code></a>\ndocs: add Entra parity roadmap</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/18b054ec8f47f19c86ed5d31362c9ec310de196e\"><code>18b054e</code></a>\nMerge branch 'dmulder/cert_p2p_access' into 'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/a32c6e5a1be88cbd8b3e1f97c56e577f630552c8\"><code>a32c6e5</code></a>\nVersion 0.8.28</li>\n<li>Additional commits viewable in <a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/compare/78bce95a8e5d64bf2214d55f3e5ff6423c6a9981...573d970fb09f5a46d1194039c4fe75b25db5d9a2\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore this major version` will close this PR and stop\nDependabot creating any more for this major version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this minor version` will close this PR and stop\nDependabot creating any more for this minor version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this dependency` will close this PR and stop\nDependabot creating any more for this dependency (unless you reopen the\nPR or upgrade to it yourself)\n\n\n</details>",
-                  "url": "https://github.com/canonical/authd/commit/4c01ff4dbd36edcab19baa04f712ceaeaf329fd5"
+                  "sha": "8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784467401,
+                  "message": "e2e snapshots survive missing metadata\n\nA failed or metadata-only-deleted live snapshot leaves its deterministic disk\nfilename behind. Subsequent provisioning then cannot recreate the snapshot.\nUse a unique external disk and memory filename for each live snapshot instead.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f"
                },
                {
-                  "sha": "0530935daad9976148df920263c1b1a8931b4f5c",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1786142581,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau\n\nBumps [authd-oidc-brokers/third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau) from `78bce95` to `573d970`.\n- [Commits](https://gitlab.com/samba-team/libhimmelblau/compare/78bce95a8e5d64bf2214d55f3e5ff6423c6a9981...573d970fb09f5a46d1194039c4fe75b25db5d9a2)\n\n---\nupdated-dependencies:\n- dependency-name: authd-oidc-brokers/third_party/libhimmelblau\n  dependency-version: 573d970fb09f5a46d1194039c4fe75b25db5d9a2\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0530935daad9976148df920263c1b1a8931b4f5c"
+                  "sha": "7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784386654,
+                  "message": "Ensure GDM sees managed users after reboot\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181"
                }
             ],
             "ciActions": [
@@ -8193,25 +8193,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4c00306c3a279744e7ed69d36a7819e4ba104bac",
+                  "sha": "a5623c2e01f7cbeb235b06a4ad891597e1505809",
                   "author": "adombeck",
-                  "timestamp": 1786351076,
-                  "message": "deps(go): bump the minor-updates group across 1 directory with 4 updates (#1738)",
-                  "url": "https://github.com/canonical/authd/commit/4c00306c3a279744e7ed69d36a7819e4ba104bac"
+                  "timestamp": 1786449522,
+                  "message": "Ensure GDM sees managed users after reboot (#1744)\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nAlso adds an e2e-test to test that the authd user shows up in GDM after\na reboot.\n\nCloses #1743 \nUDENG-11043",
+                  "url": "https://github.com/canonical/authd/commit/a5623c2e01f7cbeb235b06a4ad891597e1505809"
                },
                {
-                  "sha": "4c01ff4dbd36edcab19baa04f712ceaeaf329fd5",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1786342009,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau from `78bce95` to `573d970` (#1758)\n\nBumps\n[authd-oidc-brokers/third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau)\nfrom `78bce95` to `573d970`.\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/573d970fb09f5a46d1194039c4fe75b25db5d9a2\"><code>573d970</code></a>\nMerge branch 'dependabot/cargo/all-cargo-updates-bbf8a6edc3' into\n'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/a1db73054f26138455c4e1c808f8df9372188e46\"><code>a1db730</code></a>\nAdd funding.json wellKnown pointer</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/777e24f7607dc151e333b911a5163496793e1ee2\"><code>777e24f</code></a>\nMerge branch 'dependabot/cargo/all-cargo-updates-bbf8a6edc3' into\n'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/e5f7fd810c56a9d030ecdc8bd84e9d67b7f7d91f\"><code>e5f7fd8</code></a>\nVersion 0.8.29</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/1e1261f270ad5e671cad9f9283cca7bd9b4cb215\"><code>1e1261f</code></a>\ncargo update warning crates</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/0af982f20e00f124d56c187a1c98139670cba18a\"><code>0af982f</code></a>\ndeps(rust): bump the all-cargo-updates group across 1 directory with 10\nupdates</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/b1d3c2716c87b268511efde03d9dca72639c3530\"><code>b1d3c27</code></a>\nMerge branch 'dmulder/roadmap' into 'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/f7b631e9d3df56bb9b30fd3b0b78ea6486546354\"><code>f7b631e</code></a>\ndocs: add Entra parity roadmap</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/18b054ec8f47f19c86ed5d31362c9ec310de196e\"><code>18b054e</code></a>\nMerge branch 'dmulder/cert_p2p_access' into 'main'</li>\n<li><a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/commit/a32c6e5a1be88cbd8b3e1f97c56e577f630552c8\"><code>a32c6e5</code></a>\nVersion 0.8.28</li>\n<li>Additional commits viewable in <a\nhref=\"https://gitlab.com/samba-team/libhimmelblau/compare/78bce95a8e5d64bf2214d55f3e5ff6423c6a9981...573d970fb09f5a46d1194039c4fe75b25db5d9a2\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore this major version` will close this PR and stop\nDependabot creating any more for this major version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this minor version` will close this PR and stop\nDependabot creating any more for this minor version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this dependency` will close this PR and stop\nDependabot creating any more for this dependency (unless you reopen the\nPR or upgrade to it yourself)\n\n\n</details>",
-                  "url": "https://github.com/canonical/authd/commit/4c01ff4dbd36edcab19baa04f712ceaeaf329fd5"
+                  "sha": "8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784467401,
+                  "message": "e2e snapshots survive missing metadata\n\nA failed or metadata-only-deleted live snapshot leaves its deterministic disk\nfilename behind. Subsequent provisioning then cannot recreate the snapshot.\nUse a unique external disk and memory filename for each live snapshot instead.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f"
                },
                {
-                  "sha": "0530935daad9976148df920263c1b1a8931b4f5c",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1786142581,
-                  "message": "deps(submodule): bump authd-oidc-brokers/third_party/libhimmelblau\n\nBumps [authd-oidc-brokers/third_party/libhimmelblau](https://gitlab.com/samba-team/libhimmelblau) from `78bce95` to `573d970`.\n- [Commits](https://gitlab.com/samba-team/libhimmelblau/compare/78bce95a8e5d64bf2214d55f3e5ff6423c6a9981...573d970fb09f5a46d1194039c4fe75b25db5d9a2)\n\n---\nupdated-dependencies:\n- dependency-name: authd-oidc-brokers/third_party/libhimmelblau\n  dependency-version: 573d970fb09f5a46d1194039c4fe75b25db5d9a2\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0530935daad9976148df920263c1b1a8931b4f5c"
+                  "sha": "7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1784386654,
+                  "message": "Ensure GDM sees managed users after reboot\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181"
                }
             ],
             "ciActions": [
