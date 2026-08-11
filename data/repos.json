@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9981a6370b9fe5d8e2d8819856f144e7f4bd663c",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1786455377,
+                  "message": "153.0.3-1.",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/9981a6370b9fe5d8e2d8819856f144e7f4bd663c"
+               },
+               {
                   "sha": "7053fb8dfb39a86c33a02e3223edc9de43333e9f",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1784623589,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1780664099,
                   "message": "Disable JIT on Risc-V.",
                   "url": "https://github.com/ubuntu/thunderbird/commit/4452d4f5fa9c5fd239e19758074d0ce9a325fce3"
-               },
-               {
-                  "sha": "69e9556722c16e9e28fa0456056b437e50e5cedb",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1782897115,
-                  "message": "Drop no-attribute-warn.patch from patches/series too.",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/69e9556722c16e9e28fa0456056b437e50e5cedb"
                }
             ],
             "ciActions": [],
@@ -3561,25 +3561,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cebbafe82a9a158edc9bbacaf1e261f133081d99",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1783596999,
-                  "message": "feat: add action to setup contract tests with Workshop (#131)\n\nAdd a reusable common action for contract tests and make LXD storage\nsize configurable.\n\nNote that `16GiB` is a safer default LXD storage size for CI stability\nand remains overrideable by callers.\n\n---\n\nUDENG-10753",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/cebbafe82a9a158edc9bbacaf1e261f133081d99"
+                  "sha": "9d76f62f2f6a7f67fe5620c2afc40d24016e603b",
+                  "author": "Kat",
+                  "timestamp": 1786459766,
+                  "message": "feat(g/infra): Add JAAS auth action (#133)\n\nHere, we add a JAAS auth action, taking in a client ID and client secret\nto authenticate with JAAS. By taking advantage of JS action features, we\nalso implement a cleanup hook that clears out the Juju data and logs the\nuser out of JAAS. Though not strictly necessary, it's safer to do this\nwhen considering the possibility of non-ephemeral runners.\n\nNote that because of a bug with Juju, the login action requires an\nadditional controller normalization step, where we clear the embedded\ncontroller CA certificate from the Juju controllers file. This\nworkaround needs to be enabled until\nhttps://github.com/juju/juju/pull/22931 makes it to a stable release.\n\n---\n[UDENG-11019](https://warthogs.atlassian.net/browse/UDENG-11019)\n\n[UDENG-11019]:\nhttps://warthogs.atlassian.net/browse/UDENG-11019?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/9d76f62f2f6a7f67fe5620c2afc40d24016e603b"
                },
                {
-                  "sha": "1c56c0a9d439f25e2a086957eb984d2e071de04a",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1783503358,
-                  "message": "feat: add action to setup contract tests with Workshop",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/1c56c0a9d439f25e2a086957eb984d2e071de04a"
+                  "sha": "8c3b2eb4e0b228d123495e4d59f3655ce0a423a0",
+                  "author": "kkuo",
+                  "timestamp": 1786372452,
+                  "message": "feat(g/i/jaas-auth): Remove CA-cert workaround\n\nhttps://github.com/juju/juju/pull/22931 was released so the workaround is no longer required.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/8c3b2eb4e0b228d123495e4d59f3655ce0a423a0"
                },
                {
-                  "sha": "ddfbb7ae3eed889b19c009577bfd27a4632c8886",
-                  "author": "adombeck",
-                  "timestamp": 1783352486,
-                  "message": "fix: gh-actions/build-debian: Fix 'cd: null directory' (#129)\n\nUDENG-10958",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/ddfbb7ae3eed889b19c009577bfd27a4632c8886"
+                  "sha": "141bbfdb689526dde5367748a34e1219ddd110b8",
+                  "author": "kkuo",
+                  "timestamp": 1784836119,
+                  "message": "test(.g/w): Add test workflows for JAAS auth actions",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/141bbfdb689526dde5367748a34e1219ddd110b8"
                }
             ],
             "ciActions": [],
@@ -4684,25 +4684,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cadd1f0f6234d33be003c0fedd98d1c4af36b097",
+                  "author": "Ken VanDine",
+                  "timestamp": 1786460419,
+                  "message": "Add snap setting to enable gamepadui mode (#523)",
+                  "url": "https://github.com/canonical/steam-snap/commit/cadd1f0f6234d33be003c0fedd98d1c4af36b097"
+               },
+               {
+                  "sha": "f2027b88952271e6a2b46738925ca5bb5b31a576",
+                  "author": "Ken VanDine",
+                  "timestamp": 1786390227,
+                  "message": "Add snap setting to enable gamepadui mode\n\nSigned-off-by: Ken VanDine <ken.vandine@canonical.com>",
+                  "url": "https://github.com/canonical/steam-snap/commit/f2027b88952271e6a2b46738925ca5bb5b31a576"
+               },
+               {
                   "sha": "96f3e6df7e2792dcc9deb8ada78ced0a99030301",
                   "author": "Shane Crowley",
                   "timestamp": 1784791765,
                   "message": "docs: URL migration branch (#522)\n\nThis PR introduces changes necessary to migrate the steam documentation\nURL to `ubuntu.com/docs/steam`.\n\nIt also enables Google Analytics for tracking docs traffic.\n\nUDENG-10935",
                   "url": "https://github.com/canonical/steam-snap/commit/96f3e6df7e2792dcc9deb8ada78ced0a99030301"
-               },
-               {
-                  "sha": "df485f654cf961d47093d6f5c7c2dc4d1b0a3735",
-                  "author": "shanecrowley",
-                  "timestamp": 1784733851,
-                  "message": "remove needless f-strings\n\nthese were carried over from the documentation for the url migration",
-                  "url": "https://github.com/canonical/steam-snap/commit/df485f654cf961d47093d6f5c7c2dc4d1b0a3735"
-               },
-               {
-                  "sha": "cebb5db91a11e2228a0aadda220b5cfc0c8dff8b",
-                  "author": "shanecrowley",
-                  "timestamp": 1784621814,
-                  "message": "add GA and cookie consent banner",
-                  "url": "https://github.com/canonical/steam-snap/commit/cebb5db91a11e2228a0aadda220b5cfc0c8dff8b"
                }
             ],
             "ciActions": [],
@@ -5318,14 +5318,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 637,
-                     "timestamp": 1784852971
+                     "revision": 643,
+                     "timestamp": 1786455791
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 636,
-                     "timestamp": 1784852971
+                     "revision": 642,
+                     "timestamp": 1786455791
                   },
                   {
                      "track": "latest",
@@ -5876,25 +5876,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cebbafe82a9a158edc9bbacaf1e261f133081d99",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1783596999,
-                  "message": "feat: add action to setup contract tests with Workshop (#131)\n\nAdd a reusable common action for contract tests and make LXD storage\nsize configurable.\n\nNote that `16GiB` is a safer default LXD storage size for CI stability\nand remains overrideable by callers.\n\n---\n\nUDENG-10753",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/cebbafe82a9a158edc9bbacaf1e261f133081d99"
+                  "sha": "9d76f62f2f6a7f67fe5620c2afc40d24016e603b",
+                  "author": "Kat",
+                  "timestamp": 1786459766,
+                  "message": "feat(g/infra): Add JAAS auth action (#133)\n\nHere, we add a JAAS auth action, taking in a client ID and client secret\nto authenticate with JAAS. By taking advantage of JS action features, we\nalso implement a cleanup hook that clears out the Juju data and logs the\nuser out of JAAS. Though not strictly necessary, it's safer to do this\nwhen considering the possibility of non-ephemeral runners.\n\nNote that because of a bug with Juju, the login action requires an\nadditional controller normalization step, where we clear the embedded\ncontroller CA certificate from the Juju controllers file. This\nworkaround needs to be enabled until\nhttps://github.com/juju/juju/pull/22931 makes it to a stable release.\n\n---\n[UDENG-11019](https://warthogs.atlassian.net/browse/UDENG-11019)\n\n[UDENG-11019]:\nhttps://warthogs.atlassian.net/browse/UDENG-11019?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/9d76f62f2f6a7f67fe5620c2afc40d24016e603b"
                },
                {
-                  "sha": "1c56c0a9d439f25e2a086957eb984d2e071de04a",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1783503358,
-                  "message": "feat: add action to setup contract tests with Workshop",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/1c56c0a9d439f25e2a086957eb984d2e071de04a"
+                  "sha": "8c3b2eb4e0b228d123495e4d59f3655ce0a423a0",
+                  "author": "kkuo",
+                  "timestamp": 1786372452,
+                  "message": "feat(g/i/jaas-auth): Remove CA-cert workaround\n\nhttps://github.com/juju/juju/pull/22931 was released so the workaround is no longer required.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/8c3b2eb4e0b228d123495e4d59f3655ce0a423a0"
                },
                {
-                  "sha": "ddfbb7ae3eed889b19c009577bfd27a4632c8886",
-                  "author": "adombeck",
-                  "timestamp": 1783352486,
-                  "message": "fix: gh-actions/build-debian: Fix 'cd: null directory' (#129)\n\nUDENG-10958",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/ddfbb7ae3eed889b19c009577bfd27a4632c8886"
+                  "sha": "141bbfdb689526dde5367748a34e1219ddd110b8",
+                  "author": "kkuo",
+                  "timestamp": 1784836119,
+                  "message": "test(.g/w): Add test workflows for JAAS auth actions",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/141bbfdb689526dde5367748a34e1219ddd110b8"
                }
             ],
             "ciActions": [],
@@ -7032,25 +7032,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cadd1f0f6234d33be003c0fedd98d1c4af36b097",
+                  "author": "Ken VanDine",
+                  "timestamp": 1786460419,
+                  "message": "Add snap setting to enable gamepadui mode (#523)",
+                  "url": "https://github.com/canonical/steam-snap/commit/cadd1f0f6234d33be003c0fedd98d1c4af36b097"
+               },
+               {
+                  "sha": "f2027b88952271e6a2b46738925ca5bb5b31a576",
+                  "author": "Ken VanDine",
+                  "timestamp": 1786390227,
+                  "message": "Add snap setting to enable gamepadui mode\n\nSigned-off-by: Ken VanDine <ken.vandine@canonical.com>",
+                  "url": "https://github.com/canonical/steam-snap/commit/f2027b88952271e6a2b46738925ca5bb5b31a576"
+               },
+               {
                   "sha": "96f3e6df7e2792dcc9deb8ada78ced0a99030301",
                   "author": "Shane Crowley",
                   "timestamp": 1784791765,
                   "message": "docs: URL migration branch (#522)\n\nThis PR introduces changes necessary to migrate the steam documentation\nURL to `ubuntu.com/docs/steam`.\n\nIt also enables Google Analytics for tracking docs traffic.\n\nUDENG-10935",
                   "url": "https://github.com/canonical/steam-snap/commit/96f3e6df7e2792dcc9deb8ada78ced0a99030301"
-               },
-               {
-                  "sha": "df485f654cf961d47093d6f5c7c2dc4d1b0a3735",
-                  "author": "shanecrowley",
-                  "timestamp": 1784733851,
-                  "message": "remove needless f-strings\n\nthese were carried over from the documentation for the url migration",
-                  "url": "https://github.com/canonical/steam-snap/commit/df485f654cf961d47093d6f5c7c2dc4d1b0a3735"
-               },
-               {
-                  "sha": "cebb5db91a11e2228a0aadda220b5cfc0c8dff8b",
-                  "author": "shanecrowley",
-                  "timestamp": 1784621814,
-                  "message": "add GA and cookie consent banner",
-                  "url": "https://github.com/canonical/steam-snap/commit/cebb5db91a11e2228a0aadda220b5cfc0c8dff8b"
                }
             ],
             "ciActions": [],
@@ -7707,14 +7707,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 637,
-                     "timestamp": 1784852971
+                     "revision": 643,
+                     "timestamp": 1786455791
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 636,
-                     "timestamp": 1784852971
+                     "revision": 642,
+                     "timestamp": 1786455791
                   },
                   {
                      "track": "latest",
@@ -7747,7 +7747,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 59,
+            "newCommits": 63,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8360,25 +8360,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cebbafe82a9a158edc9bbacaf1e261f133081d99",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1783596999,
-                  "message": "feat: add action to setup contract tests with Workshop (#131)\n\nAdd a reusable common action for contract tests and make LXD storage\nsize configurable.\n\nNote that `16GiB` is a safer default LXD storage size for CI stability\nand remains overrideable by callers.\n\n---\n\nUDENG-10753",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/cebbafe82a9a158edc9bbacaf1e261f133081d99"
+                  "sha": "9d76f62f2f6a7f67fe5620c2afc40d24016e603b",
+                  "author": "Kat",
+                  "timestamp": 1786459766,
+                  "message": "feat(g/infra): Add JAAS auth action (#133)\n\nHere, we add a JAAS auth action, taking in a client ID and client secret\nto authenticate with JAAS. By taking advantage of JS action features, we\nalso implement a cleanup hook that clears out the Juju data and logs the\nuser out of JAAS. Though not strictly necessary, it's safer to do this\nwhen considering the possibility of non-ephemeral runners.\n\nNote that because of a bug with Juju, the login action requires an\nadditional controller normalization step, where we clear the embedded\ncontroller CA certificate from the Juju controllers file. This\nworkaround needs to be enabled until\nhttps://github.com/juju/juju/pull/22931 makes it to a stable release.\n\n---\n[UDENG-11019](https://warthogs.atlassian.net/browse/UDENG-11019)\n\n[UDENG-11019]:\nhttps://warthogs.atlassian.net/browse/UDENG-11019?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/9d76f62f2f6a7f67fe5620c2afc40d24016e603b"
                },
                {
-                  "sha": "1c56c0a9d439f25e2a086957eb984d2e071de04a",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1783503358,
-                  "message": "feat: add action to setup contract tests with Workshop",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/1c56c0a9d439f25e2a086957eb984d2e071de04a"
+                  "sha": "8c3b2eb4e0b228d123495e4d59f3655ce0a423a0",
+                  "author": "kkuo",
+                  "timestamp": 1786372452,
+                  "message": "feat(g/i/jaas-auth): Remove CA-cert workaround\n\nhttps://github.com/juju/juju/pull/22931 was released so the workaround is no longer required.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/8c3b2eb4e0b228d123495e4d59f3655ce0a423a0"
                },
                {
-                  "sha": "ddfbb7ae3eed889b19c009577bfd27a4632c8886",
-                  "author": "adombeck",
-                  "timestamp": 1783352486,
-                  "message": "fix: gh-actions/build-debian: Fix 'cd: null directory' (#129)\n\nUDENG-10958",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/ddfbb7ae3eed889b19c009577bfd27a4632c8886"
+                  "sha": "141bbfdb689526dde5367748a34e1219ddd110b8",
+                  "author": "kkuo",
+                  "timestamp": 1784836119,
+                  "message": "test(.g/w): Add test workflows for JAAS auth actions",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/141bbfdb689526dde5367748a34e1219ddd110b8"
                }
             ],
             "ciActions": [],
@@ -9483,25 +9483,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "cadd1f0f6234d33be003c0fedd98d1c4af36b097",
+                  "author": "Ken VanDine",
+                  "timestamp": 1786460419,
+                  "message": "Add snap setting to enable gamepadui mode (#523)",
+                  "url": "https://github.com/canonical/steam-snap/commit/cadd1f0f6234d33be003c0fedd98d1c4af36b097"
+               },
+               {
+                  "sha": "f2027b88952271e6a2b46738925ca5bb5b31a576",
+                  "author": "Ken VanDine",
+                  "timestamp": 1786390227,
+                  "message": "Add snap setting to enable gamepadui mode\n\nSigned-off-by: Ken VanDine <ken.vandine@canonical.com>",
+                  "url": "https://github.com/canonical/steam-snap/commit/f2027b88952271e6a2b46738925ca5bb5b31a576"
+               },
+               {
                   "sha": "96f3e6df7e2792dcc9deb8ada78ced0a99030301",
                   "author": "Shane Crowley",
                   "timestamp": 1784791765,
                   "message": "docs: URL migration branch (#522)\n\nThis PR introduces changes necessary to migrate the steam documentation\nURL to `ubuntu.com/docs/steam`.\n\nIt also enables Google Analytics for tracking docs traffic.\n\nUDENG-10935",
                   "url": "https://github.com/canonical/steam-snap/commit/96f3e6df7e2792dcc9deb8ada78ced0a99030301"
-               },
-               {
-                  "sha": "df485f654cf961d47093d6f5c7c2dc4d1b0a3735",
-                  "author": "shanecrowley",
-                  "timestamp": 1784733851,
-                  "message": "remove needless f-strings\n\nthese were carried over from the documentation for the url migration",
-                  "url": "https://github.com/canonical/steam-snap/commit/df485f654cf961d47093d6f5c7c2dc4d1b0a3735"
-               },
-               {
-                  "sha": "cebb5db91a11e2228a0aadda220b5cfc0c8dff8b",
-                  "author": "shanecrowley",
-                  "timestamp": 1784621814,
-                  "message": "add GA and cookie consent banner",
-                  "url": "https://github.com/canonical/steam-snap/commit/cebb5db91a11e2228a0aadda220b5cfc0c8dff8b"
                }
             ],
             "ciActions": [],
@@ -10152,14 +10152,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 637,
-                     "timestamp": 1784852971
+                     "revision": 643,
+                     "timestamp": 1786455791
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 636,
-                     "timestamp": 1784852971
+                     "revision": 642,
+                     "timestamp": 1786455791
                   },
                   {
                      "track": "latest",
