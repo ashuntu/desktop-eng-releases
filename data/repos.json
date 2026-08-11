@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a5623c2e01f7cbeb235b06a4ad891597e1505809",
+                  "sha": "356ffb37d2e2e25e3a253dd0c4db606758768c48",
                   "author": "adombeck",
-                  "timestamp": 1786449522,
-                  "message": "Ensure GDM sees managed users after reboot (#1744)\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nAlso adds an e2e-test to test that the authd user shows up in GDM after\na reboot.\n\nCloses #1743 \nUDENG-11043",
-                  "url": "https://github.com/canonical/authd/commit/a5623c2e01f7cbeb235b06a4ad891597e1505809"
+                  "timestamp": 1786462009,
+                  "message": "Drop .github/workflows/auto-updates.yaml (#1768)\n\nCloses #1767\nUDENG-11151",
+                  "url": "https://github.com/canonical/authd/commit/356ffb37d2e2e25e3a253dd0c4db606758768c48"
                },
                {
-                  "sha": "8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1784467401,
-                  "message": "e2e snapshots survive missing metadata\n\nA failed or metadata-only-deleted live snapshot leaves its deterministic disk\nfilename behind. Subsequent provisioning then cannot recreate the snapshot.\nUse a unique external disk and memory filename for each live snapshot instead.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f"
+                  "sha": "3e19c2f9b161a6b6a495cee983504f92aa8ffad4",
+                  "author": "adombeck",
+                  "timestamp": 1786461981,
+                  "message": "ci(e2e): stop chunking the VM image OCI artifact upload (#1765)",
+                  "url": "https://github.com/canonical/authd/commit/3e19c2f9b161a6b6a495cee983504f92aa8ffad4"
                },
                {
-                  "sha": "7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181",
+                  "sha": "96016465d0dbec230edac43e7eee7af818e505b3",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1784386654,
-                  "message": "Ensure GDM sees managed users after reboot\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181"
+                  "timestamp": 1786461121,
+                  "message": "Drop .github/workflows/auto-updates.yaml\n\nThis workflow regenerated the Rust vendored tree and\nXS-Vendored-Sources-Rust after every push to main touching Cargo.lock\nor debian/control, then force-pushed the result to main and noble.\n\nIt is redundant: debian/rules' override_dh_auto_configure already fails\nthe source build pre-merge when XS-Vendored-Sources-Rust doesn't match\nthe vendored crates, and debian.yaml runs that build on every relevant\nPR for all supported releases. Since Cargo.lock and debian/control only\nlive on main, there is nothing release-specific left for the workflow's\nper-release matrix to produce.\n\nIt also bypassed branch protection and review by pushing directly to\nmain, and pushed to noble, which is no longer part of the release flow.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/96016465d0dbec230edac43e7eee7af818e505b3"
                }
             ],
             "ciActions": [
@@ -5709,25 +5709,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a5623c2e01f7cbeb235b06a4ad891597e1505809",
+                  "sha": "356ffb37d2e2e25e3a253dd0c4db606758768c48",
                   "author": "adombeck",
-                  "timestamp": 1786449522,
-                  "message": "Ensure GDM sees managed users after reboot (#1744)\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nAlso adds an e2e-test to test that the authd user shows up in GDM after\na reboot.\n\nCloses #1743 \nUDENG-11043",
-                  "url": "https://github.com/canonical/authd/commit/a5623c2e01f7cbeb235b06a4ad891597e1505809"
+                  "timestamp": 1786462009,
+                  "message": "Drop .github/workflows/auto-updates.yaml (#1768)\n\nCloses #1767\nUDENG-11151",
+                  "url": "https://github.com/canonical/authd/commit/356ffb37d2e2e25e3a253dd0c4db606758768c48"
                },
                {
-                  "sha": "8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1784467401,
-                  "message": "e2e snapshots survive missing metadata\n\nA failed or metadata-only-deleted live snapshot leaves its deterministic disk\nfilename behind. Subsequent provisioning then cannot recreate the snapshot.\nUse a unique external disk and memory filename for each live snapshot instead.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f"
+                  "sha": "3e19c2f9b161a6b6a495cee983504f92aa8ffad4",
+                  "author": "adombeck",
+                  "timestamp": 1786461981,
+                  "message": "ci(e2e): stop chunking the VM image OCI artifact upload (#1765)",
+                  "url": "https://github.com/canonical/authd/commit/3e19c2f9b161a6b6a495cee983504f92aa8ffad4"
                },
                {
-                  "sha": "7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181",
+                  "sha": "96016465d0dbec230edac43e7eee7af818e505b3",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1784386654,
-                  "message": "Ensure GDM sees managed users after reboot\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181"
+                  "timestamp": 1786461121,
+                  "message": "Drop .github/workflows/auto-updates.yaml\n\nThis workflow regenerated the Rust vendored tree and\nXS-Vendored-Sources-Rust after every push to main touching Cargo.lock\nor debian/control, then force-pushed the result to main and noble.\n\nIt is redundant: debian/rules' override_dh_auto_configure already fails\nthe source build pre-merge when XS-Vendored-Sources-Rust doesn't match\nthe vendored crates, and debian.yaml runs that build on every relevant\nPR for all supported releases. Since Cargo.lock and debian/control only\nlive on main, there is nothing release-specific left for the workflow's\nper-release matrix to produce.\n\nIt also bypassed branch protection and review by pushing directly to\nmain, and pushed to noble, which is no longer part of the release flow.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/96016465d0dbec230edac43e7eee7af818e505b3"
                }
             ],
             "ciActions": [
@@ -8193,25 +8193,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a5623c2e01f7cbeb235b06a4ad891597e1505809",
+                  "sha": "356ffb37d2e2e25e3a253dd0c4db606758768c48",
                   "author": "adombeck",
-                  "timestamp": 1786449522,
-                  "message": "Ensure GDM sees managed users after reboot (#1744)\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nAlso adds an e2e-test to test that the authd user shows up in GDM after\na reboot.\n\nCloses #1743 \nUDENG-11043",
-                  "url": "https://github.com/canonical/authd/commit/a5623c2e01f7cbeb235b06a4ad891597e1505809"
+                  "timestamp": 1786462009,
+                  "message": "Drop .github/workflows/auto-updates.yaml (#1768)\n\nCloses #1767\nUDENG-11151",
+                  "url": "https://github.com/canonical/authd/commit/356ffb37d2e2e25e3a253dd0c4db606758768c48"
                },
                {
-                  "sha": "8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1784467401,
-                  "message": "e2e snapshots survive missing metadata\n\nA failed or metadata-only-deleted live snapshot leaves its deterministic disk\nfilename behind. Subsequent provisioning then cannot recreate the snapshot.\nUse a unique external disk and memory filename for each live snapshot instead.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/8e6bd1a56a439ca7a3f6f3a52bf4de113bda425f"
+                  "sha": "3e19c2f9b161a6b6a495cee983504f92aa8ffad4",
+                  "author": "adombeck",
+                  "timestamp": 1786461981,
+                  "message": "ci(e2e): stop chunking the VM image OCI artifact upload (#1765)",
+                  "url": "https://github.com/canonical/authd/commit/3e19c2f9b161a6b6a495cee983504f92aa8ffad4"
                },
                {
-                  "sha": "7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181",
+                  "sha": "96016465d0dbec230edac43e7eee7af818e505b3",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1784386654,
-                  "message": "Ensure GDM sees managed users after reboot\n\nAccountsService can enumerate NSS users before authd has completed its\nsocket-activated startup, leaving the GDM user cache without managed\naccounts until they log in once. Start authd as part of the NSS lookup\ntarget and make that target wait for the daemon to become ready.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/7bdaf6f9fc222daeb01cfaa65cbcf46baa07e181"
+                  "timestamp": 1786461121,
+                  "message": "Drop .github/workflows/auto-updates.yaml\n\nThis workflow regenerated the Rust vendored tree and\nXS-Vendored-Sources-Rust after every push to main touching Cargo.lock\nor debian/control, then force-pushed the result to main and noble.\n\nIt is redundant: debian/rules' override_dh_auto_configure already fails\nthe source build pre-merge when XS-Vendored-Sources-Rust doesn't match\nthe vendored crates, and debian.yaml runs that build on every relevant\nPR for all supported releases. Since Cargo.lock and debian/control only\nlive on main, there is nothing release-specific left for the workflow's\nper-release matrix to produce.\n\nIt also bypassed branch protection and review by pushing directly to\nmain, and pushed to noble, which is no longer part of the release flow.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/96016465d0dbec230edac43e7eee7af818e505b3"
                }
             ],
             "ciActions": [
