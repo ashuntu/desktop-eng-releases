@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9b3d00ac38e05b9e5bd6e122677095cb4efc0c13",
-                  "author": "adombeck",
-                  "timestamp": 1786529612,
-                  "message": "config: nest PAM settings under `pam:` with per-service overrides (#1675)\n\nCloses #1775 \nUDENG-11164",
-                  "url": "https://github.com/canonical/authd/commit/9b3d00ac38e05b9e5bd6e122677095cb4efc0c13"
+                  "sha": "85fc6342479c45bd40cfe3ac1aabbffa360d5bc7",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1786535592,
+                  "message": "Run broker tests with all available providers (#1770)\n\nRun broker tests with the default, `withgoogle`, and `withmsentraid`\nbuild tags, including ASAN for Entra, so provider-specific build\nfailures are caught in CI.\n\nUDENG-8449",
+                  "url": "https://github.com/canonical/authd/commit/85fc6342479c45bd40cfe3ac1aabbffa360d5bc7"
                },
                {
-                  "sha": "4edab0070ed0519785c23df36f3707884166ced5",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1783447316,
-                  "message": "pam: recognize services in standard PAM configuration directories\n\nPAM service definitions may be installed in /usr/lib/pam.d rather than\n/etc/pam.d. Check both locations before warning that a configured\nper-service override has no matching PAM configuration.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4edab0070ed0519785c23df36f3707884166ced5"
+                  "sha": "dd2bc65db3193411c14c4aad82f536b1e135008e",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1786521744,
+                  "message": "docs: document broker provider build tags\n\nUntagged broker tests and linting do not compile the provider-specific\nwiring, which can let build failures reach CI. Document the required\nprovider-tagged test commands, MS Entra binding generation, and tagged\nlinting invocation.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/dd2bc65db3193411c14c4aad82f536b1e135008e"
                },
                {
-                  "sha": "4274fa484b49edc573d11c4527ce0ddf7c048bfb",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1783372231,
-                  "message": "config: nest PAM settings under pam: with per-service overrides\n\nThe auth_fail_* brute-force mitigation settings belong to the PAM\nservice, not to authd globally. They are now nested under pam: in\nauthd.yaml, and can be overridden per PAM service under pam.services:\n\n  pam:\n    auth_fail_delay: 2s\n    services:\n      sshd:\n        auth_fail_delay: 5s\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4274fa484b49edc573d11c4527ce0ddf7c048bfb"
+                  "sha": "8ca16a6a9f2addbe00b0b32940ee8cc89334d750",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1786520945,
+                  "message": "ci(brokers-qa): test all provider variants\n\nThe broker QA workflow previously exercised only one provider build\nconfiguration, and its ASAN command omitted the withmsentraid tag.\nRun coverage under the default, withgoogle, and withmsentraid variants,\nmerge their coverage data, and pass the Entra tag to ASAN so provider-\nspecific code is compiled and tested.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/8ca16a6a9f2addbe00b0b32940ee8cc89334d750"
                }
             ],
             "ciActions": [
@@ -5735,25 +5735,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9b3d00ac38e05b9e5bd6e122677095cb4efc0c13",
-                  "author": "adombeck",
-                  "timestamp": 1786529612,
-                  "message": "config: nest PAM settings under `pam:` with per-service overrides (#1675)\n\nCloses #1775 \nUDENG-11164",
-                  "url": "https://github.com/canonical/authd/commit/9b3d00ac38e05b9e5bd6e122677095cb4efc0c13"
+                  "sha": "85fc6342479c45bd40cfe3ac1aabbffa360d5bc7",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1786535592,
+                  "message": "Run broker tests with all available providers (#1770)\n\nRun broker tests with the default, `withgoogle`, and `withmsentraid`\nbuild tags, including ASAN for Entra, so provider-specific build\nfailures are caught in CI.\n\nUDENG-8449",
+                  "url": "https://github.com/canonical/authd/commit/85fc6342479c45bd40cfe3ac1aabbffa360d5bc7"
                },
                {
-                  "sha": "4edab0070ed0519785c23df36f3707884166ced5",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1783447316,
-                  "message": "pam: recognize services in standard PAM configuration directories\n\nPAM service definitions may be installed in /usr/lib/pam.d rather than\n/etc/pam.d. Check both locations before warning that a configured\nper-service override has no matching PAM configuration.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4edab0070ed0519785c23df36f3707884166ced5"
+                  "sha": "dd2bc65db3193411c14c4aad82f536b1e135008e",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1786521744,
+                  "message": "docs: document broker provider build tags\n\nUntagged broker tests and linting do not compile the provider-specific\nwiring, which can let build failures reach CI. Document the required\nprovider-tagged test commands, MS Entra binding generation, and tagged\nlinting invocation.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/dd2bc65db3193411c14c4aad82f536b1e135008e"
                },
                {
-                  "sha": "4274fa484b49edc573d11c4527ce0ddf7c048bfb",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1783372231,
-                  "message": "config: nest PAM settings under pam: with per-service overrides\n\nThe auth_fail_* brute-force mitigation settings belong to the PAM\nservice, not to authd globally. They are now nested under pam: in\nauthd.yaml, and can be overridden per PAM service under pam.services:\n\n  pam:\n    auth_fail_delay: 2s\n    services:\n      sshd:\n        auth_fail_delay: 5s\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4274fa484b49edc573d11c4527ce0ddf7c048bfb"
+                  "sha": "8ca16a6a9f2addbe00b0b32940ee8cc89334d750",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1786520945,
+                  "message": "ci(brokers-qa): test all provider variants\n\nThe broker QA workflow previously exercised only one provider build\nconfiguration, and its ASAN command omitted the withmsentraid tag.\nRun coverage under the default, withgoogle, and withmsentraid variants,\nmerge their coverage data, and pass the Entra tag to ASAN so provider-\nspecific code is compiled and tested.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/8ca16a6a9f2addbe00b0b32940ee8cc89334d750"
                }
             ],
             "ciActions": [
@@ -8245,25 +8245,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "9b3d00ac38e05b9e5bd6e122677095cb4efc0c13",
-                  "author": "adombeck",
-                  "timestamp": 1786529612,
-                  "message": "config: nest PAM settings under `pam:` with per-service overrides (#1675)\n\nCloses #1775 \nUDENG-11164",
-                  "url": "https://github.com/canonical/authd/commit/9b3d00ac38e05b9e5bd6e122677095cb4efc0c13"
+                  "sha": "85fc6342479c45bd40cfe3ac1aabbffa360d5bc7",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1786535592,
+                  "message": "Run broker tests with all available providers (#1770)\n\nRun broker tests with the default, `withgoogle`, and `withmsentraid`\nbuild tags, including ASAN for Entra, so provider-specific build\nfailures are caught in CI.\n\nUDENG-8449",
+                  "url": "https://github.com/canonical/authd/commit/85fc6342479c45bd40cfe3ac1aabbffa360d5bc7"
                },
                {
-                  "sha": "4edab0070ed0519785c23df36f3707884166ced5",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1783447316,
-                  "message": "pam: recognize services in standard PAM configuration directories\n\nPAM service definitions may be installed in /usr/lib/pam.d rather than\n/etc/pam.d. Check both locations before warning that a configured\nper-service override has no matching PAM configuration.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4edab0070ed0519785c23df36f3707884166ced5"
+                  "sha": "dd2bc65db3193411c14c4aad82f536b1e135008e",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1786521744,
+                  "message": "docs: document broker provider build tags\n\nUntagged broker tests and linting do not compile the provider-specific\nwiring, which can let build failures reach CI. Document the required\nprovider-tagged test commands, MS Entra binding generation, and tagged\nlinting invocation.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/dd2bc65db3193411c14c4aad82f536b1e135008e"
                },
                {
-                  "sha": "4274fa484b49edc573d11c4527ce0ddf7c048bfb",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1783372231,
-                  "message": "config: nest PAM settings under pam: with per-service overrides\n\nThe auth_fail_* brute-force mitigation settings belong to the PAM\nservice, not to authd globally. They are now nested under pam: in\nauthd.yaml, and can be overridden per PAM service under pam.services:\n\n  pam:\n    auth_fail_delay: 2s\n    services:\n      sshd:\n        auth_fail_delay: 5s\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4274fa484b49edc573d11c4527ce0ddf7c048bfb"
+                  "sha": "8ca16a6a9f2addbe00b0b32940ee8cc89334d750",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1786520945,
+                  "message": "ci(brokers-qa): test all provider variants\n\nThe broker QA workflow previously exercised only one provider build\nconfiguration, and its ASAN command omitted the withmsentraid tag.\nRun coverage under the default, withgoogle, and withmsentraid variants,\nmerge their coverage data, and pass the Entra tag to ASAN so provider-\nspecific code is compiled and tested.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/8ca16a6a9f2addbe00b0b32940ee8cc89334d750"
                }
             ],
             "ciActions": [
