@@ -3764,25 +3764,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "60da5cd0c05d9443a08260123b61da647bb2f78b",
+                  "sha": "8c58972eb5d0e86e6e20beaa746c4687d12ca77e",
                   "author": "Robert Ancell",
-                  "timestamp": 1785202488,
-                  "message": "CI: hold snap auto-refresh in the test container\n\nInstalling a snap can make snapd refresh and restart itself, which\noccasionally fails with \"snapd rollback across the restart\" and breaks\nthe test job. A background auto-refresh of snapd can trigger the same\nrestart at any point during the run.\n\nHold automatic refreshes with \"snap refresh --hold\" once snapd is ready,\nso snapd does not spontaneously refresh itself while the tests run.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/60da5cd0c05d9443a08260123b61da647bb2f78b"
+                  "timestamp": 1787012197,
+                  "message": "Warn when an app is configured against a bundled toolchain from an older snap\n\nOlder revisions of the snap bundled the Linux build toolchain (ninja,\nand previously clang/cmake) inside the snap. When an app was built,\nCMake cached the absolute path to those tools, e.g.\n/snap/flutter/current/usr/bin/ninja, in the project's build/linux\ndirectory.\n\nThe snap now relies on the host toolchain and no longer ships these\ntools, so after a snap refresh those cached paths point at files that no\nlonger exist and the build fails with:\n\n  CMake Error at CMakeLists.txt:3 (project):\n    Running '/snap/flutter/current/usr/bin/ninja' '--version' failed with:\n    No such file or directory\n\nBefore a Linux build (run, build linux, test), scan the project's\nbuild/linux CMake caches for tool paths under /snap/flutter that no\nlonger exist. If any are found, tell the user to run \"flutter clean\" so\nthe build is reconfigured against the host toolchain, turning a cryptic\nCMake error into a clear, actionable message.\n\nThe check only warns and never deletes anything itself, matching the\nexisting (non-destructive, advisory) behaviour of the host dependency\ncheck.\n\nFixes #144",
+                  "url": "https://github.com/canonical/flutter-snap/commit/8c58972eb5d0e86e6e20beaa746c4687d12ca77e"
                },
                {
-                  "sha": "dab4e87897b8975e559a60ef06edbbc5db420a2f",
+                  "sha": "244940f04a0106bbde734c51e16225937b30bfce",
                   "author": "Robert Ancell",
-                  "timestamp": 1785202836,
-                  "message": "CI: extract the shared test job into a reusable workflow\n\nci.yaml and daily.yaml duplicated the same test matrix and steps, which\nhad to be kept in sync by hand. Move the test job into a reusable\nworkflow (test.yaml, workflow_call) and have both workflows call it.\n\nThe only difference between the two was which snap is installed, so the\nreusable workflow takes a \"snap\" input: \"artifact\" installs the snap\nbuilt and uploaded earlier in the CI run, while \"candidate\" installs the\npublished candidate snap for the daily check.\n\nAlso stop the cleanup job from deleting the snap artifacts when a test\nfails: it ran with \"always()\", so re-running only the failed test job\nfailed at the download step with \"Artifact not found for name:\nsnap-amd64\". Clean up only on success so the artifacts survive a failed\nrun and the failed job can be re-run without rebuilding.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/dab4e87897b8975e559a60ef06edbbc5db420a2f"
+                  "timestamp": 1787088537,
+                  "message": "Remove the obsolete openurl app\n\nopenurl.sh and the \"openurl\" app existed only to back flutter.desktop:\nthe desktop entry's Exec launched openurl.sh, which opened a browser tab\nto the Flutter editor setup docs. Both were added together in #20.\n\nNow that flutter.desktop has been removed, nothing launches the openurl\napp any more (it is not a general URL handler - it ignores its arguments\nand hardcodes the docs URL), so remove openurl.sh and its app entry.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/244940f04a0106bbde734c51e16225937b30bfce"
                },
                {
-                  "sha": "2a0c361801c789c215b65bc4382d47c341d12e48",
+                  "sha": "3a04875560f32e83447b2d79504aaed803d2b3de",
                   "author": "Robert Ancell",
-                  "timestamp": 1785195021,
-                  "message": "Harden shell scripts and add shellcheck lint job\n\nBring dart.sh in line with flutter.sh: run under 'set -e', report errors\nto stderr and exit non-zero when Flutter is not initialized or the Dart\nbinary is missing (previously these exited 0, hiding failures).\n\nFix shellcheck findings across the runtime and CI helper scripts: quote\nvariable expansions, replace legacy backticks with $(), drop useless\nuses of cat, and use POSIX-safe constructs in the /bin/sh helpers. Where\nword splitting is intentional (docker exec runner and install args) the\nbehaviour is kept with a targeted shellcheck directive.\n\nAdd a shellcheck lint job to the CI workflow so these issues are caught\nautomatically, and bump actions/checkout from the deprecated v2 to v4.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/2a0c361801c789c215b65bc4382d47c341d12e48"
+                  "timestamp": 1784765112,
+                  "message": "Remove flutter.desktop\n\nThe openurl app used flutter.desktop only to associate a desktop entry\nfor the online documentation; remove the desktop file and its references\nfrom the snap.\n\nFixes: https://github.com/canonical/flutter-snap/issues/116",
+                  "url": "https://github.com/canonical/flutter-snap/commit/3a04875560f32e83447b2d79504aaed803d2b3de"
                }
             ],
             "ciActions": [],
@@ -6105,25 +6105,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "60da5cd0c05d9443a08260123b61da647bb2f78b",
+                  "sha": "8c58972eb5d0e86e6e20beaa746c4687d12ca77e",
                   "author": "Robert Ancell",
-                  "timestamp": 1785202488,
-                  "message": "CI: hold snap auto-refresh in the test container\n\nInstalling a snap can make snapd refresh and restart itself, which\noccasionally fails with \"snapd rollback across the restart\" and breaks\nthe test job. A background auto-refresh of snapd can trigger the same\nrestart at any point during the run.\n\nHold automatic refreshes with \"snap refresh --hold\" once snapd is ready,\nso snapd does not spontaneously refresh itself while the tests run.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/60da5cd0c05d9443a08260123b61da647bb2f78b"
+                  "timestamp": 1787012197,
+                  "message": "Warn when an app is configured against a bundled toolchain from an older snap\n\nOlder revisions of the snap bundled the Linux build toolchain (ninja,\nand previously clang/cmake) inside the snap. When an app was built,\nCMake cached the absolute path to those tools, e.g.\n/snap/flutter/current/usr/bin/ninja, in the project's build/linux\ndirectory.\n\nThe snap now relies on the host toolchain and no longer ships these\ntools, so after a snap refresh those cached paths point at files that no\nlonger exist and the build fails with:\n\n  CMake Error at CMakeLists.txt:3 (project):\n    Running '/snap/flutter/current/usr/bin/ninja' '--version' failed with:\n    No such file or directory\n\nBefore a Linux build (run, build linux, test), scan the project's\nbuild/linux CMake caches for tool paths under /snap/flutter that no\nlonger exist. If any are found, tell the user to run \"flutter clean\" so\nthe build is reconfigured against the host toolchain, turning a cryptic\nCMake error into a clear, actionable message.\n\nThe check only warns and never deletes anything itself, matching the\nexisting (non-destructive, advisory) behaviour of the host dependency\ncheck.\n\nFixes #144",
+                  "url": "https://github.com/canonical/flutter-snap/commit/8c58972eb5d0e86e6e20beaa746c4687d12ca77e"
                },
                {
-                  "sha": "dab4e87897b8975e559a60ef06edbbc5db420a2f",
+                  "sha": "244940f04a0106bbde734c51e16225937b30bfce",
                   "author": "Robert Ancell",
-                  "timestamp": 1785202836,
-                  "message": "CI: extract the shared test job into a reusable workflow\n\nci.yaml and daily.yaml duplicated the same test matrix and steps, which\nhad to be kept in sync by hand. Move the test job into a reusable\nworkflow (test.yaml, workflow_call) and have both workflows call it.\n\nThe only difference between the two was which snap is installed, so the\nreusable workflow takes a \"snap\" input: \"artifact\" installs the snap\nbuilt and uploaded earlier in the CI run, while \"candidate\" installs the\npublished candidate snap for the daily check.\n\nAlso stop the cleanup job from deleting the snap artifacts when a test\nfails: it ran with \"always()\", so re-running only the failed test job\nfailed at the download step with \"Artifact not found for name:\nsnap-amd64\". Clean up only on success so the artifacts survive a failed\nrun and the failed job can be re-run without rebuilding.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/dab4e87897b8975e559a60ef06edbbc5db420a2f"
+                  "timestamp": 1787088537,
+                  "message": "Remove the obsolete openurl app\n\nopenurl.sh and the \"openurl\" app existed only to back flutter.desktop:\nthe desktop entry's Exec launched openurl.sh, which opened a browser tab\nto the Flutter editor setup docs. Both were added together in #20.\n\nNow that flutter.desktop has been removed, nothing launches the openurl\napp any more (it is not a general URL handler - it ignores its arguments\nand hardcodes the docs URL), so remove openurl.sh and its app entry.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/244940f04a0106bbde734c51e16225937b30bfce"
                },
                {
-                  "sha": "2a0c361801c789c215b65bc4382d47c341d12e48",
+                  "sha": "3a04875560f32e83447b2d79504aaed803d2b3de",
                   "author": "Robert Ancell",
-                  "timestamp": 1785195021,
-                  "message": "Harden shell scripts and add shellcheck lint job\n\nBring dart.sh in line with flutter.sh: run under 'set -e', report errors\nto stderr and exit non-zero when Flutter is not initialized or the Dart\nbinary is missing (previously these exited 0, hiding failures).\n\nFix shellcheck findings across the runtime and CI helper scripts: quote\nvariable expansions, replace legacy backticks with $(), drop useless\nuses of cat, and use POSIX-safe constructs in the /bin/sh helpers. Where\nword splitting is intentional (docker exec runner and install args) the\nbehaviour is kept with a targeted shellcheck directive.\n\nAdd a shellcheck lint job to the CI workflow so these issues are caught\nautomatically, and bump actions/checkout from the deprecated v2 to v4.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/2a0c361801c789c215b65bc4382d47c341d12e48"
+                  "timestamp": 1784765112,
+                  "message": "Remove flutter.desktop\n\nThe openurl app used flutter.desktop only to associate a desktop entry\nfor the online documentation; remove the desktop file and its references\nfrom the snap.\n\nFixes: https://github.com/canonical/flutter-snap/issues/116",
+                  "url": "https://github.com/canonical/flutter-snap/commit/3a04875560f32e83447b2d79504aaed803d2b3de"
                }
             ],
             "ciActions": [],
@@ -8615,25 +8615,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "60da5cd0c05d9443a08260123b61da647bb2f78b",
+                  "sha": "8c58972eb5d0e86e6e20beaa746c4687d12ca77e",
                   "author": "Robert Ancell",
-                  "timestamp": 1785202488,
-                  "message": "CI: hold snap auto-refresh in the test container\n\nInstalling a snap can make snapd refresh and restart itself, which\noccasionally fails with \"snapd rollback across the restart\" and breaks\nthe test job. A background auto-refresh of snapd can trigger the same\nrestart at any point during the run.\n\nHold automatic refreshes with \"snap refresh --hold\" once snapd is ready,\nso snapd does not spontaneously refresh itself while the tests run.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/60da5cd0c05d9443a08260123b61da647bb2f78b"
+                  "timestamp": 1787012197,
+                  "message": "Warn when an app is configured against a bundled toolchain from an older snap\n\nOlder revisions of the snap bundled the Linux build toolchain (ninja,\nand previously clang/cmake) inside the snap. When an app was built,\nCMake cached the absolute path to those tools, e.g.\n/snap/flutter/current/usr/bin/ninja, in the project's build/linux\ndirectory.\n\nThe snap now relies on the host toolchain and no longer ships these\ntools, so after a snap refresh those cached paths point at files that no\nlonger exist and the build fails with:\n\n  CMake Error at CMakeLists.txt:3 (project):\n    Running '/snap/flutter/current/usr/bin/ninja' '--version' failed with:\n    No such file or directory\n\nBefore a Linux build (run, build linux, test), scan the project's\nbuild/linux CMake caches for tool paths under /snap/flutter that no\nlonger exist. If any are found, tell the user to run \"flutter clean\" so\nthe build is reconfigured against the host toolchain, turning a cryptic\nCMake error into a clear, actionable message.\n\nThe check only warns and never deletes anything itself, matching the\nexisting (non-destructive, advisory) behaviour of the host dependency\ncheck.\n\nFixes #144",
+                  "url": "https://github.com/canonical/flutter-snap/commit/8c58972eb5d0e86e6e20beaa746c4687d12ca77e"
                },
                {
-                  "sha": "dab4e87897b8975e559a60ef06edbbc5db420a2f",
+                  "sha": "244940f04a0106bbde734c51e16225937b30bfce",
                   "author": "Robert Ancell",
-                  "timestamp": 1785202836,
-                  "message": "CI: extract the shared test job into a reusable workflow\n\nci.yaml and daily.yaml duplicated the same test matrix and steps, which\nhad to be kept in sync by hand. Move the test job into a reusable\nworkflow (test.yaml, workflow_call) and have both workflows call it.\n\nThe only difference between the two was which snap is installed, so the\nreusable workflow takes a \"snap\" input: \"artifact\" installs the snap\nbuilt and uploaded earlier in the CI run, while \"candidate\" installs the\npublished candidate snap for the daily check.\n\nAlso stop the cleanup job from deleting the snap artifacts when a test\nfails: it ran with \"always()\", so re-running only the failed test job\nfailed at the download step with \"Artifact not found for name:\nsnap-amd64\". Clean up only on success so the artifacts survive a failed\nrun and the failed job can be re-run without rebuilding.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/dab4e87897b8975e559a60ef06edbbc5db420a2f"
+                  "timestamp": 1787088537,
+                  "message": "Remove the obsolete openurl app\n\nopenurl.sh and the \"openurl\" app existed only to back flutter.desktop:\nthe desktop entry's Exec launched openurl.sh, which opened a browser tab\nto the Flutter editor setup docs. Both were added together in #20.\n\nNow that flutter.desktop has been removed, nothing launches the openurl\napp any more (it is not a general URL handler - it ignores its arguments\nand hardcodes the docs URL), so remove openurl.sh and its app entry.",
+                  "url": "https://github.com/canonical/flutter-snap/commit/244940f04a0106bbde734c51e16225937b30bfce"
                },
                {
-                  "sha": "2a0c361801c789c215b65bc4382d47c341d12e48",
+                  "sha": "3a04875560f32e83447b2d79504aaed803d2b3de",
                   "author": "Robert Ancell",
-                  "timestamp": 1785195021,
-                  "message": "Harden shell scripts and add shellcheck lint job\n\nBring dart.sh in line with flutter.sh: run under 'set -e', report errors\nto stderr and exit non-zero when Flutter is not initialized or the Dart\nbinary is missing (previously these exited 0, hiding failures).\n\nFix shellcheck findings across the runtime and CI helper scripts: quote\nvariable expansions, replace legacy backticks with $(), drop useless\nuses of cat, and use POSIX-safe constructs in the /bin/sh helpers. Where\nword splitting is intentional (docker exec runner and install args) the\nbehaviour is kept with a targeted shellcheck directive.\n\nAdd a shellcheck lint job to the CI workflow so these issues are caught\nautomatically, and bump actions/checkout from the deprecated v2 to v4.",
-                  "url": "https://github.com/canonical/flutter-snap/commit/2a0c361801c789c215b65bc4382d47c341d12e48"
+                  "timestamp": 1784765112,
+                  "message": "Remove flutter.desktop\n\nThe openurl app used flutter.desktop only to associate a desktop entry\nfor the online documentation; remove the desktop file and its references\nfrom the snap.\n\nFixes: https://github.com/canonical/flutter-snap/issues/116",
+                  "url": "https://github.com/canonical/flutter-snap/commit/3a04875560f32e83447b2d79504aaed803d2b3de"
                }
             ],
             "ciActions": [],
