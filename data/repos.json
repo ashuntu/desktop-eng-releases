@@ -3594,6 +3594,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4dc5840fb73c31fa67ef36a9dc946dfe203a663b",
+                  "author": "Kat",
+                  "timestamp": 1787254556,
+                  "message": "feat: add action to notify MM about GH failures (#132)\n\nHere, we add an action to notify Mattermost about GH failures. When used\nas intended, it fetches the corresponding run, linking the run, ref, and\ndescribing the trigger. It also pings a list of configured users.\n\nThis is pretty similar to what we already use elsewhere. But, instead of\na webhook, this utilizes the MM REST API and requires a bot token for\nuse. We also add a few additional features, such as using the repository\norg/owner icon as the author icon by default.\n\nIn terms of safety, as long as the MM token is implemented using a\nrepository secret, it should be that only actors with write permissions\ncan send notifications. That being said, caution should still be taken\nwhen using this action in public repositories.\n\nExample notification:\n<img width=\"2860\" height=\"630\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/5b68b971-628d-4080-adc9-1e1d0e2ffc9d\"\n/>",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/4dc5840fb73c31fa67ef36a9dc946dfe203a663b"
+               },
+               {
                   "sha": "9db27d8cab14caf047ed89eec804e078895a4c2c",
                   "author": "Kat",
                   "timestamp": 1787005308,
@@ -3606,13 +3613,6 @@
                   "timestamp": 1784841393,
                   "message": "feat(g/infra): Add database credential backup to Vault\n\nBack up database cluster credentials to a Vault KV path when\ncredential-usernames is set, updating the secret only when a value has\nchanged. Retrieved passwords are masked in the logs and never printed.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/e1071918e9b268f29ec978c2a5528fbac6a97435"
-               },
-               {
-                  "sha": "b31ccc2b383c9902fccb8784a1c04b29b8facac3",
-                  "author": "kkuo",
-                  "timestamp": 1786557931,
-                  "message": "refactor(g/infra): Organize backup-database selection into classes\n\n- Extract _UnitHealth/_parse_units to deduplicate Juju status parsing\n- Introduce _Selector/_JujuStatusSelector/_ClusterStatusSelector to model\n  the two selection modes (juju status vs. get-cluster-status), and make\n  the cluster-status helpers private (module-internal only)\n- Centralize the unit-role to memberRole translation in _MEMBER_ROLES\n- Move shared summary markers to a new constants.py, imported by both\n  backup.py and the credential backup script on the stacked branch\n- Drop the unused juju_run_succeeded import and unused test variable",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/b31ccc2b383c9902fccb8784a1c04b29b8facac3"
                }
             ],
             "ciActions": [],
@@ -5935,6 +5935,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4dc5840fb73c31fa67ef36a9dc946dfe203a663b",
+                  "author": "Kat",
+                  "timestamp": 1787254556,
+                  "message": "feat: add action to notify MM about GH failures (#132)\n\nHere, we add an action to notify Mattermost about GH failures. When used\nas intended, it fetches the corresponding run, linking the run, ref, and\ndescribing the trigger. It also pings a list of configured users.\n\nThis is pretty similar to what we already use elsewhere. But, instead of\na webhook, this utilizes the MM REST API and requires a bot token for\nuse. We also add a few additional features, such as using the repository\norg/owner icon as the author icon by default.\n\nIn terms of safety, as long as the MM token is implemented using a\nrepository secret, it should be that only actors with write permissions\ncan send notifications. That being said, caution should still be taken\nwhen using this action in public repositories.\n\nExample notification:\n<img width=\"2860\" height=\"630\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/5b68b971-628d-4080-adc9-1e1d0e2ffc9d\"\n/>",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/4dc5840fb73c31fa67ef36a9dc946dfe203a663b"
+               },
+               {
                   "sha": "9db27d8cab14caf047ed89eec804e078895a4c2c",
                   "author": "Kat",
                   "timestamp": 1787005308,
@@ -5947,13 +5954,6 @@
                   "timestamp": 1784841393,
                   "message": "feat(g/infra): Add database credential backup to Vault\n\nBack up database cluster credentials to a Vault KV path when\ncredential-usernames is set, updating the secret only when a value has\nchanged. Retrieved passwords are masked in the logs and never printed.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/e1071918e9b268f29ec978c2a5528fbac6a97435"
-               },
-               {
-                  "sha": "b31ccc2b383c9902fccb8784a1c04b29b8facac3",
-                  "author": "kkuo",
-                  "timestamp": 1786557931,
-                  "message": "refactor(g/infra): Organize backup-database selection into classes\n\n- Extract _UnitHealth/_parse_units to deduplicate Juju status parsing\n- Introduce _Selector/_JujuStatusSelector/_ClusterStatusSelector to model\n  the two selection modes (juju status vs. get-cluster-status), and make\n  the cluster-status helpers private (module-internal only)\n- Centralize the unit-role to memberRole translation in _MEMBER_ROLES\n- Move shared summary markers to a new constants.py, imported by both\n  backup.py and the credential backup script on the stacked branch\n- Drop the unused juju_run_succeeded import and unused test variable",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/b31ccc2b383c9902fccb8784a1c04b29b8facac3"
                }
             ],
             "ciActions": [],
@@ -7405,7 +7405,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 47,
+            "newCommits": 62,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -8445,6 +8445,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4dc5840fb73c31fa67ef36a9dc946dfe203a663b",
+                  "author": "Kat",
+                  "timestamp": 1787254556,
+                  "message": "feat: add action to notify MM about GH failures (#132)\n\nHere, we add an action to notify Mattermost about GH failures. When used\nas intended, it fetches the corresponding run, linking the run, ref, and\ndescribing the trigger. It also pings a list of configured users.\n\nThis is pretty similar to what we already use elsewhere. But, instead of\na webhook, this utilizes the MM REST API and requires a bot token for\nuse. We also add a few additional features, such as using the repository\norg/owner icon as the author icon by default.\n\nIn terms of safety, as long as the MM token is implemented using a\nrepository secret, it should be that only actors with write permissions\ncan send notifications. That being said, caution should still be taken\nwhen using this action in public repositories.\n\nExample notification:\n<img width=\"2860\" height=\"630\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/5b68b971-628d-4080-adc9-1e1d0e2ffc9d\"\n/>",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/4dc5840fb73c31fa67ef36a9dc946dfe203a663b"
+               },
+               {
                   "sha": "9db27d8cab14caf047ed89eec804e078895a4c2c",
                   "author": "Kat",
                   "timestamp": 1787005308,
@@ -8457,13 +8464,6 @@
                   "timestamp": 1784841393,
                   "message": "feat(g/infra): Add database credential backup to Vault\n\nBack up database cluster credentials to a Vault KV path when\ncredential-usernames is set, updating the secret only when a value has\nchanged. Retrieved passwords are masked in the logs and never printed.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/e1071918e9b268f29ec978c2a5528fbac6a97435"
-               },
-               {
-                  "sha": "b31ccc2b383c9902fccb8784a1c04b29b8facac3",
-                  "author": "kkuo",
-                  "timestamp": 1786557931,
-                  "message": "refactor(g/infra): Organize backup-database selection into classes\n\n- Extract _UnitHealth/_parse_units to deduplicate Juju status parsing\n- Introduce _Selector/_JujuStatusSelector/_ClusterStatusSelector to model\n  the two selection modes (juju status vs. get-cluster-status), and make\n  the cluster-status helpers private (module-internal only)\n- Centralize the unit-role to memberRole translation in _MEMBER_ROLES\n- Move shared summary markers to a new constants.py, imported by both\n  backup.py and the credential backup script on the stacked branch\n- Drop the unused juju_run_succeeded import and unused test variable",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/b31ccc2b383c9902fccb8784a1c04b29b8facac3"
                }
             ],
             "ciActions": [],
