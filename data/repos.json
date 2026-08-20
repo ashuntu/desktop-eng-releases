@@ -5603,25 +5603,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "78663bfb1a935d3ccb98adad90bd1b6a18064a4b",
-                  "author": "kkuo",
-                  "timestamp": 1787255352,
-                  "message": "maint: Add ignores to .phpcs and reformat Hooks.php",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/78663bfb1a935d3ccb98adad90bd1b6a18064a4b"
+                  "sha": "c21aa8fcb3e6d71620577f855c4dc98429dad8f4",
+                  "author": "Kat",
+                  "timestamp": 1787262264,
+                  "message": "ci: Add GitHub Actions workflow for PHP, JSON, and LESS linting (#2)\n\nAdd GitHub Actions workflow for PHP, JSON, and LESS linting:\n- php-lint: runs composer test (parallel-lint, phpcs, minus-x) across\nPHP 8.3 and 8.5\n- json-lint: validates extension.json, i18n, and other JSON files\n- stylelint: lints LESS files using base wikimedia config\n\nWe also included some styling fixes to the LESS files.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/c21aa8fcb3e6d71620577f855c4dc98429dad8f4"
                },
                {
-                  "sha": "d34112bd3a94f358353a84712abcd60155507f88",
+                  "sha": "15191d1596b9fcb2dd3e84c7d5343b86f6d6a338",
                   "author": "kkuo",
-                  "timestamp": 1787253367,
-                  "message": "fix(vector): No overline for pinnable header",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/d34112bd3a94f358353a84712abcd60155507f88"
+                  "timestamp": 1787259943,
+                  "message": "style(less): Reformat to Wikimedia stylelint conventions\n\nMechanical stylelint --fix (tabs, paren/quote spacing) plus manual\nfixes for the remaining errors: merge duplicate selectors in\nHeader.less and Admonitions.less, border: none -> 0.\n\nNo behavior change intended.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/15191d1596b9fcb2dd3e84c7d5343b86f6d6a338"
                },
                {
-                  "sha": "2db07f40236e94eb35f41cb34ca7800c1017ed39",
+                  "sha": "e7c6073cd437dae80611d50e7c538249ae7cc5d6",
                   "author": "kkuo",
-                  "timestamp": 1787240895,
-                  "message": "maint: Drop CodeMirror, status-message, and related-articles styles\n\nThese don't belong in the extension:\n\n- CodeMirror.less and its CodeMirror test-extension wiring (clone target,\n  mount, wfLoadExtension) — the editor tweaks are dropped.\n- The StatusMessages and RelatedArticles on-wiki template styles and their\n  seed templates (Template:Message, Template:In use, Template:Related\n  articles); Template_examples and Main_Page are updated to drop the\n  removed sections, and the seed list in the README is corrected.\n\nAlso adds a generic `make run SCRIPT=...` target for one-off maintenance\nscripts, used here to delete the now-orphaned template pages from the test\nwiki (deleteBatch).",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/2db07f40236e94eb35f41cb34ca7800c1017ed39"
+                  "timestamp": 1787259920,
+                  "message": "ci: Lint LESS files with stylelint\n\nAdd a less-lint job running stylelint with stylelint-config-wikimedia\n(support-modern + mediawiki profiles, as used by MediaWiki core/skins)\nover resources/**/*.less, excluding vendored files and the generated\ncodex-tokens.less.\n\nRule overrides follow the Vector skins config, plus\ndeclaration-no-important: null — this extensions skin-overriding\nmodules deliberately use !important against Vectors own rules.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/e7c6073cd437dae80611d50e7c538249ae7cc5d6"
                }
             ],
             "ciActions": [],
