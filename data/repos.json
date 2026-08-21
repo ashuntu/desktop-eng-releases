@@ -5603,25 +5603,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "487f735b117ba34d30f6ebbe18aba6110791fde1",
+                  "author": "Kat",
+                  "timestamp": 1787326186,
+                  "message": "deps(ubuntu-palette.less): sync Vanilla Framework color palette (#4)\n\nAutomated update of `ubuntu-palette.less` from upstream Vanilla\nFramework.\n\n**Triggered by:** workflow_dispatch\n**Vanilla ref:** `latest stable`\n\nChanges were produced by including Vanilla's own `vf-theme-*--colors`\nmixins in a generated shim and compiling with Dart Sass, which\nresolves all computed color values (`adjust-color`, `rgba`,\n`color.scale`, map lookups, etc.) into static `--vf-color-*`\ncustom properties.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/487f735b117ba34d30f6ebbe18aba6110791fde1"
+               },
+               {
+                  "sha": "d005d060e73798567e779b28bcc81a838471c0bf",
+                  "author": "Kat",
+                  "timestamp": 1787326159,
+                  "message": "fix: Drop the overline on a section heading only when it leads the content (#3)\n\nA section heading that is the very first child of the content sits right\nbelow the page toolbar, so its overline would stack with the toolbar\nrule into a double bar. Suppress the border-top and top margin there —\nbut only when nothing precedes the heading, so a heading after intro\ntext (e.g. Main Page's \"Test pages\") keeps its overline.\n\n:first-child (not :first-of-type) is the key: it only matches when the\nheading is the first element child, regardless of element type. Covers\nthe article form (h2 wrapped in .mw-heading2 inside .mw-parser-output)\nand the special-page form (a bare h2 under .mw-body-content, e.g.\nSpecial:Version).",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/d005d060e73798567e779b28bcc81a838471c0bf"
+               },
+               {
                   "sha": "c21aa8fcb3e6d71620577f855c4dc98429dad8f4",
                   "author": "Kat",
                   "timestamp": 1787262264,
                   "message": "ci: Add GitHub Actions workflow for PHP, JSON, and LESS linting (#2)\n\nAdd GitHub Actions workflow for PHP, JSON, and LESS linting:\n- php-lint: runs composer test (parallel-lint, phpcs, minus-x) across\nPHP 8.3 and 8.5\n- json-lint: validates extension.json, i18n, and other JSON files\n- stylelint: lints LESS files using base wikimedia config\n\nWe also included some styling fixes to the LESS files.",
                   "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/c21aa8fcb3e6d71620577f855c4dc98429dad8f4"
-               },
-               {
-                  "sha": "15191d1596b9fcb2dd3e84c7d5343b86f6d6a338",
-                  "author": "kkuo",
-                  "timestamp": 1787259943,
-                  "message": "style(less): Reformat to Wikimedia stylelint conventions\n\nMechanical stylelint --fix (tabs, paren/quote spacing) plus manual\nfixes for the remaining errors: merge duplicate selectors in\nHeader.less and Admonitions.less, border: none -> 0.\n\nNo behavior change intended.",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/15191d1596b9fcb2dd3e84c7d5343b86f6d6a338"
-               },
-               {
-                  "sha": "e7c6073cd437dae80611d50e7c538249ae7cc5d6",
-                  "author": "kkuo",
-                  "timestamp": 1787259920,
-                  "message": "ci: Lint LESS files with stylelint\n\nAdd a less-lint job running stylelint with stylelint-config-wikimedia\n(support-modern + mediawiki profiles, as used by MediaWiki core/skins)\nover resources/**/*.less, excluding vendored files and the generated\ncodex-tokens.less.\n\nRule overrides follow the Vector skins config, plus\ndeclaration-no-important: null — this extensions skin-overriding\nmodules deliberately use !important against Vectors own rules.",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/e7c6073cd437dae80611d50e7c538249ae7cc5d6"
                }
             ],
             "ciActions": [],
