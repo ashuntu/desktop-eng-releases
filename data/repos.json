@@ -669,6 +669,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc8c1740fca00177ccb45fa80c5e9106a49af16f",
+                  "author": "Ken VanDine",
+                  "timestamp": 1787880622,
+                  "message": "Fix snap build: resolve libxml2 conflict between qemu and libspice-gtk parts\n\nThe qemu and libspice-gtk parts were both providing usr/lib/x86_64-linux-gnu/libxml2.so.2.9.14\nwith different contents, causing the snap build to fail during staging.\n\nAdd an override-stage hook to the qemu part to remove the conflicting libxml2 library file,\nallowing libspice-gtk's version to be used instead.",
+                  "url": "https://github.com/ubuntu/gnome-boxes/commit/dc8c1740fca00177ccb45fa80c5e9106a49af16f"
+               },
+               {
                   "sha": "958d3fea13cdce88aa1cbf75bee1d02e1bc545d2",
                   "author": "Marco Trevisan (Treviño)",
                   "timestamp": 1737360957,
@@ -681,13 +688,6 @@
                   "timestamp": 1737360926,
                   "message": "snap: Explicitly enable egl and webdav in spice-gtk",
                   "url": "https://github.com/ubuntu/gnome-boxes/commit/53a38f512bbbef7cf66d98175679f1858c6b7af3"
-               },
-               {
-                  "sha": "773e0e990ff57aa1871cb05dcdc85d7ec54fce6f",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1737356992,
-                  "message": "snap: Drop tracker part and dependency\n\nIt's not required anymore as per upstream commit dbc5cc586 (44.0), so\nremove it for us too",
-                  "url": "https://github.com/ubuntu/gnome-boxes/commit/773e0e990ff57aa1871cb05dcdc85d7ec54fce6f"
                }
             ],
             "ciActions": [],
@@ -4710,25 +4710,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4452ded392e900bcf03f15becf7e136bf8540111",
+                  "author": "Ken VanDine",
+                  "timestamp": 1787864275,
+                  "message": "Dont' strip out the debian/copyright from the packages we stage (#526)",
+                  "url": "https://github.com/canonical/steam-snap/commit/4452ded392e900bcf03f15becf7e136bf8540111"
+               },
+               {
+                  "sha": "1a93c35e822e27cc743956f644451637c919b96f",
+                  "author": "Ken VanDine",
+                  "timestamp": 1787848597,
+                  "message": "Dont' strip out the debian/copyright from the packages we stage",
+                  "url": "https://github.com/canonical/steam-snap/commit/1a93c35e822e27cc743956f644451637c919b96f"
+               },
+               {
                   "sha": "cadd1f0f6234d33be003c0fedd98d1c4af36b097",
                   "author": "Ken VanDine",
                   "timestamp": 1786460419,
                   "message": "Add snap setting to enable gamepadui mode (#523)",
                   "url": "https://github.com/canonical/steam-snap/commit/cadd1f0f6234d33be003c0fedd98d1c4af36b097"
-               },
-               {
-                  "sha": "f2027b88952271e6a2b46738925ca5bb5b31a576",
-                  "author": "Ken VanDine",
-                  "timestamp": 1786390227,
-                  "message": "Add snap setting to enable gamepadui mode\n\nSigned-off-by: Ken VanDine <ken.vandine@canonical.com>",
-                  "url": "https://github.com/canonical/steam-snap/commit/f2027b88952271e6a2b46738925ca5bb5b31a576"
-               },
-               {
-                  "sha": "96f3e6df7e2792dcc9deb8ada78ced0a99030301",
-                  "author": "Shane Crowley",
-                  "timestamp": 1784791765,
-                  "message": "docs: URL migration branch (#522)\n\nThis PR introduces changes necessary to migrate the steam documentation\nURL to `ubuntu.com/docs/steam`.\n\nIt also enables Google Analytics for tracking docs traffic.\n\nUDENG-10935",
-                  "url": "https://github.com/canonical/steam-snap/commit/96f3e6df7e2792dcc9deb8ada78ced0a99030301"
                }
             ],
             "ciActions": [],
@@ -7117,25 +7117,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4452ded392e900bcf03f15becf7e136bf8540111",
+                  "author": "Ken VanDine",
+                  "timestamp": 1787864275,
+                  "message": "Dont' strip out the debian/copyright from the packages we stage (#526)",
+                  "url": "https://github.com/canonical/steam-snap/commit/4452ded392e900bcf03f15becf7e136bf8540111"
+               },
+               {
+                  "sha": "1a93c35e822e27cc743956f644451637c919b96f",
+                  "author": "Ken VanDine",
+                  "timestamp": 1787848597,
+                  "message": "Dont' strip out the debian/copyright from the packages we stage",
+                  "url": "https://github.com/canonical/steam-snap/commit/1a93c35e822e27cc743956f644451637c919b96f"
+               },
+               {
                   "sha": "cadd1f0f6234d33be003c0fedd98d1c4af36b097",
                   "author": "Ken VanDine",
                   "timestamp": 1786460419,
                   "message": "Add snap setting to enable gamepadui mode (#523)",
                   "url": "https://github.com/canonical/steam-snap/commit/cadd1f0f6234d33be003c0fedd98d1c4af36b097"
-               },
-               {
-                  "sha": "f2027b88952271e6a2b46738925ca5bb5b31a576",
-                  "author": "Ken VanDine",
-                  "timestamp": 1786390227,
-                  "message": "Add snap setting to enable gamepadui mode\n\nSigned-off-by: Ken VanDine <ken.vandine@canonical.com>",
-                  "url": "https://github.com/canonical/steam-snap/commit/f2027b88952271e6a2b46738925ca5bb5b31a576"
-               },
-               {
-                  "sha": "96f3e6df7e2792dcc9deb8ada78ced0a99030301",
-                  "author": "Shane Crowley",
-                  "timestamp": 1784791765,
-                  "message": "docs: URL migration branch (#522)\n\nThis PR introduces changes necessary to migrate the steam documentation\nURL to `ubuntu.com/docs/steam`.\n\nIt also enables Google Analytics for tracking docs traffic.\n\nUDENG-10935",
-                  "url": "https://github.com/canonical/steam-snap/commit/96f3e6df7e2792dcc9deb8ada78ced0a99030301"
                }
             ],
             "ciActions": [],
@@ -9594,25 +9594,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4452ded392e900bcf03f15becf7e136bf8540111",
+                  "author": "Ken VanDine",
+                  "timestamp": 1787864275,
+                  "message": "Dont' strip out the debian/copyright from the packages we stage (#526)",
+                  "url": "https://github.com/canonical/steam-snap/commit/4452ded392e900bcf03f15becf7e136bf8540111"
+               },
+               {
+                  "sha": "1a93c35e822e27cc743956f644451637c919b96f",
+                  "author": "Ken VanDine",
+                  "timestamp": 1787848597,
+                  "message": "Dont' strip out the debian/copyright from the packages we stage",
+                  "url": "https://github.com/canonical/steam-snap/commit/1a93c35e822e27cc743956f644451637c919b96f"
+               },
+               {
                   "sha": "cadd1f0f6234d33be003c0fedd98d1c4af36b097",
                   "author": "Ken VanDine",
                   "timestamp": 1786460419,
                   "message": "Add snap setting to enable gamepadui mode (#523)",
                   "url": "https://github.com/canonical/steam-snap/commit/cadd1f0f6234d33be003c0fedd98d1c4af36b097"
-               },
-               {
-                  "sha": "f2027b88952271e6a2b46738925ca5bb5b31a576",
-                  "author": "Ken VanDine",
-                  "timestamp": 1786390227,
-                  "message": "Add snap setting to enable gamepadui mode\n\nSigned-off-by: Ken VanDine <ken.vandine@canonical.com>",
-                  "url": "https://github.com/canonical/steam-snap/commit/f2027b88952271e6a2b46738925ca5bb5b31a576"
-               },
-               {
-                  "sha": "96f3e6df7e2792dcc9deb8ada78ced0a99030301",
-                  "author": "Shane Crowley",
-                  "timestamp": 1784791765,
-                  "message": "docs: URL migration branch (#522)\n\nThis PR introduces changes necessary to migrate the steam documentation\nURL to `ubuntu.com/docs/steam`.\n\nIt also enables Google Analytics for tracking docs traffic.\n\nUDENG-10935",
-                  "url": "https://github.com/canonical/steam-snap/commit/96f3e6df7e2792dcc9deb8ada78ced0a99030301"
                }
             ],
             "ciActions": [],
