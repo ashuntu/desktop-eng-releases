@@ -669,25 +669,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dc8c1740fca00177ccb45fa80c5e9106a49af16f",
-                  "author": "Ken VanDine",
-                  "timestamp": 1787880622,
-                  "message": "Fix snap build: resolve libxml2 conflict between qemu and libspice-gtk parts\n\nThe qemu and libspice-gtk parts were both providing usr/lib/x86_64-linux-gnu/libxml2.so.2.9.14\nwith different contents, causing the snap build to fail during staging.\n\nAdd an override-stage hook to the qemu part to remove the conflicting libxml2 library file,\nallowing libspice-gtk's version to be used instead.",
-                  "url": "https://github.com/ubuntu/gnome-boxes/commit/dc8c1740fca00177ccb45fa80c5e9106a49af16f"
+                  "sha": "4069731ef7bc2810b645e2562dbc6ba40e64abc0",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1788020947,
+                  "message": "snap: Always use the latest version of osinfo-db\n\nIt's a project it's always better to be on the edge, and there's no risk\nthat it could break anything",
+                  "url": "https://github.com/ubuntu/gnome-boxes/commit/4069731ef7bc2810b645e2562dbc6ba40e64abc0"
                },
                {
-                  "sha": "958d3fea13cdce88aa1cbf75bee1d02e1bc545d2",
+                  "sha": "0cca6f0c57414f2c628b65ebd2f3787c6dcffe1c",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1737360957,
-                  "message": "snap: Only prime osinfo relevant data",
-                  "url": "https://github.com/ubuntu/gnome-boxes/commit/958d3fea13cdce88aa1cbf75bee1d02e1bc545d2"
+                  "timestamp": 1788017969,
+                  "message": "snap: Compute the latest ubuntu version programmatically\n\nSo that we don't have to update the file manually, but rather just\nrebuild the snap",
+                  "url": "https://github.com/ubuntu/gnome-boxes/commit/0cca6f0c57414f2c628b65ebd2f3787c6dcffe1c"
                },
                {
-                  "sha": "53a38f512bbbef7cf66d98175679f1858c6b7af3",
+                  "sha": "22c014b0dc64e30db2b943a730e33763faabaef6",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1737360926,
-                  "message": "snap: Explicitly enable egl and webdav in spice-gtk",
-                  "url": "https://github.com/ubuntu/gnome-boxes/commit/53a38f512bbbef7cf66d98175679f1858c6b7af3"
+                  "timestamp": 1788017866,
+                  "message": "ubuntu-daily: Fix live iso URI",
+                  "url": "https://github.com/ubuntu/gnome-boxes/commit/22c014b0dc64e30db2b943a730e33763faabaef6"
                }
             ],
             "ciActions": [],
@@ -705,8 +705,8 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 11,
-                     "timestamp": 1704211697
+                     "revision": 14,
+                     "timestamp": 1788027502
                   }
                ],
                "channels": [
@@ -4117,6 +4117,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 379031829,
+                  "version": "rev123",
+                  "timestamp": 1788018123,
+                  "title": "Revision 123",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 109</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 16:02 UTC on 29 Aug 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/255\">#255</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev122...rev123\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev122&hellip;rev123</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev123",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev123...main"
+               },
+               {
                   "id": 378851902,
                   "version": "rev122",
                   "timestamp": 1787968089,
@@ -4133,15 +4142,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 20:19 UTC on 28 Aug 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Pause reconciliation when LocalSettings doesn&rsquo;t match composer lock by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/246\">#246</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev120...rev121\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev120&hellip;rev121</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev121",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev121...main"
-               },
-               {
-                  "id": 378724561,
-                  "version": "rev120",
-                  "timestamp": 1787944667,
-                  "title": "Revision 120",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 19:45 UTC on 28 Aug 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(deps): update dependency pydantic to v2.13.5 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/248\">#248</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev119...rev120\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev119&hellip;rev120</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev120",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev120...main"
                }
             ],
             "commits": null,
@@ -4156,8 +4156,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 122,
-                     "timestamp": 1787970921
+                     "revision": 123,
+                     "timestamp": 1788019329
                   }
                ],
                "channels": [
@@ -6524,6 +6524,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 379031829,
+                  "version": "rev123",
+                  "timestamp": 1788018123,
+                  "title": "Revision 123",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 109</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 16:02 UTC on 29 Aug 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/255\">#255</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev122...rev123\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev122&hellip;rev123</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev123",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev123...main"
+               },
+               {
                   "id": 378851902,
                   "version": "rev122",
                   "timestamp": 1787968089,
@@ -6540,15 +6549,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 20:19 UTC on 28 Aug 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Pause reconciliation when LocalSettings doesn&rsquo;t match composer lock by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/246\">#246</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev120...rev121\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev120&hellip;rev121</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev121",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev121...main"
-               },
-               {
-                  "id": 378724561,
-                  "version": "rev120",
-                  "timestamp": 1787944667,
-                  "title": "Revision 120",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 19:45 UTC on 28 Aug 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(deps): update dependency pydantic to v2.13.5 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/248\">#248</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev119...rev120\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev119&hellip;rev120</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev120",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev120...main"
                }
             ],
             "commits": null,
@@ -6563,8 +6563,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 122,
-                     "timestamp": 1787970921
+                     "revision": 123,
+                     "timestamp": 1788019329
                   }
                ],
                "channels": [
@@ -9001,6 +9001,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 379031829,
+                  "version": "rev123",
+                  "timestamp": 1788018123,
+                  "title": "Revision 123",
+                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 109</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 16:02 UTC on 29 Aug 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/255\">#255</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev122...rev123\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev122&hellip;rev123</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev123",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev123...main"
+               },
+               {
                   "id": 378851902,
                   "version": "rev122",
                   "timestamp": 1787968089,
@@ -9017,15 +9026,6 @@
                   "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 20:19 UTC on 28 Aug 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Pause reconciliation when LocalSettings doesn&rsquo;t match composer lock by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/246\">#246</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev120...rev121\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev120&hellip;rev121</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev121",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev121...main"
-               },
-               {
-                  "id": 378724561,
-                  "version": "rev120",
-                  "timestamp": 1787944667,
-                  "title": "Revision 120",
-                  "body": "<p>resources:\n    -  git-sync-image: registry.k8s.io/git-sync/git-sync:v4.7.1\n       resource-revision: 1\n    -  mediawiki-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;1.46/edge&rsquo; at 19:45 UTC on 28 Aug 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix(deps): update dependency pydantic to v2.13.5 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/248\">#248</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/rev119...rev120\">https://github.com/canonical/mediawiki-k8s-operator/compare/rev119&hellip;rev120</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/rev120",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/rev120...main"
                }
             ],
             "commits": null,
@@ -9040,8 +9040,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 122,
-                     "timestamp": 1787970921
+                     "revision": 123,
+                     "timestamp": 1788019329
                   }
                ],
                "channels": [
