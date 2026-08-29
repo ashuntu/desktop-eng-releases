@@ -669,6 +669,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "775d76f691a177348338dd6ab904f29839ffbb39",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1788035755,
+                  "message": "snap/spice-gtk: Disable polkit support\n\nWe have a patch in gnome-boxes to suggest using sudo to fix the\npermission issues, that's fine for now.\n\nIn future we should support polkit via [1], but it's requiring store\nacceptance, so let's just continue supporting usb redirection as we did\nso far for now.\n\n[1] https://snapcraft.io/docs/reference/interfaces/polkit-interface/",
+                  "url": "https://github.com/ubuntu/gnome-boxes/commit/775d76f691a177348338dd6ab904f29839ffbb39"
+               },
+               {
                   "sha": "4069731ef7bc2810b645e2562dbc6ba40e64abc0",
                   "author": "Marco Trevisan (Treviño)",
                   "timestamp": 1788020947,
@@ -681,13 +688,6 @@
                   "timestamp": 1788017969,
                   "message": "snap: Compute the latest ubuntu version programmatically\n\nSo that we don't have to update the file manually, but rather just\nrebuild the snap",
                   "url": "https://github.com/ubuntu/gnome-boxes/commit/0cca6f0c57414f2c628b65ebd2f3787c6dcffe1c"
-               },
-               {
-                  "sha": "22c014b0dc64e30db2b943a730e33763faabaef6",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1788017866,
-                  "message": "ubuntu-daily: Fix live iso URI",
-                  "url": "https://github.com/ubuntu/gnome-boxes/commit/22c014b0dc64e30db2b943a730e33763faabaef6"
                }
             ],
             "ciActions": [],
@@ -4113,7 +4113,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -4912,25 +4912,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "30d02eeac13f91888e808ee2dc9c0462b40dcb42",
-                  "author": "Dennis Loose",
-                  "timestamp": 1787320660,
-                  "message": "a11y: slides with interactive elements need to have them exposed to screen readers (#1472)\n\n## Summary\nFixes #1452.\nThe installation slideshow is not exposed to screen readers: slide text\nis not\nannounced, and the links in slides such as \"Help and support\" cannot be\nreached\nor read. This PR makes the slides accessible to assistive technology,\nwith no\nchange to their visual appearance.\n\n## What changed\n- Each slide's body text is exposed as a single focusable node, so a\nscreen\n  reader reads the slide in one Tab stop.\n- A slide's links are exposed as their own focusable nodes.\n- Decorative content (images, list bullets, spacing markup) is hidden\nfrom\n  assistive technology so it is not announced.\n- The slideshow is reachable by Tab and announces itself when focused,\nbut does\n  not take focus automatically (it auto-advances on a timer).\n- `install_page`: the install-log overlay, rather than the whole\nslideshow, is\n  excluded from focus, so the slides are focusable.\n\n## Testing\n- `flutter test apps/ubuntu_bootstrap/test/install/`\n- Added widget tests covering the slide body node, the link nodes,\ndecorative\n  content exclusion, and Tab order.\n- Manually verified with Orca on Linux.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/30d02eeac13f91888e808ee2dc9c0462b40dcb42"
+                  "sha": "df29bb1944cbfa0671cac6d3927c9876f2d3221c",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788037031,
+                  "message": "fix: Pin html below 0.15.7 and regenerate mocks (#1532)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/df29bb1944cbfa0671cac6d3927c9876f2d3221c"
                },
                {
-                  "sha": "0cc6b169ec7b739ffc46e1792df15c7678aaa4af",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1787319836,
-                  "message": "Merge remote-tracking branch 'origin/main' into 1452-a11y-slides-with-interactive-elements-need-to-have-them-exposed-to-screen-readers",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0cc6b169ec7b739ffc46e1792df15c7678aaa4af"
+                  "sha": "144c7726a925c92bb9e70db5d0e4a1a60f3c3de7",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1788007944,
+                  "message": "chore: Regenerate mocks\n\nOutput of melos generate, which CI diffs against the tree. The mock\ngenerator now emits a blank line after the ignore_for_file header.\n\nClaude-Session: https://claude.ai/code/session_01K4ipmNnmKt7PB21TSeVtHK",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/144c7726a925c92bb9e70db5d0e4a1a60f3c3de7"
                },
                {
-                  "sha": "16ec02b673484f8e3986905e5a862bea22501fd5",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1787319830,
-                  "message": "style: apply dart format",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/16ec02b673484f8e3986905e5a862bea22501fd5"
+                  "sha": "24bbbbfa8bdcfe4678a378c4e12e530a59da9ae6",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1788007944,
+                  "message": "fix: Pin html below 0.15.7 in ubuntu_provision and ubuntu_wizard\n\nhtml 0.15.7, published 2026-08-28, removed the matches() helper from\nquery_selector.dart that flutter_html 3.0.0 still calls. The packages\ndirectory has no lockfile, so CI resolved the new version and every\ntest in the packages that pull in flutter_html stopped compiling.\n\nClaude-Session: https://claude.ai/code/session_01K4ipmNnmKt7PB21TSeVtHK",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/24bbbbfa8bdcfe4678a378c4e12e530a59da9ae6"
                }
             ],
             "ciActions": [
@@ -6520,7 +6520,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -7319,25 +7319,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "30d02eeac13f91888e808ee2dc9c0462b40dcb42",
-                  "author": "Dennis Loose",
-                  "timestamp": 1787320660,
-                  "message": "a11y: slides with interactive elements need to have them exposed to screen readers (#1472)\n\n## Summary\nFixes #1452.\nThe installation slideshow is not exposed to screen readers: slide text\nis not\nannounced, and the links in slides such as \"Help and support\" cannot be\nreached\nor read. This PR makes the slides accessible to assistive technology,\nwith no\nchange to their visual appearance.\n\n## What changed\n- Each slide's body text is exposed as a single focusable node, so a\nscreen\n  reader reads the slide in one Tab stop.\n- A slide's links are exposed as their own focusable nodes.\n- Decorative content (images, list bullets, spacing markup) is hidden\nfrom\n  assistive technology so it is not announced.\n- The slideshow is reachable by Tab and announces itself when focused,\nbut does\n  not take focus automatically (it auto-advances on a timer).\n- `install_page`: the install-log overlay, rather than the whole\nslideshow, is\n  excluded from focus, so the slides are focusable.\n\n## Testing\n- `flutter test apps/ubuntu_bootstrap/test/install/`\n- Added widget tests covering the slide body node, the link nodes,\ndecorative\n  content exclusion, and Tab order.\n- Manually verified with Orca on Linux.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/30d02eeac13f91888e808ee2dc9c0462b40dcb42"
+                  "sha": "df29bb1944cbfa0671cac6d3927c9876f2d3221c",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788037031,
+                  "message": "fix: Pin html below 0.15.7 and regenerate mocks (#1532)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/df29bb1944cbfa0671cac6d3927c9876f2d3221c"
                },
                {
-                  "sha": "0cc6b169ec7b739ffc46e1792df15c7678aaa4af",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1787319836,
-                  "message": "Merge remote-tracking branch 'origin/main' into 1452-a11y-slides-with-interactive-elements-need-to-have-them-exposed-to-screen-readers",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0cc6b169ec7b739ffc46e1792df15c7678aaa4af"
+                  "sha": "144c7726a925c92bb9e70db5d0e4a1a60f3c3de7",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1788007944,
+                  "message": "chore: Regenerate mocks\n\nOutput of melos generate, which CI diffs against the tree. The mock\ngenerator now emits a blank line after the ignore_for_file header.\n\nClaude-Session: https://claude.ai/code/session_01K4ipmNnmKt7PB21TSeVtHK",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/144c7726a925c92bb9e70db5d0e4a1a60f3c3de7"
                },
                {
-                  "sha": "16ec02b673484f8e3986905e5a862bea22501fd5",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1787319830,
-                  "message": "style: apply dart format",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/16ec02b673484f8e3986905e5a862bea22501fd5"
+                  "sha": "24bbbbfa8bdcfe4678a378c4e12e530a59da9ae6",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1788007944,
+                  "message": "fix: Pin html below 0.15.7 in ubuntu_provision and ubuntu_wizard\n\nhtml 0.15.7, published 2026-08-28, removed the matches() helper from\nquery_selector.dart that flutter_html 3.0.0 still calls. The packages\ndirectory has no lockfile, so CI resolved the new version and every\ntest in the packages that pull in flutter_html stopped compiling.\n\nClaude-Session: https://claude.ai/code/session_01K4ipmNnmKt7PB21TSeVtHK",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/24bbbbfa8bdcfe4678a378c4e12e530a59da9ae6"
                }
             ],
             "ciActions": [
@@ -8997,7 +8997,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -9796,25 +9796,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "30d02eeac13f91888e808ee2dc9c0462b40dcb42",
-                  "author": "Dennis Loose",
-                  "timestamp": 1787320660,
-                  "message": "a11y: slides with interactive elements need to have them exposed to screen readers (#1472)\n\n## Summary\nFixes #1452.\nThe installation slideshow is not exposed to screen readers: slide text\nis not\nannounced, and the links in slides such as \"Help and support\" cannot be\nreached\nor read. This PR makes the slides accessible to assistive technology,\nwith no\nchange to their visual appearance.\n\n## What changed\n- Each slide's body text is exposed as a single focusable node, so a\nscreen\n  reader reads the slide in one Tab stop.\n- A slide's links are exposed as their own focusable nodes.\n- Decorative content (images, list bullets, spacing markup) is hidden\nfrom\n  assistive technology so it is not announced.\n- The slideshow is reachable by Tab and announces itself when focused,\nbut does\n  not take focus automatically (it auto-advances on a timer).\n- `install_page`: the install-log overlay, rather than the whole\nslideshow, is\n  excluded from focus, so the slides are focusable.\n\n## Testing\n- `flutter test apps/ubuntu_bootstrap/test/install/`\n- Added widget tests covering the slide body node, the link nodes,\ndecorative\n  content exclusion, and Tab order.\n- Manually verified with Orca on Linux.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/30d02eeac13f91888e808ee2dc9c0462b40dcb42"
+                  "sha": "df29bb1944cbfa0671cac6d3927c9876f2d3221c",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788037031,
+                  "message": "fix: Pin html below 0.15.7 and regenerate mocks (#1532)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/df29bb1944cbfa0671cac6d3927c9876f2d3221c"
                },
                {
-                  "sha": "0cc6b169ec7b739ffc46e1792df15c7678aaa4af",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1787319836,
-                  "message": "Merge remote-tracking branch 'origin/main' into 1452-a11y-slides-with-interactive-elements-need-to-have-them-exposed-to-screen-readers",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/0cc6b169ec7b739ffc46e1792df15c7678aaa4af"
+                  "sha": "144c7726a925c92bb9e70db5d0e4a1a60f3c3de7",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1788007944,
+                  "message": "chore: Regenerate mocks\n\nOutput of melos generate, which CI diffs against the tree. The mock\ngenerator now emits a blank line after the ignore_for_file header.\n\nClaude-Session: https://claude.ai/code/session_01K4ipmNnmKt7PB21TSeVtHK",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/144c7726a925c92bb9e70db5d0e4a1a60f3c3de7"
                },
                {
-                  "sha": "16ec02b673484f8e3986905e5a862bea22501fd5",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1787319830,
-                  "message": "style: apply dart format",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/16ec02b673484f8e3986905e5a862bea22501fd5"
+                  "sha": "24bbbbfa8bdcfe4678a378c4e12e530a59da9ae6",
+                  "author": "Lukas Klingsbo",
+                  "timestamp": 1788007944,
+                  "message": "fix: Pin html below 0.15.7 in ubuntu_provision and ubuntu_wizard\n\nhtml 0.15.7, published 2026-08-28, removed the matches() helper from\nquery_selector.dart that flutter_html 3.0.0 still calls. The packages\ndirectory has no lockfile, so CI resolved the new version and every\ntest in the packages that pull in flutter_html stopped compiling.\n\nClaude-Session: https://claude.ai/code/session_01K4ipmNnmKt7PB21TSeVtHK",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/24bbbbfa8bdcfe4678a378c4e12e530a59da9ae6"
                }
             ],
             "ciActions": [
