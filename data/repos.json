@@ -3594,25 +3594,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "930088aa0896ba1bf4a8269d1af25c9e9ec2cbbd",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788253997,
+                  "message": "feat: add decisions from pulse 16 retro regarding the ai pr usage (#137)",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/930088aa0896ba1bf4a8269d1af25c9e9ec2cbbd"
+               },
+               {
+                  "sha": "0bd25db14ed322bd12938603d0259d43eb2d03d4",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788251670,
+                  "message": "feat: add decisions from pulse 16 retro regarding the ai based pr resolving and descriptions",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/0bd25db14ed322bd12938603d0259d43eb2d03d4"
+               },
+               {
                   "sha": "4dc5840fb73c31fa67ef36a9dc946dfe203a663b",
                   "author": "Kat",
                   "timestamp": 1787254556,
                   "message": "feat: add action to notify MM about GH failures (#132)\n\nHere, we add an action to notify Mattermost about GH failures. When used\nas intended, it fetches the corresponding run, linking the run, ref, and\ndescribing the trigger. It also pings a list of configured users.\n\nThis is pretty similar to what we already use elsewhere. But, instead of\na webhook, this utilizes the MM REST API and requires a bot token for\nuse. We also add a few additional features, such as using the repository\norg/owner icon as the author icon by default.\n\nIn terms of safety, as long as the MM token is implemented using a\nrepository secret, it should be that only actors with write permissions\ncan send notifications. That being said, caution should still be taken\nwhen using this action in public repositories.\n\nExample notification:\n<img width=\"2860\" height=\"630\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/5b68b971-628d-4080-adc9-1e1d0e2ffc9d\"\n/>",
                   "url": "https://github.com/canonical/desktop-engineering/commit/4dc5840fb73c31fa67ef36a9dc946dfe203a663b"
-               },
-               {
-                  "sha": "9db27d8cab14caf047ed89eec804e078895a4c2c",
-                  "author": "Kat",
-                  "timestamp": 1787005308,
-                  "message": "feat(g/infra): Add database credential backup to Vault (#135)\n\nHere, we expand on the backup-database action, adding functionality to\nallow for the optional backing up of database credentials to a vault,\nwhich is required for cases where the entire cluster is lost.\n\nAs the usernames needed differ not only between PostgreSQL and MySQL but\nalso between revisions, we need to allow the user to pass in their\nusername target.\n\nBy default, the credentials secret path is constructed as\n`secret/services/{model}/{application}-credentials`. The secret is\ncreated if it does not exist already.\n\nTo avoid making unnecessary writes and incrementing revisions every time\nthe action is run, we first fetch the secrets from the vault. This is\nlater used to compare against what the charm reports. Only if there is a\nmismatch do we attempt a write.\n\nTo avoid leaking credentials to the logs, we take advantage of GitHub's\nmasking feature.\n\nVault credentials are provided via a token input.\n\nThe action will install the vault snap if it is not already installed,\nallowing for multiple calls to the action within the same job.\n\nIn a dry run scenario, we only skip write actions to the vault.\n\nDepends on #134\n\nRefs:\n\nhttps://canonical.com/data/mysql/docs/8.4/how-to/back-up-and-restore/migrate-a-cluster/\n\nhttps://canonical.com/data/postgresql/docs/14/how-to/back-up-and-restore/migrate-a-cluster/\n\n---\n[UDENG-11019](https://warthogs.atlassian.net/browse/UDENG-11019)\n\n[UDENG-11019]:\nhttps://warthogs.atlassian.net/browse/UDENG-11019?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9db27d8cab14caf047ed89eec804e078895a4c2c"
-               },
-               {
-                  "sha": "e1071918e9b268f29ec978c2a5528fbac6a97435",
-                  "author": "kkuo",
-                  "timestamp": 1784841393,
-                  "message": "feat(g/infra): Add database credential backup to Vault\n\nBack up database cluster credentials to a Vault KV path when\ncredential-usernames is set, updating the secret only when a value has\nchanged. Retrieved passwords are masked in the logs and never printed.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e1071918e9b268f29ec978c2a5528fbac6a97435"
                }
             ],
             "ciActions": [],
@@ -5968,25 +5968,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "930088aa0896ba1bf4a8269d1af25c9e9ec2cbbd",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788253997,
+                  "message": "feat: add decisions from pulse 16 retro regarding the ai pr usage (#137)",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/930088aa0896ba1bf4a8269d1af25c9e9ec2cbbd"
+               },
+               {
+                  "sha": "0bd25db14ed322bd12938603d0259d43eb2d03d4",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788251670,
+                  "message": "feat: add decisions from pulse 16 retro regarding the ai based pr resolving and descriptions",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/0bd25db14ed322bd12938603d0259d43eb2d03d4"
+               },
+               {
                   "sha": "4dc5840fb73c31fa67ef36a9dc946dfe203a663b",
                   "author": "Kat",
                   "timestamp": 1787254556,
                   "message": "feat: add action to notify MM about GH failures (#132)\n\nHere, we add an action to notify Mattermost about GH failures. When used\nas intended, it fetches the corresponding run, linking the run, ref, and\ndescribing the trigger. It also pings a list of configured users.\n\nThis is pretty similar to what we already use elsewhere. But, instead of\na webhook, this utilizes the MM REST API and requires a bot token for\nuse. We also add a few additional features, such as using the repository\norg/owner icon as the author icon by default.\n\nIn terms of safety, as long as the MM token is implemented using a\nrepository secret, it should be that only actors with write permissions\ncan send notifications. That being said, caution should still be taken\nwhen using this action in public repositories.\n\nExample notification:\n<img width=\"2860\" height=\"630\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/5b68b971-628d-4080-adc9-1e1d0e2ffc9d\"\n/>",
                   "url": "https://github.com/canonical/desktop-engineering/commit/4dc5840fb73c31fa67ef36a9dc946dfe203a663b"
-               },
-               {
-                  "sha": "9db27d8cab14caf047ed89eec804e078895a4c2c",
-                  "author": "Kat",
-                  "timestamp": 1787005308,
-                  "message": "feat(g/infra): Add database credential backup to Vault (#135)\n\nHere, we expand on the backup-database action, adding functionality to\nallow for the optional backing up of database credentials to a vault,\nwhich is required for cases where the entire cluster is lost.\n\nAs the usernames needed differ not only between PostgreSQL and MySQL but\nalso between revisions, we need to allow the user to pass in their\nusername target.\n\nBy default, the credentials secret path is constructed as\n`secret/services/{model}/{application}-credentials`. The secret is\ncreated if it does not exist already.\n\nTo avoid making unnecessary writes and incrementing revisions every time\nthe action is run, we first fetch the secrets from the vault. This is\nlater used to compare against what the charm reports. Only if there is a\nmismatch do we attempt a write.\n\nTo avoid leaking credentials to the logs, we take advantage of GitHub's\nmasking feature.\n\nVault credentials are provided via a token input.\n\nThe action will install the vault snap if it is not already installed,\nallowing for multiple calls to the action within the same job.\n\nIn a dry run scenario, we only skip write actions to the vault.\n\nDepends on #134\n\nRefs:\n\nhttps://canonical.com/data/mysql/docs/8.4/how-to/back-up-and-restore/migrate-a-cluster/\n\nhttps://canonical.com/data/postgresql/docs/14/how-to/back-up-and-restore/migrate-a-cluster/\n\n---\n[UDENG-11019](https://warthogs.atlassian.net/browse/UDENG-11019)\n\n[UDENG-11019]:\nhttps://warthogs.atlassian.net/browse/UDENG-11019?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9db27d8cab14caf047ed89eec804e078895a4c2c"
-               },
-               {
-                  "sha": "e1071918e9b268f29ec978c2a5528fbac6a97435",
-                  "author": "kkuo",
-                  "timestamp": 1784841393,
-                  "message": "feat(g/infra): Add database credential backup to Vault\n\nBack up database cluster credentials to a Vault KV path when\ncredential-usernames is set, updating the secret only when a value has\nchanged. Retrieved passwords are masked in the logs and never printed.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e1071918e9b268f29ec978c2a5528fbac6a97435"
                }
             ],
             "ciActions": [],
@@ -8478,25 +8478,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "930088aa0896ba1bf4a8269d1af25c9e9ec2cbbd",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788253997,
+                  "message": "feat: add decisions from pulse 16 retro regarding the ai pr usage (#137)",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/930088aa0896ba1bf4a8269d1af25c9e9ec2cbbd"
+               },
+               {
+                  "sha": "0bd25db14ed322bd12938603d0259d43eb2d03d4",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788251670,
+                  "message": "feat: add decisions from pulse 16 retro regarding the ai based pr resolving and descriptions",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/0bd25db14ed322bd12938603d0259d43eb2d03d4"
+               },
+               {
                   "sha": "4dc5840fb73c31fa67ef36a9dc946dfe203a663b",
                   "author": "Kat",
                   "timestamp": 1787254556,
                   "message": "feat: add action to notify MM about GH failures (#132)\n\nHere, we add an action to notify Mattermost about GH failures. When used\nas intended, it fetches the corresponding run, linking the run, ref, and\ndescribing the trigger. It also pings a list of configured users.\n\nThis is pretty similar to what we already use elsewhere. But, instead of\na webhook, this utilizes the MM REST API and requires a bot token for\nuse. We also add a few additional features, such as using the repository\norg/owner icon as the author icon by default.\n\nIn terms of safety, as long as the MM token is implemented using a\nrepository secret, it should be that only actors with write permissions\ncan send notifications. That being said, caution should still be taken\nwhen using this action in public repositories.\n\nExample notification:\n<img width=\"2860\" height=\"630\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/5b68b971-628d-4080-adc9-1e1d0e2ffc9d\"\n/>",
                   "url": "https://github.com/canonical/desktop-engineering/commit/4dc5840fb73c31fa67ef36a9dc946dfe203a663b"
-               },
-               {
-                  "sha": "9db27d8cab14caf047ed89eec804e078895a4c2c",
-                  "author": "Kat",
-                  "timestamp": 1787005308,
-                  "message": "feat(g/infra): Add database credential backup to Vault (#135)\n\nHere, we expand on the backup-database action, adding functionality to\nallow for the optional backing up of database credentials to a vault,\nwhich is required for cases where the entire cluster is lost.\n\nAs the usernames needed differ not only between PostgreSQL and MySQL but\nalso between revisions, we need to allow the user to pass in their\nusername target.\n\nBy default, the credentials secret path is constructed as\n`secret/services/{model}/{application}-credentials`. The secret is\ncreated if it does not exist already.\n\nTo avoid making unnecessary writes and incrementing revisions every time\nthe action is run, we first fetch the secrets from the vault. This is\nlater used to compare against what the charm reports. Only if there is a\nmismatch do we attempt a write.\n\nTo avoid leaking credentials to the logs, we take advantage of GitHub's\nmasking feature.\n\nVault credentials are provided via a token input.\n\nThe action will install the vault snap if it is not already installed,\nallowing for multiple calls to the action within the same job.\n\nIn a dry run scenario, we only skip write actions to the vault.\n\nDepends on #134\n\nRefs:\n\nhttps://canonical.com/data/mysql/docs/8.4/how-to/back-up-and-restore/migrate-a-cluster/\n\nhttps://canonical.com/data/postgresql/docs/14/how-to/back-up-and-restore/migrate-a-cluster/\n\n---\n[UDENG-11019](https://warthogs.atlassian.net/browse/UDENG-11019)\n\n[UDENG-11019]:\nhttps://warthogs.atlassian.net/browse/UDENG-11019?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/9db27d8cab14caf047ed89eec804e078895a4c2c"
-               },
-               {
-                  "sha": "e1071918e9b268f29ec978c2a5528fbac6a97435",
-                  "author": "kkuo",
-                  "timestamp": 1784841393,
-                  "message": "feat(g/infra): Add database credential backup to Vault\n\nBack up database cluster credentials to a Vault KV path when\ncredential-usernames is set, updating the secret only when a value has\nchanged. Retrieved passwords are masked in the logs and never printed.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e1071918e9b268f29ec978c2a5528fbac6a97435"
                }
             ],
             "ciActions": [],
