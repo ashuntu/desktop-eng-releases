@@ -699,8 +699,8 @@
                   {
                      "track": "latest",
                      "channel": "stable",
-                     "revision": 11,
-                     "timestamp": 1704813669
+                     "revision": 16,
+                     "timestamp": 1788382257
                   },
                   {
                      "track": "latest",
@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b05a07cf81e702e7d1fbd6f86f76477430300e2b",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788371284,
-                  "message": "ci: Auto-regenerate packaging files on Dependabot PRs\n\nFixes #1759\nUDENG-11145",
-                  "url": "https://github.com/canonical/authd/commit/b05a07cf81e702e7d1fbd6f86f76477430300e2b"
-               },
-               {
-                  "sha": "ef4323c8424fdbd100df07f4455b9220106f5d4e",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1786462876,
-                  "message": "ci: Regenerate packaging files for Dependabot PRs\n\nDependabot updates to the root Cargo and Go manifests can leave these files\nstale:\n- Cargo.lock\n- debian/control's XS-Vendored-Sources-Rust field\n- debian/copyright for the vendor/ and vendor_rust/ trees\n\nRegenerate the files and push them to the PR branch. Generate Cargo.lock and\nXS-Vendored-Sources-Rust in Ubuntu Noble, which matches the package build and\nits pinned Cargo. Noble's default Cargo cannot parse Cargo.toml, so put the\npinned Cargo bin directory first in PATH. Generate debian/copyright in\nubuntu:devel, which provides python3-anytree and matches the licenserecon\ncheck.\n\nRun generation with read-only permissions because Cargo, cargo-vendor-filterer,\nGo, and the copyright script may run dependency code. Let the separate\nwrite-scoped job apply the artifact and push it without running PR code.\n\nFixes #1759\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/ef4323c8424fdbd100df07f4455b9220106f5d4e"
-               },
-               {
-                  "sha": "c63027861f40203608ad1d8f902bb6010249abde",
+                  "sha": "73fe38a8f94ce83c4301b52f412f7baf4cc3f601",
                   "author": "adombeck",
-                  "timestamp": 1788359675,
-                  "message": "deps(go): bump google.golang.org/grpc from 1.83.0 to 1.83.1 (#1853)",
-                  "url": "https://github.com/canonical/authd/commit/c63027861f40203608ad1d8f902bb6010249abde"
+                  "timestamp": 1788379019,
+                  "message": "ci: retry only the failed tests after an ASAN-internal abort (#1798)\n\nCloses #1797\nUDENG-11236",
+                  "url": "https://github.com/canonical/authd/commit/73fe38a8f94ce83c4301b52f412f7baf4cc3f601"
+               },
+               {
+                  "sha": "60174b9d54f7a86613c2c6559bfee54950a3ba79",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788374848,
+                  "message": "Revert accidental direct main update\n\nThe CI fix was intended for a separate branch, but the inherited upstream\nconfiguration sent it to main. Restore main's previous workflow content\nbefore publishing the fix under its own branch.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/60174b9d54f7a86613c2c6559bfee54950a3ba79"
+               },
+               {
+                  "sha": "3fac0c7f6051121342885bc7306cc2bcdad90dff",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788374793,
+                  "message": "Fix packaging regeneration for Git 2.55 and OpenSSL 4\n\nGit 2.55 can interpret the generic git diff command used with the two\nmanifest paths as a no-index comparison. Use git diff-files to compare\nthe worktree with the checkout index, and pass the workspace as a safe\nGit directory for container jobs.\n\nThe ubuntu:devel image now ships OpenSSL 4, which cargo-vendor-filterer\n0.5.16 rejects. Pin version 0.5.18 in both packaging workflows; its\ndefault build does not enable the incompatible OpenSSL dependency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/3fac0c7f6051121342885bc7306cc2bcdad90dff"
                }
             ],
             "ciActions": [
@@ -5774,25 +5774,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b05a07cf81e702e7d1fbd6f86f76477430300e2b",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788371284,
-                  "message": "ci: Auto-regenerate packaging files on Dependabot PRs\n\nFixes #1759\nUDENG-11145",
-                  "url": "https://github.com/canonical/authd/commit/b05a07cf81e702e7d1fbd6f86f76477430300e2b"
-               },
-               {
-                  "sha": "ef4323c8424fdbd100df07f4455b9220106f5d4e",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1786462876,
-                  "message": "ci: Regenerate packaging files for Dependabot PRs\n\nDependabot updates to the root Cargo and Go manifests can leave these files\nstale:\n- Cargo.lock\n- debian/control's XS-Vendored-Sources-Rust field\n- debian/copyright for the vendor/ and vendor_rust/ trees\n\nRegenerate the files and push them to the PR branch. Generate Cargo.lock and\nXS-Vendored-Sources-Rust in Ubuntu Noble, which matches the package build and\nits pinned Cargo. Noble's default Cargo cannot parse Cargo.toml, so put the\npinned Cargo bin directory first in PATH. Generate debian/copyright in\nubuntu:devel, which provides python3-anytree and matches the licenserecon\ncheck.\n\nRun generation with read-only permissions because Cargo, cargo-vendor-filterer,\nGo, and the copyright script may run dependency code. Let the separate\nwrite-scoped job apply the artifact and push it without running PR code.\n\nFixes #1759\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/ef4323c8424fdbd100df07f4455b9220106f5d4e"
-               },
-               {
-                  "sha": "c63027861f40203608ad1d8f902bb6010249abde",
+                  "sha": "73fe38a8f94ce83c4301b52f412f7baf4cc3f601",
                   "author": "adombeck",
-                  "timestamp": 1788359675,
-                  "message": "deps(go): bump google.golang.org/grpc from 1.83.0 to 1.83.1 (#1853)",
-                  "url": "https://github.com/canonical/authd/commit/c63027861f40203608ad1d8f902bb6010249abde"
+                  "timestamp": 1788379019,
+                  "message": "ci: retry only the failed tests after an ASAN-internal abort (#1798)\n\nCloses #1797\nUDENG-11236",
+                  "url": "https://github.com/canonical/authd/commit/73fe38a8f94ce83c4301b52f412f7baf4cc3f601"
+               },
+               {
+                  "sha": "60174b9d54f7a86613c2c6559bfee54950a3ba79",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788374848,
+                  "message": "Revert accidental direct main update\n\nThe CI fix was intended for a separate branch, but the inherited upstream\nconfiguration sent it to main. Restore main's previous workflow content\nbefore publishing the fix under its own branch.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/60174b9d54f7a86613c2c6559bfee54950a3ba79"
+               },
+               {
+                  "sha": "3fac0c7f6051121342885bc7306cc2bcdad90dff",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788374793,
+                  "message": "Fix packaging regeneration for Git 2.55 and OpenSSL 4\n\nGit 2.55 can interpret the generic git diff command used with the two\nmanifest paths as a no-index comparison. Use git diff-files to compare\nthe worktree with the checkout index, and pass the workspace as a safe\nGit directory for container jobs.\n\nThe ubuntu:devel image now ships OpenSSL 4, which cargo-vendor-filterer\n0.5.16 rejects. Pin version 0.5.18 in both packaging workflows; its\ndefault build does not enable the incompatible OpenSSL dependency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/3fac0c7f6051121342885bc7306cc2bcdad90dff"
                }
             ],
             "ciActions": [
@@ -8290,25 +8290,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b05a07cf81e702e7d1fbd6f86f76477430300e2b",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788371284,
-                  "message": "ci: Auto-regenerate packaging files on Dependabot PRs\n\nFixes #1759\nUDENG-11145",
-                  "url": "https://github.com/canonical/authd/commit/b05a07cf81e702e7d1fbd6f86f76477430300e2b"
-               },
-               {
-                  "sha": "ef4323c8424fdbd100df07f4455b9220106f5d4e",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1786462876,
-                  "message": "ci: Regenerate packaging files for Dependabot PRs\n\nDependabot updates to the root Cargo and Go manifests can leave these files\nstale:\n- Cargo.lock\n- debian/control's XS-Vendored-Sources-Rust field\n- debian/copyright for the vendor/ and vendor_rust/ trees\n\nRegenerate the files and push them to the PR branch. Generate Cargo.lock and\nXS-Vendored-Sources-Rust in Ubuntu Noble, which matches the package build and\nits pinned Cargo. Noble's default Cargo cannot parse Cargo.toml, so put the\npinned Cargo bin directory first in PATH. Generate debian/copyright in\nubuntu:devel, which provides python3-anytree and matches the licenserecon\ncheck.\n\nRun generation with read-only permissions because Cargo, cargo-vendor-filterer,\nGo, and the copyright script may run dependency code. Let the separate\nwrite-scoped job apply the artifact and push it without running PR code.\n\nFixes #1759\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/ef4323c8424fdbd100df07f4455b9220106f5d4e"
-               },
-               {
-                  "sha": "c63027861f40203608ad1d8f902bb6010249abde",
+                  "sha": "73fe38a8f94ce83c4301b52f412f7baf4cc3f601",
                   "author": "adombeck",
-                  "timestamp": 1788359675,
-                  "message": "deps(go): bump google.golang.org/grpc from 1.83.0 to 1.83.1 (#1853)",
-                  "url": "https://github.com/canonical/authd/commit/c63027861f40203608ad1d8f902bb6010249abde"
+                  "timestamp": 1788379019,
+                  "message": "ci: retry only the failed tests after an ASAN-internal abort (#1798)\n\nCloses #1797\nUDENG-11236",
+                  "url": "https://github.com/canonical/authd/commit/73fe38a8f94ce83c4301b52f412f7baf4cc3f601"
+               },
+               {
+                  "sha": "60174b9d54f7a86613c2c6559bfee54950a3ba79",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788374848,
+                  "message": "Revert accidental direct main update\n\nThe CI fix was intended for a separate branch, but the inherited upstream\nconfiguration sent it to main. Restore main's previous workflow content\nbefore publishing the fix under its own branch.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/60174b9d54f7a86613c2c6559bfee54950a3ba79"
+               },
+               {
+                  "sha": "3fac0c7f6051121342885bc7306cc2bcdad90dff",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788374793,
+                  "message": "Fix packaging regeneration for Git 2.55 and OpenSSL 4\n\nGit 2.55 can interpret the generic git diff command used with the two\nmanifest paths as a no-index comparison. Use git diff-files to compare\nthe worktree with the checkout index, and pass the workspace as a safe\nGit directory for container jobs.\n\nThe ubuntu:devel image now ships OpenSSL 4, which cargo-vendor-filterer\n0.5.16 rejects. Pin version 0.5.18 in both packaging workflows; its\ndefault build does not enable the incompatible OpenSSL dependency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/3fac0c7f6051121342885bc7306cc2bcdad90dff"
                }
             ],
             "ciActions": [
