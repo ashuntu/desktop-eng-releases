@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f95ffe399d1536d810c7d2ae78e47eadb605c96b",
-                  "author": "adombeck",
-                  "timestamp": 1788191561,
-                  "message": "e2e: test migrations with branch packages (#1843)\n\nUDENG-11344\nCloses #1842",
-                  "url": "https://github.com/canonical/authd/commit/f95ffe399d1536d810c7d2ae78e47eadb605c96b"
+                  "sha": "b0042ebebafb639869650b4ccaa8196e5108db70",
+                  "author": "Orazio Lucio Terranova",
+                  "timestamp": 1788357672,
+                  "message": "e2e-tests: test entra + MFA authentication for GDM and polkit (#1813)\n\nAdd tests to check Entra ID + MFA authentication flow for GDM and\npolkit.\n\n- Test GDM login with Entra ID password and MFA (login_entra_auth.robot)\n- Test polkit authentication as authd user via pkexec using Entra ID\npassword and MFA after initial GDM login (polkit_pkexec.robot)\n\nUDENG-11240 \n\ne2e-brokers: msentraid\ne2e-tests: login_entra_auth.robot polkit_pkexec.robot",
+                  "url": "https://github.com/canonical/authd/commit/b0042ebebafb639869650b4ccaa8196e5108db70"
                },
                {
-                  "sha": "4154f3d066bbe717130df60f48728db5adf95049",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1787999317,
-                  "message": "e2e: use selected PPA for migration updates\n\nMigration suites restore a snapshot without the PPA selected during\nprovisioning. Pass that selection through run-tests.sh and add it before\ninstalling branch authd packages, defaulting to authd-edge so migration\nruns use matching dependencies.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4154f3d066bbe717130df60f48728db5adf95049"
+                  "sha": "2fb854be06f9cb91847bc1c1dd9ae88312dd79e8",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1788353454,
+                  "message": "Bump Go toolchain to 1.26.7 (#1854)\n\nThe Go 1.26.7 package is now available in the Ubuntu Enterprise Desktop\nbackports PPA for Noble.\n\nI've cherry-picked both dependabot commits from #1834 and #1835, but\ndropped the the temporary workflow/toolchain workarounds and superseded\nboth with this PR.\n\nCloses #1851\nUDENG-11365",
+                  "url": "https://github.com/canonical/authd/commit/2fb854be06f9cb91847bc1c1dd9ae88312dd79e8"
                },
                {
-                  "sha": "f63466feaa8715f01cbb8880ade86ab8685ee552",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788185546,
-                  "message": "e2e: test migrations with branch packages\n\nIn CI, the migration e2e-tests should exercise upgrades from the latest\nstable authd and broker releases to artifacts built from the current\nbranch. Pass the branch-built Debian package and broker snap into the VM\nand install them during the update step. For local runs which don't\nspecify packages via the AUTHD_DEB and BROKER_SNAP environment\nvariables, we keep falling back to the edge version.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f63466feaa8715f01cbb8880ade86ab8685ee552"
+                  "sha": "040ece0153c30b8969281b281abe8664e5f356a6",
+                  "author": "OrazioLucioTerranova",
+                  "timestamp": 1788342616,
+                  "message": "e2e-tests: add Enter ID Password and MFA keyword",
+                  "url": "https://github.com/canonical/authd/commit/040ece0153c30b8969281b281abe8664e5f356a6"
                }
             ],
             "ciActions": [
@@ -4918,25 +4918,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d431b53f11436bc4b715371be216199f7807e6c2",
+                  "sha": "a24ce9d879554b86cb3aa167c5f2dd260a9f9679",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1788341147,
-                  "message": "chore(deps): bump rand from 0.8.5 to 0.8.8 in /packages/landscape_mock_server (#1418)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d431b53f11436bc4b715371be216199f7807e6c2"
+                  "timestamp": 1788354080,
+                  "message": "CI: replace failing Go coverage converter in TiCS upload job (#1537)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a24ce9d879554b86cb3aa167c5f2dd260a9f9679"
                },
                {
-                  "sha": "fed9f83d3355c4840fd21e6e2615bf7f85564ab1",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1788340511,
-                  "message": "chore(deps): bump rand in /packages/landscape_mock_server\n\nBumps [rand](https://github.com/rust-random/rand) from 0.8.5 to 0.8.8.\n- [Release notes](https://github.com/rust-random/rand/releases)\n- [Changelog](https://github.com/rust-random/rand/blob/0.8.8/CHANGELOG.md)\n- [Commits](https://github.com/rust-random/rand/compare/0.8.5...0.8.8)\n\n---\nupdated-dependencies:\n- dependency-name: rand\n  dependency-version: 0.8.6\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fed9f83d3355c4840fd21e6e2615bf7f85564ab1"
+                  "sha": "19b4c6908abf94a5c017a3ecff31b0b723411915",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788353375,
+                  "message": "Merge branch 'main' into copilot/fix-github-actions-job",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/19b4c6908abf94a5c017a3ecff31b0b723411915"
                },
                {
-                  "sha": "9e783a3af9662812adecf46f161a44b74e463ca5",
+                  "sha": "b91bc843d2a862279666bbaed55867f0bedda706",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1788340400,
-                  "message": "chore(deps): bump bytes from 1.9.0 to 1.12.1 in /packages/landscape_mock_server (#1296)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9e783a3af9662812adecf46f161a44b74e463ca5"
+                  "timestamp": 1788351555,
+                  "message": "Remediate OSV findings blocking `scan-push / osv-scan` (#1536)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b91bc843d2a862279666bbaed55867f0bedda706"
                }
             ],
             "ciActions": [
@@ -5315,7 +5315,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 58,
+            "newCommits": 59,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5362,14 +5362,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 658,
-                     "timestamp": 1787756174
+                     "revision": 660,
+                     "timestamp": 1788354777
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 659,
-                     "timestamp": 1787756335
+                     "revision": 661,
+                     "timestamp": 1788355018
                   }
                ],
                "channels": [
@@ -5774,25 +5774,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f95ffe399d1536d810c7d2ae78e47eadb605c96b",
-                  "author": "adombeck",
-                  "timestamp": 1788191561,
-                  "message": "e2e: test migrations with branch packages (#1843)\n\nUDENG-11344\nCloses #1842",
-                  "url": "https://github.com/canonical/authd/commit/f95ffe399d1536d810c7d2ae78e47eadb605c96b"
+                  "sha": "b0042ebebafb639869650b4ccaa8196e5108db70",
+                  "author": "Orazio Lucio Terranova",
+                  "timestamp": 1788357672,
+                  "message": "e2e-tests: test entra + MFA authentication for GDM and polkit (#1813)\n\nAdd tests to check Entra ID + MFA authentication flow for GDM and\npolkit.\n\n- Test GDM login with Entra ID password and MFA (login_entra_auth.robot)\n- Test polkit authentication as authd user via pkexec using Entra ID\npassword and MFA after initial GDM login (polkit_pkexec.robot)\n\nUDENG-11240 \n\ne2e-brokers: msentraid\ne2e-tests: login_entra_auth.robot polkit_pkexec.robot",
+                  "url": "https://github.com/canonical/authd/commit/b0042ebebafb639869650b4ccaa8196e5108db70"
                },
                {
-                  "sha": "4154f3d066bbe717130df60f48728db5adf95049",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1787999317,
-                  "message": "e2e: use selected PPA for migration updates\n\nMigration suites restore a snapshot without the PPA selected during\nprovisioning. Pass that selection through run-tests.sh and add it before\ninstalling branch authd packages, defaulting to authd-edge so migration\nruns use matching dependencies.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4154f3d066bbe717130df60f48728db5adf95049"
+                  "sha": "2fb854be06f9cb91847bc1c1dd9ae88312dd79e8",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1788353454,
+                  "message": "Bump Go toolchain to 1.26.7 (#1854)\n\nThe Go 1.26.7 package is now available in the Ubuntu Enterprise Desktop\nbackports PPA for Noble.\n\nI've cherry-picked both dependabot commits from #1834 and #1835, but\ndropped the the temporary workflow/toolchain workarounds and superseded\nboth with this PR.\n\nCloses #1851\nUDENG-11365",
+                  "url": "https://github.com/canonical/authd/commit/2fb854be06f9cb91847bc1c1dd9ae88312dd79e8"
                },
                {
-                  "sha": "f63466feaa8715f01cbb8880ade86ab8685ee552",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788185546,
-                  "message": "e2e: test migrations with branch packages\n\nIn CI, the migration e2e-tests should exercise upgrades from the latest\nstable authd and broker releases to artifacts built from the current\nbranch. Pass the branch-built Debian package and broker snap into the VM\nand install them during the update step. For local runs which don't\nspecify packages via the AUTHD_DEB and BROKER_SNAP environment\nvariables, we keep falling back to the edge version.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f63466feaa8715f01cbb8880ade86ab8685ee552"
+                  "sha": "040ece0153c30b8969281b281abe8664e5f356a6",
+                  "author": "OrazioLucioTerranova",
+                  "timestamp": 1788342616,
+                  "message": "e2e-tests: add Enter ID Password and MFA keyword",
+                  "url": "https://github.com/canonical/authd/commit/040ece0153c30b8969281b281abe8664e5f356a6"
                }
             ],
             "ciActions": [
@@ -7331,25 +7331,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d431b53f11436bc4b715371be216199f7807e6c2",
+                  "sha": "a24ce9d879554b86cb3aa167c5f2dd260a9f9679",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1788341147,
-                  "message": "chore(deps): bump rand from 0.8.5 to 0.8.8 in /packages/landscape_mock_server (#1418)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d431b53f11436bc4b715371be216199f7807e6c2"
+                  "timestamp": 1788354080,
+                  "message": "CI: replace failing Go coverage converter in TiCS upload job (#1537)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a24ce9d879554b86cb3aa167c5f2dd260a9f9679"
                },
                {
-                  "sha": "fed9f83d3355c4840fd21e6e2615bf7f85564ab1",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1788340511,
-                  "message": "chore(deps): bump rand in /packages/landscape_mock_server\n\nBumps [rand](https://github.com/rust-random/rand) from 0.8.5 to 0.8.8.\n- [Release notes](https://github.com/rust-random/rand/releases)\n- [Changelog](https://github.com/rust-random/rand/blob/0.8.8/CHANGELOG.md)\n- [Commits](https://github.com/rust-random/rand/compare/0.8.5...0.8.8)\n\n---\nupdated-dependencies:\n- dependency-name: rand\n  dependency-version: 0.8.6\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fed9f83d3355c4840fd21e6e2615bf7f85564ab1"
+                  "sha": "19b4c6908abf94a5c017a3ecff31b0b723411915",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788353375,
+                  "message": "Merge branch 'main' into copilot/fix-github-actions-job",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/19b4c6908abf94a5c017a3ecff31b0b723411915"
                },
                {
-                  "sha": "9e783a3af9662812adecf46f161a44b74e463ca5",
+                  "sha": "b91bc843d2a862279666bbaed55867f0bedda706",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1788340400,
-                  "message": "chore(deps): bump bytes from 1.9.0 to 1.12.1 in /packages/landscape_mock_server (#1296)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9e783a3af9662812adecf46f161a44b74e463ca5"
+                  "timestamp": 1788351555,
+                  "message": "Remediate OSV findings blocking `scan-push / osv-scan` (#1536)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b91bc843d2a862279666bbaed55867f0bedda706"
                }
             ],
             "ciActions": [
@@ -7450,7 +7450,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 103,
+            "newCommits": 116,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7769,7 +7769,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 58,
+            "newCommits": 59,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7816,14 +7816,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 658,
-                     "timestamp": 1787756174
+                     "revision": 660,
+                     "timestamp": 1788354777
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 659,
-                     "timestamp": 1787756335
+                     "revision": 661,
+                     "timestamp": 1788355018
                   }
                ],
                "channels": [
@@ -7844,9 +7844,18 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 106,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
+               {
+                  "id": 381162369,
+                  "version": "v0.16.4.post3",
+                  "timestamp": 1788344689,
+                  "title": "v0.16.4.post3",
+                  "body": "",
+                  "url": "https://github.com/ubuntu/adsys/releases/tag/v0.16.4.post3",
+                  "compareUrl": "https://github.com/ubuntu/adsys/compare/v0.16.4.post3...main"
+               },
                {
                   "id": 341463082,
                   "version": "v0.16.4.post2",
@@ -7864,15 +7873,6 @@
                   "body": "",
                   "url": "https://github.com/ubuntu/adsys/releases/tag/v0.16.4.post1",
                   "compareUrl": "https://github.com/ubuntu/adsys/compare/v0.16.4.post1...main"
-               },
-               {
-                  "id": 264751977,
-                  "version": "v0.16.4",
-                  "timestamp": 1763981704,
-                  "title": "v0.16.4",
-                  "body": "",
-                  "url": "https://github.com/ubuntu/adsys/releases/tag/v0.16.4",
-                  "compareUrl": "https://github.com/ubuntu/adsys/compare/v0.16.4...main"
                }
             ],
             "commits": null,
@@ -8290,25 +8290,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f95ffe399d1536d810c7d2ae78e47eadb605c96b",
-                  "author": "adombeck",
-                  "timestamp": 1788191561,
-                  "message": "e2e: test migrations with branch packages (#1843)\n\nUDENG-11344\nCloses #1842",
-                  "url": "https://github.com/canonical/authd/commit/f95ffe399d1536d810c7d2ae78e47eadb605c96b"
+                  "sha": "b0042ebebafb639869650b4ccaa8196e5108db70",
+                  "author": "Orazio Lucio Terranova",
+                  "timestamp": 1788357672,
+                  "message": "e2e-tests: test entra + MFA authentication for GDM and polkit (#1813)\n\nAdd tests to check Entra ID + MFA authentication flow for GDM and\npolkit.\n\n- Test GDM login with Entra ID password and MFA (login_entra_auth.robot)\n- Test polkit authentication as authd user via pkexec using Entra ID\npassword and MFA after initial GDM login (polkit_pkexec.robot)\n\nUDENG-11240 \n\ne2e-brokers: msentraid\ne2e-tests: login_entra_auth.robot polkit_pkexec.robot",
+                  "url": "https://github.com/canonical/authd/commit/b0042ebebafb639869650b4ccaa8196e5108db70"
                },
                {
-                  "sha": "4154f3d066bbe717130df60f48728db5adf95049",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1787999317,
-                  "message": "e2e: use selected PPA for migration updates\n\nMigration suites restore a snapshot without the PPA selected during\nprovisioning. Pass that selection through run-tests.sh and add it before\ninstalling branch authd packages, defaulting to authd-edge so migration\nruns use matching dependencies.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/4154f3d066bbe717130df60f48728db5adf95049"
+                  "sha": "2fb854be06f9cb91847bc1c1dd9ae88312dd79e8",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1788353454,
+                  "message": "Bump Go toolchain to 1.26.7 (#1854)\n\nThe Go 1.26.7 package is now available in the Ubuntu Enterprise Desktop\nbackports PPA for Noble.\n\nI've cherry-picked both dependabot commits from #1834 and #1835, but\ndropped the the temporary workflow/toolchain workarounds and superseded\nboth with this PR.\n\nCloses #1851\nUDENG-11365",
+                  "url": "https://github.com/canonical/authd/commit/2fb854be06f9cb91847bc1c1dd9ae88312dd79e8"
                },
                {
-                  "sha": "f63466feaa8715f01cbb8880ade86ab8685ee552",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788185546,
-                  "message": "e2e: test migrations with branch packages\n\nIn CI, the migration e2e-tests should exercise upgrades from the latest\nstable authd and broker releases to artifacts built from the current\nbranch. Pass the branch-built Debian package and broker snap into the VM\nand install them during the update step. For local runs which don't\nspecify packages via the AUTHD_DEB and BROKER_SNAP environment\nvariables, we keep falling back to the edge version.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f63466feaa8715f01cbb8880ade86ab8685ee552"
+                  "sha": "040ece0153c30b8969281b281abe8664e5f356a6",
+                  "author": "OrazioLucioTerranova",
+                  "timestamp": 1788342616,
+                  "message": "e2e-tests: add Enter ID Password and MFA keyword",
+                  "url": "https://github.com/canonical/authd/commit/040ece0153c30b8969281b281abe8664e5f356a6"
                }
             ],
             "ciActions": [
@@ -9814,25 +9814,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d431b53f11436bc4b715371be216199f7807e6c2",
+                  "sha": "a24ce9d879554b86cb3aa167c5f2dd260a9f9679",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1788341147,
-                  "message": "chore(deps): bump rand from 0.8.5 to 0.8.8 in /packages/landscape_mock_server (#1418)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/d431b53f11436bc4b715371be216199f7807e6c2"
+                  "timestamp": 1788354080,
+                  "message": "CI: replace failing Go coverage converter in TiCS upload job (#1537)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/a24ce9d879554b86cb3aa167c5f2dd260a9f9679"
                },
                {
-                  "sha": "fed9f83d3355c4840fd21e6e2615bf7f85564ab1",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1788340511,
-                  "message": "chore(deps): bump rand in /packages/landscape_mock_server\n\nBumps [rand](https://github.com/rust-random/rand) from 0.8.5 to 0.8.8.\n- [Release notes](https://github.com/rust-random/rand/releases)\n- [Changelog](https://github.com/rust-random/rand/blob/0.8.8/CHANGELOG.md)\n- [Commits](https://github.com/rust-random/rand/compare/0.8.5...0.8.8)\n\n---\nupdated-dependencies:\n- dependency-name: rand\n  dependency-version: 0.8.6\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/fed9f83d3355c4840fd21e6e2615bf7f85564ab1"
+                  "sha": "19b4c6908abf94a5c017a3ecff31b0b723411915",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1788353375,
+                  "message": "Merge branch 'main' into copilot/fix-github-actions-job",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/19b4c6908abf94a5c017a3ecff31b0b723411915"
                },
                {
-                  "sha": "9e783a3af9662812adecf46f161a44b74e463ca5",
+                  "sha": "b91bc843d2a862279666bbaed55867f0bedda706",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1788340400,
-                  "message": "chore(deps): bump bytes from 1.9.0 to 1.12.1 in /packages/landscape_mock_server (#1296)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9e783a3af9662812adecf46f161a44b74e463ca5"
+                  "timestamp": 1788351555,
+                  "message": "Remediate OSV findings blocking `scan-push / osv-scan` (#1536)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b91bc843d2a862279666bbaed55867f0bedda706"
                }
             ],
             "ciActions": [
@@ -10246,7 +10246,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 58,
+            "newCommits": 59,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10293,14 +10293,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 658,
-                     "timestamp": 1787756174
+                     "revision": 660,
+                     "timestamp": 1788354777
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 659,
-                     "timestamp": 1787756335
+                     "revision": 661,
+                     "timestamp": 1788355018
                   }
                ],
                "channels": [
