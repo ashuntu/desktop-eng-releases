@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b0042ebebafb639869650b4ccaa8196e5108db70",
-                  "author": "Orazio Lucio Terranova",
-                  "timestamp": 1788357672,
-                  "message": "e2e-tests: test entra + MFA authentication for GDM and polkit (#1813)\n\nAdd tests to check Entra ID + MFA authentication flow for GDM and\npolkit.\n\n- Test GDM login with Entra ID password and MFA (login_entra_auth.robot)\n- Test polkit authentication as authd user via pkexec using Entra ID\npassword and MFA after initial GDM login (polkit_pkexec.robot)\n\nUDENG-11240 \n\ne2e-brokers: msentraid\ne2e-tests: login_entra_auth.robot polkit_pkexec.robot",
-                  "url": "https://github.com/canonical/authd/commit/b0042ebebafb639869650b4ccaa8196e5108db70"
+                  "sha": "b05a07cf81e702e7d1fbd6f86f76477430300e2b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788371284,
+                  "message": "ci: Auto-regenerate packaging files on Dependabot PRs\n\nFixes #1759\nUDENG-11145",
+                  "url": "https://github.com/canonical/authd/commit/b05a07cf81e702e7d1fbd6f86f76477430300e2b"
                },
                {
-                  "sha": "2fb854be06f9cb91847bc1c1dd9ae88312dd79e8",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1788353454,
-                  "message": "Bump Go toolchain to 1.26.7 (#1854)\n\nThe Go 1.26.7 package is now available in the Ubuntu Enterprise Desktop\nbackports PPA for Noble.\n\nI've cherry-picked both dependabot commits from #1834 and #1835, but\ndropped the the temporary workflow/toolchain workarounds and superseded\nboth with this PR.\n\nCloses #1851\nUDENG-11365",
-                  "url": "https://github.com/canonical/authd/commit/2fb854be06f9cb91847bc1c1dd9ae88312dd79e8"
+                  "sha": "ef4323c8424fdbd100df07f4455b9220106f5d4e",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1786462876,
+                  "message": "ci: Regenerate packaging files for Dependabot PRs\n\nDependabot updates to the root Cargo and Go manifests can leave these files\nstale:\n- Cargo.lock\n- debian/control's XS-Vendored-Sources-Rust field\n- debian/copyright for the vendor/ and vendor_rust/ trees\n\nRegenerate the files and push them to the PR branch. Generate Cargo.lock and\nXS-Vendored-Sources-Rust in Ubuntu Noble, which matches the package build and\nits pinned Cargo. Noble's default Cargo cannot parse Cargo.toml, so put the\npinned Cargo bin directory first in PATH. Generate debian/copyright in\nubuntu:devel, which provides python3-anytree and matches the licenserecon\ncheck.\n\nRun generation with read-only permissions because Cargo, cargo-vendor-filterer,\nGo, and the copyright script may run dependency code. Let the separate\nwrite-scoped job apply the artifact and push it without running PR code.\n\nFixes #1759\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ef4323c8424fdbd100df07f4455b9220106f5d4e"
                },
                {
-                  "sha": "040ece0153c30b8969281b281abe8664e5f356a6",
-                  "author": "OrazioLucioTerranova",
-                  "timestamp": 1788342616,
-                  "message": "e2e-tests: add Enter ID Password and MFA keyword",
-                  "url": "https://github.com/canonical/authd/commit/040ece0153c30b8969281b281abe8664e5f356a6"
+                  "sha": "c63027861f40203608ad1d8f902bb6010249abde",
+                  "author": "adombeck",
+                  "timestamp": 1788359675,
+                  "message": "deps(go): bump google.golang.org/grpc from 1.83.0 to 1.83.1 (#1853)",
+                  "url": "https://github.com/canonical/authd/commit/c63027861f40203608ad1d8f902bb6010249abde"
                }
             ],
             "ciActions": [
@@ -5774,25 +5774,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b0042ebebafb639869650b4ccaa8196e5108db70",
-                  "author": "Orazio Lucio Terranova",
-                  "timestamp": 1788357672,
-                  "message": "e2e-tests: test entra + MFA authentication for GDM and polkit (#1813)\n\nAdd tests to check Entra ID + MFA authentication flow for GDM and\npolkit.\n\n- Test GDM login with Entra ID password and MFA (login_entra_auth.robot)\n- Test polkit authentication as authd user via pkexec using Entra ID\npassword and MFA after initial GDM login (polkit_pkexec.robot)\n\nUDENG-11240 \n\ne2e-brokers: msentraid\ne2e-tests: login_entra_auth.robot polkit_pkexec.robot",
-                  "url": "https://github.com/canonical/authd/commit/b0042ebebafb639869650b4ccaa8196e5108db70"
+                  "sha": "b05a07cf81e702e7d1fbd6f86f76477430300e2b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788371284,
+                  "message": "ci: Auto-regenerate packaging files on Dependabot PRs\n\nFixes #1759\nUDENG-11145",
+                  "url": "https://github.com/canonical/authd/commit/b05a07cf81e702e7d1fbd6f86f76477430300e2b"
                },
                {
-                  "sha": "2fb854be06f9cb91847bc1c1dd9ae88312dd79e8",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1788353454,
-                  "message": "Bump Go toolchain to 1.26.7 (#1854)\n\nThe Go 1.26.7 package is now available in the Ubuntu Enterprise Desktop\nbackports PPA for Noble.\n\nI've cherry-picked both dependabot commits from #1834 and #1835, but\ndropped the the temporary workflow/toolchain workarounds and superseded\nboth with this PR.\n\nCloses #1851\nUDENG-11365",
-                  "url": "https://github.com/canonical/authd/commit/2fb854be06f9cb91847bc1c1dd9ae88312dd79e8"
+                  "sha": "ef4323c8424fdbd100df07f4455b9220106f5d4e",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1786462876,
+                  "message": "ci: Regenerate packaging files for Dependabot PRs\n\nDependabot updates to the root Cargo and Go manifests can leave these files\nstale:\n- Cargo.lock\n- debian/control's XS-Vendored-Sources-Rust field\n- debian/copyright for the vendor/ and vendor_rust/ trees\n\nRegenerate the files and push them to the PR branch. Generate Cargo.lock and\nXS-Vendored-Sources-Rust in Ubuntu Noble, which matches the package build and\nits pinned Cargo. Noble's default Cargo cannot parse Cargo.toml, so put the\npinned Cargo bin directory first in PATH. Generate debian/copyright in\nubuntu:devel, which provides python3-anytree and matches the licenserecon\ncheck.\n\nRun generation with read-only permissions because Cargo, cargo-vendor-filterer,\nGo, and the copyright script may run dependency code. Let the separate\nwrite-scoped job apply the artifact and push it without running PR code.\n\nFixes #1759\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ef4323c8424fdbd100df07f4455b9220106f5d4e"
                },
                {
-                  "sha": "040ece0153c30b8969281b281abe8664e5f356a6",
-                  "author": "OrazioLucioTerranova",
-                  "timestamp": 1788342616,
-                  "message": "e2e-tests: add Enter ID Password and MFA keyword",
-                  "url": "https://github.com/canonical/authd/commit/040ece0153c30b8969281b281abe8664e5f356a6"
+                  "sha": "c63027861f40203608ad1d8f902bb6010249abde",
+                  "author": "adombeck",
+                  "timestamp": 1788359675,
+                  "message": "deps(go): bump google.golang.org/grpc from 1.83.0 to 1.83.1 (#1853)",
+                  "url": "https://github.com/canonical/authd/commit/c63027861f40203608ad1d8f902bb6010249abde"
                }
             ],
             "ciActions": [
@@ -8290,25 +8290,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b0042ebebafb639869650b4ccaa8196e5108db70",
-                  "author": "Orazio Lucio Terranova",
-                  "timestamp": 1788357672,
-                  "message": "e2e-tests: test entra + MFA authentication for GDM and polkit (#1813)\n\nAdd tests to check Entra ID + MFA authentication flow for GDM and\npolkit.\n\n- Test GDM login with Entra ID password and MFA (login_entra_auth.robot)\n- Test polkit authentication as authd user via pkexec using Entra ID\npassword and MFA after initial GDM login (polkit_pkexec.robot)\n\nUDENG-11240 \n\ne2e-brokers: msentraid\ne2e-tests: login_entra_auth.robot polkit_pkexec.robot",
-                  "url": "https://github.com/canonical/authd/commit/b0042ebebafb639869650b4ccaa8196e5108db70"
+                  "sha": "b05a07cf81e702e7d1fbd6f86f76477430300e2b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788371284,
+                  "message": "ci: Auto-regenerate packaging files on Dependabot PRs\n\nFixes #1759\nUDENG-11145",
+                  "url": "https://github.com/canonical/authd/commit/b05a07cf81e702e7d1fbd6f86f76477430300e2b"
                },
                {
-                  "sha": "2fb854be06f9cb91847bc1c1dd9ae88312dd79e8",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1788353454,
-                  "message": "Bump Go toolchain to 1.26.7 (#1854)\n\nThe Go 1.26.7 package is now available in the Ubuntu Enterprise Desktop\nbackports PPA for Noble.\n\nI've cherry-picked both dependabot commits from #1834 and #1835, but\ndropped the the temporary workflow/toolchain workarounds and superseded\nboth with this PR.\n\nCloses #1851\nUDENG-11365",
-                  "url": "https://github.com/canonical/authd/commit/2fb854be06f9cb91847bc1c1dd9ae88312dd79e8"
+                  "sha": "ef4323c8424fdbd100df07f4455b9220106f5d4e",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1786462876,
+                  "message": "ci: Regenerate packaging files for Dependabot PRs\n\nDependabot updates to the root Cargo and Go manifests can leave these files\nstale:\n- Cargo.lock\n- debian/control's XS-Vendored-Sources-Rust field\n- debian/copyright for the vendor/ and vendor_rust/ trees\n\nRegenerate the files and push them to the PR branch. Generate Cargo.lock and\nXS-Vendored-Sources-Rust in Ubuntu Noble, which matches the package build and\nits pinned Cargo. Noble's default Cargo cannot parse Cargo.toml, so put the\npinned Cargo bin directory first in PATH. Generate debian/copyright in\nubuntu:devel, which provides python3-anytree and matches the licenserecon\ncheck.\n\nRun generation with read-only permissions because Cargo, cargo-vendor-filterer,\nGo, and the copyright script may run dependency code. Let the separate\nwrite-scoped job apply the artifact and push it without running PR code.\n\nFixes #1759\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ef4323c8424fdbd100df07f4455b9220106f5d4e"
                },
                {
-                  "sha": "040ece0153c30b8969281b281abe8664e5f356a6",
-                  "author": "OrazioLucioTerranova",
-                  "timestamp": 1788342616,
-                  "message": "e2e-tests: add Enter ID Password and MFA keyword",
-                  "url": "https://github.com/canonical/authd/commit/040ece0153c30b8969281b281abe8664e5f356a6"
+                  "sha": "c63027861f40203608ad1d8f902bb6010249abde",
+                  "author": "adombeck",
+                  "timestamp": 1788359675,
+                  "message": "deps(go): bump google.golang.org/grpc from 1.83.0 to 1.83.1 (#1853)",
+                  "url": "https://github.com/canonical/authd/commit/c63027861f40203608ad1d8f902bb6010249abde"
                }
             ],
             "ciActions": [
