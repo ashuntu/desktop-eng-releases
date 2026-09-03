@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "73fe38a8f94ce83c4301b52f412f7baf4cc3f601",
+                  "sha": "c7e979978df6c7559994a966c7193e0526ffc96c",
                   "author": "adombeck",
-                  "timestamp": 1788379019,
-                  "message": "ci: retry only the failed tests after an ASAN-internal abort (#1798)\n\nCloses #1797\nUDENG-11236",
-                  "url": "https://github.com/canonical/authd/commit/73fe38a8f94ce83c4301b52f412f7baf4cc3f601"
+                  "timestamp": 1788387768,
+                  "message": "ci: Fix packaging regeneration workflow for Dependabot PRs (#1862)",
+                  "url": "https://github.com/canonical/authd/commit/c7e979978df6c7559994a966c7193e0526ffc96c"
                },
                {
-                  "sha": "60174b9d54f7a86613c2c6559bfee54950a3ba79",
+                  "sha": "96fec286d80e64963cb7ec6d75edb48691e05983",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1788374848,
-                  "message": "Revert accidental direct main update\n\nThe CI fix was intended for a separate branch, but the inherited upstream\nconfiguration sent it to main. Restore main's previous workflow content\nbefore publishing the fix under its own branch.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/60174b9d54f7a86613c2c6559bfee54950a3ba79"
+                  "timestamp": 1788377935,
+                  "message": "Fix packaging checks with Git 2.55\n\nGit 2.55 can interpret the generic git diff command with the two\nmanifest paths as a no-index comparison. Compare the worktree with the\ncheckout index instead, and configure the workspace as a global safe Git\ndirectory before checkout so all Git commands in container jobs can use\nit.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/96fec286d80e64963cb7ec6d75edb48691e05983"
                },
                {
-                  "sha": "3fac0c7f6051121342885bc7306cc2bcdad90dff",
+                  "sha": "0944589ad96bdd83c367500a4f42e0361c4c6f49",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1788374793,
-                  "message": "Fix packaging regeneration for Git 2.55 and OpenSSL 4\n\nGit 2.55 can interpret the generic git diff command used with the two\nmanifest paths as a no-index comparison. Use git diff-files to compare\nthe worktree with the checkout index, and pass the workspace as a safe\nGit directory for container jobs.\n\nThe ubuntu:devel image now ships OpenSSL 4, which cargo-vendor-filterer\n0.5.16 rejects. Pin version 0.5.18 in both packaging workflows; its\ndefault build does not enable the incompatible OpenSSL dependency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/3fac0c7f6051121342885bc7306cc2bcdad90dff"
+                  "timestamp": 1788377928,
+                  "message": "Use compatible cargo-vendor-filterer versions per Ubuntu release\n\nNoble's archive Rust toolchain is 1.75, which cannot build\ncargo-vendor-filterer 0.5.18. Keep 0.5.16 for Noble, while using\n0.5.18 in the devel packaging job where OpenSSL 4 makes 0.5.16\nunusable.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/0944589ad96bdd83c367500a4f42e0361c4c6f49"
                }
             ],
             "ciActions": [
@@ -5609,25 +5609,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "96c02d9fcaf5bfdeaff385be3cbf0e6199a9eb0d",
+                  "sha": "50421a16ab5555eb14547b4b4262e9cd082c2a14",
                   "author": "Kat",
-                  "timestamp": 1788207629,
-                  "message": "fix: Base .skin-invert on light theme. (#46)\n\n`.skin-invert` needs to be able to override `skin-theme-clientpref-*`\nclasses and use the light theme mappings, as a filter is then applied to\ninvert all the colors.\n\nThis resolves issues with the text contrast in the toolbar for the\neditor in dark mode.\n\n<img width=\"1525\" height=\"112\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/cb1da964-49a8-438e-a6f7-62b9b6ca258d\"\n/>",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/96c02d9fcaf5bfdeaff385be3cbf0e6199a9eb0d"
+                  "timestamp": 1788390091,
+                  "message": "refactor: Split shared components from overrides (#50)\n\nHere, we reorganize the components, splitting the shared ones from\noverrides. `components/ubuntu` is meant for components that we are\nintroducing. `components/mediawiki` is for overrides. This allows for\nsimpler maintenance of our `.stylelintrc.json` file.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/50421a16ab5555eb14547b4b4262e9cd082c2a14"
                },
                {
-                  "sha": "33cbb999bf91fb181967605997720b64059fdf7f",
+                  "sha": "b9f20c872db55af1966bd3d7dffb08185e9aefa1",
                   "author": "kkuo",
-                  "timestamp": 1788202313,
-                  "message": "fix: Base .skin-invert on light theme.\n\n`.skin-invert` needs to be able to override `skin-theme-clientpref-*` classes and use the light theme mappings, as a filter is then applied to invert all the colors.\n\nThis resolves issues with the text contrast in the tool-bar for the editor in dark mode.",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/33cbb999bf91fb181967605997720b64059fdf7f"
+                  "timestamp": 1788370490,
+                  "message": "refactor: Split shared components from overrides\n\nHere, we reorganize the components, splitting the shared ones from overrides. `components/ubuntu` is meant for components that we are introducing. `components/mediawiki` is for overrides. This allows for more simple maintenance of our `.stylelintrc.json` file.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/b9f20c872db55af1966bd3d7dffb08185e9aefa1"
                },
                {
-                  "sha": "685cbb43344797f23b14efca6e6671dd576d3659",
-                  "author": "Kat",
-                  "timestamp": 1788194835,
-                  "message": "maint: Switch to local files for agent issues (#45)\n\nThe agent skills create a lot of relatively ephemeral GitHub issues.\nSince this is an open-source project and we do use GitHub issues to\ntrack real issues and expect users to submit issues with it, this makes\nit too cluttered.\n\nInstead, here we switch things to use a local `.scratch` folder that is\nnot added to version control. We lose any remote syncing due to this, so\nwe may want to look for a long term alternative like Jira, but this at\nleast will eliminate the immediate issue.\n\nShould close #44",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/685cbb43344797f23b14efca6e6671dd576d3659"
+                  "sha": "b6ef3a5f457895e69d8393adf1c20f2036aa66ec",
+                  "author": "kkuo",
+                  "timestamp": 1788371503,
+                  "message": "ci: Ignore css-nesting compatibility for .less files\n\nMediaWiki's pre-processor for less files handled by the resource loader renders CSS nesting in a manner such that we don't need to worry about a lack of browser support for CSS nesting, if we use it in a .less file.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/b6ef3a5f457895e69d8393adf1c20f2036aa66ec"
                }
             ],
             "ciActions": [],
@@ -5774,25 +5774,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "73fe38a8f94ce83c4301b52f412f7baf4cc3f601",
+                  "sha": "c7e979978df6c7559994a966c7193e0526ffc96c",
                   "author": "adombeck",
-                  "timestamp": 1788379019,
-                  "message": "ci: retry only the failed tests after an ASAN-internal abort (#1798)\n\nCloses #1797\nUDENG-11236",
-                  "url": "https://github.com/canonical/authd/commit/73fe38a8f94ce83c4301b52f412f7baf4cc3f601"
+                  "timestamp": 1788387768,
+                  "message": "ci: Fix packaging regeneration workflow for Dependabot PRs (#1862)",
+                  "url": "https://github.com/canonical/authd/commit/c7e979978df6c7559994a966c7193e0526ffc96c"
                },
                {
-                  "sha": "60174b9d54f7a86613c2c6559bfee54950a3ba79",
+                  "sha": "96fec286d80e64963cb7ec6d75edb48691e05983",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1788374848,
-                  "message": "Revert accidental direct main update\n\nThe CI fix was intended for a separate branch, but the inherited upstream\nconfiguration sent it to main. Restore main's previous workflow content\nbefore publishing the fix under its own branch.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/60174b9d54f7a86613c2c6559bfee54950a3ba79"
+                  "timestamp": 1788377935,
+                  "message": "Fix packaging checks with Git 2.55\n\nGit 2.55 can interpret the generic git diff command with the two\nmanifest paths as a no-index comparison. Compare the worktree with the\ncheckout index instead, and configure the workspace as a global safe Git\ndirectory before checkout so all Git commands in container jobs can use\nit.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/96fec286d80e64963cb7ec6d75edb48691e05983"
                },
                {
-                  "sha": "3fac0c7f6051121342885bc7306cc2bcdad90dff",
+                  "sha": "0944589ad96bdd83c367500a4f42e0361c4c6f49",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1788374793,
-                  "message": "Fix packaging regeneration for Git 2.55 and OpenSSL 4\n\nGit 2.55 can interpret the generic git diff command used with the two\nmanifest paths as a no-index comparison. Use git diff-files to compare\nthe worktree with the checkout index, and pass the workspace as a safe\nGit directory for container jobs.\n\nThe ubuntu:devel image now ships OpenSSL 4, which cargo-vendor-filterer\n0.5.16 rejects. Pin version 0.5.18 in both packaging workflows; its\ndefault build does not enable the incompatible OpenSSL dependency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/3fac0c7f6051121342885bc7306cc2bcdad90dff"
+                  "timestamp": 1788377928,
+                  "message": "Use compatible cargo-vendor-filterer versions per Ubuntu release\n\nNoble's archive Rust toolchain is 1.75, which cannot build\ncargo-vendor-filterer 0.5.18. Keep 0.5.16 for Noble, while using\n0.5.18 in the devel packaging job where OpenSSL 4 makes 0.5.16\nunusable.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/0944589ad96bdd83c367500a4f42e0361c4c6f49"
                }
             ],
             "ciActions": [
@@ -8290,25 +8290,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "73fe38a8f94ce83c4301b52f412f7baf4cc3f601",
+                  "sha": "c7e979978df6c7559994a966c7193e0526ffc96c",
                   "author": "adombeck",
-                  "timestamp": 1788379019,
-                  "message": "ci: retry only the failed tests after an ASAN-internal abort (#1798)\n\nCloses #1797\nUDENG-11236",
-                  "url": "https://github.com/canonical/authd/commit/73fe38a8f94ce83c4301b52f412f7baf4cc3f601"
+                  "timestamp": 1788387768,
+                  "message": "ci: Fix packaging regeneration workflow for Dependabot PRs (#1862)",
+                  "url": "https://github.com/canonical/authd/commit/c7e979978df6c7559994a966c7193e0526ffc96c"
                },
                {
-                  "sha": "60174b9d54f7a86613c2c6559bfee54950a3ba79",
+                  "sha": "96fec286d80e64963cb7ec6d75edb48691e05983",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1788374848,
-                  "message": "Revert accidental direct main update\n\nThe CI fix was intended for a separate branch, but the inherited upstream\nconfiguration sent it to main. Restore main's previous workflow content\nbefore publishing the fix under its own branch.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/60174b9d54f7a86613c2c6559bfee54950a3ba79"
+                  "timestamp": 1788377935,
+                  "message": "Fix packaging checks with Git 2.55\n\nGit 2.55 can interpret the generic git diff command with the two\nmanifest paths as a no-index comparison. Compare the worktree with the\ncheckout index instead, and configure the workspace as a global safe Git\ndirectory before checkout so all Git commands in container jobs can use\nit.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/96fec286d80e64963cb7ec6d75edb48691e05983"
                },
                {
-                  "sha": "3fac0c7f6051121342885bc7306cc2bcdad90dff",
+                  "sha": "0944589ad96bdd83c367500a4f42e0361c4c6f49",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1788374793,
-                  "message": "Fix packaging regeneration for Git 2.55 and OpenSSL 4\n\nGit 2.55 can interpret the generic git diff command used with the two\nmanifest paths as a no-index comparison. Use git diff-files to compare\nthe worktree with the checkout index, and pass the workspace as a safe\nGit directory for container jobs.\n\nThe ubuntu:devel image now ships OpenSSL 4, which cargo-vendor-filterer\n0.5.16 rejects. Pin version 0.5.18 in both packaging workflows; its\ndefault build does not enable the incompatible OpenSSL dependency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/3fac0c7f6051121342885bc7306cc2bcdad90dff"
+                  "timestamp": 1788377928,
+                  "message": "Use compatible cargo-vendor-filterer versions per Ubuntu release\n\nNoble's archive Rust toolchain is 1.75, which cannot build\ncargo-vendor-filterer 0.5.18. Keep 0.5.16 for Noble, while using\n0.5.18 in the devel packaging job where OpenSSL 4 makes 0.5.16\nunusable.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/0944589ad96bdd83c367500a4f42e0361c4c6f49"
                }
             ],
             "ciActions": [
