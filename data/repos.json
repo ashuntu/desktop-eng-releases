@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0ef334d771ca63b74f1c88d77bf40d89015f5143",
+                  "sha": "b62bfd34b910fe635f0252518692a31ac42a87e0",
                   "author": "adombeck",
-                  "timestamp": 1788453969,
-                  "message": "Prevent E2E teardown from hanging on socat (#1866)\n\nCloses #1865 \nUDENG-11406",
-                  "url": "https://github.com/canonical/authd/commit/0ef334d771ca63b74f1c88d77bf40d89015f5143"
+                  "timestamp": 1788512474,
+                  "message": "Improve error behavior when broker fails to start (#1832)\n\nUDENG-10822",
+                  "url": "https://github.com/canonical/authd/commit/b62bfd34b910fe635f0252518692a31ac42a87e0"
                },
                {
-                  "sha": "f854e37e46897cbd0500c6dfcba885d5114164af",
+                  "sha": "ddc98328ec9b85b44e85901bbfa5434cf2a20bce",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1788436460,
-                  "message": "Prevent E2E teardown from hanging on socat\n\nJournal teardown could wait forever after asking the TCP journal\nforwarder to stop, leaving the test job stuck with orphaned processes.\nBound the graceful wait and kill socat when it does not exit.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f854e37e46897cbd0500c6dfcba885d5114164af"
+                  "timestamp": 1788185467,
+                  "message": "Classify broker initialization failures as unavailable\n\nA queued D-Bus call can run after broker initialization fails but before the\nbroker connection disconnects. Returning the raw initialization error then\nproduces org.freedesktop.DBus.Error.Failed, which authd does not classify as\nbroker unavailability and exposes the broker's internal failure to users.\n\nReturn a dedicated broker-unavailable D-Bus error for calls released by a\nfailed initialization, and translate it through authd's existing unavailable\nbroker handling. Keep unrelated broker method failures as regular Failed\nerrors.\n\nAdd regression coverage for the method error and failed activation paths.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ddc98328ec9b85b44e85901bbfa5434cf2a20bce"
                },
                {
-                  "sha": "e605354c81e7ac7d392f7328df667aa068a6bd5a",
-                  "author": "adombeck",
-                  "timestamp": 1788435046,
-                  "message": "Preserve non-ASCII copyright holders (#1864)",
-                  "url": "https://github.com/canonical/authd/commit/e605354c81e7ac7d392f7328df667aa068a6bd5a"
+                  "sha": "51ad988e11e74f0e8675eff945bb60b6e7e37221",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1787821578,
+                  "message": "Tell admin how to check broker logs when it's unavailable\n\nWhen a broker cannot be reached, the log message now includes a command\nto check the broker service state and recent log lines.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/51ad988e11e74f0e8675eff945bb60b6e7e37221"
                }
             ],
             "ciActions": [
@@ -5774,25 +5774,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0ef334d771ca63b74f1c88d77bf40d89015f5143",
+                  "sha": "b62bfd34b910fe635f0252518692a31ac42a87e0",
                   "author": "adombeck",
-                  "timestamp": 1788453969,
-                  "message": "Prevent E2E teardown from hanging on socat (#1866)\n\nCloses #1865 \nUDENG-11406",
-                  "url": "https://github.com/canonical/authd/commit/0ef334d771ca63b74f1c88d77bf40d89015f5143"
+                  "timestamp": 1788512474,
+                  "message": "Improve error behavior when broker fails to start (#1832)\n\nUDENG-10822",
+                  "url": "https://github.com/canonical/authd/commit/b62bfd34b910fe635f0252518692a31ac42a87e0"
                },
                {
-                  "sha": "f854e37e46897cbd0500c6dfcba885d5114164af",
+                  "sha": "ddc98328ec9b85b44e85901bbfa5434cf2a20bce",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1788436460,
-                  "message": "Prevent E2E teardown from hanging on socat\n\nJournal teardown could wait forever after asking the TCP journal\nforwarder to stop, leaving the test job stuck with orphaned processes.\nBound the graceful wait and kill socat when it does not exit.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f854e37e46897cbd0500c6dfcba885d5114164af"
+                  "timestamp": 1788185467,
+                  "message": "Classify broker initialization failures as unavailable\n\nA queued D-Bus call can run after broker initialization fails but before the\nbroker connection disconnects. Returning the raw initialization error then\nproduces org.freedesktop.DBus.Error.Failed, which authd does not classify as\nbroker unavailability and exposes the broker's internal failure to users.\n\nReturn a dedicated broker-unavailable D-Bus error for calls released by a\nfailed initialization, and translate it through authd's existing unavailable\nbroker handling. Keep unrelated broker method failures as regular Failed\nerrors.\n\nAdd regression coverage for the method error and failed activation paths.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ddc98328ec9b85b44e85901bbfa5434cf2a20bce"
                },
                {
-                  "sha": "e605354c81e7ac7d392f7328df667aa068a6bd5a",
-                  "author": "adombeck",
-                  "timestamp": 1788435046,
-                  "message": "Preserve non-ASCII copyright holders (#1864)",
-                  "url": "https://github.com/canonical/authd/commit/e605354c81e7ac7d392f7328df667aa068a6bd5a"
+                  "sha": "51ad988e11e74f0e8675eff945bb60b6e7e37221",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1787821578,
+                  "message": "Tell admin how to check broker logs when it's unavailable\n\nWhen a broker cannot be reached, the log message now includes a command\nto check the broker service state and recent log lines.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/51ad988e11e74f0e8675eff945bb60b6e7e37221"
                }
             ],
             "ciActions": [
@@ -8290,25 +8290,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "0ef334d771ca63b74f1c88d77bf40d89015f5143",
+                  "sha": "b62bfd34b910fe635f0252518692a31ac42a87e0",
                   "author": "adombeck",
-                  "timestamp": 1788453969,
-                  "message": "Prevent E2E teardown from hanging on socat (#1866)\n\nCloses #1865 \nUDENG-11406",
-                  "url": "https://github.com/canonical/authd/commit/0ef334d771ca63b74f1c88d77bf40d89015f5143"
+                  "timestamp": 1788512474,
+                  "message": "Improve error behavior when broker fails to start (#1832)\n\nUDENG-10822",
+                  "url": "https://github.com/canonical/authd/commit/b62bfd34b910fe635f0252518692a31ac42a87e0"
                },
                {
-                  "sha": "f854e37e46897cbd0500c6dfcba885d5114164af",
+                  "sha": "ddc98328ec9b85b44e85901bbfa5434cf2a20bce",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1788436460,
-                  "message": "Prevent E2E teardown from hanging on socat\n\nJournal teardown could wait forever after asking the TCP journal\nforwarder to stop, leaving the test job stuck with orphaned processes.\nBound the graceful wait and kill socat when it does not exit.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f854e37e46897cbd0500c6dfcba885d5114164af"
+                  "timestamp": 1788185467,
+                  "message": "Classify broker initialization failures as unavailable\n\nA queued D-Bus call can run after broker initialization fails but before the\nbroker connection disconnects. Returning the raw initialization error then\nproduces org.freedesktop.DBus.Error.Failed, which authd does not classify as\nbroker unavailability and exposes the broker's internal failure to users.\n\nReturn a dedicated broker-unavailable D-Bus error for calls released by a\nfailed initialization, and translate it through authd's existing unavailable\nbroker handling. Keep unrelated broker method failures as regular Failed\nerrors.\n\nAdd regression coverage for the method error and failed activation paths.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ddc98328ec9b85b44e85901bbfa5434cf2a20bce"
                },
                {
-                  "sha": "e605354c81e7ac7d392f7328df667aa068a6bd5a",
-                  "author": "adombeck",
-                  "timestamp": 1788435046,
-                  "message": "Preserve non-ASCII copyright holders (#1864)",
-                  "url": "https://github.com/canonical/authd/commit/e605354c81e7ac7d392f7328df667aa068a6bd5a"
+                  "sha": "51ad988e11e74f0e8675eff945bb60b6e7e37221",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1787821578,
+                  "message": "Tell admin how to check broker logs when it's unavailable\n\nWhen a broker cannot be reached, the log message now includes a command\nto check the broker service state and recent log lines.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/51ad988e11e74f0e8675eff945bb60b6e7e37221"
                }
             ],
             "ciActions": [
