@@ -3106,25 +3106,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "18777235b84f0e34f4a0cd6869c9474fdbe11df5",
+                  "author": "Marek Suchánek",
+                  "timestamp": 1788516252,
+                  "message": "Merge pull request #178 from ubuntu/smart-cards-files-domain\n\nReplace the outdated files domain",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/18777235b84f0e34f4a0cd6869c9474fdbe11df5"
+               },
+               {
+                  "sha": "3de0d9ea568b66ae515fa99f8b6cc291cd3bd7d2",
+                  "author": "Marek Suchánek",
+                  "timestamp": 1788448355,
+                  "message": "Replace the outdated files domain",
+                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/3de0d9ea568b66ae515fa99f8b6cc291cd3bd7d2"
+               },
+               {
                   "sha": "786057d7a1ba1212d06c16880820681b40bb24d3",
                   "author": "Marek Suchánek",
                   "timestamp": 1787909246,
                   "message": "Merge pull request #169 from frederic-hoerni/feature/relax-hw-root-of-trust-requirement\n\nTPM/FDE: Relax the hw root of trust requirement",
                   "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/786057d7a1ba1212d06c16880820681b40bb24d3"
-               },
-               {
-                  "sha": "b8ac89eb51c82da87875ab4d65469f5615f0afd6",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1787857011,
-                  "message": "Write a basic index page for NVIDIA",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/b8ac89eb51c82da87875ab4d65469f5615f0afd6"
-               },
-               {
-                  "sha": "5c4e53df1fa11ac8b412f69513bcac058941ec2e",
-                  "author": "Marek Suchánek",
-                  "timestamp": 1787834560,
-                  "message": "Merge pull request #173 from ubuntu/nvidia-improvements\n\nImprove the NVIDIA drivers guides",
-                  "url": "https://github.com/ubuntu/ubuntu-desktop-documentation/commit/5c4e53df1fa11ac8b412f69513bcac058941ec2e"
                }
             ],
             "ciActions": [
@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b62bfd34b910fe635f0252518692a31ac42a87e0",
+                  "sha": "713af1039bda5361680ad25bc6f5ca03c1dc3e22",
                   "author": "adombeck",
-                  "timestamp": 1788512474,
-                  "message": "Improve error behavior when broker fails to start (#1832)\n\nUDENG-10822",
-                  "url": "https://github.com/canonical/authd/commit/b62bfd34b910fe635f0252518692a31ac42a87e0"
+                  "timestamp": 1788519731,
+                  "message": "Document safe removal of authd users (#1872)\n\nCloses #1871\nUDENG-11412",
+                  "url": "https://github.com/canonical/authd/commit/713af1039bda5361680ad25bc6f5ca03c1dc3e22"
                },
                {
-                  "sha": "ddc98328ec9b85b44e85901bbfa5434cf2a20bce",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788185467,
-                  "message": "Classify broker initialization failures as unavailable\n\nA queued D-Bus call can run after broker initialization fails but before the\nbroker connection disconnects. Returning the raw initialization error then\nproduces org.freedesktop.DBus.Error.Failed, which authd does not classify as\nbroker unavailability and exposes the broker's internal failure to users.\n\nReturn a dedicated broker-unavailable D-Bus error for calls released by a\nfailed initialization, and translate it through authd's existing unavailable\nbroker handling. Keep unrelated broker method failures as regular Failed\nerrors.\n\nAdd regression coverage for the method error and failed activation paths.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/ddc98328ec9b85b44e85901bbfa5434cf2a20bce"
+                  "sha": "8ed8a67be7d9e4420b985e09f390b4a200797389",
+                  "author": "Shane Crowley",
+                  "timestamp": 1788519098,
+                  "message": "docs: reorganize homepage (#1857)\n\n* Use table formatting for better readability (visual separation of\ninformation)\n* Merge user login and authentication rows (these seem tightly coupled?)\n* Add row on user management (important info to surface)\n \n<img width=\"40%\" alt=\"Screenshot 2026-09-02 120106\"\nsrc=\"https://github.com/user-attachments/assets/3d6f137e-67c9-464b-b138-9064ad52c5ea\"\n/>\n\n<img width=\"38%\" height=\"1232\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/afe3ae99-93a1-4c82-888d-04ad6e3eaa92\"\n/>\n\nUDENG-11360",
+                  "url": "https://github.com/canonical/authd/commit/8ed8a67be7d9e4420b985e09f390b4a200797389"
                },
                {
-                  "sha": "51ad988e11e74f0e8675eff945bb60b6e7e37221",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1787821578,
-                  "message": "Tell admin how to check broker logs when it's unavailable\n\nWhen a broker cannot be reached, the log message now includes a command\nto check the broker service state and recent log lines.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/51ad988e11e74f0e8675eff945bb60b6e7e37221"
+                  "sha": "0fbe1bf3c2d3f350c3d4b1e60d0626dba2a90536",
+                  "author": "shanecrowley",
+                  "timestamp": 1788346824,
+                  "message": "reorganize docs homepage\n\n* Use table formatting for better readability\n* Merge user login and authentication rows\n* Add row on user management",
+                  "url": "https://github.com/canonical/authd/commit/0fbe1bf3c2d3f350c3d4b1e60d0626dba2a90536"
                }
             ],
             "ciActions": [
@@ -5609,25 +5609,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "50421a16ab5555eb14547b4b4262e9cd082c2a14",
+                  "sha": "34d58f31b5414aa7ecb3ea38e0cee04aa520424b",
                   "author": "Kat",
-                  "timestamp": 1788390091,
-                  "message": "refactor: Split shared components from overrides (#50)\n\nHere, we reorganize the components, splitting the shared ones from\noverrides. `components/ubuntu` is meant for components that we are\nintroducing. `components/mediawiki` is for overrides. This allows for\nsimpler maintenance of our `.stylelintrc.json` file.",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/50421a16ab5555eb14547b4b4262e9cd082c2a14"
+                  "timestamp": 1788529838,
+                  "message": "feat: Homepage design and card components (#48)\n\nHere, we implement a number of card components, and demonstrate their\nusage via templates, Lua modules, and mockups of a new main page design.\n\nThe intent of the final usage is to utilize the templates to create the\nstructures needed for the components and layout. These templates may use\nLua modules under the hood as well, but the Lua models aren't intended\nto be invoked directly on the pages.\n\nThere are multiple examples of the main page design as a seed. One is\nwith standard HTML; another uses templates.\n\n\nhttps://github.com/user-attachments/assets/ed379487-3e8c-4a4e-ba66-4ea40150e761\n\n\nSupersedes #14",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/34d58f31b5414aa7ecb3ea38e0cee04aa520424b"
                },
                {
-                  "sha": "b9f20c872db55af1966bd3d7dffb08185e9aefa1",
-                  "author": "kkuo",
-                  "timestamp": 1788370490,
-                  "message": "refactor: Split shared components from overrides\n\nHere, we reorganize the components, splitting the shared ones from overrides. `components/ubuntu` is meant for components that we are introducing. `components/mediawiki` is for overrides. This allows for more simple maintenance of our `.stylelintrc.json` file.",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/b9f20c872db55af1966bd3d7dffb08185e9aefa1"
+                  "sha": "46b6d1afed73320023969dee4b2d26d47150127a",
+                  "author": "Shane Crowley",
+                  "timestamp": 1788514502,
+                  "message": "Ubuntu Mbox type for welcome message (#52)\n\nAdds a new Mbox/admonition type \"Ubuntu\", with orange branding and\ncircle-of-friends logo.\nTo initially be used to contain a welcome message on the homepage but\ncould be useful for general community-facing callouts.\nNote: Mbox template seeded and extensions added to support this PR.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/46b6d1afed73320023969dee4b2d26d47150127a"
                },
                {
-                  "sha": "b6ef3a5f457895e69d8393adf1c20f2036aa66ec",
-                  "author": "kkuo",
-                  "timestamp": 1788371503,
-                  "message": "ci: Ignore css-nesting compatibility for .less files\n\nMediaWiki's pre-processor for less files handled by the resource loader renders CSS nesting in a manner such that we don't need to worry about a lack of browser support for CSS nesting, if we use it in a .less file.",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/b6ef3a5f457895e69d8393adf1c20f2036aa66ec"
+                  "sha": "f21930ad8735c5f1095cd991f84cf5218fc8b853",
+                  "author": "shanecrowley",
+                  "timestamp": 1788420075,
+                  "message": "add extensions to support Mbox",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/f21930ad8735c5f1095cd991f84cf5218fc8b853"
                }
             ],
             "ciActions": [],
@@ -5774,25 +5774,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b62bfd34b910fe635f0252518692a31ac42a87e0",
+                  "sha": "713af1039bda5361680ad25bc6f5ca03c1dc3e22",
                   "author": "adombeck",
-                  "timestamp": 1788512474,
-                  "message": "Improve error behavior when broker fails to start (#1832)\n\nUDENG-10822",
-                  "url": "https://github.com/canonical/authd/commit/b62bfd34b910fe635f0252518692a31ac42a87e0"
+                  "timestamp": 1788519731,
+                  "message": "Document safe removal of authd users (#1872)\n\nCloses #1871\nUDENG-11412",
+                  "url": "https://github.com/canonical/authd/commit/713af1039bda5361680ad25bc6f5ca03c1dc3e22"
                },
                {
-                  "sha": "ddc98328ec9b85b44e85901bbfa5434cf2a20bce",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788185467,
-                  "message": "Classify broker initialization failures as unavailable\n\nA queued D-Bus call can run after broker initialization fails but before the\nbroker connection disconnects. Returning the raw initialization error then\nproduces org.freedesktop.DBus.Error.Failed, which authd does not classify as\nbroker unavailability and exposes the broker's internal failure to users.\n\nReturn a dedicated broker-unavailable D-Bus error for calls released by a\nfailed initialization, and translate it through authd's existing unavailable\nbroker handling. Keep unrelated broker method failures as regular Failed\nerrors.\n\nAdd regression coverage for the method error and failed activation paths.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/ddc98328ec9b85b44e85901bbfa5434cf2a20bce"
+                  "sha": "8ed8a67be7d9e4420b985e09f390b4a200797389",
+                  "author": "Shane Crowley",
+                  "timestamp": 1788519098,
+                  "message": "docs: reorganize homepage (#1857)\n\n* Use table formatting for better readability (visual separation of\ninformation)\n* Merge user login and authentication rows (these seem tightly coupled?)\n* Add row on user management (important info to surface)\n \n<img width=\"40%\" alt=\"Screenshot 2026-09-02 120106\"\nsrc=\"https://github.com/user-attachments/assets/3d6f137e-67c9-464b-b138-9064ad52c5ea\"\n/>\n\n<img width=\"38%\" height=\"1232\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/afe3ae99-93a1-4c82-888d-04ad6e3eaa92\"\n/>\n\nUDENG-11360",
+                  "url": "https://github.com/canonical/authd/commit/8ed8a67be7d9e4420b985e09f390b4a200797389"
                },
                {
-                  "sha": "51ad988e11e74f0e8675eff945bb60b6e7e37221",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1787821578,
-                  "message": "Tell admin how to check broker logs when it's unavailable\n\nWhen a broker cannot be reached, the log message now includes a command\nto check the broker service state and recent log lines.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/51ad988e11e74f0e8675eff945bb60b6e7e37221"
+                  "sha": "0fbe1bf3c2d3f350c3d4b1e60d0626dba2a90536",
+                  "author": "shanecrowley",
+                  "timestamp": 1788346824,
+                  "message": "reorganize docs homepage\n\n* Use table formatting for better readability\n* Merge user login and authentication rows\n* Add row on user management",
+                  "url": "https://github.com/canonical/authd/commit/0fbe1bf3c2d3f350c3d4b1e60d0626dba2a90536"
                }
             ],
             "ciActions": [
@@ -7450,7 +7450,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 139,
+            "newCommits": 141,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -8290,25 +8290,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b62bfd34b910fe635f0252518692a31ac42a87e0",
+                  "sha": "713af1039bda5361680ad25bc6f5ca03c1dc3e22",
                   "author": "adombeck",
-                  "timestamp": 1788512474,
-                  "message": "Improve error behavior when broker fails to start (#1832)\n\nUDENG-10822",
-                  "url": "https://github.com/canonical/authd/commit/b62bfd34b910fe635f0252518692a31ac42a87e0"
+                  "timestamp": 1788519731,
+                  "message": "Document safe removal of authd users (#1872)\n\nCloses #1871\nUDENG-11412",
+                  "url": "https://github.com/canonical/authd/commit/713af1039bda5361680ad25bc6f5ca03c1dc3e22"
                },
                {
-                  "sha": "ddc98328ec9b85b44e85901bbfa5434cf2a20bce",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788185467,
-                  "message": "Classify broker initialization failures as unavailable\n\nA queued D-Bus call can run after broker initialization fails but before the\nbroker connection disconnects. Returning the raw initialization error then\nproduces org.freedesktop.DBus.Error.Failed, which authd does not classify as\nbroker unavailability and exposes the broker's internal failure to users.\n\nReturn a dedicated broker-unavailable D-Bus error for calls released by a\nfailed initialization, and translate it through authd's existing unavailable\nbroker handling. Keep unrelated broker method failures as regular Failed\nerrors.\n\nAdd regression coverage for the method error and failed activation paths.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/ddc98328ec9b85b44e85901bbfa5434cf2a20bce"
+                  "sha": "8ed8a67be7d9e4420b985e09f390b4a200797389",
+                  "author": "Shane Crowley",
+                  "timestamp": 1788519098,
+                  "message": "docs: reorganize homepage (#1857)\n\n* Use table formatting for better readability (visual separation of\ninformation)\n* Merge user login and authentication rows (these seem tightly coupled?)\n* Add row on user management (important info to surface)\n \n<img width=\"40%\" alt=\"Screenshot 2026-09-02 120106\"\nsrc=\"https://github.com/user-attachments/assets/3d6f137e-67c9-464b-b138-9064ad52c5ea\"\n/>\n\n<img width=\"38%\" height=\"1232\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/afe3ae99-93a1-4c82-888d-04ad6e3eaa92\"\n/>\n\nUDENG-11360",
+                  "url": "https://github.com/canonical/authd/commit/8ed8a67be7d9e4420b985e09f390b4a200797389"
                },
                {
-                  "sha": "51ad988e11e74f0e8675eff945bb60b6e7e37221",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1787821578,
-                  "message": "Tell admin how to check broker logs when it's unavailable\n\nWhen a broker cannot be reached, the log message now includes a command\nto check the broker service state and recent log lines.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/51ad988e11e74f0e8675eff945bb60b6e7e37221"
+                  "sha": "0fbe1bf3c2d3f350c3d4b1e60d0626dba2a90536",
+                  "author": "shanecrowley",
+                  "timestamp": 1788346824,
+                  "message": "reorganize docs homepage\n\n* Use table formatting for better readability\n* Merge user login and authentication rows\n* Add row on user management",
+                  "url": "https://github.com/canonical/authd/commit/0fbe1bf3c2d3f350c3d4b1e60d0626dba2a90536"
                }
             ],
             "ciActions": [
@@ -9009,7 +9009,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
