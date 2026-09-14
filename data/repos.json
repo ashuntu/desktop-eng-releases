@@ -3176,25 +3176,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "23edc54894a30c5947bd6c00466354b56980c483",
-                  "author": "didrocks",
-                  "timestamp": 1788841599,
-                  "message": "New upstream snapshot for GNOME Shell",
-                  "url": "https://github.com/ubuntu/yaru/commit/23edc54894a30c5947bd6c00466354b56980c483"
-               },
-               {
-                  "sha": "2c466d8f420b343cf71183cf1ce83a90ceedcb6b",
+                  "sha": "7f18973e05607c609c4b972f0dd9bff36fa2a13e",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1788215688,
+                  "timestamp": 1789400062,
                   "message": "Upload to stonking",
-                  "url": "https://github.com/ubuntu/yaru/commit/2c466d8f420b343cf71183cf1ce83a90ceedcb6b"
+                  "url": "https://github.com/ubuntu/yaru/commit/7f18973e05607c609c4b972f0dd9bff36fa2a13e"
                },
                {
-                  "sha": "7478a4a5ef13a9e211b7cd11d046952134a627fe",
+                  "sha": "d4af1d6a6fbce56f3ae3215fd9e0e1e717c9042e",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1788215592,
+                  "timestamp": 1789400057,
                   "message": "Update changelog",
-                  "url": "https://github.com/ubuntu/yaru/commit/7478a4a5ef13a9e211b7cd11d046952134a627fe"
+                  "url": "https://github.com/ubuntu/yaru/commit/d4af1d6a6fbce56f3ae3215fd9e0e1e717c9042e"
+               },
+               {
+                  "sha": "3cdd35b4e9d5cff6ca27cf713a0870f13685bc93",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1789400023,
+                  "message": "build: Release Yaru 26.10.3",
+                  "url": "https://github.com/ubuntu/yaru/commit/3cdd35b4e9d5cff6ca27cf713a0870f13685bc93"
                }
             ],
             "ciActions": [],
@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4e5e1e3e2b2f8c735e85bcc6f4be18a40057966e",
+                  "sha": "5ccd26d3015d3f4f5244a7a4abb4f7b00acf02d2",
+                  "author": "adombeck",
+                  "timestamp": 1789397160,
+                  "message": "e2e: Test unlocking lock screen with password (#1918)\n\nUDENG-11497",
+                  "url": "https://github.com/canonical/authd/commit/5ccd26d3015d3f4f5244a7a4abb4f7b00acf02d2"
+               },
+               {
+                  "sha": "a7d306e6a654ce5281cd886e724c54ba5a8ba14b",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1789122770,
-                  "message": "broker: prevent AADSTS700025 on Entra device-code refresh (#1882)\n\nNormal Entra device-code authentication uses a public OIDC client. The\nconfigured secret is only for the app-only Graph fallback when Entra\nauthentication is enabled without device registration. Sending it to the\npublic refresh endpoint causes AADSTS700025.\n\nKeep the public OAuth client separate from the Graph credentials so both\nrefresh paths work correctly.\n\nCloses #1881\nUDENG-11453",
-                  "url": "https://github.com/canonical/authd/commit/4e5e1e3e2b2f8c735e85bcc6f4be18a40057966e"
+                  "timestamp": 1789395731,
+                  "message": "pam/gdm: work around PAM_MAXTRIES until GNOME Shell is fixed (#1919)\n\nGDM treats `PAM_MAXTRIES` as service unavailable and leaves the password\nprompt spinning **forever** after authd reaches its retry limit.\n\nUntil GNOME Shell handles this result correctly, return `PAM_AUTH_ERR`\nand\nsend the existing denied result for GDM only. `PAM_MAXTRIES` remains\nunchanged for other clients, preserving the fixes for #1425 and #1342.\n\nThe earlier commits also remove the duplicate GDM/PAM failure message.\n\nLaunchpad bug report:\n[#2166922](https://bugs.launchpad.net/ubuntu/+source/gnome-shell/+bug/2166922)\n\nCloses #1893\nUDENG-11472",
+                  "url": "https://github.com/canonical/authd/commit/a7d306e6a654ce5281cd886e724c54ba5a8ba14b"
                },
                {
-                  "sha": "e4aaa35ed16db2804189b87845e9c5d84223f33f",
-                  "author": "adombeck",
-                  "timestamp": 1789116326,
-                  "message": "e2e: allow selecting individual Robot test cases (#1910)\n\nCloses #1909\nUDENG-11489",
-                  "url": "https://github.com/canonical/authd/commit/e4aaa35ed16db2804189b87845e9c5d84223f33f"
-               },
-               {
-                  "sha": "aef7b9d45c93c5cf872d4d1ceac84e1afc64bd91",
-                  "author": "adombeck",
-                  "timestamp": 1789113758,
-                  "message": "e2e: check GDM user shell (#1917)\n\nUDENG-11496",
-                  "url": "https://github.com/canonical/authd/commit/aef7b9d45c93c5cf872d4d1ceac84e1afc64bd91"
+                  "sha": "fcfea92189c036995443a04c047a8acda3ff9e4f",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1789381989,
+                  "message": "Retry transient Entra authentication failures (#1874)\n\nTransient Entra MFA initialization failures, AADSTS90006\n(`ExternalServerRetryableError`) and AADSTS90055\n(`TenantThrottlingError`), were treated as terminal and forced users to\nrestart authentication. Retry these failures in-process for three total\nattempts with bounded jittered backoff: 1-1.5 seconds, then 2-2.5\nseconds. Other MFA errors keep existing routing. After the retry budget,\nuse `AuthRetry` with a neutral message. The normal attempt limit still\napplies. Cancellation during backoff or an interrupted initiation\nreturns `AuthCancelled` without consuming an authentication attempt. The\npreserved AADSTS code in `MFAError` means no `libhimmelblau` submodule\nchange is required.",
+                  "url": "https://github.com/canonical/authd/commit/fcfea92189c036995443a04c047a8acda3ff9e4f"
                }
             ],
             "ciActions": [
@@ -3627,6 +3627,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e39c493680a705d7ad2a59f9333a4bb943b1f8c0",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789389640,
+                  "message": "feat: add arm64 support for building snap from ci",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/e39c493680a705d7ad2a59f9333a4bb943b1f8c0"
+               },
+               {
                   "sha": "8f590bab536bef5615d88a6d2dde6480f60ad482",
                   "author": "Matthew Hagemann",
                   "timestamp": 1787648978,
@@ -3639,13 +3646,6 @@
                   "timestamp": 1787097245,
                   "message": "fix: use correct error kind for login-required error\n\nPreviously used auth-login-required, which was a non-existent error.",
                   "url": "https://github.com/canonical/desktop-security-center/commit/a11f1b50ea40eeb9bfa07530d82133d6b56dad41"
-               },
-               {
-                  "sha": "9c46daad4a38548858d74ca1a05bf07249d8050d",
-                  "author": "Soumya Ranjan Patnaik",
-                  "timestamp": 1781859098,
-                  "message": "chore: UX changes",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/9c46daad4a38548858d74ca1a05bf07249d8050d"
                }
             ],
             "ciActions": [],
@@ -3729,25 +3729,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3333870c0c308b090b61b8c5bc79a51b2335e3c2",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789401250,
+                  "message": "chore(deps): update tiobe/tics-github-action action to v4 (#418)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/3333870c0c308b090b61b8c5bc79a51b2335e3c2"
+               },
+               {
+                  "sha": "1cfc2ea567851c6e12837a0fec9f38390ce3efb1",
+                  "author": "renovate[bot]",
+                  "timestamp": 1789392950,
+                  "message": "chore(deps): update tiobe/tics-github-action action to v4",
+                  "url": "https://github.com/canonical/firmware-updater/commit/1cfc2ea567851c6e12837a0fec9f38390ce3efb1"
+               },
+               {
                   "sha": "ff1601e6c49d6fca78ccc7772aef8ced3b7e041d",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789125633,
                   "message": "fix(l10n): translations update from Hosted Weblate (#415)",
                   "url": "https://github.com/canonical/firmware-updater/commit/ff1601e6c49d6fca78ccc7772aef8ced3b7e041d"
-               },
-               {
-                  "sha": "d556387d783838321b8045dfb681be7a44115832",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1789125361,
-                  "message": "chore: regenerate l10n",
-                  "url": "https://github.com/canonical/firmware-updater/commit/d556387d783838321b8045dfb681be7a44115832"
-               },
-               {
-                  "sha": "a120739b2ad60a0fefa08b57b09ccfe72e863206",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789125254,
-                  "message": "feat: added signing to weblate generation",
-                  "url": "https://github.com/canonical/firmware-updater/commit/a120739b2ad60a0fefa08b57b09ccfe72e863206"
                }
             ],
             "ciActions": [
@@ -5642,25 +5642,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3a0574c2c1face6fb55b47b351448bdd8a13f833",
+                  "sha": "03c029e56fcf6c5c85da6f4d7d089b6813d0a0a5",
                   "author": "Kat",
-                  "timestamp": 1789156433,
-                  "message": "ci(dependabot): Configure Dependabot for GitHub Actions and Cookie Policy (#61)\n\nConfigure Dependabot for GitHub Actions and the Cookie Policy npm\ndependency.",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/3a0574c2c1face6fb55b47b351448bdd8a13f833"
+                  "timestamp": 1789400378,
+                  "message": "fix: Improve layout behavior of card button link (#62)\n\nHere, we implement some improvements to the behavior of card button link\nlayouts. Using `--ubuntu-card-button-min-width`, the min-width of the\ncard buttons can be established. This can be used to manipulate the\nnumber of buttons shown per row at the full-width desktop display and on\na per-card basis.\n\nWe also added a special case for 6 children layouts, making them prefer\n2 rows of 3 instead of fitting as many buttons as possible on the first\nrow, leading to situations such as 5 on the first row and 1 on the\nsecond. A similar special case is included for 4 children layouts,\npreferring 2 rows of 2 over the first being a row of three and the\nsecond being a row of 1. This logic could probably be generalized with\n`sibling-count()`, but this is only baseline 2026, meaning older browser\nversions don't support it.\n\nAdditionally, we include a fix where the vendored pragma icons would\nshrink when the buttons that utilize them get too small to fit all\ncontent within a required min-width. The content may eventually spill\nout of the button. For this, manual testing of the content against the\nminimum supported width (320px) is required on a per-implementation\nbasis.\n\nNote, the homepage design seed currently isn't fully updated to match\nwhat is being done live or what will be done, but for the purposes of\nthe changes introduced in this PR, it should be fine.\n\n\nhttps://github.com/user-attachments/assets/552c6b9b-af45-4e37-8b0c-4260b78bba6f\n\nWe also included a new seed to demonstrate how the card buttons roughly\nbehave with different configurations.\n\n\nhttps://github.com/user-attachments/assets/dcaf46f2-6471-4899-a805-7a907498837f",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/03c029e56fcf6c5c85da6f4d7d089b6813d0a0a5"
                },
                {
-                  "sha": "da735837e412db6d3f4d8632d65f834c9e460d8c",
+                  "sha": "690e0097cf62193689ba762ec665b810f2044bbd",
                   "author": "kkuo",
-                  "timestamp": 1789079828,
-                  "message": "ci(dependabot): Configure dependabot for cookie policy",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/da735837e412db6d3f4d8632d65f834c9e460d8c"
+                  "timestamp": 1789147818,
+                  "message": "Keep card button icons full size",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/690e0097cf62193689ba762ec665b810f2044bbd"
                },
                {
-                  "sha": "b0385a7c74821e45521d003a405abdf39ae32823",
+                  "sha": "c98763fd018ec649827d9372ef35eb1b0303552c",
                   "author": "kkuo",
-                  "timestamp": 1789079660,
-                  "message": "ci(dependabot): Configure dependabot for GH actions",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/b0385a7c74821e45521d003a405abdf39ae32823"
+                  "timestamp": 1789147788,
+                  "message": "Add responsive card button link sizing",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/c98763fd018ec649827d9372ef35eb1b0303552c"
                }
             ],
             "ciActions": [],
@@ -5807,25 +5807,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4e5e1e3e2b2f8c735e85bcc6f4be18a40057966e",
+                  "sha": "5ccd26d3015d3f4f5244a7a4abb4f7b00acf02d2",
+                  "author": "adombeck",
+                  "timestamp": 1789397160,
+                  "message": "e2e: Test unlocking lock screen with password (#1918)\n\nUDENG-11497",
+                  "url": "https://github.com/canonical/authd/commit/5ccd26d3015d3f4f5244a7a4abb4f7b00acf02d2"
+               },
+               {
+                  "sha": "a7d306e6a654ce5281cd886e724c54ba5a8ba14b",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1789122770,
-                  "message": "broker: prevent AADSTS700025 on Entra device-code refresh (#1882)\n\nNormal Entra device-code authentication uses a public OIDC client. The\nconfigured secret is only for the app-only Graph fallback when Entra\nauthentication is enabled without device registration. Sending it to the\npublic refresh endpoint causes AADSTS700025.\n\nKeep the public OAuth client separate from the Graph credentials so both\nrefresh paths work correctly.\n\nCloses #1881\nUDENG-11453",
-                  "url": "https://github.com/canonical/authd/commit/4e5e1e3e2b2f8c735e85bcc6f4be18a40057966e"
+                  "timestamp": 1789395731,
+                  "message": "pam/gdm: work around PAM_MAXTRIES until GNOME Shell is fixed (#1919)\n\nGDM treats `PAM_MAXTRIES` as service unavailable and leaves the password\nprompt spinning **forever** after authd reaches its retry limit.\n\nUntil GNOME Shell handles this result correctly, return `PAM_AUTH_ERR`\nand\nsend the existing denied result for GDM only. `PAM_MAXTRIES` remains\nunchanged for other clients, preserving the fixes for #1425 and #1342.\n\nThe earlier commits also remove the duplicate GDM/PAM failure message.\n\nLaunchpad bug report:\n[#2166922](https://bugs.launchpad.net/ubuntu/+source/gnome-shell/+bug/2166922)\n\nCloses #1893\nUDENG-11472",
+                  "url": "https://github.com/canonical/authd/commit/a7d306e6a654ce5281cd886e724c54ba5a8ba14b"
                },
                {
-                  "sha": "e4aaa35ed16db2804189b87845e9c5d84223f33f",
-                  "author": "adombeck",
-                  "timestamp": 1789116326,
-                  "message": "e2e: allow selecting individual Robot test cases (#1910)\n\nCloses #1909\nUDENG-11489",
-                  "url": "https://github.com/canonical/authd/commit/e4aaa35ed16db2804189b87845e9c5d84223f33f"
-               },
-               {
-                  "sha": "aef7b9d45c93c5cf872d4d1ceac84e1afc64bd91",
-                  "author": "adombeck",
-                  "timestamp": 1789113758,
-                  "message": "e2e: check GDM user shell (#1917)\n\nUDENG-11496",
-                  "url": "https://github.com/canonical/authd/commit/aef7b9d45c93c5cf872d4d1ceac84e1afc64bd91"
+                  "sha": "fcfea92189c036995443a04c047a8acda3ff9e4f",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1789381989,
+                  "message": "Retry transient Entra authentication failures (#1874)\n\nTransient Entra MFA initialization failures, AADSTS90006\n(`ExternalServerRetryableError`) and AADSTS90055\n(`TenantThrottlingError`), were treated as terminal and forced users to\nrestart authentication. Retry these failures in-process for three total\nattempts with bounded jittered backoff: 1-1.5 seconds, then 2-2.5\nseconds. Other MFA errors keep existing routing. After the retry budget,\nuse `AuthRetry` with a neutral message. The normal attempt limit still\napplies. Cancellation during backoff or an interrupted initiation\nreturns `AuthCancelled` without consuming an authentication attempt. The\npreserved AADSTS code in `MFAError` means no `libhimmelblau` submodule\nchange is required.",
+                  "url": "https://github.com/canonical/authd/commit/fcfea92189c036995443a04c047a8acda3ff9e4f"
                }
             ],
             "ciActions": [
@@ -6040,6 +6040,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e39c493680a705d7ad2a59f9333a4bb943b1f8c0",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789389640,
+                  "message": "feat: add arm64 support for building snap from ci",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/e39c493680a705d7ad2a59f9333a4bb943b1f8c0"
+               },
+               {
                   "sha": "8f590bab536bef5615d88a6d2dde6480f60ad482",
                   "author": "Matthew Hagemann",
                   "timestamp": 1787648978,
@@ -6052,13 +6059,6 @@
                   "timestamp": 1787097245,
                   "message": "fix: use correct error kind for login-required error\n\nPreviously used auth-login-required, which was a non-existent error.",
                   "url": "https://github.com/canonical/desktop-security-center/commit/a11f1b50ea40eeb9bfa07530d82133d6b56dad41"
-               },
-               {
-                  "sha": "9c46daad4a38548858d74ca1a05bf07249d8050d",
-                  "author": "Soumya Ranjan Patnaik",
-                  "timestamp": 1781859098,
-                  "message": "chore: UX changes",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/9c46daad4a38548858d74ca1a05bf07249d8050d"
                }
             ],
             "ciActions": [],
@@ -6142,25 +6142,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3333870c0c308b090b61b8c5bc79a51b2335e3c2",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789401250,
+                  "message": "chore(deps): update tiobe/tics-github-action action to v4 (#418)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/3333870c0c308b090b61b8c5bc79a51b2335e3c2"
+               },
+               {
+                  "sha": "1cfc2ea567851c6e12837a0fec9f38390ce3efb1",
+                  "author": "renovate[bot]",
+                  "timestamp": 1789392950,
+                  "message": "chore(deps): update tiobe/tics-github-action action to v4",
+                  "url": "https://github.com/canonical/firmware-updater/commit/1cfc2ea567851c6e12837a0fec9f38390ce3efb1"
+               },
+               {
                   "sha": "ff1601e6c49d6fca78ccc7772aef8ced3b7e041d",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789125633,
                   "message": "fix(l10n): translations update from Hosted Weblate (#415)",
                   "url": "https://github.com/canonical/firmware-updater/commit/ff1601e6c49d6fca78ccc7772aef8ced3b7e041d"
-               },
-               {
-                  "sha": "d556387d783838321b8045dfb681be7a44115832",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1789125361,
-                  "message": "chore: regenerate l10n",
-                  "url": "https://github.com/canonical/firmware-updater/commit/d556387d783838321b8045dfb681be7a44115832"
-               },
-               {
-                  "sha": "a120739b2ad60a0fefa08b57b09ccfe72e863206",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789125254,
-                  "message": "feat: added signing to weblate generation",
-                  "url": "https://github.com/canonical/firmware-updater/commit/a120739b2ad60a0fefa08b57b09ccfe72e863206"
                }
             ],
             "ciActions": [
@@ -7516,7 +7516,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 162,
+            "newCommits": 165,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7910,7 +7910,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 134,
+            "newCommits": 140,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8356,25 +8356,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4e5e1e3e2b2f8c735e85bcc6f4be18a40057966e",
+                  "sha": "5ccd26d3015d3f4f5244a7a4abb4f7b00acf02d2",
+                  "author": "adombeck",
+                  "timestamp": 1789397160,
+                  "message": "e2e: Test unlocking lock screen with password (#1918)\n\nUDENG-11497",
+                  "url": "https://github.com/canonical/authd/commit/5ccd26d3015d3f4f5244a7a4abb4f7b00acf02d2"
+               },
+               {
+                  "sha": "a7d306e6a654ce5281cd886e724c54ba5a8ba14b",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1789122770,
-                  "message": "broker: prevent AADSTS700025 on Entra device-code refresh (#1882)\n\nNormal Entra device-code authentication uses a public OIDC client. The\nconfigured secret is only for the app-only Graph fallback when Entra\nauthentication is enabled without device registration. Sending it to the\npublic refresh endpoint causes AADSTS700025.\n\nKeep the public OAuth client separate from the Graph credentials so both\nrefresh paths work correctly.\n\nCloses #1881\nUDENG-11453",
-                  "url": "https://github.com/canonical/authd/commit/4e5e1e3e2b2f8c735e85bcc6f4be18a40057966e"
+                  "timestamp": 1789395731,
+                  "message": "pam/gdm: work around PAM_MAXTRIES until GNOME Shell is fixed (#1919)\n\nGDM treats `PAM_MAXTRIES` as service unavailable and leaves the password\nprompt spinning **forever** after authd reaches its retry limit.\n\nUntil GNOME Shell handles this result correctly, return `PAM_AUTH_ERR`\nand\nsend the existing denied result for GDM only. `PAM_MAXTRIES` remains\nunchanged for other clients, preserving the fixes for #1425 and #1342.\n\nThe earlier commits also remove the duplicate GDM/PAM failure message.\n\nLaunchpad bug report:\n[#2166922](https://bugs.launchpad.net/ubuntu/+source/gnome-shell/+bug/2166922)\n\nCloses #1893\nUDENG-11472",
+                  "url": "https://github.com/canonical/authd/commit/a7d306e6a654ce5281cd886e724c54ba5a8ba14b"
                },
                {
-                  "sha": "e4aaa35ed16db2804189b87845e9c5d84223f33f",
-                  "author": "adombeck",
-                  "timestamp": 1789116326,
-                  "message": "e2e: allow selecting individual Robot test cases (#1910)\n\nCloses #1909\nUDENG-11489",
-                  "url": "https://github.com/canonical/authd/commit/e4aaa35ed16db2804189b87845e9c5d84223f33f"
-               },
-               {
-                  "sha": "aef7b9d45c93c5cf872d4d1ceac84e1afc64bd91",
-                  "author": "adombeck",
-                  "timestamp": 1789113758,
-                  "message": "e2e: check GDM user shell (#1917)\n\nUDENG-11496",
-                  "url": "https://github.com/canonical/authd/commit/aef7b9d45c93c5cf872d4d1ceac84e1afc64bd91"
+                  "sha": "fcfea92189c036995443a04c047a8acda3ff9e4f",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1789381989,
+                  "message": "Retry transient Entra authentication failures (#1874)\n\nTransient Entra MFA initialization failures, AADSTS90006\n(`ExternalServerRetryableError`) and AADSTS90055\n(`TenantThrottlingError`), were treated as terminal and forced users to\nrestart authentication. Retry these failures in-process for three total\nattempts with bounded jittered backoff: 1-1.5 seconds, then 2-2.5\nseconds. Other MFA errors keep existing routing. After the retry budget,\nuse `AuthRetry` with a neutral message. The normal attempt limit still\napplies. Cancellation during backoff or an interrupted initiation\nreturns `AuthCancelled` without consuming an authentication attempt. The\npreserved AADSTS code in `MFAError` means no `libhimmelblau` submodule\nchange is required.",
+                  "url": "https://github.com/canonical/authd/commit/fcfea92189c036995443a04c047a8acda3ff9e4f"
                }
             ],
             "ciActions": [
@@ -8589,6 +8589,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e39c493680a705d7ad2a59f9333a4bb943b1f8c0",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789389640,
+                  "message": "feat: add arm64 support for building snap from ci",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/e39c493680a705d7ad2a59f9333a4bb943b1f8c0"
+               },
+               {
                   "sha": "8f590bab536bef5615d88a6d2dde6480f60ad482",
                   "author": "Matthew Hagemann",
                   "timestamp": 1787648978,
@@ -8601,13 +8608,6 @@
                   "timestamp": 1787097245,
                   "message": "fix: use correct error kind for login-required error\n\nPreviously used auth-login-required, which was a non-existent error.",
                   "url": "https://github.com/canonical/desktop-security-center/commit/a11f1b50ea40eeb9bfa07530d82133d6b56dad41"
-               },
-               {
-                  "sha": "9c46daad4a38548858d74ca1a05bf07249d8050d",
-                  "author": "Soumya Ranjan Patnaik",
-                  "timestamp": 1781859098,
-                  "message": "chore: UX changes",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/9c46daad4a38548858d74ca1a05bf07249d8050d"
                }
             ],
             "ciActions": [],
@@ -8691,25 +8691,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3333870c0c308b090b61b8c5bc79a51b2335e3c2",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789401250,
+                  "message": "chore(deps): update tiobe/tics-github-action action to v4 (#418)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/3333870c0c308b090b61b8c5bc79a51b2335e3c2"
+               },
+               {
+                  "sha": "1cfc2ea567851c6e12837a0fec9f38390ce3efb1",
+                  "author": "renovate[bot]",
+                  "timestamp": 1789392950,
+                  "message": "chore(deps): update tiobe/tics-github-action action to v4",
+                  "url": "https://github.com/canonical/firmware-updater/commit/1cfc2ea567851c6e12837a0fec9f38390ce3efb1"
+               },
+               {
                   "sha": "ff1601e6c49d6fca78ccc7772aef8ced3b7e041d",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789125633,
                   "message": "fix(l10n): translations update from Hosted Weblate (#415)",
                   "url": "https://github.com/canonical/firmware-updater/commit/ff1601e6c49d6fca78ccc7772aef8ced3b7e041d"
-               },
-               {
-                  "sha": "d556387d783838321b8045dfb681be7a44115832",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1789125361,
-                  "message": "chore: regenerate l10n",
-                  "url": "https://github.com/canonical/firmware-updater/commit/d556387d783838321b8045dfb681be7a44115832"
-               },
-               {
-                  "sha": "a120739b2ad60a0fefa08b57b09ccfe72e863206",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789125254,
-                  "message": "feat: added signing to weblate generation",
-                  "url": "https://github.com/canonical/firmware-updater/commit/a120739b2ad60a0fefa08b57b09ccfe72e863206"
                }
             ],
             "ciActions": [
@@ -10464,25 +10464,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "23edc54894a30c5947bd6c00466354b56980c483",
-                  "author": "didrocks",
-                  "timestamp": 1788841599,
-                  "message": "New upstream snapshot for GNOME Shell",
-                  "url": "https://github.com/ubuntu/yaru/commit/23edc54894a30c5947bd6c00466354b56980c483"
-               },
-               {
-                  "sha": "2c466d8f420b343cf71183cf1ce83a90ceedcb6b",
+                  "sha": "7f18973e05607c609c4b972f0dd9bff36fa2a13e",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1788215688,
+                  "timestamp": 1789400062,
                   "message": "Upload to stonking",
-                  "url": "https://github.com/ubuntu/yaru/commit/2c466d8f420b343cf71183cf1ce83a90ceedcb6b"
+                  "url": "https://github.com/ubuntu/yaru/commit/7f18973e05607c609c4b972f0dd9bff36fa2a13e"
                },
                {
-                  "sha": "7478a4a5ef13a9e211b7cd11d046952134a627fe",
+                  "sha": "d4af1d6a6fbce56f3ae3215fd9e0e1e717c9042e",
                   "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1788215592,
+                  "timestamp": 1789400057,
                   "message": "Update changelog",
-                  "url": "https://github.com/ubuntu/yaru/commit/7478a4a5ef13a9e211b7cd11d046952134a627fe"
+                  "url": "https://github.com/ubuntu/yaru/commit/d4af1d6a6fbce56f3ae3215fd9e0e1e717c9042e"
+               },
+               {
+                  "sha": "3cdd35b4e9d5cff6ca27cf713a0870f13685bc93",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1789400023,
+                  "message": "build: Release Yaru 26.10.3",
+                  "url": "https://github.com/ubuntu/yaru/commit/3cdd35b4e9d5cff6ca27cf713a0870f13685bc93"
                }
             ],
             "ciActions": [],
