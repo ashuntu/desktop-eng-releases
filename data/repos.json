@@ -4117,6 +4117,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 389546519,
+                  "version": "publish-35036676036",
+                  "timestamp": 1789513481,
+                  "title": "Publish 35036676036",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev147\">mediawiki-k8s-rev147 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev132</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Ensure S3 uploads respect egress proxy at all stages by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/275\">#275</a></li>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/276\">#276</a></li>\n<li>feat: Use libsrvg instead of inkscape, and set reasonable defaults for image processing by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/278\">#278</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35027749533...publish-35036676036\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35027749533&hellip;publish-35036676036</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35036676036",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35036676036...main"
+               },
+               {
                   "id": 389505203,
                   "version": "publish-35027749533",
                   "timestamp": 1789506334,
@@ -4133,15 +4142,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev145\">mediawiki-k8s-rev145 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev130</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>refactor: Reorganize modules handling external relations by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/272\">#272</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34792471266...publish-35004196310\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34792471266&hellip;publish-35004196310</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35004196310",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35004196310...main"
-               },
-               {
-                  "id": 388081259,
-                  "version": "publish-34792471266",
-                  "timestamp": 1789343086,
-                  "title": "Publish 34792471266",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev144\">mediawiki-k8s-rev144 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev129</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/274\">#274</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34672739616...publish-34792471266\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34672739616&hellip;publish-34792471266</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-34792471266",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34792471266...main"
                }
             ],
             "commits": null,
@@ -4162,8 +4162,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 146,
-                     "timestamp": 1789509309
+                     "revision": 147,
+                     "timestamp": 1789516110
                   }
                ],
                "channels": [
@@ -4183,25 +4183,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5501325a679d26b65207621c38221d2aa3151448",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1785437393,
-                  "message": "Added manual test plan (#10)\n\nFirst version of a manual test plan.",
-                  "url": "https://github.com/canonical/myna/commit/5501325a679d26b65207621c38221d2aa3151448"
+                  "sha": "0c26f406f1ab389bf535817ec4a50dbbe9bad158",
+                  "author": "Charles",
+                  "timestamp": 1789506778,
+                  "message": "test(inject): stop running the manual preedit probe in every gated run\n\nibus_preedit_visual_probe waits 5 s for a person to click a field, then\nholds each preedit for 3 s so they can judge the rendering: 12 s of every\ntest-gated and cov run, asserting nothing a headless run can see.\nordinary_field_receives_preedit_and_commit now proves the preedit and\ncommit reach a real input context.\n\nIgnore it and document the --ignored invocation for the manual check.",
+                  "url": "https://github.com/canonical/myna/commit/0c26f406f1ab389bf535817ec4a50dbbe9bad158"
                },
                {
-                  "sha": "cfe1998649d5771c9ce07443852cb48149584efa",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1785437327,
-                  "message": "Add IMPROVEMENTS section to test-plan-system.md",
-                  "url": "https://github.com/canonical/myna/commit/cfe1998649d5771c9ce07443852cb48149584efa"
+                  "sha": "baecf4506e0747704063fec0eb4ad8a60d62ad17",
+                  "author": "Charles",
+                  "timestamp": 1789506778,
+                  "message": "build(test): run the GTK suites on a private session bus\n\nThe workshop inherits the host session bus. GDK asks it for\norg.freedesktop.host.portal.Registry and portal.Inhibit, and each\nlookup waits out the 25 s D-Bus timeout: render_check took 50.2 s and\nthe myna-config template suite 174 s for 7 tests, about 220 s of\nmake test-client-ui and the same again under cov.\n\nMeasured on the same binaries: render_check 50.2 s -> 0.3 s and the\ntemplate suite 174 s -> 6.6 s under dbus-run-session, all tests passing.\nGDK_DEBUG=no-portals alone only reached 68 s. A private bus also keeps\nthe probes off the developer's live session. GIO_USE_VFS=local keeps\nGIO from activating gvfsd on it, as dev/gated-tests.sh already does.",
+                  "url": "https://github.com/canonical/myna/commit/baecf4506e0747704063fec0eb4ad8a60d62ad17"
                },
                {
-                  "sha": "2745bfeaab695062048fbb6a019b08f6dedb949d",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1785396796,
-                  "message": "Spec-kit tooling and project constitution (#8)\n\n## What\n\nSpec-kit workflow tooling (`.specify/` templates, scripts, and\nmanifests; `.claude/skills/` and `.omp/commands/` agent integrations)\nand the ratified project constitution (v1.2.0).\n\n## Why\n\nMakes the spec-driven development workflow — and the constitution's\ngates (red-green TDD, Workshop-sandboxed testing, performance\nwatermarks, staged branch delivery) — reproducible for every\ncontributor. Split out of #6 so tooling, feature design artifacts, and\nimplementation can be reviewed independently (stack: this PR ← #6 ← #7).",
-                  "url": "https://github.com/canonical/myna/commit/2745bfeaab695062048fbb6a019b08f6dedb949d"
+                  "sha": "fc0663c18e6a59d63fb748c21e0775e0d71fe7a1",
+                  "author": "Charles",
+                  "timestamp": 1789506778,
+                  "message": "build(test): select client test targets across the workspace, not by package\n\nResolver 2 unifies dependency features over the packages a command\nselects. test-gated, ui-check and cov scoped with -p, so they built a\nsecond copy of glib, gio and their -sys crates (and of tokio, rustix and\nsyn for other members) with features the workspace build does not use.\nCargo keeps both copies, so switching scope is free once built, but\nevery edit to a workspace crate compiles once per copy.\n\nMeasured on warm targets, touching myna-core and then building what the\nclient test actions build: 14 compile units in 57 s with -p, 8 units in\n45 s with --workspace and target filters. Cargo applies --test, --lib\nand --example across the selected packages, so the same tests run on the\nworkspace feature set. Unifying features in [workspace.dependencies]\ncannot reach the transitive-only crates, and a workspace-hack crate\nwould change the features of the shipped snap and deb binaries.\n\nThe scoped-loop advice in .kb/verification.md and the Makefile uses\n--workspace as well.",
+                  "url": "https://github.com/canonical/myna/commit/fc0663c18e6a59d63fb748c21e0775e0d71fe7a1"
                }
             ],
             "ciActions": [],
@@ -5642,25 +5642,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d7b0613c428a640bf419cf0d3344d006e43304c0",
+                  "author": "Kat",
+                  "timestamp": 1789511784,
+                  "message": "fix: Visited destructive should be the same as destructive (#64)\n\nWe don't have a color token that fits as a dedicated color for\ndestructive, visited links, so we will just use the standard destructive\ncolor. This should be fine since the destructive color is mostly used\nfor pages that do not exist yet, and for those, we don't care if we\ncan't differentiate between visited and non-visited. There is also no\nstandard idea as to what a \"destructive\" visited link would look like\nanyway, meaning we reduce the potential for visual clutter without clear\nmeaning.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/d7b0613c428a640bf419cf0d3344d006e43304c0"
+               },
+               {
+                  "sha": "8c49a5ffd105fdb73b43c8eb100aea13a84dc379",
+                  "author": "kkuo",
+                  "timestamp": 1789506451,
+                  "message": "fix: Visited destructive should be the same as destructive\n\nWe don't have a color token that fits as a dedicated color for destructive, visited links, so we will just use the standard destructive color. This should be fine since the destructive color is mostly used for pages that do not exist yet, and for those, we don't care if we can't differentiate between visited and non-visited. There is also no standard idea as to what a \"destructive\" visited link would look like anyway, meaning we reduce the potential for visual clutter without clear meaning.",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/8c49a5ffd105fdb73b43c8eb100aea13a84dc379"
+               },
+               {
                   "sha": "03c029e56fcf6c5c85da6f4d7d089b6813d0a0a5",
                   "author": "Kat",
                   "timestamp": 1789400378,
                   "message": "fix: Improve layout behavior of card button link (#62)\n\nHere, we implement some improvements to the behavior of card button link\nlayouts. Using `--ubuntu-card-button-min-width`, the min-width of the\ncard buttons can be established. This can be used to manipulate the\nnumber of buttons shown per row at the full-width desktop display and on\na per-card basis.\n\nWe also added a special case for 6 children layouts, making them prefer\n2 rows of 3 instead of fitting as many buttons as possible on the first\nrow, leading to situations such as 5 on the first row and 1 on the\nsecond. A similar special case is included for 4 children layouts,\npreferring 2 rows of 2 over the first being a row of three and the\nsecond being a row of 1. This logic could probably be generalized with\n`sibling-count()`, but this is only baseline 2026, meaning older browser\nversions don't support it.\n\nAdditionally, we include a fix where the vendored pragma icons would\nshrink when the buttons that utilize them get too small to fit all\ncontent within a required min-width. The content may eventually spill\nout of the button. For this, manual testing of the content against the\nminimum supported width (320px) is required on a per-implementation\nbasis.\n\nNote, the homepage design seed currently isn't fully updated to match\nwhat is being done live or what will be done, but for the purposes of\nthe changes introduced in this PR, it should be fine.\n\n\nhttps://github.com/user-attachments/assets/552c6b9b-af45-4e37-8b0c-4260b78bba6f\n\nWe also included a new seed to demonstrate how the card buttons roughly\nbehave with different configurations.\n\n\nhttps://github.com/user-attachments/assets/dcaf46f2-6471-4899-a805-7a907498837f",
                   "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/03c029e56fcf6c5c85da6f4d7d089b6813d0a0a5"
-               },
-               {
-                  "sha": "690e0097cf62193689ba762ec665b810f2044bbd",
-                  "author": "kkuo",
-                  "timestamp": 1789147818,
-                  "message": "Keep card button icons full size",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/690e0097cf62193689ba762ec665b810f2044bbd"
-               },
-               {
-                  "sha": "c98763fd018ec649827d9372ef35eb1b0303552c",
-                  "author": "kkuo",
-                  "timestamp": 1789147788,
-                  "message": "Add responsive card button link sizing",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-extension/commit/c98763fd018ec649827d9372ef35eb1b0303552c"
                }
             ],
             "ciActions": [],
@@ -6563,6 +6563,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 389546519,
+                  "version": "publish-35036676036",
+                  "timestamp": 1789513481,
+                  "title": "Publish 35036676036",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev147\">mediawiki-k8s-rev147 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev132</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Ensure S3 uploads respect egress proxy at all stages by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/275\">#275</a></li>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/276\">#276</a></li>\n<li>feat: Use libsrvg instead of inkscape, and set reasonable defaults for image processing by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/278\">#278</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35027749533...publish-35036676036\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35027749533&hellip;publish-35036676036</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35036676036",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35036676036...main"
+               },
+               {
                   "id": 389505203,
                   "version": "publish-35027749533",
                   "timestamp": 1789506334,
@@ -6579,15 +6588,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev145\">mediawiki-k8s-rev145 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev130</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>refactor: Reorganize modules handling external relations by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/272\">#272</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34792471266...publish-35004196310\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34792471266&hellip;publish-35004196310</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35004196310",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35004196310...main"
-               },
-               {
-                  "id": 388081259,
-                  "version": "publish-34792471266",
-                  "timestamp": 1789343086,
-                  "title": "Publish 34792471266",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev144\">mediawiki-k8s-rev144 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev129</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/274\">#274</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34672739616...publish-34792471266\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34672739616&hellip;publish-34792471266</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-34792471266",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34792471266...main"
                }
             ],
             "commits": null,
@@ -6608,8 +6608,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 146,
-                     "timestamp": 1789509309
+                     "revision": 147,
+                     "timestamp": 1789516110
                   }
                ],
                "channels": [
@@ -6629,25 +6629,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5501325a679d26b65207621c38221d2aa3151448",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1785437393,
-                  "message": "Added manual test plan (#10)\n\nFirst version of a manual test plan.",
-                  "url": "https://github.com/canonical/myna/commit/5501325a679d26b65207621c38221d2aa3151448"
+                  "sha": "0c26f406f1ab389bf535817ec4a50dbbe9bad158",
+                  "author": "Charles",
+                  "timestamp": 1789506778,
+                  "message": "test(inject): stop running the manual preedit probe in every gated run\n\nibus_preedit_visual_probe waits 5 s for a person to click a field, then\nholds each preedit for 3 s so they can judge the rendering: 12 s of every\ntest-gated and cov run, asserting nothing a headless run can see.\nordinary_field_receives_preedit_and_commit now proves the preedit and\ncommit reach a real input context.\n\nIgnore it and document the --ignored invocation for the manual check.",
+                  "url": "https://github.com/canonical/myna/commit/0c26f406f1ab389bf535817ec4a50dbbe9bad158"
                },
                {
-                  "sha": "cfe1998649d5771c9ce07443852cb48149584efa",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1785437327,
-                  "message": "Add IMPROVEMENTS section to test-plan-system.md",
-                  "url": "https://github.com/canonical/myna/commit/cfe1998649d5771c9ce07443852cb48149584efa"
+                  "sha": "baecf4506e0747704063fec0eb4ad8a60d62ad17",
+                  "author": "Charles",
+                  "timestamp": 1789506778,
+                  "message": "build(test): run the GTK suites on a private session bus\n\nThe workshop inherits the host session bus. GDK asks it for\norg.freedesktop.host.portal.Registry and portal.Inhibit, and each\nlookup waits out the 25 s D-Bus timeout: render_check took 50.2 s and\nthe myna-config template suite 174 s for 7 tests, about 220 s of\nmake test-client-ui and the same again under cov.\n\nMeasured on the same binaries: render_check 50.2 s -> 0.3 s and the\ntemplate suite 174 s -> 6.6 s under dbus-run-session, all tests passing.\nGDK_DEBUG=no-portals alone only reached 68 s. A private bus also keeps\nthe probes off the developer's live session. GIO_USE_VFS=local keeps\nGIO from activating gvfsd on it, as dev/gated-tests.sh already does.",
+                  "url": "https://github.com/canonical/myna/commit/baecf4506e0747704063fec0eb4ad8a60d62ad17"
                },
                {
-                  "sha": "2745bfeaab695062048fbb6a019b08f6dedb949d",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1785396796,
-                  "message": "Spec-kit tooling and project constitution (#8)\n\n## What\n\nSpec-kit workflow tooling (`.specify/` templates, scripts, and\nmanifests; `.claude/skills/` and `.omp/commands/` agent integrations)\nand the ratified project constitution (v1.2.0).\n\n## Why\n\nMakes the spec-driven development workflow — and the constitution's\ngates (red-green TDD, Workshop-sandboxed testing, performance\nwatermarks, staged branch delivery) — reproducible for every\ncontributor. Split out of #6 so tooling, feature design artifacts, and\nimplementation can be reviewed independently (stack: this PR ← #6 ← #7).",
-                  "url": "https://github.com/canonical/myna/commit/2745bfeaab695062048fbb6a019b08f6dedb949d"
+                  "sha": "fc0663c18e6a59d63fb748c21e0775e0d71fe7a1",
+                  "author": "Charles",
+                  "timestamp": 1789506778,
+                  "message": "build(test): select client test targets across the workspace, not by package\n\nResolver 2 unifies dependency features over the packages a command\nselects. test-gated, ui-check and cov scoped with -p, so they built a\nsecond copy of glib, gio and their -sys crates (and of tokio, rustix and\nsyn for other members) with features the workspace build does not use.\nCargo keeps both copies, so switching scope is free once built, but\nevery edit to a workspace crate compiles once per copy.\n\nMeasured on warm targets, touching myna-core and then building what the\nclient test actions build: 14 compile units in 57 s with -p, 8 units in\n45 s with --workspace and target filters. Cargo applies --test, --lib\nand --example across the selected packages, so the same tests run on the\nworkspace feature set. Unifying features in [workspace.dependencies]\ncannot reach the transitive-only crates, and a workspace-hack crate\nwould change the features of the shipped snap and deb binaries.\n\nThe scoped-loop advice in .kb/verification.md and the Makefile uses\n--workspace as well.",
+                  "url": "https://github.com/canonical/myna/commit/fc0663c18e6a59d63fb748c21e0775e0d71fe7a1"
                }
             ],
             "ciActions": [],
@@ -9079,6 +9079,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 389546519,
+                  "version": "publish-35036676036",
+                  "timestamp": 1789513481,
+                  "title": "Publish 35036676036",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev147\">mediawiki-k8s-rev147 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev132</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Ensure S3 uploads respect egress proxy at all stages by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/275\">#275</a></li>\n<li>Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/276\">#276</a></li>\n<li>feat: Use libsrvg instead of inkscape, and set reasonable defaults for image processing by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/278\">#278</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35027749533...publish-35036676036\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35027749533&hellip;publish-35036676036</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35036676036",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35036676036...main"
+               },
+               {
                   "id": 389505203,
                   "version": "publish-35027749533",
                   "timestamp": 1789506334,
@@ -9095,15 +9104,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev145\">mediawiki-k8s-rev145 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev130</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>refactor: Reorganize modules handling external relations by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/272\">#272</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34792471266...publish-35004196310\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34792471266&hellip;publish-35004196310</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35004196310",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35004196310...main"
-               },
-               {
-                  "id": 388081259,
-                  "version": "publish-34792471266",
-                  "timestamp": 1789343086,
-                  "title": "Publish 34792471266",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev144\">mediawiki-k8s-rev144 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev129</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/274\">#274</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34672739616...publish-34792471266\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34672739616&hellip;publish-34792471266</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-34792471266",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-34792471266...main"
                }
             ],
             "commits": null,
@@ -9124,8 +9124,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 146,
-                     "timestamp": 1789509309
+                     "revision": 147,
+                     "timestamp": 1789516110
                   }
                ],
                "channels": [
@@ -9145,25 +9145,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5501325a679d26b65207621c38221d2aa3151448",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1785437393,
-                  "message": "Added manual test plan (#10)\n\nFirst version of a manual test plan.",
-                  "url": "https://github.com/canonical/myna/commit/5501325a679d26b65207621c38221d2aa3151448"
+                  "sha": "0c26f406f1ab389bf535817ec4a50dbbe9bad158",
+                  "author": "Charles",
+                  "timestamp": 1789506778,
+                  "message": "test(inject): stop running the manual preedit probe in every gated run\n\nibus_preedit_visual_probe waits 5 s for a person to click a field, then\nholds each preedit for 3 s so they can judge the rendering: 12 s of every\ntest-gated and cov run, asserting nothing a headless run can see.\nordinary_field_receives_preedit_and_commit now proves the preedit and\ncommit reach a real input context.\n\nIgnore it and document the --ignored invocation for the manual check.",
+                  "url": "https://github.com/canonical/myna/commit/0c26f406f1ab389bf535817ec4a50dbbe9bad158"
                },
                {
-                  "sha": "cfe1998649d5771c9ce07443852cb48149584efa",
-                  "author": "copilot-swe-agent[bot]",
-                  "timestamp": 1785437327,
-                  "message": "Add IMPROVEMENTS section to test-plan-system.md",
-                  "url": "https://github.com/canonical/myna/commit/cfe1998649d5771c9ce07443852cb48149584efa"
+                  "sha": "baecf4506e0747704063fec0eb4ad8a60d62ad17",
+                  "author": "Charles",
+                  "timestamp": 1789506778,
+                  "message": "build(test): run the GTK suites on a private session bus\n\nThe workshop inherits the host session bus. GDK asks it for\norg.freedesktop.host.portal.Registry and portal.Inhibit, and each\nlookup waits out the 25 s D-Bus timeout: render_check took 50.2 s and\nthe myna-config template suite 174 s for 7 tests, about 220 s of\nmake test-client-ui and the same again under cov.\n\nMeasured on the same binaries: render_check 50.2 s -> 0.3 s and the\ntemplate suite 174 s -> 6.6 s under dbus-run-session, all tests passing.\nGDK_DEBUG=no-portals alone only reached 68 s. A private bus also keeps\nthe probes off the developer's live session. GIO_USE_VFS=local keeps\nGIO from activating gvfsd on it, as dev/gated-tests.sh already does.",
+                  "url": "https://github.com/canonical/myna/commit/baecf4506e0747704063fec0eb4ad8a60d62ad17"
                },
                {
-                  "sha": "2745bfeaab695062048fbb6a019b08f6dedb949d",
-                  "author": "Jean-Baptiste Lallement",
-                  "timestamp": 1785396796,
-                  "message": "Spec-kit tooling and project constitution (#8)\n\n## What\n\nSpec-kit workflow tooling (`.specify/` templates, scripts, and\nmanifests; `.claude/skills/` and `.omp/commands/` agent integrations)\nand the ratified project constitution (v1.2.0).\n\n## Why\n\nMakes the spec-driven development workflow — and the constitution's\ngates (red-green TDD, Workshop-sandboxed testing, performance\nwatermarks, staged branch delivery) — reproducible for every\ncontributor. Split out of #6 so tooling, feature design artifacts, and\nimplementation can be reviewed independently (stack: this PR ← #6 ← #7).",
-                  "url": "https://github.com/canonical/myna/commit/2745bfeaab695062048fbb6a019b08f6dedb949d"
+                  "sha": "fc0663c18e6a59d63fb748c21e0775e0d71fe7a1",
+                  "author": "Charles",
+                  "timestamp": 1789506778,
+                  "message": "build(test): select client test targets across the workspace, not by package\n\nResolver 2 unifies dependency features over the packages a command\nselects. test-gated, ui-check and cov scoped with -p, so they built a\nsecond copy of glib, gio and their -sys crates (and of tokio, rustix and\nsyn for other members) with features the workspace build does not use.\nCargo keeps both copies, so switching scope is free once built, but\nevery edit to a workspace crate compiles once per copy.\n\nMeasured on warm targets, touching myna-core and then building what the\nclient test actions build: 14 compile units in 57 s with -p, 8 units in\n45 s with --workspace and target filters. Cargo applies --test, --lib\nand --example across the selected packages, so the same tests run on the\nworkspace feature set. Unifying features in [workspace.dependencies]\ncannot reach the transitive-only crates, and a workspace-hack crate\nwould change the features of the shipped snap and deb binaries.\n\nThe scoped-loop advice in .kb/verification.md and the Makefile uses\n--workspace as well.",
+                  "url": "https://github.com/canonical/myna/commit/fc0663c18e6a59d63fb748c21e0775e0d71fe7a1"
                }
             ],
             "ciActions": [],
