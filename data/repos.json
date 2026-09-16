@@ -3528,25 +3528,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fe30cb833f5832be61dcba62bb44c217e172024b",
+                  "author": "Robert Ancell",
+                  "timestamp": 1789551588,
+                  "message": "feat: use Dart 3 records for multiple return values in code generator (#405)\n\nCloses #399\n\n## Summary\n\nThis PR updates `DBusCodeGenerator` so that remote D-Bus methods with\nmultiple output arguments return strongly-typed Dart 3 records\n(`Future<(Type1 name1, Type2 name2, ...)>`) instead of returning an\nuntyped `Future<List<DBusValue>>`.\n\nEach output value is automatically converted to its corresponding native\nDart type using `type.dbusToNative(...)`, matching the behavior of\nsingle-output methods and enabling full type safety, IDE autocomplete,\nand Dart 3 record destructuring:\n\n```dart\n// Generated method return example:\nfinal (name, count) = await client.callGetDetails();\n```\n\n## Changes\n\n- **Code Generator**\n([`lib/src/dbus_code_generator.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/dbus_code_generator.dart)):\n- Updated `_generateRemoteMethodCall` when `outputArgs.length > 1` to\ngenerate a Dart 3 record type signature and deserialize return values as\na record literal tuple.\n- Preserves output argument names from D-Bus introspection XML when\navailable, with keyword and collision avoidance.\n- **SDK Requirement**\n([`pubspec.yaml`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/pubspec.yaml)):\n  - Updated minimum Dart SDK constraint to `>=3.0.0 <4.0.0`.\n- **Dart 3 FFI Compliance**\n([`lib/src/getsid_windows.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/getsid_windows.dart)):\n- Added `final class` modifier to FFI `Struct` subclasses to comply with\nDart 3 class modifier rules.\n- **Tests**\n([`test/generated-code/method-multiple-outputs.client.out`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/test/generated-code/method-multiple-outputs.client.out)):\n- Updated code generator test fixture to match the new record output\nformat.\n\n## Verification\n\n- Ran `dart test --name \"code generator\"`. All 33 tests passed cleanly.\n- Formatted code using `dart format .`.",
+                  "url": "https://github.com/canonical/dbus.dart/commit/fe30cb833f5832be61dcba62bb44c217e172024b"
+               },
+               {
+                  "sha": "5181bb20f141623ee011297e912c3c3aeff1617f",
+                  "author": "Victor C.",
+                  "timestamp": 1789537850,
+                  "message": "feat: use Dart 3 records for multiple return values in code generator\n\nRemote D-Bus methods with multiple output arguments now return a\nstrongly typed Dart 3 record instead of an untyped List<DBusValue>.\nEach output value is converted to its native Dart type, matching the\nbehaviour of single output methods, and the argument names from the\nintrospection XML are used as field names when available.\n\nExtract _nameIsReserved() and _makeRecordType() helpers, and use\n_nameIsReserved() in the signal code generation too, which had its\nown copies of the keyword list.\n\nRecords require Dart 3, so bump the minimum SDK to 3.0.0. With that\nconstraint the analyzer requires the FFI Struct subclasses in\ngetsid_windows.dart to be final.",
+                  "url": "https://github.com/canonical/dbus.dart/commit/5181bb20f141623ee011297e912c3c3aeff1617f"
+               },
+               {
                   "sha": "609c0b409fa9fa3b0af58d5e0197156b67c8f4c7",
                   "author": "Robert Ancell",
                   "timestamp": 1789427207,
                   "message": "Allow ANONYMOUS auth (#407)\n\nThis is a revival of #397 which seems to have gone stale. I added the\nflag that @robert-ancell requested to make sure that we don't break\nexisting behavior. I also added a test for both true and false cases of\nallowAnonymous",
                   "url": "https://github.com/canonical/dbus.dart/commit/609c0b409fa9fa3b0af58d5e0197156b67c8f4c7"
-               },
-               {
-                  "sha": "1bffed19b2ecce21b624cf68f83a6436d21d1c0d",
-                  "author": "Frede Hoey Braendstrup",
-                  "timestamp": 1789418634,
-                  "message": "Allow ANONYMOUS auth\n\nThis is useful for authenticating against a remote TCP dbus instance.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/1bffed19b2ecce21b624cf68f83a6436d21d1c0d"
-               },
-               {
-                  "sha": "f9cb69528e9328b4c8d0a574fd6d218004fa5735",
-                  "author": "Robert Ancell",
-                  "timestamp": 1787187924,
-                  "message": "Fix lint, use super parameter (#406)",
-                  "url": "https://github.com/canonical/dbus.dart/commit/f9cb69528e9328b4c8d0a574fd6d218004fa5735"
                }
             ],
             "ciActions": [],
@@ -4350,25 +4350,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9934180b764cea3a9576119a905f51ba620693df",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789558197,
+                  "message": "ci: fix snapcraft and rust issues (#322)",
+                  "url": "https://github.com/canonical/prompting-client/commit/9934180b764cea3a9576119a905f51ba620693df"
+               },
+               {
+                  "sha": "4746d5101743b8ac93e328f439ec1c9faf1d3a1d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789551106,
+                  "message": "ci: fix snapcraft and rust issues",
+                  "url": "https://github.com/canonical/prompting-client/commit/4746d5101743b8ac93e328f439ec1c9faf1d3a1d"
+               },
+               {
                   "sha": "b01a9410766b96608b2de17e28e3fcb89028d7c3",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1788951954,
                   "message": "application: Use a transparent background as view bg color (#319)",
                   "url": "https://github.com/canonical/prompting-client/commit/b01a9410766b96608b2de17e28e3fcb89028d7c3"
-               },
-               {
-                  "sha": "ac80171e37fba144a41bd21b610f4ac3728ef901",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1787590061,
-                  "message": "application: Use a transparent background as view bg color\n\nFlutter apps will draw by default using a black background, this is\nbecause it cannot be known what will be the application main color\nbefore than drawing it.\n\nFor flutter apps that are using the yaru toolkit we can be confident\nthat the bg color will match the gtk one so we can just show a\ntransparent background rather than painting a black one while the app is\nloading",
-                  "url": "https://github.com/canonical/prompting-client/commit/ac80171e37fba144a41bd21b610f4ac3728ef901"
-               },
-               {
-                  "sha": "b09f755e072587b6591b74c1503fda37f19c23ed",
-                  "author": "Dennis Loose",
-                  "timestamp": 1784277530,
-                  "message": "fix: follow redirects in fvm install script (#314)\n\nSee https://github.com/canonical/firmware-updater/pull/401",
-                  "url": "https://github.com/canonical/prompting-client/commit/b09f755e072587b6591b74c1503fda37f19c23ed"
                }
             ],
             "ciActions": [],
@@ -4642,25 +4642,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "556719ed0ad20cbd9850a24409b4541aa98addce",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1787846156,
-                  "message": "ci: remove repository CLA check (#142)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/556719ed0ad20cbd9850a24409b4541aa98addce"
+                  "sha": "3ac403d73e964aa63d600b290b8e700bd8930676",
+                  "author": "Murad Eynizada",
+                  "timestamp": 1789552452,
+                  "message": "chore: release 0.7.6 (#144)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/3ac403d73e964aa63d600b290b8e700bd8930676"
                },
                {
-                  "sha": "b3415b3b63cc07369bb4c058bd31d39da45325e4",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1787845621,
-                  "message": "ci: removed cla checkup from repo to use org wide check",
-                  "url": "https://github.com/canonical/snapd.dart/commit/b3415b3b63cc07369bb4c058bd31d39da45325e4"
+                  "sha": "513a7180327455043673c50c6ec435fef263a886",
+                  "author": "Murad Eynizada",
+                  "timestamp": 1789551642,
+                  "message": "chore: release 0.7.6\n\nSigned-off-by: Murad Eynizada <murad.eynizada@canonical.com>",
+                  "url": "https://github.com/canonical/snapd.dart/commit/513a7180327455043673c50c6ec435fef263a886"
                },
                {
-                  "sha": "5943406daba6c651689a2180a3113f252dfbea07",
-                  "author": "Dennis Loose",
-                  "timestamp": 1781017241,
-                  "message": "chore: release 0.7.5 (#141)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/5943406daba6c651689a2180a3113f252dfbea07"
+                  "sha": "8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e",
+                  "author": "Murad Eynizada",
+                  "timestamp": 1789551272,
+                  "message": "feat: add commonId support to SnapdClient.find() (#143)\n\n## Summary\n\nAdd support for searching snaps by `commonId` in `SnapdClient.find()`.\n\n## Validation\n\nAll existing tests continue to pass, and the new `find - common-id` test\nwas added.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e"
                }
             ],
             "ciActions": [],
@@ -5348,7 +5348,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 62,
+            "newCommits": 63,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5941,25 +5941,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fe30cb833f5832be61dcba62bb44c217e172024b",
+                  "author": "Robert Ancell",
+                  "timestamp": 1789551588,
+                  "message": "feat: use Dart 3 records for multiple return values in code generator (#405)\n\nCloses #399\n\n## Summary\n\nThis PR updates `DBusCodeGenerator` so that remote D-Bus methods with\nmultiple output arguments return strongly-typed Dart 3 records\n(`Future<(Type1 name1, Type2 name2, ...)>`) instead of returning an\nuntyped `Future<List<DBusValue>>`.\n\nEach output value is automatically converted to its corresponding native\nDart type using `type.dbusToNative(...)`, matching the behavior of\nsingle-output methods and enabling full type safety, IDE autocomplete,\nand Dart 3 record destructuring:\n\n```dart\n// Generated method return example:\nfinal (name, count) = await client.callGetDetails();\n```\n\n## Changes\n\n- **Code Generator**\n([`lib/src/dbus_code_generator.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/dbus_code_generator.dart)):\n- Updated `_generateRemoteMethodCall` when `outputArgs.length > 1` to\ngenerate a Dart 3 record type signature and deserialize return values as\na record literal tuple.\n- Preserves output argument names from D-Bus introspection XML when\navailable, with keyword and collision avoidance.\n- **SDK Requirement**\n([`pubspec.yaml`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/pubspec.yaml)):\n  - Updated minimum Dart SDK constraint to `>=3.0.0 <4.0.0`.\n- **Dart 3 FFI Compliance**\n([`lib/src/getsid_windows.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/getsid_windows.dart)):\n- Added `final class` modifier to FFI `Struct` subclasses to comply with\nDart 3 class modifier rules.\n- **Tests**\n([`test/generated-code/method-multiple-outputs.client.out`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/test/generated-code/method-multiple-outputs.client.out)):\n- Updated code generator test fixture to match the new record output\nformat.\n\n## Verification\n\n- Ran `dart test --name \"code generator\"`. All 33 tests passed cleanly.\n- Formatted code using `dart format .`.",
+                  "url": "https://github.com/canonical/dbus.dart/commit/fe30cb833f5832be61dcba62bb44c217e172024b"
+               },
+               {
+                  "sha": "5181bb20f141623ee011297e912c3c3aeff1617f",
+                  "author": "Victor C.",
+                  "timestamp": 1789537850,
+                  "message": "feat: use Dart 3 records for multiple return values in code generator\n\nRemote D-Bus methods with multiple output arguments now return a\nstrongly typed Dart 3 record instead of an untyped List<DBusValue>.\nEach output value is converted to its native Dart type, matching the\nbehaviour of single output methods, and the argument names from the\nintrospection XML are used as field names when available.\n\nExtract _nameIsReserved() and _makeRecordType() helpers, and use\n_nameIsReserved() in the signal code generation too, which had its\nown copies of the keyword list.\n\nRecords require Dart 3, so bump the minimum SDK to 3.0.0. With that\nconstraint the analyzer requires the FFI Struct subclasses in\ngetsid_windows.dart to be final.",
+                  "url": "https://github.com/canonical/dbus.dart/commit/5181bb20f141623ee011297e912c3c3aeff1617f"
+               },
+               {
                   "sha": "609c0b409fa9fa3b0af58d5e0197156b67c8f4c7",
                   "author": "Robert Ancell",
                   "timestamp": 1789427207,
                   "message": "Allow ANONYMOUS auth (#407)\n\nThis is a revival of #397 which seems to have gone stale. I added the\nflag that @robert-ancell requested to make sure that we don't break\nexisting behavior. I also added a test for both true and false cases of\nallowAnonymous",
                   "url": "https://github.com/canonical/dbus.dart/commit/609c0b409fa9fa3b0af58d5e0197156b67c8f4c7"
-               },
-               {
-                  "sha": "1bffed19b2ecce21b624cf68f83a6436d21d1c0d",
-                  "author": "Frede Hoey Braendstrup",
-                  "timestamp": 1789418634,
-                  "message": "Allow ANONYMOUS auth\n\nThis is useful for authenticating against a remote TCP dbus instance.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/1bffed19b2ecce21b624cf68f83a6436d21d1c0d"
-               },
-               {
-                  "sha": "f9cb69528e9328b4c8d0a574fd6d218004fa5735",
-                  "author": "Robert Ancell",
-                  "timestamp": 1787187924,
-                  "message": "Fix lint, use super parameter (#406)",
-                  "url": "https://github.com/canonical/dbus.dart/commit/f9cb69528e9328b4c8d0a574fd6d218004fa5735"
                }
             ],
             "ciActions": [],
@@ -6796,25 +6796,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9934180b764cea3a9576119a905f51ba620693df",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789558197,
+                  "message": "ci: fix snapcraft and rust issues (#322)",
+                  "url": "https://github.com/canonical/prompting-client/commit/9934180b764cea3a9576119a905f51ba620693df"
+               },
+               {
+                  "sha": "4746d5101743b8ac93e328f439ec1c9faf1d3a1d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789551106,
+                  "message": "ci: fix snapcraft and rust issues",
+                  "url": "https://github.com/canonical/prompting-client/commit/4746d5101743b8ac93e328f439ec1c9faf1d3a1d"
+               },
+               {
                   "sha": "b01a9410766b96608b2de17e28e3fcb89028d7c3",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1788951954,
                   "message": "application: Use a transparent background as view bg color (#319)",
                   "url": "https://github.com/canonical/prompting-client/commit/b01a9410766b96608b2de17e28e3fcb89028d7c3"
-               },
-               {
-                  "sha": "ac80171e37fba144a41bd21b610f4ac3728ef901",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1787590061,
-                  "message": "application: Use a transparent background as view bg color\n\nFlutter apps will draw by default using a black background, this is\nbecause it cannot be known what will be the application main color\nbefore than drawing it.\n\nFor flutter apps that are using the yaru toolkit we can be confident\nthat the bg color will match the gtk one so we can just show a\ntransparent background rather than painting a black one while the app is\nloading",
-                  "url": "https://github.com/canonical/prompting-client/commit/ac80171e37fba144a41bd21b610f4ac3728ef901"
-               },
-               {
-                  "sha": "b09f755e072587b6591b74c1503fda37f19c23ed",
-                  "author": "Dennis Loose",
-                  "timestamp": 1784277530,
-                  "message": "fix: follow redirects in fvm install script (#314)\n\nSee https://github.com/canonical/firmware-updater/pull/401",
-                  "url": "https://github.com/canonical/prompting-client/commit/b09f755e072587b6591b74c1503fda37f19c23ed"
                }
             ],
             "ciActions": [],
@@ -7088,25 +7088,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "556719ed0ad20cbd9850a24409b4541aa98addce",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1787846156,
-                  "message": "ci: remove repository CLA check (#142)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/556719ed0ad20cbd9850a24409b4541aa98addce"
+                  "sha": "3ac403d73e964aa63d600b290b8e700bd8930676",
+                  "author": "Murad Eynizada",
+                  "timestamp": 1789552452,
+                  "message": "chore: release 0.7.6 (#144)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/3ac403d73e964aa63d600b290b8e700bd8930676"
                },
                {
-                  "sha": "b3415b3b63cc07369bb4c058bd31d39da45325e4",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1787845621,
-                  "message": "ci: removed cla checkup from repo to use org wide check",
-                  "url": "https://github.com/canonical/snapd.dart/commit/b3415b3b63cc07369bb4c058bd31d39da45325e4"
+                  "sha": "513a7180327455043673c50c6ec435fef263a886",
+                  "author": "Murad Eynizada",
+                  "timestamp": 1789551642,
+                  "message": "chore: release 0.7.6\n\nSigned-off-by: Murad Eynizada <murad.eynizada@canonical.com>",
+                  "url": "https://github.com/canonical/snapd.dart/commit/513a7180327455043673c50c6ec435fef263a886"
                },
                {
-                  "sha": "5943406daba6c651689a2180a3113f252dfbea07",
-                  "author": "Dennis Loose",
-                  "timestamp": 1781017241,
-                  "message": "chore: release 0.7.5 (#141)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/5943406daba6c651689a2180a3113f252dfbea07"
+                  "sha": "8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e",
+                  "author": "Murad Eynizada",
+                  "timestamp": 1789551272,
+                  "message": "feat: add commonId support to SnapdClient.find() (#143)\n\n## Summary\n\nAdd support for searching snaps by `commonId` in `SnapdClient.find()`.\n\n## Validation\n\nAll existing tests continue to pass, and the new `find - common-id` test\nwas added.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e"
                }
             ],
             "ciActions": [],
@@ -7835,7 +7835,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 62,
+            "newCommits": 63,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7910,7 +7910,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 140,
+            "newCommits": 142,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8490,25 +8490,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fe30cb833f5832be61dcba62bb44c217e172024b",
+                  "author": "Robert Ancell",
+                  "timestamp": 1789551588,
+                  "message": "feat: use Dart 3 records for multiple return values in code generator (#405)\n\nCloses #399\n\n## Summary\n\nThis PR updates `DBusCodeGenerator` so that remote D-Bus methods with\nmultiple output arguments return strongly-typed Dart 3 records\n(`Future<(Type1 name1, Type2 name2, ...)>`) instead of returning an\nuntyped `Future<List<DBusValue>>`.\n\nEach output value is automatically converted to its corresponding native\nDart type using `type.dbusToNative(...)`, matching the behavior of\nsingle-output methods and enabling full type safety, IDE autocomplete,\nand Dart 3 record destructuring:\n\n```dart\n// Generated method return example:\nfinal (name, count) = await client.callGetDetails();\n```\n\n## Changes\n\n- **Code Generator**\n([`lib/src/dbus_code_generator.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/dbus_code_generator.dart)):\n- Updated `_generateRemoteMethodCall` when `outputArgs.length > 1` to\ngenerate a Dart 3 record type signature and deserialize return values as\na record literal tuple.\n- Preserves output argument names from D-Bus introspection XML when\navailable, with keyword and collision avoidance.\n- **SDK Requirement**\n([`pubspec.yaml`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/pubspec.yaml)):\n  - Updated minimum Dart SDK constraint to `>=3.0.0 <4.0.0`.\n- **Dart 3 FFI Compliance**\n([`lib/src/getsid_windows.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/getsid_windows.dart)):\n- Added `final class` modifier to FFI `Struct` subclasses to comply with\nDart 3 class modifier rules.\n- **Tests**\n([`test/generated-code/method-multiple-outputs.client.out`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/test/generated-code/method-multiple-outputs.client.out)):\n- Updated code generator test fixture to match the new record output\nformat.\n\n## Verification\n\n- Ran `dart test --name \"code generator\"`. All 33 tests passed cleanly.\n- Formatted code using `dart format .`.",
+                  "url": "https://github.com/canonical/dbus.dart/commit/fe30cb833f5832be61dcba62bb44c217e172024b"
+               },
+               {
+                  "sha": "5181bb20f141623ee011297e912c3c3aeff1617f",
+                  "author": "Victor C.",
+                  "timestamp": 1789537850,
+                  "message": "feat: use Dart 3 records for multiple return values in code generator\n\nRemote D-Bus methods with multiple output arguments now return a\nstrongly typed Dart 3 record instead of an untyped List<DBusValue>.\nEach output value is converted to its native Dart type, matching the\nbehaviour of single output methods, and the argument names from the\nintrospection XML are used as field names when available.\n\nExtract _nameIsReserved() and _makeRecordType() helpers, and use\n_nameIsReserved() in the signal code generation too, which had its\nown copies of the keyword list.\n\nRecords require Dart 3, so bump the minimum SDK to 3.0.0. With that\nconstraint the analyzer requires the FFI Struct subclasses in\ngetsid_windows.dart to be final.",
+                  "url": "https://github.com/canonical/dbus.dart/commit/5181bb20f141623ee011297e912c3c3aeff1617f"
+               },
+               {
                   "sha": "609c0b409fa9fa3b0af58d5e0197156b67c8f4c7",
                   "author": "Robert Ancell",
                   "timestamp": 1789427207,
                   "message": "Allow ANONYMOUS auth (#407)\n\nThis is a revival of #397 which seems to have gone stale. I added the\nflag that @robert-ancell requested to make sure that we don't break\nexisting behavior. I also added a test for both true and false cases of\nallowAnonymous",
                   "url": "https://github.com/canonical/dbus.dart/commit/609c0b409fa9fa3b0af58d5e0197156b67c8f4c7"
-               },
-               {
-                  "sha": "1bffed19b2ecce21b624cf68f83a6436d21d1c0d",
-                  "author": "Frede Hoey Braendstrup",
-                  "timestamp": 1789418634,
-                  "message": "Allow ANONYMOUS auth\n\nThis is useful for authenticating against a remote TCP dbus instance.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/1bffed19b2ecce21b624cf68f83a6436d21d1c0d"
-               },
-               {
-                  "sha": "f9cb69528e9328b4c8d0a574fd6d218004fa5735",
-                  "author": "Robert Ancell",
-                  "timestamp": 1787187924,
-                  "message": "Fix lint, use super parameter (#406)",
-                  "url": "https://github.com/canonical/dbus.dart/commit/f9cb69528e9328b4c8d0a574fd6d218004fa5735"
                }
             ],
             "ciActions": [],
@@ -9312,25 +9312,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9934180b764cea3a9576119a905f51ba620693df",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789558197,
+                  "message": "ci: fix snapcraft and rust issues (#322)",
+                  "url": "https://github.com/canonical/prompting-client/commit/9934180b764cea3a9576119a905f51ba620693df"
+               },
+               {
+                  "sha": "4746d5101743b8ac93e328f439ec1c9faf1d3a1d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789551106,
+                  "message": "ci: fix snapcraft and rust issues",
+                  "url": "https://github.com/canonical/prompting-client/commit/4746d5101743b8ac93e328f439ec1c9faf1d3a1d"
+               },
+               {
                   "sha": "b01a9410766b96608b2de17e28e3fcb89028d7c3",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1788951954,
                   "message": "application: Use a transparent background as view bg color (#319)",
                   "url": "https://github.com/canonical/prompting-client/commit/b01a9410766b96608b2de17e28e3fcb89028d7c3"
-               },
-               {
-                  "sha": "ac80171e37fba144a41bd21b610f4ac3728ef901",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1787590061,
-                  "message": "application: Use a transparent background as view bg color\n\nFlutter apps will draw by default using a black background, this is\nbecause it cannot be known what will be the application main color\nbefore than drawing it.\n\nFor flutter apps that are using the yaru toolkit we can be confident\nthat the bg color will match the gtk one so we can just show a\ntransparent background rather than painting a black one while the app is\nloading",
-                  "url": "https://github.com/canonical/prompting-client/commit/ac80171e37fba144a41bd21b610f4ac3728ef901"
-               },
-               {
-                  "sha": "b09f755e072587b6591b74c1503fda37f19c23ed",
-                  "author": "Dennis Loose",
-                  "timestamp": 1784277530,
-                  "message": "fix: follow redirects in fvm install script (#314)\n\nSee https://github.com/canonical/firmware-updater/pull/401",
-                  "url": "https://github.com/canonical/prompting-client/commit/b09f755e072587b6591b74c1503fda37f19c23ed"
                }
             ],
             "ciActions": [],
@@ -9604,25 +9604,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "556719ed0ad20cbd9850a24409b4541aa98addce",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1787846156,
-                  "message": "ci: remove repository CLA check (#142)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/556719ed0ad20cbd9850a24409b4541aa98addce"
+                  "sha": "3ac403d73e964aa63d600b290b8e700bd8930676",
+                  "author": "Murad Eynizada",
+                  "timestamp": 1789552452,
+                  "message": "chore: release 0.7.6 (#144)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/3ac403d73e964aa63d600b290b8e700bd8930676"
                },
                {
-                  "sha": "b3415b3b63cc07369bb4c058bd31d39da45325e4",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1787845621,
-                  "message": "ci: removed cla checkup from repo to use org wide check",
-                  "url": "https://github.com/canonical/snapd.dart/commit/b3415b3b63cc07369bb4c058bd31d39da45325e4"
+                  "sha": "513a7180327455043673c50c6ec435fef263a886",
+                  "author": "Murad Eynizada",
+                  "timestamp": 1789551642,
+                  "message": "chore: release 0.7.6\n\nSigned-off-by: Murad Eynizada <murad.eynizada@canonical.com>",
+                  "url": "https://github.com/canonical/snapd.dart/commit/513a7180327455043673c50c6ec435fef263a886"
                },
                {
-                  "sha": "5943406daba6c651689a2180a3113f252dfbea07",
-                  "author": "Dennis Loose",
-                  "timestamp": 1781017241,
-                  "message": "chore: release 0.7.5 (#141)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/5943406daba6c651689a2180a3113f252dfbea07"
+                  "sha": "8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e",
+                  "author": "Murad Eynizada",
+                  "timestamp": 1789551272,
+                  "message": "feat: add commonId support to SnapdClient.find() (#143)\n\n## Summary\n\nAdd support for searching snaps by `commonId` in `SnapdClient.find()`.\n\n## Validation\n\nAll existing tests continue to pass, and the new `find - common-id` test\nwas added.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e"
                }
             ],
             "ciActions": [],
@@ -10345,7 +10345,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 62,
+            "newCommits": 63,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
