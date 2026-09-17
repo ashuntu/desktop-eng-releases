@@ -3627,25 +3627,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4e77a6bf649416e761fb5b6f0ae5793676f00eaf",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789638429,
+                  "message": "maint: include noto fonts only for arm64 architecture (#248)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/4e77a6bf649416e761fb5b6f0ae5793676f00eaf"
+               },
+               {
+                  "sha": "30262ab47cbf5a97bc676f21d0d61fde70c9ac1f",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789631069,
+                  "message": "fix: added noto fallback fonts for arm64 (#247)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/30262ab47cbf5a97bc676f21d0d61fde70c9ac1f"
+               },
+               {
                   "sha": "e39c493680a705d7ad2a59f9333a4bb943b1f8c0",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789389640,
                   "message": "feat: add arm64 support for building snap from ci",
                   "url": "https://github.com/canonical/desktop-security-center/commit/e39c493680a705d7ad2a59f9333a4bb943b1f8c0"
-               },
-               {
-                  "sha": "8f590bab536bef5615d88a6d2dde6480f60ad482",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1787648978,
-                  "message": "Merge pull request #229 from canonical/security-center/snapd-exception-kind\n\nUniquely handle polkit errors using snapd reported error kinds",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/8f590bab536bef5615d88a6d2dde6480f60ad482"
-               },
-               {
-                  "sha": "a11f1b50ea40eeb9bfa07530d82133d6b56dad41",
-                  "author": "Soumya Ranjan Patnaik",
-                  "timestamp": 1787097245,
-                  "message": "fix: use correct error kind for login-required error\n\nPreviously used auth-login-required, which was a non-existent error.",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a11f1b50ea40eeb9bfa07530d82133d6b56dad41"
                }
             ],
             "ciActions": [],
@@ -3729,25 +3729,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "eefc7e9fd5ba4045eed0e09d211a1410cf69c5cd",
+                  "sha": "c5bed7b18f1c4af90c3d44353301d562c97d6856",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789570954,
-                  "message": "ci: add arm64 option when building a snap (#419)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/eefc7e9fd5ba4045eed0e09d211a1410cf69c5cd"
+                  "timestamp": 1789647178,
+                  "message": "fix: add noto fonts as workaround for arm64 (#420)\n\nResolves UDENG-11439",
+                  "url": "https://github.com/canonical/firmware-updater/commit/c5bed7b18f1c4af90c3d44353301d562c97d6856"
                },
                {
-                  "sha": "fc6cec3e17c88ddfea5940cb04cb675c8f77916c",
+                  "sha": "d67c13665202dd884cc4b46f3468315ce4c3ecd9",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789544720,
-                  "message": "ci: add arm64 option when building a snap",
-                  "url": "https://github.com/canonical/firmware-updater/commit/fc6cec3e17c88ddfea5940cb04cb675c8f77916c"
+                  "timestamp": 1789636447,
+                  "message": "only include noto package for arm64 platform",
+                  "url": "https://github.com/canonical/firmware-updater/commit/d67c13665202dd884cc4b46f3468315ce4c3ecd9"
                },
                {
-                  "sha": "195f125b4385b9df26f9e5fb186f4d5ba63503b5",
+                  "sha": "1607dbf0e62a57f82a184062c2edd32edb8b652f",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789487557,
-                  "message": "chore(deps): update google/osv-scanner-action action to v2.6.0 (#417)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/195f125b4385b9df26f9e5fb186f4d5ba63503b5"
+                  "timestamp": 1789565872,
+                  "message": "fix: add noto fonts as workaround for arm64",
+                  "url": "https://github.com/canonical/firmware-updater/commit/1607dbf0e62a57f82a184062c2edd32edb8b652f"
                }
             ],
             "ciActions": [
@@ -4183,25 +4183,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ee4ce4b69afc2a3e6eb35786230af2497cdb0281",
+                  "sha": "a91c0b15fec9800d13e79ed6029c185b16aed1fd",
                   "author": "Charles",
-                  "timestamp": 1789556782,
-                  "message": "fix(desktop): own the injection target for one utterance\n\nText could follow focus into another window. The controller subscribed to\nfocus events only after acquire returned, so a FocusOut delivered inside\nthe 50 ms content-type grace was lost; the final drain ran outside the\nfocus-guarded select loop; and commit checked only the content type, never\nwhether focus had left the context it acquired. ibus-daemon follows every\nFocusOut with a FocusIn on its fake context, so a focused flag cannot tell\nthat focus moved: the engine now exposes FocusId and ActiveSurroundingText\nso the daemon names the context in FocusInId/FocusOutId.\n\nacquire is all or nothing and hands out a Target that owns the utterance's\nright to write, under a lease minted before the engine switch and bound to\nthat context. Commit and preedit refuse an ended lease, a focus stream\ntaken afterwards still reports the loss, and release consumes the target,\nwhich makes a double release a type error and retires cancel, end and the\nno-op set_activity. Draining runs inside the same select loop, and the\ncontroller's three ending booleans collapse into one Ending.\n\nA refused flush no longer reports success: the completion follows a\nDelivery verdict, so the discriminator is whether buffered text was\ndropped rather than whether the transcript is empty. Text that did land\nstill ends silently.\n\nThe displaced input method belongs to the connection, not to one\nutterance. A target that superseded a live one remembered myna-stt, so its\nrelease handed back our own engine and lost the user's input method.\nEngineState records it once, only when the switch succeeded and the name\nis neither empty nor ours, and whichever release still owes it hands it\nback.\n\nOur own restore focuses the engine out before its reply, and the daemon\nthen focuses its fake context, so a pending lease ignores both; once\nfocused, either ends it. The window between the lease check and the daemon\nrouting CommitText is bounded, not closed: IBus cannot address a commit to\na context.",
-                  "url": "https://github.com/canonical/myna/commit/ee4ce4b69afc2a3e6eb35786230af2497cdb0281"
+                  "timestamp": 1789645460,
+                  "message": "refactor: remove the qwen and sherpa backends\n\nThe release ships whisper, parakeet and funasr only.\n\nRemoved:\n- qwen-snap/ and sherpa-snap/ entirely.\n- server/src/myna/testbed/qwen.py, sherpa.py and their tests\n  (test_qwen_unit.py, test_sherpa_unit.py, testbed/test_sherpa.py).\n- dev/fetch_sherpa_model.py, dev/fetch_sherpa_punct_model.py and\n  dev/stage-qwen-c.sh.\n- The sherpa extra and sherpa_onnx mypy override in server/pyproject.toml,\n  the qwen-c/sherpa adapter choices and --sherpa-* flags in cli.py, both\n  from Makefile BACKENDS and the benchmarker's PURGEABLE set, their\n  dev/bench.yaml(.example) blocks, test_model_pins.py and\n  test_snap_packaging.py entries (including the sherpa-only punctuation\n  toggle test), and spread.yaml/lint-packages.sh/.gitignore/dev/README.md\n  references.\n- Qwen from the system test plan: models under test are now Whisper,\n  Parakeet and FunASR, and TC-07 (unsupported-language probe) is rescoped\n  to FunASR, since Whisper and Parakeet both cover Estonian.\n\nmyna-sherpa/myna-qwen stand-in names in benchmarker tests now use\nmyna-parakeet/myna-funasr.\n\nKept: specs/ as frozen history, and historical sherpa mentions in comments.\nThe onnxruntime <1.28 cap existed for sherpa-onnx; it stays for now so the\nparakeet perf baseline's runtime does not move.\n\nserver/uv.lock: 114 -> 113 packages (sherpa-onnx dropped; nothing else\nchanged).",
+                  "url": "https://github.com/canonical/myna/commit/a91c0b15fec9800d13e79ed6029c185b16aed1fd"
                },
                {
-                  "sha": "0c26f406f1ab389bf535817ec4a50dbbe9bad158",
+                  "sha": "a190da8db8ed70bc71f8524f1807dd8fc02f6293",
                   "author": "Charles",
-                  "timestamp": 1789506778,
-                  "message": "test(inject): stop running the manual preedit probe in every gated run\n\nibus_preedit_visual_probe waits 5 s for a person to click a field, then\nholds each preedit for 3 s so they can judge the rendering: 12 s of every\ntest-gated and cov run, asserting nothing a headless run can see.\nordinary_field_receives_preedit_and_commit now proves the preedit and\ncommit reach a real input context.\n\nIgnore it and document the --ignored invocation for the manual check.",
-                  "url": "https://github.com/canonical/myna/commit/0c26f406f1ab389bf535817ec4a50dbbe9bad158"
+                  "timestamp": 1789641685,
+                  "message": "fix(snaps): re-select the engine when hardware-observe is connected\n\nThe install hook cannot score hardware without hardware-observe, so a\nsnap installed before the plug is connected (a sideload, or a store grant\nthat arrives by refresh) settles on cpu. Nothing re-scored afterwards:\nconnecting the plug left myna-parakeet on cpu on an RTX 4080 with no\nrestart, until someone ran `use-engine --auto` by hand.\n\nparakeet and whisper, the snaps with more than one engine, now run\n`use-engine --auto` from a connect-plug-hardware-observe hook. The hook\nskips while no engine is active, because snapd auto-connects before the\ninstall hook runs and that hook selects; and it never exits non-zero,\nbecause a failing connect hook makes snapd undo the connection.\n\nThat skip relies on every install hook leaving an engine active, which\nwhisper's did not: without the plug it selected nothing and its daemon\nexited on every start. It now falls back to cpu by name, as parakeet's\ndoes.",
+                  "url": "https://github.com/canonical/myna/commit/a190da8db8ed70bc71f8524f1807dd8fc02f6293"
                },
                {
-                  "sha": "baecf4506e0747704063fec0eb4ad8a60d62ad17",
+                  "sha": "ad49d90ecd758e6338affd5c715fba8807f35b0b",
                   "author": "Charles",
-                  "timestamp": 1789506778,
-                  "message": "build(test): run the GTK suites on a private session bus\n\nThe workshop inherits the host session bus. GDK asks it for\norg.freedesktop.host.portal.Registry and portal.Inhibit, and each\nlookup waits out the 25 s D-Bus timeout: render_check took 50.2 s and\nthe myna-config template suite 174 s for 7 tests, about 220 s of\nmake test-client-ui and the same again under cov.\n\nMeasured on the same binaries: render_check 50.2 s -> 0.3 s and the\ntemplate suite 174 s -> 6.6 s under dbus-run-session, all tests passing.\nGDK_DEBUG=no-portals alone only reached 68 s. A private bus also keeps\nthe probes off the developer's live session. GIO_USE_VFS=local keeps\nGIO from activating gvfsd on it, as dev/gated-tests.sh already does.",
-                  "url": "https://github.com/canonical/myna/commit/baecf4506e0747704063fec0eb4ad8a60d62ad17"
+                  "timestamp": 1789640378,
+                  "message": "docs(parakeet): report the snap's own benchmark and answer the restart prompt\n\nThe table came from the pre-snap spike (1.62% WER, 5.2 GB, a NeMo parity\ncolumn myna-bench cannot produce). Replace it with the myna-bench rows\nmeasured against the installed fp32-only snap on zephyrus.\n\n`use-engine --auto` asks \"Restart? [Y/n]\" and hangs a non-interactive shell\nafter already saving the switch; pass --assume-yes as whisper-snap's README\ndoes.",
+                  "url": "https://github.com/canonical/myna/commit/ad49d90ecd758e6338affd5c715fba8807f35b0b"
                }
             ],
             "ciActions": [],
@@ -4350,25 +4350,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "18d457bed858e60a348ea38582301dac9a5fc287",
+                  "sha": "248fcb4c1d1917beccdb6a6372785a2c09eeee33",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789566854,
-                  "message": "ci: add arm64 option when building a snap (#321)",
-                  "url": "https://github.com/canonical/prompting-client/commit/18d457bed858e60a348ea38582301dac9a5fc287"
+                  "timestamp": 1789638286,
+                  "message": "fix: add noto fonts as fallback for arm64 workaround (#323)\n\nResolves UDENG-11440",
+                  "url": "https://github.com/canonical/prompting-client/commit/248fcb4c1d1917beccdb6a6372785a2c09eeee33"
                },
                {
-                  "sha": "d32dd58e35c889324375865560e00a72c482e4f9",
+                  "sha": "55310ec6413c37e37152d22652c482851ea4260a",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789544900,
-                  "message": "ci: add arm64 option when building a snap",
-                  "url": "https://github.com/canonical/prompting-client/commit/d32dd58e35c889324375865560e00a72c482e4f9"
+                  "timestamp": 1789638191,
+                  "message": "fix: drop rust toolchain from final snap (#324)",
+                  "url": "https://github.com/canonical/prompting-client/commit/55310ec6413c37e37152d22652c482851ea4260a"
                },
                {
-                  "sha": "9934180b764cea3a9576119a905f51ba620693df",
+                  "sha": "c5b876261950141b6348f7129d370fb484212dbb",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789558197,
-                  "message": "ci: fix snapcraft and rust issues (#322)",
-                  "url": "https://github.com/canonical/prompting-client/commit/9934180b764cea3a9576119a905f51ba620693df"
+                  "timestamp": 1789636260,
+                  "message": "include fonts-noto-cjk only for arm64 architecture",
+                  "url": "https://github.com/canonical/prompting-client/commit/c5b876261950141b6348f7129d370fb484212dbb"
                }
             ],
             "ciActions": [],
@@ -4784,6 +4784,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "84ff565dbabc8d881632dee9619ecf95f1a8434e",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789640234,
+                  "message": "docs: simplify readme (#14)",
+                  "url": "https://github.com/canonical/translations-verifier/commit/84ff565dbabc8d881632dee9619ecf95f1a8434e"
+               },
+               {
                   "sha": "e2b72fa4ea65e69666558fe5d9c28fa8dd0dd72d",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1788984748,
@@ -4796,13 +4803,6 @@
                   "timestamp": 1788820953,
                   "message": "fix: added pr permissions",
                   "url": "https://github.com/canonical/translations-verifier/commit/15c81bff13606f4bfc940734175b88cca61e8168"
-               },
-               {
-                  "sha": "de5f98b5c68a510dc1f862d4b306bafda0a8a59c",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1788820331,
-                  "message": "chore: added error details for mutation error",
-                  "url": "https://github.com/canonical/translations-verifier/commit/de5f98b5c68a510dc1f862d4b306bafda0a8a59c"
                }
             ],
             "ciActions": [],
@@ -5348,7 +5348,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 63,
+            "newCommits": 69,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5395,14 +5395,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 666,
-                     "timestamp": 1789565610
+                     "revision": 674,
+                     "timestamp": 1789649518
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 667,
-                     "timestamp": 1789566190
+                     "revision": 673,
+                     "timestamp": 1789648676
                   }
                ],
                "channels": [
@@ -6040,25 +6040,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4e77a6bf649416e761fb5b6f0ae5793676f00eaf",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789638429,
+                  "message": "maint: include noto fonts only for arm64 architecture (#248)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/4e77a6bf649416e761fb5b6f0ae5793676f00eaf"
+               },
+               {
+                  "sha": "30262ab47cbf5a97bc676f21d0d61fde70c9ac1f",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789631069,
+                  "message": "fix: added noto fallback fonts for arm64 (#247)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/30262ab47cbf5a97bc676f21d0d61fde70c9ac1f"
+               },
+               {
                   "sha": "e39c493680a705d7ad2a59f9333a4bb943b1f8c0",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789389640,
                   "message": "feat: add arm64 support for building snap from ci",
                   "url": "https://github.com/canonical/desktop-security-center/commit/e39c493680a705d7ad2a59f9333a4bb943b1f8c0"
-               },
-               {
-                  "sha": "8f590bab536bef5615d88a6d2dde6480f60ad482",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1787648978,
-                  "message": "Merge pull request #229 from canonical/security-center/snapd-exception-kind\n\nUniquely handle polkit errors using snapd reported error kinds",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/8f590bab536bef5615d88a6d2dde6480f60ad482"
-               },
-               {
-                  "sha": "a11f1b50ea40eeb9bfa07530d82133d6b56dad41",
-                  "author": "Soumya Ranjan Patnaik",
-                  "timestamp": 1787097245,
-                  "message": "fix: use correct error kind for login-required error\n\nPreviously used auth-login-required, which was a non-existent error.",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a11f1b50ea40eeb9bfa07530d82133d6b56dad41"
                }
             ],
             "ciActions": [],
@@ -6142,25 +6142,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "eefc7e9fd5ba4045eed0e09d211a1410cf69c5cd",
+                  "sha": "c5bed7b18f1c4af90c3d44353301d562c97d6856",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789570954,
-                  "message": "ci: add arm64 option when building a snap (#419)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/eefc7e9fd5ba4045eed0e09d211a1410cf69c5cd"
+                  "timestamp": 1789647178,
+                  "message": "fix: add noto fonts as workaround for arm64 (#420)\n\nResolves UDENG-11439",
+                  "url": "https://github.com/canonical/firmware-updater/commit/c5bed7b18f1c4af90c3d44353301d562c97d6856"
                },
                {
-                  "sha": "fc6cec3e17c88ddfea5940cb04cb675c8f77916c",
+                  "sha": "d67c13665202dd884cc4b46f3468315ce4c3ecd9",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789544720,
-                  "message": "ci: add arm64 option when building a snap",
-                  "url": "https://github.com/canonical/firmware-updater/commit/fc6cec3e17c88ddfea5940cb04cb675c8f77916c"
+                  "timestamp": 1789636447,
+                  "message": "only include noto package for arm64 platform",
+                  "url": "https://github.com/canonical/firmware-updater/commit/d67c13665202dd884cc4b46f3468315ce4c3ecd9"
                },
                {
-                  "sha": "195f125b4385b9df26f9e5fb186f4d5ba63503b5",
+                  "sha": "1607dbf0e62a57f82a184062c2edd32edb8b652f",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789487557,
-                  "message": "chore(deps): update google/osv-scanner-action action to v2.6.0 (#417)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/195f125b4385b9df26f9e5fb186f4d5ba63503b5"
+                  "timestamp": 1789565872,
+                  "message": "fix: add noto fonts as workaround for arm64",
+                  "url": "https://github.com/canonical/firmware-updater/commit/1607dbf0e62a57f82a184062c2edd32edb8b652f"
                }
             ],
             "ciActions": [
@@ -6629,25 +6629,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ee4ce4b69afc2a3e6eb35786230af2497cdb0281",
+                  "sha": "a91c0b15fec9800d13e79ed6029c185b16aed1fd",
                   "author": "Charles",
-                  "timestamp": 1789556782,
-                  "message": "fix(desktop): own the injection target for one utterance\n\nText could follow focus into another window. The controller subscribed to\nfocus events only after acquire returned, so a FocusOut delivered inside\nthe 50 ms content-type grace was lost; the final drain ran outside the\nfocus-guarded select loop; and commit checked only the content type, never\nwhether focus had left the context it acquired. ibus-daemon follows every\nFocusOut with a FocusIn on its fake context, so a focused flag cannot tell\nthat focus moved: the engine now exposes FocusId and ActiveSurroundingText\nso the daemon names the context in FocusInId/FocusOutId.\n\nacquire is all or nothing and hands out a Target that owns the utterance's\nright to write, under a lease minted before the engine switch and bound to\nthat context. Commit and preedit refuse an ended lease, a focus stream\ntaken afterwards still reports the loss, and release consumes the target,\nwhich makes a double release a type error and retires cancel, end and the\nno-op set_activity. Draining runs inside the same select loop, and the\ncontroller's three ending booleans collapse into one Ending.\n\nA refused flush no longer reports success: the completion follows a\nDelivery verdict, so the discriminator is whether buffered text was\ndropped rather than whether the transcript is empty. Text that did land\nstill ends silently.\n\nThe displaced input method belongs to the connection, not to one\nutterance. A target that superseded a live one remembered myna-stt, so its\nrelease handed back our own engine and lost the user's input method.\nEngineState records it once, only when the switch succeeded and the name\nis neither empty nor ours, and whichever release still owes it hands it\nback.\n\nOur own restore focuses the engine out before its reply, and the daemon\nthen focuses its fake context, so a pending lease ignores both; once\nfocused, either ends it. The window between the lease check and the daemon\nrouting CommitText is bounded, not closed: IBus cannot address a commit to\na context.",
-                  "url": "https://github.com/canonical/myna/commit/ee4ce4b69afc2a3e6eb35786230af2497cdb0281"
+                  "timestamp": 1789645460,
+                  "message": "refactor: remove the qwen and sherpa backends\n\nThe release ships whisper, parakeet and funasr only.\n\nRemoved:\n- qwen-snap/ and sherpa-snap/ entirely.\n- server/src/myna/testbed/qwen.py, sherpa.py and their tests\n  (test_qwen_unit.py, test_sherpa_unit.py, testbed/test_sherpa.py).\n- dev/fetch_sherpa_model.py, dev/fetch_sherpa_punct_model.py and\n  dev/stage-qwen-c.sh.\n- The sherpa extra and sherpa_onnx mypy override in server/pyproject.toml,\n  the qwen-c/sherpa adapter choices and --sherpa-* flags in cli.py, both\n  from Makefile BACKENDS and the benchmarker's PURGEABLE set, their\n  dev/bench.yaml(.example) blocks, test_model_pins.py and\n  test_snap_packaging.py entries (including the sherpa-only punctuation\n  toggle test), and spread.yaml/lint-packages.sh/.gitignore/dev/README.md\n  references.\n- Qwen from the system test plan: models under test are now Whisper,\n  Parakeet and FunASR, and TC-07 (unsupported-language probe) is rescoped\n  to FunASR, since Whisper and Parakeet both cover Estonian.\n\nmyna-sherpa/myna-qwen stand-in names in benchmarker tests now use\nmyna-parakeet/myna-funasr.\n\nKept: specs/ as frozen history, and historical sherpa mentions in comments.\nThe onnxruntime <1.28 cap existed for sherpa-onnx; it stays for now so the\nparakeet perf baseline's runtime does not move.\n\nserver/uv.lock: 114 -> 113 packages (sherpa-onnx dropped; nothing else\nchanged).",
+                  "url": "https://github.com/canonical/myna/commit/a91c0b15fec9800d13e79ed6029c185b16aed1fd"
                },
                {
-                  "sha": "0c26f406f1ab389bf535817ec4a50dbbe9bad158",
+                  "sha": "a190da8db8ed70bc71f8524f1807dd8fc02f6293",
                   "author": "Charles",
-                  "timestamp": 1789506778,
-                  "message": "test(inject): stop running the manual preedit probe in every gated run\n\nibus_preedit_visual_probe waits 5 s for a person to click a field, then\nholds each preedit for 3 s so they can judge the rendering: 12 s of every\ntest-gated and cov run, asserting nothing a headless run can see.\nordinary_field_receives_preedit_and_commit now proves the preedit and\ncommit reach a real input context.\n\nIgnore it and document the --ignored invocation for the manual check.",
-                  "url": "https://github.com/canonical/myna/commit/0c26f406f1ab389bf535817ec4a50dbbe9bad158"
+                  "timestamp": 1789641685,
+                  "message": "fix(snaps): re-select the engine when hardware-observe is connected\n\nThe install hook cannot score hardware without hardware-observe, so a\nsnap installed before the plug is connected (a sideload, or a store grant\nthat arrives by refresh) settles on cpu. Nothing re-scored afterwards:\nconnecting the plug left myna-parakeet on cpu on an RTX 4080 with no\nrestart, until someone ran `use-engine --auto` by hand.\n\nparakeet and whisper, the snaps with more than one engine, now run\n`use-engine --auto` from a connect-plug-hardware-observe hook. The hook\nskips while no engine is active, because snapd auto-connects before the\ninstall hook runs and that hook selects; and it never exits non-zero,\nbecause a failing connect hook makes snapd undo the connection.\n\nThat skip relies on every install hook leaving an engine active, which\nwhisper's did not: without the plug it selected nothing and its daemon\nexited on every start. It now falls back to cpu by name, as parakeet's\ndoes.",
+                  "url": "https://github.com/canonical/myna/commit/a190da8db8ed70bc71f8524f1807dd8fc02f6293"
                },
                {
-                  "sha": "baecf4506e0747704063fec0eb4ad8a60d62ad17",
+                  "sha": "ad49d90ecd758e6338affd5c715fba8807f35b0b",
                   "author": "Charles",
-                  "timestamp": 1789506778,
-                  "message": "build(test): run the GTK suites on a private session bus\n\nThe workshop inherits the host session bus. GDK asks it for\norg.freedesktop.host.portal.Registry and portal.Inhibit, and each\nlookup waits out the 25 s D-Bus timeout: render_check took 50.2 s and\nthe myna-config template suite 174 s for 7 tests, about 220 s of\nmake test-client-ui and the same again under cov.\n\nMeasured on the same binaries: render_check 50.2 s -> 0.3 s and the\ntemplate suite 174 s -> 6.6 s under dbus-run-session, all tests passing.\nGDK_DEBUG=no-portals alone only reached 68 s. A private bus also keeps\nthe probes off the developer's live session. GIO_USE_VFS=local keeps\nGIO from activating gvfsd on it, as dev/gated-tests.sh already does.",
-                  "url": "https://github.com/canonical/myna/commit/baecf4506e0747704063fec0eb4ad8a60d62ad17"
+                  "timestamp": 1789640378,
+                  "message": "docs(parakeet): report the snap's own benchmark and answer the restart prompt\n\nThe table came from the pre-snap spike (1.62% WER, 5.2 GB, a NeMo parity\ncolumn myna-bench cannot produce). Replace it with the myna-bench rows\nmeasured against the installed fp32-only snap on zephyrus.\n\n`use-engine --auto` asks \"Restart? [Y/n]\" and hangs a non-interactive shell\nafter already saving the switch; pass --assume-yes as whisper-snap's README\ndoes.",
+                  "url": "https://github.com/canonical/myna/commit/ad49d90ecd758e6338affd5c715fba8807f35b0b"
                }
             ],
             "ciActions": [],
@@ -6796,25 +6796,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "18d457bed858e60a348ea38582301dac9a5fc287",
+                  "sha": "248fcb4c1d1917beccdb6a6372785a2c09eeee33",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789566854,
-                  "message": "ci: add arm64 option when building a snap (#321)",
-                  "url": "https://github.com/canonical/prompting-client/commit/18d457bed858e60a348ea38582301dac9a5fc287"
+                  "timestamp": 1789638286,
+                  "message": "fix: add noto fonts as fallback for arm64 workaround (#323)\n\nResolves UDENG-11440",
+                  "url": "https://github.com/canonical/prompting-client/commit/248fcb4c1d1917beccdb6a6372785a2c09eeee33"
                },
                {
-                  "sha": "d32dd58e35c889324375865560e00a72c482e4f9",
+                  "sha": "55310ec6413c37e37152d22652c482851ea4260a",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789544900,
-                  "message": "ci: add arm64 option when building a snap",
-                  "url": "https://github.com/canonical/prompting-client/commit/d32dd58e35c889324375865560e00a72c482e4f9"
+                  "timestamp": 1789638191,
+                  "message": "fix: drop rust toolchain from final snap (#324)",
+                  "url": "https://github.com/canonical/prompting-client/commit/55310ec6413c37e37152d22652c482851ea4260a"
                },
                {
-                  "sha": "9934180b764cea3a9576119a905f51ba620693df",
+                  "sha": "c5b876261950141b6348f7129d370fb484212dbb",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789558197,
-                  "message": "ci: fix snapcraft and rust issues (#322)",
-                  "url": "https://github.com/canonical/prompting-client/commit/9934180b764cea3a9576119a905f51ba620693df"
+                  "timestamp": 1789636260,
+                  "message": "include fonts-noto-cjk only for arm64 architecture",
+                  "url": "https://github.com/canonical/prompting-client/commit/c5b876261950141b6348f7129d370fb484212dbb"
                }
             ],
             "ciActions": [],
@@ -7230,6 +7230,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "84ff565dbabc8d881632dee9619ecf95f1a8434e",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789640234,
+                  "message": "docs: simplify readme (#14)",
+                  "url": "https://github.com/canonical/translations-verifier/commit/84ff565dbabc8d881632dee9619ecf95f1a8434e"
+               },
+               {
                   "sha": "e2b72fa4ea65e69666558fe5d9c28fa8dd0dd72d",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1788984748,
@@ -7242,13 +7249,6 @@
                   "timestamp": 1788820953,
                   "message": "fix: added pr permissions",
                   "url": "https://github.com/canonical/translations-verifier/commit/15c81bff13606f4bfc940734175b88cca61e8168"
-               },
-               {
-                  "sha": "de5f98b5c68a510dc1f862d4b306bafda0a8a59c",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1788820331,
-                  "message": "chore: added error details for mutation error",
-                  "url": "https://github.com/canonical/translations-verifier/commit/de5f98b5c68a510dc1f862d4b306bafda0a8a59c"
                }
             ],
             "ciActions": [],
@@ -7516,7 +7516,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 168,
+            "newCommits": 179,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7835,7 +7835,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 63,
+            "newCommits": 69,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7882,14 +7882,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 666,
-                     "timestamp": 1789565610
+                     "revision": 674,
+                     "timestamp": 1789649518
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 667,
-                     "timestamp": 1789566190
+                     "revision": 673,
+                     "timestamp": 1789648676
                   }
                ],
                "channels": [
@@ -8589,25 +8589,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4e77a6bf649416e761fb5b6f0ae5793676f00eaf",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789638429,
+                  "message": "maint: include noto fonts only for arm64 architecture (#248)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/4e77a6bf649416e761fb5b6f0ae5793676f00eaf"
+               },
+               {
+                  "sha": "30262ab47cbf5a97bc676f21d0d61fde70c9ac1f",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789631069,
+                  "message": "fix: added noto fallback fonts for arm64 (#247)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/30262ab47cbf5a97bc676f21d0d61fde70c9ac1f"
+               },
+               {
                   "sha": "e39c493680a705d7ad2a59f9333a4bb943b1f8c0",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789389640,
                   "message": "feat: add arm64 support for building snap from ci",
                   "url": "https://github.com/canonical/desktop-security-center/commit/e39c493680a705d7ad2a59f9333a4bb943b1f8c0"
-               },
-               {
-                  "sha": "8f590bab536bef5615d88a6d2dde6480f60ad482",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1787648978,
-                  "message": "Merge pull request #229 from canonical/security-center/snapd-exception-kind\n\nUniquely handle polkit errors using snapd reported error kinds",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/8f590bab536bef5615d88a6d2dde6480f60ad482"
-               },
-               {
-                  "sha": "a11f1b50ea40eeb9bfa07530d82133d6b56dad41",
-                  "author": "Soumya Ranjan Patnaik",
-                  "timestamp": 1787097245,
-                  "message": "fix: use correct error kind for login-required error\n\nPreviously used auth-login-required, which was a non-existent error.",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a11f1b50ea40eeb9bfa07530d82133d6b56dad41"
                }
             ],
             "ciActions": [],
@@ -8691,25 +8691,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "eefc7e9fd5ba4045eed0e09d211a1410cf69c5cd",
+                  "sha": "c5bed7b18f1c4af90c3d44353301d562c97d6856",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789570954,
-                  "message": "ci: add arm64 option when building a snap (#419)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/eefc7e9fd5ba4045eed0e09d211a1410cf69c5cd"
+                  "timestamp": 1789647178,
+                  "message": "fix: add noto fonts as workaround for arm64 (#420)\n\nResolves UDENG-11439",
+                  "url": "https://github.com/canonical/firmware-updater/commit/c5bed7b18f1c4af90c3d44353301d562c97d6856"
                },
                {
-                  "sha": "fc6cec3e17c88ddfea5940cb04cb675c8f77916c",
+                  "sha": "d67c13665202dd884cc4b46f3468315ce4c3ecd9",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789544720,
-                  "message": "ci: add arm64 option when building a snap",
-                  "url": "https://github.com/canonical/firmware-updater/commit/fc6cec3e17c88ddfea5940cb04cb675c8f77916c"
+                  "timestamp": 1789636447,
+                  "message": "only include noto package for arm64 platform",
+                  "url": "https://github.com/canonical/firmware-updater/commit/d67c13665202dd884cc4b46f3468315ce4c3ecd9"
                },
                {
-                  "sha": "195f125b4385b9df26f9e5fb186f4d5ba63503b5",
+                  "sha": "1607dbf0e62a57f82a184062c2edd32edb8b652f",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789487557,
-                  "message": "chore(deps): update google/osv-scanner-action action to v2.6.0 (#417)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/195f125b4385b9df26f9e5fb186f4d5ba63503b5"
+                  "timestamp": 1789565872,
+                  "message": "fix: add noto fonts as workaround for arm64",
+                  "url": "https://github.com/canonical/firmware-updater/commit/1607dbf0e62a57f82a184062c2edd32edb8b652f"
                }
             ],
             "ciActions": [
@@ -9145,25 +9145,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ee4ce4b69afc2a3e6eb35786230af2497cdb0281",
+                  "sha": "a91c0b15fec9800d13e79ed6029c185b16aed1fd",
                   "author": "Charles",
-                  "timestamp": 1789556782,
-                  "message": "fix(desktop): own the injection target for one utterance\n\nText could follow focus into another window. The controller subscribed to\nfocus events only after acquire returned, so a FocusOut delivered inside\nthe 50 ms content-type grace was lost; the final drain ran outside the\nfocus-guarded select loop; and commit checked only the content type, never\nwhether focus had left the context it acquired. ibus-daemon follows every\nFocusOut with a FocusIn on its fake context, so a focused flag cannot tell\nthat focus moved: the engine now exposes FocusId and ActiveSurroundingText\nso the daemon names the context in FocusInId/FocusOutId.\n\nacquire is all or nothing and hands out a Target that owns the utterance's\nright to write, under a lease minted before the engine switch and bound to\nthat context. Commit and preedit refuse an ended lease, a focus stream\ntaken afterwards still reports the loss, and release consumes the target,\nwhich makes a double release a type error and retires cancel, end and the\nno-op set_activity. Draining runs inside the same select loop, and the\ncontroller's three ending booleans collapse into one Ending.\n\nA refused flush no longer reports success: the completion follows a\nDelivery verdict, so the discriminator is whether buffered text was\ndropped rather than whether the transcript is empty. Text that did land\nstill ends silently.\n\nThe displaced input method belongs to the connection, not to one\nutterance. A target that superseded a live one remembered myna-stt, so its\nrelease handed back our own engine and lost the user's input method.\nEngineState records it once, only when the switch succeeded and the name\nis neither empty nor ours, and whichever release still owes it hands it\nback.\n\nOur own restore focuses the engine out before its reply, and the daemon\nthen focuses its fake context, so a pending lease ignores both; once\nfocused, either ends it. The window between the lease check and the daemon\nrouting CommitText is bounded, not closed: IBus cannot address a commit to\na context.",
-                  "url": "https://github.com/canonical/myna/commit/ee4ce4b69afc2a3e6eb35786230af2497cdb0281"
+                  "timestamp": 1789645460,
+                  "message": "refactor: remove the qwen and sherpa backends\n\nThe release ships whisper, parakeet and funasr only.\n\nRemoved:\n- qwen-snap/ and sherpa-snap/ entirely.\n- server/src/myna/testbed/qwen.py, sherpa.py and their tests\n  (test_qwen_unit.py, test_sherpa_unit.py, testbed/test_sherpa.py).\n- dev/fetch_sherpa_model.py, dev/fetch_sherpa_punct_model.py and\n  dev/stage-qwen-c.sh.\n- The sherpa extra and sherpa_onnx mypy override in server/pyproject.toml,\n  the qwen-c/sherpa adapter choices and --sherpa-* flags in cli.py, both\n  from Makefile BACKENDS and the benchmarker's PURGEABLE set, their\n  dev/bench.yaml(.example) blocks, test_model_pins.py and\n  test_snap_packaging.py entries (including the sherpa-only punctuation\n  toggle test), and spread.yaml/lint-packages.sh/.gitignore/dev/README.md\n  references.\n- Qwen from the system test plan: models under test are now Whisper,\n  Parakeet and FunASR, and TC-07 (unsupported-language probe) is rescoped\n  to FunASR, since Whisper and Parakeet both cover Estonian.\n\nmyna-sherpa/myna-qwen stand-in names in benchmarker tests now use\nmyna-parakeet/myna-funasr.\n\nKept: specs/ as frozen history, and historical sherpa mentions in comments.\nThe onnxruntime <1.28 cap existed for sherpa-onnx; it stays for now so the\nparakeet perf baseline's runtime does not move.\n\nserver/uv.lock: 114 -> 113 packages (sherpa-onnx dropped; nothing else\nchanged).",
+                  "url": "https://github.com/canonical/myna/commit/a91c0b15fec9800d13e79ed6029c185b16aed1fd"
                },
                {
-                  "sha": "0c26f406f1ab389bf535817ec4a50dbbe9bad158",
+                  "sha": "a190da8db8ed70bc71f8524f1807dd8fc02f6293",
                   "author": "Charles",
-                  "timestamp": 1789506778,
-                  "message": "test(inject): stop running the manual preedit probe in every gated run\n\nibus_preedit_visual_probe waits 5 s for a person to click a field, then\nholds each preedit for 3 s so they can judge the rendering: 12 s of every\ntest-gated and cov run, asserting nothing a headless run can see.\nordinary_field_receives_preedit_and_commit now proves the preedit and\ncommit reach a real input context.\n\nIgnore it and document the --ignored invocation for the manual check.",
-                  "url": "https://github.com/canonical/myna/commit/0c26f406f1ab389bf535817ec4a50dbbe9bad158"
+                  "timestamp": 1789641685,
+                  "message": "fix(snaps): re-select the engine when hardware-observe is connected\n\nThe install hook cannot score hardware without hardware-observe, so a\nsnap installed before the plug is connected (a sideload, or a store grant\nthat arrives by refresh) settles on cpu. Nothing re-scored afterwards:\nconnecting the plug left myna-parakeet on cpu on an RTX 4080 with no\nrestart, until someone ran `use-engine --auto` by hand.\n\nparakeet and whisper, the snaps with more than one engine, now run\n`use-engine --auto` from a connect-plug-hardware-observe hook. The hook\nskips while no engine is active, because snapd auto-connects before the\ninstall hook runs and that hook selects; and it never exits non-zero,\nbecause a failing connect hook makes snapd undo the connection.\n\nThat skip relies on every install hook leaving an engine active, which\nwhisper's did not: without the plug it selected nothing and its daemon\nexited on every start. It now falls back to cpu by name, as parakeet's\ndoes.",
+                  "url": "https://github.com/canonical/myna/commit/a190da8db8ed70bc71f8524f1807dd8fc02f6293"
                },
                {
-                  "sha": "baecf4506e0747704063fec0eb4ad8a60d62ad17",
+                  "sha": "ad49d90ecd758e6338affd5c715fba8807f35b0b",
                   "author": "Charles",
-                  "timestamp": 1789506778,
-                  "message": "build(test): run the GTK suites on a private session bus\n\nThe workshop inherits the host session bus. GDK asks it for\norg.freedesktop.host.portal.Registry and portal.Inhibit, and each\nlookup waits out the 25 s D-Bus timeout: render_check took 50.2 s and\nthe myna-config template suite 174 s for 7 tests, about 220 s of\nmake test-client-ui and the same again under cov.\n\nMeasured on the same binaries: render_check 50.2 s -> 0.3 s and the\ntemplate suite 174 s -> 6.6 s under dbus-run-session, all tests passing.\nGDK_DEBUG=no-portals alone only reached 68 s. A private bus also keeps\nthe probes off the developer's live session. GIO_USE_VFS=local keeps\nGIO from activating gvfsd on it, as dev/gated-tests.sh already does.",
-                  "url": "https://github.com/canonical/myna/commit/baecf4506e0747704063fec0eb4ad8a60d62ad17"
+                  "timestamp": 1789640378,
+                  "message": "docs(parakeet): report the snap's own benchmark and answer the restart prompt\n\nThe table came from the pre-snap spike (1.62% WER, 5.2 GB, a NeMo parity\ncolumn myna-bench cannot produce). Replace it with the myna-bench rows\nmeasured against the installed fp32-only snap on zephyrus.\n\n`use-engine --auto` asks \"Restart? [Y/n]\" and hangs a non-interactive shell\nafter already saving the switch; pass --assume-yes as whisper-snap's README\ndoes.",
+                  "url": "https://github.com/canonical/myna/commit/ad49d90ecd758e6338affd5c715fba8807f35b0b"
                }
             ],
             "ciActions": [],
@@ -9312,25 +9312,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "18d457bed858e60a348ea38582301dac9a5fc287",
+                  "sha": "248fcb4c1d1917beccdb6a6372785a2c09eeee33",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789566854,
-                  "message": "ci: add arm64 option when building a snap (#321)",
-                  "url": "https://github.com/canonical/prompting-client/commit/18d457bed858e60a348ea38582301dac9a5fc287"
+                  "timestamp": 1789638286,
+                  "message": "fix: add noto fonts as fallback for arm64 workaround (#323)\n\nResolves UDENG-11440",
+                  "url": "https://github.com/canonical/prompting-client/commit/248fcb4c1d1917beccdb6a6372785a2c09eeee33"
                },
                {
-                  "sha": "d32dd58e35c889324375865560e00a72c482e4f9",
+                  "sha": "55310ec6413c37e37152d22652c482851ea4260a",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789544900,
-                  "message": "ci: add arm64 option when building a snap",
-                  "url": "https://github.com/canonical/prompting-client/commit/d32dd58e35c889324375865560e00a72c482e4f9"
+                  "timestamp": 1789638191,
+                  "message": "fix: drop rust toolchain from final snap (#324)",
+                  "url": "https://github.com/canonical/prompting-client/commit/55310ec6413c37e37152d22652c482851ea4260a"
                },
                {
-                  "sha": "9934180b764cea3a9576119a905f51ba620693df",
+                  "sha": "c5b876261950141b6348f7129d370fb484212dbb",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789558197,
-                  "message": "ci: fix snapcraft and rust issues (#322)",
-                  "url": "https://github.com/canonical/prompting-client/commit/9934180b764cea3a9576119a905f51ba620693df"
+                  "timestamp": 1789636260,
+                  "message": "include fonts-noto-cjk only for arm64 architecture",
+                  "url": "https://github.com/canonical/prompting-client/commit/c5b876261950141b6348f7129d370fb484212dbb"
                }
             ],
             "ciActions": [],
@@ -9746,6 +9746,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "84ff565dbabc8d881632dee9619ecf95f1a8434e",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1789640234,
+                  "message": "docs: simplify readme (#14)",
+                  "url": "https://github.com/canonical/translations-verifier/commit/84ff565dbabc8d881632dee9619ecf95f1a8434e"
+               },
+               {
                   "sha": "e2b72fa4ea65e69666558fe5d9c28fa8dd0dd72d",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1788984748,
@@ -9758,13 +9765,6 @@
                   "timestamp": 1788820953,
                   "message": "fix: added pr permissions",
                   "url": "https://github.com/canonical/translations-verifier/commit/15c81bff13606f4bfc940734175b88cca61e8168"
-               },
-               {
-                  "sha": "de5f98b5c68a510dc1f862d4b306bafda0a8a59c",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1788820331,
-                  "message": "chore: added error details for mutation error",
-                  "url": "https://github.com/canonical/translations-verifier/commit/de5f98b5c68a510dc1f862d4b306bafda0a8a59c"
                }
             ],
             "ciActions": [],
@@ -10345,7 +10345,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 63,
+            "newCommits": 69,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10392,14 +10392,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 666,
-                     "timestamp": 1789565610
+                     "revision": 674,
+                     "timestamp": 1789649518
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 667,
-                     "timestamp": 1789566190
+                     "revision": 673,
+                     "timestamp": 1789648676
                   }
                ],
                "channels": [
