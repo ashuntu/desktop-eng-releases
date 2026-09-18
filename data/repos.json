@@ -3394,6 +3394,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "290084e917f7095f19fc9e8d3b23d8cd939b23f1",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1789751085,
+                  "message": "examplebroker: Always set the needed auth steps on new session (#1746)\n\nWe were setting the needed auth steps only for users that are unknown,\nbut not for the ones we already tracked internally.\n\nThis implied that accessing again with the same MFA user did not lead to\nanother MFA session",
+                  "url": "https://github.com/canonical/authd/commit/290084e917f7095f19fc9e8d3b23d8cd939b23f1"
+               },
+               {
                   "sha": "d641f3d975f4f6755dde9504360c96aa7db27dce",
                   "author": "adombeck",
                   "timestamp": 1789728161,
@@ -3401,18 +3408,11 @@
                   "url": "https://github.com/canonical/authd/commit/d641f3d975f4f6755dde9504360c96aa7db27dce"
                },
                {
-                  "sha": "7931b645053b66ae19c16728a0cea07ae63854a1",
-                  "author": "adombeck",
-                  "timestamp": 1789685968,
-                  "message": "e2e: Upgrade gnome-shell from the selected PPA (#1949)\n\nCloses #1948\nUDENG-11587",
-                  "url": "https://github.com/canonical/authd/commit/7931b645053b66ae19c16728a0cea07ae63854a1"
-               },
-               {
-                  "sha": "41386b360746363807cfc95e92f085aa345ce5f1",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789681304,
-                  "message": "e2e: Upgrade gnome-shell from the selected PPA\n\nInstalling authd from the PPA does not force an upgrade of gnome-shell\nto the version from the PPA in case the installed gnome-shell version\nalready satisfies authd's compatibility constraints. Explicitly upgrade\ngnome-shell after adding the selected PPA so E2E runs test the\ngnome-shell version from the PPA.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/41386b360746363807cfc95e92f085aa345ce5f1"
+                  "sha": "b2bf24be07d38e188f3d1cf5519df2945d2bfa2d",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1789688376,
+                  "message": "pam/integration-tests/native: Add test to authenticate MFA users multiple times\n\nAdd an integration test that authenticates the same generated MFA user\nin two separate native PAM sessions and checks that both require the\nfull multi-factor flow.\n\nThe first login creates the user inside the broker, so the second\nsession hits the already-known branch that the fix repairs. Without the\nfix the second login stops after the password step.\n\nFactor the existing MFA flow into nativeMfaAuth so both sessions share\nit. It tolerates the missing provider selection, which authd skips once\nthe user is bound to a broker.",
+                  "url": "https://github.com/canonical/authd/commit/b2bf24be07d38e188f3d1cf5519df2945d2bfa2d"
                }
             ],
             "ciActions": [
@@ -5779,6 +5779,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "290084e917f7095f19fc9e8d3b23d8cd939b23f1",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1789751085,
+                  "message": "examplebroker: Always set the needed auth steps on new session (#1746)\n\nWe were setting the needed auth steps only for users that are unknown,\nbut not for the ones we already tracked internally.\n\nThis implied that accessing again with the same MFA user did not lead to\nanother MFA session",
+                  "url": "https://github.com/canonical/authd/commit/290084e917f7095f19fc9e8d3b23d8cd939b23f1"
+               },
+               {
                   "sha": "d641f3d975f4f6755dde9504360c96aa7db27dce",
                   "author": "adombeck",
                   "timestamp": 1789728161,
@@ -5786,18 +5793,11 @@
                   "url": "https://github.com/canonical/authd/commit/d641f3d975f4f6755dde9504360c96aa7db27dce"
                },
                {
-                  "sha": "7931b645053b66ae19c16728a0cea07ae63854a1",
-                  "author": "adombeck",
-                  "timestamp": 1789685968,
-                  "message": "e2e: Upgrade gnome-shell from the selected PPA (#1949)\n\nCloses #1948\nUDENG-11587",
-                  "url": "https://github.com/canonical/authd/commit/7931b645053b66ae19c16728a0cea07ae63854a1"
-               },
-               {
-                  "sha": "41386b360746363807cfc95e92f085aa345ce5f1",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789681304,
-                  "message": "e2e: Upgrade gnome-shell from the selected PPA\n\nInstalling authd from the PPA does not force an upgrade of gnome-shell\nto the version from the PPA in case the installed gnome-shell version\nalready satisfies authd's compatibility constraints. Explicitly upgrade\ngnome-shell after adding the selected PPA so E2E runs test the\ngnome-shell version from the PPA.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/41386b360746363807cfc95e92f085aa345ce5f1"
+                  "sha": "b2bf24be07d38e188f3d1cf5519df2945d2bfa2d",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1789688376,
+                  "message": "pam/integration-tests/native: Add test to authenticate MFA users multiple times\n\nAdd an integration test that authenticates the same generated MFA user\nin two separate native PAM sessions and checks that both require the\nfull multi-factor flow.\n\nThe first login creates the user inside the broker, so the second\nsession hits the already-known branch that the fix repairs. Without the\nfix the second login stops after the password step.\n\nFactor the existing MFA flow into nativeMfaAuth so both sessions share\nit. It tolerates the missing provider selection, which authd skips once\nthe user is bound to a broker.",
+                  "url": "https://github.com/canonical/authd/commit/b2bf24be07d38e188f3d1cf5519df2945d2bfa2d"
                }
             ],
             "ciActions": [
