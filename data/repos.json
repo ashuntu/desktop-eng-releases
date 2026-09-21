@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dade21df164b24e359378dc44ee737be2ce85065",
+                  "author": "adombeck",
+                  "timestamp": 1789999695,
+                  "message": "docs: recommend synctest for time-based tests (#1956)",
+                  "url": "https://github.com/canonical/authd/commit/dade21df164b24e359378dc44ee737be2ce85065"
+               },
+               {
+                  "sha": "e4298230f54180128a9f81e7871c98924240cc98",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1789985992,
+                  "message": "docs: recommend synctest for time-based tests\n\nTell agents to prefer testing/synctest when tests exercise timers,\ndeadlines, sleeps, or other time-based concurrency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/e4298230f54180128a9f81e7871c98924240cc98"
+               },
+               {
                   "sha": "290084e917f7095f19fc9e8d3b23d8cd939b23f1",
                   "author": "Marco Trevisan",
                   "timestamp": 1789751085,
                   "message": "examplebroker: Always set the needed auth steps on new session (#1746)\n\nWe were setting the needed auth steps only for users that are unknown,\nbut not for the ones we already tracked internally.\n\nThis implied that accessing again with the same MFA user did not lead to\nanother MFA session",
                   "url": "https://github.com/canonical/authd/commit/290084e917f7095f19fc9e8d3b23d8cd939b23f1"
-               },
-               {
-                  "sha": "d641f3d975f4f6755dde9504360c96aa7db27dce",
-                  "author": "adombeck",
-                  "timestamp": 1789728161,
-                  "message": "pam/gdm/extension: Use upstream functions to cleanup the JSON request (#1751)\n\nUDENG-11100",
-                  "url": "https://github.com/canonical/authd/commit/d641f3d975f4f6755dde9504360c96aa7db27dce"
-               },
-               {
-                  "sha": "b2bf24be07d38e188f3d1cf5519df2945d2bfa2d",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1789688376,
-                  "message": "pam/integration-tests/native: Add test to authenticate MFA users multiple times\n\nAdd an integration test that authenticates the same generated MFA user\nin two separate native PAM sessions and checks that both require the\nfull multi-factor flow.\n\nThe first login creates the user inside the broker, so the second\nsession hits the already-known branch that the fix repairs. Without the\nfix the second login stops after the password step.\n\nFactor the existing MFA flow into nativeMfaAuth so both sessions share\nit. It tolerates the missing provider selection, which authd skips once\nthe user is bound to a broker.",
-                  "url": "https://github.com/canonical/authd/commit/b2bf24be07d38e188f3d1cf5519df2945d2bfa2d"
                }
             ],
             "ciActions": [
@@ -3954,25 +3954,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ce652ec49953489454ced6f43ca0adb7a22a7003",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790002560,
+                  "message": "chore: update CHANGELOG and loosen sdk constraint (#65)\n\n`dart pub publish --dry-run` reported:\n\n```\nValidating package...\nPackage validation found the following potential issue:\n* 1 checked-in file is modified in git.\n\n  Usually you want to publish from a clean git state.\n\n  Consider committing these files or reverting the changes.\n\n  Modified files:\n\n  CHANGELOG.md\n\n  Run `git status` for more information.\n\n\nPackage validation found the following hint:\n* The declared SDK constraint is '>=2.12.0 <3.0.0', this is interpreted as '>=2.12.0 <4.0.0'.\n\n  Consider updating the SDK constraint to:\n\n  environment:\n    sdk: '>=2.12.0 <4.0.0'\n\nThe server may enforce additional checks.\n```\n\nso this PR adds a new CHANGELOG entry and adjusts the SDK constraint\naccordingly.",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/ce652ec49953489454ced6f43ca0adb7a22a7003"
+               },
+               {
+                  "sha": "b528decd450269db2fcfb9910e6f4c65580a6165",
+                  "author": "Dennis Loose",
+                  "timestamp": 1789976619,
+                  "message": "chore: update CHANGELOG and loosen sdk constraint",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/b528decd450269db2fcfb9910e6f4c65580a6165"
+               },
+               {
                   "sha": "18c94c83b24c8fc3069bf742cd1a71791573f9d1",
                   "author": "Dennis Loose",
                   "timestamp": 1789976189,
                   "message": "Update to dbus.dart 0.8.0 (#64)",
                   "url": "https://github.com/canonical/gsettings.dart/commit/18c94c83b24c8fc3069bf742cd1a71791573f9d1"
-               },
-               {
-                  "sha": "3fb003e4747f7361a7195d9b41358a9b92f59c59",
-                  "author": "Matt Kosarek",
-                  "timestamp": 1789671238,
-                  "message": "Update to dbus.dart 0.8.0",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/3fb003e4747f7361a7195d9b41358a9b92f59c59"
-               },
-               {
-                  "sha": "5ea793ea0387ba2fafd3e448db97f82c01502b28",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756091270,
-                  "message": "Merge pull request #63 from robert-ancell/ci-ubuntu-version\n\nUpdate Ubuntu CI version and remove obsolete CLA check",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/5ea793ea0387ba2fafd3e448db97f82c01502b28"
                }
             ],
             "ciActions": [],
@@ -4117,6 +4117,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 393065494,
+                  "version": "publish-35617032307",
+                  "timestamp": 1790000781,
+                  "title": "Publish 35617032307",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev152\">mediawiki-k8s-rev152 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev137</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/284\">#284</a></li>\n<li>fix(deps): update dependency dpcharmlibs-interfaces to v1.2.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/285\">#285</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35570353131...publish-35617032307\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35570353131&hellip;publish-35617032307</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35617032307",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35617032307...main"
+               },
+               {
                   "id": 392746762,
                   "version": "publish-35570353131",
                   "timestamp": 1789971206,
@@ -4133,15 +4142,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev150\">mediawiki-k8s-rev150 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev135</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore: Unpin Valkey in integration tests by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/282\">#282</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35238542174...publish-35275666052\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35238542174&hellip;publish-35275666052</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35275666052",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35275666052...main"
-               },
-               {
-                  "id": 390829176,
-                  "version": "publish-35238542174",
-                  "timestamp": 1789655325,
-                  "title": "Publish 35238542174",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev149\">mediawiki-k8s-rev149 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev134</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: Update AWS extension pin by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/281\">#281</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35125725695...publish-35238542174\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35125725695&hellip;publish-35238542174</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35238542174",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35238542174...main"
                }
             ],
             "commits": null,
@@ -4162,8 +4162,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 151,
-                     "timestamp": 1789973783
+                     "revision": 152,
+                     "timestamp": 1790003681
                   }
                ],
                "channels": [
@@ -4183,25 +4183,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "994a2345ed7a90c861183b8e2a66a90907316208",
-                  "author": "Charles",
-                  "timestamp": 1789730429,
-                  "message": "fix(server): hand the signals back before the loop closes\n\nStopping an inference service intermittently printed \"Exception ignored\nwhen trying to write to the signal wakeup fd: OSError: [Errno 9] Bad file\ndescriptor\" after the \"shutting down\" line. The shutdown itself had\nalready finished, so this is noise, but it fires on all three snaps and\nhas since at least Sep 07 (9 occurrences in 14 days here).\n\nserve() installed SIGTERM/SIGINT handlers on the running loop and never\nremoved them. asyncio's wakeup fd is the loop's self-pipe, and\nloop.close() closes that pipe before it restores the default handlers, so\na signal delivered in that window makes CPython's C handler write to a\nclosed fd. Reproduced under the snap's own python 3.12 by closing the\nself-pipe and raising SIGTERM in the window, which prints the reported\ntraceback verbatim; removing the handler first silences it.\n\nThe body of serve() now sits in try/finally and the finally removes both\nhandlers, which resets the wakeup fd while the pipe is still open and\nrestores SIG_DFL, so a late SIGTERM ends the process instead. Doing it\nthere rather than right after stop.wait() keeps the graceful shutdown\nimmune to a second signal while the loop is still running.\n\nThe new test drives serve() on the fake adapter, sends itself SIGTERM and\nasserts the disposition is handed back; it was seen failing on\n_sighandler_noop first.",
-                  "url": "https://github.com/canonical/myna/commit/994a2345ed7a90c861183b8e2a66a90907316208"
+                  "sha": "74be9ea9cd3485c4a463f99b728f07fcd0bbe364",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1790005930,
+                  "message": "build(deps): bump anyio from 4.13.0 to 4.14.2 in /server\n\nBumps [anyio](https://github.com/agronholm/anyio) from 4.13.0 to 4.14.2.\n- [Release notes](https://github.com/agronholm/anyio/releases)\n- [Commits](https://github.com/agronholm/anyio/compare/4.13.0...4.14.2)\n\n---\nupdated-dependencies:\n- dependency-name: anyio\n  dependency-version: 4.14.2\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/myna/commit/74be9ea9cd3485c4a463f99b728f07fcd0bbe364"
                },
                {
-                  "sha": "504153751054d4d41afea2c294ccde4b029e7e65",
-                  "author": "Charles",
-                  "timestamp": 1789728281,
-                  "message": "test(orchestrator): grade the salvage on the branches mutants reached\n\nMutation testing on the new lifecycle code left two live mutants and one\nbranch with no test at all:\n\n- `accepted && !reported` flipped to `||` announced a salvage for a fault\n  with nothing to salvage, which only shows up as an event nobody asserted:\n  the no-audio test now says so, because a HUD that goes to finishing for a\n  microphone that never opened is wrong.\n- `if !ended` dropped the end-of-audio path's CaptureEnded. Live sources\n  report `Ended` on health, so only a source that does not - WavFileSource,\n  which reports `Capturing` and nothing else - can tell the difference: a\n  clip against a backend that never loads now proves the deadline arms.\n- A fault reaches the runner twice, on health and as the stream's `Err`.\n  Neither is required and neither is waited for, which a source reporting it\n  on one side only now pins from both sides.\n\n47 mutants over fsm.rs and runner.rs: 0 missed, 20 caught, 4 unviable. The\n23 timeouts are whole-function mutants of the pre-existing FSM predicates,\nwhere the driver's unbounded test awaits hang the suite rather than fail it.",
-                  "url": "https://github.com/canonical/myna/commit/504153751054d4d41afea2c294ccde4b029e7e65"
+                  "sha": "fe7779169dffedae172e41ebc533b1f1b5909440",
+                  "author": "Peter Vančo",
+                  "timestamp": 1789946948,
+                  "message": "fix(l10n): added translation using Weblate (Czech)",
+                  "url": "https://github.com/canonical/myna/commit/fe7779169dffedae172e41ebc533b1f1b5909440"
                },
                {
-                  "sha": "7bfed6f991fd7a4e505d317931d19aa71cca1b0a",
-                  "author": "Charles",
-                  "timestamp": 1789726278,
-                  "message": "fix(orchestrator): transcribe the audio a capture fault interrupted\n\nA capture fault mid-utterance (mic unplugged, device error, ring overload)\nsent CaptureFailed at once and abandoned the session, so audio the user had\nalready spoken and the client had already accepted was thrown away and they\ngot an error instead of their words. The pre-review code drained the ring\nfirst but abandoned the session just the same, so this is long-standing.\n\nCapture now decides by what it had handed over. With nothing accepted - a\ndevice that never opened, a fault with an empty ring - nothing changes: the\nsession fails at once. With audio accepted, the fault becomes CaptureLost:\nout of band, so it does not wait behind the queued audio, it arms the\nprogress deadline (capture is over) without closing the accept-gate, and the\naccepted PCM still flows in order with the end of audio behind it. The\nutterance finishes as a release would, the committed text is committed and\ninjected, and only then does the fault end the session as its failure.\n\nA failure while finishing keeps the device fault inside its message rather\nthan replacing it, so the deadline or a backend error can never be the last\nword on why an utterance died. Abort is untouched: a user cancel still\ndiscards promptly whatever capture did.\n\nThe salvage message says audio was lost, because it always was - the rest of\nwhat was being said into a dead device, or the speech an overloaded buffer\nrefused - so it cannot read as a clean end.\n\nThe desktop controller follows the same order: CaptureLost moves the HUD to\nfinishing, the text is inserted as usual, and the completion notice is\nreplaced by the failure, so the session never flashes a hidden or \"No speech\ndetected\" completion between the transcript and the error.\n\nDeliberate behaviour change to an A4 acceptance criterion: an overload\nbefore Ready no longer fails without sending audio, it waits for the backend\nand sends what the ring held, bounded by the 300 s progress deadline.",
-                  "url": "https://github.com/canonical/myna/commit/7bfed6f991fd7a4e505d317931d19aa71cca1b0a"
+                  "sha": "881ef334fd66db14f92e649dd604591fd4ef7113",
+                  "author": "Ihor Hordiichuk",
+                  "timestamp": 1789945530,
+                  "message": "fix(l10n): added translation using Weblate (Ukrainian)",
+                  "url": "https://github.com/canonical/myna/commit/881ef334fd66db14f92e649dd604591fd4ef7113"
                }
             ],
             "ciActions": [],
@@ -4350,25 +4350,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd8c7504c20525c3fcbc46af5c4950d147636a76",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1789716761,
-                  "message": "Add codegen-units setting to release profile (#316)\n\nTo make better use of LTO.",
-                  "url": "https://github.com/canonical/prompting-client/commit/dd8c7504c20525c3fcbc46af5c4950d147636a76"
+                  "sha": "88bf647de0d590ab988a05f0348f9b6b3270230b",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1790001561,
+                  "message": "fix: expand action buttons to full prompt width (#318)\n\nThe allow/deny split buttons were laid out in a `Wrap` with\n`WrapAlignment.center`, so each button only ever took its intrinsic\nwidth — the width of its own label. At the prompt's fixed 372px width\nthis left the two buttons hugging their text with uneven widths, and\nlonger localized labels pushed the second button onto its own line.\n\nThis switches the layout to a `Column` with `CrossAxisAlignment.stretch`\nand passes the new `expanded: true` flag to `YaruSplitButton.filled`, so\neach button fills the full content width regardless of label length.\nWithout `expanded`, the split button's internal `Row` still hugs its\nlabel even when the parent stretches it, so the flag is required for the\nstretch to have any effect.\n\n`expanded` was added in yaru 10.2.0, hence the accompanying dependency\nbump.\n\n### Dependency bump\n\n`yaru: ^8.3.0` → `^10.2.0` — two major versions. Two knock-on changes\nwere needed:\n\n- `main.dart`: `ThemeData? theme` / `darkTheme` on `YaruThemeData` are\nnon-nullable as of 10.2.0, so the `?.` before `.customize()` is gone.\n- `iterable_extensions.dart`: yaru 10.2.0 now exports its own\n`separatedBy` extension on `Iterable<Widget>`, which collides with our\nlocal copy as an ambiguous extension. The local `separatedBy` is removed\nand `tile_list.dart` picks up yaru's via its existing\n`package:yaru/yaru.dart` import. `withSpacing` is untouched — yaru's\nversion of that one is not exported.\n\n### Testing\n\nAdded `test/device_action_buttons_test.dart`, which renders\n`DeviceActionButtons` at the real content width (`kWindowWidth - 2 *\nkPagePadding`) and asserts the dropdown's right edge reaches the full\nwidth — i.e. the main button actually expanded rather than hugging its\nlabel.\n\nNote that the existing widget tests run at a 760px viewport\n(`test/test_utils.dart:26`), roughly 2× the real 372px prompt width, so\nthey would not have caught this. The new test sets its own width\nexplicitly.\n\nVerified locally:\n\n- `flutter test` — 50 passed\n- `flutter analyze --fatal-infos` — no issues\n- `dart format` — no changes\n\n### Review notes\n\nThis is a visual change to the camera, microphone and home prompt pages,\nso it's worth a look on a real prompt rather than just reading the diff.\nReviewers should also confirm the yaru 8 → 10 jump doesn't regress\nanything else in the UI; the bump is scoped to what `expanded` requires,\nbut it is a two-major-version move and the test suite only covers so\nmuch of the visual surface.\n\n\n\n---\n\nUDENG-11210",
+                  "url": "https://github.com/canonical/prompting-client/commit/88bf647de0d590ab988a05f0348f9b6b3270230b"
                },
                {
-                  "sha": "248fcb4c1d1917beccdb6a6372785a2c09eeee33",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789638286,
-                  "message": "fix: add noto fonts as fallback for arm64 workaround (#323)\n\nResolves UDENG-11440",
-                  "url": "https://github.com/canonical/prompting-client/commit/248fcb4c1d1917beccdb6a6372785a2c09eeee33"
+                  "sha": "44899c4a6bfce2a7bafc537d9ae07ce33770d9cd",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1789721492,
+                  "message": "fix: update comments for clarity on menu width handling in DeviceActionButtons",
+                  "url": "https://github.com/canonical/prompting-client/commit/44899c4a6bfce2a7bafc537d9ae07ce33770d9cd"
                },
                {
-                  "sha": "55310ec6413c37e37152d22652c482851ea4260a",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789638191,
-                  "message": "fix: drop rust toolchain from final snap (#324)",
-                  "url": "https://github.com/canonical/prompting-client/commit/55310ec6413c37e37152d22652c482851ea4260a"
+                  "sha": "18e10b390f274753c211ecf6fa6ade60c79ac45f",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1789720659,
+                  "message": "feat: add onChildWidthChanged callback to AdaptiveButtonBar for dynamic width reporting",
+                  "url": "https://github.com/canonical/prompting-client/commit/18e10b390f274753c211ecf6fa6ade60c79ac45f"
                }
             ],
             "ciActions": [],
@@ -4783,6 +4783,15 @@
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
                {
+                  "id": 393153433,
+                  "version": "v0.2.0",
+                  "timestamp": 1790011483,
+                  "title": "v0.2.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.1.0...v0.2.0\">0.2.0</a> (2026-09-21)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>handle empty proposed translation without ai help (<a href=\"https://github.com/canonical/translations-verifier/commit/fd672f8870a40e485cbae1f7b26ba8b47a471d43\">fd672f8</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.2.0",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.2.0...main"
+               },
+               {
                   "id": 391349524,
                   "version": "v0.1.0",
                   "timestamp": 1789723347,
@@ -5006,6 +5015,24 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 393226874,
+                  "version": "rev115",
+                  "timestamp": 1790017993,
+                  "title": "Revision 115",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 19:15 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.2.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/151\">#151</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...rev115\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114&hellip;rev115</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev115",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev115...main"
+               },
+               {
+                  "id": 393038872,
+                  "version": "rev114",
+                  "timestamp": 1790001057,
+                  "title": "Revision 114",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:38 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/150\">#150</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...rev114\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113&hellip;rev114</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev114",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...main"
+               },
+               {
                   "id": 387261161,
                   "version": "rev113",
                   "timestamp": 1789152111,
@@ -5013,24 +5040,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 105</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:43 UTC on 11 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update tiobe/tics-github-action action to v4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/149\">#149</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112...rev113\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112&hellip;rev113</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev113",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...main"
-               },
-               {
-                  "id": 386666403,
-                  "version": "rev112",
-                  "timestamp": 1789079326,
-                  "title": "Revision 112",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 104</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:31 UTC on 10 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.1.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/148\">#148</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev111...rev112\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev111&hellip;rev112</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev112",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112...main"
-               },
-               {
-                  "id": 385691559,
-                  "version": "rev111",
-                  "timestamp": 1788880355,
-                  "title": "Revision 111",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 103</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:46 UTC on 9 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/144\">#144</a></li>\n<li>deps(pep621): update dependency ops to v3.8.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/146\">#146</a></li>\n<li>deps(pep621): update dependency jubilant to v1.13.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/147\">#147</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/145\">#145</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev110...rev111\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev110&hellip;rev111</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev111",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev111...main"
                }
             ],
             "commits": null,
@@ -5042,8 +5051,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 113,
-                     "timestamp": 1789152212
+                     "revision": 115,
+                     "timestamp": 1790018142
                   }
                ],
                "channels": [
@@ -5483,107 +5492,121 @@
       "team": "WSL",
       "repos": [
          {
-            "name": "decorate",
+            "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/ubuntu/decorate",
-            "releases": null,
-            "commits": [
+            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
+            "releases": [
                {
-                  "sha": "8228e241ee19366ac586457ae7540331d03fb650",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1739450559,
-                  "message": "Merge pull request #27 from ubuntu/migrate_gh_jira_app\n\nMigrate to org GitHub to Jira application",
-                  "url": "https://github.com/ubuntu/decorate/commit/8228e241ee19366ac586457ae7540331d03fb650"
+                  "id": 393226874,
+                  "version": "rev115",
+                  "timestamp": 1790017993,
+                  "title": "Revision 115",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 19:15 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.2.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/151\">#151</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...rev115\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114&hellip;rev115</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev115",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev115...main"
                },
                {
-                  "sha": "81ea6242b5af3216c360a897d63eaf2ed074746d",
-                  "author": "Didier Roche",
-                  "timestamp": 1739430406,
-                  "message": "Migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5942",
-                  "url": "https://github.com/ubuntu/decorate/commit/81ea6242b5af3216c360a897d63eaf2ed074746d"
+                  "id": 393038872,
+                  "version": "rev114",
+                  "timestamp": 1790001057,
+                  "title": "Revision 114",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:38 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/150\">#150</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...rev114\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113&hellip;rev114</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev114",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...main"
                },
                {
-                  "sha": "b76bb81d1209ba92b56c759d828f75c19479a444",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1724165749,
-                  "message": "Merge pull request #26 from ubuntu/fix-sprintf-on-nonformat-string\n\nOnly use Sprintf when we have arguments to format",
-                  "url": "https://github.com/ubuntu/decorate/commit/b76bb81d1209ba92b56c759d828f75c19479a444"
+                  "id": 387261161,
+                  "version": "rev113",
+                  "timestamp": 1789152111,
+                  "title": "Revision 113",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 105</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:43 UTC on 11 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update tiobe/tics-github-action action to v4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/149\">#149</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112...rev113\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112&hellip;rev113</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev113",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...main"
                }
             ],
-            "ciActions": [
-               "https://github.com/ubuntu/decorate/workflows/QA"
+            "commits": null,
+            "ciActions": [],
+            "charm": {
+               "name": "ubuntu-insights-server-k8s",
+               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
+               "releases": [
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 115,
+                     "timestamp": 1790018142
+                  }
+               ],
+               "channels": [
+                  "edge"
+               ],
+               "tracks": [
+                  "latest"
+               ]
+            },
+            "snap": null
+         },
+         {
+            "name": "translations-verifier",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/translations-verifier",
+            "releases": [
+               {
+                  "id": 393153433,
+                  "version": "v0.2.0",
+                  "timestamp": 1790011483,
+                  "title": "v0.2.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.1.0...v0.2.0\">0.2.0</a> (2026-09-21)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>handle empty proposed translation without ai help (<a href=\"https://github.com/canonical/translations-verifier/commit/fd672f8870a40e485cbae1f7b26ba8b47a471d43\">fd672f8</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.2.0",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.2.0...main"
+               },
+               {
+                  "id": 391349524,
+                  "version": "v0.1.0",
+                  "timestamp": 1789723347,
+                  "title": "v0.1.0",
+                  "body": "<h2>0.1.0 (2026-09-18)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/019c5b7bf627c1d0c15f0320aff16fe22014aec9\">019c5b7</a>)</li>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/abadaa9d12e643a1870de771bf9505d637fbae8d\">abadaa9</a>)</li>\n</ul>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/e16aec2ac06b9ac27aef57cf483fa1790771cf18\">e16aec2</a>)</li>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/86115b951a9c75481125ff677bd1b9bf95057780\">86115b9</a>)</li>\n<li>added pr permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/15c81bff13606f4bfc940734175b88cca61e8168\">15c81bf</a>)</li>\n</ul>\n\n<h3>Documentation</h3>\n\n<ul>\n<li>simplify readme (<a href=\"https://github.com/canonical/translations-verifier/issues/14\">#14</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/84ff565dbabc8d881632dee9619ecf95f1a8434e\">84ff565</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.1.0",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.1.0...main"
+               }
             ],
+            "commits": null,
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
          {
-            "name": "go-i18n",
+            "name": "dep5-vendor-gen",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/ubuntu/go-i18n",
+            "url": "https://github.com/canonical/dep5-vendor-gen",
             "releases": null,
             "commits": [
                {
-                  "sha": "47e047f852b4b86d45567c8331a2548d6473692b",
-                  "author": "adombeck",
-                  "timestamp": 1760007113,
-                  "message": "Bump Go version to 1.23.12 (#17)",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/47e047f852b4b86d45567c8331a2548d6473692b"
-               },
-               {
-                  "sha": "c4be58aa4db383b3a41f6c2d6a564e627745834c",
-                  "author": "adombeck",
-                  "timestamp": 1760007082,
-                  "message": "Fix module path of the tools module (#16)",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/c4be58aa4db383b3a41f6c2d6a564e627745834c"
-               },
-               {
-                  "sha": "184110c056a539a8510a9b00c108c52d0b82b3d8",
+                  "sha": "d2a233053dc8718d0ff6452df53903ecc856e391",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1759999865,
-                  "message": "Bump Go version to 1.23.12\n\ngovulncheck reports the following vulnerability in Go 1.23.10:\n\nVulnerability #1: GO-2025-3956\n    Unexpected paths returned from LookPath in os/exec\n  More info: https://pkg.go.dev/vuln/GO-2025-3956\n  Standard library\n    Found in: os/exec@go1.23.10\n    Fixed in: os/exec@go1.23.12\n    Example traces found:\nError:       #1: cmd/compile-mo/main.go:53:30: compile.generateMos calls exec.Command, which calls exec.LookPath",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/184110c056a539a8510a9b00c108c52d0b82b3d8"
-               }
-            ],
-            "ciActions": [
-               "https://github.com/ubuntu/go-i18n/actions/workflows/qa.yaml"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "GoWSL",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/ubuntu/GoWSL",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "0ef2623cc8fb5bf37649b30adc999e9dd0f57570",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1762975080,
-                  "message": "Prefers slog for utils_test (#144)\n\nThis was actually done in PR #140 but I ended up merging that PR in the\nwrong order. Thus, I'm basically redoing that PR.",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/0ef2623cc8fb5bf37649b30adc999e9dd0f57570"
+                  "timestamp": 1788433321,
+                  "message": "Preserve non-ASCII copyright holders\n\nThe generator relied on Python's locale when decoding licensecheck\noutput.  A non-UTF-8 locale could turn UTF-8 names into mojibake in\ndebian/copyright. Decode the machine-readable output as UTF-8\nexplicitly.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/d2a233053dc8718d0ff6452df53903ecc856e391"
                },
                {
-                  "sha": "5a7efa0612a23b92d234ed375d2ab73004be03d2",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1759440907,
-                  "message": "Applies code review suggestions\n\nabout not using ':', capitalization and avoiding '\\n' in the values.",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/5a7efa0612a23b92d234ed375d2ab73004be03d2"
+                  "sha": "6de959406d15e0a4835838f88e3b4a90bb019607",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1786613918,
+                  "message": "docs: update licensecheck install instructions\n\nReference the standalone licensecheck package instead of devscripts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/6de959406d15e0a4835838f88e3b4a90bb019607"
                },
                {
-                  "sha": "576e37f7932d274b888f2c814e7713d8990bc8a6",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1758225565,
-                  "message": "Tidy the dependencies\n\nBump the toolchain to 1.22.12 (the latest 1.22)\nRemove dependency on 0xrawsec/golang-utils\nRefreshes other dependencies",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/576e37f7932d274b888f2c814e7713d8990bc8a6"
+                  "sha": "efc24680335411cb2538e1cf3ec36d04dd7900c9",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1786355620,
+                  "message": "Auto-create output directory for --debian-copyright\n\nPreviously the script exited with an error if the parent directory of\n--debian-copyright didn't exist, forcing users to mkdir it manually.\nCreate it automatically instead, matching how most codegen tools behave.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/efc24680335411cb2538e1cf3ec36d04dd7900c9"
                }
             ],
-            "ciActions": [
-               "https://github.com/ubuntu/GoWSL/actions/workflows/qa-azure.yaml"
-            ],
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -5595,25 +5618,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "40ed45a142882538115dd23f35b2a728625e9878",
+                  "author": "Kat",
+                  "timestamp": 1790001099,
+                  "message": "deps(ci): bump tiobe/tics-github-action from 3 to 4 in the gh-actions group (#386)\n\nBumps the gh-actions group with 1 update:\n[tiobe/tics-github-action](https://github.com/tiobe/tics-github-action).\n\nUpdates `tiobe/tics-github-action` from 3 to 4\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/tiobe/tics-github-action/releases\">tiobe/tics-github-action's\nreleases</a>.</em></p>\n<blockquote>\n<h2>Version 4.0.0</h2>\n<!-- raw HTML omitted -->\n<h2>What's Changed</h2>\n<h3>Features</h3>\n<ul>\n<li>RM-37983: Converted action to ESM and updated to Node 24 by <a\nhref=\"https://github.com/janssen-tiobe\"><code>@​janssen-tiobe</code></a>\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/530\">tiobe/tics-github-action#530</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/tiobe/tics-github-action/compare/v3.12.0...v4.0.0\">https://github.com/tiobe/tics-github-action/compare/v3.12.0...v4.0.0</a></p>\n<h2>v3.12.0</h2>\n<!-- raw HTML omitted -->\n<h2>What's Changed</h2>\n<h3>Features</h3>\n<ul>\n<li>RM-37915: Added TQI impact table to the summary by <a\nhref=\"https://github.com/janssen-tiobe\"><code>@​janssen-tiobe</code></a>\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/528\">tiobe/tics-github-action#528</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/tiobe/tics-github-action/compare/v3.11.0...v3.12.0\">https://github.com/tiobe/tics-github-action/compare/v3.11.0...v3.12.0</a></p>\n<h2>v3.11.0</h2>\n<!-- raw HTML omitted -->\n<h2>What's Changed</h2>\n<h3>Features</h3>\n<ul>\n<li>Revise README to stress out differences between server and client\nrun by <a href=\"https://github.com/tiobeacj\"><code>@​tiobeacj</code></a>\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/525\">tiobe/tics-github-action#525</a></li>\n<li>RM-38452: Added random string to tmpdir name to make them unique by\n<a\nhref=\"https://github.com/janssen-tiobe\"><code>@​janssen-tiobe</code></a>\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/529\">tiobe/tics-github-action#529</a></li>\n</ul>\n<h3>Dependencies</h3>\n<ul>\n<li>Bump ip-address and socks by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/521\">tiobe/tics-github-action#521</a></li>\n<li>Bump fast-xml-builder from 1.1.5 to 1.2.0 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/523\">tiobe/tics-github-action#523</a></li>\n<li>Bump basic-ftp from 5.3.0 to 5.3.1 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/522\">tiobe/tics-github-action#522</a></li>\n<li>Bump actions/checkout from 6 to 7 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/527\">tiobe/tics-github-action#527</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/tiobeacj\"><code>@​tiobeacj</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/525\">tiobe/tics-github-action#525</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/tiobe/tics-github-action/compare/v3.10.0...v3.11.0\">https://github.com/tiobe/tics-github-action/compare/v3.10.0...v3.11.0</a></p>\n<h2>v3.10.0</h2>\n<!-- raw HTML omitted -->\n<h2>What's Changed</h2>\n<h3>Features</h3>\n<ul>\n<li>RM-38009: Using the repository name if no project is specified when\nrunning qserver mode by <a\nhref=\"https://github.com/janssen-tiobe\"><code>@​janssen-tiobe</code></a>\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/519\">tiobe/tics-github-action#519</a></li>\n<li>RM-37714: Removed CLI summary that was posted at the end of a run.\nby <a\nhref=\"https://github.com/janssen-tiobe\"><code>@​janssen-tiobe</code></a>\nin <a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/pull/520\">tiobe/tics-github-action#520</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/tiobe/tics-github-action/compare/v3.9.0...v3.10.0\">https://github.com/tiobe/tics-github-action/compare/v3.9.0...v3.10.0</a></p>\n<h2>v3.9.1</h2>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/06afa6781ba53ab58efbe766d41d84febad1f683\"><code>06afa67</code></a>\nBuild dist after push to main</li>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/a2ac7fb99b7bdbf8c3374e044bc1e6330676180c\"><code>a2ac7fb</code></a>\nRM-37983: Converted action to ESM and updated to Node 24 (<a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/issues/530\">#530</a>)</li>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/333078bc527399e5916a166bd1a3a788be5a01a9\"><code>333078b</code></a>\nBuild dist after push to main</li>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/e831d62812b1d6ed790347a34e17e07ae6e8bc76\"><code>e831d62</code></a>\nMerge branches '37915-tqi_overview' and 'main' of\ngithub.com:tiobe/tics-githu...</li>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/25b77dd16d9aef103cae71a81a804e01e9fb47d5\"><code>25b77dd</code></a>\nRM-37915: Using unicode to get sans-serif font for label grades</li>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/74bf696843d3f0980ae6d7a810abe40f82dfcd17\"><code>74bf696</code></a>\nBuild dist after push to main</li>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/a1323bf395005bddb43f94c351ea820e693cb583\"><code>a1323bf</code></a>\nRM-38452: Added random string to tmpdir name to make them unique (<a\nhref=\"https://redirect.github.com/tiobe/tics-github-action/issues/529\">#529</a>)</li>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/99eed865ea5d443a94e92d77d8eadc04074917dd\"><code>99eed86</code></a>\nRM-37915: Only showing evaluated conditions dropdown if there are\nany</li>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/0e7cf582edc0d2b5eb057adcbbdee7c591077dac\"><code>0e7cf58</code></a>\nRM-37915: Fixed test name mismatch</li>\n<li><a\nhref=\"https://github.com/tiobe/tics-github-action/commit/ab76a64555af65a6f2456fc410ec3d09d9f6da75\"><code>ab76a64</code></a>\nRM-37915: Fixed rounding issue for scores in tqi label</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/tiobe/tics-github-action/compare/v3...v4\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=tiobe/tics-github-action&package-manager=github_actions&previous-version=3&new-version=4)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore <dependency name> major version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's major version (unless you unignore this specific\ndependency's major version or upgrade to it yourself)\n- `@dependabot ignore <dependency name> minor version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's minor version (unless you unignore this specific\ndependency's minor version or upgrade to it yourself)\n- `@dependabot ignore <dependency name>` will close this group update PR\nand stop Dependabot creating any more for the specific dependency\n(unless you unignore this specific dependency or upgrade to it yourself)\n- `@dependabot unignore <dependency name>` will remove all of the ignore\nconditions of the specified dependency\n- `@dependabot unignore <dependency name> <ignore condition>` will\nremove the ignore condition of the specified dependency and ignore\nconditions\n\n\n</details>",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/40ed45a142882538115dd23f35b2a728625e9878"
+               },
+               {
+                  "sha": "77e3e6345d61eded77eee92b852e7bacefe37e5e",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1789635852,
+                  "message": "deps(ci): bump tiobe/tics-github-action in the gh-actions group\n\nBumps the gh-actions group with 1 update: [tiobe/tics-github-action](https://github.com/tiobe/tics-github-action).\n\n\nUpdates `tiobe/tics-github-action` from 3 to 4\n- [Release notes](https://github.com/tiobe/tics-github-action/releases)\n- [Commits](https://github.com/tiobe/tics-github-action/compare/v3...v4)\n\n---\nupdated-dependencies:\n- dependency-name: tiobe/tics-github-action\n  dependency-version: '4'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n  dependency-group: gh-actions\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/77e3e6345d61eded77eee92b852e7bacefe37e5e"
+               },
+               {
                   "sha": "9925deaf4fc9545b19f850a7351770e8a8c47f50",
                   "author": "Kat",
                   "timestamp": 1787337714,
                   "message": "docs(README.md): Remove Go Report Card (#382)\n\nGo Report Card has been deprecated.",
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/9925deaf4fc9545b19f850a7351770e8a8c47f50"
-               },
-               {
-                  "sha": "a5ef372be0da632e1df665a2a6e3f3e808d58981",
-                  "author": "kkuo",
-                  "timestamp": 1787261546,
-                  "message": "docs(README.md): Remove Go Report Card\n\nGo Report Card has been deprecated.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/a5ef372be0da632e1df665a2a6e3f3e808d58981"
-               },
-               {
-                  "sha": "7b30765a1126d34e28685b491f7e11ca1f1696af",
-                  "author": "Kat",
-                  "timestamp": 1787337075,
-                  "message": "deps(go): Bump Go to 1.26.7 and update dependencies (#381)\n\nBump Go to 1.26.7 and update dependencies. This should fix CI.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7b30765a1126d34e28685b491f7e11ca1f1696af"
                }
             ],
             "ciActions": [
@@ -5686,38 +5709,35 @@
             "snap": null
          },
          {
-            "name": "wsl-actions-example",
+            "name": "myna",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/ubuntu/wsl-actions-example",
+            "url": "https://github.com/canonical/myna",
             "releases": null,
             "commits": [
                {
-                  "sha": "6e6f10720113aed99576fb35f2dc5a3ca3f859a4",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1707145567,
-                  "message": "Merge pull request #6 from ubuntu/cloud-init\n\nCloud-init tests",
-                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/6e6f10720113aed99576fb35f2dc5a3ca3f859a4"
+                  "sha": "74be9ea9cd3485c4a463f99b728f07fcd0bbe364",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1790005930,
+                  "message": "build(deps): bump anyio from 4.13.0 to 4.14.2 in /server\n\nBumps [anyio](https://github.com/agronholm/anyio) from 4.13.0 to 4.14.2.\n- [Release notes](https://github.com/agronholm/anyio/releases)\n- [Commits](https://github.com/agronholm/anyio/compare/4.13.0...4.14.2)\n\n---\nupdated-dependencies:\n- dependency-name: anyio\n  dependency-version: 4.14.2\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/myna/commit/74be9ea9cd3485c4a463f99b728f07fcd0bbe364"
                },
                {
-                  "sha": "7b60ccc69f056d9822a300e5a0c22ba02d8632f5",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1706872689,
-                  "message": "Avoid interference with other workflows",
-                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/7b60ccc69f056d9822a300e5a0c22ba02d8632f5"
+                  "sha": "fe7779169dffedae172e41ebc533b1f1b5909440",
+                  "author": "Peter Vančo",
+                  "timestamp": 1789946948,
+                  "message": "fix(l10n): added translation using Weblate (Czech)",
+                  "url": "https://github.com/canonical/myna/commit/fe7779169dffedae172e41ebc533b1f1b5909440"
                },
                {
-                  "sha": "b58a6f43797847e55a73082506a91c85a63a827e",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1706872676,
-                  "message": "Cloud-init tests",
-                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/b58a6f43797847e55a73082506a91c85a63a827e"
+                  "sha": "881ef334fd66db14f92e649dd604591fd4ef7113",
+                  "author": "Ihor Hordiichuk",
+                  "timestamp": 1789945530,
+                  "message": "fix(l10n): added translation using Weblate (Ukrainian)",
+                  "url": "https://github.com/canonical/myna/commit/881ef334fd66db14f92e649dd604591fd4ef7113"
                }
             ],
-            "ciActions": [
-               "https://github.com/ubuntu/wsl-actions-example/actions/workflows/test.yaml",
-               "https://github.com/ubuntu/wsl-actions-example/actions/workflows/test_wsl.yaml"
-            ],
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -5795,25 +5815,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dade21df164b24e359378dc44ee737be2ce85065",
+                  "author": "adombeck",
+                  "timestamp": 1789999695,
+                  "message": "docs: recommend synctest for time-based tests (#1956)",
+                  "url": "https://github.com/canonical/authd/commit/dade21df164b24e359378dc44ee737be2ce85065"
+               },
+               {
+                  "sha": "e4298230f54180128a9f81e7871c98924240cc98",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1789985992,
+                  "message": "docs: recommend synctest for time-based tests\n\nTell agents to prefer testing/synctest when tests exercise timers,\ndeadlines, sleeps, or other time-based concurrency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/e4298230f54180128a9f81e7871c98924240cc98"
+               },
+               {
                   "sha": "290084e917f7095f19fc9e8d3b23d8cd939b23f1",
                   "author": "Marco Trevisan",
                   "timestamp": 1789751085,
                   "message": "examplebroker: Always set the needed auth steps on new session (#1746)\n\nWe were setting the needed auth steps only for users that are unknown,\nbut not for the ones we already tracked internally.\n\nThis implied that accessing again with the same MFA user did not lead to\nanother MFA session",
                   "url": "https://github.com/canonical/authd/commit/290084e917f7095f19fc9e8d3b23d8cd939b23f1"
-               },
-               {
-                  "sha": "d641f3d975f4f6755dde9504360c96aa7db27dce",
-                  "author": "adombeck",
-                  "timestamp": 1789728161,
-                  "message": "pam/gdm/extension: Use upstream functions to cleanup the JSON request (#1751)\n\nUDENG-11100",
-                  "url": "https://github.com/canonical/authd/commit/d641f3d975f4f6755dde9504360c96aa7db27dce"
-               },
-               {
-                  "sha": "b2bf24be07d38e188f3d1cf5519df2945d2bfa2d",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1789688376,
-                  "message": "pam/integration-tests/native: Add test to authenticate MFA users multiple times\n\nAdd an integration test that authenticates the same generated MFA user\nin two separate native PAM sessions and checks that both require the\nfull multi-factor flow.\n\nThe first login creates the user inside the broker, so the second\nsession hits the already-known branch that the fix repairs. Without the\nfix the second login stops after the password step.\n\nFactor the existing MFA flow into nativeMfaAuth so both sessions share\nit. It tolerates the missing provider selection, which authd skips once\nthe user is bound to a broker.",
-                  "url": "https://github.com/canonical/authd/commit/b2bf24be07d38e188f3d1cf5519df2945d2bfa2d"
                }
             ],
             "ciActions": [
@@ -5955,32 +5975,32 @@
             "snap": null
          },
          {
-            "name": "dep5-vendor-gen",
+            "name": "nm.dart",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/dep5-vendor-gen",
+            "url": "https://github.com/canonical/nm.dart",
             "releases": null,
             "commits": [
                {
-                  "sha": "d2a233053dc8718d0ff6452df53903ecc856e391",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788433321,
-                  "message": "Preserve non-ASCII copyright holders\n\nThe generator relied on Python's locale when decoding licensecheck\noutput.  A non-UTF-8 locale could turn UTF-8 names into mojibake in\ndebian/copyright. Decode the machine-readable output as UTF-8\nexplicitly.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/d2a233053dc8718d0ff6452df53903ecc856e391"
+                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756088060,
+                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
+                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
                },
                {
-                  "sha": "6de959406d15e0a4835838f88e3b4a90bb019607",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1786613918,
-                  "message": "docs: update licensecheck install instructions\n\nReference the standalone licensecheck package instead of devscripts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/6de959406d15e0a4835838f88e3b4a90bb019607"
+                  "sha": "8bfcc709f591f5fa1774d80bbc1818c6384dfcc6",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756087873,
+                  "message": "Move tests from 20.04 to 24.04",
+                  "url": "https://github.com/canonical/nm.dart/commit/8bfcc709f591f5fa1774d80bbc1818c6384dfcc6"
                },
                {
-                  "sha": "efc24680335411cb2538e1cf3ec36d04dd7900c9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1786355620,
-                  "message": "Auto-create output directory for --debian-copyright\n\nPreviously the script exited with an error if the parent directory of\n--debian-copyright didn't exist, forcing users to mkdir it manually.\nCreate it automatically instead, matching how most codegen tools behave.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/efc24680335411cb2538e1cf3ec36d04dd7900c9"
+                  "sha": "d9bab233e2555881866f5673b2fdc5abed6217ea",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756075408,
+                  "message": "Remove CLA checker",
+                  "url": "https://github.com/canonical/nm.dart/commit/d9bab233e2555881866f5673b2fdc5abed6217ea"
                }
             ],
             "ciActions": [],
@@ -6348,35 +6368,37 @@
             "snap": null
          },
          {
-            "name": "gsettings.dart",
+            "name": "odrs.dart",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/gsettings.dart",
+            "url": "https://github.com/canonical/odrs.dart",
             "releases": null,
             "commits": [
                {
-                  "sha": "18c94c83b24c8fc3069bf742cd1a71791573f9d1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789976189,
-                  "message": "Update to dbus.dart 0.8.0 (#64)",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/18c94c83b24c8fc3069bf742cd1a71791573f9d1"
+                  "sha": "03726e458a6e9ff5c8d80cb68c9c8913870a9569",
+                  "author": "J-P Nurmi",
+                  "timestamp": 1689614443,
+                  "message": "chore: update links",
+                  "url": "https://github.com/canonical/odrs.dart/commit/03726e458a6e9ff5c8d80cb68c9c8913870a9569"
                },
                {
-                  "sha": "3fb003e4747f7361a7195d9b41358a9b92f59c59",
-                  "author": "Matt Kosarek",
-                  "timestamp": 1789671238,
-                  "message": "Update to dbus.dart 0.8.0",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/3fb003e4747f7361a7195d9b41358a9b92f59c59"
+                  "sha": "2d4c561531d840e7b78c30a9a9b5a40aacff6acf",
+                  "author": "J-P Nurmi",
+                  "timestamp": 1686326120,
+                  "message": "chore: release v0.0.4",
+                  "url": "https://github.com/canonical/odrs.dart/commit/2d4c561531d840e7b78c30a9a9b5a40aacff6acf"
                },
                {
-                  "sha": "5ea793ea0387ba2fafd3e448db97f82c01502b28",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756091270,
-                  "message": "Merge pull request #63 from robert-ancell/ci-ubuntu-version\n\nUpdate Ubuntu CI version and remove obsolete CLA check",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/5ea793ea0387ba2fafd3e448db97f82c01502b28"
+                  "sha": "af7bf4503a68bfb75f16e9107bdbc0ee58c0ee07",
+                  "author": "J-P Nurmi",
+                  "timestamp": 1686318686,
+                  "message": "feat(vote): add vote_id to be able to recognize self-voted reviews (#15)",
+                  "url": "https://github.com/canonical/odrs.dart/commit/af7bf4503a68bfb75f16e9107bdbc0ee58c0ee07"
                }
             ],
-            "ciActions": [],
+            "ciActions": [
+               "https://github.com/canonical/odrs.dart/actions/workflows/ci.yaml"
+            ],
             "charm": null,
             "snap": null
          },
@@ -6551,6 +6573,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 393065494,
+                  "version": "publish-35617032307",
+                  "timestamp": 1790000781,
+                  "title": "Publish 35617032307",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev152\">mediawiki-k8s-rev152 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev137</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/284\">#284</a></li>\n<li>fix(deps): update dependency dpcharmlibs-interfaces to v1.2.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/285\">#285</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35570353131...publish-35617032307\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35570353131&hellip;publish-35617032307</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35617032307",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35617032307...main"
+               },
+               {
                   "id": 392746762,
                   "version": "publish-35570353131",
                   "timestamp": 1789971206,
@@ -6567,15 +6598,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev150\">mediawiki-k8s-rev150 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev135</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore: Unpin Valkey in integration tests by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/282\">#282</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35238542174...publish-35275666052\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35238542174&hellip;publish-35275666052</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35275666052",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35275666052...main"
-               },
-               {
-                  "id": 390829176,
-                  "version": "publish-35238542174",
-                  "timestamp": 1789655325,
-                  "title": "Publish 35238542174",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev149\">mediawiki-k8s-rev149 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev134</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: Update AWS extension pin by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/281\">#281</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35125725695...publish-35238542174\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35125725695&hellip;publish-35238542174</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35238542174",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35238542174...main"
                }
             ],
             "commits": null,
@@ -6596,8 +6618,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 151,
-                     "timestamp": 1789973783
+                     "revision": 152,
+                     "timestamp": 1790003681
                   }
                ],
                "channels": [
@@ -6610,103 +6632,106 @@
             "snap": null
          },
          {
-            "name": "myna",
+            "name": "wsl-actions-example",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/myna",
+            "url": "https://github.com/ubuntu/wsl-actions-example",
             "releases": null,
             "commits": [
                {
-                  "sha": "994a2345ed7a90c861183b8e2a66a90907316208",
-                  "author": "Charles",
-                  "timestamp": 1789730429,
-                  "message": "fix(server): hand the signals back before the loop closes\n\nStopping an inference service intermittently printed \"Exception ignored\nwhen trying to write to the signal wakeup fd: OSError: [Errno 9] Bad file\ndescriptor\" after the \"shutting down\" line. The shutdown itself had\nalready finished, so this is noise, but it fires on all three snaps and\nhas since at least Sep 07 (9 occurrences in 14 days here).\n\nserve() installed SIGTERM/SIGINT handlers on the running loop and never\nremoved them. asyncio's wakeup fd is the loop's self-pipe, and\nloop.close() closes that pipe before it restores the default handlers, so\na signal delivered in that window makes CPython's C handler write to a\nclosed fd. Reproduced under the snap's own python 3.12 by closing the\nself-pipe and raising SIGTERM in the window, which prints the reported\ntraceback verbatim; removing the handler first silences it.\n\nThe body of serve() now sits in try/finally and the finally removes both\nhandlers, which resets the wakeup fd while the pipe is still open and\nrestores SIG_DFL, so a late SIGTERM ends the process instead. Doing it\nthere rather than right after stop.wait() keeps the graceful shutdown\nimmune to a second signal while the loop is still running.\n\nThe new test drives serve() on the fake adapter, sends itself SIGTERM and\nasserts the disposition is handed back; it was seen failing on\n_sighandler_noop first.",
-                  "url": "https://github.com/canonical/myna/commit/994a2345ed7a90c861183b8e2a66a90907316208"
+                  "sha": "6e6f10720113aed99576fb35f2dc5a3ca3f859a4",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1707145567,
+                  "message": "Merge pull request #6 from ubuntu/cloud-init\n\nCloud-init tests",
+                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/6e6f10720113aed99576fb35f2dc5a3ca3f859a4"
                },
                {
-                  "sha": "504153751054d4d41afea2c294ccde4b029e7e65",
-                  "author": "Charles",
-                  "timestamp": 1789728281,
-                  "message": "test(orchestrator): grade the salvage on the branches mutants reached\n\nMutation testing on the new lifecycle code left two live mutants and one\nbranch with no test at all:\n\n- `accepted && !reported` flipped to `||` announced a salvage for a fault\n  with nothing to salvage, which only shows up as an event nobody asserted:\n  the no-audio test now says so, because a HUD that goes to finishing for a\n  microphone that never opened is wrong.\n- `if !ended` dropped the end-of-audio path's CaptureEnded. Live sources\n  report `Ended` on health, so only a source that does not - WavFileSource,\n  which reports `Capturing` and nothing else - can tell the difference: a\n  clip against a backend that never loads now proves the deadline arms.\n- A fault reaches the runner twice, on health and as the stream's `Err`.\n  Neither is required and neither is waited for, which a source reporting it\n  on one side only now pins from both sides.\n\n47 mutants over fsm.rs and runner.rs: 0 missed, 20 caught, 4 unviable. The\n23 timeouts are whole-function mutants of the pre-existing FSM predicates,\nwhere the driver's unbounded test awaits hang the suite rather than fail it.",
-                  "url": "https://github.com/canonical/myna/commit/504153751054d4d41afea2c294ccde4b029e7e65"
+                  "sha": "7b60ccc69f056d9822a300e5a0c22ba02d8632f5",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706872689,
+                  "message": "Avoid interference with other workflows",
+                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/7b60ccc69f056d9822a300e5a0c22ba02d8632f5"
                },
                {
-                  "sha": "7bfed6f991fd7a4e505d317931d19aa71cca1b0a",
-                  "author": "Charles",
-                  "timestamp": 1789726278,
-                  "message": "fix(orchestrator): transcribe the audio a capture fault interrupted\n\nA capture fault mid-utterance (mic unplugged, device error, ring overload)\nsent CaptureFailed at once and abandoned the session, so audio the user had\nalready spoken and the client had already accepted was thrown away and they\ngot an error instead of their words. The pre-review code drained the ring\nfirst but abandoned the session just the same, so this is long-standing.\n\nCapture now decides by what it had handed over. With nothing accepted - a\ndevice that never opened, a fault with an empty ring - nothing changes: the\nsession fails at once. With audio accepted, the fault becomes CaptureLost:\nout of band, so it does not wait behind the queued audio, it arms the\nprogress deadline (capture is over) without closing the accept-gate, and the\naccepted PCM still flows in order with the end of audio behind it. The\nutterance finishes as a release would, the committed text is committed and\ninjected, and only then does the fault end the session as its failure.\n\nA failure while finishing keeps the device fault inside its message rather\nthan replacing it, so the deadline or a backend error can never be the last\nword on why an utterance died. Abort is untouched: a user cancel still\ndiscards promptly whatever capture did.\n\nThe salvage message says audio was lost, because it always was - the rest of\nwhat was being said into a dead device, or the speech an overloaded buffer\nrefused - so it cannot read as a clean end.\n\nThe desktop controller follows the same order: CaptureLost moves the HUD to\nfinishing, the text is inserted as usual, and the completion notice is\nreplaced by the failure, so the session never flashes a hidden or \"No speech\ndetected\" completion between the transcript and the error.\n\nDeliberate behaviour change to an A4 acceptance criterion: an overload\nbefore Ready no longer fails without sending audio, it waits for the backend\nand sends what the ring held, bounded by the 300 s progress deadline.",
-                  "url": "https://github.com/canonical/myna/commit/7bfed6f991fd7a4e505d317931d19aa71cca1b0a"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "nm.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/nm.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756088060,
-                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
-               },
-               {
-                  "sha": "8bfcc709f591f5fa1774d80bbc1818c6384dfcc6",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756087873,
-                  "message": "Move tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/8bfcc709f591f5fa1774d80bbc1818c6384dfcc6"
-               },
-               {
-                  "sha": "d9bab233e2555881866f5673b2fdc5abed6217ea",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756075408,
-                  "message": "Remove CLA checker",
-                  "url": "https://github.com/canonical/nm.dart/commit/d9bab233e2555881866f5673b2fdc5abed6217ea"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "odrs.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/odrs.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "03726e458a6e9ff5c8d80cb68c9c8913870a9569",
-                  "author": "J-P Nurmi",
-                  "timestamp": 1689614443,
-                  "message": "chore: update links",
-                  "url": "https://github.com/canonical/odrs.dart/commit/03726e458a6e9ff5c8d80cb68c9c8913870a9569"
-               },
-               {
-                  "sha": "2d4c561531d840e7b78c30a9a9b5a40aacff6acf",
-                  "author": "J-P Nurmi",
-                  "timestamp": 1686326120,
-                  "message": "chore: release v0.0.4",
-                  "url": "https://github.com/canonical/odrs.dart/commit/2d4c561531d840e7b78c30a9a9b5a40aacff6acf"
-               },
-               {
-                  "sha": "af7bf4503a68bfb75f16e9107bdbc0ee58c0ee07",
-                  "author": "J-P Nurmi",
-                  "timestamp": 1686318686,
-                  "message": "feat(vote): add vote_id to be able to recognize self-voted reviews (#15)",
-                  "url": "https://github.com/canonical/odrs.dart/commit/af7bf4503a68bfb75f16e9107bdbc0ee58c0ee07"
+                  "sha": "b58a6f43797847e55a73082506a91c85a63a827e",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706872676,
+                  "message": "Cloud-init tests",
+                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/b58a6f43797847e55a73082506a91c85a63a827e"
                }
             ],
             "ciActions": [
-               "https://github.com/canonical/odrs.dart/actions/workflows/ci.yaml"
+               "https://github.com/ubuntu/wsl-actions-example/actions/workflows/test.yaml",
+               "https://github.com/ubuntu/wsl-actions-example/actions/workflows/test_wsl.yaml"
             ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "GoWSL",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/ubuntu/GoWSL",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "0ef2623cc8fb5bf37649b30adc999e9dd0f57570",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1762975080,
+                  "message": "Prefers slog for utils_test (#144)\n\nThis was actually done in PR #140 but I ended up merging that PR in the\nwrong order. Thus, I'm basically redoing that PR.",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/0ef2623cc8fb5bf37649b30adc999e9dd0f57570"
+               },
+               {
+                  "sha": "5a7efa0612a23b92d234ed375d2ab73004be03d2",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1759440907,
+                  "message": "Applies code review suggestions\n\nabout not using ':', capitalization and avoiding '\\n' in the values.",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/5a7efa0612a23b92d234ed375d2ab73004be03d2"
+               },
+               {
+                  "sha": "576e37f7932d274b888f2c814e7713d8990bc8a6",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1758225565,
+                  "message": "Tidy the dependencies\n\nBump the toolchain to 1.22.12 (the latest 1.22)\nRemove dependency on 0xrawsec/golang-utils\nRefreshes other dependencies",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/576e37f7932d274b888f2c814e7713d8990bc8a6"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/ubuntu/GoWSL/actions/workflows/qa-azure.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "gsettings.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/gsettings.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "ce652ec49953489454ced6f43ca0adb7a22a7003",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790002560,
+                  "message": "chore: update CHANGELOG and loosen sdk constraint (#65)\n\n`dart pub publish --dry-run` reported:\n\n```\nValidating package...\nPackage validation found the following potential issue:\n* 1 checked-in file is modified in git.\n\n  Usually you want to publish from a clean git state.\n\n  Consider committing these files or reverting the changes.\n\n  Modified files:\n\n  CHANGELOG.md\n\n  Run `git status` for more information.\n\n\nPackage validation found the following hint:\n* The declared SDK constraint is '>=2.12.0 <3.0.0', this is interpreted as '>=2.12.0 <4.0.0'.\n\n  Consider updating the SDK constraint to:\n\n  environment:\n    sdk: '>=2.12.0 <4.0.0'\n\nThe server may enforce additional checks.\n```\n\nso this PR adds a new CHANGELOG entry and adjusts the SDK constraint\naccordingly.",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/ce652ec49953489454ced6f43ca0adb7a22a7003"
+               },
+               {
+                  "sha": "b528decd450269db2fcfb9910e6f4c65580a6165",
+                  "author": "Dennis Loose",
+                  "timestamp": 1789976619,
+                  "message": "chore: update CHANGELOG and loosen sdk constraint",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/b528decd450269db2fcfb9910e6f4c65580a6165"
+               },
+               {
+                  "sha": "18c94c83b24c8fc3069bf742cd1a71791573f9d1",
+                  "author": "Dennis Loose",
+                  "timestamp": 1789976189,
+                  "message": "Update to dbus.dart 0.8.0 (#64)",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/18c94c83b24c8fc3069bf742cd1a71791573f9d1"
+               }
+            ],
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -6784,25 +6809,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd8c7504c20525c3fcbc46af5c4950d147636a76",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1789716761,
-                  "message": "Add codegen-units setting to release profile (#316)\n\nTo make better use of LTO.",
-                  "url": "https://github.com/canonical/prompting-client/commit/dd8c7504c20525c3fcbc46af5c4950d147636a76"
+                  "sha": "88bf647de0d590ab988a05f0348f9b6b3270230b",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1790001561,
+                  "message": "fix: expand action buttons to full prompt width (#318)\n\nThe allow/deny split buttons were laid out in a `Wrap` with\n`WrapAlignment.center`, so each button only ever took its intrinsic\nwidth — the width of its own label. At the prompt's fixed 372px width\nthis left the two buttons hugging their text with uneven widths, and\nlonger localized labels pushed the second button onto its own line.\n\nThis switches the layout to a `Column` with `CrossAxisAlignment.stretch`\nand passes the new `expanded: true` flag to `YaruSplitButton.filled`, so\neach button fills the full content width regardless of label length.\nWithout `expanded`, the split button's internal `Row` still hugs its\nlabel even when the parent stretches it, so the flag is required for the\nstretch to have any effect.\n\n`expanded` was added in yaru 10.2.0, hence the accompanying dependency\nbump.\n\n### Dependency bump\n\n`yaru: ^8.3.0` → `^10.2.0` — two major versions. Two knock-on changes\nwere needed:\n\n- `main.dart`: `ThemeData? theme` / `darkTheme` on `YaruThemeData` are\nnon-nullable as of 10.2.0, so the `?.` before `.customize()` is gone.\n- `iterable_extensions.dart`: yaru 10.2.0 now exports its own\n`separatedBy` extension on `Iterable<Widget>`, which collides with our\nlocal copy as an ambiguous extension. The local `separatedBy` is removed\nand `tile_list.dart` picks up yaru's via its existing\n`package:yaru/yaru.dart` import. `withSpacing` is untouched — yaru's\nversion of that one is not exported.\n\n### Testing\n\nAdded `test/device_action_buttons_test.dart`, which renders\n`DeviceActionButtons` at the real content width (`kWindowWidth - 2 *\nkPagePadding`) and asserts the dropdown's right edge reaches the full\nwidth — i.e. the main button actually expanded rather than hugging its\nlabel.\n\nNote that the existing widget tests run at a 760px viewport\n(`test/test_utils.dart:26`), roughly 2× the real 372px prompt width, so\nthey would not have caught this. The new test sets its own width\nexplicitly.\n\nVerified locally:\n\n- `flutter test` — 50 passed\n- `flutter analyze --fatal-infos` — no issues\n- `dart format` — no changes\n\n### Review notes\n\nThis is a visual change to the camera, microphone and home prompt pages,\nso it's worth a look on a real prompt rather than just reading the diff.\nReviewers should also confirm the yaru 8 → 10 jump doesn't regress\nanything else in the UI; the bump is scoped to what `expanded` requires,\nbut it is a two-major-version move and the test suite only covers so\nmuch of the visual surface.\n\n\n\n---\n\nUDENG-11210",
+                  "url": "https://github.com/canonical/prompting-client/commit/88bf647de0d590ab988a05f0348f9b6b3270230b"
                },
                {
-                  "sha": "248fcb4c1d1917beccdb6a6372785a2c09eeee33",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789638286,
-                  "message": "fix: add noto fonts as fallback for arm64 workaround (#323)\n\nResolves UDENG-11440",
-                  "url": "https://github.com/canonical/prompting-client/commit/248fcb4c1d1917beccdb6a6372785a2c09eeee33"
+                  "sha": "44899c4a6bfce2a7bafc537d9ae07ce33770d9cd",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1789721492,
+                  "message": "fix: update comments for clarity on menu width handling in DeviceActionButtons",
+                  "url": "https://github.com/canonical/prompting-client/commit/44899c4a6bfce2a7bafc537d9ae07ce33770d9cd"
                },
                {
-                  "sha": "55310ec6413c37e37152d22652c482851ea4260a",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789638191,
-                  "message": "fix: drop rust toolchain from final snap (#324)",
-                  "url": "https://github.com/canonical/prompting-client/commit/55310ec6413c37e37152d22652c482851ea4260a"
+                  "sha": "18e10b390f274753c211ecf6fa6ade60c79ac45f",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1789720659,
+                  "message": "feat: add onChildWidthChanged callback to AdaptiveButtonBar for dynamic width reporting",
+                  "url": "https://github.com/canonical/prompting-client/commit/18e10b390f274753c211ecf6fa6ade60c79ac45f"
                }
             ],
             "ciActions": [],
@@ -7211,23 +7236,37 @@
             "snap": null
          },
          {
-            "name": "translations-verifier",
+            "name": "decorate",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/translations-verifier",
-            "releases": [
+            "url": "https://github.com/ubuntu/decorate",
+            "releases": null,
+            "commits": [
                {
-                  "id": 391349524,
-                  "version": "v0.1.0",
-                  "timestamp": 1789723347,
-                  "title": "v0.1.0",
-                  "body": "<h2>0.1.0 (2026-09-18)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/019c5b7bf627c1d0c15f0320aff16fe22014aec9\">019c5b7</a>)</li>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/abadaa9d12e643a1870de771bf9505d637fbae8d\">abadaa9</a>)</li>\n</ul>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/e16aec2ac06b9ac27aef57cf483fa1790771cf18\">e16aec2</a>)</li>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/86115b951a9c75481125ff677bd1b9bf95057780\">86115b9</a>)</li>\n<li>added pr permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/15c81bff13606f4bfc940734175b88cca61e8168\">15c81bf</a>)</li>\n</ul>\n\n<h3>Documentation</h3>\n\n<ul>\n<li>simplify readme (<a href=\"https://github.com/canonical/translations-verifier/issues/14\">#14</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/84ff565dbabc8d881632dee9619ecf95f1a8434e\">84ff565</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.1.0",
-                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.1.0...main"
+                  "sha": "8228e241ee19366ac586457ae7540331d03fb650",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1739450559,
+                  "message": "Merge pull request #27 from ubuntu/migrate_gh_jira_app\n\nMigrate to org GitHub to Jira application",
+                  "url": "https://github.com/ubuntu/decorate/commit/8228e241ee19366ac586457ae7540331d03fb650"
+               },
+               {
+                  "sha": "81ea6242b5af3216c360a897d63eaf2ed074746d",
+                  "author": "Didier Roche",
+                  "timestamp": 1739430406,
+                  "message": "Migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5942",
+                  "url": "https://github.com/ubuntu/decorate/commit/81ea6242b5af3216c360a897d63eaf2ed074746d"
+               },
+               {
+                  "sha": "b76bb81d1209ba92b56c759d828f75c19479a444",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1724165749,
+                  "message": "Merge pull request #26 from ubuntu/fix-sprintf-on-nonformat-string\n\nOnly use Sprintf when we have arguments to format",
+                  "url": "https://github.com/ubuntu/decorate/commit/b76bb81d1209ba92b56c759d828f75c19479a444"
                }
             ],
-            "commits": null,
-            "ciActions": [],
+            "ciActions": [
+               "https://github.com/ubuntu/decorate/workflows/QA"
+            ],
             "charm": null,
             "snap": null
          },
@@ -7434,59 +7473,79 @@
             "snap": null
          },
          {
-            "name": "ubuntu-insights-k8s-operator",
+            "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
+            "newCommits": 399,
+            "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
-                  "id": 387261161,
-                  "version": "rev113",
-                  "timestamp": 1789152111,
-                  "title": "Revision 113",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 105</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:43 UTC on 11 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update tiobe/tics-github-action action to v4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/149\">#149</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112...rev113\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112&hellip;rev113</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev113",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...main"
+                  "id": 129779620,
+                  "version": "ubuntu_service-v0.3.0",
+                  "timestamp": 1700150958,
+                  "title": "ubuntu_service: v0.3.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_service-v0.2.4...ubuntu_service-v0.3.0\">0.3.0</a> (2023-11-16)</h2>\n\n<ul>\n<li><strong>ubuntu_service:</strong> Add generics for parameters (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/338\">#338</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/762f05cefaad72083063c61728a1c4db6daee95b\">762f05c</a>)</li>\n<li><strong>ubuntu_service:</strong> Add parameter generics (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/762f05cefaad72083063c61728a1c4db6daee95b\">762f05c</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/ubuntu_service-v0.3.0",
+                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_service-v0.3.0...main"
                },
                {
-                  "id": 386666403,
-                  "version": "rev112",
-                  "timestamp": 1789079326,
-                  "title": "Revision 112",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 104</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:31 UTC on 10 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.1.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/148\">#148</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev111...rev112\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev111&hellip;rev112</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev112",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112...main"
+                  "id": 128513033,
+                  "version": "ubuntu_widgets-v0.3.0",
+                  "timestamp": 1699443094,
+                  "title": "ubuntu_widgets: v0.3.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_widgets-v0.2.1...ubuntu_widgets-v0.3.0\">0.3.0</a> (2023-10-30)</h2>\n\n<ul>\n<li><strong>ubuntu_widgets:</strong> use fixed padding for MenuButtonBuilder (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/334\">#334</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/5856134426d43b7590bce107e62a0841e1c6548f\">5856134</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/ubuntu_widgets-v0.3.0",
+                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_widgets-v0.3.0...main"
                },
                {
-                  "id": 385691559,
-                  "version": "rev111",
-                  "timestamp": 1788880355,
-                  "title": "Revision 111",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 103</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:46 UTC on 9 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/144\">#144</a></li>\n<li>deps(pep621): update dependency ops to v3.8.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/146\">#146</a></li>\n<li>deps(pep621): update dependency jubilant to v1.13.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/147\">#147</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/145\">#145</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev110...rev111\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev110&hellip;rev111</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev111",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev111...main"
+                  "id": 125755686,
+                  "version": "xdg_icons-v0.0.3",
+                  "timestamp": 1697704901,
+                  "title": "xdg_icons: v0.0.3",
+                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/xdg_icons-v0.0.2...xdg_icons-v0.0.3\">0.0.3</a> (2023-10-18)</h2>\n\n<ul>\n<li><strong>deps:</strong> bump flutter/yaru versions in xdg_icons (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/41bbe62bd17a36bfbe9d255f0e2cf5d21dc4759c\">41bbe62</a>)</li>\n<li><strong>deps:</strong> update dependency mocktail to v1 (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/313\">#313</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/7e0f079290673734ee63ac3e3f8ebb20733c3262\">7e0f079</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/xdg_icons-v0.0.3",
+                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/xdg_icons-v0.0.3...main"
                }
             ],
             "commits": null,
-            "ciActions": [],
-            "charm": {
-               "name": "ubuntu-insights-server-k8s",
-               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
-               "releases": [
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 113,
-                     "timestamp": 1789152212
-                  }
-               ],
-               "channels": [
-                  "edge"
-               ],
-               "tracks": [
-                  "latest"
-               ]
-            },
+            "ciActions": [
+               "https://github.com/canonical/ubuntu-flutter-plugins/workflows/CI"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "go-i18n",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/ubuntu/go-i18n",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "47e047f852b4b86d45567c8331a2548d6473692b",
+                  "author": "adombeck",
+                  "timestamp": 1760007113,
+                  "message": "Bump Go version to 1.23.12 (#17)",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/47e047f852b4b86d45567c8331a2548d6473692b"
+               },
+               {
+                  "sha": "c4be58aa4db383b3a41f6c2d6a564e627745834c",
+                  "author": "adombeck",
+                  "timestamp": 1760007082,
+                  "message": "Fix module path of the tools module (#16)",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/c4be58aa4db383b3a41f6c2d6a564e627745834c"
+               },
+               {
+                  "sha": "184110c056a539a8510a9b00c108c52d0b82b3d8",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1759999865,
+                  "message": "Bump Go version to 1.23.12\n\ngovulncheck reports the following vulnerability in Go 1.23.10:\n\nVulnerability #1: GO-2025-3956\n    Unexpected paths returned from LookPath in os/exec\n  More info: https://pkg.go.dev/vuln/GO-2025-3956\n  Standard library\n    Found in: os/exec@go1.23.10\n    Fixed in: os/exec@go1.23.12\n    Example traces found:\nError:       #1: cmd/compile-mo/main.go:53:30: compile.generateMos calls exec.Command, which calls exec.LookPath",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/184110c056a539a8510a9b00c108c52d0b82b3d8"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/ubuntu/go-i18n/actions/workflows/qa.yaml"
+            ],
+            "charm": null,
             "snap": null
          },
          {
@@ -7526,47 +7585,6 @@
             "commits": null,
             "ciActions": [
                "https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/qa.yaml"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "ubuntu-flutter-plugins",
-            "defaultBranch": "main",
-            "newCommits": 399,
-            "url": "https://github.com/canonical/ubuntu-flutter-plugins",
-            "releases": [
-               {
-                  "id": 129779620,
-                  "version": "ubuntu_service-v0.3.0",
-                  "timestamp": 1700150958,
-                  "title": "ubuntu_service: v0.3.0",
-                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_service-v0.2.4...ubuntu_service-v0.3.0\">0.3.0</a> (2023-11-16)</h2>\n\n<ul>\n<li><strong>ubuntu_service:</strong> Add generics for parameters (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/338\">#338</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/762f05cefaad72083063c61728a1c4db6daee95b\">762f05c</a>)</li>\n<li><strong>ubuntu_service:</strong> Add parameter generics (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/762f05cefaad72083063c61728a1c4db6daee95b\">762f05c</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/ubuntu_service-v0.3.0",
-                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_service-v0.3.0...main"
-               },
-               {
-                  "id": 128513033,
-                  "version": "ubuntu_widgets-v0.3.0",
-                  "timestamp": 1699443094,
-                  "title": "ubuntu_widgets: v0.3.0",
-                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_widgets-v0.2.1...ubuntu_widgets-v0.3.0\">0.3.0</a> (2023-10-30)</h2>\n\n<ul>\n<li><strong>ubuntu_widgets:</strong> use fixed padding for MenuButtonBuilder (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/334\">#334</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/5856134426d43b7590bce107e62a0841e1c6548f\">5856134</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/ubuntu_widgets-v0.3.0",
-                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_widgets-v0.3.0...main"
-               },
-               {
-                  "id": 125755686,
-                  "version": "xdg_icons-v0.0.3",
-                  "timestamp": 1697704901,
-                  "title": "xdg_icons: v0.0.3",
-                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/xdg_icons-v0.0.2...xdg_icons-v0.0.3\">0.0.3</a> (2023-10-18)</h2>\n\n<ul>\n<li><strong>deps:</strong> bump flutter/yaru versions in xdg_icons (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/41bbe62bd17a36bfbe9d255f0e2cf5d21dc4759c\">41bbe62</a>)</li>\n<li><strong>deps:</strong> update dependency mocktail to v1 (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/313\">#313</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/7e0f079290673734ee63ac3e3f8ebb20733c3262\">7e0f079</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/xdg_icons-v0.0.3",
-                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/xdg_icons-v0.0.3...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [
-               "https://github.com/canonical/ubuntu-flutter-plugins/workflows/CI"
             ],
             "charm": null,
             "snap": null
@@ -8332,25 +8350,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dade21df164b24e359378dc44ee737be2ce85065",
+                  "author": "adombeck",
+                  "timestamp": 1789999695,
+                  "message": "docs: recommend synctest for time-based tests (#1956)",
+                  "url": "https://github.com/canonical/authd/commit/dade21df164b24e359378dc44ee737be2ce85065"
+               },
+               {
+                  "sha": "e4298230f54180128a9f81e7871c98924240cc98",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1789985992,
+                  "message": "docs: recommend synctest for time-based tests\n\nTell agents to prefer testing/synctest when tests exercise timers,\ndeadlines, sleeps, or other time-based concurrency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/e4298230f54180128a9f81e7871c98924240cc98"
+               },
+               {
                   "sha": "290084e917f7095f19fc9e8d3b23d8cd939b23f1",
                   "author": "Marco Trevisan",
                   "timestamp": 1789751085,
                   "message": "examplebroker: Always set the needed auth steps on new session (#1746)\n\nWe were setting the needed auth steps only for users that are unknown,\nbut not for the ones we already tracked internally.\n\nThis implied that accessing again with the same MFA user did not lead to\nanother MFA session",
                   "url": "https://github.com/canonical/authd/commit/290084e917f7095f19fc9e8d3b23d8cd939b23f1"
-               },
-               {
-                  "sha": "d641f3d975f4f6755dde9504360c96aa7db27dce",
-                  "author": "adombeck",
-                  "timestamp": 1789728161,
-                  "message": "pam/gdm/extension: Use upstream functions to cleanup the JSON request (#1751)\n\nUDENG-11100",
-                  "url": "https://github.com/canonical/authd/commit/d641f3d975f4f6755dde9504360c96aa7db27dce"
-               },
-               {
-                  "sha": "b2bf24be07d38e188f3d1cf5519df2945d2bfa2d",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1789688376,
-                  "message": "pam/integration-tests/native: Add test to authenticate MFA users multiple times\n\nAdd an integration test that authenticates the same generated MFA user\nin two separate native PAM sessions and checks that both require the\nfull multi-factor flow.\n\nThe first login creates the user inside the broker, so the second\nsession hits the already-known branch that the fix repairs. Without the\nfix the second login stops after the password step.\n\nFactor the existing MFA flow into nativeMfaAuth so both sessions share\nit. It tolerates the missing provider selection, which authd skips once\nthe user is bound to a broker.",
-                  "url": "https://github.com/canonical/authd/commit/b2bf24be07d38e188f3d1cf5519df2945d2bfa2d"
                }
             ],
             "ciActions": [
@@ -8892,25 +8910,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ce652ec49953489454ced6f43ca0adb7a22a7003",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790002560,
+                  "message": "chore: update CHANGELOG and loosen sdk constraint (#65)\n\n`dart pub publish --dry-run` reported:\n\n```\nValidating package...\nPackage validation found the following potential issue:\n* 1 checked-in file is modified in git.\n\n  Usually you want to publish from a clean git state.\n\n  Consider committing these files or reverting the changes.\n\n  Modified files:\n\n  CHANGELOG.md\n\n  Run `git status` for more information.\n\n\nPackage validation found the following hint:\n* The declared SDK constraint is '>=2.12.0 <3.0.0', this is interpreted as '>=2.12.0 <4.0.0'.\n\n  Consider updating the SDK constraint to:\n\n  environment:\n    sdk: '>=2.12.0 <4.0.0'\n\nThe server may enforce additional checks.\n```\n\nso this PR adds a new CHANGELOG entry and adjusts the SDK constraint\naccordingly.",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/ce652ec49953489454ced6f43ca0adb7a22a7003"
+               },
+               {
+                  "sha": "b528decd450269db2fcfb9910e6f4c65580a6165",
+                  "author": "Dennis Loose",
+                  "timestamp": 1789976619,
+                  "message": "chore: update CHANGELOG and loosen sdk constraint",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/b528decd450269db2fcfb9910e6f4c65580a6165"
+               },
+               {
                   "sha": "18c94c83b24c8fc3069bf742cd1a71791573f9d1",
                   "author": "Dennis Loose",
                   "timestamp": 1789976189,
                   "message": "Update to dbus.dart 0.8.0 (#64)",
                   "url": "https://github.com/canonical/gsettings.dart/commit/18c94c83b24c8fc3069bf742cd1a71791573f9d1"
-               },
-               {
-                  "sha": "3fb003e4747f7361a7195d9b41358a9b92f59c59",
-                  "author": "Matt Kosarek",
-                  "timestamp": 1789671238,
-                  "message": "Update to dbus.dart 0.8.0",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/3fb003e4747f7361a7195d9b41358a9b92f59c59"
-               },
-               {
-                  "sha": "5ea793ea0387ba2fafd3e448db97f82c01502b28",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756091270,
-                  "message": "Merge pull request #63 from robert-ancell/ci-ubuntu-version\n\nUpdate Ubuntu CI version and remove obsolete CLA check",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/5ea793ea0387ba2fafd3e448db97f82c01502b28"
                }
             ],
             "ciActions": [],
@@ -9055,6 +9073,15 @@
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
+                  "id": 393065494,
+                  "version": "publish-35617032307",
+                  "timestamp": 1790000781,
+                  "title": "Publish 35617032307",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev152\">mediawiki-k8s-rev152 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev137</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/284\">#284</a></li>\n<li>fix(deps): update dependency dpcharmlibs-interfaces to v1.2.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/285\">#285</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35570353131...publish-35617032307\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35570353131&hellip;publish-35617032307</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35617032307",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35617032307...main"
+               },
+               {
                   "id": 392746762,
                   "version": "publish-35570353131",
                   "timestamp": 1789971206,
@@ -9071,15 +9098,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev150\">mediawiki-k8s-rev150 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev135</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore: Unpin Valkey in integration tests by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/282\">#282</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35238542174...publish-35275666052\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35238542174&hellip;publish-35275666052</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35275666052",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35275666052...main"
-               },
-               {
-                  "id": 390829176,
-                  "version": "publish-35238542174",
-                  "timestamp": 1789655325,
-                  "title": "Publish 35238542174",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev149\">mediawiki-k8s-rev149 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev134</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps: Update AWS extension pin by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/281\">#281</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35125725695...publish-35238542174\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35125725695&hellip;publish-35238542174</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-35238542174",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-35238542174...main"
                }
             ],
             "commits": null,
@@ -9100,8 +9118,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 151,
-                     "timestamp": 1789973783
+                     "revision": 152,
+                     "timestamp": 1790003681
                   }
                ],
                "channels": [
@@ -9121,25 +9139,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "994a2345ed7a90c861183b8e2a66a90907316208",
-                  "author": "Charles",
-                  "timestamp": 1789730429,
-                  "message": "fix(server): hand the signals back before the loop closes\n\nStopping an inference service intermittently printed \"Exception ignored\nwhen trying to write to the signal wakeup fd: OSError: [Errno 9] Bad file\ndescriptor\" after the \"shutting down\" line. The shutdown itself had\nalready finished, so this is noise, but it fires on all three snaps and\nhas since at least Sep 07 (9 occurrences in 14 days here).\n\nserve() installed SIGTERM/SIGINT handlers on the running loop and never\nremoved them. asyncio's wakeup fd is the loop's self-pipe, and\nloop.close() closes that pipe before it restores the default handlers, so\na signal delivered in that window makes CPython's C handler write to a\nclosed fd. Reproduced under the snap's own python 3.12 by closing the\nself-pipe and raising SIGTERM in the window, which prints the reported\ntraceback verbatim; removing the handler first silences it.\n\nThe body of serve() now sits in try/finally and the finally removes both\nhandlers, which resets the wakeup fd while the pipe is still open and\nrestores SIG_DFL, so a late SIGTERM ends the process instead. Doing it\nthere rather than right after stop.wait() keeps the graceful shutdown\nimmune to a second signal while the loop is still running.\n\nThe new test drives serve() on the fake adapter, sends itself SIGTERM and\nasserts the disposition is handed back; it was seen failing on\n_sighandler_noop first.",
-                  "url": "https://github.com/canonical/myna/commit/994a2345ed7a90c861183b8e2a66a90907316208"
+                  "sha": "74be9ea9cd3485c4a463f99b728f07fcd0bbe364",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1790005930,
+                  "message": "build(deps): bump anyio from 4.13.0 to 4.14.2 in /server\n\nBumps [anyio](https://github.com/agronholm/anyio) from 4.13.0 to 4.14.2.\n- [Release notes](https://github.com/agronholm/anyio/releases)\n- [Commits](https://github.com/agronholm/anyio/compare/4.13.0...4.14.2)\n\n---\nupdated-dependencies:\n- dependency-name: anyio\n  dependency-version: 4.14.2\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/canonical/myna/commit/74be9ea9cd3485c4a463f99b728f07fcd0bbe364"
                },
                {
-                  "sha": "504153751054d4d41afea2c294ccde4b029e7e65",
-                  "author": "Charles",
-                  "timestamp": 1789728281,
-                  "message": "test(orchestrator): grade the salvage on the branches mutants reached\n\nMutation testing on the new lifecycle code left two live mutants and one\nbranch with no test at all:\n\n- `accepted && !reported` flipped to `||` announced a salvage for a fault\n  with nothing to salvage, which only shows up as an event nobody asserted:\n  the no-audio test now says so, because a HUD that goes to finishing for a\n  microphone that never opened is wrong.\n- `if !ended` dropped the end-of-audio path's CaptureEnded. Live sources\n  report `Ended` on health, so only a source that does not - WavFileSource,\n  which reports `Capturing` and nothing else - can tell the difference: a\n  clip against a backend that never loads now proves the deadline arms.\n- A fault reaches the runner twice, on health and as the stream's `Err`.\n  Neither is required and neither is waited for, which a source reporting it\n  on one side only now pins from both sides.\n\n47 mutants over fsm.rs and runner.rs: 0 missed, 20 caught, 4 unviable. The\n23 timeouts are whole-function mutants of the pre-existing FSM predicates,\nwhere the driver's unbounded test awaits hang the suite rather than fail it.",
-                  "url": "https://github.com/canonical/myna/commit/504153751054d4d41afea2c294ccde4b029e7e65"
+                  "sha": "fe7779169dffedae172e41ebc533b1f1b5909440",
+                  "author": "Peter Vančo",
+                  "timestamp": 1789946948,
+                  "message": "fix(l10n): added translation using Weblate (Czech)",
+                  "url": "https://github.com/canonical/myna/commit/fe7779169dffedae172e41ebc533b1f1b5909440"
                },
                {
-                  "sha": "7bfed6f991fd7a4e505d317931d19aa71cca1b0a",
-                  "author": "Charles",
-                  "timestamp": 1789726278,
-                  "message": "fix(orchestrator): transcribe the audio a capture fault interrupted\n\nA capture fault mid-utterance (mic unplugged, device error, ring overload)\nsent CaptureFailed at once and abandoned the session, so audio the user had\nalready spoken and the client had already accepted was thrown away and they\ngot an error instead of their words. The pre-review code drained the ring\nfirst but abandoned the session just the same, so this is long-standing.\n\nCapture now decides by what it had handed over. With nothing accepted - a\ndevice that never opened, a fault with an empty ring - nothing changes: the\nsession fails at once. With audio accepted, the fault becomes CaptureLost:\nout of band, so it does not wait behind the queued audio, it arms the\nprogress deadline (capture is over) without closing the accept-gate, and the\naccepted PCM still flows in order with the end of audio behind it. The\nutterance finishes as a release would, the committed text is committed and\ninjected, and only then does the fault end the session as its failure.\n\nA failure while finishing keeps the device fault inside its message rather\nthan replacing it, so the deadline or a backend error can never be the last\nword on why an utterance died. Abort is untouched: a user cancel still\ndiscards promptly whatever capture did.\n\nThe salvage message says audio was lost, because it always was - the rest of\nwhat was being said into a dead device, or the speech an overloaded buffer\nrefused - so it cannot read as a clean end.\n\nThe desktop controller follows the same order: CaptureLost moves the HUD to\nfinishing, the text is inserted as usual, and the completion notice is\nreplaced by the failure, so the session never flashes a hidden or \"No speech\ndetected\" completion between the transcript and the error.\n\nDeliberate behaviour change to an A4 acceptance criterion: an overload\nbefore Ready no longer fails without sending audio, it waits for the backend\nand sends what the ring held, bounded by the 300 s progress deadline.",
-                  "url": "https://github.com/canonical/myna/commit/7bfed6f991fd7a4e505d317931d19aa71cca1b0a"
+                  "sha": "881ef334fd66db14f92e649dd604591fd4ef7113",
+                  "author": "Ihor Hordiichuk",
+                  "timestamp": 1789945530,
+                  "message": "fix(l10n): added translation using Weblate (Ukrainian)",
+                  "url": "https://github.com/canonical/myna/commit/881ef334fd66db14f92e649dd604591fd4ef7113"
                }
             ],
             "ciActions": [],
@@ -9288,25 +9306,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd8c7504c20525c3fcbc46af5c4950d147636a76",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1789716761,
-                  "message": "Add codegen-units setting to release profile (#316)\n\nTo make better use of LTO.",
-                  "url": "https://github.com/canonical/prompting-client/commit/dd8c7504c20525c3fcbc46af5c4950d147636a76"
+                  "sha": "88bf647de0d590ab988a05f0348f9b6b3270230b",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1790001561,
+                  "message": "fix: expand action buttons to full prompt width (#318)\n\nThe allow/deny split buttons were laid out in a `Wrap` with\n`WrapAlignment.center`, so each button only ever took its intrinsic\nwidth — the width of its own label. At the prompt's fixed 372px width\nthis left the two buttons hugging their text with uneven widths, and\nlonger localized labels pushed the second button onto its own line.\n\nThis switches the layout to a `Column` with `CrossAxisAlignment.stretch`\nand passes the new `expanded: true` flag to `YaruSplitButton.filled`, so\neach button fills the full content width regardless of label length.\nWithout `expanded`, the split button's internal `Row` still hugs its\nlabel even when the parent stretches it, so the flag is required for the\nstretch to have any effect.\n\n`expanded` was added in yaru 10.2.0, hence the accompanying dependency\nbump.\n\n### Dependency bump\n\n`yaru: ^8.3.0` → `^10.2.0` — two major versions. Two knock-on changes\nwere needed:\n\n- `main.dart`: `ThemeData? theme` / `darkTheme` on `YaruThemeData` are\nnon-nullable as of 10.2.0, so the `?.` before `.customize()` is gone.\n- `iterable_extensions.dart`: yaru 10.2.0 now exports its own\n`separatedBy` extension on `Iterable<Widget>`, which collides with our\nlocal copy as an ambiguous extension. The local `separatedBy` is removed\nand `tile_list.dart` picks up yaru's via its existing\n`package:yaru/yaru.dart` import. `withSpacing` is untouched — yaru's\nversion of that one is not exported.\n\n### Testing\n\nAdded `test/device_action_buttons_test.dart`, which renders\n`DeviceActionButtons` at the real content width (`kWindowWidth - 2 *\nkPagePadding`) and asserts the dropdown's right edge reaches the full\nwidth — i.e. the main button actually expanded rather than hugging its\nlabel.\n\nNote that the existing widget tests run at a 760px viewport\n(`test/test_utils.dart:26`), roughly 2× the real 372px prompt width, so\nthey would not have caught this. The new test sets its own width\nexplicitly.\n\nVerified locally:\n\n- `flutter test` — 50 passed\n- `flutter analyze --fatal-infos` — no issues\n- `dart format` — no changes\n\n### Review notes\n\nThis is a visual change to the camera, microphone and home prompt pages,\nso it's worth a look on a real prompt rather than just reading the diff.\nReviewers should also confirm the yaru 8 → 10 jump doesn't regress\nanything else in the UI; the bump is scoped to what `expanded` requires,\nbut it is a two-major-version move and the test suite only covers so\nmuch of the visual surface.\n\n\n\n---\n\nUDENG-11210",
+                  "url": "https://github.com/canonical/prompting-client/commit/88bf647de0d590ab988a05f0348f9b6b3270230b"
                },
                {
-                  "sha": "248fcb4c1d1917beccdb6a6372785a2c09eeee33",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789638286,
-                  "message": "fix: add noto fonts as fallback for arm64 workaround (#323)\n\nResolves UDENG-11440",
-                  "url": "https://github.com/canonical/prompting-client/commit/248fcb4c1d1917beccdb6a6372785a2c09eeee33"
+                  "sha": "44899c4a6bfce2a7bafc537d9ae07ce33770d9cd",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1789721492,
+                  "message": "fix: update comments for clarity on menu width handling in DeviceActionButtons",
+                  "url": "https://github.com/canonical/prompting-client/commit/44899c4a6bfce2a7bafc537d9ae07ce33770d9cd"
                },
                {
-                  "sha": "55310ec6413c37e37152d22652c482851ea4260a",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789638191,
-                  "message": "fix: drop rust toolchain from final snap (#324)",
-                  "url": "https://github.com/canonical/prompting-client/commit/55310ec6413c37e37152d22652c482851ea4260a"
+                  "sha": "18e10b390f274753c211ecf6fa6ade60c79ac45f",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1789720659,
+                  "message": "feat: add onChildWidthChanged callback to AdaptiveButtonBar for dynamic width reporting",
+                  "url": "https://github.com/canonical/prompting-client/commit/18e10b390f274753c211ecf6fa6ade60c79ac45f"
                }
             ],
             "ciActions": [],
@@ -9721,6 +9739,15 @@
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
                {
+                  "id": 393153433,
+                  "version": "v0.2.0",
+                  "timestamp": 1790011483,
+                  "title": "v0.2.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.1.0...v0.2.0\">0.2.0</a> (2026-09-21)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>handle empty proposed translation without ai help (<a href=\"https://github.com/canonical/translations-verifier/commit/fd672f8870a40e485cbae1f7b26ba8b47a471d43\">fd672f8</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.2.0",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.2.0...main"
+               },
+               {
                   "id": 391349524,
                   "version": "v0.1.0",
                   "timestamp": 1789723347,
@@ -9979,6 +10006,24 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 393226874,
+                  "version": "rev115",
+                  "timestamp": 1790017993,
+                  "title": "Revision 115",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 19:15 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.2.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/151\">#151</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...rev115\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114&hellip;rev115</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev115",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev115...main"
+               },
+               {
+                  "id": 393038872,
+                  "version": "rev114",
+                  "timestamp": 1790001057,
+                  "title": "Revision 114",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:38 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/150\">#150</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...rev114\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113&hellip;rev114</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev114",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...main"
+               },
+               {
                   "id": 387261161,
                   "version": "rev113",
                   "timestamp": 1789152111,
@@ -9986,24 +10031,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 105</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:43 UTC on 11 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update tiobe/tics-github-action action to v4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/149\">#149</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112...rev113\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112&hellip;rev113</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev113",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...main"
-               },
-               {
-                  "id": 386666403,
-                  "version": "rev112",
-                  "timestamp": 1789079326,
-                  "title": "Revision 112",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 104</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 22:31 UTC on 10 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.1.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/148\">#148</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev111...rev112\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev111&hellip;rev112</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev112",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112...main"
-               },
-               {
-                  "id": 385691559,
-                  "version": "rev111",
-                  "timestamp": 1788880355,
-                  "title": "Revision 111",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 103</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 16:46 UTC on 9 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/144\">#144</a></li>\n<li>deps(pep621): update dependency ops to v3.8.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/146\">#146</a></li>\n<li>deps(pep621): update dependency jubilant to v1.13.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/147\">#147</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/145\">#145</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev110...rev111\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev110&hellip;rev111</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev111",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev111...main"
                }
             ],
             "commits": null,
@@ -10015,8 +10042,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 113,
-                     "timestamp": 1789152212
+                     "revision": 115,
+                     "timestamp": 1790018142
                   }
                ],
                "channels": [
