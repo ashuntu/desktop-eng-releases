@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "39dcbd7021bd2cc823ca9e4f6259cf8343d73163",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790065739,
+                  "message": "Fix broker snap build with Snapcraft 9.1.1 (#1957)\n\nUDENG-11610\n\nThe _build broker snap_ job is failing as noted in the following CI\nruns:\n-\nhttps://github.com/canonical/authd/actions/runs/35698967104/job/106652321599?pr=1954\n-\nhttps://github.com/canonical/authd/actions/runs/35695193241/job/106640644207?pr=1939\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap, so a\ncache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\n## Failure\n\nThe job failed while priming `libhimmelblau`:\n\n```text\nsnapcraft 9.1.1 from Canonical installed\nPriming libhimmelblau\nUnknown error: Invalid pattern: '**' can only be an entire path component\n```\n\nBoth libhimmelblau and the broker had already compiled successfully. The\nfailure was caused by this invalid `pathlib.Path.glob()` pattern:\n\n```yaml\n- -lib/**.so\n```\n\n`**` must be a complete path component. The corrected pattern is:\n\n```yaml\n- -lib/**/*.so\n```\n## Verification\n\nLocal environment: Snapcraft 9.1.1, Python 3.12.3.\n\nBefore the fix, this command reproduced the CI error:\n\n```bash\nauthd-scripts/build-broker-snap \\\n    --broker msentraid \\\n    --build-dir ../build \\\n    --snap-src-dir ~/projects/build/authd-broker-snap-911-repro\n```\n\nAfter the fix, the same build completed and produced:\n\n```text\nauthd-msentraid_0.4.0+35503fd.dade21d_amd64.snap\n```\n\nThe snap was also unpacked successfully with `unsquashfs`. Only existing\nmetadata warnings for missing `title` and `contact` remained.\n\ne2e-tests: allowed_users.robot login_gdm.robot\ne2e-test-case: Test login with GDM",
+                  "url": "https://github.com/canonical/authd/commit/39dcbd7021bd2cc823ca9e4f6259cf8343d73163"
+               },
+               {
+                  "sha": "35503fd984409e6ce5454af3652937210f5f5761",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790061211,
+                  "message": "snap: fix invalid shared-library prime glob\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap,\nso a cache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/35503fd984409e6ce5454af3652937210f5f5761"
+               },
+               {
                   "sha": "dade21df164b24e359378dc44ee737be2ce85065",
                   "author": "adombeck",
                   "timestamp": 1789999695,
                   "message": "docs: recommend synctest for time-based tests (#1956)",
                   "url": "https://github.com/canonical/authd/commit/dade21df164b24e359378dc44ee737be2ce85065"
-               },
-               {
-                  "sha": "e4298230f54180128a9f81e7871c98924240cc98",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789985992,
-                  "message": "docs: recommend synctest for time-based tests\n\nTell agents to prefer testing/synctest when tests exercise timers,\ndeadlines, sleeps, or other time-based concurrency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/e4298230f54180128a9f81e7871c98924240cc98"
-               },
-               {
-                  "sha": "290084e917f7095f19fc9e8d3b23d8cd939b23f1",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1789751085,
-                  "message": "examplebroker: Always set the needed auth steps on new session (#1746)\n\nWe were setting the needed auth steps only for users that are unknown,\nbut not for the ones we already tracked internally.\n\nThis implied that accessing again with the same MFA user did not lead to\nanother MFA session",
-                  "url": "https://github.com/canonical/authd/commit/290084e917f7095f19fc9e8d3b23d8cd939b23f1"
                }
             ],
             "ciActions": [
@@ -3627,6 +3627,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790065318,
+                  "message": "maint: include root pubspec.lock file (#253)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415"
+               },
+               {
                   "sha": "7fbf371d4e8e42f47353462005196b27b3505cc6",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789983146,
@@ -3639,13 +3646,6 @@
                   "timestamp": 1789734946,
                   "message": "fix(app-permissions): remove give feedback link (#250)\n\n* fix(app-permissions): hide give feedback link\n\nRemove the App Permissions feedback survey link from the UI and the\nGitHub issue template contact links, while keeping the translation string\nin place in case the link is reintroduced later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* fix(app-permissions): remove giveFeedback enum member entirely\n\nAddress review feedback: rather than blanking the url and filtering it\nout of the rendered list, remove the _Link.giveFeedback member and its\nswitch branches in url and localize outright.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* chore(app-permissions): remove unused giveFeedback translation\n\nRemove the interfacePageLinkGiveFeedback key from all ARB files and\nregenerate localizations, now that the enum member referencing it has\nbeen removed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
                   "url": "https://github.com/canonical/desktop-security-center/commit/bcdc379f645c576fc1ecb26d6b9794b06f2a3c91"
-               },
-               {
-                  "sha": "35905f8e4c64e5a679cc8393d622f21c36b581bc",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789734071,
-                  "message": "feat: add translations workflows (#249)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/35905f8e4c64e5a679cc8393d622f21c36b581bc"
                }
             ],
             "ciActions": [],
@@ -4350,25 +4350,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7bddd104d423c2691a5982758898e869ecdaeec1",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790068538,
+                  "message": "maint: commit pubspec.lock files (#329)",
+                  "url": "https://github.com/canonical/prompting-client/commit/7bddd104d423c2691a5982758898e869ecdaeec1"
+               },
+               {
+                  "sha": "68b871b3eefb8f43f6f96f8b08f804c1df575510",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790005873,
+                  "message": "maint: commit pubspec.lock files",
+                  "url": "https://github.com/canonical/prompting-client/commit/68b871b3eefb8f43f6f96f8b08f804c1df575510"
+               },
+               {
                   "sha": "88bf647de0d590ab988a05f0348f9b6b3270230b",
                   "author": "Matthew Hagemann",
                   "timestamp": 1790001561,
                   "message": "fix: expand action buttons to full prompt width (#318)\n\nThe allow/deny split buttons were laid out in a `Wrap` with\n`WrapAlignment.center`, so each button only ever took its intrinsic\nwidth — the width of its own label. At the prompt's fixed 372px width\nthis left the two buttons hugging their text with uneven widths, and\nlonger localized labels pushed the second button onto its own line.\n\nThis switches the layout to a `Column` with `CrossAxisAlignment.stretch`\nand passes the new `expanded: true` flag to `YaruSplitButton.filled`, so\neach button fills the full content width regardless of label length.\nWithout `expanded`, the split button's internal `Row` still hugs its\nlabel even when the parent stretches it, so the flag is required for the\nstretch to have any effect.\n\n`expanded` was added in yaru 10.2.0, hence the accompanying dependency\nbump.\n\n### Dependency bump\n\n`yaru: ^8.3.0` → `^10.2.0` — two major versions. Two knock-on changes\nwere needed:\n\n- `main.dart`: `ThemeData? theme` / `darkTheme` on `YaruThemeData` are\nnon-nullable as of 10.2.0, so the `?.` before `.customize()` is gone.\n- `iterable_extensions.dart`: yaru 10.2.0 now exports its own\n`separatedBy` extension on `Iterable<Widget>`, which collides with our\nlocal copy as an ambiguous extension. The local `separatedBy` is removed\nand `tile_list.dart` picks up yaru's via its existing\n`package:yaru/yaru.dart` import. `withSpacing` is untouched — yaru's\nversion of that one is not exported.\n\n### Testing\n\nAdded `test/device_action_buttons_test.dart`, which renders\n`DeviceActionButtons` at the real content width (`kWindowWidth - 2 *\nkPagePadding`) and asserts the dropdown's right edge reaches the full\nwidth — i.e. the main button actually expanded rather than hugging its\nlabel.\n\nNote that the existing widget tests run at a 760px viewport\n(`test/test_utils.dart:26`), roughly 2× the real 372px prompt width, so\nthey would not have caught this. The new test sets its own width\nexplicitly.\n\nVerified locally:\n\n- `flutter test` — 50 passed\n- `flutter analyze --fatal-infos` — no issues\n- `dart format` — no changes\n\n### Review notes\n\nThis is a visual change to the camera, microphone and home prompt pages,\nso it's worth a look on a real prompt rather than just reading the diff.\nReviewers should also confirm the yaru 8 → 10 jump doesn't regress\nanything else in the UI; the bump is scoped to what `expanded` requires,\nbut it is a two-major-version move and the test suite only covers so\nmuch of the visual surface.\n\n\n\n---\n\nUDENG-11210",
                   "url": "https://github.com/canonical/prompting-client/commit/88bf647de0d590ab988a05f0348f9b6b3270230b"
-               },
-               {
-                  "sha": "44899c4a6bfce2a7bafc537d9ae07ce33770d9cd",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1789721492,
-                  "message": "fix: update comments for clarity on menu width handling in DeviceActionButtons",
-                  "url": "https://github.com/canonical/prompting-client/commit/44899c4a6bfce2a7bafc537d9ae07ce33770d9cd"
-               },
-               {
-                  "sha": "18e10b390f274753c211ecf6fa6ade60c79ac45f",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1789720659,
-                  "message": "feat: add onChildWidthChanged callback to AdaptiveButtonBar for dynamic width reporting",
-                  "url": "https://github.com/canonical/prompting-client/commit/18e10b390f274753c211ecf6fa6ade60c79ac45f"
                }
             ],
             "ciActions": [],
@@ -5815,25 +5815,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "39dcbd7021bd2cc823ca9e4f6259cf8343d73163",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790065739,
+                  "message": "Fix broker snap build with Snapcraft 9.1.1 (#1957)\n\nUDENG-11610\n\nThe _build broker snap_ job is failing as noted in the following CI\nruns:\n-\nhttps://github.com/canonical/authd/actions/runs/35698967104/job/106652321599?pr=1954\n-\nhttps://github.com/canonical/authd/actions/runs/35695193241/job/106640644207?pr=1939\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap, so a\ncache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\n## Failure\n\nThe job failed while priming `libhimmelblau`:\n\n```text\nsnapcraft 9.1.1 from Canonical installed\nPriming libhimmelblau\nUnknown error: Invalid pattern: '**' can only be an entire path component\n```\n\nBoth libhimmelblau and the broker had already compiled successfully. The\nfailure was caused by this invalid `pathlib.Path.glob()` pattern:\n\n```yaml\n- -lib/**.so\n```\n\n`**` must be a complete path component. The corrected pattern is:\n\n```yaml\n- -lib/**/*.so\n```\n## Verification\n\nLocal environment: Snapcraft 9.1.1, Python 3.12.3.\n\nBefore the fix, this command reproduced the CI error:\n\n```bash\nauthd-scripts/build-broker-snap \\\n    --broker msentraid \\\n    --build-dir ../build \\\n    --snap-src-dir ~/projects/build/authd-broker-snap-911-repro\n```\n\nAfter the fix, the same build completed and produced:\n\n```text\nauthd-msentraid_0.4.0+35503fd.dade21d_amd64.snap\n```\n\nThe snap was also unpacked successfully with `unsquashfs`. Only existing\nmetadata warnings for missing `title` and `contact` remained.\n\ne2e-tests: allowed_users.robot login_gdm.robot\ne2e-test-case: Test login with GDM",
+                  "url": "https://github.com/canonical/authd/commit/39dcbd7021bd2cc823ca9e4f6259cf8343d73163"
+               },
+               {
+                  "sha": "35503fd984409e6ce5454af3652937210f5f5761",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790061211,
+                  "message": "snap: fix invalid shared-library prime glob\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap,\nso a cache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/35503fd984409e6ce5454af3652937210f5f5761"
+               },
+               {
                   "sha": "dade21df164b24e359378dc44ee737be2ce85065",
                   "author": "adombeck",
                   "timestamp": 1789999695,
                   "message": "docs: recommend synctest for time-based tests (#1956)",
                   "url": "https://github.com/canonical/authd/commit/dade21df164b24e359378dc44ee737be2ce85065"
-               },
-               {
-                  "sha": "e4298230f54180128a9f81e7871c98924240cc98",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789985992,
-                  "message": "docs: recommend synctest for time-based tests\n\nTell agents to prefer testing/synctest when tests exercise timers,\ndeadlines, sleeps, or other time-based concurrency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/e4298230f54180128a9f81e7871c98924240cc98"
-               },
-               {
-                  "sha": "290084e917f7095f19fc9e8d3b23d8cd939b23f1",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1789751085,
-                  "message": "examplebroker: Always set the needed auth steps on new session (#1746)\n\nWe were setting the needed auth steps only for users that are unknown,\nbut not for the ones we already tracked internally.\n\nThis implied that accessing again with the same MFA user did not lead to\nanother MFA session",
-                  "url": "https://github.com/canonical/authd/commit/290084e917f7095f19fc9e8d3b23d8cd939b23f1"
                }
             ],
             "ciActions": [
@@ -6048,6 +6048,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790065318,
+                  "message": "maint: include root pubspec.lock file (#253)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415"
+               },
+               {
                   "sha": "7fbf371d4e8e42f47353462005196b27b3505cc6",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789983146,
@@ -6060,13 +6067,6 @@
                   "timestamp": 1789734946,
                   "message": "fix(app-permissions): remove give feedback link (#250)\n\n* fix(app-permissions): hide give feedback link\n\nRemove the App Permissions feedback survey link from the UI and the\nGitHub issue template contact links, while keeping the translation string\nin place in case the link is reintroduced later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* fix(app-permissions): remove giveFeedback enum member entirely\n\nAddress review feedback: rather than blanking the url and filtering it\nout of the rendered list, remove the _Link.giveFeedback member and its\nswitch branches in url and localize outright.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* chore(app-permissions): remove unused giveFeedback translation\n\nRemove the interfacePageLinkGiveFeedback key from all ARB files and\nregenerate localizations, now that the enum member referencing it has\nbeen removed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
                   "url": "https://github.com/canonical/desktop-security-center/commit/bcdc379f645c576fc1ecb26d6b9794b06f2a3c91"
-               },
-               {
-                  "sha": "35905f8e4c64e5a679cc8393d622f21c36b581bc",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789734071,
-                  "message": "feat: add translations workflows (#249)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/35905f8e4c64e5a679cc8393d622f21c36b581bc"
                }
             ],
             "ciActions": [],
@@ -6809,25 +6809,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7bddd104d423c2691a5982758898e869ecdaeec1",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790068538,
+                  "message": "maint: commit pubspec.lock files (#329)",
+                  "url": "https://github.com/canonical/prompting-client/commit/7bddd104d423c2691a5982758898e869ecdaeec1"
+               },
+               {
+                  "sha": "68b871b3eefb8f43f6f96f8b08f804c1df575510",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790005873,
+                  "message": "maint: commit pubspec.lock files",
+                  "url": "https://github.com/canonical/prompting-client/commit/68b871b3eefb8f43f6f96f8b08f804c1df575510"
+               },
+               {
                   "sha": "88bf647de0d590ab988a05f0348f9b6b3270230b",
                   "author": "Matthew Hagemann",
                   "timestamp": 1790001561,
                   "message": "fix: expand action buttons to full prompt width (#318)\n\nThe allow/deny split buttons were laid out in a `Wrap` with\n`WrapAlignment.center`, so each button only ever took its intrinsic\nwidth — the width of its own label. At the prompt's fixed 372px width\nthis left the two buttons hugging their text with uneven widths, and\nlonger localized labels pushed the second button onto its own line.\n\nThis switches the layout to a `Column` with `CrossAxisAlignment.stretch`\nand passes the new `expanded: true` flag to `YaruSplitButton.filled`, so\neach button fills the full content width regardless of label length.\nWithout `expanded`, the split button's internal `Row` still hugs its\nlabel even when the parent stretches it, so the flag is required for the\nstretch to have any effect.\n\n`expanded` was added in yaru 10.2.0, hence the accompanying dependency\nbump.\n\n### Dependency bump\n\n`yaru: ^8.3.0` → `^10.2.0` — two major versions. Two knock-on changes\nwere needed:\n\n- `main.dart`: `ThemeData? theme` / `darkTheme` on `YaruThemeData` are\nnon-nullable as of 10.2.0, so the `?.` before `.customize()` is gone.\n- `iterable_extensions.dart`: yaru 10.2.0 now exports its own\n`separatedBy` extension on `Iterable<Widget>`, which collides with our\nlocal copy as an ambiguous extension. The local `separatedBy` is removed\nand `tile_list.dart` picks up yaru's via its existing\n`package:yaru/yaru.dart` import. `withSpacing` is untouched — yaru's\nversion of that one is not exported.\n\n### Testing\n\nAdded `test/device_action_buttons_test.dart`, which renders\n`DeviceActionButtons` at the real content width (`kWindowWidth - 2 *\nkPagePadding`) and asserts the dropdown's right edge reaches the full\nwidth — i.e. the main button actually expanded rather than hugging its\nlabel.\n\nNote that the existing widget tests run at a 760px viewport\n(`test/test_utils.dart:26`), roughly 2× the real 372px prompt width, so\nthey would not have caught this. The new test sets its own width\nexplicitly.\n\nVerified locally:\n\n- `flutter test` — 50 passed\n- `flutter analyze --fatal-infos` — no issues\n- `dart format` — no changes\n\n### Review notes\n\nThis is a visual change to the camera, microphone and home prompt pages,\nso it's worth a look on a real prompt rather than just reading the diff.\nReviewers should also confirm the yaru 8 → 10 jump doesn't regress\nanything else in the UI; the bump is scoped to what `expanded` requires,\nbut it is a two-major-version move and the test suite only covers so\nmuch of the visual surface.\n\n\n\n---\n\nUDENG-11210",
                   "url": "https://github.com/canonical/prompting-client/commit/88bf647de0d590ab988a05f0348f9b6b3270230b"
-               },
-               {
-                  "sha": "44899c4a6bfce2a7bafc537d9ae07ce33770d9cd",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1789721492,
-                  "message": "fix: update comments for clarity on menu width handling in DeviceActionButtons",
-                  "url": "https://github.com/canonical/prompting-client/commit/44899c4a6bfce2a7bafc537d9ae07ce33770d9cd"
-               },
-               {
-                  "sha": "18e10b390f274753c211ecf6fa6ade60c79ac45f",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1789720659,
-                  "message": "feat: add onChildWidthChanged callback to AdaptiveButtonBar for dynamic width reporting",
-                  "url": "https://github.com/canonical/prompting-client/commit/18e10b390f274753c211ecf6fa6ade60c79ac45f"
                }
             ],
             "ciActions": [],
@@ -7551,7 +7551,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 181,
+            "newCommits": 183,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -8350,25 +8350,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "39dcbd7021bd2cc823ca9e4f6259cf8343d73163",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790065739,
+                  "message": "Fix broker snap build with Snapcraft 9.1.1 (#1957)\n\nUDENG-11610\n\nThe _build broker snap_ job is failing as noted in the following CI\nruns:\n-\nhttps://github.com/canonical/authd/actions/runs/35698967104/job/106652321599?pr=1954\n-\nhttps://github.com/canonical/authd/actions/runs/35695193241/job/106640644207?pr=1939\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap, so a\ncache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\n## Failure\n\nThe job failed while priming `libhimmelblau`:\n\n```text\nsnapcraft 9.1.1 from Canonical installed\nPriming libhimmelblau\nUnknown error: Invalid pattern: '**' can only be an entire path component\n```\n\nBoth libhimmelblau and the broker had already compiled successfully. The\nfailure was caused by this invalid `pathlib.Path.glob()` pattern:\n\n```yaml\n- -lib/**.so\n```\n\n`**` must be a complete path component. The corrected pattern is:\n\n```yaml\n- -lib/**/*.so\n```\n## Verification\n\nLocal environment: Snapcraft 9.1.1, Python 3.12.3.\n\nBefore the fix, this command reproduced the CI error:\n\n```bash\nauthd-scripts/build-broker-snap \\\n    --broker msentraid \\\n    --build-dir ../build \\\n    --snap-src-dir ~/projects/build/authd-broker-snap-911-repro\n```\n\nAfter the fix, the same build completed and produced:\n\n```text\nauthd-msentraid_0.4.0+35503fd.dade21d_amd64.snap\n```\n\nThe snap was also unpacked successfully with `unsquashfs`. Only existing\nmetadata warnings for missing `title` and `contact` remained.\n\ne2e-tests: allowed_users.robot login_gdm.robot\ne2e-test-case: Test login with GDM",
+                  "url": "https://github.com/canonical/authd/commit/39dcbd7021bd2cc823ca9e4f6259cf8343d73163"
+               },
+               {
+                  "sha": "35503fd984409e6ce5454af3652937210f5f5761",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790061211,
+                  "message": "snap: fix invalid shared-library prime glob\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap,\nso a cache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/35503fd984409e6ce5454af3652937210f5f5761"
+               },
+               {
                   "sha": "dade21df164b24e359378dc44ee737be2ce85065",
                   "author": "adombeck",
                   "timestamp": 1789999695,
                   "message": "docs: recommend synctest for time-based tests (#1956)",
                   "url": "https://github.com/canonical/authd/commit/dade21df164b24e359378dc44ee737be2ce85065"
-               },
-               {
-                  "sha": "e4298230f54180128a9f81e7871c98924240cc98",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789985992,
-                  "message": "docs: recommend synctest for time-based tests\n\nTell agents to prefer testing/synctest when tests exercise timers,\ndeadlines, sleeps, or other time-based concurrency.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/e4298230f54180128a9f81e7871c98924240cc98"
-               },
-               {
-                  "sha": "290084e917f7095f19fc9e8d3b23d8cd939b23f1",
-                  "author": "Marco Trevisan",
-                  "timestamp": 1789751085,
-                  "message": "examplebroker: Always set the needed auth steps on new session (#1746)\n\nWe were setting the needed auth steps only for users that are unknown,\nbut not for the ones we already tracked internally.\n\nThis implied that accessing again with the same MFA user did not lead to\nanother MFA session",
-                  "url": "https://github.com/canonical/authd/commit/290084e917f7095f19fc9e8d3b23d8cd939b23f1"
                }
             ],
             "ciActions": [
@@ -8583,6 +8583,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790065318,
+                  "message": "maint: include root pubspec.lock file (#253)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415"
+               },
+               {
                   "sha": "7fbf371d4e8e42f47353462005196b27b3505cc6",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789983146,
@@ -8595,13 +8602,6 @@
                   "timestamp": 1789734946,
                   "message": "fix(app-permissions): remove give feedback link (#250)\n\n* fix(app-permissions): hide give feedback link\n\nRemove the App Permissions feedback survey link from the UI and the\nGitHub issue template contact links, while keeping the translation string\nin place in case the link is reintroduced later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* fix(app-permissions): remove giveFeedback enum member entirely\n\nAddress review feedback: rather than blanking the url and filtering it\nout of the rendered list, remove the _Link.giveFeedback member and its\nswitch branches in url and localize outright.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* chore(app-permissions): remove unused giveFeedback translation\n\nRemove the interfacePageLinkGiveFeedback key from all ARB files and\nregenerate localizations, now that the enum member referencing it has\nbeen removed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
                   "url": "https://github.com/canonical/desktop-security-center/commit/bcdc379f645c576fc1ecb26d6b9794b06f2a3c91"
-               },
-               {
-                  "sha": "35905f8e4c64e5a679cc8393d622f21c36b581bc",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789734071,
-                  "message": "feat: add translations workflows (#249)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/35905f8e4c64e5a679cc8393d622f21c36b581bc"
                }
             ],
             "ciActions": [],
@@ -9306,25 +9306,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "7bddd104d423c2691a5982758898e869ecdaeec1",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790068538,
+                  "message": "maint: commit pubspec.lock files (#329)",
+                  "url": "https://github.com/canonical/prompting-client/commit/7bddd104d423c2691a5982758898e869ecdaeec1"
+               },
+               {
+                  "sha": "68b871b3eefb8f43f6f96f8b08f804c1df575510",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790005873,
+                  "message": "maint: commit pubspec.lock files",
+                  "url": "https://github.com/canonical/prompting-client/commit/68b871b3eefb8f43f6f96f8b08f804c1df575510"
+               },
+               {
                   "sha": "88bf647de0d590ab988a05f0348f9b6b3270230b",
                   "author": "Matthew Hagemann",
                   "timestamp": 1790001561,
                   "message": "fix: expand action buttons to full prompt width (#318)\n\nThe allow/deny split buttons were laid out in a `Wrap` with\n`WrapAlignment.center`, so each button only ever took its intrinsic\nwidth — the width of its own label. At the prompt's fixed 372px width\nthis left the two buttons hugging their text with uneven widths, and\nlonger localized labels pushed the second button onto its own line.\n\nThis switches the layout to a `Column` with `CrossAxisAlignment.stretch`\nand passes the new `expanded: true` flag to `YaruSplitButton.filled`, so\neach button fills the full content width regardless of label length.\nWithout `expanded`, the split button's internal `Row` still hugs its\nlabel even when the parent stretches it, so the flag is required for the\nstretch to have any effect.\n\n`expanded` was added in yaru 10.2.0, hence the accompanying dependency\nbump.\n\n### Dependency bump\n\n`yaru: ^8.3.0` → `^10.2.0` — two major versions. Two knock-on changes\nwere needed:\n\n- `main.dart`: `ThemeData? theme` / `darkTheme` on `YaruThemeData` are\nnon-nullable as of 10.2.0, so the `?.` before `.customize()` is gone.\n- `iterable_extensions.dart`: yaru 10.2.0 now exports its own\n`separatedBy` extension on `Iterable<Widget>`, which collides with our\nlocal copy as an ambiguous extension. The local `separatedBy` is removed\nand `tile_list.dart` picks up yaru's via its existing\n`package:yaru/yaru.dart` import. `withSpacing` is untouched — yaru's\nversion of that one is not exported.\n\n### Testing\n\nAdded `test/device_action_buttons_test.dart`, which renders\n`DeviceActionButtons` at the real content width (`kWindowWidth - 2 *\nkPagePadding`) and asserts the dropdown's right edge reaches the full\nwidth — i.e. the main button actually expanded rather than hugging its\nlabel.\n\nNote that the existing widget tests run at a 760px viewport\n(`test/test_utils.dart:26`), roughly 2× the real 372px prompt width, so\nthey would not have caught this. The new test sets its own width\nexplicitly.\n\nVerified locally:\n\n- `flutter test` — 50 passed\n- `flutter analyze --fatal-infos` — no issues\n- `dart format` — no changes\n\n### Review notes\n\nThis is a visual change to the camera, microphone and home prompt pages,\nso it's worth a look on a real prompt rather than just reading the diff.\nReviewers should also confirm the yaru 8 → 10 jump doesn't regress\nanything else in the UI; the bump is scoped to what `expanded` requires,\nbut it is a two-major-version move and the test suite only covers so\nmuch of the visual surface.\n\n\n\n---\n\nUDENG-11210",
                   "url": "https://github.com/canonical/prompting-client/commit/88bf647de0d590ab988a05f0348f9b6b3270230b"
-               },
-               {
-                  "sha": "44899c4a6bfce2a7bafc537d9ae07ce33770d9cd",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1789721492,
-                  "message": "fix: update comments for clarity on menu width handling in DeviceActionButtons",
-                  "url": "https://github.com/canonical/prompting-client/commit/44899c4a6bfce2a7bafc537d9ae07ce33770d9cd"
-               },
-               {
-                  "sha": "18e10b390f274753c211ecf6fa6ade60c79ac45f",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1789720659,
-                  "message": "feat: add onChildWidthChanged callback to AdaptiveButtonBar for dynamic width reporting",
-                  "url": "https://github.com/canonical/prompting-client/commit/18e10b390f274753c211ecf6fa6ade60c79ac45f"
                }
             ],
             "ciActions": [],
