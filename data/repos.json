@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "39dcbd7021bd2cc823ca9e4f6259cf8343d73163",
+                  "sha": "80f97bf7623546517d3aebc25ab0fdb9f558b796",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790065739,
-                  "message": "Fix broker snap build with Snapcraft 9.1.1 (#1957)\n\nUDENG-11610\n\nThe _build broker snap_ job is failing as noted in the following CI\nruns:\n-\nhttps://github.com/canonical/authd/actions/runs/35698967104/job/106652321599?pr=1954\n-\nhttps://github.com/canonical/authd/actions/runs/35695193241/job/106640644207?pr=1939\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap, so a\ncache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\n## Failure\n\nThe job failed while priming `libhimmelblau`:\n\n```text\nsnapcraft 9.1.1 from Canonical installed\nPriming libhimmelblau\nUnknown error: Invalid pattern: '**' can only be an entire path component\n```\n\nBoth libhimmelblau and the broker had already compiled successfully. The\nfailure was caused by this invalid `pathlib.Path.glob()` pattern:\n\n```yaml\n- -lib/**.so\n```\n\n`**` must be a complete path component. The corrected pattern is:\n\n```yaml\n- -lib/**/*.so\n```\n## Verification\n\nLocal environment: Snapcraft 9.1.1, Python 3.12.3.\n\nBefore the fix, this command reproduced the CI error:\n\n```bash\nauthd-scripts/build-broker-snap \\\n    --broker msentraid \\\n    --build-dir ../build \\\n    --snap-src-dir ~/projects/build/authd-broker-snap-911-repro\n```\n\nAfter the fix, the same build completed and produced:\n\n```text\nauthd-msentraid_0.4.0+35503fd.dade21d_amd64.snap\n```\n\nThe snap was also unpacked successfully with `unsquashfs`. Only existing\nmetadata warnings for missing `title` and `contact` remained.\n\ne2e-tests: allowed_users.robot login_gdm.robot\ne2e-test-case: Test login with GDM",
-                  "url": "https://github.com/canonical/authd/commit/39dcbd7021bd2cc823ca9e4f6259cf8343d73163"
+                  "timestamp": 1790085136,
+                  "message": "broker: avoid offering an unusable local security key (#1939)\n\nEntra ID can return a `FidoKey` for a synced passkey. authd previously\nassumed that the challenge could be completed by a local security key,\nleaving users at a touch prompt or the device-code flow even when Entra\npassword authentication was available.\n\n### Fix\n\n- Keep the Entra ID authentication flow available alongside the local\nsecurity-key flow, so accounts that support Entra ID password sign-in\ncan fall back to their password.\n- Before prompting for a connected local `libfido2` key, check it\nagainst Entra's allow list. Offer a matching key first, with PIN entry\nwhen needed.\n- When no key is connected or the check is inconclusive, offer the\npassword first and keep the key selectable. When the key definitely has\nno matching credential, offer the password first without the local-key\noption.\n\nThis covers local `libfido2` security keys only. Synced and cross-device\npasskeys are not completed locally; users need another supported Entra\nmethod, such as Entra ID password authentication or the device-code\nflow, where available. MFA-flow ownership across cancellation is\naddressed in follow-up #1954.\n\nCloses #1915\nUDENG-11498\n\ne2e-tests: login_entra_auth.robot login_entra_auth_client_secret.robot\nlogin_entra_passwordless.robot login_entra_synced_passkey.robot",
+                  "url": "https://github.com/canonical/authd/commit/80f97bf7623546517d3aebc25ab0fdb9f558b796"
                },
                {
-                  "sha": "35503fd984409e6ce5454af3652937210f5f5761",
+                  "sha": "c20f204bf2846387a32059e146c2fccf1c6da485",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790061211,
-                  "message": "snap: fix invalid shared-library prime glob\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap,\nso a cache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/35503fd984409e6ce5454af3652937210f5f5761"
+                  "timestamp": 1790057425,
+                  "message": "e2e: cover FIDO TAP fallback\n\nA passwordless account with a synced passkey must be able to complete\nauthentication through a Temporary Access Pass instead of being\nrouted to an Entra password form or an unusable local security-key\nprompt.\n\nUse a dedicated account and serialize TAP lifecycle operations so\nconcurrent release variants do not race Authenticator requests. Retry\nthe complete login after restoring broker state.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/c20f204bf2846387a32059e146c2fccf1c6da485"
                },
                {
-                  "sha": "dade21df164b24e359378dc44ee737be2ce85065",
-                  "author": "adombeck",
-                  "timestamp": 1789999695,
-                  "message": "docs: recommend synctest for time-based tests (#1956)",
-                  "url": "https://github.com/canonical/authd/commit/dade21df164b24e359378dc44ee737be2ce85065"
+                  "sha": "a3e416a05930a9143cde5576132571bf4173a69c",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790057253,
+                  "message": "Temporarily bump libhimmelblau gitlink for password capability\n\nKeep authd's password fallback available for FIDO flows until the\ncorresponding libhimmelblau C API change lands upstream.\n\nPoint the gitlink, URL, and branch at the fork temporarily so fresh\ncheckouts use the password-capability accessor. Remove this bump after\nthe upstream change is available.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/a3e416a05930a9143cde5576132571bf4173a69c"
                }
             ],
             "ciActions": [
@@ -3627,25 +3627,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415",
+                  "sha": "5e8b94bfa73133d17c0370fe5aa58b65766e4dc6",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1790065318,
-                  "message": "maint: include root pubspec.lock file (#253)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415"
+                  "timestamp": 1790077988,
+                  "message": "Merge pull request #252 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/5e8b94bfa73133d17c0370fe5aa58b65766e4dc6"
                },
                {
-                  "sha": "7fbf371d4e8e42f47353462005196b27b3505cc6",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789983146,
-                  "message": "ci: update weblate bot pinned version (#251)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/7fbf371d4e8e42f47353462005196b27b3505cc6"
+                  "sha": "67492e4d42d7b873e5d927c6b9925b4e4ee8a55d",
+                  "author": "canonical-desktop-bot",
+                  "timestamp": 1790071765,
+                  "message": "maint: regenerate l10n",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/67492e4d42d7b873e5d927c6b9925b4e4ee8a55d"
                },
                {
-                  "sha": "bcdc379f645c576fc1ecb26d6b9794b06f2a3c91",
-                  "author": "Juan Ruitiña",
-                  "timestamp": 1789734946,
-                  "message": "fix(app-permissions): remove give feedback link (#250)\n\n* fix(app-permissions): hide give feedback link\n\nRemove the App Permissions feedback survey link from the UI and the\nGitHub issue template contact links, while keeping the translation string\nin place in case the link is reintroduced later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* fix(app-permissions): remove giveFeedback enum member entirely\n\nAddress review feedback: rather than blanking the url and filtering it\nout of the rendered list, remove the _Link.giveFeedback member and its\nswitch branches in url and localize outright.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* chore(app-permissions): remove unused giveFeedback translation\n\nRemove the interfacePageLinkGiveFeedback key from all ARB files and\nregenerate localizations, now that the enum member referencing it has\nbeen removed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/bcdc379f645c576fc1ecb26d6b9794b06f2a3c91"
+                  "sha": "ab15ceff6b690f5c6da2fbc083c8082ee1e2025e",
+                  "author": "Github Action",
+                  "timestamp": 1790071385,
+                  "message": "fix(l10n): translated using Weblate (English (United Kingdom))\n\nCurrently translated at 94.8% (186 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/en_GB/",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/ab15ceff6b690f5c6da2fbc083c8082ee1e2025e"
                }
             ],
             "ciActions": [],
@@ -5815,25 +5815,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "39dcbd7021bd2cc823ca9e4f6259cf8343d73163",
+                  "sha": "80f97bf7623546517d3aebc25ab0fdb9f558b796",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790065739,
-                  "message": "Fix broker snap build with Snapcraft 9.1.1 (#1957)\n\nUDENG-11610\n\nThe _build broker snap_ job is failing as noted in the following CI\nruns:\n-\nhttps://github.com/canonical/authd/actions/runs/35698967104/job/106652321599?pr=1954\n-\nhttps://github.com/canonical/authd/actions/runs/35695193241/job/106640644207?pr=1939\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap, so a\ncache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\n## Failure\n\nThe job failed while priming `libhimmelblau`:\n\n```text\nsnapcraft 9.1.1 from Canonical installed\nPriming libhimmelblau\nUnknown error: Invalid pattern: '**' can only be an entire path component\n```\n\nBoth libhimmelblau and the broker had already compiled successfully. The\nfailure was caused by this invalid `pathlib.Path.glob()` pattern:\n\n```yaml\n- -lib/**.so\n```\n\n`**` must be a complete path component. The corrected pattern is:\n\n```yaml\n- -lib/**/*.so\n```\n## Verification\n\nLocal environment: Snapcraft 9.1.1, Python 3.12.3.\n\nBefore the fix, this command reproduced the CI error:\n\n```bash\nauthd-scripts/build-broker-snap \\\n    --broker msentraid \\\n    --build-dir ../build \\\n    --snap-src-dir ~/projects/build/authd-broker-snap-911-repro\n```\n\nAfter the fix, the same build completed and produced:\n\n```text\nauthd-msentraid_0.4.0+35503fd.dade21d_amd64.snap\n```\n\nThe snap was also unpacked successfully with `unsquashfs`. Only existing\nmetadata warnings for missing `title` and `contact` remained.\n\ne2e-tests: allowed_users.robot login_gdm.robot\ne2e-test-case: Test login with GDM",
-                  "url": "https://github.com/canonical/authd/commit/39dcbd7021bd2cc823ca9e4f6259cf8343d73163"
+                  "timestamp": 1790085136,
+                  "message": "broker: avoid offering an unusable local security key (#1939)\n\nEntra ID can return a `FidoKey` for a synced passkey. authd previously\nassumed that the challenge could be completed by a local security key,\nleaving users at a touch prompt or the device-code flow even when Entra\npassword authentication was available.\n\n### Fix\n\n- Keep the Entra ID authentication flow available alongside the local\nsecurity-key flow, so accounts that support Entra ID password sign-in\ncan fall back to their password.\n- Before prompting for a connected local `libfido2` key, check it\nagainst Entra's allow list. Offer a matching key first, with PIN entry\nwhen needed.\n- When no key is connected or the check is inconclusive, offer the\npassword first and keep the key selectable. When the key definitely has\nno matching credential, offer the password first without the local-key\noption.\n\nThis covers local `libfido2` security keys only. Synced and cross-device\npasskeys are not completed locally; users need another supported Entra\nmethod, such as Entra ID password authentication or the device-code\nflow, where available. MFA-flow ownership across cancellation is\naddressed in follow-up #1954.\n\nCloses #1915\nUDENG-11498\n\ne2e-tests: login_entra_auth.robot login_entra_auth_client_secret.robot\nlogin_entra_passwordless.robot login_entra_synced_passkey.robot",
+                  "url": "https://github.com/canonical/authd/commit/80f97bf7623546517d3aebc25ab0fdb9f558b796"
                },
                {
-                  "sha": "35503fd984409e6ce5454af3652937210f5f5761",
+                  "sha": "c20f204bf2846387a32059e146c2fccf1c6da485",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790061211,
-                  "message": "snap: fix invalid shared-library prime glob\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap,\nso a cache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/35503fd984409e6ce5454af3652937210f5f5761"
+                  "timestamp": 1790057425,
+                  "message": "e2e: cover FIDO TAP fallback\n\nA passwordless account with a synced passkey must be able to complete\nauthentication through a Temporary Access Pass instead of being\nrouted to an Entra password form or an unusable local security-key\nprompt.\n\nUse a dedicated account and serialize TAP lifecycle operations so\nconcurrent release variants do not race Authenticator requests. Retry\nthe complete login after restoring broker state.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/c20f204bf2846387a32059e146c2fccf1c6da485"
                },
                {
-                  "sha": "dade21df164b24e359378dc44ee737be2ce85065",
-                  "author": "adombeck",
-                  "timestamp": 1789999695,
-                  "message": "docs: recommend synctest for time-based tests (#1956)",
-                  "url": "https://github.com/canonical/authd/commit/dade21df164b24e359378dc44ee737be2ce85065"
+                  "sha": "a3e416a05930a9143cde5576132571bf4173a69c",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790057253,
+                  "message": "Temporarily bump libhimmelblau gitlink for password capability\n\nKeep authd's password fallback available for FIDO flows until the\ncorresponding libhimmelblau C API change lands upstream.\n\nPoint the gitlink, URL, and branch at the fork temporarily so fresh\ncheckouts use the password-capability accessor. Remove this bump after\nthe upstream change is available.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/a3e416a05930a9143cde5576132571bf4173a69c"
                }
             ],
             "ciActions": [
@@ -6048,25 +6048,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415",
+                  "sha": "5e8b94bfa73133d17c0370fe5aa58b65766e4dc6",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1790065318,
-                  "message": "maint: include root pubspec.lock file (#253)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415"
+                  "timestamp": 1790077988,
+                  "message": "Merge pull request #252 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/5e8b94bfa73133d17c0370fe5aa58b65766e4dc6"
                },
                {
-                  "sha": "7fbf371d4e8e42f47353462005196b27b3505cc6",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789983146,
-                  "message": "ci: update weblate bot pinned version (#251)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/7fbf371d4e8e42f47353462005196b27b3505cc6"
+                  "sha": "67492e4d42d7b873e5d927c6b9925b4e4ee8a55d",
+                  "author": "canonical-desktop-bot",
+                  "timestamp": 1790071765,
+                  "message": "maint: regenerate l10n",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/67492e4d42d7b873e5d927c6b9925b4e4ee8a55d"
                },
                {
-                  "sha": "bcdc379f645c576fc1ecb26d6b9794b06f2a3c91",
-                  "author": "Juan Ruitiña",
-                  "timestamp": 1789734946,
-                  "message": "fix(app-permissions): remove give feedback link (#250)\n\n* fix(app-permissions): hide give feedback link\n\nRemove the App Permissions feedback survey link from the UI and the\nGitHub issue template contact links, while keeping the translation string\nin place in case the link is reintroduced later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* fix(app-permissions): remove giveFeedback enum member entirely\n\nAddress review feedback: rather than blanking the url and filtering it\nout of the rendered list, remove the _Link.giveFeedback member and its\nswitch branches in url and localize outright.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* chore(app-permissions): remove unused giveFeedback translation\n\nRemove the interfacePageLinkGiveFeedback key from all ARB files and\nregenerate localizations, now that the enum member referencing it has\nbeen removed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/bcdc379f645c576fc1ecb26d6b9794b06f2a3c91"
+                  "sha": "ab15ceff6b690f5c6da2fbc083c8082ee1e2025e",
+                  "author": "Github Action",
+                  "timestamp": 1790071385,
+                  "message": "fix(l10n): translated using Weblate (English (United Kingdom))\n\nCurrently translated at 94.8% (186 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/en_GB/",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/ab15ceff6b690f5c6da2fbc083c8082ee1e2025e"
                }
             ],
             "ciActions": [],
@@ -8350,25 +8350,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "39dcbd7021bd2cc823ca9e4f6259cf8343d73163",
+                  "sha": "80f97bf7623546517d3aebc25ab0fdb9f558b796",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790065739,
-                  "message": "Fix broker snap build with Snapcraft 9.1.1 (#1957)\n\nUDENG-11610\n\nThe _build broker snap_ job is failing as noted in the following CI\nruns:\n-\nhttps://github.com/canonical/authd/actions/runs/35698967104/job/106652321599?pr=1954\n-\nhttps://github.com/canonical/authd/actions/runs/35695193241/job/106640644207?pr=1939\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap, so a\ncache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\n## Failure\n\nThe job failed while priming `libhimmelblau`:\n\n```text\nsnapcraft 9.1.1 from Canonical installed\nPriming libhimmelblau\nUnknown error: Invalid pattern: '**' can only be an entire path component\n```\n\nBoth libhimmelblau and the broker had already compiled successfully. The\nfailure was caused by this invalid `pathlib.Path.glob()` pattern:\n\n```yaml\n- -lib/**.so\n```\n\n`**` must be a complete path component. The corrected pattern is:\n\n```yaml\n- -lib/**/*.so\n```\n## Verification\n\nLocal environment: Snapcraft 9.1.1, Python 3.12.3.\n\nBefore the fix, this command reproduced the CI error:\n\n```bash\nauthd-scripts/build-broker-snap \\\n    --broker msentraid \\\n    --build-dir ../build \\\n    --snap-src-dir ~/projects/build/authd-broker-snap-911-repro\n```\n\nAfter the fix, the same build completed and produced:\n\n```text\nauthd-msentraid_0.4.0+35503fd.dade21d_amd64.snap\n```\n\nThe snap was also unpacked successfully with `unsquashfs`. Only existing\nmetadata warnings for missing `title` and `contact` remained.\n\ne2e-tests: allowed_users.robot login_gdm.robot\ne2e-test-case: Test login with GDM",
-                  "url": "https://github.com/canonical/authd/commit/39dcbd7021bd2cc823ca9e4f6259cf8343d73163"
+                  "timestamp": 1790085136,
+                  "message": "broker: avoid offering an unusable local security key (#1939)\n\nEntra ID can return a `FidoKey` for a synced passkey. authd previously\nassumed that the challenge could be completed by a local security key,\nleaving users at a touch prompt or the device-code flow even when Entra\npassword authentication was available.\n\n### Fix\n\n- Keep the Entra ID authentication flow available alongside the local\nsecurity-key flow, so accounts that support Entra ID password sign-in\ncan fall back to their password.\n- Before prompting for a connected local `libfido2` key, check it\nagainst Entra's allow list. Offer a matching key first, with PIN entry\nwhen needed.\n- When no key is connected or the check is inconclusive, offer the\npassword first and keep the key selectable. When the key definitely has\nno matching credential, offer the password first without the local-key\noption.\n\nThis covers local `libfido2` security keys only. Synced and cross-device\npasskeys are not completed locally; users need another supported Entra\nmethod, such as Entra ID password authentication or the device-code\nflow, where available. MFA-flow ownership across cancellation is\naddressed in follow-up #1954.\n\nCloses #1915\nUDENG-11498\n\ne2e-tests: login_entra_auth.robot login_entra_auth_client_secret.robot\nlogin_entra_passwordless.robot login_entra_synced_passkey.robot",
+                  "url": "https://github.com/canonical/authd/commit/80f97bf7623546517d3aebc25ab0fdb9f558b796"
                },
                {
-                  "sha": "35503fd984409e6ce5454af3652937210f5f5761",
+                  "sha": "c20f204bf2846387a32059e146c2fccf1c6da485",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790061211,
-                  "message": "snap: fix invalid shared-library prime glob\n\nSnapcraft 9.1.1 rejects `lib/**.so` while priming the broker snap,\nso a cache miss fails after the broker has built successfully. Use a\nrecursive glob with `**` as its own path component to keep excluding\nshared libraries.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/35503fd984409e6ce5454af3652937210f5f5761"
+                  "timestamp": 1790057425,
+                  "message": "e2e: cover FIDO TAP fallback\n\nA passwordless account with a synced passkey must be able to complete\nauthentication through a Temporary Access Pass instead of being\nrouted to an Entra password form or an unusable local security-key\nprompt.\n\nUse a dedicated account and serialize TAP lifecycle operations so\nconcurrent release variants do not race Authenticator requests. Retry\nthe complete login after restoring broker state.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/c20f204bf2846387a32059e146c2fccf1c6da485"
                },
                {
-                  "sha": "dade21df164b24e359378dc44ee737be2ce85065",
-                  "author": "adombeck",
-                  "timestamp": 1789999695,
-                  "message": "docs: recommend synctest for time-based tests (#1956)",
-                  "url": "https://github.com/canonical/authd/commit/dade21df164b24e359378dc44ee737be2ce85065"
+                  "sha": "a3e416a05930a9143cde5576132571bf4173a69c",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790057253,
+                  "message": "Temporarily bump libhimmelblau gitlink for password capability\n\nKeep authd's password fallback available for FIDO flows until the\ncorresponding libhimmelblau C API change lands upstream.\n\nPoint the gitlink, URL, and branch at the fork temporarily so fresh\ncheckouts use the password-capability accessor. Remove this bump after\nthe upstream change is available.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/a3e416a05930a9143cde5576132571bf4173a69c"
                }
             ],
             "ciActions": [
@@ -8583,25 +8583,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415",
+                  "sha": "5e8b94bfa73133d17c0370fe5aa58b65766e4dc6",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1790065318,
-                  "message": "maint: include root pubspec.lock file (#253)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/a3d9f2b56a2c8c45a20b2f117d26d7cb3fa06415"
+                  "timestamp": 1790077988,
+                  "message": "Merge pull request #252 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/5e8b94bfa73133d17c0370fe5aa58b65766e4dc6"
                },
                {
-                  "sha": "7fbf371d4e8e42f47353462005196b27b3505cc6",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789983146,
-                  "message": "ci: update weblate bot pinned version (#251)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/7fbf371d4e8e42f47353462005196b27b3505cc6"
+                  "sha": "67492e4d42d7b873e5d927c6b9925b4e4ee8a55d",
+                  "author": "canonical-desktop-bot",
+                  "timestamp": 1790071765,
+                  "message": "maint: regenerate l10n",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/67492e4d42d7b873e5d927c6b9925b4e4ee8a55d"
                },
                {
-                  "sha": "bcdc379f645c576fc1ecb26d6b9794b06f2a3c91",
-                  "author": "Juan Ruitiña",
-                  "timestamp": 1789734946,
-                  "message": "fix(app-permissions): remove give feedback link (#250)\n\n* fix(app-permissions): hide give feedback link\n\nRemove the App Permissions feedback survey link from the UI and the\nGitHub issue template contact links, while keeping the translation string\nin place in case the link is reintroduced later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* fix(app-permissions): remove giveFeedback enum member entirely\n\nAddress review feedback: rather than blanking the url and filtering it\nout of the rendered list, remove the _Link.giveFeedback member and its\nswitch branches in url and localize outright.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n\n* chore(app-permissions): remove unused giveFeedback translation\n\nRemove the interfacePageLinkGiveFeedback key from all ARB files and\nregenerate localizations, now that the enum member referencing it has\nbeen removed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/bcdc379f645c576fc1ecb26d6b9794b06f2a3c91"
+                  "sha": "ab15ceff6b690f5c6da2fbc083c8082ee1e2025e",
+                  "author": "Github Action",
+                  "timestamp": 1790071385,
+                  "message": "fix(l10n): translated using Weblate (English (United Kingdom))\n\nCurrently translated at 94.8% (186 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/en_GB/",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/ab15ceff6b690f5c6da2fbc083c8082ee1e2025e"
                }
             ],
             "ciActions": [],
