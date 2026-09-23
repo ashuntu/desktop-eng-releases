@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4163e18e996184ea9f23138aa31bf35669bdea0e",
+                  "sha": "c942fd4ee95aed354eec6eef4ef21f0eccd69133",
                   "author": "adombeck",
-                  "timestamp": 1790114890,
-                  "message": "debian: Allow newer GNOME Shell versions on Resolute (#1950)\n\nUDENG-11588",
-                  "url": "https://github.com/canonical/authd/commit/4163e18e996184ea9f23138aa31bf35669bdea0e"
+                  "timestamp": 1790162103,
+                  "message": "e2e: Fix GNOME Shell not installed (#1969)\n\nResolute e2e runs failed because GNOME Shell was not installed anymore.\n\nCloses #1968",
+                  "url": "https://github.com/canonical/authd/commit/c942fd4ee95aed354eec6eef4ef21f0eccd69133"
                },
                {
-                  "sha": "8c98fc9a61d9712e8343f6c79feb3ecf31b0513e",
-                  "author": "adombeck",
-                  "timestamp": 1790114810,
-                  "message": "pam/gdm: serialize challenge setup with GDM stage (#1904)\n\nCloses #1901 \nUDENG-11480",
-                  "url": "https://github.com/canonical/authd/commit/8c98fc9a61d9712e8343f6c79feb3ecf31b0513e"
+                  "sha": "46261945502b23b24cf70c4cf720f921f43c9d3c",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790160073,
+                  "message": "Prevent empty packaging regeneration commits (#1967)\n\nAs noted in https://github.com/canonical/authd/pull/1816/commits\nThe update packaging job can generate empty commits\n\nThe GitHub commit API accepts file additions that already match the\nbranch, so verify the downloaded artifact differs before creating the\ncommit.",
+                  "url": "https://github.com/canonical/authd/commit/46261945502b23b24cf70c4cf720f921f43c9d3c"
                },
                {
-                  "sha": "5c2d36f67212c3aa1860ace97f2f5b2ac227eb43",
-                  "author": "adombeck",
-                  "timestamp": 1790102910,
-                  "message": "e2e: support selecting source for system packages (#1911)\n\nCloses #1920\nUDENG-11503",
-                  "url": "https://github.com/canonical/authd/commit/5c2d36f67212c3aa1860ace97f2f5b2ac227eb43"
+                  "sha": "2f5dfeef7655b80b95869be166e692859622661c",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790158945,
+                  "message": "e2e: keep resolute GNOME Shell available with stale PPA\n\nThe e2e tests were broken on Resolute because installing the branch\nauthd package removed gnome-shell. The package required version\n50.1-0ubuntu1.3, but authd-edge still publishes the patched\n50.1-0ubuntu1.2+authd1~26.04.1 build.\n\nKeep that patched PPA build as the lower bound while accepting newer\narchive versions, so provisioning can retain GNOME Shell until the PPA\ncatches up.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/2f5dfeef7655b80b95869be166e692859622661c"
                }
             ],
             "ciActions": [
@@ -3627,6 +3627,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9836436feef1cf2bc119b5d9cf926f060512aa74",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790153878,
+                  "message": "ci: update ci to reuse cached fvm, flutter, melos and dart packages (#254)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9836436feef1cf2bc119b5d9cf926f060512aa74"
+               },
+               {
                   "sha": "5e8b94bfa73133d17c0370fe5aa58b65766e4dc6",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790077988,
@@ -3639,13 +3646,6 @@
                   "timestamp": 1790071765,
                   "message": "maint: regenerate l10n",
                   "url": "https://github.com/canonical/desktop-security-center/commit/67492e4d42d7b873e5d927c6b9925b4e4ee8a55d"
-               },
-               {
-                  "sha": "ab15ceff6b690f5c6da2fbc083c8082ee1e2025e",
-                  "author": "Github Action",
-                  "timestamp": 1790071385,
-                  "message": "fix(l10n): translated using Weblate (English (United Kingdom))\n\nCurrently translated at 94.8% (186 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/en_GB/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/ab15ceff6b690f5c6da2fbc083c8082ee1e2025e"
                }
             ],
             "ciActions": [],
@@ -3729,25 +3729,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2d77dfef3d13deeb24b67a6c6fc3adb6ae6f8060",
+                  "sha": "397a7774d453f34192d2db86c387ed4e7b5a2998",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789737616,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#421)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/2d77dfef3d13deeb24b67a6c6fc3adb6ae6f8060"
+                  "timestamp": 1790152428,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#426)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/397a7774d453f34192d2db86c387ed4e7b5a2998"
                },
                {
-                  "sha": "c2c38313b1a20f1382934dafdf1c7ed911ecd9e3",
+                  "sha": "b1009b1b9eb07c01e6523a6e5c0fde8467e7b383",
                   "author": "canonical-desktop-bot",
-                  "timestamp": 1789736720,
+                  "timestamp": 1790135613,
                   "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/firmware-updater/commit/c2c38313b1a20f1382934dafdf1c7ed911ecd9e3"
+                  "url": "https://github.com/canonical/firmware-updater/commit/b1009b1b9eb07c01e6523a6e5c0fde8467e7b383"
                },
                {
-                  "sha": "ffca4980db74f3380ced9fb203b843818a292067",
-                  "author": "Adolfo Jayme Barrientos",
-                  "timestamp": 1789621321,
-                  "message": "fix(l10n): translated using Weblate (Spanish)\n\nCurrently translated at 100.0% (114 of 114 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/es/",
-                  "url": "https://github.com/canonical/firmware-updater/commit/ffca4980db74f3380ced9fb203b843818a292067"
+                  "sha": "516e5a97b58a496648d3fcf69887285bfae5465d",
+                  "author": "ふぐ",
+                  "timestamp": 1790095006,
+                  "message": "fix(l10n): translated using Weblate (Japanese)\n\nCurrently translated at 100.0% (114 of 114 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/ja/",
+                  "url": "https://github.com/canonical/firmware-updater/commit/516e5a97b58a496648d3fcf69887285bfae5465d"
                }
             ],
             "ciActions": [
@@ -4183,25 +4183,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "74be9ea9cd3485c4a463f99b728f07fcd0bbe364",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1790005930,
-                  "message": "build(deps): bump anyio from 4.13.0 to 4.14.2 in /server\n\nBumps [anyio](https://github.com/agronholm/anyio) from 4.13.0 to 4.14.2.\n- [Release notes](https://github.com/agronholm/anyio/releases)\n- [Commits](https://github.com/agronholm/anyio/compare/4.13.0...4.14.2)\n\n---\nupdated-dependencies:\n- dependency-name: anyio\n  dependency-version: 4.14.2\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/myna/commit/74be9ea9cd3485c4a463f99b728f07fcd0bbe364"
+                  "sha": "97f7694fcf5d8175243b2cdcddc5da5a7d507b73",
+                  "author": "Charles",
+                  "timestamp": 1790153285,
+                  "message": "feat(cli): send testbed clips as fast as the backend takes them\n\nReal-time pacing made a 33 s clip look hung for 33 s. --realtime keeps\nit for imitating a microphone; --no-realtime is gone.",
+                  "url": "https://github.com/canonical/myna/commit/97f7694fcf5d8175243b2cdcddc5da5a7d507b73"
                },
                {
-                  "sha": "fe7779169dffedae172e41ebc533b1f1b5909440",
-                  "author": "Peter Vančo",
-                  "timestamp": 1789946948,
-                  "message": "fix(l10n): added translation using Weblate (Czech)",
-                  "url": "https://github.com/canonical/myna/commit/fe7779169dffedae172e41ebc533b1f1b5909440"
+                  "sha": "6f10e3d379ca74d19d9017175aad032cccb2e078",
+                  "author": "Charles",
+                  "timestamp": 1790153250,
+                  "message": "refactor(cli): pass the testbed's arguments to parse_args\n\nLets tests drive the flag handling.",
+                  "url": "https://github.com/canonical/myna/commit/6f10e3d379ca74d19d9017175aad032cccb2e078"
                },
                {
-                  "sha": "881ef334fd66db14f92e649dd604591fd4ef7113",
-                  "author": "Ihor Hordiichuk",
-                  "timestamp": 1789945530,
-                  "message": "fix(l10n): added translation using Weblate (Ukrainian)",
-                  "url": "https://github.com/canonical/myna/commit/881ef334fd66db14f92e649dd604591fd4ef7113"
+                  "sha": "3b9272d91c4ffc3df831c9645bd0014c832f109d",
+                  "author": "Charles",
+                  "timestamp": 1790149188,
+                  "message": "feat(cli): resample testbed clips to the backend format\n\nA clip recorded at 48 kHz stereo was sent as-is and every backend\nrefused it. The daemon never hits this because PipeWire converts its\ncapture; a file has to be converted here.",
+                  "url": "https://github.com/canonical/myna/commit/3b9272d91c4ffc3df831c9645bd0014c832f109d"
                }
             ],
             "ciActions": [],
@@ -4350,25 +4350,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7bddd104d423c2691a5982758898e869ecdaeec1",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790068538,
-                  "message": "maint: commit pubspec.lock files (#329)",
-                  "url": "https://github.com/canonical/prompting-client/commit/7bddd104d423c2691a5982758898e869ecdaeec1"
+                  "sha": "d9b18538ff9d749f6a08bc4acd3b1717875b86b0",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790161341,
+                  "message": "chore(deps): update rust crate http-body-util to v0.1.5 (#330)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/d9b18538ff9d749f6a08bc4acd3b1717875b86b0"
                },
                {
-                  "sha": "68b871b3eefb8f43f6f96f8b08f804c1df575510",
+                  "sha": "336f82f951e38dcb86f12fd331b8186b08564358",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1790005873,
-                  "message": "maint: commit pubspec.lock files",
-                  "url": "https://github.com/canonical/prompting-client/commit/68b871b3eefb8f43f6f96f8b08f804c1df575510"
+                  "timestamp": 1790160847,
+                  "message": "chore(deps): update rust crate chrono to v0.4.45 (#317)",
+                  "url": "https://github.com/canonical/prompting-client/commit/336f82f951e38dcb86f12fd331b8186b08564358"
                },
                {
-                  "sha": "88bf647de0d590ab988a05f0348f9b6b3270230b",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1790001561,
-                  "message": "fix: expand action buttons to full prompt width (#318)\n\nThe allow/deny split buttons were laid out in a `Wrap` with\n`WrapAlignment.center`, so each button only ever took its intrinsic\nwidth — the width of its own label. At the prompt's fixed 372px width\nthis left the two buttons hugging their text with uneven widths, and\nlonger localized labels pushed the second button onto its own line.\n\nThis switches the layout to a `Column` with `CrossAxisAlignment.stretch`\nand passes the new `expanded: true` flag to `YaruSplitButton.filled`, so\neach button fills the full content width regardless of label length.\nWithout `expanded`, the split button's internal `Row` still hugs its\nlabel even when the parent stretches it, so the flag is required for the\nstretch to have any effect.\n\n`expanded` was added in yaru 10.2.0, hence the accompanying dependency\nbump.\n\n### Dependency bump\n\n`yaru: ^8.3.0` → `^10.2.0` — two major versions. Two knock-on changes\nwere needed:\n\n- `main.dart`: `ThemeData? theme` / `darkTheme` on `YaruThemeData` are\nnon-nullable as of 10.2.0, so the `?.` before `.customize()` is gone.\n- `iterable_extensions.dart`: yaru 10.2.0 now exports its own\n`separatedBy` extension on `Iterable<Widget>`, which collides with our\nlocal copy as an ambiguous extension. The local `separatedBy` is removed\nand `tile_list.dart` picks up yaru's via its existing\n`package:yaru/yaru.dart` import. `withSpacing` is untouched — yaru's\nversion of that one is not exported.\n\n### Testing\n\nAdded `test/device_action_buttons_test.dart`, which renders\n`DeviceActionButtons` at the real content width (`kWindowWidth - 2 *\nkPagePadding`) and asserts the dropdown's right edge reaches the full\nwidth — i.e. the main button actually expanded rather than hugging its\nlabel.\n\nNote that the existing widget tests run at a 760px viewport\n(`test/test_utils.dart:26`), roughly 2× the real 372px prompt width, so\nthey would not have caught this. The new test sets its own width\nexplicitly.\n\nVerified locally:\n\n- `flutter test` — 50 passed\n- `flutter analyze --fatal-infos` — no issues\n- `dart format` — no changes\n\n### Review notes\n\nThis is a visual change to the camera, microphone and home prompt pages,\nso it's worth a look on a real prompt rather than just reading the diff.\nReviewers should also confirm the yaru 8 → 10 jump doesn't regress\nanything else in the UI; the bump is scoped to what `expanded` requires,\nbut it is a two-major-version move and the test suite only covers so\nmuch of the visual surface.\n\n\n\n---\n\nUDENG-11210",
-                  "url": "https://github.com/canonical/prompting-client/commit/88bf647de0d590ab988a05f0348f9b6b3270230b"
+                  "sha": "11ebe83e48e0ce2bc20f5263fd4c473bf0338626",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790159828,
+                  "message": "chore(deps): update rust crate chrono to v0.4.45",
+                  "url": "https://github.com/canonical/prompting-client/commit/11ebe83e48e0ce2bc20f5263fd4c473bf0338626"
                }
             ],
             "ciActions": [],
@@ -4779,9 +4779,18 @@
          {
             "name": "translations-verifier",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 3,
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
+               {
+                  "id": 394466374,
+                  "version": "v0.3.0",
+                  "timestamp": 1790153530,
+                  "title": "v0.3.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.2.0...v0.3.0\">0.3.0</a> (2026-09-23)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>add source text to the console output (<a href=\"https://github.com/canonical/translations-verifier/issues/18\">#18</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/3cb7398e4f0b1cb16c7cb8bdc3c0fc6504849357\">3cb7398</a>)</li>\n</ul>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>updated release-please support for uv lockfile (<a href=\"https://github.com/canonical/translations-verifier/issues/20\">#20</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/6aab4519906fb8d22da0a8cf3a1364d30cdb613b\">6aab451</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.3.0",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.3.0...main"
+               },
                {
                   "id": 393153433,
                   "version": "v0.2.0",
@@ -5492,67 +5501,20 @@
       "team": "WSL",
       "repos": [
          {
-            "name": "ubuntu-insights-k8s-operator",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
-            "releases": [
-               {
-                  "id": 393226874,
-                  "version": "rev115",
-                  "timestamp": 1790017993,
-                  "title": "Revision 115",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 19:15 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.2.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/151\">#151</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...rev115\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114&hellip;rev115</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev115",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev115...main"
-               },
-               {
-                  "id": 393038872,
-                  "version": "rev114",
-                  "timestamp": 1790001057,
-                  "title": "Revision 114",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:38 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/150\">#150</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...rev114\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113&hellip;rev114</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev114",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...main"
-               },
-               {
-                  "id": 387261161,
-                  "version": "rev113",
-                  "timestamp": 1789152111,
-                  "title": "Revision 113",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 105</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:43 UTC on 11 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update tiobe/tics-github-action action to v4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/149\">#149</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112...rev113\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112&hellip;rev113</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev113",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": {
-               "name": "ubuntu-insights-server-k8s",
-               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
-               "releases": [
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 115,
-                     "timestamp": 1790018142
-                  }
-               ],
-               "channels": [
-                  "edge"
-               ],
-               "tracks": [
-                  "latest"
-               ]
-            },
-            "snap": null
-         },
-         {
             "name": "translations-verifier",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 3,
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
+               {
+                  "id": 394466374,
+                  "version": "v0.3.0",
+                  "timestamp": 1790153530,
+                  "title": "v0.3.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.2.0...v0.3.0\">0.3.0</a> (2026-09-23)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>add source text to the console output (<a href=\"https://github.com/canonical/translations-verifier/issues/18\">#18</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/3cb7398e4f0b1cb16c7cb8bdc3c0fc6504849357\">3cb7398</a>)</li>\n</ul>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>updated release-please support for uv lockfile (<a href=\"https://github.com/canonical/translations-verifier/issues/20\">#20</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/6aab4519906fb8d22da0a8cf3a1364d30cdb613b\">6aab451</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.3.0",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.3.0...main"
+               },
                {
                   "id": 393153433,
                   "version": "v0.2.0",
@@ -5578,35 +5540,70 @@
             "snap": null
          },
          {
-            "name": "dep5-vendor-gen",
+            "name": "dbus.dart",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/dep5-vendor-gen",
+            "url": "https://github.com/canonical/dbus.dart",
             "releases": null,
             "commits": [
                {
-                  "sha": "d2a233053dc8718d0ff6452df53903ecc856e391",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1788433321,
-                  "message": "Preserve non-ASCII copyright holders\n\nThe generator relied on Python's locale when decoding licensecheck\noutput.  A non-UTF-8 locale could turn UTF-8 names into mojibake in\ndebian/copyright. Decode the machine-readable output as UTF-8\nexplicitly.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/d2a233053dc8718d0ff6452df53903ecc856e391"
+                  "sha": "bcbe446c4d7d929812b37a6fc60a277c506257f7",
+                  "author": "Robert Ancell",
+                  "timestamp": 1789595338,
+                  "message": "Releasing 0.8.0",
+                  "url": "https://github.com/canonical/dbus.dart/commit/bcbe446c4d7d929812b37a6fc60a277c506257f7"
                },
                {
-                  "sha": "6de959406d15e0a4835838f88e3b4a90bb019607",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1786613918,
-                  "message": "docs: update licensecheck install instructions\n\nReference the standalone licensecheck package instead of devscripts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/6de959406d15e0a4835838f88e3b4a90bb019607"
+                  "sha": "fe30cb833f5832be61dcba62bb44c217e172024b",
+                  "author": "Robert Ancell",
+                  "timestamp": 1789551588,
+                  "message": "feat: use Dart 3 records for multiple return values in code generator (#405)\n\nCloses #399\n\n## Summary\n\nThis PR updates `DBusCodeGenerator` so that remote D-Bus methods with\nmultiple output arguments return strongly-typed Dart 3 records\n(`Future<(Type1 name1, Type2 name2, ...)>`) instead of returning an\nuntyped `Future<List<DBusValue>>`.\n\nEach output value is automatically converted to its corresponding native\nDart type using `type.dbusToNative(...)`, matching the behavior of\nsingle-output methods and enabling full type safety, IDE autocomplete,\nand Dart 3 record destructuring:\n\n```dart\n// Generated method return example:\nfinal (name, count) = await client.callGetDetails();\n```\n\n## Changes\n\n- **Code Generator**\n([`lib/src/dbus_code_generator.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/dbus_code_generator.dart)):\n- Updated `_generateRemoteMethodCall` when `outputArgs.length > 1` to\ngenerate a Dart 3 record type signature and deserialize return values as\na record literal tuple.\n- Preserves output argument names from D-Bus introspection XML when\navailable, with keyword and collision avoidance.\n- **SDK Requirement**\n([`pubspec.yaml`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/pubspec.yaml)):\n  - Updated minimum Dart SDK constraint to `>=3.0.0 <4.0.0`.\n- **Dart 3 FFI Compliance**\n([`lib/src/getsid_windows.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/getsid_windows.dart)):\n- Added `final class` modifier to FFI `Struct` subclasses to comply with\nDart 3 class modifier rules.\n- **Tests**\n([`test/generated-code/method-multiple-outputs.client.out`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/test/generated-code/method-multiple-outputs.client.out)):\n- Updated code generator test fixture to match the new record output\nformat.\n\n## Verification\n\n- Ran `dart test --name \"code generator\"`. All 33 tests passed cleanly.\n- Formatted code using `dart format .`.",
+                  "url": "https://github.com/canonical/dbus.dart/commit/fe30cb833f5832be61dcba62bb44c217e172024b"
                },
                {
-                  "sha": "efc24680335411cb2538e1cf3ec36d04dd7900c9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1786355620,
-                  "message": "Auto-create output directory for --debian-copyright\n\nPreviously the script exited with an error if the parent directory of\n--debian-copyright didn't exist, forcing users to mkdir it manually.\nCreate it automatically instead, matching how most codegen tools behave.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/efc24680335411cb2538e1cf3ec36d04dd7900c9"
+                  "sha": "5181bb20f141623ee011297e912c3c3aeff1617f",
+                  "author": "Victor C.",
+                  "timestamp": 1789537850,
+                  "message": "feat: use Dart 3 records for multiple return values in code generator\n\nRemote D-Bus methods with multiple output arguments now return a\nstrongly typed Dart 3 record instead of an untyped List<DBusValue>.\nEach output value is converted to its native Dart type, matching the\nbehaviour of single output methods, and the argument names from the\nintrospection XML are used as field names when available.\n\nExtract _nameIsReserved() and _makeRecordType() helpers, and use\n_nameIsReserved() in the signal code generation too, which had its\nown copies of the keyword list.\n\nRecords require Dart 3, so bump the minimum SDK to 3.0.0. With that\nconstraint the analyzer requires the FFI Struct subclasses in\ngetsid_windows.dart to be final.",
+                  "url": "https://github.com/canonical/dbus.dart/commit/5181bb20f141623ee011297e912c3c3aeff1617f"
                }
             ],
             "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "GoWSL",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/ubuntu/GoWSL",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "0ef2623cc8fb5bf37649b30adc999e9dd0f57570",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1762975080,
+                  "message": "Prefers slog for utils_test (#144)\n\nThis was actually done in PR #140 but I ended up merging that PR in the\nwrong order. Thus, I'm basically redoing that PR.",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/0ef2623cc8fb5bf37649b30adc999e9dd0f57570"
+               },
+               {
+                  "sha": "5a7efa0612a23b92d234ed375d2ab73004be03d2",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1759440907,
+                  "message": "Applies code review suggestions\n\nabout not using ':', capitalization and avoiding '\\n' in the values.",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/5a7efa0612a23b92d234ed375d2ab73004be03d2"
+               },
+               {
+                  "sha": "576e37f7932d274b888f2c814e7713d8990bc8a6",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1758225565,
+                  "message": "Tidy the dependencies\n\nBump the toolchain to 1.22.12 (the latest 1.22)\nRemove dependency on 0xrawsec/golang-utils\nRefreshes other dependencies",
+                  "url": "https://github.com/ubuntu/GoWSL/commit/576e37f7932d274b888f2c814e7713d8990bc8a6"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/ubuntu/GoWSL/actions/workflows/qa-azure.yaml"
+            ],
             "charm": null,
             "snap": null
          },
@@ -5709,35 +5706,38 @@
             "snap": null
          },
          {
-            "name": "myna",
+            "name": "wsl-actions-example",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/myna",
+            "url": "https://github.com/ubuntu/wsl-actions-example",
             "releases": null,
             "commits": [
                {
-                  "sha": "74be9ea9cd3485c4a463f99b728f07fcd0bbe364",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1790005930,
-                  "message": "build(deps): bump anyio from 4.13.0 to 4.14.2 in /server\n\nBumps [anyio](https://github.com/agronholm/anyio) from 4.13.0 to 4.14.2.\n- [Release notes](https://github.com/agronholm/anyio/releases)\n- [Commits](https://github.com/agronholm/anyio/compare/4.13.0...4.14.2)\n\n---\nupdated-dependencies:\n- dependency-name: anyio\n  dependency-version: 4.14.2\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/myna/commit/74be9ea9cd3485c4a463f99b728f07fcd0bbe364"
+                  "sha": "6e6f10720113aed99576fb35f2dc5a3ca3f859a4",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1707145567,
+                  "message": "Merge pull request #6 from ubuntu/cloud-init\n\nCloud-init tests",
+                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/6e6f10720113aed99576fb35f2dc5a3ca3f859a4"
                },
                {
-                  "sha": "fe7779169dffedae172e41ebc533b1f1b5909440",
-                  "author": "Peter Vančo",
-                  "timestamp": 1789946948,
-                  "message": "fix(l10n): added translation using Weblate (Czech)",
-                  "url": "https://github.com/canonical/myna/commit/fe7779169dffedae172e41ebc533b1f1b5909440"
+                  "sha": "7b60ccc69f056d9822a300e5a0c22ba02d8632f5",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706872689,
+                  "message": "Avoid interference with other workflows",
+                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/7b60ccc69f056d9822a300e5a0c22ba02d8632f5"
                },
                {
-                  "sha": "881ef334fd66db14f92e649dd604591fd4ef7113",
-                  "author": "Ihor Hordiichuk",
-                  "timestamp": 1789945530,
-                  "message": "fix(l10n): added translation using Weblate (Ukrainian)",
-                  "url": "https://github.com/canonical/myna/commit/881ef334fd66db14f92e649dd604591fd4ef7113"
+                  "sha": "b58a6f43797847e55a73082506a91c85a63a827e",
+                  "author": "Edu Gómez Escandell",
+                  "timestamp": 1706872676,
+                  "message": "Cloud-init tests",
+                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/b58a6f43797847e55a73082506a91c85a63a827e"
                }
             ],
-            "ciActions": [],
+            "ciActions": [
+               "https://github.com/ubuntu/wsl-actions-example/actions/workflows/test.yaml",
+               "https://github.com/ubuntu/wsl-actions-example/actions/workflows/test_wsl.yaml"
+            ],
             "charm": null,
             "snap": null
          },
@@ -5815,25 +5815,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4163e18e996184ea9f23138aa31bf35669bdea0e",
+                  "sha": "c942fd4ee95aed354eec6eef4ef21f0eccd69133",
                   "author": "adombeck",
-                  "timestamp": 1790114890,
-                  "message": "debian: Allow newer GNOME Shell versions on Resolute (#1950)\n\nUDENG-11588",
-                  "url": "https://github.com/canonical/authd/commit/4163e18e996184ea9f23138aa31bf35669bdea0e"
+                  "timestamp": 1790162103,
+                  "message": "e2e: Fix GNOME Shell not installed (#1969)\n\nResolute e2e runs failed because GNOME Shell was not installed anymore.\n\nCloses #1968",
+                  "url": "https://github.com/canonical/authd/commit/c942fd4ee95aed354eec6eef4ef21f0eccd69133"
                },
                {
-                  "sha": "8c98fc9a61d9712e8343f6c79feb3ecf31b0513e",
-                  "author": "adombeck",
-                  "timestamp": 1790114810,
-                  "message": "pam/gdm: serialize challenge setup with GDM stage (#1904)\n\nCloses #1901 \nUDENG-11480",
-                  "url": "https://github.com/canonical/authd/commit/8c98fc9a61d9712e8343f6c79feb3ecf31b0513e"
+                  "sha": "46261945502b23b24cf70c4cf720f921f43c9d3c",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790160073,
+                  "message": "Prevent empty packaging regeneration commits (#1967)\n\nAs noted in https://github.com/canonical/authd/pull/1816/commits\nThe update packaging job can generate empty commits\n\nThe GitHub commit API accepts file additions that already match the\nbranch, so verify the downloaded artifact differs before creating the\ncommit.",
+                  "url": "https://github.com/canonical/authd/commit/46261945502b23b24cf70c4cf720f921f43c9d3c"
                },
                {
-                  "sha": "5c2d36f67212c3aa1860ace97f2f5b2ac227eb43",
-                  "author": "adombeck",
-                  "timestamp": 1790102910,
-                  "message": "e2e: support selecting source for system packages (#1911)\n\nCloses #1920\nUDENG-11503",
-                  "url": "https://github.com/canonical/authd/commit/5c2d36f67212c3aa1860ace97f2f5b2ac227eb43"
+                  "sha": "2f5dfeef7655b80b95869be166e692859622661c",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790158945,
+                  "message": "e2e: keep resolute GNOME Shell available with stale PPA\n\nThe e2e tests were broken on Resolute because installing the branch\nauthd package removed gnome-shell. The package required version\n50.1-0ubuntu1.3, but authd-edge still publishes the patched\n50.1-0ubuntu1.2+authd1~26.04.1 build.\n\nKeep that patched PPA build as the lower bound while accepting newer\narchive versions, so provisioning can retain GNOME Shell until the PPA\ncatches up.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/2f5dfeef7655b80b95869be166e692859622661c"
                }
             ],
             "ciActions": [
@@ -5942,32 +5942,32 @@
             "snap": null
          },
          {
-            "name": "dbus.dart",
+            "name": "myna",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/dbus.dart",
+            "url": "https://github.com/canonical/myna",
             "releases": null,
             "commits": [
                {
-                  "sha": "bcbe446c4d7d929812b37a6fc60a277c506257f7",
-                  "author": "Robert Ancell",
-                  "timestamp": 1789595338,
-                  "message": "Releasing 0.8.0",
-                  "url": "https://github.com/canonical/dbus.dart/commit/bcbe446c4d7d929812b37a6fc60a277c506257f7"
+                  "sha": "97f7694fcf5d8175243b2cdcddc5da5a7d507b73",
+                  "author": "Charles",
+                  "timestamp": 1790153285,
+                  "message": "feat(cli): send testbed clips as fast as the backend takes them\n\nReal-time pacing made a 33 s clip look hung for 33 s. --realtime keeps\nit for imitating a microphone; --no-realtime is gone.",
+                  "url": "https://github.com/canonical/myna/commit/97f7694fcf5d8175243b2cdcddc5da5a7d507b73"
                },
                {
-                  "sha": "fe30cb833f5832be61dcba62bb44c217e172024b",
-                  "author": "Robert Ancell",
-                  "timestamp": 1789551588,
-                  "message": "feat: use Dart 3 records for multiple return values in code generator (#405)\n\nCloses #399\n\n## Summary\n\nThis PR updates `DBusCodeGenerator` so that remote D-Bus methods with\nmultiple output arguments return strongly-typed Dart 3 records\n(`Future<(Type1 name1, Type2 name2, ...)>`) instead of returning an\nuntyped `Future<List<DBusValue>>`.\n\nEach output value is automatically converted to its corresponding native\nDart type using `type.dbusToNative(...)`, matching the behavior of\nsingle-output methods and enabling full type safety, IDE autocomplete,\nand Dart 3 record destructuring:\n\n```dart\n// Generated method return example:\nfinal (name, count) = await client.callGetDetails();\n```\n\n## Changes\n\n- **Code Generator**\n([`lib/src/dbus_code_generator.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/dbus_code_generator.dart)):\n- Updated `_generateRemoteMethodCall` when `outputArgs.length > 1` to\ngenerate a Dart 3 record type signature and deserialize return values as\na record literal tuple.\n- Preserves output argument names from D-Bus introspection XML when\navailable, with keyword and collision avoidance.\n- **SDK Requirement**\n([`pubspec.yaml`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/pubspec.yaml)):\n  - Updated minimum Dart SDK constraint to `>=3.0.0 <4.0.0`.\n- **Dart 3 FFI Compliance**\n([`lib/src/getsid_windows.dart`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/lib/src/getsid_windows.dart)):\n- Added `final class` modifier to FFI `Struct` subclasses to comply with\nDart 3 class modifier rules.\n- **Tests**\n([`test/generated-code/method-multiple-outputs.client.out`](file:///Users/vicajilau/Developer/Flutter/dbus.dart/test/generated-code/method-multiple-outputs.client.out)):\n- Updated code generator test fixture to match the new record output\nformat.\n\n## Verification\n\n- Ran `dart test --name \"code generator\"`. All 33 tests passed cleanly.\n- Formatted code using `dart format .`.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/fe30cb833f5832be61dcba62bb44c217e172024b"
+                  "sha": "6f10e3d379ca74d19d9017175aad032cccb2e078",
+                  "author": "Charles",
+                  "timestamp": 1790153250,
+                  "message": "refactor(cli): pass the testbed's arguments to parse_args\n\nLets tests drive the flag handling.",
+                  "url": "https://github.com/canonical/myna/commit/6f10e3d379ca74d19d9017175aad032cccb2e078"
                },
                {
-                  "sha": "5181bb20f141623ee011297e912c3c3aeff1617f",
-                  "author": "Victor C.",
-                  "timestamp": 1789537850,
-                  "message": "feat: use Dart 3 records for multiple return values in code generator\n\nRemote D-Bus methods with multiple output arguments now return a\nstrongly typed Dart 3 record instead of an untyped List<DBusValue>.\nEach output value is converted to its native Dart type, matching the\nbehaviour of single output methods, and the argument names from the\nintrospection XML are used as field names when available.\n\nExtract _nameIsReserved() and _makeRecordType() helpers, and use\n_nameIsReserved() in the signal code generation too, which had its\nown copies of the keyword list.\n\nRecords require Dart 3, so bump the minimum SDK to 3.0.0. With that\nconstraint the analyzer requires the FFI Struct subclasses in\ngetsid_windows.dart to be final.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/5181bb20f141623ee011297e912c3c3aeff1617f"
+                  "sha": "3b9272d91c4ffc3df831c9645bd0014c832f109d",
+                  "author": "Charles",
+                  "timestamp": 1790149188,
+                  "message": "feat(cli): resample testbed clips to the backend format\n\nA clip recorded at 48 kHz stereo was sent as-is and every backend\nrefused it. The daemon never hits this because PipeWire converts its\ncapture; a file has to be converted here.",
+                  "url": "https://github.com/canonical/myna/commit/3b9272d91c4ffc3df831c9645bd0014c832f109d"
                }
             ],
             "ciActions": [],
@@ -5975,32 +5975,32 @@
             "snap": null
          },
          {
-            "name": "nm.dart",
+            "name": "dep5-vendor-gen",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/nm.dart",
+            "url": "https://github.com/canonical/dep5-vendor-gen",
             "releases": null,
             "commits": [
                {
-                  "sha": "38859ab40db6fdd9c43477867b71ca1ea999e464",
-                  "author": "Robert Ancell",
-                  "timestamp": 1790140878,
-                  "message": "Require dbus 0.8 (#74)\n\nBumps the `dbus` dependency from `^0.7.0` to `^0.8.0`, and raises the\nSDK lower bound to `>=3.0.0` (dbus 0.8.0 requires Dart 3).\n\nSDK v2 is pretty old.",
-                  "url": "https://github.com/canonical/nm.dart/commit/38859ab40db6fdd9c43477867b71ca1ea999e464"
+                  "sha": "d2a233053dc8718d0ff6452df53903ecc856e391",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1788433321,
+                  "message": "Preserve non-ASCII copyright holders\n\nThe generator relied on Python's locale when decoding licensecheck\noutput.  A non-UTF-8 locale could turn UTF-8 names into mojibake in\ndebian/copyright. Decode the machine-readable output as UTF-8\nexplicitly.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/d2a233053dc8718d0ff6452df53903ecc856e391"
                },
                {
-                  "sha": "19aaf76eb3f5cbb01e02e56605dfb5593c7141f3",
-                  "author": "Matt Kosarek",
-                  "timestamp": 1790023891,
-                  "message": "Require dbus 0.8\n\ndbus 0.8.0 requires Dart 3, so the SDK lower bound is raised to 3.0.0 as\nwell. No source changes are needed: the runtime API used by nm is\nunchanged in 0.8.0, which only adds anonymous client authentication and\nalters the code generator's output.",
-                  "url": "https://github.com/canonical/nm.dart/commit/19aaf76eb3f5cbb01e02e56605dfb5593c7141f3"
+                  "sha": "6de959406d15e0a4835838f88e3b4a90bb019607",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1786613918,
+                  "message": "docs: update licensecheck install instructions\n\nReference the standalone licensecheck package instead of devscripts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/6de959406d15e0a4835838f88e3b4a90bb019607"
                },
                {
-                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756088060,
-                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
+                  "sha": "efc24680335411cb2538e1cf3ec36d04dd7900c9",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1786355620,
+                  "message": "Auto-create output directory for --debian-copyright\n\nPreviously the script exited with an error if the parent directory of\n--debian-copyright didn't exist, forcing users to mkdir it manually.\nCreate it automatically instead, matching how most codegen tools behave.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/dep5-vendor-gen/commit/efc24680335411cb2538e1cf3ec36d04dd7900c9"
                }
             ],
             "ciActions": [],
@@ -6048,6 +6048,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9836436feef1cf2bc119b5d9cf926f060512aa74",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790153878,
+                  "message": "ci: update ci to reuse cached fvm, flutter, melos and dart packages (#254)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9836436feef1cf2bc119b5d9cf926f060512aa74"
+               },
+               {
                   "sha": "5e8b94bfa73133d17c0370fe5aa58b65766e4dc6",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790077988,
@@ -6060,13 +6067,6 @@
                   "timestamp": 1790071765,
                   "message": "maint: regenerate l10n",
                   "url": "https://github.com/canonical/desktop-security-center/commit/67492e4d42d7b873e5d927c6b9925b4e4ee8a55d"
-               },
-               {
-                  "sha": "ab15ceff6b690f5c6da2fbc083c8082ee1e2025e",
-                  "author": "Github Action",
-                  "timestamp": 1790071385,
-                  "message": "fix(l10n): translated using Weblate (English (United Kingdom))\n\nCurrently translated at 94.8% (186 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/en_GB/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/ab15ceff6b690f5c6da2fbc083c8082ee1e2025e"
                }
             ],
             "ciActions": [],
@@ -6150,25 +6150,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2d77dfef3d13deeb24b67a6c6fc3adb6ae6f8060",
+                  "sha": "397a7774d453f34192d2db86c387ed4e7b5a2998",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789737616,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#421)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/2d77dfef3d13deeb24b67a6c6fc3adb6ae6f8060"
+                  "timestamp": 1790152428,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#426)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/397a7774d453f34192d2db86c387ed4e7b5a2998"
                },
                {
-                  "sha": "c2c38313b1a20f1382934dafdf1c7ed911ecd9e3",
+                  "sha": "b1009b1b9eb07c01e6523a6e5c0fde8467e7b383",
                   "author": "canonical-desktop-bot",
-                  "timestamp": 1789736720,
+                  "timestamp": 1790135613,
                   "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/firmware-updater/commit/c2c38313b1a20f1382934dafdf1c7ed911ecd9e3"
+                  "url": "https://github.com/canonical/firmware-updater/commit/b1009b1b9eb07c01e6523a6e5c0fde8467e7b383"
                },
                {
-                  "sha": "ffca4980db74f3380ced9fb203b843818a292067",
-                  "author": "Adolfo Jayme Barrientos",
-                  "timestamp": 1789621321,
-                  "message": "fix(l10n): translated using Weblate (Spanish)\n\nCurrently translated at 100.0% (114 of 114 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/es/",
-                  "url": "https://github.com/canonical/firmware-updater/commit/ffca4980db74f3380ced9fb203b843818a292067"
+                  "sha": "516e5a97b58a496648d3fcf69887285bfae5465d",
+                  "author": "ふぐ",
+                  "timestamp": 1790095006,
+                  "message": "fix(l10n): translated using Weblate (Japanese)\n\nCurrently translated at 100.0% (114 of 114 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/ja/",
+                  "url": "https://github.com/canonical/firmware-updater/commit/516e5a97b58a496648d3fcf69887285bfae5465d"
                }
             ],
             "ciActions": [
@@ -6368,37 +6368,35 @@
             "snap": null
          },
          {
-            "name": "odrs.dart",
+            "name": "gsettings.dart",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/odrs.dart",
+            "url": "https://github.com/canonical/gsettings.dart",
             "releases": null,
             "commits": [
                {
-                  "sha": "03726e458a6e9ff5c8d80cb68c9c8913870a9569",
-                  "author": "J-P Nurmi",
-                  "timestamp": 1689614443,
-                  "message": "chore: update links",
-                  "url": "https://github.com/canonical/odrs.dart/commit/03726e458a6e9ff5c8d80cb68c9c8913870a9569"
+                  "sha": "ce652ec49953489454ced6f43ca0adb7a22a7003",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790002560,
+                  "message": "chore: update CHANGELOG and loosen sdk constraint (#65)\n\n`dart pub publish --dry-run` reported:\n\n```\nValidating package...\nPackage validation found the following potential issue:\n* 1 checked-in file is modified in git.\n\n  Usually you want to publish from a clean git state.\n\n  Consider committing these files or reverting the changes.\n\n  Modified files:\n\n  CHANGELOG.md\n\n  Run `git status` for more information.\n\n\nPackage validation found the following hint:\n* The declared SDK constraint is '>=2.12.0 <3.0.0', this is interpreted as '>=2.12.0 <4.0.0'.\n\n  Consider updating the SDK constraint to:\n\n  environment:\n    sdk: '>=2.12.0 <4.0.0'\n\nThe server may enforce additional checks.\n```\n\nso this PR adds a new CHANGELOG entry and adjusts the SDK constraint\naccordingly.",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/ce652ec49953489454ced6f43ca0adb7a22a7003"
                },
                {
-                  "sha": "2d4c561531d840e7b78c30a9a9b5a40aacff6acf",
-                  "author": "J-P Nurmi",
-                  "timestamp": 1686326120,
-                  "message": "chore: release v0.0.4",
-                  "url": "https://github.com/canonical/odrs.dart/commit/2d4c561531d840e7b78c30a9a9b5a40aacff6acf"
+                  "sha": "b528decd450269db2fcfb9910e6f4c65580a6165",
+                  "author": "Dennis Loose",
+                  "timestamp": 1789976619,
+                  "message": "chore: update CHANGELOG and loosen sdk constraint",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/b528decd450269db2fcfb9910e6f4c65580a6165"
                },
                {
-                  "sha": "af7bf4503a68bfb75f16e9107bdbc0ee58c0ee07",
-                  "author": "J-P Nurmi",
-                  "timestamp": 1686318686,
-                  "message": "feat(vote): add vote_id to be able to recognize self-voted reviews (#15)",
-                  "url": "https://github.com/canonical/odrs.dart/commit/af7bf4503a68bfb75f16e9107bdbc0ee58c0ee07"
+                  "sha": "18c94c83b24c8fc3069bf742cd1a71791573f9d1",
+                  "author": "Dennis Loose",
+                  "timestamp": 1789976189,
+                  "message": "Update to dbus.dart 0.8.0 (#64)",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/18c94c83b24c8fc3069bf742cd1a71791573f9d1"
                }
             ],
-            "ciActions": [
-               "https://github.com/canonical/odrs.dart/actions/workflows/ci.yaml"
-            ],
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -6501,32 +6499,32 @@
             "snap": null
          },
          {
-            "name": "landscape-hostagent-api",
+            "name": "nm.dart",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/landscape-hostagent-api",
+            "url": "https://github.com/canonical/nm.dart",
             "releases": null,
             "commits": [
                {
-                  "sha": "590e7d7ae4e1975855608c5d1036fd79ebe98727",
-                  "author": "CarlosNihelton",
-                  "timestamp": 1758296763,
-                  "message": "Update files generated from protobuf definition",
-                  "url": "https://github.com/canonical/landscape-hostagent-api/commit/590e7d7ae4e1975855608c5d1036fd79ebe98727"
+                  "sha": "38859ab40db6fdd9c43477867b71ca1ea999e464",
+                  "author": "Robert Ancell",
+                  "timestamp": 1790140878,
+                  "message": "Require dbus 0.8 (#74)\n\nBumps the `dbus` dependency from `^0.7.0` to `^0.8.0`, and raises the\nSDK lower bound to `>=3.0.0` (dbus 0.8.0 requires Dart 3).\n\nSDK v2 is pretty old.",
+                  "url": "https://github.com/canonical/nm.dart/commit/38859ab40db6fdd9c43477867b71ca1ea999e464"
                },
                {
-                  "sha": "6ce6841ef92fd07fa863acabf0d872a2e842a1f7",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1758296561,
-                  "message": "With Go 1.20 CI can no longer succeed in generating bindings\n\nThat's because the latest Go codegen tools used in CI are no longer\ncompatible with Go 1.20",
-                  "url": "https://github.com/canonical/landscape-hostagent-api/commit/6ce6841ef92fd07fa863acabf0d872a2e842a1f7"
+                  "sha": "19aaf76eb3f5cbb01e02e56605dfb5593c7141f3",
+                  "author": "Matt Kosarek",
+                  "timestamp": 1790023891,
+                  "message": "Require dbus 0.8\n\ndbus 0.8.0 requires Dart 3, so the SDK lower bound is raised to 3.0.0 as\nwell. No source changes are needed: the runtime API used by nm is\nunchanged in 0.8.0, which only adds anonymous client authentication and\nalters the code generator's output.",
+                  "url": "https://github.com/canonical/nm.dart/commit/19aaf76eb3f5cbb01e02e56605dfb5593c7141f3"
                },
                {
-                  "sha": "e2aec5cde2340765eec55a2b673f19b1c6d48a33",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1758296261,
-                  "message": "Merge pull request #25 from canonical/unmanaged-instances\n\nfeat: Present the unmanaged instances",
-                  "url": "https://github.com/canonical/landscape-hostagent-api/commit/e2aec5cde2340765eec55a2b673f19b1c6d48a33"
+                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756088060,
+                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
+                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
                }
             ],
             "ciActions": [],
@@ -6560,6 +6558,175 @@
                   "timestamp": 1756095210,
                   "message": "Update CI Ubuntu version",
                   "url": "https://github.com/canonical/lxd.dart/commit/390502610980d33fc8ea5fe1ecec6288fe60a010"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "pc-amd64-gadget-desktop",
+            "defaultBranch": "22",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/pc-amd64-gadget-desktop",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "f6b5f109fcc92c430d74867199fb9c5ad2532491",
+                  "author": "James Henstridge",
+                  "timestamp": 1711079315,
+                  "message": "Merge pull request #15 from canonical/increase_ubuntu_seed_partition\n\nBump ubuntu-seed to 7000M to allow more flexibility in seeding more snaps",
+                  "url": "https://github.com/canonical/pc-amd64-gadget-desktop/commit/f6b5f109fcc92c430d74867199fb9c5ad2532491"
+               },
+               {
+                  "sha": "1c28ed9e630d52fa62f5b8a414f3d3a659d3bbea",
+                  "author": "Ken VanDine",
+                  "timestamp": 1711027290,
+                  "message": "Bump ubuntu-seed to 7000M to allow more flexibility in seeding more\nsnaps.",
+                  "url": "https://github.com/canonical/pc-amd64-gadget-desktop/commit/1c28ed9e630d52fa62f5b8a414f3d3a659d3bbea"
+               },
+               {
+                  "sha": "5dd6f8eef4cd088be477e0b04fec586caef1fd64",
+                  "author": "Ken VanDine",
+                  "timestamp": 1698113710,
+                  "message": "Only allow ssh from localhost (#12)",
+                  "url": "https://github.com/canonical/pc-amd64-gadget-desktop/commit/5dd6f8eef4cd088be477e0b04fec586caef1fd64"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "go-i18n",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/ubuntu/go-i18n",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "47e047f852b4b86d45567c8331a2548d6473692b",
+                  "author": "adombeck",
+                  "timestamp": 1760007113,
+                  "message": "Bump Go version to 1.23.12 (#17)",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/47e047f852b4b86d45567c8331a2548d6473692b"
+               },
+               {
+                  "sha": "c4be58aa4db383b3a41f6c2d6a564e627745834c",
+                  "author": "adombeck",
+                  "timestamp": 1760007082,
+                  "message": "Fix module path of the tools module (#16)",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/c4be58aa4db383b3a41f6c2d6a564e627745834c"
+               },
+               {
+                  "sha": "184110c056a539a8510a9b00c108c52d0b82b3d8",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1759999865,
+                  "message": "Bump Go version to 1.23.12\n\ngovulncheck reports the following vulnerability in Go 1.23.10:\n\nVulnerability #1: GO-2025-3956\n    Unexpected paths returned from LookPath in os/exec\n  More info: https://pkg.go.dev/vuln/GO-2025-3956\n  Standard library\n    Found in: os/exec@go1.23.10\n    Fixed in: os/exec@go1.23.12\n    Example traces found:\nError:       #1: cmd/compile-mo/main.go:53:30: compile.generateMos calls exec.Command, which calls exec.LookPath",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/184110c056a539a8510a9b00c108c52d0b82b3d8"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/ubuntu/go-i18n/actions/workflows/qa.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "landscape-hostagent-api",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/landscape-hostagent-api",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "590e7d7ae4e1975855608c5d1036fd79ebe98727",
+                  "author": "CarlosNihelton",
+                  "timestamp": 1758296763,
+                  "message": "Update files generated from protobuf definition",
+                  "url": "https://github.com/canonical/landscape-hostagent-api/commit/590e7d7ae4e1975855608c5d1036fd79ebe98727"
+               },
+               {
+                  "sha": "6ce6841ef92fd07fa863acabf0d872a2e842a1f7",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1758296561,
+                  "message": "With Go 1.20 CI can no longer succeed in generating bindings\n\nThat's because the latest Go codegen tools used in CI are no longer\ncompatible with Go 1.20",
+                  "url": "https://github.com/canonical/landscape-hostagent-api/commit/6ce6841ef92fd07fa863acabf0d872a2e842a1f7"
+               },
+               {
+                  "sha": "e2aec5cde2340765eec55a2b673f19b1c6d48a33",
+                  "author": "Carlos Nihelton",
+                  "timestamp": 1758296261,
+                  "message": "Merge pull request #25 from canonical/unmanaged-instances\n\nfeat: Present the unmanaged instances",
+                  "url": "https://github.com/canonical/landscape-hostagent-api/commit/e2aec5cde2340765eec55a2b673f19b1c6d48a33"
+               }
+            ],
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "odrs.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/odrs.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "03726e458a6e9ff5c8d80cb68c9c8913870a9569",
+                  "author": "J-P Nurmi",
+                  "timestamp": 1689614443,
+                  "message": "chore: update links",
+                  "url": "https://github.com/canonical/odrs.dart/commit/03726e458a6e9ff5c8d80cb68c9c8913870a9569"
+               },
+               {
+                  "sha": "2d4c561531d840e7b78c30a9a9b5a40aacff6acf",
+                  "author": "J-P Nurmi",
+                  "timestamp": 1686326120,
+                  "message": "chore: release v0.0.4",
+                  "url": "https://github.com/canonical/odrs.dart/commit/2d4c561531d840e7b78c30a9a9b5a40aacff6acf"
+               },
+               {
+                  "sha": "af7bf4503a68bfb75f16e9107bdbc0ee58c0ee07",
+                  "author": "J-P Nurmi",
+                  "timestamp": 1686318686,
+                  "message": "feat(vote): add vote_id to be able to recognize self-voted reviews (#15)",
+                  "url": "https://github.com/canonical/odrs.dart/commit/af7bf4503a68bfb75f16e9107bdbc0ee58c0ee07"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/canonical/odrs.dart/actions/workflows/ci.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "packagekit.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/packagekit.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
+                  "author": "ashuntu",
+                  "timestamp": 1772066466,
+                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
+               },
+               {
+                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
+                  "author": "ashuntu",
+                  "timestamp": 1771891119,
+                  "message": "fix: Add .vscode/ to .gitignore",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
+               },
+               {
+                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
+                  "author": "ashuntu",
+                  "timestamp": 1771891112,
+                  "message": "fix: Resolve ubuntu_lints errors",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
                }
             ],
             "ciActions": [],
@@ -6632,176 +6799,6 @@
             "snap": null
          },
          {
-            "name": "wsl-actions-example",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/ubuntu/wsl-actions-example",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "6e6f10720113aed99576fb35f2dc5a3ca3f859a4",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1707145567,
-                  "message": "Merge pull request #6 from ubuntu/cloud-init\n\nCloud-init tests",
-                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/6e6f10720113aed99576fb35f2dc5a3ca3f859a4"
-               },
-               {
-                  "sha": "7b60ccc69f056d9822a300e5a0c22ba02d8632f5",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1706872689,
-                  "message": "Avoid interference with other workflows",
-                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/7b60ccc69f056d9822a300e5a0c22ba02d8632f5"
-               },
-               {
-                  "sha": "b58a6f43797847e55a73082506a91c85a63a827e",
-                  "author": "Edu Gómez Escandell",
-                  "timestamp": 1706872676,
-                  "message": "Cloud-init tests",
-                  "url": "https://github.com/ubuntu/wsl-actions-example/commit/b58a6f43797847e55a73082506a91c85a63a827e"
-               }
-            ],
-            "ciActions": [
-               "https://github.com/ubuntu/wsl-actions-example/actions/workflows/test.yaml",
-               "https://github.com/ubuntu/wsl-actions-example/actions/workflows/test_wsl.yaml"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "GoWSL",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/ubuntu/GoWSL",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "0ef2623cc8fb5bf37649b30adc999e9dd0f57570",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1762975080,
-                  "message": "Prefers slog for utils_test (#144)\n\nThis was actually done in PR #140 but I ended up merging that PR in the\nwrong order. Thus, I'm basically redoing that PR.",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/0ef2623cc8fb5bf37649b30adc999e9dd0f57570"
-               },
-               {
-                  "sha": "5a7efa0612a23b92d234ed375d2ab73004be03d2",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1759440907,
-                  "message": "Applies code review suggestions\n\nabout not using ':', capitalization and avoiding '\\n' in the values.",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/5a7efa0612a23b92d234ed375d2ab73004be03d2"
-               },
-               {
-                  "sha": "576e37f7932d274b888f2c814e7713d8990bc8a6",
-                  "author": "Carlos Nihelton",
-                  "timestamp": 1758225565,
-                  "message": "Tidy the dependencies\n\nBump the toolchain to 1.22.12 (the latest 1.22)\nRemove dependency on 0xrawsec/golang-utils\nRefreshes other dependencies",
-                  "url": "https://github.com/ubuntu/GoWSL/commit/576e37f7932d274b888f2c814e7713d8990bc8a6"
-               }
-            ],
-            "ciActions": [
-               "https://github.com/ubuntu/GoWSL/actions/workflows/qa-azure.yaml"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "gsettings.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/gsettings.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "ce652ec49953489454ced6f43ca0adb7a22a7003",
-                  "author": "Dennis Loose",
-                  "timestamp": 1790002560,
-                  "message": "chore: update CHANGELOG and loosen sdk constraint (#65)\n\n`dart pub publish --dry-run` reported:\n\n```\nValidating package...\nPackage validation found the following potential issue:\n* 1 checked-in file is modified in git.\n\n  Usually you want to publish from a clean git state.\n\n  Consider committing these files or reverting the changes.\n\n  Modified files:\n\n  CHANGELOG.md\n\n  Run `git status` for more information.\n\n\nPackage validation found the following hint:\n* The declared SDK constraint is '>=2.12.0 <3.0.0', this is interpreted as '>=2.12.0 <4.0.0'.\n\n  Consider updating the SDK constraint to:\n\n  environment:\n    sdk: '>=2.12.0 <4.0.0'\n\nThe server may enforce additional checks.\n```\n\nso this PR adds a new CHANGELOG entry and adjusts the SDK constraint\naccordingly.",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/ce652ec49953489454ced6f43ca0adb7a22a7003"
-               },
-               {
-                  "sha": "b528decd450269db2fcfb9910e6f4c65580a6165",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789976619,
-                  "message": "chore: update CHANGELOG and loosen sdk constraint",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/b528decd450269db2fcfb9910e6f4c65580a6165"
-               },
-               {
-                  "sha": "18c94c83b24c8fc3069bf742cd1a71791573f9d1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789976189,
-                  "message": "Update to dbus.dart 0.8.0 (#64)",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/18c94c83b24c8fc3069bf742cd1a71791573f9d1"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "packagekit.dart",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/packagekit.dart",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
-                  "author": "ashuntu",
-                  "timestamp": 1772066466,
-                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
-               },
-               {
-                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
-                  "author": "ashuntu",
-                  "timestamp": 1771891119,
-                  "message": "fix: Add .vscode/ to .gitignore",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
-               },
-               {
-                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
-                  "author": "ashuntu",
-                  "timestamp": 1771891112,
-                  "message": "fix: Resolve ubuntu_lints errors",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "pc-amd64-gadget-desktop",
-            "defaultBranch": "22",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/pc-amd64-gadget-desktop",
-            "releases": null,
-            "commits": [
-               {
-                  "sha": "f6b5f109fcc92c430d74867199fb9c5ad2532491",
-                  "author": "James Henstridge",
-                  "timestamp": 1711079315,
-                  "message": "Merge pull request #15 from canonical/increase_ubuntu_seed_partition\n\nBump ubuntu-seed to 7000M to allow more flexibility in seeding more snaps",
-                  "url": "https://github.com/canonical/pc-amd64-gadget-desktop/commit/f6b5f109fcc92c430d74867199fb9c5ad2532491"
-               },
-               {
-                  "sha": "1c28ed9e630d52fa62f5b8a414f3d3a659d3bbea",
-                  "author": "Ken VanDine",
-                  "timestamp": 1711027290,
-                  "message": "Bump ubuntu-seed to 7000M to allow more flexibility in seeding more\nsnaps.",
-                  "url": "https://github.com/canonical/pc-amd64-gadget-desktop/commit/1c28ed9e630d52fa62f5b8a414f3d3a659d3bbea"
-               },
-               {
-                  "sha": "5dd6f8eef4cd088be477e0b04fec586caef1fd64",
-                  "author": "Ken VanDine",
-                  "timestamp": 1698113710,
-                  "message": "Only allow ssh from localhost (#12)",
-                  "url": "https://github.com/canonical/pc-amd64-gadget-desktop/commit/5dd6f8eef4cd088be477e0b04fec586caef1fd64"
-               }
-            ],
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "prompting-client",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -6809,25 +6806,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7bddd104d423c2691a5982758898e869ecdaeec1",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790068538,
-                  "message": "maint: commit pubspec.lock files (#329)",
-                  "url": "https://github.com/canonical/prompting-client/commit/7bddd104d423c2691a5982758898e869ecdaeec1"
+                  "sha": "d9b18538ff9d749f6a08bc4acd3b1717875b86b0",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790161341,
+                  "message": "chore(deps): update rust crate http-body-util to v0.1.5 (#330)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/d9b18538ff9d749f6a08bc4acd3b1717875b86b0"
                },
                {
-                  "sha": "68b871b3eefb8f43f6f96f8b08f804c1df575510",
+                  "sha": "336f82f951e38dcb86f12fd331b8186b08564358",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1790005873,
-                  "message": "maint: commit pubspec.lock files",
-                  "url": "https://github.com/canonical/prompting-client/commit/68b871b3eefb8f43f6f96f8b08f804c1df575510"
+                  "timestamp": 1790160847,
+                  "message": "chore(deps): update rust crate chrono to v0.4.45 (#317)",
+                  "url": "https://github.com/canonical/prompting-client/commit/336f82f951e38dcb86f12fd331b8186b08564358"
                },
                {
-                  "sha": "88bf647de0d590ab988a05f0348f9b6b3270230b",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1790001561,
-                  "message": "fix: expand action buttons to full prompt width (#318)\n\nThe allow/deny split buttons were laid out in a `Wrap` with\n`WrapAlignment.center`, so each button only ever took its intrinsic\nwidth — the width of its own label. At the prompt's fixed 372px width\nthis left the two buttons hugging their text with uneven widths, and\nlonger localized labels pushed the second button onto its own line.\n\nThis switches the layout to a `Column` with `CrossAxisAlignment.stretch`\nand passes the new `expanded: true` flag to `YaruSplitButton.filled`, so\neach button fills the full content width regardless of label length.\nWithout `expanded`, the split button's internal `Row` still hugs its\nlabel even when the parent stretches it, so the flag is required for the\nstretch to have any effect.\n\n`expanded` was added in yaru 10.2.0, hence the accompanying dependency\nbump.\n\n### Dependency bump\n\n`yaru: ^8.3.0` → `^10.2.0` — two major versions. Two knock-on changes\nwere needed:\n\n- `main.dart`: `ThemeData? theme` / `darkTheme` on `YaruThemeData` are\nnon-nullable as of 10.2.0, so the `?.` before `.customize()` is gone.\n- `iterable_extensions.dart`: yaru 10.2.0 now exports its own\n`separatedBy` extension on `Iterable<Widget>`, which collides with our\nlocal copy as an ambiguous extension. The local `separatedBy` is removed\nand `tile_list.dart` picks up yaru's via its existing\n`package:yaru/yaru.dart` import. `withSpacing` is untouched — yaru's\nversion of that one is not exported.\n\n### Testing\n\nAdded `test/device_action_buttons_test.dart`, which renders\n`DeviceActionButtons` at the real content width (`kWindowWidth - 2 *\nkPagePadding`) and asserts the dropdown's right edge reaches the full\nwidth — i.e. the main button actually expanded rather than hugging its\nlabel.\n\nNote that the existing widget tests run at a 760px viewport\n(`test/test_utils.dart:26`), roughly 2× the real 372px prompt width, so\nthey would not have caught this. The new test sets its own width\nexplicitly.\n\nVerified locally:\n\n- `flutter test` — 50 passed\n- `flutter analyze --fatal-infos` — no issues\n- `dart format` — no changes\n\n### Review notes\n\nThis is a visual change to the camera, microphone and home prompt pages,\nso it's worth a look on a real prompt rather than just reading the diff.\nReviewers should also confirm the yaru 8 → 10 jump doesn't regress\nanything else in the UI; the bump is scoped to what `expanded` requires,\nbut it is a two-major-version move and the test suite only covers so\nmuch of the visual surface.\n\n\n\n---\n\nUDENG-11210",
-                  "url": "https://github.com/canonical/prompting-client/commit/88bf647de0d590ab988a05f0348f9b6b3270230b"
+                  "sha": "11ebe83e48e0ce2bc20f5263fd4c473bf0338626",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790159828,
+                  "message": "chore(deps): update rust crate chrono to v0.4.45",
+                  "url": "https://github.com/canonical/prompting-client/commit/11ebe83e48e0ce2bc20f5263fd4c473bf0338626"
                }
             ],
             "ciActions": [],
@@ -7514,38 +7511,59 @@
             "snap": null
          },
          {
-            "name": "go-i18n",
+            "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/ubuntu/go-i18n",
-            "releases": null,
-            "commits": [
+            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
+            "releases": [
                {
-                  "sha": "47e047f852b4b86d45567c8331a2548d6473692b",
-                  "author": "adombeck",
-                  "timestamp": 1760007113,
-                  "message": "Bump Go version to 1.23.12 (#17)",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/47e047f852b4b86d45567c8331a2548d6473692b"
+                  "id": 393226874,
+                  "version": "rev115",
+                  "timestamp": 1790017993,
+                  "title": "Revision 115",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 19:15 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.2.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/151\">#151</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...rev115\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114&hellip;rev115</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev115",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev115...main"
                },
                {
-                  "sha": "c4be58aa4db383b3a41f6c2d6a564e627745834c",
-                  "author": "adombeck",
-                  "timestamp": 1760007082,
-                  "message": "Fix module path of the tools module (#16)",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/c4be58aa4db383b3a41f6c2d6a564e627745834c"
+                  "id": 393038872,
+                  "version": "rev114",
+                  "timestamp": 1790001057,
+                  "title": "Revision 114",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:38 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/150\">#150</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...rev114\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113&hellip;rev114</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev114",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...main"
                },
                {
-                  "sha": "184110c056a539a8510a9b00c108c52d0b82b3d8",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1759999865,
-                  "message": "Bump Go version to 1.23.12\n\ngovulncheck reports the following vulnerability in Go 1.23.10:\n\nVulnerability #1: GO-2025-3956\n    Unexpected paths returned from LookPath in os/exec\n  More info: https://pkg.go.dev/vuln/GO-2025-3956\n  Standard library\n    Found in: os/exec@go1.23.10\n    Fixed in: os/exec@go1.23.12\n    Example traces found:\nError:       #1: cmd/compile-mo/main.go:53:30: compile.generateMos calls exec.Command, which calls exec.LookPath",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/184110c056a539a8510a9b00c108c52d0b82b3d8"
+                  "id": 387261161,
+                  "version": "rev113",
+                  "timestamp": 1789152111,
+                  "title": "Revision 113",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 105</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 18:43 UTC on 11 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update tiobe/tics-github-action action to v4 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/149\">#149</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112...rev113\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev112&hellip;rev113</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev113",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...main"
                }
             ],
-            "ciActions": [
-               "https://github.com/ubuntu/go-i18n/actions/workflows/qa.yaml"
-            ],
-            "charm": null,
+            "commits": null,
+            "ciActions": [],
+            "charm": {
+               "name": "ubuntu-insights-server-k8s",
+               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
+               "releases": [
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 115,
+                     "timestamp": 1790018142
+                  }
+               ],
+               "channels": [
+                  "edge"
+               ],
+               "tracks": [
+                  "latest"
+               ]
+            },
             "snap": null
          },
          {
@@ -8350,25 +8368,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "4163e18e996184ea9f23138aa31bf35669bdea0e",
+                  "sha": "c942fd4ee95aed354eec6eef4ef21f0eccd69133",
                   "author": "adombeck",
-                  "timestamp": 1790114890,
-                  "message": "debian: Allow newer GNOME Shell versions on Resolute (#1950)\n\nUDENG-11588",
-                  "url": "https://github.com/canonical/authd/commit/4163e18e996184ea9f23138aa31bf35669bdea0e"
+                  "timestamp": 1790162103,
+                  "message": "e2e: Fix GNOME Shell not installed (#1969)\n\nResolute e2e runs failed because GNOME Shell was not installed anymore.\n\nCloses #1968",
+                  "url": "https://github.com/canonical/authd/commit/c942fd4ee95aed354eec6eef4ef21f0eccd69133"
                },
                {
-                  "sha": "8c98fc9a61d9712e8343f6c79feb3ecf31b0513e",
-                  "author": "adombeck",
-                  "timestamp": 1790114810,
-                  "message": "pam/gdm: serialize challenge setup with GDM stage (#1904)\n\nCloses #1901 \nUDENG-11480",
-                  "url": "https://github.com/canonical/authd/commit/8c98fc9a61d9712e8343f6c79feb3ecf31b0513e"
+                  "sha": "46261945502b23b24cf70c4cf720f921f43c9d3c",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790160073,
+                  "message": "Prevent empty packaging regeneration commits (#1967)\n\nAs noted in https://github.com/canonical/authd/pull/1816/commits\nThe update packaging job can generate empty commits\n\nThe GitHub commit API accepts file additions that already match the\nbranch, so verify the downloaded artifact differs before creating the\ncommit.",
+                  "url": "https://github.com/canonical/authd/commit/46261945502b23b24cf70c4cf720f921f43c9d3c"
                },
                {
-                  "sha": "5c2d36f67212c3aa1860ace97f2f5b2ac227eb43",
-                  "author": "adombeck",
-                  "timestamp": 1790102910,
-                  "message": "e2e: support selecting source for system packages (#1911)\n\nCloses #1920\nUDENG-11503",
-                  "url": "https://github.com/canonical/authd/commit/5c2d36f67212c3aa1860ace97f2f5b2ac227eb43"
+                  "sha": "2f5dfeef7655b80b95869be166e692859622661c",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790158945,
+                  "message": "e2e: keep resolute GNOME Shell available with stale PPA\n\nThe e2e tests were broken on Resolute because installing the branch\nauthd package removed gnome-shell. The package required version\n50.1-0ubuntu1.3, but authd-edge still publishes the patched\n50.1-0ubuntu1.2+authd1~26.04.1 build.\n\nKeep that patched PPA build as the lower bound while accepting newer\narchive versions, so provisioning can retain GNOME Shell until the PPA\ncatches up.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/2f5dfeef7655b80b95869be166e692859622661c"
                }
             ],
             "ciActions": [
@@ -8583,6 +8601,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9836436feef1cf2bc119b5d9cf926f060512aa74",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790153878,
+                  "message": "ci: update ci to reuse cached fvm, flutter, melos and dart packages (#254)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9836436feef1cf2bc119b5d9cf926f060512aa74"
+               },
+               {
                   "sha": "5e8b94bfa73133d17c0370fe5aa58b65766e4dc6",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790077988,
@@ -8595,13 +8620,6 @@
                   "timestamp": 1790071765,
                   "message": "maint: regenerate l10n",
                   "url": "https://github.com/canonical/desktop-security-center/commit/67492e4d42d7b873e5d927c6b9925b4e4ee8a55d"
-               },
-               {
-                  "sha": "ab15ceff6b690f5c6da2fbc083c8082ee1e2025e",
-                  "author": "Github Action",
-                  "timestamp": 1790071385,
-                  "message": "fix(l10n): translated using Weblate (English (United Kingdom))\n\nCurrently translated at 94.8% (186 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/en_GB/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/ab15ceff6b690f5c6da2fbc083c8082ee1e2025e"
                }
             ],
             "ciActions": [],
@@ -8685,25 +8703,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "2d77dfef3d13deeb24b67a6c6fc3adb6ae6f8060",
+                  "sha": "397a7774d453f34192d2db86c387ed4e7b5a2998",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1789737616,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#421)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/2d77dfef3d13deeb24b67a6c6fc3adb6ae6f8060"
+                  "timestamp": 1790152428,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#426)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/397a7774d453f34192d2db86c387ed4e7b5a2998"
                },
                {
-                  "sha": "c2c38313b1a20f1382934dafdf1c7ed911ecd9e3",
+                  "sha": "b1009b1b9eb07c01e6523a6e5c0fde8467e7b383",
                   "author": "canonical-desktop-bot",
-                  "timestamp": 1789736720,
+                  "timestamp": 1790135613,
                   "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/firmware-updater/commit/c2c38313b1a20f1382934dafdf1c7ed911ecd9e3"
+                  "url": "https://github.com/canonical/firmware-updater/commit/b1009b1b9eb07c01e6523a6e5c0fde8467e7b383"
                },
                {
-                  "sha": "ffca4980db74f3380ced9fb203b843818a292067",
-                  "author": "Adolfo Jayme Barrientos",
-                  "timestamp": 1789621321,
-                  "message": "fix(l10n): translated using Weblate (Spanish)\n\nCurrently translated at 100.0% (114 of 114 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/es/",
-                  "url": "https://github.com/canonical/firmware-updater/commit/ffca4980db74f3380ced9fb203b843818a292067"
+                  "sha": "516e5a97b58a496648d3fcf69887285bfae5465d",
+                  "author": "ふぐ",
+                  "timestamp": 1790095006,
+                  "message": "fix(l10n): translated using Weblate (Japanese)\n\nCurrently translated at 100.0% (114 of 114 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/ja/",
+                  "url": "https://github.com/canonical/firmware-updater/commit/516e5a97b58a496648d3fcf69887285bfae5465d"
                }
             ],
             "ciActions": [
@@ -9139,25 +9157,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "74be9ea9cd3485c4a463f99b728f07fcd0bbe364",
-                  "author": "dependabot[bot]",
-                  "timestamp": 1790005930,
-                  "message": "build(deps): bump anyio from 4.13.0 to 4.14.2 in /server\n\nBumps [anyio](https://github.com/agronholm/anyio) from 4.13.0 to 4.14.2.\n- [Release notes](https://github.com/agronholm/anyio/releases)\n- [Commits](https://github.com/agronholm/anyio/compare/4.13.0...4.14.2)\n\n---\nupdated-dependencies:\n- dependency-name: anyio\n  dependency-version: 4.14.2\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
-                  "url": "https://github.com/canonical/myna/commit/74be9ea9cd3485c4a463f99b728f07fcd0bbe364"
+                  "sha": "97f7694fcf5d8175243b2cdcddc5da5a7d507b73",
+                  "author": "Charles",
+                  "timestamp": 1790153285,
+                  "message": "feat(cli): send testbed clips as fast as the backend takes them\n\nReal-time pacing made a 33 s clip look hung for 33 s. --realtime keeps\nit for imitating a microphone; --no-realtime is gone.",
+                  "url": "https://github.com/canonical/myna/commit/97f7694fcf5d8175243b2cdcddc5da5a7d507b73"
                },
                {
-                  "sha": "fe7779169dffedae172e41ebc533b1f1b5909440",
-                  "author": "Peter Vančo",
-                  "timestamp": 1789946948,
-                  "message": "fix(l10n): added translation using Weblate (Czech)",
-                  "url": "https://github.com/canonical/myna/commit/fe7779169dffedae172e41ebc533b1f1b5909440"
+                  "sha": "6f10e3d379ca74d19d9017175aad032cccb2e078",
+                  "author": "Charles",
+                  "timestamp": 1790153250,
+                  "message": "refactor(cli): pass the testbed's arguments to parse_args\n\nLets tests drive the flag handling.",
+                  "url": "https://github.com/canonical/myna/commit/6f10e3d379ca74d19d9017175aad032cccb2e078"
                },
                {
-                  "sha": "881ef334fd66db14f92e649dd604591fd4ef7113",
-                  "author": "Ihor Hordiichuk",
-                  "timestamp": 1789945530,
-                  "message": "fix(l10n): added translation using Weblate (Ukrainian)",
-                  "url": "https://github.com/canonical/myna/commit/881ef334fd66db14f92e649dd604591fd4ef7113"
+                  "sha": "3b9272d91c4ffc3df831c9645bd0014c832f109d",
+                  "author": "Charles",
+                  "timestamp": 1790149188,
+                  "message": "feat(cli): resample testbed clips to the backend format\n\nA clip recorded at 48 kHz stereo was sent as-is and every backend\nrefused it. The daemon never hits this because PipeWire converts its\ncapture; a file has to be converted here.",
+                  "url": "https://github.com/canonical/myna/commit/3b9272d91c4ffc3df831c9645bd0014c832f109d"
                }
             ],
             "ciActions": [],
@@ -9306,25 +9324,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "7bddd104d423c2691a5982758898e869ecdaeec1",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790068538,
-                  "message": "maint: commit pubspec.lock files (#329)",
-                  "url": "https://github.com/canonical/prompting-client/commit/7bddd104d423c2691a5982758898e869ecdaeec1"
+                  "sha": "d9b18538ff9d749f6a08bc4acd3b1717875b86b0",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790161341,
+                  "message": "chore(deps): update rust crate http-body-util to v0.1.5 (#330)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/d9b18538ff9d749f6a08bc4acd3b1717875b86b0"
                },
                {
-                  "sha": "68b871b3eefb8f43f6f96f8b08f804c1df575510",
+                  "sha": "336f82f951e38dcb86f12fd331b8186b08564358",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1790005873,
-                  "message": "maint: commit pubspec.lock files",
-                  "url": "https://github.com/canonical/prompting-client/commit/68b871b3eefb8f43f6f96f8b08f804c1df575510"
+                  "timestamp": 1790160847,
+                  "message": "chore(deps): update rust crate chrono to v0.4.45 (#317)",
+                  "url": "https://github.com/canonical/prompting-client/commit/336f82f951e38dcb86f12fd331b8186b08564358"
                },
                {
-                  "sha": "88bf647de0d590ab988a05f0348f9b6b3270230b",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1790001561,
-                  "message": "fix: expand action buttons to full prompt width (#318)\n\nThe allow/deny split buttons were laid out in a `Wrap` with\n`WrapAlignment.center`, so each button only ever took its intrinsic\nwidth — the width of its own label. At the prompt's fixed 372px width\nthis left the two buttons hugging their text with uneven widths, and\nlonger localized labels pushed the second button onto its own line.\n\nThis switches the layout to a `Column` with `CrossAxisAlignment.stretch`\nand passes the new `expanded: true` flag to `YaruSplitButton.filled`, so\neach button fills the full content width regardless of label length.\nWithout `expanded`, the split button's internal `Row` still hugs its\nlabel even when the parent stretches it, so the flag is required for the\nstretch to have any effect.\n\n`expanded` was added in yaru 10.2.0, hence the accompanying dependency\nbump.\n\n### Dependency bump\n\n`yaru: ^8.3.0` → `^10.2.0` — two major versions. Two knock-on changes\nwere needed:\n\n- `main.dart`: `ThemeData? theme` / `darkTheme` on `YaruThemeData` are\nnon-nullable as of 10.2.0, so the `?.` before `.customize()` is gone.\n- `iterable_extensions.dart`: yaru 10.2.0 now exports its own\n`separatedBy` extension on `Iterable<Widget>`, which collides with our\nlocal copy as an ambiguous extension. The local `separatedBy` is removed\nand `tile_list.dart` picks up yaru's via its existing\n`package:yaru/yaru.dart` import. `withSpacing` is untouched — yaru's\nversion of that one is not exported.\n\n### Testing\n\nAdded `test/device_action_buttons_test.dart`, which renders\n`DeviceActionButtons` at the real content width (`kWindowWidth - 2 *\nkPagePadding`) and asserts the dropdown's right edge reaches the full\nwidth — i.e. the main button actually expanded rather than hugging its\nlabel.\n\nNote that the existing widget tests run at a 760px viewport\n(`test/test_utils.dart:26`), roughly 2× the real 372px prompt width, so\nthey would not have caught this. The new test sets its own width\nexplicitly.\n\nVerified locally:\n\n- `flutter test` — 50 passed\n- `flutter analyze --fatal-infos` — no issues\n- `dart format` — no changes\n\n### Review notes\n\nThis is a visual change to the camera, microphone and home prompt pages,\nso it's worth a look on a real prompt rather than just reading the diff.\nReviewers should also confirm the yaru 8 → 10 jump doesn't regress\nanything else in the UI; the bump is scoped to what `expanded` requires,\nbut it is a two-major-version move and the test suite only covers so\nmuch of the visual surface.\n\n\n\n---\n\nUDENG-11210",
-                  "url": "https://github.com/canonical/prompting-client/commit/88bf647de0d590ab988a05f0348f9b6b3270230b"
+                  "sha": "11ebe83e48e0ce2bc20f5263fd4c473bf0338626",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790159828,
+                  "message": "chore(deps): update rust crate chrono to v0.4.45",
+                  "url": "https://github.com/canonical/prompting-client/commit/11ebe83e48e0ce2bc20f5263fd4c473bf0338626"
                }
             ],
             "ciActions": [],
@@ -9735,9 +9753,18 @@
          {
             "name": "translations-verifier",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 3,
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
+               {
+                  "id": 394466374,
+                  "version": "v0.3.0",
+                  "timestamp": 1790153530,
+                  "title": "v0.3.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.2.0...v0.3.0\">0.3.0</a> (2026-09-23)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>add source text to the console output (<a href=\"https://github.com/canonical/translations-verifier/issues/18\">#18</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/3cb7398e4f0b1cb16c7cb8bdc3c0fc6504849357\">3cb7398</a>)</li>\n</ul>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>updated release-please support for uv lockfile (<a href=\"https://github.com/canonical/translations-verifier/issues/20\">#20</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/6aab4519906fb8d22da0a8cf3a1364d30cdb613b\">6aab451</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.3.0",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.3.0...main"
+               },
                {
                   "id": 393153433,
                   "version": "v0.2.0",
