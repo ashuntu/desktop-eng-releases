@@ -3034,6 +3034,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ce15907fce19a9b8bc01bd21942d2162dca506c0",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1790172645,
+                  "message": "156.0.1-1",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/ce15907fce19a9b8bc01bd21942d2162dca506c0"
+               },
+               {
                   "sha": "f9b079024543f682e89c179a8887ba2f48651b84",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1789455056,
@@ -3046,13 +3053,6 @@
                   "timestamp": 1788938179,
                   "message": "155.0.1-1",
                   "url": "https://github.com/ubuntu/thunderbird/commit/e57c7479f352df2376521a15b56d0c9be32813e2"
-               },
-               {
-                  "sha": "056a6271bd39143009ec762c8bc81095ad504bd8",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1787901173,
-                  "message": "155.0-1",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/056a6271bd39143009ec762c8bc81095ad504bd8"
                }
             ],
             "ciActions": [],
@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c942fd4ee95aed354eec6eef4ef21f0eccd69133",
+                  "sha": "39f6ac727b98b62921eb8cb619ebf8a74f773bb1",
                   "author": "adombeck",
-                  "timestamp": 1790162103,
-                  "message": "e2e: Fix GNOME Shell not installed (#1969)\n\nResolute e2e runs failed because GNOME Shell was not installed anymore.\n\nCloses #1968",
-                  "url": "https://github.com/canonical/authd/commit/c942fd4ee95aed354eec6eef4ef21f0eccd69133"
+                  "timestamp": 1790179411,
+                  "message": "e2e: also record apt policy of yaru in test logs (#1975)",
+                  "url": "https://github.com/canonical/authd/commit/39f6ac727b98b62921eb8cb619ebf8a74f773bb1"
                },
                {
-                  "sha": "46261945502b23b24cf70c4cf720f921f43c9d3c",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790160073,
-                  "message": "Prevent empty packaging regeneration commits (#1967)\n\nAs noted in https://github.com/canonical/authd/pull/1816/commits\nThe update packaging job can generate empty commits\n\nThe GitHub commit API accepts file additions that already match the\nbranch, so verify the downloaded artifact differs before creating the\ncommit.",
-                  "url": "https://github.com/canonical/authd/commit/46261945502b23b24cf70c4cf720f921f43c9d3c"
+                  "sha": "a48e617bf5e9e6e056817ca1a74eb266cd8da8b5",
+                  "author": "adombeck",
+                  "timestamp": 1790176644,
+                  "message": "deps(submodule): bump e2e-tests/.yarf from `4a93842` to `b7204cf` (#1847)\n\nCloses #1826",
+                  "url": "https://github.com/canonical/authd/commit/a48e617bf5e9e6e056817ca1a74eb266cd8da8b5"
                },
                {
-                  "sha": "2f5dfeef7655b80b95869be166e692859622661c",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790158945,
-                  "message": "e2e: keep resolute GNOME Shell available with stale PPA\n\nThe e2e tests were broken on Resolute because installing the branch\nauthd package removed gnome-shell. The package required version\n50.1-0ubuntu1.3, but authd-edge still publishes the patched\n50.1-0ubuntu1.2+authd1~26.04.1 build.\n\nKeep that patched PPA build as the lower bound while accepting newer\narchive versions, so provisioning can retain GNOME Shell until the PPA\ncatches up.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/2f5dfeef7655b80b95869be166e692859622661c"
+                  "sha": "f3a6b4e5963bd2576691447539e29bb8877b865c",
+                  "author": "OrazioLucioTerranova",
+                  "timestamp": 1789631274,
+                  "message": "Reduce OCR confidence threshold for GDM Username/Password fields\n\nGDM's Username and Password placeholder fields render with a blinking\ntext cursor that can visually fuse with the adjacent letter, making\nOCR read e.g. \"IUsername\" or \"IPassword\" instead of the expected\ntext. The extra glyph doesn't affect the fuzzy-match similarity score\n(the target string is still a full substring match), but it lowers\nthe OCR engine's own per-token confidence score below the suite's\ndefault threshold, causing sporadic Match Text timeouts.\n\nLower the confidence threshold to 88 for these matches to tolerate the\nconfidence dip caused by the cursor-fusion artifact, without loosening\nsimilarity matching.\n\nCo-authored-by: Adrian Dombeck <adrian.dombeck@canonical.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/f3a6b4e5963bd2576691447539e29bb8877b865c"
                }
             ],
             "ciActions": [
@@ -4350,25 +4350,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d9b18538ff9d749f6a08bc4acd3b1717875b86b0",
+                  "sha": "26a5124b40856225ee3547d361e0c9b0c64f6f52",
                   "author": "renovate[bot]",
-                  "timestamp": 1790161341,
-                  "message": "chore(deps): update rust crate http-body-util to v0.1.5 (#330)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/d9b18538ff9d749f6a08bc4acd3b1717875b86b0"
+                  "timestamp": 1790179575,
+                  "message": "chore(deps): update google/osv-scanner-action digest to 764c918 (#203)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/26a5124b40856225ee3547d361e0c9b0c64f6f52"
                },
                {
-                  "sha": "336f82f951e38dcb86f12fd331b8186b08564358",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790160847,
-                  "message": "chore(deps): update rust crate chrono to v0.4.45 (#317)",
-                  "url": "https://github.com/canonical/prompting-client/commit/336f82f951e38dcb86f12fd331b8186b08564358"
+                  "sha": "e8c758cfa513cb45af3f6f0f14c3283bab0034d9",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790163858,
+                  "message": "fix(deps): update rust crate thiserror to v2 (#163)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/e8c758cfa513cb45af3f6f0f14c3283bab0034d9"
                },
                {
-                  "sha": "11ebe83e48e0ce2bc20f5263fd4c473bf0338626",
+                  "sha": "5f269e66891b00becfba5c1be79ce1a55e57e283",
                   "author": "renovate[bot]",
-                  "timestamp": 1790159828,
-                  "message": "chore(deps): update rust crate chrono to v0.4.45",
-                  "url": "https://github.com/canonical/prompting-client/commit/11ebe83e48e0ce2bc20f5263fd4c473bf0338626"
+                  "timestamp": 1790162735,
+                  "message": "chore(deps): update rust crate axum to v0.8.9 (#313)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/5f269e66891b00becfba5c1be79ce1a55e57e283"
                }
             ],
             "ciActions": [],
@@ -4957,25 +4957,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8fc59c5219fc6a9693aab25a9739cd580aa813e3",
+                  "sha": "c34bd5790eabf76a4429d89044f64b5e2480c7eb",
                   "author": "Dennis Loose",
-                  "timestamp": 1789739500,
-                  "message": "chore: track subiquity from ubuntu/stonking (#1555)\n\nIn preparation for the upcoming release, we should start tracking\nsubiquity's newly created `ubuntu/stonking` branch.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8fc59c5219fc6a9693aab25a9739cd580aa813e3"
+                  "timestamp": 1790179280,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631 (#1558)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/be4a23540c233f7c8fc283ede8d00de7a01a4890..233463112af9da37a4c411a7bd2531f12842d1da))\n| digest | `be4a235` → `2334631` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0NC4xMTAuMCIsInVwZGF0ZWRJblZlciI6IjQ0LjExMC4wIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c34bd5790eabf76a4429d89044f64b5e2480c7eb"
                },
                {
-                  "sha": "e2d7437bff1b867ea0fbfaa65dfab922319aa04c",
+                  "sha": "ab47bcb98e5ffdb87501fb7789ecd394d26f69e6",
                   "author": "Dennis Loose",
-                  "timestamp": 1789734618,
-                  "message": "chore: track subiquity from ubuntu/stonking",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e2d7437bff1b867ea0fbfaa65dfab922319aa04c"
+                  "timestamp": 1790177507,
+                  "message": "chore: regenerate subiquity types",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ab47bcb98e5ffdb87501fb7789ecd394d26f69e6"
                },
                {
-                  "sha": "9397408ebaf2ca5a2653dbc5e2873ccdf126cfa5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789654712,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 37d40d6 (#1553)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/b02541cad731e8edd3586d0535309319af71896c..37d40d61ba554975bdce06b8a2e07322b8df4f78))\n| digest | `b02541c` → `37d40d6` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0NC45My43IiwidXBkYXRlZEluVmVyIjoiNDQuOTYuMyIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9397408ebaf2ca5a2653dbc5e2873ccdf126cfa5"
+                  "sha": "bc8b06577375cc89c941642defea77b687c2e2cd",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790176826,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bc8b06577375cc89c941642defea77b687c2e2cd"
                }
             ],
             "ciActions": [
@@ -5815,25 +5815,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c942fd4ee95aed354eec6eef4ef21f0eccd69133",
+                  "sha": "39f6ac727b98b62921eb8cb619ebf8a74f773bb1",
                   "author": "adombeck",
-                  "timestamp": 1790162103,
-                  "message": "e2e: Fix GNOME Shell not installed (#1969)\n\nResolute e2e runs failed because GNOME Shell was not installed anymore.\n\nCloses #1968",
-                  "url": "https://github.com/canonical/authd/commit/c942fd4ee95aed354eec6eef4ef21f0eccd69133"
+                  "timestamp": 1790179411,
+                  "message": "e2e: also record apt policy of yaru in test logs (#1975)",
+                  "url": "https://github.com/canonical/authd/commit/39f6ac727b98b62921eb8cb619ebf8a74f773bb1"
                },
                {
-                  "sha": "46261945502b23b24cf70c4cf720f921f43c9d3c",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790160073,
-                  "message": "Prevent empty packaging regeneration commits (#1967)\n\nAs noted in https://github.com/canonical/authd/pull/1816/commits\nThe update packaging job can generate empty commits\n\nThe GitHub commit API accepts file additions that already match the\nbranch, so verify the downloaded artifact differs before creating the\ncommit.",
-                  "url": "https://github.com/canonical/authd/commit/46261945502b23b24cf70c4cf720f921f43c9d3c"
+                  "sha": "a48e617bf5e9e6e056817ca1a74eb266cd8da8b5",
+                  "author": "adombeck",
+                  "timestamp": 1790176644,
+                  "message": "deps(submodule): bump e2e-tests/.yarf from `4a93842` to `b7204cf` (#1847)\n\nCloses #1826",
+                  "url": "https://github.com/canonical/authd/commit/a48e617bf5e9e6e056817ca1a74eb266cd8da8b5"
                },
                {
-                  "sha": "2f5dfeef7655b80b95869be166e692859622661c",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790158945,
-                  "message": "e2e: keep resolute GNOME Shell available with stale PPA\n\nThe e2e tests were broken on Resolute because installing the branch\nauthd package removed gnome-shell. The package required version\n50.1-0ubuntu1.3, but authd-edge still publishes the patched\n50.1-0ubuntu1.2+authd1~26.04.1 build.\n\nKeep that patched PPA build as the lower bound while accepting newer\narchive versions, so provisioning can retain GNOME Shell until the PPA\ncatches up.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/2f5dfeef7655b80b95869be166e692859622661c"
+                  "sha": "f3a6b4e5963bd2576691447539e29bb8877b865c",
+                  "author": "OrazioLucioTerranova",
+                  "timestamp": 1789631274,
+                  "message": "Reduce OCR confidence threshold for GDM Username/Password fields\n\nGDM's Username and Password placeholder fields render with a blinking\ntext cursor that can visually fuse with the adjacent letter, making\nOCR read e.g. \"IUsername\" or \"IPassword\" instead of the expected\ntext. The extra glyph doesn't affect the fuzzy-match similarity score\n(the target string is still a full substring match), but it lowers\nthe OCR engine's own per-token confidence score below the suite's\ndefault threshold, causing sporadic Match Text timeouts.\n\nLower the confidence threshold to 88 for these matches to tolerate the\nconfidence dip caused by the cursor-fusion artifact, without loosening\nsimilarity matching.\n\nCo-authored-by: Adrian Dombeck <adrian.dombeck@canonical.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/f3a6b4e5963bd2576691447539e29bb8877b865c"
                }
             ],
             "ciActions": [
@@ -6806,25 +6806,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d9b18538ff9d749f6a08bc4acd3b1717875b86b0",
+                  "sha": "26a5124b40856225ee3547d361e0c9b0c64f6f52",
                   "author": "renovate[bot]",
-                  "timestamp": 1790161341,
-                  "message": "chore(deps): update rust crate http-body-util to v0.1.5 (#330)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/d9b18538ff9d749f6a08bc4acd3b1717875b86b0"
+                  "timestamp": 1790179575,
+                  "message": "chore(deps): update google/osv-scanner-action digest to 764c918 (#203)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/26a5124b40856225ee3547d361e0c9b0c64f6f52"
                },
                {
-                  "sha": "336f82f951e38dcb86f12fd331b8186b08564358",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790160847,
-                  "message": "chore(deps): update rust crate chrono to v0.4.45 (#317)",
-                  "url": "https://github.com/canonical/prompting-client/commit/336f82f951e38dcb86f12fd331b8186b08564358"
+                  "sha": "e8c758cfa513cb45af3f6f0f14c3283bab0034d9",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790163858,
+                  "message": "fix(deps): update rust crate thiserror to v2 (#163)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/e8c758cfa513cb45af3f6f0f14c3283bab0034d9"
                },
                {
-                  "sha": "11ebe83e48e0ce2bc20f5263fd4c473bf0338626",
+                  "sha": "5f269e66891b00becfba5c1be79ce1a55e57e283",
                   "author": "renovate[bot]",
-                  "timestamp": 1790159828,
-                  "message": "chore(deps): update rust crate chrono to v0.4.45",
-                  "url": "https://github.com/canonical/prompting-client/commit/11ebe83e48e0ce2bc20f5263fd4c473bf0338626"
+                  "timestamp": 1790162735,
+                  "message": "chore(deps): update rust crate axum to v0.8.9 (#313)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/5f269e66891b00becfba5c1be79ce1a55e57e283"
                }
             ],
             "ciActions": [],
@@ -7409,25 +7409,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8fc59c5219fc6a9693aab25a9739cd580aa813e3",
+                  "sha": "c34bd5790eabf76a4429d89044f64b5e2480c7eb",
                   "author": "Dennis Loose",
-                  "timestamp": 1789739500,
-                  "message": "chore: track subiquity from ubuntu/stonking (#1555)\n\nIn preparation for the upcoming release, we should start tracking\nsubiquity's newly created `ubuntu/stonking` branch.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8fc59c5219fc6a9693aab25a9739cd580aa813e3"
+                  "timestamp": 1790179280,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631 (#1558)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/be4a23540c233f7c8fc283ede8d00de7a01a4890..233463112af9da37a4c411a7bd2531f12842d1da))\n| digest | `be4a235` → `2334631` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0NC4xMTAuMCIsInVwZGF0ZWRJblZlciI6IjQ0LjExMC4wIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c34bd5790eabf76a4429d89044f64b5e2480c7eb"
                },
                {
-                  "sha": "e2d7437bff1b867ea0fbfaa65dfab922319aa04c",
+                  "sha": "ab47bcb98e5ffdb87501fb7789ecd394d26f69e6",
                   "author": "Dennis Loose",
-                  "timestamp": 1789734618,
-                  "message": "chore: track subiquity from ubuntu/stonking",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e2d7437bff1b867ea0fbfaa65dfab922319aa04c"
+                  "timestamp": 1790177507,
+                  "message": "chore: regenerate subiquity types",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ab47bcb98e5ffdb87501fb7789ecd394d26f69e6"
                },
                {
-                  "sha": "9397408ebaf2ca5a2653dbc5e2873ccdf126cfa5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789654712,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 37d40d6 (#1553)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/b02541cad731e8edd3586d0535309319af71896c..37d40d61ba554975bdce06b8a2e07322b8df4f78))\n| digest | `b02541c` → `37d40d6` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0NC45My43IiwidXBkYXRlZEluVmVyIjoiNDQuOTYuMyIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9397408ebaf2ca5a2653dbc5e2873ccdf126cfa5"
+                  "sha": "bc8b06577375cc89c941642defea77b687c2e2cd",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790176826,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bc8b06577375cc89c941642defea77b687c2e2cd"
                }
             ],
             "ciActions": [
@@ -7922,7 +7922,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 148,
+            "newCommits": 150,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8368,25 +8368,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c942fd4ee95aed354eec6eef4ef21f0eccd69133",
+                  "sha": "39f6ac727b98b62921eb8cb619ebf8a74f773bb1",
                   "author": "adombeck",
-                  "timestamp": 1790162103,
-                  "message": "e2e: Fix GNOME Shell not installed (#1969)\n\nResolute e2e runs failed because GNOME Shell was not installed anymore.\n\nCloses #1968",
-                  "url": "https://github.com/canonical/authd/commit/c942fd4ee95aed354eec6eef4ef21f0eccd69133"
+                  "timestamp": 1790179411,
+                  "message": "e2e: also record apt policy of yaru in test logs (#1975)",
+                  "url": "https://github.com/canonical/authd/commit/39f6ac727b98b62921eb8cb619ebf8a74f773bb1"
                },
                {
-                  "sha": "46261945502b23b24cf70c4cf720f921f43c9d3c",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790160073,
-                  "message": "Prevent empty packaging regeneration commits (#1967)\n\nAs noted in https://github.com/canonical/authd/pull/1816/commits\nThe update packaging job can generate empty commits\n\nThe GitHub commit API accepts file additions that already match the\nbranch, so verify the downloaded artifact differs before creating the\ncommit.",
-                  "url": "https://github.com/canonical/authd/commit/46261945502b23b24cf70c4cf720f921f43c9d3c"
+                  "sha": "a48e617bf5e9e6e056817ca1a74eb266cd8da8b5",
+                  "author": "adombeck",
+                  "timestamp": 1790176644,
+                  "message": "deps(submodule): bump e2e-tests/.yarf from `4a93842` to `b7204cf` (#1847)\n\nCloses #1826",
+                  "url": "https://github.com/canonical/authd/commit/a48e617bf5e9e6e056817ca1a74eb266cd8da8b5"
                },
                {
-                  "sha": "2f5dfeef7655b80b95869be166e692859622661c",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790158945,
-                  "message": "e2e: keep resolute GNOME Shell available with stale PPA\n\nThe e2e tests were broken on Resolute because installing the branch\nauthd package removed gnome-shell. The package required version\n50.1-0ubuntu1.3, but authd-edge still publishes the patched\n50.1-0ubuntu1.2+authd1~26.04.1 build.\n\nKeep that patched PPA build as the lower bound while accepting newer\narchive versions, so provisioning can retain GNOME Shell until the PPA\ncatches up.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/2f5dfeef7655b80b95869be166e692859622661c"
+                  "sha": "f3a6b4e5963bd2576691447539e29bb8877b865c",
+                  "author": "OrazioLucioTerranova",
+                  "timestamp": 1789631274,
+                  "message": "Reduce OCR confidence threshold for GDM Username/Password fields\n\nGDM's Username and Password placeholder fields render with a blinking\ntext cursor that can visually fuse with the adjacent letter, making\nOCR read e.g. \"IUsername\" or \"IPassword\" instead of the expected\ntext. The extra glyph doesn't affect the fuzzy-match similarity score\n(the target string is still a full substring match), but it lowers\nthe OCR engine's own per-token confidence score below the suite's\ndefault threshold, causing sporadic Match Text timeouts.\n\nLower the confidence threshold to 88 for these matches to tolerate the\nconfidence dip caused by the cursor-fusion artifact, without loosening\nsimilarity matching.\n\nCo-authored-by: Adrian Dombeck <adrian.dombeck@canonical.com>\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/f3a6b4e5963bd2576691447539e29bb8877b865c"
                }
             ],
             "ciActions": [
@@ -9324,25 +9324,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d9b18538ff9d749f6a08bc4acd3b1717875b86b0",
+                  "sha": "26a5124b40856225ee3547d361e0c9b0c64f6f52",
                   "author": "renovate[bot]",
-                  "timestamp": 1790161341,
-                  "message": "chore(deps): update rust crate http-body-util to v0.1.5 (#330)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/d9b18538ff9d749f6a08bc4acd3b1717875b86b0"
+                  "timestamp": 1790179575,
+                  "message": "chore(deps): update google/osv-scanner-action digest to 764c918 (#203)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/26a5124b40856225ee3547d361e0c9b0c64f6f52"
                },
                {
-                  "sha": "336f82f951e38dcb86f12fd331b8186b08564358",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790160847,
-                  "message": "chore(deps): update rust crate chrono to v0.4.45 (#317)",
-                  "url": "https://github.com/canonical/prompting-client/commit/336f82f951e38dcb86f12fd331b8186b08564358"
+                  "sha": "e8c758cfa513cb45af3f6f0f14c3283bab0034d9",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790163858,
+                  "message": "fix(deps): update rust crate thiserror to v2 (#163)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/e8c758cfa513cb45af3f6f0f14c3283bab0034d9"
                },
                {
-                  "sha": "11ebe83e48e0ce2bc20f5263fd4c473bf0338626",
+                  "sha": "5f269e66891b00becfba5c1be79ce1a55e57e283",
                   "author": "renovate[bot]",
-                  "timestamp": 1790159828,
-                  "message": "chore(deps): update rust crate chrono to v0.4.45",
-                  "url": "https://github.com/canonical/prompting-client/commit/11ebe83e48e0ce2bc20f5263fd4c473bf0338626"
+                  "timestamp": 1790162735,
+                  "message": "chore(deps): update rust crate axum to v0.8.9 (#313)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/5f269e66891b00becfba5c1be79ce1a55e57e283"
                }
             ],
             "ciActions": [],
@@ -9931,25 +9931,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8fc59c5219fc6a9693aab25a9739cd580aa813e3",
+                  "sha": "c34bd5790eabf76a4429d89044f64b5e2480c7eb",
                   "author": "Dennis Loose",
-                  "timestamp": 1789739500,
-                  "message": "chore: track subiquity from ubuntu/stonking (#1555)\n\nIn preparation for the upcoming release, we should start tracking\nsubiquity's newly created `ubuntu/stonking` branch.",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/8fc59c5219fc6a9693aab25a9739cd580aa813e3"
+                  "timestamp": 1790179280,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631 (#1558)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/be4a23540c233f7c8fc283ede8d00de7a01a4890..233463112af9da37a4c411a7bd2531f12842d1da))\n| digest | `be4a235` → `2334631` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0NC4xMTAuMCIsInVwZGF0ZWRJblZlciI6IjQ0LjExMC4wIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c34bd5790eabf76a4429d89044f64b5e2480c7eb"
                },
                {
-                  "sha": "e2d7437bff1b867ea0fbfaa65dfab922319aa04c",
+                  "sha": "ab47bcb98e5ffdb87501fb7789ecd394d26f69e6",
                   "author": "Dennis Loose",
-                  "timestamp": 1789734618,
-                  "message": "chore: track subiquity from ubuntu/stonking",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/e2d7437bff1b867ea0fbfaa65dfab922319aa04c"
+                  "timestamp": 1790177507,
+                  "message": "chore: regenerate subiquity types",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ab47bcb98e5ffdb87501fb7789ecd394d26f69e6"
                },
                {
-                  "sha": "9397408ebaf2ca5a2653dbc5e2873ccdf126cfa5",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789654712,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 37d40d6 (#1553)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/b02541cad731e8edd3586d0535309319af71896c..37d40d61ba554975bdce06b8a2e07322b8df4f78))\n| digest | `b02541c` → `37d40d6` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0NC45My43IiwidXBkYXRlZEluVmVyIjoiNDQuOTYuMyIsInRhcmdldEJyYW5jaCI6Im1haW4iLCJsYWJlbHMiOltdfQ==-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/9397408ebaf2ca5a2653dbc5e2873ccdf126cfa5"
+                  "sha": "bc8b06577375cc89c941642defea77b687c2e2cd",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790176826,
+                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bc8b06577375cc89c941642defea77b687c2e2cd"
                }
             ],
             "ciActions": [
