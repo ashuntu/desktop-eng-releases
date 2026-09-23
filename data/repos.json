@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4163e18e996184ea9f23138aa31bf35669bdea0e",
+                  "author": "adombeck",
+                  "timestamp": 1790114890,
+                  "message": "debian: Allow newer GNOME Shell versions on Resolute (#1950)\n\nUDENG-11588",
+                  "url": "https://github.com/canonical/authd/commit/4163e18e996184ea9f23138aa31bf35669bdea0e"
+               },
+               {
+                  "sha": "8c98fc9a61d9712e8343f6c79feb3ecf31b0513e",
+                  "author": "adombeck",
+                  "timestamp": 1790114810,
+                  "message": "pam/gdm: serialize challenge setup with GDM stage (#1904)\n\nCloses #1901 \nUDENG-11480",
+                  "url": "https://github.com/canonical/authd/commit/8c98fc9a61d9712e8343f6c79feb3ecf31b0513e"
+               },
+               {
                   "sha": "5c2d36f67212c3aa1860ace97f2f5b2ac227eb43",
                   "author": "adombeck",
                   "timestamp": 1790102910,
                   "message": "e2e: support selecting source for system packages (#1911)\n\nCloses #1920\nUDENG-11503",
                   "url": "https://github.com/canonical/authd/commit/5c2d36f67212c3aa1860ace97f2f5b2ac227eb43"
-               },
-               {
-                  "sha": "061a05b06a6158ca266df1d4765df2eda07274ed",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789688443,
-                  "message": "e2e: support selecting sources for authd and system packages\n\nSRU verification needs E2E tests to run with packages from the -proposed\npocket. Add an archive-source marker for PR descriptions, apply it to\nthe matching Ubuntu release job, and update the VM's installed packages\nfrom that suite.\n\nAlso support selecting the source of authd, so that we can for example\ntest authd from resolute-updates with system packages (including\ngnome-shell) from resolute-proposed.\n\nThis replaces the existing e2e-ppa marker. Instead, the two new markers\nalso support PPAs, so that we can now specify that either system\npackages or authd or both should be installed from PPAs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/061a05b06a6158ca266df1d4765df2eda07274ed"
-               },
-               {
-                  "sha": "72496cc8b2f45b2b6124b10e0cdb346b2c25d1c9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789717906,
-                  "message": "debian: Allow newer GNOME Shell versions on Resolute\n\nThe reason we pinned an exact GNOME Shell version for Resolute (and\nstill do for Noble) is that these are patched versions from our PPA\nthat contain the fix for\nhttps://bugs.launchpad.net/ubuntu/+source/gnome-shell/+bug/2160622\nwhich is necessary to avoid regressions with recent authd versions (see\nthe note in the PR description of\nhttps://github.com/canonical/authd/pull/1623 for details).\n\nThat fix is in the process of being SRUed to Resolute as\n50.1-0ubuntu1.3. To verify that this fix works, we need to allow\ninstalling it alongside authd.\n\nSince this fix was merged onto the GNOME Shell's ubuntu/resolute branch\n[1] and is now being SRUed, we can be sure that every newer version also\ncontains the fix, so we can now allow newer versions again.\n\n[1] https://salsa.debian.org/gnome-team/gnome-shell/-/merge_requests/131\n\nUnfortunately, the same isn't true for Noble, because the fix was not\nSRUed to it yet, which means new versions published to noble-updates or\nnoble-security could still not contain the fix and therefore break with\nrecent authd versions.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/72496cc8b2f45b2b6124b10e0cdb346b2c25d1c9"
                }
             ],
             "ciActions": [
@@ -3594,25 +3594,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3f41fbd2c8f55358397041a228f40f32d804b7dd",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790121765,
+                  "message": "feat: add cache to fvm, flutter and dart packages (#145)",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/3f41fbd2c8f55358397041a228f40f32d804b7dd"
+               },
+               {
+                  "sha": "e1069c189573b3525a60f54c5107ea3264f80805",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790114990,
+                  "message": "feat: add cache to fvm, flutter and dart packages",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/e1069c189573b3525a60f54c5107ea3264f80805"
+               },
+               {
                   "sha": "d800b57abab325c3799364d28147ce49df7dd12a",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789737636,
                   "message": "fix: change anchored yaml to hardcoded (#144)",
                   "url": "https://github.com/canonical/desktop-engineering/commit/d800b57abab325c3799364d28147ce49df7dd12a"
-               },
-               {
-                  "sha": "0050a45461a9be48ec60d8f734f0530f80e80634",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789734988,
-                  "message": "fix: change anchored yaml to hardcoded",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/0050a45461a9be48ec60d8f734f0530f80e80634"
-               },
-               {
-                  "sha": "5da7ff1502842ebac0bf6384700f58c95d000428",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789716679,
-                  "message": "feat: weblate l10n generation action (#139)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/5da7ff1502842ebac0bf6384700f58c95d000428"
                }
             ],
             "ciActions": [],
@@ -5815,25 +5815,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4163e18e996184ea9f23138aa31bf35669bdea0e",
+                  "author": "adombeck",
+                  "timestamp": 1790114890,
+                  "message": "debian: Allow newer GNOME Shell versions on Resolute (#1950)\n\nUDENG-11588",
+                  "url": "https://github.com/canonical/authd/commit/4163e18e996184ea9f23138aa31bf35669bdea0e"
+               },
+               {
+                  "sha": "8c98fc9a61d9712e8343f6c79feb3ecf31b0513e",
+                  "author": "adombeck",
+                  "timestamp": 1790114810,
+                  "message": "pam/gdm: serialize challenge setup with GDM stage (#1904)\n\nCloses #1901 \nUDENG-11480",
+                  "url": "https://github.com/canonical/authd/commit/8c98fc9a61d9712e8343f6c79feb3ecf31b0513e"
+               },
+               {
                   "sha": "5c2d36f67212c3aa1860ace97f2f5b2ac227eb43",
                   "author": "adombeck",
                   "timestamp": 1790102910,
                   "message": "e2e: support selecting source for system packages (#1911)\n\nCloses #1920\nUDENG-11503",
                   "url": "https://github.com/canonical/authd/commit/5c2d36f67212c3aa1860ace97f2f5b2ac227eb43"
-               },
-               {
-                  "sha": "061a05b06a6158ca266df1d4765df2eda07274ed",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789688443,
-                  "message": "e2e: support selecting sources for authd and system packages\n\nSRU verification needs E2E tests to run with packages from the -proposed\npocket. Add an archive-source marker for PR descriptions, apply it to\nthe matching Ubuntu release job, and update the VM's installed packages\nfrom that suite.\n\nAlso support selecting the source of authd, so that we can for example\ntest authd from resolute-updates with system packages (including\ngnome-shell) from resolute-proposed.\n\nThis replaces the existing e2e-ppa marker. Instead, the two new markers\nalso support PPAs, so that we can now specify that either system\npackages or authd or both should be installed from PPAs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/061a05b06a6158ca266df1d4765df2eda07274ed"
-               },
-               {
-                  "sha": "72496cc8b2f45b2b6124b10e0cdb346b2c25d1c9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789717906,
-                  "message": "debian: Allow newer GNOME Shell versions on Resolute\n\nThe reason we pinned an exact GNOME Shell version for Resolute (and\nstill do for Noble) is that these are patched versions from our PPA\nthat contain the fix for\nhttps://bugs.launchpad.net/ubuntu/+source/gnome-shell/+bug/2160622\nwhich is necessary to avoid regressions with recent authd versions (see\nthe note in the PR description of\nhttps://github.com/canonical/authd/pull/1623 for details).\n\nThat fix is in the process of being SRUed to Resolute as\n50.1-0ubuntu1.3. To verify that this fix works, we need to allow\ninstalling it alongside authd.\n\nSince this fix was merged onto the GNOME Shell's ubuntu/resolute branch\n[1] and is now being SRUed, we can be sure that every newer version also\ncontains the fix, so we can now allow newer versions again.\n\n[1] https://salsa.debian.org/gnome-team/gnome-shell/-/merge_requests/131\n\nUnfortunately, the same isn't true for Noble, because the fix was not\nSRUed to it yet, which means new versions published to noble-updates or\nnoble-security could still not contain the fix and therefore break with\nrecent authd versions.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/72496cc8b2f45b2b6124b10e0cdb346b2c25d1c9"
                }
             ],
             "ciActions": [
@@ -6015,25 +6015,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3f41fbd2c8f55358397041a228f40f32d804b7dd",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790121765,
+                  "message": "feat: add cache to fvm, flutter and dart packages (#145)",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/3f41fbd2c8f55358397041a228f40f32d804b7dd"
+               },
+               {
+                  "sha": "e1069c189573b3525a60f54c5107ea3264f80805",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790114990,
+                  "message": "feat: add cache to fvm, flutter and dart packages",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/e1069c189573b3525a60f54c5107ea3264f80805"
+               },
+               {
                   "sha": "d800b57abab325c3799364d28147ce49df7dd12a",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789737636,
                   "message": "fix: change anchored yaml to hardcoded (#144)",
                   "url": "https://github.com/canonical/desktop-engineering/commit/d800b57abab325c3799364d28147ce49df7dd12a"
-               },
-               {
-                  "sha": "0050a45461a9be48ec60d8f734f0530f80e80634",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789734988,
-                  "message": "fix: change anchored yaml to hardcoded",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/0050a45461a9be48ec60d8f734f0530f80e80634"
-               },
-               {
-                  "sha": "5da7ff1502842ebac0bf6384700f58c95d000428",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789716679,
-                  "message": "feat: weblate l10n generation action (#139)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/5da7ff1502842ebac0bf6384700f58c95d000428"
                }
             ],
             "ciActions": [],
@@ -8350,25 +8350,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4163e18e996184ea9f23138aa31bf35669bdea0e",
+                  "author": "adombeck",
+                  "timestamp": 1790114890,
+                  "message": "debian: Allow newer GNOME Shell versions on Resolute (#1950)\n\nUDENG-11588",
+                  "url": "https://github.com/canonical/authd/commit/4163e18e996184ea9f23138aa31bf35669bdea0e"
+               },
+               {
+                  "sha": "8c98fc9a61d9712e8343f6c79feb3ecf31b0513e",
+                  "author": "adombeck",
+                  "timestamp": 1790114810,
+                  "message": "pam/gdm: serialize challenge setup with GDM stage (#1904)\n\nCloses #1901 \nUDENG-11480",
+                  "url": "https://github.com/canonical/authd/commit/8c98fc9a61d9712e8343f6c79feb3ecf31b0513e"
+               },
+               {
                   "sha": "5c2d36f67212c3aa1860ace97f2f5b2ac227eb43",
                   "author": "adombeck",
                   "timestamp": 1790102910,
                   "message": "e2e: support selecting source for system packages (#1911)\n\nCloses #1920\nUDENG-11503",
                   "url": "https://github.com/canonical/authd/commit/5c2d36f67212c3aa1860ace97f2f5b2ac227eb43"
-               },
-               {
-                  "sha": "061a05b06a6158ca266df1d4765df2eda07274ed",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789688443,
-                  "message": "e2e: support selecting sources for authd and system packages\n\nSRU verification needs E2E tests to run with packages from the -proposed\npocket. Add an archive-source marker for PR descriptions, apply it to\nthe matching Ubuntu release job, and update the VM's installed packages\nfrom that suite.\n\nAlso support selecting the source of authd, so that we can for example\ntest authd from resolute-updates with system packages (including\ngnome-shell) from resolute-proposed.\n\nThis replaces the existing e2e-ppa marker. Instead, the two new markers\nalso support PPAs, so that we can now specify that either system\npackages or authd or both should be installed from PPAs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/061a05b06a6158ca266df1d4765df2eda07274ed"
-               },
-               {
-                  "sha": "72496cc8b2f45b2b6124b10e0cdb346b2c25d1c9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1789717906,
-                  "message": "debian: Allow newer GNOME Shell versions on Resolute\n\nThe reason we pinned an exact GNOME Shell version for Resolute (and\nstill do for Noble) is that these are patched versions from our PPA\nthat contain the fix for\nhttps://bugs.launchpad.net/ubuntu/+source/gnome-shell/+bug/2160622\nwhich is necessary to avoid regressions with recent authd versions (see\nthe note in the PR description of\nhttps://github.com/canonical/authd/pull/1623 for details).\n\nThat fix is in the process of being SRUed to Resolute as\n50.1-0ubuntu1.3. To verify that this fix works, we need to allow\ninstalling it alongside authd.\n\nSince this fix was merged onto the GNOME Shell's ubuntu/resolute branch\n[1] and is now being SRUed, we can be sure that every newer version also\ncontains the fix, so we can now allow newer versions again.\n\n[1] https://salsa.debian.org/gnome-team/gnome-shell/-/merge_requests/131\n\nUnfortunately, the same isn't true for Noble, because the fix was not\nSRUed to it yet, which means new versions published to noble-updates or\nnoble-security could still not contain the fix and therefore break with\nrecent authd versions.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/72496cc8b2f45b2b6124b10e0cdb346b2c25d1c9"
                }
             ],
             "ciActions": [
@@ -8550,25 +8550,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "3f41fbd2c8f55358397041a228f40f32d804b7dd",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790121765,
+                  "message": "feat: add cache to fvm, flutter and dart packages (#145)",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/3f41fbd2c8f55358397041a228f40f32d804b7dd"
+               },
+               {
+                  "sha": "e1069c189573b3525a60f54c5107ea3264f80805",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790114990,
+                  "message": "feat: add cache to fvm, flutter and dart packages",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/e1069c189573b3525a60f54c5107ea3264f80805"
+               },
+               {
                   "sha": "d800b57abab325c3799364d28147ce49df7dd12a",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1789737636,
                   "message": "fix: change anchored yaml to hardcoded (#144)",
                   "url": "https://github.com/canonical/desktop-engineering/commit/d800b57abab325c3799364d28147ce49df7dd12a"
-               },
-               {
-                  "sha": "0050a45461a9be48ec60d8f734f0530f80e80634",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789734988,
-                  "message": "fix: change anchored yaml to hardcoded",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/0050a45461a9be48ec60d8f734f0530f80e80634"
-               },
-               {
-                  "sha": "5da7ff1502842ebac0bf6384700f58c95d000428",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789716679,
-                  "message": "feat: weblate l10n generation action (#139)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/5da7ff1502842ebac0bf6384700f58c95d000428"
                }
             ],
             "ciActions": [],
