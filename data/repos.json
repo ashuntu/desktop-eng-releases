@@ -3394,25 +3394,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "807aa697281ee7bf4831fa93924c23d349ffcb10",
-                  "author": "adombeck",
-                  "timestamp": 1790243437,
-                  "message": "e2e: Fix incorrect password prompt matched (#1987)\n\nCloses #1983",
-                  "url": "https://github.com/canonical/authd/commit/807aa697281ee7bf4831fa93924c23d349ffcb10"
-               },
-               {
-                  "sha": "493c5d9af4411bc857b1432e7be4d63df001c243",
+                  "sha": "ca6f582be7aa398758abcdc4e4f1119225325b1e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790192797,
-                  "message": "e2e: Fix incorrect password prompt matched\n\nWe were looking for the string \"Password\" in the OCR output, but GDM\ndisplays \"Enter your password\". That's similar enough that it often\nresulted in a match but sometimes it didn't. Let's fix that by looking\nfor the string that's actually displayed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/493c5d9af4411bc857b1432e7be4d63df001c243"
+                  "timestamp": 1790252279,
+                  "message": "Merge branch 'stable'",
+                  "url": "https://github.com/canonical/authd/commit/ca6f582be7aa398758abcdc4e4f1119225325b1e"
                },
                {
-                  "sha": "cb54d5f3cf9f93ef0666428e12810f14c6426e94",
+                  "sha": "f5210c13b8b0d07391a1aa3a9c925fe00feff3ab",
+                  "author": "adombeck",
+                  "timestamp": 1790252119,
+                  "message": "Release authd 0.7.0 (#1961)\n\n* Improve error behavior when broker fails to start\n* Avoid Tokio panic during late NSS lookups\n* pam/gdm: Ignore GDM echo of our own auth mode selection\n* pam/adapter: Ignore stale stopAuthentication from a superseded challenge\n* Hide terminal password prompt after submission\n* config: nest PAM settings under `pam:` with per-service overrides\n* pam: Don't offer existing users to choose a different provider\n* Ensure GDM sees managed users after reboot\n* pam/main-exec: Exit with failure if the server connection is lost\n* pam: don't fail auth when UpdateBrokerForUser write fails\n* Use \"authentication flow\" terminology consistently\n* pam/gdm: serialise concurrent PAM conversations\n* pam: fall back to native mode when TERM=dumb\n* pam/native: don't show stage headers in polkit dialog\n* pam: Return PAM_IGNORE early when only the local broker is available\n* Improve PAM prompts\n* Fix selection menu shown briefly before auto-selection\n* pam/go-exec: drain GMainContext after stopping GDBusServer on cleanup\n* pam: Set `PAM_AUTHTOK` on successful authentication\n* Allow non-root processes to use the PAM service\n* Use \"device code flow\" terminology consistently\n* pam: reject broker mismatch early in SelectBroker\n* brokers: use providerID for user identification\n* authctl: add authctl user set-home\n* debian/rules: Fix dh_auto_configure using wrong cargo version\n* Add `authctl user set-shell` command\n* Support deleting users and groups via authctl\n* pam/adapter: Return ErrAuthinfoUnavail when broker listing fails\n* Return PAM_MAXTRIES on too many auth failures\n* Support API versioning in broker API and authd\n* pam/adapter: fix authTracker race with a generation counter\n* pam: use dynamic padding for URL/Code labels alignment\n* Improve login layout\n* pam/main-exec: Don't set timeout for D-Bus connection\n* pam: Support Ctrl-D in text entries\n* Remove bbolt to SQLite migration code\n* Update Go dependencies:\n  - toolchain go1.26.7\n  - github.com/mattn/go-sqlite3 v1.14.52\n  - github.com/stretchr/testify v1.12.1\n  - golang.org/x/sys v0.48.0\n  - golang.org/x/term v0.45.0\n  - google.golang.org/grpc v1.83.2\n  - google.golang.org/protobuf v1.36.12\n  - gopkg.in/ini.v1 v1.67.3\n  - go.yaml.in/yaml/v3 v3.0.5 // indirect\n  - golang.org/x/net v0.58.0 // indirect\n  - golang.org/x/sync v0.22.0 // indirect\n  - golang.org/x/text v0.41.0 // indirect\n  - google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect\n* Update Rust dependencies:\n  - cc ^1.2.63\n  - hyper-util ^0.1.20\n  - libc ^0.2.186\n  - log ^0.4.31\n  - once_cell ^1.21.4\n  - rustix ^1.1.4\n  - simple_logger ^5.2.0\n  - tokio ^1.50.0",
+                  "url": "https://github.com/canonical/authd/commit/f5210c13b8b0d07391a1aa3a9c925fe00feff3ab"
+               },
+               {
+                  "sha": "c2d7734fbd5ea8d10fb04821e33314e7e02ab891",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790243131,
-                  "message": "deps(rust): bump procfs from 0.17.0 to 0.18.0 (#1485)\n\nBumps [procfs](https://github.com/eminence/procfs) from 0.17.0 to\n0.18.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/eminence/procfs/releases\">procfs's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v0.18.0</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Enable <code>generate-link-to-definition</code> rustdoc feature on\ndocs.rs by <a\nhref=\"https://github.com/GuillaumeGomez\"><code>@​GuillaumeGomez</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/320\">eminence/procfs#320</a></li>\n<li>Use correct MSRV by <a\nhref=\"https://github.com/tyilo\"><code>@​tyilo</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/328\">eminence/procfs#328</a></li>\n<li>replace hardcoded crate name by env var that returns the crate's\nname dynamically by <a\nhref=\"https://github.com/PauloMigAlmeida\"><code>@​PauloMigAlmeida</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/327\">eminence/procfs#327</a></li>\n<li>Remove unused crate and use by <a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/329\">eminence/procfs#329</a></li>\n<li>Fix lints as the names have changed by <a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/330\">eminence/procfs#330</a></li>\n<li>Reduce short-lived allocations in memory maps parsing by <a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/331\">eminence/procfs#331</a></li>\n<li>Work around 32/64 bit mismatch by <a\nhref=\"https://github.com/musicinmybrain\"><code>@​musicinmybrain</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/326\">eminence/procfs#326</a></li>\n<li>Parse /proc/pid/status &quot;Groups&quot; field as u32 by <a\nhref=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/334\">eminence/procfs#334</a></li>\n<li>Make get_pressure and parse_pressure_record public by <a\nhref=\"https://github.com/SebastiaanYN\"><code>@​SebastiaanYN</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/335\">eminence/procfs#335</a></li>\n<li>Use AsRef<!-- raw HTML omitted --> for user-facing path parameters\nby <a href=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/336\">eminence/procfs#336</a></li>\n<li>Check process name in test_proc_status_for_kthreadd by <a\nhref=\"https://github.com/NoisyCoil\"><code>@​NoisyCoil</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/337\">eminence/procfs#337</a></li>\n<li>Add <code>full</code> record to <code>CpuPressure</code> by <a\nhref=\"https://github.com/SebastiaanYN\"><code>@​SebastiaanYN</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/338\">eminence/procfs#338</a></li>\n<li>chore(deps): update <code>rustix</code> to 1.0.1 by <a\nhref=\"https://github.com/cratelyn\"><code>@​cratelyn</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/340\">eminence/procfs#340</a></li>\n<li>Derive PartialEq &amp; Eq for FDTarget by <a\nhref=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/339\">eminence/procfs#339</a></li>\n<li>Fix README.md example compilation by <a\nhref=\"https://github.com/rantala\"><code>@​rantala</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/342\">eminence/procfs#342</a></li>\n<li>Fix for trait derivation on wasm targets by <a\nhref=\"https://github.com/fzylogic\"><code>@​fzylogic</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/345\">eminence/procfs#345</a></li>\n<li>Add Process.open_relative_flags by <a\nhref=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/341\">eminence/procfs#341</a></li>\n<li>fix wrong spelling in nfs mount by <a\nhref=\"https://github.com/arthur-zhang\"><code>@​arthur-zhang</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/347\">eminence/procfs#347</a></li>\n<li>Add track_caller to check_unwrap test helper function by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/355\">eminence/procfs#355</a></li>\n<li>Add /proc/pid/syscall parsing support by <a\nhref=\"https://github.com/jebradbury39\"><code>@​jebradbury39</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/350\">eminence/procfs#350</a></li>\n<li>Fix FDTarget parsing for unknown FD types by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/356\">eminence/procfs#356</a></li>\n<li>Fix parsing for mountinfo and related fields when presented with\nempty fields by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/357\">eminence/procfs#357</a></li>\n<li>Replace <code>crate</code> with <code>$crate</code> in our macro\ndefinitions by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/358\">eminence/procfs#358</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a\nhref=\"https://github.com/GuillaumeGomez\"><code>@​GuillaumeGomez</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/320\">eminence/procfs#320</a></li>\n<li><a href=\"https://github.com/tyilo\"><code>@​tyilo</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/328\">eminence/procfs#328</a></li>\n<li><a\nhref=\"https://github.com/PauloMigAlmeida\"><code>@​PauloMigAlmeida</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/327\">eminence/procfs#327</a></li>\n<li><a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/329\">eminence/procfs#329</a></li>\n<li><a\nhref=\"https://github.com/musicinmybrain\"><code>@​musicinmybrain</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/326\">eminence/procfs#326</a></li>\n<li><a href=\"https://github.com/Jongy\"><code>@​Jongy</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/334\">eminence/procfs#334</a></li>\n<li><a\nhref=\"https://github.com/SebastiaanYN\"><code>@​SebastiaanYN</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/335\">eminence/procfs#335</a></li>\n<li><a href=\"https://github.com/NoisyCoil\"><code>@​NoisyCoil</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/337\">eminence/procfs#337</a></li>\n<li><a href=\"https://github.com/cratelyn\"><code>@​cratelyn</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/340\">eminence/procfs#340</a></li>\n<li><a href=\"https://github.com/rantala\"><code>@​rantala</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/342\">eminence/procfs#342</a></li>\n<li><a href=\"https://github.com/fzylogic\"><code>@​fzylogic</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/345\">eminence/procfs#345</a></li>\n<li><a\nhref=\"https://github.com/arthur-zhang\"><code>@​arthur-zhang</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/347\">eminence/procfs#347</a></li>\n<li><a\nhref=\"https://github.com/jebradbury39\"><code>@​jebradbury39</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/350\">eminence/procfs#350</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/eminence/procfs/compare/v0.17.0...v0.18.0\">https://github.com/eminence/procfs/compare/v0.17.0...v0.18.0</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/7d3a0cd0f5b5a8147608fba577b2da26c09dd326\"><code>7d3a0cd</code></a>\nBump version to v0.18.0</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/78d6a16fab5abd5f9bc6e1f65eff5d9d6595d0b0\"><code>78d6a16</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/358\">#358</a>\nfrom eminence/macro_rules_crate</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/44f428932e88937d04fb908969dcd225f56dddf4\"><code>44f4289</code></a>\nReplace <code>crate</code> with <code>$crate</code> in our macro\ndefinitions</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/432e8c271c665d59747150f7d087ca6ff8a7d6c7\"><code>432e8c2</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/357\">#357</a>\nfrom eminence/fix_pasta_mountinfo</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/bffec12aa26ae66194c3f79235d356865aa50e31\"><code>bffec12</code></a>\nFix parsing for mountinfo and related fields when presented with empty\nfields</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/d6181116c86cd7015670cbc4b3ffa99143fa3f26\"><code>d618111</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/356\">#356</a>\nfrom eminence/fdtarget_fix</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/4a7b270474a023f8d496a4fd9a2b7bd81cfc3bf8\"><code>4a7b270</code></a>\nFix FDTarget parsing for unknown FD types</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/5faa3c4a8e324060ef69173703be30e68245297b\"><code>5faa3c4</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/350\">#350</a>\nfrom jebradbury39/add_syscall_parsing</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/5547a6a9b54f9726bfc4e92a563f3f98a46cd2e0\"><code>5547a6a</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/355\">#355</a>\nfrom eminence/add-track-caller-to-test-helper</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/eddfadb7f20c37a5f77d1c5fd7e3756625aac3b5\"><code>eddfadb</code></a>\nremove comment</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/eminence/procfs/compare/v0.17.0...v0.18.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/canonical/authd/commit/cb54d5f3cf9f93ef0666428e12810f14c6426e94"
+                  "timestamp": 1790247634,
+                  "message": "deps(rust): bump ctor from 0.5.0 to 1.0.13 (#1816)\n\nBumps [ctor](https://github.com/mmastrac/linktime) from 0.5.0 to 1.0.13.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/mmastrac/linktime/releases\">ctor's\nreleases</a>.</em></p>\n<blockquote>\n<h2>ctor-1.0.13</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up consistent\n64-bit hash chunks (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/508\">#508</a>)\nand the cross-crate section-name fix (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/509\">#509</a>)\n(should not result in any downstream visible changes)</li>\n<li>Document <code>crate_path</code> and re-exports by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/rust-ctor/pull/514\">mmastrac/rust-ctor#514</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13\">https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13</a></p>\n<h2>ctor-1.0.12</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up PR <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/495\">#495</a>\n(should not result in any downstream visible changes)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12\">https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12</a></p>\n<h2>ctor-1.0.11</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Pointer-align the Apple ctor anchor by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/503\">mmastrac/linktime#503</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11\">https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11</a></p>\n<h2>ctor-1.0.10</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Split <code>Static::deref</code>'s slow path into cold fn by <a\nhref=\"https://github.com/yvt\"><code>@​yvt</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/yvt\"><code>@​yvt</code></a> made their\nfirst contribution in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10\">https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10</a></p>\n<h2>ctor-1.0.9</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Ensure that Apple-platform staticlibs always keep the primary\npriority ctor (fixed by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/498\">mmastrac/linktime#498</a>,\nreported in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/496\">#496</a>\nby <a\nhref=\"https://github.com/tylerhawkes\"><code>@​tylerhawkes</code></a>)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9\">https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9</a></p>\n<h2>ctor-1.0.8</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump versions by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/490\">mmastrac/linktime#490</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8\">https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8</a></p>\n<h2>ctor-1.0.7</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump downstream <code>link-section</code> crate version and API\nupdates.</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a\nhref=\"https://github.com/mmastrac/linktime/commits/ctor-1.0.13\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
+                  "url": "https://github.com/canonical/authd/commit/c2d7734fbd5ea8d10fb04821e33314e7e02ab891"
                }
             ],
             "ciActions": [
@@ -3627,6 +3627,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d3d1ab8e7cb2688fe2c31677997f798cd4024f53",
+                  "author": "Weblate (bot)",
+                  "timestamp": 1790259681,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#255)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/d3d1ab8e7cb2688fe2c31677997f798cd4024f53"
+               },
+               {
                   "sha": "9836436feef1cf2bc119b5d9cf926f060512aa74",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790153878,
@@ -3639,13 +3646,6 @@
                   "timestamp": 1790077988,
                   "message": "Merge pull request #252 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
                   "url": "https://github.com/canonical/desktop-security-center/commit/5e8b94bfa73133d17c0370fe5aa58b65766e4dc6"
-               },
-               {
-                  "sha": "67492e4d42d7b873e5d927c6b9925b4e4ee8a55d",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790071765,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/67492e4d42d7b873e5d927c6b9925b4e4ee8a55d"
                }
             ],
             "ciActions": [],
@@ -4350,25 +4350,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "94c841defbc6e0c1dc8ab8ec34e060ad5675b4e8",
+                  "sha": "ac3226f8236bb53564b91285283841b9da850856",
                   "author": "renovate[bot]",
-                  "timestamp": 1790242584,
-                  "message": "chore(deps): update rust crate thiserror to v2.0.21 (#345)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/94c841defbc6e0c1dc8ab8ec34e060ad5675b4e8"
+                  "timestamp": 1790249451,
+                  "message": "chore(deps): update peter-evans/create-pull-request action to v8 (#357)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/ac3226f8236bb53564b91285283841b9da850856"
                },
                {
-                  "sha": "b3a6001485770cfa8f5d650155dbf528614f2d9d",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790242547,
-                  "message": "chore(deps): update dependency ubuntu to v26 (#355)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/b3a6001485770cfa8f5d650155dbf528614f2d9d"
+                  "sha": "42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4",
+                  "author": "Copilot",
+                  "timestamp": 1790249416,
+                  "message": "feat: socket logging printing incorrectly (#277)\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: matthew-hagemann <93575731+matthew-hagemann@users.noreply.github.com>\nCo-authored-by: gabelluardo <42920247+gabelluardo@users.noreply.github.com>\nCo-authored-by: ogres <2391557+ogres@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4"
                },
                {
-                  "sha": "fe8b8c0c1caa0afa9a1bfbf25a2e4590d4e38052",
+                  "sha": "1085f480433beb0c7be73fdd0548184a14c59ae4",
                   "author": "renovate[bot]",
-                  "timestamp": 1790242465,
-                  "message": "chore(deps): update j178/prek-action action to v3 (#356)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/fe8b8c0c1caa0afa9a1bfbf25a2e4590d4e38052"
+                  "timestamp": 1790249384,
+                  "message": "chore(deps): update rust crate serial_test to v4 (#358)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/1085f480433beb0c7be73fdd0548184a14c59ae4"
                }
             ],
             "ciActions": [],
@@ -4957,25 +4957,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c34bd5790eabf76a4429d89044f64b5e2480c7eb",
+                  "sha": "b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c",
                   "author": "Dennis Loose",
-                  "timestamp": 1790179280,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631 (#1558)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/be4a23540c233f7c8fc283ede8d00de7a01a4890..233463112af9da37a4c411a7bd2531f12842d1da))\n| digest | `be4a235` → `2334631` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0NC4xMTAuMCIsInVwZGF0ZWRJblZlciI6IjQ0LjExMC4wIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c34bd5790eabf76a4429d89044f64b5e2480c7eb"
+                  "timestamp": 1790251737,
+                  "message": "feat(storage): enforce storage requirements in manual partitioning (#1556)\n\nConsume the storage `requirements` from subiquity and block \"Next\" in\nmanual partitioning until all of them are satisfied, replacing the\nneedRoot/needBoot flags. Requirements that are still probing are treated\nas unmet.\n\nDepends on canonical/subiquity#2438.\nUDENG-11490",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c"
                },
                {
-                  "sha": "ab47bcb98e5ffdb87501fb7789ecd394d26f69e6",
+                  "sha": "f1cdb0f1378e91f7644210f206bf1691eda93b0b",
                   "author": "Dennis Loose",
-                  "timestamp": 1790177507,
-                  "message": "chore: regenerate subiquity types",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ab47bcb98e5ffdb87501fb7789ecd394d26f69e6"
+                  "timestamp": 1790239923,
+                  "message": "test: add widget tests for added info/warning messages",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f1cdb0f1378e91f7644210f206bf1691eda93b0b"
                },
                {
-                  "sha": "bc8b06577375cc89c941642defea77b687c2e2cd",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790176826,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bc8b06577375cc89c941642defea77b687c2e2cd"
+                  "sha": "864989291313b7c4111f19dfc35327bdd8980176",
+                  "author": "Dennis Loose",
+                  "timestamp": 1789750672,
+                  "message": "refactor: formatting",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/864989291313b7c4111f19dfc35327bdd8980176"
                }
             ],
             "ciActions": [
@@ -5813,25 +5813,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "807aa697281ee7bf4831fa93924c23d349ffcb10",
-                  "author": "adombeck",
-                  "timestamp": 1790243437,
-                  "message": "e2e: Fix incorrect password prompt matched (#1987)\n\nCloses #1983",
-                  "url": "https://github.com/canonical/authd/commit/807aa697281ee7bf4831fa93924c23d349ffcb10"
-               },
-               {
-                  "sha": "493c5d9af4411bc857b1432e7be4d63df001c243",
+                  "sha": "ca6f582be7aa398758abcdc4e4f1119225325b1e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790192797,
-                  "message": "e2e: Fix incorrect password prompt matched\n\nWe were looking for the string \"Password\" in the OCR output, but GDM\ndisplays \"Enter your password\". That's similar enough that it often\nresulted in a match but sometimes it didn't. Let's fix that by looking\nfor the string that's actually displayed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/493c5d9af4411bc857b1432e7be4d63df001c243"
+                  "timestamp": 1790252279,
+                  "message": "Merge branch 'stable'",
+                  "url": "https://github.com/canonical/authd/commit/ca6f582be7aa398758abcdc4e4f1119225325b1e"
                },
                {
-                  "sha": "cb54d5f3cf9f93ef0666428e12810f14c6426e94",
+                  "sha": "f5210c13b8b0d07391a1aa3a9c925fe00feff3ab",
+                  "author": "adombeck",
+                  "timestamp": 1790252119,
+                  "message": "Release authd 0.7.0 (#1961)\n\n* Improve error behavior when broker fails to start\n* Avoid Tokio panic during late NSS lookups\n* pam/gdm: Ignore GDM echo of our own auth mode selection\n* pam/adapter: Ignore stale stopAuthentication from a superseded challenge\n* Hide terminal password prompt after submission\n* config: nest PAM settings under `pam:` with per-service overrides\n* pam: Don't offer existing users to choose a different provider\n* Ensure GDM sees managed users after reboot\n* pam/main-exec: Exit with failure if the server connection is lost\n* pam: don't fail auth when UpdateBrokerForUser write fails\n* Use \"authentication flow\" terminology consistently\n* pam/gdm: serialise concurrent PAM conversations\n* pam: fall back to native mode when TERM=dumb\n* pam/native: don't show stage headers in polkit dialog\n* pam: Return PAM_IGNORE early when only the local broker is available\n* Improve PAM prompts\n* Fix selection menu shown briefly before auto-selection\n* pam/go-exec: drain GMainContext after stopping GDBusServer on cleanup\n* pam: Set `PAM_AUTHTOK` on successful authentication\n* Allow non-root processes to use the PAM service\n* Use \"device code flow\" terminology consistently\n* pam: reject broker mismatch early in SelectBroker\n* brokers: use providerID for user identification\n* authctl: add authctl user set-home\n* debian/rules: Fix dh_auto_configure using wrong cargo version\n* Add `authctl user set-shell` command\n* Support deleting users and groups via authctl\n* pam/adapter: Return ErrAuthinfoUnavail when broker listing fails\n* Return PAM_MAXTRIES on too many auth failures\n* Support API versioning in broker API and authd\n* pam/adapter: fix authTracker race with a generation counter\n* pam: use dynamic padding for URL/Code labels alignment\n* Improve login layout\n* pam/main-exec: Don't set timeout for D-Bus connection\n* pam: Support Ctrl-D in text entries\n* Remove bbolt to SQLite migration code\n* Update Go dependencies:\n  - toolchain go1.26.7\n  - github.com/mattn/go-sqlite3 v1.14.52\n  - github.com/stretchr/testify v1.12.1\n  - golang.org/x/sys v0.48.0\n  - golang.org/x/term v0.45.0\n  - google.golang.org/grpc v1.83.2\n  - google.golang.org/protobuf v1.36.12\n  - gopkg.in/ini.v1 v1.67.3\n  - go.yaml.in/yaml/v3 v3.0.5 // indirect\n  - golang.org/x/net v0.58.0 // indirect\n  - golang.org/x/sync v0.22.0 // indirect\n  - golang.org/x/text v0.41.0 // indirect\n  - google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect\n* Update Rust dependencies:\n  - cc ^1.2.63\n  - hyper-util ^0.1.20\n  - libc ^0.2.186\n  - log ^0.4.31\n  - once_cell ^1.21.4\n  - rustix ^1.1.4\n  - simple_logger ^5.2.0\n  - tokio ^1.50.0",
+                  "url": "https://github.com/canonical/authd/commit/f5210c13b8b0d07391a1aa3a9c925fe00feff3ab"
+               },
+               {
+                  "sha": "c2d7734fbd5ea8d10fb04821e33314e7e02ab891",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790243131,
-                  "message": "deps(rust): bump procfs from 0.17.0 to 0.18.0 (#1485)\n\nBumps [procfs](https://github.com/eminence/procfs) from 0.17.0 to\n0.18.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/eminence/procfs/releases\">procfs's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v0.18.0</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Enable <code>generate-link-to-definition</code> rustdoc feature on\ndocs.rs by <a\nhref=\"https://github.com/GuillaumeGomez\"><code>@​GuillaumeGomez</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/320\">eminence/procfs#320</a></li>\n<li>Use correct MSRV by <a\nhref=\"https://github.com/tyilo\"><code>@​tyilo</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/328\">eminence/procfs#328</a></li>\n<li>replace hardcoded crate name by env var that returns the crate's\nname dynamically by <a\nhref=\"https://github.com/PauloMigAlmeida\"><code>@​PauloMigAlmeida</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/327\">eminence/procfs#327</a></li>\n<li>Remove unused crate and use by <a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/329\">eminence/procfs#329</a></li>\n<li>Fix lints as the names have changed by <a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/330\">eminence/procfs#330</a></li>\n<li>Reduce short-lived allocations in memory maps parsing by <a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/331\">eminence/procfs#331</a></li>\n<li>Work around 32/64 bit mismatch by <a\nhref=\"https://github.com/musicinmybrain\"><code>@​musicinmybrain</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/326\">eminence/procfs#326</a></li>\n<li>Parse /proc/pid/status &quot;Groups&quot; field as u32 by <a\nhref=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/334\">eminence/procfs#334</a></li>\n<li>Make get_pressure and parse_pressure_record public by <a\nhref=\"https://github.com/SebastiaanYN\"><code>@​SebastiaanYN</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/335\">eminence/procfs#335</a></li>\n<li>Use AsRef<!-- raw HTML omitted --> for user-facing path parameters\nby <a href=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/336\">eminence/procfs#336</a></li>\n<li>Check process name in test_proc_status_for_kthreadd by <a\nhref=\"https://github.com/NoisyCoil\"><code>@​NoisyCoil</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/337\">eminence/procfs#337</a></li>\n<li>Add <code>full</code> record to <code>CpuPressure</code> by <a\nhref=\"https://github.com/SebastiaanYN\"><code>@​SebastiaanYN</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/338\">eminence/procfs#338</a></li>\n<li>chore(deps): update <code>rustix</code> to 1.0.1 by <a\nhref=\"https://github.com/cratelyn\"><code>@​cratelyn</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/340\">eminence/procfs#340</a></li>\n<li>Derive PartialEq &amp; Eq for FDTarget by <a\nhref=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/339\">eminence/procfs#339</a></li>\n<li>Fix README.md example compilation by <a\nhref=\"https://github.com/rantala\"><code>@​rantala</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/342\">eminence/procfs#342</a></li>\n<li>Fix for trait derivation on wasm targets by <a\nhref=\"https://github.com/fzylogic\"><code>@​fzylogic</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/345\">eminence/procfs#345</a></li>\n<li>Add Process.open_relative_flags by <a\nhref=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/341\">eminence/procfs#341</a></li>\n<li>fix wrong spelling in nfs mount by <a\nhref=\"https://github.com/arthur-zhang\"><code>@​arthur-zhang</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/347\">eminence/procfs#347</a></li>\n<li>Add track_caller to check_unwrap test helper function by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/355\">eminence/procfs#355</a></li>\n<li>Add /proc/pid/syscall parsing support by <a\nhref=\"https://github.com/jebradbury39\"><code>@​jebradbury39</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/350\">eminence/procfs#350</a></li>\n<li>Fix FDTarget parsing for unknown FD types by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/356\">eminence/procfs#356</a></li>\n<li>Fix parsing for mountinfo and related fields when presented with\nempty fields by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/357\">eminence/procfs#357</a></li>\n<li>Replace <code>crate</code> with <code>$crate</code> in our macro\ndefinitions by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/358\">eminence/procfs#358</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a\nhref=\"https://github.com/GuillaumeGomez\"><code>@​GuillaumeGomez</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/320\">eminence/procfs#320</a></li>\n<li><a href=\"https://github.com/tyilo\"><code>@​tyilo</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/328\">eminence/procfs#328</a></li>\n<li><a\nhref=\"https://github.com/PauloMigAlmeida\"><code>@​PauloMigAlmeida</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/327\">eminence/procfs#327</a></li>\n<li><a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/329\">eminence/procfs#329</a></li>\n<li><a\nhref=\"https://github.com/musicinmybrain\"><code>@​musicinmybrain</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/326\">eminence/procfs#326</a></li>\n<li><a href=\"https://github.com/Jongy\"><code>@​Jongy</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/334\">eminence/procfs#334</a></li>\n<li><a\nhref=\"https://github.com/SebastiaanYN\"><code>@​SebastiaanYN</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/335\">eminence/procfs#335</a></li>\n<li><a href=\"https://github.com/NoisyCoil\"><code>@​NoisyCoil</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/337\">eminence/procfs#337</a></li>\n<li><a href=\"https://github.com/cratelyn\"><code>@​cratelyn</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/340\">eminence/procfs#340</a></li>\n<li><a href=\"https://github.com/rantala\"><code>@​rantala</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/342\">eminence/procfs#342</a></li>\n<li><a href=\"https://github.com/fzylogic\"><code>@​fzylogic</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/345\">eminence/procfs#345</a></li>\n<li><a\nhref=\"https://github.com/arthur-zhang\"><code>@​arthur-zhang</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/347\">eminence/procfs#347</a></li>\n<li><a\nhref=\"https://github.com/jebradbury39\"><code>@​jebradbury39</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/350\">eminence/procfs#350</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/eminence/procfs/compare/v0.17.0...v0.18.0\">https://github.com/eminence/procfs/compare/v0.17.0...v0.18.0</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/7d3a0cd0f5b5a8147608fba577b2da26c09dd326\"><code>7d3a0cd</code></a>\nBump version to v0.18.0</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/78d6a16fab5abd5f9bc6e1f65eff5d9d6595d0b0\"><code>78d6a16</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/358\">#358</a>\nfrom eminence/macro_rules_crate</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/44f428932e88937d04fb908969dcd225f56dddf4\"><code>44f4289</code></a>\nReplace <code>crate</code> with <code>$crate</code> in our macro\ndefinitions</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/432e8c271c665d59747150f7d087ca6ff8a7d6c7\"><code>432e8c2</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/357\">#357</a>\nfrom eminence/fix_pasta_mountinfo</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/bffec12aa26ae66194c3f79235d356865aa50e31\"><code>bffec12</code></a>\nFix parsing for mountinfo and related fields when presented with empty\nfields</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/d6181116c86cd7015670cbc4b3ffa99143fa3f26\"><code>d618111</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/356\">#356</a>\nfrom eminence/fdtarget_fix</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/4a7b270474a023f8d496a4fd9a2b7bd81cfc3bf8\"><code>4a7b270</code></a>\nFix FDTarget parsing for unknown FD types</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/5faa3c4a8e324060ef69173703be30e68245297b\"><code>5faa3c4</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/350\">#350</a>\nfrom jebradbury39/add_syscall_parsing</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/5547a6a9b54f9726bfc4e92a563f3f98a46cd2e0\"><code>5547a6a</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/355\">#355</a>\nfrom eminence/add-track-caller-to-test-helper</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/eddfadb7f20c37a5f77d1c5fd7e3756625aac3b5\"><code>eddfadb</code></a>\nremove comment</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/eminence/procfs/compare/v0.17.0...v0.18.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/canonical/authd/commit/cb54d5f3cf9f93ef0666428e12810f14c6426e94"
+                  "timestamp": 1790247634,
+                  "message": "deps(rust): bump ctor from 0.5.0 to 1.0.13 (#1816)\n\nBumps [ctor](https://github.com/mmastrac/linktime) from 0.5.0 to 1.0.13.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/mmastrac/linktime/releases\">ctor's\nreleases</a>.</em></p>\n<blockquote>\n<h2>ctor-1.0.13</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up consistent\n64-bit hash chunks (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/508\">#508</a>)\nand the cross-crate section-name fix (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/509\">#509</a>)\n(should not result in any downstream visible changes)</li>\n<li>Document <code>crate_path</code> and re-exports by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/rust-ctor/pull/514\">mmastrac/rust-ctor#514</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13\">https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13</a></p>\n<h2>ctor-1.0.12</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up PR <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/495\">#495</a>\n(should not result in any downstream visible changes)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12\">https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12</a></p>\n<h2>ctor-1.0.11</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Pointer-align the Apple ctor anchor by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/503\">mmastrac/linktime#503</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11\">https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11</a></p>\n<h2>ctor-1.0.10</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Split <code>Static::deref</code>'s slow path into cold fn by <a\nhref=\"https://github.com/yvt\"><code>@​yvt</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/yvt\"><code>@​yvt</code></a> made their\nfirst contribution in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10\">https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10</a></p>\n<h2>ctor-1.0.9</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Ensure that Apple-platform staticlibs always keep the primary\npriority ctor (fixed by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/498\">mmastrac/linktime#498</a>,\nreported in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/496\">#496</a>\nby <a\nhref=\"https://github.com/tylerhawkes\"><code>@​tylerhawkes</code></a>)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9\">https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9</a></p>\n<h2>ctor-1.0.8</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump versions by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/490\">mmastrac/linktime#490</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8\">https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8</a></p>\n<h2>ctor-1.0.7</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump downstream <code>link-section</code> crate version and API\nupdates.</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a\nhref=\"https://github.com/mmastrac/linktime/commits/ctor-1.0.13\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
+                  "url": "https://github.com/canonical/authd/commit/c2d7734fbd5ea8d10fb04821e33314e7e02ab891"
                }
             ],
             "ciActions": [
@@ -6046,6 +6046,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d3d1ab8e7cb2688fe2c31677997f798cd4024f53",
+                  "author": "Weblate (bot)",
+                  "timestamp": 1790259681,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#255)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/d3d1ab8e7cb2688fe2c31677997f798cd4024f53"
+               },
+               {
                   "sha": "9836436feef1cf2bc119b5d9cf926f060512aa74",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790153878,
@@ -6058,13 +6065,6 @@
                   "timestamp": 1790077988,
                   "message": "Merge pull request #252 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
                   "url": "https://github.com/canonical/desktop-security-center/commit/5e8b94bfa73133d17c0370fe5aa58b65766e4dc6"
-               },
-               {
-                  "sha": "67492e4d42d7b873e5d927c6b9925b4e4ee8a55d",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790071765,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/67492e4d42d7b873e5d927c6b9925b4e4ee8a55d"
                }
             ],
             "ciActions": [],
@@ -6802,25 +6802,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "94c841defbc6e0c1dc8ab8ec34e060ad5675b4e8",
+                  "sha": "ac3226f8236bb53564b91285283841b9da850856",
                   "author": "renovate[bot]",
-                  "timestamp": 1790242584,
-                  "message": "chore(deps): update rust crate thiserror to v2.0.21 (#345)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/94c841defbc6e0c1dc8ab8ec34e060ad5675b4e8"
+                  "timestamp": 1790249451,
+                  "message": "chore(deps): update peter-evans/create-pull-request action to v8 (#357)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/ac3226f8236bb53564b91285283841b9da850856"
                },
                {
-                  "sha": "b3a6001485770cfa8f5d650155dbf528614f2d9d",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790242547,
-                  "message": "chore(deps): update dependency ubuntu to v26 (#355)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/b3a6001485770cfa8f5d650155dbf528614f2d9d"
+                  "sha": "42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4",
+                  "author": "Copilot",
+                  "timestamp": 1790249416,
+                  "message": "feat: socket logging printing incorrectly (#277)\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: matthew-hagemann <93575731+matthew-hagemann@users.noreply.github.com>\nCo-authored-by: gabelluardo <42920247+gabelluardo@users.noreply.github.com>\nCo-authored-by: ogres <2391557+ogres@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4"
                },
                {
-                  "sha": "fe8b8c0c1caa0afa9a1bfbf25a2e4590d4e38052",
+                  "sha": "1085f480433beb0c7be73fdd0548184a14c59ae4",
                   "author": "renovate[bot]",
-                  "timestamp": 1790242465,
-                  "message": "chore(deps): update j178/prek-action action to v3 (#356)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/fe8b8c0c1caa0afa9a1bfbf25a2e4590d4e38052"
+                  "timestamp": 1790249384,
+                  "message": "chore(deps): update rust crate serial_test to v4 (#358)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/1085f480433beb0c7be73fdd0548184a14c59ae4"
                }
             ],
             "ciActions": [],
@@ -7409,25 +7409,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c34bd5790eabf76a4429d89044f64b5e2480c7eb",
+                  "sha": "b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c",
                   "author": "Dennis Loose",
-                  "timestamp": 1790179280,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631 (#1558)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/be4a23540c233f7c8fc283ede8d00de7a01a4890..233463112af9da37a4c411a7bd2531f12842d1da))\n| digest | `be4a235` → `2334631` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0NC4xMTAuMCIsInVwZGF0ZWRJblZlciI6IjQ0LjExMC4wIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c34bd5790eabf76a4429d89044f64b5e2480c7eb"
+                  "timestamp": 1790251737,
+                  "message": "feat(storage): enforce storage requirements in manual partitioning (#1556)\n\nConsume the storage `requirements` from subiquity and block \"Next\" in\nmanual partitioning until all of them are satisfied, replacing the\nneedRoot/needBoot flags. Requirements that are still probing are treated\nas unmet.\n\nDepends on canonical/subiquity#2438.\nUDENG-11490",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c"
                },
                {
-                  "sha": "ab47bcb98e5ffdb87501fb7789ecd394d26f69e6",
+                  "sha": "f1cdb0f1378e91f7644210f206bf1691eda93b0b",
                   "author": "Dennis Loose",
-                  "timestamp": 1790177507,
-                  "message": "chore: regenerate subiquity types",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ab47bcb98e5ffdb87501fb7789ecd394d26f69e6"
+                  "timestamp": 1790239923,
+                  "message": "test: add widget tests for added info/warning messages",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f1cdb0f1378e91f7644210f206bf1691eda93b0b"
                },
                {
-                  "sha": "bc8b06577375cc89c941642defea77b687c2e2cd",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790176826,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bc8b06577375cc89c941642defea77b687c2e2cd"
+                  "sha": "864989291313b7c4111f19dfc35327bdd8980176",
+                  "author": "Dennis Loose",
+                  "timestamp": 1789750672,
+                  "message": "refactor: formatting",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/864989291313b7c4111f19dfc35327bdd8980176"
                }
             ],
             "ciActions": [
@@ -8368,25 +8368,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "807aa697281ee7bf4831fa93924c23d349ffcb10",
-                  "author": "adombeck",
-                  "timestamp": 1790243437,
-                  "message": "e2e: Fix incorrect password prompt matched (#1987)\n\nCloses #1983",
-                  "url": "https://github.com/canonical/authd/commit/807aa697281ee7bf4831fa93924c23d349ffcb10"
-               },
-               {
-                  "sha": "493c5d9af4411bc857b1432e7be4d63df001c243",
+                  "sha": "ca6f582be7aa398758abcdc4e4f1119225325b1e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790192797,
-                  "message": "e2e: Fix incorrect password prompt matched\n\nWe were looking for the string \"Password\" in the OCR output, but GDM\ndisplays \"Enter your password\". That's similar enough that it often\nresulted in a match but sometimes it didn't. Let's fix that by looking\nfor the string that's actually displayed.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/493c5d9af4411bc857b1432e7be4d63df001c243"
+                  "timestamp": 1790252279,
+                  "message": "Merge branch 'stable'",
+                  "url": "https://github.com/canonical/authd/commit/ca6f582be7aa398758abcdc4e4f1119225325b1e"
                },
                {
-                  "sha": "cb54d5f3cf9f93ef0666428e12810f14c6426e94",
+                  "sha": "f5210c13b8b0d07391a1aa3a9c925fe00feff3ab",
+                  "author": "adombeck",
+                  "timestamp": 1790252119,
+                  "message": "Release authd 0.7.0 (#1961)\n\n* Improve error behavior when broker fails to start\n* Avoid Tokio panic during late NSS lookups\n* pam/gdm: Ignore GDM echo of our own auth mode selection\n* pam/adapter: Ignore stale stopAuthentication from a superseded challenge\n* Hide terminal password prompt after submission\n* config: nest PAM settings under `pam:` with per-service overrides\n* pam: Don't offer existing users to choose a different provider\n* Ensure GDM sees managed users after reboot\n* pam/main-exec: Exit with failure if the server connection is lost\n* pam: don't fail auth when UpdateBrokerForUser write fails\n* Use \"authentication flow\" terminology consistently\n* pam/gdm: serialise concurrent PAM conversations\n* pam: fall back to native mode when TERM=dumb\n* pam/native: don't show stage headers in polkit dialog\n* pam: Return PAM_IGNORE early when only the local broker is available\n* Improve PAM prompts\n* Fix selection menu shown briefly before auto-selection\n* pam/go-exec: drain GMainContext after stopping GDBusServer on cleanup\n* pam: Set `PAM_AUTHTOK` on successful authentication\n* Allow non-root processes to use the PAM service\n* Use \"device code flow\" terminology consistently\n* pam: reject broker mismatch early in SelectBroker\n* brokers: use providerID for user identification\n* authctl: add authctl user set-home\n* debian/rules: Fix dh_auto_configure using wrong cargo version\n* Add `authctl user set-shell` command\n* Support deleting users and groups via authctl\n* pam/adapter: Return ErrAuthinfoUnavail when broker listing fails\n* Return PAM_MAXTRIES on too many auth failures\n* Support API versioning in broker API and authd\n* pam/adapter: fix authTracker race with a generation counter\n* pam: use dynamic padding for URL/Code labels alignment\n* Improve login layout\n* pam/main-exec: Don't set timeout for D-Bus connection\n* pam: Support Ctrl-D in text entries\n* Remove bbolt to SQLite migration code\n* Update Go dependencies:\n  - toolchain go1.26.7\n  - github.com/mattn/go-sqlite3 v1.14.52\n  - github.com/stretchr/testify v1.12.1\n  - golang.org/x/sys v0.48.0\n  - golang.org/x/term v0.45.0\n  - google.golang.org/grpc v1.83.2\n  - google.golang.org/protobuf v1.36.12\n  - gopkg.in/ini.v1 v1.67.3\n  - go.yaml.in/yaml/v3 v3.0.5 // indirect\n  - golang.org/x/net v0.58.0 // indirect\n  - golang.org/x/sync v0.22.0 // indirect\n  - golang.org/x/text v0.41.0 // indirect\n  - google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect\n* Update Rust dependencies:\n  - cc ^1.2.63\n  - hyper-util ^0.1.20\n  - libc ^0.2.186\n  - log ^0.4.31\n  - once_cell ^1.21.4\n  - rustix ^1.1.4\n  - simple_logger ^5.2.0\n  - tokio ^1.50.0",
+                  "url": "https://github.com/canonical/authd/commit/f5210c13b8b0d07391a1aa3a9c925fe00feff3ab"
+               },
+               {
+                  "sha": "c2d7734fbd5ea8d10fb04821e33314e7e02ab891",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790243131,
-                  "message": "deps(rust): bump procfs from 0.17.0 to 0.18.0 (#1485)\n\nBumps [procfs](https://github.com/eminence/procfs) from 0.17.0 to\n0.18.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/eminence/procfs/releases\">procfs's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v0.18.0</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Enable <code>generate-link-to-definition</code> rustdoc feature on\ndocs.rs by <a\nhref=\"https://github.com/GuillaumeGomez\"><code>@​GuillaumeGomez</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/320\">eminence/procfs#320</a></li>\n<li>Use correct MSRV by <a\nhref=\"https://github.com/tyilo\"><code>@​tyilo</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/328\">eminence/procfs#328</a></li>\n<li>replace hardcoded crate name by env var that returns the crate's\nname dynamically by <a\nhref=\"https://github.com/PauloMigAlmeida\"><code>@​PauloMigAlmeida</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/327\">eminence/procfs#327</a></li>\n<li>Remove unused crate and use by <a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/329\">eminence/procfs#329</a></li>\n<li>Fix lints as the names have changed by <a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/330\">eminence/procfs#330</a></li>\n<li>Reduce short-lived allocations in memory maps parsing by <a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/331\">eminence/procfs#331</a></li>\n<li>Work around 32/64 bit mismatch by <a\nhref=\"https://github.com/musicinmybrain\"><code>@​musicinmybrain</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/326\">eminence/procfs#326</a></li>\n<li>Parse /proc/pid/status &quot;Groups&quot; field as u32 by <a\nhref=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/334\">eminence/procfs#334</a></li>\n<li>Make get_pressure and parse_pressure_record public by <a\nhref=\"https://github.com/SebastiaanYN\"><code>@​SebastiaanYN</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/335\">eminence/procfs#335</a></li>\n<li>Use AsRef<!-- raw HTML omitted --> for user-facing path parameters\nby <a href=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/336\">eminence/procfs#336</a></li>\n<li>Check process name in test_proc_status_for_kthreadd by <a\nhref=\"https://github.com/NoisyCoil\"><code>@​NoisyCoil</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/337\">eminence/procfs#337</a></li>\n<li>Add <code>full</code> record to <code>CpuPressure</code> by <a\nhref=\"https://github.com/SebastiaanYN\"><code>@​SebastiaanYN</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/338\">eminence/procfs#338</a></li>\n<li>chore(deps): update <code>rustix</code> to 1.0.1 by <a\nhref=\"https://github.com/cratelyn\"><code>@​cratelyn</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/340\">eminence/procfs#340</a></li>\n<li>Derive PartialEq &amp; Eq for FDTarget by <a\nhref=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/339\">eminence/procfs#339</a></li>\n<li>Fix README.md example compilation by <a\nhref=\"https://github.com/rantala\"><code>@​rantala</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/342\">eminence/procfs#342</a></li>\n<li>Fix for trait derivation on wasm targets by <a\nhref=\"https://github.com/fzylogic\"><code>@​fzylogic</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/345\">eminence/procfs#345</a></li>\n<li>Add Process.open_relative_flags by <a\nhref=\"https://github.com/Jongy\"><code>@​Jongy</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/341\">eminence/procfs#341</a></li>\n<li>fix wrong spelling in nfs mount by <a\nhref=\"https://github.com/arthur-zhang\"><code>@​arthur-zhang</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/347\">eminence/procfs#347</a></li>\n<li>Add track_caller to check_unwrap test helper function by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/355\">eminence/procfs#355</a></li>\n<li>Add /proc/pid/syscall parsing support by <a\nhref=\"https://github.com/jebradbury39\"><code>@​jebradbury39</code></a>\nin <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/350\">eminence/procfs#350</a></li>\n<li>Fix FDTarget parsing for unknown FD types by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/356\">eminence/procfs#356</a></li>\n<li>Fix parsing for mountinfo and related fields when presented with\nempty fields by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/357\">eminence/procfs#357</a></li>\n<li>Replace <code>crate</code> with <code>$crate</code> in our macro\ndefinitions by <a\nhref=\"https://github.com/eminence\"><code>@​eminence</code></a> in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/358\">eminence/procfs#358</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a\nhref=\"https://github.com/GuillaumeGomez\"><code>@​GuillaumeGomez</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/320\">eminence/procfs#320</a></li>\n<li><a href=\"https://github.com/tyilo\"><code>@​tyilo</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/328\">eminence/procfs#328</a></li>\n<li><a\nhref=\"https://github.com/PauloMigAlmeida\"><code>@​PauloMigAlmeida</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/327\">eminence/procfs#327</a></li>\n<li><a\nhref=\"https://github.com/javierhonduco\"><code>@​javierhonduco</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/329\">eminence/procfs#329</a></li>\n<li><a\nhref=\"https://github.com/musicinmybrain\"><code>@​musicinmybrain</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/326\">eminence/procfs#326</a></li>\n<li><a href=\"https://github.com/Jongy\"><code>@​Jongy</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/334\">eminence/procfs#334</a></li>\n<li><a\nhref=\"https://github.com/SebastiaanYN\"><code>@​SebastiaanYN</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/335\">eminence/procfs#335</a></li>\n<li><a href=\"https://github.com/NoisyCoil\"><code>@​NoisyCoil</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/337\">eminence/procfs#337</a></li>\n<li><a href=\"https://github.com/cratelyn\"><code>@​cratelyn</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/340\">eminence/procfs#340</a></li>\n<li><a href=\"https://github.com/rantala\"><code>@​rantala</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/342\">eminence/procfs#342</a></li>\n<li><a href=\"https://github.com/fzylogic\"><code>@​fzylogic</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/345\">eminence/procfs#345</a></li>\n<li><a\nhref=\"https://github.com/arthur-zhang\"><code>@​arthur-zhang</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/347\">eminence/procfs#347</a></li>\n<li><a\nhref=\"https://github.com/jebradbury39\"><code>@​jebradbury39</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/eminence/procfs/pull/350\">eminence/procfs#350</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/eminence/procfs/compare/v0.17.0...v0.18.0\">https://github.com/eminence/procfs/compare/v0.17.0...v0.18.0</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/7d3a0cd0f5b5a8147608fba577b2da26c09dd326\"><code>7d3a0cd</code></a>\nBump version to v0.18.0</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/78d6a16fab5abd5f9bc6e1f65eff5d9d6595d0b0\"><code>78d6a16</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/358\">#358</a>\nfrom eminence/macro_rules_crate</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/44f428932e88937d04fb908969dcd225f56dddf4\"><code>44f4289</code></a>\nReplace <code>crate</code> with <code>$crate</code> in our macro\ndefinitions</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/432e8c271c665d59747150f7d087ca6ff8a7d6c7\"><code>432e8c2</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/357\">#357</a>\nfrom eminence/fix_pasta_mountinfo</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/bffec12aa26ae66194c3f79235d356865aa50e31\"><code>bffec12</code></a>\nFix parsing for mountinfo and related fields when presented with empty\nfields</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/d6181116c86cd7015670cbc4b3ffa99143fa3f26\"><code>d618111</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/356\">#356</a>\nfrom eminence/fdtarget_fix</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/4a7b270474a023f8d496a4fd9a2b7bd81cfc3bf8\"><code>4a7b270</code></a>\nFix FDTarget parsing for unknown FD types</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/5faa3c4a8e324060ef69173703be30e68245297b\"><code>5faa3c4</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/350\">#350</a>\nfrom jebradbury39/add_syscall_parsing</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/5547a6a9b54f9726bfc4e92a563f3f98a46cd2e0\"><code>5547a6a</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/eminence/procfs/issues/355\">#355</a>\nfrom eminence/add-track-caller-to-test-helper</li>\n<li><a\nhref=\"https://github.com/eminence/procfs/commit/eddfadb7f20c37a5f77d1c5fd7e3756625aac3b5\"><code>eddfadb</code></a>\nremove comment</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/eminence/procfs/compare/v0.17.0...v0.18.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/canonical/authd/commit/cb54d5f3cf9f93ef0666428e12810f14c6426e94"
+                  "timestamp": 1790247634,
+                  "message": "deps(rust): bump ctor from 0.5.0 to 1.0.13 (#1816)\n\nBumps [ctor](https://github.com/mmastrac/linktime) from 0.5.0 to 1.0.13.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/mmastrac/linktime/releases\">ctor's\nreleases</a>.</em></p>\n<blockquote>\n<h2>ctor-1.0.13</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up consistent\n64-bit hash chunks (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/508\">#508</a>)\nand the cross-crate section-name fix (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/509\">#509</a>)\n(should not result in any downstream visible changes)</li>\n<li>Document <code>crate_path</code> and re-exports by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/rust-ctor/pull/514\">mmastrac/rust-ctor#514</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13\">https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13</a></p>\n<h2>ctor-1.0.12</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up PR <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/495\">#495</a>\n(should not result in any downstream visible changes)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12\">https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12</a></p>\n<h2>ctor-1.0.11</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Pointer-align the Apple ctor anchor by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/503\">mmastrac/linktime#503</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11\">https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11</a></p>\n<h2>ctor-1.0.10</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Split <code>Static::deref</code>'s slow path into cold fn by <a\nhref=\"https://github.com/yvt\"><code>@​yvt</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/yvt\"><code>@​yvt</code></a> made their\nfirst contribution in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10\">https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10</a></p>\n<h2>ctor-1.0.9</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Ensure that Apple-platform staticlibs always keep the primary\npriority ctor (fixed by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/498\">mmastrac/linktime#498</a>,\nreported in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/496\">#496</a>\nby <a\nhref=\"https://github.com/tylerhawkes\"><code>@​tylerhawkes</code></a>)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9\">https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9</a></p>\n<h2>ctor-1.0.8</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump versions by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/490\">mmastrac/linktime#490</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8\">https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8</a></p>\n<h2>ctor-1.0.7</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump downstream <code>link-section</code> crate version and API\nupdates.</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a\nhref=\"https://github.com/mmastrac/linktime/commits/ctor-1.0.13\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
+                  "url": "https://github.com/canonical/authd/commit/c2d7734fbd5ea8d10fb04821e33314e7e02ab891"
                }
             ],
             "ciActions": [
@@ -8601,6 +8601,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "d3d1ab8e7cb2688fe2c31677997f798cd4024f53",
+                  "author": "Weblate (bot)",
+                  "timestamp": 1790259681,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#255)",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/d3d1ab8e7cb2688fe2c31677997f798cd4024f53"
+               },
+               {
                   "sha": "9836436feef1cf2bc119b5d9cf926f060512aa74",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790153878,
@@ -8613,13 +8620,6 @@
                   "timestamp": 1790077988,
                   "message": "Merge pull request #252 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
                   "url": "https://github.com/canonical/desktop-security-center/commit/5e8b94bfa73133d17c0370fe5aa58b65766e4dc6"
-               },
-               {
-                  "sha": "67492e4d42d7b873e5d927c6b9925b4e4ee8a55d",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790071765,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/67492e4d42d7b873e5d927c6b9925b4e4ee8a55d"
                }
             ],
             "ciActions": [],
@@ -9119,8 +9119,34 @@
                }
             ],
             "commits": null,
-            "ciActions": null,
-            "charm": null,
+            "ciActions": [
+               "https://github.com/canonical/mediawiki-k8s-operator/actions/workflows/publish_charm.yaml",
+               "https://github.com/canonical/mediawiki-k8s-operator/actions/workflows/promote_charm.yaml"
+            ],
+            "charm": {
+               "name": "mediawiki-k8s",
+               "url": "https://charmhub.io/mediawiki-k8s",
+               "releases": [
+                  {
+                     "track": "1.46",
+                     "channel": "edge",
+                     "revision": 125,
+                     "timestamp": 1788277812
+                  },
+                  {
+                     "track": "1.46",
+                     "channel": "edge",
+                     "revision": 153,
+                     "timestamp": 1790210090
+                  }
+               ],
+               "channels": [
+                  "edge"
+               ],
+               "tracks": [
+                  "1.46"
+               ]
+            },
             "snap": null
          },
          {
@@ -9298,25 +9324,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "94c841defbc6e0c1dc8ab8ec34e060ad5675b4e8",
+                  "sha": "ac3226f8236bb53564b91285283841b9da850856",
                   "author": "renovate[bot]",
-                  "timestamp": 1790242584,
-                  "message": "chore(deps): update rust crate thiserror to v2.0.21 (#345)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/94c841defbc6e0c1dc8ab8ec34e060ad5675b4e8"
+                  "timestamp": 1790249451,
+                  "message": "chore(deps): update peter-evans/create-pull-request action to v8 (#357)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/ac3226f8236bb53564b91285283841b9da850856"
                },
                {
-                  "sha": "b3a6001485770cfa8f5d650155dbf528614f2d9d",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790242547,
-                  "message": "chore(deps): update dependency ubuntu to v26 (#355)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/b3a6001485770cfa8f5d650155dbf528614f2d9d"
+                  "sha": "42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4",
+                  "author": "Copilot",
+                  "timestamp": 1790249416,
+                  "message": "feat: socket logging printing incorrectly (#277)\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: matthew-hagemann <93575731+matthew-hagemann@users.noreply.github.com>\nCo-authored-by: gabelluardo <42920247+gabelluardo@users.noreply.github.com>\nCo-authored-by: ogres <2391557+ogres@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4"
                },
                {
-                  "sha": "fe8b8c0c1caa0afa9a1bfbf25a2e4590d4e38052",
+                  "sha": "1085f480433beb0c7be73fdd0548184a14c59ae4",
                   "author": "renovate[bot]",
-                  "timestamp": 1790242465,
-                  "message": "chore(deps): update j178/prek-action action to v3 (#356)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/fe8b8c0c1caa0afa9a1bfbf25a2e4590d4e38052"
+                  "timestamp": 1790249384,
+                  "message": "chore(deps): update rust crate serial_test to v4 (#358)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/prompting-client/commit/1085f480433beb0c7be73fdd0548184a14c59ae4"
                }
             ],
             "ciActions": [],
@@ -9905,25 +9931,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c34bd5790eabf76a4429d89044f64b5e2480c7eb",
+                  "sha": "b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c",
                   "author": "Dennis Loose",
-                  "timestamp": 1790179280,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631 (#1558)\n\nThis PR contains the following updates:\n\n| Package | Update | Change |\n|---|---|---|\n|\n[packages/subiquity_client/subiquity](https://redirect.github.com/canonical/subiquity)\n([changelog](https://redirect.github.com/canonical/subiquity/compare/be4a23540c233f7c8fc283ede8d00de7a01a4890..233463112af9da37a4c411a7bd2531f12842d1da))\n| digest | `be4a235` → `2334631` |\n\n---\n\n> [!WARNING]\n> Some dependencies could not be looked up. Check the [Dependency\nDashboard](../issues/4) for more information.\n\n---\n\n### Configuration\n\n📅 **Schedule**: (UTC)\n\n- Branch creation\n  - \"after 9am and before 2pm on monday\"\n- Automerge\n  - At any time (no schedule defined)\n\n🚦 **Automerge**: Disabled by config. Please merge this manually once you\nare satisfied.\n\n♻ **Rebasing**: Whenever PR becomes conflicted, or you tick the\nrebase/retry checkbox.\n\n🔕 **Ignore**: Close this PR and you won't be reminded about this update\nagain.\n\n---\n\n- [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check\nthis box\n\n---\n\nThis PR was generated by [Mend Renovate](https://mend.io/renovate/).\nView the [repository job\nlog](https://developer.mend.io/github/canonical/ubuntu-desktop-provision).\n\n<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0NC4xMTAuMCIsInVwZGF0ZWRJblZlciI6IjQ0LjExMC4wIiwidGFyZ2V0QnJhbmNoIjoibWFpbiIsImxhYmVscyI6W119-->",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/c34bd5790eabf76a4429d89044f64b5e2480c7eb"
+                  "timestamp": 1790251737,
+                  "message": "feat(storage): enforce storage requirements in manual partitioning (#1556)\n\nConsume the storage `requirements` from subiquity and block \"Next\" in\nmanual partitioning until all of them are satisfied, replacing the\nneedRoot/needBoot flags. Requirements that are still probing are treated\nas unmet.\n\nDepends on canonical/subiquity#2438.\nUDENG-11490",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c"
                },
                {
-                  "sha": "ab47bcb98e5ffdb87501fb7789ecd394d26f69e6",
+                  "sha": "f1cdb0f1378e91f7644210f206bf1691eda93b0b",
                   "author": "Dennis Loose",
-                  "timestamp": 1790177507,
-                  "message": "chore: regenerate subiquity types",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ab47bcb98e5ffdb87501fb7789ecd394d26f69e6"
+                  "timestamp": 1790239923,
+                  "message": "test: add widget tests for added info/warning messages",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f1cdb0f1378e91f7644210f206bf1691eda93b0b"
                },
                {
-                  "sha": "bc8b06577375cc89c941642defea77b687c2e2cd",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790176826,
-                  "message": "chore(deps): update packages/subiquity_client/subiquity digest to 2334631",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/bc8b06577375cc89c941642defea77b687c2e2cd"
+                  "sha": "864989291313b7c4111f19dfc35327bdd8980176",
+                  "author": "Dennis Loose",
+                  "timestamp": 1789750672,
+                  "message": "refactor: formatting",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/864989291313b7c4111f19dfc35327bdd8980176"
                }
             ],
             "ciActions": [
