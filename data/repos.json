@@ -151,14 +151,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 47,
-                     "timestamp": 1768981103
+                     "revision": 50,
+                     "timestamp": 1790322392
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 48,
-                     "timestamp": 1768981595
+                     "revision": 51,
+                     "timestamp": 1790323577
                   }
                ],
                "channels": [
@@ -3401,25 +3401,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ddee43e7547aec58a7f665c94d9d576b8dbb64e4",
+                  "author": "adombeck",
+                  "timestamp": 1790323123,
+                  "message": "ci: Report non-default e2e options as annotations (#1994)",
+                  "url": "https://github.com/canonical/authd/commit/ddee43e7547aec58a7f665c94d9d576b8dbb64e4"
+               },
+               {
+                  "sha": "2421725603f486ea1ebb66deaa6ac885de271cd1",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790317684,
+                  "message": "ci: Report non-default e2e options as annotations\n\nReport non-default e2e options as CI annotations to make them easier to\nfind when looking at a workflow run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/2421725603f486ea1ebb66deaa6ac885de271cd1"
+               },
+               {
                   "sha": "ca6f582be7aa398758abcdc4e4f1119225325b1e",
                   "author": "Adrian Dombeck",
                   "timestamp": 1790252279,
                   "message": "Merge branch 'stable'",
                   "url": "https://github.com/canonical/authd/commit/ca6f582be7aa398758abcdc4e4f1119225325b1e"
-               },
-               {
-                  "sha": "f5210c13b8b0d07391a1aa3a9c925fe00feff3ab",
-                  "author": "adombeck",
-                  "timestamp": 1790252119,
-                  "message": "Release authd 0.7.0 (#1961)\n\n* Improve error behavior when broker fails to start\n* Avoid Tokio panic during late NSS lookups\n* pam/gdm: Ignore GDM echo of our own auth mode selection\n* pam/adapter: Ignore stale stopAuthentication from a superseded challenge\n* Hide terminal password prompt after submission\n* config: nest PAM settings under `pam:` with per-service overrides\n* pam: Don't offer existing users to choose a different provider\n* Ensure GDM sees managed users after reboot\n* pam/main-exec: Exit with failure if the server connection is lost\n* pam: don't fail auth when UpdateBrokerForUser write fails\n* Use \"authentication flow\" terminology consistently\n* pam/gdm: serialise concurrent PAM conversations\n* pam: fall back to native mode when TERM=dumb\n* pam/native: don't show stage headers in polkit dialog\n* pam: Return PAM_IGNORE early when only the local broker is available\n* Improve PAM prompts\n* Fix selection menu shown briefly before auto-selection\n* pam/go-exec: drain GMainContext after stopping GDBusServer on cleanup\n* pam: Set `PAM_AUTHTOK` on successful authentication\n* Allow non-root processes to use the PAM service\n* Use \"device code flow\" terminology consistently\n* pam: reject broker mismatch early in SelectBroker\n* brokers: use providerID for user identification\n* authctl: add authctl user set-home\n* debian/rules: Fix dh_auto_configure using wrong cargo version\n* Add `authctl user set-shell` command\n* Support deleting users and groups via authctl\n* pam/adapter: Return ErrAuthinfoUnavail when broker listing fails\n* Return PAM_MAXTRIES on too many auth failures\n* Support API versioning in broker API and authd\n* pam/adapter: fix authTracker race with a generation counter\n* pam: use dynamic padding for URL/Code labels alignment\n* Improve login layout\n* pam/main-exec: Don't set timeout for D-Bus connection\n* pam: Support Ctrl-D in text entries\n* Remove bbolt to SQLite migration code\n* Update Go dependencies:\n  - toolchain go1.26.7\n  - github.com/mattn/go-sqlite3 v1.14.52\n  - github.com/stretchr/testify v1.12.1\n  - golang.org/x/sys v0.48.0\n  - golang.org/x/term v0.45.0\n  - google.golang.org/grpc v1.83.2\n  - google.golang.org/protobuf v1.36.12\n  - gopkg.in/ini.v1 v1.67.3\n  - go.yaml.in/yaml/v3 v3.0.5 // indirect\n  - golang.org/x/net v0.58.0 // indirect\n  - golang.org/x/sync v0.22.0 // indirect\n  - golang.org/x/text v0.41.0 // indirect\n  - google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect\n* Update Rust dependencies:\n  - cc ^1.2.63\n  - hyper-util ^0.1.20\n  - libc ^0.2.186\n  - log ^0.4.31\n  - once_cell ^1.21.4\n  - rustix ^1.1.4\n  - simple_logger ^5.2.0\n  - tokio ^1.50.0",
-                  "url": "https://github.com/canonical/authd/commit/f5210c13b8b0d07391a1aa3a9c925fe00feff3ab"
-               },
-               {
-                  "sha": "c2d7734fbd5ea8d10fb04821e33314e7e02ab891",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790247634,
-                  "message": "deps(rust): bump ctor from 0.5.0 to 1.0.13 (#1816)\n\nBumps [ctor](https://github.com/mmastrac/linktime) from 0.5.0 to 1.0.13.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/mmastrac/linktime/releases\">ctor's\nreleases</a>.</em></p>\n<blockquote>\n<h2>ctor-1.0.13</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up consistent\n64-bit hash chunks (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/508\">#508</a>)\nand the cross-crate section-name fix (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/509\">#509</a>)\n(should not result in any downstream visible changes)</li>\n<li>Document <code>crate_path</code> and re-exports by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/rust-ctor/pull/514\">mmastrac/rust-ctor#514</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13\">https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13</a></p>\n<h2>ctor-1.0.12</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up PR <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/495\">#495</a>\n(should not result in any downstream visible changes)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12\">https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12</a></p>\n<h2>ctor-1.0.11</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Pointer-align the Apple ctor anchor by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/503\">mmastrac/linktime#503</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11\">https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11</a></p>\n<h2>ctor-1.0.10</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Split <code>Static::deref</code>'s slow path into cold fn by <a\nhref=\"https://github.com/yvt\"><code>@​yvt</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/yvt\"><code>@​yvt</code></a> made their\nfirst contribution in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10\">https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10</a></p>\n<h2>ctor-1.0.9</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Ensure that Apple-platform staticlibs always keep the primary\npriority ctor (fixed by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/498\">mmastrac/linktime#498</a>,\nreported in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/496\">#496</a>\nby <a\nhref=\"https://github.com/tylerhawkes\"><code>@​tylerhawkes</code></a>)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9\">https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9</a></p>\n<h2>ctor-1.0.8</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump versions by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/490\">mmastrac/linktime#490</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8\">https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8</a></p>\n<h2>ctor-1.0.7</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump downstream <code>link-section</code> crate version and API\nupdates.</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a\nhref=\"https://github.com/mmastrac/linktime/commits/ctor-1.0.13\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/canonical/authd/commit/c2d7734fbd5ea8d10fb04821e33314e7e02ab891"
                }
             ],
             "ciActions": [
@@ -3601,25 +3601,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3f41fbd2c8f55358397041a228f40f32d804b7dd",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790121765,
-                  "message": "feat: add cache to fvm, flutter and dart packages (#145)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/3f41fbd2c8f55358397041a228f40f32d804b7dd"
+                  "sha": "c41b8c04c55da2d476730a95944edc44ba6b1052",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1790342620,
+                  "message": "feat(gh-actions/build-debian): Allow building sources with git-buildpackage (#146)\n\nAdd a use-gbp input to build the source package with gbp instead of\ndpkg-buildpackage. This lets a repository delegate its source build to\nthe debian/gbp.conf prebuild hook (e.g. fetching meson subprojects)\nwhile this action still builds and uploads the binaries.\n\ngit-buildpackage is installed on demand. Because gbp exports the\ncommitted tree (--git-export defaults to HEAD), the changelog bumped by\ndch is committed first, and gbp then builds from a clean export with\n--git-ignore-branch.\n\nWe need this in gnome-shell-ubuntu-extensions to fully use the action\nrather than doing a mixup.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c41b8c04c55da2d476730a95944edc44ba6b1052"
                },
                {
-                  "sha": "e1069c189573b3525a60f54c5107ea3264f80805",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790114990,
-                  "message": "feat: add cache to fvm, flutter and dart packages",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e1069c189573b3525a60f54c5107ea3264f80805"
+                  "sha": "631ce4273a1d0456c06f91d953af21ba30ac935f",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1790199240,
+                  "message": "gh-actions/build-debian: Always upload the generated source package\n\nThe source package is regenerated and version-bumped even when\nfrom-sources-file is provided, so it should be uploaded in that case too:\nit is the source matching the built binaries, and consumers such as\nautopkgtest need it to reuse them.\n\nThe sources-only and from-sources-file combination is already rejected by\nthe input checks, and the source build step always populates\nSOURCE_OUTPUT_DIR, so the condition is not needed.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/631ce4273a1d0456c06f91d953af21ba30ac935f"
                },
                {
-                  "sha": "d800b57abab325c3799364d28147ce49df7dd12a",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789737636,
-                  "message": "fix: change anchored yaml to hardcoded (#144)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/d800b57abab325c3799364d28147ce49df7dd12a"
+                  "sha": "55838961123f3403bcfaede7c5d59afcc4d747cc",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1790195557,
+                  "message": "ci: Test building sources with git-buildpackage\n\nAdd a test job that clones a quilt package maintained with gbp\n(gsettings-desktop-schemas, which uses pristine-tar) via gbp clone and\nbuilds its source through the build-debian action with use-gbp enabled.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/55838961123f3403bcfaede7c5d59afcc4d747cc"
                }
             ],
             "ciActions": [],
@@ -3634,25 +3634,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d3d1ab8e7cb2688fe2c31677997f798cd4024f53",
-                  "author": "Weblate (bot)",
-                  "timestamp": 1790259681,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#255)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/d3d1ab8e7cb2688fe2c31677997f798cd4024f53"
+                  "sha": "9f794b7dbc264b5df6fd56a5f24cb29378ade34d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790326388,
+                  "message": "Merge pull request #256 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9f794b7dbc264b5df6fd56a5f24cb29378ade34d"
                },
                {
-                  "sha": "9836436feef1cf2bc119b5d9cf926f060512aa74",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790153878,
-                  "message": "ci: update ci to reuse cached fvm, flutter, melos and dart packages (#254)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/9836436feef1cf2bc119b5d9cf926f060512aa74"
+                  "sha": "b6598893a93e224eff0eac0d33f51a20461c1f87",
+                  "author": "canonical-desktop-bot",
+                  "timestamp": 1790325883,
+                  "message": "maint: regenerate l10n",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/b6598893a93e224eff0eac0d33f51a20461c1f87"
                },
                {
-                  "sha": "5e8b94bfa73133d17c0370fe5aa58b65766e4dc6",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790077988,
-                  "message": "Merge pull request #252 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/5e8b94bfa73133d17c0370fe5aa58b65766e4dc6"
+                  "sha": "98a79fae026965870df8b62406b51c215e413f9b",
+                  "author": "Github Action",
+                  "timestamp": 1790325775,
+                  "message": "fix(l10n): translated using Weblate (Esperanto)\n\nCurrently translated at 100.0% (196 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/eo/",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/98a79fae026965870df8b62406b51c215e413f9b"
                }
             ],
             "ciActions": [],
@@ -4357,25 +4357,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "63e50567498e796f306b0baabe2ddedbfa4a7da2",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790282654,
-                  "message": "chore(deps): update rust crate hyper-util to v0.1.21 (#361)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/63e50567498e796f306b0baabe2ddedbfa4a7da2"
+                  "sha": "0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790338119,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#325)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Prompting\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/matrix-auto.svg)",
+                  "url": "https://github.com/canonical/prompting-client/commit/0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7"
                },
                {
-                  "sha": "ac3226f8236bb53564b91285283841b9da850856",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790249451,
-                  "message": "chore(deps): update peter-evans/create-pull-request action to v8 (#357)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/ac3226f8236bb53564b91285283841b9da850856"
+                  "sha": "c9b99ef4f6036dae05423da324a1b6671a06a7e9",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790337224,
+                  "message": "maint: regenerated localizations files",
+                  "url": "https://github.com/canonical/prompting-client/commit/c9b99ef4f6036dae05423da324a1b6671a06a7e9"
                },
                {
-                  "sha": "42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4",
-                  "author": "Copilot",
-                  "timestamp": 1790249416,
-                  "message": "feat: socket logging printing incorrectly (#277)\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: matthew-hagemann <93575731+matthew-hagemann@users.noreply.github.com>\nCo-authored-by: gabelluardo <42920247+gabelluardo@users.noreply.github.com>\nCo-authored-by: ogres <2391557+ogres@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4"
+                  "sha": "381bfcaa9b9627b364dd59df2cacda7c585103d5",
+                  "author": "Github Action",
+                  "timestamp": 1790334384,
+                  "message": "fix(l10n): translated using Weblate (Chinese (Simplified Han script))\n\nCurrently translated at 100.0% (61 of 61 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/zh_Hans/",
+                  "url": "https://github.com/canonical/prompting-client/commit/381bfcaa9b9627b364dd59df2cacda7c585103d5"
                }
             ],
             "ciActions": [],
@@ -4964,25 +4964,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ab92e5d2aec1645504710f2c92c219d0e0134264",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790341950,
+                  "message": "fix: only show '/boot needs to be ext4' info if required (#1561)\n\nSubiquity only enforces `/boot` to be `ext4` under certain conditions,\nsee\n[here](https://github.com/canonical/subiquity/blob/088f26086964f35a623864d97aa0f138a710f0da/subiquity/common/storage/requirements.py#L133-L138)\nand\n[here](https://github.com/canonical/subiquity/blob/088f26086964f35a623864d97aa0f138a710f0da/subiquity/models/storage.py#L2559)\n(e.g. it's not enforced on BIOS systems). In this case we shouldn't show\nthe informational hint in the screenshot below:\n<img width=\"556\" height=\"407\" alt=\"Screenshot From 2026-09-24 16-48-53\"\nsrc=\"https://github.com/user-attachments/assets/3f96605c-450b-48ae-90e9-bd2ffb347e73\"\n/>\n\nThis PR adds an explicit check for the `USE_EXT4_BOOT` requirement.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ab92e5d2aec1645504710f2c92c219d0e0134264"
+               },
+               {
+                  "sha": "3222178ac43abae393e6e102227f729312ee84de",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790339511,
+                  "message": "fix: only show '/boot needs to be ext4' info if required",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3222178ac43abae393e6e102227f729312ee84de"
+               },
+               {
                   "sha": "b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c",
                   "author": "Dennis Loose",
                   "timestamp": 1790251737,
                   "message": "feat(storage): enforce storage requirements in manual partitioning (#1556)\n\nConsume the storage `requirements` from subiquity and block \"Next\" in\nmanual partitioning until all of them are satisfied, replacing the\nneedRoot/needBoot flags. Requirements that are still probing are treated\nas unmet.\n\nDepends on canonical/subiquity#2438.\nUDENG-11490",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c"
-               },
-               {
-                  "sha": "f1cdb0f1378e91f7644210f206bf1691eda93b0b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1790239923,
-                  "message": "test: add widget tests for added info/warning messages",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f1cdb0f1378e91f7644210f206bf1691eda93b0b"
-               },
-               {
-                  "sha": "864989291313b7c4111f19dfc35327bdd8980176",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789750672,
-                  "message": "refactor: formatting",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/864989291313b7c4111f19dfc35327bdd8980176"
                }
             ],
             "ciActions": [
@@ -5853,25 +5853,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ddee43e7547aec58a7f665c94d9d576b8dbb64e4",
+                  "author": "adombeck",
+                  "timestamp": 1790323123,
+                  "message": "ci: Report non-default e2e options as annotations (#1994)",
+                  "url": "https://github.com/canonical/authd/commit/ddee43e7547aec58a7f665c94d9d576b8dbb64e4"
+               },
+               {
+                  "sha": "2421725603f486ea1ebb66deaa6ac885de271cd1",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790317684,
+                  "message": "ci: Report non-default e2e options as annotations\n\nReport non-default e2e options as CI annotations to make them easier to\nfind when looking at a workflow run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/2421725603f486ea1ebb66deaa6ac885de271cd1"
+               },
+               {
                   "sha": "ca6f582be7aa398758abcdc4e4f1119225325b1e",
                   "author": "Adrian Dombeck",
                   "timestamp": 1790252279,
                   "message": "Merge branch 'stable'",
                   "url": "https://github.com/canonical/authd/commit/ca6f582be7aa398758abcdc4e4f1119225325b1e"
-               },
-               {
-                  "sha": "f5210c13b8b0d07391a1aa3a9c925fe00feff3ab",
-                  "author": "adombeck",
-                  "timestamp": 1790252119,
-                  "message": "Release authd 0.7.0 (#1961)\n\n* Improve error behavior when broker fails to start\n* Avoid Tokio panic during late NSS lookups\n* pam/gdm: Ignore GDM echo of our own auth mode selection\n* pam/adapter: Ignore stale stopAuthentication from a superseded challenge\n* Hide terminal password prompt after submission\n* config: nest PAM settings under `pam:` with per-service overrides\n* pam: Don't offer existing users to choose a different provider\n* Ensure GDM sees managed users after reboot\n* pam/main-exec: Exit with failure if the server connection is lost\n* pam: don't fail auth when UpdateBrokerForUser write fails\n* Use \"authentication flow\" terminology consistently\n* pam/gdm: serialise concurrent PAM conversations\n* pam: fall back to native mode when TERM=dumb\n* pam/native: don't show stage headers in polkit dialog\n* pam: Return PAM_IGNORE early when only the local broker is available\n* Improve PAM prompts\n* Fix selection menu shown briefly before auto-selection\n* pam/go-exec: drain GMainContext after stopping GDBusServer on cleanup\n* pam: Set `PAM_AUTHTOK` on successful authentication\n* Allow non-root processes to use the PAM service\n* Use \"device code flow\" terminology consistently\n* pam: reject broker mismatch early in SelectBroker\n* brokers: use providerID for user identification\n* authctl: add authctl user set-home\n* debian/rules: Fix dh_auto_configure using wrong cargo version\n* Add `authctl user set-shell` command\n* Support deleting users and groups via authctl\n* pam/adapter: Return ErrAuthinfoUnavail when broker listing fails\n* Return PAM_MAXTRIES on too many auth failures\n* Support API versioning in broker API and authd\n* pam/adapter: fix authTracker race with a generation counter\n* pam: use dynamic padding for URL/Code labels alignment\n* Improve login layout\n* pam/main-exec: Don't set timeout for D-Bus connection\n* pam: Support Ctrl-D in text entries\n* Remove bbolt to SQLite migration code\n* Update Go dependencies:\n  - toolchain go1.26.7\n  - github.com/mattn/go-sqlite3 v1.14.52\n  - github.com/stretchr/testify v1.12.1\n  - golang.org/x/sys v0.48.0\n  - golang.org/x/term v0.45.0\n  - google.golang.org/grpc v1.83.2\n  - google.golang.org/protobuf v1.36.12\n  - gopkg.in/ini.v1 v1.67.3\n  - go.yaml.in/yaml/v3 v3.0.5 // indirect\n  - golang.org/x/net v0.58.0 // indirect\n  - golang.org/x/sync v0.22.0 // indirect\n  - golang.org/x/text v0.41.0 // indirect\n  - google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect\n* Update Rust dependencies:\n  - cc ^1.2.63\n  - hyper-util ^0.1.20\n  - libc ^0.2.186\n  - log ^0.4.31\n  - once_cell ^1.21.4\n  - rustix ^1.1.4\n  - simple_logger ^5.2.0\n  - tokio ^1.50.0",
-                  "url": "https://github.com/canonical/authd/commit/f5210c13b8b0d07391a1aa3a9c925fe00feff3ab"
-               },
-               {
-                  "sha": "c2d7734fbd5ea8d10fb04821e33314e7e02ab891",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790247634,
-                  "message": "deps(rust): bump ctor from 0.5.0 to 1.0.13 (#1816)\n\nBumps [ctor](https://github.com/mmastrac/linktime) from 0.5.0 to 1.0.13.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/mmastrac/linktime/releases\">ctor's\nreleases</a>.</em></p>\n<blockquote>\n<h2>ctor-1.0.13</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up consistent\n64-bit hash chunks (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/508\">#508</a>)\nand the cross-crate section-name fix (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/509\">#509</a>)\n(should not result in any downstream visible changes)</li>\n<li>Document <code>crate_path</code> and re-exports by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/rust-ctor/pull/514\">mmastrac/rust-ctor#514</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13\">https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13</a></p>\n<h2>ctor-1.0.12</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up PR <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/495\">#495</a>\n(should not result in any downstream visible changes)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12\">https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12</a></p>\n<h2>ctor-1.0.11</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Pointer-align the Apple ctor anchor by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/503\">mmastrac/linktime#503</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11\">https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11</a></p>\n<h2>ctor-1.0.10</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Split <code>Static::deref</code>'s slow path into cold fn by <a\nhref=\"https://github.com/yvt\"><code>@​yvt</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/yvt\"><code>@​yvt</code></a> made their\nfirst contribution in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10\">https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10</a></p>\n<h2>ctor-1.0.9</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Ensure that Apple-platform staticlibs always keep the primary\npriority ctor (fixed by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/498\">mmastrac/linktime#498</a>,\nreported in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/496\">#496</a>\nby <a\nhref=\"https://github.com/tylerhawkes\"><code>@​tylerhawkes</code></a>)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9\">https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9</a></p>\n<h2>ctor-1.0.8</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump versions by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/490\">mmastrac/linktime#490</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8\">https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8</a></p>\n<h2>ctor-1.0.7</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump downstream <code>link-section</code> crate version and API\nupdates.</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a\nhref=\"https://github.com/mmastrac/linktime/commits/ctor-1.0.13\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/canonical/authd/commit/c2d7734fbd5ea8d10fb04821e33314e7e02ab891"
                }
             ],
             "ciActions": [
@@ -6053,25 +6053,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3f41fbd2c8f55358397041a228f40f32d804b7dd",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790121765,
-                  "message": "feat: add cache to fvm, flutter and dart packages (#145)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/3f41fbd2c8f55358397041a228f40f32d804b7dd"
+                  "sha": "c41b8c04c55da2d476730a95944edc44ba6b1052",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1790342620,
+                  "message": "feat(gh-actions/build-debian): Allow building sources with git-buildpackage (#146)\n\nAdd a use-gbp input to build the source package with gbp instead of\ndpkg-buildpackage. This lets a repository delegate its source build to\nthe debian/gbp.conf prebuild hook (e.g. fetching meson subprojects)\nwhile this action still builds and uploads the binaries.\n\ngit-buildpackage is installed on demand. Because gbp exports the\ncommitted tree (--git-export defaults to HEAD), the changelog bumped by\ndch is committed first, and gbp then builds from a clean export with\n--git-ignore-branch.\n\nWe need this in gnome-shell-ubuntu-extensions to fully use the action\nrather than doing a mixup.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c41b8c04c55da2d476730a95944edc44ba6b1052"
                },
                {
-                  "sha": "e1069c189573b3525a60f54c5107ea3264f80805",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790114990,
-                  "message": "feat: add cache to fvm, flutter and dart packages",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e1069c189573b3525a60f54c5107ea3264f80805"
+                  "sha": "631ce4273a1d0456c06f91d953af21ba30ac935f",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1790199240,
+                  "message": "gh-actions/build-debian: Always upload the generated source package\n\nThe source package is regenerated and version-bumped even when\nfrom-sources-file is provided, so it should be uploaded in that case too:\nit is the source matching the built binaries, and consumers such as\nautopkgtest need it to reuse them.\n\nThe sources-only and from-sources-file combination is already rejected by\nthe input checks, and the source build step always populates\nSOURCE_OUTPUT_DIR, so the condition is not needed.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/631ce4273a1d0456c06f91d953af21ba30ac935f"
                },
                {
-                  "sha": "d800b57abab325c3799364d28147ce49df7dd12a",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789737636,
-                  "message": "fix: change anchored yaml to hardcoded (#144)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/d800b57abab325c3799364d28147ce49df7dd12a"
+                  "sha": "55838961123f3403bcfaede7c5d59afcc4d747cc",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1790195557,
+                  "message": "ci: Test building sources with git-buildpackage\n\nAdd a test job that clones a quilt package maintained with gbp\n(gsettings-desktop-schemas, which uses pristine-tar) via gbp clone and\nbuilds its source through the build-debian action with use-gbp enabled.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/55838961123f3403bcfaede7c5d59afcc4d747cc"
                }
             ],
             "ciActions": [],
@@ -6086,25 +6086,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d3d1ab8e7cb2688fe2c31677997f798cd4024f53",
-                  "author": "Weblate (bot)",
-                  "timestamp": 1790259681,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#255)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/d3d1ab8e7cb2688fe2c31677997f798cd4024f53"
+                  "sha": "9f794b7dbc264b5df6fd56a5f24cb29378ade34d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790326388,
+                  "message": "Merge pull request #256 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9f794b7dbc264b5df6fd56a5f24cb29378ade34d"
                },
                {
-                  "sha": "9836436feef1cf2bc119b5d9cf926f060512aa74",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790153878,
-                  "message": "ci: update ci to reuse cached fvm, flutter, melos and dart packages (#254)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/9836436feef1cf2bc119b5d9cf926f060512aa74"
+                  "sha": "b6598893a93e224eff0eac0d33f51a20461c1f87",
+                  "author": "canonical-desktop-bot",
+                  "timestamp": 1790325883,
+                  "message": "maint: regenerate l10n",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/b6598893a93e224eff0eac0d33f51a20461c1f87"
                },
                {
-                  "sha": "5e8b94bfa73133d17c0370fe5aa58b65766e4dc6",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790077988,
-                  "message": "Merge pull request #252 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/5e8b94bfa73133d17c0370fe5aa58b65766e4dc6"
+                  "sha": "98a79fae026965870df8b62406b51c215e413f9b",
+                  "author": "Github Action",
+                  "timestamp": 1790325775,
+                  "message": "fix(l10n): translated using Weblate (Esperanto)\n\nCurrently translated at 100.0% (196 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/eo/",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/98a79fae026965870df8b62406b51c215e413f9b"
                }
             ],
             "ciActions": [],
@@ -6842,25 +6842,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "63e50567498e796f306b0baabe2ddedbfa4a7da2",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790282654,
-                  "message": "chore(deps): update rust crate hyper-util to v0.1.21 (#361)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/63e50567498e796f306b0baabe2ddedbfa4a7da2"
+                  "sha": "0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790338119,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#325)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Prompting\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/matrix-auto.svg)",
+                  "url": "https://github.com/canonical/prompting-client/commit/0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7"
                },
                {
-                  "sha": "ac3226f8236bb53564b91285283841b9da850856",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790249451,
-                  "message": "chore(deps): update peter-evans/create-pull-request action to v8 (#357)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/ac3226f8236bb53564b91285283841b9da850856"
+                  "sha": "c9b99ef4f6036dae05423da324a1b6671a06a7e9",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790337224,
+                  "message": "maint: regenerated localizations files",
+                  "url": "https://github.com/canonical/prompting-client/commit/c9b99ef4f6036dae05423da324a1b6671a06a7e9"
                },
                {
-                  "sha": "42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4",
-                  "author": "Copilot",
-                  "timestamp": 1790249416,
-                  "message": "feat: socket logging printing incorrectly (#277)\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: matthew-hagemann <93575731+matthew-hagemann@users.noreply.github.com>\nCo-authored-by: gabelluardo <42920247+gabelluardo@users.noreply.github.com>\nCo-authored-by: ogres <2391557+ogres@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4"
+                  "sha": "381bfcaa9b9627b364dd59df2cacda7c585103d5",
+                  "author": "Github Action",
+                  "timestamp": 1790334384,
+                  "message": "fix(l10n): translated using Weblate (Chinese (Simplified Han script))\n\nCurrently translated at 100.0% (61 of 61 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/zh_Hans/",
+                  "url": "https://github.com/canonical/prompting-client/commit/381bfcaa9b9627b364dd59df2cacda7c585103d5"
                }
             ],
             "ciActions": [],
@@ -7449,25 +7449,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ab92e5d2aec1645504710f2c92c219d0e0134264",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790341950,
+                  "message": "fix: only show '/boot needs to be ext4' info if required (#1561)\n\nSubiquity only enforces `/boot` to be `ext4` under certain conditions,\nsee\n[here](https://github.com/canonical/subiquity/blob/088f26086964f35a623864d97aa0f138a710f0da/subiquity/common/storage/requirements.py#L133-L138)\nand\n[here](https://github.com/canonical/subiquity/blob/088f26086964f35a623864d97aa0f138a710f0da/subiquity/models/storage.py#L2559)\n(e.g. it's not enforced on BIOS systems). In this case we shouldn't show\nthe informational hint in the screenshot below:\n<img width=\"556\" height=\"407\" alt=\"Screenshot From 2026-09-24 16-48-53\"\nsrc=\"https://github.com/user-attachments/assets/3f96605c-450b-48ae-90e9-bd2ffb347e73\"\n/>\n\nThis PR adds an explicit check for the `USE_EXT4_BOOT` requirement.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ab92e5d2aec1645504710f2c92c219d0e0134264"
+               },
+               {
+                  "sha": "3222178ac43abae393e6e102227f729312ee84de",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790339511,
+                  "message": "fix: only show '/boot needs to be ext4' info if required",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3222178ac43abae393e6e102227f729312ee84de"
+               },
+               {
                   "sha": "b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c",
                   "author": "Dennis Loose",
                   "timestamp": 1790251737,
                   "message": "feat(storage): enforce storage requirements in manual partitioning (#1556)\n\nConsume the storage `requirements` from subiquity and block \"Next\" in\nmanual partitioning until all of them are satisfied, replacing the\nneedRoot/needBoot flags. Requirements that are still probing are treated\nas unmet.\n\nDepends on canonical/subiquity#2438.\nUDENG-11490",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c"
-               },
-               {
-                  "sha": "f1cdb0f1378e91f7644210f206bf1691eda93b0b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1790239923,
-                  "message": "test: add widget tests for added info/warning messages",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f1cdb0f1378e91f7644210f206bf1691eda93b0b"
-               },
-               {
-                  "sha": "864989291313b7c4111f19dfc35327bdd8980176",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789750672,
-                  "message": "refactor: formatting",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/864989291313b7c4111f19dfc35327bdd8980176"
                }
             ],
             "ciActions": [
@@ -7962,7 +7962,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 150,
+            "newCommits": 157,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8408,25 +8408,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ddee43e7547aec58a7f665c94d9d576b8dbb64e4",
+                  "author": "adombeck",
+                  "timestamp": 1790323123,
+                  "message": "ci: Report non-default e2e options as annotations (#1994)",
+                  "url": "https://github.com/canonical/authd/commit/ddee43e7547aec58a7f665c94d9d576b8dbb64e4"
+               },
+               {
+                  "sha": "2421725603f486ea1ebb66deaa6ac885de271cd1",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790317684,
+                  "message": "ci: Report non-default e2e options as annotations\n\nReport non-default e2e options as CI annotations to make them easier to\nfind when looking at a workflow run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/2421725603f486ea1ebb66deaa6ac885de271cd1"
+               },
+               {
                   "sha": "ca6f582be7aa398758abcdc4e4f1119225325b1e",
                   "author": "Adrian Dombeck",
                   "timestamp": 1790252279,
                   "message": "Merge branch 'stable'",
                   "url": "https://github.com/canonical/authd/commit/ca6f582be7aa398758abcdc4e4f1119225325b1e"
-               },
-               {
-                  "sha": "f5210c13b8b0d07391a1aa3a9c925fe00feff3ab",
-                  "author": "adombeck",
-                  "timestamp": 1790252119,
-                  "message": "Release authd 0.7.0 (#1961)\n\n* Improve error behavior when broker fails to start\n* Avoid Tokio panic during late NSS lookups\n* pam/gdm: Ignore GDM echo of our own auth mode selection\n* pam/adapter: Ignore stale stopAuthentication from a superseded challenge\n* Hide terminal password prompt after submission\n* config: nest PAM settings under `pam:` with per-service overrides\n* pam: Don't offer existing users to choose a different provider\n* Ensure GDM sees managed users after reboot\n* pam/main-exec: Exit with failure if the server connection is lost\n* pam: don't fail auth when UpdateBrokerForUser write fails\n* Use \"authentication flow\" terminology consistently\n* pam/gdm: serialise concurrent PAM conversations\n* pam: fall back to native mode when TERM=dumb\n* pam/native: don't show stage headers in polkit dialog\n* pam: Return PAM_IGNORE early when only the local broker is available\n* Improve PAM prompts\n* Fix selection menu shown briefly before auto-selection\n* pam/go-exec: drain GMainContext after stopping GDBusServer on cleanup\n* pam: Set `PAM_AUTHTOK` on successful authentication\n* Allow non-root processes to use the PAM service\n* Use \"device code flow\" terminology consistently\n* pam: reject broker mismatch early in SelectBroker\n* brokers: use providerID for user identification\n* authctl: add authctl user set-home\n* debian/rules: Fix dh_auto_configure using wrong cargo version\n* Add `authctl user set-shell` command\n* Support deleting users and groups via authctl\n* pam/adapter: Return ErrAuthinfoUnavail when broker listing fails\n* Return PAM_MAXTRIES on too many auth failures\n* Support API versioning in broker API and authd\n* pam/adapter: fix authTracker race with a generation counter\n* pam: use dynamic padding for URL/Code labels alignment\n* Improve login layout\n* pam/main-exec: Don't set timeout for D-Bus connection\n* pam: Support Ctrl-D in text entries\n* Remove bbolt to SQLite migration code\n* Update Go dependencies:\n  - toolchain go1.26.7\n  - github.com/mattn/go-sqlite3 v1.14.52\n  - github.com/stretchr/testify v1.12.1\n  - golang.org/x/sys v0.48.0\n  - golang.org/x/term v0.45.0\n  - google.golang.org/grpc v1.83.2\n  - google.golang.org/protobuf v1.36.12\n  - gopkg.in/ini.v1 v1.67.3\n  - go.yaml.in/yaml/v3 v3.0.5 // indirect\n  - golang.org/x/net v0.58.0 // indirect\n  - golang.org/x/sync v0.22.0 // indirect\n  - golang.org/x/text v0.41.0 // indirect\n  - google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect\n* Update Rust dependencies:\n  - cc ^1.2.63\n  - hyper-util ^0.1.20\n  - libc ^0.2.186\n  - log ^0.4.31\n  - once_cell ^1.21.4\n  - rustix ^1.1.4\n  - simple_logger ^5.2.0\n  - tokio ^1.50.0",
-                  "url": "https://github.com/canonical/authd/commit/f5210c13b8b0d07391a1aa3a9c925fe00feff3ab"
-               },
-               {
-                  "sha": "c2d7734fbd5ea8d10fb04821e33314e7e02ab891",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790247634,
-                  "message": "deps(rust): bump ctor from 0.5.0 to 1.0.13 (#1816)\n\nBumps [ctor](https://github.com/mmastrac/linktime) from 0.5.0 to 1.0.13.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/mmastrac/linktime/releases\">ctor's\nreleases</a>.</em></p>\n<blockquote>\n<h2>ctor-1.0.13</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up consistent\n64-bit hash chunks (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/508\">#508</a>)\nand the cross-crate section-name fix (<a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/509\">#509</a>)\n(should not result in any downstream visible changes)</li>\n<li>Document <code>crate_path</code> and re-exports by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/rust-ctor/pull/514\">mmastrac/rust-ctor#514</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13\">https://github.com/mmastrac/rust-ctor/compare/ctor-1.0.12...ctor-1.0.13</a></p>\n<h2>ctor-1.0.12</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bumped internal proc macro minimum version to pick up PR <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/495\">#495</a>\n(should not result in any downstream visible changes)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12\">https://github.com/mmastrac/linktime/compare/ctor-1.0.11...ctor-1.0.12</a></p>\n<h2>ctor-1.0.11</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Pointer-align the Apple ctor anchor by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/503\">mmastrac/linktime#503</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11\">https://github.com/mmastrac/linktime/compare/ctor-1.0.10...ctor-1.0.11</a></p>\n<h2>ctor-1.0.10</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Split <code>Static::deref</code>'s slow path into cold fn by <a\nhref=\"https://github.com/yvt\"><code>@​yvt</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/yvt\"><code>@​yvt</code></a> made their\nfirst contribution in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/501\">mmastrac/linktime#501</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10\">https://github.com/mmastrac/linktime/compare/ctor-1.0.9...ctor-1.0.10</a></p>\n<h2>ctor-1.0.9</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Ensure that Apple-platform staticlibs always keep the primary\npriority ctor (fixed by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/498\">mmastrac/linktime#498</a>,\nreported in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/issues/496\">#496</a>\nby <a\nhref=\"https://github.com/tylerhawkes\"><code>@​tylerhawkes</code></a>)</li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9\">https://github.com/mmastrac/linktime/compare/ctor-1.0.8...ctor-1.0.9</a></p>\n<h2>ctor-1.0.8</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump versions by <a\nhref=\"https://github.com/mmastrac\"><code>@​mmastrac</code></a> in <a\nhref=\"https://redirect.github.com/mmastrac/linktime/pull/490\">mmastrac/linktime#490</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8\">https://github.com/mmastrac/linktime/compare/link-section-0.18.3...ctor-1.0.8</a></p>\n<h2>ctor-1.0.7</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Bump downstream <code>link-section</code> crate version and API\nupdates.</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li>See full diff in <a\nhref=\"https://github.com/mmastrac/linktime/commits/ctor-1.0.13\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
-                  "url": "https://github.com/canonical/authd/commit/c2d7734fbd5ea8d10fb04821e33314e7e02ab891"
                }
             ],
             "ciActions": [
@@ -8608,25 +8608,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3f41fbd2c8f55358397041a228f40f32d804b7dd",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790121765,
-                  "message": "feat: add cache to fvm, flutter and dart packages (#145)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/3f41fbd2c8f55358397041a228f40f32d804b7dd"
+                  "sha": "c41b8c04c55da2d476730a95944edc44ba6b1052",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1790342620,
+                  "message": "feat(gh-actions/build-debian): Allow building sources with git-buildpackage (#146)\n\nAdd a use-gbp input to build the source package with gbp instead of\ndpkg-buildpackage. This lets a repository delegate its source build to\nthe debian/gbp.conf prebuild hook (e.g. fetching meson subprojects)\nwhile this action still builds and uploads the binaries.\n\ngit-buildpackage is installed on demand. Because gbp exports the\ncommitted tree (--git-export defaults to HEAD), the changelog bumped by\ndch is committed first, and gbp then builds from a clean export with\n--git-ignore-branch.\n\nWe need this in gnome-shell-ubuntu-extensions to fully use the action\nrather than doing a mixup.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/c41b8c04c55da2d476730a95944edc44ba6b1052"
                },
                {
-                  "sha": "e1069c189573b3525a60f54c5107ea3264f80805",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790114990,
-                  "message": "feat: add cache to fvm, flutter and dart packages",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/e1069c189573b3525a60f54c5107ea3264f80805"
+                  "sha": "631ce4273a1d0456c06f91d953af21ba30ac935f",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1790199240,
+                  "message": "gh-actions/build-debian: Always upload the generated source package\n\nThe source package is regenerated and version-bumped even when\nfrom-sources-file is provided, so it should be uploaded in that case too:\nit is the source matching the built binaries, and consumers such as\nautopkgtest need it to reuse them.\n\nThe sources-only and from-sources-file combination is already rejected by\nthe input checks, and the source build step always populates\nSOURCE_OUTPUT_DIR, so the condition is not needed.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/631ce4273a1d0456c06f91d953af21ba30ac935f"
                },
                {
-                  "sha": "d800b57abab325c3799364d28147ce49df7dd12a",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1789737636,
-                  "message": "fix: change anchored yaml to hardcoded (#144)",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/d800b57abab325c3799364d28147ce49df7dd12a"
+                  "sha": "55838961123f3403bcfaede7c5d59afcc4d747cc",
+                  "author": "Marco Trevisan (Treviño)",
+                  "timestamp": 1790195557,
+                  "message": "ci: Test building sources with git-buildpackage\n\nAdd a test job that clones a quilt package maintained with gbp\n(gsettings-desktop-schemas, which uses pristine-tar) via gbp clone and\nbuilds its source through the build-debian action with use-gbp enabled.",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/55838961123f3403bcfaede7c5d59afcc4d747cc"
                }
             ],
             "ciActions": [],
@@ -8641,25 +8641,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d3d1ab8e7cb2688fe2c31677997f798cd4024f53",
-                  "author": "Weblate (bot)",
-                  "timestamp": 1790259681,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#255)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/d3d1ab8e7cb2688fe2c31677997f798cd4024f53"
+                  "sha": "9f794b7dbc264b5df6fd56a5f24cb29378ade34d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790326388,
+                  "message": "Merge pull request #256 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/9f794b7dbc264b5df6fd56a5f24cb29378ade34d"
                },
                {
-                  "sha": "9836436feef1cf2bc119b5d9cf926f060512aa74",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790153878,
-                  "message": "ci: update ci to reuse cached fvm, flutter, melos and dart packages (#254)",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/9836436feef1cf2bc119b5d9cf926f060512aa74"
+                  "sha": "b6598893a93e224eff0eac0d33f51a20461c1f87",
+                  "author": "canonical-desktop-bot",
+                  "timestamp": 1790325883,
+                  "message": "maint: regenerate l10n",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/b6598893a93e224eff0eac0d33f51a20461c1f87"
                },
                {
-                  "sha": "5e8b94bfa73133d17c0370fe5aa58b65766e4dc6",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790077988,
-                  "message": "Merge pull request #252 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/5e8b94bfa73133d17c0370fe5aa58b65766e4dc6"
+                  "sha": "98a79fae026965870df8b62406b51c215e413f9b",
+                  "author": "Github Action",
+                  "timestamp": 1790325775,
+                  "message": "fix(l10n): translated using Weblate (Esperanto)\n\nCurrently translated at 100.0% (196 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/eo/",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/98a79fae026965870df8b62406b51c215e413f9b"
                }
             ],
             "ciActions": [],
@@ -9364,25 +9364,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "63e50567498e796f306b0baabe2ddedbfa4a7da2",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790282654,
-                  "message": "chore(deps): update rust crate hyper-util to v0.1.21 (#361)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/63e50567498e796f306b0baabe2ddedbfa4a7da2"
+                  "sha": "0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790338119,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#325)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Prompting\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/matrix-auto.svg)",
+                  "url": "https://github.com/canonical/prompting-client/commit/0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7"
                },
                {
-                  "sha": "ac3226f8236bb53564b91285283841b9da850856",
-                  "author": "renovate[bot]",
-                  "timestamp": 1790249451,
-                  "message": "chore(deps): update peter-evans/create-pull-request action to v8 (#357)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/ac3226f8236bb53564b91285283841b9da850856"
+                  "sha": "c9b99ef4f6036dae05423da324a1b6671a06a7e9",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790337224,
+                  "message": "maint: regenerated localizations files",
+                  "url": "https://github.com/canonical/prompting-client/commit/c9b99ef4f6036dae05423da324a1b6671a06a7e9"
                },
                {
-                  "sha": "42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4",
-                  "author": "Copilot",
-                  "timestamp": 1790249416,
-                  "message": "feat: socket logging printing incorrectly (#277)\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: matthew-hagemann <93575731+matthew-hagemann@users.noreply.github.com>\nCo-authored-by: gabelluardo <42920247+gabelluardo@users.noreply.github.com>\nCo-authored-by: ogres <2391557+ogres@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/prompting-client/commit/42b5d8d5ca3b58a52d76c3a8d3f74453ced1e1a4"
+                  "sha": "381bfcaa9b9627b364dd59df2cacda7c585103d5",
+                  "author": "Github Action",
+                  "timestamp": 1790334384,
+                  "message": "fix(l10n): translated using Weblate (Chinese (Simplified Han script))\n\nCurrently translated at 100.0% (61 of 61 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/zh_Hans/",
+                  "url": "https://github.com/canonical/prompting-client/commit/381bfcaa9b9627b364dd59df2cacda7c585103d5"
                }
             ],
             "ciActions": [],
@@ -9971,25 +9971,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ab92e5d2aec1645504710f2c92c219d0e0134264",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790341950,
+                  "message": "fix: only show '/boot needs to be ext4' info if required (#1561)\n\nSubiquity only enforces `/boot` to be `ext4` under certain conditions,\nsee\n[here](https://github.com/canonical/subiquity/blob/088f26086964f35a623864d97aa0f138a710f0da/subiquity/common/storage/requirements.py#L133-L138)\nand\n[here](https://github.com/canonical/subiquity/blob/088f26086964f35a623864d97aa0f138a710f0da/subiquity/models/storage.py#L2559)\n(e.g. it's not enforced on BIOS systems). In this case we shouldn't show\nthe informational hint in the screenshot below:\n<img width=\"556\" height=\"407\" alt=\"Screenshot From 2026-09-24 16-48-53\"\nsrc=\"https://github.com/user-attachments/assets/3f96605c-450b-48ae-90e9-bd2ffb347e73\"\n/>\n\nThis PR adds an explicit check for the `USE_EXT4_BOOT` requirement.",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/ab92e5d2aec1645504710f2c92c219d0e0134264"
+               },
+               {
+                  "sha": "3222178ac43abae393e6e102227f729312ee84de",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790339511,
+                  "message": "fix: only show '/boot needs to be ext4' info if required",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/3222178ac43abae393e6e102227f729312ee84de"
+               },
+               {
                   "sha": "b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c",
                   "author": "Dennis Loose",
                   "timestamp": 1790251737,
                   "message": "feat(storage): enforce storage requirements in manual partitioning (#1556)\n\nConsume the storage `requirements` from subiquity and block \"Next\" in\nmanual partitioning until all of them are satisfied, replacing the\nneedRoot/needBoot flags. Requirements that are still probing are treated\nas unmet.\n\nDepends on canonical/subiquity#2438.\nUDENG-11490",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/b0456bd8bc00620ba86e5c4a23ca8b8927b7e25c"
-               },
-               {
-                  "sha": "f1cdb0f1378e91f7644210f206bf1691eda93b0b",
-                  "author": "Dennis Loose",
-                  "timestamp": 1790239923,
-                  "message": "test: add widget tests for added info/warning messages",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/f1cdb0f1378e91f7644210f206bf1691eda93b0b"
-               },
-               {
-                  "sha": "864989291313b7c4111f19dfc35327bdd8980176",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789750672,
-                  "message": "refactor: formatting",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/864989291313b7c4111f19dfc35327bdd8980176"
                }
             ],
             "ciActions": [
