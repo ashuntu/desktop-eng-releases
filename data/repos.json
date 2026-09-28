@@ -3401,25 +3401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "52e27bc18b216f22c802429bfa3cfaa96a0cf8fb",
+                  "sha": "77f2a927e7dc4d149677b70034a3473075a39cce",
                   "author": "adombeck",
-                  "timestamp": 1790385048,
-                  "message": "Don't fail if broker config permissions are too broad (#2000)\n\nCloses #1999",
-                  "url": "https://github.com/canonical/authd/commit/52e27bc18b216f22c802429bfa3cfaa96a0cf8fb"
+                  "timestamp": 1790613175,
+                  "message": "Enforce broker config validation on new installs without breaking existing configurations (#2003)\n\nCloses #2002",
+                  "url": "https://github.com/canonical/authd/commit/77f2a927e7dc4d149677b70034a3473075a39cce"
                },
                {
-                  "sha": "50dd6f3466b46962cea7bcc63325089464be5da2",
+                  "sha": "ca170873ba5785258987921df7f84929e17d112e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790383592,
-                  "message": "Don't fail if broker config permissions are too broad\n\nUpdate the permissions instead if that is possible without being\nsusceptible to symlink attacks, which it is when the directory is not\nwritable to users beside root.",
-                  "url": "https://github.com/canonical/authd/commit/50dd6f3466b46962cea7bcc63325089464be5da2"
+                  "timestamp": 1790601515,
+                  "message": "Avoid duplicate legacy config warnings\n\nThe D-Bus service creates one broker per API version from the same\nconfiguration. Parse it once to avoid repeated file reads and warnings,\nthen copy mutable state so each broker keeps its own owner state.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ca170873ba5785258987921df7f84929e17d112e"
                },
                {
-                  "sha": "cca2543b9a0255c00245795700f83d9f5ca5c6df",
-                  "author": "adombeck",
-                  "timestamp": 1790348327,
-                  "message": "ci: Speed up R2 uploads (#1995)\n\nThe upload of the e2e test results to R2 storage takes over 5 minutes.\nSpeed that up.",
-                  "url": "https://github.com/canonical/authd/commit/cca2543b9a0255c00245795700f83d9f5ca5c6df"
+                  "sha": "de1491c014756fbb1e29d37a20234e8f5b58022f",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790544858,
+                  "message": "Keep broker upgrades compatible with strict config checks\n\nAn owner-only drop-in directory kept 0.4.1 file modes inaccessible\nto other users. Preserve that trust boundary; outside it, reject\nwritable, wrong-owner, and symlink paths and only warn on readable,\nnon-writable mode differences.\n\nPre-hook snaps have no recorded previous version. Treat an unset value\nas older than each migration boundary so their upgrade migrations and\nlegacy compatibility marker can run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/de1491c014756fbb1e29d37a20234e8f5b58022f"
                }
             ],
             "ciActions": [
@@ -3601,25 +3601,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f0377b0b730d3c0e8961e929bb22d70ee20e9062",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790606294,
+                  "message": "feat: enforce lockfile during melos bootstrap (#147)\n\nThis will ensure that versions are picked from lockfile",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/f0377b0b730d3c0e8961e929bb22d70ee20e9062"
+               },
+               {
+                  "sha": "f45615b7e809a5dac2c6f24cbca7cafe67df9831",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790603745,
+                  "message": "feat: enforce lockfile during melos bootstrap",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/f45615b7e809a5dac2c6f24cbca7cafe67df9831"
+               },
+               {
                   "sha": "c41b8c04c55da2d476730a95944edc44ba6b1052",
                   "author": "Marco Trevisan",
                   "timestamp": 1790342620,
                   "message": "feat(gh-actions/build-debian): Allow building sources with git-buildpackage (#146)\n\nAdd a use-gbp input to build the source package with gbp instead of\ndpkg-buildpackage. This lets a repository delegate its source build to\nthe debian/gbp.conf prebuild hook (e.g. fetching meson subprojects)\nwhile this action still builds and uploads the binaries.\n\ngit-buildpackage is installed on demand. Because gbp exports the\ncommitted tree (--git-export defaults to HEAD), the changelog bumped by\ndch is committed first, and gbp then builds from a clean export with\n--git-ignore-branch.\n\nWe need this in gnome-shell-ubuntu-extensions to fully use the action\nrather than doing a mixup.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/c41b8c04c55da2d476730a95944edc44ba6b1052"
-               },
-               {
-                  "sha": "631ce4273a1d0456c06f91d953af21ba30ac935f",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1790199240,
-                  "message": "gh-actions/build-debian: Always upload the generated source package\n\nThe source package is regenerated and version-bumped even when\nfrom-sources-file is provided, so it should be uploaded in that case too:\nit is the source matching the built binaries, and consumers such as\nautopkgtest need it to reuse them.\n\nThe sources-only and from-sources-file combination is already rejected by\nthe input checks, and the source build step always populates\nSOURCE_OUTPUT_DIR, so the condition is not needed.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/631ce4273a1d0456c06f91d953af21ba30ac935f"
-               },
-               {
-                  "sha": "55838961123f3403bcfaede7c5d59afcc4d747cc",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1790195557,
-                  "message": "ci: Test building sources with git-buildpackage\n\nAdd a test job that clones a quilt package maintained with gbp\n(gsettings-desktop-schemas, which uses pristine-tar) via gbp clone and\nbuilds its source through the build-debian action with use-gbp enabled.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/55838961123f3403bcfaede7c5d59afcc4d747cc"
                }
             ],
             "ciActions": [],
@@ -4120,7 +4120,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "97f7694fcf5d8175243b2cdcddc5da5a7d507b73",
+                  "sha": "f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a",
                   "author": "Charles",
-                  "timestamp": 1790153285,
-                  "message": "feat(cli): send testbed clips as fast as the backend takes them\n\nReal-time pacing made a 33 s clip look hung for 33 s. --realtime keeps\nit for imitating a microphone; --no-realtime is gone.",
-                  "url": "https://github.com/canonical/myna/commit/97f7694fcf5d8175243b2cdcddc5da5a7d507b73"
+                  "timestamp": 1790595398,
+                  "message": "fix(hud): check the render only after a frame has painted it\n\nA widget's paintable replays its last painted frame, so the fixed 600 ms\nfrom present raced the first paint on a loaded runner and read nothing:\nCI's ui-check failed 'Bar: nothing was drawn', and 3-4 in 10 runs failed\npinned to one busy core. Wait for a frame after the indicator is mapped\nand allocated, then settle; 20 of 20 pass under the same load.",
+                  "url": "https://github.com/canonical/myna/commit/f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a"
                },
                {
-                  "sha": "6f10e3d379ca74d19d9017175aad032cccb2e078",
+                  "sha": "ae0701fc2bb9a9315262cb5ae84f27b7191c217b",
                   "author": "Charles",
-                  "timestamp": 1790153250,
-                  "message": "refactor(cli): pass the testbed's arguments to parse_args\n\nLets tests drive the flag handling.",
-                  "url": "https://github.com/canonical/myna/commit/6f10e3d379ca74d19d9017175aad032cccb2e078"
+                  "timestamp": 1790594715,
+                  "message": "docs(kb): explain where every artifact's version comes from\n\nReleasing is tagging; the 0.0.0 in the manifests and wheel name is a\nplaceholder that is never bumped.",
+                  "url": "https://github.com/canonical/myna/commit/ae0701fc2bb9a9315262cb5ae84f27b7191c217b"
                },
                {
-                  "sha": "3b9272d91c4ffc3df831c9645bd0014c832f109d",
+                  "sha": "8832f5a6bd5e66eb92cb278892a9b1e6635875f7",
                   "author": "Charles",
-                  "timestamp": 1790149188,
-                  "message": "feat(cli): resample testbed clips to the backend format\n\nA clip recorded at 48 kHz stereo was sent as-is and every backend\nrefused it. The daemon never hits this because PipeWire converts its\ncapture; a file has to be converted here.",
-                  "url": "https://github.com/canonical/myna/commit/3b9272d91c4ffc3df831c9645bd0014c832f109d"
+                  "timestamp": 1790594715,
+                  "message": "fix(client): fail the build when no version can be resolved\n\nThe fallback to the Cargo placeholder made a build outside a checkout\nreport 0.0.0 in About and diagnostics without complaint. cargo-mutants\ncopies were such builds; they now find the checkout via MYNA_REPO_ROOT.",
+                  "url": "https://github.com/canonical/myna/commit/8832f5a6bd5e66eb92cb278892a9b1e6635875f7"
                }
             ],
             "ciActions": [],
@@ -5853,25 +5853,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "52e27bc18b216f22c802429bfa3cfaa96a0cf8fb",
+                  "sha": "77f2a927e7dc4d149677b70034a3473075a39cce",
                   "author": "adombeck",
-                  "timestamp": 1790385048,
-                  "message": "Don't fail if broker config permissions are too broad (#2000)\n\nCloses #1999",
-                  "url": "https://github.com/canonical/authd/commit/52e27bc18b216f22c802429bfa3cfaa96a0cf8fb"
+                  "timestamp": 1790613175,
+                  "message": "Enforce broker config validation on new installs without breaking existing configurations (#2003)\n\nCloses #2002",
+                  "url": "https://github.com/canonical/authd/commit/77f2a927e7dc4d149677b70034a3473075a39cce"
                },
                {
-                  "sha": "50dd6f3466b46962cea7bcc63325089464be5da2",
+                  "sha": "ca170873ba5785258987921df7f84929e17d112e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790383592,
-                  "message": "Don't fail if broker config permissions are too broad\n\nUpdate the permissions instead if that is possible without being\nsusceptible to symlink attacks, which it is when the directory is not\nwritable to users beside root.",
-                  "url": "https://github.com/canonical/authd/commit/50dd6f3466b46962cea7bcc63325089464be5da2"
+                  "timestamp": 1790601515,
+                  "message": "Avoid duplicate legacy config warnings\n\nThe D-Bus service creates one broker per API version from the same\nconfiguration. Parse it once to avoid repeated file reads and warnings,\nthen copy mutable state so each broker keeps its own owner state.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ca170873ba5785258987921df7f84929e17d112e"
                },
                {
-                  "sha": "cca2543b9a0255c00245795700f83d9f5ca5c6df",
-                  "author": "adombeck",
-                  "timestamp": 1790348327,
-                  "message": "ci: Speed up R2 uploads (#1995)\n\nThe upload of the e2e test results to R2 storage takes over 5 minutes.\nSpeed that up.",
-                  "url": "https://github.com/canonical/authd/commit/cca2543b9a0255c00245795700f83d9f5ca5c6df"
+                  "sha": "de1491c014756fbb1e29d37a20234e8f5b58022f",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790544858,
+                  "message": "Keep broker upgrades compatible with strict config checks\n\nAn owner-only drop-in directory kept 0.4.1 file modes inaccessible\nto other users. Preserve that trust boundary; outside it, reject\nwritable, wrong-owner, and symlink paths and only warn on readable,\nnon-writable mode differences.\n\nPre-hook snaps have no recorded previous version. Treat an unset value\nas older than each migration boundary so their upgrade migrations and\nlegacy compatibility marker can run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/de1491c014756fbb1e29d37a20234e8f5b58022f"
                }
             ],
             "ciActions": [
@@ -6053,25 +6053,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f0377b0b730d3c0e8961e929bb22d70ee20e9062",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790606294,
+                  "message": "feat: enforce lockfile during melos bootstrap (#147)\n\nThis will ensure that versions are picked from lockfile",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/f0377b0b730d3c0e8961e929bb22d70ee20e9062"
+               },
+               {
+                  "sha": "f45615b7e809a5dac2c6f24cbca7cafe67df9831",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790603745,
+                  "message": "feat: enforce lockfile during melos bootstrap",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/f45615b7e809a5dac2c6f24cbca7cafe67df9831"
+               },
+               {
                   "sha": "c41b8c04c55da2d476730a95944edc44ba6b1052",
                   "author": "Marco Trevisan",
                   "timestamp": 1790342620,
                   "message": "feat(gh-actions/build-debian): Allow building sources with git-buildpackage (#146)\n\nAdd a use-gbp input to build the source package with gbp instead of\ndpkg-buildpackage. This lets a repository delegate its source build to\nthe debian/gbp.conf prebuild hook (e.g. fetching meson subprojects)\nwhile this action still builds and uploads the binaries.\n\ngit-buildpackage is installed on demand. Because gbp exports the\ncommitted tree (--git-export defaults to HEAD), the changelog bumped by\ndch is committed first, and gbp then builds from a clean export with\n--git-ignore-branch.\n\nWe need this in gnome-shell-ubuntu-extensions to fully use the action\nrather than doing a mixup.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/c41b8c04c55da2d476730a95944edc44ba6b1052"
-               },
-               {
-                  "sha": "631ce4273a1d0456c06f91d953af21ba30ac935f",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1790199240,
-                  "message": "gh-actions/build-debian: Always upload the generated source package\n\nThe source package is regenerated and version-bumped even when\nfrom-sources-file is provided, so it should be uploaded in that case too:\nit is the source matching the built binaries, and consumers such as\nautopkgtest need it to reuse them.\n\nThe sources-only and from-sources-file combination is already rejected by\nthe input checks, and the source build step always populates\nSOURCE_OUTPUT_DIR, so the condition is not needed.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/631ce4273a1d0456c06f91d953af21ba30ac935f"
-               },
-               {
-                  "sha": "55838961123f3403bcfaede7c5d59afcc4d747cc",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1790195557,
-                  "message": "ci: Test building sources with git-buildpackage\n\nAdd a test job that clones a quilt package maintained with gbp\n(gsettings-desktop-schemas, which uses pristine-tar) via gbp clone and\nbuilds its source through the build-debian action with use-gbp enabled.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/55838961123f3403bcfaede7c5d59afcc4d747cc"
                }
             ],
             "ciActions": [],
@@ -6605,7 +6605,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -6675,25 +6675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "97f7694fcf5d8175243b2cdcddc5da5a7d507b73",
+                  "sha": "f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a",
                   "author": "Charles",
-                  "timestamp": 1790153285,
-                  "message": "feat(cli): send testbed clips as fast as the backend takes them\n\nReal-time pacing made a 33 s clip look hung for 33 s. --realtime keeps\nit for imitating a microphone; --no-realtime is gone.",
-                  "url": "https://github.com/canonical/myna/commit/97f7694fcf5d8175243b2cdcddc5da5a7d507b73"
+                  "timestamp": 1790595398,
+                  "message": "fix(hud): check the render only after a frame has painted it\n\nA widget's paintable replays its last painted frame, so the fixed 600 ms\nfrom present raced the first paint on a loaded runner and read nothing:\nCI's ui-check failed 'Bar: nothing was drawn', and 3-4 in 10 runs failed\npinned to one busy core. Wait for a frame after the indicator is mapped\nand allocated, then settle; 20 of 20 pass under the same load.",
+                  "url": "https://github.com/canonical/myna/commit/f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a"
                },
                {
-                  "sha": "6f10e3d379ca74d19d9017175aad032cccb2e078",
+                  "sha": "ae0701fc2bb9a9315262cb5ae84f27b7191c217b",
                   "author": "Charles",
-                  "timestamp": 1790153250,
-                  "message": "refactor(cli): pass the testbed's arguments to parse_args\n\nLets tests drive the flag handling.",
-                  "url": "https://github.com/canonical/myna/commit/6f10e3d379ca74d19d9017175aad032cccb2e078"
+                  "timestamp": 1790594715,
+                  "message": "docs(kb): explain where every artifact's version comes from\n\nReleasing is tagging; the 0.0.0 in the manifests and wheel name is a\nplaceholder that is never bumped.",
+                  "url": "https://github.com/canonical/myna/commit/ae0701fc2bb9a9315262cb5ae84f27b7191c217b"
                },
                {
-                  "sha": "3b9272d91c4ffc3df831c9645bd0014c832f109d",
+                  "sha": "8832f5a6bd5e66eb92cb278892a9b1e6635875f7",
                   "author": "Charles",
-                  "timestamp": 1790149188,
-                  "message": "feat(cli): resample testbed clips to the backend format\n\nA clip recorded at 48 kHz stereo was sent as-is and every backend\nrefused it. The daemon never hits this because PipeWire converts its\ncapture; a file has to be converted here.",
-                  "url": "https://github.com/canonical/myna/commit/3b9272d91c4ffc3df831c9645bd0014c832f109d"
+                  "timestamp": 1790594715,
+                  "message": "fix(client): fail the build when no version can be resolved\n\nThe fallback to the Cargo placeholder made a build outside a checkout\nreport 0.0.0 in About and diagnostics without complaint. cargo-mutants\ncopies were such builds; they now find the checkout via MYNA_REPO_ROOT.",
+                  "url": "https://github.com/canonical/myna/commit/8832f5a6bd5e66eb92cb278892a9b1e6635875f7"
                }
             ],
             "ciActions": [],
@@ -8408,25 +8408,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "52e27bc18b216f22c802429bfa3cfaa96a0cf8fb",
+                  "sha": "77f2a927e7dc4d149677b70034a3473075a39cce",
                   "author": "adombeck",
-                  "timestamp": 1790385048,
-                  "message": "Don't fail if broker config permissions are too broad (#2000)\n\nCloses #1999",
-                  "url": "https://github.com/canonical/authd/commit/52e27bc18b216f22c802429bfa3cfaa96a0cf8fb"
+                  "timestamp": 1790613175,
+                  "message": "Enforce broker config validation on new installs without breaking existing configurations (#2003)\n\nCloses #2002",
+                  "url": "https://github.com/canonical/authd/commit/77f2a927e7dc4d149677b70034a3473075a39cce"
                },
                {
-                  "sha": "50dd6f3466b46962cea7bcc63325089464be5da2",
+                  "sha": "ca170873ba5785258987921df7f84929e17d112e",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790383592,
-                  "message": "Don't fail if broker config permissions are too broad\n\nUpdate the permissions instead if that is possible without being\nsusceptible to symlink attacks, which it is when the directory is not\nwritable to users beside root.",
-                  "url": "https://github.com/canonical/authd/commit/50dd6f3466b46962cea7bcc63325089464be5da2"
+                  "timestamp": 1790601515,
+                  "message": "Avoid duplicate legacy config warnings\n\nThe D-Bus service creates one broker per API version from the same\nconfiguration. Parse it once to avoid repeated file reads and warnings,\nthen copy mutable state so each broker keeps its own owner state.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/ca170873ba5785258987921df7f84929e17d112e"
                },
                {
-                  "sha": "cca2543b9a0255c00245795700f83d9f5ca5c6df",
-                  "author": "adombeck",
-                  "timestamp": 1790348327,
-                  "message": "ci: Speed up R2 uploads (#1995)\n\nThe upload of the e2e test results to R2 storage takes over 5 minutes.\nSpeed that up.",
-                  "url": "https://github.com/canonical/authd/commit/cca2543b9a0255c00245795700f83d9f5ca5c6df"
+                  "sha": "de1491c014756fbb1e29d37a20234e8f5b58022f",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790544858,
+                  "message": "Keep broker upgrades compatible with strict config checks\n\nAn owner-only drop-in directory kept 0.4.1 file modes inaccessible\nto other users. Preserve that trust boundary; outside it, reject\nwritable, wrong-owner, and symlink paths and only warn on readable,\nnon-writable mode differences.\n\nPre-hook snaps have no recorded previous version. Treat an unset value\nas older than each migration boundary so their upgrade migrations and\nlegacy compatibility marker can run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/de1491c014756fbb1e29d37a20234e8f5b58022f"
                }
             ],
             "ciActions": [
@@ -8608,25 +8608,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f0377b0b730d3c0e8961e929bb22d70ee20e9062",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790606294,
+                  "message": "feat: enforce lockfile during melos bootstrap (#147)\n\nThis will ensure that versions are picked from lockfile",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/f0377b0b730d3c0e8961e929bb22d70ee20e9062"
+               },
+               {
+                  "sha": "f45615b7e809a5dac2c6f24cbca7cafe67df9831",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790603745,
+                  "message": "feat: enforce lockfile during melos bootstrap",
+                  "url": "https://github.com/canonical/desktop-engineering/commit/f45615b7e809a5dac2c6f24cbca7cafe67df9831"
+               },
+               {
                   "sha": "c41b8c04c55da2d476730a95944edc44ba6b1052",
                   "author": "Marco Trevisan",
                   "timestamp": 1790342620,
                   "message": "feat(gh-actions/build-debian): Allow building sources with git-buildpackage (#146)\n\nAdd a use-gbp input to build the source package with gbp instead of\ndpkg-buildpackage. This lets a repository delegate its source build to\nthe debian/gbp.conf prebuild hook (e.g. fetching meson subprojects)\nwhile this action still builds and uploads the binaries.\n\ngit-buildpackage is installed on demand. Because gbp exports the\ncommitted tree (--git-export defaults to HEAD), the changelog bumped by\ndch is committed first, and gbp then builds from a clean export with\n--git-ignore-branch.\n\nWe need this in gnome-shell-ubuntu-extensions to fully use the action\nrather than doing a mixup.",
                   "url": "https://github.com/canonical/desktop-engineering/commit/c41b8c04c55da2d476730a95944edc44ba6b1052"
-               },
-               {
-                  "sha": "631ce4273a1d0456c06f91d953af21ba30ac935f",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1790199240,
-                  "message": "gh-actions/build-debian: Always upload the generated source package\n\nThe source package is regenerated and version-bumped even when\nfrom-sources-file is provided, so it should be uploaded in that case too:\nit is the source matching the built binaries, and consumers such as\nautopkgtest need it to reuse them.\n\nThe sources-only and from-sources-file combination is already rejected by\nthe input checks, and the source build step always populates\nSOURCE_OUTPUT_DIR, so the condition is not needed.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/631ce4273a1d0456c06f91d953af21ba30ac935f"
-               },
-               {
-                  "sha": "55838961123f3403bcfaede7c5d59afcc4d747cc",
-                  "author": "Marco Trevisan (Treviño)",
-                  "timestamp": 1790195557,
-                  "message": "ci: Test building sources with git-buildpackage\n\nAdd a test job that clones a quilt package maintained with gbp\n(gsettings-desktop-schemas, which uses pristine-tar) via gbp clone and\nbuilds its source through the build-debian action with use-gbp enabled.",
-                  "url": "https://github.com/canonical/desktop-engineering/commit/55838961123f3403bcfaede7c5d59afcc4d747cc"
                }
             ],
             "ciActions": [],
@@ -9127,7 +9127,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -9197,25 +9197,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "97f7694fcf5d8175243b2cdcddc5da5a7d507b73",
+                  "sha": "f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a",
                   "author": "Charles",
-                  "timestamp": 1790153285,
-                  "message": "feat(cli): send testbed clips as fast as the backend takes them\n\nReal-time pacing made a 33 s clip look hung for 33 s. --realtime keeps\nit for imitating a microphone; --no-realtime is gone.",
-                  "url": "https://github.com/canonical/myna/commit/97f7694fcf5d8175243b2cdcddc5da5a7d507b73"
+                  "timestamp": 1790595398,
+                  "message": "fix(hud): check the render only after a frame has painted it\n\nA widget's paintable replays its last painted frame, so the fixed 600 ms\nfrom present raced the first paint on a loaded runner and read nothing:\nCI's ui-check failed 'Bar: nothing was drawn', and 3-4 in 10 runs failed\npinned to one busy core. Wait for a frame after the indicator is mapped\nand allocated, then settle; 20 of 20 pass under the same load.",
+                  "url": "https://github.com/canonical/myna/commit/f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a"
                },
                {
-                  "sha": "6f10e3d379ca74d19d9017175aad032cccb2e078",
+                  "sha": "ae0701fc2bb9a9315262cb5ae84f27b7191c217b",
                   "author": "Charles",
-                  "timestamp": 1790153250,
-                  "message": "refactor(cli): pass the testbed's arguments to parse_args\n\nLets tests drive the flag handling.",
-                  "url": "https://github.com/canonical/myna/commit/6f10e3d379ca74d19d9017175aad032cccb2e078"
+                  "timestamp": 1790594715,
+                  "message": "docs(kb): explain where every artifact's version comes from\n\nReleasing is tagging; the 0.0.0 in the manifests and wheel name is a\nplaceholder that is never bumped.",
+                  "url": "https://github.com/canonical/myna/commit/ae0701fc2bb9a9315262cb5ae84f27b7191c217b"
                },
                {
-                  "sha": "3b9272d91c4ffc3df831c9645bd0014c832f109d",
+                  "sha": "8832f5a6bd5e66eb92cb278892a9b1e6635875f7",
                   "author": "Charles",
-                  "timestamp": 1790149188,
-                  "message": "feat(cli): resample testbed clips to the backend format\n\nA clip recorded at 48 kHz stereo was sent as-is and every backend\nrefused it. The daemon never hits this because PipeWire converts its\ncapture; a file has to be converted here.",
-                  "url": "https://github.com/canonical/myna/commit/3b9272d91c4ffc3df831c9645bd0014c832f109d"
+                  "timestamp": 1790594715,
+                  "message": "fix(client): fail the build when no version can be resolved\n\nThe fallback to the Cargo placeholder made a build outside a checkout\nreport 0.0.0 in About and diagnostics without complaint. cargo-mutants\ncopies were such builds; they now find the checkout via MYNA_REPO_ROOT.",
+                  "url": "https://github.com/canonical/myna/commit/8832f5a6bd5e66eb92cb278892a9b1e6635875f7"
                }
             ],
             "ciActions": [],
