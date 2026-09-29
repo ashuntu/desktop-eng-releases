@@ -3401,25 +3401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "77f2a927e7dc4d149677b70034a3473075a39cce",
+                  "sha": "31aceee5956992f0af32f543896263c049d6cbb6",
                   "author": "adombeck",
-                  "timestamp": 1790613175,
-                  "message": "Enforce broker config validation on new installs without breaking existing configurations (#2003)\n\nCloses #2002",
-                  "url": "https://github.com/canonical/authd/commit/77f2a927e7dc4d149677b70034a3473075a39cce"
+                  "timestamp": 1790684678,
+                  "message": "Fix and improve the release documentation (#1991)\n\nUDENG-11768",
+                  "url": "https://github.com/canonical/authd/commit/31aceee5956992f0af32f543896263c049d6cbb6"
                },
                {
-                  "sha": "ca170873ba5785258987921df7f84929e17d112e",
+                  "sha": "2bb62c30cbda0ecee572f727faacce957700418f",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790601515,
-                  "message": "Avoid duplicate legacy config warnings\n\nThe D-Bus service creates one broker per API version from the same\nconfiguration. Parse it once to avoid repeated file reads and warnings,\nthen copy mutable state so each broker keeps its own owner state.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/ca170873ba5785258987921df7f84929e17d112e"
+                  "timestamp": 1790678179,
+                  "message": "RELEASE.md: Fix trailing space",
+                  "url": "https://github.com/canonical/authd/commit/2bb62c30cbda0ecee572f727faacce957700418f"
                },
                {
-                  "sha": "de1491c014756fbb1e29d37a20234e8f5b58022f",
+                  "sha": "97496a60f5cf97d4ac7ee7b6469f0a9cd01238bf",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790544858,
-                  "message": "Keep broker upgrades compatible with strict config checks\n\nAn owner-only drop-in directory kept 0.4.1 file modes inaccessible\nto other users. Preserve that trust boundary; outside it, reject\nwritable, wrong-owner, and symlink paths and only warn on readable,\nnon-writable mode differences.\n\nPre-hook snaps have no recorded previous version. Treat an unset value\nas older than each migration boundary so their upgrade migrations and\nlegacy compatibility marker can run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/de1491c014756fbb1e29d37a20234e8f5b58022f"
+                  "timestamp": 1790330196,
+                  "message": "RELEASE.md: Clarify release rebase and merge flow\n\nBackports leave the shell inside the temporary Ubuntu checkout, so\nreturn to the original checkout before updating main. Pull main with\nfast-forward-only and merge the remote stable ref to avoid using a\nstale or missing local branch.\n\nKeep the pre-rebase tested SHA because rebasing rewrites it, and push\nthe resulting branch before approval so reviewers see the release-ready\nhistory.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/97496a60f5cf97d4ac7ee7b6469f0a9cd01238bf"
                }
             ],
             "ciActions": [
@@ -3634,25 +3634,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "196c27be4f91aad240648c1597e959cf53752648",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790673108,
+                  "message": "Merge pull request #259 from nteodosio/riscv\n\nmaint: Support Risc-V build.",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/196c27be4f91aad240648c1597e959cf53752648"
+               },
+               {
+                  "sha": "dfab4f9f225b81405e421d889c5ceaf8c1c852d9",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1790601830,
+                  "message": "maint: Support Risc-V build.",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/dfab4f9f225b81405e421d889c5ceaf8c1c852d9"
+               },
+               {
                   "sha": "59af6744ca64e8731ab5d02538edf9496c8282ab",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790430111,
                   "message": "Merge pull request #257 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
                   "url": "https://github.com/canonical/desktop-security-center/commit/59af6744ca64e8731ab5d02538edf9496c8282ab"
-               },
-               {
-                  "sha": "c245b39723b91a7081a57d7e109f83f8531b393c",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790424703,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/c245b39723b91a7081a57d7e109f83f8531b393c"
-               },
-               {
-                  "sha": "f454adc3fba4c3509bd11d2faacf841df9e20bb5",
-                  "author": "Github Action",
-                  "timestamp": 1790424581,
-                  "message": "fix(l10n): translated using Weblate (Irish)\n\nCurrently translated at 100.0% (196 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/ga/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/f454adc3fba4c3509bd11d2faacf841df9e20bb5"
                }
             ],
             "ciActions": [],
@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a",
+                  "sha": "f39e96240eb51ffd8a1103259028e00bbd05dfe0",
                   "author": "Charles",
-                  "timestamp": 1790595398,
-                  "message": "fix(hud): check the render only after a frame has painted it\n\nA widget's paintable replays its last painted frame, so the fixed 600 ms\nfrom present raced the first paint on a loaded runner and read nothing:\nCI's ui-check failed 'Bar: nothing was drawn', and 3-4 in 10 runs failed\npinned to one busy core. Wait for a frame after the indicator is mapped\nand allocated, then settle; 20 of 20 pass under the same load.",
-                  "url": "https://github.com/canonical/myna/commit/f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a"
+                  "timestamp": 1790673614,
+                  "message": "fix(config): translate the kept-value report and drop an unread field\n\nThe report for a value the model did not keep was an English format\nstring; it now goes through gettext and a test drives it end to end.\nStagedChange::original lost its last reader with the confirmation\ntext, so the field goes too.",
+                  "url": "https://github.com/canonical/myna/commit/f39e96240eb51ffd8a1103259028e00bbd05dfe0"
                },
                {
-                  "sha": "ae0701fc2bb9a9315262cb5ae84f27b7191c217b",
+                  "sha": "a6606764453221e7f2dedc0b750d69ee4d839360",
                   "author": "Charles",
-                  "timestamp": 1790594715,
-                  "message": "docs(kb): explain where every artifact's version comes from\n\nReleasing is tagging; the 0.0.0 in the manifests and wheel name is a\nplaceholder that is never bumped.",
-                  "url": "https://github.com/canonical/myna/commit/ae0701fc2bb9a9315262cb5ae84f27b7191c217b"
+                  "timestamp": 1790673094,
+                  "message": "fix(config): keep the page still when an entry's change applies\n\nOn Noble, applying an entry with Enter scrolled the Model tab up by\nseveral rows. Removing the focused row makes GTK 4.14 focus the next\nfocusable one and scroll to it, and restoring focus to a row not yet\nlaid out scrolled again.\n\nA rebuild now clears the focus first and restores it with the\nviewport's scroll-to-focus off, never onto the changing row. The entry\nkeeps its own row while it applies, so the page keeps its height, shows\nthe progress at its end without its pencil, and gets its focus back\nwithout its text selected.",
+                  "url": "https://github.com/canonical/myna/commit/a6606764453221e7f2dedc0b750d69ee4d839360"
                },
                {
-                  "sha": "8832f5a6bd5e66eb92cb278892a9b1e6635875f7",
+                  "sha": "14ce8a1f3684d9075654f50f6213a415ec1a2574",
                   "author": "Charles",
-                  "timestamp": 1790594715,
-                  "message": "fix(client): fail the build when no version can be resolved\n\nThe fallback to the Cargo placeholder made a build outside a checkout\nreport 0.0.0 in About and diagnostics without complaint. cargo-mutants\ncopies were such builds; they now find the checkout via MYNA_REPO_ROOT.",
-                  "url": "https://github.com/canonical/myna/commit/8832f5a6bd5e66eb92cb278892a9b1e6635875f7"
+                  "timestamp": 1790672186,
+                  "message": "fix(config): keep the Model tab's scroll and the changing row legible\n\nEvery rebuild made a new page, so each change scrolled the tab back to\nthe top. The tab now keeps one page per backend and refills its groups\nin place, which GTK lays out before it next clamps the scroll.\n\nThe changing row was insensitive like the others, which dimmed its\nprogress line twice over. It now stays sensitive and only stops taking\ninput, and tells assistive technology it is busy.",
+                  "url": "https://github.com/canonical/myna/commit/14ce8a1f3684d9075654f50f6213a415ec1a2574"
                }
             ],
             "ciActions": [],
@@ -5361,7 +5361,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 71,
+            "newCommits": 72,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5408,14 +5408,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 679,
-                     "timestamp": 1790627439
+                     "revision": 681,
+                     "timestamp": 1790678865
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 678,
-                     "timestamp": 1790626670
+                     "revision": 680,
+                     "timestamp": 1790678095
                   }
                ],
                "channels": [
@@ -5853,25 +5853,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "77f2a927e7dc4d149677b70034a3473075a39cce",
+                  "sha": "31aceee5956992f0af32f543896263c049d6cbb6",
                   "author": "adombeck",
-                  "timestamp": 1790613175,
-                  "message": "Enforce broker config validation on new installs without breaking existing configurations (#2003)\n\nCloses #2002",
-                  "url": "https://github.com/canonical/authd/commit/77f2a927e7dc4d149677b70034a3473075a39cce"
+                  "timestamp": 1790684678,
+                  "message": "Fix and improve the release documentation (#1991)\n\nUDENG-11768",
+                  "url": "https://github.com/canonical/authd/commit/31aceee5956992f0af32f543896263c049d6cbb6"
                },
                {
-                  "sha": "ca170873ba5785258987921df7f84929e17d112e",
+                  "sha": "2bb62c30cbda0ecee572f727faacce957700418f",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790601515,
-                  "message": "Avoid duplicate legacy config warnings\n\nThe D-Bus service creates one broker per API version from the same\nconfiguration. Parse it once to avoid repeated file reads and warnings,\nthen copy mutable state so each broker keeps its own owner state.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/ca170873ba5785258987921df7f84929e17d112e"
+                  "timestamp": 1790678179,
+                  "message": "RELEASE.md: Fix trailing space",
+                  "url": "https://github.com/canonical/authd/commit/2bb62c30cbda0ecee572f727faacce957700418f"
                },
                {
-                  "sha": "de1491c014756fbb1e29d37a20234e8f5b58022f",
+                  "sha": "97496a60f5cf97d4ac7ee7b6469f0a9cd01238bf",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790544858,
-                  "message": "Keep broker upgrades compatible with strict config checks\n\nAn owner-only drop-in directory kept 0.4.1 file modes inaccessible\nto other users. Preserve that trust boundary; outside it, reject\nwritable, wrong-owner, and symlink paths and only warn on readable,\nnon-writable mode differences.\n\nPre-hook snaps have no recorded previous version. Treat an unset value\nas older than each migration boundary so their upgrade migrations and\nlegacy compatibility marker can run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/de1491c014756fbb1e29d37a20234e8f5b58022f"
+                  "timestamp": 1790330196,
+                  "message": "RELEASE.md: Clarify release rebase and merge flow\n\nBackports leave the shell inside the temporary Ubuntu checkout, so\nreturn to the original checkout before updating main. Pull main with\nfast-forward-only and merge the remote stable ref to avoid using a\nstale or missing local branch.\n\nKeep the pre-rebase tested SHA because rebasing rewrites it, and push\nthe resulting branch before approval so reviewers see the release-ready\nhistory.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/97496a60f5cf97d4ac7ee7b6469f0a9cd01238bf"
                }
             ],
             "ciActions": [
@@ -6086,25 +6086,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "196c27be4f91aad240648c1597e959cf53752648",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790673108,
+                  "message": "Merge pull request #259 from nteodosio/riscv\n\nmaint: Support Risc-V build.",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/196c27be4f91aad240648c1597e959cf53752648"
+               },
+               {
+                  "sha": "dfab4f9f225b81405e421d889c5ceaf8c1c852d9",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1790601830,
+                  "message": "maint: Support Risc-V build.",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/dfab4f9f225b81405e421d889c5ceaf8c1c852d9"
+               },
+               {
                   "sha": "59af6744ca64e8731ab5d02538edf9496c8282ab",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790430111,
                   "message": "Merge pull request #257 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
                   "url": "https://github.com/canonical/desktop-security-center/commit/59af6744ca64e8731ab5d02538edf9496c8282ab"
-               },
-               {
-                  "sha": "c245b39723b91a7081a57d7e109f83f8531b393c",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790424703,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/c245b39723b91a7081a57d7e109f83f8531b393c"
-               },
-               {
-                  "sha": "f454adc3fba4c3509bd11d2faacf841df9e20bb5",
-                  "author": "Github Action",
-                  "timestamp": 1790424581,
-                  "message": "fix(l10n): translated using Weblate (Irish)\n\nCurrently translated at 100.0% (196 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/ga/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/f454adc3fba4c3509bd11d2faacf841df9e20bb5"
                }
             ],
             "ciActions": [],
@@ -6675,25 +6675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a",
+                  "sha": "f39e96240eb51ffd8a1103259028e00bbd05dfe0",
                   "author": "Charles",
-                  "timestamp": 1790595398,
-                  "message": "fix(hud): check the render only after a frame has painted it\n\nA widget's paintable replays its last painted frame, so the fixed 600 ms\nfrom present raced the first paint on a loaded runner and read nothing:\nCI's ui-check failed 'Bar: nothing was drawn', and 3-4 in 10 runs failed\npinned to one busy core. Wait for a frame after the indicator is mapped\nand allocated, then settle; 20 of 20 pass under the same load.",
-                  "url": "https://github.com/canonical/myna/commit/f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a"
+                  "timestamp": 1790673614,
+                  "message": "fix(config): translate the kept-value report and drop an unread field\n\nThe report for a value the model did not keep was an English format\nstring; it now goes through gettext and a test drives it end to end.\nStagedChange::original lost its last reader with the confirmation\ntext, so the field goes too.",
+                  "url": "https://github.com/canonical/myna/commit/f39e96240eb51ffd8a1103259028e00bbd05dfe0"
                },
                {
-                  "sha": "ae0701fc2bb9a9315262cb5ae84f27b7191c217b",
+                  "sha": "a6606764453221e7f2dedc0b750d69ee4d839360",
                   "author": "Charles",
-                  "timestamp": 1790594715,
-                  "message": "docs(kb): explain where every artifact's version comes from\n\nReleasing is tagging; the 0.0.0 in the manifests and wheel name is a\nplaceholder that is never bumped.",
-                  "url": "https://github.com/canonical/myna/commit/ae0701fc2bb9a9315262cb5ae84f27b7191c217b"
+                  "timestamp": 1790673094,
+                  "message": "fix(config): keep the page still when an entry's change applies\n\nOn Noble, applying an entry with Enter scrolled the Model tab up by\nseveral rows. Removing the focused row makes GTK 4.14 focus the next\nfocusable one and scroll to it, and restoring focus to a row not yet\nlaid out scrolled again.\n\nA rebuild now clears the focus first and restores it with the\nviewport's scroll-to-focus off, never onto the changing row. The entry\nkeeps its own row while it applies, so the page keeps its height, shows\nthe progress at its end without its pencil, and gets its focus back\nwithout its text selected.",
+                  "url": "https://github.com/canonical/myna/commit/a6606764453221e7f2dedc0b750d69ee4d839360"
                },
                {
-                  "sha": "8832f5a6bd5e66eb92cb278892a9b1e6635875f7",
+                  "sha": "14ce8a1f3684d9075654f50f6213a415ec1a2574",
                   "author": "Charles",
-                  "timestamp": 1790594715,
-                  "message": "fix(client): fail the build when no version can be resolved\n\nThe fallback to the Cargo placeholder made a build outside a checkout\nreport 0.0.0 in About and diagnostics without complaint. cargo-mutants\ncopies were such builds; they now find the checkout via MYNA_REPO_ROOT.",
-                  "url": "https://github.com/canonical/myna/commit/8832f5a6bd5e66eb92cb278892a9b1e6635875f7"
+                  "timestamp": 1790672186,
+                  "message": "fix(config): keep the Model tab's scroll and the changing row legible\n\nEvery rebuild made a new page, so each change scrolled the tab back to\nthe top. The tab now keeps one page per backend and refills its groups\nin place, which GTK lays out before it next clamps the scroll.\n\nThe changing row was insensitive like the others, which dimmed its\nprogress line twice over. It now stays sensitive and only stops taking\ninput, and tells assistive technology it is busy.",
+                  "url": "https://github.com/canonical/myna/commit/14ce8a1f3684d9075654f50f6213a415ec1a2574"
                }
             ],
             "ciActions": [],
@@ -7568,7 +7568,7 @@
          {
             "name": "ubuntu-pro-for-wsl",
             "defaultBranch": "main",
-            "newCommits": 186,
+            "newCommits": 193,
             "url": "https://github.com/canonical/ubuntu-pro-for-wsl",
             "releases": [
                {
@@ -7887,7 +7887,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 71,
+            "newCommits": 72,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7934,14 +7934,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 679,
-                     "timestamp": 1790627439
+                     "revision": 681,
+                     "timestamp": 1790678865
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 678,
-                     "timestamp": 1790626670
+                     "revision": 680,
+                     "timestamp": 1790678095
                   }
                ],
                "channels": [
@@ -7962,7 +7962,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 157,
+            "newCommits": 166,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8408,25 +8408,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "77f2a927e7dc4d149677b70034a3473075a39cce",
+                  "sha": "31aceee5956992f0af32f543896263c049d6cbb6",
                   "author": "adombeck",
-                  "timestamp": 1790613175,
-                  "message": "Enforce broker config validation on new installs without breaking existing configurations (#2003)\n\nCloses #2002",
-                  "url": "https://github.com/canonical/authd/commit/77f2a927e7dc4d149677b70034a3473075a39cce"
+                  "timestamp": 1790684678,
+                  "message": "Fix and improve the release documentation (#1991)\n\nUDENG-11768",
+                  "url": "https://github.com/canonical/authd/commit/31aceee5956992f0af32f543896263c049d6cbb6"
                },
                {
-                  "sha": "ca170873ba5785258987921df7f84929e17d112e",
+                  "sha": "2bb62c30cbda0ecee572f727faacce957700418f",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790601515,
-                  "message": "Avoid duplicate legacy config warnings\n\nThe D-Bus service creates one broker per API version from the same\nconfiguration. Parse it once to avoid repeated file reads and warnings,\nthen copy mutable state so each broker keeps its own owner state.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/ca170873ba5785258987921df7f84929e17d112e"
+                  "timestamp": 1790678179,
+                  "message": "RELEASE.md: Fix trailing space",
+                  "url": "https://github.com/canonical/authd/commit/2bb62c30cbda0ecee572f727faacce957700418f"
                },
                {
-                  "sha": "de1491c014756fbb1e29d37a20234e8f5b58022f",
+                  "sha": "97496a60f5cf97d4ac7ee7b6469f0a9cd01238bf",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790544858,
-                  "message": "Keep broker upgrades compatible with strict config checks\n\nAn owner-only drop-in directory kept 0.4.1 file modes inaccessible\nto other users. Preserve that trust boundary; outside it, reject\nwritable, wrong-owner, and symlink paths and only warn on readable,\nnon-writable mode differences.\n\nPre-hook snaps have no recorded previous version. Treat an unset value\nas older than each migration boundary so their upgrade migrations and\nlegacy compatibility marker can run.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/de1491c014756fbb1e29d37a20234e8f5b58022f"
+                  "timestamp": 1790330196,
+                  "message": "RELEASE.md: Clarify release rebase and merge flow\n\nBackports leave the shell inside the temporary Ubuntu checkout, so\nreturn to the original checkout before updating main. Pull main with\nfast-forward-only and merge the remote stable ref to avoid using a\nstale or missing local branch.\n\nKeep the pre-rebase tested SHA because rebasing rewrites it, and push\nthe resulting branch before approval so reviewers see the release-ready\nhistory.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/97496a60f5cf97d4ac7ee7b6469f0a9cd01238bf"
                }
             ],
             "ciActions": [
@@ -8641,25 +8641,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "196c27be4f91aad240648c1597e959cf53752648",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790673108,
+                  "message": "Merge pull request #259 from nteodosio/riscv\n\nmaint: Support Risc-V build.",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/196c27be4f91aad240648c1597e959cf53752648"
+               },
+               {
+                  "sha": "dfab4f9f225b81405e421d889c5ceaf8c1c852d9",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1790601830,
+                  "message": "maint: Support Risc-V build.",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/dfab4f9f225b81405e421d889c5ceaf8c1c852d9"
+               },
+               {
                   "sha": "59af6744ca64e8731ab5d02538edf9496c8282ab",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790430111,
                   "message": "Merge pull request #257 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
                   "url": "https://github.com/canonical/desktop-security-center/commit/59af6744ca64e8731ab5d02538edf9496c8282ab"
-               },
-               {
-                  "sha": "c245b39723b91a7081a57d7e109f83f8531b393c",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790424703,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/c245b39723b91a7081a57d7e109f83f8531b393c"
-               },
-               {
-                  "sha": "f454adc3fba4c3509bd11d2faacf841df9e20bb5",
-                  "author": "Github Action",
-                  "timestamp": 1790424581,
-                  "message": "fix(l10n): translated using Weblate (Irish)\n\nCurrently translated at 100.0% (196 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/ga/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/f454adc3fba4c3509bd11d2faacf841df9e20bb5"
                }
             ],
             "ciActions": [],
@@ -9197,25 +9197,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a",
+                  "sha": "f39e96240eb51ffd8a1103259028e00bbd05dfe0",
                   "author": "Charles",
-                  "timestamp": 1790595398,
-                  "message": "fix(hud): check the render only after a frame has painted it\n\nA widget's paintable replays its last painted frame, so the fixed 600 ms\nfrom present raced the first paint on a loaded runner and read nothing:\nCI's ui-check failed 'Bar: nothing was drawn', and 3-4 in 10 runs failed\npinned to one busy core. Wait for a frame after the indicator is mapped\nand allocated, then settle; 20 of 20 pass under the same load.",
-                  "url": "https://github.com/canonical/myna/commit/f8a026f5cf974ff6d72cf5fa92f857127a5c6a6a"
+                  "timestamp": 1790673614,
+                  "message": "fix(config): translate the kept-value report and drop an unread field\n\nThe report for a value the model did not keep was an English format\nstring; it now goes through gettext and a test drives it end to end.\nStagedChange::original lost its last reader with the confirmation\ntext, so the field goes too.",
+                  "url": "https://github.com/canonical/myna/commit/f39e96240eb51ffd8a1103259028e00bbd05dfe0"
                },
                {
-                  "sha": "ae0701fc2bb9a9315262cb5ae84f27b7191c217b",
+                  "sha": "a6606764453221e7f2dedc0b750d69ee4d839360",
                   "author": "Charles",
-                  "timestamp": 1790594715,
-                  "message": "docs(kb): explain where every artifact's version comes from\n\nReleasing is tagging; the 0.0.0 in the manifests and wheel name is a\nplaceholder that is never bumped.",
-                  "url": "https://github.com/canonical/myna/commit/ae0701fc2bb9a9315262cb5ae84f27b7191c217b"
+                  "timestamp": 1790673094,
+                  "message": "fix(config): keep the page still when an entry's change applies\n\nOn Noble, applying an entry with Enter scrolled the Model tab up by\nseveral rows. Removing the focused row makes GTK 4.14 focus the next\nfocusable one and scroll to it, and restoring focus to a row not yet\nlaid out scrolled again.\n\nA rebuild now clears the focus first and restores it with the\nviewport's scroll-to-focus off, never onto the changing row. The entry\nkeeps its own row while it applies, so the page keeps its height, shows\nthe progress at its end without its pencil, and gets its focus back\nwithout its text selected.",
+                  "url": "https://github.com/canonical/myna/commit/a6606764453221e7f2dedc0b750d69ee4d839360"
                },
                {
-                  "sha": "8832f5a6bd5e66eb92cb278892a9b1e6635875f7",
+                  "sha": "14ce8a1f3684d9075654f50f6213a415ec1a2574",
                   "author": "Charles",
-                  "timestamp": 1790594715,
-                  "message": "fix(client): fail the build when no version can be resolved\n\nThe fallback to the Cargo placeholder made a build outside a checkout\nreport 0.0.0 in About and diagnostics without complaint. cargo-mutants\ncopies were such builds; they now find the checkout via MYNA_REPO_ROOT.",
-                  "url": "https://github.com/canonical/myna/commit/8832f5a6bd5e66eb92cb278892a9b1e6635875f7"
+                  "timestamp": 1790672186,
+                  "message": "fix(config): keep the Model tab's scroll and the changing row legible\n\nEvery rebuild made a new page, so each change scrolled the tab back to\nthe top. The tab now keeps one page per backend and refills its groups\nin place, which GTK lays out before it next clamps the scroll.\n\nThe changing row was insensitive like the others, which dimmed its\nprogress line twice over. It now stays sensitive and only stops taking\ninput, and tells assistive technology it is busy.",
+                  "url": "https://github.com/canonical/myna/commit/14ce8a1f3684d9075654f50f6213a415ec1a2574"
                }
             ],
             "ciActions": [],
@@ -10403,7 +10403,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 71,
+            "newCommits": 72,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10450,14 +10450,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 679,
-                     "timestamp": 1790627439
+                     "revision": 681,
+                     "timestamp": 1790678865
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 678,
-                     "timestamp": 1790626670
+                     "revision": 680,
+                     "timestamp": 1790678095
                   }
                ],
                "channels": [
