@@ -3401,25 +3401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fc24eaccee7a67d293e4de5dadff57374fb8aada",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790781620,
-                  "message": "Remove the obsolete `rust-toolchain.toml` pin (#2023)",
-                  "url": "https://github.com/canonical/authd/commit/fc24eaccee7a67d293e4de5dadff57374fb8aada"
-               },
-               {
-                  "sha": "7616de43474baad881c7a074bfd3f6134f6e82e3",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790736458,
-                  "message": "Remove the obsolete `rust-toolchain.toml` pin\n\nThe pin was a workaround for `libhimmelblau` failing to build with\ncargo 1.92.0. It has since moved forward to 1.94.0 (553cbd9b2), and\nthe latest stable toolchain builds `libhimmelblau` fine.\n\nDependabot no longer updates the pin (e92a68ec7), so it rots until it\nbreaks; in July, `cargo-c` raised its MSRV above the pinned rustc and\nbroke CI: https://github.com/canonical/authd/issues/1748\n\nVerified: `generate.sh` builds `libhimmelblau` with both the pinned\n1.94.0 and the unpinned stable 1.97.0.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/7616de43474baad881c7a074bfd3f6134f6e82e3"
-               },
-               {
-                  "sha": "2762c4763eb71cd32f0c1c7bdd1005d43ffdbd86",
+                  "sha": "f49c2c92be4e802399699f365e355ca57fe19c84",
                   "author": "adombeck",
-                  "timestamp": 1790768972,
-                  "message": "Alert about new gnome-shell releases in Noble (#2021)\n\nUDENG-11804",
-                  "url": "https://github.com/canonical/authd/commit/2762c4763eb71cd32f0c1c7bdd1005d43ffdbd86"
+                  "timestamp": 1790796251,
+                  "message": "Permission denial test must use a non-root peer (#2029)",
+                  "url": "https://github.com/canonical/authd/commit/f49c2c92be4e802399699f365e355ca57fe19c84"
+               },
+               {
+                  "sha": "d385b284d9e934f214b7b8394a9645fb84cfbc8d",
+                  "author": "adombeck",
+                  "timestamp": 1790796053,
+                  "message": "ci: Run shellcheck whenever a shell script is changed (#2026)",
+                  "url": "https://github.com/canonical/authd/commit/d385b284d9e934f214b7b8394a9645fb84cfbc8d"
+               },
+               {
+                  "sha": "9645b8453f130958d48e321d7f51564ae9bf1be9",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790781398,
+                  "message": "ci: Run ShellCheck for script and config changes\n\nThe QA workflows filtered out directories containing shell scripts, which\nmade ShellCheck run when no scripts had changed.\n\nUse one set of paths for pushes and pull requests. Include the workflow and\nShellCheck configuration so checker changes retrigger the job.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/9645b8453f130958d48e321d7f51564ae9bf1be9"
                }
             ],
             "ciActions": [
@@ -4120,9 +4120,18 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 4,
+            "newCommits": 0,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
+               {
+                  "id": 400320957,
+                  "version": "publish-36757299916",
+                  "timestamp": 1790792135,
+                  "title": "Publish 36757299916",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev158\">mediawiki-k8s-rev158 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev143</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Add explanation on how the localisation cache is handled by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/290\">#290</a></li>\n<li>chore(deps): update dependency jubilant to v1.14.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/294\">#294</a></li>\n<li>feat: Persist object cache connections by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/295\">#295</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36347793372...publish-36757299916\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36347793372&hellip;publish-36757299916</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36757299916",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36757299916...main"
+               },
                {
                   "id": 397800926,
                   "version": "publish-36347793372",
@@ -4140,15 +4149,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev156\">mediawiki-k8s-rev156 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev141</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/291\">#291</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074...publish-36221680017\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074&hellip;publish-36221680017</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36221680017",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017...main"
-               },
-               {
-                  "id": 397095964,
-                  "version": "publish-36219705074",
-                  "timestamp": 1790397008,
-                  "title": "Publish 36219705074",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev155\">mediawiki-k8s-rev155 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev140</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Update deployment diagram by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/289\">#289</a></li>\n<li>fix(deps): update dependency dpcharmlibs-interfaces to v1.2.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/288\">#288</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36060169585...publish-36219705074\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36060169585&hellip;publish-36219705074</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36219705074",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074...main"
                }
             ],
             "commits": null,
@@ -4169,8 +4169,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 157,
-                     "timestamp": 1790541081
+                     "revision": 158,
+                     "timestamp": 1790792522
                   }
                ],
                "channels": [
@@ -4964,6 +4964,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "39028ebb1e3d91fad65efb084fdef8926d61df57",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790791970,
+                  "message": "a11y: remove redundant headers from form inputs (#1565)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/39028ebb1e3d91fad65efb084fdef8926d61df57"
+               },
+               {
                   "sha": "4fb0ab22e43a07e5e6f0369d9401c2a67fb7974a",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790695067,
@@ -4976,13 +4983,6 @@
                   "timestamp": 1790693645,
                   "message": "maint: l10n regenerate",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eb01d60b97c75509c2c658c3414927c8c38bc832"
-               },
-               {
-                  "sha": "dd27cd93388b8354104867542ae126c34fc421e1",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790692837,
-                  "message": "Translated using Weblate (Slovak)\n\nCurrently translated at 100.0% (5 of 5 strings)\n\nTranslation: ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide 8\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-8/sk/",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/dd27cd93388b8354104867542ae126c34fc421e1"
                }
             ],
             "ciActions": [
@@ -5361,7 +5361,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 72,
+            "newCommits": 73,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5408,14 +5408,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 681,
-                     "timestamp": 1790678865
+                     "revision": 683,
+                     "timestamp": 1790799898
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 680,
-                     "timestamp": 1790678095
+                     "revision": 682,
+                     "timestamp": 1790797201
                   }
                ],
                "channels": [
@@ -5853,25 +5853,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fc24eaccee7a67d293e4de5dadff57374fb8aada",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790781620,
-                  "message": "Remove the obsolete `rust-toolchain.toml` pin (#2023)",
-                  "url": "https://github.com/canonical/authd/commit/fc24eaccee7a67d293e4de5dadff57374fb8aada"
-               },
-               {
-                  "sha": "7616de43474baad881c7a074bfd3f6134f6e82e3",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790736458,
-                  "message": "Remove the obsolete `rust-toolchain.toml` pin\n\nThe pin was a workaround for `libhimmelblau` failing to build with\ncargo 1.92.0. It has since moved forward to 1.94.0 (553cbd9b2), and\nthe latest stable toolchain builds `libhimmelblau` fine.\n\nDependabot no longer updates the pin (e92a68ec7), so it rots until it\nbreaks; in July, `cargo-c` raised its MSRV above the pinned rustc and\nbroke CI: https://github.com/canonical/authd/issues/1748\n\nVerified: `generate.sh` builds `libhimmelblau` with both the pinned\n1.94.0 and the unpinned stable 1.97.0.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/7616de43474baad881c7a074bfd3f6134f6e82e3"
-               },
-               {
-                  "sha": "2762c4763eb71cd32f0c1c7bdd1005d43ffdbd86",
+                  "sha": "f49c2c92be4e802399699f365e355ca57fe19c84",
                   "author": "adombeck",
-                  "timestamp": 1790768972,
-                  "message": "Alert about new gnome-shell releases in Noble (#2021)\n\nUDENG-11804",
-                  "url": "https://github.com/canonical/authd/commit/2762c4763eb71cd32f0c1c7bdd1005d43ffdbd86"
+                  "timestamp": 1790796251,
+                  "message": "Permission denial test must use a non-root peer (#2029)",
+                  "url": "https://github.com/canonical/authd/commit/f49c2c92be4e802399699f365e355ca57fe19c84"
+               },
+               {
+                  "sha": "d385b284d9e934f214b7b8394a9645fb84cfbc8d",
+                  "author": "adombeck",
+                  "timestamp": 1790796053,
+                  "message": "ci: Run shellcheck whenever a shell script is changed (#2026)",
+                  "url": "https://github.com/canonical/authd/commit/d385b284d9e934f214b7b8394a9645fb84cfbc8d"
+               },
+               {
+                  "sha": "9645b8453f130958d48e321d7f51564ae9bf1be9",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790781398,
+                  "message": "ci: Run ShellCheck for script and config changes\n\nThe QA workflows filtered out directories containing shell scripts, which\nmade ShellCheck run when no scripts had changed.\n\nUse one set of paths for pushes and pull requests. Include the workflow and\nShellCheck configuration so checker changes retrigger the job.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/9645b8453f130958d48e321d7f51564ae9bf1be9"
                }
             ],
             "ciActions": [
@@ -6605,9 +6605,18 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 4,
+            "newCommits": 0,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
+               {
+                  "id": 400320957,
+                  "version": "publish-36757299916",
+                  "timestamp": 1790792135,
+                  "title": "Publish 36757299916",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev158\">mediawiki-k8s-rev158 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev143</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Add explanation on how the localisation cache is handled by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/290\">#290</a></li>\n<li>chore(deps): update dependency jubilant to v1.14.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/294\">#294</a></li>\n<li>feat: Persist object cache connections by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/295\">#295</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36347793372...publish-36757299916\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36347793372&hellip;publish-36757299916</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36757299916",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36757299916...main"
+               },
                {
                   "id": 397800926,
                   "version": "publish-36347793372",
@@ -6625,15 +6634,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev156\">mediawiki-k8s-rev156 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev141</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/291\">#291</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074...publish-36221680017\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074&hellip;publish-36221680017</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36221680017",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017...main"
-               },
-               {
-                  "id": 397095964,
-                  "version": "publish-36219705074",
-                  "timestamp": 1790397008,
-                  "title": "Publish 36219705074",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev155\">mediawiki-k8s-rev155 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev140</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Update deployment diagram by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/289\">#289</a></li>\n<li>fix(deps): update dependency dpcharmlibs-interfaces to v1.2.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/288\">#288</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36060169585...publish-36219705074\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36060169585&hellip;publish-36219705074</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36219705074",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074...main"
                }
             ],
             "commits": null,
@@ -6654,8 +6654,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 157,
-                     "timestamp": 1790541081
+                     "revision": 158,
+                     "timestamp": 1790792522
                   }
                ],
                "channels": [
@@ -7449,6 +7449,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "39028ebb1e3d91fad65efb084fdef8926d61df57",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790791970,
+                  "message": "a11y: remove redundant headers from form inputs (#1565)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/39028ebb1e3d91fad65efb084fdef8926d61df57"
+               },
+               {
                   "sha": "4fb0ab22e43a07e5e6f0369d9401c2a67fb7974a",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790695067,
@@ -7461,13 +7468,6 @@
                   "timestamp": 1790693645,
                   "message": "maint: l10n regenerate",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eb01d60b97c75509c2c658c3414927c8c38bc832"
-               },
-               {
-                  "sha": "dd27cd93388b8354104867542ae126c34fc421e1",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790692837,
-                  "message": "Translated using Weblate (Slovak)\n\nCurrently translated at 100.0% (5 of 5 strings)\n\nTranslation: ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide 8\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-8/sk/",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/dd27cd93388b8354104867542ae126c34fc421e1"
                }
             ],
             "ciActions": [
@@ -7887,7 +7887,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 72,
+            "newCommits": 73,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7934,14 +7934,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 681,
-                     "timestamp": 1790678865
+                     "revision": 683,
+                     "timestamp": 1790799898
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 680,
-                     "timestamp": 1790678095
+                     "revision": 682,
+                     "timestamp": 1790797201
                   }
                ],
                "channels": [
@@ -8408,25 +8408,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "fc24eaccee7a67d293e4de5dadff57374fb8aada",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790781620,
-                  "message": "Remove the obsolete `rust-toolchain.toml` pin (#2023)",
-                  "url": "https://github.com/canonical/authd/commit/fc24eaccee7a67d293e4de5dadff57374fb8aada"
-               },
-               {
-                  "sha": "7616de43474baad881c7a074bfd3f6134f6e82e3",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790736458,
-                  "message": "Remove the obsolete `rust-toolchain.toml` pin\n\nThe pin was a workaround for `libhimmelblau` failing to build with\ncargo 1.92.0. It has since moved forward to 1.94.0 (553cbd9b2), and\nthe latest stable toolchain builds `libhimmelblau` fine.\n\nDependabot no longer updates the pin (e92a68ec7), so it rots until it\nbreaks; in July, `cargo-c` raised its MSRV above the pinned rustc and\nbroke CI: https://github.com/canonical/authd/issues/1748\n\nVerified: `generate.sh` builds `libhimmelblau` with both the pinned\n1.94.0 and the unpinned stable 1.97.0.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/7616de43474baad881c7a074bfd3f6134f6e82e3"
-               },
-               {
-                  "sha": "2762c4763eb71cd32f0c1c7bdd1005d43ffdbd86",
+                  "sha": "f49c2c92be4e802399699f365e355ca57fe19c84",
                   "author": "adombeck",
-                  "timestamp": 1790768972,
-                  "message": "Alert about new gnome-shell releases in Noble (#2021)\n\nUDENG-11804",
-                  "url": "https://github.com/canonical/authd/commit/2762c4763eb71cd32f0c1c7bdd1005d43ffdbd86"
+                  "timestamp": 1790796251,
+                  "message": "Permission denial test must use a non-root peer (#2029)",
+                  "url": "https://github.com/canonical/authd/commit/f49c2c92be4e802399699f365e355ca57fe19c84"
+               },
+               {
+                  "sha": "d385b284d9e934f214b7b8394a9645fb84cfbc8d",
+                  "author": "adombeck",
+                  "timestamp": 1790796053,
+                  "message": "ci: Run shellcheck whenever a shell script is changed (#2026)",
+                  "url": "https://github.com/canonical/authd/commit/d385b284d9e934f214b7b8394a9645fb84cfbc8d"
+               },
+               {
+                  "sha": "9645b8453f130958d48e321d7f51564ae9bf1be9",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790781398,
+                  "message": "ci: Run ShellCheck for script and config changes\n\nThe QA workflows filtered out directories containing shell scripts, which\nmade ShellCheck run when no scripts had changed.\n\nUse one set of paths for pushes and pull requests. Include the workflow and\nShellCheck configuration so checker changes retrigger the job.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/9645b8453f130958d48e321d7f51564ae9bf1be9"
                }
             ],
             "ciActions": [
@@ -9127,9 +9127,18 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 4,
+            "newCommits": 0,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
+               {
+                  "id": 400320957,
+                  "version": "publish-36757299916",
+                  "timestamp": 1790792135,
+                  "title": "Publish 36757299916",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev158\">mediawiki-k8s-rev158 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev143</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Add explanation on how the localisation cache is handled by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/290\">#290</a></li>\n<li>chore(deps): update dependency jubilant to v1.14.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/294\">#294</a></li>\n<li>feat: Persist object cache connections by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/295\">#295</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36347793372...publish-36757299916\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36347793372&hellip;publish-36757299916</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36757299916",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36757299916...main"
+               },
                {
                   "id": 397800926,
                   "version": "publish-36347793372",
@@ -9147,15 +9156,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev156\">mediawiki-k8s-rev156 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev141</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/291\">#291</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074...publish-36221680017\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074&hellip;publish-36221680017</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36221680017",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017...main"
-               },
-               {
-                  "id": 397095964,
-                  "version": "publish-36219705074",
-                  "timestamp": 1790397008,
-                  "title": "Publish 36219705074",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev155\">mediawiki-k8s-rev155 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev140</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Update deployment diagram by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/289\">#289</a></li>\n<li>fix(deps): update dependency dpcharmlibs-interfaces to v1.2.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/288\">#288</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36060169585...publish-36219705074\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36060169585&hellip;publish-36219705074</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36219705074",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074...main"
                }
             ],
             "commits": null,
@@ -9176,8 +9176,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 157,
-                     "timestamp": 1790541081
+                     "revision": 158,
+                     "timestamp": 1790792522
                   }
                ],
                "channels": [
@@ -9971,6 +9971,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "39028ebb1e3d91fad65efb084fdef8926d61df57",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790791970,
+                  "message": "a11y: remove redundant headers from form inputs (#1565)",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/39028ebb1e3d91fad65efb084fdef8926d61df57"
+               },
+               {
                   "sha": "4fb0ab22e43a07e5e6f0369d9401c2a67fb7974a",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790695067,
@@ -9983,13 +9990,6 @@
                   "timestamp": 1790693645,
                   "message": "maint: l10n regenerate",
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eb01d60b97c75509c2c658c3414927c8c38bc832"
-               },
-               {
-                  "sha": "dd27cd93388b8354104867542ae126c34fc421e1",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790692837,
-                  "message": "Translated using Weblate (Slovak)\n\nCurrently translated at 100.0% (5 of 5 strings)\n\nTranslation: ubuntu-desktop-translations/Provision Stage 3 Bootstrap Slide 8\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-stage-3-bootstrap-slide-8/sk/",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/dd27cd93388b8354104867542ae126c34fc421e1"
                }
             ],
             "ciActions": [
@@ -10403,7 +10403,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 72,
+            "newCommits": 73,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10450,14 +10450,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 681,
-                     "timestamp": 1790678865
+                     "revision": 683,
+                     "timestamp": 1790799898
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 680,
-                     "timestamp": 1790678095
+                     "revision": 682,
+                     "timestamp": 1790797201
                   }
                ],
                "channels": [
