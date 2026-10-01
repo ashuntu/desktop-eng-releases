@@ -145,8 +145,8 @@
                   {
                      "track": "latest",
                      "channel": "candidate",
-                     "revision": 52,
-                     "timestamp": 1790391407
+                     "revision": 53,
+                     "timestamp": 1790877799
                   },
                   {
                      "track": "latest",
@@ -3211,7 +3211,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 6,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -3401,25 +3401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e",
-                  "author": "adombeck",
-                  "timestamp": 1790844005,
-                  "message": "ci: Enforce Ruff checks for supported Python files (#1976)",
-                  "url": "https://github.com/canonical/authd/commit/bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e"
+                  "sha": "298199701cf7cb5dec17a1700b498c28a1a94f26",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790868900,
+                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#2036)\n\nBumps the gh-actions group with 2 updates in the / directory:\n\nUpdates `actions/setup-python` from 6 to 7\nUpdates `tiobe/tics-github-action` from 3 to 4\n\n### Follow-up CI fixes\n\nThe TICS workflow has been failing for months, so the\n`tics-github-action` bump\ncould not be verified. This PR also carries the two fixes that unblock\nit:\n\n- `ci: fix the TICS coverage lookup and artifact paths`: the QA run id\nresolved\nto `NaN`, and the merge step looked for the brokers report one directory\ntoo\nhigh. The step now names the QA workflows by file and takes the newest\nmain\nrun that still has a live coverage artifact. Both artifacts are\ndownloaded by\nname, so a missing one fails in the download step instead of two steps\nlater.\n- `Keep third-party sources out of TICS analysis`: TICS closed with code\n-1 on\nthe Makefile of the `e2e-tests/.yarf` submodule. Only `libhimmelblau` is\ninitialized for the MS Entra build now, and all submodule worktrees are\n  removed before the analysis starts.\n\nVerified on this revision, TICS v4 analysis included:\nhttps://github.com/canonical/authd/actions/runs/36851211396\n\nUDENG-11819",
+                  "url": "https://github.com/canonical/authd/commit/298199701cf7cb5dec17a1700b498c28a1a94f26"
                },
                {
-                  "sha": "0922b958453fc5b5ce37cc2a738f020a177dfd16",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790843572,
-                  "message": "ci: Set minimum required Ruff version\n\nDependabot updates .ruff-requirements.txt, but it does not change\nrequired-version in .ruff.toml. An exact constraint would each update\nrequire a manual config edit. A minimum lets Dependabot advance the\ninstalled pin without that extra sync, while rejecting Ruff versions\nwhich are already old.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0922b958453fc5b5ce37cc2a738f020a177dfd16"
+                  "sha": "54617e7a6f06a071bf99553bb6fa31cddbc071fc",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790846159,
+                  "message": "Keep third-party sources out of TICS analysis\n\nThe TICS job scanned the YARF submodule even though it is not part of\nauthd's source. It still needs libhimmelblau to build the MS Entra\nvariant, so only initialize that dependency for the build and remove\nsubmodule worktrees before TICS starts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/54617e7a6f06a071bf99553bb6fa31cddbc071fc"
                },
                {
-                  "sha": "e00073db5a1997623314fb50bed00f6d4766de0b",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790172434,
-                  "message": "ci: Enforce Ruff checks for supported Python files\n\nPython helpers had no repository-wide formatter or linter, which allowed\nformatting to drift and left CI without a Python sanity check. Configure Ruff\nfor authd-owned Python files, exclude documentation and third-party submodule\ncode, and add a dedicated workflow that checks Python changes.\n\nConfigure dependabot to update Ruff and ensure that CI and local\ninvocations use the same Ruff version.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/e00073db5a1997623314fb50bed00f6d4766de0b"
+                  "sha": "f6c94fae8305d23cbfc2c14ed98dc0181ceb672c",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790807589,
+                  "message": "ci: fix the TICS coverage lookup and artifact paths\n\nThe TICS analysis job failed on every run since 2026-02-23 with:\n\n  GET /repos/canonical/authd/actions/runs/NaN/artifacts - 404\n  ##[error]Unable to download artifact(s): Not Found\n\nThe run id it wanted was never set, and the failure was invisible\nbecause the gh error went to stderr inside a command substitution piped\ninto jq. jq exits 0 on empty input and there was no pipefail, so set -eu\nsaw a healthy pipeline, wrote an empty id, and download-artifact then\nasked for run \"NaN\".\n\nTwo separate problems sat behind that:\n\n`gh run list` matched two registered workflows for this display name:\n`qa.yaml` and `vendored-copyright-check.yaml`. The latter is absent\nfrom the repository, so select `qa.yaml` by filename. Name the brokers\nworkflow by file too: its display name still resolves, but only because\nthe disabled `brokers-qa.yml` copy that shares it is ignored.\n\nAsking for the last run that concluded in success was the wrong\nquestion. The QA workflows often fail on jobs unrelated to coverage\nwhile the coverage job still uploads its artifact, and artifacts are\ndeleted after 90 days, so filtering on success skipped over usable\ncoverage and landed on run 27685037322 from June, which had nothing\nleft. Walk the recent runs instead and take the first that still has a\nnon-expired coverage artifact, whatever the workflow conclusion. Copilot\nreview of the earlier attempt on PR 1942 pointed this out.\n\nWith the lookup fixed, the merge step failed next on the brokers\nreport:\n\n  mv: cannot stat '.artifacts/brokers/Cobertura.xml'\n\ndownload-artifact unpacks each artifact into a subdirectory named after\nit when given no name, so the brokers report landed in\n.artifacts/brokers/coverage/ while the merge step looked one level up.\nThe authd path happened to match the real layout, which is why only the\nbrokers line was wrong. Name the artifact so it is extracted straight\ninto the given path. As a bonus, a run without the artifact now fails in\nthe download step with a clear message rather than as a missing file two\nsteps later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/f6c94fae8305d23cbfc2c14ed98dc0181ceb672c"
                }
             ],
             "ciActions": [
@@ -3634,25 +3634,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4adf2b93f4d510a4340d6d08ae6acdfeb1d80f5c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790869583,
+                  "message": "Merge pull request #261 from canonical/update-snapd\n\nchore: update snapd.dart",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/4adf2b93f4d510a4340d6d08ae6acdfeb1d80f5c"
+               },
+               {
+                  "sha": "151df7d4dd661bab0ca8977c557ca84f5d05ffc8",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790866745,
+                  "message": "chore: update snapd.dart",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/151df7d4dd661bab0ca8977c557ca84f5d05ffc8"
+               },
+               {
                   "sha": "0838703d99dfdbe9749ce61487f127559d709871",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790851274,
                   "message": "Merge pull request #260 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
                   "url": "https://github.com/canonical/desktop-security-center/commit/0838703d99dfdbe9749ce61487f127559d709871"
-               },
-               {
-                  "sha": "0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790763186,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8"
-               },
-               {
-                  "sha": "d7a429e542a41b00fdc32d56915cb89640ec692a",
-                  "author": "Yaron Shahrabani",
-                  "timestamp": 1790712799,
-                  "message": "fix(l10n): translated using Weblate (Hebrew)\n\nCurrently translated at 96.9% (190 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/he/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/d7a429e542a41b00fdc32d56915cb89640ec692a"
                }
             ],
             "ciActions": [],
@@ -4357,25 +4357,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc2073a17a9dbf3b2de4a8c7fc85ff06892896ac",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790878303,
+                  "message": "chore(deps): update canonical/translations-verifier action to v0.3.1 (#368)",
+                  "url": "https://github.com/canonical/prompting-client/commit/dc2073a17a9dbf3b2de4a8c7fc85ff06892896ac"
+               },
+               {
+                  "sha": "de9099e500097fbdfa393beb4cff94d08b15f711",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790875713,
+                  "message": "chore(deps): update canonical/translations-verifier action to v0.3.1",
+                  "url": "https://github.com/canonical/prompting-client/commit/de9099e500097fbdfa393beb4cff94d08b15f711"
+               },
+               {
                   "sha": "6896bdde7390c5501de43857b5b0d9f755231c15",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790624853,
                   "message": "feat: added weblate ci workflow (#365)",
                   "url": "https://github.com/canonical/prompting-client/commit/6896bdde7390c5501de43857b5b0d9f755231c15"
-               },
-               {
-                  "sha": "0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790338119,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#325)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Prompting\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/matrix-auto.svg)",
-                  "url": "https://github.com/canonical/prompting-client/commit/0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7"
-               },
-               {
-                  "sha": "c9b99ef4f6036dae05423da324a1b6671a06a7e9",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790337224,
-                  "message": "maint: regenerated localizations files",
-                  "url": "https://github.com/canonical/prompting-client/commit/c9b99ef4f6036dae05423da324a1b6671a06a7e9"
                }
             ],
             "ciActions": [],
@@ -4786,7 +4786,7 @@
          {
             "name": "translations-verifier",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
                {
@@ -5853,25 +5853,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e",
-                  "author": "adombeck",
-                  "timestamp": 1790844005,
-                  "message": "ci: Enforce Ruff checks for supported Python files (#1976)",
-                  "url": "https://github.com/canonical/authd/commit/bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e"
+                  "sha": "298199701cf7cb5dec17a1700b498c28a1a94f26",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790868900,
+                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#2036)\n\nBumps the gh-actions group with 2 updates in the / directory:\n\nUpdates `actions/setup-python` from 6 to 7\nUpdates `tiobe/tics-github-action` from 3 to 4\n\n### Follow-up CI fixes\n\nThe TICS workflow has been failing for months, so the\n`tics-github-action` bump\ncould not be verified. This PR also carries the two fixes that unblock\nit:\n\n- `ci: fix the TICS coverage lookup and artifact paths`: the QA run id\nresolved\nto `NaN`, and the merge step looked for the brokers report one directory\ntoo\nhigh. The step now names the QA workflows by file and takes the newest\nmain\nrun that still has a live coverage artifact. Both artifacts are\ndownloaded by\nname, so a missing one fails in the download step instead of two steps\nlater.\n- `Keep third-party sources out of TICS analysis`: TICS closed with code\n-1 on\nthe Makefile of the `e2e-tests/.yarf` submodule. Only `libhimmelblau` is\ninitialized for the MS Entra build now, and all submodule worktrees are\n  removed before the analysis starts.\n\nVerified on this revision, TICS v4 analysis included:\nhttps://github.com/canonical/authd/actions/runs/36851211396\n\nUDENG-11819",
+                  "url": "https://github.com/canonical/authd/commit/298199701cf7cb5dec17a1700b498c28a1a94f26"
                },
                {
-                  "sha": "0922b958453fc5b5ce37cc2a738f020a177dfd16",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790843572,
-                  "message": "ci: Set minimum required Ruff version\n\nDependabot updates .ruff-requirements.txt, but it does not change\nrequired-version in .ruff.toml. An exact constraint would each update\nrequire a manual config edit. A minimum lets Dependabot advance the\ninstalled pin without that extra sync, while rejecting Ruff versions\nwhich are already old.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0922b958453fc5b5ce37cc2a738f020a177dfd16"
+                  "sha": "54617e7a6f06a071bf99553bb6fa31cddbc071fc",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790846159,
+                  "message": "Keep third-party sources out of TICS analysis\n\nThe TICS job scanned the YARF submodule even though it is not part of\nauthd's source. It still needs libhimmelblau to build the MS Entra\nvariant, so only initialize that dependency for the build and remove\nsubmodule worktrees before TICS starts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/54617e7a6f06a071bf99553bb6fa31cddbc071fc"
                },
                {
-                  "sha": "e00073db5a1997623314fb50bed00f6d4766de0b",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790172434,
-                  "message": "ci: Enforce Ruff checks for supported Python files\n\nPython helpers had no repository-wide formatter or linter, which allowed\nformatting to drift and left CI without a Python sanity check. Configure Ruff\nfor authd-owned Python files, exclude documentation and third-party submodule\ncode, and add a dedicated workflow that checks Python changes.\n\nConfigure dependabot to update Ruff and ensure that CI and local\ninvocations use the same Ruff version.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/e00073db5a1997623314fb50bed00f6d4766de0b"
+                  "sha": "f6c94fae8305d23cbfc2c14ed98dc0181ceb672c",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790807589,
+                  "message": "ci: fix the TICS coverage lookup and artifact paths\n\nThe TICS analysis job failed on every run since 2026-02-23 with:\n\n  GET /repos/canonical/authd/actions/runs/NaN/artifacts - 404\n  ##[error]Unable to download artifact(s): Not Found\n\nThe run id it wanted was never set, and the failure was invisible\nbecause the gh error went to stderr inside a command substitution piped\ninto jq. jq exits 0 on empty input and there was no pipefail, so set -eu\nsaw a healthy pipeline, wrote an empty id, and download-artifact then\nasked for run \"NaN\".\n\nTwo separate problems sat behind that:\n\n`gh run list` matched two registered workflows for this display name:\n`qa.yaml` and `vendored-copyright-check.yaml`. The latter is absent\nfrom the repository, so select `qa.yaml` by filename. Name the brokers\nworkflow by file too: its display name still resolves, but only because\nthe disabled `brokers-qa.yml` copy that shares it is ignored.\n\nAsking for the last run that concluded in success was the wrong\nquestion. The QA workflows often fail on jobs unrelated to coverage\nwhile the coverage job still uploads its artifact, and artifacts are\ndeleted after 90 days, so filtering on success skipped over usable\ncoverage and landed on run 27685037322 from June, which had nothing\nleft. Walk the recent runs instead and take the first that still has a\nnon-expired coverage artifact, whatever the workflow conclusion. Copilot\nreview of the earlier attempt on PR 1942 pointed this out.\n\nWith the lookup fixed, the merge step failed next on the brokers\nreport:\n\n  mv: cannot stat '.artifacts/brokers/Cobertura.xml'\n\ndownload-artifact unpacks each artifact into a subdirectory named after\nit when given no name, so the brokers report landed in\n.artifacts/brokers/coverage/ while the merge step looked one level up.\nThe authd path happened to match the real layout, which is why only the\nbrokers line was wrong. Name the artifact so it is extracted straight\ninto the given path. As a bonus, a run without the artifact now fails in\nthe download step with a clear message rather than as a missing file two\nsteps later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/f6c94fae8305d23cbfc2c14ed98dc0181ceb672c"
                }
             ],
             "ciActions": [
@@ -6086,25 +6086,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4adf2b93f4d510a4340d6d08ae6acdfeb1d80f5c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790869583,
+                  "message": "Merge pull request #261 from canonical/update-snapd\n\nchore: update snapd.dart",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/4adf2b93f4d510a4340d6d08ae6acdfeb1d80f5c"
+               },
+               {
+                  "sha": "151df7d4dd661bab0ca8977c557ca84f5d05ffc8",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790866745,
+                  "message": "chore: update snapd.dart",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/151df7d4dd661bab0ca8977c557ca84f5d05ffc8"
+               },
+               {
                   "sha": "0838703d99dfdbe9749ce61487f127559d709871",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790851274,
                   "message": "Merge pull request #260 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
                   "url": "https://github.com/canonical/desktop-security-center/commit/0838703d99dfdbe9749ce61487f127559d709871"
-               },
-               {
-                  "sha": "0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790763186,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8"
-               },
-               {
-                  "sha": "d7a429e542a41b00fdc32d56915cb89640ec692a",
-                  "author": "Yaron Shahrabani",
-                  "timestamp": 1790712799,
-                  "message": "fix(l10n): translated using Weblate (Hebrew)\n\nCurrently translated at 96.9% (190 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/he/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/d7a429e542a41b00fdc32d56915cb89640ec692a"
                }
             ],
             "ciActions": [],
@@ -6842,25 +6842,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc2073a17a9dbf3b2de4a8c7fc85ff06892896ac",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790878303,
+                  "message": "chore(deps): update canonical/translations-verifier action to v0.3.1 (#368)",
+                  "url": "https://github.com/canonical/prompting-client/commit/dc2073a17a9dbf3b2de4a8c7fc85ff06892896ac"
+               },
+               {
+                  "sha": "de9099e500097fbdfa393beb4cff94d08b15f711",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790875713,
+                  "message": "chore(deps): update canonical/translations-verifier action to v0.3.1",
+                  "url": "https://github.com/canonical/prompting-client/commit/de9099e500097fbdfa393beb4cff94d08b15f711"
+               },
+               {
                   "sha": "6896bdde7390c5501de43857b5b0d9f755231c15",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790624853,
                   "message": "feat: added weblate ci workflow (#365)",
                   "url": "https://github.com/canonical/prompting-client/commit/6896bdde7390c5501de43857b5b0d9f755231c15"
-               },
-               {
-                  "sha": "0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790338119,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#325)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Prompting\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/matrix-auto.svg)",
-                  "url": "https://github.com/canonical/prompting-client/commit/0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7"
-               },
-               {
-                  "sha": "c9b99ef4f6036dae05423da324a1b6671a06a7e9",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790337224,
-                  "message": "maint: regenerated localizations files",
-                  "url": "https://github.com/canonical/prompting-client/commit/c9b99ef4f6036dae05423da324a1b6671a06a7e9"
                }
             ],
             "ciActions": [],
@@ -7271,7 +7271,7 @@
          {
             "name": "translations-verifier",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
                {
@@ -8212,7 +8212,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 6,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -8408,25 +8408,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e",
-                  "author": "adombeck",
-                  "timestamp": 1790844005,
-                  "message": "ci: Enforce Ruff checks for supported Python files (#1976)",
-                  "url": "https://github.com/canonical/authd/commit/bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e"
+                  "sha": "298199701cf7cb5dec17a1700b498c28a1a94f26",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790868900,
+                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#2036)\n\nBumps the gh-actions group with 2 updates in the / directory:\n\nUpdates `actions/setup-python` from 6 to 7\nUpdates `tiobe/tics-github-action` from 3 to 4\n\n### Follow-up CI fixes\n\nThe TICS workflow has been failing for months, so the\n`tics-github-action` bump\ncould not be verified. This PR also carries the two fixes that unblock\nit:\n\n- `ci: fix the TICS coverage lookup and artifact paths`: the QA run id\nresolved\nto `NaN`, and the merge step looked for the brokers report one directory\ntoo\nhigh. The step now names the QA workflows by file and takes the newest\nmain\nrun that still has a live coverage artifact. Both artifacts are\ndownloaded by\nname, so a missing one fails in the download step instead of two steps\nlater.\n- `Keep third-party sources out of TICS analysis`: TICS closed with code\n-1 on\nthe Makefile of the `e2e-tests/.yarf` submodule. Only `libhimmelblau` is\ninitialized for the MS Entra build now, and all submodule worktrees are\n  removed before the analysis starts.\n\nVerified on this revision, TICS v4 analysis included:\nhttps://github.com/canonical/authd/actions/runs/36851211396\n\nUDENG-11819",
+                  "url": "https://github.com/canonical/authd/commit/298199701cf7cb5dec17a1700b498c28a1a94f26"
                },
                {
-                  "sha": "0922b958453fc5b5ce37cc2a738f020a177dfd16",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790843572,
-                  "message": "ci: Set minimum required Ruff version\n\nDependabot updates .ruff-requirements.txt, but it does not change\nrequired-version in .ruff.toml. An exact constraint would each update\nrequire a manual config edit. A minimum lets Dependabot advance the\ninstalled pin without that extra sync, while rejecting Ruff versions\nwhich are already old.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0922b958453fc5b5ce37cc2a738f020a177dfd16"
+                  "sha": "54617e7a6f06a071bf99553bb6fa31cddbc071fc",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790846159,
+                  "message": "Keep third-party sources out of TICS analysis\n\nThe TICS job scanned the YARF submodule even though it is not part of\nauthd's source. It still needs libhimmelblau to build the MS Entra\nvariant, so only initialize that dependency for the build and remove\nsubmodule worktrees before TICS starts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/54617e7a6f06a071bf99553bb6fa31cddbc071fc"
                },
                {
-                  "sha": "e00073db5a1997623314fb50bed00f6d4766de0b",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790172434,
-                  "message": "ci: Enforce Ruff checks for supported Python files\n\nPython helpers had no repository-wide formatter or linter, which allowed\nformatting to drift and left CI without a Python sanity check. Configure Ruff\nfor authd-owned Python files, exclude documentation and third-party submodule\ncode, and add a dedicated workflow that checks Python changes.\n\nConfigure dependabot to update Ruff and ensure that CI and local\ninvocations use the same Ruff version.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/e00073db5a1997623314fb50bed00f6d4766de0b"
+                  "sha": "f6c94fae8305d23cbfc2c14ed98dc0181ceb672c",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1790807589,
+                  "message": "ci: fix the TICS coverage lookup and artifact paths\n\nThe TICS analysis job failed on every run since 2026-02-23 with:\n\n  GET /repos/canonical/authd/actions/runs/NaN/artifacts - 404\n  ##[error]Unable to download artifact(s): Not Found\n\nThe run id it wanted was never set, and the failure was invisible\nbecause the gh error went to stderr inside a command substitution piped\ninto jq. jq exits 0 on empty input and there was no pipefail, so set -eu\nsaw a healthy pipeline, wrote an empty id, and download-artifact then\nasked for run \"NaN\".\n\nTwo separate problems sat behind that:\n\n`gh run list` matched two registered workflows for this display name:\n`qa.yaml` and `vendored-copyright-check.yaml`. The latter is absent\nfrom the repository, so select `qa.yaml` by filename. Name the brokers\nworkflow by file too: its display name still resolves, but only because\nthe disabled `brokers-qa.yml` copy that shares it is ignored.\n\nAsking for the last run that concluded in success was the wrong\nquestion. The QA workflows often fail on jobs unrelated to coverage\nwhile the coverage job still uploads its artifact, and artifacts are\ndeleted after 90 days, so filtering on success skipped over usable\ncoverage and landed on run 27685037322 from June, which had nothing\nleft. Walk the recent runs instead and take the first that still has a\nnon-expired coverage artifact, whatever the workflow conclusion. Copilot\nreview of the earlier attempt on PR 1942 pointed this out.\n\nWith the lookup fixed, the merge step failed next on the brokers\nreport:\n\n  mv: cannot stat '.artifacts/brokers/Cobertura.xml'\n\ndownload-artifact unpacks each artifact into a subdirectory named after\nit when given no name, so the brokers report landed in\n.artifacts/brokers/coverage/ while the merge step looked one level up.\nThe authd path happened to match the real layout, which is why only the\nbrokers line was wrong. Name the artifact so it is extracted straight\ninto the given path. As a bonus, a run without the artifact now fails in\nthe download step with a clear message rather than as a missing file two\nsteps later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/f6c94fae8305d23cbfc2c14ed98dc0181ceb672c"
                }
             ],
             "ciActions": [
@@ -8641,25 +8641,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "4adf2b93f4d510a4340d6d08ae6acdfeb1d80f5c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790869583,
+                  "message": "Merge pull request #261 from canonical/update-snapd\n\nchore: update snapd.dart",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/4adf2b93f4d510a4340d6d08ae6acdfeb1d80f5c"
+               },
+               {
+                  "sha": "151df7d4dd661bab0ca8977c557ca84f5d05ffc8",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790866745,
+                  "message": "chore: update snapd.dart",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/151df7d4dd661bab0ca8977c557ca84f5d05ffc8"
+               },
+               {
                   "sha": "0838703d99dfdbe9749ce61487f127559d709871",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790851274,
                   "message": "Merge pull request #260 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
                   "url": "https://github.com/canonical/desktop-security-center/commit/0838703d99dfdbe9749ce61487f127559d709871"
-               },
-               {
-                  "sha": "0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790763186,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8"
-               },
-               {
-                  "sha": "d7a429e542a41b00fdc32d56915cb89640ec692a",
-                  "author": "Yaron Shahrabani",
-                  "timestamp": 1790712799,
-                  "message": "fix(l10n): translated using Weblate (Hebrew)\n\nCurrently translated at 96.9% (190 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/he/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/d7a429e542a41b00fdc32d56915cb89640ec692a"
                }
             ],
             "ciActions": [],
@@ -9364,25 +9364,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "dc2073a17a9dbf3b2de4a8c7fc85ff06892896ac",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790878303,
+                  "message": "chore(deps): update canonical/translations-verifier action to v0.3.1 (#368)",
+                  "url": "https://github.com/canonical/prompting-client/commit/dc2073a17a9dbf3b2de4a8c7fc85ff06892896ac"
+               },
+               {
+                  "sha": "de9099e500097fbdfa393beb4cff94d08b15f711",
+                  "author": "renovate[bot]",
+                  "timestamp": 1790875713,
+                  "message": "chore(deps): update canonical/translations-verifier action to v0.3.1",
+                  "url": "https://github.com/canonical/prompting-client/commit/de9099e500097fbdfa393beb4cff94d08b15f711"
+               },
+               {
                   "sha": "6896bdde7390c5501de43857b5b0d9f755231c15",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790624853,
                   "message": "feat: added weblate ci workflow (#365)",
                   "url": "https://github.com/canonical/prompting-client/commit/6896bdde7390c5501de43857b5b0d9f755231c15"
-               },
-               {
-                  "sha": "0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790338119,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#325)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Prompting\nClient](https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/prompting-client/matrix-auto.svg)",
-                  "url": "https://github.com/canonical/prompting-client/commit/0e379028c1a4bb2d0406bb78d9f3e5b1bebf9db7"
-               },
-               {
-                  "sha": "c9b99ef4f6036dae05423da324a1b6671a06a7e9",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790337224,
-                  "message": "maint: regenerated localizations files",
-                  "url": "https://github.com/canonical/prompting-client/commit/c9b99ef4f6036dae05423da324a1b6671a06a7e9"
                }
             ],
             "ciActions": [],
@@ -9793,7 +9793,7 @@
          {
             "name": "translations-verifier",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
                {
@@ -10550,7 +10550,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 6,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
