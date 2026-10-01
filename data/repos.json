@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f39e96240eb51ffd8a1103259028e00bbd05dfe0",
+                  "sha": "95987b40c92cda9ce013b56fd258c18ec09e0ede",
                   "author": "Charles",
-                  "timestamp": 1790673614,
-                  "message": "fix(config): translate the kept-value report and drop an unread field\n\nThe report for a value the model did not keep was an English format\nstring; it now goes through gettext and a test drives it end to end.\nStagedChange::original lost its last reader with the confirmation\ntext, so the field goes too.",
-                  "url": "https://github.com/canonical/myna/commit/f39e96240eb51ffd8a1103259028e00bbd05dfe0"
+                  "timestamp": 1790809376,
+                  "message": "test(config): wait for a shown setup row on Diagnostics\n\nThe backends probe accepted a hidden Set up button. The probe's own\nrefresh rebuilds Diagnostics with the inventory incomplete, the setup\ngroup hidden and no model in the report, which on CI satisfied the wait\nand failed the next check. Require the button to be mapped.",
+                  "url": "https://github.com/canonical/myna/commit/95987b40c92cda9ce013b56fd258c18ec09e0ede"
                },
                {
-                  "sha": "a6606764453221e7f2dedc0b750d69ee4d839360",
+                  "sha": "d36098ef771dde8dd4d069bbeacedf7d460a3718",
                   "author": "Charles",
-                  "timestamp": 1790673094,
-                  "message": "fix(config): keep the page still when an entry's change applies\n\nOn Noble, applying an entry with Enter scrolled the Model tab up by\nseveral rows. Removing the focused row makes GTK 4.14 focus the next\nfocusable one and scroll to it, and restoring focus to a row not yet\nlaid out scrolled again.\n\nA rebuild now clears the focus first and restores it with the\nviewport's scroll-to-focus off, never onto the changing row. The entry\nkeeps its own row while it applies, so the page keeps its height, shows\nthe progress at its end without its pencil, and gets its focus back\nwithout its text selected.",
-                  "url": "https://github.com/canonical/myna/commit/a6606764453221e7f2dedc0b750d69ee4d839360"
+                  "timestamp": 1790806372,
+                  "message": "chore(snap): drop the sound-themes plug\n\nNothing reads the sound themes since the cues are compiled into the\ndaemon, so the plug and the data-dir entry in XDG_DATA_DIRS go.",
+                  "url": "https://github.com/canonical/myna/commit/d36098ef771dde8dd4d069bbeacedf7d460a3718"
                },
                {
-                  "sha": "14ce8a1f3684d9075654f50f6213a415ec1a2574",
+                  "sha": "3e6e907bbca027b12b2b221a743f244535c43679",
                   "author": "Charles",
-                  "timestamp": 1790672186,
-                  "message": "fix(config): keep the Model tab's scroll and the changing row legible\n\nEvery rebuild made a new page, so each change scrolled the tab back to\nthe top. The tab now keeps one page per backend and refills its groups\nin place, which GTK lays out before it next clamps the scroll.\n\nThe changing row was insensitive like the others, which dimmed its\nprogress line twice over. It now stays sensitive and only stops taking\ninput, and tells assistive technology it is busy.",
-                  "url": "https://github.com/canonical/myna/commit/14ce8a1f3684d9075654f50f6213a415ec1a2574"
+                  "timestamp": 1790806368,
+                  "message": "feat(desktop): play our own start, stop and error cues\n\nThe theme's device-added/device-removed read as a USB drive being\nplugged in, and no freedesktop event means \"listening\". Ship three\nsynthesized clips instead, compiled into the daemon: a marimba-like\nrising fifth (E5-B5) for start, the same falling and 3 dB quieter for\nstop, and a low detuned A3 double note for error. Rising for on and a\ndistinct register and rhythm for error follow the earcon literature\nand what other dictation products do.\n\nThe clips fade in and out to exact silence; the first draft ended at\n-30 dBFS and clicked. A test pins the fades. dev/synth_cues.py\nregenerates them.",
+                  "url": "https://github.com/canonical/myna/commit/3e6e907bbca027b12b2b221a743f244535c43679"
                }
             ],
             "ciActions": [],
@@ -5031,6 +5031,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 400502983,
+                  "version": "rev117",
+                  "timestamp": 1790809886,
+                  "title": "Revision 117",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 109</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:13 UTC on 30 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency jubilant to v1.14.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/153\">#153</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev116...rev117\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev116&hellip;rev117</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev117",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev117...main"
+               },
+               {
                   "id": 399344366,
                   "version": "rev116",
                   "timestamp": 1790700316,
@@ -5047,15 +5056,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 19:15 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.2.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/151\">#151</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...rev115\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114&hellip;rev115</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev115",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev115...main"
-               },
-               {
-                  "id": 393038872,
-                  "version": "rev114",
-                  "timestamp": 1790001057,
-                  "title": "Revision 114",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:38 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/150\">#150</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...rev114\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113&hellip;rev114</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev114",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...main"
                }
             ],
             "commits": null,
@@ -5067,8 +5067,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 116,
-                     "timestamp": 1790700449
+                     "revision": 117,
+                     "timestamp": 1790810008
                   }
                ],
                "channels": [
@@ -5396,14 +5396,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 681,
-                     "timestamp": 1790727773
+                     "revision": 683,
+                     "timestamp": 1790813983
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 680,
-                     "timestamp": 1790727773
+                     "revision": 682,
+                     "timestamp": 1790813983
                   },
                   {
                      "track": "latest",
@@ -6675,25 +6675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f39e96240eb51ffd8a1103259028e00bbd05dfe0",
+                  "sha": "95987b40c92cda9ce013b56fd258c18ec09e0ede",
                   "author": "Charles",
-                  "timestamp": 1790673614,
-                  "message": "fix(config): translate the kept-value report and drop an unread field\n\nThe report for a value the model did not keep was an English format\nstring; it now goes through gettext and a test drives it end to end.\nStagedChange::original lost its last reader with the confirmation\ntext, so the field goes too.",
-                  "url": "https://github.com/canonical/myna/commit/f39e96240eb51ffd8a1103259028e00bbd05dfe0"
+                  "timestamp": 1790809376,
+                  "message": "test(config): wait for a shown setup row on Diagnostics\n\nThe backends probe accepted a hidden Set up button. The probe's own\nrefresh rebuilds Diagnostics with the inventory incomplete, the setup\ngroup hidden and no model in the report, which on CI satisfied the wait\nand failed the next check. Require the button to be mapped.",
+                  "url": "https://github.com/canonical/myna/commit/95987b40c92cda9ce013b56fd258c18ec09e0ede"
                },
                {
-                  "sha": "a6606764453221e7f2dedc0b750d69ee4d839360",
+                  "sha": "d36098ef771dde8dd4d069bbeacedf7d460a3718",
                   "author": "Charles",
-                  "timestamp": 1790673094,
-                  "message": "fix(config): keep the page still when an entry's change applies\n\nOn Noble, applying an entry with Enter scrolled the Model tab up by\nseveral rows. Removing the focused row makes GTK 4.14 focus the next\nfocusable one and scroll to it, and restoring focus to a row not yet\nlaid out scrolled again.\n\nA rebuild now clears the focus first and restores it with the\nviewport's scroll-to-focus off, never onto the changing row. The entry\nkeeps its own row while it applies, so the page keeps its height, shows\nthe progress at its end without its pencil, and gets its focus back\nwithout its text selected.",
-                  "url": "https://github.com/canonical/myna/commit/a6606764453221e7f2dedc0b750d69ee4d839360"
+                  "timestamp": 1790806372,
+                  "message": "chore(snap): drop the sound-themes plug\n\nNothing reads the sound themes since the cues are compiled into the\ndaemon, so the plug and the data-dir entry in XDG_DATA_DIRS go.",
+                  "url": "https://github.com/canonical/myna/commit/d36098ef771dde8dd4d069bbeacedf7d460a3718"
                },
                {
-                  "sha": "14ce8a1f3684d9075654f50f6213a415ec1a2574",
+                  "sha": "3e6e907bbca027b12b2b221a743f244535c43679",
                   "author": "Charles",
-                  "timestamp": 1790672186,
-                  "message": "fix(config): keep the Model tab's scroll and the changing row legible\n\nEvery rebuild made a new page, so each change scrolled the tab back to\nthe top. The tab now keeps one page per backend and refills its groups\nin place, which GTK lays out before it next clamps the scroll.\n\nThe changing row was insensitive like the others, which dimmed its\nprogress line twice over. It now stays sensitive and only stops taking\ninput, and tells assistive technology it is busy.",
-                  "url": "https://github.com/canonical/myna/commit/14ce8a1f3684d9075654f50f6213a415ec1a2574"
+                  "timestamp": 1790806368,
+                  "message": "feat(desktop): play our own start, stop and error cues\n\nThe theme's device-added/device-removed read as a USB drive being\nplugged in, and no freedesktop event means \"listening\". Ship three\nsynthesized clips instead, compiled into the daemon: a marimba-like\nrising fifth (E5-B5) for start, the same falling and 3 dB quieter for\nstop, and a low detuned A3 double note for error. Rising for on and a\ndistinct register and rhythm for error follow the earcon literature\nand what other dictation products do.\n\nThe clips fade in and out to exact silence; the first draft ended at\n-30 dBFS and clicked. A test pins the fades. dev/synth_cues.py\nregenerates them.",
+                  "url": "https://github.com/canonical/myna/commit/3e6e907bbca027b12b2b221a743f244535c43679"
                }
             ],
             "ciActions": [],
@@ -7516,6 +7516,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 400502983,
+                  "version": "rev117",
+                  "timestamp": 1790809886,
+                  "title": "Revision 117",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 109</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:13 UTC on 30 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency jubilant to v1.14.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/153\">#153</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev116...rev117\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev116&hellip;rev117</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev117",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev117...main"
+               },
+               {
                   "id": 399344366,
                   "version": "rev116",
                   "timestamp": 1790700316,
@@ -7532,15 +7541,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 19:15 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.2.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/151\">#151</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...rev115\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114&hellip;rev115</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev115",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev115...main"
-               },
-               {
-                  "id": 393038872,
-                  "version": "rev114",
-                  "timestamp": 1790001057,
-                  "title": "Revision 114",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:38 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/150\">#150</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...rev114\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113&hellip;rev114</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev114",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...main"
                }
             ],
             "commits": null,
@@ -7552,8 +7552,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 116,
-                     "timestamp": 1790700449
+                     "revision": 117,
+                     "timestamp": 1790810008
                   }
                ],
                "channels": [
@@ -7922,14 +7922,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 681,
-                     "timestamp": 1790727773
+                     "revision": 683,
+                     "timestamp": 1790813983
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 680,
-                     "timestamp": 1790727773
+                     "revision": 682,
+                     "timestamp": 1790813983
                   },
                   {
                      "track": "latest",
@@ -9197,25 +9197,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f39e96240eb51ffd8a1103259028e00bbd05dfe0",
+                  "sha": "95987b40c92cda9ce013b56fd258c18ec09e0ede",
                   "author": "Charles",
-                  "timestamp": 1790673614,
-                  "message": "fix(config): translate the kept-value report and drop an unread field\n\nThe report for a value the model did not keep was an English format\nstring; it now goes through gettext and a test drives it end to end.\nStagedChange::original lost its last reader with the confirmation\ntext, so the field goes too.",
-                  "url": "https://github.com/canonical/myna/commit/f39e96240eb51ffd8a1103259028e00bbd05dfe0"
+                  "timestamp": 1790809376,
+                  "message": "test(config): wait for a shown setup row on Diagnostics\n\nThe backends probe accepted a hidden Set up button. The probe's own\nrefresh rebuilds Diagnostics with the inventory incomplete, the setup\ngroup hidden and no model in the report, which on CI satisfied the wait\nand failed the next check. Require the button to be mapped.",
+                  "url": "https://github.com/canonical/myna/commit/95987b40c92cda9ce013b56fd258c18ec09e0ede"
                },
                {
-                  "sha": "a6606764453221e7f2dedc0b750d69ee4d839360",
+                  "sha": "d36098ef771dde8dd4d069bbeacedf7d460a3718",
                   "author": "Charles",
-                  "timestamp": 1790673094,
-                  "message": "fix(config): keep the page still when an entry's change applies\n\nOn Noble, applying an entry with Enter scrolled the Model tab up by\nseveral rows. Removing the focused row makes GTK 4.14 focus the next\nfocusable one and scroll to it, and restoring focus to a row not yet\nlaid out scrolled again.\n\nA rebuild now clears the focus first and restores it with the\nviewport's scroll-to-focus off, never onto the changing row. The entry\nkeeps its own row while it applies, so the page keeps its height, shows\nthe progress at its end without its pencil, and gets its focus back\nwithout its text selected.",
-                  "url": "https://github.com/canonical/myna/commit/a6606764453221e7f2dedc0b750d69ee4d839360"
+                  "timestamp": 1790806372,
+                  "message": "chore(snap): drop the sound-themes plug\n\nNothing reads the sound themes since the cues are compiled into the\ndaemon, so the plug and the data-dir entry in XDG_DATA_DIRS go.",
+                  "url": "https://github.com/canonical/myna/commit/d36098ef771dde8dd4d069bbeacedf7d460a3718"
                },
                {
-                  "sha": "14ce8a1f3684d9075654f50f6213a415ec1a2574",
+                  "sha": "3e6e907bbca027b12b2b221a743f244535c43679",
                   "author": "Charles",
-                  "timestamp": 1790672186,
-                  "message": "fix(config): keep the Model tab's scroll and the changing row legible\n\nEvery rebuild made a new page, so each change scrolled the tab back to\nthe top. The tab now keeps one page per backend and refills its groups\nin place, which GTK lays out before it next clamps the scroll.\n\nThe changing row was insensitive like the others, which dimmed its\nprogress line twice over. It now stays sensitive and only stops taking\ninput, and tells assistive technology it is busy.",
-                  "url": "https://github.com/canonical/myna/commit/14ce8a1f3684d9075654f50f6213a415ec1a2574"
+                  "timestamp": 1790806368,
+                  "message": "feat(desktop): play our own start, stop and error cues\n\nThe theme's device-added/device-removed read as a USB drive being\nplugged in, and no freedesktop event means \"listening\". Ship three\nsynthesized clips instead, compiled into the daemon: a marimba-like\nrising fifth (E5-B5) for start, the same falling and 3 dB quieter for\nstop, and a low detuned A3 double note for error. Rising for on and a\ndistinct register and rhythm for error follow the earcon literature\nand what other dictation products do.\n\nThe clips fade in and out to exact silence; the first draft ended at\n-30 dBFS and clicked. A test pins the fades. dev/synth_cues.py\nregenerates them.",
+                  "url": "https://github.com/canonical/myna/commit/3e6e907bbca027b12b2b221a743f244535c43679"
                }
             ],
             "ciActions": [],
@@ -10073,6 +10073,15 @@
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
+                  "id": 400502983,
+                  "version": "rev117",
+                  "timestamp": 1790809886,
+                  "title": "Revision 117",
+                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 109</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 23:13 UTC on 30 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): update dependency jubilant to v1.14.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/153\">#153</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev116...rev117\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev116&hellip;rev117</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev117",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev117...main"
+               },
+               {
                   "id": 399344366,
                   "version": "rev116",
                   "timestamp": 1790700316,
@@ -10089,15 +10098,6 @@
                   "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 107</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 19:15 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.2.0 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/151\">#151</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...rev115\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114&hellip;rev115</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev115",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev115...main"
-               },
-               {
-                  "id": 393038872,
-                  "version": "rev114",
-                  "timestamp": 1790001057,
-                  "title": "Revision 114",
-                  "body": "<p>resources:\n    -  ubuntu-insights-server-image: undefined\n       resource-revision: 106</p>\n\n<p>Static resources:\n Released to &lsquo;latest/edge&rsquo; at 14:38 UTC on 21 Sep 2026</p>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(lib/charms): Update charm libraries by <a href=\"http://github.com/github-actions\">@github-actions</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/150\">#150</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113...rev114\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev113&hellip;rev114</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/rev114",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/rev114...main"
                }
             ],
             "commits": null,
@@ -10109,8 +10109,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 116,
-                     "timestamp": 1790700449
+                     "revision": 117,
+                     "timestamp": 1790810008
                   }
                ],
                "channels": [
@@ -10438,14 +10438,14 @@
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 681,
-                     "timestamp": 1790727773
+                     "revision": 683,
+                     "timestamp": 1790813983
                   },
                   {
                      "track": "latest",
                      "channel": "beta",
-                     "revision": 680,
-                     "timestamp": 1790727773
+                     "revision": 682,
+                     "timestamp": 1790813983
                   },
                   {
                      "track": "latest",
