@@ -3150,25 +3150,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f7b957ed19a7c0f687cc5ce247f611af29f1b561",
-                  "author": "Utkarsh Gupta",
-                  "timestamp": 1788569081,
-                  "message": "Merge pull request #47 from xypron/riscv64_desktop",
-                  "url": "https://github.com/ubuntu/ubuntu-manual-tests/commit/f7b957ed19a7c0f687cc5ce247f611af29f1b561"
+                  "sha": "99cbeba7654884d0508c1745d1871f73f3567189",
+                  "author": "Skia",
+                  "timestamp": 1790840806,
+                  "message": "Merge pull request #53 from xypron/riscv64-preinstalled\n\nUpdate RISCV Generic/Mandatory/Install Qemu.md",
+                  "url": "https://github.com/ubuntu/ubuntu-manual-tests/commit/99cbeba7654884d0508c1745d1871f73f3567189"
                },
                {
-                  "sha": "65e8b8838613d302fd037f2bd1bf862a49d155a8",
+                  "sha": "2a22a0099b6035a868a5a452a3de67d52b845eb2",
                   "author": "Heinrich Schuchardt",
-                  "timestamp": 1787914616,
-                  "message": "riscv64: copy desktop test-cases to stonking\n\nSigned-off-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>",
-                  "url": "https://github.com/ubuntu/ubuntu-manual-tests/commit/65e8b8838613d302fd037f2bd1bf862a49d155a8"
+                  "timestamp": 1790840500,
+                  "message": "Update RISCV Generic/Mandatory/Install Qemu.md\n\n* Use KVM on RVA23 hardware.\n* Install a core26 snap.\n\nSigned-off-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>",
+                  "url": "https://github.com/ubuntu/ubuntu-manual-tests/commit/2a22a0099b6035a868a5a452a3de67d52b845eb2"
                },
                {
-                  "sha": "a2812016ee14b9272edcdc7b94d289caa58798ef",
-                  "author": "Utkarsh Gupta",
-                  "timestamp": 1787909111,
-                  "message": "Merge pull request #46 from xypron/smoke\n\nUpdate Ubuntu Base/Mandatory/Smoke Test.md",
-                  "url": "https://github.com/ubuntu/ubuntu-manual-tests/commit/a2812016ee14b9272edcdc7b94d289caa58798ef"
+                  "sha": "572c4714214ce6bb04ea36add650dcc8097694e5",
+                  "author": "Florent 'Skia' Jacquet",
+                  "timestamp": 1790839968,
+                  "message": "Rename ubuntu-desktop as ubuntu, to match with Test Observer",
+                  "url": "https://github.com/ubuntu/ubuntu-manual-tests/commit/572c4714214ce6bb04ea36add650dcc8097694e5"
                }
             ],
             "ciActions": [],
@@ -3401,25 +3401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e29633b7ed40d49298076ff99d6eaea9b60c1dbc",
+                  "sha": "bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e",
                   "author": "adombeck",
-                  "timestamp": 1790835244,
-                  "message": "Skip authd migrations when the stable PPA lacks the devel suite (#1982)",
-                  "url": "https://github.com/canonical/authd/commit/e29633b7ed40d49298076ff99d6eaea9b60c1dbc"
+                  "timestamp": 1790844005,
+                  "message": "ci: Enforce Ruff checks for supported Python files (#1976)",
+                  "url": "https://github.com/canonical/authd/commit/bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e"
                },
                {
-                  "sha": "14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a",
+                  "sha": "0922b958453fc5b5ce37cc2a738f020a177dfd16",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790176799,
-                  "message": "Skip authd migrations when the stable PPA lacks the devel suite\n\nDuring each new Ubuntu development cycle, there's a period when there's\nno authd release yet for the devel release in the stable PPA. Currently,\nthat's causing the migration tests to fail, because they try to install\nauthd from the stable PPA first and then update it to the version from\nthe edge PPA.\n\nSkip the migration tests in that case, but only for that exact error.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a"
+                  "timestamp": 1790843572,
+                  "message": "ci: Set minimum required Ruff version\n\nDependabot updates .ruff-requirements.txt, but it does not change\nrequired-version in .ruff.toml. An exact constraint would each update\nrequire a manual config edit. A minimum lets Dependabot advance the\ninstalled pin without that extra sync, while rejecting Ruff versions\nwhich are already old.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/0922b958453fc5b5ce37cc2a738f020a177dfd16"
                },
                {
-                  "sha": "f49c2c92be4e802399699f365e355ca57fe19c84",
-                  "author": "adombeck",
-                  "timestamp": 1790796251,
-                  "message": "Permission denial test must use a non-root peer (#2029)",
-                  "url": "https://github.com/canonical/authd/commit/f49c2c92be4e802399699f365e355ca57fe19c84"
+                  "sha": "e00073db5a1997623314fb50bed00f6d4766de0b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790172434,
+                  "message": "ci: Enforce Ruff checks for supported Python files\n\nPython helpers had no repository-wide formatter or linter, which allowed\nformatting to drift and left CI without a Python sanity check. Configure Ruff\nfor authd-owned Python files, exclude documentation and third-party submodule\ncode, and add a dedicated workflow that checks Python changes.\n\nConfigure dependabot to update Ruff and ensure that CI and local\ninvocations use the same Ruff version.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/e00073db5a1997623314fb50bed00f6d4766de0b"
                }
             ],
             "ciActions": [
@@ -3634,25 +3634,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d4497eea3b20e78762ff99e8390ff782adef8e99",
+                  "sha": "0838703d99dfdbe9749ce61487f127559d709871",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1790687848,
-                  "message": "Merge pull request #258 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/d4497eea3b20e78762ff99e8390ff782adef8e99"
+                  "timestamp": 1790851274,
+                  "message": "Merge pull request #260 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/0838703d99dfdbe9749ce61487f127559d709871"
                },
                {
-                  "sha": "343b015c7b5b88337e0d2a7c910b763eacc70909",
+                  "sha": "0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8",
                   "author": "canonical-desktop-bot",
-                  "timestamp": 1790681750,
+                  "timestamp": 1790763186,
                   "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/343b015c7b5b88337e0d2a7c910b763eacc70909"
+                  "url": "https://github.com/canonical/desktop-security-center/commit/0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8"
                },
                {
-                  "sha": "445cbd18f62062b9fb81297cd66787bc59b3ae81",
-                  "author": "Github Action",
-                  "timestamp": 1790681635,
-                  "message": "fix(l10n): translated using Weblate (Occitan)\n\nCurrently translated at 100.0% (196 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/oc/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/445cbd18f62062b9fb81297cd66787bc59b3ae81"
+                  "sha": "d7a429e542a41b00fdc32d56915cb89640ec692a",
+                  "author": "Yaron Shahrabani",
+                  "timestamp": 1790712799,
+                  "message": "fix(l10n): translated using Weblate (Hebrew)\n\nCurrently translated at 96.9% (190 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/he/",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/d7a429e542a41b00fdc32d56915cb89640ec692a"
                }
             ],
             "ciActions": [],
@@ -3736,25 +3736,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9e96bae095dd01e88625d6eaae52263b25c1f84a",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790841816,
+                  "message": "fix(notifier): set app name and desktop entry on notifications (#428)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/9e96bae095dd01e88625d6eaae52263b25c1f84a"
+               },
+               {
+                  "sha": "300a5f509e1bbf893e45209ff5fbdbaec73f6f61",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790808688,
+                  "message": "fix(notifier): set app name and desktop entry on notifications\n\nNotifications had no app_name or desktop-entry hint, so GNOME Shell\nshowed them as coming from \"Unknown App\".\n\nFixes #352",
+                  "url": "https://github.com/canonical/firmware-updater/commit/300a5f509e1bbf893e45209ff5fbdbaec73f6f61"
+               },
+               {
                   "sha": "397a7774d453f34192d2db86c387ed4e7b5a2998",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790152428,
                   "message": "fix(l10n): translations update from Hosted Weblate (#426)",
                   "url": "https://github.com/canonical/firmware-updater/commit/397a7774d453f34192d2db86c387ed4e7b5a2998"
-               },
-               {
-                  "sha": "b1009b1b9eb07c01e6523a6e5c0fde8467e7b383",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790135613,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/firmware-updater/commit/b1009b1b9eb07c01e6523a6e5c0fde8467e7b383"
-               },
-               {
-                  "sha": "516e5a97b58a496648d3fcf69887285bfae5465d",
-                  "author": "ふぐ",
-                  "timestamp": 1790095006,
-                  "message": "fix(l10n): translated using Weblate (Japanese)\n\nCurrently translated at 100.0% (114 of 114 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/ja/",
-                  "url": "https://github.com/canonical/firmware-updater/commit/516e5a97b58a496648d3fcf69887285bfae5465d"
                }
             ],
             "ciActions": [
@@ -4120,9 +4120,18 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
+               {
+                  "id": 401072857,
+                  "version": "publish-36879421317",
+                  "timestamp": 1790863819,
+                  "title": "Publish 36879421317",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev159\">mediawiki-k8s-rev159 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev144</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Reconcile on redis app-data changes by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/296\">#296</a></li>\n<li>deps: Update Pluggable auth by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/297\">#297</a></li>\n<li>ci: Skip bot PR approval for actions created PRs by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/298\">#298</a></li>\n<li>fix(deps): update dependency ops to v3.8.3 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/299\">#299</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36757299916...publish-36879421317\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36757299916&hellip;publish-36879421317</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36879421317",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36879421317...main"
+               },
                {
                   "id": 400320957,
                   "version": "publish-36757299916",
@@ -4140,15 +4149,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev157\">mediawiki-k8s-rev157 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev142</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/292\">#292</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017...publish-36347793372\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017&hellip;publish-36347793372</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36347793372",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36347793372...main"
-               },
-               {
-                  "id": 397111020,
-                  "version": "publish-36221680017",
-                  "timestamp": 1790399602,
-                  "title": "Publish 36221680017",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev156\">mediawiki-k8s-rev156 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev141</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/291\">#291</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074...publish-36221680017\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074&hellip;publish-36221680017</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36221680017",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017...main"
                }
             ],
             "commits": null,
@@ -4169,8 +4169,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 158,
-                     "timestamp": 1790792522
+                     "revision": 159,
+                     "timestamp": 1790866425
                   }
                ],
                "channels": [
@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "95987b40c92cda9ce013b56fd258c18ec09e0ede",
+                  "sha": "4f957c29f07de05b707369b4e72f7a063414eb37",
                   "author": "Charles",
-                  "timestamp": 1790809376,
-                  "message": "test(config): wait for a shown setup row on Diagnostics\n\nThe backends probe accepted a hidden Set up button. The probe's own\nrefresh rebuilds Diagnostics with the inventory incomplete, the setup\ngroup hidden and no model in the report, which on CI satisfied the wait\nand failed the next check. Require the button to be mapped.",
-                  "url": "https://github.com/canonical/myna/commit/95987b40c92cda9ce013b56fd258c18ec09e0ede"
+                  "timestamp": 1790843712,
+                  "message": "fix(sound): the start cue waits for the model to be ready\n\nIt played at the press, before the backend was resolved, so a press\nwith no model or a failed load chimed Start then Error. Start now takes\nthe first Recording after Ready, as the HUD's loading/recording split\ndoes; a session that ends while loading is silent.",
+                  "url": "https://github.com/canonical/myna/commit/4f957c29f07de05b707369b4e72f7a063414eb37"
                },
                {
-                  "sha": "d36098ef771dde8dd4d069bbeacedf7d460a3718",
+                  "sha": "5c1b69747ad2c263d88d9f7e54561a63a3194cea",
                   "author": "Charles",
-                  "timestamp": 1790806372,
-                  "message": "chore(snap): drop the sound-themes plug\n\nNothing reads the sound themes since the cues are compiled into the\ndaemon, so the plug and the data-dir entry in XDG_DATA_DIRS go.",
-                  "url": "https://github.com/canonical/myna/commit/d36098ef771dde8dd4d069bbeacedf7d460a3718"
+                  "timestamp": 1790843349,
+                  "message": "refactor(desktop): track readiness in every indicator mode\n\nReadiness leaves the D-Bus module and the session tees it always, not\nonly under --dbus, so any indicator can tell loading from listening.",
+                  "url": "https://github.com/canonical/myna/commit/5c1b69747ad2c263d88d9f7e54561a63a3194cea"
                },
                {
-                  "sha": "3e6e907bbca027b12b2b221a743f244535c43679",
+                  "sha": "c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433",
                   "author": "Charles",
-                  "timestamp": 1790806368,
-                  "message": "feat(desktop): play our own start, stop and error cues\n\nThe theme's device-added/device-removed read as a USB drive being\nplugged in, and no freedesktop event means \"listening\". Ship three\nsynthesized clips instead, compiled into the daemon: a marimba-like\nrising fifth (E5-B5) for start, the same falling and 3 dB quieter for\nstop, and a low detuned A3 double note for error. Rising for on and a\ndistinct register and rhythm for error follow the earcon literature\nand what other dictation products do.\n\nThe clips fade in and out to exact silence; the first draft ended at\n-30 dBFS and clicked. A test pins the fades. dev/synth_cues.py\nregenerates them.",
-                  "url": "https://github.com/canonical/myna/commit/3e6e907bbca027b12b2b221a743f244535c43679"
+                  "timestamp": 1790843301,
+                  "message": "fix(desktop): a press with no model resets readiness\n\nThe reset ran after backend resolution, so a press that found no model\nkept the previous session's Ready and published \"recording\" before the\nerror.",
+                  "url": "https://github.com/canonical/myna/commit/c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433"
                }
             ],
             "ciActions": [],
@@ -4649,25 +4649,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3ac403d73e964aa63d600b290b8e700bd8930676",
-                  "author": "Murad Eynizada",
-                  "timestamp": 1789552452,
-                  "message": "chore: release 0.7.6 (#144)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/3ac403d73e964aa63d600b290b8e700bd8930676"
+                  "sha": "9c9327b5ba03a4ff3776038de3c0ca2daeb887d0",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790866556,
+                  "message": "chore: release 0.7.7 (#146)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/9c9327b5ba03a4ff3776038de3c0ca2daeb887d0"
                },
                {
-                  "sha": "513a7180327455043673c50c6ec435fef263a886",
-                  "author": "Murad Eynizada",
-                  "timestamp": 1789551642,
-                  "message": "chore: release 0.7.6\n\nSigned-off-by: Murad Eynizada <murad.eynizada@canonical.com>",
-                  "url": "https://github.com/canonical/snapd.dart/commit/513a7180327455043673c50c6ec435fef263a886"
+                  "sha": "aa94598c02b4c22c64473a4f3280999d863cae63",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790866032,
+                  "message": "chore: release 0.7.7",
+                  "url": "https://github.com/canonical/snapd.dart/commit/aa94598c02b4c22c64473a4f3280999d863cae63"
                },
                {
-                  "sha": "8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e",
-                  "author": "Murad Eynizada",
-                  "timestamp": 1789551272,
-                  "message": "feat: add commonId support to SnapdClient.find() (#143)\n\n## Summary\n\nAdd support for searching snaps by `commonId` in `SnapdClient.find()`.\n\n## Validation\n\nAll existing tests continue to pass, and the new `find - common-id` test\nwas added.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e"
+                  "sha": "618eecfb8f1ba301e07610e70b1b0b864ea0571c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790865917,
+                  "message": "fix: encode body as utf8 without sending charset in content-type header (#145)\n\nCurrently snapd expects the content type to be exactly\n`application/json`, an added `charset` causes it to reply with `Bad\nrequest`. Since dart HTTP client's `write` method is directly tied to\nthe charset header, we need manually encode the json and add it to the\nrequest using the lower level `add` method instead.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/618eecfb8f1ba301e07610e70b1b0b864ea0571c"
                }
             ],
             "ciActions": [],
@@ -4786,9 +4786,18 @@
          {
             "name": "translations-verifier",
             "defaultBranch": "main",
-            "newCommits": 4,
+            "newCommits": 0,
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
+               {
+                  "id": 400814248,
+                  "version": "v0.3.1",
+                  "timestamp": 1790846750,
+                  "title": "v0.3.1",
+                  "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.3.0...v0.3.1\">0.3.1</a> (2026-09-29)</h2>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>properly parse html files (<a href=\"https://github.com/canonical/translations-verifier/commit/325ac7ae55abb2ab672824d43333e55817d8f142\">325ac7a</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.3.1",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.3.1...main"
+               },
                {
                   "id": 394466374,
                   "version": "v0.3.0",
@@ -4806,15 +4815,6 @@
                   "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.1.0...v0.2.0\">0.2.0</a> (2026-09-21)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>handle empty proposed translation without ai help (<a href=\"https://github.com/canonical/translations-verifier/commit/fd672f8870a40e485cbae1f7b26ba8b47a471d43\">fd672f8</a>)</li>\n</ul>\n",
                   "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.2.0",
                   "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.2.0...main"
-               },
-               {
-                  "id": 391349524,
-                  "version": "v0.1.0",
-                  "timestamp": 1789723347,
-                  "title": "v0.1.0",
-                  "body": "<h2>0.1.0 (2026-09-18)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/019c5b7bf627c1d0c15f0320aff16fe22014aec9\">019c5b7</a>)</li>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/abadaa9d12e643a1870de771bf9505d637fbae8d\">abadaa9</a>)</li>\n</ul>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/e16aec2ac06b9ac27aef57cf483fa1790771cf18\">e16aec2</a>)</li>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/86115b951a9c75481125ff677bd1b9bf95057780\">86115b9</a>)</li>\n<li>added pr permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/15c81bff13606f4bfc940734175b88cca61e8168\">15c81bf</a>)</li>\n</ul>\n\n<h3>Documentation</h3>\n\n<ul>\n<li>simplify readme (<a href=\"https://github.com/canonical/translations-verifier/issues/14\">#14</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/84ff565dbabc8d881632dee9619ecf95f1a8434e\">84ff565</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.1.0",
-                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.1.0...main"
                }
             ],
             "commits": null,
@@ -4964,6 +4964,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "22154fde005146c25b776a37afd47878ca23eddd",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1790848077,
+                  "message": "fix(active-directory): show the AD page when autoinstall asks for it (#1560)\n\nThe installer didn't show the Active Directory page when an autoinstall\nfile listed `active-directory` in `interactive-sections`. So it never\nasked for the AD password, and the computer wasn't joined to the domain\n([LP: #2065109](https://bugs.launchpad.net/subiquity/+bug/2065109)).\n\nTwo things were wrong:\n- the `active-directory` section wasn't mapped to the AD page, and\n- the \"Use Active Directory\" box always started unticked.\n\nThis maps the section to the page, and starts with the box ticked when\nthe autoinstall sets an admin name. Unit tests and an integration test\ncover it.\n\nUDENG-11656",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/22154fde005146c25b776a37afd47878ca23eddd"
+               },
+               {
                   "sha": "39028ebb1e3d91fad65efb084fdef8926d61df57",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790791970,
@@ -4971,18 +4978,11 @@
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/39028ebb1e3d91fad65efb084fdef8926d61df57"
                },
                {
-                  "sha": "4fb0ab22e43a07e5e6f0369d9401c2a67fb7974a",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790695067,
-                  "message": "Translations update from Hosted Weblate (#1538)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Provision\nCommon](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-common/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/provision-common/matrix-auto.svg)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4fb0ab22e43a07e5e6f0369d9401c2a67fb7974a"
-               },
-               {
-                  "sha": "eb01d60b97c75509c2c658c3414927c8c38bc832",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790693645,
-                  "message": "maint: l10n regenerate",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eb01d60b97c75509c2c658c3414927c8c38bc832"
+                  "sha": "7d1933caa27cee3d90490f88f06a77401cf12f14",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1790752045,
+                  "message": "fix(active-directory): preselect AD when the section is interactive",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7d1933caa27cee3d90490f88f06a77401cf12f14"
                }
             ],
             "ciActions": [
@@ -5361,7 +5361,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 73,
+            "newCommits": 81,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -5408,14 +5408,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 683,
-                     "timestamp": 1790799898
+                     "revision": 692,
+                     "timestamp": 1790867413
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 682,
-                     "timestamp": 1790797201
+                     "revision": 691,
+                     "timestamp": 1790864946
                   }
                ],
                "channels": [
@@ -5853,25 +5853,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e29633b7ed40d49298076ff99d6eaea9b60c1dbc",
+                  "sha": "bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e",
                   "author": "adombeck",
-                  "timestamp": 1790835244,
-                  "message": "Skip authd migrations when the stable PPA lacks the devel suite (#1982)",
-                  "url": "https://github.com/canonical/authd/commit/e29633b7ed40d49298076ff99d6eaea9b60c1dbc"
+                  "timestamp": 1790844005,
+                  "message": "ci: Enforce Ruff checks for supported Python files (#1976)",
+                  "url": "https://github.com/canonical/authd/commit/bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e"
                },
                {
-                  "sha": "14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a",
+                  "sha": "0922b958453fc5b5ce37cc2a738f020a177dfd16",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790176799,
-                  "message": "Skip authd migrations when the stable PPA lacks the devel suite\n\nDuring each new Ubuntu development cycle, there's a period when there's\nno authd release yet for the devel release in the stable PPA. Currently,\nthat's causing the migration tests to fail, because they try to install\nauthd from the stable PPA first and then update it to the version from\nthe edge PPA.\n\nSkip the migration tests in that case, but only for that exact error.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a"
+                  "timestamp": 1790843572,
+                  "message": "ci: Set minimum required Ruff version\n\nDependabot updates .ruff-requirements.txt, but it does not change\nrequired-version in .ruff.toml. An exact constraint would each update\nrequire a manual config edit. A minimum lets Dependabot advance the\ninstalled pin without that extra sync, while rejecting Ruff versions\nwhich are already old.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/0922b958453fc5b5ce37cc2a738f020a177dfd16"
                },
                {
-                  "sha": "f49c2c92be4e802399699f365e355ca57fe19c84",
-                  "author": "adombeck",
-                  "timestamp": 1790796251,
-                  "message": "Permission denial test must use a non-root peer (#2029)",
-                  "url": "https://github.com/canonical/authd/commit/f49c2c92be4e802399699f365e355ca57fe19c84"
+                  "sha": "e00073db5a1997623314fb50bed00f6d4766de0b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790172434,
+                  "message": "ci: Enforce Ruff checks for supported Python files\n\nPython helpers had no repository-wide formatter or linter, which allowed\nformatting to drift and left CI without a Python sanity check. Configure Ruff\nfor authd-owned Python files, exclude documentation and third-party submodule\ncode, and add a dedicated workflow that checks Python changes.\n\nConfigure dependabot to update Ruff and ensure that CI and local\ninvocations use the same Ruff version.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/e00073db5a1997623314fb50bed00f6d4766de0b"
                }
             ],
             "ciActions": [
@@ -6086,25 +6086,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d4497eea3b20e78762ff99e8390ff782adef8e99",
+                  "sha": "0838703d99dfdbe9749ce61487f127559d709871",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1790687848,
-                  "message": "Merge pull request #258 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/d4497eea3b20e78762ff99e8390ff782adef8e99"
+                  "timestamp": 1790851274,
+                  "message": "Merge pull request #260 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/0838703d99dfdbe9749ce61487f127559d709871"
                },
                {
-                  "sha": "343b015c7b5b88337e0d2a7c910b763eacc70909",
+                  "sha": "0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8",
                   "author": "canonical-desktop-bot",
-                  "timestamp": 1790681750,
+                  "timestamp": 1790763186,
                   "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/343b015c7b5b88337e0d2a7c910b763eacc70909"
+                  "url": "https://github.com/canonical/desktop-security-center/commit/0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8"
                },
                {
-                  "sha": "445cbd18f62062b9fb81297cd66787bc59b3ae81",
-                  "author": "Github Action",
-                  "timestamp": 1790681635,
-                  "message": "fix(l10n): translated using Weblate (Occitan)\n\nCurrently translated at 100.0% (196 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/oc/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/445cbd18f62062b9fb81297cd66787bc59b3ae81"
+                  "sha": "d7a429e542a41b00fdc32d56915cb89640ec692a",
+                  "author": "Yaron Shahrabani",
+                  "timestamp": 1790712799,
+                  "message": "fix(l10n): translated using Weblate (Hebrew)\n\nCurrently translated at 96.9% (190 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/he/",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/d7a429e542a41b00fdc32d56915cb89640ec692a"
                }
             ],
             "ciActions": [],
@@ -6188,25 +6188,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9e96bae095dd01e88625d6eaae52263b25c1f84a",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790841816,
+                  "message": "fix(notifier): set app name and desktop entry on notifications (#428)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/9e96bae095dd01e88625d6eaae52263b25c1f84a"
+               },
+               {
+                  "sha": "300a5f509e1bbf893e45209ff5fbdbaec73f6f61",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790808688,
+                  "message": "fix(notifier): set app name and desktop entry on notifications\n\nNotifications had no app_name or desktop-entry hint, so GNOME Shell\nshowed them as coming from \"Unknown App\".\n\nFixes #352",
+                  "url": "https://github.com/canonical/firmware-updater/commit/300a5f509e1bbf893e45209ff5fbdbaec73f6f61"
+               },
+               {
                   "sha": "397a7774d453f34192d2db86c387ed4e7b5a2998",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790152428,
                   "message": "fix(l10n): translations update from Hosted Weblate (#426)",
                   "url": "https://github.com/canonical/firmware-updater/commit/397a7774d453f34192d2db86c387ed4e7b5a2998"
-               },
-               {
-                  "sha": "b1009b1b9eb07c01e6523a6e5c0fde8467e7b383",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790135613,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/firmware-updater/commit/b1009b1b9eb07c01e6523a6e5c0fde8467e7b383"
-               },
-               {
-                  "sha": "516e5a97b58a496648d3fcf69887285bfae5465d",
-                  "author": "ふぐ",
-                  "timestamp": 1790095006,
-                  "message": "fix(l10n): translated using Weblate (Japanese)\n\nCurrently translated at 100.0% (114 of 114 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/ja/",
-                  "url": "https://github.com/canonical/firmware-updater/commit/516e5a97b58a496648d3fcf69887285bfae5465d"
                }
             ],
             "ciActions": [
@@ -6605,9 +6605,18 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
+               {
+                  "id": 401072857,
+                  "version": "publish-36879421317",
+                  "timestamp": 1790863819,
+                  "title": "Publish 36879421317",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev159\">mediawiki-k8s-rev159 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev144</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Reconcile on redis app-data changes by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/296\">#296</a></li>\n<li>deps: Update Pluggable auth by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/297\">#297</a></li>\n<li>ci: Skip bot PR approval for actions created PRs by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/298\">#298</a></li>\n<li>fix(deps): update dependency ops to v3.8.3 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/299\">#299</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36757299916...publish-36879421317\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36757299916&hellip;publish-36879421317</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36879421317",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36879421317...main"
+               },
                {
                   "id": 400320957,
                   "version": "publish-36757299916",
@@ -6625,15 +6634,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev157\">mediawiki-k8s-rev157 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev142</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/292\">#292</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017...publish-36347793372\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017&hellip;publish-36347793372</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36347793372",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36347793372...main"
-               },
-               {
-                  "id": 397111020,
-                  "version": "publish-36221680017",
-                  "timestamp": 1790399602,
-                  "title": "Publish 36221680017",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev156\">mediawiki-k8s-rev156 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev141</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/291\">#291</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074...publish-36221680017\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074&hellip;publish-36221680017</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36221680017",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017...main"
                }
             ],
             "commits": null,
@@ -6654,8 +6654,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 158,
-                     "timestamp": 1790792522
+                     "revision": 159,
+                     "timestamp": 1790866425
                   }
                ],
                "channels": [
@@ -6675,25 +6675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "95987b40c92cda9ce013b56fd258c18ec09e0ede",
+                  "sha": "4f957c29f07de05b707369b4e72f7a063414eb37",
                   "author": "Charles",
-                  "timestamp": 1790809376,
-                  "message": "test(config): wait for a shown setup row on Diagnostics\n\nThe backends probe accepted a hidden Set up button. The probe's own\nrefresh rebuilds Diagnostics with the inventory incomplete, the setup\ngroup hidden and no model in the report, which on CI satisfied the wait\nand failed the next check. Require the button to be mapped.",
-                  "url": "https://github.com/canonical/myna/commit/95987b40c92cda9ce013b56fd258c18ec09e0ede"
+                  "timestamp": 1790843712,
+                  "message": "fix(sound): the start cue waits for the model to be ready\n\nIt played at the press, before the backend was resolved, so a press\nwith no model or a failed load chimed Start then Error. Start now takes\nthe first Recording after Ready, as the HUD's loading/recording split\ndoes; a session that ends while loading is silent.",
+                  "url": "https://github.com/canonical/myna/commit/4f957c29f07de05b707369b4e72f7a063414eb37"
                },
                {
-                  "sha": "d36098ef771dde8dd4d069bbeacedf7d460a3718",
+                  "sha": "5c1b69747ad2c263d88d9f7e54561a63a3194cea",
                   "author": "Charles",
-                  "timestamp": 1790806372,
-                  "message": "chore(snap): drop the sound-themes plug\n\nNothing reads the sound themes since the cues are compiled into the\ndaemon, so the plug and the data-dir entry in XDG_DATA_DIRS go.",
-                  "url": "https://github.com/canonical/myna/commit/d36098ef771dde8dd4d069bbeacedf7d460a3718"
+                  "timestamp": 1790843349,
+                  "message": "refactor(desktop): track readiness in every indicator mode\n\nReadiness leaves the D-Bus module and the session tees it always, not\nonly under --dbus, so any indicator can tell loading from listening.",
+                  "url": "https://github.com/canonical/myna/commit/5c1b69747ad2c263d88d9f7e54561a63a3194cea"
                },
                {
-                  "sha": "3e6e907bbca027b12b2b221a743f244535c43679",
+                  "sha": "c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433",
                   "author": "Charles",
-                  "timestamp": 1790806368,
-                  "message": "feat(desktop): play our own start, stop and error cues\n\nThe theme's device-added/device-removed read as a USB drive being\nplugged in, and no freedesktop event means \"listening\". Ship three\nsynthesized clips instead, compiled into the daemon: a marimba-like\nrising fifth (E5-B5) for start, the same falling and 3 dB quieter for\nstop, and a low detuned A3 double note for error. Rising for on and a\ndistinct register and rhythm for error follow the earcon literature\nand what other dictation products do.\n\nThe clips fade in and out to exact silence; the first draft ended at\n-30 dBFS and clicked. A test pins the fades. dev/synth_cues.py\nregenerates them.",
-                  "url": "https://github.com/canonical/myna/commit/3e6e907bbca027b12b2b221a743f244535c43679"
+                  "timestamp": 1790843301,
+                  "message": "fix(desktop): a press with no model resets readiness\n\nThe reset ran after backend resolution, so a press that found no model\nkept the previous session's Ready and published \"recording\" before the\nerror.",
+                  "url": "https://github.com/canonical/myna/commit/c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433"
                }
             ],
             "ciActions": [],
@@ -7134,25 +7134,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3ac403d73e964aa63d600b290b8e700bd8930676",
-                  "author": "Murad Eynizada",
-                  "timestamp": 1789552452,
-                  "message": "chore: release 0.7.6 (#144)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/3ac403d73e964aa63d600b290b8e700bd8930676"
+                  "sha": "9c9327b5ba03a4ff3776038de3c0ca2daeb887d0",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790866556,
+                  "message": "chore: release 0.7.7 (#146)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/9c9327b5ba03a4ff3776038de3c0ca2daeb887d0"
                },
                {
-                  "sha": "513a7180327455043673c50c6ec435fef263a886",
-                  "author": "Murad Eynizada",
-                  "timestamp": 1789551642,
-                  "message": "chore: release 0.7.6\n\nSigned-off-by: Murad Eynizada <murad.eynizada@canonical.com>",
-                  "url": "https://github.com/canonical/snapd.dart/commit/513a7180327455043673c50c6ec435fef263a886"
+                  "sha": "aa94598c02b4c22c64473a4f3280999d863cae63",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790866032,
+                  "message": "chore: release 0.7.7",
+                  "url": "https://github.com/canonical/snapd.dart/commit/aa94598c02b4c22c64473a4f3280999d863cae63"
                },
                {
-                  "sha": "8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e",
-                  "author": "Murad Eynizada",
-                  "timestamp": 1789551272,
-                  "message": "feat: add commonId support to SnapdClient.find() (#143)\n\n## Summary\n\nAdd support for searching snaps by `commonId` in `SnapdClient.find()`.\n\n## Validation\n\nAll existing tests continue to pass, and the new `find - common-id` test\nwas added.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e"
+                  "sha": "618eecfb8f1ba301e07610e70b1b0b864ea0571c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790865917,
+                  "message": "fix: encode body as utf8 without sending charset in content-type header (#145)\n\nCurrently snapd expects the content type to be exactly\n`application/json`, an added `charset` causes it to reply with `Bad\nrequest`. Since dart HTTP client's `write` method is directly tied to\nthe charset header, we need manually encode the json and add it to the\nrequest using the lower level `add` method instead.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/618eecfb8f1ba301e07610e70b1b0b864ea0571c"
                }
             ],
             "ciActions": [],
@@ -7271,9 +7271,18 @@
          {
             "name": "translations-verifier",
             "defaultBranch": "main",
-            "newCommits": 4,
+            "newCommits": 0,
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
+               {
+                  "id": 400814248,
+                  "version": "v0.3.1",
+                  "timestamp": 1790846750,
+                  "title": "v0.3.1",
+                  "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.3.0...v0.3.1\">0.3.1</a> (2026-09-29)</h2>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>properly parse html files (<a href=\"https://github.com/canonical/translations-verifier/commit/325ac7ae55abb2ab672824d43333e55817d8f142\">325ac7a</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.3.1",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.3.1...main"
+               },
                {
                   "id": 394466374,
                   "version": "v0.3.0",
@@ -7291,15 +7300,6 @@
                   "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.1.0...v0.2.0\">0.2.0</a> (2026-09-21)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>handle empty proposed translation without ai help (<a href=\"https://github.com/canonical/translations-verifier/commit/fd672f8870a40e485cbae1f7b26ba8b47a471d43\">fd672f8</a>)</li>\n</ul>\n",
                   "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.2.0",
                   "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.2.0...main"
-               },
-               {
-                  "id": 391349524,
-                  "version": "v0.1.0",
-                  "timestamp": 1789723347,
-                  "title": "v0.1.0",
-                  "body": "<h2>0.1.0 (2026-09-18)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/019c5b7bf627c1d0c15f0320aff16fe22014aec9\">019c5b7</a>)</li>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/abadaa9d12e643a1870de771bf9505d637fbae8d\">abadaa9</a>)</li>\n</ul>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/e16aec2ac06b9ac27aef57cf483fa1790771cf18\">e16aec2</a>)</li>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/86115b951a9c75481125ff677bd1b9bf95057780\">86115b9</a>)</li>\n<li>added pr permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/15c81bff13606f4bfc940734175b88cca61e8168\">15c81bf</a>)</li>\n</ul>\n\n<h3>Documentation</h3>\n\n<ul>\n<li>simplify readme (<a href=\"https://github.com/canonical/translations-verifier/issues/14\">#14</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/84ff565dbabc8d881632dee9619ecf95f1a8434e\">84ff565</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.1.0",
-                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.1.0...main"
                }
             ],
             "commits": null,
@@ -7449,6 +7449,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "22154fde005146c25b776a37afd47878ca23eddd",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1790848077,
+                  "message": "fix(active-directory): show the AD page when autoinstall asks for it (#1560)\n\nThe installer didn't show the Active Directory page when an autoinstall\nfile listed `active-directory` in `interactive-sections`. So it never\nasked for the AD password, and the computer wasn't joined to the domain\n([LP: #2065109](https://bugs.launchpad.net/subiquity/+bug/2065109)).\n\nTwo things were wrong:\n- the `active-directory` section wasn't mapped to the AD page, and\n- the \"Use Active Directory\" box always started unticked.\n\nThis maps the section to the page, and starts with the box ticked when\nthe autoinstall sets an admin name. Unit tests and an integration test\ncover it.\n\nUDENG-11656",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/22154fde005146c25b776a37afd47878ca23eddd"
+               },
+               {
                   "sha": "39028ebb1e3d91fad65efb084fdef8926d61df57",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790791970,
@@ -7456,18 +7463,11 @@
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/39028ebb1e3d91fad65efb084fdef8926d61df57"
                },
                {
-                  "sha": "4fb0ab22e43a07e5e6f0369d9401c2a67fb7974a",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790695067,
-                  "message": "Translations update from Hosted Weblate (#1538)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Provision\nCommon](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-common/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/provision-common/matrix-auto.svg)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4fb0ab22e43a07e5e6f0369d9401c2a67fb7974a"
-               },
-               {
-                  "sha": "eb01d60b97c75509c2c658c3414927c8c38bc832",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790693645,
-                  "message": "maint: l10n regenerate",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eb01d60b97c75509c2c658c3414927c8c38bc832"
+                  "sha": "7d1933caa27cee3d90490f88f06a77401cf12f14",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1790752045,
+                  "message": "fix(active-directory): preselect AD when the section is interactive",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7d1933caa27cee3d90490f88f06a77401cf12f14"
                }
             ],
             "ciActions": [
@@ -7887,7 +7887,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 73,
+            "newCommits": 81,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -7934,14 +7934,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 683,
-                     "timestamp": 1790799898
+                     "revision": 692,
+                     "timestamp": 1790867413
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 682,
-                     "timestamp": 1790797201
+                     "revision": 691,
+                     "timestamp": 1790864946
                   }
                ],
                "channels": [
@@ -8408,25 +8408,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e29633b7ed40d49298076ff99d6eaea9b60c1dbc",
+                  "sha": "bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e",
                   "author": "adombeck",
-                  "timestamp": 1790835244,
-                  "message": "Skip authd migrations when the stable PPA lacks the devel suite (#1982)",
-                  "url": "https://github.com/canonical/authd/commit/e29633b7ed40d49298076ff99d6eaea9b60c1dbc"
+                  "timestamp": 1790844005,
+                  "message": "ci: Enforce Ruff checks for supported Python files (#1976)",
+                  "url": "https://github.com/canonical/authd/commit/bc1b8cc31078b5a356ffb8423dfe5c5f18400a4e"
                },
                {
-                  "sha": "14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a",
+                  "sha": "0922b958453fc5b5ce37cc2a738f020a177dfd16",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1790176799,
-                  "message": "Skip authd migrations when the stable PPA lacks the devel suite\n\nDuring each new Ubuntu development cycle, there's a period when there's\nno authd release yet for the devel release in the stable PPA. Currently,\nthat's causing the migration tests to fail, because they try to install\nauthd from the stable PPA first and then update it to the version from\nthe edge PPA.\n\nSkip the migration tests in that case, but only for that exact error.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a"
+                  "timestamp": 1790843572,
+                  "message": "ci: Set minimum required Ruff version\n\nDependabot updates .ruff-requirements.txt, but it does not change\nrequired-version in .ruff.toml. An exact constraint would each update\nrequire a manual config edit. A minimum lets Dependabot advance the\ninstalled pin without that extra sync, while rejecting Ruff versions\nwhich are already old.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/0922b958453fc5b5ce37cc2a738f020a177dfd16"
                },
                {
-                  "sha": "f49c2c92be4e802399699f365e355ca57fe19c84",
-                  "author": "adombeck",
-                  "timestamp": 1790796251,
-                  "message": "Permission denial test must use a non-root peer (#2029)",
-                  "url": "https://github.com/canonical/authd/commit/f49c2c92be4e802399699f365e355ca57fe19c84"
+                  "sha": "e00073db5a1997623314fb50bed00f6d4766de0b",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790172434,
+                  "message": "ci: Enforce Ruff checks for supported Python files\n\nPython helpers had no repository-wide formatter or linter, which allowed\nformatting to drift and left CI without a Python sanity check. Configure Ruff\nfor authd-owned Python files, exclude documentation and third-party submodule\ncode, and add a dedicated workflow that checks Python changes.\n\nConfigure dependabot to update Ruff and ensure that CI and local\ninvocations use the same Ruff version.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/e00073db5a1997623314fb50bed00f6d4766de0b"
                }
             ],
             "ciActions": [
@@ -8641,25 +8641,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "d4497eea3b20e78762ff99e8390ff782adef8e99",
+                  "sha": "0838703d99dfdbe9749ce61487f127559d709871",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1790687848,
-                  "message": "Merge pull request #258 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/d4497eea3b20e78762ff99e8390ff782adef8e99"
+                  "timestamp": 1790851274,
+                  "message": "Merge pull request #260 from weblate/weblate-ubuntu-desktop-translations-desktop-security-center\n\nfix(l10n): translations update from Hosted Weblate",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/0838703d99dfdbe9749ce61487f127559d709871"
                },
                {
-                  "sha": "343b015c7b5b88337e0d2a7c910b763eacc70909",
+                  "sha": "0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8",
                   "author": "canonical-desktop-bot",
-                  "timestamp": 1790681750,
+                  "timestamp": 1790763186,
                   "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/343b015c7b5b88337e0d2a7c910b763eacc70909"
+                  "url": "https://github.com/canonical/desktop-security-center/commit/0b453ae0eb6f7ada7b8c8b950f8dbaf47206b7b8"
                },
                {
-                  "sha": "445cbd18f62062b9fb81297cd66787bc59b3ae81",
-                  "author": "Github Action",
-                  "timestamp": 1790681635,
-                  "message": "fix(l10n): translated using Weblate (Occitan)\n\nCurrently translated at 100.0% (196 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/oc/",
-                  "url": "https://github.com/canonical/desktop-security-center/commit/445cbd18f62062b9fb81297cd66787bc59b3ae81"
+                  "sha": "d7a429e542a41b00fdc32d56915cb89640ec692a",
+                  "author": "Yaron Shahrabani",
+                  "timestamp": 1790712799,
+                  "message": "fix(l10n): translated using Weblate (Hebrew)\n\nCurrently translated at 96.9% (190 of 196 strings)\n\nTranslation: ubuntu-desktop-translations/Desktop Security Center\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/desktop-security-center/he/",
+                  "url": "https://github.com/canonical/desktop-security-center/commit/d7a429e542a41b00fdc32d56915cb89640ec692a"
                }
             ],
             "ciActions": [],
@@ -8743,25 +8743,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "9e96bae095dd01e88625d6eaae52263b25c1f84a",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790841816,
+                  "message": "fix(notifier): set app name and desktop entry on notifications (#428)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/9e96bae095dd01e88625d6eaae52263b25c1f84a"
+               },
+               {
+                  "sha": "300a5f509e1bbf893e45209ff5fbdbaec73f6f61",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1790808688,
+                  "message": "fix(notifier): set app name and desktop entry on notifications\n\nNotifications had no app_name or desktop-entry hint, so GNOME Shell\nshowed them as coming from \"Unknown App\".\n\nFixes #352",
+                  "url": "https://github.com/canonical/firmware-updater/commit/300a5f509e1bbf893e45209ff5fbdbaec73f6f61"
+               },
+               {
                   "sha": "397a7774d453f34192d2db86c387ed4e7b5a2998",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790152428,
                   "message": "fix(l10n): translations update from Hosted Weblate (#426)",
                   "url": "https://github.com/canonical/firmware-updater/commit/397a7774d453f34192d2db86c387ed4e7b5a2998"
-               },
-               {
-                  "sha": "b1009b1b9eb07c01e6523a6e5c0fde8467e7b383",
-                  "author": "canonical-desktop-bot",
-                  "timestamp": 1790135613,
-                  "message": "maint: regenerate l10n",
-                  "url": "https://github.com/canonical/firmware-updater/commit/b1009b1b9eb07c01e6523a6e5c0fde8467e7b383"
-               },
-               {
-                  "sha": "516e5a97b58a496648d3fcf69887285bfae5465d",
-                  "author": "ふぐ",
-                  "timestamp": 1790095006,
-                  "message": "fix(l10n): translated using Weblate (Japanese)\n\nCurrently translated at 100.0% (114 of 114 strings)\n\nTranslation: ubuntu-desktop-translations/Firmware Updater\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/firmware-updater/ja/",
-                  "url": "https://github.com/canonical/firmware-updater/commit/516e5a97b58a496648d3fcf69887285bfae5465d"
                }
             ],
             "ciActions": [
@@ -9127,9 +9127,18 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 2,
+            "newCommits": 0,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
+               {
+                  "id": 401072857,
+                  "version": "publish-36879421317",
+                  "timestamp": 1790863819,
+                  "title": "Publish 36879421317",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev159\">mediawiki-k8s-rev159 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev144</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Reconcile on redis app-data changes by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/296\">#296</a></li>\n<li>deps: Update Pluggable auth by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/297\">#297</a></li>\n<li>ci: Skip bot PR approval for actions created PRs by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/298\">#298</a></li>\n<li>fix(deps): update dependency ops to v3.8.3 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/299\">#299</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36757299916...publish-36879421317\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36757299916&hellip;publish-36879421317</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36879421317",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36879421317...main"
+               },
                {
                   "id": 400320957,
                   "version": "publish-36757299916",
@@ -9147,15 +9156,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev157\">mediawiki-k8s-rev157 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev142</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/292\">#292</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017...publish-36347793372\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017&hellip;publish-36347793372</a></p>\n",
                   "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36347793372",
                   "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36347793372...main"
-               },
-               {
-                  "id": 397111020,
-                  "version": "publish-36221680017",
-                  "timestamp": 1790399602,
-                  "title": "Publish 36221680017",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev156\">mediawiki-k8s-rev156 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev141</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/291\">#291</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074...publish-36221680017\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36219705074&hellip;publish-36221680017</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-36221680017",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-36221680017...main"
                }
             ],
             "commits": null,
@@ -9176,8 +9176,8 @@
                   {
                      "track": "1.46",
                      "channel": "edge",
-                     "revision": 158,
-                     "timestamp": 1790792522
+                     "revision": 159,
+                     "timestamp": 1790866425
                   }
                ],
                "channels": [
@@ -9197,25 +9197,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "95987b40c92cda9ce013b56fd258c18ec09e0ede",
+                  "sha": "4f957c29f07de05b707369b4e72f7a063414eb37",
                   "author": "Charles",
-                  "timestamp": 1790809376,
-                  "message": "test(config): wait for a shown setup row on Diagnostics\n\nThe backends probe accepted a hidden Set up button. The probe's own\nrefresh rebuilds Diagnostics with the inventory incomplete, the setup\ngroup hidden and no model in the report, which on CI satisfied the wait\nand failed the next check. Require the button to be mapped.",
-                  "url": "https://github.com/canonical/myna/commit/95987b40c92cda9ce013b56fd258c18ec09e0ede"
+                  "timestamp": 1790843712,
+                  "message": "fix(sound): the start cue waits for the model to be ready\n\nIt played at the press, before the backend was resolved, so a press\nwith no model or a failed load chimed Start then Error. Start now takes\nthe first Recording after Ready, as the HUD's loading/recording split\ndoes; a session that ends while loading is silent.",
+                  "url": "https://github.com/canonical/myna/commit/4f957c29f07de05b707369b4e72f7a063414eb37"
                },
                {
-                  "sha": "d36098ef771dde8dd4d069bbeacedf7d460a3718",
+                  "sha": "5c1b69747ad2c263d88d9f7e54561a63a3194cea",
                   "author": "Charles",
-                  "timestamp": 1790806372,
-                  "message": "chore(snap): drop the sound-themes plug\n\nNothing reads the sound themes since the cues are compiled into the\ndaemon, so the plug and the data-dir entry in XDG_DATA_DIRS go.",
-                  "url": "https://github.com/canonical/myna/commit/d36098ef771dde8dd4d069bbeacedf7d460a3718"
+                  "timestamp": 1790843349,
+                  "message": "refactor(desktop): track readiness in every indicator mode\n\nReadiness leaves the D-Bus module and the session tees it always, not\nonly under --dbus, so any indicator can tell loading from listening.",
+                  "url": "https://github.com/canonical/myna/commit/5c1b69747ad2c263d88d9f7e54561a63a3194cea"
                },
                {
-                  "sha": "3e6e907bbca027b12b2b221a743f244535c43679",
+                  "sha": "c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433",
                   "author": "Charles",
-                  "timestamp": 1790806368,
-                  "message": "feat(desktop): play our own start, stop and error cues\n\nThe theme's device-added/device-removed read as a USB drive being\nplugged in, and no freedesktop event means \"listening\". Ship three\nsynthesized clips instead, compiled into the daemon: a marimba-like\nrising fifth (E5-B5) for start, the same falling and 3 dB quieter for\nstop, and a low detuned A3 double note for error. Rising for on and a\ndistinct register and rhythm for error follow the earcon literature\nand what other dictation products do.\n\nThe clips fade in and out to exact silence; the first draft ended at\n-30 dBFS and clicked. A test pins the fades. dev/synth_cues.py\nregenerates them.",
-                  "url": "https://github.com/canonical/myna/commit/3e6e907bbca027b12b2b221a743f244535c43679"
+                  "timestamp": 1790843301,
+                  "message": "fix(desktop): a press with no model resets readiness\n\nThe reset ran after backend resolution, so a press that found no model\nkept the previous session's Ready and published \"recording\" before the\nerror.",
+                  "url": "https://github.com/canonical/myna/commit/c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433"
                }
             ],
             "ciActions": [],
@@ -9656,25 +9656,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "3ac403d73e964aa63d600b290b8e700bd8930676",
-                  "author": "Murad Eynizada",
-                  "timestamp": 1789552452,
-                  "message": "chore: release 0.7.6 (#144)",
-                  "url": "https://github.com/canonical/snapd.dart/commit/3ac403d73e964aa63d600b290b8e700bd8930676"
+                  "sha": "9c9327b5ba03a4ff3776038de3c0ca2daeb887d0",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790866556,
+                  "message": "chore: release 0.7.7 (#146)",
+                  "url": "https://github.com/canonical/snapd.dart/commit/9c9327b5ba03a4ff3776038de3c0ca2daeb887d0"
                },
                {
-                  "sha": "513a7180327455043673c50c6ec435fef263a886",
-                  "author": "Murad Eynizada",
-                  "timestamp": 1789551642,
-                  "message": "chore: release 0.7.6\n\nSigned-off-by: Murad Eynizada <murad.eynizada@canonical.com>",
-                  "url": "https://github.com/canonical/snapd.dart/commit/513a7180327455043673c50c6ec435fef263a886"
+                  "sha": "aa94598c02b4c22c64473a4f3280999d863cae63",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790866032,
+                  "message": "chore: release 0.7.7",
+                  "url": "https://github.com/canonical/snapd.dart/commit/aa94598c02b4c22c64473a4f3280999d863cae63"
                },
                {
-                  "sha": "8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e",
-                  "author": "Murad Eynizada",
-                  "timestamp": 1789551272,
-                  "message": "feat: add commonId support to SnapdClient.find() (#143)\n\n## Summary\n\nAdd support for searching snaps by `commonId` in `SnapdClient.find()`.\n\n## Validation\n\nAll existing tests continue to pass, and the new `find - common-id` test\nwas added.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/8c8ff14d77da6f2c1b7946bb3e61ccf363a7e20e"
+                  "sha": "618eecfb8f1ba301e07610e70b1b0b864ea0571c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1790865917,
+                  "message": "fix: encode body as utf8 without sending charset in content-type header (#145)\n\nCurrently snapd expects the content type to be exactly\n`application/json`, an added `charset` causes it to reply with `Bad\nrequest`. Since dart HTTP client's `write` method is directly tied to\nthe charset header, we need manually encode the json and add it to the\nrequest using the lower level `add` method instead.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/618eecfb8f1ba301e07610e70b1b0b864ea0571c"
                }
             ],
             "ciActions": [],
@@ -9793,9 +9793,18 @@
          {
             "name": "translations-verifier",
             "defaultBranch": "main",
-            "newCommits": 4,
+            "newCommits": 0,
             "url": "https://github.com/canonical/translations-verifier",
             "releases": [
+               {
+                  "id": 400814248,
+                  "version": "v0.3.1",
+                  "timestamp": 1790846750,
+                  "title": "v0.3.1",
+                  "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.3.0...v0.3.1\">0.3.1</a> (2026-09-29)</h2>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>properly parse html files (<a href=\"https://github.com/canonical/translations-verifier/commit/325ac7ae55abb2ab672824d43333e55817d8f142\">325ac7a</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.3.1",
+                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.3.1...main"
+               },
                {
                   "id": 394466374,
                   "version": "v0.3.0",
@@ -9813,15 +9822,6 @@
                   "body": "<h2><a href=\"https://github.com/canonical/translations-verifier/compare/v0.1.0...v0.2.0\">0.2.0</a> (2026-09-21)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>handle empty proposed translation without ai help (<a href=\"https://github.com/canonical/translations-verifier/commit/fd672f8870a40e485cbae1f7b26ba8b47a471d43\">fd672f8</a>)</li>\n</ul>\n",
                   "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.2.0",
                   "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.2.0...main"
-               },
-               {
-                  "id": 391349524,
-                  "version": "v0.1.0",
-                  "timestamp": 1789723347,
-                  "title": "v0.1.0",
-                  "body": "<h2>0.1.0 (2026-09-18)</h2>\n\n<h3>Features</h3>\n\n<ul>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/019c5b7bf627c1d0c15f0320aff16fe22014aec9\">019c5b7</a>)</li>\n<li>add error codes for better debugging (<a href=\"https://github.com/canonical/translations-verifier/commit/abadaa9d12e643a1870de771bf9505d637fbae8d\">abadaa9</a>)</li>\n</ul>\n\n<h3>Bug Fixes</h3>\n\n<ul>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/e16aec2ac06b9ac27aef57cf483fa1790771cf18\">e16aec2</a>)</li>\n<li>added missing gh action permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/86115b951a9c75481125ff677bd1b9bf95057780\">86115b9</a>)</li>\n<li>added pr permissions (<a href=\"https://github.com/canonical/translations-verifier/commit/15c81bff13606f4bfc940734175b88cca61e8168\">15c81bf</a>)</li>\n</ul>\n\n<h3>Documentation</h3>\n\n<ul>\n<li>simplify readme (<a href=\"https://github.com/canonical/translations-verifier/issues/14\">#14</a>) (<a href=\"https://github.com/canonical/translations-verifier/commit/84ff565dbabc8d881632dee9619ecf95f1a8434e\">84ff565</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/translations-verifier/releases/tag/v0.1.0",
-                  "compareUrl": "https://github.com/canonical/translations-verifier/compare/v0.1.0...main"
                }
             ],
             "commits": null,
@@ -9971,6 +9971,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "22154fde005146c25b776a37afd47878ca23eddd",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1790848077,
+                  "message": "fix(active-directory): show the AD page when autoinstall asks for it (#1560)\n\nThe installer didn't show the Active Directory page when an autoinstall\nfile listed `active-directory` in `interactive-sections`. So it never\nasked for the AD password, and the computer wasn't joined to the domain\n([LP: #2065109](https://bugs.launchpad.net/subiquity/+bug/2065109)).\n\nTwo things were wrong:\n- the `active-directory` section wasn't mapped to the AD page, and\n- the \"Use Active Directory\" box always started unticked.\n\nThis maps the section to the page, and starts with the box ticked when\nthe autoinstall sets an admin name. Unit tests and an integration test\ncover it.\n\nUDENG-11656",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/22154fde005146c25b776a37afd47878ca23eddd"
+               },
+               {
                   "sha": "39028ebb1e3d91fad65efb084fdef8926d61df57",
                   "author": "Sergo Beruashvili",
                   "timestamp": 1790791970,
@@ -9978,18 +9985,11 @@
                   "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/39028ebb1e3d91fad65efb084fdef8926d61df57"
                },
                {
-                  "sha": "4fb0ab22e43a07e5e6f0369d9401c2a67fb7974a",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790695067,
-                  "message": "Translations update from Hosted Weblate (#1538)\n\nTranslations update from [Hosted Weblate](https://hosted.weblate.org)\nfor [ubuntu-desktop-translations/Provision\nCommon](https://hosted.weblate.org/projects/ubuntu-desktop-translations/provision-common/).\n\n\n\nCurrent translation status:\n\n![Weblate translation\nstatus](https://hosted.weblate.org/widget/ubuntu-desktop-translations/provision-common/matrix-auto.svg)",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/4fb0ab22e43a07e5e6f0369d9401c2a67fb7974a"
-               },
-               {
-                  "sha": "eb01d60b97c75509c2c658c3414927c8c38bc832",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1790693645,
-                  "message": "maint: l10n regenerate",
-                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/eb01d60b97c75509c2c658c3414927c8c38bc832"
+                  "sha": "7d1933caa27cee3d90490f88f06a77401cf12f14",
+                  "author": "Yashpal Yadav",
+                  "timestamp": 1790752045,
+                  "message": "fix(active-directory): preselect AD when the section is interactive",
+                  "url": "https://github.com/canonical/ubuntu-desktop-provision/commit/7d1933caa27cee3d90490f88f06a77401cf12f14"
                }
             ],
             "ciActions": [
@@ -10403,7 +10403,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 73,
+            "newCommits": 81,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10450,14 +10450,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 683,
-                     "timestamp": 1790799898
+                     "revision": 692,
+                     "timestamp": 1790867413
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 682,
-                     "timestamp": 1790797201
+                     "revision": 691,
+                     "timestamp": 1790864946
                   }
                ],
                "channels": [
