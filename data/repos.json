@@ -3401,25 +3401,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e29633b7ed40d49298076ff99d6eaea9b60c1dbc",
+                  "author": "adombeck",
+                  "timestamp": 1790835244,
+                  "message": "Skip authd migrations when the stable PPA lacks the devel suite (#1982)",
+                  "url": "https://github.com/canonical/authd/commit/e29633b7ed40d49298076ff99d6eaea9b60c1dbc"
+               },
+               {
+                  "sha": "14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790176799,
+                  "message": "Skip authd migrations when the stable PPA lacks the devel suite\n\nDuring each new Ubuntu development cycle, there's a period when there's\nno authd release yet for the devel release in the stable PPA. Currently,\nthat's causing the migration tests to fail, because they try to install\nauthd from the stable PPA first and then update it to the version from\nthe edge PPA.\n\nSkip the migration tests in that case, but only for that exact error.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a"
+               },
+               {
                   "sha": "f49c2c92be4e802399699f365e355ca57fe19c84",
                   "author": "adombeck",
                   "timestamp": 1790796251,
                   "message": "Permission denial test must use a non-root peer (#2029)",
                   "url": "https://github.com/canonical/authd/commit/f49c2c92be4e802399699f365e355ca57fe19c84"
-               },
-               {
-                  "sha": "d385b284d9e934f214b7b8394a9645fb84cfbc8d",
-                  "author": "adombeck",
-                  "timestamp": 1790796053,
-                  "message": "ci: Run shellcheck whenever a shell script is changed (#2026)",
-                  "url": "https://github.com/canonical/authd/commit/d385b284d9e934f214b7b8394a9645fb84cfbc8d"
-               },
-               {
-                  "sha": "9645b8453f130958d48e321d7f51564ae9bf1be9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790781398,
-                  "message": "ci: Run ShellCheck for script and config changes\n\nThe QA workflows filtered out directories containing shell scripts, which\nmade ShellCheck run when no scripts had changed.\n\nUse one set of paths for pushes and pull requests. Include the workflow and\nShellCheck configuration so checker changes retrigger the job.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/9645b8453f130958d48e321d7f51564ae9bf1be9"
                }
             ],
             "ciActions": [
@@ -4120,7 +4120,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -5853,25 +5853,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e29633b7ed40d49298076ff99d6eaea9b60c1dbc",
+                  "author": "adombeck",
+                  "timestamp": 1790835244,
+                  "message": "Skip authd migrations when the stable PPA lacks the devel suite (#1982)",
+                  "url": "https://github.com/canonical/authd/commit/e29633b7ed40d49298076ff99d6eaea9b60c1dbc"
+               },
+               {
+                  "sha": "14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790176799,
+                  "message": "Skip authd migrations when the stable PPA lacks the devel suite\n\nDuring each new Ubuntu development cycle, there's a period when there's\nno authd release yet for the devel release in the stable PPA. Currently,\nthat's causing the migration tests to fail, because they try to install\nauthd from the stable PPA first and then update it to the version from\nthe edge PPA.\n\nSkip the migration tests in that case, but only for that exact error.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a"
+               },
+               {
                   "sha": "f49c2c92be4e802399699f365e355ca57fe19c84",
                   "author": "adombeck",
                   "timestamp": 1790796251,
                   "message": "Permission denial test must use a non-root peer (#2029)",
                   "url": "https://github.com/canonical/authd/commit/f49c2c92be4e802399699f365e355ca57fe19c84"
-               },
-               {
-                  "sha": "d385b284d9e934f214b7b8394a9645fb84cfbc8d",
-                  "author": "adombeck",
-                  "timestamp": 1790796053,
-                  "message": "ci: Run shellcheck whenever a shell script is changed (#2026)",
-                  "url": "https://github.com/canonical/authd/commit/d385b284d9e934f214b7b8394a9645fb84cfbc8d"
-               },
-               {
-                  "sha": "9645b8453f130958d48e321d7f51564ae9bf1be9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790781398,
-                  "message": "ci: Run ShellCheck for script and config changes\n\nThe QA workflows filtered out directories containing shell scripts, which\nmade ShellCheck run when no scripts had changed.\n\nUse one set of paths for pushes and pull requests. Include the workflow and\nShellCheck configuration so checker changes retrigger the job.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/9645b8453f130958d48e321d7f51564ae9bf1be9"
                }
             ],
             "ciActions": [
@@ -6605,7 +6605,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -8408,25 +8408,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "e29633b7ed40d49298076ff99d6eaea9b60c1dbc",
+                  "author": "adombeck",
+                  "timestamp": 1790835244,
+                  "message": "Skip authd migrations when the stable PPA lacks the devel suite (#1982)",
+                  "url": "https://github.com/canonical/authd/commit/e29633b7ed40d49298076ff99d6eaea9b60c1dbc"
+               },
+               {
+                  "sha": "14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790176799,
+                  "message": "Skip authd migrations when the stable PPA lacks the devel suite\n\nDuring each new Ubuntu development cycle, there's a period when there's\nno authd release yet for the devel release in the stable PPA. Currently,\nthat's causing the migration tests to fail, because they try to install\nauthd from the stable PPA first and then update it to the version from\nthe edge PPA.\n\nSkip the migration tests in that case, but only for that exact error.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/14e0f5ac9f8f96bc3fc6011ef5efad3e1617971a"
+               },
+               {
                   "sha": "f49c2c92be4e802399699f365e355ca57fe19c84",
                   "author": "adombeck",
                   "timestamp": 1790796251,
                   "message": "Permission denial test must use a non-root peer (#2029)",
                   "url": "https://github.com/canonical/authd/commit/f49c2c92be4e802399699f365e355ca57fe19c84"
-               },
-               {
-                  "sha": "d385b284d9e934f214b7b8394a9645fb84cfbc8d",
-                  "author": "adombeck",
-                  "timestamp": 1790796053,
-                  "message": "ci: Run shellcheck whenever a shell script is changed (#2026)",
-                  "url": "https://github.com/canonical/authd/commit/d385b284d9e934f214b7b8394a9645fb84cfbc8d"
-               },
-               {
-                  "sha": "9645b8453f130958d48e321d7f51564ae9bf1be9",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1790781398,
-                  "message": "ci: Run ShellCheck for script and config changes\n\nThe QA workflows filtered out directories containing shell scripts, which\nmade ShellCheck run when no scripts had changed.\n\nUse one set of paths for pushes and pull requests. Include the workflow and\nShellCheck configuration so checker changes retrigger the job.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/9645b8453f130958d48e321d7f51564ae9bf1be9"
                }
             ],
             "ciActions": [
@@ -9127,7 +9127,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
