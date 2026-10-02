@@ -3211,7 +3211,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 7,
+            "newCommits": 9,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -3401,25 +3401,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "298199701cf7cb5dec17a1700b498c28a1a94f26",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790868900,
-                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#2036)\n\nBumps the gh-actions group with 2 updates in the / directory:\n\nUpdates `actions/setup-python` from 6 to 7\nUpdates `tiobe/tics-github-action` from 3 to 4\n\n### Follow-up CI fixes\n\nThe TICS workflow has been failing for months, so the\n`tics-github-action` bump\ncould not be verified. This PR also carries the two fixes that unblock\nit:\n\n- `ci: fix the TICS coverage lookup and artifact paths`: the QA run id\nresolved\nto `NaN`, and the merge step looked for the brokers report one directory\ntoo\nhigh. The step now names the QA workflows by file and takes the newest\nmain\nrun that still has a live coverage artifact. Both artifacts are\ndownloaded by\nname, so a missing one fails in the download step instead of two steps\nlater.\n- `Keep third-party sources out of TICS analysis`: TICS closed with code\n-1 on\nthe Makefile of the `e2e-tests/.yarf` submodule. Only `libhimmelblau` is\ninitialized for the MS Entra build now, and all submodule worktrees are\n  removed before the analysis starts.\n\nVerified on this revision, TICS v4 analysis included:\nhttps://github.com/canonical/authd/actions/runs/36851211396\n\nUDENG-11819",
-                  "url": "https://github.com/canonical/authd/commit/298199701cf7cb5dec17a1700b498c28a1a94f26"
+                  "sha": "3c1c0f51b9ad3b67a9757572ea7284b597111076",
+                  "author": "adombeck",
+                  "timestamp": 1790949686,
+                  "message": "e2e: Support wildcards in e2e-tests marker (#2043)",
+                  "url": "https://github.com/canonical/authd/commit/3c1c0f51b9ad3b67a9757572ea7284b597111076"
                },
                {
-                  "sha": "54617e7a6f06a071bf99553bb6fa31cddbc071fc",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790846159,
-                  "message": "Keep third-party sources out of TICS analysis\n\nThe TICS job scanned the YARF submodule even though it is not part of\nauthd's source. It still needs libhimmelblau to build the MS Entra\nvariant, so only initialize that dependency for the build and remove\nsubmodule worktrees before TICS starts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/54617e7a6f06a071bf99553bb6fa31cddbc071fc"
+                  "sha": "48bedb01060e0a91a41460ef50a5b4cef3917ad0",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790889752,
+                  "message": "ci: Simplify e2e marker descriptions",
+                  "url": "https://github.com/canonical/authd/commit/48bedb01060e0a91a41460ef50a5b4cef3917ad0"
                },
                {
-                  "sha": "f6c94fae8305d23cbfc2c14ed98dc0181ceb672c",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790807589,
-                  "message": "ci: fix the TICS coverage lookup and artifact paths\n\nThe TICS analysis job failed on every run since 2026-02-23 with:\n\n  GET /repos/canonical/authd/actions/runs/NaN/artifacts - 404\n  ##[error]Unable to download artifact(s): Not Found\n\nThe run id it wanted was never set, and the failure was invisible\nbecause the gh error went to stderr inside a command substitution piped\ninto jq. jq exits 0 on empty input and there was no pipefail, so set -eu\nsaw a healthy pipeline, wrote an empty id, and download-artifact then\nasked for run \"NaN\".\n\nTwo separate problems sat behind that:\n\n`gh run list` matched two registered workflows for this display name:\n`qa.yaml` and `vendored-copyright-check.yaml`. The latter is absent\nfrom the repository, so select `qa.yaml` by filename. Name the brokers\nworkflow by file too: its display name still resolves, but only because\nthe disabled `brokers-qa.yml` copy that shares it is ignored.\n\nAsking for the last run that concluded in success was the wrong\nquestion. The QA workflows often fail on jobs unrelated to coverage\nwhile the coverage job still uploads its artifact, and artifacts are\ndeleted after 90 days, so filtering on success skipped over usable\ncoverage and landed on run 27685037322 from June, which had nothing\nleft. Walk the recent runs instead and take the first that still has a\nnon-expired coverage artifact, whatever the workflow conclusion. Copilot\nreview of the earlier attempt on PR 1942 pointed this out.\n\nWith the lookup fixed, the merge step failed next on the brokers\nreport:\n\n  mv: cannot stat '.artifacts/brokers/Cobertura.xml'\n\ndownload-artifact unpacks each artifact into a subdirectory named after\nit when given no name, so the brokers report landed in\n.artifacts/brokers/coverage/ while the merge step looked one level up.\nThe authd path happened to match the real layout, which is why only the\nbrokers line was wrong. Name the artifact so it is extracted straight\ninto the given path. As a bonus, a run without the artifact now fails in\nthe download step with a clear message rather than as a missing file two\nsteps later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f6c94fae8305d23cbfc2c14ed98dc0181ceb672c"
+                  "sha": "f3725d344abae75dea627683d509454b2cbf6309",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790889423,
+                  "message": "ci: Sort e2e marker descriptions",
+                  "url": "https://github.com/canonical/authd/commit/f3725d344abae75dea627683d509454b2cbf6309"
                }
             ],
             "ciActions": [
@@ -4120,7 +4120,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -4190,6 +4190,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "15a104bb6f15405c208f3b25ee3343b65f40e941",
+                  "author": "Juan Ruitiña",
+                  "timestamp": 1790950839,
+                  "message": "feat(config): refresh the app icons",
+                  "url": "https://github.com/canonical/myna/commit/15a104bb6f15405c208f3b25ee3343b65f40e941"
+               },
+               {
                   "sha": "4f957c29f07de05b707369b4e72f7a063414eb37",
                   "author": "Charles",
                   "timestamp": 1790843712,
@@ -4202,13 +4209,6 @@
                   "timestamp": 1790843349,
                   "message": "refactor(desktop): track readiness in every indicator mode\n\nReadiness leaves the D-Bus module and the session tees it always, not\nonly under --dbus, so any indicator can tell loading from listening.",
                   "url": "https://github.com/canonical/myna/commit/5c1b69747ad2c263d88d9f7e54561a63a3194cea"
-               },
-               {
-                  "sha": "c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433",
-                  "author": "Charles",
-                  "timestamp": 1790843301,
-                  "message": "fix(desktop): a press with no model resets readiness\n\nThe reset ran after backend resolution, so a press that found no model\nkept the previous session's Ready and published \"recording\" before the\nerror.",
-                  "url": "https://github.com/canonical/myna/commit/c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433"
                }
             ],
             "ciActions": [],
@@ -5853,25 +5853,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "298199701cf7cb5dec17a1700b498c28a1a94f26",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790868900,
-                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#2036)\n\nBumps the gh-actions group with 2 updates in the / directory:\n\nUpdates `actions/setup-python` from 6 to 7\nUpdates `tiobe/tics-github-action` from 3 to 4\n\n### Follow-up CI fixes\n\nThe TICS workflow has been failing for months, so the\n`tics-github-action` bump\ncould not be verified. This PR also carries the two fixes that unblock\nit:\n\n- `ci: fix the TICS coverage lookup and artifact paths`: the QA run id\nresolved\nto `NaN`, and the merge step looked for the brokers report one directory\ntoo\nhigh. The step now names the QA workflows by file and takes the newest\nmain\nrun that still has a live coverage artifact. Both artifacts are\ndownloaded by\nname, so a missing one fails in the download step instead of two steps\nlater.\n- `Keep third-party sources out of TICS analysis`: TICS closed with code\n-1 on\nthe Makefile of the `e2e-tests/.yarf` submodule. Only `libhimmelblau` is\ninitialized for the MS Entra build now, and all submodule worktrees are\n  removed before the analysis starts.\n\nVerified on this revision, TICS v4 analysis included:\nhttps://github.com/canonical/authd/actions/runs/36851211396\n\nUDENG-11819",
-                  "url": "https://github.com/canonical/authd/commit/298199701cf7cb5dec17a1700b498c28a1a94f26"
+                  "sha": "3c1c0f51b9ad3b67a9757572ea7284b597111076",
+                  "author": "adombeck",
+                  "timestamp": 1790949686,
+                  "message": "e2e: Support wildcards in e2e-tests marker (#2043)",
+                  "url": "https://github.com/canonical/authd/commit/3c1c0f51b9ad3b67a9757572ea7284b597111076"
                },
                {
-                  "sha": "54617e7a6f06a071bf99553bb6fa31cddbc071fc",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790846159,
-                  "message": "Keep third-party sources out of TICS analysis\n\nThe TICS job scanned the YARF submodule even though it is not part of\nauthd's source. It still needs libhimmelblau to build the MS Entra\nvariant, so only initialize that dependency for the build and remove\nsubmodule worktrees before TICS starts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/54617e7a6f06a071bf99553bb6fa31cddbc071fc"
+                  "sha": "48bedb01060e0a91a41460ef50a5b4cef3917ad0",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790889752,
+                  "message": "ci: Simplify e2e marker descriptions",
+                  "url": "https://github.com/canonical/authd/commit/48bedb01060e0a91a41460ef50a5b4cef3917ad0"
                },
                {
-                  "sha": "f6c94fae8305d23cbfc2c14ed98dc0181ceb672c",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790807589,
-                  "message": "ci: fix the TICS coverage lookup and artifact paths\n\nThe TICS analysis job failed on every run since 2026-02-23 with:\n\n  GET /repos/canonical/authd/actions/runs/NaN/artifacts - 404\n  ##[error]Unable to download artifact(s): Not Found\n\nThe run id it wanted was never set, and the failure was invisible\nbecause the gh error went to stderr inside a command substitution piped\ninto jq. jq exits 0 on empty input and there was no pipefail, so set -eu\nsaw a healthy pipeline, wrote an empty id, and download-artifact then\nasked for run \"NaN\".\n\nTwo separate problems sat behind that:\n\n`gh run list` matched two registered workflows for this display name:\n`qa.yaml` and `vendored-copyright-check.yaml`. The latter is absent\nfrom the repository, so select `qa.yaml` by filename. Name the brokers\nworkflow by file too: its display name still resolves, but only because\nthe disabled `brokers-qa.yml` copy that shares it is ignored.\n\nAsking for the last run that concluded in success was the wrong\nquestion. The QA workflows often fail on jobs unrelated to coverage\nwhile the coverage job still uploads its artifact, and artifacts are\ndeleted after 90 days, so filtering on success skipped over usable\ncoverage and landed on run 27685037322 from June, which had nothing\nleft. Walk the recent runs instead and take the first that still has a\nnon-expired coverage artifact, whatever the workflow conclusion. Copilot\nreview of the earlier attempt on PR 1942 pointed this out.\n\nWith the lookup fixed, the merge step failed next on the brokers\nreport:\n\n  mv: cannot stat '.artifacts/brokers/Cobertura.xml'\n\ndownload-artifact unpacks each artifact into a subdirectory named after\nit when given no name, so the brokers report landed in\n.artifacts/brokers/coverage/ while the merge step looked one level up.\nThe authd path happened to match the real layout, which is why only the\nbrokers line was wrong. Name the artifact so it is extracted straight\ninto the given path. As a bonus, a run without the artifact now fails in\nthe download step with a clear message rather than as a missing file two\nsteps later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f6c94fae8305d23cbfc2c14ed98dc0181ceb672c"
+                  "sha": "f3725d344abae75dea627683d509454b2cbf6309",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790889423,
+                  "message": "ci: Sort e2e marker descriptions",
+                  "url": "https://github.com/canonical/authd/commit/f3725d344abae75dea627683d509454b2cbf6309"
                }
             ],
             "ciActions": [
@@ -6605,7 +6605,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -6675,6 +6675,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "15a104bb6f15405c208f3b25ee3343b65f40e941",
+                  "author": "Juan Ruitiña",
+                  "timestamp": 1790950839,
+                  "message": "feat(config): refresh the app icons",
+                  "url": "https://github.com/canonical/myna/commit/15a104bb6f15405c208f3b25ee3343b65f40e941"
+               },
+               {
                   "sha": "4f957c29f07de05b707369b4e72f7a063414eb37",
                   "author": "Charles",
                   "timestamp": 1790843712,
@@ -6687,13 +6694,6 @@
                   "timestamp": 1790843349,
                   "message": "refactor(desktop): track readiness in every indicator mode\n\nReadiness leaves the D-Bus module and the session tees it always, not\nonly under --dbus, so any indicator can tell loading from listening.",
                   "url": "https://github.com/canonical/myna/commit/5c1b69747ad2c263d88d9f7e54561a63a3194cea"
-               },
-               {
-                  "sha": "c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433",
-                  "author": "Charles",
-                  "timestamp": 1790843301,
-                  "message": "fix(desktop): a press with no model resets readiness\n\nThe reset ran after backend resolution, so a press that found no model\nkept the previous session's Ready and published \"recording\" before the\nerror.",
-                  "url": "https://github.com/canonical/myna/commit/c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433"
                }
             ],
             "ciActions": [],
@@ -8212,7 +8212,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 7,
+            "newCommits": 9,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -8408,25 +8408,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "298199701cf7cb5dec17a1700b498c28a1a94f26",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790868900,
-                  "message": "deps(ci): bump the gh-actions group across 1 directory with 2 updates (#2036)\n\nBumps the gh-actions group with 2 updates in the / directory:\n\nUpdates `actions/setup-python` from 6 to 7\nUpdates `tiobe/tics-github-action` from 3 to 4\n\n### Follow-up CI fixes\n\nThe TICS workflow has been failing for months, so the\n`tics-github-action` bump\ncould not be verified. This PR also carries the two fixes that unblock\nit:\n\n- `ci: fix the TICS coverage lookup and artifact paths`: the QA run id\nresolved\nto `NaN`, and the merge step looked for the brokers report one directory\ntoo\nhigh. The step now names the QA workflows by file and takes the newest\nmain\nrun that still has a live coverage artifact. Both artifacts are\ndownloaded by\nname, so a missing one fails in the download step instead of two steps\nlater.\n- `Keep third-party sources out of TICS analysis`: TICS closed with code\n-1 on\nthe Makefile of the `e2e-tests/.yarf` submodule. Only `libhimmelblau` is\ninitialized for the MS Entra build now, and all submodule worktrees are\n  removed before the analysis starts.\n\nVerified on this revision, TICS v4 analysis included:\nhttps://github.com/canonical/authd/actions/runs/36851211396\n\nUDENG-11819",
-                  "url": "https://github.com/canonical/authd/commit/298199701cf7cb5dec17a1700b498c28a1a94f26"
+                  "sha": "3c1c0f51b9ad3b67a9757572ea7284b597111076",
+                  "author": "adombeck",
+                  "timestamp": 1790949686,
+                  "message": "e2e: Support wildcards in e2e-tests marker (#2043)",
+                  "url": "https://github.com/canonical/authd/commit/3c1c0f51b9ad3b67a9757572ea7284b597111076"
                },
                {
-                  "sha": "54617e7a6f06a071bf99553bb6fa31cddbc071fc",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790846159,
-                  "message": "Keep third-party sources out of TICS analysis\n\nThe TICS job scanned the YARF submodule even though it is not part of\nauthd's source. It still needs libhimmelblau to build the MS Entra\nvariant, so only initialize that dependency for the build and remove\nsubmodule worktrees before TICS starts.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/54617e7a6f06a071bf99553bb6fa31cddbc071fc"
+                  "sha": "48bedb01060e0a91a41460ef50a5b4cef3917ad0",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790889752,
+                  "message": "ci: Simplify e2e marker descriptions",
+                  "url": "https://github.com/canonical/authd/commit/48bedb01060e0a91a41460ef50a5b4cef3917ad0"
                },
                {
-                  "sha": "f6c94fae8305d23cbfc2c14ed98dc0181ceb672c",
-                  "author": "Noor Eldeen Mansour",
-                  "timestamp": 1790807589,
-                  "message": "ci: fix the TICS coverage lookup and artifact paths\n\nThe TICS analysis job failed on every run since 2026-02-23 with:\n\n  GET /repos/canonical/authd/actions/runs/NaN/artifacts - 404\n  ##[error]Unable to download artifact(s): Not Found\n\nThe run id it wanted was never set, and the failure was invisible\nbecause the gh error went to stderr inside a command substitution piped\ninto jq. jq exits 0 on empty input and there was no pipefail, so set -eu\nsaw a healthy pipeline, wrote an empty id, and download-artifact then\nasked for run \"NaN\".\n\nTwo separate problems sat behind that:\n\n`gh run list` matched two registered workflows for this display name:\n`qa.yaml` and `vendored-copyright-check.yaml`. The latter is absent\nfrom the repository, so select `qa.yaml` by filename. Name the brokers\nworkflow by file too: its display name still resolves, but only because\nthe disabled `brokers-qa.yml` copy that shares it is ignored.\n\nAsking for the last run that concluded in success was the wrong\nquestion. The QA workflows often fail on jobs unrelated to coverage\nwhile the coverage job still uploads its artifact, and artifacts are\ndeleted after 90 days, so filtering on success skipped over usable\ncoverage and landed on run 27685037322 from June, which had nothing\nleft. Walk the recent runs instead and take the first that still has a\nnon-expired coverage artifact, whatever the workflow conclusion. Copilot\nreview of the earlier attempt on PR 1942 pointed this out.\n\nWith the lookup fixed, the merge step failed next on the brokers\nreport:\n\n  mv: cannot stat '.artifacts/brokers/Cobertura.xml'\n\ndownload-artifact unpacks each artifact into a subdirectory named after\nit when given no name, so the brokers report landed in\n.artifacts/brokers/coverage/ while the merge step looked one level up.\nThe authd path happened to match the real layout, which is why only the\nbrokers line was wrong. Name the artifact so it is extracted straight\ninto the given path. As a bonus, a run without the artifact now fails in\nthe download step with a clear message rather than as a missing file two\nsteps later.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f6c94fae8305d23cbfc2c14ed98dc0181ceb672c"
+                  "sha": "f3725d344abae75dea627683d509454b2cbf6309",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1790889423,
+                  "message": "ci: Sort e2e marker descriptions",
+                  "url": "https://github.com/canonical/authd/commit/f3725d344abae75dea627683d509454b2cbf6309"
                }
             ],
             "ciActions": [
@@ -9127,7 +9127,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -9197,6 +9197,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "15a104bb6f15405c208f3b25ee3343b65f40e941",
+                  "author": "Juan Ruitiña",
+                  "timestamp": 1790950839,
+                  "message": "feat(config): refresh the app icons",
+                  "url": "https://github.com/canonical/myna/commit/15a104bb6f15405c208f3b25ee3343b65f40e941"
+               },
+               {
                   "sha": "4f957c29f07de05b707369b4e72f7a063414eb37",
                   "author": "Charles",
                   "timestamp": 1790843712,
@@ -9209,13 +9216,6 @@
                   "timestamp": 1790843349,
                   "message": "refactor(desktop): track readiness in every indicator mode\n\nReadiness leaves the D-Bus module and the session tees it always, not\nonly under --dbus, so any indicator can tell loading from listening.",
                   "url": "https://github.com/canonical/myna/commit/5c1b69747ad2c263d88d9f7e54561a63a3194cea"
-               },
-               {
-                  "sha": "c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433",
-                  "author": "Charles",
-                  "timestamp": 1790843301,
-                  "message": "fix(desktop): a press with no model resets readiness\n\nThe reset ran after backend resolution, so a press that found no model\nkept the previous session's Ready and published \"recording\" before the\nerror.",
-                  "url": "https://github.com/canonical/myna/commit/c8e62c7f7b0b01cb03f20586aa64b02cfb1fd433"
                }
             ],
             "ciActions": [],
@@ -10550,7 +10550,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 7,
+            "newCommits": 9,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
