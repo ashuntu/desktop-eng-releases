@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "15a104bb6f15405c208f3b25ee3343b65f40e941",
-                  "author": "Juan Ruitiña",
-                  "timestamp": 1790950839,
-                  "message": "feat(config): refresh the app icons",
-                  "url": "https://github.com/canonical/myna/commit/15a104bb6f15405c208f3b25ee3343b65f40e941"
+                  "sha": "18e1de302459a350b7de839cd24c0de5f6f1cfaf",
+                  "author": "Charles",
+                  "timestamp": 1790980465,
+                  "message": "build: pin the Rust toolchain to 1.99.0\n\nCI's workshop took whatever stable was current, so Rust 1.99's new\nlints turned main red with no commit. One pin in client/ now drives\nthe workshops, CI and the client snap; bumps are deliberate commits.\nThe deb keeps each series' distro rustc.\n\nThe snap reads the channel from the same file. The cov action checks\nllvm-tools from client/ so it lands on the pinned toolchain.",
+                  "url": "https://github.com/canonical/myna/commit/18e1de302459a350b7de839cd24c0de5f6f1cfaf"
                },
                {
-                  "sha": "4f957c29f07de05b707369b4e72f7a063414eb37",
+                  "sha": "adf154b0a2abec6040d66746c5c6550f8dc9e8f7",
                   "author": "Charles",
-                  "timestamp": 1790843712,
-                  "message": "fix(sound): the start cue waits for the model to be ready\n\nIt played at the press, before the backend was resolved, so a press\nwith no model or a failed load chimed Start then Error. Start now takes\nthe first Recording after Ready, as the HUD's loading/recording split\ndoes; a session that ends while loading is silent.",
-                  "url": "https://github.com/canonical/myna/commit/4f957c29f07de05b707369b4e72f7a063414eb37"
+                  "timestamp": 1790979981,
+                  "message": "fix(myna-config): keep fetch_update under Rust 1.99's deprecation\n\ntry_update replaces it from 1.99, but the noble deb builds with\nrustc 1.91, so allow the deprecation rather than rename.",
+                  "url": "https://github.com/canonical/myna/commit/adf154b0a2abec6040d66746c5c6550f8dc9e8f7"
                },
                {
-                  "sha": "5c1b69747ad2c263d88d9f7e54561a63a3194cea",
+                  "sha": "9e75d3fd2d214200e972445c190da16303fb937d",
                   "author": "Charles",
-                  "timestamp": 1790843349,
-                  "message": "refactor(desktop): track readiness in every indicator mode\n\nReadiness leaves the D-Bus module and the session tees it always, not\nonly under --dbus, so any indicator can tell loading from listening.",
-                  "url": "https://github.com/canonical/myna/commit/5c1b69747ad2c263d88d9f7e54561a63a3194cea"
+                  "timestamp": 1790979981,
+                  "message": "fix(core): info_log! expands to an expression, not a statement\n\nIts trailing semicolon trips semicolon_in_expressions_from_non_local_macros\n(deny under -D warnings from Rust 1.99) wherever it is a match arm.",
+                  "url": "https://github.com/canonical/myna/commit/9e75d3fd2d214200e972445c190da16303fb937d"
                }
             ],
             "ciActions": [],
@@ -6675,25 +6675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "15a104bb6f15405c208f3b25ee3343b65f40e941",
-                  "author": "Juan Ruitiña",
-                  "timestamp": 1790950839,
-                  "message": "feat(config): refresh the app icons",
-                  "url": "https://github.com/canonical/myna/commit/15a104bb6f15405c208f3b25ee3343b65f40e941"
+                  "sha": "18e1de302459a350b7de839cd24c0de5f6f1cfaf",
+                  "author": "Charles",
+                  "timestamp": 1790980465,
+                  "message": "build: pin the Rust toolchain to 1.99.0\n\nCI's workshop took whatever stable was current, so Rust 1.99's new\nlints turned main red with no commit. One pin in client/ now drives\nthe workshops, CI and the client snap; bumps are deliberate commits.\nThe deb keeps each series' distro rustc.\n\nThe snap reads the channel from the same file. The cov action checks\nllvm-tools from client/ so it lands on the pinned toolchain.",
+                  "url": "https://github.com/canonical/myna/commit/18e1de302459a350b7de839cd24c0de5f6f1cfaf"
                },
                {
-                  "sha": "4f957c29f07de05b707369b4e72f7a063414eb37",
+                  "sha": "adf154b0a2abec6040d66746c5c6550f8dc9e8f7",
                   "author": "Charles",
-                  "timestamp": 1790843712,
-                  "message": "fix(sound): the start cue waits for the model to be ready\n\nIt played at the press, before the backend was resolved, so a press\nwith no model or a failed load chimed Start then Error. Start now takes\nthe first Recording after Ready, as the HUD's loading/recording split\ndoes; a session that ends while loading is silent.",
-                  "url": "https://github.com/canonical/myna/commit/4f957c29f07de05b707369b4e72f7a063414eb37"
+                  "timestamp": 1790979981,
+                  "message": "fix(myna-config): keep fetch_update under Rust 1.99's deprecation\n\ntry_update replaces it from 1.99, but the noble deb builds with\nrustc 1.91, so allow the deprecation rather than rename.",
+                  "url": "https://github.com/canonical/myna/commit/adf154b0a2abec6040d66746c5c6550f8dc9e8f7"
                },
                {
-                  "sha": "5c1b69747ad2c263d88d9f7e54561a63a3194cea",
+                  "sha": "9e75d3fd2d214200e972445c190da16303fb937d",
                   "author": "Charles",
-                  "timestamp": 1790843349,
-                  "message": "refactor(desktop): track readiness in every indicator mode\n\nReadiness leaves the D-Bus module and the session tees it always, not\nonly under --dbus, so any indicator can tell loading from listening.",
-                  "url": "https://github.com/canonical/myna/commit/5c1b69747ad2c263d88d9f7e54561a63a3194cea"
+                  "timestamp": 1790979981,
+                  "message": "fix(core): info_log! expands to an expression, not a statement\n\nIts trailing semicolon trips semicolon_in_expressions_from_non_local_macros\n(deny under -D warnings from Rust 1.99) wherever it is a match arm.",
+                  "url": "https://github.com/canonical/myna/commit/9e75d3fd2d214200e972445c190da16303fb937d"
                }
             ],
             "ciActions": [],
@@ -9197,25 +9197,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "15a104bb6f15405c208f3b25ee3343b65f40e941",
-                  "author": "Juan Ruitiña",
-                  "timestamp": 1790950839,
-                  "message": "feat(config): refresh the app icons",
-                  "url": "https://github.com/canonical/myna/commit/15a104bb6f15405c208f3b25ee3343b65f40e941"
+                  "sha": "18e1de302459a350b7de839cd24c0de5f6f1cfaf",
+                  "author": "Charles",
+                  "timestamp": 1790980465,
+                  "message": "build: pin the Rust toolchain to 1.99.0\n\nCI's workshop took whatever stable was current, so Rust 1.99's new\nlints turned main red with no commit. One pin in client/ now drives\nthe workshops, CI and the client snap; bumps are deliberate commits.\nThe deb keeps each series' distro rustc.\n\nThe snap reads the channel from the same file. The cov action checks\nllvm-tools from client/ so it lands on the pinned toolchain.",
+                  "url": "https://github.com/canonical/myna/commit/18e1de302459a350b7de839cd24c0de5f6f1cfaf"
                },
                {
-                  "sha": "4f957c29f07de05b707369b4e72f7a063414eb37",
+                  "sha": "adf154b0a2abec6040d66746c5c6550f8dc9e8f7",
                   "author": "Charles",
-                  "timestamp": 1790843712,
-                  "message": "fix(sound): the start cue waits for the model to be ready\n\nIt played at the press, before the backend was resolved, so a press\nwith no model or a failed load chimed Start then Error. Start now takes\nthe first Recording after Ready, as the HUD's loading/recording split\ndoes; a session that ends while loading is silent.",
-                  "url": "https://github.com/canonical/myna/commit/4f957c29f07de05b707369b4e72f7a063414eb37"
+                  "timestamp": 1790979981,
+                  "message": "fix(myna-config): keep fetch_update under Rust 1.99's deprecation\n\ntry_update replaces it from 1.99, but the noble deb builds with\nrustc 1.91, so allow the deprecation rather than rename.",
+                  "url": "https://github.com/canonical/myna/commit/adf154b0a2abec6040d66746c5c6550f8dc9e8f7"
                },
                {
-                  "sha": "5c1b69747ad2c263d88d9f7e54561a63a3194cea",
+                  "sha": "9e75d3fd2d214200e972445c190da16303fb937d",
                   "author": "Charles",
-                  "timestamp": 1790843349,
-                  "message": "refactor(desktop): track readiness in every indicator mode\n\nReadiness leaves the D-Bus module and the session tees it always, not\nonly under --dbus, so any indicator can tell loading from listening.",
-                  "url": "https://github.com/canonical/myna/commit/5c1b69747ad2c263d88d9f7e54561a63a3194cea"
+                  "timestamp": 1790979981,
+                  "message": "fix(core): info_log! expands to an expression, not a statement\n\nIts trailing semicolon trips semicolon_in_expressions_from_non_local_macros\n(deny under -D warnings from Rust 1.99) wherever it is a match arm.",
+                  "url": "https://github.com/canonical/myna/commit/9e75d3fd2d214200e972445c190da16303fb937d"
                }
             ],
             "ciActions": [],
