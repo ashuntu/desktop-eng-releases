@@ -1018,6 +1018,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "bcfbb9ec9981e2887da767b0e1fa1b0e8c7be7e1",
+                  "author": "github-actions[bot]",
+                  "timestamp": 1791030400,
+                  "message": "Update tag",
+                  "url": "https://github.com/ubuntu/gnome-contacts/commit/bcfbb9ec9981e2887da767b0e1fa1b0e8c7be7e1"
+               },
+               {
                   "sha": "a6289d6decca1079e10f8fdac94f09d7a6d6679d",
                   "author": "github-actions[bot]",
                   "timestamp": 1789303235,
@@ -1030,13 +1037,6 @@
                   "timestamp": 1789128575,
                   "message": "Update tag",
                   "url": "https://github.com/ubuntu/gnome-contacts/commit/9f4ccb14004213abb2cc11f4ed78add5a6a28a6d"
-               },
-               {
-                  "sha": "1a2d22222738203d2fbec056d68fc086503dcc8f",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1787944992,
-                  "message": "Update tag",
-                  "url": "https://github.com/ubuntu/gnome-contacts/commit/1a2d22222738203d2fbec056d68fc086503dcc8f"
                }
             ],
             "ciActions": [],
@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "18e1de302459a350b7de839cd24c0de5f6f1cfaf",
+                  "sha": "3346a293f8ce903ad89c785c1a5412c9bd99c0af",
                   "author": "Charles",
-                  "timestamp": 1790980465,
-                  "message": "build: pin the Rust toolchain to 1.99.0\n\nCI's workshop took whatever stable was current, so Rust 1.99's new\nlints turned main red with no commit. One pin in client/ now drives\nthe workshops, CI and the client snap; bumps are deliberate commits.\nThe deb keeps each series' distro rustc.\n\nThe snap reads the channel from the same file. The cov action checks\nllvm-tools from client/ so it lands on the pinned toolchain.",
-                  "url": "https://github.com/canonical/myna/commit/18e1de302459a350b7de839cd24c0de5f6f1cfaf"
+                  "timestamp": 1791023794,
+                  "message": "ci: e2e and Testflinger workflows\n\nmake e2e provisions a GNOME desktop LXD VM for E2E_RELEASE and runs the\nMyna Settings suites; e2e.yml runs it per series on PRs touching Myna\nSettings, myna-core, client/data or e2e-tests, and nightly. The VM is\nprovisioned fresh every run, so an edge snap regression shows too, and\nthe devel series is informational.\n\nmake testflinger submits the hardware smoke; testflinger.yml runs it\nnightly once the client credentials and the queue are configured, and\nis skipped until then.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
+                  "url": "https://github.com/canonical/myna/commit/3346a293f8ce903ad89c785c1a5412c9bd99c0af"
                },
                {
-                  "sha": "adf154b0a2abec6040d66746c5c6550f8dc9e8f7",
+                  "sha": "b06e6575c64960fdc4b3dada6c836f112b1a1095",
                   "author": "Charles",
-                  "timestamp": 1790979981,
-                  "message": "fix(myna-config): keep fetch_update under Rust 1.99's deprecation\n\ntry_update replaces it from 1.99, but the noble deb builds with\nrustc 1.91, so allow the deprecation rather than rename.",
-                  "url": "https://github.com/canonical/myna/commit/adf154b0a2abec6040d66746c5c6550f8dc9e8f7"
+                  "timestamp": 1791023788,
+                  "message": "test: adapter smoke on lab hardware through Testflinger\n\nadapter-smoke's checks move from the spread task into smoke.sh, so the\nsame assertions run on sideloaded snaps (spread) and on the store's\nlatest/edge snaps on a lab machine (tests/testflinger), where engine\nauto-selection meets real hardware.\n\nsubmit.sh fills the queue into job.yaml, attaches the device script and\nclip, waits, fetches artifacts and exits with test_status, since poll\nexits 0 whatever the job did. An interrupted run cancels the job so it\ndoes not hold the machine.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
+                  "url": "https://github.com/canonical/myna/commit/b06e6575c64960fdc4b3dada6c836f112b1a1095"
                },
                {
-                  "sha": "9e75d3fd2d214200e972445c190da16303fb937d",
+                  "sha": "a6e8c9ed20ecc34fd42f059bbb60102a5c125cb7",
                   "author": "Charles",
-                  "timestamp": 1790979981,
-                  "message": "fix(core): info_log! expands to an expression, not a statement\n\nIts trailing semicolon trips semicolon_in_expressions_from_non_local_macros\n(deny under -D warnings from Rust 1.99) wherever it is a match arm.",
-                  "url": "https://github.com/canonical/myna/commit/9e75d3fd2d214200e972445c190da16303fb937d"
+                  "timestamp": 1791023783,
+                  "message": "test(e2e): LXD desktop VMs instead of libvirt\n\nlxc exec and lxc file replace the SSH key, the DHCP-lease IP probing and\nscp, and the cloud image comes from LXD's own remotes, so domain.xml,\nmeta-data, the seed ISO and most of vm/lib.sh go. Each suite boots a\nthrowaway copy of its snapshot, so the provisioned VM never changes\nand restore order does not matter (zfs restores only the newest\nsnapshot). gdm starts only from the second boot, so the first one waits\nfor cloud-init alone and then disables it for the copies.\n\nshot.sh is now one script that runs inside the VM with its own flags,\nand one --polkit rule answers both snapd and the apply-plan pkexec. The\ninstalled snapshot carries myna-whisper, so backend-switch no longer\ndownloads it per run, and drops the portal-era Activation wait: the\ncustom keybinding is the only shortcut path, so onboarding-full asserts\nit on every series.\n\nUnused tools go: the fake daemon, slow snapd, snapd-rest, rdkeys,\nrealshot, editor-text, check-dictation, the driver's realshot/other/\nfront/shotwin verbs and the slow polkit modes. The e2e scripts join\nshell-lint.\n\nAll three suites pass on noble.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
+                  "url": "https://github.com/canonical/myna/commit/a6e8c9ed20ecc34fd42f059bbb60102a5c125cb7"
                }
             ],
             "ciActions": [],
@@ -6675,25 +6675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "18e1de302459a350b7de839cd24c0de5f6f1cfaf",
+                  "sha": "3346a293f8ce903ad89c785c1a5412c9bd99c0af",
                   "author": "Charles",
-                  "timestamp": 1790980465,
-                  "message": "build: pin the Rust toolchain to 1.99.0\n\nCI's workshop took whatever stable was current, so Rust 1.99's new\nlints turned main red with no commit. One pin in client/ now drives\nthe workshops, CI and the client snap; bumps are deliberate commits.\nThe deb keeps each series' distro rustc.\n\nThe snap reads the channel from the same file. The cov action checks\nllvm-tools from client/ so it lands on the pinned toolchain.",
-                  "url": "https://github.com/canonical/myna/commit/18e1de302459a350b7de839cd24c0de5f6f1cfaf"
+                  "timestamp": 1791023794,
+                  "message": "ci: e2e and Testflinger workflows\n\nmake e2e provisions a GNOME desktop LXD VM for E2E_RELEASE and runs the\nMyna Settings suites; e2e.yml runs it per series on PRs touching Myna\nSettings, myna-core, client/data or e2e-tests, and nightly. The VM is\nprovisioned fresh every run, so an edge snap regression shows too, and\nthe devel series is informational.\n\nmake testflinger submits the hardware smoke; testflinger.yml runs it\nnightly once the client credentials and the queue are configured, and\nis skipped until then.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
+                  "url": "https://github.com/canonical/myna/commit/3346a293f8ce903ad89c785c1a5412c9bd99c0af"
                },
                {
-                  "sha": "adf154b0a2abec6040d66746c5c6550f8dc9e8f7",
+                  "sha": "b06e6575c64960fdc4b3dada6c836f112b1a1095",
                   "author": "Charles",
-                  "timestamp": 1790979981,
-                  "message": "fix(myna-config): keep fetch_update under Rust 1.99's deprecation\n\ntry_update replaces it from 1.99, but the noble deb builds with\nrustc 1.91, so allow the deprecation rather than rename.",
-                  "url": "https://github.com/canonical/myna/commit/adf154b0a2abec6040d66746c5c6550f8dc9e8f7"
+                  "timestamp": 1791023788,
+                  "message": "test: adapter smoke on lab hardware through Testflinger\n\nadapter-smoke's checks move from the spread task into smoke.sh, so the\nsame assertions run on sideloaded snaps (spread) and on the store's\nlatest/edge snaps on a lab machine (tests/testflinger), where engine\nauto-selection meets real hardware.\n\nsubmit.sh fills the queue into job.yaml, attaches the device script and\nclip, waits, fetches artifacts and exits with test_status, since poll\nexits 0 whatever the job did. An interrupted run cancels the job so it\ndoes not hold the machine.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
+                  "url": "https://github.com/canonical/myna/commit/b06e6575c64960fdc4b3dada6c836f112b1a1095"
                },
                {
-                  "sha": "9e75d3fd2d214200e972445c190da16303fb937d",
+                  "sha": "a6e8c9ed20ecc34fd42f059bbb60102a5c125cb7",
                   "author": "Charles",
-                  "timestamp": 1790979981,
-                  "message": "fix(core): info_log! expands to an expression, not a statement\n\nIts trailing semicolon trips semicolon_in_expressions_from_non_local_macros\n(deny under -D warnings from Rust 1.99) wherever it is a match arm.",
-                  "url": "https://github.com/canonical/myna/commit/9e75d3fd2d214200e972445c190da16303fb937d"
+                  "timestamp": 1791023783,
+                  "message": "test(e2e): LXD desktop VMs instead of libvirt\n\nlxc exec and lxc file replace the SSH key, the DHCP-lease IP probing and\nscp, and the cloud image comes from LXD's own remotes, so domain.xml,\nmeta-data, the seed ISO and most of vm/lib.sh go. Each suite boots a\nthrowaway copy of its snapshot, so the provisioned VM never changes\nand restore order does not matter (zfs restores only the newest\nsnapshot). gdm starts only from the second boot, so the first one waits\nfor cloud-init alone and then disables it for the copies.\n\nshot.sh is now one script that runs inside the VM with its own flags,\nand one --polkit rule answers both snapd and the apply-plan pkexec. The\ninstalled snapshot carries myna-whisper, so backend-switch no longer\ndownloads it per run, and drops the portal-era Activation wait: the\ncustom keybinding is the only shortcut path, so onboarding-full asserts\nit on every series.\n\nUnused tools go: the fake daemon, slow snapd, snapd-rest, rdkeys,\nrealshot, editor-text, check-dictation, the driver's realshot/other/\nfront/shotwin verbs and the slow polkit modes. The e2e scripts join\nshell-lint.\n\nAll three suites pass on noble.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
+                  "url": "https://github.com/canonical/myna/commit/a6e8c9ed20ecc34fd42f059bbb60102a5c125cb7"
                }
             ],
             "ciActions": [],
@@ -9197,25 +9197,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "18e1de302459a350b7de839cd24c0de5f6f1cfaf",
+                  "sha": "3346a293f8ce903ad89c785c1a5412c9bd99c0af",
                   "author": "Charles",
-                  "timestamp": 1790980465,
-                  "message": "build: pin the Rust toolchain to 1.99.0\n\nCI's workshop took whatever stable was current, so Rust 1.99's new\nlints turned main red with no commit. One pin in client/ now drives\nthe workshops, CI and the client snap; bumps are deliberate commits.\nThe deb keeps each series' distro rustc.\n\nThe snap reads the channel from the same file. The cov action checks\nllvm-tools from client/ so it lands on the pinned toolchain.",
-                  "url": "https://github.com/canonical/myna/commit/18e1de302459a350b7de839cd24c0de5f6f1cfaf"
+                  "timestamp": 1791023794,
+                  "message": "ci: e2e and Testflinger workflows\n\nmake e2e provisions a GNOME desktop LXD VM for E2E_RELEASE and runs the\nMyna Settings suites; e2e.yml runs it per series on PRs touching Myna\nSettings, myna-core, client/data or e2e-tests, and nightly. The VM is\nprovisioned fresh every run, so an edge snap regression shows too, and\nthe devel series is informational.\n\nmake testflinger submits the hardware smoke; testflinger.yml runs it\nnightly once the client credentials and the queue are configured, and\nis skipped until then.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
+                  "url": "https://github.com/canonical/myna/commit/3346a293f8ce903ad89c785c1a5412c9bd99c0af"
                },
                {
-                  "sha": "adf154b0a2abec6040d66746c5c6550f8dc9e8f7",
+                  "sha": "b06e6575c64960fdc4b3dada6c836f112b1a1095",
                   "author": "Charles",
-                  "timestamp": 1790979981,
-                  "message": "fix(myna-config): keep fetch_update under Rust 1.99's deprecation\n\ntry_update replaces it from 1.99, but the noble deb builds with\nrustc 1.91, so allow the deprecation rather than rename.",
-                  "url": "https://github.com/canonical/myna/commit/adf154b0a2abec6040d66746c5c6550f8dc9e8f7"
+                  "timestamp": 1791023788,
+                  "message": "test: adapter smoke on lab hardware through Testflinger\n\nadapter-smoke's checks move from the spread task into smoke.sh, so the\nsame assertions run on sideloaded snaps (spread) and on the store's\nlatest/edge snaps on a lab machine (tests/testflinger), where engine\nauto-selection meets real hardware.\n\nsubmit.sh fills the queue into job.yaml, attaches the device script and\nclip, waits, fetches artifacts and exits with test_status, since poll\nexits 0 whatever the job did. An interrupted run cancels the job so it\ndoes not hold the machine.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
+                  "url": "https://github.com/canonical/myna/commit/b06e6575c64960fdc4b3dada6c836f112b1a1095"
                },
                {
-                  "sha": "9e75d3fd2d214200e972445c190da16303fb937d",
+                  "sha": "a6e8c9ed20ecc34fd42f059bbb60102a5c125cb7",
                   "author": "Charles",
-                  "timestamp": 1790979981,
-                  "message": "fix(core): info_log! expands to an expression, not a statement\n\nIts trailing semicolon trips semicolon_in_expressions_from_non_local_macros\n(deny under -D warnings from Rust 1.99) wherever it is a match arm.",
-                  "url": "https://github.com/canonical/myna/commit/9e75d3fd2d214200e972445c190da16303fb937d"
+                  "timestamp": 1791023783,
+                  "message": "test(e2e): LXD desktop VMs instead of libvirt\n\nlxc exec and lxc file replace the SSH key, the DHCP-lease IP probing and\nscp, and the cloud image comes from LXD's own remotes, so domain.xml,\nmeta-data, the seed ISO and most of vm/lib.sh go. Each suite boots a\nthrowaway copy of its snapshot, so the provisioned VM never changes\nand restore order does not matter (zfs restores only the newest\nsnapshot). gdm starts only from the second boot, so the first one waits\nfor cloud-init alone and then disables it for the copies.\n\nshot.sh is now one script that runs inside the VM with its own flags,\nand one --polkit rule answers both snapd and the apply-plan pkexec. The\ninstalled snapshot carries myna-whisper, so backend-switch no longer\ndownloads it per run, and drops the portal-era Activation wait: the\ncustom keybinding is the only shortcut path, so onboarding-full asserts\nit on every series.\n\nUnused tools go: the fake daemon, slow snapd, snapd-rest, rdkeys,\nrealshot, editor-text, check-dictation, the driver's realshot/other/\nfront/shotwin verbs and the slow polkit modes. The e2e scripts join\nshell-lint.\n\nAll three suites pass on noble.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
+                  "url": "https://github.com/canonical/myna/commit/a6e8c9ed20ecc34fd42f059bbb60102a5c125cb7"
                }
             ],
             "ciActions": [],
