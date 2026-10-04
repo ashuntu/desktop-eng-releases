@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f4587382be3dcc6e3d2fdd0e6c1e13c3821f970c",
+                  "sha": "688717d2d9b1f7cc291fd2a949befeef7f34669f",
                   "author": "Charles",
-                  "timestamp": 1791060689,
-                  "message": "ci(testflinger): gate verdict in the run summary, results as the artifact\n\nThe artifact is the extracted results (dut.log, fleurs.jsonl, the smoke\noutputs), kept 14 days, instead of those plus the tarball they came in.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
-                  "url": "https://github.com/canonical/myna/commit/f4587382be3dcc6e3d2fdd0e6c1e13c3821f970c"
+                  "timestamp": 1791074187,
+                  "message": "ci: prune superseded Actions caches daily\n\nlaunch-workshop saves a new cache copy every run, so the 10 GB quota\nfilled and eviction threatened the spread image. Keep the newest per\nkey and ref until canonical/launch-workshop#362 lands.",
+                  "url": "https://github.com/canonical/myna/commit/688717d2d9b1f7cc291fd2a949befeef7f34669f"
                },
                {
-                  "sha": "b127423d1c5735b12d05431f9ce6d130c68cada3",
+                  "sha": "6fba6a9cfc6b28702176a4c2450281b2fa761e26",
                   "author": "Charles",
-                  "timestamp": 1791060420,
-                  "message": "test(testflinger): FLEURS accuracy gate on latest/edge, no attachments\n\nThe lab machine clones the submitting commit, fetches the fleurs-smoke\ntier (pinned by sha256), runs the adapter smoke, then sweeps parakeet,\nwhisper small and funasr from latest/edge, each on the languages it\nclaims, and gates on tests/testflinger/ceilings.yaml. A heartbeat keeps\nthe long sweep under Testflinger's output timeout.\n\nChecked in an LXD container against store edge myna-funasr: signed\ninstall, 40 clips scored, en WER 6.6, zh CER 7.4, ja 11.1, ko 12.6.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
-                  "url": "https://github.com/canonical/myna/commit/b127423d1c5735b12d05431f9ce6d130c68cada3"
+                  "timestamp": 1791074187,
+                  "message": "ci: move cache and upload-artifact off Node 20",
+                  "url": "https://github.com/canonical/myna/commit/6fba6a9cfc6b28702176a4c2450281b2fa761e26"
                },
                {
-                  "sha": "3e5855e2252099c3e924fc37cdad53a36bfaefd0",
+                  "sha": "063a57deef6030c2cc828072b7df5fba111588a6",
                   "author": "Charles",
-                  "timestamp": 1791060420,
-                  "message": "feat(benchmarker): fleurs-smoke preset, ten clips of nine languages\n\nThe first ten FLEURS test clips by filename of en, de, fr, es, it, ru,\nzh, ja and ko, in one manifest with the locale as category: 90 clips,\n18 minutes, 24 MB packed. FLEURS ships each language as one 200-630 MB\narchive with no per-clip access, so the tier is cut once and published\nrather than cut on every run. Not a publication number; the only preset\nthat selects.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
-                  "url": "https://github.com/canonical/myna/commit/3e5855e2252099c3e924fc37cdad53a36bfaefd0"
+                  "timestamp": 1791073524,
+                  "message": "ci: sbuild the myna-config deb for every PPA series\n\nRuns on any push that changes what build-source.sh packs, so a series\nthat fails to build shows before a PPA upload. The .debs are kept as\nartifacts.",
+                  "url": "https://github.com/canonical/myna/commit/063a57deef6030c2cc828072b7df5fba111588a6"
                }
             ],
             "ciActions": [],
@@ -6675,25 +6675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f4587382be3dcc6e3d2fdd0e6c1e13c3821f970c",
+                  "sha": "688717d2d9b1f7cc291fd2a949befeef7f34669f",
                   "author": "Charles",
-                  "timestamp": 1791060689,
-                  "message": "ci(testflinger): gate verdict in the run summary, results as the artifact\n\nThe artifact is the extracted results (dut.log, fleurs.jsonl, the smoke\noutputs), kept 14 days, instead of those plus the tarball they came in.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
-                  "url": "https://github.com/canonical/myna/commit/f4587382be3dcc6e3d2fdd0e6c1e13c3821f970c"
+                  "timestamp": 1791074187,
+                  "message": "ci: prune superseded Actions caches daily\n\nlaunch-workshop saves a new cache copy every run, so the 10 GB quota\nfilled and eviction threatened the spread image. Keep the newest per\nkey and ref until canonical/launch-workshop#362 lands.",
+                  "url": "https://github.com/canonical/myna/commit/688717d2d9b1f7cc291fd2a949befeef7f34669f"
                },
                {
-                  "sha": "b127423d1c5735b12d05431f9ce6d130c68cada3",
+                  "sha": "6fba6a9cfc6b28702176a4c2450281b2fa761e26",
                   "author": "Charles",
-                  "timestamp": 1791060420,
-                  "message": "test(testflinger): FLEURS accuracy gate on latest/edge, no attachments\n\nThe lab machine clones the submitting commit, fetches the fleurs-smoke\ntier (pinned by sha256), runs the adapter smoke, then sweeps parakeet,\nwhisper small and funasr from latest/edge, each on the languages it\nclaims, and gates on tests/testflinger/ceilings.yaml. A heartbeat keeps\nthe long sweep under Testflinger's output timeout.\n\nChecked in an LXD container against store edge myna-funasr: signed\ninstall, 40 clips scored, en WER 6.6, zh CER 7.4, ja 11.1, ko 12.6.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
-                  "url": "https://github.com/canonical/myna/commit/b127423d1c5735b12d05431f9ce6d130c68cada3"
+                  "timestamp": 1791074187,
+                  "message": "ci: move cache and upload-artifact off Node 20",
+                  "url": "https://github.com/canonical/myna/commit/6fba6a9cfc6b28702176a4c2450281b2fa761e26"
                },
                {
-                  "sha": "3e5855e2252099c3e924fc37cdad53a36bfaefd0",
+                  "sha": "063a57deef6030c2cc828072b7df5fba111588a6",
                   "author": "Charles",
-                  "timestamp": 1791060420,
-                  "message": "feat(benchmarker): fleurs-smoke preset, ten clips of nine languages\n\nThe first ten FLEURS test clips by filename of en, de, fr, es, it, ru,\nzh, ja and ko, in one manifest with the locale as category: 90 clips,\n18 minutes, 24 MB packed. FLEURS ships each language as one 200-630 MB\narchive with no per-clip access, so the tier is cut once and published\nrather than cut on every run. Not a publication number; the only preset\nthat selects.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
-                  "url": "https://github.com/canonical/myna/commit/3e5855e2252099c3e924fc37cdad53a36bfaefd0"
+                  "timestamp": 1791073524,
+                  "message": "ci: sbuild the myna-config deb for every PPA series\n\nRuns on any push that changes what build-source.sh packs, so a series\nthat fails to build shows before a PPA upload. The .debs are kept as\nartifacts.",
+                  "url": "https://github.com/canonical/myna/commit/063a57deef6030c2cc828072b7df5fba111588a6"
                }
             ],
             "ciActions": [],
@@ -9197,25 +9197,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f4587382be3dcc6e3d2fdd0e6c1e13c3821f970c",
+                  "sha": "688717d2d9b1f7cc291fd2a949befeef7f34669f",
                   "author": "Charles",
-                  "timestamp": 1791060689,
-                  "message": "ci(testflinger): gate verdict in the run summary, results as the artifact\n\nThe artifact is the extracted results (dut.log, fleurs.jsonl, the smoke\noutputs), kept 14 days, instead of those plus the tarball they came in.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
-                  "url": "https://github.com/canonical/myna/commit/f4587382be3dcc6e3d2fdd0e6c1e13c3821f970c"
+                  "timestamp": 1791074187,
+                  "message": "ci: prune superseded Actions caches daily\n\nlaunch-workshop saves a new cache copy every run, so the 10 GB quota\nfilled and eviction threatened the spread image. Keep the newest per\nkey and ref until canonical/launch-workshop#362 lands.",
+                  "url": "https://github.com/canonical/myna/commit/688717d2d9b1f7cc291fd2a949befeef7f34669f"
                },
                {
-                  "sha": "b127423d1c5735b12d05431f9ce6d130c68cada3",
+                  "sha": "6fba6a9cfc6b28702176a4c2450281b2fa761e26",
                   "author": "Charles",
-                  "timestamp": 1791060420,
-                  "message": "test(testflinger): FLEURS accuracy gate on latest/edge, no attachments\n\nThe lab machine clones the submitting commit, fetches the fleurs-smoke\ntier (pinned by sha256), runs the adapter smoke, then sweeps parakeet,\nwhisper small and funasr from latest/edge, each on the languages it\nclaims, and gates on tests/testflinger/ceilings.yaml. A heartbeat keeps\nthe long sweep under Testflinger's output timeout.\n\nChecked in an LXD container against store edge myna-funasr: signed\ninstall, 40 clips scored, en WER 6.6, zh CER 7.4, ja 11.1, ko 12.6.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
-                  "url": "https://github.com/canonical/myna/commit/b127423d1c5735b12d05431f9ce6d130c68cada3"
+                  "timestamp": 1791074187,
+                  "message": "ci: move cache and upload-artifact off Node 20",
+                  "url": "https://github.com/canonical/myna/commit/6fba6a9cfc6b28702176a4c2450281b2fa761e26"
                },
                {
-                  "sha": "3e5855e2252099c3e924fc37cdad53a36bfaefd0",
+                  "sha": "063a57deef6030c2cc828072b7df5fba111588a6",
                   "author": "Charles",
-                  "timestamp": 1791060420,
-                  "message": "feat(benchmarker): fleurs-smoke preset, ten clips of nine languages\n\nThe first ten FLEURS test clips by filename of en, de, fr, es, it, ru,\nzh, ja and ko, in one manifest with the locale as category: 90 clips,\n18 minutes, 24 MB packed. FLEURS ships each language as one 200-630 MB\narchive with no per-clip access, so the tier is cut once and published\nrather than cut on every run. Not a publication number; the only preset\nthat selects.\n\nClaude-Session: https://claude.ai/code/session_01XnrUosHoDr19FeyUScpyh8",
-                  "url": "https://github.com/canonical/myna/commit/3e5855e2252099c3e924fc37cdad53a36bfaefd0"
+                  "timestamp": 1791073524,
+                  "message": "ci: sbuild the myna-config deb for every PPA series\n\nRuns on any push that changes what build-source.sh packs, so a series\nthat fails to build shows before a PPA upload. The .debs are kept as\nartifacts.",
+                  "url": "https://github.com/canonical/myna/commit/063a57deef6030c2cc828072b7df5fba111588a6"
                }
             ],
             "ciActions": [],
