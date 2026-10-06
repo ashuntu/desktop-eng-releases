@@ -4120,7 +4120,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f5b5af8fab96949a98737845a45e565beb6d217e",
+                  "sha": "5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625",
                   "author": "Charles",
-                  "timestamp": 1791209867,
-                  "message": "Revert \"fix(snap): stop the HUD from holding back refreshes\"\n\nThe store review-tools schema only accepts refresh-mode on daemons, so\nevery upload of myna fails check_schema. Restore once review-tools\naccepts ignore-running on apps (#38).",
-                  "url": "https://github.com/canonical/myna/commit/f5b5af8fab96949a98737845a45e565beb6d217e"
+                  "timestamp": 1791241624,
+                  "message": "feat(sounds): four more sound sets, and the marimba back\n\nMarimba is Myna's first set, returned with each note released to zero\nrather than cut off while ringing, which clicked. Water is drops whose\ntrapped bubbles rise in pitch as real ones do. Radio is a walkie-talkie:\nsquelch and a rising two-tone to open, a roger beep and squelch tail to\nclose, mistuned beating carriers for error. Strings is Karplus-Strong\nkoto plucks, with a sitar-bridge buzz for error.\n\nThe new sets draw on noise sources of their own in dev/synth_cues.py,\nso the existing three render bit-identically.",
+                  "url": "https://github.com/canonical/myna/commit/5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625"
                },
                {
-                  "sha": "b9522c7701fb0292d707a8a0fe2bcbf5487a4425",
+                  "sha": "24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002",
                   "author": "Charles",
-                  "timestamp": 1791209232,
-                  "message": "fix(snap): stop the HUD from holding back refreshes\n\nmyna-shell keeps myna.hud running for the whole session, and snapd\ncounts running apps as busy, so every refresh of myna was held back\nuntil the 14-day forced refresh (\"snap \"myna\" has running apps (hud)\").\n\nMark the HUD refresh-mode: ignore-running. The refresh stops the user\ndaemon, myna-shell takes the HUD down with it and spawns the new\nrevision's HUD once the daemon is back, so no stale HUD outlives it.\n\nVerified on GNOME 51 with sideloaded revisions: without the mode the\ninstall of B fails with the error above; with it B installs and the\nHUD is respawned from x2.\n\nFixes #38",
-                  "url": "https://github.com/canonical/myna/commit/b9522c7701fb0292d707a8a0fe2bcbf5487a4425"
+                  "timestamp": 1791241624,
+                  "message": "test(desktop): pin each cue's loudness instead of a peak floor\n\nThe cues are matched by K-weighted loudness, not peak, so a peak floor\nmeasured the wrong thing: a band-limited set such as a walkie-talkie\npeaks well under 0.3 at the same loudness as a struck bar. The test now\nmeasures BS.1770 loudness the way dev/synth_cues.py does (50 ms blocks,\n-20 dB relative gate) and holds each cue within 0.5 LU of its target,\nstart -16, stop -18, error -15 LUFS, with no cue clipping.",
+                  "url": "https://github.com/canonical/myna/commit/24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002"
                },
                {
-                  "sha": "6fd73f4229fc610073de1d68e35a3f84ab4530bc",
+                  "sha": "e83cd5fe70d0283f3044b2d0d0a98c356b713843",
                   "author": "Charles",
-                  "timestamp": 1791191043,
-                  "message": "build(server): bump urllib3 to 2.8.0 for PYSEC-2026-4175..4177",
-                  "url": "https://github.com/canonical/myna/commit/6fd73f4229fc610073de1d68e35a3f84ab4530bc"
+                  "timestamp": 1791241174,
+                  "message": "feat(sounds): make Chime the default sound set\n\nThe default leads the Sound style list, so the row now reads Chime,\nBird, Voice.",
+                  "url": "https://github.com/canonical/myna/commit/e83cd5fe70d0283f3044b2d0d0a98c356b713843"
                }
             ],
             "ciActions": [],
@@ -4357,25 +4357,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ae35755c90ce97f18a453c0523f8bdf74863b730",
+                  "sha": "386fb9c99186a819eb2ddb3dbc212521d7f69605",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1791206433,
-                  "message": "chore(deps): update rust crate libc to v0.2.190 (#370)",
-                  "url": "https://github.com/canonical/prompting-client/commit/ae35755c90ce97f18a453c0523f8bdf74863b730"
+                  "timestamp": 1791229365,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#367)",
+                  "url": "https://github.com/canonical/prompting-client/commit/386fb9c99186a819eb2ddb3dbc212521d7f69605"
                },
                {
-                  "sha": "5940149995121cc7a1cd90e7751f4604e0af33f3",
-                  "author": "renovate[bot]",
-                  "timestamp": 1791201302,
-                  "message": "chore(deps): update rust crate libc to v0.2.190",
-                  "url": "https://github.com/canonical/prompting-client/commit/5940149995121cc7a1cd90e7751f4604e0af33f3"
+                  "sha": "2b1338dd87c8435f42fe45a63aa27bf9d77c6310",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1791227013,
+                  "message": "gen-l10n",
+                  "url": "https://github.com/canonical/prompting-client/commit/2b1338dd87c8435f42fe45a63aa27bf9d77c6310"
                },
                {
-                  "sha": "c1d271733f2d01a2ec0e6b1b07c7d3e3988572c3",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1791201219,
-                  "message": "chore(deps): update rust crate uuid to v1.27.0 (#371)",
-                  "url": "https://github.com/canonical/prompting-client/commit/c1d271733f2d01a2ec0e6b1b07c7d3e3988572c3"
+                  "sha": "5b778118fdc00dc7f8ed6bc5a5c6a2e5abd8da2d",
+                  "author": "Peter Vančo",
+                  "timestamp": 1790909023,
+                  "message": "fix(l10n): translated using Weblate (Slovak)\n\nCurrently translated at 100.0% (61 of 61 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/sk/",
+                  "url": "https://github.com/canonical/prompting-client/commit/5b778118fdc00dc7f8ed6bc5a5c6a2e5abd8da2d"
                }
             ],
             "ciActions": [],
@@ -5620,6 +5620,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8d8141ca39de387d060c087a12b51baa5cd4ecfd",
+                  "author": "Kat",
+                  "timestamp": 1791239303,
+                  "message": "deps(go-server): bump github.com/prometheus/common from 0.71.0 to 0.72.0 in /server in the minor-updates group (#391)\n\nBumps the minor-updates group in /server with 1 update:\n[github.com/prometheus/common](https://github.com/prometheus/common).\n\nUpdates `github.com/prometheus/common` from 0.71.0 to 0.72.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/prometheus/common/releases\">github.com/prometheus/common's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v0.72.0</h2>\n<p>NOTE:</p>\n<ul>\n<li>This release bumps go.mod to 1.26 -- mostly due to /x Go packages\nrequiring 1.26 as well.</li>\n<li>This is the first release with the experimental support of\nOpenMetrics 2 encoding.</li>\n</ul>\n<h2>What's Changed</h2>\n<ul>\n<li>build(deps): bump the codeql group with 4 updates by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/980\">prometheus/common#980</a></li>\n<li>feat: implement histogram and gauge histogram support for\nOpenMetrics 2.0 by <a\nhref=\"https://github.com/dashpole\"><code>@​dashpole</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/964\">prometheus/common#964</a></li>\n<li>chore: Update gofumpt config and apply new formatting by <a\nhref=\"https://github.com/dongjiang1989\"><code>@​dongjiang1989</code></a>\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/987\">prometheus/common#987</a></li>\n<li>expfmt: reject nameless samples after metric metadata by <a\nhref=\"https://github.com/roidelapluie\"><code>@​roidelapluie</code></a>\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/988\">prometheus/common#988</a></li>\n<li>feat: implement summary support for OpenMetrics 2.0 by <a\nhref=\"https://github.com/dashpole\"><code>@​dashpole</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/983\">prometheus/common#983</a></li>\n<li>docs(expfmt): update OpenMetrics 2.0 supported metric types comments\nby <a href=\"https://github.com/dashpole\"><code>@​dashpole</code></a> in\n<a\nhref=\"https://redirect.github.com/prometheus/common/pull/989\">prometheus/common#989</a></li>\n<li>optimize sample unmarshaling for json/v2 by <a\nhref=\"https://github.com/liggitt\"><code>@​liggitt</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/991\">prometheus/common#991</a></li>\n<li>expfmt: simplify format constants and provide default negotiation\nslices by <a\nhref=\"https://github.com/bwplotka\"><code>@​bwplotka</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/992\">prometheus/common#992</a></li>\n<li>expfmt: reject invalid UTF-8 and a trailing CR in OpenMetrics 2.0\nmetadata by <a\nhref=\"https://github.com/Rohilalala\"><code>@​Rohilalala</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/998\">prometheus/common#998</a></li>\n<li>expfmt: stop a test leaving the shared parser on legacy validation\nby <a href=\"https://github.com/Rohilalala\"><code>@​Rohilalala</code></a>\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/996\">prometheus/common#996</a></li>\n<li>build(deps): bump github.com/prometheus/client_model from 0.6.2 to\n0.6.3 in the prometheus group across 1 directory by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1001\">prometheus/common#1001</a></li>\n<li>chore: Update linting by <a\nhref=\"https://github.com/SuperQ\"><code>@​SuperQ</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1002\">prometheus/common#1002</a></li>\n<li>Synchronize common files from prometheus/prometheus by <a\nhref=\"https://github.com/prombot\"><code>@​prombot</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1003\">prometheus/common#1003</a></li>\n<li>Update supported Go versions by <a\nhref=\"https://github.com/SuperQ\"><code>@​SuperQ</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1004\">prometheus/common#1004</a></li>\n<li>build(deps): bump the golang-org-x group across 1 directory with 2\nupdates by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1000\">prometheus/common#1000</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/liggitt\"><code>@​liggitt</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/991\">prometheus/common#991</a></li>\n<li><a\nhref=\"https://github.com/Rohilalala\"><code>@​Rohilalala</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/998\">prometheus/common#998</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/prometheus/common/compare/v0.71.0...v0.72.0\">https://github.com/prometheus/common/compare/v0.71.0...v0.72.0</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/ca4f6e15e233b3f333973ff2530041301f91a859\"><code>ca4f6e1</code></a>\nbuild(deps): bump the golang-org-x group across 1 directory with 2\nupdates (#...</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/3f29e557293020e3a917b2e3423cdf27d21d3703\"><code>3f29e55</code></a>\nUpdate supported Go versions (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1004\">#1004</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/acc069be0109f7b351494a5a768aefc297bfb319\"><code>acc069b</code></a>\nUpdate common Prometheus files (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1003\">#1003</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/04ca579778b25767821bbbc604dcbd8d42561a9f\"><code>04ca579</code></a>\nUpdate linting (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1002\">#1002</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/818965de4f63c43cba9286769cdfd5c9fe67991b\"><code>818965d</code></a>\nbuild(deps): bump github.com/prometheus/client_model (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1001\">#1001</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/eabff44f50be985fe96a7d67f8768e93c10562d6\"><code>eabff44</code></a>\nexpfmt: stop a test leaving the shared parser on legacy validation (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/996\">#996</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/8d1b388feeb82a8f55f32dd8db0aa9eb96181f78\"><code>8d1b388</code></a>\nexpfmt: reject invalid UTF-8 and a trailing CR in OpenMetrics 2.0\nmetadata (#...</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/4e792250c26159d19b035fb5786ab687add24d21\"><code>4e79225</code></a>\nexpfmt: simplify format constants and provide default negotiation slices\n(<a\nhref=\"https://redirect.github.com/prometheus/common/issues/992\">#992</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/c57e58a80272991367d3b16f0be83a89edc32fef\"><code>c57e58a</code></a>\noptimize sample unmarshaling for json/v2 (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/991\">#991</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/042f3705950c873b84153dd8ebd95c6ea4c47ae5\"><code>042f370</code></a>\ndocs(expfmt): update OpenMetrics 2.0 supported metric types comments (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/989\">#989</a>)</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/prometheus/common/compare/v0.71.0...v0.72.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=github.com/prometheus/common&package-manager=go_modules&previous-version=0.71.0&new-version=0.72.0)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore <dependency name> major version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's major version (unless you unignore this specific\ndependency's major version or upgrade to it yourself)\n- `@dependabot ignore <dependency name> minor version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's minor version (unless you unignore this specific\ndependency's minor version or upgrade to it yourself)\n- `@dependabot ignore <dependency name>` will close this group update PR\nand stop Dependabot creating any more for the specific dependency\n(unless you unignore this specific dependency or upgrade to it yourself)\n- `@dependabot unignore <dependency name>` will remove all of the ignore\nconditions of the specified dependency\n- `@dependabot unignore <dependency name> <ignore condition>` will\nremove the ignore condition of the specified dependency and ignore\nconditions\n\n\n</details>",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/8d8141ca39de387d060c087a12b51baa5cd4ecfd"
+               },
+               {
                   "sha": "004c3495b7059b2724cbe1ed04dccc15dc09eac1",
                   "author": "Kat",
                   "timestamp": 1791217805,
@@ -5627,18 +5634,11 @@
                   "url": "https://github.com/ubuntu/ubuntu-insights/commit/004c3495b7059b2724cbe1ed04dccc15dc09eac1"
                },
                {
-                  "sha": "034630216c6201ba9173423f30d03e57da0fd85a",
-                  "author": "kkuo",
-                  "timestamp": 1790777639,
-                  "message": "maint(insights): Link changelog with LP: #2164597",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/034630216c6201ba9173423f30d03e57da0fd85a"
-               },
-               {
-                  "sha": "aedd80e8be9b53ed608ee1effb8239e3682f56c1",
-                  "author": "kkuo",
-                  "timestamp": 1790726708,
-                  "message": "maint(insights): Update changelog for 1.0.1 upload\n\nUpdate changelog for 1.0.1 upload.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/aedd80e8be9b53ed608ee1effb8239e3682f56c1"
+                  "sha": "231a7580879c95ac6cd7021daf14c8cb27f9f6f8",
+                  "author": "dependabot[bot]",
+                  "timestamp": 1790845757,
+                  "message": "deps(go-server): bump github.com/prometheus/common\n\nBumps the minor-updates group in /server with 1 update: [github.com/prometheus/common](https://github.com/prometheus/common).\n\n\nUpdates `github.com/prometheus/common` from 0.71.0 to 0.72.0\n- [Release notes](https://github.com/prometheus/common/releases)\n- [Changelog](https://github.com/prometheus/common/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/prometheus/common/compare/v0.71.0...v0.72.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/common\n  dependency-version: 0.72.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: minor-updates\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/231a7580879c95ac6cd7021daf14c8cb27f9f6f8"
                }
             ],
             "ciActions": [
@@ -6605,7 +6605,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -6675,25 +6675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f5b5af8fab96949a98737845a45e565beb6d217e",
+                  "sha": "5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625",
                   "author": "Charles",
-                  "timestamp": 1791209867,
-                  "message": "Revert \"fix(snap): stop the HUD from holding back refreshes\"\n\nThe store review-tools schema only accepts refresh-mode on daemons, so\nevery upload of myna fails check_schema. Restore once review-tools\naccepts ignore-running on apps (#38).",
-                  "url": "https://github.com/canonical/myna/commit/f5b5af8fab96949a98737845a45e565beb6d217e"
+                  "timestamp": 1791241624,
+                  "message": "feat(sounds): four more sound sets, and the marimba back\n\nMarimba is Myna's first set, returned with each note released to zero\nrather than cut off while ringing, which clicked. Water is drops whose\ntrapped bubbles rise in pitch as real ones do. Radio is a walkie-talkie:\nsquelch and a rising two-tone to open, a roger beep and squelch tail to\nclose, mistuned beating carriers for error. Strings is Karplus-Strong\nkoto plucks, with a sitar-bridge buzz for error.\n\nThe new sets draw on noise sources of their own in dev/synth_cues.py,\nso the existing three render bit-identically.",
+                  "url": "https://github.com/canonical/myna/commit/5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625"
                },
                {
-                  "sha": "b9522c7701fb0292d707a8a0fe2bcbf5487a4425",
+                  "sha": "24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002",
                   "author": "Charles",
-                  "timestamp": 1791209232,
-                  "message": "fix(snap): stop the HUD from holding back refreshes\n\nmyna-shell keeps myna.hud running for the whole session, and snapd\ncounts running apps as busy, so every refresh of myna was held back\nuntil the 14-day forced refresh (\"snap \"myna\" has running apps (hud)\").\n\nMark the HUD refresh-mode: ignore-running. The refresh stops the user\ndaemon, myna-shell takes the HUD down with it and spawns the new\nrevision's HUD once the daemon is back, so no stale HUD outlives it.\n\nVerified on GNOME 51 with sideloaded revisions: without the mode the\ninstall of B fails with the error above; with it B installs and the\nHUD is respawned from x2.\n\nFixes #38",
-                  "url": "https://github.com/canonical/myna/commit/b9522c7701fb0292d707a8a0fe2bcbf5487a4425"
+                  "timestamp": 1791241624,
+                  "message": "test(desktop): pin each cue's loudness instead of a peak floor\n\nThe cues are matched by K-weighted loudness, not peak, so a peak floor\nmeasured the wrong thing: a band-limited set such as a walkie-talkie\npeaks well under 0.3 at the same loudness as a struck bar. The test now\nmeasures BS.1770 loudness the way dev/synth_cues.py does (50 ms blocks,\n-20 dB relative gate) and holds each cue within 0.5 LU of its target,\nstart -16, stop -18, error -15 LUFS, with no cue clipping.",
+                  "url": "https://github.com/canonical/myna/commit/24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002"
                },
                {
-                  "sha": "6fd73f4229fc610073de1d68e35a3f84ab4530bc",
+                  "sha": "e83cd5fe70d0283f3044b2d0d0a98c356b713843",
                   "author": "Charles",
-                  "timestamp": 1791191043,
-                  "message": "build(server): bump urllib3 to 2.8.0 for PYSEC-2026-4175..4177",
-                  "url": "https://github.com/canonical/myna/commit/6fd73f4229fc610073de1d68e35a3f84ab4530bc"
+                  "timestamp": 1791241174,
+                  "message": "feat(sounds): make Chime the default sound set\n\nThe default leads the Sound style list, so the row now reads Chime,\nBird, Voice.",
+                  "url": "https://github.com/canonical/myna/commit/e83cd5fe70d0283f3044b2d0d0a98c356b713843"
                }
             ],
             "ciActions": [],
@@ -6842,25 +6842,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ae35755c90ce97f18a453c0523f8bdf74863b730",
+                  "sha": "386fb9c99186a819eb2ddb3dbc212521d7f69605",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1791206433,
-                  "message": "chore(deps): update rust crate libc to v0.2.190 (#370)",
-                  "url": "https://github.com/canonical/prompting-client/commit/ae35755c90ce97f18a453c0523f8bdf74863b730"
+                  "timestamp": 1791229365,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#367)",
+                  "url": "https://github.com/canonical/prompting-client/commit/386fb9c99186a819eb2ddb3dbc212521d7f69605"
                },
                {
-                  "sha": "5940149995121cc7a1cd90e7751f4604e0af33f3",
-                  "author": "renovate[bot]",
-                  "timestamp": 1791201302,
-                  "message": "chore(deps): update rust crate libc to v0.2.190",
-                  "url": "https://github.com/canonical/prompting-client/commit/5940149995121cc7a1cd90e7751f4604e0af33f3"
+                  "sha": "2b1338dd87c8435f42fe45a63aa27bf9d77c6310",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1791227013,
+                  "message": "gen-l10n",
+                  "url": "https://github.com/canonical/prompting-client/commit/2b1338dd87c8435f42fe45a63aa27bf9d77c6310"
                },
                {
-                  "sha": "c1d271733f2d01a2ec0e6b1b07c7d3e3988572c3",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1791201219,
-                  "message": "chore(deps): update rust crate uuid to v1.27.0 (#371)",
-                  "url": "https://github.com/canonical/prompting-client/commit/c1d271733f2d01a2ec0e6b1b07c7d3e3988572c3"
+                  "sha": "5b778118fdc00dc7f8ed6bc5a5c6a2e5abd8da2d",
+                  "author": "Peter Vančo",
+                  "timestamp": 1790909023,
+                  "message": "fix(l10n): translated using Weblate (Slovak)\n\nCurrently translated at 100.0% (61 of 61 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/sk/",
+                  "url": "https://github.com/canonical/prompting-client/commit/5b778118fdc00dc7f8ed6bc5a5c6a2e5abd8da2d"
                }
             ],
             "ciActions": [],
@@ -9127,7 +9127,7 @@
          {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/mediawiki-k8s-operator",
             "releases": [
                {
@@ -9197,25 +9197,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "f5b5af8fab96949a98737845a45e565beb6d217e",
+                  "sha": "5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625",
                   "author": "Charles",
-                  "timestamp": 1791209867,
-                  "message": "Revert \"fix(snap): stop the HUD from holding back refreshes\"\n\nThe store review-tools schema only accepts refresh-mode on daemons, so\nevery upload of myna fails check_schema. Restore once review-tools\naccepts ignore-running on apps (#38).",
-                  "url": "https://github.com/canonical/myna/commit/f5b5af8fab96949a98737845a45e565beb6d217e"
+                  "timestamp": 1791241624,
+                  "message": "feat(sounds): four more sound sets, and the marimba back\n\nMarimba is Myna's first set, returned with each note released to zero\nrather than cut off while ringing, which clicked. Water is drops whose\ntrapped bubbles rise in pitch as real ones do. Radio is a walkie-talkie:\nsquelch and a rising two-tone to open, a roger beep and squelch tail to\nclose, mistuned beating carriers for error. Strings is Karplus-Strong\nkoto plucks, with a sitar-bridge buzz for error.\n\nThe new sets draw on noise sources of their own in dev/synth_cues.py,\nso the existing three render bit-identically.",
+                  "url": "https://github.com/canonical/myna/commit/5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625"
                },
                {
-                  "sha": "b9522c7701fb0292d707a8a0fe2bcbf5487a4425",
+                  "sha": "24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002",
                   "author": "Charles",
-                  "timestamp": 1791209232,
-                  "message": "fix(snap): stop the HUD from holding back refreshes\n\nmyna-shell keeps myna.hud running for the whole session, and snapd\ncounts running apps as busy, so every refresh of myna was held back\nuntil the 14-day forced refresh (\"snap \"myna\" has running apps (hud)\").\n\nMark the HUD refresh-mode: ignore-running. The refresh stops the user\ndaemon, myna-shell takes the HUD down with it and spawns the new\nrevision's HUD once the daemon is back, so no stale HUD outlives it.\n\nVerified on GNOME 51 with sideloaded revisions: without the mode the\ninstall of B fails with the error above; with it B installs and the\nHUD is respawned from x2.\n\nFixes #38",
-                  "url": "https://github.com/canonical/myna/commit/b9522c7701fb0292d707a8a0fe2bcbf5487a4425"
+                  "timestamp": 1791241624,
+                  "message": "test(desktop): pin each cue's loudness instead of a peak floor\n\nThe cues are matched by K-weighted loudness, not peak, so a peak floor\nmeasured the wrong thing: a band-limited set such as a walkie-talkie\npeaks well under 0.3 at the same loudness as a struck bar. The test now\nmeasures BS.1770 loudness the way dev/synth_cues.py does (50 ms blocks,\n-20 dB relative gate) and holds each cue within 0.5 LU of its target,\nstart -16, stop -18, error -15 LUFS, with no cue clipping.",
+                  "url": "https://github.com/canonical/myna/commit/24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002"
                },
                {
-                  "sha": "6fd73f4229fc610073de1d68e35a3f84ab4530bc",
+                  "sha": "e83cd5fe70d0283f3044b2d0d0a98c356b713843",
                   "author": "Charles",
-                  "timestamp": 1791191043,
-                  "message": "build(server): bump urllib3 to 2.8.0 for PYSEC-2026-4175..4177",
-                  "url": "https://github.com/canonical/myna/commit/6fd73f4229fc610073de1d68e35a3f84ab4530bc"
+                  "timestamp": 1791241174,
+                  "message": "feat(sounds): make Chime the default sound set\n\nThe default leads the Sound style list, so the row now reads Chime,\nBird, Voice.",
+                  "url": "https://github.com/canonical/myna/commit/e83cd5fe70d0283f3044b2d0d0a98c356b713843"
                }
             ],
             "ciActions": [],
@@ -9364,25 +9364,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ae35755c90ce97f18a453c0523f8bdf74863b730",
+                  "sha": "386fb9c99186a819eb2ddb3dbc212521d7f69605",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1791206433,
-                  "message": "chore(deps): update rust crate libc to v0.2.190 (#370)",
-                  "url": "https://github.com/canonical/prompting-client/commit/ae35755c90ce97f18a453c0523f8bdf74863b730"
+                  "timestamp": 1791229365,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#367)",
+                  "url": "https://github.com/canonical/prompting-client/commit/386fb9c99186a819eb2ddb3dbc212521d7f69605"
                },
                {
-                  "sha": "5940149995121cc7a1cd90e7751f4604e0af33f3",
-                  "author": "renovate[bot]",
-                  "timestamp": 1791201302,
-                  "message": "chore(deps): update rust crate libc to v0.2.190",
-                  "url": "https://github.com/canonical/prompting-client/commit/5940149995121cc7a1cd90e7751f4604e0af33f3"
+                  "sha": "2b1338dd87c8435f42fe45a63aa27bf9d77c6310",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1791227013,
+                  "message": "gen-l10n",
+                  "url": "https://github.com/canonical/prompting-client/commit/2b1338dd87c8435f42fe45a63aa27bf9d77c6310"
                },
                {
-                  "sha": "c1d271733f2d01a2ec0e6b1b07c7d3e3988572c3",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1791201219,
-                  "message": "chore(deps): update rust crate uuid to v1.27.0 (#371)",
-                  "url": "https://github.com/canonical/prompting-client/commit/c1d271733f2d01a2ec0e6b1b07c7d3e3988572c3"
+                  "sha": "5b778118fdc00dc7f8ed6bc5a5c6a2e5abd8da2d",
+                  "author": "Peter Vančo",
+                  "timestamp": 1790909023,
+                  "message": "fix(l10n): translated using Weblate (Slovak)\n\nCurrently translated at 100.0% (61 of 61 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/sk/",
+                  "url": "https://github.com/canonical/prompting-client/commit/5b778118fdc00dc7f8ed6bc5a5c6a2e5abd8da2d"
                }
             ],
             "ciActions": [],
