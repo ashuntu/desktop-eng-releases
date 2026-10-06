@@ -3211,7 +3211,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -4190,25 +4190,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625",
+                  "sha": "998d33e9d32cc2295df1c829c3d6f3a35ff7d831",
                   "author": "Charles",
-                  "timestamp": 1791241624,
-                  "message": "feat(sounds): four more sound sets, and the marimba back\n\nMarimba is Myna's first set, returned with each note released to zero\nrather than cut off while ringing, which clicked. Water is drops whose\ntrapped bubbles rise in pitch as real ones do. Radio is a walkie-talkie:\nsquelch and a rising two-tone to open, a roger beep and squelch tail to\nclose, mistuned beating carriers for error. Strings is Karplus-Strong\nkoto plucks, with a sitar-bridge buzz for error.\n\nThe new sets draw on noise sources of their own in dev/synth_cues.py,\nso the existing three render bit-identically.",
-                  "url": "https://github.com/canonical/myna/commit/5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625"
+                  "timestamp": 1791313334,
+                  "message": "fix(config): connect the model inside the one set-up prompt\n\nA bare noble skipped auto-connecting myna:backend, so setup connected it\nas the user: a second prompt. The set-up now runs every snap step of the\nbutton, connect included.",
+                  "url": "https://github.com/canonical/myna/commit/998d33e9d32cc2295df1c829c3d6f3a35ff7d831"
                },
                {
-                  "sha": "24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002",
+                  "sha": "25bea2c82ddb807dd5cb084258e00facf31874d4",
                   "author": "Charles",
-                  "timestamp": 1791241624,
-                  "message": "test(desktop): pin each cue's loudness instead of a peak floor\n\nThe cues are matched by K-weighted loudness, not peak, so a peak floor\nmeasured the wrong thing: a band-limited set such as a walkie-talkie\npeaks well under 0.3 at the same loudness as a struck bar. The test now\nmeasures BS.1770 loudness the way dev/synth_cues.py does (50 ms blocks,\n-20 dB relative gate) and holds each cue within 0.5 LU of its target,\nstart -16, stop -18, error -15 LUFS, with no cue clipping.",
-                  "url": "https://github.com/canonical/myna/commit/24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002"
+                  "timestamp": 1791278897,
+                  "message": "test(e2e): answer the set-up polkit action too",
+                  "url": "https://github.com/canonical/myna/commit/25bea2c82ddb807dd5cb084258e00facf31874d4"
                },
                {
-                  "sha": "e83cd5fe70d0283f3044b2d0d0a98c356b713843",
+                  "sha": "feddb1e4256a449d60e6346ca951e646dc5fe675",
                   "author": "Charles",
-                  "timestamp": 1791241174,
-                  "message": "feat(sounds): make Chime the default sound set\n\nThe default leads the Sound style list, so the row now reads Chime,\nBird, Voice.",
-                  "url": "https://github.com/canonical/myna/commit/e83cd5fe70d0283f3044b2d0d0a98c356b713843"
+                  "timestamp": 1791278897,
+                  "message": "feat(config): set Myna up under one polkit prompt\n\nsnapd authorizes the user-daemons flag and installs as two polkit actions,\nso a bare machine asked twice. Without the flag, the flag and the missing\nsnaps now run as root through one `pkexec myna-config --set-up`.",
+                  "url": "https://github.com/canonical/myna/commit/feddb1e4256a449d60e6346ca951e646dc5fe675"
                }
             ],
             "ciActions": [],
@@ -4357,25 +4357,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "13852f26d645dc8e318e687d20df227a7d21eaa6",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1791294798,
-                  "message": "chore(deps): update Flutter SDK version to 3.44.9 in configuration files (#375)\n\nBumps flutter to `3.44.9`",
-                  "url": "https://github.com/canonical/prompting-client/commit/13852f26d645dc8e318e687d20df227a7d21eaa6"
-               },
-               {
-                  "sha": "39edd950fbe0fc3bd1b4b923d432e722e17adf10",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1791279064,
-                  "message": "chore(deps): update Flutter SDK version to 3.44.9 in configuration files",
-                  "url": "https://github.com/canonical/prompting-client/commit/39edd950fbe0fc3bd1b4b923d432e722e17adf10"
-               },
-               {
-                  "sha": "386fb9c99186a819eb2ddb3dbc212521d7f69605",
+                  "sha": "421626e7854eccf86b9e3cee01bfa41d14e7f473",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1791229365,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#367)",
-                  "url": "https://github.com/canonical/prompting-client/commit/386fb9c99186a819eb2ddb3dbc212521d7f69605"
+                  "timestamp": 1791303853,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#377)",
+                  "url": "https://github.com/canonical/prompting-client/commit/421626e7854eccf86b9e3cee01bfa41d14e7f473"
+               },
+               {
+                  "sha": "8787b6132dc6da5789b51745d20fbf49a1681b93",
+                  "author": "canonical-desktop-bot",
+                  "timestamp": 1791297716,
+                  "message": "maint: regenerate l10n",
+                  "url": "https://github.com/canonical/prompting-client/commit/8787b6132dc6da5789b51745d20fbf49a1681b93"
+               },
+               {
+                  "sha": "dfc95d89a8d0aa00e6faaef5ffd2a60f6518625c",
+                  "author": "Daniel Nylander",
+                  "timestamp": 1791297440,
+                  "message": "fix(l10n): translated using Weblate (Swedish)\n\nCurrently translated at 100.0% (61 of 61 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/sv/",
+                  "url": "https://github.com/canonical/prompting-client/commit/dfc95d89a8d0aa00e6faaef5ffd2a60f6518625c"
                }
             ],
             "ciActions": [],
@@ -5475,6 +5475,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "fbfab52ffc2238478c5b952087b455920b1648b5",
+                  "author": "Alessandro Astone",
+                  "timestamp": 1791301346,
+                  "message": "gnome: Do not force specific Wayland backends in toolkits (#44)\n\nToolkits shall be able to figure it out based on the environment.\nAllow snaps or users to override the behaviour if needed.\n\nThis is configurable so that we can tweak the behaviour starting from core26\nwithout potentially breaking expectations from existing core24 snaps.\n\nCloses: https://github.com/canonical/snapcraft-desktop-integration/issues/34",
+                  "url": "https://github.com/canonical/snapcraft-desktop-integration/commit/fbfab52ffc2238478c5b952087b455920b1648b5"
+               },
+               {
                   "sha": "ba67c3d6a9a26029808671d8265ed1d32200e418",
                   "author": "Alessandro Astone",
                   "timestamp": 1783943102,
@@ -5487,13 +5494,6 @@
                   "timestamp": 1783943084,
                   "message": "Minor improvements to integration with GTK apps (#37)",
                   "url": "https://github.com/canonical/snapcraft-desktop-integration/commit/af14796d40b4d79e271b640f62f2f678fa14ffb2"
-               },
-               {
-                  "sha": "aa504fd5aab040b465caa48a9098d59eab990052",
-                  "author": "Nathan Teodosio",
-                  "timestamp": 1776431729,
-                  "message": "Do not override GDK_PIXBUF_MODULE{DIR,_FILE}. (#41)",
-                  "url": "https://github.com/canonical/snapcraft-desktop-integration/commit/aa504fd5aab040b465caa48a9098d59eab990052"
                }
             ],
             "ciActions": [],
@@ -6708,25 +6708,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625",
+                  "sha": "998d33e9d32cc2295df1c829c3d6f3a35ff7d831",
                   "author": "Charles",
-                  "timestamp": 1791241624,
-                  "message": "feat(sounds): four more sound sets, and the marimba back\n\nMarimba is Myna's first set, returned with each note released to zero\nrather than cut off while ringing, which clicked. Water is drops whose\ntrapped bubbles rise in pitch as real ones do. Radio is a walkie-talkie:\nsquelch and a rising two-tone to open, a roger beep and squelch tail to\nclose, mistuned beating carriers for error. Strings is Karplus-Strong\nkoto plucks, with a sitar-bridge buzz for error.\n\nThe new sets draw on noise sources of their own in dev/synth_cues.py,\nso the existing three render bit-identically.",
-                  "url": "https://github.com/canonical/myna/commit/5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625"
+                  "timestamp": 1791313334,
+                  "message": "fix(config): connect the model inside the one set-up prompt\n\nA bare noble skipped auto-connecting myna:backend, so setup connected it\nas the user: a second prompt. The set-up now runs every snap step of the\nbutton, connect included.",
+                  "url": "https://github.com/canonical/myna/commit/998d33e9d32cc2295df1c829c3d6f3a35ff7d831"
                },
                {
-                  "sha": "24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002",
+                  "sha": "25bea2c82ddb807dd5cb084258e00facf31874d4",
                   "author": "Charles",
-                  "timestamp": 1791241624,
-                  "message": "test(desktop): pin each cue's loudness instead of a peak floor\n\nThe cues are matched by K-weighted loudness, not peak, so a peak floor\nmeasured the wrong thing: a band-limited set such as a walkie-talkie\npeaks well under 0.3 at the same loudness as a struck bar. The test now\nmeasures BS.1770 loudness the way dev/synth_cues.py does (50 ms blocks,\n-20 dB relative gate) and holds each cue within 0.5 LU of its target,\nstart -16, stop -18, error -15 LUFS, with no cue clipping.",
-                  "url": "https://github.com/canonical/myna/commit/24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002"
+                  "timestamp": 1791278897,
+                  "message": "test(e2e): answer the set-up polkit action too",
+                  "url": "https://github.com/canonical/myna/commit/25bea2c82ddb807dd5cb084258e00facf31874d4"
                },
                {
-                  "sha": "e83cd5fe70d0283f3044b2d0d0a98c356b713843",
+                  "sha": "feddb1e4256a449d60e6346ca951e646dc5fe675",
                   "author": "Charles",
-                  "timestamp": 1791241174,
-                  "message": "feat(sounds): make Chime the default sound set\n\nThe default leads the Sound style list, so the row now reads Chime,\nBird, Voice.",
-                  "url": "https://github.com/canonical/myna/commit/e83cd5fe70d0283f3044b2d0d0a98c356b713843"
+                  "timestamp": 1791278897,
+                  "message": "feat(config): set Myna up under one polkit prompt\n\nsnapd authorizes the user-daemons flag and installs as two polkit actions,\nso a bare machine asked twice. Without the flag, the flag and the missing\nsnaps now run as root through one `pkexec myna-config --set-up`.",
+                  "url": "https://github.com/canonical/myna/commit/feddb1e4256a449d60e6346ca951e646dc5fe675"
                }
             ],
             "ciActions": [],
@@ -6875,25 +6875,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "13852f26d645dc8e318e687d20df227a7d21eaa6",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1791294798,
-                  "message": "chore(deps): update Flutter SDK version to 3.44.9 in configuration files (#375)\n\nBumps flutter to `3.44.9`",
-                  "url": "https://github.com/canonical/prompting-client/commit/13852f26d645dc8e318e687d20df227a7d21eaa6"
-               },
-               {
-                  "sha": "39edd950fbe0fc3bd1b4b923d432e722e17adf10",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1791279064,
-                  "message": "chore(deps): update Flutter SDK version to 3.44.9 in configuration files",
-                  "url": "https://github.com/canonical/prompting-client/commit/39edd950fbe0fc3bd1b4b923d432e722e17adf10"
-               },
-               {
-                  "sha": "386fb9c99186a819eb2ddb3dbc212521d7f69605",
+                  "sha": "421626e7854eccf86b9e3cee01bfa41d14e7f473",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1791229365,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#367)",
-                  "url": "https://github.com/canonical/prompting-client/commit/386fb9c99186a819eb2ddb3dbc212521d7f69605"
+                  "timestamp": 1791303853,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#377)",
+                  "url": "https://github.com/canonical/prompting-client/commit/421626e7854eccf86b9e3cee01bfa41d14e7f473"
+               },
+               {
+                  "sha": "8787b6132dc6da5789b51745d20fbf49a1681b93",
+                  "author": "canonical-desktop-bot",
+                  "timestamp": 1791297716,
+                  "message": "maint: regenerate l10n",
+                  "url": "https://github.com/canonical/prompting-client/commit/8787b6132dc6da5789b51745d20fbf49a1681b93"
+               },
+               {
+                  "sha": "dfc95d89a8d0aa00e6faaef5ffd2a60f6518625c",
+                  "author": "Daniel Nylander",
+                  "timestamp": 1791297440,
+                  "message": "fix(l10n): translated using Weblate (Swedish)\n\nCurrently translated at 100.0% (61 of 61 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/sv/",
+                  "url": "https://github.com/canonical/prompting-client/commit/dfc95d89a8d0aa00e6faaef5ffd2a60f6518625c"
                }
             ],
             "ciActions": [],
@@ -7995,7 +7995,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 175,
+            "newCommits": 179,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8245,7 +8245,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -9230,25 +9230,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625",
+                  "sha": "998d33e9d32cc2295df1c829c3d6f3a35ff7d831",
                   "author": "Charles",
-                  "timestamp": 1791241624,
-                  "message": "feat(sounds): four more sound sets, and the marimba back\n\nMarimba is Myna's first set, returned with each note released to zero\nrather than cut off while ringing, which clicked. Water is drops whose\ntrapped bubbles rise in pitch as real ones do. Radio is a walkie-talkie:\nsquelch and a rising two-tone to open, a roger beep and squelch tail to\nclose, mistuned beating carriers for error. Strings is Karplus-Strong\nkoto plucks, with a sitar-bridge buzz for error.\n\nThe new sets draw on noise sources of their own in dev/synth_cues.py,\nso the existing three render bit-identically.",
-                  "url": "https://github.com/canonical/myna/commit/5698f2bbb1cbeafe00d5cbfeb60ce51ee6411625"
+                  "timestamp": 1791313334,
+                  "message": "fix(config): connect the model inside the one set-up prompt\n\nA bare noble skipped auto-connecting myna:backend, so setup connected it\nas the user: a second prompt. The set-up now runs every snap step of the\nbutton, connect included.",
+                  "url": "https://github.com/canonical/myna/commit/998d33e9d32cc2295df1c829c3d6f3a35ff7d831"
                },
                {
-                  "sha": "24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002",
+                  "sha": "25bea2c82ddb807dd5cb084258e00facf31874d4",
                   "author": "Charles",
-                  "timestamp": 1791241624,
-                  "message": "test(desktop): pin each cue's loudness instead of a peak floor\n\nThe cues are matched by K-weighted loudness, not peak, so a peak floor\nmeasured the wrong thing: a band-limited set such as a walkie-talkie\npeaks well under 0.3 at the same loudness as a struck bar. The test now\nmeasures BS.1770 loudness the way dev/synth_cues.py does (50 ms blocks,\n-20 dB relative gate) and holds each cue within 0.5 LU of its target,\nstart -16, stop -18, error -15 LUFS, with no cue clipping.",
-                  "url": "https://github.com/canonical/myna/commit/24c5d27b02fb096a1e7ce0e2bc7c3b664f0b3002"
+                  "timestamp": 1791278897,
+                  "message": "test(e2e): answer the set-up polkit action too",
+                  "url": "https://github.com/canonical/myna/commit/25bea2c82ddb807dd5cb084258e00facf31874d4"
                },
                {
-                  "sha": "e83cd5fe70d0283f3044b2d0d0a98c356b713843",
+                  "sha": "feddb1e4256a449d60e6346ca951e646dc5fe675",
                   "author": "Charles",
-                  "timestamp": 1791241174,
-                  "message": "feat(sounds): make Chime the default sound set\n\nThe default leads the Sound style list, so the row now reads Chime,\nBird, Voice.",
-                  "url": "https://github.com/canonical/myna/commit/e83cd5fe70d0283f3044b2d0d0a98c356b713843"
+                  "timestamp": 1791278897,
+                  "message": "feat(config): set Myna up under one polkit prompt\n\nsnapd authorizes the user-daemons flag and installs as two polkit actions,\nso a bare machine asked twice. Without the flag, the flag and the missing\nsnaps now run as root through one `pkexec myna-config --set-up`.",
+                  "url": "https://github.com/canonical/myna/commit/feddb1e4256a449d60e6346ca951e646dc5fe675"
                }
             ],
             "ciActions": [],
@@ -9397,25 +9397,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "13852f26d645dc8e318e687d20df227a7d21eaa6",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1791294798,
-                  "message": "chore(deps): update Flutter SDK version to 3.44.9 in configuration files (#375)\n\nBumps flutter to `3.44.9`",
-                  "url": "https://github.com/canonical/prompting-client/commit/13852f26d645dc8e318e687d20df227a7d21eaa6"
-               },
-               {
-                  "sha": "39edd950fbe0fc3bd1b4b923d432e722e17adf10",
-                  "author": "Gabriele Belluardo",
-                  "timestamp": 1791279064,
-                  "message": "chore(deps): update Flutter SDK version to 3.44.9 in configuration files",
-                  "url": "https://github.com/canonical/prompting-client/commit/39edd950fbe0fc3bd1b4b923d432e722e17adf10"
-               },
-               {
-                  "sha": "386fb9c99186a819eb2ddb3dbc212521d7f69605",
+                  "sha": "421626e7854eccf86b9e3cee01bfa41d14e7f473",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1791229365,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#367)",
-                  "url": "https://github.com/canonical/prompting-client/commit/386fb9c99186a819eb2ddb3dbc212521d7f69605"
+                  "timestamp": 1791303853,
+                  "message": "fix(l10n): translations update from Hosted Weblate (#377)",
+                  "url": "https://github.com/canonical/prompting-client/commit/421626e7854eccf86b9e3cee01bfa41d14e7f473"
+               },
+               {
+                  "sha": "8787b6132dc6da5789b51745d20fbf49a1681b93",
+                  "author": "canonical-desktop-bot",
+                  "timestamp": 1791297716,
+                  "message": "maint: regenerate l10n",
+                  "url": "https://github.com/canonical/prompting-client/commit/8787b6132dc6da5789b51745d20fbf49a1681b93"
+               },
+               {
+                  "sha": "dfc95d89a8d0aa00e6faaef5ffd2a60f6518625c",
+                  "author": "Daniel Nylander",
+                  "timestamp": 1791297440,
+                  "message": "fix(l10n): translated using Weblate (Swedish)\n\nCurrently translated at 100.0% (61 of 61 strings)\n\nTranslation: ubuntu-desktop-translations/Prompting Client\nTranslate-URL: https://hosted.weblate.org/projects/ubuntu-desktop-translations/prompting-client/sv/",
+                  "url": "https://github.com/canonical/prompting-client/commit/dfc95d89a8d0aa00e6faaef5ffd2a60f6518625c"
                }
             ],
             "ciActions": [],
@@ -10583,7 +10583,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
