@@ -4185,7 +4185,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 12,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -4339,31 +4339,31 @@
          },
          {
             "name": "pipewire-snap",
-            "defaultBranch": "main",
+            "defaultBranch": "desktop/26",
             "newCommits": 0,
             "url": "https://github.com/canonical/pipewire-snap",
             "releases": null,
             "commits": [
                {
-                  "sha": "cc40fe75dfe42407a498cbb8d7e91c750047533c",
-                  "author": "Sergio Costas",
-                  "timestamp": 1746446255,
-                  "message": "Merge pull request #7 from sergio-costas/add-pipewire-slot\n\nAdd pipewire slot",
-                  "url": "https://github.com/canonical/pipewire-snap/commit/cc40fe75dfe42407a498cbb8d7e91c750047533c"
+                  "sha": "bb90aa1c39887d2cb02b92c33a36639b6a7aab35",
+                  "author": "Chris Bainbridge",
+                  "timestamp": 1791162217,
+                  "message": "Stage the pipewire-pulse package (resolute split the daemon out of pipewire-bin)",
+                  "url": "https://github.com/canonical/pipewire-snap/commit/bb90aa1c39887d2cb02b92c33a36639b6a7aab35"
                },
                {
-                  "sha": "ff3d73a416cb1842d9e0ba94b5783b38d036ea74",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1746441849,
-                  "message": "Add pipewire slot",
-                  "url": "https://github.com/canonical/pipewire-snap/commit/ff3d73a416cb1842d9e0ba94b5783b38d036ea74"
+                  "sha": "0d69b6d5e9fb15643ea3be90b2eace375fc18b7e",
+                  "author": "Chris Bainbridge",
+                  "timestamp": 1791162107,
+                  "message": "Read the snap version from the staged pipewire-bin deb (stage_packages dir)",
+                  "url": "https://github.com/canonical/pipewire-snap/commit/0d69b6d5e9fb15643ea3be90b2eace375fc18b7e"
                },
                {
-                  "sha": "311a73b1021ee10c8a80d3dedac1d1bad0fae0db",
-                  "author": "Sergio Costas",
-                  "timestamp": 1741349351,
-                  "message": "Merge pull request #6 from sergio-costas/add-pipewire-cmdline-tools\n\nAdd all the command line tools for pipewire",
-                  "url": "https://github.com/canonical/pipewire-snap/commit/311a73b1021ee10c8a80d3dedac1d1bad0fae0db"
+                  "sha": "4c5cfae6dcfd8a1a1671ab394c1f04133b7f79ae",
+                  "author": "Chris Bainbridge",
+                  "timestamp": 1791162033,
+                  "message": "Build from the resolute archive; wireplumber and portal access fixes\n\nThe desktop stack ships pipewire 1.6.2 / wireplumber 0.5.13 (resolute),\nwhile this snap built pipewire 1.2.x from oracular and got wireplumber\n0.5.8 from a stale subproject - swapping the snap in would downgrade\nthe audio stack. Stage the same archive builds the desktop content snap\nships instead (pipewire-bin, wireplumber, libspa-0.2-bluetooth), with\nthe version taken from the staged pipewire-bin deb, on a core26 base\nmatching the resolute packages.\n\nAlso fix two access gaps found while testing the store snap on a\nconfined Core desktop:\n- wireplumber queries the permission store through the portal D-Bus\n  (the desktop content snap's wireplumber plugs\n  org.freedesktop.impl.portal.PermissionStore); plug it here too.\n- the pipewire daemon's portal module marks portal-created clients by\n  querying org.freedesktop.portal.Desktop; plug that as well.\n\nDrop the daemon-scope passthrough: snapcraft and snapd both support\ndaemon-scope natively now.",
+                  "url": "https://github.com/canonical/pipewire-snap/commit/4c5cfae6dcfd8a1a1671ab394c1f04133b7f79ae"
                }
             ],
             "ciActions": [],
@@ -6733,7 +6733,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 12,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -6887,31 +6887,31 @@
          },
          {
             "name": "pipewire-snap",
-            "defaultBranch": "main",
+            "defaultBranch": "desktop/26",
             "newCommits": 0,
             "url": "https://github.com/canonical/pipewire-snap",
             "releases": null,
             "commits": [
                {
-                  "sha": "cc40fe75dfe42407a498cbb8d7e91c750047533c",
-                  "author": "Sergio Costas",
-                  "timestamp": 1746446255,
-                  "message": "Merge pull request #7 from sergio-costas/add-pipewire-slot\n\nAdd pipewire slot",
-                  "url": "https://github.com/canonical/pipewire-snap/commit/cc40fe75dfe42407a498cbb8d7e91c750047533c"
+                  "sha": "bb90aa1c39887d2cb02b92c33a36639b6a7aab35",
+                  "author": "Chris Bainbridge",
+                  "timestamp": 1791162217,
+                  "message": "Stage the pipewire-pulse package (resolute split the daemon out of pipewire-bin)",
+                  "url": "https://github.com/canonical/pipewire-snap/commit/bb90aa1c39887d2cb02b92c33a36639b6a7aab35"
                },
                {
-                  "sha": "ff3d73a416cb1842d9e0ba94b5783b38d036ea74",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1746441849,
-                  "message": "Add pipewire slot",
-                  "url": "https://github.com/canonical/pipewire-snap/commit/ff3d73a416cb1842d9e0ba94b5783b38d036ea74"
+                  "sha": "0d69b6d5e9fb15643ea3be90b2eace375fc18b7e",
+                  "author": "Chris Bainbridge",
+                  "timestamp": 1791162107,
+                  "message": "Read the snap version from the staged pipewire-bin deb (stage_packages dir)",
+                  "url": "https://github.com/canonical/pipewire-snap/commit/0d69b6d5e9fb15643ea3be90b2eace375fc18b7e"
                },
                {
-                  "sha": "311a73b1021ee10c8a80d3dedac1d1bad0fae0db",
-                  "author": "Sergio Costas",
-                  "timestamp": 1741349351,
-                  "message": "Merge pull request #6 from sergio-costas/add-pipewire-cmdline-tools\n\nAdd all the command line tools for pipewire",
-                  "url": "https://github.com/canonical/pipewire-snap/commit/311a73b1021ee10c8a80d3dedac1d1bad0fae0db"
+                  "sha": "4c5cfae6dcfd8a1a1671ab394c1f04133b7f79ae",
+                  "author": "Chris Bainbridge",
+                  "timestamp": 1791162033,
+                  "message": "Build from the resolute archive; wireplumber and portal access fixes\n\nThe desktop stack ships pipewire 1.6.2 / wireplumber 0.5.13 (resolute),\nwhile this snap built pipewire 1.2.x from oracular and got wireplumber\n0.5.8 from a stale subproject - swapping the snap in would downgrade\nthe audio stack. Stage the same archive builds the desktop content snap\nships instead (pipewire-bin, wireplumber, libspa-0.2-bluetooth), with\nthe version taken from the staged pipewire-bin deb, on a core26 base\nmatching the resolute packages.\n\nAlso fix two access gaps found while testing the store snap on a\nconfined Core desktop:\n- wireplumber queries the permission store through the portal D-Bus\n  (the desktop content snap's wireplumber plugs\n  org.freedesktop.impl.portal.PermissionStore); plug it here too.\n- the pipewire daemon's portal module marks portal-created clients by\n  querying org.freedesktop.portal.Desktop; plug that as well.\n\nDrop the daemon-scope passthrough: snapcraft and snapd both support\ndaemon-scope natively now.",
+                  "url": "https://github.com/canonical/pipewire-snap/commit/4c5cfae6dcfd8a1a1671ab394c1f04133b7f79ae"
                }
             ],
             "ciActions": [],
@@ -9285,7 +9285,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 6,
+            "newCommits": 12,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -9439,31 +9439,31 @@
          },
          {
             "name": "pipewire-snap",
-            "defaultBranch": "main",
+            "defaultBranch": "desktop/26",
             "newCommits": 0,
             "url": "https://github.com/canonical/pipewire-snap",
             "releases": null,
             "commits": [
                {
-                  "sha": "cc40fe75dfe42407a498cbb8d7e91c750047533c",
-                  "author": "Sergio Costas",
-                  "timestamp": 1746446255,
-                  "message": "Merge pull request #7 from sergio-costas/add-pipewire-slot\n\nAdd pipewire slot",
-                  "url": "https://github.com/canonical/pipewire-snap/commit/cc40fe75dfe42407a498cbb8d7e91c750047533c"
+                  "sha": "bb90aa1c39887d2cb02b92c33a36639b6a7aab35",
+                  "author": "Chris Bainbridge",
+                  "timestamp": 1791162217,
+                  "message": "Stage the pipewire-pulse package (resolute split the daemon out of pipewire-bin)",
+                  "url": "https://github.com/canonical/pipewire-snap/commit/bb90aa1c39887d2cb02b92c33a36639b6a7aab35"
                },
                {
-                  "sha": "ff3d73a416cb1842d9e0ba94b5783b38d036ea74",
-                  "author": "Sergio Costas Rodriguez",
-                  "timestamp": 1746441849,
-                  "message": "Add pipewire slot",
-                  "url": "https://github.com/canonical/pipewire-snap/commit/ff3d73a416cb1842d9e0ba94b5783b38d036ea74"
+                  "sha": "0d69b6d5e9fb15643ea3be90b2eace375fc18b7e",
+                  "author": "Chris Bainbridge",
+                  "timestamp": 1791162107,
+                  "message": "Read the snap version from the staged pipewire-bin deb (stage_packages dir)",
+                  "url": "https://github.com/canonical/pipewire-snap/commit/0d69b6d5e9fb15643ea3be90b2eace375fc18b7e"
                },
                {
-                  "sha": "311a73b1021ee10c8a80d3dedac1d1bad0fae0db",
-                  "author": "Sergio Costas",
-                  "timestamp": 1741349351,
-                  "message": "Merge pull request #6 from sergio-costas/add-pipewire-cmdline-tools\n\nAdd all the command line tools for pipewire",
-                  "url": "https://github.com/canonical/pipewire-snap/commit/311a73b1021ee10c8a80d3dedac1d1bad0fae0db"
+                  "sha": "4c5cfae6dcfd8a1a1671ab394c1f04133b7f79ae",
+                  "author": "Chris Bainbridge",
+                  "timestamp": 1791162033,
+                  "message": "Build from the resolute archive; wireplumber and portal access fixes\n\nThe desktop stack ships pipewire 1.6.2 / wireplumber 0.5.13 (resolute),\nwhile this snap built pipewire 1.2.x from oracular and got wireplumber\n0.5.8 from a stale subproject - swapping the snap in would downgrade\nthe audio stack. Stage the same archive builds the desktop content snap\nships instead (pipewire-bin, wireplumber, libspa-0.2-bluetooth), with\nthe version taken from the staged pipewire-bin deb, on a core26 base\nmatching the resolute packages.\n\nAlso fix two access gaps found while testing the store snap on a\nconfined Core desktop:\n- wireplumber queries the permission store through the portal D-Bus\n  (the desktop content snap's wireplumber plugs\n  org.freedesktop.impl.portal.PermissionStore); plug it here too.\n- the pipewire daemon's portal module marks portal-created clients by\n  querying org.freedesktop.portal.Desktop; plug that as well.\n\nDrop the daemon-scope passthrough: snapcraft and snapd both support\ndaemon-scope natively now.",
+                  "url": "https://github.com/canonical/pipewire-snap/commit/4c5cfae6dcfd8a1a1671ab394c1f04133b7f79ae"
                }
             ],
             "ciActions": [],
