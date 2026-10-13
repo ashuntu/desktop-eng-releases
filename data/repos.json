@@ -109,7 +109,7 @@
          {
             "name": "core-base-desktop",
             "defaultBranch": "desktop/26",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/canonical/core-base-desktop",
             "releases": [
                {
@@ -323,6 +323,24 @@
             "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-core-desktop",
             "releases": [
+               {
+                  "id": 411460828,
+                  "version": "kde-20261013",
+                  "timestamp": 1791318897,
+                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261013",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. UNLIKE the GNOME image, this image ships a companion <code>*-seed.iso</code> file: attach it as a virtual CD-ROM on first boot (see go-run-kde / README.md) - cloud-init uses it to create a guest/guest account with autologin enabled (no first-boot wizard for KDE yet). Without the seed.iso attached on first boot, no account exists. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde-20261013.img.zst.part* &gt; ubuntu-core-desktop-kde-20261013.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-20261013",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-20261013...main"
+               },
+               {
+                  "id": 411469349,
+                  "version": "gnome-20261013",
+                  "timestamp": 1791318897,
+                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261013",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261013",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261013...main"
+               },
                {
                   "id": 408497205,
                   "version": "gnome-20261010",
@@ -3841,25 +3859,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f45b12f3f1a48b92747623a65f313fc1550dccd5",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875868,
+                  "message": "chore: bump dbus to 0.8.0 (#36)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match, which enables two lints that are fixed\nhere. Analyze (with --fatal-infos), format and all tests pass.",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/f45b12f3f1a48b92747623a65f313fc1550dccd5"
+               },
+               {
+                  "sha": "62799e2be86b823e4d73e3560a3f5e5c429c3bdd",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1791801101,
+                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0. Fixes the unnecessary_lambdas and use_super_parameters lints enabled by the new SDK constraint.",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/62799e2be86b823e4d73e3560a3f5e5c429c3bdd"
+               },
+               {
                   "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
                   "author": "ashuntu",
                   "timestamp": 1772066466,
                   "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
                   "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
-               },
-               {
-                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
-                  "author": "ashuntu",
-                  "timestamp": 1771891119,
-                  "message": "fix: Add .vscode/ to .gitignore",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
-               },
-               {
-                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
-                  "author": "ashuntu",
-                  "timestamp": 1771891112,
-                  "message": "fix: Resolve ubuntu_lints errors",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
                }
             ],
             "ciActions": [],
@@ -4370,25 +4388,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1c5f02154170fc361f2b99ed27f15c5d620cbd6a",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875830,
+                  "message": "chore: bump freezed to 4.x (#148)\n\nUpdates freezed to ^4.0.2 and freezed_annotation to ^3.1.0, which\nfreezed 4 requires. The freezed classes are now abstract and the\ngenerated code is regenerated. Analyze (with --fatal-infos), format and\nall tests pass, including with json_annotation pinned to 4.9.0.\n\nbuild_runner warns that json_serializable wants an SDK floor of ^3.8.0\nand json_annotation ^4.12.0. I left those constraints unchanged here.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/1c5f02154170fc361f2b99ed27f15c5d620cbd6a"
+               },
+               {
+                  "sha": "9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1791801814,
+                  "message": "chore: bump freezed to 4.x\n\nBump freezed to ^4.0.2 and freezed_annotation to ^3.1.0. Freezed classes are now abstract, and the generated code is regenerated.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d"
+               },
+               {
                   "sha": "f29c91e3292f139617311da23d5ae76cc98320cd",
                   "author": "Yashpal Yadav",
                   "timestamp": 1791537206,
                   "message": "feat: add tpm/fde repair api (#147)\n\nAdds support for the TPM/FDE repair API at `/v2/systems`. Also adds\n`autoRepairResult` and `recommendations` to `getStorageEncrypted()`.\n\n---\n\nUDENG-11670",
                   "url": "https://github.com/canonical/snapd.dart/commit/f29c91e3292f139617311da23d5ae76cc98320cd"
-               },
-               {
-                  "sha": "ceb9fd12c1562cd2bc86b69dc8beada8832599a8",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1791536731,
-                  "message": "fix: rename SnapdSystemResponse to SnapdSystemsResponse\n\nThe endpoint is /v2/systems with an 's', so the response type should\nmatch getSystems(). Also fix the stale [getSystem] doc references.\n\nRequested in canonical/snapd.dart#147 review.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/ceb9fd12c1562cd2bc86b69dc8beada8832599a8"
-               },
-               {
-                  "sha": "03eb3657f008175e37aee793dad18ef1f9d24614",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1791535978,
-                  "message": "fix: rename getSystem to getSystems for consistency in tests",
-                  "url": "https://github.com/canonical/snapd.dart/commit/03eb3657f008175e37aee793dad18ef1f9d24614"
                }
             ],
             "ciActions": [],
@@ -5202,25 +5220,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875895,
+                  "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
+               },
+               {
+                  "sha": "4d4a6b6d9d43494daef62ac9897a0fbcf9708615",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1791800427,
+                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/4d4a6b6d9d43494daef62ac9897a0fbcf9708615"
+               },
+               {
                   "sha": "55176e644d45dd2b519b69b0dbcc748084f354ec",
                   "author": "Matthew Hagemann",
                   "timestamp": 1776844528,
                   "message": "feat: Add getHostPaths (#96)\n\nAddresses incorrectly doing this by hand in this pr:\nhttps://github.com/ubuntu/app-center/pull/2098#discussion_r3117316406\n\nI've also prepped to release by adding to the changelog and version\nbumping",
                   "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/55176e644d45dd2b519b69b0dbcc748084f354ec"
-               },
-               {
-                  "sha": "c27680456b5c36a9e11f9feb72c4b5ae6cf87b3a",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1776844260,
-                  "message": "chore: release 0.1.14\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/c27680456b5c36a9e11f9feb72c4b5ae6cf87b3a"
-               },
-               {
-                  "sha": "280bac9f8bc02b45b5cb5c2ec6c3c700900b31d0",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1776844095,
-                  "message": "test(documents): add getHostPaths test\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/280bac9f8bc02b45b5cb5c2ec6c3c700900b31d0"
                }
             ],
             "ciActions": [],
@@ -6001,7 +6019,7 @@
          {
             "name": "core-base-desktop",
             "defaultBranch": "desktop/26",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/canonical/core-base-desktop",
             "releases": [
                {
@@ -6788,25 +6806,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f45b12f3f1a48b92747623a65f313fc1550dccd5",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875868,
+                  "message": "chore: bump dbus to 0.8.0 (#36)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match, which enables two lints that are fixed\nhere. Analyze (with --fatal-infos), format and all tests pass.",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/f45b12f3f1a48b92747623a65f313fc1550dccd5"
+               },
+               {
+                  "sha": "62799e2be86b823e4d73e3560a3f5e5c429c3bdd",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1791801101,
+                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0. Fixes the unnecessary_lambdas and use_super_parameters lints enabled by the new SDK constraint.",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/62799e2be86b823e4d73e3560a3f5e5c429c3bdd"
+               },
+               {
                   "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
                   "author": "ashuntu",
                   "timestamp": 1772066466,
                   "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
                   "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
-               },
-               {
-                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
-                  "author": "ashuntu",
-                  "timestamp": 1771891119,
-                  "message": "fix: Add .vscode/ to .gitignore",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
-               },
-               {
-                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
-                  "author": "ashuntu",
-                  "timestamp": 1771891112,
-                  "message": "fix: Resolve ubuntu_lints errors",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
                }
             ],
             "ciActions": [],
@@ -7155,25 +7173,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1c5f02154170fc361f2b99ed27f15c5d620cbd6a",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875830,
+                  "message": "chore: bump freezed to 4.x (#148)\n\nUpdates freezed to ^4.0.2 and freezed_annotation to ^3.1.0, which\nfreezed 4 requires. The freezed classes are now abstract and the\ngenerated code is regenerated. Analyze (with --fatal-infos), format and\nall tests pass, including with json_annotation pinned to 4.9.0.\n\nbuild_runner warns that json_serializable wants an SDK floor of ^3.8.0\nand json_annotation ^4.12.0. I left those constraints unchanged here.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/1c5f02154170fc361f2b99ed27f15c5d620cbd6a"
+               },
+               {
+                  "sha": "9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1791801814,
+                  "message": "chore: bump freezed to 4.x\n\nBump freezed to ^4.0.2 and freezed_annotation to ^3.1.0. Freezed classes are now abstract, and the generated code is regenerated.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d"
+               },
+               {
                   "sha": "f29c91e3292f139617311da23d5ae76cc98320cd",
                   "author": "Yashpal Yadav",
                   "timestamp": 1791537206,
                   "message": "feat: add tpm/fde repair api (#147)\n\nAdds support for the TPM/FDE repair API at `/v2/systems`. Also adds\n`autoRepairResult` and `recommendations` to `getStorageEncrypted()`.\n\n---\n\nUDENG-11670",
                   "url": "https://github.com/canonical/snapd.dart/commit/f29c91e3292f139617311da23d5ae76cc98320cd"
-               },
-               {
-                  "sha": "ceb9fd12c1562cd2bc86b69dc8beada8832599a8",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1791536731,
-                  "message": "fix: rename SnapdSystemResponse to SnapdSystemsResponse\n\nThe endpoint is /v2/systems with an 's', so the response type should\nmatch getSystems(). Also fix the stale [getSystem] doc references.\n\nRequested in canonical/snapd.dart#147 review.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/ceb9fd12c1562cd2bc86b69dc8beada8832599a8"
-               },
-               {
-                  "sha": "03eb3657f008175e37aee793dad18ef1f9d24614",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1791535978,
-                  "message": "fix: rename getSystem to getSystems for consistency in tests",
-                  "url": "https://github.com/canonical/snapd.dart/commit/03eb3657f008175e37aee793dad18ef1f9d24614"
                }
             ],
             "ciActions": [],
@@ -7367,6 +7385,24 @@
             "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-core-desktop",
             "releases": [
+               {
+                  "id": 411495688,
+                  "version": "kde-20261013",
+                  "timestamp": 1791318897,
+                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261013",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. UNLIKE the GNOME image, this image ships a companion <code>*-seed.iso</code> file: attach it as a virtual CD-ROM on first boot (see go-run-kde / README.md) - cloud-init uses it to create a guest/guest account with autologin enabled (no first-boot wizard for KDE yet). Without the seed.iso attached on first boot, no account exists. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde-20261013.img.zst.part* &gt; ubuntu-core-desktop-kde-20261013.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-20261013",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-20261013...main"
+               },
+               {
+                  "id": 411469349,
+                  "version": "gnome-20261013",
+                  "timestamp": 1791318897,
+                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261013",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261013",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261013...main"
+               },
                {
                   "id": 408497205,
                   "version": "gnome-20261010",
@@ -7776,25 +7812,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875895,
+                  "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
+               },
+               {
+                  "sha": "4d4a6b6d9d43494daef62ac9897a0fbcf9708615",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1791800427,
+                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/4d4a6b6d9d43494daef62ac9897a0fbcf9708615"
+               },
+               {
                   "sha": "55176e644d45dd2b519b69b0dbcc748084f354ec",
                   "author": "Matthew Hagemann",
                   "timestamp": 1776844528,
                   "message": "feat: Add getHostPaths (#96)\n\nAddresses incorrectly doing this by hand in this pr:\nhttps://github.com/ubuntu/app-center/pull/2098#discussion_r3117316406\n\nI've also prepped to release by adding to the changelog and version\nbumping",
                   "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/55176e644d45dd2b519b69b0dbcc748084f354ec"
-               },
-               {
-                  "sha": "c27680456b5c36a9e11f9feb72c4b5ae6cf87b3a",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1776844260,
-                  "message": "chore: release 0.1.14\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/c27680456b5c36a9e11f9feb72c4b5ae6cf87b3a"
-               },
-               {
-                  "sha": "280bac9f8bc02b45b5cb5c2ec6c3c700900b31d0",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1776844095,
-                  "message": "test(documents): add getHostPaths test\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/280bac9f8bc02b45b5cb5c2ec6c3c700900b31d0"
                }
             ],
             "ciActions": [],
@@ -8507,7 +8543,7 @@
          {
             "name": "core-base-desktop",
             "defaultBranch": "desktop/26",
-            "newCommits": 0,
+            "newCommits": 1,
             "url": "https://github.com/canonical/core-base-desktop",
             "releases": [
                {
@@ -9295,25 +9331,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f45b12f3f1a48b92747623a65f313fc1550dccd5",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875868,
+                  "message": "chore: bump dbus to 0.8.0 (#36)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match, which enables two lints that are fixed\nhere. Analyze (with --fatal-infos), format and all tests pass.",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/f45b12f3f1a48b92747623a65f313fc1550dccd5"
+               },
+               {
+                  "sha": "62799e2be86b823e4d73e3560a3f5e5c429c3bdd",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1791801101,
+                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0. Fixes the unnecessary_lambdas and use_super_parameters lints enabled by the new SDK constraint.",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/62799e2be86b823e4d73e3560a3f5e5c429c3bdd"
+               },
+               {
                   "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
                   "author": "ashuntu",
                   "timestamp": 1772066466,
                   "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
                   "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
-               },
-               {
-                  "sha": "e1f449a6e96c17b5b203b660720a1162bef3271f",
-                  "author": "ashuntu",
-                  "timestamp": 1771891119,
-                  "message": "fix: Add .vscode/ to .gitignore",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e1f449a6e96c17b5b203b660720a1162bef3271f"
-               },
-               {
-                  "sha": "4f6664fd3f80576d3692369c0a2429f607812656",
-                  "author": "ashuntu",
-                  "timestamp": 1771891112,
-                  "message": "fix: Resolve ubuntu_lints errors",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/4f6664fd3f80576d3692369c0a2429f607812656"
                }
             ],
             "ciActions": [],
@@ -9662,25 +9698,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "1c5f02154170fc361f2b99ed27f15c5d620cbd6a",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875830,
+                  "message": "chore: bump freezed to 4.x (#148)\n\nUpdates freezed to ^4.0.2 and freezed_annotation to ^3.1.0, which\nfreezed 4 requires. The freezed classes are now abstract and the\ngenerated code is regenerated. Analyze (with --fatal-infos), format and\nall tests pass, including with json_annotation pinned to 4.9.0.\n\nbuild_runner warns that json_serializable wants an SDK floor of ^3.8.0\nand json_annotation ^4.12.0. I left those constraints unchanged here.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/1c5f02154170fc361f2b99ed27f15c5d620cbd6a"
+               },
+               {
+                  "sha": "9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1791801814,
+                  "message": "chore: bump freezed to 4.x\n\nBump freezed to ^4.0.2 and freezed_annotation to ^3.1.0. Freezed classes are now abstract, and the generated code is regenerated.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d"
+               },
+               {
                   "sha": "f29c91e3292f139617311da23d5ae76cc98320cd",
                   "author": "Yashpal Yadav",
                   "timestamp": 1791537206,
                   "message": "feat: add tpm/fde repair api (#147)\n\nAdds support for the TPM/FDE repair API at `/v2/systems`. Also adds\n`autoRepairResult` and `recommendations` to `getStorageEncrypted()`.\n\n---\n\nUDENG-11670",
                   "url": "https://github.com/canonical/snapd.dart/commit/f29c91e3292f139617311da23d5ae76cc98320cd"
-               },
-               {
-                  "sha": "ceb9fd12c1562cd2bc86b69dc8beada8832599a8",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1791536731,
-                  "message": "fix: rename SnapdSystemResponse to SnapdSystemsResponse\n\nThe endpoint is /v2/systems with an 's', so the response type should\nmatch getSystems(). Also fix the stale [getSystem] doc references.\n\nRequested in canonical/snapd.dart#147 review.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/ceb9fd12c1562cd2bc86b69dc8beada8832599a8"
-               },
-               {
-                  "sha": "03eb3657f008175e37aee793dad18ef1f9d24614",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1791535978,
-                  "message": "fix: rename getSystem to getSystems for consistency in tests",
-                  "url": "https://github.com/canonical/snapd.dart/commit/03eb3657f008175e37aee793dad18ef1f9d24614"
                }
             ],
             "ciActions": [],
@@ -9874,6 +9910,24 @@
             "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-core-desktop",
             "releases": [
+               {
+                  "id": 411495688,
+                  "version": "kde-20261013",
+                  "timestamp": 1791318897,
+                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261013",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. UNLIKE the GNOME image, this image ships a companion <code>*-seed.iso</code> file: attach it as a virtual CD-ROM on first boot (see go-run-kde / README.md) - cloud-init uses it to create a guest/guest account with autologin enabled (no first-boot wizard for KDE yet). Without the seed.iso attached on first boot, no account exists. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde-20261013.img.zst.part* &gt; ubuntu-core-desktop-kde-20261013.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-20261013",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-20261013...main"
+               },
+               {
+                  "id": 411469349,
+                  "version": "gnome-20261013",
+                  "timestamp": 1791318897,
+                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261013",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261013",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261013...main"
+               },
                {
                   "id": 408497205,
                   "version": "gnome-20261010",
@@ -10277,25 +10331,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875895,
+                  "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
+               },
+               {
+                  "sha": "4d4a6b6d9d43494daef62ac9897a0fbcf9708615",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1791800427,
+                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/4d4a6b6d9d43494daef62ac9897a0fbcf9708615"
+               },
+               {
                   "sha": "55176e644d45dd2b519b69b0dbcc748084f354ec",
                   "author": "Matthew Hagemann",
                   "timestamp": 1776844528,
                   "message": "feat: Add getHostPaths (#96)\n\nAddresses incorrectly doing this by hand in this pr:\nhttps://github.com/ubuntu/app-center/pull/2098#discussion_r3117316406\n\nI've also prepped to release by adding to the changelog and version\nbumping",
                   "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/55176e644d45dd2b519b69b0dbcc748084f354ec"
-               },
-               {
-                  "sha": "c27680456b5c36a9e11f9feb72c4b5ae6cf87b3a",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1776844260,
-                  "message": "chore: release 0.1.14\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/c27680456b5c36a9e11f9feb72c4b5ae6cf87b3a"
-               },
-               {
-                  "sha": "280bac9f8bc02b45b5cb5c2ec6c3c700900b31d0",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1776844095,
-                  "message": "test(documents): add getHostPaths test\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/280bac9f8bc02b45b5cb5c2ec6c3c700900b31d0"
                }
             ],
             "ciActions": [],
