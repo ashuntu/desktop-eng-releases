@@ -2236,6 +2236,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "0b347c4f09330c12f5bdf20af59d0a615c4b01e6",
+                  "author": "Nathan Pratta Teodosio",
+                  "timestamp": 1792482526,
+                  "message": "158.0.1-1",
+                  "url": "https://github.com/ubuntu/thunderbird/commit/0b347c4f09330c12f5bdf20af59d0a615c4b01e6"
+               },
+               {
                   "sha": "1485d17637acb05832b00e3ed5585c1cb43520fc",
                   "author": "Nathan Pratta Teodosio",
                   "timestamp": 1791278436,
@@ -2248,13 +2255,6 @@
                   "timestamp": 1791299673,
                   "message": "Bundle Kerberos that ignores a failed includedir.\n\nLP:2122317",
                   "url": "https://github.com/ubuntu/thunderbird/commit/ad76179f822f6071c6a1a8d01fa4cd50a8be3c4d"
-               },
-               {
-                  "sha": "cbb7416344c9b3af3b89218c260adc6d930f62a5",
-                  "author": "Nathan Pratta Teodosio",
-                  "timestamp": 1791540183,
-                  "message": "158.0-1",
-                  "url": "https://github.com/ubuntu/thunderbird/commit/cbb7416344c9b3af3b89218c260adc6d930f62a5"
                }
             ],
             "ciActions": [],
@@ -2726,25 +2726,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "14fa55a4217ccb47b6e34f155baf97a77be535ef",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1792427361,
-                  "message": "e2e: Document yarf tests (#2050)\n\nAs discussed in one of our meetings, improving the documentation section\nfor the tests should provide more clarity about which use cases the test\nis supposed to cover and which steps should be taken to get there.\n\nThis also updates the e2e AGENTS.md file so that newer tests generated\nby agents will follow the expected pattern.\n\nUDENG-11683",
-                  "url": "https://github.com/canonical/authd/commit/14fa55a4217ccb47b6e34f155baf97a77be535ef"
+                  "sha": "c09eb6d5047ac309d3b05aeb1b5414b8281f54f6",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1792488696,
+                  "message": "e2e: guard username normalization and QR code regeneration (#2127)\n\nThe mixed-case test used `E2E_USER` as supplied: a lowercase value never\nexercised case normalization, an uppercase value failed the lowercase\nNSS check. It now builds a mixed-case name and checks the lowercase\nrecord.\n\nThe QR test regenerated the code three times and logged in with whatever\nwas on screen. It now checks each replacement against the previous code\nand logs in with the last one.\n\n`Extract Device Code` no longer strips spaces: `StringUtils.First Match`\nremoves all whitespace from the captured group, and both\n`DEVICE_URL_REGEX` patterns avoid or tolerate whitespace inside a code.\nThe upper-casing stays for OCR mis-casing; the OCR notes in\n`e2e-tests/AGENTS.md` now name where spaces are handled.",
+                  "url": "https://github.com/canonical/authd/commit/c09eb6d5047ac309d3b05aeb1b5414b8281f54f6"
                },
                {
-                  "sha": "7594d1395f06f20092cb564ab2baf1036c23f4cb",
-                  "author": "adombeck",
-                  "timestamp": 1792426048,
-                  "message": "ci: Keep OCI artifacts available for workflow retries (#2080)\n\nUDENG-11974",
-                  "url": "https://github.com/canonical/authd/commit/7594d1395f06f20092cb564ab2baf1036c23f4cb"
+                  "sha": "28a7051b2b838c3e7d2111d9121d3afb8c74b0d5",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1792411020,
+                  "message": "e2e: Drop the no-op space strip from device code extraction\n\n\"Extract Device Code\" stripped spaces from the code. The value comes\nfrom StringUtils.First Match, which removes all whitespace from the\ncaptured group, and both DEVICE_URL_REGEX patterns avoid or tolerate\nwhitespace inside a code, so the step never had anything to remove.\n\nThe upper-casing stays, because OCR mis-cases letters and the same value\nfeeds the browser login and the QR comparison. The OCR notes in\ne2e-tests/AGENTS.md now name the regexes and the helper as the place\nthat handles spaces.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/28a7051b2b838c3e7d2111d9121d3afb8c74b0d5"
                },
                {
-                  "sha": "33854d35db32a19d67f7692c46e6ea06852d739d",
-                  "author": "adombeck",
-                  "timestamp": 1792425853,
-                  "message": "ci: Keep dependency updates in one weekly window (#2140)\n\nUDENG-12009",
-                  "url": "https://github.com/canonical/authd/commit/33854d35db32a19d67f7692c46e6ea06852d739d"
+                  "sha": "38ed9e833c5eb10e02396263d2802e4e16ce50f6",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1792408663,
+                  "message": "e2e: Verify that QR regeneration replaces the device code\n\nThe test regenerated the code three times and then logged in with\nwhatever the screen showed, so a regression that left the old code on\nscreen would still pass.\n\nRead the code again after each regeneration and fail if it matches the\nprevious one.\n\nThe OCR cleanup (drop spaces, upper-case) moved from the browser login\ninto \"Extract Device Code\", so the QR comparison and the login work on\nthe same normalized value. The OCR notes in e2e-tests/AGENTS.md named\nthe login flow as the place that normalizes the code; they now name\n\"Extract Device Code\".\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/38ed9e833c5eb10e02396263d2802e4e16ce50f6"
                }
             ],
             "ciActions": [
@@ -5910,25 +5910,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "14fa55a4217ccb47b6e34f155baf97a77be535ef",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1792427361,
-                  "message": "e2e: Document yarf tests (#2050)\n\nAs discussed in one of our meetings, improving the documentation section\nfor the tests should provide more clarity about which use cases the test\nis supposed to cover and which steps should be taken to get there.\n\nThis also updates the e2e AGENTS.md file so that newer tests generated\nby agents will follow the expected pattern.\n\nUDENG-11683",
-                  "url": "https://github.com/canonical/authd/commit/14fa55a4217ccb47b6e34f155baf97a77be535ef"
+                  "sha": "c09eb6d5047ac309d3b05aeb1b5414b8281f54f6",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1792488696,
+                  "message": "e2e: guard username normalization and QR code regeneration (#2127)\n\nThe mixed-case test used `E2E_USER` as supplied: a lowercase value never\nexercised case normalization, an uppercase value failed the lowercase\nNSS check. It now builds a mixed-case name and checks the lowercase\nrecord.\n\nThe QR test regenerated the code three times and logged in with whatever\nwas on screen. It now checks each replacement against the previous code\nand logs in with the last one.\n\n`Extract Device Code` no longer strips spaces: `StringUtils.First Match`\nremoves all whitespace from the captured group, and both\n`DEVICE_URL_REGEX` patterns avoid or tolerate whitespace inside a code.\nThe upper-casing stays for OCR mis-casing; the OCR notes in\n`e2e-tests/AGENTS.md` now name where spaces are handled.",
+                  "url": "https://github.com/canonical/authd/commit/c09eb6d5047ac309d3b05aeb1b5414b8281f54f6"
                },
                {
-                  "sha": "7594d1395f06f20092cb564ab2baf1036c23f4cb",
-                  "author": "adombeck",
-                  "timestamp": 1792426048,
-                  "message": "ci: Keep OCI artifacts available for workflow retries (#2080)\n\nUDENG-11974",
-                  "url": "https://github.com/canonical/authd/commit/7594d1395f06f20092cb564ab2baf1036c23f4cb"
+                  "sha": "28a7051b2b838c3e7d2111d9121d3afb8c74b0d5",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1792411020,
+                  "message": "e2e: Drop the no-op space strip from device code extraction\n\n\"Extract Device Code\" stripped spaces from the code. The value comes\nfrom StringUtils.First Match, which removes all whitespace from the\ncaptured group, and both DEVICE_URL_REGEX patterns avoid or tolerate\nwhitespace inside a code, so the step never had anything to remove.\n\nThe upper-casing stays, because OCR mis-cases letters and the same value\nfeeds the browser login and the QR comparison. The OCR notes in\ne2e-tests/AGENTS.md now name the regexes and the helper as the place\nthat handles spaces.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/28a7051b2b838c3e7d2111d9121d3afb8c74b0d5"
                },
                {
-                  "sha": "33854d35db32a19d67f7692c46e6ea06852d739d",
-                  "author": "adombeck",
-                  "timestamp": 1792425853,
-                  "message": "ci: Keep dependency updates in one weekly window (#2140)\n\nUDENG-12009",
-                  "url": "https://github.com/canonical/authd/commit/33854d35db32a19d67f7692c46e6ea06852d739d"
+                  "sha": "38ed9e833c5eb10e02396263d2802e4e16ce50f6",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1792408663,
+                  "message": "e2e: Verify that QR regeneration replaces the device code\n\nThe test regenerated the code three times and then logged in with\nwhatever the screen showed, so a regression that left the old code on\nscreen would still pass.\n\nRead the code again after each regeneration and fail if it matches the\nprevious one.\n\nThe OCR cleanup (drop spaces, upper-case) moved from the browser login\ninto \"Extract Device Code\", so the QR comparison and the login work on\nthe same normalized value. The OCR notes in e2e-tests/AGENTS.md named\nthe login flow as the place that normalizes the code; they now name\n\"Extract Device Code\".\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/38ed9e833c5eb10e02396263d2802e4e16ce50f6"
                }
             ],
             "ciActions": [
@@ -8477,25 +8477,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "14fa55a4217ccb47b6e34f155baf97a77be535ef",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1792427361,
-                  "message": "e2e: Document yarf tests (#2050)\n\nAs discussed in one of our meetings, improving the documentation section\nfor the tests should provide more clarity about which use cases the test\nis supposed to cover and which steps should be taken to get there.\n\nThis also updates the e2e AGENTS.md file so that newer tests generated\nby agents will follow the expected pattern.\n\nUDENG-11683",
-                  "url": "https://github.com/canonical/authd/commit/14fa55a4217ccb47b6e34f155baf97a77be535ef"
+                  "sha": "c09eb6d5047ac309d3b05aeb1b5414b8281f54f6",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1792488696,
+                  "message": "e2e: guard username normalization and QR code regeneration (#2127)\n\nThe mixed-case test used `E2E_USER` as supplied: a lowercase value never\nexercised case normalization, an uppercase value failed the lowercase\nNSS check. It now builds a mixed-case name and checks the lowercase\nrecord.\n\nThe QR test regenerated the code three times and logged in with whatever\nwas on screen. It now checks each replacement against the previous code\nand logs in with the last one.\n\n`Extract Device Code` no longer strips spaces: `StringUtils.First Match`\nremoves all whitespace from the captured group, and both\n`DEVICE_URL_REGEX` patterns avoid or tolerate whitespace inside a code.\nThe upper-casing stays for OCR mis-casing; the OCR notes in\n`e2e-tests/AGENTS.md` now name where spaces are handled.",
+                  "url": "https://github.com/canonical/authd/commit/c09eb6d5047ac309d3b05aeb1b5414b8281f54f6"
                },
                {
-                  "sha": "7594d1395f06f20092cb564ab2baf1036c23f4cb",
-                  "author": "adombeck",
-                  "timestamp": 1792426048,
-                  "message": "ci: Keep OCI artifacts available for workflow retries (#2080)\n\nUDENG-11974",
-                  "url": "https://github.com/canonical/authd/commit/7594d1395f06f20092cb564ab2baf1036c23f4cb"
+                  "sha": "28a7051b2b838c3e7d2111d9121d3afb8c74b0d5",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1792411020,
+                  "message": "e2e: Drop the no-op space strip from device code extraction\n\n\"Extract Device Code\" stripped spaces from the code. The value comes\nfrom StringUtils.First Match, which removes all whitespace from the\ncaptured group, and both DEVICE_URL_REGEX patterns avoid or tolerate\nwhitespace inside a code, so the step never had anything to remove.\n\nThe upper-casing stays, because OCR mis-cases letters and the same value\nfeeds the browser login and the QR comparison. The OCR notes in\ne2e-tests/AGENTS.md now name the regexes and the helper as the place\nthat handles spaces.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/28a7051b2b838c3e7d2111d9121d3afb8c74b0d5"
                },
                {
-                  "sha": "33854d35db32a19d67f7692c46e6ea06852d739d",
-                  "author": "adombeck",
-                  "timestamp": 1792425853,
-                  "message": "ci: Keep dependency updates in one weekly window (#2140)\n\nUDENG-12009",
-                  "url": "https://github.com/canonical/authd/commit/33854d35db32a19d67f7692c46e6ea06852d739d"
+                  "sha": "38ed9e833c5eb10e02396263d2802e4e16ce50f6",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1792408663,
+                  "message": "e2e: Verify that QR regeneration replaces the device code\n\nThe test regenerated the code three times and then logged in with\nwhatever the screen showed, so a regression that left the old code on\nscreen would still pass.\n\nRead the code again after each regeneration and fail if it matches the\nprevious one.\n\nThe OCR cleanup (drop spaces, upper-case) moved from the browser login\ninto \"Extract Device Code\", so the QR comparison and the login work on\nthe same normalized value. The OCR notes in e2e-tests/AGENTS.md named\nthe login flow as the place that normalizes the code; they now name\n\"Extract Device Code\".\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/38ed9e833c5eb10e02396263d2802e4e16ce50f6"
                }
             ],
             "ciActions": [
