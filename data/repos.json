@@ -70,7 +70,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 9,
+            "newCommits": 11,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -3922,25 +3922,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ee843165b70ddca816182fca37f47c5b9d9dc48c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793131675,
+                  "message": "chore(release): Release 0.2.8 (#37)\n\nReleases 0.2.8 with the dbus 0.8.0 update (#36). Analyze, format, tests\nand publish --dry-run pass.",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/ee843165b70ddca816182fca37f47c5b9d9dc48c"
+               },
+               {
+                  "sha": "9e53e590b67b7830aef83e10297297e42e066741",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131518,
+                  "message": "chore(release): Release 0.2.8",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/9e53e590b67b7830aef83e10297297e42e066741"
+               },
+               {
                   "sha": "f45b12f3f1a48b92747623a65f313fc1550dccd5",
                   "author": "paul-geoghegan",
                   "timestamp": 1791875868,
                   "message": "chore: bump dbus to 0.8.0 (#36)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match, which enables two lints that are fixed\nhere. Analyze (with --fatal-infos), format and all tests pass.",
                   "url": "https://github.com/canonical/packagekit.dart/commit/f45b12f3f1a48b92747623a65f313fc1550dccd5"
-               },
-               {
-                  "sha": "62799e2be86b823e4d73e3560a3f5e5c429c3bdd",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1791801101,
-                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0. Fixes the unnecessary_lambdas and use_super_parameters lints enabled by the new SDK constraint.",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/62799e2be86b823e4d73e3560a3f5e5c429c3bdd"
-               },
-               {
-                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
-                  "author": "ashuntu",
-                  "timestamp": 1772066466,
-                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
                }
             ],
             "ciActions": [],
@@ -4469,25 +4469,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "86d9a95a4266bbb5b85c4c34e687441173821725",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793132120,
+                  "message": "chore: release 0.7.8 (#149)\n\nReleases 0.7.8 with the TPM/FDE repair API and the freezed 4 update\n(#148). Analyze, format, tests and publish --dry-run pass.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/86d9a95a4266bbb5b85c4c34e687441173821725"
+               },
+               {
+                  "sha": "f2d8216ad2fbb16d624d1670363f4e24961ec94f",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131958,
+                  "message": "chore: release 0.7.8",
+                  "url": "https://github.com/canonical/snapd.dart/commit/f2d8216ad2fbb16d624d1670363f4e24961ec94f"
+               },
+               {
                   "sha": "1c5f02154170fc361f2b99ed27f15c5d620cbd6a",
                   "author": "paul-geoghegan",
                   "timestamp": 1791875830,
                   "message": "chore: bump freezed to 4.x (#148)\n\nUpdates freezed to ^4.0.2 and freezed_annotation to ^3.1.0, which\nfreezed 4 requires. The freezed classes are now abstract and the\ngenerated code is regenerated. Analyze (with --fatal-infos), format and\nall tests pass, including with json_annotation pinned to 4.9.0.\n\nbuild_runner warns that json_serializable wants an SDK floor of ^3.8.0\nand json_annotation ^4.12.0. I left those constraints unchanged here.",
                   "url": "https://github.com/canonical/snapd.dart/commit/1c5f02154170fc361f2b99ed27f15c5d620cbd6a"
-               },
-               {
-                  "sha": "9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1791801814,
-                  "message": "chore: bump freezed to 4.x\n\nBump freezed to ^4.0.2 and freezed_annotation to ^3.1.0. Freezed classes are now abstract, and the generated code is regenerated.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d"
-               },
-               {
-                  "sha": "f29c91e3292f139617311da23d5ae76cc98320cd",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1791537206,
-                  "message": "feat: add tpm/fde repair api (#147)\n\nAdds support for the TPM/FDE repair API at `/v2/systems`. Also adds\n`autoRepairResult` and `recommendations` to `getStorageEncrypted()`.\n\n---\n\nUDENG-11670",
-                  "url": "https://github.com/canonical/snapd.dart/commit/f29c91e3292f139617311da23d5ae76cc98320cd"
                }
             ],
             "ciActions": [],
@@ -5283,25 +5283,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8cd5a1420ea86728a7c0495bd3a691569857b184",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793131501,
+                  "message": "chore: release 0.1.15 (#99)\n\nReleases 0.1.15 with the dbus 0.8.0 update (#98). Analyze, tests and\npublish --dry-run pass.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8cd5a1420ea86728a7c0495bd3a691569857b184"
+               },
+               {
+                  "sha": "8e0fbcc3042c4bb612652ae437f1487e30e0bc65",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131297,
+                  "message": "chore: release 0.1.15",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8e0fbcc3042c4bb612652ae437f1487e30e0bc65"
+               },
+               {
                   "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
                   "author": "paul-geoghegan",
                   "timestamp": 1791875895,
                   "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
                   "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
-               },
-               {
-                  "sha": "4d4a6b6d9d43494daef62ac9897a0fbcf9708615",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1791800427,
-                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/4d4a6b6d9d43494daef62ac9897a0fbcf9708615"
-               },
-               {
-                  "sha": "55176e644d45dd2b519b69b0dbcc748084f354ec",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1776844528,
-                  "message": "feat: Add getHostPaths (#96)\n\nAddresses incorrectly doing this by hand in this pr:\nhttps://github.com/ubuntu/app-center/pull/2098#discussion_r3117316406\n\nI've also prepped to release by adding to the changelog and version\nbumping",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/55176e644d45dd2b519b69b0dbcc748084f354ec"
                }
             ],
             "ciActions": [],
@@ -6697,7 +6697,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 9,
+            "newCommits": 11,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -6809,25 +6809,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ee843165b70ddca816182fca37f47c5b9d9dc48c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793131675,
+                  "message": "chore(release): Release 0.2.8 (#37)\n\nReleases 0.2.8 with the dbus 0.8.0 update (#36). Analyze, format, tests\nand publish --dry-run pass.",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/ee843165b70ddca816182fca37f47c5b9d9dc48c"
+               },
+               {
+                  "sha": "9e53e590b67b7830aef83e10297297e42e066741",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131518,
+                  "message": "chore(release): Release 0.2.8",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/9e53e590b67b7830aef83e10297297e42e066741"
+               },
+               {
                   "sha": "f45b12f3f1a48b92747623a65f313fc1550dccd5",
                   "author": "paul-geoghegan",
                   "timestamp": 1791875868,
                   "message": "chore: bump dbus to 0.8.0 (#36)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match, which enables two lints that are fixed\nhere. Analyze (with --fatal-infos), format and all tests pass.",
                   "url": "https://github.com/canonical/packagekit.dart/commit/f45b12f3f1a48b92747623a65f313fc1550dccd5"
-               },
-               {
-                  "sha": "62799e2be86b823e4d73e3560a3f5e5c429c3bdd",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1791801101,
-                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0. Fixes the unnecessary_lambdas and use_super_parameters lints enabled by the new SDK constraint.",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/62799e2be86b823e4d73e3560a3f5e5c429c3bdd"
-               },
-               {
-                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
-                  "author": "ashuntu",
-                  "timestamp": 1772066466,
-                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
                }
             ],
             "ciActions": [],
@@ -7176,25 +7176,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "86d9a95a4266bbb5b85c4c34e687441173821725",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793132120,
+                  "message": "chore: release 0.7.8 (#149)\n\nReleases 0.7.8 with the TPM/FDE repair API and the freezed 4 update\n(#148). Analyze, format, tests and publish --dry-run pass.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/86d9a95a4266bbb5b85c4c34e687441173821725"
+               },
+               {
+                  "sha": "f2d8216ad2fbb16d624d1670363f4e24961ec94f",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131958,
+                  "message": "chore: release 0.7.8",
+                  "url": "https://github.com/canonical/snapd.dart/commit/f2d8216ad2fbb16d624d1670363f4e24961ec94f"
+               },
+               {
                   "sha": "1c5f02154170fc361f2b99ed27f15c5d620cbd6a",
                   "author": "paul-geoghegan",
                   "timestamp": 1791875830,
                   "message": "chore: bump freezed to 4.x (#148)\n\nUpdates freezed to ^4.0.2 and freezed_annotation to ^3.1.0, which\nfreezed 4 requires. The freezed classes are now abstract and the\ngenerated code is regenerated. Analyze (with --fatal-infos), format and\nall tests pass, including with json_annotation pinned to 4.9.0.\n\nbuild_runner warns that json_serializable wants an SDK floor of ^3.8.0\nand json_annotation ^4.12.0. I left those constraints unchanged here.",
                   "url": "https://github.com/canonical/snapd.dart/commit/1c5f02154170fc361f2b99ed27f15c5d620cbd6a"
-               },
-               {
-                  "sha": "9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1791801814,
-                  "message": "chore: bump freezed to 4.x\n\nBump freezed to ^4.0.2 and freezed_annotation to ^3.1.0. Freezed classes are now abstract, and the generated code is regenerated.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d"
-               },
-               {
-                  "sha": "f29c91e3292f139617311da23d5ae76cc98320cd",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1791537206,
-                  "message": "feat: add tpm/fde repair api (#147)\n\nAdds support for the TPM/FDE repair API at `/v2/systems`. Also adds\n`autoRepairResult` and `recommendations` to `getStorageEncrypted()`.\n\n---\n\nUDENG-11670",
-                  "url": "https://github.com/canonical/snapd.dart/commit/f29c91e3292f139617311da23d5ae76cc98320cd"
                }
             ],
             "ciActions": [],
@@ -7815,25 +7815,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8cd5a1420ea86728a7c0495bd3a691569857b184",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793131501,
+                  "message": "chore: release 0.1.15 (#99)\n\nReleases 0.1.15 with the dbus 0.8.0 update (#98). Analyze, tests and\npublish --dry-run pass.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8cd5a1420ea86728a7c0495bd3a691569857b184"
+               },
+               {
+                  "sha": "8e0fbcc3042c4bb612652ae437f1487e30e0bc65",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131297,
+                  "message": "chore: release 0.1.15",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8e0fbcc3042c4bb612652ae437f1487e30e0bc65"
+               },
+               {
                   "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
                   "author": "paul-geoghegan",
                   "timestamp": 1791875895,
                   "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
                   "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
-               },
-               {
-                  "sha": "4d4a6b6d9d43494daef62ac9897a0fbcf9708615",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1791800427,
-                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/4d4a6b6d9d43494daef62ac9897a0fbcf9708615"
-               },
-               {
-                  "sha": "55176e644d45dd2b519b69b0dbcc748084f354ec",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1776844528,
-                  "message": "feat: Add getHostPaths (#96)\n\nAddresses incorrectly doing this by hand in this pr:\nhttps://github.com/ubuntu/app-center/pull/2098#discussion_r3117316406\n\nI've also prepped to release by adding to the changelog and version\nbumping",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/55176e644d45dd2b519b69b0dbcc748084f354ec"
                }
             ],
             "ciActions": [],
@@ -8692,25 +8692,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "ee843165b70ddca816182fca37f47c5b9d9dc48c",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793131675,
+                  "message": "chore(release): Release 0.2.8 (#37)\n\nReleases 0.2.8 with the dbus 0.8.0 update (#36). Analyze, format, tests\nand publish --dry-run pass.",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/ee843165b70ddca816182fca37f47c5b9d9dc48c"
+               },
+               {
+                  "sha": "9e53e590b67b7830aef83e10297297e42e066741",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131518,
+                  "message": "chore(release): Release 0.2.8",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/9e53e590b67b7830aef83e10297297e42e066741"
+               },
+               {
                   "sha": "f45b12f3f1a48b92747623a65f313fc1550dccd5",
                   "author": "paul-geoghegan",
                   "timestamp": 1791875868,
                   "message": "chore: bump dbus to 0.8.0 (#36)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match, which enables two lints that are fixed\nhere. Analyze (with --fatal-infos), format and all tests pass.",
                   "url": "https://github.com/canonical/packagekit.dart/commit/f45b12f3f1a48b92747623a65f313fc1550dccd5"
-               },
-               {
-                  "sha": "62799e2be86b823e4d73e3560a3f5e5c429c3bdd",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1791801101,
-                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0. Fixes the unnecessary_lambdas and use_super_parameters lints enabled by the new SDK constraint.",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/62799e2be86b823e4d73e3560a3f5e5c429c3bdd"
-               },
-               {
-                  "sha": "e06d0192bfe795c9abb7e89c8be2fdd049a84fbe",
-                  "author": "ashuntu",
-                  "timestamp": 1772066466,
-                  "message": "fix: Add ubuntu_lints (#34)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible\n- Trailing commas\n\nAlso done for appstream.dart:\nhttps://github.com/canonical/appstream.dart/pull/43",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/e06d0192bfe795c9abb7e89c8be2fdd049a84fbe"
                }
             ],
             "ciActions": [],
@@ -9231,7 +9231,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 9,
+            "newCommits": 11,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -9722,25 +9722,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "86d9a95a4266bbb5b85c4c34e687441173821725",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793132120,
+                  "message": "chore: release 0.7.8 (#149)\n\nReleases 0.7.8 with the TPM/FDE repair API and the freezed 4 update\n(#148). Analyze, format, tests and publish --dry-run pass.",
+                  "url": "https://github.com/canonical/snapd.dart/commit/86d9a95a4266bbb5b85c4c34e687441173821725"
+               },
+               {
+                  "sha": "f2d8216ad2fbb16d624d1670363f4e24961ec94f",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131958,
+                  "message": "chore: release 0.7.8",
+                  "url": "https://github.com/canonical/snapd.dart/commit/f2d8216ad2fbb16d624d1670363f4e24961ec94f"
+               },
+               {
                   "sha": "1c5f02154170fc361f2b99ed27f15c5d620cbd6a",
                   "author": "paul-geoghegan",
                   "timestamp": 1791875830,
                   "message": "chore: bump freezed to 4.x (#148)\n\nUpdates freezed to ^4.0.2 and freezed_annotation to ^3.1.0, which\nfreezed 4 requires. The freezed classes are now abstract and the\ngenerated code is regenerated. Analyze (with --fatal-infos), format and\nall tests pass, including with json_annotation pinned to 4.9.0.\n\nbuild_runner warns that json_serializable wants an SDK floor of ^3.8.0\nand json_annotation ^4.12.0. I left those constraints unchanged here.",
                   "url": "https://github.com/canonical/snapd.dart/commit/1c5f02154170fc361f2b99ed27f15c5d620cbd6a"
-               },
-               {
-                  "sha": "9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1791801814,
-                  "message": "chore: bump freezed to 4.x\n\nBump freezed to ^4.0.2 and freezed_annotation to ^3.1.0. Freezed classes are now abstract, and the generated code is regenerated.",
-                  "url": "https://github.com/canonical/snapd.dart/commit/9fbe8d8def7ca70c50e38f398c5b1f1c03fb0f0d"
-               },
-               {
-                  "sha": "f29c91e3292f139617311da23d5ae76cc98320cd",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1791537206,
-                  "message": "feat: add tpm/fde repair api (#147)\n\nAdds support for the TPM/FDE repair API at `/v2/systems`. Also adds\n`autoRepairResult` and `recommendations` to `getStorageEncrypted()`.\n\n---\n\nUDENG-11670",
-                  "url": "https://github.com/canonical/snapd.dart/commit/f29c91e3292f139617311da23d5ae76cc98320cd"
                }
             ],
             "ciActions": [],
@@ -10355,25 +10355,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "8cd5a1420ea86728a7c0495bd3a691569857b184",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793131501,
+                  "message": "chore: release 0.1.15 (#99)\n\nReleases 0.1.15 with the dbus 0.8.0 update (#98). Analyze, tests and\npublish --dry-run pass.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8cd5a1420ea86728a7c0495bd3a691569857b184"
+               },
+               {
+                  "sha": "8e0fbcc3042c4bb612652ae437f1487e30e0bc65",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131297,
+                  "message": "chore: release 0.1.15",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8e0fbcc3042c4bb612652ae437f1487e30e0bc65"
+               },
+               {
                   "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
                   "author": "paul-geoghegan",
                   "timestamp": 1791875895,
                   "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
                   "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
-               },
-               {
-                  "sha": "4d4a6b6d9d43494daef62ac9897a0fbcf9708615",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1791800427,
-                  "message": "chore: bump dbus to 0.8.0\n\nRequires Dart 3.0, matching dbus 0.8.0.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/4d4a6b6d9d43494daef62ac9897a0fbcf9708615"
-               },
-               {
-                  "sha": "55176e644d45dd2b519b69b0dbcc748084f354ec",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1776844528,
-                  "message": "feat: Add getHostPaths (#96)\n\nAddresses incorrectly doing this by hand in this pr:\nhttps://github.com/ubuntu/app-center/pull/2098#discussion_r3117316406\n\nI've also prepped to release by adding to the changelog and version\nbumping",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/55176e644d45dd2b519b69b0dbcc748084f354ec"
                }
             ],
             "ciActions": [],
