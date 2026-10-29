@@ -3,11 +3,59 @@
       "team": "Desktop",
       "repos": [
          {
+            "name": "myna",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/myna",
+            "releases": [
+               {
+                  "id": 428073079,
+                  "version": "v0.3.1",
+                  "timestamp": 1793288927,
+                  "title": "Myna 0.3.1",
+                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>Teach Myna your words. Add names and terms to the vocabulary in Myna\nSettings&rsquo; Model tab, and the Parakeet model listens for them: a word it\nused to misspell, or split (&ldquo;pulse audio&rdquo; for PulseAudio), is far more\nlikely to come out the way you wrote it (#1).</li>\n<li>Whisper and FunASR do not use the vocabulary yet, and its row is hidden\nwhile one of them is the active model.</li>\n<li>Switching engine or model no longer leaves the old one&rsquo;s files on disk\n(#61).</li>\n<li>Typing on Plasma Wayland keeps your keyboard layout during a dictation\n(#4).</li>\n<li>Setting up Myna on Xfce and Plasma no longer stops at the indicator step\nuntil the next login (#79).</li>\n<li>On Plasma with software rendering, the first dictation no longer stalls\nwhile the pill starts.</li>\n</ul>\n\n<h2>Known issues</h2>\n\n<ul>\n<li>A word that sounds exactly like a common one can still come out as the\ncommon word: &ldquo;Myna&rdquo; is heard as &ldquo;minor&rdquo; or &ldquo;miner&rdquo; in some accents.</li>\n<li>Upgrading waits for your next logout: the running pill holds back the\nsnap refresh (#38). The fix is waiting on the Snap Store.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app and a speech model. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>Myna works on GNOME, Xfce and KDE Plasma 6.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
+                  "url": "https://github.com/canonical/myna/releases/tag/v0.3.1",
+                  "compareUrl": "https://github.com/canonical/myna/compare/v0.3.1...main"
+               },
+               {
+                  "id": 424062302,
+                  "version": "v0.3.0",
+                  "timestamp": 1793007444,
+                  "title": "Myna 0.3.0",
+                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>KDE Plasma 6 is supported. Myna Settings sets up IBus as KWin&rsquo;s input\nmethod and binds the dictation key, and the pill shows on Plasma&rsquo;s\nWayland session (#65, #79).</li>\n<li>Notifications no longer pile up on Plasma (#70).</li>\n<li>Long dictations into Wine and CrossOver applications are no longer cut\noff (#73).</li>\n<li>Choosing a model while it is still installing no longer leaves Myna\nwith no model (#51).</li>\n<li>Myna Settings works when your shell is not listed in /etc/shells (#74).</li>\n<li>Dictation ends cleanly when another input method takes over, and Myna\nclaims IBus back at the next dictation.</li>\n<li>The pill follows the desktop&rsquo;s accent colour and animation settings.</li>\n</ul>\n\n<h2>Known issues</h2>\n\n<ul>\n<li>Upgrading from 0.2.4 waits for your next logout: the running pill holds\nback the snap refresh (#38). The fix is waiting on the Snap Store.</li>\n<li>On Plasma, if Myna Settings updates before the myna snap, the pill stays\nhidden until the snap refreshes.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app and a speech model. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>Myna works on GNOME, Xfce and KDE Plasma 6.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
+                  "url": "https://github.com/canonical/myna/releases/tag/v0.3.0",
+                  "compareUrl": "https://github.com/canonical/myna/compare/v0.3.0...main"
+               },
+               {
+                  "id": 417124680,
+                  "version": "v0.2.4",
+                  "timestamp": 1792402801,
+                  "title": "Myna 0.2.4",
+                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>Myna and its speech backends now build for arm64. Arm64 support is\nexperimental; the Parakeet NVIDIA GPU engine has not been tested on\narm64 hardware.</li>\n<li>Microphone DC offset no longer keeps dictation running or hides pauses.\nDiagnostics now shows the last dictation&rsquo;s input levels and warns about\na problematic offset.</li>\n<li>Whisper and Parakeet can finish dictation on the CPU when a GPU decode\nfails, including when GPU memory runs out mid-session.</li>\n<li>Whisper no longer skips long stretches of speech around pauses.</li>\n<li>New translations: Azerbaijani, Esperanto, Estonian, French, Occitan,\nPolish, Russian, Slovak, Ukrainian and Traditional Chinese.</li>\n</ul>\n\n<h2>Other improvements</h2>\n\n<ul>\n<li>GNOME Shell preedit rendering is more reliable in terminal applications.</li>\n<li>GPU memory warnings now account for other applications using the GPU.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app, a speech model and the GNOME Shell extension. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
+                  "url": "https://github.com/canonical/myna/releases/tag/v0.2.4",
+                  "compareUrl": "https://github.com/canonical/myna/compare/v0.2.4...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
             "newCommits": 0,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
+               {
+                  "id": 427988494,
+                  "version": "publish-40893805452",
+                  "timestamp": 1793284212,
+                  "title": "Publish 40893805452",
+                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev130\">ubuntu-insights-server-k8s-rev130 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev122</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.3.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/178\">#178</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404...publish-40893805452\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404&hellip;publish-40893805452</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40893805452",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40893805452...main"
+               },
                {
                   "id": 427439142,
                   "version": "publish-40813272404",
@@ -25,15 +73,6 @@
                   "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev128\">ubuntu-insights-server-k8s-rev128 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev120</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/176\">#176</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819...publish-40267518355\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819&hellip;publish-40267518355</a></p>\n",
                   "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40267518355",
                   "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355...main"
-               },
-               {
-                  "id": 420074359,
-                  "version": "publish-39678848819",
-                  "timestamp": 1792617428,
-                  "title": "Publish 39678848819",
-                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev127\">ubuntu-insights-server-k8s-rev127 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev119</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(insights_rock): Bump insights version and Go ver by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/175\">#175</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/162\">#162</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39487366394...publish-39678848819\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39487366394&hellip;publish-39678848819</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-39678848819",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819...main"
                }
             ],
             "commits": null,
@@ -45,8 +84,8 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 129,
-                     "timestamp": 1793245272
+                     "revision": 130,
+                     "timestamp": 1793284923
                   }
                ],
                "channels": [
@@ -121,45 +160,6 @@
                   "1.46"
                ]
             },
-            "snap": null
-         },
-         {
-            "name": "myna",
-            "defaultBranch": "main",
-            "newCommits": 11,
-            "url": "https://github.com/canonical/myna",
-            "releases": [
-               {
-                  "id": 424062302,
-                  "version": "v0.3.0",
-                  "timestamp": 1793007444,
-                  "title": "Myna 0.3.0",
-                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>KDE Plasma 6 is supported. Myna Settings sets up IBus as KWin&rsquo;s input\nmethod and binds the dictation key, and the pill shows on Plasma&rsquo;s\nWayland session (#65, #79).</li>\n<li>Notifications no longer pile up on Plasma (#70).</li>\n<li>Long dictations into Wine and CrossOver applications are no longer cut\noff (#73).</li>\n<li>Choosing a model while it is still installing no longer leaves Myna\nwith no model (#51).</li>\n<li>Myna Settings works when your shell is not listed in /etc/shells (#74).</li>\n<li>Dictation ends cleanly when another input method takes over, and Myna\nclaims IBus back at the next dictation.</li>\n<li>The pill follows the desktop&rsquo;s accent colour and animation settings.</li>\n</ul>\n\n<h2>Known issues</h2>\n\n<ul>\n<li>Upgrading from 0.2.4 waits for your next logout: the running pill holds\nback the snap refresh (#38). The fix is waiting on the Snap Store.</li>\n<li>On Plasma, if Myna Settings updates before the myna snap, the pill stays\nhidden until the snap refreshes.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app and a speech model. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>Myna works on GNOME, Xfce and KDE Plasma 6.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
-                  "url": "https://github.com/canonical/myna/releases/tag/v0.3.0",
-                  "compareUrl": "https://github.com/canonical/myna/compare/v0.3.0...main"
-               },
-               {
-                  "id": 417124680,
-                  "version": "v0.2.4",
-                  "timestamp": 1792402801,
-                  "title": "Myna 0.2.4",
-                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>Myna and its speech backends now build for arm64. Arm64 support is\nexperimental; the Parakeet NVIDIA GPU engine has not been tested on\narm64 hardware.</li>\n<li>Microphone DC offset no longer keeps dictation running or hides pauses.\nDiagnostics now shows the last dictation&rsquo;s input levels and warns about\na problematic offset.</li>\n<li>Whisper and Parakeet can finish dictation on the CPU when a GPU decode\nfails, including when GPU memory runs out mid-session.</li>\n<li>Whisper no longer skips long stretches of speech around pauses.</li>\n<li>New translations: Azerbaijani, Esperanto, Estonian, French, Occitan,\nPolish, Russian, Slovak, Ukrainian and Traditional Chinese.</li>\n</ul>\n\n<h2>Other improvements</h2>\n\n<ul>\n<li>GNOME Shell preedit rendering is more reliable in terminal applications.</li>\n<li>GPU memory warnings now account for other applications using the GPU.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app, a speech model and the GNOME Shell extension. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
-                  "url": "https://github.com/canonical/myna/releases/tag/v0.2.4",
-                  "compareUrl": "https://github.com/canonical/myna/compare/v0.2.4...main"
-               },
-               {
-                  "id": 412904253,
-                  "version": "v0.2.3",
-                  "timestamp": 1791993204,
-                  "title": "Myna 0.2.3",
-                  "body": "<p>Myna 0.2.3</p>\n\n<h2>Highlights</h2>\n\n<ul>\n<li>On an NVIDIA machine Myna cannot use, setup picks the CPU engine instead of the GPU one, and no longer downloads the GPU components for nothing. That covers a missing or old driver (#49) and a GPU older than the engine&rsquo;s CUDA libraries support, such as a GTX 1050 for Parakeet (#56).</li>\n<li>A GPU engine that cannot run, because its driver went away or the card is too old, keeps transcribing on the CPU and says so, instead of failing every dictation with &ldquo;Transcription failed&rdquo;.</li>\n<li>Myna tells you when dictation is slowed by low memory.</li>\n<li>Report an Issue includes each model&rsquo;s engine and status even when Diagnostics was never opened.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app, a speech model and the GNOME Shell extension. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n",
-                  "url": "https://github.com/canonical/myna/releases/tag/v0.2.3",
-                  "compareUrl": "https://github.com/canonical/myna/compare/v0.2.3...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": null,
             "snap": null
          },
          {
@@ -477,7 +477,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -656,7 +656,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 439,
+            "newCommits": 441,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -5526,72 +5526,74 @@
       "team": "WSL",
       "repos": [
          {
-            "name": "decorate",
+            "name": "myna",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/ubuntu/decorate",
-            "releases": null,
-            "commits": [
+            "url": "https://github.com/canonical/myna",
+            "releases": [
                {
-                  "sha": "8228e241ee19366ac586457ae7540331d03fb650",
-                  "author": "Didier Roche-Tolomelli",
-                  "timestamp": 1739450559,
-                  "message": "Merge pull request #27 from ubuntu/migrate_gh_jira_app\n\nMigrate to org GitHub to Jira application",
-                  "url": "https://github.com/ubuntu/decorate/commit/8228e241ee19366ac586457ae7540331d03fb650"
+                  "id": 428073079,
+                  "version": "v0.3.1",
+                  "timestamp": 1793288927,
+                  "title": "Myna 0.3.1",
+                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>Teach Myna your words. Add names and terms to the vocabulary in Myna\nSettings&rsquo; Model tab, and the Parakeet model listens for them: a word it\nused to misspell, or split (&ldquo;pulse audio&rdquo; for PulseAudio), is far more\nlikely to come out the way you wrote it (#1).</li>\n<li>Whisper and FunASR do not use the vocabulary yet, and its row is hidden\nwhile one of them is the active model.</li>\n<li>Switching engine or model no longer leaves the old one&rsquo;s files on disk\n(#61).</li>\n<li>Typing on Plasma Wayland keeps your keyboard layout during a dictation\n(#4).</li>\n<li>Setting up Myna on Xfce and Plasma no longer stops at the indicator step\nuntil the next login (#79).</li>\n<li>On Plasma with software rendering, the first dictation no longer stalls\nwhile the pill starts.</li>\n</ul>\n\n<h2>Known issues</h2>\n\n<ul>\n<li>A word that sounds exactly like a common one can still come out as the\ncommon word: &ldquo;Myna&rdquo; is heard as &ldquo;minor&rdquo; or &ldquo;miner&rdquo; in some accents.</li>\n<li>Upgrading waits for your next logout: the running pill holds back the\nsnap refresh (#38). The fix is waiting on the Snap Store.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app and a speech model. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>Myna works on GNOME, Xfce and KDE Plasma 6.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
+                  "url": "https://github.com/canonical/myna/releases/tag/v0.3.1",
+                  "compareUrl": "https://github.com/canonical/myna/compare/v0.3.1...main"
                },
                {
-                  "sha": "81ea6242b5af3216c360a897d63eaf2ed074746d",
-                  "author": "Didier Roche",
-                  "timestamp": 1739430406,
-                  "message": "Migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5942",
-                  "url": "https://github.com/ubuntu/decorate/commit/81ea6242b5af3216c360a897d63eaf2ed074746d"
+                  "id": 424062302,
+                  "version": "v0.3.0",
+                  "timestamp": 1793007444,
+                  "title": "Myna 0.3.0",
+                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>KDE Plasma 6 is supported. Myna Settings sets up IBus as KWin&rsquo;s input\nmethod and binds the dictation key, and the pill shows on Plasma&rsquo;s\nWayland session (#65, #79).</li>\n<li>Notifications no longer pile up on Plasma (#70).</li>\n<li>Long dictations into Wine and CrossOver applications are no longer cut\noff (#73).</li>\n<li>Choosing a model while it is still installing no longer leaves Myna\nwith no model (#51).</li>\n<li>Myna Settings works when your shell is not listed in /etc/shells (#74).</li>\n<li>Dictation ends cleanly when another input method takes over, and Myna\nclaims IBus back at the next dictation.</li>\n<li>The pill follows the desktop&rsquo;s accent colour and animation settings.</li>\n</ul>\n\n<h2>Known issues</h2>\n\n<ul>\n<li>Upgrading from 0.2.4 waits for your next logout: the running pill holds\nback the snap refresh (#38). The fix is waiting on the Snap Store.</li>\n<li>On Plasma, if Myna Settings updates before the myna snap, the pill stays\nhidden until the snap refreshes.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app and a speech model. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>Myna works on GNOME, Xfce and KDE Plasma 6.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
+                  "url": "https://github.com/canonical/myna/releases/tag/v0.3.0",
+                  "compareUrl": "https://github.com/canonical/myna/compare/v0.3.0...main"
                },
                {
-                  "sha": "b76bb81d1209ba92b56c759d828f75c19479a444",
-                  "author": "Denison Barbosa",
-                  "timestamp": 1724165749,
-                  "message": "Merge pull request #26 from ubuntu/fix-sprintf-on-nonformat-string\n\nOnly use Sprintf when we have arguments to format",
-                  "url": "https://github.com/ubuntu/decorate/commit/b76bb81d1209ba92b56c759d828f75c19479a444"
+                  "id": 417124680,
+                  "version": "v0.2.4",
+                  "timestamp": 1792402801,
+                  "title": "Myna 0.2.4",
+                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>Myna and its speech backends now build for arm64. Arm64 support is\nexperimental; the Parakeet NVIDIA GPU engine has not been tested on\narm64 hardware.</li>\n<li>Microphone DC offset no longer keeps dictation running or hides pauses.\nDiagnostics now shows the last dictation&rsquo;s input levels and warns about\na problematic offset.</li>\n<li>Whisper and Parakeet can finish dictation on the CPU when a GPU decode\nfails, including when GPU memory runs out mid-session.</li>\n<li>Whisper no longer skips long stretches of speech around pauses.</li>\n<li>New translations: Azerbaijani, Esperanto, Estonian, French, Occitan,\nPolish, Russian, Slovak, Ukrainian and Traditional Chinese.</li>\n</ul>\n\n<h2>Other improvements</h2>\n\n<ul>\n<li>GNOME Shell preedit rendering is more reliable in terminal applications.</li>\n<li>GPU memory warnings now account for other applications using the GPU.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app, a speech model and the GNOME Shell extension. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
+                  "url": "https://github.com/canonical/myna/releases/tag/v0.2.4",
+                  "compareUrl": "https://github.com/canonical/myna/compare/v0.2.4...main"
                }
             ],
-            "ciActions": [
-               "https://github.com/ubuntu/decorate/workflows/QA"
-            ],
+            "commits": null,
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
          {
-            "name": "go-i18n",
+            "name": "ubuntu-mediawiki-minerva-skin",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/ubuntu/go-i18n",
+            "url": "https://github.com/ubuntu/ubuntu-mediawiki-minerva-skin",
             "releases": null,
             "commits": [
                {
-                  "sha": "47e047f852b4b86d45567c8331a2548d6473692b",
-                  "author": "adombeck",
-                  "timestamp": 1760007113,
-                  "message": "Bump Go version to 1.23.12 (#17)",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/47e047f852b4b86d45567c8331a2548d6473692b"
+                  "sha": "844495ec18d520417e71024c91e88f9814e90a7d",
+                  "author": "kkuo",
+                  "timestamp": 1788896587,
+                  "message": "docs: remove unused CoC",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-minerva-skin/commit/844495ec18d520417e71024c91e88f9814e90a7d"
                },
                {
-                  "sha": "c4be58aa4db383b3a41f6c2d6a564e627745834c",
-                  "author": "adombeck",
-                  "timestamp": 1760007082,
-                  "message": "Fix module path of the tools module (#16)",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/c4be58aa4db383b3a41f6c2d6a564e627745834c"
+                  "sha": "10038df962dc6b7c48c54e17caca3929691b6d43",
+                  "author": "kkuo",
+                  "timestamp": 1788896437,
+                  "message": "docs: add SECURITY.md",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-minerva-skin/commit/10038df962dc6b7c48c54e17caca3929691b6d43"
                },
                {
-                  "sha": "184110c056a539a8510a9b00c108c52d0b82b3d8",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1759999865,
-                  "message": "Bump Go version to 1.23.12\n\ngovulncheck reports the following vulnerability in Go 1.23.10:\n\nVulnerability #1: GO-2025-3956\n    Unexpected paths returned from LookPath in os/exec\n  More info: https://pkg.go.dev/vuln/GO-2025-3956\n  Standard library\n    Found in: os/exec@go1.23.10\n    Fixed in: os/exec@go1.23.12\n    Example traces found:\nError:       #1: cmd/compile-mo/main.go:53:30: compile.generateMos calls exec.Command, which calls exec.LookPath",
-                  "url": "https://github.com/ubuntu/go-i18n/commit/184110c056a539a8510a9b00c108c52d0b82b3d8"
+                  "sha": "df978ac5029d5af3027fd00699b6e746cc0bfa7a",
+                  "author": "kkuo",
+                  "timestamp": 1788895929,
+                  "message": "Fork MinervaNeue for Ubuntu Wiki",
+                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-minerva-skin/commit/df978ac5029d5af3027fd00699b6e746cc0bfa7a"
                }
             ],
-            "ciActions": [
-               "https://github.com/ubuntu/go-i18n/actions/workflows/qa.yaml"
-            ],
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -5699,35 +5701,37 @@
             "snap": null
          },
          {
-            "name": "ubuntu-mediawiki-minerva-skin",
+            "name": "decorate",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/ubuntu/ubuntu-mediawiki-minerva-skin",
+            "url": "https://github.com/ubuntu/decorate",
             "releases": null,
             "commits": [
                {
-                  "sha": "844495ec18d520417e71024c91e88f9814e90a7d",
-                  "author": "kkuo",
-                  "timestamp": 1788896587,
-                  "message": "docs: remove unused CoC",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-minerva-skin/commit/844495ec18d520417e71024c91e88f9814e90a7d"
+                  "sha": "8228e241ee19366ac586457ae7540331d03fb650",
+                  "author": "Didier Roche-Tolomelli",
+                  "timestamp": 1739450559,
+                  "message": "Merge pull request #27 from ubuntu/migrate_gh_jira_app\n\nMigrate to org GitHub to Jira application",
+                  "url": "https://github.com/ubuntu/decorate/commit/8228e241ee19366ac586457ae7540331d03fb650"
                },
                {
-                  "sha": "10038df962dc6b7c48c54e17caca3929691b6d43",
-                  "author": "kkuo",
-                  "timestamp": 1788896437,
-                  "message": "docs: add SECURITY.md",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-minerva-skin/commit/10038df962dc6b7c48c54e17caca3929691b6d43"
+                  "sha": "81ea6242b5af3216c360a897d63eaf2ed074746d",
+                  "author": "Didier Roche",
+                  "timestamp": 1739430406,
+                  "message": "Migrate to org GitHub to Jira application\n\nWe have a new GitHub to Jira global organization application. The\nprevious gh workflow action is now deprecated.\n\nUDENG-5942",
+                  "url": "https://github.com/ubuntu/decorate/commit/81ea6242b5af3216c360a897d63eaf2ed074746d"
                },
                {
-                  "sha": "df978ac5029d5af3027fd00699b6e746cc0bfa7a",
-                  "author": "kkuo",
-                  "timestamp": 1788895929,
-                  "message": "Fork MinervaNeue for Ubuntu Wiki",
-                  "url": "https://github.com/ubuntu/ubuntu-mediawiki-minerva-skin/commit/df978ac5029d5af3027fd00699b6e746cc0bfa7a"
+                  "sha": "b76bb81d1209ba92b56c759d828f75c19479a444",
+                  "author": "Denison Barbosa",
+                  "timestamp": 1724165749,
+                  "message": "Merge pull request #26 from ubuntu/fix-sprintf-on-nonformat-string\n\nOnly use Sprintf when we have arguments to format",
+                  "url": "https://github.com/ubuntu/decorate/commit/b76bb81d1209ba92b56c759d828f75c19479a444"
                }
             ],
-            "ciActions": [],
+            "ciActions": [
+               "https://github.com/ubuntu/decorate/workflows/QA"
+            ],
             "charm": null,
             "snap": null
          },
@@ -5831,32 +5835,32 @@
             "snap": null
          },
          {
-            "name": "appstream.dart",
+            "name": "nm.dart",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/appstream.dart",
+            "url": "https://github.com/canonical/nm.dart",
             "releases": null,
             "commits": [
                {
-                  "sha": "12c359e5ca0a40f954025f9a42f59799b292fcee",
-                  "author": "Matthew Hagemann",
-                  "timestamp": 1786113656,
-                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs (#44)\n\n`AppstreamReleaseType` is missing `snapshot`, which libappstream defines\nas `AS_RELEASE_KIND_SNAPSHOT` and the Ubuntu archive emits. The DEP-11\nmetadata for `resolute-updates/main` currently carries one, for nautilus\n50.2.2.\n\nOn its own that would be a plain `FormatException`. But collection\nparsing runs in an isolate spawned without an error port, so the isolate\ndies without ever sending a result and `await port.first` never\ncompletes. `load()` then hangs forever: no error, no log, no stack\ntrace, just a future that never resolves — and every consumer waiting on\nthe pool hangs with it. This is what is currently freezing the Ubuntu\nApp Center's Manage page (ubuntu/app-center#2139); the \"unhandled\nexception\" the reporter sees in the terminal is the dying isolate,\nprinted by the runtime while the app itself just stops.\n\nChanges:\n\n- Add `snapshot` to `AppstreamReleaseType`.\n- Pass `onError` to `Isolate.spawn` and race it against the result port,\nso a failed parse surfaces as `AppstreamCollectionLoadException` instead\nof hanging.\n- Let `AppstreamPool` take custom catalog directory prefixes, so the\nfailure path is reachable from a test.\n\nThe regression test hangs for its full 30 s timeout without the second\nchange. Verified against a real system catalog: 2745 components load in\n3.4 s, including the nautilus snapshot release that previously hung the\npool.\n\nOne thing deliberately left out: `load()` still fails as a whole if any\nsingle catalog file fails to parse. It just fails loudly now instead of\nhanging. Making the pool skip unparseable catalogs and keep the rest\nwould be a behaviour change, and seemed better left to your call than\nbundled into a bugfix.",
-                  "url": "https://github.com/canonical/appstream.dart/commit/12c359e5ca0a40f954025f9a42f59799b292fcee"
+                  "sha": "38859ab40db6fdd9c43477867b71ca1ea999e464",
+                  "author": "Robert Ancell",
+                  "timestamp": 1790140878,
+                  "message": "Require dbus 0.8 (#74)\n\nBumps the `dbus` dependency from `^0.7.0` to `^0.8.0`, and raises the\nSDK lower bound to `>=3.0.0` (dbus 0.8.0 requires Dart 3).\n\nSDK v2 is pretty old.",
+                  "url": "https://github.com/canonical/nm.dart/commit/38859ab40db6fdd9c43477867b71ca1ea999e464"
                },
                {
-                  "sha": "33b05768a81b389da831f526086299911322a2fa",
-                  "author": "Victor C.",
-                  "timestamp": 1786012584,
-                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs\n\n`AppstreamReleaseType` was missing `snapshot`, which libappstream defines\n(`AS_RELEASE_KIND_SNAPSHOT`) and the Ubuntu archive emits — the DEP-11\nmetadata for `resolute-updates/main` currently carries one for nautilus.\n\nOn its own that would be a plain `FormatException`, but parsing runs in an\nisolate spawned without an error port. The isolate died without ever sending\na result, so `await port.first` never completed and `load()` hung forever:\nno error, no log, just a future that never resolves. Any consumer waiting on\nthe pool hangs with it.\n\nWire up `onError` so a failed parse surfaces as\n`AppstreamCollectionLoadException`, and let `AppstreamPool` take custom\ncatalog directory prefixes so the failure path can be tested.",
-                  "url": "https://github.com/canonical/appstream.dart/commit/33b05768a81b389da831f526086299911322a2fa"
+                  "sha": "19aaf76eb3f5cbb01e02e56605dfb5593c7141f3",
+                  "author": "Matt Kosarek",
+                  "timestamp": 1790023891,
+                  "message": "Require dbus 0.8\n\ndbus 0.8.0 requires Dart 3, so the SDK lower bound is raised to 3.0.0 as\nwell. No source changes are needed: the runtime API used by nm is\nunchanged in 0.8.0, which only adds anonymous client authentication and\nalters the code generator's output.",
+                  "url": "https://github.com/canonical/nm.dart/commit/19aaf76eb3f5cbb01e02e56605dfb5593c7141f3"
                },
                {
-                  "sha": "9f13b368dd31333d37ee7bf9a10280fc39507627",
-                  "author": "ashuntu",
-                  "timestamp": 1772066444,
-                  "message": "fix: Add ubuntu_lints (#43)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible (this results in a fair amount of casting\ndue to the nature of the library, please double check these)\n- Trailing commas\n\nAlso done for packagekit.dart:\nhttps://github.com/canonical/packagekit.dart/pull/34",
-                  "url": "https://github.com/canonical/appstream.dart/commit/9f13b368dd31333d37ee7bf9a10280fc39507627"
+                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
+                  "author": "Robert Ancell",
+                  "timestamp": 1756088060,
+                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
+                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
                }
             ],
             "ciActions": [],
@@ -6389,27 +6393,6 @@
             "snap": null
          },
          {
-            "name": "gnome-desktop-runtime",
-            "defaultBranch": "desktop/26",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/gnome-desktop-runtime",
-            "releases": [
-               {
-                  "id": 408424065,
-                  "version": "desktop-26-latest",
-                  "timestamp": 1791588125,
-                  "title": "desktop/26 latest snap",
-                  "body": "<p>Rolling latest desktop/26 snap build; assets are replaced on every green build.</p>\n",
-                  "url": "https://github.com/canonical/gnome-desktop-runtime/releases/tag/desktop-26-latest",
-                  "compareUrl": "https://github.com/canonical/gnome-desktop-runtime/compare/desktop-26-latest...desktop/26"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "glib.dart",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -6429,6 +6412,27 @@
             "ciActions": [
                "https://github.com/ubuntu-flutter-community/glib.dart/actions/workflows/ci.yaml"
             ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "gnome-desktop-runtime",
+            "defaultBranch": "desktop/26",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/gnome-desktop-runtime",
+            "releases": [
+               {
+                  "id": 408424065,
+                  "version": "desktop-26-latest",
+                  "timestamp": 1791588125,
+                  "title": "desktop/26 latest snap",
+                  "body": "<p>Rolling latest desktop/26 snap build; assets are replaced on every green build.</p>\n",
+                  "url": "https://github.com/canonical/gnome-desktop-runtime/releases/tag/desktop-26-latest",
+                  "compareUrl": "https://github.com/canonical/gnome-desktop-runtime/compare/desktop-26-latest...desktop/26"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
             "charm": null,
             "snap": null
          },
@@ -6630,136 +6634,100 @@
             "snap": null
          },
          {
-            "name": "mediawiki-k8s-operator",
+            "name": "xdg_desktop_portal.dart",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/mediawiki-k8s-operator",
-            "releases": [
+            "url": "https://github.com/canonical/xdg_desktop_portal.dart",
+            "releases": null,
+            "commits": [
                {
-                  "id": 424864155,
-                  "version": "publish-40417246043",
-                  "timestamp": 1793053943,
-                  "title": "Publish 40417246043",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev189\">mediawiki-k8s-rev189 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev174, shellbox-image rev15</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/340\">#340</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-40198128177...publish-40417246043\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-40198128177&hellip;publish-40417246043</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-40417246043",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-40417246043...main"
+                  "sha": "8cd5a1420ea86728a7c0495bd3a691569857b184",
+                  "author": "Dennis Loose",
+                  "timestamp": 1793131501,
+                  "message": "chore: release 0.1.15 (#99)\n\nReleases 0.1.15 with the dbus 0.8.0 update (#98). Analyze, tests and\npublish --dry-run pass.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8cd5a1420ea86728a7c0495bd3a691569857b184"
                },
                {
-                  "id": 423425146,
-                  "version": "publish-40198128177",
-                  "timestamp": 1792933234,
-                  "title": "Publish 40198128177",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev188\">mediawiki-k8s-rev188 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev173, shellbox-image rev14</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Clarify MediaWiki trademark licensing by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/338\">#338</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39911877341...publish-40198128177\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39911877341&hellip;publish-40198128177</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-40198128177",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-40198128177...main"
+                  "sha": "8e0fbcc3042c4bb612652ae437f1487e30e0bc65",
+                  "author": "Paul Geoghegan",
+                  "timestamp": 1793131297,
+                  "message": "chore: release 0.1.15",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8e0fbcc3042c4bb612652ae437f1487e30e0bc65"
                },
                {
-                  "id": 421518284,
-                  "version": "publish-39911877341",
-                  "timestamp": 1792735103,
-                  "title": "Publish 39911877341",
-                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev187\">mediawiki-k8s-rev187 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev172, shellbox-image rev13</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Rename rotate-mediawiki-secrets to rotate-secrets by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/335\">#335</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39899081473...publish-39911877341\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39899081473&hellip;publish-39911877341</a></p>\n",
-                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-39911877341",
-                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39911877341...main"
+                  "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
+                  "author": "paul-geoghegan",
+                  "timestamp": 1791875895,
+                  "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
                }
             ],
-            "commits": null,
-            "ciActions": [
-               "https://github.com/canonical/mediawiki-k8s-operator/actions/workflows/publish_charm.yaml",
-               "https://github.com/canonical/mediawiki-k8s-operator/actions/workflows/promote_charm.yaml"
-            ],
-            "charm": {
-               "name": "mediawiki-k8s",
-               "url": "https://charmhub.io/mediawiki-k8s",
-               "releases": [
-                  {
-                     "track": "1.46",
-                     "channel": "edge",
-                     "revision": 125,
-                     "timestamp": 1788277812
-                  },
-                  {
-                     "track": "1.46",
-                     "channel": "edge",
-                     "revision": 189,
-                     "timestamp": 1793056060
-                  }
-               ],
-               "channels": [
-                  "edge"
-               ],
-               "tracks": [
-                  "1.46"
-               ]
-            },
-            "snap": null
-         },
-         {
-            "name": "myna",
-            "defaultBranch": "main",
-            "newCommits": 11,
-            "url": "https://github.com/canonical/myna",
-            "releases": [
-               {
-                  "id": 424062302,
-                  "version": "v0.3.0",
-                  "timestamp": 1793007444,
-                  "title": "Myna 0.3.0",
-                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>KDE Plasma 6 is supported. Myna Settings sets up IBus as KWin&rsquo;s input\nmethod and binds the dictation key, and the pill shows on Plasma&rsquo;s\nWayland session (#65, #79).</li>\n<li>Notifications no longer pile up on Plasma (#70).</li>\n<li>Long dictations into Wine and CrossOver applications are no longer cut\noff (#73).</li>\n<li>Choosing a model while it is still installing no longer leaves Myna\nwith no model (#51).</li>\n<li>Myna Settings works when your shell is not listed in /etc/shells (#74).</li>\n<li>Dictation ends cleanly when another input method takes over, and Myna\nclaims IBus back at the next dictation.</li>\n<li>The pill follows the desktop&rsquo;s accent colour and animation settings.</li>\n</ul>\n\n<h2>Known issues</h2>\n\n<ul>\n<li>Upgrading from 0.2.4 waits for your next logout: the running pill holds\nback the snap refresh (#38). The fix is waiting on the Snap Store.</li>\n<li>On Plasma, if Myna Settings updates before the myna snap, the pill stays\nhidden until the snap refreshes.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app and a speech model. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>Myna works on GNOME, Xfce and KDE Plasma 6.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
-                  "url": "https://github.com/canonical/myna/releases/tag/v0.3.0",
-                  "compareUrl": "https://github.com/canonical/myna/compare/v0.3.0...main"
-               },
-               {
-                  "id": 417124680,
-                  "version": "v0.2.4",
-                  "timestamp": 1792402801,
-                  "title": "Myna 0.2.4",
-                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>Myna and its speech backends now build for arm64. Arm64 support is\nexperimental; the Parakeet NVIDIA GPU engine has not been tested on\narm64 hardware.</li>\n<li>Microphone DC offset no longer keeps dictation running or hides pauses.\nDiagnostics now shows the last dictation&rsquo;s input levels and warns about\na problematic offset.</li>\n<li>Whisper and Parakeet can finish dictation on the CPU when a GPU decode\nfails, including when GPU memory runs out mid-session.</li>\n<li>Whisper no longer skips long stretches of speech around pauses.</li>\n<li>New translations: Azerbaijani, Esperanto, Estonian, French, Occitan,\nPolish, Russian, Slovak, Ukrainian and Traditional Chinese.</li>\n</ul>\n\n<h2>Other improvements</h2>\n\n<ul>\n<li>GNOME Shell preedit rendering is more reliable in terminal applications.</li>\n<li>GPU memory warnings now account for other applications using the GPU.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app, a speech model and the GNOME Shell extension. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
-                  "url": "https://github.com/canonical/myna/releases/tag/v0.2.4",
-                  "compareUrl": "https://github.com/canonical/myna/compare/v0.2.4...main"
-               },
-               {
-                  "id": 412904253,
-                  "version": "v0.2.3",
-                  "timestamp": 1791993204,
-                  "title": "Myna 0.2.3",
-                  "body": "<p>Myna 0.2.3</p>\n\n<h2>Highlights</h2>\n\n<ul>\n<li>On an NVIDIA machine Myna cannot use, setup picks the CPU engine instead of the GPU one, and no longer downloads the GPU components for nothing. That covers a missing or old driver (#49) and a GPU older than the engine&rsquo;s CUDA libraries support, such as a GTX 1050 for Parakeet (#56).</li>\n<li>A GPU engine that cannot run, because its driver went away or the card is too old, keeps transcribing on the CPU and says so, instead of failing every dictation with &ldquo;Transcription failed&rdquo;.</li>\n<li>Myna tells you when dictation is slowed by low memory.</li>\n<li>Report an Issue includes each model&rsquo;s engine and status even when Diagnostics was never opened.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app, a speech model and the GNOME Shell extension. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n",
-                  "url": "https://github.com/canonical/myna/releases/tag/v0.2.3",
-                  "compareUrl": "https://github.com/canonical/myna/compare/v0.2.3...main"
-               }
-            ],
-            "commits": null,
             "ciActions": [],
             "charm": null,
             "snap": null
          },
          {
-            "name": "nm.dart",
+            "name": "go-i18n",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/nm.dart",
+            "url": "https://github.com/ubuntu/go-i18n",
             "releases": null,
             "commits": [
                {
-                  "sha": "38859ab40db6fdd9c43477867b71ca1ea999e464",
-                  "author": "Robert Ancell",
-                  "timestamp": 1790140878,
-                  "message": "Require dbus 0.8 (#74)\n\nBumps the `dbus` dependency from `^0.7.0` to `^0.8.0`, and raises the\nSDK lower bound to `>=3.0.0` (dbus 0.8.0 requires Dart 3).\n\nSDK v2 is pretty old.",
-                  "url": "https://github.com/canonical/nm.dart/commit/38859ab40db6fdd9c43477867b71ca1ea999e464"
+                  "sha": "47e047f852b4b86d45567c8331a2548d6473692b",
+                  "author": "adombeck",
+                  "timestamp": 1760007113,
+                  "message": "Bump Go version to 1.23.12 (#17)",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/47e047f852b4b86d45567c8331a2548d6473692b"
                },
                {
-                  "sha": "19aaf76eb3f5cbb01e02e56605dfb5593c7141f3",
-                  "author": "Matt Kosarek",
-                  "timestamp": 1790023891,
-                  "message": "Require dbus 0.8\n\ndbus 0.8.0 requires Dart 3, so the SDK lower bound is raised to 3.0.0 as\nwell. No source changes are needed: the runtime API used by nm is\nunchanged in 0.8.0, which only adds anonymous client authentication and\nalters the code generator's output.",
-                  "url": "https://github.com/canonical/nm.dart/commit/19aaf76eb3f5cbb01e02e56605dfb5593c7141f3"
+                  "sha": "c4be58aa4db383b3a41f6c2d6a564e627745834c",
+                  "author": "adombeck",
+                  "timestamp": 1760007082,
+                  "message": "Fix module path of the tools module (#16)",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/c4be58aa4db383b3a41f6c2d6a564e627745834c"
                },
                {
-                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756088060,
-                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
+                  "sha": "184110c056a539a8510a9b00c108c52d0b82b3d8",
+                  "author": "Adrian Dombeck",
+                  "timestamp": 1759999865,
+                  "message": "Bump Go version to 1.23.12\n\ngovulncheck reports the following vulnerability in Go 1.23.10:\n\nVulnerability #1: GO-2025-3956\n    Unexpected paths returned from LookPath in os/exec\n  More info: https://pkg.go.dev/vuln/GO-2025-3956\n  Standard library\n    Found in: os/exec@go1.23.10\n    Fixed in: os/exec@go1.23.12\n    Example traces found:\nError:       #1: cmd/compile-mo/main.go:53:30: compile.generateMos calls exec.Command, which calls exec.LookPath",
+                  "url": "https://github.com/ubuntu/go-i18n/commit/184110c056a539a8510a9b00c108c52d0b82b3d8"
+               }
+            ],
+            "ciActions": [
+               "https://github.com/ubuntu/go-i18n/actions/workflows/qa.yaml"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "appstream.dart",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/appstream.dart",
+            "releases": null,
+            "commits": [
+               {
+                  "sha": "12c359e5ca0a40f954025f9a42f59799b292fcee",
+                  "author": "Matthew Hagemann",
+                  "timestamp": 1786113656,
+                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs (#44)\n\n`AppstreamReleaseType` is missing `snapshot`, which libappstream defines\nas `AS_RELEASE_KIND_SNAPSHOT` and the Ubuntu archive emits. The DEP-11\nmetadata for `resolute-updates/main` currently carries one, for nautilus\n50.2.2.\n\nOn its own that would be a plain `FormatException`. But collection\nparsing runs in an isolate spawned without an error port, so the isolate\ndies without ever sending a result and `await port.first` never\ncompletes. `load()` then hangs forever: no error, no log, no stack\ntrace, just a future that never resolves — and every consumer waiting on\nthe pool hangs with it. This is what is currently freezing the Ubuntu\nApp Center's Manage page (ubuntu/app-center#2139); the \"unhandled\nexception\" the reporter sees in the terminal is the dying isolate,\nprinted by the runtime while the app itself just stops.\n\nChanges:\n\n- Add `snapshot` to `AppstreamReleaseType`.\n- Pass `onError` to `Isolate.spawn` and race it against the result port,\nso a failed parse surfaces as `AppstreamCollectionLoadException` instead\nof hanging.\n- Let `AppstreamPool` take custom catalog directory prefixes, so the\nfailure path is reachable from a test.\n\nThe regression test hangs for its full 30 s timeout without the second\nchange. Verified against a real system catalog: 2745 components load in\n3.4 s, including the nautilus snapshot release that previously hung the\npool.\n\nOne thing deliberately left out: `load()` still fails as a whole if any\nsingle catalog file fails to parse. It just fails loudly now instead of\nhanging. Making the pool skip unparseable catalogs and keep the rest\nwould be a behaviour change, and seemed better left to your call than\nbundled into a bugfix.",
+                  "url": "https://github.com/canonical/appstream.dart/commit/12c359e5ca0a40f954025f9a42f59799b292fcee"
+               },
+               {
+                  "sha": "33b05768a81b389da831f526086299911322a2fa",
+                  "author": "Victor C.",
+                  "timestamp": 1786012584,
+                  "message": "fix: support snapshot releases and stop hanging on unparseable catalogs\n\n`AppstreamReleaseType` was missing `snapshot`, which libappstream defines\n(`AS_RELEASE_KIND_SNAPSHOT`) and the Ubuntu archive emits — the DEP-11\nmetadata for `resolute-updates/main` currently carries one for nautilus.\n\nOn its own that would be a plain `FormatException`, but parsing runs in an\nisolate spawned without an error port. The isolate died without ever sending\na result, so `await port.first` never completed and `load()` hung forever:\nno error, no log, just a future that never resolves. Any consumer waiting on\nthe pool hangs with it.\n\nWire up `onError` so a failed parse surfaces as\n`AppstreamCollectionLoadException`, and let `AppstreamPool` take custom\ncatalog directory prefixes so the failure path can be tested.",
+                  "url": "https://github.com/canonical/appstream.dart/commit/33b05768a81b389da831f526086299911322a2fa"
+               },
+               {
+                  "sha": "9f13b368dd31333d37ee7bf9a10280fc39507627",
+                  "author": "ashuntu",
+                  "timestamp": 1772066444,
+                  "message": "fix: Add ubuntu_lints (#43)\n\nAdds `ubuntu_lints` to the project, which results in many syntax errors\nthat this PR also fixes.\n\nSome notable things that `ubuntu_lints` enforces:\n- `final` for variables that aren't reassigned\n- Strict types where possible (this results in a fair amount of casting\ndue to the nature of the library, please double check these)\n- Trailing commas\n\nAlso done for packagekit.dart:\nhttps://github.com/canonical/packagekit.dart/pull/34",
+                  "url": "https://github.com/canonical/appstream.dart/commit/9f13b368dd31333d37ee7bf9a10280fc39507627"
                }
             ],
             "ciActions": [],
@@ -6835,27 +6803,6 @@
             "snap": null
          },
          {
-            "name": "pipewire-snap",
-            "defaultBranch": "desktop/26",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/pipewire-snap",
-            "releases": [
-               {
-                  "id": 408421017,
-                  "version": "desktop-26-latest",
-                  "timestamp": 1791588127,
-                  "title": "desktop/26 latest snap",
-                  "body": "<p>Rolling latest desktop/26 snap build; assets are replaced on every green build.</p>\n",
-                  "url": "https://github.com/canonical/pipewire-snap/releases/tag/desktop-26-latest",
-                  "compareUrl": "https://github.com/canonical/pipewire-snap/compare/desktop-26-latest...desktop/26"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "pc-amd64-gadget-desktop",
             "defaultBranch": "desktop/26",
             "newCommits": 0,
@@ -6869,6 +6816,27 @@
                   "body": "<p>Rolling latest desktop/26 snap build; assets are replaced on every green build.</p>\n",
                   "url": "https://github.com/canonical/pc-amd64-gadget-desktop/releases/tag/desktop-26-latest",
                   "compareUrl": "https://github.com/canonical/pc-amd64-gadget-desktop/compare/desktop-26-latest...desktop/26"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "pipewire-snap",
+            "defaultBranch": "desktop/26",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/pipewire-snap",
+            "releases": [
+               {
+                  "id": 408421017,
+                  "version": "desktop-26-latest",
+                  "timestamp": 1791588127,
+                  "title": "desktop/26 latest snap",
+                  "body": "<p>Rolling latest desktop/26 snap build; assets are replaced on every green build.</p>\n",
+                  "url": "https://github.com/canonical/pipewire-snap/releases/tag/desktop-26-latest",
+                  "compareUrl": "https://github.com/canonical/pipewire-snap/compare/desktop-26-latest...desktop/26"
                }
             ],
             "commits": null,
@@ -7513,62 +7481,6 @@
             "snap": null
          },
          {
-            "name": "ubuntu-insights-k8s-operator",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
-            "releases": [
-               {
-                  "id": 427439142,
-                  "version": "publish-40813272404",
-                  "timestamp": 1793244509,
-                  "title": "Publish 40813272404",
-                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev129\">ubuntu-insights-server-k8s-rev129 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev121</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.3.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/177\">#177</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355...publish-40813272404\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355&hellip;publish-40813272404</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40813272404",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404...main"
-               },
-               {
-                  "id": 423850494,
-                  "version": "publish-40267518355",
-                  "timestamp": 1792987121,
-                  "title": "Publish 40267518355",
-                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev128\">ubuntu-insights-server-k8s-rev128 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev120</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/176\">#176</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819...publish-40267518355\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819&hellip;publish-40267518355</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40267518355",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355...main"
-               },
-               {
-                  "id": 420074359,
-                  "version": "publish-39678848819",
-                  "timestamp": 1792617428,
-                  "title": "Publish 39678848819",
-                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev127\">ubuntu-insights-server-k8s-rev127 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev119</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(insights_rock): Bump insights version and Go ver by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/175\">#175</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/162\">#162</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39487366394...publish-39678848819\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39487366394&hellip;publish-39678848819</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-39678848819",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": {
-               "name": "ubuntu-insights-server-k8s",
-               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
-               "releases": [
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 129,
-                     "timestamp": 1793245272
-                  }
-               ],
-               "channels": [
-                  "edge"
-               ],
-               "tracks": [
-                  "latest"
-               ]
-            },
-            "snap": null
-         },
-         {
             "name": "ubuntu-desktop-session-snap",
             "defaultBranch": "desktop/26",
             "newCommits": 0,
@@ -7587,6 +7499,103 @@
             "commits": null,
             "ciActions": [],
             "charm": null,
+            "snap": null
+         },
+         {
+            "name": "ubuntu-flutter-plugins",
+            "defaultBranch": "main",
+            "newCommits": 441,
+            "url": "https://github.com/canonical/ubuntu-flutter-plugins",
+            "releases": [
+               {
+                  "id": 129779620,
+                  "version": "ubuntu_service-v0.3.0",
+                  "timestamp": 1700150958,
+                  "title": "ubuntu_service: v0.3.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_service-v0.2.4...ubuntu_service-v0.3.0\">0.3.0</a> (2023-11-16)</h2>\n\n<ul>\n<li><strong>ubuntu_service:</strong> Add generics for parameters (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/338\">#338</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/762f05cefaad72083063c61728a1c4db6daee95b\">762f05c</a>)</li>\n<li><strong>ubuntu_service:</strong> Add parameter generics (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/762f05cefaad72083063c61728a1c4db6daee95b\">762f05c</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/ubuntu_service-v0.3.0",
+                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_service-v0.3.0...main"
+               },
+               {
+                  "id": 128513033,
+                  "version": "ubuntu_widgets-v0.3.0",
+                  "timestamp": 1699443094,
+                  "title": "ubuntu_widgets: v0.3.0",
+                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_widgets-v0.2.1...ubuntu_widgets-v0.3.0\">0.3.0</a> (2023-10-30)</h2>\n\n<ul>\n<li><strong>ubuntu_widgets:</strong> use fixed padding for MenuButtonBuilder (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/334\">#334</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/5856134426d43b7590bce107e62a0841e1c6548f\">5856134</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/ubuntu_widgets-v0.3.0",
+                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_widgets-v0.3.0...main"
+               },
+               {
+                  "id": 125755686,
+                  "version": "xdg_icons-v0.0.3",
+                  "timestamp": 1697704901,
+                  "title": "xdg_icons: v0.0.3",
+                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/xdg_icons-v0.0.2...xdg_icons-v0.0.3\">0.0.3</a> (2023-10-18)</h2>\n\n<ul>\n<li><strong>deps:</strong> bump flutter/yaru versions in xdg_icons (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/41bbe62bd17a36bfbe9d255f0e2cf5d21dc4759c\">41bbe62</a>)</li>\n<li><strong>deps:</strong> update dependency mocktail to v1 (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/313\">#313</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/7e0f079290673734ee63ac3e3f8ebb20733c3262\">7e0f079</a>)</li>\n</ul>\n",
+                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/xdg_icons-v0.0.3",
+                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/xdg_icons-v0.0.3...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [
+               "https://github.com/canonical/ubuntu-flutter-plugins/workflows/CI"
+            ],
+            "charm": null,
+            "snap": null
+         },
+         {
+            "name": "ubuntu-insights-k8s-operator",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
+            "releases": [
+               {
+                  "id": 427988494,
+                  "version": "publish-40893805452",
+                  "timestamp": 1793284212,
+                  "title": "Publish 40893805452",
+                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev130\">ubuntu-insights-server-k8s-rev130 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev122</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.3.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/178\">#178</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404...publish-40893805452\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404&hellip;publish-40893805452</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40893805452",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40893805452...main"
+               },
+               {
+                  "id": 427439142,
+                  "version": "publish-40813272404",
+                  "timestamp": 1793244509,
+                  "title": "Publish 40813272404",
+                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev129\">ubuntu-insights-server-k8s-rev129 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev121</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.3.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/177\">#177</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355...publish-40813272404\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355&hellip;publish-40813272404</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40813272404",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404...main"
+               },
+               {
+                  "id": 423850494,
+                  "version": "publish-40267518355",
+                  "timestamp": 1792987121,
+                  "title": "Publish 40267518355",
+                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev128\">ubuntu-insights-server-k8s-rev128 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev120</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/176\">#176</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819...publish-40267518355\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819&hellip;publish-40267518355</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40267518355",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
+            "charm": {
+               "name": "ubuntu-insights-server-k8s",
+               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
+               "releases": [
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 130,
+                     "timestamp": 1793284923
+                  }
+               ],
+               "channels": [
+                  "edge"
+               ],
+               "tracks": [
+                  "latest"
+               ]
+            },
             "snap": null
          },
          {
@@ -7626,47 +7635,6 @@
             "commits": null,
             "ciActions": [
                "https://github.com/canonical/ubuntu-pro-for-wsl/actions/workflows/qa.yaml"
-            ],
-            "charm": null,
-            "snap": null
-         },
-         {
-            "name": "ubuntu-flutter-plugins",
-            "defaultBranch": "main",
-            "newCommits": 439,
-            "url": "https://github.com/canonical/ubuntu-flutter-plugins",
-            "releases": [
-               {
-                  "id": 129779620,
-                  "version": "ubuntu_service-v0.3.0",
-                  "timestamp": 1700150958,
-                  "title": "ubuntu_service: v0.3.0",
-                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_service-v0.2.4...ubuntu_service-v0.3.0\">0.3.0</a> (2023-11-16)</h2>\n\n<ul>\n<li><strong>ubuntu_service:</strong> Add generics for parameters (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/338\">#338</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/762f05cefaad72083063c61728a1c4db6daee95b\">762f05c</a>)</li>\n<li><strong>ubuntu_service:</strong> Add parameter generics (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/762f05cefaad72083063c61728a1c4db6daee95b\">762f05c</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/ubuntu_service-v0.3.0",
-                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_service-v0.3.0...main"
-               },
-               {
-                  "id": 128513033,
-                  "version": "ubuntu_widgets-v0.3.0",
-                  "timestamp": 1699443094,
-                  "title": "ubuntu_widgets: v0.3.0",
-                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_widgets-v0.2.1...ubuntu_widgets-v0.3.0\">0.3.0</a> (2023-10-30)</h2>\n\n<ul>\n<li><strong>ubuntu_widgets:</strong> use fixed padding for MenuButtonBuilder (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/334\">#334</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/5856134426d43b7590bce107e62a0841e1c6548f\">5856134</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/ubuntu_widgets-v0.3.0",
-                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/ubuntu_widgets-v0.3.0...main"
-               },
-               {
-                  "id": 125755686,
-                  "version": "xdg_icons-v0.0.3",
-                  "timestamp": 1697704901,
-                  "title": "xdg_icons: v0.0.3",
-                  "body": "<h2><a href=\"https://github.com/canonical/ubuntu-flutter-plugins/compare/xdg_icons-v0.0.2...xdg_icons-v0.0.3\">0.0.3</a> (2023-10-18)</h2>\n\n<ul>\n<li><strong>deps:</strong> bump flutter/yaru versions in xdg_icons (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/41bbe62bd17a36bfbe9d255f0e2cf5d21dc4759c\">41bbe62</a>)</li>\n<li><strong>deps:</strong> update dependency mocktail to v1 (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/issues/313\">#313</a>) (<a href=\"https://github.com/canonical/ubuntu-flutter-plugins/commit/7e0f079290673734ee63ac3e3f8ebb20733c3262\">7e0f079</a>)</li>\n</ul>\n",
-                  "url": "https://github.com/canonical/ubuntu-flutter-plugins/releases/tag/xdg_icons-v0.0.3",
-                  "compareUrl": "https://github.com/canonical/ubuntu-flutter-plugins/compare/xdg_icons-v0.0.3...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [
-               "https://github.com/canonical/ubuntu-flutter-plugins/workflows/CI"
             ],
             "charm": null,
             "snap": null
@@ -7808,36 +7776,68 @@
             "snap": null
          },
          {
-            "name": "xdg_desktop_portal.dart",
+            "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
             "newCommits": 0,
-            "url": "https://github.com/canonical/xdg_desktop_portal.dart",
-            "releases": null,
-            "commits": [
+            "url": "https://github.com/canonical/mediawiki-k8s-operator",
+            "releases": [
                {
-                  "sha": "8cd5a1420ea86728a7c0495bd3a691569857b184",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793131501,
-                  "message": "chore: release 0.1.15 (#99)\n\nReleases 0.1.15 with the dbus 0.8.0 update (#98). Analyze, tests and\npublish --dry-run pass.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8cd5a1420ea86728a7c0495bd3a691569857b184"
+                  "id": 424864155,
+                  "version": "publish-40417246043",
+                  "timestamp": 1793053943,
+                  "title": "Publish 40417246043",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev189\">mediawiki-k8s-rev189 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev174, shellbox-image rev15</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>chore(deps): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/340\">#340</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-40198128177...publish-40417246043\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-40198128177&hellip;publish-40417246043</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-40417246043",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-40417246043...main"
                },
                {
-                  "sha": "8e0fbcc3042c4bb612652ae437f1487e30e0bc65",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793131297,
-                  "message": "chore: release 0.1.15",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8e0fbcc3042c4bb612652ae437f1487e30e0bc65"
+                  "id": 423425146,
+                  "version": "publish-40198128177",
+                  "timestamp": 1792933234,
+                  "title": "Publish 40198128177",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev188\">mediawiki-k8s-rev188 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev173, shellbox-image rev14</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>docs: Clarify MediaWiki trademark licensing by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/338\">#338</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39911877341...publish-40198128177\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39911877341&hellip;publish-40198128177</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-40198128177",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-40198128177...main"
                },
                {
-                  "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1791875895,
-                  "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
+                  "id": 421518284,
+                  "version": "publish-39911877341",
+                  "timestamp": 1792735103,
+                  "title": "Publish 39911877341",
+                  "body": "<h2>Published charms</h2>\n\n<h3>mediawiki-k8s → <code>1.46/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/mediawiki-k8s-operator/tree/mediawiki-k8s-rev187\">mediawiki-k8s-rev187 (ubuntu@26.04, amd64) — resources: git-sync-image rev2, mediawiki-image rev172, shellbox-image rev13</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>fix: Rename rotate-mediawiki-secrets to rotate-secrets by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/mediawiki-k8s-operator/pull/335\">#335</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39899081473...publish-39911877341\">https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39899081473&hellip;publish-39911877341</a></p>\n",
+                  "url": "https://github.com/canonical/mediawiki-k8s-operator/releases/tag/publish-39911877341",
+                  "compareUrl": "https://github.com/canonical/mediawiki-k8s-operator/compare/publish-39911877341...main"
                }
             ],
-            "ciActions": [],
-            "charm": null,
+            "commits": null,
+            "ciActions": [
+               "https://github.com/canonical/mediawiki-k8s-operator/actions/workflows/publish_charm.yaml",
+               "https://github.com/canonical/mediawiki-k8s-operator/actions/workflows/promote_charm.yaml"
+            ],
+            "charm": {
+               "name": "mediawiki-k8s",
+               "url": "https://charmhub.io/mediawiki-k8s",
+               "releases": [
+                  {
+                     "track": "1.46",
+                     "channel": "edge",
+                     "revision": 125,
+                     "timestamp": 1788277812
+                  },
+                  {
+                     "track": "1.46",
+                     "channel": "edge",
+                     "revision": 189,
+                     "timestamp": 1793056060
+                  }
+               ],
+               "channels": [
+                  "edge"
+               ],
+               "tracks": [
+                  "1.46"
+               ]
+            },
             "snap": null
          },
          {
@@ -9164,6 +9164,45 @@
             "snap": null
          },
          {
+            "name": "myna",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/myna",
+            "releases": [
+               {
+                  "id": 428073079,
+                  "version": "v0.3.1",
+                  "timestamp": 1793288927,
+                  "title": "Myna 0.3.1",
+                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>Teach Myna your words. Add names and terms to the vocabulary in Myna\nSettings&rsquo; Model tab, and the Parakeet model listens for them: a word it\nused to misspell, or split (&ldquo;pulse audio&rdquo; for PulseAudio), is far more\nlikely to come out the way you wrote it (#1).</li>\n<li>Whisper and FunASR do not use the vocabulary yet, and its row is hidden\nwhile one of them is the active model.</li>\n<li>Switching engine or model no longer leaves the old one&rsquo;s files on disk\n(#61).</li>\n<li>Typing on Plasma Wayland keeps your keyboard layout during a dictation\n(#4).</li>\n<li>Setting up Myna on Xfce and Plasma no longer stops at the indicator step\nuntil the next login (#79).</li>\n<li>On Plasma with software rendering, the first dictation no longer stalls\nwhile the pill starts.</li>\n</ul>\n\n<h2>Known issues</h2>\n\n<ul>\n<li>A word that sounds exactly like a common one can still come out as the\ncommon word: &ldquo;Myna&rdquo; is heard as &ldquo;minor&rdquo; or &ldquo;miner&rdquo; in some accents.</li>\n<li>Upgrading waits for your next logout: the running pill holds back the\nsnap refresh (#38). The fix is waiting on the Snap Store.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app and a speech model. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>Myna works on GNOME, Xfce and KDE Plasma 6.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
+                  "url": "https://github.com/canonical/myna/releases/tag/v0.3.1",
+                  "compareUrl": "https://github.com/canonical/myna/compare/v0.3.1...main"
+               },
+               {
+                  "id": 424062302,
+                  "version": "v0.3.0",
+                  "timestamp": 1793007444,
+                  "title": "Myna 0.3.0",
+                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>KDE Plasma 6 is supported. Myna Settings sets up IBus as KWin&rsquo;s input\nmethod and binds the dictation key, and the pill shows on Plasma&rsquo;s\nWayland session (#65, #79).</li>\n<li>Notifications no longer pile up on Plasma (#70).</li>\n<li>Long dictations into Wine and CrossOver applications are no longer cut\noff (#73).</li>\n<li>Choosing a model while it is still installing no longer leaves Myna\nwith no model (#51).</li>\n<li>Myna Settings works when your shell is not listed in /etc/shells (#74).</li>\n<li>Dictation ends cleanly when another input method takes over, and Myna\nclaims IBus back at the next dictation.</li>\n<li>The pill follows the desktop&rsquo;s accent colour and animation settings.</li>\n</ul>\n\n<h2>Known issues</h2>\n\n<ul>\n<li>Upgrading from 0.2.4 waits for your next logout: the running pill holds\nback the snap refresh (#38). The fix is waiting on the Snap Store.</li>\n<li>On Plasma, if Myna Settings updates before the myna snap, the pill stays\nhidden until the snap refreshes.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app and a speech model. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>Myna works on GNOME, Xfce and KDE Plasma 6.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
+                  "url": "https://github.com/canonical/myna/releases/tag/v0.3.0",
+                  "compareUrl": "https://github.com/canonical/myna/compare/v0.3.0...main"
+               },
+               {
+                  "id": 417124680,
+                  "version": "v0.2.4",
+                  "timestamp": 1792402801,
+                  "title": "Myna 0.2.4",
+                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>Myna and its speech backends now build for arm64. Arm64 support is\nexperimental; the Parakeet NVIDIA GPU engine has not been tested on\narm64 hardware.</li>\n<li>Microphone DC offset no longer keeps dictation running or hides pauses.\nDiagnostics now shows the last dictation&rsquo;s input levels and warns about\na problematic offset.</li>\n<li>Whisper and Parakeet can finish dictation on the CPU when a GPU decode\nfails, including when GPU memory runs out mid-session.</li>\n<li>Whisper no longer skips long stretches of speech around pauses.</li>\n<li>New translations: Azerbaijani, Esperanto, Estonian, French, Occitan,\nPolish, Russian, Slovak, Ukrainian and Traditional Chinese.</li>\n</ul>\n\n<h2>Other improvements</h2>\n\n<ul>\n<li>GNOME Shell preedit rendering is more reliable in terminal applications.</li>\n<li>GPU memory warnings now account for other applications using the GPU.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app, a speech model and the GNOME Shell extension. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
+                  "url": "https://github.com/canonical/myna/releases/tag/v0.2.4",
+                  "compareUrl": "https://github.com/canonical/myna/compare/v0.2.4...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
+            "charm": null,
+            "snap": null
+         },
+         {
             "name": "mediawiki-k8s-operator",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -9229,45 +9268,6 @@
             "snap": null
          },
          {
-            "name": "myna",
-            "defaultBranch": "main",
-            "newCommits": 11,
-            "url": "https://github.com/canonical/myna",
-            "releases": [
-               {
-                  "id": 424062302,
-                  "version": "v0.3.0",
-                  "timestamp": 1793007444,
-                  "title": "Myna 0.3.0",
-                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>KDE Plasma 6 is supported. Myna Settings sets up IBus as KWin&rsquo;s input\nmethod and binds the dictation key, and the pill shows on Plasma&rsquo;s\nWayland session (#65, #79).</li>\n<li>Notifications no longer pile up on Plasma (#70).</li>\n<li>Long dictations into Wine and CrossOver applications are no longer cut\noff (#73).</li>\n<li>Choosing a model while it is still installing no longer leaves Myna\nwith no model (#51).</li>\n<li>Myna Settings works when your shell is not listed in /etc/shells (#74).</li>\n<li>Dictation ends cleanly when another input method takes over, and Myna\nclaims IBus back at the next dictation.</li>\n<li>The pill follows the desktop&rsquo;s accent colour and animation settings.</li>\n</ul>\n\n<h2>Known issues</h2>\n\n<ul>\n<li>Upgrading from 0.2.4 waits for your next logout: the running pill holds\nback the snap refresh (#38). The fix is waiting on the Snap Store.</li>\n<li>On Plasma, if Myna Settings updates before the myna snap, the pill stays\nhidden until the snap refreshes.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app and a speech model. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>Myna works on GNOME, Xfce and KDE Plasma 6.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
-                  "url": "https://github.com/canonical/myna/releases/tag/v0.3.0",
-                  "compareUrl": "https://github.com/canonical/myna/compare/v0.3.0...main"
-               },
-               {
-                  "id": 417124680,
-                  "version": "v0.2.4",
-                  "timestamp": 1792402801,
-                  "title": "Myna 0.2.4",
-                  "body": "<h2>Highlights</h2>\n\n<ul>\n<li>Myna and its speech backends now build for arm64. Arm64 support is\nexperimental; the Parakeet NVIDIA GPU engine has not been tested on\narm64 hardware.</li>\n<li>Microphone DC offset no longer keeps dictation running or hides pauses.\nDiagnostics now shows the last dictation&rsquo;s input levels and warns about\na problematic offset.</li>\n<li>Whisper and Parakeet can finish dictation on the CPU when a GPU decode\nfails, including when GPU memory runs out mid-session.</li>\n<li>Whisper no longer skips long stretches of speech around pauses.</li>\n<li>New translations: Azerbaijani, Esperanto, Estonian, French, Occitan,\nPolish, Russian, Slovak, Ukrainian and Traditional Chinese.</li>\n</ul>\n\n<h2>Other improvements</h2>\n\n<ul>\n<li>GNOME Shell preedit rendering is more reliable in terminal applications.</li>\n<li>GPU memory warnings now account for other applications using the GPU.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app, a speech model and the GNOME Shell extension. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n\n<p>arm64 is experimental: the speech models run on the CPU, and Parakeet&rsquo;s NVIDIA GPU engine is built for arm64 but has not been tried on hardware yet.</p>\n",
-                  "url": "https://github.com/canonical/myna/releases/tag/v0.2.4",
-                  "compareUrl": "https://github.com/canonical/myna/compare/v0.2.4...main"
-               },
-               {
-                  "id": 412904253,
-                  "version": "v0.2.3",
-                  "timestamp": 1791993204,
-                  "title": "Myna 0.2.3",
-                  "body": "<p>Myna 0.2.3</p>\n\n<h2>Highlights</h2>\n\n<ul>\n<li>On an NVIDIA machine Myna cannot use, setup picks the CPU engine instead of the GPU one, and no longer downloads the GPU components for nothing. That covers a missing or old driver (#49) and a GPU older than the engine&rsquo;s CUDA libraries support, such as a GTX 1050 for Parakeet (#56).</li>\n<li>A GPU engine that cannot run, because its driver went away or the card is too old, keeps transcribing on the CPU and says so, instead of failing every dictation with &ldquo;Transcription failed&rdquo;.</li>\n<li>Myna tells you when dictation is slowed by low memory.</li>\n<li>Report an Issue includes each model&rsquo;s engine and status even when Diagnostics was never opened.</li>\n</ul>\n\n<h2>Install</h2>\n\n<p>On Ubuntu 24.04 LTS or later, install Myna Settings from the PPA:</p>\n\n<pre><code>sudo add-apt-repository ppa:canonical-desktop-team/myna\nsudo apt install myna-config\n</code></pre>\n\n<p>Myna Settings then sets up the rest: the Dictation app, a speech model and the GNOME Shell extension. They come from the Snap Store&rsquo;s <code>latest/edge</code> channel as <a href=\"https://snapcraft.io/myna\">myna</a>, <a href=\"https://snapcraft.io/myna-parakeet\">myna-parakeet</a>, <a href=\"https://snapcraft.io/myna-whisper\">myna-whisper</a> and <a href=\"https://snapcraft.io/myna-funasr\">myna-funasr</a>.</p>\n",
-                  "url": "https://github.com/canonical/myna/releases/tag/v0.2.3",
-                  "compareUrl": "https://github.com/canonical/myna/compare/v0.2.3...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": null,
-            "snap": null
-         },
-         {
             "name": "yaru_test.dart",
             "defaultBranch": "main",
             "newCommits": 0,
@@ -9311,7 +9311,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -10094,62 +10094,6 @@
             "snap": null
          },
          {
-            "name": "ubuntu-insights-k8s-operator",
-            "defaultBranch": "main",
-            "newCommits": 0,
-            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
-            "releases": [
-               {
-                  "id": 427439142,
-                  "version": "publish-40813272404",
-                  "timestamp": 1793244509,
-                  "title": "Publish 40813272404",
-                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev129\">ubuntu-insights-server-k8s-rev129 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev121</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.3.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/177\">#177</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355...publish-40813272404\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355&hellip;publish-40813272404</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40813272404",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404...main"
-               },
-               {
-                  "id": 423850494,
-                  "version": "publish-40267518355",
-                  "timestamp": 1792987121,
-                  "title": "Publish 40267518355",
-                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev128\">ubuntu-insights-server-k8s-rev128 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev120</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/176\">#176</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819...publish-40267518355\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819&hellip;publish-40267518355</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40267518355",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355...main"
-               },
-               {
-                  "id": 420074359,
-                  "version": "publish-39678848819",
-                  "timestamp": 1792617428,
-                  "title": "Publish 39678848819",
-                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev127\">ubuntu-insights-server-k8s-rev127 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev119</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(insights_rock): Bump insights version and Go ver by <a href=\"http://github.com/hk21702\">@hk21702</a> in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/175\">#175</a></li>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/162\">#162</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39487366394...publish-39678848819\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39487366394&hellip;publish-39678848819</a></p>\n",
-                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-39678848819",
-                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819...main"
-               }
-            ],
-            "commits": null,
-            "ciActions": [],
-            "charm": {
-               "name": "ubuntu-insights-server-k8s",
-               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
-               "releases": [
-                  {
-                     "track": "latest",
-                     "channel": "edge",
-                     "revision": 129,
-                     "timestamp": 1793245272
-                  }
-               ],
-               "channels": [
-                  "edge"
-               ],
-               "tracks": [
-                  "latest"
-               ]
-            },
-            "snap": null
-         },
-         {
             "name": "ubuntu-desktop-session-snap",
             "defaultBranch": "desktop/26",
             "newCommits": 0,
@@ -10173,7 +10117,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 439,
+            "newCommits": 441,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -10209,6 +10153,62 @@
                "https://github.com/canonical/ubuntu-flutter-plugins/workflows/CI"
             ],
             "charm": null,
+            "snap": null
+         },
+         {
+            "name": "ubuntu-insights-k8s-operator",
+            "defaultBranch": "main",
+            "newCommits": 0,
+            "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
+            "releases": [
+               {
+                  "id": 427988494,
+                  "version": "publish-40893805452",
+                  "timestamp": 1793284212,
+                  "title": "Publish 40893805452",
+                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev130\">ubuntu-insights-server-k8s-rev130 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev122</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.3.2 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/178\">#178</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404...publish-40893805452\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404&hellip;publish-40893805452</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40893805452",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40893805452...main"
+               },
+               {
+                  "id": 427439142,
+                  "version": "publish-40813272404",
+                  "timestamp": 1793244509,
+                  "title": "Publish 40813272404",
+                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev129\">ubuntu-insights-server-k8s-rev129 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev121</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(github-actions): update astral-sh/setup-uv action to v10.3.1 by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/177\">#177</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355...publish-40813272404\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355&hellip;publish-40813272404</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40813272404",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40813272404...main"
+               },
+               {
+                  "id": 423850494,
+                  "version": "publish-40267518355",
+                  "timestamp": 1792987121,
+                  "title": "Publish 40267518355",
+                  "body": "<h2>Published charms</h2>\n\n<h3>ubuntu-insights-server-k8s → <code>latest/edge</code></h3>\n\n<ul>\n<li><a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/tree/ubuntu-insights-server-k8s-rev128\">ubuntu-insights-server-k8s-rev128 (ubuntu@24.04, amd64) — resources: ubuntu-insights-server-image rev120</a></li>\n</ul>\n\n<h2>What&rsquo;s Changed</h2>\n\n<ul>\n<li>deps(pep621): lock file maintenance by <a href=\"http://github.com/renovate\">@renovate</a>[bot] in <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/pull/176\">#176</a></li>\n</ul>\n\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819...publish-40267518355\">https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-39678848819&hellip;publish-40267518355</a></p>\n",
+                  "url": "https://github.com/canonical/ubuntu-insights-k8s-operator/releases/tag/publish-40267518355",
+                  "compareUrl": "https://github.com/canonical/ubuntu-insights-k8s-operator/compare/publish-40267518355...main"
+               }
+            ],
+            "commits": null,
+            "ciActions": [],
+            "charm": {
+               "name": "ubuntu-insights-server-k8s",
+               "url": "https://charmhub.io/ubuntu-insights-server-k8s",
+               "releases": [
+                  {
+                     "track": "latest",
+                     "channel": "edge",
+                     "revision": 130,
+                     "timestamp": 1793284923
+                  }
+               ],
+               "channels": [
+                  "edge"
+               ],
+               "tracks": [
+                  "latest"
+               ]
+            },
             "snap": null
          },
          {
@@ -10657,7 +10657,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 1,
+            "newCommits": 2,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
