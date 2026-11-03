@@ -61,7 +61,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 8,
+            "newCommits": 16,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -206,7 +206,7 @@
          {
             "name": "core-base-desktop",
             "defaultBranch": "desktop/26",
-            "newCommits": 3,
+            "newCommits": 4,
             "url": "https://github.com/canonical/core-base-desktop",
             "releases": [
                {
@@ -442,31 +442,22 @@
             "url": "https://github.com/canonical/ubuntu-core-desktop",
             "releases": [
                {
-                  "id": 411495688,
-                  "version": "kde-20261013",
+                  "id": 432957630,
+                  "version": "kde-20261103",
                   "timestamp": 1791318897,
-                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261013",
-                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. UNLIKE the GNOME image, this image ships a companion <code>*-seed.iso</code> file: attach it as a virtual CD-ROM on first boot (see go-run-kde / README.md) - cloud-init uses it to create a guest/guest account with autologin enabled (no first-boot wizard for KDE yet). Without the seed.iso attached on first boot, no account exists. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde-20261013.img.zst.part* &gt; ubuntu-core-desktop-kde-20261013.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-20261013",
-                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-20261013...main"
+                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261103",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. No credentials are baked in: first boot runs the plasma-setup first-boot wizard (the KDE equivalent of GNOME&rsquo;s ubuntu-desktop-init) to create the user account. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde-20261103.img.zst.part* &gt; ubuntu-core-desktop-kde-20261103.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde-20261103.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-20261103",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-20261103...main"
                },
                {
-                  "id": 414881008,
-                  "version": "gnome-20261016",
+                  "id": 432907036,
+                  "version": "gnome-20261103",
                   "timestamp": 1791318897,
-                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261016",
-                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261016.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261016",
-                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261016...main"
-               },
-               {
-                  "id": 411469349,
-                  "version": "gnome-20261013",
-                  "timestamp": 1791318897,
-                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261013",
-                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261013",
-                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261013...main"
+                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261103",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261103.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261103",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261103...main"
                }
             ],
             "commits": null,
@@ -2780,25 +2771,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b666c463c190f9edb4b6a186e942ac7f4946a853",
+                  "sha": "2e917dbd85d5f00a545d20c45901255e49eadbe8",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1793629837,
-                  "message": "deps(rust): bump the minor-updates group across 1 directory with 6 updates (#2175)\n\nBumps the minor-updates group with 6 updates in the / directory:\n\nUpdates `tonic-prost` from 0.14.6 to 0.14.9\nUpdates `tonic` from 0.14.6 to 0.14.9\nUpdates `rustix` from 1.1.5 to 1.1.6\nUpdates `tokio` from 1.53.3 to 1.54.1\nUpdates `tonic-prost-build` from 0.14.6 to 0.14.9\nUpdates `cc` from 1.9.0 to 1.10.0",
-                  "url": "https://github.com/canonical/authd/commit/b666c463c190f9edb4b6a186e942ac7f4946a853"
+                  "timestamp": 1793724281,
+                  "message": "deps(e2e): bump filelock from 4.0.7 to 4.2.1 in /e2e-tests (#2168)\n\nBumps [filelock](https://github.com/tox-dev/filelock) from 4.0.7 to\n4.2.1.",
+                  "url": "https://github.com/canonical/authd/commit/2e917dbd85d5f00a545d20c45901255e49eadbe8"
                },
                {
-                  "sha": "437bf6bb48834e91397b619303f695adb033bc53",
-                  "author": "adombeck",
-                  "timestamp": 1793629192,
-                  "message": "ci: Skip scheduled documentation checks and LXD cache refreshes in forks (#2178)",
-                  "url": "https://github.com/canonical/authd/commit/437bf6bb48834e91397b619303f695adb033bc53"
+                  "sha": "5b8f0c6429036098683fd2057154e84482a0fa3f",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1793701997,
+                  "message": "e2e: Fix device-code login on the new Entra approval page (#2180)\n\nMicrosoft added an `Approve sign-in on another device` page to the\nEntra device-code flow. Since 2026-11-02 the browser login waited for\nthe old page text, timed out, and every device-code test failed on\nnoble, resolute, and stonking. The dependabot e2e runs failed for the\nsame reason.\n\nThe login accepts either page. On the new one it clicks `Approve`,\nbecause Return would activate `This wasn't me` and decline the login.\nThe heading match tolerates line breaks that `innerText` can add. That\nmatch also uncovered a `wait_for_pattern` bug: a pattern such as `\\s+`\nnever matched.\n\ne2e-tests: allowed_users.robot login_gdm.robot\n\nCloses #2179\nUDENG-12051",
+                  "url": "https://github.com/canonical/authd/commit/5b8f0c6429036098683fd2057154e84482a0fa3f"
                },
                {
-                  "sha": "0d694122e9c9d394e1d96f1d48334aeb7cc2db24",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1793625348,
-                  "message": "ci: Avoid scheduled maintenance jobs in forks\n\nScheduled LXD cache refreshes and cargo-c/oras updates run in forks,\nwhere they waste resources and open unwanted dependency update PRs.\nRestrict scheduled runs to canonical/authd while keeping manual runs\navailable in forks.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0d694122e9c9d394e1d96f1d48334aeb7cc2db24"
+                  "sha": "3d218b265a84ce71bdb04e0ddc57cc3f828e187b",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1793699578,
+                  "message": "deps(ci): update oras to v1.3.6 (#2172)\n\nUpdates the oras CLI version used by `.github/actions/setup-oras`\nto the latest stable release.",
+                  "url": "https://github.com/canonical/authd/commit/3d218b265a84ce71bdb04e0ddc57cc3f828e187b"
                }
             ],
             "ciActions": [
@@ -5584,7 +5575,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 8,
+            "newCommits": 16,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -5894,25 +5885,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b666c463c190f9edb4b6a186e942ac7f4946a853",
+                  "sha": "2e917dbd85d5f00a545d20c45901255e49eadbe8",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1793629837,
-                  "message": "deps(rust): bump the minor-updates group across 1 directory with 6 updates (#2175)\n\nBumps the minor-updates group with 6 updates in the / directory:\n\nUpdates `tonic-prost` from 0.14.6 to 0.14.9\nUpdates `tonic` from 0.14.6 to 0.14.9\nUpdates `rustix` from 1.1.5 to 1.1.6\nUpdates `tokio` from 1.53.3 to 1.54.1\nUpdates `tonic-prost-build` from 0.14.6 to 0.14.9\nUpdates `cc` from 1.9.0 to 1.10.0",
-                  "url": "https://github.com/canonical/authd/commit/b666c463c190f9edb4b6a186e942ac7f4946a853"
+                  "timestamp": 1793724281,
+                  "message": "deps(e2e): bump filelock from 4.0.7 to 4.2.1 in /e2e-tests (#2168)\n\nBumps [filelock](https://github.com/tox-dev/filelock) from 4.0.7 to\n4.2.1.",
+                  "url": "https://github.com/canonical/authd/commit/2e917dbd85d5f00a545d20c45901255e49eadbe8"
                },
                {
-                  "sha": "437bf6bb48834e91397b619303f695adb033bc53",
-                  "author": "adombeck",
-                  "timestamp": 1793629192,
-                  "message": "ci: Skip scheduled documentation checks and LXD cache refreshes in forks (#2178)",
-                  "url": "https://github.com/canonical/authd/commit/437bf6bb48834e91397b619303f695adb033bc53"
+                  "sha": "5b8f0c6429036098683fd2057154e84482a0fa3f",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1793701997,
+                  "message": "e2e: Fix device-code login on the new Entra approval page (#2180)\n\nMicrosoft added an `Approve sign-in on another device` page to the\nEntra device-code flow. Since 2026-11-02 the browser login waited for\nthe old page text, timed out, and every device-code test failed on\nnoble, resolute, and stonking. The dependabot e2e runs failed for the\nsame reason.\n\nThe login accepts either page. On the new one it clicks `Approve`,\nbecause Return would activate `This wasn't me` and decline the login.\nThe heading match tolerates line breaks that `innerText` can add. That\nmatch also uncovered a `wait_for_pattern` bug: a pattern such as `\\s+`\nnever matched.\n\ne2e-tests: allowed_users.robot login_gdm.robot\n\nCloses #2179\nUDENG-12051",
+                  "url": "https://github.com/canonical/authd/commit/5b8f0c6429036098683fd2057154e84482a0fa3f"
                },
                {
-                  "sha": "0d694122e9c9d394e1d96f1d48334aeb7cc2db24",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1793625348,
-                  "message": "ci: Avoid scheduled maintenance jobs in forks\n\nScheduled LXD cache refreshes and cargo-c/oras updates run in forks,\nwhere they waste resources and open unwanted dependency update PRs.\nRestrict scheduled runs to canonical/authd while keeping manual runs\navailable in forks.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0d694122e9c9d394e1d96f1d48334aeb7cc2db24"
+                  "sha": "3d218b265a84ce71bdb04e0ddc57cc3f828e187b",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1793699578,
+                  "message": "deps(ci): update oras to v1.3.6 (#2172)\n\nUpdates the oras CLI version used by `.github/actions/setup-oras`\nto the latest stable release.",
+                  "url": "https://github.com/canonical/authd/commit/3d218b265a84ce71bdb04e0ddc57cc3f828e187b"
                }
             ],
             "ciActions": [
@@ -5990,7 +5981,7 @@
          {
             "name": "core-base-desktop",
             "defaultBranch": "desktop/26",
-            "newCommits": 3,
+            "newCommits": 4,
             "url": "https://github.com/canonical/core-base-desktop",
             "releases": [
                {
@@ -7410,31 +7401,22 @@
             "url": "https://github.com/canonical/ubuntu-core-desktop",
             "releases": [
                {
-                  "id": 411495688,
-                  "version": "kde-20261013",
+                  "id": 432957630,
+                  "version": "kde-20261103",
                   "timestamp": 1791318897,
-                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261013",
-                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. UNLIKE the GNOME image, this image ships a companion <code>*-seed.iso</code> file: attach it as a virtual CD-ROM on first boot (see go-run-kde / README.md) - cloud-init uses it to create a guest/guest account with autologin enabled (no first-boot wizard for KDE yet). Without the seed.iso attached on first boot, no account exists. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde-20261013.img.zst.part* &gt; ubuntu-core-desktop-kde-20261013.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-20261013",
-                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-20261013...main"
+                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261103",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. No credentials are baked in: first boot runs the plasma-setup first-boot wizard (the KDE equivalent of GNOME&rsquo;s ubuntu-desktop-init) to create the user account. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde-20261103.img.zst.part* &gt; ubuntu-core-desktop-kde-20261103.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde-20261103.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-20261103",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-20261103...main"
                },
                {
-                  "id": 414881008,
-                  "version": "gnome-20261016",
+                  "id": 432907036,
+                  "version": "gnome-20261103",
                   "timestamp": 1791318897,
-                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261016",
-                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261016.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261016",
-                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261016...main"
-               },
-               {
-                  "id": 411469349,
-                  "version": "gnome-20261013",
-                  "timestamp": 1791318897,
-                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261013",
-                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261013",
-                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261013...main"
+                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261103",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261103.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261103",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261103...main"
                }
             ],
             "commits": null,
@@ -8004,7 +7986,7 @@
          {
             "name": "adsys",
             "defaultBranch": "main",
-            "newCommits": 213,
+            "newCommits": 225,
             "url": "https://github.com/ubuntu/adsys",
             "releases": [
                {
@@ -8438,25 +8420,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b666c463c190f9edb4b6a186e942ac7f4946a853",
+                  "sha": "2e917dbd85d5f00a545d20c45901255e49eadbe8",
                   "author": "Noor Eldeen Mansour",
-                  "timestamp": 1793629837,
-                  "message": "deps(rust): bump the minor-updates group across 1 directory with 6 updates (#2175)\n\nBumps the minor-updates group with 6 updates in the / directory:\n\nUpdates `tonic-prost` from 0.14.6 to 0.14.9\nUpdates `tonic` from 0.14.6 to 0.14.9\nUpdates `rustix` from 1.1.5 to 1.1.6\nUpdates `tokio` from 1.53.3 to 1.54.1\nUpdates `tonic-prost-build` from 0.14.6 to 0.14.9\nUpdates `cc` from 1.9.0 to 1.10.0",
-                  "url": "https://github.com/canonical/authd/commit/b666c463c190f9edb4b6a186e942ac7f4946a853"
+                  "timestamp": 1793724281,
+                  "message": "deps(e2e): bump filelock from 4.0.7 to 4.2.1 in /e2e-tests (#2168)\n\nBumps [filelock](https://github.com/tox-dev/filelock) from 4.0.7 to\n4.2.1.",
+                  "url": "https://github.com/canonical/authd/commit/2e917dbd85d5f00a545d20c45901255e49eadbe8"
                },
                {
-                  "sha": "437bf6bb48834e91397b619303f695adb033bc53",
-                  "author": "adombeck",
-                  "timestamp": 1793629192,
-                  "message": "ci: Skip scheduled documentation checks and LXD cache refreshes in forks (#2178)",
-                  "url": "https://github.com/canonical/authd/commit/437bf6bb48834e91397b619303f695adb033bc53"
+                  "sha": "5b8f0c6429036098683fd2057154e84482a0fa3f",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1793701997,
+                  "message": "e2e: Fix device-code login on the new Entra approval page (#2180)\n\nMicrosoft added an `Approve sign-in on another device` page to the\nEntra device-code flow. Since 2026-11-02 the browser login waited for\nthe old page text, timed out, and every device-code test failed on\nnoble, resolute, and stonking. The dependabot e2e runs failed for the\nsame reason.\n\nThe login accepts either page. On the new one it clicks `Approve`,\nbecause Return would activate `This wasn't me` and decline the login.\nThe heading match tolerates line breaks that `innerText` can add. That\nmatch also uncovered a `wait_for_pattern` bug: a pattern such as `\\s+`\nnever matched.\n\ne2e-tests: allowed_users.robot login_gdm.robot\n\nCloses #2179\nUDENG-12051",
+                  "url": "https://github.com/canonical/authd/commit/5b8f0c6429036098683fd2057154e84482a0fa3f"
                },
                {
-                  "sha": "0d694122e9c9d394e1d96f1d48334aeb7cc2db24",
-                  "author": "Adrian Dombeck",
-                  "timestamp": 1793625348,
-                  "message": "ci: Avoid scheduled maintenance jobs in forks\n\nScheduled LXD cache refreshes and cargo-c/oras updates run in forks,\nwhere they waste resources and open unwanted dependency update PRs.\nRestrict scheduled runs to canonical/authd while keeping manual runs\navailable in forks.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/0d694122e9c9d394e1d96f1d48334aeb7cc2db24"
+                  "sha": "3d218b265a84ce71bdb04e0ddc57cc3f828e187b",
+                  "author": "Noor Eldeen Mansour",
+                  "timestamp": 1793699578,
+                  "message": "deps(ci): update oras to v1.3.6 (#2172)\n\nUpdates the oras CLI version used by `.github/actions/setup-oras`\nto the latest stable release.",
+                  "url": "https://github.com/canonical/authd/commit/3d218b265a84ce71bdb04e0ddc57cc3f828e187b"
                }
             ],
             "ciActions": [
@@ -8534,7 +8516,7 @@
          {
             "name": "core-base-desktop",
             "defaultBranch": "desktop/26",
-            "newCommits": 3,
+            "newCommits": 4,
             "url": "https://github.com/canonical/core-base-desktop",
             "releases": [
                {
@@ -9166,7 +9148,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 8,
+            "newCommits": 16,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -9935,31 +9917,22 @@
             "url": "https://github.com/canonical/ubuntu-core-desktop",
             "releases": [
                {
-                  "id": 411495688,
-                  "version": "kde-20261013",
+                  "id": 432957630,
+                  "version": "kde-20261103",
                   "timestamp": 1791318897,
-                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261013",
-                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. UNLIKE the GNOME image, this image ships a companion <code>*-seed.iso</code> file: attach it as a virtual CD-ROM on first boot (see go-run-kde / README.md) - cloud-init uses it to create a guest/guest account with autologin enabled (no first-boot wizard for KDE yet). Without the seed.iso attached on first boot, no account exists. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde-20261013.img.zst.part* &gt; ubuntu-core-desktop-kde-20261013.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-20261013",
-                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-20261013...main"
+                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261103",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. No credentials are baked in: first boot runs the plasma-setup first-boot wizard (the KDE equivalent of GNOME&rsquo;s ubuntu-desktop-init) to create the user account. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde-20261103.img.zst.part* &gt; ubuntu-core-desktop-kde-20261103.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde-20261103.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-20261103",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-20261103...main"
                },
                {
-                  "id": 414881008,
-                  "version": "gnome-20261016",
+                  "id": 432907036,
+                  "version": "gnome-20261103",
                   "timestamp": 1791318897,
-                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261016",
-                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261016.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261016",
-                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261016...main"
-               },
-               {
-                  "id": 411469349,
-                  "version": "gnome-20261013",
-                  "timestamp": 1791318897,
-                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261013",
-                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261013.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
-                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261013",
-                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261013...main"
+                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261103",
+                  "body": "<p>DANGEROUS developer preview. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-20261103.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
+                  "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-20261103",
+                  "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-20261103...main"
                }
             ],
             "commits": null,
