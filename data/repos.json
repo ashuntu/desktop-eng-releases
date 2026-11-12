@@ -156,7 +156,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 80,
+            "newCommits": 83,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -486,7 +486,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 3,
+            "newCommits": 4,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -2789,25 +2789,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ba9b6076ed5c1a765a902bc6513e9f754cd47aef",
+                  "sha": "e2a709aa892c00c6995f541638c568e4535a37b2",
                   "author": "adombeck",
-                  "timestamp": 1794309464,
-                  "message": "e2e: Let first-time GDM login finish before the desktop wait expires (#2232)\n\nCloses #2231",
-                  "url": "https://github.com/canonical/authd/commit/ba9b6076ed5c1a765a902bc6513e9f754cd47aef"
+                  "timestamp": 1794399800,
+                  "message": "ci: Prevent nightly triage failures from reversed tool-call order (#2246)\n\nCloses #2245",
+                  "url": "https://github.com/canonical/authd/commit/e2a709aa892c00c6995f541638c568e4535a37b2"
                },
                {
-                  "sha": "15a86a2471a0e4709c0bd4a0dfb8605b895a45e1",
+                  "sha": "7b544824960165ce46ac0d04d7539dec1584a150",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1794247509,
-                  "message": "e2e: Let first-time GDM login finish before the desktop wait expires\n\nWe've seen e2e tests time out waiting for the desktop to be ready after\nsubmitting the new local password. The broker spent 42-48 seconds on\nthat request before GNOME could start. The recordings and guest journal\nshow the session still starting as the wait expired.\n\nAllow two minutes on this first-login path, matching the surrounding\npassword prompts. Keep the one-minute default for other desktop waits.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/15a86a2471a0e4709c0bd4a0dfb8605b895a45e1"
+                  "timestamp": 1794391221,
+                  "message": "ci: Prevent nightly triage failures from reversed tool-call order\n\nThe nightly agent queued set_issue_type before its matching create_issue.\nThe safe-output guard rejected the queue, so verification failed and no\ntriage writes were applied.\n\nValidate the same one-to-one Bug type pairs, then place each type call\nright after its creation before processing. Keep rejecting invalid or\nduplicate IDs, unmatched type calls, and suggestion-only calls. Preserve\nother output ordering and leave the original queue untouched on failure.\n\nCover reversed calls and interleaved pairs. Replaying the retained output\nfrom run 42950163944 fails with the original guard and passes after this\nchange, with only the creation/type pair reordered.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/7b544824960165ce46ac0d04d7539dec1584a150"
                },
                {
-                  "sha": "c7091386058f55b5d3ca6aa2e5489b552b25f7b6",
+                  "sha": "0591654d3b8387bc7eacf29bee3ec75de4300615",
                   "author": "adombeck",
-                  "timestamp": 1794257391,
-                  "message": "authctl: Keep boolean flag help compact with pflag 1.1.0 (#2218)\n\npflag 1.1.0 adds `[=true|false]` to boolean flags in help output. This\nmakes flags harder to scan and widens the flag column. Keep authctl's\nexisting compact help and generated Markdown/reStructuredText reference\ntext instead of changing the golden files to match the new format.\n\nRender cloned flags without the boolean marker and generate\ndocumentation from a separate command-tree copy. This keeps Cobra's\nstandard generators and leaves live flag values and command parsing\nunchanged. Tests cover compact help, unchanged parsing, and generated\ndocumentation.\n\nThe workaround is temporary. Comments link to\nhttps://github.com/spf13/pflag/issues/454 so it can be removed once\nupstream supports disabling this syntax.\n\nValidation:\n\n- `go test ./cmd/authctl/...` — passed.\n- `scripts/golangci-lint run` — passed, no issues.\n- `git diff --check` — passed.\n\nThe full build and repository-wide code generation were not rerun for\nthis review update.\n\n<!--\nE2E tests in CI\n\nThe E2E workflow runs for a pull request only when it has the\n`e2e-tests`\nlabel. Copy the relevant line(s) below into the visible part of the pull\nrequest description to override the defaults. Leave these examples\ncommented\nto use the defaults:\n\n- the `authd-msentraid` broker\n- all supported Ubuntu releases\n- the complete test suite\n- all test cases in the selected suites\n- the branch-built authd package\n- the matching Ubuntu `-proposed` pocket and `authd-edge` PPA for\npackages other than authd\n- optional Ubuntu archive suites for the matching release\n\ne2e-brokers: google\ne2e-ubuntu-releases: noble\ne2e-tests: allowed_users.robot login_gdm.robot\ne2e-test-case: Test login with GDM\ne2e-authd-apt-source: resolute-proposed\ne2e-apt-source: resolute-proposed\ne2e-apt-source: authd-edge\ne2e-apt-source-base: resolute-updates\ne2e-authd-apt-source-base: authd\n\nThe `e2e-ubuntu-releases` marker limits the Ubuntu releases tested by\nthe\nworkflow. It accepts a space- or comma-separated list of `noble`,\n`resolute`,\n`stonking`, and `devel`; leave it commented to test all supported\nreleases.\n\nThe `e2e-tests` marker accepts space- or comma-separated suite filenames\nor\nshell-style glob patterns such as `login*.robot`. Leave the marker\ncommented to\nrun the complete suite.\n\nThe `e2e-test-case` marker selects the exact Robot test case name.\nRepeat the\nmarker to select more than one test case.\n\nThe `e2e-authd-apt-source` marker adds APT sources for authd. It accepts\n`authd`, `authd-edge`, or `authd-dev` to select the respective PPA, or\nan\narchive suite such as `resolute-updates` or `resolute-proposed`. Repeat\nthe\nmarker to add more sources. If no source applies to a release job, the\nbranch-built authd package remains the package under test. PPA sources\napply to\nevery Ubuntu release; archive suites apply only to matching release\njobs.\n\nThe `e2e-apt-source` marker adds APT sources for every package except\nauthd.\nIt accepts the same PPA names and Ubuntu archive suites and can be\nrepeated to\nadd more sources. With no marker, the matching Ubuntu `-proposed` pocket\nand\nthe `authd-edge` PPA are added to the VM's default archive suites. When\nthe\nmarker is present, its values replace those extra defaults; the VM's\ndefault\narchive suites remain enabled. APT installs the highest available\npackage\nversion across the enabled sources. PPA values apply to every release,\narchive\nsuite values apply only to matching release jobs, and jobs with no\napplicable\nvalues use the default sources.\n\nThe `e2e-apt-source-base` marker selects the source for the stable\nmigration\nbaseline for all packages except authd.\n\nThe `e2e-authd-apt-source-base` marker selects the source for the stable\nmigration baseline for authd. If it's omitted, authd uses the stable\n`authd`\nPPA when it publishes the selected Ubuntu suite, and falls back to the\narchive\notherwise.\n\nThe target source markers are independent. For example, these lines add\n`resolute-proposed` and `authd-edge` for system packages, while adding\nthe same\ntwo sources as candidates for authd:\n\n```text\ne2e-apt-source: resolute-proposed\ne2e-apt-source: authd-edge\ne2e-authd-apt-source: resolute-proposed\ne2e-authd-apt-source: authd-edge\n```\n\nThe base source markers select the sources for the stable migration\nbaseline.\n`e2e-apt-source-base` selects the Ubuntu archive suite for all packages\nexcept\nauthd, while `e2e-authd-apt-source-base` selects the authd source. If\nthe\nauthd base marker is omitted, authd uses the stable `authd` PPA when it\npublishes the selected Ubuntu suite, and falls back to that suite's\narchive\notherwise. For example, the markers at the top of this template test a\nmigration from system packages in `resolute-updates` and stable authd\nfrom the\n`authd` PPA to system packages in `resolute-proposed` and `authd-edge`,\nwith\nauthd from `resolute-proposed`.\n-->",
-                  "url": "https://github.com/canonical/authd/commit/c7091386058f55b5d3ca6aa2e5489b552b25f7b6"
+                  "timestamp": 1794391300,
+                  "message": "docs(e2e): Explain how to keep local Robocop in sync with CI (#2239)",
+                  "url": "https://github.com/canonical/authd/commit/0591654d3b8387bc7eacf29bee3ec75de4300615"
                }
             ],
             "ciActions": [
@@ -4613,25 +4613,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cc41fa0bff8bdbe561070f0b01758d7d0ec3ad2f",
+                  "sha": "afb29549758b86b36d65e347d21cbdb2b687f83c",
                   "author": "Ken VanDine",
-                  "timestamp": 1793853106,
-                  "message": "Add a startup window for faster launch feedback (#547)\n\nSteam can take a while to show a window after launch. This adds a small\n\"Starting Steam…\" splash, shown immediately, so users know the launch\nworked.\n- Splash ( steam-splash ,  steam-splash-wrapper ): a GTK4 window that is\nfullscreen in the gamepad session and a small window elsewhere. It\ncloses when Steam's main window is focused, when the launch process\nexits, or after a 2-minute timeout.\n- Launch chain: the wrapper runs first in the app's  command-chain  and\ndoesn't block the launch. It puts 64-bit library paths first for the\nsplash only, so GTK doesn't load the 32-bit  libX11.\n- Packaging: the launcher part moves from GTK3 to GTK4 and stages\n python3  and  xdotool.\n- Gamepad UI: adds  gamepadui-watchdog , which  desktop-launch  runs\nwhen  gamepadui=true  to return Steam to Big Picture if it falls back to\nthe desktop UI. The desktop file gets an \"Exit Big Picture\" action, and\nBig Picture now launches with  -start .",
-                  "url": "https://github.com/canonical/steam-snap/commit/cc41fa0bff8bdbe561070f0b01758d7d0ec3ad2f"
+                  "timestamp": 1794367143,
+                  "message": "Close splash when Steam window is visible, not only focused (#553)\n\nOn desktop sessions focus can stay on the splash or another app, so the\nfocus-based check never matched and the splash lingered until timeout.",
+                  "url": "https://github.com/canonical/steam-snap/commit/afb29549758b86b36d65e347d21cbdb2b687f83c"
                },
                {
-                  "sha": "545f5abf44752f570d601d062f7d3b12d062129d",
+                  "sha": "b343fd977f04c54aea8ff45dbfc480424b1f43f1",
                   "author": "Ken VanDine",
-                  "timestamp": 1793107657,
-                  "message": "chore: Bump ninja, meson, and mangohud (#544)",
-                  "url": "https://github.com/canonical/steam-snap/commit/545f5abf44752f570d601d062f7d3b12d062129d"
+                  "timestamp": 1794367088,
+                  "message": "fix: Add libopengl package (#552)\n\nAdds libopengl to stage of the snap. We already include libvulkan, so\nthis is the equivalent addition for opengl.\n\nFixes https://github.com/canonical/steam-snap/issues/550\n\n---\n\nUDENG-12165",
+                  "url": "https://github.com/canonical/steam-snap/commit/b343fd977f04c54aea8ff45dbfc480424b1f43f1"
                },
                {
-                  "sha": "f7f68bb33d0f913b5e45bf6fc487da55de710459",
+                  "sha": "83c71b5425635cf0c8f7387045717ba6133e0d41",
                   "author": "Ken VanDine",
-                  "timestamp": 1793107623,
-                  "message": "ci: Add shellcheck job (#540)\n\nWe use quite a lot of shell, so I figured a shellcheck job would be a\nnice addition.",
-                  "url": "https://github.com/canonical/steam-snap/commit/f7f68bb33d0f913b5e45bf6fc487da55de710459"
+                  "timestamp": 1793990725,
+                  "message": "Make Steam window class case-insensitive in search\n\nCo-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Ken VanDine <ken@vandine.org>",
+                  "url": "https://github.com/canonical/steam-snap/commit/83c71b5425635cf0c8f7387045717ba6133e0d41"
                }
             ],
             "ciActions": [],
@@ -5913,25 +5913,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ba9b6076ed5c1a765a902bc6513e9f754cd47aef",
+                  "sha": "e2a709aa892c00c6995f541638c568e4535a37b2",
                   "author": "adombeck",
-                  "timestamp": 1794309464,
-                  "message": "e2e: Let first-time GDM login finish before the desktop wait expires (#2232)\n\nCloses #2231",
-                  "url": "https://github.com/canonical/authd/commit/ba9b6076ed5c1a765a902bc6513e9f754cd47aef"
+                  "timestamp": 1794399800,
+                  "message": "ci: Prevent nightly triage failures from reversed tool-call order (#2246)\n\nCloses #2245",
+                  "url": "https://github.com/canonical/authd/commit/e2a709aa892c00c6995f541638c568e4535a37b2"
                },
                {
-                  "sha": "15a86a2471a0e4709c0bd4a0dfb8605b895a45e1",
+                  "sha": "7b544824960165ce46ac0d04d7539dec1584a150",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1794247509,
-                  "message": "e2e: Let first-time GDM login finish before the desktop wait expires\n\nWe've seen e2e tests time out waiting for the desktop to be ready after\nsubmitting the new local password. The broker spent 42-48 seconds on\nthat request before GNOME could start. The recordings and guest journal\nshow the session still starting as the wait expired.\n\nAllow two minutes on this first-login path, matching the surrounding\npassword prompts. Keep the one-minute default for other desktop waits.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/15a86a2471a0e4709c0bd4a0dfb8605b895a45e1"
+                  "timestamp": 1794391221,
+                  "message": "ci: Prevent nightly triage failures from reversed tool-call order\n\nThe nightly agent queued set_issue_type before its matching create_issue.\nThe safe-output guard rejected the queue, so verification failed and no\ntriage writes were applied.\n\nValidate the same one-to-one Bug type pairs, then place each type call\nright after its creation before processing. Keep rejecting invalid or\nduplicate IDs, unmatched type calls, and suggestion-only calls. Preserve\nother output ordering and leave the original queue untouched on failure.\n\nCover reversed calls and interleaved pairs. Replaying the retained output\nfrom run 42950163944 fails with the original guard and passes after this\nchange, with only the creation/type pair reordered.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/7b544824960165ce46ac0d04d7539dec1584a150"
                },
                {
-                  "sha": "c7091386058f55b5d3ca6aa2e5489b552b25f7b6",
+                  "sha": "0591654d3b8387bc7eacf29bee3ec75de4300615",
                   "author": "adombeck",
-                  "timestamp": 1794257391,
-                  "message": "authctl: Keep boolean flag help compact with pflag 1.1.0 (#2218)\n\npflag 1.1.0 adds `[=true|false]` to boolean flags in help output. This\nmakes flags harder to scan and widens the flag column. Keep authctl's\nexisting compact help and generated Markdown/reStructuredText reference\ntext instead of changing the golden files to match the new format.\n\nRender cloned flags without the boolean marker and generate\ndocumentation from a separate command-tree copy. This keeps Cobra's\nstandard generators and leaves live flag values and command parsing\nunchanged. Tests cover compact help, unchanged parsing, and generated\ndocumentation.\n\nThe workaround is temporary. Comments link to\nhttps://github.com/spf13/pflag/issues/454 so it can be removed once\nupstream supports disabling this syntax.\n\nValidation:\n\n- `go test ./cmd/authctl/...` — passed.\n- `scripts/golangci-lint run` — passed, no issues.\n- `git diff --check` — passed.\n\nThe full build and repository-wide code generation were not rerun for\nthis review update.\n\n<!--\nE2E tests in CI\n\nThe E2E workflow runs for a pull request only when it has the\n`e2e-tests`\nlabel. Copy the relevant line(s) below into the visible part of the pull\nrequest description to override the defaults. Leave these examples\ncommented\nto use the defaults:\n\n- the `authd-msentraid` broker\n- all supported Ubuntu releases\n- the complete test suite\n- all test cases in the selected suites\n- the branch-built authd package\n- the matching Ubuntu `-proposed` pocket and `authd-edge` PPA for\npackages other than authd\n- optional Ubuntu archive suites for the matching release\n\ne2e-brokers: google\ne2e-ubuntu-releases: noble\ne2e-tests: allowed_users.robot login_gdm.robot\ne2e-test-case: Test login with GDM\ne2e-authd-apt-source: resolute-proposed\ne2e-apt-source: resolute-proposed\ne2e-apt-source: authd-edge\ne2e-apt-source-base: resolute-updates\ne2e-authd-apt-source-base: authd\n\nThe `e2e-ubuntu-releases` marker limits the Ubuntu releases tested by\nthe\nworkflow. It accepts a space- or comma-separated list of `noble`,\n`resolute`,\n`stonking`, and `devel`; leave it commented to test all supported\nreleases.\n\nThe `e2e-tests` marker accepts space- or comma-separated suite filenames\nor\nshell-style glob patterns such as `login*.robot`. Leave the marker\ncommented to\nrun the complete suite.\n\nThe `e2e-test-case` marker selects the exact Robot test case name.\nRepeat the\nmarker to select more than one test case.\n\nThe `e2e-authd-apt-source` marker adds APT sources for authd. It accepts\n`authd`, `authd-edge`, or `authd-dev` to select the respective PPA, or\nan\narchive suite such as `resolute-updates` or `resolute-proposed`. Repeat\nthe\nmarker to add more sources. If no source applies to a release job, the\nbranch-built authd package remains the package under test. PPA sources\napply to\nevery Ubuntu release; archive suites apply only to matching release\njobs.\n\nThe `e2e-apt-source` marker adds APT sources for every package except\nauthd.\nIt accepts the same PPA names and Ubuntu archive suites and can be\nrepeated to\nadd more sources. With no marker, the matching Ubuntu `-proposed` pocket\nand\nthe `authd-edge` PPA are added to the VM's default archive suites. When\nthe\nmarker is present, its values replace those extra defaults; the VM's\ndefault\narchive suites remain enabled. APT installs the highest available\npackage\nversion across the enabled sources. PPA values apply to every release,\narchive\nsuite values apply only to matching release jobs, and jobs with no\napplicable\nvalues use the default sources.\n\nThe `e2e-apt-source-base` marker selects the source for the stable\nmigration\nbaseline for all packages except authd.\n\nThe `e2e-authd-apt-source-base` marker selects the source for the stable\nmigration baseline for authd. If it's omitted, authd uses the stable\n`authd`\nPPA when it publishes the selected Ubuntu suite, and falls back to the\narchive\notherwise.\n\nThe target source markers are independent. For example, these lines add\n`resolute-proposed` and `authd-edge` for system packages, while adding\nthe same\ntwo sources as candidates for authd:\n\n```text\ne2e-apt-source: resolute-proposed\ne2e-apt-source: authd-edge\ne2e-authd-apt-source: resolute-proposed\ne2e-authd-apt-source: authd-edge\n```\n\nThe base source markers select the sources for the stable migration\nbaseline.\n`e2e-apt-source-base` selects the Ubuntu archive suite for all packages\nexcept\nauthd, while `e2e-authd-apt-source-base` selects the authd source. If\nthe\nauthd base marker is omitted, authd uses the stable `authd` PPA when it\npublishes the selected Ubuntu suite, and falls back to that suite's\narchive\notherwise. For example, the markers at the top of this template test a\nmigration from system packages in `resolute-updates` and stable authd\nfrom the\n`authd` PPA to system packages in `resolute-proposed` and `authd-edge`,\nwith\nauthd from `resolute-proposed`.\n-->",
-                  "url": "https://github.com/canonical/authd/commit/c7091386058f55b5d3ca6aa2e5489b552b25f7b6"
+                  "timestamp": 1794391300,
+                  "message": "docs(e2e): Explain how to keep local Robocop in sync with CI (#2239)",
+                  "url": "https://github.com/canonical/authd/commit/0591654d3b8387bc7eacf29bee3ec75de4300615"
                }
             ],
             "ciActions": [
@@ -6748,7 +6748,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 80,
+            "newCommits": 83,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -7334,25 +7334,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cc41fa0bff8bdbe561070f0b01758d7d0ec3ad2f",
+                  "sha": "afb29549758b86b36d65e347d21cbdb2b687f83c",
                   "author": "Ken VanDine",
-                  "timestamp": 1793853106,
-                  "message": "Add a startup window for faster launch feedback (#547)\n\nSteam can take a while to show a window after launch. This adds a small\n\"Starting Steam…\" splash, shown immediately, so users know the launch\nworked.\n- Splash ( steam-splash ,  steam-splash-wrapper ): a GTK4 window that is\nfullscreen in the gamepad session and a small window elsewhere. It\ncloses when Steam's main window is focused, when the launch process\nexits, or after a 2-minute timeout.\n- Launch chain: the wrapper runs first in the app's  command-chain  and\ndoesn't block the launch. It puts 64-bit library paths first for the\nsplash only, so GTK doesn't load the 32-bit  libX11.\n- Packaging: the launcher part moves from GTK3 to GTK4 and stages\n python3  and  xdotool.\n- Gamepad UI: adds  gamepadui-watchdog , which  desktop-launch  runs\nwhen  gamepadui=true  to return Steam to Big Picture if it falls back to\nthe desktop UI. The desktop file gets an \"Exit Big Picture\" action, and\nBig Picture now launches with  -start .",
-                  "url": "https://github.com/canonical/steam-snap/commit/cc41fa0bff8bdbe561070f0b01758d7d0ec3ad2f"
+                  "timestamp": 1794367143,
+                  "message": "Close splash when Steam window is visible, not only focused (#553)\n\nOn desktop sessions focus can stay on the splash or another app, so the\nfocus-based check never matched and the splash lingered until timeout.",
+                  "url": "https://github.com/canonical/steam-snap/commit/afb29549758b86b36d65e347d21cbdb2b687f83c"
                },
                {
-                  "sha": "545f5abf44752f570d601d062f7d3b12d062129d",
+                  "sha": "b343fd977f04c54aea8ff45dbfc480424b1f43f1",
                   "author": "Ken VanDine",
-                  "timestamp": 1793107657,
-                  "message": "chore: Bump ninja, meson, and mangohud (#544)",
-                  "url": "https://github.com/canonical/steam-snap/commit/545f5abf44752f570d601d062f7d3b12d062129d"
+                  "timestamp": 1794367088,
+                  "message": "fix: Add libopengl package (#552)\n\nAdds libopengl to stage of the snap. We already include libvulkan, so\nthis is the equivalent addition for opengl.\n\nFixes https://github.com/canonical/steam-snap/issues/550\n\n---\n\nUDENG-12165",
+                  "url": "https://github.com/canonical/steam-snap/commit/b343fd977f04c54aea8ff45dbfc480424b1f43f1"
                },
                {
-                  "sha": "f7f68bb33d0f913b5e45bf6fc487da55de710459",
+                  "sha": "83c71b5425635cf0c8f7387045717ba6133e0d41",
                   "author": "Ken VanDine",
-                  "timestamp": 1793107623,
-                  "message": "ci: Add shellcheck job (#540)\n\nWe use quite a lot of shell, so I figured a shellcheck job would be a\nnice addition.",
-                  "url": "https://github.com/canonical/steam-snap/commit/f7f68bb33d0f913b5e45bf6fc487da55de710459"
+                  "timestamp": 1793990725,
+                  "message": "Make Steam window class case-insensitive in search\n\nCo-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Ken VanDine <ken@vandine.org>",
+                  "url": "https://github.com/canonical/steam-snap/commit/83c71b5425635cf0c8f7387045717ba6133e0d41"
                }
             ],
             "ciActions": [],
@@ -8520,25 +8520,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ba9b6076ed5c1a765a902bc6513e9f754cd47aef",
+                  "sha": "e2a709aa892c00c6995f541638c568e4535a37b2",
                   "author": "adombeck",
-                  "timestamp": 1794309464,
-                  "message": "e2e: Let first-time GDM login finish before the desktop wait expires (#2232)\n\nCloses #2231",
-                  "url": "https://github.com/canonical/authd/commit/ba9b6076ed5c1a765a902bc6513e9f754cd47aef"
+                  "timestamp": 1794399800,
+                  "message": "ci: Prevent nightly triage failures from reversed tool-call order (#2246)\n\nCloses #2245",
+                  "url": "https://github.com/canonical/authd/commit/e2a709aa892c00c6995f541638c568e4535a37b2"
                },
                {
-                  "sha": "15a86a2471a0e4709c0bd4a0dfb8605b895a45e1",
+                  "sha": "7b544824960165ce46ac0d04d7539dec1584a150",
                   "author": "Adrian Dombeck",
-                  "timestamp": 1794247509,
-                  "message": "e2e: Let first-time GDM login finish before the desktop wait expires\n\nWe've seen e2e tests time out waiting for the desktop to be ready after\nsubmitting the new local password. The broker spent 42-48 seconds on\nthat request before GNOME could start. The recordings and guest journal\nshow the session still starting as the wait expired.\n\nAllow two minutes on this first-login path, matching the surrounding\npassword prompts. Keep the one-minute default for other desktop waits.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/15a86a2471a0e4709c0bd4a0dfb8605b895a45e1"
+                  "timestamp": 1794391221,
+                  "message": "ci: Prevent nightly triage failures from reversed tool-call order\n\nThe nightly agent queued set_issue_type before its matching create_issue.\nThe safe-output guard rejected the queue, so verification failed and no\ntriage writes were applied.\n\nValidate the same one-to-one Bug type pairs, then place each type call\nright after its creation before processing. Keep rejecting invalid or\nduplicate IDs, unmatched type calls, and suggestion-only calls. Preserve\nother output ordering and leave the original queue untouched on failure.\n\nCover reversed calls and interleaved pairs. Replaying the retained output\nfrom run 42950163944 fails with the original guard and passes after this\nchange, with only the creation/type pair reordered.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+                  "url": "https://github.com/canonical/authd/commit/7b544824960165ce46ac0d04d7539dec1584a150"
                },
                {
-                  "sha": "c7091386058f55b5d3ca6aa2e5489b552b25f7b6",
+                  "sha": "0591654d3b8387bc7eacf29bee3ec75de4300615",
                   "author": "adombeck",
-                  "timestamp": 1794257391,
-                  "message": "authctl: Keep boolean flag help compact with pflag 1.1.0 (#2218)\n\npflag 1.1.0 adds `[=true|false]` to boolean flags in help output. This\nmakes flags harder to scan and widens the flag column. Keep authctl's\nexisting compact help and generated Markdown/reStructuredText reference\ntext instead of changing the golden files to match the new format.\n\nRender cloned flags without the boolean marker and generate\ndocumentation from a separate command-tree copy. This keeps Cobra's\nstandard generators and leaves live flag values and command parsing\nunchanged. Tests cover compact help, unchanged parsing, and generated\ndocumentation.\n\nThe workaround is temporary. Comments link to\nhttps://github.com/spf13/pflag/issues/454 so it can be removed once\nupstream supports disabling this syntax.\n\nValidation:\n\n- `go test ./cmd/authctl/...` — passed.\n- `scripts/golangci-lint run` — passed, no issues.\n- `git diff --check` — passed.\n\nThe full build and repository-wide code generation were not rerun for\nthis review update.\n\n<!--\nE2E tests in CI\n\nThe E2E workflow runs for a pull request only when it has the\n`e2e-tests`\nlabel. Copy the relevant line(s) below into the visible part of the pull\nrequest description to override the defaults. Leave these examples\ncommented\nto use the defaults:\n\n- the `authd-msentraid` broker\n- all supported Ubuntu releases\n- the complete test suite\n- all test cases in the selected suites\n- the branch-built authd package\n- the matching Ubuntu `-proposed` pocket and `authd-edge` PPA for\npackages other than authd\n- optional Ubuntu archive suites for the matching release\n\ne2e-brokers: google\ne2e-ubuntu-releases: noble\ne2e-tests: allowed_users.robot login_gdm.robot\ne2e-test-case: Test login with GDM\ne2e-authd-apt-source: resolute-proposed\ne2e-apt-source: resolute-proposed\ne2e-apt-source: authd-edge\ne2e-apt-source-base: resolute-updates\ne2e-authd-apt-source-base: authd\n\nThe `e2e-ubuntu-releases` marker limits the Ubuntu releases tested by\nthe\nworkflow. It accepts a space- or comma-separated list of `noble`,\n`resolute`,\n`stonking`, and `devel`; leave it commented to test all supported\nreleases.\n\nThe `e2e-tests` marker accepts space- or comma-separated suite filenames\nor\nshell-style glob patterns such as `login*.robot`. Leave the marker\ncommented to\nrun the complete suite.\n\nThe `e2e-test-case` marker selects the exact Robot test case name.\nRepeat the\nmarker to select more than one test case.\n\nThe `e2e-authd-apt-source` marker adds APT sources for authd. It accepts\n`authd`, `authd-edge`, or `authd-dev` to select the respective PPA, or\nan\narchive suite such as `resolute-updates` or `resolute-proposed`. Repeat\nthe\nmarker to add more sources. If no source applies to a release job, the\nbranch-built authd package remains the package under test. PPA sources\napply to\nevery Ubuntu release; archive suites apply only to matching release\njobs.\n\nThe `e2e-apt-source` marker adds APT sources for every package except\nauthd.\nIt accepts the same PPA names and Ubuntu archive suites and can be\nrepeated to\nadd more sources. With no marker, the matching Ubuntu `-proposed` pocket\nand\nthe `authd-edge` PPA are added to the VM's default archive suites. When\nthe\nmarker is present, its values replace those extra defaults; the VM's\ndefault\narchive suites remain enabled. APT installs the highest available\npackage\nversion across the enabled sources. PPA values apply to every release,\narchive\nsuite values apply only to matching release jobs, and jobs with no\napplicable\nvalues use the default sources.\n\nThe `e2e-apt-source-base` marker selects the source for the stable\nmigration\nbaseline for all packages except authd.\n\nThe `e2e-authd-apt-source-base` marker selects the source for the stable\nmigration baseline for authd. If it's omitted, authd uses the stable\n`authd`\nPPA when it publishes the selected Ubuntu suite, and falls back to the\narchive\notherwise.\n\nThe target source markers are independent. For example, these lines add\n`resolute-proposed` and `authd-edge` for system packages, while adding\nthe same\ntwo sources as candidates for authd:\n\n```text\ne2e-apt-source: resolute-proposed\ne2e-apt-source: authd-edge\ne2e-authd-apt-source: resolute-proposed\ne2e-authd-apt-source: authd-edge\n```\n\nThe base source markers select the sources for the stable migration\nbaseline.\n`e2e-apt-source-base` selects the Ubuntu archive suite for all packages\nexcept\nauthd, while `e2e-authd-apt-source-base` selects the authd source. If\nthe\nauthd base marker is omitted, authd uses the stable `authd` PPA when it\npublishes the selected Ubuntu suite, and falls back to that suite's\narchive\notherwise. For example, the markers at the top of this template test a\nmigration from system packages in `resolute-updates` and stable authd\nfrom the\n`authd` PPA to system packages in `resolute-proposed` and `authd-edge`,\nwith\nauthd from `resolute-proposed`.\n-->",
-                  "url": "https://github.com/canonical/authd/commit/c7091386058f55b5d3ca6aa2e5489b552b25f7b6"
+                  "timestamp": 1794391300,
+                  "message": "docs(e2e): Explain how to keep local Robocop in sync with CI (#2239)",
+                  "url": "https://github.com/canonical/authd/commit/0591654d3b8387bc7eacf29bee3ec75de4300615"
                }
             ],
             "ciActions": [
@@ -9330,7 +9330,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 80,
+            "newCommits": 83,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -9404,7 +9404,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 3,
+            "newCommits": 4,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
@@ -9922,25 +9922,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "cc41fa0bff8bdbe561070f0b01758d7d0ec3ad2f",
+                  "sha": "afb29549758b86b36d65e347d21cbdb2b687f83c",
                   "author": "Ken VanDine",
-                  "timestamp": 1793853106,
-                  "message": "Add a startup window for faster launch feedback (#547)\n\nSteam can take a while to show a window after launch. This adds a small\n\"Starting Steam…\" splash, shown immediately, so users know the launch\nworked.\n- Splash ( steam-splash ,  steam-splash-wrapper ): a GTK4 window that is\nfullscreen in the gamepad session and a small window elsewhere. It\ncloses when Steam's main window is focused, when the launch process\nexits, or after a 2-minute timeout.\n- Launch chain: the wrapper runs first in the app's  command-chain  and\ndoesn't block the launch. It puts 64-bit library paths first for the\nsplash only, so GTK doesn't load the 32-bit  libX11.\n- Packaging: the launcher part moves from GTK3 to GTK4 and stages\n python3  and  xdotool.\n- Gamepad UI: adds  gamepadui-watchdog , which  desktop-launch  runs\nwhen  gamepadui=true  to return Steam to Big Picture if it falls back to\nthe desktop UI. The desktop file gets an \"Exit Big Picture\" action, and\nBig Picture now launches with  -start .",
-                  "url": "https://github.com/canonical/steam-snap/commit/cc41fa0bff8bdbe561070f0b01758d7d0ec3ad2f"
+                  "timestamp": 1794367143,
+                  "message": "Close splash when Steam window is visible, not only focused (#553)\n\nOn desktop sessions focus can stay on the splash or another app, so the\nfocus-based check never matched and the splash lingered until timeout.",
+                  "url": "https://github.com/canonical/steam-snap/commit/afb29549758b86b36d65e347d21cbdb2b687f83c"
                },
                {
-                  "sha": "545f5abf44752f570d601d062f7d3b12d062129d",
+                  "sha": "b343fd977f04c54aea8ff45dbfc480424b1f43f1",
                   "author": "Ken VanDine",
-                  "timestamp": 1793107657,
-                  "message": "chore: Bump ninja, meson, and mangohud (#544)",
-                  "url": "https://github.com/canonical/steam-snap/commit/545f5abf44752f570d601d062f7d3b12d062129d"
+                  "timestamp": 1794367088,
+                  "message": "fix: Add libopengl package (#552)\n\nAdds libopengl to stage of the snap. We already include libvulkan, so\nthis is the equivalent addition for opengl.\n\nFixes https://github.com/canonical/steam-snap/issues/550\n\n---\n\nUDENG-12165",
+                  "url": "https://github.com/canonical/steam-snap/commit/b343fd977f04c54aea8ff45dbfc480424b1f43f1"
                },
                {
-                  "sha": "f7f68bb33d0f913b5e45bf6fc487da55de710459",
+                  "sha": "83c71b5425635cf0c8f7387045717ba6133e0d41",
                   "author": "Ken VanDine",
-                  "timestamp": 1793107623,
-                  "message": "ci: Add shellcheck job (#540)\n\nWe use quite a lot of shell, so I figured a shellcheck job would be a\nnice addition.",
-                  "url": "https://github.com/canonical/steam-snap/commit/f7f68bb33d0f913b5e45bf6fc487da55de710459"
+                  "timestamp": 1793990725,
+                  "message": "Make Steam window class case-insensitive in search\n\nCo-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Ken VanDine <ken@vandine.org>",
+                  "url": "https://github.com/canonical/steam-snap/commit/83c71b5425635cf0c8f7387045717ba6133e0d41"
                }
             ],
             "ciActions": [],
@@ -10783,7 +10783,7 @@
          {
             "name": "yaru.dart",
             "defaultBranch": "main",
-            "newCommits": 3,
+            "newCommits": 4,
             "url": "https://github.com/ubuntu/yaru.dart",
             "releases": [
                {
