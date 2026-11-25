@@ -154,7 +154,7 @@
                   "id": 453314180,
                   "version": "kde-latest",
                   "timestamp": 1795219018,
-                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261124",
+                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261125",
                   "body": "<p>Rolling developer preview, replaced by every green build on desktop/26. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. No credentials are baked in: first boot runs the plasma-setup first-boot wizard (the KDE equivalent of GNOME&rsquo;s ubuntu-desktop-init) to create the user account. See manifest.txt for the source commit and the snap versions in this image. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde.img.zst.part* &gt; ubuntu-core-desktop-kde.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
                   "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-latest",
                   "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-latest...main"
@@ -163,7 +163,7 @@
                   "id": 453313756,
                   "version": "gnome-latest",
                   "timestamp": 1795219018,
-                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261124",
+                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261125",
                   "body": "<p>Rolling developer preview, replaced by every green build on desktop/26. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). See manifest.txt for the source commit and the snap versions in this image. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
                   "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-latest",
                   "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-latest...main"
@@ -172,7 +172,7 @@
                   "id": 453310757,
                   "version": "gnome-arm64-latest",
                   "timestamp": 1795219018,
-                  "title": "Ubuntu Core Desktop 26 GNOME arm64 (dangerous) - 20261124",
+                  "title": "Ubuntu Core Desktop 26 GNOME arm64 (dangerous) - 20261125",
                   "body": "<p>Rolling developer preview (arm64), replaced by every green build on desktop/26. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). See manifest.txt for the source commit and the snap versions in this image. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-arm64.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). UEFI boot (shim/grub arm64); QEMU virt or an arm64 host per README.md.</p>\n",
                   "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-arm64-latest",
                   "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-arm64-latest...main"
@@ -449,7 +449,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 79,
+            "newCommits": 80,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -514,14 +514,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 806,
-                     "timestamp": 1795533370
+                     "revision": 809,
+                     "timestamp": 1795595179
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 807,
-                     "timestamp": 1795533545
+                     "revision": 808,
+                     "timestamp": 1795594897
                   }
                ],
                "channels": [
@@ -677,7 +677,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 479,
+            "newCommits": 483,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -2675,25 +2675,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5114672cc0fd505d006da500119a4deaaa602cd0",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1794308488,
-                  "message": "perf: reduce catalog memory via streaming YAML, locale filtering, and field omission (#45)\n\nApp Center kept every language and every detail of every catalog. Three\nthings made that costly.\n\nFirst, a translated string was a view of the YAML behind it, not a copy,\nso a short app name kept a whole catalog in memory; strings are copied\ninto plain maps now, with nulls dropped. Second, each YAML document was\nparsed\ntwice; `AppstreamCollection.fromYamlLines` now parses them one at a\ntime. Third, callers could not ask for less; `locales` keeps `C` and the\ngiven languages, matching by language, and `omit` skips details nobody\nreads. Both\nkeep everything by default.\n\n`AppstreamPool.components` is read-only, `load()` replaces instead of\nappending, only catalog files are read, and YAML and error edge cases\nare fixed. Version 0.3.0 needs Dart 2.15.\n\nApp Center uses:\n\n```dart\nfinal pool = AppstreamPool(\n  locales: ['pt_BR'],\n  omit: [AppstreamDetail.releaseNotes],\n);\nawait pool.load();\n```\n\nIt loaded 2,782 components from this machine's resolute catalogs, kept\nPortuguese names rather than `de` and `fr`, and left 2,928 release\ndescriptions empty.\n\n85 tests, up from 42, cover both options and the edge cases, and CI\npasses.\n\nA prototype of the string copy measured from 521 MB to 415 MB RSS in the\nApp Center harness; the final branch was not measured there, so the\ntotal saving is unknown.\n\n---\n\nUDENG-11977\n\nRefs ubuntu/app-center#1913 \n[LP: #2107315](https://bugs.launchpad.net/bugs/2107315)",
-                  "url": "https://github.com/canonical/appstream.dart/commit/5114672cc0fd505d006da500119a4deaaa602cd0"
+                  "sha": "93335bd039a54175e285a176cffe418e0657c96f",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603118,
+                  "message": "ci: automate releases and publishing to pub.dev (#46)",
+                  "url": "https://github.com/canonical/appstream.dart/commit/93335bd039a54175e285a176cffe418e0657c96f"
                },
                {
-                  "sha": "87becabcbee6cac3ba6f3f348d668c19906ccb49",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1793964659,
-                  "message": "docs: list the user-visible 0.3.0 changes in the changelog",
-                  "url": "https://github.com/canonical/appstream.dart/commit/87becabcbee6cac3ba6f3f348d668c19906ccb49"
+                  "sha": "49cbfb3668d54f73095cfb8501dcf85ed5ad9682",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554466,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/appstream.dart/commit/49cbfb3668d54f73095cfb8501dcf85ed5ad9682"
                },
                {
-                  "sha": "e79ee60797b887d4e8c3e08ed89c53010d0cc4cd",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1793964522,
-                  "message": "test: cover YAML streaming, CRLF, reloads and omit",
-                  "url": "https://github.com/canonical/appstream.dart/commit/e79ee60797b887d4e8c3e08ed89c53010d0cc4cd"
+                  "sha": "aa0a22d40be173339861cb45949028dfda948855",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552237,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/appstream.dart/commit/aa0a22d40be173339861cb45949028dfda948855"
                }
             ],
             "ciActions": [],
@@ -3103,25 +3103,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c0adf1c2debf3576b86697ec1de53f9e6e1b5805",
+                  "sha": "d09436595142beb5f4ff2a79f5419c96a9f33c73",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1795555447,
-                  "message": "Translate the Firmware Updater launcher description into Swedish (#454)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/c0adf1c2debf3576b86697ec1de53f9e6e1b5805"
+                  "timestamp": 1795599611,
+                  "message": "fix: seal firmware files before passing them to fwupd (#456)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/d09436595142beb5f4ff2a79f5419c96a9f33c73"
                },
                {
-                  "sha": "4567fd34bd8d00da3e27c8be6d8b242b72c421d1",
+                  "sha": "56636980859788fa6e792d899c09d5138ebc89ae",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1795554517,
-                  "message": "Merge branch 'main' into patch-1",
-                  "url": "https://github.com/canonical/firmware-updater/commit/4567fd34bd8d00da3e27c8be6d8b242b72c421d1"
+                  "timestamp": 1795599185,
+                  "message": "Merge branch 'main' into fix-seal-firmware-downloads",
+                  "url": "https://github.com/canonical/firmware-updater/commit/56636980859788fa6e792d899c09d5138ebc89ae"
                },
                {
-                  "sha": "82741193316453a1f16055bddeb46cef6b54171d",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1795554422,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#457)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/82741193316453a1f16055bddeb46cef6b54171d"
+                  "sha": "8e5bd3f1c2fcfdaa5ff5a3d2380760a3ae2d93bc",
+                  "author": "Daniel Nylander",
+                  "timestamp": 1795592310,
+                  "message": "fix(firmware-updater): address final review feedback",
+                  "url": "https://github.com/canonical/firmware-updater/commit/8e5bd3f1c2fcfdaa5ff5a3d2380760a3ae2d93bc"
                }
             ],
             "ciActions": [
@@ -3467,25 +3467,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ce652ec49953489454ced6f43ca0adb7a22a7003",
-                  "author": "Dennis Loose",
-                  "timestamp": 1790002560,
-                  "message": "chore: update CHANGELOG and loosen sdk constraint (#65)\n\n`dart pub publish --dry-run` reported:\n\n```\nValidating package...\nPackage validation found the following potential issue:\n* 1 checked-in file is modified in git.\n\n  Usually you want to publish from a clean git state.\n\n  Consider committing these files or reverting the changes.\n\n  Modified files:\n\n  CHANGELOG.md\n\n  Run `git status` for more information.\n\n\nPackage validation found the following hint:\n* The declared SDK constraint is '>=2.12.0 <3.0.0', this is interpreted as '>=2.12.0 <4.0.0'.\n\n  Consider updating the SDK constraint to:\n\n  environment:\n    sdk: '>=2.12.0 <4.0.0'\n\nThe server may enforce additional checks.\n```\n\nso this PR adds a new CHANGELOG entry and adjusts the SDK constraint\naccordingly.",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/ce652ec49953489454ced6f43ca0adb7a22a7003"
+                  "sha": "5469785a138feed25265a1c815281e1212fc38c3",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603991,
+                  "message": "ci: automate releases and publishing to pub.dev (#67)",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/5469785a138feed25265a1c815281e1212fc38c3"
                },
                {
-                  "sha": "b528decd450269db2fcfb9910e6f4c65580a6165",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789976619,
-                  "message": "chore: update CHANGELOG and loosen sdk constraint",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/b528decd450269db2fcfb9910e6f4c65580a6165"
+                  "sha": "ce02205625907690ca396f5b6f153ccfc319078a",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554483,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/ce02205625907690ca396f5b6f153ccfc319078a"
                },
                {
-                  "sha": "18c94c83b24c8fc3069bf742cd1a71791573f9d1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789976189,
-                  "message": "Update to dbus.dart 0.8.0 (#64)",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/18c94c83b24c8fc3069bf742cd1a71791573f9d1"
+                  "sha": "1d1bf431a3917cca7e35b33bf7b971bc74d4d431",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552237,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/1d1bf431a3917cca7e35b33bf7b971bc74d4d431"
                }
             ],
             "ciActions": [],
@@ -3862,25 +3862,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ee843165b70ddca816182fca37f47c5b9d9dc48c",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793131675,
-                  "message": "chore(release): Release 0.2.8 (#37)\n\nReleases 0.2.8 with the dbus 0.8.0 update (#36). Analyze, format, tests\nand publish --dry-run pass.",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/ee843165b70ddca816182fca37f47c5b9d9dc48c"
+                  "sha": "202f20da70ced1d1e6bcf4952003b9410bcceae8",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795604022,
+                  "message": "ci: automate releases and publishing to pub.dev (#38)",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/202f20da70ced1d1e6bcf4952003b9410bcceae8"
                },
                {
-                  "sha": "9e53e590b67b7830aef83e10297297e42e066741",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793131518,
-                  "message": "chore(release): Release 0.2.8",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/9e53e590b67b7830aef83e10297297e42e066741"
+                  "sha": "785be4ff3998602c296bec7a573dc2c4b9f863c9",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554492,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/785be4ff3998602c296bec7a573dc2c4b9f863c9"
                },
                {
-                  "sha": "f45b12f3f1a48b92747623a65f313fc1550dccd5",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1791875868,
-                  "message": "chore: bump dbus to 0.8.0 (#36)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match, which enables two lints that are fixed\nhere. Analyze (with --fatal-infos), format and all tests pass.",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/f45b12f3f1a48b92747623a65f313fc1550dccd5"
+                  "sha": "509ce8b3e2bce6e3f77fa7302c8a44e113f5ce63",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552236,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/509ce8b3e2bce6e3f77fa7302c8a44e113f5ce63"
                }
             ],
             "ciActions": [],
@@ -4277,25 +4277,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd349a9868b6ad88b6a8037b6b152bbac2b5b04d",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793891714,
-                  "message": "Merge pull request #4 from paul-geoghegan/chore/update-repository-url\n\nchore: update repository URL",
-                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/dd349a9868b6ad88b6a8037b6b152bbac2b5b04d"
+                  "sha": "203779a45e1cfcf48b25f6d9a1e0092718c5c4b6",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603961,
+                  "message": "ci: automate releases and publishing to pub.dev (#5)",
+                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/203779a45e1cfcf48b25f6d9a1e0092718c5c4b6"
                },
                {
-                  "sha": "27058c6bec8e1e7094bd7401893e87e37ba06b0a",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793890372,
-                  "message": "chore: update repository URL\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/27058c6bec8e1e7094bd7401893e87e37ba06b0a"
+                  "sha": "b4c66fa10428785055f1b29d3982c787cbc35e6b",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554472,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/b4c66fa10428785055f1b29d3982c787cbc35e6b"
                },
                {
-                  "sha": "25d77c9f20458220f2d8788f791bd76ee7e81408",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793883174,
-                  "message": "docs: update changelog",
-                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/25d77c9f20458220f2d8788f791bd76ee7e81408"
+                  "sha": "a5cc8567a3a61868cf057df7ba73df4e7c7f3961",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552238,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/a5cc8567a3a61868cf057df7ba73df4e7c7f3961"
                }
             ],
             "ciActions": [],
@@ -5087,25 +5087,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "47525afe59f52e1e84b95fd15cf2f927e67db967",
+                  "author": "Dennis Loose",
+                  "timestamp": 1795608844,
+                  "message": "runner: resolve source domain by prefix (#104)\n\nI'm breaking down #97 into smaller, more self-contained parts.\nThis PR adds a `--source-domain-prefix` argument to the new runner,\nwhich makes it easier to run tests on a shallow copy of an existing\ndomain, without having to know its exact name. I've also changed to a\nmore precise timestamp format to avoid conflicts for multiple runs on\nthe same day.\n\nUDENG-11775",
+                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/47525afe59f52e1e84b95fd15cf2f927e67db967"
+               },
+               {
+                  "sha": "58d7305fb5368b8ceb44db64edc755eeaaa0f5fb",
+                  "author": "Dennis Loose",
+                  "timestamp": 1781798463,
+                  "message": "runner: resolve source domain by prefix",
+                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/58d7305fb5368b8ceb44db64edc755eeaaa0f5fb"
+               },
+               {
                   "sha": "65809e35ca122a0e6b9cf01884d80656fc7544df",
                   "author": "Dennis Loose",
                   "timestamp": 1795441763,
                   "message": "Merge pull request #105 from canonical/ci-24.04\n\nci: run on ubuntu-24.04",
                   "url": "https://github.com/canonical/ubuntu-gui-testing/commit/65809e35ca122a0e6b9cf01884d80656fc7544df"
-               },
-               {
-                  "sha": "83fe66c498522c6d475992d86feecb932055e34f",
-                  "author": "Dennis Loose",
-                  "timestamp": 1795012835,
-                  "message": "ci: run on ubuntu-24.04",
-                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/83fe66c498522c6d475992d86feecb932055e34f"
-               },
-               {
-                  "sha": "50297e71fd0ed2662314d668044fe57f554aed2d",
-                  "author": "Dennis Loose",
-                  "timestamp": 1787067989,
-                  "message": "Merge pull request #103 from canonical/update-tpm-fde-ux\n\nfix: update TPM FDE error message in installer tests",
-                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/50297e71fd0ed2662314d668044fe57f554aed2d"
                }
             ],
             "ciActions": [],
@@ -5201,25 +5201,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "59c03e04df67d317dd31d2d6803f511f00a9c2cf",
-                  "author": "Dennis Loose",
-                  "timestamp": 1795437926,
-                  "message": "Allow dbus 0.8 (#10)\n\nubuntu_session currently limits dbus to 0.7, which blocks the\ninstaller’s Yaru upgrade. This change allows dbus 0.8 and Dart 3 while\nretaining Dart 2 support. It also sets the minimum dbus version to\n0.7.6, which provides value accessors already used by the package.",
-                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/59c03e04df67d317dd31d2d6803f511f00a9c2cf"
+                  "sha": "94bb47a570940a413f0b914e1688b3ac84001239",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603329,
+                  "message": "ci: automate releases and publishing to pub.dev (#11)",
+                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/94bb47a570940a413f0b914e1688b3ac84001239"
                },
                {
-                  "sha": "ff7fe49a4757604b9287cdb2b7d9f6132a95bd94",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1795435569,
-                  "message": "chore: prepare 0.0.5 release\n\nRecord the DBus 0.8 and Dart 3 compatibility changes as 0.0.5.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/ff7fe49a4757604b9287cdb2b7d9f6132a95bd94"
+                  "sha": "54305ad5b622f181d85e72ff2c3b7183d4106bb8",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554501,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/54305ad5b622f181d85e72ff2c3b7183d4106bb8"
                },
                {
-                  "sha": "17f034814472f9257d05d7fc6913573e24c4fcb6",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1795434098,
-                  "message": "build: allow dbus 0.8\n\nAllow Dart 3 and require dbus 0.7.6, which introduced the value accessors already used by the package.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/17f034814472f9257d05d7fc6913573e24c4fcb6"
+                  "sha": "39a41eccdc5407292a916b1107106e365cca091d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552242,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/39a41eccdc5407292a916b1107106e365cca091d"
                }
             ],
             "ciActions": [
@@ -5337,25 +5337,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8cd5a1420ea86728a7c0495bd3a691569857b184",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793131501,
-                  "message": "chore: release 0.1.15 (#99)\n\nReleases 0.1.15 with the dbus 0.8.0 update (#98). Analyze, tests and\npublish --dry-run pass.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8cd5a1420ea86728a7c0495bd3a691569857b184"
+                  "sha": "a1ee81a497ce7dd51c955fa5a54d5542d0e4f45e",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603435,
+                  "message": "ci: automate releases and publishing to pub.dev (#100)",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/a1ee81a497ce7dd51c955fa5a54d5542d0e4f45e"
                },
                {
-                  "sha": "8e0fbcc3042c4bb612652ae437f1487e30e0bc65",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793131297,
-                  "message": "chore: release 0.1.15",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8e0fbcc3042c4bb612652ae437f1487e30e0bc65"
+                  "sha": "d792e1d1e8ee55bc4764a7025294b6ce8a5d8917",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554498,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/d792e1d1e8ee55bc4764a7025294b6ce8a5d8917"
                },
                {
-                  "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1791875895,
-                  "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
+                  "sha": "8694d73693142fee1dfc9ab77fe56f362d0f3a8d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552246,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8694d73693142fee1dfc9ab77fe56f362d0f3a8d"
                }
             ],
             "ciActions": [],
@@ -5892,25 +5892,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5114672cc0fd505d006da500119a4deaaa602cd0",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1794308488,
-                  "message": "perf: reduce catalog memory via streaming YAML, locale filtering, and field omission (#45)\n\nApp Center kept every language and every detail of every catalog. Three\nthings made that costly.\n\nFirst, a translated string was a view of the YAML behind it, not a copy,\nso a short app name kept a whole catalog in memory; strings are copied\ninto plain maps now, with nulls dropped. Second, each YAML document was\nparsed\ntwice; `AppstreamCollection.fromYamlLines` now parses them one at a\ntime. Third, callers could not ask for less; `locales` keeps `C` and the\ngiven languages, matching by language, and `omit` skips details nobody\nreads. Both\nkeep everything by default.\n\n`AppstreamPool.components` is read-only, `load()` replaces instead of\nappending, only catalog files are read, and YAML and error edge cases\nare fixed. Version 0.3.0 needs Dart 2.15.\n\nApp Center uses:\n\n```dart\nfinal pool = AppstreamPool(\n  locales: ['pt_BR'],\n  omit: [AppstreamDetail.releaseNotes],\n);\nawait pool.load();\n```\n\nIt loaded 2,782 components from this machine's resolute catalogs, kept\nPortuguese names rather than `de` and `fr`, and left 2,928 release\ndescriptions empty.\n\n85 tests, up from 42, cover both options and the edge cases, and CI\npasses.\n\nA prototype of the string copy measured from 521 MB to 415 MB RSS in the\nApp Center harness; the final branch was not measured there, so the\ntotal saving is unknown.\n\n---\n\nUDENG-11977\n\nRefs ubuntu/app-center#1913 \n[LP: #2107315](https://bugs.launchpad.net/bugs/2107315)",
-                  "url": "https://github.com/canonical/appstream.dart/commit/5114672cc0fd505d006da500119a4deaaa602cd0"
+                  "sha": "93335bd039a54175e285a176cffe418e0657c96f",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603118,
+                  "message": "ci: automate releases and publishing to pub.dev (#46)",
+                  "url": "https://github.com/canonical/appstream.dart/commit/93335bd039a54175e285a176cffe418e0657c96f"
                },
                {
-                  "sha": "87becabcbee6cac3ba6f3f348d668c19906ccb49",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1793964659,
-                  "message": "docs: list the user-visible 0.3.0 changes in the changelog",
-                  "url": "https://github.com/canonical/appstream.dart/commit/87becabcbee6cac3ba6f3f348d668c19906ccb49"
+                  "sha": "49cbfb3668d54f73095cfb8501dcf85ed5ad9682",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554466,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/appstream.dart/commit/49cbfb3668d54f73095cfb8501dcf85ed5ad9682"
                },
                {
-                  "sha": "e79ee60797b887d4e8c3e08ed89c53010d0cc4cd",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1793964522,
-                  "message": "test: cover YAML streaming, CRLF, reloads and omit",
-                  "url": "https://github.com/canonical/appstream.dart/commit/e79ee60797b887d4e8c3e08ed89c53010d0cc4cd"
+                  "sha": "aa0a22d40be173339861cb45949028dfda948855",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552237,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/appstream.dart/commit/aa0a22d40be173339861cb45949028dfda948855"
                }
             ],
             "ciActions": [],
@@ -6248,25 +6248,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c0adf1c2debf3576b86697ec1de53f9e6e1b5805",
+                  "sha": "d09436595142beb5f4ff2a79f5419c96a9f33c73",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1795555447,
-                  "message": "Translate the Firmware Updater launcher description into Swedish (#454)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/c0adf1c2debf3576b86697ec1de53f9e6e1b5805"
+                  "timestamp": 1795599611,
+                  "message": "fix: seal firmware files before passing them to fwupd (#456)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/d09436595142beb5f4ff2a79f5419c96a9f33c73"
                },
                {
-                  "sha": "4567fd34bd8d00da3e27c8be6d8b242b72c421d1",
+                  "sha": "56636980859788fa6e792d899c09d5138ebc89ae",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1795554517,
-                  "message": "Merge branch 'main' into patch-1",
-                  "url": "https://github.com/canonical/firmware-updater/commit/4567fd34bd8d00da3e27c8be6d8b242b72c421d1"
+                  "timestamp": 1795599185,
+                  "message": "Merge branch 'main' into fix-seal-firmware-downloads",
+                  "url": "https://github.com/canonical/firmware-updater/commit/56636980859788fa6e792d899c09d5138ebc89ae"
                },
                {
-                  "sha": "82741193316453a1f16055bddeb46cef6b54171d",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1795554422,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#457)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/82741193316453a1f16055bddeb46cef6b54171d"
+                  "sha": "8e5bd3f1c2fcfdaa5ff5a3d2380760a3ae2d93bc",
+                  "author": "Daniel Nylander",
+                  "timestamp": 1795592310,
+                  "message": "fix(firmware-updater): address final review feedback",
+                  "url": "https://github.com/canonical/firmware-updater/commit/8e5bd3f1c2fcfdaa5ff5a3d2380760a3ae2d93bc"
                }
             ],
             "ciActions": [
@@ -6494,25 +6494,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ce652ec49953489454ced6f43ca0adb7a22a7003",
-                  "author": "Dennis Loose",
-                  "timestamp": 1790002560,
-                  "message": "chore: update CHANGELOG and loosen sdk constraint (#65)\n\n`dart pub publish --dry-run` reported:\n\n```\nValidating package...\nPackage validation found the following potential issue:\n* 1 checked-in file is modified in git.\n\n  Usually you want to publish from a clean git state.\n\n  Consider committing these files or reverting the changes.\n\n  Modified files:\n\n  CHANGELOG.md\n\n  Run `git status` for more information.\n\n\nPackage validation found the following hint:\n* The declared SDK constraint is '>=2.12.0 <3.0.0', this is interpreted as '>=2.12.0 <4.0.0'.\n\n  Consider updating the SDK constraint to:\n\n  environment:\n    sdk: '>=2.12.0 <4.0.0'\n\nThe server may enforce additional checks.\n```\n\nso this PR adds a new CHANGELOG entry and adjusts the SDK constraint\naccordingly.",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/ce652ec49953489454ced6f43ca0adb7a22a7003"
+                  "sha": "5469785a138feed25265a1c815281e1212fc38c3",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603991,
+                  "message": "ci: automate releases and publishing to pub.dev (#67)",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/5469785a138feed25265a1c815281e1212fc38c3"
                },
                {
-                  "sha": "b528decd450269db2fcfb9910e6f4c65580a6165",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789976619,
-                  "message": "chore: update CHANGELOG and loosen sdk constraint",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/b528decd450269db2fcfb9910e6f4c65580a6165"
+                  "sha": "ce02205625907690ca396f5b6f153ccfc319078a",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554483,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/ce02205625907690ca396f5b6f153ccfc319078a"
                },
                {
-                  "sha": "18c94c83b24c8fc3069bf742cd1a71791573f9d1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789976189,
-                  "message": "Update to dbus.dart 0.8.0 (#64)",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/18c94c83b24c8fc3069bf742cd1a71791573f9d1"
+                  "sha": "1d1bf431a3917cca7e35b33bf7b971bc74d4d431",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552237,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/1d1bf431a3917cca7e35b33bf7b971bc74d4d431"
                }
             ],
             "ciActions": [],
@@ -6863,25 +6863,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ee843165b70ddca816182fca37f47c5b9d9dc48c",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793131675,
-                  "message": "chore(release): Release 0.2.8 (#37)\n\nReleases 0.2.8 with the dbus 0.8.0 update (#36). Analyze, format, tests\nand publish --dry-run pass.",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/ee843165b70ddca816182fca37f47c5b9d9dc48c"
+                  "sha": "202f20da70ced1d1e6bcf4952003b9410bcceae8",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795604022,
+                  "message": "ci: automate releases and publishing to pub.dev (#38)",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/202f20da70ced1d1e6bcf4952003b9410bcceae8"
                },
                {
-                  "sha": "9e53e590b67b7830aef83e10297297e42e066741",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793131518,
-                  "message": "chore(release): Release 0.2.8",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/9e53e590b67b7830aef83e10297297e42e066741"
+                  "sha": "785be4ff3998602c296bec7a573dc2c4b9f863c9",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554492,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/785be4ff3998602c296bec7a573dc2c4b9f863c9"
                },
                {
-                  "sha": "f45b12f3f1a48b92747623a65f313fc1550dccd5",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1791875868,
-                  "message": "chore: bump dbus to 0.8.0 (#36)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match, which enables two lints that are fixed\nhere. Analyze (with --fatal-infos), format and all tests pass.",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/f45b12f3f1a48b92747623a65f313fc1550dccd5"
+                  "sha": "509ce8b3e2bce6e3f77fa7302c8a44e113f5ce63",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552236,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/509ce8b3e2bce6e3f77fa7302c8a44e113f5ce63"
                }
             ],
             "ciActions": [],
@@ -7158,25 +7158,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd349a9868b6ad88b6a8037b6b152bbac2b5b04d",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793891714,
-                  "message": "Merge pull request #4 from paul-geoghegan/chore/update-repository-url\n\nchore: update repository URL",
-                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/dd349a9868b6ad88b6a8037b6b152bbac2b5b04d"
+                  "sha": "203779a45e1cfcf48b25f6d9a1e0092718c5c4b6",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603961,
+                  "message": "ci: automate releases and publishing to pub.dev (#5)",
+                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/203779a45e1cfcf48b25f6d9a1e0092718c5c4b6"
                },
                {
-                  "sha": "27058c6bec8e1e7094bd7401893e87e37ba06b0a",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793890372,
-                  "message": "chore: update repository URL\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/27058c6bec8e1e7094bd7401893e87e37ba06b0a"
+                  "sha": "b4c66fa10428785055f1b29d3982c787cbc35e6b",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554472,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/b4c66fa10428785055f1b29d3982c787cbc35e6b"
                },
                {
-                  "sha": "25d77c9f20458220f2d8788f791bd76ee7e81408",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793883174,
-                  "message": "docs: update changelog",
-                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/25d77c9f20458220f2d8788f791bd76ee7e81408"
+                  "sha": "a5cc8567a3a61868cf057df7ba73df4e7c7f3961",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552238,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/a5cc8567a3a61868cf057df7ba73df4e7c7f3961"
                }
             ],
             "ciActions": [],
@@ -7467,7 +7467,7 @@
                   "id": 453314180,
                   "version": "kde-latest",
                   "timestamp": 1795219018,
-                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261124",
+                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261125",
                   "body": "<p>Rolling developer preview, replaced by every green build on desktop/26. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. No credentials are baked in: first boot runs the plasma-setup first-boot wizard (the KDE equivalent of GNOME&rsquo;s ubuntu-desktop-init) to create the user account. See manifest.txt for the source commit and the snap versions in this image. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde.img.zst.part* &gt; ubuntu-core-desktop-kde.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
                   "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-latest",
                   "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-latest...main"
@@ -7476,7 +7476,7 @@
                   "id": 453313756,
                   "version": "gnome-latest",
                   "timestamp": 1795219018,
-                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261124",
+                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261125",
                   "body": "<p>Rolling developer preview, replaced by every green build on desktop/26. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). See manifest.txt for the source commit and the snap versions in this image. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
                   "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-latest",
                   "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-latest...main"
@@ -7485,7 +7485,7 @@
                   "id": 453310757,
                   "version": "gnome-arm64-latest",
                   "timestamp": 1795219018,
-                  "title": "Ubuntu Core Desktop 26 GNOME arm64 (dangerous) - 20261124",
+                  "title": "Ubuntu Core Desktop 26 GNOME arm64 (dangerous) - 20261125",
                   "body": "<p>Rolling developer preview (arm64), replaced by every green build on desktop/26. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). See manifest.txt for the source commit and the snap versions in this image. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-arm64.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). UEFI boot (shim/grub arm64); QEMU virt or an arm64 host per README.md.</p>\n",
                   "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-arm64-latest",
                   "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-arm64-latest...main"
@@ -7611,7 +7611,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 479,
+            "newCommits": 483,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -7657,25 +7657,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "47525afe59f52e1e84b95fd15cf2f927e67db967",
+                  "author": "Dennis Loose",
+                  "timestamp": 1795608844,
+                  "message": "runner: resolve source domain by prefix (#104)\n\nI'm breaking down #97 into smaller, more self-contained parts.\nThis PR adds a `--source-domain-prefix` argument to the new runner,\nwhich makes it easier to run tests on a shallow copy of an existing\ndomain, without having to know its exact name. I've also changed to a\nmore precise timestamp format to avoid conflicts for multiple runs on\nthe same day.\n\nUDENG-11775",
+                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/47525afe59f52e1e84b95fd15cf2f927e67db967"
+               },
+               {
+                  "sha": "58d7305fb5368b8ceb44db64edc755eeaaa0f5fb",
+                  "author": "Dennis Loose",
+                  "timestamp": 1781798463,
+                  "message": "runner: resolve source domain by prefix",
+                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/58d7305fb5368b8ceb44db64edc755eeaaa0f5fb"
+               },
+               {
                   "sha": "65809e35ca122a0e6b9cf01884d80656fc7544df",
                   "author": "Dennis Loose",
                   "timestamp": 1795441763,
                   "message": "Merge pull request #105 from canonical/ci-24.04\n\nci: run on ubuntu-24.04",
                   "url": "https://github.com/canonical/ubuntu-gui-testing/commit/65809e35ca122a0e6b9cf01884d80656fc7544df"
-               },
-               {
-                  "sha": "83fe66c498522c6d475992d86feecb932055e34f",
-                  "author": "Dennis Loose",
-                  "timestamp": 1795012835,
-                  "message": "ci: run on ubuntu-24.04",
-                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/83fe66c498522c6d475992d86feecb932055e34f"
-               },
-               {
-                  "sha": "50297e71fd0ed2662314d668044fe57f554aed2d",
-                  "author": "Dennis Loose",
-                  "timestamp": 1787067989,
-                  "message": "Merge pull request #103 from canonical/update-tpm-fde-ux\n\nfix: update TPM FDE error message in installer tests",
-                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/50297e71fd0ed2662314d668044fe57f554aed2d"
                }
             ],
             "ciActions": [],
@@ -7787,25 +7787,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "59c03e04df67d317dd31d2d6803f511f00a9c2cf",
-                  "author": "Dennis Loose",
-                  "timestamp": 1795437926,
-                  "message": "Allow dbus 0.8 (#10)\n\nubuntu_session currently limits dbus to 0.7, which blocks the\ninstaller’s Yaru upgrade. This change allows dbus 0.8 and Dart 3 while\nretaining Dart 2 support. It also sets the minimum dbus version to\n0.7.6, which provides value accessors already used by the package.",
-                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/59c03e04df67d317dd31d2d6803f511f00a9c2cf"
+                  "sha": "94bb47a570940a413f0b914e1688b3ac84001239",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603329,
+                  "message": "ci: automate releases and publishing to pub.dev (#11)",
+                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/94bb47a570940a413f0b914e1688b3ac84001239"
                },
                {
-                  "sha": "ff7fe49a4757604b9287cdb2b7d9f6132a95bd94",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1795435569,
-                  "message": "chore: prepare 0.0.5 release\n\nRecord the DBus 0.8 and Dart 3 compatibility changes as 0.0.5.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/ff7fe49a4757604b9287cdb2b7d9f6132a95bd94"
+                  "sha": "54305ad5b622f181d85e72ff2c3b7183d4106bb8",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554501,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/54305ad5b622f181d85e72ff2c3b7183d4106bb8"
                },
                {
-                  "sha": "17f034814472f9257d05d7fc6913573e24c4fcb6",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1795434098,
-                  "message": "build: allow dbus 0.8\n\nAllow Dart 3 and require dbus 0.7.6, which introduced the value accessors already used by the package.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/17f034814472f9257d05d7fc6913573e24c4fcb6"
+                  "sha": "39a41eccdc5407292a916b1107106e365cca091d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552242,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/39a41eccdc5407292a916b1107106e365cca091d"
                }
             ],
             "ciActions": [
@@ -7923,25 +7923,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8cd5a1420ea86728a7c0495bd3a691569857b184",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793131501,
-                  "message": "chore: release 0.1.15 (#99)\n\nReleases 0.1.15 with the dbus 0.8.0 update (#98). Analyze, tests and\npublish --dry-run pass.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8cd5a1420ea86728a7c0495bd3a691569857b184"
+                  "sha": "a1ee81a497ce7dd51c955fa5a54d5542d0e4f45e",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603435,
+                  "message": "ci: automate releases and publishing to pub.dev (#100)",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/a1ee81a497ce7dd51c955fa5a54d5542d0e4f45e"
                },
                {
-                  "sha": "8e0fbcc3042c4bb612652ae437f1487e30e0bc65",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793131297,
-                  "message": "chore: release 0.1.15",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8e0fbcc3042c4bb612652ae437f1487e30e0bc65"
+                  "sha": "d792e1d1e8ee55bc4764a7025294b6ce8a5d8917",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554498,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/d792e1d1e8ee55bc4764a7025294b6ce8a5d8917"
                },
                {
-                  "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1791875895,
-                  "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
+                  "sha": "8694d73693142fee1dfc9ab77fe56f362d0f3a8d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552246,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8694d73693142fee1dfc9ab77fe56f362d0f3a8d"
                }
             ],
             "ciActions": [],
@@ -8019,7 +8019,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 79,
+            "newCommits": 80,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -8084,14 +8084,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 806,
-                     "timestamp": 1795533370
+                     "revision": 809,
+                     "timestamp": 1795595179
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 807,
-                     "timestamp": 1795533545
+                     "revision": 808,
+                     "timestamp": 1795594897
                   }
                ],
                "channels": [
@@ -8367,25 +8367,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ee843165b70ddca816182fca37f47c5b9d9dc48c",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793131675,
-                  "message": "chore(release): Release 0.2.8 (#37)\n\nReleases 0.2.8 with the dbus 0.8.0 update (#36). Analyze, format, tests\nand publish --dry-run pass.",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/ee843165b70ddca816182fca37f47c5b9d9dc48c"
+                  "sha": "202f20da70ced1d1e6bcf4952003b9410bcceae8",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795604022,
+                  "message": "ci: automate releases and publishing to pub.dev (#38)",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/202f20da70ced1d1e6bcf4952003b9410bcceae8"
                },
                {
-                  "sha": "9e53e590b67b7830aef83e10297297e42e066741",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793131518,
-                  "message": "chore(release): Release 0.2.8",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/9e53e590b67b7830aef83e10297297e42e066741"
+                  "sha": "785be4ff3998602c296bec7a573dc2c4b9f863c9",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554492,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/785be4ff3998602c296bec7a573dc2c4b9f863c9"
                },
                {
-                  "sha": "f45b12f3f1a48b92747623a65f313fc1550dccd5",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1791875868,
-                  "message": "chore: bump dbus to 0.8.0 (#36)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match, which enables two lints that are fixed\nhere. Analyze (with --fatal-infos), format and all tests pass.",
-                  "url": "https://github.com/canonical/packagekit.dart/commit/f45b12f3f1a48b92747623a65f313fc1550dccd5"
+                  "sha": "509ce8b3e2bce6e3f77fa7302c8a44e113f5ce63",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552236,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/packagekit.dart/commit/509ce8b3e2bce6e3f77fa7302c8a44e113f5ce63"
                }
             ],
             "ciActions": [],
@@ -8511,25 +8511,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "5114672cc0fd505d006da500119a4deaaa602cd0",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1794308488,
-                  "message": "perf: reduce catalog memory via streaming YAML, locale filtering, and field omission (#45)\n\nApp Center kept every language and every detail of every catalog. Three\nthings made that costly.\n\nFirst, a translated string was a view of the YAML behind it, not a copy,\nso a short app name kept a whole catalog in memory; strings are copied\ninto plain maps now, with nulls dropped. Second, each YAML document was\nparsed\ntwice; `AppstreamCollection.fromYamlLines` now parses them one at a\ntime. Third, callers could not ask for less; `locales` keeps `C` and the\ngiven languages, matching by language, and `omit` skips details nobody\nreads. Both\nkeep everything by default.\n\n`AppstreamPool.components` is read-only, `load()` replaces instead of\nappending, only catalog files are read, and YAML and error edge cases\nare fixed. Version 0.3.0 needs Dart 2.15.\n\nApp Center uses:\n\n```dart\nfinal pool = AppstreamPool(\n  locales: ['pt_BR'],\n  omit: [AppstreamDetail.releaseNotes],\n);\nawait pool.load();\n```\n\nIt loaded 2,782 components from this machine's resolute catalogs, kept\nPortuguese names rather than `de` and `fr`, and left 2,928 release\ndescriptions empty.\n\n85 tests, up from 42, cover both options and the edge cases, and CI\npasses.\n\nA prototype of the string copy measured from 521 MB to 415 MB RSS in the\nApp Center harness; the final branch was not measured there, so the\ntotal saving is unknown.\n\n---\n\nUDENG-11977\n\nRefs ubuntu/app-center#1913 \n[LP: #2107315](https://bugs.launchpad.net/bugs/2107315)",
-                  "url": "https://github.com/canonical/appstream.dart/commit/5114672cc0fd505d006da500119a4deaaa602cd0"
+                  "sha": "93335bd039a54175e285a176cffe418e0657c96f",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603118,
+                  "message": "ci: automate releases and publishing to pub.dev (#46)",
+                  "url": "https://github.com/canonical/appstream.dart/commit/93335bd039a54175e285a176cffe418e0657c96f"
                },
                {
-                  "sha": "87becabcbee6cac3ba6f3f348d668c19906ccb49",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1793964659,
-                  "message": "docs: list the user-visible 0.3.0 changes in the changelog",
-                  "url": "https://github.com/canonical/appstream.dart/commit/87becabcbee6cac3ba6f3f348d668c19906ccb49"
+                  "sha": "49cbfb3668d54f73095cfb8501dcf85ed5ad9682",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554466,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/appstream.dart/commit/49cbfb3668d54f73095cfb8501dcf85ed5ad9682"
                },
                {
-                  "sha": "e79ee60797b887d4e8c3e08ed89c53010d0cc4cd",
-                  "author": "Yashpal Yadav",
-                  "timestamp": 1793964522,
-                  "message": "test: cover YAML streaming, CRLF, reloads and omit",
-                  "url": "https://github.com/canonical/appstream.dart/commit/e79ee60797b887d4e8c3e08ed89c53010d0cc4cd"
+                  "sha": "aa0a22d40be173339861cb45949028dfda948855",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552237,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/appstream.dart/commit/aa0a22d40be173339861cb45949028dfda948855"
                }
             ],
             "ciActions": [],
@@ -8861,25 +8861,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "c0adf1c2debf3576b86697ec1de53f9e6e1b5805",
+                  "sha": "d09436595142beb5f4ff2a79f5419c96a9f33c73",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1795555447,
-                  "message": "Translate the Firmware Updater launcher description into Swedish (#454)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/c0adf1c2debf3576b86697ec1de53f9e6e1b5805"
+                  "timestamp": 1795599611,
+                  "message": "fix: seal firmware files before passing them to fwupd (#456)",
+                  "url": "https://github.com/canonical/firmware-updater/commit/d09436595142beb5f4ff2a79f5419c96a9f33c73"
                },
                {
-                  "sha": "4567fd34bd8d00da3e27c8be6d8b242b72c421d1",
+                  "sha": "56636980859788fa6e792d899c09d5138ebc89ae",
                   "author": "Sergo Beruashvili",
-                  "timestamp": 1795554517,
-                  "message": "Merge branch 'main' into patch-1",
-                  "url": "https://github.com/canonical/firmware-updater/commit/4567fd34bd8d00da3e27c8be6d8b242b72c421d1"
+                  "timestamp": 1795599185,
+                  "message": "Merge branch 'main' into fix-seal-firmware-downloads",
+                  "url": "https://github.com/canonical/firmware-updater/commit/56636980859788fa6e792d899c09d5138ebc89ae"
                },
                {
-                  "sha": "82741193316453a1f16055bddeb46cef6b54171d",
-                  "author": "Sergo Beruashvili",
-                  "timestamp": 1795554422,
-                  "message": "fix(l10n): translations update from Hosted Weblate (#457)",
-                  "url": "https://github.com/canonical/firmware-updater/commit/82741193316453a1f16055bddeb46cef6b54171d"
+                  "sha": "8e5bd3f1c2fcfdaa5ff5a3d2380760a3ae2d93bc",
+                  "author": "Daniel Nylander",
+                  "timestamp": 1795592310,
+                  "message": "fix(firmware-updater): address final review feedback",
+                  "url": "https://github.com/canonical/firmware-updater/commit/8e5bd3f1c2fcfdaa5ff5a3d2380760a3ae2d93bc"
                }
             ],
             "ciActions": [
@@ -9107,25 +9107,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "ce652ec49953489454ced6f43ca0adb7a22a7003",
-                  "author": "Dennis Loose",
-                  "timestamp": 1790002560,
-                  "message": "chore: update CHANGELOG and loosen sdk constraint (#65)\n\n`dart pub publish --dry-run` reported:\n\n```\nValidating package...\nPackage validation found the following potential issue:\n* 1 checked-in file is modified in git.\n\n  Usually you want to publish from a clean git state.\n\n  Consider committing these files or reverting the changes.\n\n  Modified files:\n\n  CHANGELOG.md\n\n  Run `git status` for more information.\n\n\nPackage validation found the following hint:\n* The declared SDK constraint is '>=2.12.0 <3.0.0', this is interpreted as '>=2.12.0 <4.0.0'.\n\n  Consider updating the SDK constraint to:\n\n  environment:\n    sdk: '>=2.12.0 <4.0.0'\n\nThe server may enforce additional checks.\n```\n\nso this PR adds a new CHANGELOG entry and adjusts the SDK constraint\naccordingly.",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/ce652ec49953489454ced6f43ca0adb7a22a7003"
+                  "sha": "5469785a138feed25265a1c815281e1212fc38c3",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603991,
+                  "message": "ci: automate releases and publishing to pub.dev (#67)",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/5469785a138feed25265a1c815281e1212fc38c3"
                },
                {
-                  "sha": "b528decd450269db2fcfb9910e6f4c65580a6165",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789976619,
-                  "message": "chore: update CHANGELOG and loosen sdk constraint",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/b528decd450269db2fcfb9910e6f4c65580a6165"
+                  "sha": "ce02205625907690ca396f5b6f153ccfc319078a",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554483,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/ce02205625907690ca396f5b6f153ccfc319078a"
                },
                {
-                  "sha": "18c94c83b24c8fc3069bf742cd1a71791573f9d1",
-                  "author": "Dennis Loose",
-                  "timestamp": 1789976189,
-                  "message": "Update to dbus.dart 0.8.0 (#64)",
-                  "url": "https://github.com/canonical/gsettings.dart/commit/18c94c83b24c8fc3069bf742cd1a71791573f9d1"
+                  "sha": "1d1bf431a3917cca7e35b33bf7b971bc74d4d431",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552237,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/gsettings.dart/commit/1d1bf431a3917cca7e35b33bf7b971bc74d4d431"
                }
             ],
             "ciActions": [],
@@ -9758,25 +9758,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "dd349a9868b6ad88b6a8037b6b152bbac2b5b04d",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793891714,
-                  "message": "Merge pull request #4 from paul-geoghegan/chore/update-repository-url\n\nchore: update repository URL",
-                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/dd349a9868b6ad88b6a8037b6b152bbac2b5b04d"
+                  "sha": "203779a45e1cfcf48b25f6d9a1e0092718c5c4b6",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603961,
+                  "message": "ci: automate releases and publishing to pub.dev (#5)",
+                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/203779a45e1cfcf48b25f6d9a1e0092718c5c4b6"
                },
                {
-                  "sha": "27058c6bec8e1e7094bd7401893e87e37ba06b0a",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793890372,
-                  "message": "chore: update repository URL\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/27058c6bec8e1e7094bd7401893e87e37ba06b0a"
+                  "sha": "b4c66fa10428785055f1b29d3982c787cbc35e6b",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554472,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/b4c66fa10428785055f1b29d3982c787cbc35e6b"
                },
                {
-                  "sha": "25d77c9f20458220f2d8788f791bd76ee7e81408",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793883174,
-                  "message": "docs: update changelog",
-                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/25d77c9f20458220f2d8788f791bd76ee7e81408"
+                  "sha": "a5cc8567a3a61868cf057df7ba73df4e7c7f3961",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552238,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/snapcraft_launcher.dart/commit/a5cc8567a3a61868cf057df7ba73df4e7c7f3961"
                }
             ],
             "ciActions": [],
@@ -10067,7 +10067,7 @@
                   "id": 453314180,
                   "version": "kde-latest",
                   "timestamp": 1795219018,
-                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261124",
+                  "title": "Ubuntu Core Desktop 26 KDE (dangerous) - 20261125",
                   "body": "<p>Rolling developer preview, replaced by every green build on desktop/26. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed. No credentials are baked in: first boot runs the plasma-setup first-boot wizard (the KDE equivalent of GNOME&rsquo;s ubuntu-desktop-init) to create the user account. See manifest.txt for the source commit and the snap versions in this image. If the image was split into <code>*.img.zst.partNN</code> files (GitHub&rsquo;s 2GiB asset cap), reassemble first: <code>cat ubuntu-core-desktop-kde.img.zst.part* &gt; ubuntu-core-desktop-kde.img.zst</code>, then verify against SHA256SUMS. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-kde.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
                   "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/kde-latest",
                   "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/kde-latest...main"
@@ -10076,7 +10076,7 @@
                   "id": 453313756,
                   "version": "gnome-latest",
                   "timestamp": 1795219018,
-                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261124",
+                  "title": "Ubuntu Core Desktop 26 GNOME (dangerous) - 20261125",
                   "body": "<p>Rolling developer preview, replaced by every green build on desktop/26. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). See manifest.txt for the source commit and the snap versions in this image. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). Boot with virt-install or qemu per README.md.</p>\n",
                   "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-latest",
                   "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-latest...main"
@@ -10085,7 +10085,7 @@
                   "id": 453310757,
                   "version": "gnome-arm64-latest",
                   "timestamp": 1795219018,
-                  "title": "Ubuntu Core Desktop 26 GNOME arm64 (dangerous) - 20261124",
+                  "title": "Ubuntu Core Desktop 26 GNOME arm64 (dangerous) - 20261125",
                   "body": "<p>Rolling developer preview (arm64), replaced by every green build on desktop/26. Signed with an individual&rsquo;s registered test key; snaps are unasserted and can never be refreshed; no credentials are baked in (first boot runs the ubuntu-desktop-init wizard). See manifest.txt for the source commit and the snap versions in this image. Decompress with: <code>zstd -T0 -d --sparse ubuntu-core-desktop-gnome-arm64.img.zst -o pc.img</code> (the &ndash;sparse flag is required or the output allocates the full ~20G). UEFI boot (shim/grub arm64); QEMU virt or an arm64 host per README.md.</p>\n",
                   "url": "https://github.com/canonical/ubuntu-core-desktop/releases/tag/gnome-arm64-latest",
                   "compareUrl": "https://github.com/canonical/ubuntu-core-desktop/compare/gnome-arm64-latest...main"
@@ -10246,7 +10246,7 @@
          {
             "name": "ubuntu-flutter-plugins",
             "defaultBranch": "main",
-            "newCommits": 479,
+            "newCommits": 483,
             "url": "https://github.com/canonical/ubuntu-flutter-plugins",
             "releases": [
                {
@@ -10292,25 +10292,25 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "47525afe59f52e1e84b95fd15cf2f927e67db967",
+                  "author": "Dennis Loose",
+                  "timestamp": 1795608844,
+                  "message": "runner: resolve source domain by prefix (#104)\n\nI'm breaking down #97 into smaller, more self-contained parts.\nThis PR adds a `--source-domain-prefix` argument to the new runner,\nwhich makes it easier to run tests on a shallow copy of an existing\ndomain, without having to know its exact name. I've also changed to a\nmore precise timestamp format to avoid conflicts for multiple runs on\nthe same day.\n\nUDENG-11775",
+                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/47525afe59f52e1e84b95fd15cf2f927e67db967"
+               },
+               {
+                  "sha": "58d7305fb5368b8ceb44db64edc755eeaaa0f5fb",
+                  "author": "Dennis Loose",
+                  "timestamp": 1781798463,
+                  "message": "runner: resolve source domain by prefix",
+                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/58d7305fb5368b8ceb44db64edc755eeaaa0f5fb"
+               },
+               {
                   "sha": "65809e35ca122a0e6b9cf01884d80656fc7544df",
                   "author": "Dennis Loose",
                   "timestamp": 1795441763,
                   "message": "Merge pull request #105 from canonical/ci-24.04\n\nci: run on ubuntu-24.04",
                   "url": "https://github.com/canonical/ubuntu-gui-testing/commit/65809e35ca122a0e6b9cf01884d80656fc7544df"
-               },
-               {
-                  "sha": "83fe66c498522c6d475992d86feecb932055e34f",
-                  "author": "Dennis Loose",
-                  "timestamp": 1795012835,
-                  "message": "ci: run on ubuntu-24.04",
-                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/83fe66c498522c6d475992d86feecb932055e34f"
-               },
-               {
-                  "sha": "50297e71fd0ed2662314d668044fe57f554aed2d",
-                  "author": "Dennis Loose",
-                  "timestamp": 1787067989,
-                  "message": "Merge pull request #103 from canonical/update-tpm-fde-ux\n\nfix: update TPM FDE error message in installer tests",
-                  "url": "https://github.com/canonical/ubuntu-gui-testing/commit/50297e71fd0ed2662314d668044fe57f554aed2d"
                }
             ],
             "ciActions": [],
@@ -10381,25 +10381,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "59c03e04df67d317dd31d2d6803f511f00a9c2cf",
-                  "author": "Dennis Loose",
-                  "timestamp": 1795437926,
-                  "message": "Allow dbus 0.8 (#10)\n\nubuntu_session currently limits dbus to 0.7, which blocks the\ninstaller’s Yaru upgrade. This change allows dbus 0.8 and Dart 3 while\nretaining Dart 2 support. It also sets the minimum dbus version to\n0.7.6, which provides value accessors already used by the package.",
-                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/59c03e04df67d317dd31d2d6803f511f00a9c2cf"
+                  "sha": "94bb47a570940a413f0b914e1688b3ac84001239",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603329,
+                  "message": "ci: automate releases and publishing to pub.dev (#11)",
+                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/94bb47a570940a413f0b914e1688b3ac84001239"
                },
                {
-                  "sha": "ff7fe49a4757604b9287cdb2b7d9f6132a95bd94",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1795435569,
-                  "message": "chore: prepare 0.0.5 release\n\nRecord the DBus 0.8 and Dart 3 compatibility changes as 0.0.5.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/ff7fe49a4757604b9287cdb2b7d9f6132a95bd94"
+                  "sha": "54305ad5b622f181d85e72ff2c3b7183d4106bb8",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554501,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/54305ad5b622f181d85e72ff2c3b7183d4106bb8"
                },
                {
-                  "sha": "17f034814472f9257d05d7fc6913573e24c4fcb6",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1795434098,
-                  "message": "build: allow dbus 0.8\n\nAllow Dart 3 and require dbus 0.7.6, which introduced the value accessors already used by the package.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/17f034814472f9257d05d7fc6913573e24c4fcb6"
+                  "sha": "39a41eccdc5407292a916b1107106e365cca091d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552242,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/ubuntu_session.dart/commit/39a41eccdc5407292a916b1107106e365cca091d"
                }
             ],
             "ciActions": [
@@ -10517,25 +10517,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "8cd5a1420ea86728a7c0495bd3a691569857b184",
-                  "author": "Dennis Loose",
-                  "timestamp": 1793131501,
-                  "message": "chore: release 0.1.15 (#99)\n\nReleases 0.1.15 with the dbus 0.8.0 update (#98). Analyze, tests and\npublish --dry-run pass.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8cd5a1420ea86728a7c0495bd3a691569857b184"
+                  "sha": "a1ee81a497ce7dd51c955fa5a54d5542d0e4f45e",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795603435,
+                  "message": "ci: automate releases and publishing to pub.dev (#100)",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/a1ee81a497ce7dd51c955fa5a54d5542d0e4f45e"
                },
                {
-                  "sha": "8e0fbcc3042c4bb612652ae437f1487e30e0bc65",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1793131297,
-                  "message": "chore: release 0.1.15",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8e0fbcc3042c4bb612652ae437f1487e30e0bc65"
+                  "sha": "d792e1d1e8ee55bc4764a7025294b6ce8a5d8917",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554498,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/d792e1d1e8ee55bc4764a7025294b6ce8a5d8917"
                },
                {
-                  "sha": "f65288022af81eba79c1078dceb73e2e2eb68954",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1791875895,
-                  "message": "chore: bump dbus to 0.8.0 (#98)\n\nUpdates dbus to ^0.8.0. dbus 0.8.0 requires Dart 3.0, so the SDK\nconstraint is raised to match. Analyze is clean and all tests pass.",
-                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/f65288022af81eba79c1078dceb73e2e2eb68954"
+                  "sha": "8694d73693142fee1dfc9ab77fe56f362d0f3a8d",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795552246,
+                  "message": "ci: automate releases and publishing to pub.dev",
+                  "url": "https://github.com/canonical/xdg_desktop_portal.dart/commit/8694d73693142fee1dfc9ab77fe56f362d0f3a8d"
                }
             ],
             "ciActions": [],
@@ -10613,7 +10613,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 79,
+            "newCommits": 80,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10678,14 +10678,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 806,
-                     "timestamp": 1795533370
+                     "revision": 809,
+                     "timestamp": 1795595179
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 807,
-                     "timestamp": 1795533545
+                     "revision": 808,
+                     "timestamp": 1795594897
                   }
                ],
                "channels": [
