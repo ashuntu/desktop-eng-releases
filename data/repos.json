@@ -207,7 +207,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 41,
+            "newCommits": 44,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -2902,25 +2902,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "032538209ad624018341d9e5ba10bc0f869cca26",
+                  "sha": "9cedd5e3f46371b26daff0aaa4cb6d56fe822a51",
                   "author": "Robert Ancell",
-                  "timestamp": 1795060368,
-                  "message": "Releasing 0.8.1",
-                  "url": "https://github.com/canonical/dbus.dart/commit/032538209ad624018341d9e5ba10bc0f869cca26"
+                  "timestamp": 1795661658,
+                  "message": "ci: automate releases and publishing to pub.dev (#413)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.8.1` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\nResolves UDENG-12242",
+                  "url": "https://github.com/canonical/dbus.dart/commit/9cedd5e3f46371b26daff0aaa4cb6d56fe822a51"
                },
                {
-                  "sha": "e02ab6cc72e21596f79d31820b4c6e722e12ac0d",
-                  "author": "Robert Ancell",
-                  "timestamp": 1795060132,
-                  "message": "Fail calls that wait for a failed connection (#411)\n\nFixes #410.\n\n`DBusClient._connect` sets `_connectCompleter` before it opens the\nsocket, so that other calls wait for the same connection. When\n`_openSocket` or the `Hello` call throws, only the first call gets the\nerror. The completer is never completed, so the calls that wait for it,\nand all later calls on the client, do not complete.\n\nThis change completes the completer with the error. The calls that wait\nfor the connection, and the calls after it, get the same error. A failed\nclient stays failed, as before; it does not try to connect again.\n\nMost of the diff is indentation: the existing code is now inside a `try`\nblock. The new code is the `catch` block.\n\n### Tests\n\nTwo new tests in `test/dbus_test.dart` use a missing socket:\n\n- `connect error`: a second `ping` after a failed one throws\n`SocketException`.\n- `connect error - concurrent calls`: two `ping` calls that start at the\nsame time both throw `SocketException`.\n\nWithout the fix, both tests time out. With the fix, `dart test` passes\non Linux (221 tests). `dart analyze` and `dart format` are clean.\n\nThis change is independent of #409, which reports connection failures on\nsignal streams.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/e02ab6cc72e21596f79d31820b4c6e722e12ac0d"
+                  "sha": "52cd7147fffe1267ba7aab8a916615a1ef9eeee1",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641801,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/dbus.dart/commit/52cd7147fffe1267ba7aab8a916615a1ef9eeee1"
                },
                {
-                  "sha": "30f5ea27d3c1bd196d53e3eecbb001aac62bf6d3",
-                  "author": "Robert Ancell",
-                  "timestamp": 1795059533,
-                  "message": "Report signal subscription failures on the signal stream (#409)\n\nFixes #408.\n\n`DBusSignalStream._onListen` starts the bus connect and the `AddMatch`\ncall, but it drops their futures. When the bus socket is not available,\nthe error is an unhandled zone error. The `onError` handler of the\nsubscription does not receive it, and the caller cannot catch it.\n\nThis change sends these errors to the stream with `addError`.\n`Future.wait` uses `eagerError: true`: when `_findUniqueName` and\n`_addMatch` both wait on one failed connect, only the first call gets\nthe error, and the other call does not complete.\n\n### Tests\n\nThree new tests in `test/dbus_test.dart` listen to a signal stream on a\nmissing socket and expect a `SocketException` in `onError`. They cover\nthe message bus path, the message bus path with a sender, and the peer\n(`messageBus: false`) path.\n\n- Without the fix, the new tests fail.\n- With the fix, `dart test` passes on Linux (222 tests). `dart analyze`\nand `dart format` are clean.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/30f5ea27d3c1bd196d53e3eecbb001aac62bf6d3"
+                  "sha": "3068066842cee0bf59c34371c123cee281b6262b",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554469,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/dbus.dart/commit/3068066842cee0bf59c34371c123cee281b6262b"
                }
             ],
             "ciActions": [],
@@ -3034,25 +3034,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "faf794318d8bdd47085e7f782c6106ac0587a851",
+                  "sha": "450179982fb70eb13fd0d0fd051c9492478b7d1d",
                   "author": "Robert Ancell",
-                  "timestamp": 1756093548,
-                  "message": "Merge pull request #45 from robert-ancell/ci-ubuntu-version\n\nUpdate CI Ubuntu version, remove obsolete CLA checker",
-                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/faf794318d8bdd47085e7f782c6106ac0587a851"
+                  "timestamp": 1795661782,
+                  "message": "ci: automate releases and publishing to pub.dev (#47)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.6.3` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\nResolves UDENG-12251",
+                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/450179982fb70eb13fd0d0fd051c9492478b7d1d"
                },
                {
-                  "sha": "f2f07adf385d8de78d2380ec3d620af9ce413678",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756092641,
-                  "message": "Remove old CLA checker",
-                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/f2f07adf385d8de78d2380ec3d620af9ce413678"
+                  "sha": "c029235cc8d6ef5f0270e622bcb8d35a7238e3ae",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641802,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/c029235cc8d6ef5f0270e622bcb8d35a7238e3ae"
                },
                {
-                  "sha": "944256669f062fa1d4d99ae7a69b1ea0d2e00131",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756092631,
-                  "message": "Update CI Ubuntu version",
-                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/944256669f062fa1d4d99ae7a69b1ea0d2e00131"
+                  "sha": "e4349b7e13cff789cda60b7797032cd505b08e96",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554481,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/e4349b7e13cff789cda60b7797032cd505b08e96"
                }
             ],
             "ciActions": [],
@@ -3171,25 +3171,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1c2b40b744e4666c2cd3a8e20b352504400a434c",
+                  "sha": "7a90b19cfc541a568235f7dc9e4d8442b3ba2296",
                   "author": "Robert Ancell",
-                  "timestamp": 1756091635,
-                  "message": "Merge pull request #32 from robert-ancell/removed-lint\n\nRemove obsolete lint option",
-                  "url": "https://github.com/canonical/fwupd.dart/commit/1c2b40b744e4666c2cd3a8e20b352504400a434c"
+                  "timestamp": 1795661801,
+                  "message": "ci: automate releases and publishing to pub.dev (#33)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.2.2` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\n\nResolves UDENG-12253",
+                  "url": "https://github.com/canonical/fwupd.dart/commit/7a90b19cfc541a568235f7dc9e4d8442b3ba2296"
                },
                {
-                  "sha": "4ad071eb17d64ff9734522076d3574c96c4b3fea",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756091535,
-                  "message": "Update SDK constraints as detected by analyze",
-                  "url": "https://github.com/canonical/fwupd.dart/commit/4ad071eb17d64ff9734522076d3574c96c4b3fea"
+                  "sha": "ba5db48efb3ea3bab8b611eafce8de533f8de643",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641802,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/fwupd.dart/commit/ba5db48efb3ea3bab8b611eafce8de533f8de643"
                },
                {
-                  "sha": "1ac2a3716119343f8d69b48c49309d6897930ac1",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756091394,
-                  "message": "Remove obsolete lint option",
-                  "url": "https://github.com/canonical/fwupd.dart/commit/1ac2a3716119343f8d69b48c49309d6897930ac1"
+                  "sha": "5b9192d3b4be784a60dccacd1ef1e9db78ece32a",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554486,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/fwupd.dart/commit/5b9192d3b4be784a60dccacd1ef1e9db78ece32a"
                }
             ],
             "ciActions": [],
@@ -3794,25 +3794,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "38859ab40db6fdd9c43477867b71ca1ea999e464",
+                  "sha": "5dab1913f477efa431994346373cf8c82f152ca2",
                   "author": "Robert Ancell",
-                  "timestamp": 1790140878,
-                  "message": "Require dbus 0.8 (#74)\n\nBumps the `dbus` dependency from `^0.7.0` to `^0.8.0`, and raises the\nSDK lower bound to `>=3.0.0` (dbus 0.8.0 requires Dart 3).\n\nSDK v2 is pretty old.",
-                  "url": "https://github.com/canonical/nm.dart/commit/38859ab40db6fdd9c43477867b71ca1ea999e464"
+                  "timestamp": 1795661819,
+                  "message": "ci: automate releases and publishing to pub.dev (#77)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.6.0` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\n\nResolves UDENG-12254",
+                  "url": "https://github.com/canonical/nm.dart/commit/5dab1913f477efa431994346373cf8c82f152ca2"
                },
                {
-                  "sha": "19aaf76eb3f5cbb01e02e56605dfb5593c7141f3",
-                  "author": "Matt Kosarek",
-                  "timestamp": 1790023891,
-                  "message": "Require dbus 0.8\n\ndbus 0.8.0 requires Dart 3, so the SDK lower bound is raised to 3.0.0 as\nwell. No source changes are needed: the runtime API used by nm is\nunchanged in 0.8.0, which only adds anonymous client authentication and\nalters the code generator's output.",
-                  "url": "https://github.com/canonical/nm.dart/commit/19aaf76eb3f5cbb01e02e56605dfb5593c7141f3"
+                  "sha": "900245de356a7a2abf0b8c3b3d168b6955d249f5",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641804,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/nm.dart/commit/900245de356a7a2abf0b8c3b3d168b6955d249f5"
                },
                {
-                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756088060,
-                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
+                  "sha": "e1b8dd2a0ba790c39db8c8ea23afe96f0efb53ab",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554489,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/nm.dart/commit/e1b8dd2a0ba790c39db8c8ea23afe96f0efb53ab"
                }
             ],
             "ciActions": [],
@@ -5271,25 +5271,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b61a689b3288b9961e968cfb89e08d8a92178707",
+                  "sha": "0a265aba7563c39178725dbd548d81fc1c765b7d",
                   "author": "Robert Ancell",
-                  "timestamp": 1791754773,
-                  "message": "Releasing 0.5.0",
-                  "url": "https://github.com/canonical/udisks.dart/commit/b61a689b3288b9961e968cfb89e08d8a92178707"
+                  "timestamp": 1795661839,
+                  "message": "ci: automate releases and publishing to pub.dev (#26)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.5.0` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\n\nResolves UDENG-12256",
+                  "url": "https://github.com/canonical/udisks.dart/commit/0a265aba7563c39178725dbd548d81fc1c765b7d"
                },
                {
-                  "sha": "99cae134e205f040c4c21bf62f32f8e5552b4a5d",
-                  "author": "Robert Ancell",
-                  "timestamp": 1791754847,
-                  "message": "Update SDK requirement",
-                  "url": "https://github.com/canonical/udisks.dart/commit/99cae134e205f040c4c21bf62f32f8e5552b4a5d"
+                  "sha": "a76c24ade7b26fa471540bcad39c2ba6f8bcc58f",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641808,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/udisks.dart/commit/a76c24ade7b26fa471540bcad39c2ba6f8bcc58f"
                },
                {
-                  "sha": "7514e1b8f3ff7a5f1cead14eba4a3f63a3c637cc",
-                  "author": "Ken VanDine",
-                  "timestamp": 1791381049,
-                  "message": "chore: bump dbus to 0.8.0 (#25)",
-                  "url": "https://github.com/canonical/udisks.dart/commit/7514e1b8f3ff7a5f1cead14eba4a3f63a3c637cc"
+                  "sha": "44d6138a9847b27dea5698715c6bacec4eead9f2",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554495,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/udisks.dart/commit/44d6138a9847b27dea5698715c6bacec4eead9f2"
                }
             ],
             "ciActions": [],
@@ -5304,25 +5304,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6d43843bc0c712bd29bd361f85914f5de12c9d19",
+                  "sha": "8c7f77b49df887ff9c20a85f17d5818a85099d3b",
                   "author": "Robert Ancell",
-                  "timestamp": 1795463034,
-                  "message": "Prepare upower 0.8.0 (#23)\n\nPrepare upower 0.8.0 for release with the DBus 0.8 update. This release\nrequires Dart 3 and drops Dart 2 support.",
-                  "url": "https://github.com/canonical/upower.dart/commit/6d43843bc0c712bd29bd361f85914f5de12c9d19"
+                  "timestamp": 1795661858,
+                  "message": "ci: automate releases and publishing to pub.dev (#24)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.8.0` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\nResolves UDENG-12248",
+                  "url": "https://github.com/canonical/upower.dart/commit/8c7f77b49df887ff9c20a85f17d5818a85099d3b"
                },
                {
-                  "sha": "43944ecfba6c5d03ef2d6346a8ce8af0b87b11e7",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1795438857,
-                  "message": "chore: prepare 0.8.0 release\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/upower.dart/commit/43944ecfba6c5d03ef2d6346a8ce8af0b87b11e7"
+                  "sha": "50a834819e0bcaaadfeb1754939a2d1fa42f5868",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641809,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/upower.dart/commit/50a834819e0bcaaadfeb1754939a2d1fa42f5868"
                },
                {
-                  "sha": "aef09d4b7119ad0d6a403bee2193d4b41b7db24a",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1795438586,
-                  "message": "deps: bump dbus to 0.8.0 (#22)\n\n``` sh\n$ dart test\nBuilding package executable... (2.8s)\nBuilt test:test.\n00:00 +14: All tests passed!\n\n$ flutter test --coverage\n00:01 +14: All tests passed!\n\n$ dart analyze --fatal-infos --fatal-warnings .\nAnalyzing ....                         0.4s\nNo issues found!\n\n$ dart format --output=none --set-exit-if-changed .\nFormatted 10 files (0 changed) in 0.01 seconds.\n```",
-                  "url": "https://github.com/canonical/upower.dart/commit/aef09d4b7119ad0d6a403bee2193d4b41b7db24a"
+                  "sha": "2410376111d7b81a7069ef79e13294afbf466b70",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554475,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/upower.dart/commit/2410376111d7b81a7069ef79e13294afbf466b70"
                }
             ],
             "ciActions": [],
@@ -5692,25 +5692,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "e6c37467720eb5bc9bfe36523fce568ea6e38782",
+                  "sha": "6398ab37136f27bbc414d7df764c5d34d5013c7d",
                   "author": "Kat",
-                  "timestamp": 1795621166,
-                  "message": "feat(insights): add insights_free_string to C API (#408)\n\n### Description\n\nAdds `insights_free_string(char* str)` to the `libinsights` C API so\ncallers can free C strings returned by the library (error strings and\n`out_report` buffers) using the library's own allocator instead of\ncalling `free` directly.\n\nCalling `free` directly across a DLL boundary is unsafe when the caller\nand `libinsights` link against different C runtimes (for example, MinGW\n`msvcrt.dll` vs. UCRT on Windows). See Microsoft's documentation on\n[potential errors passing CRT objects across DLL\nboundaries](https://learn.microsoft.com/en-us/cpp/c-runtime-library/potential-errors-passing-crt-objects-across-dll-boundaries).\n\n### Changes\n\n- Export `insights_free_string(char* str)` in\n`insights/C/libinsights.go` and update C API doc comments to reference\nit.\n- Add `insights_free_string@Base 1.0.2` to\n`insights/debian/libinsights1.symbols`.\n- Update the C integration test driver\n(`insights/C/integration-tests/test-driver/main.c`) to free\nlibrary-returned strings via `insights_free_string`.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/e6c37467720eb5bc9bfe36523fce568ea6e38782"
+                  "timestamp": 1795650630,
+                  "message": "deps(go-server): bump the minor-updates group across 1 directory with 5 updates (#406)\n\nBumps the minor-updates group with 5 updates in the /server directory:\n\n| Package | From | To |\n| --- | --- | --- |\n| [github.com/jackc/pgx/v5](https://github.com/jackc/pgx) | `5.11.0` |\n`5.13.0` |\n| [github.com/pressly/goose/v3](https://github.com/pressly/goose) |\n`3.29.0` | `3.30.1` |\n| [github.com/prometheus/common](https://github.com/prometheus/common) |\n`0.72.1` | `0.74.0` |\n|\n[github.com/testcontainers/testcontainers-go](https://github.com/testcontainers/testcontainers-go)\n| `0.44.0` | `0.45.0` |\n| [go.yaml.in/yaml/v3](https://github.com/yaml/go-yaml) | `3.0.5` |\n`3.0.6` |\n\n\nUpdates `github.com/jackc/pgx/v5` from 5.11.0 to 5.13.0\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/jackc/pgx/blob/master/CHANGELOG.md\">github.com/jackc/pgx/v5's\nchangelog</a>.</em></p>\n<blockquote>\n<h1>5.13.0 (November 11, 2026)</h1>\n<p>This release adds automatic client certificate reloading and temporal\nprecision metadata for <code>database/sql</code>.\nIt also fixes a panic on malformed server responses, unsafe retries\nafter connection failures, and range encoding.\nSee Changes for client certificate configuration behavior that may\naffect existing applications.</p>\n<h2>Security Fixes</h2>\n<ul>\n<li><strong>Panic in <code>Rows.Values</code> on malformed server\nresponses</strong>\n(<a\nhref=\"https://github.com/jackc/pgx/security/advisories/GHSA-w9rp-vfrh-q8vv\">GHSA-w9rp-vfrh-q8vv</a>).\nA server response containing fewer row values than declared fields could\ncause an index-out-of-range panic in\n<code>Rows.Values</code>. It now returns an error and closes the rows\nwhen the counts differ, including when there are extra\nvalues, matching <code>Rows.Scan</code> validation.</li>\n</ul>\n<h2>Features</h2>\n<ul>\n<li>pgconn: reload client certificates and keys configured through\n<code>sslcert</code> and <code>sslkey</code> for each TLS certificate\nrequest, allowing new connections to pick up rotated credentials without\nrecreating the configuration or\nrestarting the application. Files are still validated during\nconfiguration parsing. Relative paths retain their\nparse-time directory, and reloads follow symlinks (Erin Shepherd)</li>\n<li>stdlib: expose fractional seconds precision for\n<code>timestamp</code>, <code>timestamptz</code>, <code>time</code>,\n<code>timetz</code>, and <code>interval</code> through\n<code>ColumnTypePrecisionScale</code> and\n<code>database/sql.ColumnType.DecimalSize</code>. These return precision\n0, the fractional\nseconds precision as scale, and <code>ok=true</code>. The scale defaults\nto 6 when no fractional seconds precision is declared;\nprecision 0 means numeric precision is not applicable (Danny Xu)</li>\n</ul>\n<h2>Changes</h2>\n<ul>\n<li>pgconn: file-backed client certificates are no longer stored in the\nparsed <code>TLSConfig.Certificates</code> slice.\nSetting <code>TLSConfig.Certificates</code> (including a non-nil empty\nslice) or <code>TLSConfig.GetClientCertificate</code> overrides\nautomatic reloading. Replacing <code>TLSConfig</code>, including with a\ndirect <code>TLSConfig.Clone</code>, discards the file-backed\ncertificate settings; use <code>pgconn.Config.Copy</code> to preserve\nthem when copying a configuration. Certificate and key\nfiles must remain readable for subsequent TLS certificate requests.\nEncrypted keys reuse the password resolved\nduring configuration parsing; <code>GetSSLPassword</code> is not called\nagain on reload.</li>\n</ul>\n<h2>Bug Fixes</h2>\n<ul>\n<li>pgconn: do not mark a connection-closed error encountered while\nreceiving a response as safe to retry, since the\nrequest may already have reached the server. This prevents\n<code>database/sql</code> from automatically repeating a statement\nthat may already have executed. The error still supports\n<code>errors.Is(err, pgconn.ErrConnClosed)</code> (Aayush Shah)</li>\n<li>pgconn: skip sending a cancel request when a connection fails during\nstartup, avoiding an unnecessary second\nconnection attempt (felipe stival)</li>\n<li>pgconn: accept unencrypted combined certificate/key PEM files with\nthe certificate before the key, as well as\nkey-first files (Erin Shepherd)</li>\n<li>pgtype: encode <code>Range[any]</code> values returned by\n<code>RangeCodec.DecodeValue</code> and <code>Rows.Values</code> in both\nbinary and text\nformats, allowing decoded ranges and multiranges to be reused as query\narguments or in <code>CopyFrom</code> (waw666waw666)</li>\n<li>stdlib: report <code>ok=false</code> for the precision and scale of\nunconstrained <code>numeric</code> columns instead of bogus values\n(Danny Xu)</li>\n<li>stdlib: report <code>math.MaxInt64</code> for the lengths of\nunconstrained <code>varchar</code>, <code>bpchar</code>, and\n<code>varbit</code> columns instead of\nnegative lengths (PerryLink)</li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/1e38d71d74e94fd3b35cbe5b3415109a870d5b91\"><code>1e38d71</code></a>\nUpdate changelog for v5.13.0</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/e2bb01086bad419db40fb253992060c8b82a6146\"><code>e2bb010</code></a>\nFix Rows.Values panic on mismatched field counts</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/5b0fd94cff8686c65874c65986c2567713eed4da\"><code>5b0fd94</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/jackc/pgx/issues/2709\">#2709</a> from\nwaw666waw666/fix-range-any-encode</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/427f50d718b2edf7e4b7230c165f9fcc70bfef3a\"><code>427f50d</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/jackc/pgx/issues/2715\">#2715</a> from\nv0idpwn/pgconn-no-cancel-on-failed-connect</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/86b44111ff313b6b7e25e96cdc56a39168d89701\"><code>86b4411</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/jackc/pgx/issues/2713\">#2713</a> from\nksamirdev/fix-append-rows-by-name-bench</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/a3b88dc6d76c28128c49c6c23cac939048c1425c\"><code>a3b88dc</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/jackc/pgx/issues/2714\">#2714</a> from\nPerryLink/stdlib-column-type-length-unbounded</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/2f429e554e729f6f851337f6e0e393fc423db43f\"><code>2f429e5</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/jackc/pgx/issues/2710\">#2710</a> from\ndajiaohuang/codex/2705-pingtimeout-docs</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/85c3e62f2c17f2d97c6f1ec5364533d76dd0c22e\"><code>85c3e62</code></a>\nstdlib: close rows in precision and scale test</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/4f41febc48397e2a98e847f7bc4fc85dcf59d35e\"><code>4f41feb</code></a>\nstdlib: clarify zero precision for temporal types</li>\n<li><a\nhref=\"https://github.com/jackc/pgx/commit/22ccfd11b14b5b6cd491bd991ebb98cd26035fef\"><code>22ccfd1</code></a>\nstdlib: document temporal precision and scale metadata</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/jackc/pgx/compare/v5.11.0...v5.13.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/pressly/goose/v3` from 3.29.0 to 3.30.1\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/pressly/goose/releases\">github.com/pressly/goose/v3's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v3.30.1</h2>\n<h3>Changed</h3>\n<ul>\n<li><code>+goose ENVSUB ON</code>: support more shell expansions, such\nas <code>${VAR:?message}</code>, <code>${VAR:+word}</code>,\nand <code>${#VAR}</code>. A <code>$</code> that does not start a\nvariable name, such as <code>$1</code>, is now kept as-is\ninstead of an error (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1174\">#1174</a>)</li>\n</ul>\n<h3>Fixed</h3>\n<ul>\n<li>Build failure when <code>github.com/mfridman/interpolate</code> is\nupgraded to v0.2.0, for example with\n<code>go get -u</code> (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1176\">#1176</a>)</li>\n<li>Lock: fix an edge case where a long-lived locker could stop waiting\nfor a held lock and fail\nimmediately. Programs that migrate once at startup were not affected (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1173\">#1173</a>)</li>\n</ul>\n<h2>v3.30.0</h2>\n<h3>Added</h3>\n<ul>\n<li>Container image at <code>ghcr.io/pressly/goose</code> for\n<code>linux/amd64</code> and <code>linux/arm64</code>, published on\neach release. The image is based on distroless static, runs as a nonroot\nuser, and supports\n<code>.sql</code> migrations only (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1093\">#1093</a>)</li>\n</ul>\n<h3>Changed</h3>\n<ul>\n<li>Various dependency upgrades</li>\n<li>SQL parser: reduce memory use when parsing migration files, and make\nparsing much faster when\nthe race detector is on (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1155\">#1155</a>,\n<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1156\">#1156</a>)</li>\n</ul>\n<h3>Fixed</h3>\n<ul>\n<li>CLI: <code>goose validate</code> failed on Go migrations that\nregister an inlined function (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1110\">#1110</a>)</li>\n<li>Provider: SQL-only migrations with unpadded versions\n(<code>1_</code>, <code>2_</code>, <code>10_</code>) were sorted by\nfilename instead of version. This affected <code>ListSources</code> and\n<code>GetVersions</code>, as well as <code>Up</code>\nwhen versioning was disabled (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1124\">#1124</a>)</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/pressly/goose/blob/main/CHANGELOG.md\">github.com/pressly/goose/v3's\nchangelog</a>.</em></p>\n<blockquote>\n<h2>[v3.30.1] - 2026-11-12</h2>\n<h3>Changed</h3>\n<ul>\n<li><code>+goose ENVSUB ON</code>: support more shell expansions, such\nas <code>${VAR:?message}</code>, <code>${VAR:+word}</code>,\nand <code>${#VAR}</code>. A <code>$</code> that does not start a\nvariable name, such as <code>$1</code>, is now kept as-is\ninstead of an error (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1174\">#1174</a>)</li>\n</ul>\n<h3>Fixed</h3>\n<ul>\n<li>Build failure when <code>github.com/mfridman/interpolate</code> is\nupgraded to v0.2.0, for example with\n<code>go get -u</code> (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1176\">#1176</a>)</li>\n<li>Lock: fix an edge case where a long-lived locker could stop waiting\nfor a held lock and fail\nimmediately. Programs that migrate once at startup were not affected (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1173\">#1173</a>)</li>\n</ul>\n<h2>[v3.30.0] - 2026-11-10</h2>\n<h3>Added</h3>\n<ul>\n<li>Container image at <code>ghcr.io/pressly/goose</code> for\n<code>linux/amd64</code> and <code>linux/arm64</code>, published on\neach release. The image is based on distroless static, runs as a nonroot\nuser, and supports\n<code>.sql</code> migrations only (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1093\">#1093</a>)</li>\n</ul>\n<h3>Changed</h3>\n<ul>\n<li>Various dependency upgrades</li>\n<li>SQL parser: reduce memory use when parsing migration files, and make\nparsing much faster when\nthe race detector is on (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1155\">#1155</a>,\n<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1156\">#1156</a>)</li>\n</ul>\n<h3>Fixed</h3>\n<ul>\n<li>CLI: <code>goose validate</code> failed on Go migrations that\nregister an inlined function (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1110\">#1110</a>)</li>\n<li>Provider: SQL-only migrations with unpadded versions\n(<code>1_</code>, <code>2_</code>, <code>10_</code>) were sorted by\nfilename instead of version. This affected <code>ListSources</code> and\n<code>GetVersions</code>, as well as <code>Up</code>\nwhen versioning was disabled (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1124\">#1124</a>)</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/ded3331f49ba36e8986082b8b74918571d420d0e\"><code>ded3331</code></a>\nrelease: v3.30.1</li>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/1af0d35982153ba7832055b48d3ca7f5fd0df03e\"><code>1af0d35</code></a>\nfix: long-lived locker could stop waiting for a held lock (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1173\">#1173</a>)</li>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/580061ae1d73d983e38fcc7e58b52d5dc2fd4c14\"><code>580061a</code></a>\nfeat: support more envsub expansions (interpolate v0.2.0) (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1174\">#1174</a>)</li>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/8ac452db43527fdcd0890b56986c9efdb3b7fd81\"><code>8ac452d</code></a>\nrelease: v3.30.0</li>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/bf7cd61c413e253e006fed876d19d2002280ecce\"><code>bf7cd61</code></a>\nfeat: publish container image to ghcr.io (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1171\">#1171</a>)</li>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/8d0e5d226222801a5e9317ee354289df2aecbd73\"><code>8d0e5d2</code></a>\nsqlparser: remove per-call scanner buffers and add benchmarks (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1156\">#1156</a>)</li>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/a5d4f31cc7e0a480a9a6f207a84592430499d342\"><code>a5d4f31</code></a>\nchore: update Go dependencies and GitHub Actions (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1170\">#1170</a>)</li>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/2d285d2249855c959765409c68b17a6634f0acb4\"><code>2d285d2</code></a>\ndocs: add missing -env flag to README goose help output (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1121\">#1121</a>)</li>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/0aa9878439d23c25b62634b9cb9306a007d326d4\"><code>0aa9878</code></a>\nsqlparser: start ParseSQLMigration with a small scanner buffer (<a\nhref=\"https://redirect.github.com/pressly/goose/issues/1155\">#1155</a>)</li>\n<li><a\nhref=\"https://github.com/pressly/goose/commit/9a201bbb80d83c440855bd31272c0c0b99b41a79\"><code>9a201bb</code></a>\ndocs: remove Go Report Card badge</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/pressly/goose/compare/v3.29.0...v3.30.1\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/prometheus/common` from 0.72.1 to 0.74.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/prometheus/common/releases\">github.com/prometheus/common's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v0.74.0</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>expfmt: add ABNF parser for OpenMetrics 2.0 by <a\nhref=\"https://github.com/bwplotka\"><code>@​bwplotka</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1016\">prometheus/common#1016</a></li>\n<li>build(deps): bump ossf/scorecard-action from 2.4.4 to 2.5.0 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1032\">prometheus/common#1032</a></li>\n<li>build(deps): bump actions/upload-artifact from 7.0.1 to 7.0.2 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1033\">prometheus/common#1033</a></li>\n<li>build(deps): bump golang.org/x/net from 0.61.0 to 0.62.0 in the\ngolang-org-x group across 1 directory by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1030\">prometheus/common#1030</a></li>\n<li>expfmt: bump go-abnf to v0.5.5 by <a\nhref=\"https://github.com/PerryLink\"><code>@​PerryLink</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1029\">prometheus/common#1029</a></li>\n<li>config: move Secret into its own package by <a\nhref=\"https://github.com/mrueg\"><code>@​mrueg</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1024\">prometheus/common#1024</a></li>\n<li>build(deps): bump the codeql group with 4 updates by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1031\">prometheus/common#1031</a></li>\n<li>version: fix Slog godoc example to compile by <a\nhref=\"https://github.com/sueun-dev\"><code>@​sueun-dev</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/935\">prometheus/common#935</a></li>\n<li>build(deps): bump go.yaml.in/yaml/v2 from 2.4.4 to 2.4.5 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1043\">prometheus/common#1043</a></li>\n<li>build(deps): bump golang.org/x/oauth2 from 0.37.0 to 0.38.0 in the\ngolang-org-x group across 1 directory by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1042\">prometheus/common#1042</a></li>\n<li>expfmt: support Prometheus text format 1.0.0 by <a\nhref=\"https://github.com/ArthurSens\"><code>@​ArthurSens</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1035\">prometheus/common#1035</a></li>\n<li>Release v0.74.0 by <a\nhref=\"https://github.com/SuperQ\"><code>@​SuperQ</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1044\">prometheus/common#1044</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/PerryLink\"><code>@​PerryLink</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1029\">prometheus/common#1029</a></li>\n<li><a href=\"https://github.com/sueun-dev\"><code>@​sueun-dev</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/935\">prometheus/common#935</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/prometheus/common/compare/v0.73.1...v0.74.0\">https://github.com/prometheus/common/compare/v0.73.1...v0.74.0</a></p>\n<h2>v0.73.1</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>build(deps): bump github.com/pandatix/go-abnf from 0.5.1 to 0.5.3 by\n<a href=\"https://github.com/bwplotka\"><code>@​bwplotka</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1027\">prometheus/common#1027</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/prometheus/common/compare/v0.73.0...v0.73.1\">https://github.com/prometheus/common/compare/v0.73.0...v0.73.1</a></p>\n<h2>v0.73.0</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>expfmt: default to allow-utf-8 escaping for OpenMetrics 2.0 by <a\nhref=\"https://github.com/KR-Ravindra\"><code>@​KR-Ravindra</code></a> in\n<a\nhref=\"https://redirect.github.com/prometheus/common/pull/1008\">prometheus/common#1008</a></li>\n<li>expfmt: add FmtOpenMetrics_2_0_0_rc format constant by <a\nhref=\"https://github.com/bwplotka\"><code>@​bwplotka</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1020\">prometheus/common#1020</a></li>\n<li>expfmt: add ABNF-based OpenMetrics 1.0 parser by <a\nhref=\"https://github.com/bwplotka\"><code>@​bwplotka</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1015\">prometheus/common#1015</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a\nhref=\"https://github.com/KR-Ravindra\"><code>@​KR-Ravindra</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1008\">prometheus/common#1008</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/prometheus/common/compare/v0.72.1...v0.73.0\">https://github.com/prometheus/common/compare/v0.72.1...v0.73.0</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/prometheus/common/blob/main/CHANGELOG.md\">github.com/prometheus/common's\nchangelog</a>.</em></p>\n<blockquote>\n<h2>v0.74.0 / 2026-11-11</h2>\n<h3>What's Changed</h3>\n<ul>\n<li>expfmt: add ABNF parser for OpenMetrics 2.0 by <a\nhref=\"https://github.com/bwplotka\"><code>@​bwplotka</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1016\">prometheus/common#1016</a></li>\n<li>build(deps): bump ossf/scorecard-action from 2.4.4 to 2.5.0 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1032\">prometheus/common#1032</a></li>\n<li>build(deps): bump actions/upload-artifact from 7.0.1 to 7.0.2 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1033\">prometheus/common#1033</a></li>\n<li>build(deps): bump golang.org/x/net from 0.61.0 to 0.62.0 in the\ngolang-org-x group across 1 directory by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1030\">prometheus/common#1030</a></li>\n<li>expfmt: bump go-abnf to v0.5.5 by <a\nhref=\"https://github.com/PerryLink\"><code>@​PerryLink</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1029\">prometheus/common#1029</a></li>\n<li>config: move Secret into its own package by <a\nhref=\"https://github.com/mrueg\"><code>@​mrueg</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1024\">prometheus/common#1024</a></li>\n<li>build(deps): bump the codeql group with 4 updates by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1031\">prometheus/common#1031</a></li>\n<li>version: fix Slog godoc example to compile by <a\nhref=\"https://github.com/sueun-dev\"><code>@​sueun-dev</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/935\">prometheus/common#935</a></li>\n<li>build(deps): bump go.yaml.in/yaml/v2 from 2.4.4 to 2.4.5 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1043\">prometheus/common#1043</a></li>\n<li>build(deps): bump golang.org/x/oauth2 from 0.37.0 to 0.38.0 in the\ngolang-org-x group across 1 directory by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1042\">prometheus/common#1042</a></li>\n<li>expfmt: support Prometheus text format 1.0.0 by <a\nhref=\"https://github.com/ArthurSens\"><code>@​ArthurSens</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1035\">prometheus/common#1035</a></li>\n</ul>\n<h3>New Contributors</h3>\n<ul>\n<li><a href=\"https://github.com/PerryLink\"><code>@​PerryLink</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1029\">prometheus/common#1029</a></li>\n<li><a href=\"https://github.com/sueun-dev\"><code>@​sueun-dev</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/935\">prometheus/common#935</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/prometheus/common/compare/v0.73.1...v0.74.0\">https://github.com/prometheus/common/compare/v0.73.1...v0.74.0</a></p>\n<h2>v0.73.1 / 2026-10-30</h2>\n<h3>What's Changed</h3>\n<ul>\n<li>build(deps): bump github.com/pandatix/go-abnf from 0.5.1 to 0.5.3 by\n<a href=\"https://github.com/bwplotka\"><code>@​bwplotka</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1027\">prometheus/common#1027</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/prometheus/common/compare/v0.73.0...v0.73.1\">https://github.com/prometheus/common/compare/v0.73.0...v0.73.1</a></p>\n<h2>v0.73.0 / 2026-10-28</h2>\n<h3>What's Changed</h3>\n<ul>\n<li>expfmt: default to allow-utf-8 escaping for OpenMetrics 2.0 by <a\nhref=\"https://github.com/KR-Ravindra\"><code>@​KR-Ravindra</code></a> in\n<a\nhref=\"https://redirect.github.com/prometheus/common/pull/1008\">prometheus/common#1008</a></li>\n<li>expfmt: add FmtOpenMetrics_2_0_0_rc format constant by <a\nhref=\"https://github.com/bwplotka\"><code>@​bwplotka</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1020\">prometheus/common#1020</a></li>\n<li>expfmt: add ABNF-based OpenMetrics 1.0 parser by <a\nhref=\"https://github.com/bwplotka\"><code>@​bwplotka</code></a> in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1015\">prometheus/common#1015</a></li>\n</ul>\n<h3>New Contributors</h3>\n<ul>\n<li><a\nhref=\"https://github.com/KR-Ravindra\"><code>@​KR-Ravindra</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/prometheus/common/pull/1008\">prometheus/common#1008</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/prometheus/common/compare/v0.72.1...v0.73.0\">https://github.com/prometheus/common/compare/v0.72.1...v0.73.0</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/261004127306ec7d79df97ee04ab87e894502d4b\"><code>2610041</code></a>\nRelease v0.74.0 (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1044\">#1044</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/2d680045c1dd17f38438658e69f4385c3b41d7f5\"><code>2d68004</code></a>\nexpfmt: support Prometheus text format 1.0.0 (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1035\">#1035</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/6bd4fee50724ea79185b65b658e755b815400919\"><code>6bd4fee</code></a>\nbuild(deps): bump golang.org/x/oauth2 (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1042\">#1042</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/f77e945614122c003d9706072e42e057c7176cec\"><code>f77e945</code></a>\nbuild(deps): bump go.yaml.in/yaml/v2 from 2.4.4 to 2.4.5 (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1043\">#1043</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/f072bc2e5c1d524da47e4f7aec401017ab24dce1\"><code>f072bc2</code></a>\nversion: fix Slog godoc example to compile (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/935\">#935</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/010a894eb3d777b462756e6ff4f7b9172aecdaa1\"><code>010a894</code></a>\nbuild(deps): bump the codeql group with 4 updates (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1031\">#1031</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/e8b548eaa013fa3620d31695a8601b5cbdcaefa7\"><code>e8b548e</code></a>\nconfig: move Secret into its own package (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1024\">#1024</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/998a85af10cdd62195ce3961a041d4465f42a8b4\"><code>998a85a</code></a>\nexpfmt: bump go-abnf to v0.5.5 (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1029\">#1029</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/0c633d076e543028ab75fb520fd32cb376d7962b\"><code>0c633d0</code></a>\nbuild(deps): bump golang.org/x/net (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1030\">#1030</a>)</li>\n<li><a\nhref=\"https://github.com/prometheus/common/commit/0516cfcd24622952e7343aecccdf7476191f287f\"><code>0516cfc</code></a>\nbuild(deps): bump actions/upload-artifact from 7.0.1 to 7.0.2 (<a\nhref=\"https://redirect.github.com/prometheus/common/issues/1033\">#1033</a>)</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/prometheus/common/compare/v0.72.1...v0.74.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `github.com/testcontainers/testcontainers-go` from 0.44.0 to\n0.45.0\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/testcontainers/testcontainers-go/releases\">github.com/testcontainers/testcontainers-go's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v0.45.0</h2>\n<h1>What's Changed</h1>\n<h2>⚠️ Breaking Changes</h2>\n<ul>\n<li>chore(modules)!: extract CockroachDB and Dex client adapters (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4087\">#4087</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n</ul>\n<blockquote>\n<p>Client SDK dependencies have moved into separate examples modules.\nFor CockroachDB, <code>ConnectionConfig</code> is now available through\n<code>cockroachdbexamples.NewContainer(c)</code> in\n<code>modules/cockroachdb/examples</code>. The parent’s\n<code>ConnectionString</code> and <code>MustConnectionString</code> now\nreturn PostgreSQL URLs instead of registered pgx handles, and importing\nthe parent no longer registers the pgx SQL driver. Use the examples\nadapter to retain the previous SDK behavior, or configure the driver\nyourself.</p>\n<p>For Dex, <code>AddClient</code>, <code>RemoveClient</code>,\n<code>AddUser</code>, and <code>RemoveUser</code> have moved from\n<code>*dex.Container</code> to\n<code>dexexamples.NewAdminClient(c)</code> in\n<code>modules/dex/examples</code>. Static configuration through\n<code>WithClient</code> and <code>WithUser</code> is unchanged.</p>\n</blockquote>\n<ul>\n<li>chore(modules)!: isolate client examples across ten modules (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4081\">#4081</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n</ul>\n<blockquote>\n<p>For Cosmos DB, <code>ContainerPolicy</code> and\n<code>NewContainerPolicy</code> have moved from\n<code>modules/azure/cosmosdb</code> to\n<code>modules/azure/examples/cosmosdb</code>. Update the adapter import;\nits constructor still accepts the parent container. <code>Run</code>,\n<code>Container</code>, and <code>ConnectionString</code> remain\nunchanged in the parent module.</p>\n</blockquote>\n<h2>🔒 Security</h2>\n<ul>\n<li>security(deps): upgrade otel log sdk to v0.21.0 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4047\">#4047</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n</ul>\n<h2>🚀 Features</h2>\n<ul>\n<li>feat(sbx): configure sandbox startup with Go options (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4057\">#4057</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>feat: add Docker Sandboxes runtime provider (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3987\">#3987</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>feat(garage): add single-node S3-compatible storage module (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3950\">#3950</a>)\n<a href=\"https://github.com/kanjih\"><code>@​kanjih</code></a></li>\n<li>feat: register runtime providers and introduce the Podman module (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3946\">#3946</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>feat: add the ability to configure the provider type in the\nproperties file or as an env var (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3494\">#3494</a>)\n<a href=\"https://github.com/mkeeler\"><code>@​mkeeler</code></a></li>\n<li>feat(kafka): add TLS support (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3917\">#3917</a>)\n<a\nhref=\"https://github.com/RuslanKarabalin\"><code>@​RuslanKarabalin</code></a></li>\n</ul>\n<h2>🐛 Bug Fixes</h2>\n<ul>\n<li>fix(wait): fail fast when logs are unavailable on a stopped\ncontainer (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3898\">#3898</a>)\n<a href=\"https://github.com/skartikey\"><code>@​skartikey</code></a></li>\n<li>fix(wait): retry HostPortStrategy external check on connect timeout\n(<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4055\">#4055</a>)\n<a href=\"https://github.com/pujitha24\"><code>@​pujitha24</code></a></li>\n<li>fix: handle OCI registry manifests and isolate k3s platform test (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4059\">#4059</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>fix: setup ExposeHostPorts forward on container start hook (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3200\">#3200</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>fix(wait): support non-pointer strategies in ForAny/ForAll nil\nchecks (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4052\">#4052</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>fix(rabbitmq): pass the node config from memory instead of a shared\ntemp file (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3881\">#3881</a>)\n<a href=\"https://github.com/manduinca\"><code>@​manduinca</code></a></li>\n<li>fix: dial the sshd container on the Docker daemon host (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3877\">#3877</a>)\n<a\nhref=\"https://github.com/timofurrer\"><code>@​timofurrer</code></a></li>\n<li>fix: validate the configured session ID (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3849\">#3849</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n</ul>\n<h2>📖 Documentation</h2>\n<ul>\n<li>docs: show cumulative clones and unique cloners (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4082\">#4082</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n<li>chore(metrics): update github clones for 2026-10 (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4079\">#4079</a>)\n@<a\nhref=\"https://github.com/apps/github-actions\">github-actions[bot]</a></li>\n<li>chore: update usage metrics (2026-11) (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4077\">#4077</a>)\n@<a\nhref=\"https://github.com/apps/github-actions\">github-actions[bot]</a></li>\n<li>docs: fix dead links in module docs and comments (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4071\">#4071</a>)\n<a\nhref=\"https://github.com/sarankumar1325\"><code>@​sarankumar1325</code></a></li>\n<li>chore(docs): move Python tooling out of the Go module (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/3942\">#3942</a>)\n<a href=\"https://github.com/mikey923\"><code>@​mikey923</code></a></li>\n<li>docs: update Podman guide for the provider module (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4038\">#4038</a>)\n<a\nhref=\"https://github.com/mdelapenya\"><code>@​mdelapenya</code></a></li>\n</ul>\n<h2>🧹 Housekeeping</h2>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/b4fe8211cae9c938844cd9a0e6277800831d4d1c\"><code>b4fe821</code></a>\nchore: use new version (v0.45.0) in modules and examples</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/d40be728d720d75f7ca60e5d42a7ea7fc490fe56\"><code>d40be72</code></a>\nchore(deps): bump github.com/go-jose/go-jose/v4 in /modules/dex/examples\n(<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4088\">#4088</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/0d12cc685cabeab618ee49a58574c08795cf5ab4\"><code>0d12cc6</code></a>\nchore(modules): finish test client isolation and document examples\nmodules (#...</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/9cc89fd987930543fee79d53dced7aa9f4fb0d4b\"><code>9cc89fd</code></a>\nchore(modules): isolate eight remaining compatible client SDKs (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4086\">#4086</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/9ec54077309e7d687abd5a7cee82e492670d9e31\"><code>9ec5407</code></a>\nchore(modules)!: extract CockroachDB and Dex client adapters (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4087\">#4087</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/5c9480f6b72675f53fc433bfe45678e4388c6a9d\"><code>5c9480f</code></a>\nchore(modules): isolate client examples across eleven more modules (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4084\">#4084</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/6aaef66bb0e0dc74bd21d6f3a12d5e15302dc6c1\"><code>6aaef66</code></a>\nfix(ci): initialize sbx network policy before tests (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4085\">#4085</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/55f58feb2510720e08aab90be005128aa86ddcdf\"><code>55f58fe</code></a>\nchore(modules): isolate client examples across eleven modules (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4083\">#4083</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/ea5a2e836e5953e067240a4f915069cf90c834de\"><code>ea5a2e8</code></a>\nchore(deps): bump go.mongodb.org/mongo-driver (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4075\">#4075</a>)</li>\n<li><a\nhref=\"https://github.com/testcontainers/testcontainers-go/commit/60b08c431bd398d2eb0b034172035c08b4b53d4a\"><code>60b08c4</code></a>\ndocs: show cumulative clones and unique cloners (<a\nhref=\"https://redirect.github.com/testcontainers/testcontainers-go/issues/4082\">#4082</a>)</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/testcontainers/testcontainers-go/compare/v0.44.0...v0.45.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `go.yaml.in/yaml/v3` from 3.0.5 to 3.0.6\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/yaml/go-yaml/commit/5a62aba63b773192cd10ab954e21e143d7b00c7a\"><code>5a62aba</code></a>\nresolve: hint-class literal merge-key string &quot;&lt;&lt;&quot; so\nit's quoted on encode</li>\n<li>See full diff in <a\nhref=\"https://github.com/yaml/go-yaml/compare/v3.0.5...v3.0.6\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6398ab37136f27bbc414d7df764c5d34d5013c7d"
                },
                {
-                  "sha": "6da2c9e7aab6ae78f05123d8f416f4f9496acee2",
+                  "sha": "b8eebb8613043f26a29928fa4fbf9182e8403516",
                   "author": "Kat",
-                  "timestamp": 1795615844,
-                  "message": "tests(insights): Create broken symlinks at runtime (#415)\n\nPointing the empty fixture symlinks at itself is causing a conflict with\nlocked GHA. CI fails with the following error:\n\n```\nError: Too many levels of symbolic links : '/home/runner/work/_actions/_temp_e2b1904b-5c19-4a61-8848-4da9a1e3446d/_staging/ubuntu-insights-d3ec32dcb573578ca05152690a8d36f01d2b1830/insights/internal/collector/sysinfo/hardware/testdata/linuxfs/empty/sys/class/drm/card0-DP-2/d0/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver/driver'\n```\n\nInstead, here we create these symlinks as part of the test setup instead\nof keeping it in VCS as a fixture.",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/6da2c9e7aab6ae78f05123d8f416f4f9496acee2"
+                  "timestamp": 1795650561,
+                  "message": "deps(go-common): bump go.yaml.in/yaml/v3 from 3.0.5 to 3.0.6 in /common in the minor-updates group across 1 directory (#400)\n\nBumps the minor-updates group with 1 update in the /common directory:\n[go.yaml.in/yaml/v3](https://github.com/yaml/go-yaml).\n\nUpdates `go.yaml.in/yaml/v3` from 3.0.5 to 3.0.6\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/yaml/go-yaml/commit/5a62aba63b773192cd10ab954e21e143d7b00c7a\"><code>5a62aba</code></a>\nresolve: hint-class literal merge-key string &quot;&lt;&lt;&quot; so\nit's quoted on encode</li>\n<li>See full diff in <a\nhref=\"https://github.com/yaml/go-yaml/compare/v3.0.5...v3.0.6\">compare\nview</a></li>\n</ul>\n</details>\n<br />",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/b8eebb8613043f26a29928fa4fbf9182e8403516"
                },
                {
-                  "sha": "32948e1df438ff46977b5c8af6ca6eac16a35d49",
-                  "author": "Ahmed Essam",
-                  "timestamp": 1795527257,
-                  "message": "feat(insights): add insights_free_string to C API\n\nAdd insights_free_string(char* str) to libinsights so callers release C strings\nreturned by the library using the library's own allocator rather than calling\nfree directly, which might be unsafe when caller and library use different C\nruntimes, which might happen on Windows specifically.\n\nSee https://learn.microsoft.com/en-us/cpp/c-runtime-library/potential-errors-passing-crt-objects-across-dll-boundaries",
-                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/32948e1df438ff46977b5c8af6ca6eac16a35d49"
+                  "sha": "7e2265b2001ebe882924ceb22c5ae84d4122d890",
+                  "author": "Kat",
+                  "timestamp": 1795650524,
+                  "message": "deps(go-insights): bump the minor-updates group across 1 directory with 4 updates (#405)\n\nBumps the minor-updates group with 4 updates in the /insights directory:\n[github.com/ubuntu/ubuntu-insights/common](https://github.com/ubuntu/ubuntu-insights),\n[go.yaml.in/yaml/v3](https://github.com/yaml/go-yaml),\n[golang.org/x/text](https://github.com/golang/text) and gopkg.in/ini.v1.\n\nUpdates `github.com/ubuntu/ubuntu-insights/common` from 1.0.0 to 1.0.1\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/662b98fd9731dfba4054520af0eedcaf9de959de\"><code>662b98f</code></a>\ndeps: Bump go to 1.26.9 and update dependencies</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/8d8141ca39de387d060c087a12b51baa5cd4ecfd\"><code>8d8141c</code></a>\ndeps(go-server): bump github.com/prometheus/common from 0.71.0 to 0.72.0\nin /...</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/004c3495b7059b2724cbe1ed04dccc15dc09eac1\"><code>004c349</code></a>\nmaint: Update changelog for 1.0.1 upload (<a\nhref=\"https://redirect.github.com/ubuntu/ubuntu-insights/issues/390\">#390</a>)</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/231a7580879c95ac6cd7021daf14c8cb27f9f6f8\"><code>231a758</code></a>\ndeps(go-server): bump github.com/prometheus/common</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/034630216c6201ba9173423f30d03e57da0fd85a\"><code>0346302</code></a>\nmaint(insights): Link changelog with LP: <a\nhref=\"https://redirect.github.com/ubuntu/ubuntu-insights/issues/2164597\">#2164597</a></li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/aedd80e8be9b53ed608ee1effb8239e3682f56c1\"><code>aedd80e</code></a>\nmaint(insights): Update changelog for 1.0.1 upload</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/732c78d85787cb948d38d22f937b2210327ff249\"><code>732c78d</code></a>\nfix: Systemd based collection fails to get WSL version (<a\nhref=\"https://redirect.github.com/ubuntu/ubuntu-insights/issues/389\">#389</a>)</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/daae4ddc0d0b08181b557746280baa7bec0423a5\"><code>daae4dd</code></a>\nfix: Collect WSL version using wslinfo --version</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/2b5fdb374e81a69e1cb8a1e9c864f196e7e94813\"><code>2b5fdb3</code></a>\nfix: Systemd based collection fails to get WSL version</li>\n<li><a\nhref=\"https://github.com/ubuntu/ubuntu-insights/commit/6643c44c83335bf90d3b04f18b0d77fccdb451ba\"><code>6643c44</code></a>\ndeps(go): Bump go to 1.26.8 and update dependencies (<a\nhref=\"https://redirect.github.com/ubuntu/ubuntu-insights/issues/388\">#388</a>)</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/ubuntu/ubuntu-insights/compare/common/v1.0.0...common/v1.0.1\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `go.yaml.in/yaml/v3` from 3.0.5 to 3.0.6\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/yaml/go-yaml/commit/5a62aba63b773192cd10ab954e21e143d7b00c7a\"><code>5a62aba</code></a>\nresolve: hint-class literal merge-key string &quot;&lt;&lt;&quot; so\nit's quoted on encode</li>\n<li>See full diff in <a\nhref=\"https://github.com/yaml/go-yaml/compare/v3.0.5...v3.0.6\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `golang.org/x/text` from 0.43.0 to 0.44.0\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/golang/text/commit/6070ac32abcdd1670599eeb3ee4d513c8184a513\"><code>6070ac3</code></a>\ngo.mod: update golang.org/x dependencies</li>\n<li><a\nhref=\"https://github.com/golang/text/commit/972f2683e8864ae75860c0da80ef7c4c5a7cdee8\"><code>972f268</code></a>\nlanguage: count '_' alongside '-' in ParseAcceptLanguage guard</li>\n<li><a\nhref=\"https://github.com/golang/text/commit/367ce9e9df3a5c6a35d013826e306c82da64bd6a\"><code>367ce9e</code></a>\ninternal/export/idna: avoid excessive work in Punycode encoding</li>\n<li>See full diff in <a\nhref=\"https://github.com/golang/text/compare/v0.43.0...v0.44.0\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `gopkg.in/ini.v1` from 1.67.3 to 1.68.0",
+                  "url": "https://github.com/ubuntu/ubuntu-insights/commit/7e2265b2001ebe882924ceb22c5ae84d4122d890"
                }
             ],
             "ciActions": [
@@ -6047,25 +6047,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "032538209ad624018341d9e5ba10bc0f869cca26",
+                  "sha": "9cedd5e3f46371b26daff0aaa4cb6d56fe822a51",
                   "author": "Robert Ancell",
-                  "timestamp": 1795060368,
-                  "message": "Releasing 0.8.1",
-                  "url": "https://github.com/canonical/dbus.dart/commit/032538209ad624018341d9e5ba10bc0f869cca26"
+                  "timestamp": 1795661658,
+                  "message": "ci: automate releases and publishing to pub.dev (#413)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.8.1` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\nResolves UDENG-12242",
+                  "url": "https://github.com/canonical/dbus.dart/commit/9cedd5e3f46371b26daff0aaa4cb6d56fe822a51"
                },
                {
-                  "sha": "e02ab6cc72e21596f79d31820b4c6e722e12ac0d",
-                  "author": "Robert Ancell",
-                  "timestamp": 1795060132,
-                  "message": "Fail calls that wait for a failed connection (#411)\n\nFixes #410.\n\n`DBusClient._connect` sets `_connectCompleter` before it opens the\nsocket, so that other calls wait for the same connection. When\n`_openSocket` or the `Hello` call throws, only the first call gets the\nerror. The completer is never completed, so the calls that wait for it,\nand all later calls on the client, do not complete.\n\nThis change completes the completer with the error. The calls that wait\nfor the connection, and the calls after it, get the same error. A failed\nclient stays failed, as before; it does not try to connect again.\n\nMost of the diff is indentation: the existing code is now inside a `try`\nblock. The new code is the `catch` block.\n\n### Tests\n\nTwo new tests in `test/dbus_test.dart` use a missing socket:\n\n- `connect error`: a second `ping` after a failed one throws\n`SocketException`.\n- `connect error - concurrent calls`: two `ping` calls that start at the\nsame time both throw `SocketException`.\n\nWithout the fix, both tests time out. With the fix, `dart test` passes\non Linux (221 tests). `dart analyze` and `dart format` are clean.\n\nThis change is independent of #409, which reports connection failures on\nsignal streams.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/e02ab6cc72e21596f79d31820b4c6e722e12ac0d"
+                  "sha": "52cd7147fffe1267ba7aab8a916615a1ef9eeee1",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641801,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/dbus.dart/commit/52cd7147fffe1267ba7aab8a916615a1ef9eeee1"
                },
                {
-                  "sha": "30f5ea27d3c1bd196d53e3eecbb001aac62bf6d3",
-                  "author": "Robert Ancell",
-                  "timestamp": 1795059533,
-                  "message": "Report signal subscription failures on the signal stream (#409)\n\nFixes #408.\n\n`DBusSignalStream._onListen` starts the bus connect and the `AddMatch`\ncall, but it drops their futures. When the bus socket is not available,\nthe error is an unhandled zone error. The `onError` handler of the\nsubscription does not receive it, and the caller cannot catch it.\n\nThis change sends these errors to the stream with `addError`.\n`Future.wait` uses `eagerError: true`: when `_findUniqueName` and\n`_addMatch` both wait on one failed connect, only the first call gets\nthe error, and the other call does not complete.\n\n### Tests\n\nThree new tests in `test/dbus_test.dart` listen to a signal stream on a\nmissing socket and expect a `SocketException` in `onError`. They cover\nthe message bus path, the message bus path with a sender, and the peer\n(`messageBus: false`) path.\n\n- Without the fix, the new tests fail.\n- With the fix, `dart test` passes on Linux (222 tests). `dart analyze`\nand `dart format` are clean.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/30f5ea27d3c1bd196d53e3eecbb001aac62bf6d3"
+                  "sha": "3068066842cee0bf59c34371c123cee281b6262b",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554469,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/dbus.dart/commit/3068066842cee0bf59c34371c123cee281b6262b"
                }
             ],
             "ciActions": [],
@@ -6179,25 +6179,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "faf794318d8bdd47085e7f782c6106ac0587a851",
+                  "sha": "450179982fb70eb13fd0d0fd051c9492478b7d1d",
                   "author": "Robert Ancell",
-                  "timestamp": 1756093548,
-                  "message": "Merge pull request #45 from robert-ancell/ci-ubuntu-version\n\nUpdate CI Ubuntu version, remove obsolete CLA checker",
-                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/faf794318d8bdd47085e7f782c6106ac0587a851"
+                  "timestamp": 1795661782,
+                  "message": "ci: automate releases and publishing to pub.dev (#47)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.6.3` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\nResolves UDENG-12251",
+                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/450179982fb70eb13fd0d0fd051c9492478b7d1d"
                },
                {
-                  "sha": "f2f07adf385d8de78d2380ec3d620af9ce413678",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756092641,
-                  "message": "Remove old CLA checker",
-                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/f2f07adf385d8de78d2380ec3d620af9ce413678"
+                  "sha": "c029235cc8d6ef5f0270e622bcb8d35a7238e3ae",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641802,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/c029235cc8d6ef5f0270e622bcb8d35a7238e3ae"
                },
                {
-                  "sha": "944256669f062fa1d4d99ae7a69b1ea0d2e00131",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756092631,
-                  "message": "Update CI Ubuntu version",
-                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/944256669f062fa1d4d99ae7a69b1ea0d2e00131"
+                  "sha": "e4349b7e13cff789cda60b7797032cd505b08e96",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554481,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/e4349b7e13cff789cda60b7797032cd505b08e96"
                }
             ],
             "ciActions": [],
@@ -6316,25 +6316,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1c2b40b744e4666c2cd3a8e20b352504400a434c",
+                  "sha": "7a90b19cfc541a568235f7dc9e4d8442b3ba2296",
                   "author": "Robert Ancell",
-                  "timestamp": 1756091635,
-                  "message": "Merge pull request #32 from robert-ancell/removed-lint\n\nRemove obsolete lint option",
-                  "url": "https://github.com/canonical/fwupd.dart/commit/1c2b40b744e4666c2cd3a8e20b352504400a434c"
+                  "timestamp": 1795661801,
+                  "message": "ci: automate releases and publishing to pub.dev (#33)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.2.2` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\n\nResolves UDENG-12253",
+                  "url": "https://github.com/canonical/fwupd.dart/commit/7a90b19cfc541a568235f7dc9e4d8442b3ba2296"
                },
                {
-                  "sha": "4ad071eb17d64ff9734522076d3574c96c4b3fea",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756091535,
-                  "message": "Update SDK constraints as detected by analyze",
-                  "url": "https://github.com/canonical/fwupd.dart/commit/4ad071eb17d64ff9734522076d3574c96c4b3fea"
+                  "sha": "ba5db48efb3ea3bab8b611eafce8de533f8de643",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641802,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/fwupd.dart/commit/ba5db48efb3ea3bab8b611eafce8de533f8de643"
                },
                {
-                  "sha": "1ac2a3716119343f8d69b48c49309d6897930ac1",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756091394,
-                  "message": "Remove obsolete lint option",
-                  "url": "https://github.com/canonical/fwupd.dart/commit/1ac2a3716119343f8d69b48c49309d6897930ac1"
+                  "sha": "5b9192d3b4be784a60dccacd1ef1e9db78ece32a",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554486,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/fwupd.dart/commit/5b9192d3b4be784a60dccacd1ef1e9db78ece32a"
                }
             ],
             "ciActions": [],
@@ -6751,7 +6751,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 41,
+            "newCommits": 44,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -6795,25 +6795,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "38859ab40db6fdd9c43477867b71ca1ea999e464",
+                  "sha": "5dab1913f477efa431994346373cf8c82f152ca2",
                   "author": "Robert Ancell",
-                  "timestamp": 1790140878,
-                  "message": "Require dbus 0.8 (#74)\n\nBumps the `dbus` dependency from `^0.7.0` to `^0.8.0`, and raises the\nSDK lower bound to `>=3.0.0` (dbus 0.8.0 requires Dart 3).\n\nSDK v2 is pretty old.",
-                  "url": "https://github.com/canonical/nm.dart/commit/38859ab40db6fdd9c43477867b71ca1ea999e464"
+                  "timestamp": 1795661819,
+                  "message": "ci: automate releases and publishing to pub.dev (#77)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.6.0` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\n\nResolves UDENG-12254",
+                  "url": "https://github.com/canonical/nm.dart/commit/5dab1913f477efa431994346373cf8c82f152ca2"
                },
                {
-                  "sha": "19aaf76eb3f5cbb01e02e56605dfb5593c7141f3",
-                  "author": "Matt Kosarek",
-                  "timestamp": 1790023891,
-                  "message": "Require dbus 0.8\n\ndbus 0.8.0 requires Dart 3, so the SDK lower bound is raised to 3.0.0 as\nwell. No source changes are needed: the runtime API used by nm is\nunchanged in 0.8.0, which only adds anonymous client authentication and\nalters the code generator's output.",
-                  "url": "https://github.com/canonical/nm.dart/commit/19aaf76eb3f5cbb01e02e56605dfb5593c7141f3"
+                  "sha": "900245de356a7a2abf0b8c3b3d168b6955d249f5",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641804,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/nm.dart/commit/900245de356a7a2abf0b8c3b3d168b6955d249f5"
                },
                {
-                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756088060,
-                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
+                  "sha": "e1b8dd2a0ba790c39db8c8ea23afe96f0efb53ab",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554489,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/nm.dart/commit/e1b8dd2a0ba790c39db8c8ea23afe96f0efb53ab"
                }
             ],
             "ciActions": [],
@@ -7857,25 +7857,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b61a689b3288b9961e968cfb89e08d8a92178707",
+                  "sha": "0a265aba7563c39178725dbd548d81fc1c765b7d",
                   "author": "Robert Ancell",
-                  "timestamp": 1791754773,
-                  "message": "Releasing 0.5.0",
-                  "url": "https://github.com/canonical/udisks.dart/commit/b61a689b3288b9961e968cfb89e08d8a92178707"
+                  "timestamp": 1795661839,
+                  "message": "ci: automate releases and publishing to pub.dev (#26)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.5.0` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\n\nResolves UDENG-12256",
+                  "url": "https://github.com/canonical/udisks.dart/commit/0a265aba7563c39178725dbd548d81fc1c765b7d"
                },
                {
-                  "sha": "99cae134e205f040c4c21bf62f32f8e5552b4a5d",
-                  "author": "Robert Ancell",
-                  "timestamp": 1791754847,
-                  "message": "Update SDK requirement",
-                  "url": "https://github.com/canonical/udisks.dart/commit/99cae134e205f040c4c21bf62f32f8e5552b4a5d"
+                  "sha": "a76c24ade7b26fa471540bcad39c2ba6f8bcc58f",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641808,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/udisks.dart/commit/a76c24ade7b26fa471540bcad39c2ba6f8bcc58f"
                },
                {
-                  "sha": "7514e1b8f3ff7a5f1cead14eba4a3f63a3c637cc",
-                  "author": "Ken VanDine",
-                  "timestamp": 1791381049,
-                  "message": "chore: bump dbus to 0.8.0 (#25)",
-                  "url": "https://github.com/canonical/udisks.dart/commit/7514e1b8f3ff7a5f1cead14eba4a3f63a3c637cc"
+                  "sha": "44d6138a9847b27dea5698715c6bacec4eead9f2",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554495,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/udisks.dart/commit/44d6138a9847b27dea5698715c6bacec4eead9f2"
                }
             ],
             "ciActions": [],
@@ -7890,25 +7890,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6d43843bc0c712bd29bd361f85914f5de12c9d19",
+                  "sha": "8c7f77b49df887ff9c20a85f17d5818a85099d3b",
                   "author": "Robert Ancell",
-                  "timestamp": 1795463034,
-                  "message": "Prepare upower 0.8.0 (#23)\n\nPrepare upower 0.8.0 for release with the DBus 0.8 update. This release\nrequires Dart 3 and drops Dart 2 support.",
-                  "url": "https://github.com/canonical/upower.dart/commit/6d43843bc0c712bd29bd361f85914f5de12c9d19"
+                  "timestamp": 1795661858,
+                  "message": "ci: automate releases and publishing to pub.dev (#24)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.8.0` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\nResolves UDENG-12248",
+                  "url": "https://github.com/canonical/upower.dart/commit/8c7f77b49df887ff9c20a85f17d5818a85099d3b"
                },
                {
-                  "sha": "43944ecfba6c5d03ef2d6346a8ce8af0b87b11e7",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1795438857,
-                  "message": "chore: prepare 0.8.0 release\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/upower.dart/commit/43944ecfba6c5d03ef2d6346a8ce8af0b87b11e7"
+                  "sha": "50a834819e0bcaaadfeb1754939a2d1fa42f5868",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641809,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/upower.dart/commit/50a834819e0bcaaadfeb1754939a2d1fa42f5868"
                },
                {
-                  "sha": "aef09d4b7119ad0d6a403bee2193d4b41b7db24a",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1795438586,
-                  "message": "deps: bump dbus to 0.8.0 (#22)\n\n``` sh\n$ dart test\nBuilding package executable... (2.8s)\nBuilt test:test.\n00:00 +14: All tests passed!\n\n$ flutter test --coverage\n00:01 +14: All tests passed!\n\n$ dart analyze --fatal-infos --fatal-warnings .\nAnalyzing ....                         0.4s\nNo issues found!\n\n$ dart format --output=none --set-exit-if-changed .\nFormatted 10 files (0 changed) in 0.01 seconds.\n```",
-                  "url": "https://github.com/canonical/upower.dart/commit/aef09d4b7119ad0d6a403bee2193d4b41b7db24a"
+                  "sha": "2410376111d7b81a7069ef79e13294afbf466b70",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554475,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/upower.dart/commit/2410376111d7b81a7069ef79e13294afbf466b70"
                }
             ],
             "ciActions": [],
@@ -8400,25 +8400,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "faf794318d8bdd47085e7f782c6106ac0587a851",
+                  "sha": "450179982fb70eb13fd0d0fd051c9492478b7d1d",
                   "author": "Robert Ancell",
-                  "timestamp": 1756093548,
-                  "message": "Merge pull request #45 from robert-ancell/ci-ubuntu-version\n\nUpdate CI Ubuntu version, remove obsolete CLA checker",
-                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/faf794318d8bdd47085e7f782c6106ac0587a851"
+                  "timestamp": 1795661782,
+                  "message": "ci: automate releases and publishing to pub.dev (#47)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.6.3` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\nResolves UDENG-12251",
+                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/450179982fb70eb13fd0d0fd051c9492478b7d1d"
                },
                {
-                  "sha": "f2f07adf385d8de78d2380ec3d620af9ce413678",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756092641,
-                  "message": "Remove old CLA checker",
-                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/f2f07adf385d8de78d2380ec3d620af9ce413678"
+                  "sha": "c029235cc8d6ef5f0270e622bcb8d35a7238e3ae",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641802,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/c029235cc8d6ef5f0270e622bcb8d35a7238e3ae"
                },
                {
-                  "sha": "944256669f062fa1d4d99ae7a69b1ea0d2e00131",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756092631,
-                  "message": "Update CI Ubuntu version",
-                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/944256669f062fa1d4d99ae7a69b1ea0d2e00131"
+                  "sha": "e4349b7e13cff789cda60b7797032cd505b08e96",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554481,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/desktop_notifications.dart/commit/e4349b7e13cff789cda60b7797032cd505b08e96"
                }
             ],
             "ciActions": [],
@@ -8672,25 +8672,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "032538209ad624018341d9e5ba10bc0f869cca26",
+                  "sha": "9cedd5e3f46371b26daff0aaa4cb6d56fe822a51",
                   "author": "Robert Ancell",
-                  "timestamp": 1795060368,
-                  "message": "Releasing 0.8.1",
-                  "url": "https://github.com/canonical/dbus.dart/commit/032538209ad624018341d9e5ba10bc0f869cca26"
+                  "timestamp": 1795661658,
+                  "message": "ci: automate releases and publishing to pub.dev (#413)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.8.1` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\nResolves UDENG-12242",
+                  "url": "https://github.com/canonical/dbus.dart/commit/9cedd5e3f46371b26daff0aaa4cb6d56fe822a51"
                },
                {
-                  "sha": "e02ab6cc72e21596f79d31820b4c6e722e12ac0d",
-                  "author": "Robert Ancell",
-                  "timestamp": 1795060132,
-                  "message": "Fail calls that wait for a failed connection (#411)\n\nFixes #410.\n\n`DBusClient._connect` sets `_connectCompleter` before it opens the\nsocket, so that other calls wait for the same connection. When\n`_openSocket` or the `Hello` call throws, only the first call gets the\nerror. The completer is never completed, so the calls that wait for it,\nand all later calls on the client, do not complete.\n\nThis change completes the completer with the error. The calls that wait\nfor the connection, and the calls after it, get the same error. A failed\nclient stays failed, as before; it does not try to connect again.\n\nMost of the diff is indentation: the existing code is now inside a `try`\nblock. The new code is the `catch` block.\n\n### Tests\n\nTwo new tests in `test/dbus_test.dart` use a missing socket:\n\n- `connect error`: a second `ping` after a failed one throws\n`SocketException`.\n- `connect error - concurrent calls`: two `ping` calls that start at the\nsame time both throw `SocketException`.\n\nWithout the fix, both tests time out. With the fix, `dart test` passes\non Linux (221 tests). `dart analyze` and `dart format` are clean.\n\nThis change is independent of #409, which reports connection failures on\nsignal streams.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/e02ab6cc72e21596f79d31820b4c6e722e12ac0d"
+                  "sha": "52cd7147fffe1267ba7aab8a916615a1ef9eeee1",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641801,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/dbus.dart/commit/52cd7147fffe1267ba7aab8a916615a1ef9eeee1"
                },
                {
-                  "sha": "30f5ea27d3c1bd196d53e3eecbb001aac62bf6d3",
-                  "author": "Robert Ancell",
-                  "timestamp": 1795059533,
-                  "message": "Report signal subscription failures on the signal stream (#409)\n\nFixes #408.\n\n`DBusSignalStream._onListen` starts the bus connect and the `AddMatch`\ncall, but it drops their futures. When the bus socket is not available,\nthe error is an unhandled zone error. The `onError` handler of the\nsubscription does not receive it, and the caller cannot catch it.\n\nThis change sends these errors to the stream with `addError`.\n`Future.wait` uses `eagerError: true`: when `_findUniqueName` and\n`_addMatch` both wait on one failed connect, only the first call gets\nthe error, and the other call does not complete.\n\n### Tests\n\nThree new tests in `test/dbus_test.dart` listen to a signal stream on a\nmissing socket and expect a `SocketException` in `onError`. They cover\nthe message bus path, the message bus path with a sender, and the peer\n(`messageBus: false`) path.\n\n- Without the fix, the new tests fail.\n- With the fix, `dart test` passes on Linux (222 tests). `dart analyze`\nand `dart format` are clean.",
-                  "url": "https://github.com/canonical/dbus.dart/commit/30f5ea27d3c1bd196d53e3eecbb001aac62bf6d3"
+                  "sha": "3068066842cee0bf59c34371c123cee281b6262b",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554469,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/dbus.dart/commit/3068066842cee0bf59c34371c123cee281b6262b"
                }
             ],
             "ciActions": [],
@@ -8929,25 +8929,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "1c2b40b744e4666c2cd3a8e20b352504400a434c",
+                  "sha": "7a90b19cfc541a568235f7dc9e4d8442b3ba2296",
                   "author": "Robert Ancell",
-                  "timestamp": 1756091635,
-                  "message": "Merge pull request #32 from robert-ancell/removed-lint\n\nRemove obsolete lint option",
-                  "url": "https://github.com/canonical/fwupd.dart/commit/1c2b40b744e4666c2cd3a8e20b352504400a434c"
+                  "timestamp": 1795661801,
+                  "message": "ci: automate releases and publishing to pub.dev (#33)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.2.2` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\n\nResolves UDENG-12253",
+                  "url": "https://github.com/canonical/fwupd.dart/commit/7a90b19cfc541a568235f7dc9e4d8442b3ba2296"
                },
                {
-                  "sha": "4ad071eb17d64ff9734522076d3574c96c4b3fea",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756091535,
-                  "message": "Update SDK constraints as detected by analyze",
-                  "url": "https://github.com/canonical/fwupd.dart/commit/4ad071eb17d64ff9734522076d3574c96c4b3fea"
+                  "sha": "ba5db48efb3ea3bab8b611eafce8de533f8de643",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641802,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/fwupd.dart/commit/ba5db48efb3ea3bab8b611eafce8de533f8de643"
                },
                {
-                  "sha": "1ac2a3716119343f8d69b48c49309d6897930ac1",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756091394,
-                  "message": "Remove obsolete lint option",
-                  "url": "https://github.com/canonical/fwupd.dart/commit/1ac2a3716119343f8d69b48c49309d6897930ac1"
+                  "sha": "5b9192d3b4be784a60dccacd1ef1e9db78ece32a",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554486,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/fwupd.dart/commit/5b9192d3b4be784a60dccacd1ef1e9db78ece32a"
                }
             ],
             "ciActions": [],
@@ -9319,7 +9319,7 @@
          {
             "name": "myna",
             "defaultBranch": "main",
-            "newCommits": 41,
+            "newCommits": 44,
             "url": "https://github.com/canonical/myna",
             "releases": [
                {
@@ -9363,25 +9363,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "38859ab40db6fdd9c43477867b71ca1ea999e464",
+                  "sha": "5dab1913f477efa431994346373cf8c82f152ca2",
                   "author": "Robert Ancell",
-                  "timestamp": 1790140878,
-                  "message": "Require dbus 0.8 (#74)\n\nBumps the `dbus` dependency from `^0.7.0` to `^0.8.0`, and raises the\nSDK lower bound to `>=3.0.0` (dbus 0.8.0 requires Dart 3).\n\nSDK v2 is pretty old.",
-                  "url": "https://github.com/canonical/nm.dart/commit/38859ab40db6fdd9c43477867b71ca1ea999e464"
+                  "timestamp": 1795661819,
+                  "message": "ci: automate releases and publishing to pub.dev (#77)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.6.0` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\n\nResolves UDENG-12254",
+                  "url": "https://github.com/canonical/nm.dart/commit/5dab1913f477efa431994346373cf8c82f152ca2"
                },
                {
-                  "sha": "19aaf76eb3f5cbb01e02e56605dfb5593c7141f3",
-                  "author": "Matt Kosarek",
-                  "timestamp": 1790023891,
-                  "message": "Require dbus 0.8\n\ndbus 0.8.0 requires Dart 3, so the SDK lower bound is raised to 3.0.0 as\nwell. No source changes are needed: the runtime API used by nm is\nunchanged in 0.8.0, which only adds anonymous client authentication and\nalters the code generator's output.",
-                  "url": "https://github.com/canonical/nm.dart/commit/19aaf76eb3f5cbb01e02e56605dfb5593c7141f3"
+                  "sha": "900245de356a7a2abf0b8c3b3d168b6955d249f5",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641804,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/nm.dart/commit/900245de356a7a2abf0b8c3b3d168b6955d249f5"
                },
                {
-                  "sha": "0adbf52826cf7949116945fcb8105d745a325b4c",
-                  "author": "Robert Ancell",
-                  "timestamp": 1756088060,
-                  "message": "Merge pull request #72 from robert-ancell/ci-ubuntu-version\n\nMove tests from 20.04 to 24.04",
-                  "url": "https://github.com/canonical/nm.dart/commit/0adbf52826cf7949116945fcb8105d745a325b4c"
+                  "sha": "e1b8dd2a0ba790c39db8c8ea23afe96f0efb53ab",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554489,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/nm.dart/commit/e1b8dd2a0ba790c39db8c8ea23afe96f0efb53ab"
                }
             ],
             "ciActions": [],
@@ -10451,25 +10451,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "b61a689b3288b9961e968cfb89e08d8a92178707",
+                  "sha": "0a265aba7563c39178725dbd548d81fc1c765b7d",
                   "author": "Robert Ancell",
-                  "timestamp": 1791754773,
-                  "message": "Releasing 0.5.0",
-                  "url": "https://github.com/canonical/udisks.dart/commit/b61a689b3288b9961e968cfb89e08d8a92178707"
+                  "timestamp": 1795661839,
+                  "message": "ci: automate releases and publishing to pub.dev (#26)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.5.0` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\n\nResolves UDENG-12256",
+                  "url": "https://github.com/canonical/udisks.dart/commit/0a265aba7563c39178725dbd548d81fc1c765b7d"
                },
                {
-                  "sha": "99cae134e205f040c4c21bf62f32f8e5552b4a5d",
-                  "author": "Robert Ancell",
-                  "timestamp": 1791754847,
-                  "message": "Update SDK requirement",
-                  "url": "https://github.com/canonical/udisks.dart/commit/99cae134e205f040c4c21bf62f32f8e5552b4a5d"
+                  "sha": "a76c24ade7b26fa471540bcad39c2ba6f8bcc58f",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641808,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/udisks.dart/commit/a76c24ade7b26fa471540bcad39c2ba6f8bcc58f"
                },
                {
-                  "sha": "7514e1b8f3ff7a5f1cead14eba4a3f63a3c637cc",
-                  "author": "Ken VanDine",
-                  "timestamp": 1791381049,
-                  "message": "chore: bump dbus to 0.8.0 (#25)",
-                  "url": "https://github.com/canonical/udisks.dart/commit/7514e1b8f3ff7a5f1cead14eba4a3f63a3c637cc"
+                  "sha": "44d6138a9847b27dea5698715c6bacec4eead9f2",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554495,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/udisks.dart/commit/44d6138a9847b27dea5698715c6bacec4eead9f2"
                }
             ],
             "ciActions": [],
@@ -10484,25 +10484,25 @@
             "releases": null,
             "commits": [
                {
-                  "sha": "6d43843bc0c712bd29bd361f85914f5de12c9d19",
+                  "sha": "8c7f77b49df887ff9c20a85f17d5818a85099d3b",
                   "author": "Robert Ancell",
-                  "timestamp": 1795463034,
-                  "message": "Prepare upower 0.8.0 (#23)\n\nPrepare upower 0.8.0 for release with the DBus 0.8 update. This release\nrequires Dart 3 and drops Dart 2 support.",
-                  "url": "https://github.com/canonical/upower.dart/commit/6d43843bc0c712bd29bd361f85914f5de12c9d19"
+                  "timestamp": 1795661858,
+                  "message": "ci: automate releases and publishing to pub.dev (#24)\n\n## Summary\n\nAutomates releases and publishing to pub.dev from GitHub Actions,\nreplacing the manual `chore: release` commit + `dart pub publish` flow.\n\n### Flow\n\n1. Conventional commits land on `main`.\n2. `release.yml` (release-please) opens/updates a `chore: release X.Y.Z`\nPR that bumps `pubspec.yaml` and `CHANGELOG.md`.\n3. Merging that PR creates the `vX.Y.Z` tag + GitHub release, then\ndispatches `publish.yml` on the tag (tags created with `GITHUB_TOKEN`\ndon't trigger `push` workflows).\n4. `publish.yml` verifies the tag matches `pubspec.yaml`, runs analyze +\ntests, then publishes via `dart-lang/setup-dart`'s reusable workflow\nusing OIDC (no secrets). It also runs on a manually pushed `vX.Y.Z` tag.\n\n### Changes\n\n- `.github/workflows/release.yml`: release-please + dispatch of publish.\n- `.github/workflows/publish.yml`: verify + publish (`push` tags and\n`workflow_dispatch`).\n- `.github/workflows/publish-dry-run.yml`: `dart pub publish --dry-run`\non PRs.\n- `.github/workflows/semantic-pr.yml`: enforces conventional PR titles.\n- `release-please-config.json` / `.release-please-manifest.json`: `dart`\nrelease type, `v` tags, pre-1.0 `feat` -> patch bump, bootstrapped at\n`0.8.0` so the next release only includes new commits.\n- `CONTRIBUTING.md`: documents the release process.\n\nResolves UDENG-12248",
+                  "url": "https://github.com/canonical/upower.dart/commit/8c7f77b49df887ff9c20a85f17d5818a85099d3b"
                },
                {
-                  "sha": "43944ecfba6c5d03ef2d6346a8ce8af0b87b11e7",
-                  "author": "Paul Geoghegan",
-                  "timestamp": 1795438857,
-                  "message": "chore: prepare 0.8.0 release\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/upower.dart/commit/43944ecfba6c5d03ef2d6346a8ce8af0b87b11e7"
+                  "sha": "50a834819e0bcaaadfeb1754939a2d1fa42f5868",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795641809,
+                  "message": "ci: configure Renovate for semantic PR titles",
+                  "url": "https://github.com/canonical/upower.dart/commit/50a834819e0bcaaadfeb1754939a2d1fa42f5868"
                },
                {
-                  "sha": "aef09d4b7119ad0d6a403bee2193d4b41b7db24a",
-                  "author": "paul-geoghegan",
-                  "timestamp": 1795438586,
-                  "message": "deps: bump dbus to 0.8.0 (#22)\n\n``` sh\n$ dart test\nBuilding package executable... (2.8s)\nBuilt test:test.\n00:00 +14: All tests passed!\n\n$ flutter test --coverage\n00:01 +14: All tests passed!\n\n$ dart analyze --fatal-infos --fatal-warnings .\nAnalyzing ....                         0.4s\nNo issues found!\n\n$ dart format --output=none --set-exit-if-changed .\nFormatted 10 files (0 changed) in 0.01 seconds.\n```",
-                  "url": "https://github.com/canonical/upower.dart/commit/aef09d4b7119ad0d6a403bee2193d4b41b7db24a"
+                  "sha": "2410376111d7b81a7069ef79e13294afbf466b70",
+                  "author": "Sergo Beruashvili",
+                  "timestamp": 1795554475,
+                  "message": "docs: describe tag protection accurately",
+                  "url": "https://github.com/canonical/upower.dart/commit/2410376111d7b81a7069ef79e13294afbf466b70"
                }
             ],
             "ciActions": [],
