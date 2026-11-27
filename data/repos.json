@@ -91,7 +91,7 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
@@ -449,7 +449,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 81,
+            "newCommits": 82,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -514,14 +514,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 811,
-                     "timestamp": 1795616835
+                     "revision": 812,
+                     "timestamp": 1795766190
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 810,
-                     "timestamp": 1795616572
+                     "revision": 813,
+                     "timestamp": 1795766334
                   }
                ],
                "channels": [
@@ -2717,6 +2717,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "488a268f7503919932b5901c68a02db8a6141d0b",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1795746024,
+                  "message": "ptytest: Don't read the process state while it is being waited (#2315)\n\nI got a data-race during tests:\n\n```\nWARNING: DATA RACE\nWrite at 0x00c000203768 by goroutine 12:\n  os/exec.(*Cmd).Wait()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/os/exec/exec.go:934 +0x1b1\n  github.com/canonical/authd/internal/testutils/ptytest.Start.func2()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:408 +0x37\n\nPrevious read at 0x00c000203768 by goroutine 9:\n  github.com/canonical/authd/internal/testutils/ptytest.(*Console).processExitSummary()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:546 +0x426\n  github.com/canonical/authd/internal/testutils/ptytest.(*Console).formatDiagnostics()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:509 +0x6de\n  github.com/canonical/authd/internal/testutils/ptytest.(*Console).WaitForEchoOff()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:631 +0x44c\n  github.com/canonical/authd/internal/testutils/ptytest_test.TestWaitForEchoOffFailure()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest_test.go:85 +0x1e4\n  testing.tRunner()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2036 +0x21c\n  testing.(*T).Run.gowrap1()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2101 +0x38\n\nGoroutine 12 (running) created at:\n  github.com/canonical/authd/internal/testutils/ptytest.Start()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:407 +0x1212\n  github.com/canonical/authd/internal/testutils/ptytest_test.TestWaitForEchoOffFailure()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest_test.go:82 +0x1ab\n  testing.tRunner()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2036 +0x21c\n  testing.(*T).Run.gowrap1()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2101 +0x38\n\nGoroutine 9 (running) created at:\n  testing.(*T).Run()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2101 +0xb12\n  testing.runTests.func1()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2585 +0x84\n  testing.tRunner()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2036 +0x21c\n  testing.runTests()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2583 +0x9e9\n  testing.(*M).Run()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2443 +0xf4b\n  main.main()\n      _testmain.go:92 +0x164\n```\n\nThe exit summary used in the failure diagnostics falls back to the state\nof the command process when its wait result is not available yet. But\nthat state is set by the goroutine waiting for the command, so reading\nit races with it, as reported by the race detector.\n\nSo store the process state atomically once the wait is done, and use it\ninstead.",
+                  "url": "https://github.com/canonical/authd/commit/488a268f7503919932b5901c68a02db8a6141d0b"
+               },
+               {
                   "sha": "3534280a35bec97e5d1837b31f4ff7656b1cce65",
                   "author": "Noor Eldeen Mansour",
                   "timestamp": 1795706647,
@@ -2729,13 +2736,6 @@
                   "timestamp": 1795705067,
                   "message": "e2e: give the VM more time to shut off\n\nThe stonking e2e job failed when the VM did not reach \"shut off\" within\nthe 5 second wait after `virsh shutdown`, right after the broker snap\ninstall restarted snapd. The same job's earlier reboot also needed more\nthan 5 seconds and only survived because the outer retry caught it.\n\nWait up to 10 seconds per attempt. A slow guest now has time to stop; a\nguest that never shuts down fails after about 32 seconds instead of\nabout 18.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
                   "url": "https://github.com/canonical/authd/commit/58816cd2a794ecc9afc8a70c8f697307e1a1452d"
-               },
-               {
-                  "sha": "f5aec08672cefb7d3a1d66adc8077dcf0b23b137",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1795233249,
-                  "message": "e2e: log the domain state when the VM does not shut off\n\nThe shutdown retries give up without recording why the guest is still\nrunning, so a slow snapd settle and a lost ACPI request look identical\nin the job log (#2302). The state query is time-bounded, and the exit\nstatus is unchanged.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f5aec08672cefb7d3a1d66adc8077dcf0b23b137"
                }
             ],
             "ciActions": [
@@ -5934,6 +5934,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "488a268f7503919932b5901c68a02db8a6141d0b",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1795746024,
+                  "message": "ptytest: Don't read the process state while it is being waited (#2315)\n\nI got a data-race during tests:\n\n```\nWARNING: DATA RACE\nWrite at 0x00c000203768 by goroutine 12:\n  os/exec.(*Cmd).Wait()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/os/exec/exec.go:934 +0x1b1\n  github.com/canonical/authd/internal/testutils/ptytest.Start.func2()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:408 +0x37\n\nPrevious read at 0x00c000203768 by goroutine 9:\n  github.com/canonical/authd/internal/testutils/ptytest.(*Console).processExitSummary()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:546 +0x426\n  github.com/canonical/authd/internal/testutils/ptytest.(*Console).formatDiagnostics()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:509 +0x6de\n  github.com/canonical/authd/internal/testutils/ptytest.(*Console).WaitForEchoOff()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:631 +0x44c\n  github.com/canonical/authd/internal/testutils/ptytest_test.TestWaitForEchoOffFailure()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest_test.go:85 +0x1e4\n  testing.tRunner()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2036 +0x21c\n  testing.(*T).Run.gowrap1()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2101 +0x38\n\nGoroutine 12 (running) created at:\n  github.com/canonical/authd/internal/testutils/ptytest.Start()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:407 +0x1212\n  github.com/canonical/authd/internal/testutils/ptytest_test.TestWaitForEchoOffFailure()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest_test.go:82 +0x1ab\n  testing.tRunner()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2036 +0x21c\n  testing.(*T).Run.gowrap1()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2101 +0x38\n\nGoroutine 9 (running) created at:\n  testing.(*T).Run()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2101 +0xb12\n  testing.runTests.func1()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2585 +0x84\n  testing.tRunner()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2036 +0x21c\n  testing.runTests()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2583 +0x9e9\n  testing.(*M).Run()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2443 +0xf4b\n  main.main()\n      _testmain.go:92 +0x164\n```\n\nThe exit summary used in the failure diagnostics falls back to the state\nof the command process when its wait result is not available yet. But\nthat state is set by the goroutine waiting for the command, so reading\nit races with it, as reported by the race detector.\n\nSo store the process state atomically once the wait is done, and use it\ninstead.",
+                  "url": "https://github.com/canonical/authd/commit/488a268f7503919932b5901c68a02db8a6141d0b"
+               },
+               {
                   "sha": "3534280a35bec97e5d1837b31f4ff7656b1cce65",
                   "author": "Noor Eldeen Mansour",
                   "timestamp": 1795706647,
@@ -5946,13 +5953,6 @@
                   "timestamp": 1795705067,
                   "message": "e2e: give the VM more time to shut off\n\nThe stonking e2e job failed when the VM did not reach \"shut off\" within\nthe 5 second wait after `virsh shutdown`, right after the broker snap\ninstall restarted snapd. The same job's earlier reboot also needed more\nthan 5 seconds and only survived because the outer retry caught it.\n\nWait up to 10 seconds per attempt. A slow guest now has time to stop; a\nguest that never shuts down fails after about 32 seconds instead of\nabout 18.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
                   "url": "https://github.com/canonical/authd/commit/58816cd2a794ecc9afc8a70c8f697307e1a1452d"
-               },
-               {
-                  "sha": "f5aec08672cefb7d3a1d66adc8077dcf0b23b137",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1795233249,
-                  "message": "e2e: log the domain state when the VM does not shut off\n\nThe shutdown retries give up without recording why the guest is still\nrunning, so a slow snapd settle and a lost ACPI request look identical\nin the job log (#2302). The state query is time-bounded, and the exit\nstatus is unchanged.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f5aec08672cefb7d3a1d66adc8077dcf0b23b137"
                }
             ],
             "ciActions": [
@@ -7703,7 +7703,7 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
@@ -8037,7 +8037,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 81,
+            "newCommits": 82,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -8102,14 +8102,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 811,
-                     "timestamp": 1795616835
+                     "revision": 812,
+                     "timestamp": 1795766190
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 810,
-                     "timestamp": 1795616572
+                     "revision": 813,
+                     "timestamp": 1795766334
                   }
                ],
                "channels": [
@@ -9458,6 +9458,13 @@
             "releases": null,
             "commits": [
                {
+                  "sha": "488a268f7503919932b5901c68a02db8a6141d0b",
+                  "author": "Marco Trevisan",
+                  "timestamp": 1795746024,
+                  "message": "ptytest: Don't read the process state while it is being waited (#2315)\n\nI got a data-race during tests:\n\n```\nWARNING: DATA RACE\nWrite at 0x00c000203768 by goroutine 12:\n  os/exec.(*Cmd).Wait()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/os/exec/exec.go:934 +0x1b1\n  github.com/canonical/authd/internal/testutils/ptytest.Start.func2()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:408 +0x37\n\nPrevious read at 0x00c000203768 by goroutine 9:\n  github.com/canonical/authd/internal/testutils/ptytest.(*Console).processExitSummary()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:546 +0x426\n  github.com/canonical/authd/internal/testutils/ptytest.(*Console).formatDiagnostics()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:509 +0x6de\n  github.com/canonical/authd/internal/testutils/ptytest.(*Console).WaitForEchoOff()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:631 +0x44c\n  github.com/canonical/authd/internal/testutils/ptytest_test.TestWaitForEchoOffFailure()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest_test.go:85 +0x1e4\n  testing.tRunner()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2036 +0x21c\n  testing.(*T).Run.gowrap1()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2101 +0x38\n\nGoroutine 12 (running) created at:\n  github.com/canonical/authd/internal/testutils/ptytest.Start()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest.go:407 +0x1212\n  github.com/canonical/authd/internal/testutils/ptytest_test.TestWaitForEchoOffFailure()\n      /home/runner/work/authd/authd/internal/testutils/ptytest/ptytest_test.go:82 +0x1ab\n  testing.tRunner()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2036 +0x21c\n  testing.(*T).Run.gowrap1()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2101 +0x38\n\nGoroutine 9 (running) created at:\n  testing.(*T).Run()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2101 +0xb12\n  testing.runTests.func1()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2585 +0x84\n  testing.tRunner()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2036 +0x21c\n  testing.runTests()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2583 +0x9e9\n  testing.(*M).Run()\n      /opt/hostedtoolcache/go/1.26.11/x64/src/testing/testing.go:2443 +0xf4b\n  main.main()\n      _testmain.go:92 +0x164\n```\n\nThe exit summary used in the failure diagnostics falls back to the state\nof the command process when its wait result is not available yet. But\nthat state is set by the goroutine waiting for the command, so reading\nit races with it, as reported by the race detector.\n\nSo store the process state atomically once the wait is done, and use it\ninstead.",
+                  "url": "https://github.com/canonical/authd/commit/488a268f7503919932b5901c68a02db8a6141d0b"
+               },
+               {
                   "sha": "3534280a35bec97e5d1837b31f4ff7656b1cce65",
                   "author": "Noor Eldeen Mansour",
                   "timestamp": 1795706647,
@@ -9470,13 +9477,6 @@
                   "timestamp": 1795705067,
                   "message": "e2e: give the VM more time to shut off\n\nThe stonking e2e job failed when the VM did not reach \"shut off\" within\nthe 5 second wait after `virsh shutdown`, right after the broker snap\ninstall restarted snapd. The same job's earlier reboot also needed more\nthan 5 seconds and only survived because the outer retry caught it.\n\nWait up to 10 seconds per attempt. A slow guest now has time to stop; a\nguest that never shuts down fails after about 32 seconds instead of\nabout 18.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
                   "url": "https://github.com/canonical/authd/commit/58816cd2a794ecc9afc8a70c8f697307e1a1452d"
-               },
-               {
-                  "sha": "f5aec08672cefb7d3a1d66adc8077dcf0b23b137",
-                  "author": "github-actions[bot]",
-                  "timestamp": 1795233249,
-                  "message": "e2e: log the domain state when the VM does not shut off\n\nThe shutdown retries give up without recording why the guest is still\nrunning, so a slow snapd settle and a lost ACPI request look identical\nin the job log (#2302). The state query is time-bounded, and the exit\nstatus is unchanged.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-                  "url": "https://github.com/canonical/authd/commit/f5aec08672cefb7d3a1d66adc8077dcf0b23b137"
                }
             ],
             "ciActions": [
@@ -10347,7 +10347,7 @@
          {
             "name": "ubuntu-insights-k8s-operator",
             "defaultBranch": "main",
-            "newCommits": 0,
+            "newCommits": 2,
             "url": "https://github.com/canonical/ubuntu-insights-k8s-operator",
             "releases": [
                {
@@ -10640,7 +10640,7 @@
          {
             "name": "yarf",
             "defaultBranch": "main",
-            "newCommits": 81,
+            "newCommits": 82,
             "url": "https://github.com/canonical/yarf",
             "releases": [
                {
@@ -10705,14 +10705,14 @@
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 811,
-                     "timestamp": 1795616835
+                     "revision": 812,
+                     "timestamp": 1795766190
                   },
                   {
                      "track": "latest",
                      "channel": "edge",
-                     "revision": 810,
-                     "timestamp": 1795616572
+                     "revision": 813,
+                     "timestamp": 1795766334
                   }
                ],
                "channels": [
